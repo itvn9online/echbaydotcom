@@ -12,6 +12,7 @@ Stable tag: 1.0.9
 Version: 1.0.9
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
+Old version: https://github.com/itvn9online/echbaydotcom-2018-07-16
 
 
 === HƯỚNG DẪN CÀI ĐẶT ===
