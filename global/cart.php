@@ -107,6 +107,26 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		//
 		$animate_id = 'tr_cart_' . $post->ID;
 		
+		// product size
+		$product_size = _eb_get_post_object( $post->ID, '_eb_product_size' );
+		if ( $product_size != '' ) {
+			if ( substr( $product_size, 0, 1 ) == ',' ) {
+				$product_size = substr( $product_size, 1 );
+			}
+			$product_size = str_replace( '"', '\"', $product_size );
+		}
+		
+		//
+		$product_list_color = _eb_get_post_object( $post->ID, '_eb_product_list_color' );
+		$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
+		$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
+		
+		//
+		$product_color_name = _eb_get_post_object( $post->ID, '_eb_product_color' );
+		if ( $product_color_name != '' ) {
+			$product_color_name = ' - (' . $product_color_name . ')';
+		}
+		
 		
 		//
 		$cart_list .= '
@@ -117,9 +137,9 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 			<br>
 		</div>
 		<div class="lf f70 fullsize-if-mobile">
-			<div><a href="' . $p_link . '" class="bold upper medium blackcolor get-product-name-for-cart">' . $post->post_title . '</a></div>
-			<div data-id="' . $post->ID . '" class="show-list-color"></div>
-			<div data-id="' . $post->ID . '" class="show-list-size"></div>
+			<div><a href="' . $p_link . '" class="bold upper medium blackcolor get-product-name-for-cart">' . $post->post_title . '<span class="show-product-color-name' . $post->ID . '">' . $product_color_name . '</span></a></div>
+			<div data-id="' . $post->ID . '" data-name="' . str_replace( '"', '&quot;', EBE_get_lang('cart_mausac') ) . '" class="show-list-color l30 d-none">' . $product_list_color . '</div>
+			<div data-id="' . $post->ID . '" data-value="' . $product_size . '" class="show-list-size l30 d-none">' . EBE_get_lang('cart_kichco') . ': </div>
 			<div class="bold big show-if-mobile">' . EBE_add_ebe_currency_class ( $trv_giamoi ) . '</div>
 			<br>
 			<div><a href="' . $c_link . '" class="upper blackcolor">' . $c_name . '</a></div>

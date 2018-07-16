@@ -1891,11 +1891,13 @@ var _global_js_eb = {
 		// nếu đang là xem trong giỏ hàng
 		else {
 			jQuery('.each-for-set-cart-value').each(function () {
+				var cart_pid = jQuery(this).attr('data-id') || 0;
+				
 				ebe_arr_cart_product_list.push( {
-					"id" : jQuery(this).attr('data-id') || 0,
+					"id" : cart_pid,
 					"name" : jQuery('.get-product-name-for-cart', this).html() || '',
-					"size" : '',
-					"color" : '',
+					"size" : jQuery('.show-list-size[data-id="' + cart_pid + '"] select').val() || '',
+					"color" : jQuery('.show-list-color[data-id="' + cart_pid + '"] select').val() || '',
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
 					"price" : jQuery(this).attr('data-price') || 0,
 					"quan" : jQuery('.change-select-quanlity', this).val() || 1,
@@ -1903,7 +1905,7 @@ var _global_js_eb = {
 				} );
 			});
 		}
-//		console.log( ebe_arr_cart_product_list );
+		if ( cf_tester_mode == 1 ) console.log( ebe_arr_cart_product_list );
 		
 		//
 //		if ( dog('hd_products_info') == null ) {

@@ -55,10 +55,12 @@ foreach ( $arr as $k => $v ) {
 		$arr_shop_cart_price[$v] = isset( $_POST['t_new_price'][$v] ) ? $_POST['t_new_price'][$v] : 0;
 	}
 }
-//echo $strFilter . "\n";
-//print_r( $arr_shop_cart );
-//print_r( $arr_shop_cart_size );
-//exit();
+/*
+echo $strFilter . "\n";
+print_r( $arr_shop_cart );
+print_r( $arr_shop_cart_size );
+exit();
+*/
 
 
 //

@@ -744,7 +744,7 @@ function ___eb_details_product_color () {
 				if ( color_quan == '' ) {
 					color_quan = 1;
 				}
-				console.log('color_quan: ' + color_quan);
+				if ( cf_tester_mode == 1 ) console.log('color_quan: ' + color_quan);
 				
 				// còn hàng thì mới hiển thị
 				if ( color_quan > 0 ) {
@@ -972,7 +972,7 @@ function ___eb_details_product_size () {
 	
 	// có nhiều size thì tạo list
 	var str = '',
-		select_default_size = '';
+		select_default_size = null;
 	
 	for (var i = 0; i < arr_product_size.length; i++) {
 		// conver từ bản code cũ sang
@@ -1003,7 +1003,7 @@ function ___eb_details_product_size () {
 		
 		// Giá trị mảng phải khác null -> null = xóa
 		if ( arr_product_size[i].val != null && arr_product_size[i].val >= 0 ) {
-			if ( select_default_size == '' ) {
+			if ( select_default_size == null ) {
 				select_default_size = i;
 			}
 			
@@ -3468,6 +3468,125 @@ setTimeout(function () {
 	}
 	else if ( act == 'cart' ) {
 		_global_js_eb.ga_event_track( 'View cart', 'Xem gio hang' );
+		
+		// load size và color trong giỏ hàng
+		(function () {
+			// Size cho phần giỏ hàng
+			jQuery('.show-list-size').each(function() {
+				var a = jQuery(this).attr('data-value') || '',
+					t_post_id = jQuery(this).attr('data-id') || '';
+				if ( a != '' ) {
+//					console.log(a);
+					if ( a.substr(0, 1) == ',' ) {
+						a = a.substr(1);
+					}
+					if ( a.substr(0, 1) != '[' ) {
+						a = "[" + a + "]";
+					}
+//					console.log(a);
+					a = eval( a );
+//					console.log(a);
+//					console.log(a.length);
+					
+					//
+					if ( typeof a[0] != 'undefined' && typeof a[0].name == 'undefined' ) {
+//					if ( a.length == 1 && typeof a[0][0].ten != 'undefined' ) {
+						a = a[0];
+					}
+					
+					var str = '';
+					for ( var i = 0; i < a.length; i++ ) {
+						// conver từ bản code cũ sang
+						if ( typeof a[i].name == 'undefined' ) {
+							if ( typeof a[i].ten != 'undefined' ) {
+								a[i].name = a[i].ten;
+							}
+							else {
+								a[i].name = '';
+							}
+						}
+						
+						if ( typeof a[i].val == 'undefined' ) {
+							if ( typeof a[i].soluong != 'undefined' ) {
+								a[i].val = a[i].soluong;
+							}
+							else {
+								a[i].val = 0;
+							}
+						}
+						else if ( a[i].val == '' ) {
+							a[i].val = 0;
+						}
+						
+						//
+						if ( a[i].name != '' && a[i].val >= 0 ) {
+							str += '<option value="' + a[i].name + '">' + a[i].name + '</option>';
+						}
+					}
+					
+					//
+					if ( str != '' ) {
+						jQuery(this).show().append('<select name="t_size[' + t_post_id + ']">' + str + '</select>');
+					}
+				}
+			});
+			
+			//
+			jQuery('.show-list-size select').change(function () {
+				_global_js_eb.cart_create_arr_poruduct();
+			});
+			
+			
+			//
+			jQuery('.show-list-color').each(function() {
+				var t_post_id = jQuery(this).attr('data-id') || '';
+				console.log(t_post_id);
+				console.log(jQuery('img', this).length);
+				
+				//
+				var str = '';
+				
+				jQuery('img', this).each(function() {
+					var s = jQuery(this).attr('data-src') || jQuery(this).attr('src') || '';
+					
+					if ( s != '' ) {
+						// trạng thái
+						var status = jQuery(this).attr('data-status') || 1;
+						
+						if ( status > 0 ) {
+							var color_name = jQuery(this).attr('alt') || jQuery(this).attr('title') || jQuery(this).attr('data-color') || '',
+								color_quan = jQuery(this).attr('data-quan') || '',
+								color_price = jQuery(this).attr('data-price') || '';
+							
+							// Để trống -> coi như còn hàng
+							if ( color_quan == '' ) {
+								color_quan = 1;
+							}
+							if ( cf_tester_mode == 1 ) console.log('color_quan: ' + color_quan);
+							
+							// còn hàng thì mới hiển thị
+							if ( color_quan > 0 ) {
+								str += '<option value="' + color_name + '">' + color_name + '</option>';
+							}
+						}
+					}
+				});
+				
+				//
+				if ( str != '' ) {
+					jQuery(this).show().html( ( jQuery(this).attr('data-name') || '' ) + ': <select name="t_color[' + t_post_id + ']">' + str + '</select>');
+				}
+			});
+			
+			//
+			jQuery('.show-list-color select').change(function () {
+				_global_js_eb.cart_create_arr_poruduct();
+			});
+			
+			//
+			_global_js_eb.cart_create_arr_poruduct();
+		})();
+		
 	}
 	else if ( act == 'hoan-tat' ) {
 		_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong' );

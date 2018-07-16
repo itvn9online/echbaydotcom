@@ -139,7 +139,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	z-index: 9;
 }
 /* .ip-invoice-alert td:first-child { border-left: 5px #ccc solid; } */
-.table-list tr td:first-child {
+.ip-invoice-alert tr td:first-child {
 	border-left-width: 10px;
 	padding-left: 0;
 }

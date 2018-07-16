@@ -17,7 +17,7 @@ $('.url-for-cleanup-404').attr({
 	href: window.location.href.split('&cleanup_404=')[0].split('#')[0] + '&cleanup_404=1'
 });
 </script>
-<table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list ip-invoice-alert">
+<table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list">
 	<tr class="table-list-title">
 		<td width="50%">URL with 404 Error</td>
 		<td width="50%">URL redirect to</td>

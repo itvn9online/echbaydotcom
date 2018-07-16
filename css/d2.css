@@ -2173,3 +2173,8 @@ iframe[name="google_conversion_frame"] {
 }
 .thread-details-index li:hover { text-decoration: underline; }
 .footer-address-address p { margin: 0; }
+/* */
+.change-select-quanlity {
+	padding: 3px 5px;
+	border-radius: 3px;
+}
