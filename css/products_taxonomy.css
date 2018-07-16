@@ -1,0 +1,18 @@
+.list-edit-taxonomy .fa-star[data-val="1"] { color: #F90; }
+.list-edit-taxonomy .fa-paw[data-val="1"],
+.list-edit-taxonomy .fa-unlock[data-val="1"],
+.list-edit-taxonomy .fa-unlock-alt[data-val="1"] { color: #000; }
+.list-edit-taxonomy .fa-unlock[data-val="1"]:before,
+.list-edit-taxonomy .fa-unlock-alt[data-val="1"]:before { content: "\f023"; }
+/* .maxwidth-quick-add-taxonomy { max-width: 600px; } */
+.list-edit-taxonomy blockquote {
+	font-size: 18px;
+	padding-left: 15px;
+	margin-left: 0;
+	border-left: 1px #999 solid;
+}
+.list-edit-taxonomy blockquote blockquote {
+	font-size: 85%;
+	padding-left: 30px;
+	border-left: 0;
+}

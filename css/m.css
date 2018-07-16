@@ -1,0 +1,271 @@
+/*
+* style for mobile
+*/
+/* @media screen and (max-width:775px) { */
+body.style-for-mobile {
+	min-width: 250px;
+	/* padding: 0 1px; */
+	margin-top: 45px;
+}
+/* global mobile */
+.style-for-mobile .w90,
+.style-for-mobile .w99,
+/* .style-for-mobile .global-w99, */
+/*
+.style-for-mobile .col-main-content,
+.style-for-mobile .col-sidebar-content,
+*/
+.style-for-mobile .fullsize-if-mobile {
+	width: 100% !important;
+	margin: 0 0 0 auto;
+	max-width: 999px;
+	float: none;
+}
+/*
+.style-for-mobile .fullsize-if-mobile { }
+*/
+.style-for-mobile .w90,
+/* .style-for-mobile .global-w99, */
+.style-for-mobile .w99 { min-width: 250px; }
+.style-for-mobile .hide-if-mobile { display: none !important; }
+.style-for-mobile .show-if-mobile { display: block !important; }
+.style-for-mobile .right-padding-menu,
+.style-for-mobile .padding-right-menu,
+.style-for-mobile .right-space-menu,
+.style-for-mobile .right-menu-space { padding-right: 0; }
+.style-for-mobile .left-padding-menu,
+.style-for-mobile .padding-left-menu,
+.style-for-mobile .left-space-menu,
+.style-for-mobile .left-menu-space { padding-left: 0; }
+.style-for-mobile .mobile-zero-margin,
+.style-for-mobile .echbay-blog,
+.style-for-mobile .thread-list,
+.style-for-mobile .widget-search-advanced { margin: 0 !important; }
+/* .style-for-mobile .thread-list li { width: 50%; } */
+/* fix search mobile */
+/*
+.style-for-mobile .div-search-margin {
+	margin-top: 0;
+	position: fixed;
+	top: 45px;
+	left: 0;
+	right: 0;
+	padding: 5px 0;
+	background: rgba( 0, 0, 0, .8 );
+	z-index: 99;
+	border-bottom: 1px #666 solid;
+	display: none;
+}
+.style-for-mobile .div-search-margin .div-search {
+	background: #fff;
+	width: 95%;
+	margin: 0 auto !important;
+	border: 0 none;
+	border-radius: 10px;
+}
+.style-for-mobile .div-search-margin input[type=search] { color: #333; }
+.style-for-mobile .show-search-mobile .div-search-margin { display: block; }
+*/
+/* mobile menu */
+.style-for-mobile .menu-for-mobile {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+.menu-mobile-padding,
+.menu-mobile-search,
+#nav_mobile_top a,
+/* .menu-mobile-nav, */
+.menu-mobile-top,
+.height-for-mobile { background: rgba( 0, 0, 0, .9 ); }
+/*
+.style-for-mobile .height-for-mobile,
+*/
+.style-for-mobile .menu-mobile-top {
+	padding: 0 15px;
+	line-height: 45px;
+}
+.style-for-mobile .height-for-mobile { display: none; }
+/* #nav_mobile_top a, */
+.style-for-mobile .menu-mobile-top,
+.style-for-mobile .menu-mobile-top a {
+	font-size: 35px;
+	color: #fff;
+}
+.style-for-mobile .menu-mobile-top a { display: block; }
+.style-for-mobile .menu-mobile-nav {
+	line-height: 35px;
+	display: none;
+	border-top: 1px #000 solid;
+	border-bottom: 1px #000 solid;
+	overflow: auto;
+}
+.style-for-mobile .menu-mobile-nav,
+.style-for-mobile .menu-mobile-nav a { color: #fff; }
+/* */
+#nav_mobile_top { border-bottom: 20px #333 solid; }
+#nav_mobile_top ul { }
+#nav_mobile_top li { border-bottom: 1px #515151 solid; }
+#nav_mobile_top a {
+	display: block;
+	padding: 0 20px;
+	font-size: 14px;
+	line-height: 40px;
+}
+#nav_mobile_top .sub-menu { }
+#nav_mobile_top .sub-menu li {
+	border: 0 none;
+	line-height: 30px;
+}
+#nav_mobile_top .sub-menu a {
+	background: rgba(77, 77, 64, .9);
+	display: block;
+	color: #ccc;
+	padding: 0 0 0 30px;
+	font-size: 12px;
+	border-bottom: 1px #4d4d40 solid;
+}
+#nav_mobile_top .sub-menu .sub-menu { background: rgba(77, 77, 64, .7); }
+#nav_mobile_top .sub-menu .sub-menu li { }
+#nav_mobile_top .sub-menu .sub-menu a {
+	border-bottom-color: #666;
+	text-transform: none;
+	padding-left: 45px;
+}
+#nav_mobile_top .sub-menu .sub-menu .sub-menu { display: none; }
+/* */
+.style-for-mobile .mobile_member_func a { margin: 0 10px; }
+.style-for-mobile .menu-mobile-search {
+	position: relative;
+	padding: 10px 15px;
+}
+.style-for-mobile .menu-mobile-search i {
+	position: absolute;
+	right: 30px;
+	color: #000;
+	font-size: 25px;
+	cursor: pointer;
+}
+.style-for-mobile .menu-mobile-search input[type=text] {
+	width: 98%;
+	padding: 8px 1px;
+	border: 1px #999 solid;
+	border-radius: 2px;
+	background: #fff;
+}
+/* touch mobile */
+.style-for-mobile .home-video-scroll { overflow: auto; }
+.style-for-mobile .home-video-scroll ul {
+	width: 250%;
+	max-width: 900px;
+}
+.style-for-mobile .cart-table-free div { margin: 5px 0 !important; }
+.style-for-mobile .cart-ultable li div.f25,
+.style-for-mobile .cart-ultable li div.f75 { width: 100%; }
+/* other style mobile */
+.style-for-mobile #oi_scroll_top {
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	/*
+	bottom: 0 !important;
+	border-radius: 8px 8px 0 0;
+	*/
+	right: auto;
+	left: 1px;
+	opacity: .8;
+}
+.style-for-mobile #oi_scroll_top:hover { opacity: 1; }
+.style-for-mobile .big-banner-button ul {
+	position: inherit;
+	top: 0;
+	margin: 15px 0;
+}
+.style-for-mobile .big-banner-button li.selected { color: #C00; }
+.style-for-mobile .banner-chan-trang li { width: 99%; }
+.style-for-mobile .global-right-space {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.style-for-mobile .echbay-blog-left,
+.style-for-mobile .echbay-blog-right {
+	width: 100% !important;
+	float: none;
+}
+.style-for-mobile .echbay-blog-right .echbay-blog-marginleft {
+	padding-left: 0 !important;
+	padding-top: 8px !important;
+}
+.style-for-mobile #main-content,
+.style-for-mobile .mobile-padding { padding: 0 5px; }
+.style-for-mobile .jEBE_slider-position {
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+/*
+.style-for-mobile .thread-details-mobileLeft,
+.style-for-mobile .thread-details-mobileRight { line-height: 150px; }
+*/
+/* } */
+.style-for-mobile .thread-details-mobileCenter { max-width: 450px; }
+.style-for-mobile .menu-mobile-padding { padding-bottom: 90px; }
+/* .style-for-mobile .menu-mobile-padding .oi_member_func a { } */
+/* .style-for-mobile .thread_list_menu_noidung .custom-width-cats-sidebar { display: none; } */
+/*
+* Hủy bỏ việc lật ngược cột
+*/
+.style-for-mobile .home_menu_noidung,
+.style-for-mobile .thread_list_menu_noidung,
+.style-for-mobile .thread_details_menu_noidung,
+.style-for-mobile .blogs_menu_noidung,
+.style-for-mobile .blog_details_menu_noidung,
+.style-for-mobile .page_menu_noidung {
+	display: block;
+	flex-direction: unset;
+}
+/*
+* Nội dung với menu nằm trên một cột -> tạo giãn cách cho 2 cái này
+*/
+.style-for-mobile .home_noidung_menu .col-sidebar-content,
+.style-for-mobile .thread_list_noidung_menu .col-sidebar-content,
+.style-for-mobile .thread_details_noidung_menu .col-sidebar-content,
+.style-for-mobile .blogs_noidung_menu .col-sidebar-content,
+.style-for-mobile .blog_details_noidung_menu .col-sidebar-content,
+.style-for-mobile .page_noidung_menu .col-sidebar-content,
+/* */
+.style-for-mobile .home_menu_noidung .col-sidebar-content,
+.style-for-mobile .thread_list_menu_noidung .col-sidebar-content,
+.style-for-mobile .thread_details_menu_noidung .col-sidebar-content,
+.style-for-mobile .blogs_menu_noidung .col-sidebar-content,
+.style-for-mobile .blog_details_menu_noidung .col-sidebar-content,
+.style-for-mobile .page_menu_noidung .col-sidebar-content { padding-top: 20px; }
+.style-for-mobile .mobile-fullsize li {
+	width: 100%;
+	float: none;
+}
+.style-for-mobile .echbay-blog33 li { width: 50%; }
+.style-for-mobile .thread-list-order { display: none; }
+.style-for-mobile .text-left-if-mobile { text-align: left; }
+.style-for-mobile .text-right-if-mobile { text-align: right; }
+.style-for-mobile .ebe-quick-view .quick-view-close i {
+	right: 10px;
+	top: 15px;
+	position: fixed;
+	box-shadow: 0 0 25px #333;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+}
+.style-for-mobile .thread-list-status6 {
+	width: 60px;
+	height: 60px;
+}
+/*
+@media screen and (max-width:768px) {
+}
+
+@media screen and (min-width:768px) {
+}
+*/

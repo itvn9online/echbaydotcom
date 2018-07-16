@@ -1,0 +1,708 @@
+<style>
+#wpadminbar { height: 39px; }
+</style>
+<link rel="stylesheet" href="{tmp.admin_css_uri}admin_config_theme.css?v={tmp.js_version}" type="text/css" />
+<div class="config_theme-bars">&nbsp;</div>
+<br>
+<br>
+<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">{tmp.config_module_name}</a> (Giao diện đang sử dụng: <strong>{tmp.cf_current_theme_using}</strong>)</div>
+<p class="show-if-module-config_theme l19">* Tùy theo thiết kế của theme là chiều rộng dạng bo viền, tràn khung hoặc tính theo tỉ lệ phần trăm (tương đối) mà lựa chọn kích thước tiêu chuẩn chung một cách hớp lý nhất.<br>
+	* Giao diện trang mặc định được bố trí với một số bố cục cơ bản để bạn có thể lựa chọn và sử dụng nhiều <a href="{tmp.web_admin_link}widgets.php" target="_blank" class="redcolor"><strong>widget</strong></a> nhất có thể. Trường hợp không tìm được bố cục hợp lý hoặc muốn thiết kế giao diện riêng, vui lòng liên hệ để thuê thiết kế riêng (có thể sẽ mất phí).<br>
+	* Trong mọi trường hợp, widget có tên là <strong>main sidebar</strong> sẽ được gọi ra, nếu widget tương ứng theo từng module không khả dụng<br>
+	<span class="redcolor">* Một số tính năng chỉ hỗ trợ các giao diện sử dụng trang thiết kế mặc định, các giao diện có thiết kế riêng sẽ không khả dụng.</span></p>
+<ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
+</ul>
+<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
+	<div class="d-none">{tmp.str_list_all_include_file}</div>
+	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-support-table maxwidth-public-table fix-textarea-height">
+		<tbody title="Giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Thêm giao diện mới</td>
+				<td class="i">Nếu bạn am hiểu về HTML, CSS... một chút PHP, Javascript... bạn có thể tự tạo giao diện riêng cho mình tại đây. Sử dụng công cụ hỗ trợ của chúng tôi để tạo ra giao diện theo chuẩn chung của hệ thống.</td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i"><button type="button" class="cur click-open-create-themes">Tạo giao diện mới</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bold"><div class="medium cf">
+						<div class="lf f30">
+							<label for="press_for_search_all_themes">Danh sách giao diện:</label>
+						</div>
+						<div class="lf f70"><strong>Tìm kiếm giao diện:</strong>
+							<input type="text" data-class-search="for-all-themes-quick-search li" id="press_for_search_all_themes" placeholder="Nhập tên giao diện">
+						</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><ul class="cf for-all-themes-quick-search skins-admin-edit">
+						{tmp.str_all_themes_support}
+					</ul></td>
+			</tr>
+		</tbody>
+		<tbody title="Chung" id="eb-admin-config-theme-chung" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t"><label for="cf_blog_class_style">Chiều rộng khung (chung)</label></td>
+				<td class="i">{tmp.cf_blog_class_style}
+					<div>* Chiều rộng này sẽ được sử dụng cho các trang khác nếu trang đó không có thiết lập chiều rông cụ thể.</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Thiết kế phần TOP</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_top_class_style">Chiều rộng top</label></td>
+				<td class="i">{tmp.cf_top_class_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_top_default" id="cf_using_top_default" value="{tmp.cf_using_top_default}" />
+					<label for="cf_using_top_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho phần TOP hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-top-default border-file-design">{tmp.str_top_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Khung cho phần MAIN</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="border-file-design">{tmp.str_main_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Thiết kế phần FOOTER</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_footer_class_style">Chiều rộng footer</label></td>
+				<td class="i">{tmp.cf_footer_class_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_footer_default" id="cf_using_footer_default" value="{tmp.cf_using_footer_default}" />
+					<label for="cf_using_footer_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho phần FOOTER hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-footer-default border-file-design">{tmp.str_footer_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2">* Kích thước của cả khung là 100%, bạn muốn phần sidebar chiếm bao nhiêu % trong tổng số 100% này thì nhập số đó vào đây rồi lưu lại.</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_global_width_sidebar">Chiều rộng cho khung menu</label></td>
+				<td class="i"><input type="text" name="cf_global_width_sidebar" id="cf_global_width_sidebar" value="{tmp.cf_global_width_sidebar}" class="s" maxlength="2" />
+					%
+					<div class="small">* Đây là kích thước dùng chung cho toàn bộ website, nếu kích thước này được thiết lập, toàn bộ website sẽ sử dụng kích thước này làm chuẩn. Nếu không, hãy sử dụng các tham số tiếp theo để thiết lập riêng cho từng trang.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_home_width_sidebar">Chiều rộng khung (home)</label></td>
+				<td class="i"><input type="text" name="cf_home_width_sidebar" id="cf_home_width_sidebar" value="{tmp.cf_home_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_cats_width_sidebar">Chiều rộng khung (category)</label></td>
+				<td class="i"><input type="text" name="cf_cats_width_sidebar" id="cf_cats_width_sidebar" value="{tmp.cf_cats_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_post_width_sidebar">Chiều rộng khung (product)</label></td>
+				<td class="i"><input type="text" name="cf_post_width_sidebar" id="cf_post_width_sidebar" value="{tmp.cf_post_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_blogs_width_sidebar">Chiều rộng khung (blogs)</label></td>
+				<td class="i"><input type="text" name="cf_blogs_width_sidebar" id="cf_blogs_width_sidebar" value="{tmp.cf_blogs_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_blog_width_sidebar">Chiều rộng khung (blog)</label></td>
+				<td class="i"><input type="text" name="cf_blog_width_sidebar" id="cf_blog_width_sidebar" value="{tmp.cf_blog_width_sidebar}" class="s" maxlength="2" />
+					%</td>
+			</tr>
+		</tbody>
+		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>home sidebar</li>
+						<li>home content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_home_class_style">Chiều rộng khung</label></td>
+				<td class="i">{tmp.cf_home_class_style}
+					<div class="small">* Do Trang chủ (Home) thường là một dạng thiết kế phức hợp, nên chiều rộng của trang chủ không bị chi phối bởi chiều rộng của các module khác trừ khi file template cố ý sử dụng theo cách riêng.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_home_column_style">Bố cục trang chủ</label></td>
+				<td class="i">{tmp.cf_home_column_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_home_default" id="cf_using_home_default" value="{tmp.cf_using_home_default}" />
+					<label for="cf_using_home_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho trang HOME hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-home-default border-file-design">{tmp.str_home_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td class="i bold redcolor bborder" colspan="2">Phân trang cho Trang chủ</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_num_home_hot">Sản phẩm Nổi bật</label></td>
+				<td class="i"><input type="number" name="cf_num_home_hot" id="cf_num_home_hot" value="{tmp.cf_num_home_hot}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Nổi bật hoặc hệ thống tự đưa ra các sản phẩm được nhiều người mua nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_num_home_new">Sản phẩm Mới</label></td>
+				<td class="i"><input type="number" name="cf_num_home_new" id="cf_num_home_new" value="{tmp.cf_num_home_new}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Mới hoặc hệ thống tự đưa ra các sản phẩm mới nhất theo ngày cập nhật nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			<!--
+			<tr>
+				<td class="t">Sản phẩm Nhiều người quan tâm</td>
+				<td class="i"><input type="number" name="cf_num_home_view" value="{tmp.cf_num_home_view}" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là sản phẩm do bạn đánh dấu Trạng thái là Sản phẩm Xem nhiều hoặc hệ thống tự đưa ra các sản phẩm được xem nhiều theo số lượt giảm dần nếu không tìm đủ sản phẩm cần thiết để hiển thị. Nhập là 0 nếu bạn muốn tắt chức năng này.</em></td>
+			</tr>
+			-->
+			<tr>
+				<td class="t"><label for="cf_num_home_list">Danh sách sản phẩm ở trang chủ</label></td>
+				<td class="i"><input type="number" name="cf_num_home_list" id="cf_num_home_list" value="{tmp.cf_num_home_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Là số sản phẩm lấy kèm mỗi nhóm ở trang chủ. Nhập là 0 nếu bạn muốn tắt chức năng này hoặc chuyển sang sử dụng <a href="{tmp.web_admin_link}widgets.php" target="_blank"><strong>Widget</strong></a> có tên là: <strong>EchBay home product</strong> hoặc <strong>EchBay home list</strong> (nếu có).</em></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_home_sub_cat_tag">HTML tag cho tên Danh mục</label></td>
+				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_home_sub_cat_tag}</div>
+					<div class="small l19">* các thẻ trong bộ CSS <strong>thread-home-c2</strong> mặc định là thẻ A, nếu muốn nó có thẻ bao ngoài là các thẻ khác như: H2, H3, DIV... thì sử dụng chức năng này. Các bộ thẻ khuyên dùng và sẽ được CSS mặc định hỗ trợ là: DIV, H2.</div></td>
+			</tr>
+		</tbody>
+		<tbody title="Danh sách sản phẩm (Category)" id="eb-admin-config-theme-list" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>category sidebar</li>
+						<li>category content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_cats_class_style">Chiều rộng khung</label></td>
+				<td class="i">{tmp.cf_cats_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_cats_column_style">Bố cục trang danh sách sản phẩm</label></td>
+				<td class="i">{tmp.cf_cats_column_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr class="d-none">
+				<td class="t"><label for="cf_cats_node_html">Bố cục chỉ mục sản phẩm (node)</label></td>
+				<td class="i">{tmp.cf_cats_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_cats_num_line">Số sản phẩm trên mỗi dòng</label></td>
+				<td class="i">{tmp.cf_cats_num_line}</td>
+			</tr>
+			<tr>
+				<td class="t"><label for="posts_per_page">Số sản phẩm trên mỗi trang</label></td>
+				<td class="i"><input type="number" name="posts_per_page" id="posts_per_page" value="{tmp.posts_per_page}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Khung cho trang CATEGORY</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="border-file-design">{tmp.str_catsmain_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="checkbox" name="cf_using_cats_default" id="cf_using_cats_default" value="{tmp.cf_using_home_default}" />
+					<label for="cf_using_cats_default" data-on="Sử dụng widget để tạo khung (chỉ dành cho kỹ thuật viên)." data-off="Sử dụng file thiết kế dựng sẵn (<em>Khuyên dùng</em>! Chọn các file bên dưới)."></label>
+					<div class="small l19">Chọn từng khối thiết kế cho trang CATEGORY hoặc nếu không chọn khối nào, hệ thống sẽ sử dụng thiết kế mặc định (được cho là phù hợp với hầu hết các website TMĐT).</div>
+					<div class="show-if-using-cats-default border-file-design">{tmp.str_cats_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Thiết kế khung SẢN PHẨM</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_product_size">Kích thước ảnh Sản phẩm</label></td>
+				<td class="i"><input type="text" name="cf_product_size" id="cf_product_size" value="{tmp.cf_product_size}" class="s fixed-size-for-config" maxlength="10" />
+					<div class="small">Ví dụ: 400x400, 4x4, 200x300, 2x3... trong đó: 4x4 tương đương với 400x400, 2x3 tương đương với 200x300.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_product_mobile_size">K.Thước ảnh S.Phẩm trên mobile</label></td>
+				<td class="i"><input type="number" name="cf_product_mobile_size" id="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" data-width="375" class="s fixed-width-for-config" maxlength="10" />
+					<div class="small">Đây là chiều rộng tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 7 inch trở xuống. Màn hình tiêu chuẩn được sử dụng để tính toán tự động là iPhone 7 (375 x 667 pixel) -&gt; bạn muốn hiển thị bao nhiêu sản phẩm trên hàng thì nhập số đó vào (ví dụ: 3) hệ thống sẽ tự tính toán kích thước phù hợp.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_product_table_size">K.Thước ảnh S.Phẩm trên table</label></td>
+				<td class="i"><input type="number" name="cf_product_table_size" id="cf_product_table_size" value="{tmp.cf_product_table_size}" data-width="768" class="s fixed-width-for-config" maxlength="10" />
+					<div class="small">Đây là chiều rộng tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 11 inch trở xuống. Màn hình tiêu chuẩn được sử dụng để tính toán tự động là iPad (768 x 1024 pixel) -&gt; bạn muốn hiển thị bao nhiêu sản phẩm trên hàng thì nhập số đó vào (ví dụ: 4) hệ thống sẽ tự tính toán kích thước phù hợp.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_threadnode_title_tag">HTML tag cho tiêu đề</label></td>
+				<td class="i"><div class="noborder-ebdesign-table-for">{tmp.cf_threadnode_title_tag}</div>
+					<div class="small l19">Mặc định, code chỉ để thẻ H3 cho các tiêu đề, theo khuyến nghị của <a href="https://chrome.google.com/webstore/detail/seoquake/akdgnmcogleenhbclghghlkkdndkjdjc?hl=vi" target="_blank" rel="nofollow">SEO Quake</a>. Trường hợp các bạn làm SEO có nhu cầu sử dụng các thẻ khác thì chọn theo lựa chọn ở đây.<br>
+						* Lưu ý: việc thay đổi thẻ có thể sẽ làm thay đổi giao diện web, vì thế, cần phải kiểm tra và điều chỉnh lại CSS theo thẻ mới.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_cats_description_viewmore">Thu gọn nội dung danh mục</label></td>
+				<td class="i"><input type="number" name="cf_cats_description_viewmore" id="cf_cats_description_viewmore" value="{tmp.cf_cats_description_viewmore}" placeholder="{aaa.cf_cats_description_viewmore}" class="s" />
+					<div class="small">Khi thông số này được thiết lập lớn hơn 0, chiều cao nội dung danh mục sẽ bị thu lại bằng với thông số này. Nút [Xem thêm] sẽ được kích hoạt, và nội dung sẽ mở ra đầy đủ khi người dùng bấm [Xem thêm].</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_content_for_excerpt_null">Lấy Nội dung cho Tóm tắt</label></td>
+				<td class="i"><input type="number" name="cf_content_for_excerpt_null" id="cf_content_for_excerpt_null" value="{tmp.cf_content_for_excerpt_null}" placeholder="{aaa.cf_content_for_excerpt_null}" class="s" />
+					<div class="small">Trong Danh mục sản phẩm, Danh mục tin tức! Nếu phần Tóm tắt bài viết để trống, nội dung sẽ được cắt xén để thay thế (Nhập số ký tự muốn cắt vào đây, tối thiểu <strong>70</strong> ký tự tính năng mới được kích hoạt).</div></td>
+			</tr>
+		</tbody>
+		<tbody title="Chi tiết sản phẩm (Post)" id="eb-admin-config-theme-details" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>post sidebar</li>
+						<li>post content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_post_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang chi tiết sản phẩm</td>
+				<td class="i">{tmp.cf_post_column_style}</td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="t">Thiết kế chi tiết SẢN PHẨM</td>
+			</tr>
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho trang chi tiết SẢN PHẨM hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+					<div class="border-file-design border-threaddetails-design">{tmp.str_threaddetails_design_preview}</div></td>
+			</tr>
+			<tr>
+				<td class="t">Slide chi tiết sản phẩm</td>
+				<td class="i"><input type="text" name="cf_product_details_size" value="{tmp.cf_product_details_size}" class="s fixed-size-for-config" maxlength="10" />
+					<div class="small">Kích thước slider trong phần chi tiết sản phẩm.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Kích hoạt nút chuyển ảnh nhỏ</td>
+				<td class="i"><input type="checkbox" name="cf_details_show_list_next" id="cf_details_show_list_next" value="{tmp.cf_details_show_list_next}" />
+					<label for="cf_details_show_list_next" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Slider trang chi tiết sản phẩm, để cho gọn thì mặc định nút chuyển ảnh loại nhỏ được ẩn đi, nếu bạn muốn bật lên, hãy kích hoạt ở đây.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Hiển thị ảnh nhỏ (thumbnail)</td>
+				<td class="i"><input type="checkbox" name="cf_details_show_list_thumb" id="cf_details_show_list_thumb" value="{tmp.cf_details_show_list_thumb}" />
+					<label for="cf_details_show_list_thumb" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Hiển thị thêm danh sách các ảnh nhỏ giúp người dùng dễ sử dụng slider hơn.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Thumbnail về bên phải</td>
+				<td class="i"><input type="checkbox" name="cf_details_right_thumbnail" id="cf_details_right_thumbnail" value="{tmp.cf_details_right_thumbnail}" />
+					<label for="cf_details_right_thumbnail" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên PHẢI thì bấm vào đây.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Thumbnail về bên trái</td>
+				<td class="i"><input type="checkbox" name="cf_details_left_thumbnail" id="cf_details_left_thumbnail" value="{tmp.cf_details_left_thumbnail}" />
+					<label for="cf_details_left_thumbnail" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên TRÁI thì bấm vào đây.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_slider_details_play">Tự động chạy slider</label></td>
+				<td class="i"><input type="number" name="cf_slider_details_play" value="{tmp.cf_slider_details_play}" id="cf_slider_details_play" class="s" />
+					(mini giây)
+					<div class="small">Khi thông số này được thiết lập lớn hơn 0, slider trang chi tiết sẽ được kích hoạt tự động chạy theo số mini giây đã được thiết lập (1 giây = 1000 mini giây).</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Hiển thị phom mua ngay</td>
+				<td class="i"><input type="checkbox" name="cf_details_show_quick_cart" id="cf_details_show_quick_cart" value="{tmp.cf_details_show_quick_cart}" />
+					<label for="cf_details_show_quick_cart" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Thông thường, với các web bán hàng! việc hiển thị phom mua ngay sẽ tăng tỉ lệ tương tác của người dùng với hệ thống, tạo sự thuận lợi nhất định cho việc mua hàng của người dùng. Tuy nhiên, với một số giao diện, phom này hiển thị ra sẽ không phù hợp lắm thì bạn có thể để chế độ ẩn, và phom chỉ hiển thị khi được gọi ra (nếu giao diện có hỗ trợ).</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bắt buộc nhập Họ tên</td>
+				<td class="i"><input type="checkbox" name="cf_required_name_cart" id="cf_required_name_cart" value="{tmp.cf_required_name_cart}" />
+					<label for="cf_required_name_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Họ tên khi mua hàng.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bắt buộc nhập Email</td>
+				<td class="i"><input type="checkbox" name="cf_required_email_cart" id="cf_required_email_cart" value="{tmp.cf_required_email_cart}" />
+					<label for="cf_required_email_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Email khi mua hàng.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bắt buộc nhập Địa chỉ</td>
+				<td class="i"><input type="checkbox" name="cf_required_address_cart" id="cf_required_address_cart" value="{tmp.cf_required_address_cart}" />
+					<label for="cf_required_address_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Địa chỉ khi mua hàng.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Tạo style list cho post_excerpt</td>
+				<td class="i"><input type="checkbox" name="cf_details_excerpt" id="cf_details_excerpt" value="{tmp.cf_details_excerpt}" />
+					<label for="cf_details_excerpt" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small">Mặc định, phần tóm tắt của website không hỗ trợ HTML, nên khi xuất ra ngoài, sẽ có một đoạn JS giúp tạo đoạn lệnh này từ text thuần sang dạng LIST (UL LI), sau đó bạn có thể viết thêm CSS cho nó hiển thị đẹp hơn.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bôi đậm post_excerpt</td>
+				<td class="i"><input type="checkbox" name="cf_details_bold_excerpt" id="cf_details_bold_excerpt" value="{tmp.cf_details_bold_excerpt}" />
+					<label for="cf_details_bold_excerpt" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small">Bôi đậm đề mục của phần tóm tắt. Ví dụ: "<strong>Chuyên mục</strong>: Bán chổi đót".</div></td>
+			</tr>
+			<tr>
+				<td class="t">Tạo bảng post_excerpt</td>
+				<td class="i"><input type="checkbox" name="cf_options_excerpt" id="cf_options_excerpt" value="{tmp.cf_options_excerpt}" />
+					<label for="cf_options_excerpt" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small">Tạo bảng cho mục tóm tắt, thiết kế này nhằm làm đẹp hơn cho phần tóm tắt, thường sẽ phải CSS thêm.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Chuyển post option sang UL</td>
+				<td class="i"><input type="checkbox" name="cf_details_ul_options" id="cf_details_ul_options" value="{tmp.cf_details_ul_options}" />
+					<label for="cf_details_ul_options" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small">Phần post option mặc định được đặt HTML là dạng bảng (TABLE) để khung được thẳng và CSS dễ dàng. Nếu bạn muốn chuyển sang dạng LI thì hãy tích vào đây, việc CSS chỉ phức tạp hơn chút.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_product_details_viewmore">Thu gọn nội dung sản phẩm</label></td>
+				<td class="i"><input type="number" name="cf_product_details_viewmore" value="{tmp.cf_product_details_viewmore}" id="cf_product_details_viewmore" class="s" />
+					<div class="small">Khi thông số này được thiết lập lớn hơn 0, chiều cao nội dung sản phẩm sẽ bị thu lại bằng với thông số này. Nút [Xem thêm] sẽ được kích hoạt, và nội dung sẽ mở ra đầy đủ khi người dùng bấm [Xem thêm].</div></td>
+			</tr>
+			<tr>
+				<td class="t">Banner trang chi tiết S.Phẩm</td>
+				<td class="i"><input type="checkbox" name="cf_post_big_banner" id="cf_post_big_banner" value="{tmp.cf_post_big_banner}" />
+					<label for="cf_post_big_banner" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Mặc định, banner chính sẽ được load cho cả trang chi tiết sản phẩm, nếu bạn không muốn nó xuất hiện ở đây, hãy bỏ chọn và lưu lại.</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td class="t">Mục lục cho nội dung</td>
+				<td class="i"><input type="text" name="cf_post_index_content" value="{tmp.cf_post_index_content}" placeholder="h2" class="s" maxlength="2" />
+					<div class="small">Khi chức năng này được kích hoạt, hệ thống sẽ tìm các thẻ H2 trong phần nội dung bài viết và tạo mục lục cho nó. Kích hoạt bằng cách nhập các thẻ HEADING (từ H2-h6).</div></td>
+			</tr>
+			<tr>
+				<td class="t">Tự chỉnh size ảnh</td>
+				<td class="i"><input type="checkbox" name="cf_post_rm_img_width" id="cf_post_rm_img_width" value="{tmp.cf_post_rm_img_width}" />
+					<label for="cf_post_rm_img_width" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Kích hoạt chức năng này, hình ảnh sẽ được đưa về kích thước thật mà hình ảnh đang có thay vì size ảnh mà bạn tự chỉnh khi soạn bài.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_img_details_maxwidth">Chiều rộng ảnh tối đa</label></td>
+				<td class="i"><input type="number" name="cf_img_details_maxwidth" value="{tmp.cf_img_details_maxwidth}" id="cf_img_details_maxwidth" class="s" />
+					<div class="small">Khi thông số này được thiết lập lớn hơn <strong>90</strong>, ảnh trong khung nội dung Sản phẩm và Blog/ Tin tức sẽ bị giới hạn chiều rộng theo thông số này.</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr class="d-none">
+				<td class="t">Bố cục sản phẩm liên quan (node)</td>
+				<td class="i">{tmp.cf_post_node_html}</td>
+			</tr>
+			<tr class="d-none">
+				<td class="i bold redcolor bborder" colspan="2">Phân trang cho Trang chi tiết Sản phẩm</td>
+			</tr>
+			<tr>
+				<td class="t">Sản phẩm liên quan</td>
+				<td class="i"><input type="number" name="cf_num_details_list" value="{tmp.cf_num_details_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td class="t">Giá ảo cho Cốc Cốc</td>
+				<td class="i"><input type="number" name="cf_coccoc_discount_price" value="{tmp.cf_coccoc_discount_price}" class="s" />
+					<div class="small">Phần này để tạo một giá ảo trên trình duyệt Cốc Cốc, không cho Cốc Cốc biết được giá thật của sản phẩm nó sẽ đem so sánh với sản phẩm của bên khác. Muốn giảm bao nhiêu % thì nhập số con số đấy vào đây (từ 1-99).</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết sản phẩm, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
+			</tr>
+			<tr>
+				<td class="t">Sản phẩm liên quan (2)</td>
+				<td class="i"><input type="number" name="cf_num_details2_list" value="{tmp.cf_num_details2_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td class="t">Sản phẩm liên quan (3)</td>
+				<td class="i"><input type="number" name="cf_num_details3_list" value="{tmp.cf_num_details3_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Một số giao diện yêu cầu 2-3 list sản phẩm liên quan (mặc định là không tải), nếu giao diện của bạn có hỗ trợ, và bạn muốn kích hoạt chức năng này, hãy nhập số sản phẩm muốn lấy.</em></td>
+			</tr>
+		</tbody>
+		<tbody title="Blog/ Tin tức" id="eb-admin-config-theme-blog" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>blog sidebar</li>
+						<li>blog content sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_blogs_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang danh sách tin</td>
+				<td class="i">{tmp.cf_blogs_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục chỉ mục tin (node)</td>
+				<td class="i">{tmp.cf_blogs_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t">Số tin trên mỗi dòng</td>
+				<td class="i">{tmp.cf_blogs_num_line}</td>
+			</tr>
+			<tr>
+				<td class="t">Kích thước ảnh Tin tức/ blog</td>
+				<td class="i"><input type="text" name="cf_blog_size" value="{tmp.cf_blog_size}" class="s fixed-size-for-config" maxlength="10" /></td>
+			</tr>
+			<tr>
+				<td class="t">Số tin trên mỗi trang</td>
+				<td class="i"><input type="number" name="cf_blogs_per_page" value="{tmp.cf_blogs_per_page}" class="s" />
+					<p class="small">* Nếu để bằng <strong>0</strong>, số tin sẽ được hiển thị theo cấu hình mặc định chung của toàn hệ thống là <strong>{tmp.posts_per_page}</strong>.</p></td>
+			</tr>
+			<tr>
+				<td class="t">Chuyển nội dung về cuối</td>
+				<td class="i"><input type="checkbox" name="cf_blogs_content_bottom" id="cf_blogs_content_bottom" value="{tmp.cf_blogs_content_bottom}" />
+					<label for="cf_blogs_content_bottom" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Trong danh mục Tin tức, nội dung danh mục (nếu có) được đặt mặc định ở trên cùng, nếu muốn chuyển nó xuống dưới thì hãy bật chức năng này lên rồi lưu lại.</div></td>
+			</tr>
+		</tbody>
+		<tbody title="Chi tiết Blog/ Tin tức" id="eb-admin-config-theme-blog-detais" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+						<li>blog details sidebar</li>
+						<li>blog content details sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_blogd_class_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang chi tiết</td>
+				<td class="i">{tmp.cf_blog_column_style}</td>
+			</tr>
+			<tr>
+				<td class="t">Tự chỉnh size ảnh</td>
+				<td class="i"><input type="checkbox" name="cf_blog_rm_img_width" id="cf_blog_rm_img_width" value="{tmp.cf_blog_rm_img_width}" />
+					<label for="cf_blog_rm_img_width" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Kích hoạt chức năng này, hình ảnh sẽ được đưa về kích thước thật mà hình ảnh đang có thay vì size ảnh mà bạn tự chỉnh khi soạn bài.</div></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục tin liên quan (node)</td>
+				<td class="i">{tmp.cf_blog_node_html}</td>
+			</tr>
+			<tr>
+				<td class="t">Số tin trên mỗi dòng</td>
+				<td class="i">{tmp.cf_blog_num_line}</td>
+			</tr>
+			<tr>
+				<td class="t">Bài viết liên quan</td>
+				<td class="i"><input type="number" name="cf_num_details_blog_list" value="{tmp.cf_num_details_blog_list}" class="s" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>Đây là số lượng sản phẩm Liên quan trong phần chi tiết blog, bạn muốn lấy bao nhiêu sản phẩm thì nhập số đó vào đây.</em></td>
+			</tr>
+		</tbody>
+		<tbody title="Trang tĩnh (Page)" id="eb-admin-config-theme-page" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Các widget được gọi ra</td>
+				<td class="i"><ol class="bold">
+						<li>main sidebar</li>
+					</ol></td>
+			</tr>
+			<tr>
+				<td class="t">Chiều rộng khung</td>
+				<td class="i">{tmp.cf_page_class_style}
+					<div class="small">* Do Trang tĩnh (Page) thường là một dạng thiết kế phức hợp, nên chiều rộng của trang chủ không bị chi phối bởi chiều rộng của các module khác trừ khi file template cố ý sử dụng theo cách riêng.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Bố cục trang riêng (Page)</td>
+				<td class="i">{tmp.cf_page_column_style}</td>
+			</tr>
+		</tbody>
+		<!--
+		<tbody title="Trang tìm kiếm" id="eb-admin-config-theme-search" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td colspan="2"><div class="small l19">Chọn file thiết kế cho khung SẢN PHẨM trong trang <strong>tìm kiếm</strong> hoặc nếu không chọn file nào, hệ thống sẽ sử dụng thiết kế mặc định theo theme hoặc của plugin.</div>
+					<div class="border-file-design border-threadnode-design">{tmp.str_threadsreachnode_design_preview}</div></td>
+			</tr>
+		</tbody>
+		-->
+		<tbody title="Phom nhập liệu (form)" id="eb-admin-config-theme-form" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td colspan="2"><span class="t">Giỏ hàng (đầy đủ)</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_cart" id="cf_form_cart"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="t">Giỏ hàng (thu gọn)</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_quick_cart" id="cf_form_quick_cart"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="t">Đăng ký thành viên</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_register" id="cf_form_register"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><span class="t">Liên hệ</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea name="cf_form_contact" id="cf_form_contact"></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />
+	</div>
+</form>
+<textarea name="cf_tmp_form_cart" id="cf_tmp_form_cart"></textarea>
+<textarea name="cf_tmp_form_quick_cart" id="cf_tmp_form_quick_cart"></textarea>
+<textarea name="cf_tmp_form_register" id="cf_tmp_form_register"></textarea>
+<textarea name="cf_tmp_form_contact" id="cf_tmp_form_contact"></textarea>
+<div class="change-eb-design-fixed">
+	<div data-key="private">
+		<div class="change-eb-design-padding">{tmp.str_private_include_file}</div>
+	</div>
+	{tmp.str_html_for_list_theme_module} 
+	<!--
+	<div data-key="top" class="change-eb-design-hide-fixed change-eb-design-top-fixed">
+		<div class="change-eb-design-padding">{tmp.str_top_include_file}</div>
+	</div>
+	<div data-key="footer" class="change-eb-design-hide-fixed change-eb-design-footer-fixed">
+		<div class="change-eb-design-padding">{tmp.str_footer_include_file}</div>
+	</div>
+	<div data-key="home" class="change-eb-design-hide-fixed change-eb-design-home-fixed">
+		<div class="change-eb-design-padding">{tmp.str_home_include_file}</div>
+	</div>
+	<div data-key="cats" class="change-eb-design-hide-fixed change-eb-design-cats-fixed">
+		<div class="change-eb-design-padding">{tmp.str_cats_include_file}</div>
+	</div>
+	--> 
+	{tmp.str_html_for_single_theme_module} 
+	<!--
+	<div data-key="threadnode" class="change-eb-design-hide-fixed change-eb-design-threadnode-fixed">
+		<div class="change-eb-design-padding">
+			<div class="border-threadnode-design cf">{tmp.str_threadnode_include_file}</div>
+		</div>
+	</div>
+	<div data-key="main" class="change-eb-design-hide-fixed change-eb-design-main-fixed">
+		<div class="change-eb-design-padding">
+			<div class="border-main-design cf">{tmp.str_main_include_file}</div>
+		</div>
+	</div>
+	<div data-key="catsmain" class="change-eb-design-hide-fixed change-eb-design-catsmain-fixed">
+		<div class="change-eb-design-padding">
+			<div class="border-catsmain-design cf">{tmp.str_catsmain_include_file}</div>
+		</div>
+	</div>
+	<div data-key="threaddetails" class="change-eb-design-hide-fixed change-eb-design-threaddetails-fixed">
+		<div class="change-eb-design-padding">
+			<div class="border-threaddetails-design cf">{tmp.str_threaddetails_include_file}</div>
+		</div>
+	</div>
+	-->
+	<div id="change_eb_design_width">&nbsp;</div>
+</div>
+<input type="text" id="press_for_search_eb_themes" placeholder="Tìm kiếm giao diện theo tên" class="eb-themes-search d-none" />
+<!-- add new themes -->
+<div id="eb_add_new_themes" class="hide-if-press-esc">
+	<div class="eb-best-new-themes">
+		<form name="frm_create_theme" method="post" action="{tmp.web_link}process/?set_module=config_create_theme" target="target_eb_iframe" onsubmit="return check_create_theme();">
+			<div class="medium18 bold">Tạo giao diện mới</div>
+			<p>* Công cụ tạo file mẫu cho giao diện theo một chuẩn chung!</p>
+			<div>Giao diện tạo mới sẽ được lưu vào thư mục (nếu chưa có):<br>
+				<em><strong>{tmp.dir_for_save_new_theme}ui/</strong></em></div>
+			<br>
+			<div>Tập khai báo include mặc định cho giao diện sẽ được lưu vào thư mục (nếu chưa có):<br>
+				<em><strong>{tmp.dir_for_save_include_theme}themes/all/[ Tên giao diện ].php</strong></em></div>
+			<br>
+			<div class="bold">Tên giao diện</div>
+			<div>
+				<input type="text" placeholder="Chữ cái từ A-z, 0-9, viết liền, không dấu" value="" name="create_theme_name" id="create_theme_name" aria-required="true" required>
+			</div>
+			<br>
+			<div class="bold">Top</div>
+			<div>
+				<input type="number" placeholder="0-6" value="1" name="create_theme_top" id="create_theme_top">
+			</div>
+			<br>
+			<div class="bold">Footer</div>
+			<div>
+				<input type="number" placeholder="0-6" value="1" name="create_theme_footer" id="create_theme_footer">
+			</div>
+			<br>
+			<div class="d-none">
+				<div class="bold">Khung sản phẩm</div>
+				<div>
+					<input type="number" placeholder="0-1" value="1" name="create_theme_threadnode" id="create_theme_threadnode">
+				</div>
+				<br>
+				<div class="bold">Trang chi tiết</div>
+				<div>
+					<input type="number" placeholder="0-6" value="1" name="create_theme_threaddetails" id="create_theme_threaddetails">
+				</div>
+				<br>
+			</div>
+			<div>
+				<input type="submit" value="Khởi tạo" class="cur" />
+				<button type="button" onClick="process_for_press_esc();" class="cur">Hủy bỏ [x]</button>
+			</div>
+			<br>
+		</form>
+	</div>
+</div>
+<div class="d-none">
+	<form name="frm_config_active_theme" method="post" action="{tmp.web_link}process/?set_module=config_active_theme" target="target_eb_iframe">
+		<input type="text" placeholder="Key theme" value="" name="create_theme_key" id="create_theme_key" aria-required="true" required>
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+<script type="text/javascript">
+{tmp.js}
+</script> 
+<script type="text/javascript" src="{tmp.admin_js_uri}config.js?v={tmp.js_version}"></script> 
+<script type="text/javascript" src="{tmp.admin_js_uri}config_theme.js?v={tmp.js_version}"></script> 

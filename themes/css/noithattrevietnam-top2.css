@@ -1,0 +1,89 @@
+#noithattrevietnam-top2 { padding: 1px 0; }
+#noithattrevietnam-top2 { }
+#noithattrevietnam-top2 .nttvn-nav-menu { line-height: 25px; }
+#noithattrevietnam-top2 .nttvn-nav-menu ul {
+	letter-spacing: -0.5px;
+	white-space: nowrap;
+}
+#noithattrevietnam-top2 .nttvn-nav-menu li { float: left; }
+#noithattrevietnam-top2 .nttvn-nav-menu a {
+	color: #fff;
+	text-transform: uppercase;
+	padding: 10px 15px;
+	border-right: solid 1px rgba(255,255,255,.3);
+	font-size: 14px;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+}
+#noithattrevietnam-top2.nttvn-nav-small .nttvn-nav-menu a {
+	/* text-transform: capitalize; */
+	padding: 10px;
+	font-size: 12px;
+}
+#noithattrevietnam-top2 .nttvn-nav-menu a:hover {
+	background: #fff;
+	color: #333;
+}
+#noithattrevietnam-top2 .nttvn-nav-menu .sub-menu {
+	background-color: #f7941e;
+	position: absolute;
+	z-index: 9;
+	width: 230px;
+	display: none;
+	letter-spacing: 0;
+}
+#noithattrevietnam-top2 .nttvn-nav-menu li:hover .sub-menu { display: block; }
+/*
+#noithattrevietnam-top2 .nttvn-nav-menu li:hover a {
+	background: #fff;
+	color: #333;
+}
+*/
+#noithattrevietnam-top2 .nttvn-nav-menu .sub-menu li { float: none; }
+#noithattrevietnam-top2 .nttvn-nav-menu .sub-menu a {
+	background: none;
+	text-transform: none;
+	color: #fff;
+	padding: 5px 15px;
+	border-top: 1px rgba(255,255,255,.3) solid;
+	font-size: 14px;
+}
+#noithattrevietnam-top2 .nttvn-nav-menu .sub-menu a:hover { background: rgba(255, 255, 255, .1); }
+#noithattrevietnam-top2 .nttvn-nav-menu .sub-menu .sub-menu { display: none; }
+#noithattrevietnam-top2 .div-search-margin {
+	position: relative;
+	height: 45px;
+}
+#noithattrevietnam-top2 .div-search {
+	position: absolute;
+	right: 0;
+	top: 8px;
+	bottom: 8px;
+}
+#noithattrevietnam-top2 .div-search input[type="search"] {
+	padding: 3px;
+	height: 28px;
+	border: 0 none;
+	width: 90%;
+	display: none;
+}
+#noithattrevietnam-top2 .div-search button {
+	top: -8px;
+	right: -1px;
+	bottom: -8px;
+	background-color: #f1f100;
+	width: 40px;
+	font-size: 16px;
+}
+#noithattrevietnam-top2 .div-search-margin:hover .div-search {
+	overflow: hidden;
+	border-color: #f2f2f2;
+}
+#noithattrevietnam-top2 .div-search-margin:hover .div-search input[type="search"] {
+	display: block;
+	width: 250px;
+}
+#noithattrevietnam-top2 .div-search-margin:hover .div-search button {
+	background-color: #f7941e;
+	color: #fff;
+}

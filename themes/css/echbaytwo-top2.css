@@ -1,0 +1,28 @@
+#echbaytwo-top2 .nav-mobile-hotline {
+	line-height: 38px;
+	font-size: 25px;
+	margin-top: 20px;
+}
+#echbaytwo-top2 .div-search-margin { margin-top: 20px; }
+#echbaytwo-top2 .div-search { border-width: 2px; }
+#echbaytwo-top2 .div-search form { padding-left: 6px }
+#echbaytwo-top2 .div-search input[type=search] {
+	background: none;
+	height: 36px;
+	width: 85%;
+}
+#echbaytwo-top2 .div-search button {
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	font-size: 20px;
+	color: #fff;
+	width: 68px;
+}
+#echbaytwo-top2 .div-search:hover { background-color: #fff; }
+#echbaytwo-top2 .web-logo {
+	line-height: 68px;
+	background: left no-repeat;
+	background-size: 90% auto;
+}
+#echbaytwo-top2 .web-top-logo { padding: 10px 0; }

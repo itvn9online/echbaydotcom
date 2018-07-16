@@ -1,0 +1,186 @@
+.eb-admin-config,
+.config_theme-bars,
+.eb-admin-wp-submit {
+	position: fixed;
+	top: 0;
+	line-height: 40px;
+}
+.config_theme-bars {
+	z-index: 999990;
+	left: 160px;
+	right: 0;
+	background: #fff;
+	-webkit-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	-moz-box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+	box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+}
+.eb-admin-config {
+	margin: 0;
+	left: 190px;
+	z-index: 999991;
+	font-size: 15px;
+	min-width: 250px;
+}
+body.folded .config_theme-bars { left: 68px; }
+body.folded .eb-admin-config { left: 8%; }
+.eb-admin-config:hover {
+	padding: 0 50px 90px 0;
+	background: rgba(255,255,255,.8);
+}
+.eb-admin-config li {
+	float: none;
+	border-radius: 0;
+	margin: 0;
+	background: #fff;
+	border-color: #ccc;
+	border-top: 0 none;
+	display: none;
+}
+.eb-admin-config li.selected,
+.eb-admin-config:hover li {
+	display: block;
+	color: #000;
+}
+.eb-admin-config li:hover { background: #f2f2f2; }
+.eb-admin-config li.selected { background: #eaf7ff; }
+.eb-admin-wp-submit {
+	bottom: auto;
+	right: -1px;
+	z-index: 1000001;
+	border: 0 none;
+	padding: 0 25px;
+	background: #3899ec;
+	color: #fff;
+	top: -1px;
+}
+#eb_add_new_themes {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.6);
+	z-index: 999999;
+	overflow: auto;
+	display: none;
+}
+.eb-best-new-themes {
+	width: 90%;
+	max-width: 600px;
+	padding: 25px;
+	margin: 25px auto;
+	background: #fff;
+}
+.eb-best-new-themes input[type=text],
+.eb-best-new-themes input[type=number] {
+	width: 90%;
+	padding: 5px;
+}
+.eb-best-new-themes input[type=submit],
+.eb-best-new-themes button { padding: 6px 25px; }
+.skins-admin-edit {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.skins-admin-edit li {
+	float: left;
+	width: 33%;
+	order: 9;
+}
+.skins-admin-edit li[data-price="0"] { order: 5; }
+.skins-admin-edit li.selected { order: 0 !important; }
+.skins-admin-edit .skins-adminedit-bg {
+	background: #fff top center no-repeat;
+	background-size: contain;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAALElEQVQYGWO8d+/efwYkoKioiMRjYGBC4WHhUK6A8T8QIJt8//59ZC493AAAQssKpBK4F5AAAAAASUVORK5CYII=);
+	position: relative;
+	margin: 0 35px 0 0;
+	height: 300px;
+	line-height: 300px;
+	border: 1px #ccc solid;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.skins-admin-edit li:hover .skins-adminedit-bg {
+	background-size: 80% auto;
+	background-position: right bottom;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
+.skins-adminedit-info {
+	font-size: 14px;
+	color: #333;
+}
+.skins-admin-edit li h4 {
+	margin: 10px 0 5px 0;
+	font-size: 18px;
+	color: #868686;
+	font-weight: 400;
+	text-align: left;
+}
+.skins-adminedit-info { margin: 0 0 55px 0; }
+/*
+.skins-admin-edit .skins-adminedit-bg {
+	background: rgba(255, 255, 255,.65);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	display: none;
+}
+.skins-admin-edit .skins-adminedit-bg span {
+	background: rgba(14, 185, 82, .8);
+	color: #fff;
+	font-size: 16px;
+	display: block;
+	line-height: 35px;
+	width: 150px;
+	margin: 130px auto auto auto;
+	border-radius: 5px;
+}
+*/
+.skins-admin-edit li.selected .skins-adminedit-bg {
+	-webkit-box-shadow: 0 2pt 2pt #ff9595;
+	-moz-box-shadow: 0 2pt 2pt #ff9595;
+	box-shadow: 2pt 2pt 2pt #ff9595;
+	border-color: #f00;
+}
+.skins-admin-edit h3 {
+	background: rgba(200, 200, 200,.65);
+	position: absolute;
+	display: block;
+	bottom: 0;
+	height: 35px;
+	line-height: 35px;
+	overflow: hidden;
+	color: #23282d;
+	left: 0;
+	right: 0;
+	border-top: 1px #ccc solid;
+	text-align: left;
+	padding-left: 15px;
+}
+.skins-admin-edit li.selected h3 {
+	background: rgba(0, 0, 0,.65);
+	color: #fff;
+}
+.skins-admin-edit button {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	display: none;
+}
+.skins-admin-edit h3,
+.skins-admin-edit button { z-index: 2; }
+/* .skins-admin-edit li:hover .skins-adminedit-bg, */
+.skins-admin-edit li:hover button { display: block; }
+/*
+.skins-admin-edit li:first-child div { display: none !important; }
+.skins-admin-edit li.selected .click-active-eb-themes { display: none !important; }
+*/

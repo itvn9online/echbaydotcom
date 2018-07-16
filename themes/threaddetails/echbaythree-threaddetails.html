@@ -1,0 +1,170 @@
+<div class="global-product-module {tmp.cf_post_class_style}">
+	<div class="cf">
+		<div class="lf f40 fullsize-if-mobile">
+			<div class="thread-details-mobileCenter cur">
+				<div data-img="{tmp.trv_img}" data-size="{tmp.cf_product_details_size}" class="thread-details-mobileAvt ti-le-global" style="background-image:url({tmp.trv_img});">&nbsp;</div>
+			</div>
+		</div>
+		<div class="lf f40 fullsize-if-mobile">
+			<div class="left-menu-space">
+				<div class="thread-details-relative">
+					<div style="position:absolute;right:0;">{tmp.admin_edit}</div>
+				</div>
+				<h1 class="thread-details-title">{tmp.trv_h1_tieude}</h1>
+				<div data-rating="{tmp.rating_value_img}" class="medium each-to-rating"></div>
+				<div class="thread-details-bprice">
+					<div class="thread-details-label upper small">Giá bán</div>
+					<div class="thread-details-price">{tmp.trv_giamoi}</div>
+					<div data-gia="{tmp.pt}" class="thread-details-gia hide-if-gia-zero">
+						<ul class="cf">
+							<li>
+								<div class="thread-details-label upper small">Giá cũ</div>
+								<div class="bold">{tmp.trv_giaban}</div>
+							</li>
+							<li class="thread-details-giamgia d-none">
+								<div class="thread-details-label upper small">Giảm</div>
+								<div class="bold">-{tmp.pt}%</div>
+							</li>
+							<li class="thread-details-tietkiem">
+								<div class="thread-details-label upper small">Tiết kiệm</div>
+								<div class="bold">-{tmp.trv_tietkiem}</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<table cellpadding="0" cellspacing="0" border="0" width="100%" class="thread-details-options">
+					{tmp.other_option_list}
+				</table>
+				<div class="thread-details-comment graycolor l25">{tmp.trv_goithieu}</div>
+				<br>
+				<br>
+				<!-- Màu sắc -->
+				<div id="oi_product_color" class="cf product-color d-none">
+					<div class="lf f30">
+						<div class="product-color-title">Màu sắc</div>
+					</div>
+					<div class="lf f70">
+						<ul class="cf">
+						</ul>
+					</div>
+				</div>
+				<div id="oi_time_line"></div>
+				<div>{tmp.clone-show-quick-cart}</div>
+			</div>
+		</div>
+		<div class="lf f20 fullsize-if-mobile">
+			<div class="left-menu-space">
+				<div class="text-center details-ankhi-hethang">
+					<div>
+						<button type="button" class="details-mua-ngay big click-jquery-show-quick-cart upper default-bg">Mua ngay</button>
+					</div>
+					<br>
+					<div><a href="cart?id={tmp.trv_id}" rel="nofollow" class="details-tu-van"><i class="fa fa-shopping-cart"></i> Thêm vào Fiỏ hàng</a></div>
+					<br>
+				</div>
+				<!--
+				<div class="details-support">
+					<div class="details-support-title">Hỗ trợ đặt hàng</div>
+					<div class="details-support-phone"><i class="fa fa-phone-square"></i> <span class="phone-numbers-block">{tmp.cf_call_dienthoai}</span></div>
+					<div class="details-support-yahoo d-none"> <span class="yahoo-nick-block">{tmp.cf_yahoo}</span></div>
+				</div>
+				<br />
+				-->
+				<div class="thread-details-mua">
+					<div class="thread-details-muapadding">
+						<div class="medium text-center">Còn <span id="oi_con_phieu" class="bold">0</span> phiếu</div>
+						<div class="bold thread-details-maxmua">
+							<div class="rf" style="padding:0 3px;color:#000">{tmp.trv_max_mua}</div>
+							<div id="oi_mua_max" data-min="{tmp.trv_mua}" data-max="{tmp.trv_max_mua}" class="thread-details-muamax">|</div>
+						</div>
+						<div class="text-center">Đã có <span class="bold">{tmp.trv_mua}</span> người đặt mua</div>
+					</div>
+				</div>
+				<br>
+				<ul class="thread-details-slogan">
+					<li>
+						<div><i class="fa fa-truck"></i> Giao hàng<br>
+							<span>Toàn Quốc</span></div>
+					</li>
+					<li>
+						<div><i class="fa fa-dollar"></i> Thanh toán khi<br>
+							<span>Nhận hàng</span></div>
+					</li>
+					<li>
+						<div><i class="fa fa-refresh"></i> Đổi hàng<br>
+							<span>trong 7 ngày</span></div>
+					</li>
+					<!--
+					<li>
+						<div><i class="fa fa-check-square"></i> Bảo hành VIP<br>
+							<span>12 tháng</span></div>
+					</li>
+					-->
+				</ul>
+				<br>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div style="position:relative;">
+		<div class="cf {tmp.custom_product_flex_css}">
+			<div class="col-main-content custom-width-product-main fullsize-if-mobile">
+				<div id="details_main">
+					<ul class="thread-details-tab upper fcb cf">
+						<li data-show="thread-details-tab-content" class="selected">Thông tin sản phẩm</li>
+						<li data-show="thread-details-tab-comment">Bình luận</li>
+					</ul>
+					<div class="thread-details-contenttab thread-details-tab-content">
+						<div id="content_img_product" class="l25 img-max-width ul-default-style">{tmp.trv_noidung}</div>
+						<br>
+						<div class="cf hide-if-mobile thread-details-bottom">
+							<div class="lf f62">
+								<h2>{tmp.trv_tieude}</h2>
+							</div>
+							<div class="lf f38">
+								<button class="thread-details-buy default-bg cur upper click-jquery-show-quick-cart"><i class="fa fa-shopping-cart"></i> Mua ngay</button>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="thread-details-tags d-none"><i class="fa fa-tag"></i> {tmp.str_tags}</div>
+					<br>
+					<div class="hide-if-show-comment">
+						<div class="thread-list-filter cf">
+							<div class="lf">Bình luận</div>
+						</div>
+						<br>
+					</div>
+					{tmp.html_for_fb_comment}<br>
+				</div>
+			</div>
+			<div class="col-sidebar-content custom-width-global-sidebar custom-width-product-sidebar fullsize-if-mobile">
+				<div id="main_right" class="product-right-space global-right-space">
+					<div class="thread-list-filter cf">
+						<div class="lf">Sản phẩm khác</div>
+					</div>
+					<br>
+					<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-list100 thread-details-rightpost cf">
+						{tmp.other_post_right}
+					</ul>
+					<br>
+					<div class="fix-right-menu">{tmp.str_sidebar}</div>
+					<div id="fix_right_menu">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="fix_end_right_menu">&nbsp;</div>
+	<div class="details-other-title upper fcb">Sản phẩm cùng loại</div>
+	<br>
+	<ul data-width="{tmp.cf_product_mobile_size}" data-big-width="{tmp.cf_product_table_size}" class="fix-li-wit thread-list thread-details-other cf">
+		{tmp.other_post_2right}
+	</ul>
+	<br>
+</div>
+<div class="global-product-widget">{tmp.str_for_details_sidebar}</div>
+<div class="d-none">
+	<div id="export_img_product">{tmp.trv_galerry}</div>
+	<div id="export_img_list_color">{tmp.trv_list_color}</div>
+</div>
