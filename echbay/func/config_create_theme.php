@@ -113,6 +113,9 @@ function WGR_create_themes_default_format (
 * copyright in footer
 <div><?php echo $str_footer_echbay_license; ?></div>
 *
+* lang
+<div><?php echo EBE_get_lang(\'custom_text\'); ?></div>
+*
 */
 		' );
 	}
