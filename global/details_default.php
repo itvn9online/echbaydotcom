@@ -771,6 +771,12 @@ $arr_main_content = array(
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 	
+	// slogan
+	'tmp.lang_ebslogan1' => EBE_get_lang('ebslogan1'),
+	'tmp.lang_ebslogan2' => EBE_get_lang('ebslogan2'),
+	'tmp.lang_ebslogan3' => EBE_get_lang('ebslogan3'),
+	'tmp.lang_ebslogan4' => EBE_get_lang('ebslogan4'),
+	
 	//
 	'tmp.lang_post_custom_text' => EBE_get_lang('post_custom_text'),
 	'tmp.lang_post_custom_text1' => EBE_get_lang('post_custom_text1'),
