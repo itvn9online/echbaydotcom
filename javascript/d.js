@@ -3473,7 +3473,7 @@ setTimeout(function () {
 		(function () {
 			// Size cho phần giỏ hàng
 			jQuery('.show-list-size').each(function() {
-				var a = jQuery(this).attr('data-value') || '',
+				var a = jQuery(this).html() || '',
 					t_post_id = jQuery(this).attr('data-id') || '';
 				if ( a != '' ) {
 //					console.log(a);
@@ -3526,7 +3526,7 @@ setTimeout(function () {
 					
 					//
 					if ( str != '' ) {
-						jQuery(this).show().append('<select name="t_size[' + t_post_id + ']">' + str + '</select>');
+						jQuery(this).show().html( ( jQuery(this).attr('data-name') || '' ) + ': <select name="t_size[' + t_post_id + ']">' + str + '</select>');
 					}
 				}
 			});
@@ -3540,8 +3540,8 @@ setTimeout(function () {
 			//
 			jQuery('.show-list-color').each(function() {
 				var t_post_id = jQuery(this).attr('data-id') || '';
-				console.log(t_post_id);
-				console.log(jQuery('img', this).length);
+//				console.log(t_post_id);
+//				console.log(jQuery('img', this).length);
 				
 				//
 				var str = '';
