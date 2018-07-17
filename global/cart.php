@@ -136,12 +136,11 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 			<div><a href="' . $p_link . '"><img src="' . $trv_img . '" height="90" /></a></div>
 			<br>
 		</div>
-		<div class="lf f70 fullsize-if-mobile">
+		<div class="lf f70 cart-div-margin fullsize-if-mobile">
 			<div><a href="' . $p_link . '" class="bold upper medium blackcolor get-product-name-for-cart">' . $post->post_title . '<span class="show-product-color-name' . $post->ID . '">' . $product_color_name . '</span></a></div>
-			<div data-id="' . $post->ID . '" data-name="' . str_replace( '"', '&quot;', EBE_get_lang('cart_mausac') ) . '" class="show-list-color l30 d-none">' . $product_list_color . '</div>
-			<div data-id="' . $post->ID . '" data-value="' . $product_size . '" class="show-list-size l30 d-none">' . EBE_get_lang('cart_kichco') . ': </div>
+			<div data-id="' . $post->ID . '" data-name="' . str_replace( '"', '&quot;', EBE_get_lang('cart_mausac') ) . '" class="show-list-color l25 d-none">' . $product_list_color . '</div>
+			<div data-id="' . $post->ID . '" data-value="' . $product_size . '" class="show-list-size l25 d-none">' . EBE_get_lang('cart_kichco') . ': </div>
 			<div class="bold big show-if-mobile">' . EBE_add_ebe_currency_class ( $trv_giamoi ) . '</div>
-			<br>
 			<div><a href="' . $c_link . '" class="upper blackcolor">' . $c_name . '</a></div>
 			<div class="cart-table-remove"><i onClick="_global_js_eb.cart_remove_item(' . $post->ID . ', \'' . $animate_id . '\');" class="fa fa-remove cur"></i></div>
 			<input type="hidden" name="t_muangay[]" value="' . $post->ID . '" />
