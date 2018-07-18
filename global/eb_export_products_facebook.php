@@ -127,8 +127,7 @@ foreach ( $sql as $v ) {
 	//
 	$for_google = '';
 	if ( $export_type == 'google' ) {
-		$for_google = '<g:google_product_category>' . $google_product_category . '</g:google_product_category>
-	<g:item_group_id>' . $ant_id . '</g:item_group_id>';
+		$for_google = '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
 	}
 	
 	
@@ -146,6 +145,7 @@ $rss_content .= '<item>
 	<g:sale_price>' . $before_price . $sale_price . $after_price . '</g:sale_price>
 	<g:brand>' . $rss_brand . '</g:brand>
 	' . $for_google . '
+	<g:item_group_id>' . $ant_id . '</g:item_group_id>
 </item>';
 
 }
