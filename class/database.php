@@ -28,7 +28,7 @@ include EB_THEME_CORE . 'func.php';
 //
 //$default_all_timezone = 'Asia/Saigon';
 $default_all_timezone = 'Asia/Ho_Chi_Minh';
-//echo current_time( 'timestamp' );
+/*
 if ( file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
 	date_default_timezone_set ( file_get_contents( EB_THEME_CACHE . '___timezone.txt' ) );
 }
@@ -36,6 +36,7 @@ if ( file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
 else {
 	date_default_timezone_set ( $default_all_timezone );
 }
+*/
 /*
 echo get_option('gmt_offset');
 echo get_option('timezone_string');
@@ -49,8 +50,20 @@ date_default_timezone_set ( get_option('gmt_offset') );
 */
 
 //
-$date_time = time ();
-//$date_time = current_time( 'timestamp' );
+/*
+$tz = get_option('timezone_string');
+if ( $tz != '' ) {
+	date_default_timezone_set ( $tz );
+	$date_time = time ();
+}
+else {
+	date_default_timezone_set ( 'UTC' );
+	$date_time = time() + get_option('gmt_offset') * HOUR_IN_SECONDS;
+}
+*/
+$date_time = current_time( 'timestamp' );
+//$date_time = time() + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
+
 $date_server = date ( 'Y-m-d', $date_time );
 $time_server = date ( 'H:i:s', $date_time );
 $year_curent = substr ( $date_server, 0, 4 );
@@ -59,7 +72,24 @@ $day_curent = substr ( $date_server, 8, 2 );
 
 //
 define( 'date_time', $date_time );
-//echo date( 'r', date_time ) . '<br>';
+
+/*
+echo '<!-- ';
+echo 'timezone_string: ' . get_option( 'timezone_string' ) . "\n";
+
+//echo 'date_time: ' + date_time . "\n";
+echo 'date_time: ' . date( 'r', date_time ) . "\n";
+
+echo 'HOUR_IN_SECONDS: ' . HOUR_IN_SECONDS . "\n";
+
+//echo current_time( 'timestamp', 1 ) . "\n";
+echo 'timestamp: ' . date( 'r', current_time( 'timestamp', 1 ) ) . "\n";
+
+//echo current_time( 'mysql', 1 ) . "\n";
+echo 'mysql: ' . date( 'r', strtotime( current_time( 'mysql', 1 ) ) ) . "\n";
+//echo file_get_contents( EB_THEME_CACHE . '___timezone.txt' ) . "\n";
+echo ' -->';
+*/
 
 //
 define( 'date_server', $date_server );
