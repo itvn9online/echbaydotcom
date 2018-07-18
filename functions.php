@@ -1570,6 +1570,10 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 			$a = preg_replace('/ id=\"menu-item-(.*)\"/iU', '', $a );
 			$a = preg_replace('/ class=\"menu-item (.*)\"/iU', '', $a );
 			
+			//
+			$a = str_replace( 'http://./', './', $a );
+			$a = str_replace( 'https://./', './', $a );
+			
 			// xóa ký tự đặc biệt khi rút link category
 			$a = str_replace( '/./', '/', $a );
 //			$a = str_replace( '/category/', '/', $a );
