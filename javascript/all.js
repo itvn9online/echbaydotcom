@@ -7,6 +7,16 @@
 
 
 
+
+
+//console.log( typeof $ );
+//console.log( typeof jQuery );
+if ( typeof $ == 'undefined' ) {
+	$ = jQuery;
+}
+
+
+
 // lưu URL cuối cùng mà người dùng đã xem, để lần sau truy cập luôn vào URL này cho tiện
 // -> ưu tiên chạy đầu tiên luôn
 (function () {
@@ -46,16 +56,6 @@
 	}, 5000);
 	*/
 })();
-
-
-
-
-
-//console.log( typeof $ );
-//console.log( typeof jQuery );
-if ( typeof $ == 'undefined' ) {
-	$ = jQuery;
-}
 
 
 
