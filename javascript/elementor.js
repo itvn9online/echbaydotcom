@@ -37,6 +37,7 @@
 	var arr = [
 		'css/d.css',
 //		'css/d2.css',
+		// -> admin css làm bị tràn khung thiết kế của widget blog -> bỏ
 //		'css/admin.css',
 		'css/elementor.css',
 		''
