@@ -188,10 +188,6 @@ if ( file_exists( $inc_file ) ) {
 	
 	//
 	include $inc_file;
-
-
-	//
-	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
 }
 // hoặc nếu đây là một page template -> code sẽ nằm trong file template kia
@@ -208,6 +204,9 @@ else {
 	echo '<!-- ' . $inc_file . ' -->' . "\n";
 	include EB_THEME_PLUGIN_INDEX . 'global/null.php';
 }
+
+// chuẩn hóa nội dung theo tiêu chuẩn
+include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 
 
 

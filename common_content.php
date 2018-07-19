@@ -2,7 +2,6 @@
 
 
 
-
 $arr_global_main = array(
 	'tmp.cf_dienthoai' => $__cf_row['cf_dienthoai'],
 	'tmp.cf_call_dienthoai' => $__cf_row['cf_call_dienthoai'],
@@ -38,8 +37,9 @@ $arr_global_main = array(
 	
 	// phần option cho link của mục blog
 	'tmp.blog_link_option' => '',
-	'tmp.post_zero' => EBE_get_lang('post_zero'),
+	'tmp.post_zero' => EBE_get_lang('post_zero')
 );
+//print_r( $arr_global_main );
 
 // riêng với trang chủ -> nếu có set chiều rộng -> bỏ phần chiệu rọng bên trong các module con đi
 if ( $act == '' && $__cf_row['cf_home_class_style'] != '' ) {

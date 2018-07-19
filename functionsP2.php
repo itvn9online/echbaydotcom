@@ -261,6 +261,7 @@ function _eb_load_post (
 	// ưu tiên sử dụng URL tương đối -> có thể gây lỗi trên 1 số phiên bản -> bỏ
 //	return str_replace( web_link, '', _eb_supper_del_line( $str ) );
 	return _eb_supper_del_line( $str );
+//	return str_replace( '{tmp.post_zero}', EBE_get_lang('post_zero'), _eb_supper_del_line( $str ) );
 }
 
 
