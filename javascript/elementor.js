@@ -25,7 +25,7 @@
 			
 			// kiểm tra nếu chưa có thì add vào
 			if ( document.getElementById( check_id ) == null ) {
-				console.log( url_for_add_elementor + arr[i] );
+				console.log( 'Add JS: ' + url_for_add_elementor + arr[i] );
 				
 				//
 				jQuery('head').append('<script id="' + check_id + '" src="' + url_for_add_elementor + arr[i] + '?v=' + v + '"><\/script>');
@@ -49,7 +49,7 @@
 			
 			// kiểm tra nếu chưa có thì add vào
 			if ( document.getElementById( check_id ) == null ) {
-				console.log( url_for_add_elementor + arr[i] );
+				console.log( 'Add CSS: ' + url_for_add_elementor + arr[i] );
 				
 				//
 				jQuery('head').append('<link id="' + check_id + '" rel="stylesheet" href="' + url_for_add_elementor + arr[i] + '?v=' + v + '" type="text/css" media="all" \/>');

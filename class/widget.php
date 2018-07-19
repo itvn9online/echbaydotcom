@@ -129,6 +129,11 @@ function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
 
 function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
+	//
+	WGR_add_css_js_for_elementor_editer();
+	
+	
+	//
 	global $arr_eb_product_status;
 	global $arr_eb_ads_status;
 	global $wpdb;
