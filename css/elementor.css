@@ -1,0 +1,6 @@
+/* bổ sung css dành riêng cho elementor */
+.category-for-home_list {
+	display: block;
+	margin-bottom: 10px;
+}
+.d-none { display: none; }

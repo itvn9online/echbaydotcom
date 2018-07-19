@@ -954,6 +954,9 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $taxonomy = 'category' ) {
 	
 	//
+	WGR_add_css_js_for_elementor_editer();
+	
+	//
 	$instance = wp_parse_args ( ( array ) $instance, $default );
 	foreach ( $instance as $k => $v ) {
 		$$k = esc_attr ( $v );
@@ -1016,6 +1019,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	echo '</div>';
 	
 	echo '<script>WGR_category_for_home_list("' . $id_for . '", 1);</script>';
+//	print_r( $_GET );
 	
 	
 	//
@@ -1060,6 +1064,26 @@ function WGR_default_for_home_list_and_blog () {
 		'run_slider' => '',
 		'custom_style' => ''
 	);
+}
+
+
+// add css, js for elementor
+// do trong trình chỉnh sửa của elemento không có sẵn các mã JS, CSS của EchBay theme, nên widget trong này hoạt động cũng không chuẩn -> add thêm vào cho nó chuẩn
+function WGR_add_css_js_for_elementor_editer () {
+	$f = EB_THEME_PLUGIN_INDEX . 'javascript/elementor.js';
+	
+	/*
+	echo EB_THEME_PLUGIN_INDEX . '<br>';
+	echo ABSPATH . '<br>';
+	echo web_link . '<br>';
+	echo admin_link . '<br>';
+	
+	//
+	echo $f . '<br>';
+	echo str_replace( ABSPATH, web_link, $f ) . '<br>';
+	*/
+	echo '<script>var url_for_add_elementor="' . str_replace( ABSPATH, web_link, EB_THEME_PLUGIN_INDEX ) . '";</script>
+	<script src="' . str_replace( ABSPATH, web_link, $f ) . '?v=' . filemtime( $f ) . '"></script>';
 }
 
 
