@@ -4,7 +4,8 @@
 
 /*
 * Cấu trúc dữ liệu sản phẩm theo tiêu chuẩn của google
-* https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998
+https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998
+https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog?__mref=message_bubble#feed-format
 */
 
 
@@ -115,12 +116,16 @@ foreach ( $sql as $v ) {
 	
 	//
 	$price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_oldprice', 0 ) );
-	$sale_price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) );
+	$new_price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) );
+	$sale_price = '';
 	
 	// chỉnh lại giá về 1 thông số
-	if ( $price == 0 && $sale_price > 0 ) {
-		$price = $sale_price;
-		$sale_price = 0;
+	// có khuyến mại
+	if ( $new_price > 0 && $price > $new_price ) {
+		$sale_price = '<g:sale_price>' . $before_price . $new_price . $after_price . '</g:sale_price>';
+	}
+	else if ( $price < $new_price ) {
+		$price = $new_price;
 	}
 	
 	
@@ -142,7 +147,7 @@ $rss_content .= '<item>
 	<g:link>' . $p_link . '</g:link>
 	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
-	<g:sale_price>' . $before_price . $sale_price . $after_price . '</g:sale_price>
+	' . $sale_price . '
 	<g:brand>' . $rss_brand . '</g:brand>
 	' . $for_google . '
 	<g:item_group_id>' . $ant_id . '</g:item_group_id>

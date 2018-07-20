@@ -36,7 +36,9 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	
 	// post_tag
-	$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_tag', 0.8 );
+	if ( $__cf_row['cf_alow_post_tag_index'] == 1 ) {
+		$get_list_sitemap .= WGR_get_sitemap_taxonomy( 'post_tag', 0.8 );
+	}
 	
 	
 	// post_options

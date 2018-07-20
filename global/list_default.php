@@ -13,6 +13,9 @@ $str_for_category_top_sidebar = '';
 	if ( $switch_taxonomy == 'post_options' && $__cf_row['cf_alow_post_option_index'] != 1 ) {
 		$__cf_row ["cf_blog_public"] = 0;
 	}
+	else if ( $switch_taxonomy == 'post_tag' && $__cf_row['cf_alow_post_tag_index'] != 1 ) {
+		$__cf_row ["cf_blog_public"] = 0;
+	}
 	else if ( isset( $_GET['search_advanced'] ) || _eb_get_cat_object( $cid, '_eb_category_noindex', 0 ) == 1 ) {
 		$__cf_row ["cf_blog_public"] = 0;
 	}

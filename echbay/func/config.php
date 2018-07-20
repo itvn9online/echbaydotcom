@@ -83,6 +83,8 @@ $_POST['cf_remove_post_option_base'] = WGR_default_config('cf_remove_post_option
 
 $_POST['cf_alow_post_option_index'] = WGR_default_config('cf_alow_post_option_index');
 
+$_POST['cf_alow_post_tag_index'] = WGR_default_config('cf_alow_post_tag_index');
+
 $_POST['cf_on_off_echbay_seo'] = WGR_default_config('cf_on_off_echbay_seo');
 
 $_POST['cf_on_off_echbay_logo'] = WGR_default_config('cf_on_off_echbay_logo');

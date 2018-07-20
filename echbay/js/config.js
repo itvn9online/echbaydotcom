@@ -445,6 +445,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_remove_category_base' );
 	show_note_for_checkbox_config( 'cf_remove_post_option_base' );
 	show_note_for_checkbox_config( 'cf_alow_post_option_index' );
+	show_note_for_checkbox_config( 'cf_alow_post_tag_index' );
 	
 	show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
 	show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );

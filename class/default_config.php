@@ -177,6 +177,7 @@ $__cf_row_default = array(
 	'cf_remove_category_base' => 'off',
 	'cf_remove_post_option_base' => 'off',
 	'cf_alow_post_option_index' => 'off',
+	'cf_alow_post_tag_index' => 1,
 	
 	// plugin SEO của EchBay
 	'cf_on_off_echbay_seo' => 1,
