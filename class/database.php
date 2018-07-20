@@ -36,6 +36,14 @@ if ( $tz == '' ) {
 }
 else {
 	date_default_timezone_set ( $tz );
+	
+	// cập nhật tự động múi giờ mới
+	/*
+	$gtm = get_option('gmt_offset');
+	if ( $gmt == 7 ) {
+		update_option('timezone_string', $default_all_timezone);
+	}
+	*/
 }
 
 /*
