@@ -5,7 +5,7 @@
 <div class="l25">
 	<h3>Giờ hiện tại của máy chủ là: <?php echo date( 'r', date_time ); ?></h3>
 	<h3>Múi giờ hiện tại của máy chủ là: <?php echo date_default_timezone_get(); ?></h3>
-	<h3>Múi giờ trong cấu hình là: UTC<?php echo get_option( 'gmt_offset' ) . ' - ' . get_option( 'timezone_string' ); ?></h3>
+	<h3>Múi giờ trong cấu hình là: UTC<?php echo get_option( 'gmt_offset' ) . ' (' . get_option( 'timezone_string' ); ?>)</h3>
 </div>
 <br>
 <?php
