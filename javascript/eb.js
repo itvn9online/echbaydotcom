@@ -682,11 +682,15 @@ var _global_js_eb = {
 		// tạo attr mặc định để lưu thuộc tính cũ
 		jQuery('.img-max-width').each(function() {
 			var max_width = jQuery(this).attr('data-max-width') || '';
+//			console.log('aaaaaaaaaaa: ' + max_width);
 			if ( max_width == '' || max_width < 90 ) {
 				max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+				jQuery(this).attr({
+					'data-max-width': max_width
+				});
 			}
 			max_width = Math.ceil( max_width ) - 1;
-//			console.log(max_width);
+//			console.log('bbbbbbbbbbb: ' + max_width);
 			
 			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
 //			jQuery('.wp-caption', this).width( max_width - 5 );
@@ -831,14 +835,19 @@ var _global_js_eb = {
 			
 			
 			
+			//
+			jQuery('.img-max-width .wp-caption').width('auto');
+			
+			
 			// trên mobile -> giới hạn kích thước media
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-max-width') || '';
-				if ( max_width == '' || max_width < 90 ) {
+				// lấy theo kích thước tối đa của khung này luôn
+//				var max_width = jQuery(this).attr('data-max-width') || 250;
+//				if ( max_width == '' || max_width < 90 ) {
 					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
-				}
-//				console.log(max_width);
+//				}
 				max_width = Math.ceil( max_width ) - 1;
+//				console.log('ccccccccccc: ' + max_width);
 				var max_sizes_width = max_width + 99;
 				
 				// xử lý với hình ảnh
@@ -912,12 +921,14 @@ var _global_js_eb = {
 			
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-max-width') || '';
+				var max_width = jQuery(this).attr('data-max-width') || 250;
+				/*
 				if ( max_width == '' || max_width < 90 ) {
 					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
 				}
+				*/
 				max_width = Math.ceil( max_width ) - 1;
-//				console.log(max_width);
+//				console.log('dddddddddd: ' + max_width);
 				var max_sizes_width = max_width + 99;
 				
 				// xử lý với hình ảnh
@@ -953,7 +964,7 @@ var _global_js_eb = {
 							if ( current_wit > max_width ) {
 								current_wit = max_width;
 							}
-							current_wit -= 5;
+							current_wit -= 1;
 						}
 //						console.log(current_wit);
 						
