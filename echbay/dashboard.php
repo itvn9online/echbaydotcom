@@ -2,7 +2,11 @@
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Trang tổng quan</a></div>
 <p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo admin_link; ?> 'admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.</p>
 <br>
-<h3>Giờ hiện tại của máy chủ là: <?php echo date( 'r', date_time ); ?></h3>
+<div class="l25">
+	<h3>Giờ hiện tại của máy chủ là: <?php echo date( 'r', date_time ); ?></h3>
+	<h3>Múi giờ hiện tại của máy chủ là: <?php echo date_default_timezone_get(); ?></h3>
+	<h3>Múi giờ trong cấu hình là: UTC<?php echo get_option( 'gmt_offset' ) . ' - ' . get_option( 'timezone_string' ); ?></h3>
+</div>
 <br>
 <?php
 
@@ -73,6 +77,14 @@ if ( isset( $sql[0]->option_value ) && $sql[0]->option_value == 0 ) {
 if ( get_option( 'blog_public' ) == 0 ) {
 	$str_eb_warning .= '
 	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập website của bạn đang chặn không cho các công cụ tìm kiếm index website này. Nếu bạn muốn thay đổi ý định này, <a href="' . admin_link . 'options-reading.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
+}
+
+
+
+//
+if ( get_option( 'timezone_string' ) == '' ) {
+	$str_eb_warning .= '
+	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập múi giờ chuẩn xác cho website sẽ làm tăng tính ổn định của tất cả tính năng đang có trên website. Hãy chọn một múi giờ cụ thể thay vì chọn múi giờ UTC! <a href="' . admin_link . 'options-reading.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
 }
 
 
