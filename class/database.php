@@ -28,11 +28,18 @@ include EB_THEME_CORE . 'func.php';
 //
 //$default_all_timezone = 'Asia/Saigon';
 $default_all_timezone = 'Asia/Ho_Chi_Minh';
+
+// lấy múi giờ trong config -> nếu không có thì set theo múi mặc định của VN
+$tz = get_option('timezone_string');
+if ( $tz == '' ) {
+	date_default_timezone_set ( $default_all_timezone );
+}
+
 /*
 if ( file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
 	date_default_timezone_set ( file_get_contents( EB_THEME_CACHE . '___timezone.txt' ) );
 }
-// Sử dụng timezon mặc định
+// Sử dụng timezon mặc định cho khách VN
 else {
 	date_default_timezone_set ( $default_all_timezone );
 }
@@ -61,7 +68,8 @@ else {
 	$date_time = time() + get_option('gmt_offset') * HOUR_IN_SECONDS;
 }
 */
-$date_time = current_time( 'timestamp' );
+$date_time = time ();
+//$date_time = current_time( 'timestamp' );
 //$date_time = time() + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
 
 $date_server = date ( 'Y-m-d', $date_time );
@@ -75,6 +83,7 @@ define( 'date_time', $date_time );
 
 /*
 echo '<!-- ';
+echo 'timezone: ' . date_default_timezone_get() . "\n";
 echo 'timezone_string: ' . get_option( 'timezone_string' ) . "\n";
 
 //echo 'date_time: ' + date_time . "\n";
