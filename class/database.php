@@ -34,6 +34,9 @@ $tz = get_option('timezone_string');
 if ( $tz == '' ) {
 	date_default_timezone_set ( $default_all_timezone );
 }
+else {
+	date_default_timezone_set ( $tz );
+}
 
 /*
 if ( file_exists ( EB_THEME_CACHE . '___timezone.txt' ) ) {
