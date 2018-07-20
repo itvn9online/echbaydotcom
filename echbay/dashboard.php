@@ -1,6 +1,9 @@
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Trang tổng quan</a></div>
 <p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website, tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo admin_link; ?> 'admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.</p>
+<br>
+<h3>Giờ hiện tại của máy chủ là: <?php echo date( 'r', date_time ); ?></h3>
+<br>
 <?php
 
 //

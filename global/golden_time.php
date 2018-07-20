@@ -26,7 +26,7 @@ $__cf_row ['cf_description'] = EBE_get_lang('golden_desc_time');
 $url_og_url = web_link . $act;
 $dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
 */
-$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, EBE_get_lang('golden_time') );
+$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, EBE_get_lang('golden_time'), 0, 'nofollow' );
 
 
 //

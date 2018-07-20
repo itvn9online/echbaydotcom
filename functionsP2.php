@@ -1631,12 +1631,17 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 }
 
 
-function _eb_create_breadcrumb ( $url, $tit, $id = 0 ) {
+function _eb_create_breadcrumb ( $url, $tit, $id = 0, $rel = '' ) {
 	global $breadcrumb_position;
 	global $group_go_to;
 	
 	//
-	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '" rel="nofollow">' . $tit . '</a></li>';
+	if ( $rel != '' ) {
+		$rel = ' rel="' . $rel . '"';
+	}
+	
+	//
+	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '"' . $rel . '>' . $tit . '</a></li>';
 	
 	//
 //	echo $breadcrumb_position . "\n";
