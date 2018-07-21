@@ -36,7 +36,7 @@ function WGR_rss_get_parent_cat ( $id ) {
 
 //
 $rssCacheFilter = 'rss-' . $export_type;
-$rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 3600 );
+$rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 300 );
 //$rss_content = false;
 if ($rss_content == false) {
 	
@@ -131,8 +131,13 @@ foreach ( $sql as $v ) {
 	
 	//
 	$for_google = '';
+	/*
 	if ( $export_type == 'google' ) {
-		$for_google = '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
+	}
+	*/
+	$str_google_product_category = '';
+	if ( $google_product_category != '' ) {
+		$str_google_product_category = '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
 	}
 	
 	
@@ -149,7 +154,7 @@ $rss_content .= '<item>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
 	' . $sale_price . '
 	<g:brand>' . $rss_brand . '</g:brand>
-	' . $for_google . '
+	' . $str_google_product_category . '
 	<g:item_group_id>' . $ant_id . '</g:item_group_id>
 </item>';
 
