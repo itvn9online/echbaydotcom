@@ -23,12 +23,18 @@ if (mtv_id <= 0) {
 
 
 //
+wp_set_password( $t_matkhau, mtv_id );
+
+// or
+/*
 wp_update_user(
 	array(
 		'user_pass' => $t_matkhau,
 		'ID' => mtv_id
 	)
 );
+*/
+
 
 
 

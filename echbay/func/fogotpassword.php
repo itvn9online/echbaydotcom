@@ -22,12 +22,32 @@ $user_id = email_exists( $user_email );
 
 // có thì trả về luôn
 if ( $user_id > 0 ) {
+	// gán dữ liệu để hàm của wp hoạt động
+	$_POST['user_login'] = $user_email;
+	
+	$errors = retrieve_password();
+	
+	if ( is_wp_error($errors) ) {
+		print_r( $errors );
+		_eb_alert( 'Lỗi!' );
+	}
 } else {
 	_eb_alert( 'Email không tồn tại, vui lòng nhập lại' );
 }
 
 
 //
+die('<script type="text/javascript">
+
+if ( top != self ) {
+	parent.document.frm_dangnhap.reset();
+}
+else {
+	window.opener.document.frm_dangnhap.reset();
+}
+
+</script>');
+
 _eb_alert( 'Vui lòng kiểm tra email để tiếp tục' );
 
 
