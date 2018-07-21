@@ -35,7 +35,7 @@ function WGR_rss_get_parent_cat ( $id ) {
 
 
 //
-$rssCacheFilter = 'rss-fb';
+$rssCacheFilter = 'rss-' . $export_type;
 $rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 3600 );
 //$rss_content = false;
 if ($rss_content == false) {
