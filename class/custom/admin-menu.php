@@ -405,7 +405,7 @@ function echbay_admin_footer_styles() {
 	$strCacheFilter = 'github_theme_version';
 	$current_theme_github_version = _eb_get_static_html ( $strCacheFilter, '', '', 3600 );
 	if ( $current_theme_github_version == false ) {
-		$current_theme_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
+		$current_theme_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION' );
 		
 		_eb_get_static_html ( $strCacheFilter, $current_theme_github_version, '', 60 );
 	}
