@@ -75,6 +75,13 @@ else {
 //
 $cache_ant_id = array();
 
+// xác định giới tính cho sản phẩm
+$arr_sex_lang_xml = array(
+	0 => 'unisex',
+	1 => 'male',
+	2 => 'female'
+);
+
 
 //
 foreach ( $sql as $v ) {
@@ -159,6 +166,7 @@ $rss_content .= '<item>
 	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
 	' . $add_on_data . '
+	<g:gender><![CDATA[' . $arr_sex_lang_xml[ _eb_get_post_object( $v->ID, '_eb_product_gender', 0 ) ] . ']]></g:gender>
 	<g:brand>' . $rss_brand . '</g:brand>
 </item>';
 

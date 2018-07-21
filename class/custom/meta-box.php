@@ -142,6 +142,7 @@ for ( $i = 23; $i > 5; $i-- ) {
 $eb_arr_type_custom_meta_box = array(
 	// post
 	'_eb_product_status' => $arr_eb_product_status,
+	'_eb_product_gender' => $arr_eb_product_gender,
 //	'_eb_product_color' => 'number',
 //	'_eb_product_sku' => 'number',
 //	'_eb_product_oldprice' => 'number',
@@ -258,6 +259,7 @@ $eb_meta_custom_meta_box = array(
 */
 $eb_arr_custom_meta_box = array(
 	'_eb_product_status' => 'Trạng thái',
+	'_eb_product_gender' => 'Giới tính',
 	'_eb_product_color' => 'Màu sắc',
 	'_eb_product_size' => 'Kích thước',
 	'_eb_product_searchkey' => 'EB Search',

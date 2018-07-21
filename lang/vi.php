@@ -123,6 +123,10 @@ $___eb_lang[eb_key_for_site_lang . 'product_status8'] = $___eb_lang[eb_key_for_s
 $___eb_lang[eb_key_for_site_lang . 'product_status9'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 $___eb_lang[eb_key_for_site_lang . 'product_status10'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 
+$___eb_lang[eb_key_for_site_lang . 'product_male_gender'] = 'Nam';
+$___eb_lang[eb_key_for_site_lang . 'product_female_gender'] = 'Nữ';
+$___eb_lang[eb_key_for_site_lang . 'product_unisex_gender'] = 'Không phân loại';
+
 
 // details
 $___eb_lang[eb_key_for_site_lang . 'chitietsp'] = 'Chi tiết Sản phẩm';

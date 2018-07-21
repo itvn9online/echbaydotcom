@@ -293,6 +293,12 @@ $arr_eb_product_status = array(
 	10 => EBE_get_lang('product_status10')
 );
 
+$arr_eb_product_gender = array(
+	0 => EBE_get_lang('product_unisex_gender'),
+	1 => EBE_get_lang('product_male_gender'),
+	2 => EBE_get_lang('product_female_gender')
+);
+
 // nếu theme có hỗ trợ nhiều định dạng q.cáo khác -> add vào
 if ( isset ( $arr_eb_ads_custom_status ) ) {
 //	print_r( $arr_eb_ads_custom_status );

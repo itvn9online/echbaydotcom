@@ -37,7 +37,6 @@ function WGR_export_product_to_xml ( $limit, $filter = '', $post_type = 'post' )
 	WHERE
 		post_type = '" . $post_type . "'
 		" . $filter . "
-		AND ( post_status = 'publish' OR post_status = 'pending' OR post_status = 'draft' )
 	ORDER BY
 		ID
 	LIMIT 0, " . $limit );
