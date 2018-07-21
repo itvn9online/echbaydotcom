@@ -526,8 +526,8 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	
 	
 	
-	// kiểm tra phiên bản theme
-	if ( wgr_theme_current_version != wgr_theme_github_version ) {
+	// kiểm tra phiên bản theme -> theme thì chỉ có sử dụng child-theme thì mới có version
+	if ( wgr_theme_current_version != '' && wgr_theme_current_version != wgr_theme_github_version ) {
 		console.log('UPDATE NEW THEME VERSION');
 		
 		$('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&confirm_eb_process=1&connect_to=theme" class="orgcolor">Update WGR Theme</a></li>');
