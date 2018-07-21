@@ -17,7 +17,7 @@ if ( $mtv_id > 0 ) {
 				<label for="t_email"><strong>Email</strong></label>
 			</div>
 			<div>
-				<input type="email" name="t_email" id="t_email" value="" placeholder="Email" aria-required="true" required />
+				<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
 			</div>
 			<br />
 			<div>

@@ -15,18 +15,18 @@ if ( $mtv_id > 0 ) {
 				<label for="t_email"><strong>Email</strong></label>
 			</div>
 			<div>
-				<input type="email" name="t_email" id="t_email" value="" placeholder="Email" aria-required="true" required />
+				<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
 			</div>
 			<br />
 			<div>
 				<label for="t_matkhau"><strong>Mật khẩu</strong></label>
 			</div>
 			<div>
-				<input type="password" name="t_matkhau" id="t_matkhau" value="" placeholder="Password" aria-required="true" required />
+				<input type="password" name="t_matkhau" value="" placeholder="Password" aria-required="true" required />
 			</div>
 			<br />
 			<div>
-				<input type="checkbox" name="t_remember" id="t_remember" value="1" />
+				<input type="checkbox" name="t_remember" value="1" />
 				<label for="t_remember" style="color:#666">Duy trì trạng thái đăng nhập</label>
 			</div>
 			<br />
@@ -34,7 +34,7 @@ if ( $mtv_id > 0 ) {
 				<button type="submit" class="cur">Đăng nhập</button>
 			</div>
 			<br />
-			<div><a href="#" onClick="g_func.opopup('fogotpassword');">Bạn quên mật khẩu? lấy lại mật khẩu tại đây</a></div>
+			<div><a href="javascript:;" onClick="g_func.opopup('fogotpassword');">Bạn quên mật khẩu? lấy lại mật khẩu tại đây</a></div>
 		</form>
 	</div>
 </div>

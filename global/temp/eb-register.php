@@ -17,21 +17,21 @@ if ( $mtv_id > 0 ) {
 				<label for="t_email"><strong>Email</strong></label>
 			</div>
 			<div>
-				<input type="email" name="t_email" id="t_email" value="" placeholder="Email" aria-required="true" required />
+				<input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
 			</div>
 			<br />
 			<div>
 				<label for="t_matkhau"><strong>Mật khẩu</strong></label>
 			</div>
 			<div>
-				<input type="password" name="t_matkhau" id="t_matkhau" value="" placeholder="Password" aria-required="true" required />
+				<input type="password" name="t_matkhau" value="" placeholder="Password" aria-required="true" required />
 			</div>
 			<br />
 			<div>
 				<label for="t_matkhau2"><strong>Xác nhận mật khẩu</strong></label>
 			</div>
 			<div>
-				<input type="password" name="t_matkhau2" id="t_matkhau2" value="" placeholder="Re-password" aria-required="true" required />
+				<input type="password" name="t_matkhau2" value="" placeholder="Re-password" aria-required="true" required />
 			</div>
 			<br />
 			<div>

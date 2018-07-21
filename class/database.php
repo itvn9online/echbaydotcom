@@ -430,6 +430,7 @@ $arr_active_for_404_page = array(
 	"eb-register" => 1,
 	"eb-quick-register" => 1,
 	"eb-fogotpassword" => 1,
+	"resetpassword" => 1,
 	
 	"eb-ajaxservice" => 1,
 	"download_img_to_site" => 1,
