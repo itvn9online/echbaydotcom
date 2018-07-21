@@ -113,31 +113,37 @@ foreach ( $sql as $v ) {
 	}
 	
 	
+	// các dữ liệu khác, có thì mới cho vào
+	$add_on_data = '';
+	
 	
 	//
 	$price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_oldprice', 0 ) );
 	$new_price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) );
-	$sale_price = '';
 	
 	// chỉnh lại giá về 1 thông số
 	// có khuyến mại
 	if ( $new_price > 0 && $price > $new_price ) {
-		$sale_price = '<g:sale_price>' . $before_price . $new_price . $after_price . '</g:sale_price>';
+		$add_on_data .= '<g:sale_price>' . $before_price . $new_price . $after_price . '</g:sale_price>';
 	}
 	else if ( $price < $new_price ) {
 		$price = $new_price;
 	}
 	
+	// cho bản của google
+	if ( $export_type == 'google' ) {
+		$add_on_data .= '<g:item_group_id>' . $ant_id . '</g:item_group_id>';
+	}
+	
+	// product category
+	if ( $google_product_category != '' ) {
+		$add_on_data .= '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
+	}
 	
 	//
-	$for_google = '';
-	/*
-	if ( $export_type == 'google' ) {
-	}
-	*/
-	$str_google_product_category = '';
-	if ( $google_product_category != '' ) {
-		$str_google_product_category = '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
+	$color = _eb_get_post_object( $v->ID, '_eb_product_color' );
+	if ( $color != '' ) {
+		$add_on_data .= '<g:color><![CDATA[' . $color . ']]></g:color>';
 	}
 	
 	
@@ -152,10 +158,8 @@ $rss_content .= '<item>
 	<g:link>' . $p_link . '</g:link>
 	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
-	' . $sale_price . '
+	' . $add_on_data . '
 	<g:brand>' . $rss_brand . '</g:brand>
-	' . $str_google_product_category . '
-	<g:item_group_id>' . $ant_id . '</g:item_group_id>
 </item>';
 
 }
