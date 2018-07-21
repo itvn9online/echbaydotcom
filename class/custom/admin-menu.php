@@ -192,19 +192,21 @@ function echbay_admin_styles() {
 	//
 	$str_ads_status = '';
 	foreach ( $arr_eb_ads_status as $k => $v ) {
-		$str_ads_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+//		$str_ads_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+		$str_ads_status .= ',{id:' . $k . ',ten:"' . _eb_str_block_fix_content( $v ) . '"}';
 	}
 	
 	//
 	$str_product_status = '';
 	foreach ( $arr_eb_product_status as $k => $v ) {
-		$str_product_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+//		$str_product_status .= ',{id:' . $k . ',ten:"' . str_replace( '"', '\"', $v ) . '"}';
+		$str_product_status .= ',{id:' . $k . ',ten:"' . _eb_str_block_fix_content( $v ) . '"}';
 	}
 	
 	//
 	echo '<script type="text/javascript">
-var web_link = "' . $web_ad_link . '",
-	admin_link = "' . $web_ad_link . WP_ADMIN_DIR . '/",
+var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
+	admin_link = "' . str_replace( '/', '\/', $web_ad_link ) . WP_ADMIN_DIR . '\/",
 	date_time = ' . date_time . ',
 	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
 	year_curent = ' . $year_curent . ',
@@ -377,8 +379,47 @@ function echbay_admin_footer_styles() {
 //	$last_update_js = date_time;
 	
 	
+	
+	// kiểm tra phiên bản hiện tại của web và phiên bản mới trên github
+	// hiện tại
+	$current_version = file_get_contents( EB_THEME_PLUGIN_INDEX . 'VERSION', 1 );
+	
+	// trên github
+	$strCacheFilter = 'github_version';
+	$current_github_version = _eb_get_static_html ( $strCacheFilter, '', '', 3600 );
+	if ( $current_github_version == false ) {
+		$current_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
+		
+		_eb_get_static_html ( $strCacheFilter, $current_github_version, '', 60 );
+	}
+	
+	
+	
+	// phiên bản của theme
+	$current_theme_version = '';
+	if ( file_exists( EB_THEME_URL . 'VERSION' ) ) {
+		$current_theme_version = file_get_contents( EB_THEME_URL . 'VERSION', 1 );
+	}
+	
+	// trên github
+	$strCacheFilter = 'github_theme_version';
+	$current_theme_github_version = _eb_get_static_html ( $strCacheFilter, '', '', 3600 );
+	if ( $current_theme_github_version == false ) {
+		$current_theme_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
+		
+		_eb_get_static_html ( $strCacheFilter, $current_theme_github_version, '', 60 );
+	}
+	
+	
+	
 	//
-	echo '<script type="text/javascript">var cf_chu_de_chinh= "' . str_replace( '"', '\"', $__cf_row['cf_chu_de_chinh']  ). '";</script>';
+	echo '<script type="text/javascript">var cf_chu_de_chinh = "' . _eb_str_block_fix_content( str_replace( '"', '\"', $__cf_row['cf_chu_de_chinh'] ) ) . '",
+	
+	wgr_plugin_current_version = "' . $current_version . '",
+	wgr_plugin_github_version = "' . $current_github_version . '",
+	
+	wgr_theme_current_version = "' . $current_theme_version . '",
+	wgr_theme_github_version = "' . $current_theme_github_version . '";</script>';
 	
 	//
 	/*

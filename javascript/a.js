@@ -499,6 +499,7 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	
 	$('#' + id_echbay_menu + '-top').append( '<div class="ab-sub-wrapper"><ul id="' + id_echbay_menu + '-submenu" class="ab-submenu"></ul></div>' );
 	
+	
 	// thêm menu update nếu có update mới
 	var check_update = $('#menu-dashboard ul a .update-plugins .update-count').html() || 0;
 	if ( parseInt( check_update, 10 ) > 0 ) {
@@ -513,6 +514,26 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 		// xóa thẻ span trong menu update
 		$('.wgr-eb-show-menu-update span').remove();
 	}
+	
+	
+	
+	// kiểm tra phiên bản plugin
+	if ( wgr_plugin_current_version != wgr_plugin_github_version ) {
+		console.log('UPDATE NEW PLUGIN VERSION');
+		
+		$('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&confirm_eb_process=1&connect_to=github" class="orgcolor">Update WGR Plugin</a></li>');
+	}
+	
+	
+	
+	// kiểm tra phiên bản theme
+	if ( wgr_theme_current_version != wgr_theme_github_version ) {
+		console.log('UPDATE NEW THEME VERSION');
+		
+		$('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&confirm_eb_process=1&connect_to=theme" class="orgcolor">Update WGR Theme</a></li>');
+	}
+	
+	
 	
 	//
 	for ( var x in a ) {
