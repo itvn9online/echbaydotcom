@@ -84,7 +84,7 @@ if ( get_option( 'blog_public' ) == 0 ) {
 //
 if ( get_option( 'timezone_string' ) == '' ) {
 	$str_eb_warning .= '
-	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập múi giờ chuẩn xác cho website sẽ làm tăng tính ổn định của tất cả tính năng đang có trên website. Hãy chọn một múi giờ cụ thể thay vì chọn múi giờ UTC! <a href="' . admin_link . 'options-reading.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
+	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Thiết lập múi giờ chuẩn xác cho website sẽ làm tăng tính ổn định của tất cả tính năng đang có trên website. Hãy chọn một múi giờ cụ thể thay vì chọn múi giờ UTC! <a href="' . admin_link . 'options-general.php" target="_blank" class="bluecolor"><u>có thể thay đổi tại đây</u></a>.</div>';
 	
 	//
 	/*
