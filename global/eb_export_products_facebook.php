@@ -73,7 +73,8 @@ else {
 
 
 //
-$cache_ant_id = array();
+$cache_google_product = array();
+$cache_cat_gender = array();
 
 // xác định giới tính cho sản phẩm
 $arr_sex_lang_xml = array(
@@ -104,9 +105,10 @@ foreach ( $sql as $v ) {
 	
 	//
 	$google_product_category = '';
+	$cat_gender = '';
 	if ( $ant_id > 0 ) {
-		if ( isset( $cache_ant_id[ $ant_id ] ) ) {
-			$google_product_category = $cache_ant_id[ $ant_id ];
+		if ( isset( $cache_google_product[ $ant_id ] ) ) {
+			$google_product_category = $cache_google_product[ $ant_id ];
 		}
 		else {
 			$google_product_category = _eb_get_cat_object( $ant_id, '_eb_category_google_product' );
@@ -115,7 +117,17 @@ foreach ( $sql as $v ) {
 			if ( $google_product_category == '' ) {
 				$google_product_category = $__cf_row['cf_google_product_category'];
 			}
-			$cache_ant_id[ $ant_id ] = $google_product_category;
+			$cache_google_product[ $ant_id ] = $google_product_category;
+		}
+		
+		// lấy giới tính của nhóm sản phẩm
+		if ( isset( $cache_cat_gender[ $ant_id ] ) ) {
+			$cat_gender = $cache_cat_gender[ $ant_id ];
+		}
+		else {
+			$cat_gender = _eb_get_cat_object( $ant_id, '_eb_category_gender', 0 );
+			
+			$cache_cat_gender[ $ant_id ] = $cat_gender;
 		}
 	}
 	
@@ -148,6 +160,12 @@ foreach ( $sql as $v ) {
 	}
 	
 	//
+	$post_gender = _eb_get_post_object( $v->ID, '_eb_product_gender', 0 );
+	if ( $post_gender == 0 ) {
+		$post_gender = $cat_gender;
+	}
+	
+	//
 	$color = _eb_get_post_object( $v->ID, '_eb_product_color' );
 	if ( $color != '' ) {
 		$add_on_data .= '<g:color><![CDATA[' . $color . ']]></g:color>';
@@ -166,7 +184,7 @@ $rss_content .= '<item>
 	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
 	<g:price>' . $before_price . $price . $after_price . '</g:price>
 	' . $add_on_data . '
-	<g:gender><![CDATA[' . $arr_sex_lang_xml[ _eb_get_post_object( $v->ID, '_eb_product_gender', 0 ) ] . ']]></g:gender>
+	<g:gender><![CDATA[' . $arr_sex_lang_xml[$post_gender] . ']]></g:gender>
 	<g:brand>' . $rss_brand . '</g:brand>
 </item>';
 

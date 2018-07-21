@@ -179,6 +179,7 @@ $eb_arr_type_custom_meta_box = array(
 	
 	// category
 	'_eb_category_status' => $arr_eb_category_status,
+	'_eb_category_gender' => $arr_eb_category_gender,
 	'_eb_category_order' => 'number',
 	'_eb_category_leech_url' => 'hidden',
 	'_eb_category_primary' => 'checkbox',
@@ -577,6 +578,7 @@ $arr_category_custom_fields = array();
 $arr_category_custom_fields['_eb_category_avt'] = 'Ảnh đại diện lớn (banner)';
 $arr_category_custom_fields['_eb_category_favicon'] = 'Ảnh đại diện nhỏ (favicon)';
 $arr_category_custom_fields['_eb_category_custom_css'] = 'CSS riêng';
+$arr_category_custom_fields['_eb_category_gender'] = 'Giới tính';
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
