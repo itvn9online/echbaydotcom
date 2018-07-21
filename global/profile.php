@@ -5,7 +5,6 @@
 //
 if ( mtv_id > 0 ) {
 	$__cf_row ['cf_title'] = EBE_get_lang('taikhoan');
-	$group_go_to[] = ' <li><a href="./profile" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
 	
 	
 	//
@@ -53,9 +52,12 @@ if ( mtv_id > 0 ) {
 	
 	
 	//
-	$main_content = EBE_str_template( 'profile.html', array(
-		'tmp.css_link' => str_replace( ABSPATH, web_link, EB_THEME_PLUGIN_INDEX ),
-		
+	include EB_THEME_PLUGIN_INDEX . 'global/user.php';
+	
+	
+	//
+//	$main_content = EBE_str_template( 'profile.html', array(
+	$main_content = EBE_html_template( $user_temp, array(
 		'tmp.tv_email' => mtv_email,
 		'tmp.connect_admin' => $connect_admin,
 		'tmp.mtv_id' => mtv_id,
@@ -65,7 +67,7 @@ if ( mtv_id > 0 ) {
 		'tmp.tv_ngaydangky' => date( 'H:i:s d/m/Y', strtotime( $arr_user_profile->data->user_registered ) ),
 		
 		// lang
-		'tmp.pr_tonquan' => EBE_get_lang('pr_tonquan'),
+		'tmp.user_module_name' => EBE_get_lang('pr_tonquan'),
 		'tmp.pr_email' => EBE_get_lang('pr_email'),
 		'tmp.pr_id' => EBE_get_lang('pr_id'),
 		'tmp.pr_matkhau' => EBE_get_lang('pr_matkhau'),
@@ -75,7 +77,8 @@ if ( mtv_id > 0 ) {
 		'tmp.pr_diachi' => EBE_get_lang('pr_diachi'),
 		'tmp.pr_ngaydangky' => EBE_get_lang('pr_ngaydangky'),
 		'tmp.pr_capnhat' => EBE_get_lang('pr_capnhat')
-	), EB_THEME_PLUGIN_INDEX . 'html/' );
+//	), EB_THEME_PLUGIN_INDEX . 'html/' );
+	) );
 }
 else {
 	// không được include file 404 -> vì sẽ gây lỗi vòng lặp liên tọi
