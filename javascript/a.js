@@ -603,3 +603,10 @@ $('#adminmenu a').click(function () {
 
 
 
+//
+$('#WGR_html_alert').click(function () {
+	$('#WGR_html_alert').fadeOut();
+});
+
+
+

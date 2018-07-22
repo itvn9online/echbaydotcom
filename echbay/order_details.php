@@ -107,6 +107,7 @@ if ( $show_dang_xac_nhan != '' ) {
 		<input type="number" name="order_old_type" id="order_old_type" value="<?php echo $order_old_type; ?>">
 		<textarea name="order_products" id="order_products" style="width:99%;height:110px;"><?php echo $post->order_products; ?></textarea>
 		<textarea name="order_customer" id="order_customer" style="width:99%;height:110px;"><?php echo $post->order_customer; ?></textarea>
+		<input type="number" name="t_trangthai" value="<?php echo $post->order_status; ?>">
 	</div>
 	<div class="medium18 redcolor l30">Thông tin khách hàng</div>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="eb-public-table">
@@ -162,49 +163,60 @@ if ( $show_dang_xac_nhan != '' ) {
 			?></td>
 		</tr>
 		<tr>
-			<td class="t">Ghi chú của CSKH <span class="d-block small">Ví dụ: lý do hủy đơn hàng.</span></td>
-			<td class="i"><textarea id="hd_admin_ghichu"></textarea></td>
+			<td colspan="2"><textarea id="hd_admin_ghichu" placeholder="Ghi chú của nhân viên Chăm sóc khách hàng. Ví dụ: lý do hủy đơn hàng..."></textarea></td>
 		</tr>
+		<?php
+		
+		$hd_trangthai = $post->order_status;
+		
+		//
+		if ( $hd_trangthai == 0 && isset( $post->order_update_time ) ) {
+			$sql = "UPDATE eb_in_con_voi
+			SET
+				order_update_time = " . date_time . "
+			WHERE
+				order_id = " . $post->order_id;
+//						echo $sql . "\n";
+			_eb_q( $sql, 0 );
+			
+			//
+//						$auto_reset_status_after_view = 0;
+		}
+		
+		//
+		$str_select_trangthai = '';
+		$str_button_trangthai = '';
+		foreach ( $arr_hd_trangthai as $k => $v ) {
+			if ( $k >= 0 ) {
+				$sl = '';
+				$cl = '';
+				if ( $k == $hd_trangthai ) {
+					$sl = ' selected="selected"';
+					$cl = 'selected';
+				}
+				
+				//
+				$str_select_trangthai .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
+				
+				$str_button_trangthai .= '<button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button>';
+			}
+		}
+		
+		?>
+		<tr>
+			<td colspan="2" class="bill-detail-status"><?php echo $str_button_trangthai; ?></td>
+		</tr>
+		<!--
 		<tr>
 			<td class="t">Trạng thái</td>
 			<td class="i"><select name="t_trangthai">
-					<?php
-					
-					$hd_trangthai = $post->order_status;
-					
-					//
-					if ( $hd_trangthai == 0 && isset( $post->order_update_time ) ) {
-						$sql = "UPDATE eb_in_con_voi
-						SET
-							order_update_time = " . date_time . "
-						WHERE
-							order_id = " . $post->order_id;
-//						echo $sql . "\n";
-						_eb_q( $sql, 0 );
-						
-						//
-//						$auto_reset_status_after_view = 0;
-					}
-					
-					//
-					foreach ( $arr_hd_trangthai as $k => $v ) {
-						if ( $k >= 0 ) {
-							$sl = '';
-							if ( $k == $hd_trangthai ) {
-								$sl = ' selected="selected"';
-							}
-							
-							//
-							echo '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
-						}
-					}
-					
-					?>
+					<?php echo $str_select_trangthai; ?>
 				</select></td>
 		</tr>
+		-->
 	</table>
 	<br>
-	<div class="show-if-js-enable d-none" style="position:fixed;bottom:25px;right:25px;">
+	<div class="show-if-js-enable d-none bill-detail-submit">
 		<button type="submit" id="eb_cart_submit" class="blue-button cur"><i class="fa fa-save"></i> Lưu thay đổi</button>
 		<button type="button" id="eb_cart_print" class="red-button cur"><i class="fa fa-print"></i> In Phiếu thu</button>
 		<button type="button" id="eb_vandon_print" class="org-button cur"><i class="fa fa-truck"></i> In Vận đơn</button>

@@ -1420,6 +1420,22 @@ function _eb_alert($m) {
 	die ( '<script type="text/javascript">alert("' . str_replace( '"', '\'', $m ) . '");</script>' );
 }
 
+function _eb_html_alert($m) {
+	die ( '<script type="text/javascript">
+if ( top != self ) {
+	parent.WGR_html_alert("' . $m . '");
+}
+else {
+	if ( typeof WGR_html_alert == "function" ) {
+		WGR_html_alert("' . $m . '");
+	}
+	else {
+		window.opener.WGR_html_alert("' . $m . '");
+	}
+}
+</script>' );
+}
+
 
 
 function EBE_get_file_in_folder($open_folder, $type = '', $brace = '') {

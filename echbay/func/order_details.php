@@ -136,7 +136,8 @@ foreach ( $arr as $k => $v ) {
 _eb_log_admin_order( 'Cập nhật đơn hàng #' . $order_id . ' (' . ( isset( $arr_hd_trangthai[ $order_status ] ) ? $arr_hd_trangthai[ $order_status ] : 'NULL' ) . ')', $order_id );
 
 //
-_eb_alert('Cập nhật thông tin đơn hàng thành công');
+//_eb_alert('Cập nhật thông tin đơn hàng thành công');
+_eb_html_alert('Cập nhật thông tin đơn hàng thành công');
 
 
 

@@ -143,6 +143,24 @@ input[id="_eb_category_order"] { width: 90px; }
 	border-left-width: 10px;
 	padding-left: 0;
 }
+/* color for order stauts v2 */
+.eb-order-filter-tab li[data-tab="0"] a,
+.hd_status0,
+.hd_status0 a { font-weight: bold; }
+.eb-order-filter-tab li[data-tab="4"] a,
+.hd_status4,
+.hd_status4 a {
+	text-decoration: line-through;
+	font-size: 11px;
+}
+.hd_status4 td { padding: 3px 6px; }
+.hd_status4:hover,
+.hd_status4:hover a {
+	color: #333;
+	text-decoration: none;
+}
+/* color for order stauts v1 */
+/*
 .eb-order-filter-tab li[data-tab="0"] a,
 .hd_status0,
 .hd_status0 a {
@@ -208,6 +226,7 @@ input[id="_eb_category_order"] { width: 90px; }
 .hd_status12,
 .hd_status12 a { color: #9e9e9e; }
 .hd_status12 td:first-child { border-left-color: #9e9e9e; }
+*/
 /* */
 .eb-order-filter-tab {
 	display: -webkit-flex;
@@ -957,14 +976,62 @@ input[id="_eb_category_order"] { width: 90px; }
 	right: 0;
 	text-align: center;
 }
+#WGR_html_alert,
 .show-if-duplicator-null div {
-	width: 60%;
 	max-width: 600px;
-	margin: 0 auto;
 	padding: 10px;
-	background: rgba(255, 193, 7, .8);
 	border-radius: 5px;
 	cursor: pointer;
+}
+.show-if-duplicator-null div {
+	margin: 0 auto;
+	width: 60%;
+	background: rgba(255, 193, 7, .8);
+}
+#WGR_html_alert {
+	position: fixed;
+	left: 50%;
+	transform: translate(-50%, 0);
+	box-shadow: 0 0 20px #666;
+	bottom: 10px;
+	text-shadow: 1px 1px 5px #fff;
+	background: rgb(255, 193, 7);
+}
+/* */
+.bill-detail-submit {
+	position: fixed;
+	bottom: 1px;
+	right: 1px;
+	z-index: 99;
+}
+.bill-detail-submit button {
+	padding: 15px 20px;
+	font-size: 15px;
+	border-radius: 2px;
+	font-weight: normal;
+}
+#hd_admin_ghichu {
+	width: 99%;
+	min-height: 90px;
+}
+.bill-detail-status button {
+	background: #999;
+	border: 0 none;
+	padding: 0;
+	margin: 0 1px 1px 0;
+	cursor: pointer;
+	color: #fff;
+	outline: none;
+}
+.bill-detail-status button span {
+	background: rgba(255, 255, 255, .6);
+	display: block;
+	padding: 8px 10px;
+}
+.bill-detail-status button:hover span { background: none; }
+.bill-detail-status button.selected span {
+	background: transparent url(../images-global/tick.png) bottom right no-repeat;
+	box-shadow: 0 0 5px #666;
 }
 
 @media screen and (max-width:775px) {

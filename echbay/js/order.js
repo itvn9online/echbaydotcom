@@ -189,6 +189,57 @@ setTimeout(function () {
 			});
 		}
 	});
+	
+	
+	// tạo mầu cho trạng thái của đơn hàng
+	(function ( arr ) {
+		
+		var str = '';
+		
+		// chạy vòng lặp và tạo mầu theo các css có sẵn
+		for ( var i = 0; i < arr.length; i++ ) {
+			str += '.eb-order-filter-tab li[data-tab="' + i + '"] a,\
+.hd_status' + i + ',\
+.hd_status' + i + ' a { color: #' + arr[i] + '; }\
+.hd_status' + i + ' td:first-child { border-left-color: #' + arr[i] + '; }\
+.bill-detail-status button[data-tab="' + i + '"] { background-color: #' + arr[i] + '; }';
+		}
+		
+		//
+//		console.log( str );
+		$('head').append('<style>' + str + '</style>');
+		
+		// hiệu ứng khi bấm vào nút trạng thái -> cho phép cập nhật luôn
+		$('.bill-detail-status button').off().click(function () {
+			$('.bill-detail-status button').removeClass('selected');
+			$(this).addClass('selected');
+			
+			//
+			var f = document.frm_invoice_details;
+			
+			f.t_trangthai.value = $(this).attr('data-tab') || 0;
+			
+			f.submit();
+		});
+		
+	})( [
+		'000',
+		'00F',
+		'F90',
+		'090',
+		'ccc',
+		'C0F',
+		'F0F',
+		'600',
+		'60F',
+		'f00',
+		'666',
+		'c00',
+		'9e9e9e',
+		'000',
+		'000',
+		'000'
+	] );
 }, 200);
 
 
