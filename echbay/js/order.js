@@ -215,11 +215,15 @@ setTimeout(function () {
 			$(this).addClass('selected');
 			
 			//
-			var f = document.frm_invoice_details;
+			var f = document.frm_invoice_details,
+				st = $(this).attr('data-tab') || 0;
 			
-			f.t_trangthai.value = $(this).attr('data-tab') || 0;
-			
-			f.submit();
+			//
+			if ( st != f.t_trangthai.value ) {
+				f.t_trangthai.value = st;
+				
+				f.submit();
+			}
 		});
 		
 	})( [

@@ -979,7 +979,6 @@ input[id="_eb_category_order"] { width: 90px; }
 #WGR_html_alert,
 .show-if-duplicator-null div {
 	max-width: 600px;
-	padding: 10px;
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -987,6 +986,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	margin: 0 auto;
 	width: 60%;
 	background: rgba(255, 193, 7, .8);
+	padding: 10px;
 }
 #WGR_html_alert {
 	position: fixed;
@@ -996,6 +996,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	bottom: 10px;
 	text-shadow: 1px 1px 5px #fff;
 	background: rgb(255, 193, 7);
+	padding: 30px;
 }
 /* */
 .bill-detail-submit {
@@ -1023,6 +1024,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	color: #fff;
 	outline: none;
 }
+.bill-detail-status button.selected { cursor: not-allowed; }
 .bill-detail-status button span {
 	background: rgba(255, 255, 255, .6);
 	display: block;
