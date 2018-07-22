@@ -442,7 +442,8 @@ function WGR_update_meta_post ( $id, $k, $v ) {
 		if ( empty( $sql ) ) {
 			return false;
 		}
-		echo '<!-- SELECT new posts structure -->' . "\n";
+//		echo '<!-- SELECT new posts structure -->' . "\n";
+//		echo '<!-- ' . $k . ' -->' . "\n";
 		
 		//
 		$sql = (array) $sql[0];

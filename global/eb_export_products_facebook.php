@@ -52,7 +52,13 @@ $rss_content .= '<?xml version="1.0" encoding="UTF-8"?>
 		<link>' . web_link . '</link>
 		<description>' . $__cf_row['cf_description'] . '</description>
 		<last_update>' . date( 'r', date_time ) . '</last_update>
-		<code_copyright>Cache by EchBay.com - WebGiaRe.org</code_copyright>';
+		<code_copyright>Cache by EchBay.com - WebGiaRe.org</code_copyright>
+		<code_document>
+			<facebook_document>https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog?__mref=message_bubble#feed-format</facebook_document>
+			<google_document>https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998</google_document>
+			<google_product_category>https://support.google.com/merchants/answer/6324436?hl=vi</google_product_category>
+			<google_product_taxonomy>https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt</google_product_taxonomy>
+		</code_document>';
 
 
 //
