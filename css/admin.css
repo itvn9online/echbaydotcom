@@ -1033,6 +1033,7 @@ input[id="_eb_category_order"] { width: 90px; }
 .bill-detail-status button:hover span { background: none; }
 .bill-detail-status button.selected span {
 	background: transparent url(../images-global/tick.png) bottom right no-repeat;
+	background-size: 22px auto;
 	box-shadow: 0 0 5px #666;
 }
 
