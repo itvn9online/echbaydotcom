@@ -45,21 +45,6 @@ if ($rss_content == false) {
 	//
 $rss_content = '';
 
-$rss_content .= '<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
-	<channel>
-		<title>' . web_name . '</title>
-		<link>' . web_link . '</link>
-		<description>' . $__cf_row['cf_description'] . '</description>
-		<last_update>' . date( 'r', date_time ) . '</last_update>
-		<code_copyright>Cache by EchBay.com - WebGiaRe.org</code_copyright>
-		<code_document>
-			<facebook_document>https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog?__mref=message_bubble#feed-format</facebook_document>
-			<google_document>https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998</google_document>
-			<google_product_category>https://support.google.com/merchants/answer/6324436?hl=vi</google_product_category>
-			<google_product_taxonomy>https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt</google_product_taxonomy>
-		</code_document>';
-
 
 //
 $rss_brand = explode( '.', $_SERVER['HTTP_HOST'] );
@@ -149,7 +134,7 @@ foreach ( $sql as $v ) {
 	// chỉnh lại giá về 1 thông số
 	// có khuyến mại
 	if ( $new_price > 0 && $price > $new_price ) {
-		$add_on_data .= '<g:sale_price>' . $before_price . $new_price . $after_price . '</g:sale_price>';
+		$add_on_data .= '<g:sale_price>' . $before_price . $new_price . $after_price . '</g:sale_price>' . "\n";
 	}
 	else if ( $price < $new_price ) {
 		$price = $new_price;
@@ -157,12 +142,12 @@ foreach ( $sql as $v ) {
 	
 	// cho bản của google
 	if ( $export_type == 'google' ) {
-		$add_on_data .= '<g:item_group_id>' . $ant_id . '</g:item_group_id>';
+		$add_on_data .= '<g:item_group_id>' . $ant_id . '</g:item_group_id>' . "\n";
 	}
 	
 	// product category
 	if ( $google_product_category != '' ) {
-		$add_on_data .= '<g:google_product_category>' . $google_product_category . '</g:google_product_category>';
+		$add_on_data .= '<g:google_product_category>' . $google_product_category . '</g:google_product_category>' . "\n";
 	}
 	
 	//
@@ -174,31 +159,45 @@ foreach ( $sql as $v ) {
 	//
 	$color = _eb_get_post_object( $v->ID, '_eb_product_color' );
 	if ( $color != '' ) {
-		$add_on_data .= '<g:color><![CDATA[' . $color . ']]></g:color>';
+		$add_on_data .= '<g:color><![CDATA[' . $color . ']]></g:color>' . "\n";
 	}
 	
 	
 	
 	//
 $rss_content .= '<item>
-	<g:id>' . $v->ID . '</g:id>
-	<g:availability>' . ( _eb_get_post_object( $v->ID, '_eb_product_buyer', 0 ) < _eb_get_post_object( $v->ID, '_eb_product_quantity', 0 ) ? 'in stock' : 'out of stock' ) . '</g:availability>
-	<g:condition>new</g:condition>
-	<g:description><![CDATA[' . $v->post_excerpt . ']]></g:description>
-	<g:image_link>' . _eb_get_post_img( $v->ID ) . '</g:image_link>
-	<g:link>' . $p_link . '</g:link>
-	<g:title><![CDATA[' . $v->post_title . ']]></g:title>
-	<g:price>' . $before_price . $price . $after_price . '</g:price>
-	' . $add_on_data . '
-	<g:gender><![CDATA[' . $arr_sex_lang_xml[$post_gender] . ']]></g:gender>
-	<g:brand>' . $rss_brand . '</g:brand>
+<g:id>' . $v->ID . '</g:id>
+<g:availability>' . ( _eb_get_post_object( $v->ID, '_eb_product_buyer', 0 ) < _eb_get_post_object( $v->ID, '_eb_product_quantity', 0 ) ? 'in stock' : 'out of stock' ) . '</g:availability>
+<g:condition>new</g:condition>
+<g:description><![CDATA[' . $v->post_excerpt . ']]></g:description>
+<g:image_link>' . _eb_get_post_img( $v->ID ) . '</g:image_link>
+<g:link>' . $p_link . '</g:link>
+<g:title><![CDATA[' . $v->post_title . ']]></g:title>
+<g:price>' . $before_price . $price . $after_price . '</g:price>' . $add_on_data . '
+<g:gender><![CDATA[' . $arr_sex_lang_xml[$post_gender] . ']]></g:gender>
+<g:brand>' . $rss_brand . '</g:brand>
 </item>';
 
 }
 
 
 
-$rss_content .= '</channel>
+
+// tổng hợp lại
+$rss_content = '<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+<channel>
+<title><![CDATA[' . web_name . ']]></title>
+<link>' . web_link . '</link>
+<description><![CDATA[' . $__cf_row['cf_description'] . ']]></description>
+<last_update>' . date( 'r', date_time ) . '</last_update>
+<code_copyright>Cache by EchBay.com - WebGiaRe.org</code_copyright>
+<facebook_document><![CDATA[https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog?__mref=message_bubble#feed-format]]></facebook_document>
+<google_document><![CDATA[https://support.google.com/merchants/topic/6324338?hl=vi&ref_topic=7294998]]></google_document>
+<google_product_category><![CDATA[https://support.google.com/merchants/answer/6324436?hl=vi]]></google_product_category>
+<google_product_taxonomy><![CDATA[https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt]]></google_product_taxonomy>
+' . $rss_content . '
+</channel>
 </rss>';
 	
 	
