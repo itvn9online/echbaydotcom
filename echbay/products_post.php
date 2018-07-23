@@ -178,6 +178,7 @@ $strAjaxLink .= '&trang=' . $trang;
 <div class="class-for-<?php echo $by_post_type; ?>">
 	<div class="quick-show2-if-post">
 		<div class="orgcolor">* Bạn có thể chọn và lọc sản phẩm theo danh mục ở trên, sau đó bấm chọn nút Export sản phẩm ở bên để có danh sách sản phẩm phù hợp giúp cho việc chạy quảng cáo hiệu quả hơn.</div>
+		<br>
 		<div class="text-right cf div-inline-block">
 			<?php
 			
