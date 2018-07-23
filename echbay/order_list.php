@@ -247,7 +247,7 @@ $str_hom_nay = date( 'md', date_time );
 					<span class="time-for-send-bill d-block">(' . $ngay_gui_don . ')</span>
 				</a></div>
 			</td>
-			<td>' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</td>
+			<td><span class="order-list-icon">' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</span></td>
 			<td><div class="eb-to-product"></div></td>
 			<td>
 				<div><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank"><i class="fa fa-user"></i> ' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></div>

@@ -227,6 +227,29 @@ input[id="_eb_category_order"] { width: 90px; }
 .hd_status12 a { color: #9e9e9e; }
 .hd_status12 td:first-child { border-left-color: #9e9e9e; }
 */
+.order-list-icon:before {
+	display: inline-block;
+	font-family: Font Awesome\ 5 Free;
+	content: "";
+	min-width: 21px;
+	font-size: 11px;
+}
+.hd_status0 .order-list-icon:before { content: "\f07a"; }
+.hd_status1 .order-list-icon:before { content: "\f0d1"; }
+.hd_status2 .order-list-icon:before { content: "\f017"; }
+.hd_status3 .order-list-icon:before { content: "\f06e"; }
+.hd_status4 .order-list-icon:before { content: "\f1f8"; }
+.hd_status5 .order-list-icon:before { content: "\f2f1"; }
+.hd_status6 .order-list-icon:before { content: "\f3dd"; }
+.hd_status7 .order-list-icon:before { content: "\f095"; }
+.hd_status8 .order-list-icon:before { content: "\f004"; }
+.hd_status9 .order-list-icon:before { content: "\f00c"; }
+.hd_status10 .order-list-icon:before { content: "\f02f"; }
+.hd_status11 .order-list-icon:before { content: "\f4df"; }
+.hd_status12 .order-list-icon:before { content: "\f502"; }
+.hd_status13 .order-list-icon:before { content: ""; }
+.hd_status14 .order-list-icon:before { content: ""; }
+.hd_status15 .order-list-icon:before { content: ""; }
 /* */
 .eb-order-filter-tab {
 	display: -webkit-flex;
