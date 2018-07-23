@@ -2,7 +2,8 @@
 
 
 var arr_global_js_order_details = [],
-	arr_global_js_order_customter = {};
+	arr_global_js_order_customter = {},
+	auto_add_slug_if_not_exist = false;
 
 function ___eb_admin_update_order_details () {
 	
@@ -16,6 +17,12 @@ function ___eb_admin_update_order_details () {
 	arr_global_js_order_customter['hd_dienthoai'] = $('#oi_hd_dienthoai').val() || '';
 	arr_global_js_order_customter['hd_diachi'] = $('#oi_hd_diachi').val() || '';
 	arr_global_js_order_customter['hd_admin_ghichu'] = $('#hd_admin_ghichu').val() || '';
+	
+	// tạo key để sau này tìm kiếm đơn hàng cho tiện
+	arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] );
+	arr_global_js_order_customter['hd_key'] = arr_global_js_order_customter['hd_key'].replace( /\-/g, '' );
+	
+	//
 	console.log( arr_global_js_order_customter );
 	$('#order_customer').val( escape( JSON.stringify( arr_global_js_order_customter ) ) );
 	
@@ -133,6 +140,27 @@ function ___eb_admin_update_order_details () {
 			}
 			
 			arr[i].size = ' ' + arr[i].size;
+		}
+		
+		// bổ sung thêm slug để sau tìm kiếm cho nó tiện
+		if ( typeof arr[i].slug == 'undefined' || arr[i].slug == '' ) {
+			arr[i].slug = g_func.non_mark_seo( arr[i].name );
+			arr[i].slug = arr[i].slug.replace( /\-/g, '' );
+			
+			// gán cho mảng tổng -> tí mới submit được
+			arr_global_js_order_details[i].slug = arr[i].slug;
+			
+			// tự động submit sau 1 thời gian
+			if ( auto_add_slug_if_not_exist == false ) {
+				auto_add_slug_if_not_exist = true;
+				
+				//
+				setTimeout(function () {
+					___eb_admin_update_order_details();
+					console.log( 'auto update slug' );
+					document.frm_invoice_details.submit();
+				}, 600);
+			}
 		}
 		
 		//

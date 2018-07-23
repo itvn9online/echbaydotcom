@@ -1573,6 +1573,10 @@ var _global_js_eb = {
 			arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
 		}
 		
+		// key tìm kiếm đơn hàng
+		arr.hd_key = g_func.non_mark_seo( arr.hd_ten + arr.hd_dienthoai );
+		arr.hd_key = arr.hd_key.replace( /\-/g, '' );
+		
 //		console.log(arr);
 		
 		/*
