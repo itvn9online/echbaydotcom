@@ -42,15 +42,21 @@ if( isset ( $_GET ['invoice_key'] ) ) {
 		}
 //		$invoice_key = urlencode( str_replace( '+', ' ', $invoice_key ) );
 		
+		// tìm kiếm theo key
+		$invoice_slug_key = _eb_non_mark_seo( urldecode( $invoice_key ) );
+//		echo $invoice_slug_key . '<br>';
+		$invoice_slug_key = str_replace( '.', '', str_replace( '-', '', $invoice_slug_key ) );
+//		echo $invoice_slug_key . '<br>';
+		
 		// cấu trúc thẻ tìm kiếm theo từng hạng mục
 		if ( $type_search == 'sp' ) {
-			$strFilter .= " AND order_products LIKE '%{$invoice_key}%' ";
+			$strFilter .= " AND ( order_products LIKE '%{$invoice_slug_key}%' OR order_products LIKE '%{$invoice_key}%' ) ";
 		}
 		else if ( $type_search == 'id' ) {
-			$strFilter .= " AND order_sku LIKE '%{$invoice_key}%' OR order_id LIKE '%{$invoice_key}%' ";
+			$strFilter .= " AND ( order_sku LIKE '%{$invoice_key}%' OR order_id LIKE '%{$invoice_key}%' ) ";
 		}
 		else {
-			$strFilter .= " AND order_customer LIKE '%{$invoice_key}%' ";
+			$strFilter .= " AND ( order_customer LIKE '%{$invoice_slug_key}%' OR order_customer LIKE '%{$invoice_key}%' ) ";
 		}
 	}
 }
@@ -158,7 +164,7 @@ $str_hom_nay = date( 'md', date_time );
 			<input type="text" name="invoice_key" id="oi_invoice_key" title="Tìm kiếm" value="<?php echo $invoice_key; ?>" placeholder="Mã đơn hàng, Số điện thoại, Email" maxlength="20" />
 			<input type="submit" value="Tìm" class="cur oi_invoice_submit" />
 		</form>
-		<div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a> <span class="redcolor small">* Lưu ý: từ khóa tìm kiếm có phân biệt chữ HOA, chữ thường, có dấu và không dấu.</span></div>
+		<div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a> <span class="redcolor small">* Lưu ý: từ khóa tìm kiếm có thể sẽ phân biệt chữ HOA, chữ thường, có dấu và không dấu.</span></div>
 	</div>
 </div>
 <br>

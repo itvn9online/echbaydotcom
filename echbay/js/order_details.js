@@ -30,6 +30,22 @@ function ___eb_admin_update_order_details () {
 }
 
 
+function WGR_hide_html_alert_auto_order_submit () {
+	
+	// ẩn html alert tự động
+	$('#WGR_html_alert').css({
+		opacity: .01
+	});
+	
+	$('#target_eb_iframe').on('load', function () {
+		$('#WGR_html_alert').css({
+			opacity: 1
+		}).hide();
+	});
+	
+}
+
+
 //
 (function () {
 	
@@ -91,6 +107,7 @@ function ___eb_admin_update_order_details () {
 			if ( $('#order_products').val().length > 100 && $('#order_customer').val().length > 100 ) {
 				console.log( 'auto update old order' );
 				document.frm_invoice_details.submit();
+				WGR_hide_html_alert_auto_order_submit();
 			}
 			else {
 				console.log( 'auto update STOP, because content too short!' );
@@ -159,6 +176,7 @@ function ___eb_admin_update_order_details () {
 					___eb_admin_update_order_details();
 					console.log( 'auto update slug' );
 					document.frm_invoice_details.submit();
+					WGR_hide_html_alert_auto_order_submit();
 				}, 600);
 			}
 		}
@@ -217,8 +235,32 @@ function ___eb_admin_update_order_details () {
 	$('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
 	$('#oi_hd_diachi').val( cus['hd_diachi'] );
 	$('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
+	
+	// Hiển thị ghi chú của admin nếu có
 	if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
 		$('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
+	}
+	
+	// tự động cập nhật key tìm kiếm thông tin khách hàng
+	if ( typeof arr_global_js_order_customter['hd_key'] == 'undefined' ) {
+		
+		// key tìm kiếm đơn hàng
+		arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] );
+		arr_global_js_order_customter['hd_key'] = arr_global_js_order_customter['hd_key'].replace( /\-/g, '' );
+		
+		// tự động submit sau 1 thời gian
+		if ( auto_add_slug_if_not_exist == false ) {
+			auto_add_slug_if_not_exist = true;
+			
+			//
+			setTimeout(function () {
+				___eb_admin_update_order_details();
+				console.log( 'auto update key' );
+				document.frm_invoice_details.submit();
+				WGR_hide_html_alert_auto_order_submit();
+			}, 600);
+		}
+		
 	}
 	
 	
