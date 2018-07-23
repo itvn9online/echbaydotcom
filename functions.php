@@ -52,6 +52,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	}
 	
 	
+	// kiểm tra lại lần nữa, vì post bây giờ có thể đã thay đổi
 	// với quảng cáo thì lấy link theo kiểu quảng cáo
 	if ( $post->post_type == 'ads' ) {
 //		echo $alias_taxonomy;
@@ -78,6 +79,22 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		// đặt ảnh đại diện cho phần q.cáo
 		$post->trv_img = $anh_dai_dien_goc;
 		
+		
+		// load ảnh đại diện cho phần quảng cáo
+		// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
+		if ( $__cf_row['cf_ads_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
+			$post->trv_table_img = $post->trv_img;
+		} else {
+			$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_table_size'] );
+		}
+		
+		if ( $__cf_row['cf_ads_thumbnail_mobile_size'] == $__cf_row['cf_ads_thumbnail_table_size'] ) {
+			$post->trv_mobile_img = $post->trv_table_img;
+		} else {
+			$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_mobile_size'] );
+		}
+		
+		
 		//
 		$youtube_id = _eb_get_youtube_id( _eb_get_post_meta( $post->ID, '_eb_ads_video_url' ) );
 //		$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
@@ -91,16 +108,49 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 		$post->youtube_id = $youtube_id;
 		$post->youtube_url = $youtube_url;
 		$post->youtube_avt = $youtube_avt;
-	} else {
-		// sử dụng ảnh riêng của q.cáo (nếu có)
+	}
+	// các loại post khác
+	else {
+		// sử dụng ảnh riêng của q.cáo (nếu có) -> trường hợp q.cáo alias tới 1 post nào đó, nhưng phần ảnh vẫn sẽ dùng ảnh của q.cáo
 		if ( $anh_dai_dien_goc != '' ) {
 			$post->trv_img = $anh_dai_dien_goc;
+			
+			
+			// load ảnh đại diện cho phần quảng cáo
+			// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
+			if ( $__cf_row['cf_ads_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
+				$post->trv_table_img = $post->trv_img;
+			} else {
+				$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_table_size'] );
+			}
+			
+			if ( $__cf_row['cf_ads_thumbnail_mobile_size'] == $__cf_row['cf_ads_thumbnail_table_size'] ) {
+				$post->trv_mobile_img = $post->trv_table_img;
+			} else {
+				$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_mobile_size'] );
+			}
 		}
 		// sử dụng ảnh mặc định của post
 		else {
 			$post->trv_img = _eb_get_post_img( $post->ID, $__cf_row['cf_product_thumbnail_size'] );
 			$ads_id = $post->ID;
+			
+			
+			// load ảnh đại diện cho phần sản phẩm
+			// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
+			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+				$post->trv_table_img = $post->trv_img;
+			} else {
+				$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+			}
+			
+			if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+				$post->trv_mobile_img = $post->trv_table_img;
+			} else {
+				$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+			}
 		}
+		
 		
 		// nếu có lệnh lấy full nội dung -> lấy luôn
 		if ( isset( $other_options['get_full_content'] ) && $other_options['get_full_content'] == 1 ) {
@@ -256,21 +306,6 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	
 	$post->cf_product_size = $__cf_row['cf_product_size'];
 	$post->cf_blog_size = $__cf_row['cf_blog_size'];
-	
-	
-	// load ảnh đại diện cho phần quảng cáo
-	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-	if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
-		$post->trv_table_img = $post->trv_img;
-	} else {
-		$post->trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
-	}
-	
-	if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
-		$post->trv_mobile_img = $post->trv_table_img;
-	} else {
-		$post->trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
-	}
 	
 	
 	//
@@ -3521,21 +3556,35 @@ function _eb_load_ads (
 			else {
 				$trv_img = $anh_dai_dien_goc;
 			}
+			$ftype = explode('.', $trv_img);
+//			$ftype = $ftype[ count( $ftype ) - 1 ];
+//			echo '<!-- ' . $ftype . ' -->' . "\n";
 			
 			// lấy ảnh từ bài viết
 			$trv_table_img = '';
 			$trv_mobile_img = '';
-			if ( $ads_id > 0 ) {
-				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+			
+			// với ảnh gif -> chỉ lấy ảnh gốc -> do ảnh resize có thể bị lỗi
+			if ( strtolower( $ftype[ count( $ftype ) - 1 ] ) == 'gif' ) {
+				$trv_table_img = $trv_img;
+				$trv_mobile_img = $trv_img;
+			}
+			else if ( $ads_id > 0 ) {
+//				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+//				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
+				if ( $__cf_row['cf_ads_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
 					$trv_table_img = $trv_img;
 				} else {
-					$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+//					$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+					$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_table_size'] );
 				}
 				
-				if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+//				if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+				if ( $__cf_row['cf_ads_thumbnail_mobile_size'] == $__cf_row['cf_ads_thumbnail_table_size'] ) {
 					$trv_mobile_img = $trv_table_img;
 				} else {
-					$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+//					$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+					$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_ads_thumbnail_mobile_size'] );
 				}
 			}
 			

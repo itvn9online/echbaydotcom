@@ -350,13 +350,41 @@ $arr_cf_product_thumbnail_size = array(
 );
 //print_r($arr_cf_product_thumbnail_size);
 $str_cf_product_thumbnail_size = '';
+$str_cf_ads_thumbnail_size = '';
+$str_cf_ads_thumbnail_table_size = '';
+$str_cf_ads_thumbnail_mobile_size = '';
 foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
+	// post
 	$sl = '';
 	if ( $__cf_row['cf_product_thumbnail_size'] == $k ) {
 		$sl = ' selected="selected"';
 	}
 	
 	$str_cf_product_thumbnail_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
+	
+	// ads
+	$sl = '';
+	if ( $__cf_row['cf_ads_thumbnail_size'] == $k ) {
+		$sl = ' selected="selected"';
+	}
+	
+	$str_cf_ads_thumbnail_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
+	
+	//
+	$sl = '';
+	if ( $__cf_row['cf_ads_thumbnail_table_size'] == $k ) {
+		$sl = ' selected="selected"';
+	}
+	
+	$str_cf_ads_thumbnail_table_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
+	
+	//
+	$sl = '';
+	if ( $__cf_row['cf_ads_thumbnail_mobile_size'] == $k ) {
+		$sl = ' selected="selected"';
+	}
+	
+	$str_cf_ads_thumbnail_mobile_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 }
 
 
@@ -526,9 +554,16 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.cf_page_column_style' => $str_cf_page_column_style,
 	
 	
+	//
 	'tmp.cf_product_thumbnail_size' => '<select name="cf_product_thumbnail_size">' . $str_cf_product_thumbnail_size . '</select>',
 	'tmp.cf_product_thumbnail_table_size' => '<select name="cf_product_thumbnail_table_size">' . $str_cf_product_thumbnail_table_size . '</select>',
 	'tmp.cf_product_thumbnail_mobile_size' => '<select name="cf_product_thumbnail_mobile_size">' . $str_cf_product_thumbnail_mobile_size . '</select>',
+	
+	//
+	'tmp.cf_ads_thumbnail_size' => '<select name="cf_ads_thumbnail_size">' . $str_cf_ads_thumbnail_size . '</select>',
+	'tmp.cf_ads_thumbnail_table_size' => '<select name="cf_ads_thumbnail_table_size">' . $str_cf_ads_thumbnail_table_size . '</select>',
+	'tmp.cf_ads_thumbnail_mobile_size' => '<select name="cf_ads_thumbnail_mobile_size">' . $str_cf_ads_thumbnail_mobile_size . '</select>',
+	
 	
 //	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
 	'tmp.list_file_for_lang' => '',

@@ -134,7 +134,10 @@ $__cf_row_default = array(
 	'cf_product_thumbnail_size' => 'medium',
 	'cf_product_thumbnail_table_size' => 'medium',
 	'cf_product_thumbnail_mobile_size' => 'ebmobile',
+	
 	'cf_ads_thumbnail_size' => 'full',
+	'cf_ads_thumbnail_table_size' => 'medium_large',
+	'cf_ads_thumbnail_mobile_size' => 'medium',
 	
 	'cf_region' => '',
 	'cf_placename' => 'Ha Noi',

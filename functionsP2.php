@@ -13,7 +13,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 		0,
 		'
 <li class="global-a-posi"><a href="{tmp.p_link}" title="{tmp.post_title}"{tmp.target_blank}>&nbsp;</a>
-	<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" data-video="{tmp.youtube_url}" class="ti-le-global banner-ads-media text-center" style="background-image:url({tmp.trv_img});">&nbsp;</div>
+	<div data-size="{tmp.data_size}" data-img="{tmp.trv_img}" data-table-img="{tmp.trv_table_img}" data-mobile-img="{tmp.trv_mobile_img}" data-video="{tmp.youtube_url}" class="ti-le-global banner-ads-media text-center" style="background-image:url({tmp.trv_table_img});">&nbsp;</div>
 </li>',
 		array(
 			'default_value' => ''
@@ -1977,6 +1977,15 @@ $cache_thumbnail_id = array();
 function _eb_get_post_img ( $id, $_size = 'full' ) {
 	global $cache_thumbnail_id;
 //	global $cache_attachment_image_src;
+	
+	/*
+	echo '<!-- ';
+	print_r( $cache_thumbnail_id ) . "\n";
+	echo 'Post ID: ' . $id . "\n";
+	echo 'Post title: ' . get_the_title( $id ) . "\n";
+	echo 'Size: ' . $_size . "\n";
+	echo ' -->';
+	*/
 	
 	//
 //	if ( isset( $cache_attachment_image_src[ $id . $_size ] ) ) {

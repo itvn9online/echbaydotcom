@@ -43,6 +43,17 @@ if ( eb_this_current_url == web_link ) {
 
 
 
+// chỉnh lại ảnh của big banner sang ảnh to với bản pc
+if ( jQuery(window).width() > 768 ) {
+	jQuery('.oi_big_banner .ti-le-global').each(function() {
+		jQuery(this).css({
+			'background-image': 'url(' + jQuery(this).attr('data-img') + ')'
+		});
+	});
+}
+
+
+
 //
 jQuery('.eb-set-menu-selected .sub-menu').addClass('cf');
 
