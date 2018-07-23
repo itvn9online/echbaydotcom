@@ -143,7 +143,7 @@ function ___eb_set_base_url_for_search_advanced () {
 		}
 		url_for_advanced_search_filter += 'search_advanced=1';
 	}
-	if ( cf_tester_mode == 1 ) console.log( url_for_advanced_search_filter );
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( url_for_advanced_search_filter );
 }
 
 
@@ -176,10 +176,10 @@ function ___eb_search_advanced_go_to_url ( op ) {
 	
 	//
 	if ( typeof op != 'object' ) {
-		if ( cf_tester_mode == 1 ) console.log( 'option not found in URL search advanced' );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'option not found in URL search advanced' );
 		return false;
 	}
-	if ( cf_tester_mode == 1 ) console.log(op);
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(op);
 	
 	// tạo các option khác nếu chưa có
 	if ( typeof op.price_in == 'undefined' ) {
@@ -190,7 +190,7 @@ function ___eb_search_advanced_go_to_url ( op ) {
 		if ( op.price_in == '' ) {
 			op.price_in = jQuery('.echbay-product-price-between a.selected').attr('data-price');
 		}
-		if ( cf_tester_mode == 1 ) console.log( op.price_in );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( op.price_in );
 	}
 	if ( typeof op.category == 'undefined' || typeof op.post_options == 'undefined' ) {
 		var filter_category = '',
@@ -234,19 +234,19 @@ function ___eb_search_advanced_go_to_url ( op ) {
 		
 		new_url += '&filter=' + op.post_options;
 	}
-	if ( cf_tester_mode == 1 ) console.log( new_url );
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( new_url );
 	
 	//
 //	return false;
 	
 	//
 	if ( new_url == '' ) {
-		if ( cf_tester_mode == 1 ) console.log( 'new_url not found in URL search advanced' );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'new_url not found in URL search advanced' );
 		return false;
 	}
 	
 	//
-	if ( cf_search_advanced_auto_submit == 1 ) {
+	if ( WGR_check_option_on ( cf_search_advanced_auto_submit ) ) {
 		window.location = new_url;
 	} else {
 		jQuery('.click-to-search-advanced').attr({
@@ -286,7 +286,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	
 	// chỉ tìm ở trang danh sách sản phẩm
 	if ( typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category' ) {
-		if ( cf_tester_mode == 1 ) console.log('search price is active, but run only category page -> STOP.');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('search price is active, but run only category page -> STOP.');
 	}
 	
 	//
@@ -296,7 +296,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	
 	// nếu không có class này thì hủy chức năng luôn
 	if ( jQuery(clat).length == 0 ) {
-		if ( cf_tester_mode == 1 ) console.log('search price is active, but element ' + clat + ' not found -> STOP.');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('search price is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
 	
@@ -305,7 +305,7 @@ function ___eb_set_url_for_search_price_in_button ( clat ) {
 	
 	// nếu có -> tìm vào dựng URL choc ác thẻ A
 	/*
-	if ( cf_search_advanced_auto_submit == 1 ) {
+	if ( WGR_check_option_on ( cf_search_advanced_auto_submit ) ) {
 		jQuery(clat + ' a').each(function() {
 			var a = jQuery(this).attr('data-price') || '';
 			
@@ -363,7 +363,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	// hiển thị nút go to nếu go_to_url = false, mặc định là nhảy URL luôn
 	/*
 	if ( typeof go_to_url == 'undefined' ) {
-		if ( cf_search_advanced_auto_submit == 1 ) {
+		if ( WGR_check_option_on ( cf_search_advanced_auto_submit ) ) {
 			go_to_url = true;
 		}
 		else {
@@ -374,7 +374,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	
 	// chỉ tìm ở trang danh sách sản phẩm
 	if ( typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category' ) {
-		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but run only category page -> STOP.');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('search advanced is active, but run only category page -> STOP.');
 		return false;
 	}
 	
@@ -385,7 +385,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 	
 	//
 	if ( jQuery(clat).length == 0 ) {
-		if ( cf_tester_mode == 1 ) console.log('search advanced is active, but element ' + clat + ' not found -> STOP.');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('search advanced is active, but element ' + clat + ' not found -> STOP.');
 		return false;
 	}
 //	console.log(jQuery(clat).length);
@@ -460,12 +460,12 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		
 		
 		// nếu là auto click -> chỉ cần set class selected cho thuộc tính thôi
-		if ( search_advanced_auto_click == 1 ) {
+		if ( WGR_check_option_on ( search_advanced_auto_click ) ) {
 			return false;
 		}
 		// nếu là category -> chuyển URL luôn
 		else if ( this_tax == 'category' ) {
-			if ( cf_tester_mode == 1 ) console.log('search advanced not run if taxonomy == category');
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('search advanced not run if taxonomy == category');
 			return true;
 		}
 		
@@ -501,7 +501,7 @@ function ___eb_set_url_for_search_advanced_button ( clat, inner_clat, go_to_url 
 		if ( filter_options != '' ) {
 			new_url += '&filter=' + filter_options.substr( 1 );
 		}
-		if ( cf_tester_mode == 1 ) console.log( url_for_advanced_search_filter + new_url );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( url_for_advanced_search_filter + new_url );
 		
 		// nếu lệnh chuyển URL chuyển URL
 		if ( go_to_url == true ) {
@@ -593,13 +593,13 @@ ___eb_set_url_for_search_advanced_button();
 					});
 				}
 			}
-			else if ( a.split('//').length > 1 ) {
+			else if ( WGR_check_option_on ( cf_auto_nofollow ) && a.split('//').length > 1 ) {
 				a = a.split('//')[1].split('/')[0];
 				
 				if ( a != document.domain ) {
 					jQuery(this).attr({
 						target: '_blank',
-						rel: ' nofollow'
+						rel: 'nofollow'
 					});
 				}
 			}
@@ -829,7 +829,7 @@ function add_fb_messages_for_page () {
 		if ( __global_facebook_id != '' ) {
 			
 			//
-			if ( cf_tester_mode == 1 ) console.log( 'FB app ID: ' + __global_facebook_id );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'FB app ID: ' + __global_facebook_id );
 			
 			// căn lại chiều rộng cho fb plugin
 			jQuery('.fb-like, .fb-comments').each(function () {

@@ -101,10 +101,18 @@
 					<button data-link="./cart" data-text="<?php echo EBE_get_lang('cart'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
+			<!--
 			<li class="cf">
 				<div class="lf f80"><i class="fa fa-user"></i> <?php echo EBE_get_lang('taikhoan'); ?> <em>(/profile)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="./profile" data-text="<?php echo EBE_get_lang('taikhoan'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			-->
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-user"></i> <?php echo EBE_get_lang('taikhoan'); ?> <em>(oi_member_func)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="#" data-text="."  data-css="oi_member_func" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">

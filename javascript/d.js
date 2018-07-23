@@ -42,6 +42,14 @@ if ( eb_this_current_url == web_link ) {
 }
 
 
+function WGR_check_option_on ( a ) {
+	if ( a == 1 || a == "1" ) {
+		return true;
+	}
+	return false;
+}
+
+
 
 // chỉnh lại ảnh của big banner sang ảnh to với bản pc
 if ( jQuery(window).width() > 768 ) {
@@ -104,14 +112,6 @@ jQuery('.eb-set-menu-selected .sub-menu').addClass('cf');
 //
 function ___eb_list_product_order () {
 	console.log('WARNING! Function ___eb_list_product_order bas been remove, please clear in your code!');
-}
-
-
-function WGR_check_option_on ( a ) {
-	if ( a == 1 || a == "1" ) {
-		return true;
-	}
-	return false;
 }
 
 
@@ -179,8 +179,8 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 //	console.log( sr );
 	
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
-	if ( typeof eb_disable_auto_get_thumb == 'number' && eb_disable_auto_get_thumb == 1 ) {
-		if ( cf_tester_mode == 1 ) console.log('Auto get thumb disable');
+	if ( typeof eb_disable_auto_get_thumb == 'number' && WGR_check_option_on ( eb_disable_auto_get_thumb ) ) {
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto get thumb disable');
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
 	else if ( sr.split(wp_content + '/uploads/').length > 1 ) {
@@ -244,7 +244,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 function ___eb_details_slider_v2 () {
 	
 	// trên mobile thì để 1 chế độ xem thôi -> xóa CSS điều khiển định dạng slider trước khi lệnh JS chạy để không bị vỡ khung
-	if ( cf_details_right_thumbnail == 1 && jQuery(window).width() < 775 ) {
+	if ( WGR_check_option_on ( cf_details_right_thumbnail ) && jQuery(window).width() < 775 ) {
 //		jQuery('link#thumb-col, link#thumb-col-left, link#thumb-col-mobile').remove();
 		jQuery('link#thumb-col, link#thumb-col-left').remove();
 	}
@@ -312,7 +312,7 @@ function ___eb_details_slider_v2 () {
 		
 		//
 		sr = ___eb_set_img_to_thumbnail( sr );
-		if ( cf_tester_mode == 1 ) console.log( sr );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( sr );
 		
 		//
 		str += '<li data-node="' +i+ '" data-src="' + sr + '" style="background-image:url(\'' + sr + '\')">&nbsp;</li>';
@@ -346,7 +346,7 @@ function ___eb_details_slider_v2 () {
 	
 	// tải slider theo code mới
 	jEBE_slider( '.thread-details-mobileAvt', {
-		buttonListNext: cf_details_show_list_next == 1 ? true : false,
+		buttonListNext: WGR_check_option_on ( cf_details_show_list_next ) ? true : false,
 		
 		// tự động chạy slider theo thời gian mà người dùng chỉ định
 		autoplay : cf_slider_details_play > 0 ? true : false,
@@ -359,14 +359,14 @@ function ___eb_details_slider_v2 () {
 		sliderArrowRight : 'fa-chevron-circle-right',
 		
 //		thumbnail : 'ul li',
-		thumbnail : cf_details_show_list_thumb == 1 ? 'ul li' : false,
+		thumbnail : WGR_check_option_on ( cf_details_show_list_thumb ) ? 'ul li' : false,
 		size : jQuery('.thread-details-mobileAvt').attr('data-size') || ''
 	}, function () {
 		jQuery('.thread-details-mobileAvt li').click(function () {
 			var a = jQuery(this).attr('data-src') || '';
 			if ( a != '' ) {
 				a = ___eb_set_thumb_to_fullsize( a );
-				if ( cf_tester_mode == 1 ) console.log(a);
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
 				
 				jQuery(this).css({
 					'background-image': 'url("' + a + '")'
@@ -379,7 +379,7 @@ function ___eb_details_slider_v2 () {
 		
 		// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
 		// trên mobile thì để 1 chế độ xem thôi
-		if ( cf_details_right_thumbnail == 1 && jQuery(window).width() >= 775 ) {
+		if ( WGR_check_option_on ( cf_details_right_thumbnail ) && jQuery(window).width() >= 775 ) {
 			
 			//
 			var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
@@ -455,10 +455,10 @@ function ___eb_details_ul_options () {
 	
 	// tắt chế độ tạo style cho phần excerpt nếu option này đang được tắt
 	if ( ! WGR_check_option_on( cf_details_ul_options ) ) {
-		if ( cf_tester_mode == 1 ) console.log('___eb_details_ul_options disable');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('___eb_details_ul_options disable');
 		return false;
 	}
-	if ( cf_tester_mode == 1 ) console.log('___eb_details_ul_options is running...');
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('___eb_details_ul_options is running...');
 	
 	// chặn -> không cho chạy lại lần nữa
 	cf_details_ul_options = 'off';
@@ -491,10 +491,10 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	
 	// tắt chế độ tạo style cho phần excerpt nếu option này đang được tắt
 	if ( ! WGR_check_option_on( cf_details_excerpt ) ) {
-		if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html disable');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('___eb_details_excerpt_html disable');
 		return false;
 	}
-	if ( cf_tester_mode == 1 ) console.log('___eb_details_excerpt_html is running...');
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('___eb_details_excerpt_html is running...');
 	
 	// chặn -> không cho chạy lại lần nữa
 	cf_details_excerpt = 'off';
@@ -505,7 +505,7 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	
 	// Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
 	if ( a == '' ) {
-		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is NULL');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('thread-details-comment is NULL');
 		return false;
 	}
 	
@@ -514,7 +514,7 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	
 	// 1 dòng thì cũng bỏ qua luôn
 	if ( a.length <= 1 ) {
-		if ( cf_tester_mode == 1 ) console.log('thread-details-comment is one line');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('thread-details-comment is one line');
 		return false;
 	}
 	
@@ -648,7 +648,7 @@ function ___eb_details_product_tab () {
 		if ( g_func.mb_v2() == false ) {
 			// Chiều cao định vị cho tab
 			var min_tab_height = jQuery('.thread-details-tab').attr('data-max-height') || 40;
-			if ( cf_tester_mode == 1 ) console.log( 'Fixed data height (max ' + min_tab_height + 'px) for thread-details-tab' );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Fixed data height (max ' + min_tab_height + 'px) for thread-details-tab' );
 			
 	//		console.log( jQuery('.thread-details-tab').height() );
 			if ( jQuery('.thread-details-tab').height() > min_tab_height ) {
@@ -755,7 +755,7 @@ function ___eb_details_product_color () {
 				if ( color_quan == '' ) {
 					color_quan = 1;
 				}
-				if ( cf_tester_mode == 1 ) console.log('color_quan: ' + color_quan);
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('color_quan: ' + color_quan);
 				
 				// còn hàng thì mới hiển thị
 				if ( color_quan > 0 ) {
@@ -835,13 +835,13 @@ function ___eb_details_product_color () {
 			if ( color_price != '' && color_price > 0 ) {
 				show_price = color_price;
 				price_for_quick_cart = color_price;
-				if ( cf_tester_mode == 1 ) console.log('price_color');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_color');
 			}
 			// lấy giá mặc định
 			else {
 				show_price = product_js.gm;
 				price_for_quick_cart = 0;
-				if ( cf_tester_mode == 1 ) console.log('price_default');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_default');
 			}
 //			console.log('COLOR');
 			jQuery('#oi_change_tongtien').html( g_func.money_format( select_quan * show_price ) );
@@ -979,7 +979,7 @@ function ___eb_details_product_size () {
 	if ( arr_product_size.length < 1 || jQuery('.oi_product_size').length == 0 ) {
 		return false;
 	}
-	if ( cf_tester_mode == 1 ) console.log(arr_product_size);
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(arr_product_size);
 	
 	// có nhiều size thì tạo list
 	var str = '',
@@ -1094,19 +1094,19 @@ function ___eb_details_product_size () {
 			if ( size_price != '' && size_price > 0 ) {
 				show_price = size_price;
 				price_for_quick_cart = size_price;
-				if ( cf_tester_mode == 1 ) console.log('price_by_size');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_by_size');
 			}
 			// nếu có giá theo mầu vừa click -> lấy giá theo mầu
 			else if ( price_by_color != '' && price_by_color> 0 ) {
 				show_price = price_by_color;
 				price_for_quick_cart = price_by_color;
-				if ( cf_tester_mode == 1 ) console.log('price_by_color');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_by_color');
 			}
 			// mặc định thì lấy giá của size chính
 			else {
 				show_price = product_js.gm;
 				price_for_quick_cart = 0;
-				if ( cf_tester_mode == 1 ) console.log('price_default');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_default');
 			}
 //			console.log('SIZE');
 			jQuery('#oi_change_tongtien').html( g_func.money_format( select_quan * show_price ) );
@@ -1123,7 +1123,7 @@ function ___eb_details_product_size () {
 //	jQuery('.oi_product_size li:first').click();
 	jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
 	setTimeout(function () {
-		if ( cf_tester_mode == 1 ) console.log('select_default_size: ' + select_default_size);
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('select_default_size: ' + select_default_size);
 		jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
 	}, 800);
 	
@@ -1168,7 +1168,7 @@ function ___eb_details_cart_quan () {
 
 // tạo html cho khung đếm số phiếu mua hàng
 function ___eb_details_product_quan () {
-//	if ( cf_tester_mode == 1 ) console.log('___eb_details_product_quan');
+//	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('___eb_details_product_quan');
 	
 	//
 	if ( jQuery('#oi_mua_max').length == 0 ) {
@@ -1226,7 +1226,7 @@ var big_banner_timeout1 = null;
 		autoplay : cf_slider_big_play > 0 ? true : false,
 		speedNext: cf_slider_big_play,
 		
-		sliderArrow: ( cf_arrow_big_banner == 1 ) ? true : false,
+		sliderArrow: ( WGR_check_option_on ( cf_arrow_big_banner ) ) ? true : false,
 		
 //		thumbnail : '.banner-ads-media',
 		size : jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
@@ -1265,7 +1265,7 @@ function ___eb_big_banner () {
 	
 	//
 	if ( jQuery('.sponsor-top-desktop').length == 0 ) {
-		if ( cf_tester_mode == 1 ) console.log('sponsor-top-desktop not found');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('sponsor-top-desktop not found');
 		return false;
 	}
 	
@@ -1450,9 +1450,9 @@ function ___eb_click_open_video_popup () {
 		// lấy URL để tạo ID cho youtube nếu không có ID
 		if ( a == '' && lnk != '' ) {
 			a = _global_js_eb.youtube_id( lnk );
-//			if ( cf_tester_mode == 1 ) console.log( lnk );
+//			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( lnk );
 			if ( a != '' ) {
-//				if ( cf_tester_mode == 1 ) console.log( a );
+//				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( a );
 				jQuery(this).attr({
 					'data-video': '//www.youtube.com/embed/' + a
 				});
@@ -1537,11 +1537,13 @@ function ___eb_click_open_video_popup () {
 			// Tạo list video -> Lấy các video khác trên cùng trang
 			var get_other_video = '.click-quick-view-video';
 			if ( module != '' ) {
-				if ( cf_tester_mode == 1 ) console.log(module);
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(module);
 				get_other_video = '.click-quick-view-video[data-module="' +module+ '"]';
 			}
-			if ( cf_tester_mode == 1 ) console.log(get_other_video);
-			if ( cf_tester_mode == 1 ) console.log(jQuery(get_other_video).length);
+			if ( WGR_check_option_on ( cf_tester_mode ) ) {
+				console.log(get_other_video);
+				console.log(jQuery(get_other_video).length);
+			}
 			
 			//
 			jQuery(get_other_video).each(function () {
@@ -1761,7 +1763,7 @@ function ___eb_list_post_run ( r ) {
 	khong_chay_function_o_theme_nua = 1;
 	
 	if ( typeof Child_eb_list_post_run == 'function' ) {
-		if ( cf_tester_mode == 1 ) console.log('Child_eb_list_post_run');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Child_eb_list_post_run');
 		
 		Child_eb_list_post_run();
 	}
@@ -1774,7 +1776,7 @@ function ___eb_list_post_run ( r ) {
 			
 			// chỉ xử lý khi nội dung đủ lớn
 			if ( cf_cats_description_viewmore < 0 ) {
-				if ( cf_tester_mode == 1 ) console.log('View more category disable!');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('View more category disable!');
 				
 				jQuery('.global-cats-description').hide();
 				
@@ -1872,7 +1874,7 @@ function WGR_for_post_details ( function_for_post, function_for_blog ) {
 		
 		//
 		if ( str == '' ) {
-			if ( cf_tester_mode == 1 ) console.log('Post index not found!');
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Post index not found!');
 			return false;
 		}
 		str = '<div class="thread-details-index"><strong>Nội dung chính:</strong><ul>' + str + '</ul></div>';
@@ -2038,7 +2040,7 @@ function ___eb_details_post_run ( r ) {
 			
 			// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
 			if ( dog(id_for_show) == null ) {
-				if ( cf_tester_mode == 1 ) console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
 				return false;
 			}
 			
@@ -2060,7 +2062,7 @@ function ___eb_details_post_run ( r ) {
 	
 	// hiển thị con dấu hàng chính hãng
 	if ( WGR_check_option_on( _eb_product_chinhhang ) ) {
-		if ( cf_tester_mode == 1 ) console.log('Hàng chính hãng');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Hàng chính hãng');
 		
 		//
 		if ( jQuery('.show-tem-chinh-hang').length > 0 ) {
@@ -2083,7 +2085,7 @@ function ___eb_details_post_run ( r ) {
 		
 		// nếu mở trong iframe -> không dùng chức năng thu gọn nội dung
 		if ( top != self ) {
-			if ( cf_tester_mode == 1 ) console.log('Short post content is active! but post open in iframe!');
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Short post content is active! but post open in iframe!');
 			return false;
 		}
 		
@@ -2105,7 +2107,7 @@ function ___eb_details_post_run ( r ) {
 			
 			// nếu tính năng được kích hoạt, nhưng chiều cao không đủ
 			if ( a.height() < cf_product_details_viewmore * 1.5 ) {
-				if ( cf_tester_mode == 1 ) console.log('cf_product_details_viewmore it active! but height of content not enough');
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('cf_product_details_viewmore it active! but height of content not enough');
 				return false;
 			}
 			
@@ -2179,14 +2181,14 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 //	console.log(typeof add_id);
 //	console.log(add_id);
 	if ( add_id <= 0 ) {
-		if ( cf_tester_mode == 1 ) console.log('new ID for add not found: ' + add_id);
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('new ID for add not found: ' + add_id);
 		return false;
 	}
 	
 	// lấy danh sách trong cookie trước đó
 	var str_history = g_func.getc(cookie_name),
 		new_id = '[' + add_id + ']';
-	if ( cf_tester_mode == 1 ) {
+	if ( WGR_check_option_on ( cf_tester_mode ) ) {
 		console.log(str_history);
 		limit_history = 5;
 	}
@@ -2197,7 +2199,7 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 	}
 	// nếu có rồi -> kiểm tra có trùng với ID hiện tại không
 	else if ( str_history.split( new_id ).length > 1 ) {
-		if ( cf_tester_mode == 1 ) console.log('product ID exist in history cookie');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('product ID exist in history cookie');
 		return false;
 	}
 	
@@ -2230,7 +2232,7 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 			// thêm vào cuối
 			str_history += add_id + ']';
 		}
-		if ( cf_tester_mode == 1 ) console.log('Split history: ' + str_history);
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Split history: ' + str_history);
 	}
 	// thêm mới
 	else {
@@ -2327,7 +2329,7 @@ function ___eb_global_blog_details_runing ( r ) {
 	if ( pid > 0 ) {
 		var check_update_views = g_func.getc('wgr_post_id_view_history'),
 			new_id = '[' + pid + ']';
-		if ( cf_tester_mode == 1 ) {
+		if ( WGR_check_option_on ( cf_tester_mode ) ) {
 			console.log(check_update_views);
 		}
 		
@@ -3392,7 +3394,7 @@ setTimeout(function () {
 				}
 				
 				if ( a[i] != '' ) {
-					if ( cf_tester_mode == 1 ) console.log( 'Widget YouTube video: ' + a[i] );
+					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Widget YouTube video: ' + a[i] );
 					
 					str += '<div class="widget_echbay_youtube-node"><iframe src="//www.youtube.com/embed/' + a[i] + '" allowfullscreen="" frameborder="0" height="' + hai + '" width="' + wit + '"></iframe></div>';
 				}
@@ -3457,7 +3459,7 @@ setTimeout(function () {
 		if ( switch_taxonomy == 'category'
 		|| switch_taxonomy == 'post_tag'
 		|| switch_taxonomy == 'post_options' ) {
-			if ( cf_tester_mode == 1 ) console.log('test track for fb');
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('test track for fb');
 			
 			//
 			var track_arr = {
@@ -3580,7 +3582,7 @@ setTimeout(function () {
 							if ( color_quan == '' ) {
 								color_quan = 1;
 							}
-							if ( cf_tester_mode == 1 ) console.log('color_quan: ' + color_quan);
+							if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('color_quan: ' + color_quan);
 							
 							// còn hàng thì mới hiển thị
 							if ( color_quan > 0 ) {
@@ -3795,7 +3797,7 @@ function WGR_set_quick_view_height () {
 
 //
 if (press_esc_to_quickvideo_close == false) {
-	if ( cf_tester_mode == 1 ) console.log('close');
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('close');
 	
 	//
 	press_esc_to_quickvideo_close = true;
@@ -3814,7 +3816,7 @@ if (press_esc_to_quickvideo_close == false) {
 			// khác cửa sổ (ví dụ như khi dùng quick view)
 			else {
 				try {
-					if ( cf_tester_mode == 1 ) console.log('Close popup window');
+					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Close popup window');
 					
 					// hàm tự viết
 					top.close_img_quick_video_details();

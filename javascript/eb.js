@@ -314,7 +314,7 @@ var g_func = {
 		
 		
 		//
-		if ( cf_tester_mode == 1 ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain + ', time: ' + seconds );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain + ', time: ' + seconds );
 	},
 	getc: function (name) {
 		var nameEQ = encodeURIComponent(name) + "=",
@@ -536,7 +536,7 @@ function ajaxl(url, id, bg, callBack) {
 	if ( url.split( '//' ).length == 1 ) {
 		url = web_link + 'eb-ajaxservice?set_module=' + url;
 	}
-	if ( cf_tester_mode == 1 ) console.log(url);
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(url);
 	
 	//
 	jQuery.ajax({
@@ -1143,7 +1143,7 @@ var _global_js_eb = {
 			}
 			
 			// Nếu không phải chế độ TEST -> bỏ qua khi cùng là domain
-//			if ( cf_tester_mode != 1 ) {
+//			if ( WGR_check_option_on ( cf_tester_mode ) ) {
 				s = a.split('//')[1].split('/')[0];
 				s2 = click_url.split('//')[1].split('/')[0];
 				if ( s.split(s2).length > 1 || s2.split(s).length > 1 ) {
@@ -1216,7 +1216,7 @@ var _global_js_eb = {
 			}
 			*/
 			uri = JSON.stringify( arr );
-			if ( cf_tester_mode == 1 ) {
+			if ( WGR_check_option_on ( cf_tester_mode ) ) {
 				console.log(arr);
 				console.log(uri);
 			}
@@ -1772,7 +1772,7 @@ var _global_js_eb = {
 			// Nếu người dùng tiết lộ -> xin luôn
 			var lat = position.coords.latitude,
 				lon = position.coords.longitude;
-			if ( cf_tester_mode == 1 ) console.log( position );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( position );
 //			console.log( lat );
 //			console.log( lon );
 			
@@ -1783,7 +1783,7 @@ var _global_js_eb = {
 				lat : lat,
 				lon : lon
 			};
-			if ( cf_tester_mode == 1 ) console.log( data );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( data );
 			
 			// lưu lại trong cookies
 			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
@@ -1813,7 +1813,7 @@ var _global_js_eb = {
 		if ( typeof client_ip != 'undefined' && client_ip != '' ) {
 			url_get_ip_info += '/' + client_ip;
 		}
-		if ( cf_tester_mode == 1 ) console.log( url_get_ip_info );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( url_get_ip_info );
 		
 		// Không cho thì lấy gần đúng
 		jQuery.getJSON( url_get_ip_info, function(data) {
@@ -1824,7 +1824,7 @@ var _global_js_eb = {
 				data.lon = data.loc.split(',')[1];
 			}
 			
-			if ( cf_tester_mode == 1 ) console.log( data );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( data );
 			
 			g_func.setc('ipinfo_to_language', JSON.stringify( data ), 3600 * 2 );
 			
@@ -1916,7 +1916,7 @@ var _global_js_eb = {
 				} );
 			});
 		}
-		if ( cf_tester_mode == 1 ) console.log( ebe_arr_cart_product_list );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( ebe_arr_cart_product_list );
 		
 		//
 //		if ( dog('hd_products_info') == null ) {
@@ -2642,8 +2642,8 @@ var _global_js_eb = {
 				track_arr.content_type = 'product';
 			}
 		}
-		if ( cf_tester_mode == 1 ) console.log('Facebook pixel (' + track_name + ') by EchBay.com');
-		if ( cf_tester_mode == 1 ) console.log( track_arr );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Facebook pixel (' + track_name + ') by EchBay.com');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( track_arr );
 		
 		//
 		fbq('track', track_name, track_arr);

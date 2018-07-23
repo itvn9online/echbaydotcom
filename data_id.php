@@ -46,6 +46,7 @@ $add_data_id = array (
 		// chế độ kiểm thử -> dùng để console lỗi nếu chế độ này đang bật
 //		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
 		'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
+		'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
 		
 		// tự động submit trong phần tìm kiếm nâng cao
 		'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',
