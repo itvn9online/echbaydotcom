@@ -1059,6 +1059,10 @@ input[id="_eb_category_order"] { width: 90px; }
 	background-size: 22px auto;
 	box-shadow: 0 0 5px #666;
 }
+.order-list-info i.fa {
+	display: inline-block;
+	min-width: 21px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

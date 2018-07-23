@@ -249,8 +249,8 @@ $str_hom_nay = date( 'md', date_time );
 			</td>
 			<td><span class="order-list-icon">' . ( isset( $arr_hd_trangthai[ $hd_trangthai ] ) ? $arr_hd_trangthai[ $hd_trangthai ] : '<em>NULL</em>' ) . '</span></td>
 			<td><div class="eb-to-product"></div></td>
-			<td>
-				<div><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank"><i class="fa fa-user"></i> ' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></div>
+			<td class="order-list-info">
+				<div><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank"><i class="fa fa-envelope-o"></i> ' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></div>
 				<div><i class="fa fa-phone"></i> <span class="eb-to-phone"></span></div>
 				<div><i class="fa fa-home"></i> <span class="eb-to-adress"></span></div>
 			</td>
