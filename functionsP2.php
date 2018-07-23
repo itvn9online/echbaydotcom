@@ -1263,6 +1263,23 @@ function EBE_get_ftp_root_dir ( $content_ = 'test' ) {
 	if ( $ftp_dir_root == '' ) {
 		echo 'ERROR FTP: ftp_dir_root not found<br>' . "\n";
 	}
+	else {
+//		echo ABSPATH . '<br>';
+//		echo basename( ABSPATH ) . '<br>';
+		
+		// kiểm tra xem thư mục -> nếu khác root -> lấy theme
+		if ( basename( ABSPATH ) != $ftp_dir_root ) {
+			// lấy từ vị trì root trở đi
+//			$ftp_dir_root .= '/' . basename( ABSPATH );
+			$ftp_dir_root = strstr( ABSPATH, $ftp_dir_root );
+			
+			// bỏ dấu chéo ở cuối
+//			echo substr( $ftp_dir_root, -1 ) . '<br>';
+			if ( substr( $ftp_dir_root, -1 ) ) {
+				$ftp_dir_root = substr( $ftp_dir_root, 0, -1 );
+			}
+		}
+	}
 	
 	return $ftp_dir_root;
 }
