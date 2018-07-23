@@ -29,29 +29,36 @@ $cats_type = ( $by_post_type == 'blog' ) ? 'blogs' : 'category';
 //
 if ( $by_cat_id > 0 ) {
 	
+	//
+//	echo $by_cat_id . '<br>';
+	
 	$strLinkPager .= '&by_cat_id=' . $by_cat_id;
 	$strAjaxLink .= '&by_cat_id=' . $by_cat_id;
 	
 	//
 	$arrs_cats = array(
 		'taxonomy' => $cats_type,
-		'hide_empty' => 0,
-		'parent' => $by_cat_id,
+//		'hide_empty' => 0,
+		'parent' => $by_cat_id
 	);
 	
 	$arrs_cats = get_categories( $arrs_cats );
 //	print_r( $arrs_cats );
 	
 	$by_child_cat_id = '';
-	foreach ( $arrs_cats as $v ) {
-		$by_child_cat_id .= ',' . $v->term_id;
+	if ( ! empty( $arrs_cats ) ) {
+		foreach ( $arrs_cats as $v ) {
+			$by_child_cat_id .= ',' . $v->term_id;
+		}
+//		echo $by_child_cat_id . '<br>';
 	}
 	
 	
-	//
+	// câu lệnh lọc theo taxonomy
 	$strFilter .= " AND `" . $wpdb->term_taxonomy . "`.taxonomy = '" . $cats_type . "'
 		AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $by_cat_id . $by_child_cat_id . ") ";
 	
+	// câu lệnh jion các bảng lại với nhau
 	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
 		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
 //	$joinFilter = ", `" . $wpdb->term_taxonomy . "`, `" . $wpdb->term_relationships . "` ";
@@ -68,8 +75,8 @@ if ( $by_cat_id > 0 ) {
 //
 $arrs_cats = array(
 	'taxonomy' => $cats_type,
-	'hide_empty' => 0,
-	'parent' => 0,
+//	'hide_empty' => 0,
+	'parent' => 0
 );
 
 //
@@ -84,7 +91,37 @@ foreach ( $arrs_cats as $v ) {
 	}
 	
 	//
-	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a></li>';
+	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a>';
+	
+	
+	// lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
+	$arrs_sub_cats = array(
+		'taxonomy' => $cats_type,
+//		'hide_empty' => 0,
+		'parent' => $v->term_id
+	);
+	
+	//
+	$arrs_sub_cats = get_categories( $arrs_sub_cats );
+//	print_r( $arrs_sub_cats );
+	if ( ! empty( $arrs_sub_cats ) ) {
+		echo '<ul class="sub-menu cf">';
+		
+		foreach ( $arrs_sub_cats as $v2 ) {
+			$sl = '';
+			if ( $v2->term_id == $by_cat_id ) {
+				$sl = 'bold';
+			}
+			
+			//
+			echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . '</a>';
+		}
+		
+		echo '</ul>';
+	}
+	
+	//
+	echo '</li>';
 }
 echo '</ul>';
 
@@ -140,11 +177,24 @@ $strAjaxLink .= '&trang=' . $trang;
 
 <div class="class-for-<?php echo $by_post_type; ?>">
 	<div class="quick-show2-if-post">
+		<div class="orgcolor">* Bạn có thể chọn và lọc sản phẩm theo danh mục ở trên, sau đó bấm chọn nút Export sản phẩm ở bên để có danh sách sản phẩm phù hợp giúp cho việc chạy quảng cáo hiệu quả hơn.</div>
 		<div class="text-right cf div-inline-block">
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=google&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">for Google</a></div>
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=facebook&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">for Facebook</a></div>
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=echbaydotcom&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">from Echbaydotcom</a></div>
-			<div><a href="<?php echo web_link; ?>eb_export_products?export_type=woo&token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ); ?>" target="_blank" class="rf d-block blue-button whitecolor">from Woocommerce</a></div>
+			<?php
+			
+			$arr_button_export = array(
+				'google' => 'for Google',
+				'facebook' => 'for Facebook',
+				'echbaydotcom' => 'from Echbaydotcom',
+				'woo' => 'from Woocommerce'
+			);
+			
+			$export_token = _eb_mdnam( $_SERVER['HTTP_HOST'] );
+			
+			foreach ( $arr_button_export as $k => $v ) {
+				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&limit=2000" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
+			}
+			
+			?>
 		</div>
 		<br>
 		<div class="thread-edit-tools">

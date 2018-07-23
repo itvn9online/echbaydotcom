@@ -36,12 +36,31 @@
 .class-for-post .quick-show-if-paw,
 .class-for-blog .quick-show-if-paw { display: inline-block !important; }
 */
-.admin-products_post-category { margin-bottom: 15px; }
+.admin-products_post-category {
+	margin-bottom: 15px;
+	position: relative;
+}
 .admin-products_post-category li {
 	float: left;
 	margin: 5px 20px 5px 0;
 }
+.admin-products_post-category a {
+	display: inline-block;
+	padding: 10px 0;
+}
 .admin-products_post-category a:before { content: "- "; }
+.admin-products_post-category .sub-menu {
+	position: absolute;
+	left: 0;
+	right: 0;
+	background: rgba(255, 255, 255, .9);
+	box-shadow: 0 0 5px #ccc;
+	padding: 5px;
+	display: none;
+}
+.admin-products_post-category li:hover .sub-menu { display: block; }
+.admin-products_post-category .sub-menu li { }
+.admin-products_post-category .sub-menu a { padding: 5px 0; }
 .table-list input[type="number"].s { width: 70px; }
 /* multi edit tool */
 
