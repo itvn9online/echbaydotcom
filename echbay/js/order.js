@@ -222,6 +222,8 @@ setTimeout(function () {
 			if ( st != f.t_trangthai.value ) {
 				f.t_trangthai.value = st;
 				
+				___eb_admin_update_order_details();
+				
 				f.submit();
 			}
 		});
