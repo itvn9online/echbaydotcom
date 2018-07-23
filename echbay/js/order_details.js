@@ -241,6 +241,15 @@ function ___eb_admin_update_order_details () {
 
 
 
+// đánh dấu tab cùng trạng thái với dơn hiện tại
+setTimeout(function () {
+	$('.eb-order-filter-tab li a').removeClass('selected');
+	$('.eb-order-filter-tab li[data-tab="' + document.frm_invoice_details.t_trangthai.value + '"] a').addClass('selected');
+}, 600);
+
+
+
+
 //
 $('.show-if-js-enable').show();
 //dog('eb_cart_submit').disabled = false;
