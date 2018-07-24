@@ -258,8 +258,8 @@ function ___eb_details_slider_v2 () {
 	//
 //	console.log( slider_len );
 	
-	// nếu slider chính không có ảnh -> lấy ảnh từ nội dung
-	if ( slider_len == 0 ) {
+	// nếu slider chính không có ảnh -> lấy ảnh từ nội dung -> nếu option cho phép lấy ảnh từ nội dung
+	if ( slider_len == 0 && WGR_check_option_on( cf_details_content_slider ) ) {
 		slider_len = jQuery('#content_img_product img').length;
 		html_for_get = '#content_img_product img';
 		data_get = 'src';

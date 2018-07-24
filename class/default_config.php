@@ -261,6 +261,8 @@ $__cf_row_default = array(
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
 	*/
+	// tự động lấy ảnh trong content nếu slider bị trống
+	'cf_details_content_slider' => 1,
 	// Ẩn/ Hiện nút nhỏ nhỏ màu đỏ trên silder
 	'cf_details_show_list_next' => 'off',
 	'cf_details_show_list_thumb' => 1,
