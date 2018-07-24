@@ -47,6 +47,7 @@ $add_data_id = array (
 //		'cf_tester_mode' => $__cf_row['cf_tester_mode'],
 		'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
 		'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
+		'cf_disable_tracking' => '\'' . $__cf_row['cf_disable_tracking'] . '\'',
 		
 		// tự động submit trong phần tìm kiếm nâng cao
 		'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',

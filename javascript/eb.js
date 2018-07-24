@@ -2596,6 +2596,12 @@ var _global_js_eb = {
 			return false;
 		}
 		
+		// không track đối với người dùng đã đăng nhập
+		if ( isLogin > 0 && WGR_check_option_on( cf_disable_tracking ) ) {
+			console.log('ga_event_track disable by user login');
+			return false;
+		}
+		
 		//
 		/*
 		if ( typeof goog_report_conversion == 'undefined' ) {
@@ -2635,6 +2641,12 @@ var _global_js_eb = {
 		// Không chạy trong iframe
 		if ( top != self ) {
 			console.log('fb_track not run in iframe');
+			return false;
+		}
+		
+		// không track đối với người dùng đã đăng nhập
+		if ( isLogin > 0 && WGR_check_option_on( cf_disable_tracking ) ) {
+			console.log('fb_track disable by user login');
 			return false;
 		}
 		

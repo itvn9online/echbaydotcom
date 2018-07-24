@@ -67,6 +67,8 @@ $_POST['cf_debug_mode'] = WGR_default_config('cf_debug_mode');
 
 $_POST['cf_gtag_id'] = WGR_default_config('cf_gtag_id');
 
+$_POST['cf_disable_tracking'] = WGR_default_config('cf_disable_tracking');
+
 $_POST['cf_on_off_json'] = WGR_default_config('cf_on_off_json');
 
 $_POST['cf_on_off_xmlrpc'] = WGR_default_config('cf_on_off_xmlrpc');
