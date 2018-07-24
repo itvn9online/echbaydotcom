@@ -765,3 +765,21 @@ function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
 
+function WGR_register_sidebar ( $k, $v ) {
+	register_sidebar( array(
+		'name' => str_replace( '_', ' ', $k ),
+		'id' => $k,
+		'class' => $k,
+		'description' => $v,
+		
+		'before_widget' => '<div id="%1$s" class="%2$s">',
+		'after_widget' => '</div>',
+		
+//		'before_title' => '<div-for-replace class="' . $k . '-title">',
+//		'after_title' => '</div-for-replace>'
+		'before_title' => $k . '-title',
+	) );
+}
+
+
+

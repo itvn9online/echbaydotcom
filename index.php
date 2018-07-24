@@ -734,19 +734,7 @@ function echbay_theme_setup() {
 	
 	// chạy vòng lặp add sidebat
 	foreach ( $arr_to_add_sidebar as $k => $v ) {
-		register_sidebar( array(
-			'name' => str_replace( '_', ' ', $k ),
-			'id' => $k,
-			'class' => $k,
-			'description' => $v,
-			
-			'before_widget' => '<div id="%1$s" class="%2$s">',
-			'after_widget' => '</div>',
-			
-//			'before_title' => '<div-for-replace class="' . $k . '-title">',
-//			'after_title' => '</div-for-replace>'
-			'before_title' => $k . '-title',
-		) );
+		WGR_register_sidebar( $k, $v );
 	}
 	
 	
