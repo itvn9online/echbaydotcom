@@ -63,6 +63,15 @@ function dog(o, s) {
 	return document.getElementById(o);
 }
 
+
+function WGR_check_option_on ( a ) {
+	if ( a == 1 || a == "1" ) {
+		return true;
+	}
+	return false;
+}
+
+
 function _date(phomat, t) {
 	var result = '';
 	if (typeof phomat != 'string' || phomat.replace(/\s/g, '') == '') {

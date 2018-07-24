@@ -42,14 +42,6 @@ if ( eb_this_current_url == web_link ) {
 }
 
 
-function WGR_check_option_on ( a ) {
-	if ( a == 1 || a == "1" ) {
-		return true;
-	}
-	return false;
-}
-
-
 
 // chỉnh lại ảnh của big banner sang ảnh to với bản pc
 if ( jQuery(window).width() > 768 ) {
