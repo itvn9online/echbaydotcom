@@ -311,10 +311,76 @@ function WGR_hide_html_alert_auto_order_submit () {
 
 
 
-// đánh dấu tab cùng trạng thái với dơn hiện tại
+//
+var arr_user_blacklist = [];
 setTimeout(function () {
+	
+	// đánh dấu tab cùng trạng thái với dơn hiện tại
 	$('.eb-order-filter-tab li a').removeClass('selected');
 	$('.eb-order-filter-tab li[data-tab="' + document.frm_invoice_details.t_trangthai.value + '"] a').addClass('selected');
+	
+	
+	// tìm các đơn hàng thuộc tiện báo xấu cùng thông tin với đơn hàng này để báo lại khách
+	var dt = $('#oi_hd_dienthoai').val() || '',
+		e = $('#get-order-email').html() || '',
+		uri = '';
+	console.log( dt );
+	console.log( e );
+	
+	// điện thoại chỉ lấy 9 ký tự sau cùng -> bỏ qua phần số 0 hoặc +84 nếu có
+	if ( dt != '' ) {
+		dt = g_func.non_mark_seo( dt );
+		dt = dt.toString().replace(/\-/g, '').substr( dt.toString().length - 9 );
+		
+		uri += '&dt=' + dt;
+	}
+	
+	// mail thì không lấy các email cùng với tên miền hiện tại -> vì lấy theo số đt là đủ rồi
+	if ( e != '' && e.split( '@' ).length == 2 && e.split( document.domain ).length == 1 ) {
+		uri += '&e=' + e;
+	}
+	console.log( uri );
+	
+	//
+	if ( uri != '' ) {
+		ajaxl('get_customer_blacklist&no_echo=1&order_id=' + order_id + uri, 'oi_customer_blacklist', 1, function () {
+			setTimeout(function () {
+//				console.log( arr_user_blacklist );
+				
+				//
+				if ( arr_user_blacklist.length > 0 ) {
+					if ( arr_user_blacklist.length == 1 && typeof arr_user_blacklist[0].error != 'undefined' ) {
+						console.log( arr_user_blacklist[0].error );
+					}
+					else {
+						for ( var i = 0; i < arr_user_blacklist.length; i++ ) {
+							console.log( admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id );
+							
+							
+							//
+//							console.log( arr_user_blacklist[i].order_customer );
+							try {
+								var custom_info = $.parseJSON( unescape( arr_user_blacklist[i].order_customer ) );
+								console.log( custom_info );
+							} catch ( e ) {
+								console.log( WGR_show_try_catch_err( e ) );
+							}
+						}
+					}
+				}
+			}, 600);
+			
+			//
+//			var msg = $('#oi_customer_blacklist').html();
+//			console.log( msg );
+//		}, {
+//			dataType: "json"
+		});
+	}
+	else {
+		console.log( 'Phone and email is NULL!' );
+	}
+	
 }, 600);
 
 

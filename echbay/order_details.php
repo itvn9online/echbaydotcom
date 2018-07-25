@@ -125,7 +125,7 @@ if ( $show_dang_xac_nhan != '' ) {
 		</tr>
 		<tr>
 			<td class="t">Email</td>
-			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
+			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
 		</tr>
 	</table>
 	<br>

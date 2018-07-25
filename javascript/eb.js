@@ -520,7 +520,7 @@ var g_func = {
 	}
 };
 
-function ajaxl(url, id, bg, callBack) {
+function ajaxl( url, id, bg, callBack, ajax_option ) {
 	if ( typeof url == 'undefined' || url == '' ) {
 		console.log('URL is NULL');
 		return false;
@@ -547,12 +547,30 @@ function ajaxl(url, id, bg, callBack) {
 	}
 	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(url);
 	
+	// các tham số để lấy dữ liệu
+	if ( typeof ajax_option != 'object' ) {
+		ajax_option = {
+			type: 'POST',
+			url: url,
+			data: ''
+		};
+	}
+	else {
+		// method
+		if ( typeof ajax_option.type == 'undefined' ) {
+			ajax_option.type = 'POST';
+		}
+		else if ( ajax_option.type == '' ) {
+			ajax_option.type = 'GET';
+		}
+		
+		//
+		ajax_option.url = url;
+		ajax_option.data = '';
+	}
+	
 	//
-	jQuery.ajax({
-		type: 'POST',
-		url: url,
-		data: ''
-	}).done(function(msg) {
+	jQuery.ajax( ajax_option ).done(function(msg) {
 		jQuery('#' + id).html(msg);
 		
 		if ( typeof callBack == 'function' ) {

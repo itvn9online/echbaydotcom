@@ -26,7 +26,7 @@ if ( using_child_wgr_theme == 1 ) {
 	$child_theme_ajaxl = EB_CHILD_THEME_URL . $action_module . '.php';
 }
 
-//
+// child theme
 if ( $child_theme_ajaxl != '' && file_exists( $child_theme_ajaxl ) ) {
 	$echbay_ajax_file = $child_theme_ajaxl;
 	
@@ -34,15 +34,34 @@ if ( $child_theme_ajaxl != '' && file_exists( $child_theme_ajaxl ) ) {
 		echo '<!-- ajax by child theme (EchBay plugin) -->';
 	}
 }
+// theme
 else if ( file_exists( $echbay_ajax_file ) ) {
 	echo '<!-- ajax by theme (EchBay plugin) -->';
 }
+// plugin
 else {
 	
 	// kiểm tra ajax theo plugin
 	$echbay_ajax_file = EB_THEME_PLUGIN_INDEX . 'global/temp/' . $action_module . '.php';
+	$echbay_user_ajax_file = EB_THEME_PLUGIN_INDEX . 'global/temp/user/' . $action_module . '.php';
 	
+	// guest
 	if ( file_exists( $echbay_ajax_file ) ) {
+		if ( ! isset( $_GET['no_echo'] ) ) {
+			echo '<!-- EchBay plugin ajax -->';
+		}
+	}
+	// user
+	else if ( file_exists( $echbay_user_ajax_file ) ) {
+		if ( mtv_id == 0 ) {
+			echo 'Permission ERROR!';
+			
+			exit();
+		}
+		
+		//
+		$echbay_ajax_file = $echbay_user_ajax_file;
+		
 		if ( ! isset( $_GET['no_echo'] ) ) {
 			echo '<!-- EchBay plugin ajax -->';
 		}

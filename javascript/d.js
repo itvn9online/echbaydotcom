@@ -685,6 +685,19 @@ function ___eb_details_product_tab () {
 
 
 
+// giá theo từng màu hoặc size (ưu tiên size)
+function WGR_show_price_for_size_color ( gia ) {
+	
+	// add giá theo bản mới -> web nào update mới có tính năng này
+	if ( $('.show-size-color-price').length > 0 ) {
+		$('.show-size-color-price strong').html( g_func.money_format( gia ) );
+	}
+	else {
+		console.log('Update new version or add class show-size-color-price for show child product price');
+	}
+	
+}
+
 
 // màu sắc sản phẩm
 // hiển thị tên màu trực tiếp nếu không có màu nào được chỉ định
@@ -837,6 +850,9 @@ function ___eb_details_product_color () {
 			}
 //			console.log('COLOR');
 			jQuery('#oi_change_tongtien').html( g_func.money_format( select_quan * show_price ) );
+			
+			// hiển thị lại giá của chi tiết sản phẩm
+			WGR_show_price_for_size_color( show_price );
 			
 			//
 			_global_js_eb.cart_create_arr_poruduct();
@@ -1102,6 +1118,9 @@ function ___eb_details_product_size () {
 			}
 //			console.log('SIZE');
 			jQuery('#oi_change_tongtien').html( g_func.money_format( select_quan * show_price ) );
+			
+			// hiển thị lại giá của chi tiết sản phẩm
+			WGR_show_price_for_size_color ( show_price );
 			
 			//
 			_global_js_eb.cart_create_arr_poruduct();
