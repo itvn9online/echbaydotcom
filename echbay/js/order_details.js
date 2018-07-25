@@ -182,13 +182,20 @@ function WGR_hide_html_alert_auto_order_submit () {
 		}
 		
 		//
+		var product_price = arr[i].price;
+		// hiển thị giá theo size, color nếu có
+		if ( arr[i].child_price != '' ) {
+			product_price = arr[i].child_price;
+		}
+		
+		//
 		$('.order-danhsach-sanpham').append('\
 		<tr>\
 			<td>' + arr[i].id + '</td>\
 			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + '</a>' + arr[i].color + arr[i].size + '</td>\
-			<td>' + g_func.money_format( arr[i].price ) + '</td>\
+			<td>' + g_func.money_format( product_price ) + '</td>\
 			<td><input type="number" value="' + arr[i].quan + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity s" size="5" maxlength="10" /></td>\
-			<td>' + g_func.money_format( arr[i].price * arr[i].quan ) + '</td>\
+			<td>' + g_func.money_format( product_price * arr[i].quan ) + '</td>\
 		</tr>');
 		
 	}

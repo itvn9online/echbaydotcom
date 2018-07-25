@@ -102,7 +102,7 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	
 	//
 //	'tmp.tv_hoten' => get_the_author_meta( 'first_name', mtv_id ) . ' ' . get_the_author_meta( 'last_name', mtv_id ),
-	'tmp.tv_hoten' => get_the_author_meta( 'first_name', mtv_id ),
+	'tmp.tv_hoten' => get_the_author_meta( 'first_name', mtv_id )
 ) );
 
 
