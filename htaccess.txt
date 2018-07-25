@@ -44,11 +44,17 @@ RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,L]
 	ExpiresActive On
 	# bo qua cai lenh set thoi gian het han mac dinh nay di
 	ExpiresDefault "access plus 10 days"
+	
+#	ExpiresByType text/.* "access plus 1 week"
 	ExpiresByType text/css "access plus 1 week"
 	ExpiresByType text/plain "access plus 1 month"
+	
+#	ExpiresByType image/.* "access plus 1 week"
 	ExpiresByType image/gif "access plus 1 month"
 	ExpiresByType image/png "access plus 1 month"
 	ExpiresByType image/jpeg "access plus 1 month"
+	
+#	ExpiresByType application/.* "access plus 1 week"
 	ExpiresByType application/x-javascript "access plus 1 month"
 	ExpiresByType application/javascript "access plus 1 week"
 	ExpiresByType application/x-icon "access plus 1 year"
@@ -80,12 +86,25 @@ RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,L]
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
+	
 	RewriteEngine On
+	
+	# for primary domain -> comment if using wordpress in sub-directory
 	RewriteBase /
+	
+	# for sub directory -> remove comment if using wordpress in sub-directory
+#	RewriteBase /sub-dir
+
 	RewriteRule ^index\.php$ - [L]
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	# for primary domain -> comment if using wordpress in sub-directory
 	RewriteRule . /index.php [L]
+	
+	# for sub directory -> remove comment if using wordpress in sub-directory
+#	RewriteRule . /sub-dir/index.php [L]
+	
 </IfModule>
 
 # END WordPress
