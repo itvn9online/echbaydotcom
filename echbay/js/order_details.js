@@ -312,7 +312,8 @@ function WGR_hide_html_alert_auto_order_submit () {
 
 
 //
-var arr_user_blacklist = [];
+var arr_user_blacklist = [],
+	da_load_danh_sach_bao_xau = false;
 setTimeout(function () {
 	
 	// đánh dấu tab cùng trạng thái với dơn hiện tại
@@ -324,8 +325,8 @@ setTimeout(function () {
 	var dt = $('#oi_hd_dienthoai').val() || '',
 		e = $('#get-order-email').html() || '',
 		uri = '';
-	console.log( dt );
-	console.log( e );
+//	console.log( dt );
+//	console.log( e );
 	
 	// điện thoại chỉ lấy 9 ký tự sau cùng -> bỏ qua phần số 0 hoặc +84 nếu có
 	if ( dt != '' ) {
@@ -336,10 +337,11 @@ setTimeout(function () {
 	}
 	
 	// mail thì không lấy các email cùng với tên miền hiện tại -> vì lấy theo số đt là đủ rồi
-	if ( e != '' && e.split( '@' ).length == 2 && e.split( document.domain ).length == 1 ) {
+	// kiểm tra quyền điều khiển của người đăng đơn, nếu không phải admin thì bỏ qua email
+	if ( WGR_check_option_on ( order_user_can ) == false && e != '' && e.split( '@' ).length == 2 && e.split( document.domain ).length == 1 ) {
 		uri += '&e=' + e;
 	}
-	console.log( uri );
+	console.log( 'Check blacklist by: ' + uri );
 	
 	//
 	if ( uri != '' ) {
@@ -353,19 +355,64 @@ setTimeout(function () {
 						console.log( arr_user_blacklist[0].error );
 					}
 					else {
-						for ( var i = 0; i < arr_user_blacklist.length; i++ ) {
-							console.log( admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id );
-							
+						// hiển thị thông báo báo xấu
+						$('#open_list_bao_xau strong').html( arr_user_blacklist.length );
+						$('#open_list_bao_xau').fadeIn().on('click', function () {
 							
 							//
-//							console.log( arr_user_blacklist[i].order_customer );
-							try {
-								var custom_info = $.parseJSON( unescape( arr_user_blacklist[i].order_customer ) );
-								console.log( custom_info );
-							} catch ( e ) {
-								console.log( WGR_show_try_catch_err( e ) );
+							$('#open_list_bao_xau').fadeOut();
+							$('#order_show_bao_xau').fadeIn();
+							
+							//
+							if ( da_load_danh_sach_bao_xau == true ) {
+								return false;
 							}
-						}
+							da_load_danh_sach_bao_xau = true;
+							
+							//
+							var str = '';
+							for ( var i = 0; i < arr_user_blacklist.length; i++ ) {
+								console.log( admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id );
+								
+								
+								//
+	//							console.log( arr_user_blacklist[i].order_customer );
+								try {
+									var custom_info = $.parseJSON( unescape( arr_user_blacklist[i].order_customer ) );
+									console.log( custom_info );
+									
+									//
+									if ( custom_info.hd_ten == '' ) {
+										custom_info.hd_ten = custom_info.hd_dienthoai;
+									}
+									
+									//
+									str += '<li>\
+										<a href="' + admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id + '" target="_blank" class="bold">' + custom_info.hd_ten + '</a>\
+										<ul class="sub-menu">\
+											<li>Ghi chú: <span class="orgcolor">' + custom_info.hd_admin_ghichu + '</span></li>\
+											<li>Điện thoại: ' + custom_info.hd_dienthoai + '</li>\
+											<li>Email: ' + custom_info.hd_email + '</li>\
+											<li>Địa chỉ: ' + custom_info.hd_diachi + '</li>\
+											<li>Thời gian: ' + custom_info.hd_usertime + '</li>\
+											<li class="d-none">Thiết bị: ' + custom_info.hd_agent + '</li>\
+										</ul>\
+									</li>';
+								} catch ( e ) {
+									console.log( WGR_show_try_catch_err( e ) );
+								}
+							}
+							
+							//
+							$('#order_show_bao_xau ul').html( str );
+							
+						});
+						
+						//
+						$('#close_list_bao_xau').on('click', function () {
+							$('#open_list_bao_xau').fadeIn();
+							$('#order_show_bao_xau').fadeOut();
+						});
 					}
 				}
 			}, 600);

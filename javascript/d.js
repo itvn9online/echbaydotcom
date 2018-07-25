@@ -689,8 +689,8 @@ function ___eb_details_product_tab () {
 function WGR_show_price_for_size_color ( gia ) {
 	
 	// add giá theo bản mới -> web nào update mới có tính năng này
-	if ( $('.show-size-color-price').length > 0 ) {
-		$('.show-size-color-price strong').html( g_func.money_format( gia ) );
+	if ( jQuery('.show-size-color-price').length > 0 ) {
+		jQuery('.show-size-color-price strong').html( g_func.money_format( gia ) );
 	}
 	else {
 		console.log('Update new version or add class show-size-color-price for show child product price');

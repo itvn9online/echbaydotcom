@@ -244,6 +244,12 @@ if ( $show_dang_xac_nhan != '' ) {
 </table>
 <br>
 <br>
+<div id="open_list_bao_xau">Khách hàng này đã bị báo xấu <strong>0</strong> lần</div>
+<div id="order_show_bao_xau">
+	<div id="close_list_bao_xau"><i class="fa fa-remove"></i></div>
+	<ul>
+	</ul>
+</div>
 <script type="text/javascript">
 
 // v1
@@ -257,7 +263,8 @@ var order_details_arr_cart_product_list_v1 = (function ( arr ) {
 // v2
 var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
 	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
-	order_id = "<?php echo $id; ?>";
+	order_id = "<?php echo $id; ?>",
+	order_user_can = "<?php echo ( user_can($post->tv_id, 'delete_posts') ? 1 : 0 ); ?>";
 
 </script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . date_time; ?>"></script> 

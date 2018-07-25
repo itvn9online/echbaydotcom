@@ -54,7 +54,7 @@ if ( typeof $ == 'undefined' ) {
 	setTimeout(function () {
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		g_func.setc( 'wgr_last_url_user_visit', escape( window.location.href ), 0, 7 );
-	}, 5000);
+	}, 5 * 60 * 1000);
 })();
 
 
