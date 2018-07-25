@@ -240,7 +240,7 @@ function create_deault_css () {
 	
 	// text color
 	a = f.cf_default_color.value;
-	str += '.default-color, .mcb { color: ' + a + '; }';
+	str += '.default-color, .default-color a, .mcb, .mcb a { color: ' + a + '; }';
 	
 	// link color
 	a = f.cf_default_link_color.value;
