@@ -85,7 +85,7 @@ a { color: #000 !important }
 	for ( var i = 0; i < order_details_arr_cart_product_list.length; i++ ) {
 		product_price = order_details_arr_cart_product_list[i].price;
 		// hiển thị giá theo size, color nếu có
-		if ( order_details_arr_cart_product_list[i].child_price != '' ) {
+		if ( typeof order_details_arr_cart_product_list[i].child_price != 'undefined' && order_details_arr_cart_product_list[i].child_price != '' ) {
 			product_price = order_details_arr_cart_product_list[i].child_price;
 		}
 		
