@@ -68,7 +68,7 @@ $trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
 
 
 
-//
+// lọc theo trạng thái đơn
 $status_by = '';
 if ( isset( $_GET['tab'] ) ) {
 	$status_by = $_GET['tab'];
@@ -80,6 +80,10 @@ if ( isset( $_GET['tab'] ) ) {
 		
 		$strLinkPager .= '&tab=' . $status_by;
 	}
+}
+// mặc định thì bỏ qua cái đơn đã hủy
+else {
+	$strFilter .= " AND order_status != 4 ";
 }
 $jsLinkPager = $strLinkPager;
 
