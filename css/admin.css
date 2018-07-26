@@ -315,12 +315,12 @@ input[id="_eb_category_order"] { width: 90px; }
 /* hiển thị danh sách báo xấu nếu có */
 #open_list_bao_xau {
 	position: fixed;
-	left: 12%;
+	left: 10%;
 	top: 50%;
 	max-width: 110px;
 	text-align: center;
 	font-size: 12px;
-	background: rgba(255, 0, 0, .9);
+	background: rgba(255, 0, 0, .5);
 	color: #fff;
 	padding: 5px;
 	line-height: 17px;
@@ -331,6 +331,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	transform: translate(0, -50%);
 	z-index: 9999;
 }
+#open_list_bao_xau:hover { background: #c00; }
 #order_show_bao_xau {
 	position: fixed;
 	left: 0;
