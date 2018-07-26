@@ -73,6 +73,12 @@ $status_by = '';
 if ( isset( $_GET['tab'] ) ) {
 	$status_by = $_GET['tab'];
 	
+	// với đơn hàng đã ẩn, chỉ có supper admin mới được xem
+	if ( (int) $status_by == 13 && ! current_user_can('create_users') ) {
+		$status_by = '';
+	}
+	
+	//
 	if ( $status_by != '' ) {
 		$status_by = (int) $status_by;
 		
@@ -83,7 +89,7 @@ if ( isset( $_GET['tab'] ) ) {
 }
 // mặc định thì bỏ qua cái đơn đã hủy
 else {
-	$strFilter .= " AND order_status != 4 ";
+	$strFilter .= " AND order_status != 4 AND order_status != 13 ";
 }
 $jsLinkPager = $strLinkPager;
 

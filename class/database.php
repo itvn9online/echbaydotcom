@@ -340,7 +340,8 @@ $arr_hd_trangthai = array (
 		9 => 'Hoàn tất',
 		10 => 'Xác nhận, chờ in',
 		11 => 'Đang vận chuyển',
-		12 => 'Danh Sách Đen'
+		12 => 'Danh Sách Đen',
+		13 => 'Ẩn'
 );
 
 

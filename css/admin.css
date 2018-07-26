@@ -279,7 +279,9 @@ input[id="_eb_category_order"] { width: 90px; }
 .eb-order-filter-tab li[data-tab="12"] a:before,
 .bill-detail-status button[data-tab="12"] span:before,
 .hd_status12 .order-list-icon:before { content: "\f502"; }
-.hd_status13 .order-list-icon:before { content: ""; }
+.eb-order-filter-tab li[data-tab="13"] a:before,
+.bill-detail-status button[data-tab="13"] span:before,
+.hd_status13 .order-list-icon:before { content: "\f070"; }
 .hd_status14 .order-list-icon:before { content: ""; }
 .hd_status15 .order-list-icon:before { content: ""; }
 .eb-order-filter-tab li:first-child a:before { display: none; }
@@ -292,6 +294,7 @@ input[id="_eb_category_order"] { width: 90px; }
 }
 .eb-order-filter-tab li { order: 9; }
 .eb-order-filter-tab li[data-tab="4"] { order: 99; }
+.eb-order-filter-tab li[data-tab="13"] { order: 100; }
 .eb-order-filter-tab a { position: relative; }
 .eb-order-filter-tab a.selected { color: #fff !important; }
 .eb-order-filter-tab sup {
