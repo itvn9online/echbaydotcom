@@ -300,8 +300,13 @@ function WGR_hide_html_alert_auto_order_submit () {
 				
 				a = _date( 'd-m-Y H:i', cus[x] );
 			}
+			// tạo link
 			else if ( ( x == 'hd_url' || x == 'hd_referrer' ) && a != '' ) {
 				a = '<a href="' + a + '" target="_blank" rel="nofollow">' + a + '</a>';
+			}
+			// tạo khoảng cách cho phần agent
+			else if ( x == 'hd_agent' ) {
+				a = a.replace( /\//g, '/ ' ).replace( /\;/g, '; ' );
 			}
 			
 			//
