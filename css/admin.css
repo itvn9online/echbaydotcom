@@ -315,20 +315,21 @@ input[id="_eb_category_order"] { width: 90px; }
 /* hiển thị danh sách báo xấu nếu có */
 #open_list_bao_xau {
 	position: fixed;
-	right: 10px;
+	left: 12%;
 	top: 50%;
-	max-width: 150px;
+	max-width: 110px;
 	text-align: center;
 	font-size: 12px;
-	background: rgba(255, 0, 0, .8);
+	background: rgba(255, 0, 0, .9);
 	color: #fff;
-	padding: 5px 10px;
+	padding: 5px;
 	line-height: 17px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px #666;
 	cursor: pointer;
 	display: none;
 	transform: translate(0, -50%);
+	z-index: 9999;
 }
 #order_show_bao_xau {
 	position: fixed;
@@ -1141,20 +1142,35 @@ input[id="_eb_category_order"] { width: 90px; }
 	padding: 0;
 	margin: 0 1px 1px 0;
 	cursor: pointer;
-	color: #fff;
+	color: #000;
 	outline: none;
+	border-radius: 2px;
 }
-.bill-detail-status button.selected { cursor: not-allowed; }
+.bill-detail-status button.selected {
+	cursor: not-allowed;
+	margin: 0 2px;
+}
+.bill-detail-status button:hover,
+.bill-detail-status button.selected { color: #fff; }
 .bill-detail-status button span {
 	background: rgba(255, 255, 255, .6);
 	display: block;
-	padding: 8px 10px;
+	/*
+	text-shadow: 1px 1px 0 #333;
+	*/
+	padding: 10px 8px;
 }
 .bill-detail-status button:hover span { background: none; }
 .bill-detail-status button.selected span {
 	background: transparent url(../images-global/tick.png) bottom right no-repeat;
 	background-size: 22px auto;
-	box-shadow: 0 0 5px #666;
+	/*
+	font-weight: bold;
+	padding-left: 8px;
+	padding-right: 8px;
+	*/
+	box-shadow: 0 0 25px #333;
+	padding: 10px 6px;
 }
 .order-list-info i.fa {
 	display: inline-block;

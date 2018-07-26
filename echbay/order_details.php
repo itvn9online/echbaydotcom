@@ -204,6 +204,9 @@ if ( $show_dang_xac_nhan != '' ) {
 		
 		?>
 		<tr>
+			<td class="t">Phân loại đơn hàng:</td>
+		</tr>
+		<tr>
 			<td colspan="2" class="bill-detail-status"><?php echo $str_button_trangthai; ?></td>
 		</tr>
 		<!--

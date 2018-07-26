@@ -401,7 +401,7 @@ setTimeout(function () {
 											<li>Điện thoại: ' + custom_info.hd_dienthoai + '</li>\
 											<li>Email: ' + custom_info.hd_email + '</li>\
 											<li>Địa chỉ: ' + custom_info.hd_diachi + '</li>\
-											<li>Thời gian: ' + custom_info.hd_usertime + '</li>\
+											<li>Ngày gửi: ' + _date( lang_date_format, custom_info.hd_usertime ) + '</li>\
 											<li class="d-none">Thiết bị: ' + custom_info.hd_agent + '</li>\
 										</ul>\
 									</li>';
