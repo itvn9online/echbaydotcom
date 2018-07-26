@@ -66,6 +66,8 @@ else {
 
 
 //
+$__cf_row ['cf_title'] = str_replace( '"', '&quot;', $__cf_row ['cf_title'] );
+$__cf_row ['cf_keywords'] = str_replace( '"', '&quot;', $__cf_row ['cf_keywords'] );
 $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_description'] );
 
 
@@ -76,7 +78,7 @@ $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_descri
 <meta name="keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
 <meta name="news_keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
 <meta name="description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta name="abstract" content="<?php echo $__cf_row ['cf_abstract'] != '' ? $__cf_row ['cf_abstract'] : $__cf_row ['cf_description']; ?>" />
+<meta name="abstract" content="<?php echo $__cf_row ['cf_abstract'] != '' ? str_replace( '"', '&quot;', $__cf_row ['cf_abstract'] ) : $__cf_row ['cf_description']; ?>" />
 <meta name="RATING" content="GENERAL" />
 <meta name="GENERATOR" content="EchBay.com eCommerce Software" />
 <meta itemprop="name" content="<?php echo $__cf_row ['cf_title']; ?>" />

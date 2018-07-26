@@ -513,7 +513,7 @@ else {
 		"@type": "Person",
 		"name": "itvn9online"
 	},
-	"description": "' . $__cf_row ['cf_description'] . '",
+	"description": "' . str_replace( '"', '&quot;', $__cf_row ['cf_description'] ) . '",
 	"image": {
 		"@type": "ImageObject",
 		"width": "400",

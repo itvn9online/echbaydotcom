@@ -57,7 +57,7 @@ $f_content = '<script type="application/ld+json">
 		"position": 1,
 		"item": {
 			"@id": "' .str_replace( '/', '\/', web_link). '",
-			"name": "Trang chủ"
+			"name": "' . str_replace( '"', '&quot;', EBE_get_lang('home') ) . '"
 		}
 	} ' . implode( ' ', $schema_BreadcrumbList ) . ' ]
 }

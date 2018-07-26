@@ -1855,7 +1855,7 @@ function _eb_tieu_de_chuan_seo( $str ) {
 	}
 	
 	//
-	echo '<title>' . $str . '</title>' . "\n";
+	echo '<title>' . str_replace( '"', '&quot;', $str ) . '</title>' . "\n";
 //	return $str;
 }
 
