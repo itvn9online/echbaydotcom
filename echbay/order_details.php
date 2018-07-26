@@ -198,7 +198,7 @@ if ( $show_dang_xac_nhan != '' ) {
 				//
 				$str_select_trangthai .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 				
-				$str_button_trangthai .= '<li data-tab="' . $k . '"><button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button></li>';
+				$str_button_trangthai .= '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button></li>';
 			}
 		}
 		
