@@ -198,7 +198,7 @@ if ( $show_dang_xac_nhan != '' ) {
 				//
 				$str_select_trangthai .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 				
-				$str_button_trangthai .= '<button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button>';
+				$str_button_trangthai .= '<li data-tab="' . $k . '"><button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button></li>';
 			}
 		}
 		
@@ -207,7 +207,9 @@ if ( $show_dang_xac_nhan != '' ) {
 			<td class="t">Phân loại đơn hàng:</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="bill-detail-status"><?php echo $str_button_trangthai; ?></td>
+			<td colspan="2"><ul class="cf bill-detail-status">
+					<?php echo $str_button_trangthai; ?>
+				</ul></td>
 		</tr>
 		<!--
 		<tr>
