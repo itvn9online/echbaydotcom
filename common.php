@@ -9,8 +9,11 @@
 
 
 
-
-//echo $act;
+/*
+if ( is_home() ) {
+	echo $act;
+}
+*/
 //echo get_language_attributes();
 //echo wp_logout_url();
 //echo current_user_can();
@@ -147,6 +150,11 @@ $str_nav_mobile_top = _eb_echbay_menu( 'nav-for-mobile' );
 $id_for_get_sidebar = id_default_for_get_sidebar;
 
 if ( $act == '' ) {
+//if ( $act == '' || is_home() ) {
+	// gán lại act về trống
+//	$act = '';
+	
+	//
 	$inc_file = 'home';
 } else {
 	$inc_file = $act;

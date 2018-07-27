@@ -44,7 +44,7 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-price cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_thanhtien'); ?></div>
-						<div class="eb-quickcart-right redcolor"><span id="oi_change_tongtien" class="ebe-currency bold"></span></div>
+						<div class="eb-quickcart-right redcolor"><span id="oi_change_tongtien" class="ebe-currency bold"></span> <span id="oi_details_zero_price" class="bold d-none"><?php echo EBE_get_lang('post_zero'); ?></span></div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-fullname cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_hoten'); ?></div>
