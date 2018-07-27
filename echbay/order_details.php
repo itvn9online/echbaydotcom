@@ -227,8 +227,22 @@ if ( $show_dang_xac_nhan != '' ) {
 		<button type="button" id="eb_vandon_print" class="org-button cur"><i class="fa fa-truck"></i> In Vận đơn</button>
 	</div>
 </form>
-<br>
-<br>
+<div id="order_show_too_order" class="d-none">
+	<div class="medium18 redcolor l30">Đơn hàng cùng ngời gửi</div>
+	<table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list">
+		<tr class="table-list-title">
+			<td>ID</td>
+			<td>Khách hàng</td>
+			<td>Điện thoại</td>
+			<td>Địa chỉ</td>
+			<!-- <td>IP</td> -->
+			<td>Ngày gửi</td>
+			<td>Ghi chú đơn hàng</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+</div>
 <div class="medium18 redcolor l30">Lịch sử xem và thay đổi dữ liệu</div>
 <table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list">
 	<tr class="table-list-title">

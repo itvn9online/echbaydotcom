@@ -47,10 +47,10 @@ if ( $strFilter != '' ) {
 //	echo $strFilter;
 	
 	// lấy danh sách đơn hàng
-	$sql = _eb_load_order( 100, array(
-		'filter_by' => $strFilter,
+	$sql = _eb_load_order( 25, array(
 		// chỉ lấy các đơn bị liệt vào danh sách đen
-		'status_by' => 12
+//		'status_by' => 12,
+		'filter_by' => $strFilter
 	) );
 //	print_r( $sql );
 	
@@ -58,13 +58,20 @@ if ( $strFilter != '' ) {
 	foreach ( $sql as $v ) {
 //		print_r( $v );
 		
+		// đối với các đơn khác
+		$str_js = 'arr_list_orther_order';
+		
+		// đối với đơn bị báo xấu
+		if ( $v->order_status == 12 ) {
+			$str_js = 'arr_user_blacklist';
+		}
+		
 		//
-		echo '
-		arr_user_blacklist.push({
+		echo $str_js . '.push({
 			"order_id" : ' . $v->order_id . ',
+			"order_status" : ' . $v->order_status . ',
 			"order_customer" : "' . $v->order_customer . '"
-		});
-		';
+		});';
 	}
 	
 	//

@@ -323,9 +323,11 @@ function WGR_hide_html_alert_auto_order_submit () {
 
 
 
-//
+// danh sách các đơn đã bị báo xấu của tài khoản này
 var arr_user_blacklist = [],
-	da_load_danh_sach_bao_xau = false;
+	da_load_danh_sach_bao_xau = false,
+	// danh sách các đơn khác cùng tài khoản, trừ đơn báo xấu
+	arr_list_orther_order = [];
 setTimeout(function () {
 	
 	// đánh dấu tab cùng trạng thái với dơn hiện tại
@@ -369,11 +371,17 @@ setTimeout(function () {
 					else {
 						// hiển thị thông báo báo xấu
 						$('#open_list_bao_xau strong').html( arr_user_blacklist.length );
+						
+						// ẩn đi để lúc nữa còn dùng lệnh toggle
+						$('#order_show_bao_xau').hide();
+						
+						//
 						$('#open_list_bao_xau').fadeIn().on('click', function () {
 							
 							//
 							$('#open_list_bao_xau').fadeOut();
-							$('#order_show_bao_xau').fadeIn();
+//							$('#order_show_bao_xau').fadeIn();
+							$('#order_show_bao_xau').toggle('slow');
 							
 							//
 							if ( da_load_danh_sach_bao_xau == true ) {
@@ -384,7 +392,7 @@ setTimeout(function () {
 							//
 							var str = '';
 							for ( var i = 0; i < arr_user_blacklist.length; i++ ) {
-								console.log( admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id );
+//								console.log( admin_link + 'admin.php?page=eb-order&id=' + arr_user_blacklist[i].order_id );
 								
 								
 								//
@@ -423,9 +431,44 @@ setTimeout(function () {
 						//
 						$('#close_list_bao_xau').on('click', function () {
 							$('#open_list_bao_xau').fadeIn();
-							$('#order_show_bao_xau').fadeOut();
+//							$('#order_show_bao_xau').fadeOut();
+							$('#order_show_bao_xau').toggle('slow');
 						});
 					}
+				}
+				
+				//
+//				console.log( arr_list_orther_order );
+				if ( arr_list_orther_order.length > 0 ) {
+					var str = '';
+					for ( var i = 0; i < arr_list_orther_order.length; i++ ) {
+						try {
+							var custom_info = $.parseJSON( unescape( arr_list_orther_order[i].order_customer ) );
+							console.log( custom_info );
+							
+							//
+							if ( custom_info.hd_ten == '' ) {
+								custom_info.hd_ten = custom_info.hd_dienthoai;
+							}
+							
+							//
+							str += '\
+							<tr class="hd_status' + arr_list_orther_order[i].order_status + '">\
+								<td><a href="' + admin_link + 'admin.php?page=eb-order&id=' + arr_list_orther_order[i].order_id + '" target="_blank" class="bold">' + arr_list_orther_order[i].order_id + '</a></td>\
+								<td><a href="' + admin_link + 'admin.php?page=eb-order&id=' + arr_list_orther_order[i].order_id + '" target="_blank" class="bold">' + custom_info.hd_ten + '</a></td>\
+								<td>' + custom_info.hd_dienthoai + '</td>\
+								<td>' + custom_info.hd_diachi + '</td>\
+								<td>' + _date( lang_date_format, custom_info.hd_usertime ) + '</td>\
+								<td class="orgcolor">' + custom_info.hd_admin_ghichu + '</li>\
+							</tr>';
+						} catch ( e ) {
+							console.log( WGR_show_try_catch_err( e ) );
+						}
+					}
+					
+					//
+					$('#order_show_too_order table').append( str );
+					$('#order_show_too_order').toggle('slow');
 				}
 			}, 600);
 			
