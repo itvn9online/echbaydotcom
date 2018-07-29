@@ -706,9 +706,44 @@ function ___eb_details_product_tab () {
 // giá theo từng màu hoặc size (ưu tiên size)
 function WGR_show_price_for_size_color ( gia ) {
 	
+	// nếu không xác định được giá thì bỏ luôn -> chức năng này để xác định lại giá
+	if ( typeof gia == 'undefined' || gia == '' || gia <= 0 ) {
+		return false;
+	}
+	
 	// add giá theo bản mới -> web nào update mới có tính năng này
 	if ( jQuery('.show-size-color-price').length > 0 ) {
-		jQuery('.show-size-color-price strong').html( g_func.money_format( gia ) );
+		jQuery('.show-size-color-price .ebe-currency').html( g_func.money_format( gia ) );
+		
+		// tính bước giá đã thay đổi của giá mới
+		var buoc_gia = $('.show-size-color-price .ebe-currency').attr('data-num') || '',
+			gia_cu = $('.set-size-color-price .ebe-currency').attr('data-num') || '',
+//			giam_gia = $('.thread-details-data-gia').attr('data-gia') || '',
+			set_gia = 0,
+			// tỉ lệ thay đổi giá của giá mới -> giá cũ cũng giảm tương tự
+			ti_le = 0;
+//		console.log(buoc_gia);
+//		console.log(gia_cu);
+//		console.log(giam_gia);
+		
+		// nếu tìm và xác định được giá cũ thì mới tiếp tục
+		if ( gia_cu != '' && gia_cu > 0 && buoc_gia != '' && buoc_gia > 0 ) {
+			// nếu tỉ lệ không đổi -> không cần tính toán nữa
+			if ( buoc_gia == gia ) {
+				$('.set-size-color-price .ebe-currency').html( g_func.money_format( gia_cu ) );
+			}
+			// khi giá có thay đổi -> tính toán lại
+			else {
+				ti_le = gia * 100 / buoc_gia;
+//				console.log(ti_le);
+				
+				// tính lại giá cũ theo tỉ lệ vừa tính được
+				set_gia = gia_cu/ 100 * ti_le;
+				
+				// hiển thị lại giá cũ theo tỉ lệ đã tìm được
+				$('.set-size-color-price .ebe-currency').html( g_func.money_format( set_gia ) );
+			}
+		}
 	}
 	else {
 		console.log('Update new version or add class show-size-color-price for show child product price');
