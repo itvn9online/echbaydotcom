@@ -33,10 +33,10 @@ if ( typeof $ == 'undefined' ) {
 		
 		// khoảng thời gian để chuyển URL cuối cùng
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
-		
 //		return false;
 		
-		if ( l != '' && l != window.location.href ) {
+		// nếu có URL cũ, và URL mới không phải là edit post
+		if ( window.location.href.split('/post.php?post=').length == 1 && l != '' && l != window.location.href ) {
 			$('body').css({
 				opacity: .1
 			});
@@ -50,7 +50,7 @@ if ( typeof $ == 'undefined' ) {
 		
 	}
 	
-	// sau 5 giây thì lưu URL hiện tại lại
+	// sau 5 phút thì lưu URL hiện tại lại
 	setTimeout(function () {
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		g_func.setc( 'wgr_last_url_user_visit', escape( window.location.href ), 0, 7 );

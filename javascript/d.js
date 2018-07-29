@@ -716,9 +716,9 @@ function WGR_show_price_for_size_color ( gia ) {
 		jQuery('.show-size-color-price .ebe-currency').html( g_func.money_format( gia ) );
 		
 		// tính bước giá đã thay đổi của giá mới
-		var buoc_gia = $('.show-size-color-price .ebe-currency').attr('data-num') || '',
-			gia_cu = $('.set-size-color-price .ebe-currency').attr('data-num') || '',
-//			giam_gia = $('.thread-details-data-gia').attr('data-gia') || '',
+		var buoc_gia = jQuery('.show-size-color-price .ebe-currency').attr('data-num') || '',
+			gia_cu = jQuery('.set-size-color-price .ebe-currency').attr('data-num') || '',
+			giam_gia = jQuery('.thread-details-data-gia').attr('data-gia') || '',
 			set_gia = 0,
 			// tỉ lệ thay đổi giá của giá mới -> giá cũ cũng giảm tương tự
 			ti_le = 0;
@@ -730,18 +730,28 @@ function WGR_show_price_for_size_color ( gia ) {
 		if ( gia_cu != '' && gia_cu > 0 && buoc_gia != '' && buoc_gia > 0 ) {
 			// nếu tỉ lệ không đổi -> không cần tính toán nữa
 			if ( buoc_gia == gia ) {
-				$('.set-size-color-price .ebe-currency').html( g_func.money_format( gia_cu ) );
+				jQuery('.set-size-color-price .ebe-currency').html( g_func.money_format( gia_cu ) );
 			}
 			// khi giá có thay đổi -> tính toán lại
 			else {
-				ti_le = gia * 100 / buoc_gia;
-//				console.log(ti_le);
-				
-				// tính lại giá cũ theo tỉ lệ vừa tính được
-				set_gia = gia_cu/ 100 * ti_le;
+				// tính theo % có sẵn -> giá cũ luôn luôn hơn giá mới theo % nhất định
+				if ( giam_gia != '' && giam_gia > 0 ) {
+					// ép về kiểu số mới thực hiện pháp cộng được
+					set_gia = ( 0 - ( 0 - gia ) ) + ( gia/ 100 * giam_gia );
+					// với giá $ thì chưa test -> nên vẫn dùng phương thức trên
+//					set_gia = Number( gia ) + ( gia/ 100 * giam_gia );
+				}
+				// không có % thì tính theo bước giá đã thay đổi
+				else {
+					ti_le = Math.ceil( gia * 100 / buoc_gia );
+//					console.log(ti_le);
+					
+					// tính lại giá cũ theo tỉ lệ vừa tính được
+					set_gia = Math.ceil( gia_cu/ 100 * ti_le );
+				}
 				
 				// hiển thị lại giá cũ theo tỉ lệ đã tìm được
-				$('.set-size-color-price .ebe-currency').html( g_func.money_format( set_gia ) );
+				jQuery('.set-size-color-price .ebe-currency').html( g_func.money_format( set_gia ) );
 			}
 		}
 	}
