@@ -1738,10 +1738,12 @@ var _global_js_eb = {
 //		g_func.delck('ipinfo_to_language'); return;
 		
 		// kiểm tra trong cookie xem có ko
-		var a = g_func.getc('ipinfo_to_language');
 		if ( typeof real_time != 'undefined' && real_time == 1 ) {
-			a = null;
+			var a = null;
 			console.log('clear ipinfo_to_language cookie');
+		}
+		else {
+			var a = g_func.getc('ipinfo_to_language');
 		}
 //		console.log( a );
 		
@@ -1770,7 +1772,9 @@ var _global_js_eb = {
 			a = json_array (a);
 			
 			// làm lại lần nữa cho chắc ăn
-			a = json_array (a);
+			if ( typeof a != 'object' ) {
+				a = json_array (a);
+			}
 			
 			// quá tam 3 bận
 			if ( typeof a != 'object' ) {
@@ -1786,7 +1790,8 @@ var _global_js_eb = {
 				after_load( a );
 			}
 			
-//			console.log(a);
+			//
+			console.log(a);
 			
 			return a;
 		}
@@ -1794,6 +1799,8 @@ var _global_js_eb = {
 		// chức năng hỏi tọa độ chỉ hoạt động trên HTTPS -> kiểm tra luôn
 		if ( window.location.protocol != 'https:' ) {
 			console.log('navigator.geolocation only runing in HTTPS');
+			
+			// chuyển sang chế độ lấy tự động luôn và ngay
 			return _global_js_eb.user_auto_loc( after_load );
 		}
 		

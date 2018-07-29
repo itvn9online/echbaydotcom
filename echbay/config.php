@@ -100,6 +100,7 @@ WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
 
 
 
+
 //
 //print_r( $__cf_row_default );
 $__cf_row = $__cf_row_default;
@@ -744,9 +745,6 @@ if ( $include_page == 'config_theme' ) {
 
 // -> HTML
 $main_content = EBE_arr_tmp( $arr_for_set_template, $main_content );
-
-
-
 
 
 

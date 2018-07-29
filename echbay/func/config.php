@@ -395,6 +395,25 @@ $_POST['cf_default_css'] = WGR_remove_css_multi_comment( $_POST['cf_default_css'
 
 
 
+// Tự động xác định lại vị trí của admin website để tạo map
+if ( $_POST['cf_region'] == '' || $_POST['cf_placename'] == '' ) {
+	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+	
+	//
+	if ( $cGeoLite2 != NULL ) {
+		if ( $_POST['cf_region'] == '' ) {
+			$_POST['cf_region'] = $cGeoLite2->getUserCountryCodeByIp();
+		}
+		
+		if ( $_POST['cf_placename'] == '' ) {
+			$_POST['cf_placename'] = $cGeoLite2->getUserCityByIp();
+		}
+	}
+}
+
+
+
+
 // chuyển đơn vị tiền tệ từ sau ra trước
 /*
 if ( $_POST['cf_current_price_before'] == 1 ) {

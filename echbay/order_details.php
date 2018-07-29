@@ -273,12 +273,9 @@ echo WP_CONTENT_DIR . '<br>';
 */
 
 // GeoLite2 -> xác định vị trí người dùng qua IP
-$inc_GeoLite2 = WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2/GeoLite2Helper.php';
-//echo $inc_GeoLite2 . '<br>';
-if ( file_exists( $inc_GeoLite2 ) ) {
-	include $inc_GeoLite2;
-	$helper = new GeoLite2Helper();
-	echo $helper->checkIpFromVietnam( $post->order_ip );
+include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+if ( $cGeoLite2 != NULL ) {
+	echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
 }
 else {
 	echo 'PRO version';
