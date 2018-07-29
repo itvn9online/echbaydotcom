@@ -172,6 +172,10 @@ else if ( $__post->post_type == 'page' ) {
 		$id_for_get_sidebar = 'page_sidebar';
 	}
 }
+// product wooecommerce
+else if ( $__post->post_type == 'product' ) {
+	$post_categories = get_the_terms( $pid, 'product_cat' );
+}
 //if ( mtv_id == 1 ) print_r( $post_categories );
 
 
@@ -609,6 +613,10 @@ if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
 else if ( $__post->post_type == 'page' ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
 	include EB_THEME_PLUGIN_INDEX . 'global/details_page.php';
+}
+else if ( $__post->post_type == 'product' ) {
+	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
+//	include EB_THEME_PLUGIN_INDEX . 'global/details_page.php';
 }
 // post
 else {

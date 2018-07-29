@@ -4,7 +4,12 @@ if ( have_posts() ) {
 //	echo '<!-- TEST -->' . "\n";
 //	print_r( $post );
 	
-	if ( $post->post_type == 'post' || $post->post_type == EB_BLOG_POST_TYPE ) {
+	// các post type được hỗ trợ
+	if ( $post->post_type == 'post'
+	// blog cuar WGR
+	|| $post->post_type == EB_BLOG_POST_TYPE
+	// product của woocommerce
+	|| $post->post_type == 'product' ) {
 		if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'php/content.php' ) ) {
 //			echo '<!-- ' . EB_CHILD_THEME_URL . ' -->' . "\n";
 			include EB_CHILD_THEME_URL . 'php/content.php';

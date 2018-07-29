@@ -2192,6 +2192,14 @@ $arr_object_term_meta = array();
 function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
 	global $arr_object_term_meta;
 	
+	/*
+	echo '============================<br>' . "\n";
+	print_r( $id );
+	echo '<br>' . "\n";
+	echo $key . '<br>' . "\n";
+	echo '============================<br>' . "\n";
+	*/
+	
 	// v3 -> sử dụng term meta
 	$check_id = 'cid' . $id;
 	
