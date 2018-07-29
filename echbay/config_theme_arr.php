@@ -102,8 +102,8 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 //	global $arr_for_set_template;
 	
 	//
-	$path_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-premium/', EB_THEME_PLUGIN_INDEX );
-	$url_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-premium/', EB_URL_OF_PLUGIN );
+	$path_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-pro/', EB_THEME_PLUGIN_INDEX );
+	$url_for_premium = str_replace( '/echbaydotcom/', '/echbaydotcom-pro/', EB_URL_OF_PLUGIN );
 	
 	// định dạng file được hỗ trợ
 	$files_type_support = 'php,html,htm';

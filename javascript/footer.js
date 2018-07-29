@@ -676,7 +676,7 @@ function WGR_click_add_product_to_favorite () {
 	
 	// chạy vòng lặp và tạo hiệu ứng select cho các sản phẩm đã lưu
 	for ( var i = 0; i < check_favorite.length; i++ ) {
-		check_favorite[i] = check_favorite[i].replace(/\[|\]/, '');
+		check_favorite[i] = check_favorite[i].replace(/\[|\]/g, '');
 //		check_favorite[i] = parseInt( check_favorite[i], 10 );
 //		console.log(check_favorite[i]);
 		

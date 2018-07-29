@@ -1,6 +1,7 @@
 <?php
 
 
+
 // sử dụng file này để load chi tiết đơn hàng -> dùng chung
 include ECHBAY_PRI_CODE . 'order_details_load.php';
 
@@ -259,6 +260,31 @@ if ( $show_dang_xac_nhan != '' ) {
 	<tr>
 		<td class="t">IP</td>
 		<td class="i"><?php echo $post->order_ip; ?></td>
+	</tr>
+	<tr>
+		<td class="t">Vị trí (tương đối)</td>
+		<td class="i"><?php
+
+//
+/*
+echo EB_THEME_PLUGIN_INDEX . '<br>';
+echo EB_URL_OF_PLUGIN . '<br>';
+echo WP_CONTENT_DIR . '<br>';
+*/
+
+// GeoLite2 -> xác định vị trí người dùng qua IP
+$inc_GeoLite2 = WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2/GeoLite2Helper.php';
+//echo $inc_GeoLite2 . '<br>';
+if ( file_exists( $inc_GeoLite2 ) ) {
+	include $inc_GeoLite2;
+	$helper = new GeoLite2Helper();
+	echo $helper->checkIpFromVietnam( $post->order_ip );
+}
+else {
+	echo 'PRO version';
+}
+
+		?></td>
 	</tr>
 </table>
 <br>
