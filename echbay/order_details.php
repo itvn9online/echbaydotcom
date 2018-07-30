@@ -101,6 +101,13 @@ if ( $show_dang_xac_nhan != '' ) {
 	*/
 }
 
+
+
+// xem người gửi đơn là admin hay khách
+$order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
+
+
+
 ?>
 <form name="frm_invoice_details" method="post" action="<?php echo web_link; ?>process/?set_module=order_details" target="target_eb_iframe" onSubmit="return ___eb_admin_update_order_details();">
 	<div class="d-none">
@@ -272,13 +279,18 @@ echo EB_URL_OF_PLUGIN . '<br>';
 echo WP_CONTENT_DIR . '<br>';
 */
 
-// GeoLite2 -> xác định vị trí người dùng qua IP
-include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
-if ( $cGeoLite2 != NULL ) {
-	echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+// GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
+if ( $order_user_can == 1 ) {
+	echo 'Admin';
 }
 else {
-	echo 'PRO version';
+	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+	if ( $cGeoLite2 != NULL ) {
+		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+	}
+	else {
+		echo 'PRO version';
+	}
 }
 
 		?></td>
@@ -306,7 +318,7 @@ var order_details_arr_cart_product_list_v1 = (function ( arr ) {
 var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
 	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
 	order_id = "<?php echo $id; ?>",
-	order_user_can = "<?php echo ( user_can($post->tv_id, 'delete_posts') ? 1 : 0 ); ?>";
+	order_user_can = "<?php echo $order_user_can; ?>";
 
 </script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . date_time; ?>"></script> 
