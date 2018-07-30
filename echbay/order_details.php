@@ -132,6 +132,34 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 			<td class="i"><input type="text" name="t_diachi" id="oi_hd_diachi" value="" class="l" /></td>
 		</tr>
 		<tr>
+			<td valign="top" class="t">Vị trí địa lý</td>
+			<td class="i"><?php
+
+//
+/*
+echo EB_THEME_PLUGIN_INDEX . '<br>';
+echo EB_URL_OF_PLUGIN . '<br>';
+echo WP_CONTENT_DIR . '<br>';
+*/
+
+// GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
+if ( $order_user_can == 1 ) {
+	echo 'Admin';
+}
+else {
+	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+	if ( $cGeoLite2 != NULL ) {
+		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+	}
+	else {
+		echo 'Phiên bản <i class="fa-pro"></i>';
+	}
+}
+
+		?>
+				<div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có tính chất tham khảo!</div></td>
+		</tr>
+		<tr>
 			<td class="t">Email</td>
 			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
 		</tr>
@@ -267,33 +295,6 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 	<tr>
 		<td class="t">IP</td>
 		<td class="i"><?php echo $post->order_ip; ?></td>
-	</tr>
-	<tr>
-		<td class="t">Vị trí (tương đối)</td>
-		<td class="i"><?php
-
-//
-/*
-echo EB_THEME_PLUGIN_INDEX . '<br>';
-echo EB_URL_OF_PLUGIN . '<br>';
-echo WP_CONTENT_DIR . '<br>';
-*/
-
-// GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
-if ( $order_user_can == 1 ) {
-	echo 'Admin';
-}
-else {
-	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
-	if ( $cGeoLite2 != NULL ) {
-		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
-	}
-	else {
-		echo 'PRO version';
-	}
-}
-
-		?></td>
 	</tr>
 </table>
 <br>

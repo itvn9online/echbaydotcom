@@ -2213,3 +2213,16 @@ iframe[name="google_conversion_frame"] {
 }
 .thread-details-index li:hover { text-decoration: underline; }
 .footer-address-address p { margin: 0; }
+/* pro version */
+.fa-pro,
+.fa-pro-version {
+	font-style: normal;
+	font-weight: bold;
+	display: inline-block;
+	color: #fff;
+	background: #FF9800;
+	padding: 0 5px;
+	border-radius: 4px;
+}
+.fa-pro:before { content: "Pro"; }
+.fa-pro-version:before { content: "Pro version"; }
