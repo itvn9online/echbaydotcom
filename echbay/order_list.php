@@ -144,15 +144,6 @@ $str_hom_nay = date( 'md', date_time );
 
 
 ?>
-<style type="text/css">
-.show-order-120size .eb-to-product,
-.show-order-120size .eb-to-adress { width: 250px; }
-.show-if-order-fullsize { display: none; }
-.time-for-send-bill {
-	font-weight: normal;
-	font-size: 12px;
-}
-</style>
 <div class="wrap">
 	<div class="cf">
 		<div class="lf f60">
@@ -256,9 +247,9 @@ $str_hom_nay = date( 'md', date_time );
 		
 		//
 		echo '
-		<tr class="eb-set-order-list-info check_hom_nay' . $check_hom_nay . ' hd_status' . $hd_trangthai . '">
+		<tr data-id="' . $o->order_id . '" class="eb-set-order-list-info poup-change-status check_hom_nay' . $check_hom_nay . ' hd_status' . $hd_trangthai . '">
 			<td class="text-center">
-				<div><a href="' . admin_link . 'admin.php?page=eb-order&id=' . $o->order_id . '">
+				<div><a href="' . admin_link . 'admin.php?page=eb-order&id=' . $o->order_id . '" data-id="' . $o->order_id . '" class="open-order-in-popup">
 					' . $o->order_sku . ' <i class="fa fa-edit bluecolor"></i>
 					<span class="time-for-send-bill d-block">(' . $ngay_gui_don . ')</span>
 				</a></div>
@@ -316,6 +307,10 @@ if ($totalPage > 1) {
 ?>
 </div>
 <br>
+<!-- mở cửa sổ chỉnh đơn hàng trong popup -->
+<div id="oi_order_iframe" class="hide-if-press-esc d-none">
+	<iframe id="target_order_iframe" name="target_order_iframe" src="about:blank" width="100%" height="600">AJAX form</iframe>
+</div>
 <script type="text/javascript">
 
 var str_hom_nay = "<?php echo $str_hom_nay; ?>";
@@ -329,4 +324,5 @@ WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>
 
 click_set_search_order_by_type();
 
-</script>
+</script> 
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_list.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_list.js' ); ?>"></script> 

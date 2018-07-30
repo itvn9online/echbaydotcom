@@ -1193,6 +1193,31 @@ input[id="_eb_category_order"] { width: 90px; }
 	display: inline-block;
 	min-width: 21px;
 }
+/* open order details in popup */
+.show-if-order-fullsize,
+body.order_open_in_popup #wpadminbar,
+body.order_open_in_popup #adminmenumain,
+body.order_open_in_popup .hide-if-order-open-in-popup { display: none; }
+body.order_open_in_popup .show-if-order-open-in-popup { display: block; }
+body.order_open_in_popup #wpcontent { margin-left: 0; }
+html.order_open_in_popup { padding-top: 0; }
+.show-order-120size .eb-to-product,
+.show-order-120size .eb-to-adress { width: 250px; }
+.time-for-send-bill {
+	font-weight: normal;
+	font-size: 12px;
+}
+#oi_order_iframe {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999999;
+	width: 90%;
+	max-width: 1100px;
+	background: #fff;
+	box-shadow: 0 0 90px #333;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

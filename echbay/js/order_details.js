@@ -1,9 +1,41 @@
 
 
 
+// nếu hóa đơn được mở trong popup -> ẩn 1 số thông tin đi cho gọn
+if ( top != self ) {
+	// thêm class để ẩn bớt dữ liệu
+	$('body').addClass('order_open_in_popup').addClass('folded');
+	$('html').addClass('order_open_in_popup');
+	
+	//
+	parent.WGR_after_open_order_details_popup();
+	
+	//
+	$('a').attr({
+		target: '_blank'
+	});
+}
+/*
+else if ( typeof window.opener == 'object' ) {
+	window.opener.WGR_after_open_order_details_popup();
+}
+*/
+//console.log( typeof window.opener );
+
+
+
+//
 var arr_global_js_order_details = [],
 	arr_global_js_order_customter = {},
 	auto_add_slug_if_not_exist = false;
+
+
+function WGR_order_details_after_update () {
+	// nếu đơn hàng được sửa trong popup -> xử lý phần trạng thái đơn
+	if ( top != self ) {
+		parent.WGR_order_list_after_update( order_id, document.frm_invoice_details.t_trangthai.value, $('.bill-detail-status button.selected span').html() );
+	}
+}
 
 function ___eb_admin_update_order_details () {
 	
@@ -346,6 +378,7 @@ setTimeout(function () {
 	if ( dt != '' ) {
 		dt = g_func.non_mark_seo( dt.split('-')[0].split('/')[0] );
 //		console.log( dt );
+		dt = g_func.number_only( dt );
 		dt = dt.toString().replace(/\-/g, '').substr( dt.toString().length - 9 );
 		
 		uri += '&dt=' + dt;

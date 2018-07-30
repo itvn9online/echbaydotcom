@@ -9,6 +9,7 @@ include ECHBAY_PRI_CODE . 'order_details_load.php';
 
 ?>
 
+<p class="orgcolor d-none show-if-order-open-in-popup">* Bấm <strong>ESC</strong> hoặc <span onClick="process_for_press_esc();" class="cur bluecolor">nhấn vào đây</span> để đóng cửa sổ này!</p>
 <div class="wrap">
 	<h1>Chi tiết đơn hàng</h1>
 </div>
@@ -323,4 +324,4 @@ var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>"
 	order_user_can = "<?php echo $order_user_can; ?>";
 
 </script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . date_time; ?>"></script> 
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 

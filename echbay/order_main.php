@@ -1,18 +1,19 @@
-<br>
-<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Đơn hàng</a></div>
-<ul class="cf eb-admin-tab eb-order-filter-tab">
-	<li><a href="admin.php?page=eb-order">Tất cả</a></li>
-	<?php
-	global $arr_hd_trangthai;
-	
-	//
-	foreach ( $arr_hd_trangthai as $k => $v ) {
-		if ( $k >= 0 ) {
-			echo '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
+<div class="hide-if-order-open-in-popup"><br>
+	<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Đơn hàng <i class="fa fa-refresh"></i></a></div>
+	<ul class="cf eb-admin-tab eb-order-filter-tab">
+		<li><a href="admin.php?page=eb-order">Tất cả</a></li>
+		<?php
+		global $arr_hd_trangthai;
+		
+		//
+		foreach ( $arr_hd_trangthai as $k => $v ) {
+			if ( $k >= 0 ) {
+				echo '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
+			}
 		}
-	}
-	?>
-</ul>
+		?>
+	</ul>
+</div>
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order.js?v=' . date_time; ?>"></script>
 <?php
 
@@ -142,6 +143,7 @@ if ( isset($_GET['id']) ) {
 } else {
 	include ECHBAY_PRI_CODE . 'order_list.php';
 }
+
 
 
 

@@ -419,7 +419,18 @@ function process_for_press_esc () {
 	$('.click-to-exit-design').click();
 	$('#oi_admin_popup, .hide-if-press-esc').hide();
 	
-	$('body').removeClass('ebdesign-no-scroll');
+	$('body').removeClass('ebdesign-no-scroll').removeClass('body-no-scroll');
+	
+	// nếu admin đang mở trong popup -> xử lý cả ở cửa số cha
+	if ( top != self ) {
+		try {
+			top.process_for_press_esc();
+		}
+		catch (e) {
+			parent.process_for_press_esc();
+		}
+//		window.opener.process_for_press_esc();
+	}
 }
 
 // Tất cả các hiệu ứng khi bấm ESC sẽ bị đóng lại
