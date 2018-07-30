@@ -1210,13 +1210,22 @@ html.order_open_in_popup { padding-top: 0; }
 #oi_order_iframe {
 	position: fixed;
 	top: 0;
-	right: 0;
+	right: -1500px;
 	bottom: 0;
 	z-index: 999999;
 	width: 90%;
 	max-width: 1100px;
 	background: #fff;
 	box-shadow: 0 0 90px #333;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	opacity: .2;
+}
+body.body-no-scroll #oi_order_iframe {
+	right: 0;
+	opacity: 1;
 }
 
 @media screen and (max-width:775px) {

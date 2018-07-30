@@ -34,7 +34,8 @@ _global_js_eb.add_primari_iframe();
 // chức năng xử lý cho product size
 var eb_global_product_size = '',
 	eb_inner_html_product_size = '',
-	gallery_has_been_load = false;
+	gallery_has_been_load = false,
+	current_ls_url = window.location.href;
 
 
 
@@ -420,6 +421,8 @@ function process_for_press_esc () {
 	$('#oi_admin_popup, .hide-if-press-esc').hide();
 	
 	$('body').removeClass('ebdesign-no-scroll').removeClass('body-no-scroll');
+	
+	window.history.pushState("", '', current_ls_url);
 	
 	// nếu admin đang mở trong popup -> xử lý cả ở cửa số cha
 	if ( top != self ) {

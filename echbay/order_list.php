@@ -308,7 +308,7 @@ if ($totalPage > 1) {
 </div>
 <br>
 <!-- mở cửa sổ chỉnh đơn hàng trong popup -->
-<div id="oi_order_iframe" class="hide-if-press-esc d-none">
+<div id="oi_order_iframe" class="hide-if-press-esc2">
 	<iframe id="target_order_iframe" name="target_order_iframe" src="about:blank" width="100%" height="600">AJAX form</iframe>
 </div>
 <script type="text/javascript">
