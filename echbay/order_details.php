@@ -152,7 +152,7 @@ else {
 		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
 	}
 	else {
-		echo 'Phiên bản <i class="fa-pro"></i>';
+		echo 'Phiên bản <i class="fa-pro upper"></i>';
 	}
 }
 
