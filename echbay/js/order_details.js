@@ -344,7 +344,8 @@ setTimeout(function () {
 	
 	// điện thoại chỉ lấy 9 ký tự sau cùng -> bỏ qua phần số 0 hoặc +84 nếu có
 	if ( dt != '' ) {
-		dt = g_func.non_mark_seo( dt );
+		dt = g_func.non_mark_seo( dt.split('-')[0].split('/')[0] );
+//		console.log( dt );
 		dt = dt.toString().replace(/\-/g, '').substr( dt.toString().length - 9 );
 		
 		uri += '&dt=' + dt;

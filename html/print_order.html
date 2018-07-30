@@ -81,64 +81,71 @@ a { color: #000 !important }
 	var str = '',
 		str2 = '',
 		tong_tien1 = 0,
-		product_price = 0;
+		product_price = 0,
+		j = 1;
 	for ( var i = 0; i < order_details_arr_cart_product_list.length; i++ ) {
-		product_price = order_details_arr_cart_product_list[i].price;
-		// hiển thị giá theo size, color nếu có
-		if ( typeof order_details_arr_cart_product_list[i].child_price != 'undefined' && order_details_arr_cart_product_list[i].child_price != '' ) {
-			product_price = order_details_arr_cart_product_list[i].child_price;
-		}
 		
-		//
-		var total_line = product_price * order_details_arr_cart_product_list[i].quan;
-		tong_tien1 += total_line;
-		
-		//
-		if ( order_details_arr_cart_product_list[i].color != '' ) {
-			order_details_arr_cart_product_list[i].color = $.trim( order_details_arr_cart_product_list[i].color );
-			if ( order_details_arr_cart_product_list[i].color.substr( 0, 1 ) != '-' ) {
-				order_details_arr_cart_product_list[i].color = '- ' + order_details_arr_cart_product_list[i].color;
+		if ( order_details_arr_cart_product_list[i].quan > 0 ) {
+			product_price = order_details_arr_cart_product_list[i].price;
+			// hiển thị giá theo size, color nếu có
+			if ( typeof order_details_arr_cart_product_list[i].child_price != 'undefined' && order_details_arr_cart_product_list[i].child_price != '' ) {
+				product_price = order_details_arr_cart_product_list[i].child_price;
 			}
 			
-			order_details_arr_cart_product_list[i].color = ' ' + order_details_arr_cart_product_list[i].color;
-		}
-		
-		if ( order_details_arr_cart_product_list[i].size != '' ) {
-			order_details_arr_cart_product_list[i].size = $.trim( order_details_arr_cart_product_list[i].size );
-			if ( order_details_arr_cart_product_list[i].size.substr( 0, 1 ) != '(' ) {
-				order_details_arr_cart_product_list[i].size = '(Size: ' + order_details_arr_cart_product_list[i].size + ')';
+			//
+			var total_line = product_price * order_details_arr_cart_product_list[i].quan;
+			tong_tien1 += total_line;
+			
+			//
+			if ( order_details_arr_cart_product_list[i].color != '' ) {
+				order_details_arr_cart_product_list[i].color = $.trim( order_details_arr_cart_product_list[i].color );
+				if ( order_details_arr_cart_product_list[i].color.substr( 0, 1 ) != '-' ) {
+					order_details_arr_cart_product_list[i].color = '- ' + order_details_arr_cart_product_list[i].color;
+				}
+				
+				order_details_arr_cart_product_list[i].color = ' ' + order_details_arr_cart_product_list[i].color;
 			}
 			
-			order_details_arr_cart_product_list[i].size = ' ' + order_details_arr_cart_product_list[i].size;
-		}
-		
-		//
-		str += '\
+			if ( order_details_arr_cart_product_list[i].size != '' ) {
+				order_details_arr_cart_product_list[i].size = $.trim( order_details_arr_cart_product_list[i].size );
+				if ( order_details_arr_cart_product_list[i].size.substr( 0, 1 ) != '(' ) {
+					order_details_arr_cart_product_list[i].size = '(Size: ' + order_details_arr_cart_product_list[i].size + ')';
+				}
+				
+				order_details_arr_cart_product_list[i].size = ' ' + order_details_arr_cart_product_list[i].size;
+			}
+			
+			//
+			str += '\
 <tr>\
-	<td>' + ( i + 1 ) + '</td>\
+	<td>' + j + '</td>\
 	<td>' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</td>\
 	<td>&nbsp;</td>\
 	<td><span class="ebe-currency">' + g_func.money_format( product_price ) + '</span></td>\
 	<td>' + order_details_arr_cart_product_list[i].quan + '</td>\
 	<td><span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></td>\
 </tr>';
+			
+			// for vận đơn
+			str2 += '<div>' + j + '. ' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</div>';
+			
+			//
+			j++;
+			
+		}
 		
-		// for vận đơn
-		str2 += '<div>' + ( i + 1 ) + '. ' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</div>';
+		//
+		if ( print_type == 'print_van_don' ) {
+			$('.product_vandon_list').html( str2 );
+		}
+		else {
+			$('.public-table-print .tr-title').after( str );
+			$('#tong_tien1').html( g_func.money_format( tong_tien1 ) );
+		}
 		
+		//
+		$('#tinh_tong_tien').html( g_func.money_format( tong_tien1 ) );
 	}
-	
-	//
-	if ( print_type == 'print_van_don' ) {
-		$('.product_vandon_list').html( str2 );
-	}
-	else {
-		$('.public-table-print .tr-title').after( str );
-		$('#tong_tien1').html( g_func.money_format( tong_tien1 ) );
-	}
-	
-	//
-	$('#tinh_tong_tien').html( g_func.money_format( tong_tien1 ) );
 	
 })();
 </script>

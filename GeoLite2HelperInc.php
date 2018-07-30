@@ -9,7 +9,7 @@ include GeoLite2Helper_PATH . '/Db/Reader/Util.php';
 
 use MaxMind\Db\Reader;
 
-class GeoLite2Helper {
+class WGR_GeoLite2Helper {
 //	public $ipAddress;
 	
 	/*
@@ -62,7 +62,7 @@ class GeoLite2Helper {
 			$this->ipAddress = 'UNKNOWN';
 	}
 	
-	private function getDB($ip = NULL) {
+	private function getDB($ip) {
 		/*
 		if (!empty($ip)) {
 			$this->ipAddress = $ip;
@@ -93,6 +93,76 @@ class GeoLite2Helper {
 		$reader->close();
 		
 		return $result;
+	}
+	
+	
+	// lấy nhiều thông tin cùng lúc
+	public function getUserOptionByIp($ip = NULL, $o = NULL) {
+		$a = $this->getDB( $ip );
+//		if ( mtv_id == 1 ) print_r( $a );
+		
+		//
+		$r = array();
+		
+		// lấy các thông số theo thuộc tính
+		// tất cả các giá trị
+		if ( $o == NULL || $o == 'all' ) {
+			if ( isset( $a['city'] ) ) {
+				$r[] = $a['city']['names']['en'];
+			}
+			
+			$r[] = $a['country']['names']['en'];
+			$r[] = $a['continent']['names']['en'];
+			$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+		}
+		// tất cả mã vùng
+		else if ( $o == 'all_code' ) {
+			if ( isset( $a['subdivisions'] ) ) {
+				$r[] = $a['subdivisions'][0]['iso_code'];
+			}
+			else if ( isset( $a['city'] ) ) {
+				$r[] = $a['city']['names']['en'];
+			}
+			
+			$r[] = $a['country']['iso_code'];
+			$r[] = $a['continent']['code'];
+			$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+		}
+		// lấy từng cái
+		else {
+			if ( isset( $o['city'] ) && isset( $a['city'] ) ) {
+				$r[] = $a['city']['names']['en'];
+			}
+			else if ( isset( $o['city_code'] ) ) {
+				if ( isset( $a['subdivisions'] ) ) {
+					$r[] = $a['subdivisions'][0]['iso_code'];
+				}
+				else if ( isset( $a['city'] ) ) {
+					$r[] = $a['city']['names']['en'];
+				}
+			}
+			
+			if ( isset( $o['country'] ) ) {
+				$r[] = $a['country']['names']['en'];
+			}
+			else if ( isset( $o['country_code'] ) ) {
+				$r[] = $a['country']['iso_code'];
+			}
+			
+			if ( isset( $o['continent'] ) ) {
+				$r[] = $a['continent']['names']['en'];
+			}
+			else if ( isset( $o['continent_code'] ) ) {
+				$r[] = $a['continent']['code'];
+			}
+			
+			if ( isset( $o['location'] ) ) {
+				$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+			}
+		}
+		
+		//
+		return implode( ', ', $r );
 	}
 	
 	

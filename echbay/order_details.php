@@ -144,12 +144,13 @@ echo WP_CONTENT_DIR . '<br>';
 
 // GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
 if ( $order_user_can == 1 ) {
-	echo 'Admin';
+	echo 'Gửi bởi Biên tập viên';
 }
 else {
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
 	if ( $cGeoLite2 != NULL ) {
-		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+//		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+		echo $cGeoLite2->getUserOptionByIp( $post->order_ip );
 	}
 	else {
 		echo 'Phiên bản <i class="fa-pro upper"></i>';
@@ -157,7 +158,7 @@ else {
 }
 
 		?>
-				<div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có tính chất tham khảo!</div></td>
+				<div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div></td>
 		</tr>
 		<tr>
 			<td class="t">Email</td>
