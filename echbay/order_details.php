@@ -267,7 +267,7 @@ else {
 	</div>
 </form>
 <div id="order_show_too_order" class="d-none">
-	<div class="medium18 redcolor l30">Đơn hàng cùng ngời gửi</div>
+	<div class="medium18 redcolor l30">Đơn hàng cùng người gửi</div>
 	<table border="0" cellpadding="6" cellspacing="0" width="100%" class="table-list">
 		<tr class="table-list-title">
 			<td>ID</td>
