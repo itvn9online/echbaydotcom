@@ -719,7 +719,7 @@ function WGR_show_price_for_size_color ( gia ) {
 		var buoc_gia = jQuery('.show-size-color-price .ebe-currency').attr('data-num') || '',
 			gia_cu = jQuery('.set-size-color-price .ebe-currency').attr('data-num') || '',
 //			giam_gia = jQuery('.thread-details-data-gia').attr('data-gia') || '',
-			giam_gia = 0,
+			giam_gia = '',
 			set_gia = 0,
 			// tỉ lệ thay đổi giá của giá mới -> giá cũ cũng giảm tương tự
 			ti_le = 0;
