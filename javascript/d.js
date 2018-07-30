@@ -718,7 +718,8 @@ function WGR_show_price_for_size_color ( gia ) {
 		// tính bước giá đã thay đổi của giá mới
 		var buoc_gia = jQuery('.show-size-color-price .ebe-currency').attr('data-num') || '',
 			gia_cu = jQuery('.set-size-color-price .ebe-currency').attr('data-num') || '',
-			giam_gia = jQuery('.thread-details-data-gia').attr('data-gia') || '',
+//			giam_gia = jQuery('.thread-details-data-gia').attr('data-gia') || '',
+			giam_gia = 0,
 			set_gia = 0,
 			// tỉ lệ thay đổi giá của giá mới -> giá cũ cũng giảm tương tự
 			ti_le = 0;
@@ -734,6 +735,10 @@ function WGR_show_price_for_size_color ( gia ) {
 			}
 			// khi giá có thay đổi -> tính toán lại
 			else {
+				// tính theo % giảm giá đang bị sai -> tính theo bước giá
+//				giam_gia = 100 - (buoc_gia * 100 / gia_cu);
+//				console.log(giam_gia);
+				
 				// tính theo % có sẵn -> giá cũ luôn luôn hơn giá mới theo % nhất định
 				if ( giam_gia != '' && giam_gia > 0 ) {
 					// ép về kiểu số mới thực hiện pháp cộng được
