@@ -29,9 +29,11 @@ function WGR_after_open_order_details_popup () {
 	});
 	
 	//
+	/*
 	$('body').css({
-//		opacity: 1
+		opacity: 1
 	});
+	*/
 }
 
 
