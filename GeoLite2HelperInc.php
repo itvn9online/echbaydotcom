@@ -113,7 +113,7 @@ class WGR_GeoLite2Helper {
 			
 			$r[] = $a['country']['names']['en'];
 			$r[] = $a['continent']['names']['en'];
-			$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+			$r[] = '<a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
 		}
 		// tất cả mã vùng
 		else if ( $o == 'all_code' ) {
@@ -126,7 +126,7 @@ class WGR_GeoLite2Helper {
 			
 			$r[] = $a['country']['iso_code'];
 			$r[] = $a['continent']['code'];
-			$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+			$r[] = '<a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
 		}
 		// lấy từng cái
 		else {
@@ -157,7 +157,7 @@ class WGR_GeoLite2Helper {
 			}
 			
 			if ( isset( $o['location'] ) ) {
-				$r[] = ' - <a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
+				$r[] = '<a href="https://www.google.com/maps/@' . $a['location']['latitude'] . ',' . $a['location']['longitude'] . ',17z" rel="nofollow" target="_blank" class="small">Xem bản đồ</a>';
 			}
 		}
 		
