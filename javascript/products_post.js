@@ -262,6 +262,17 @@ function WGR_check_quick_edit_price () {
 
 
 
+// tìm kiếm sản phẩm
+function auto_submit_products_post_search () {
+	var f = document.frm_products_post_search;
+	
+	WGR_admin_quick_edit_products( 'products', '&by_post_type=' + f.by_post_type.value + '&q=' + encodeURIComponent( f.q.value ) );
+	
+	return false;
+}
+
+
+
 
 // Chỉnh sửa SEO nhanh
 WGR_click_open_quick_edit_seo();

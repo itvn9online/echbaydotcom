@@ -17,6 +17,7 @@
 .click-order-thread.fa-diamond[data-val="0"],
 .click-order-thread.fa-star { color: #333; }
 .click-order-thread.fa-diamond[data-val="1"] { color: #F90; }
+.quick-show-if-postblog,
 .quick-show2-if-post,
 .quick-show-if-post { display: none !important; }
 /* một số nút chỉ hiển thị với post type cụ thể */
@@ -31,6 +32,8 @@
 .class-for-post .fa-link,
 .class-for-post .fa-paw,
 .class-for-post .fa-diamond { display: inline-block !important; }
+.class-for-blog .quick-show-if-postblog,
+.class-for-post .quick-show-if-postblog,
 .class-for-post .quick-show2-if-post { display: block !important; }
 /*
 .class-for-post .quick-show-if-paw,
@@ -108,4 +111,33 @@
 #frm_quick_edit_price input[type="text"] {
 	width: 80%;
 	padding: 4px 6px;
+}
+/* phom tìm kiếm sản phẩm */
+.products-post-search {
+	margin: 0 auto;
+	max-width: 600px;
+	position: relative;
+	border: 1px #ccc solid;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0 0 10px #ccc;
+}
+.products-post-search input[type="search"] {
+	width: 90%;
+	padding-left: 6px;
+	height: 35px;
+	border: 0 none;
+	font-size: 15px;
+}
+.products-post-search button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 10%;
+	background: #FF9800;
+	color: #fff;
+	font-size: 18px;
+	border: 0 none;
+	border-radius: 0 5px 5px 0;
 }

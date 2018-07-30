@@ -70,6 +70,24 @@ if ( $by_cat_id > 0 ) {
 
 
 
+// hỗ trợ tìm kiếm sản phẩm/ blog
+$by_search_key = isset( $_GET['q'] ) ? trim( $_GET['q'] ) : '';
+
+if ( $by_search_key != '' ) {
+	
+	$by_search_key = urldecode( $by_search_key );
+	
+	if ( strlen( $by_search_key ) > 2 ) {
+		
+		$by_slug_key = _eb_non_mark_seo( urldecode( $by_search_key ) );
+		
+		$strFilter .= " AND ( `" . wp_posts . "`.post_name LIKE '%{$by_slug_key}%' OR `" . wp_posts . "`.post_title LIKE '%{$by_search_key}%' ) ";
+		
+	}
+	
+}
+
+
 
 
 //
@@ -275,6 +293,18 @@ $strAjaxLink .= '&trang=' . $trang;
 				</form>
 			</div>
 		</div>
+	</div>
+	<!-- chức năng tìm kiếm qua ajax -->
+	<div class="w99 quick-show-if-postblog">
+		<form name="frm_products_post_search" method="get" action="javascript:;" onSubmit="return auto_submit_products_post_search();">
+			<input type="hidden" name="page" value="eb-products">
+			<input type="hidden" name="by_post_type" value="<?php echo $by_post_type; ?>">
+			<div class="products-post-search">
+				<input type="search" name="q" value="<?php echo $by_search_key; ?>" placeholder="Tìm kiếm theo tên sản phẩm" aria-required="true" required />
+				<button type="submit" class="cur"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+		<br>
 	</div>
 </div>
 <div id="frm_quick_edit_price" class="hide-if-press-esc">
@@ -516,6 +546,12 @@ if ( $totalThread > 0 ) {
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_post.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_post.js' ) . '"></script>' . "\n";
+
+
+
+
+
+
 
 
 
