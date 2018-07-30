@@ -1198,7 +1198,7 @@ input[id="_eb_category_order"] { width: 90px; }
 body.order_open_in_popup #wpadminbar,
 body.order_open_in_popup #adminmenumain,
 body.order_open_in_popup .hide-if-order-open-in-popup { display: none; }
-body.order_open_in_popup .show-if-order-open-in-popup { display: block; }
+body.order_open_in_popup .show-if-order-open-in-popup { display: inline-block; }
 body.order_open_in_popup #wpcontent { margin-left: 0; }
 html.order_open_in_popup { padding-top: 0; }
 .show-order-120size .eb-to-product,

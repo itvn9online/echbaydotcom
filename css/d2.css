@@ -1726,6 +1726,7 @@ a.search-advanced-btn {
 	border: 1px transparent solid;
 }
 .org-button { border: 1px transparent solid; }
+.black-button { background-color: #333; }
 .order-danhsach-sanpham,
 .eb-public-table {
 	border: 1px #ccc solid;
