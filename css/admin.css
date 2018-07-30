@@ -342,6 +342,7 @@ input[id="_eb_category_order"] { width: 90px; }
 	transform: translate(0, -50%);
 	z-index: 9999;
 }
+body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 #open_list_bao_xau:hover { background: #c00; }
 #order_show_bao_xau {
 	position: fixed;
