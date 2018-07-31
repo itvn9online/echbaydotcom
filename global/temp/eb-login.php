@@ -26,8 +26,8 @@ if ( $mtv_id > 0 ) {
 			</div>
 			<br />
 			<div>
-				<input type="checkbox" name="t_remember" value="1" />
-				<label for="t_remember" style="color:#666">Duy trì trạng thái đăng nhập</label>
+				<input type="checkbox" name="t_remember" id="label_for_t_remember" value="1" />
+				<label for="label_for_t_remember" style="color:#666">Duy trì trạng thái đăng nhập</label>
 			</div>
 			<br />
 			<div>
