@@ -776,6 +776,10 @@ function EBE_eb_update_time_to_new_time ( $t ) {
 
 // thư mục chứa theme hiện tại
 $current_theme_dir_update = basename( EB_THEME_URL );
+$current_theme_version_update = '';
+if ( file_exists( EB_THEME_URL . 'VERSION' ) ) {
+	$current_theme_version_update = ' (' . file_get_contents( EB_THEME_URL . 'VERSION', 1 ) . ')';
+}
 
 // hỗ trợ cập nhật theme khi sử dụng giao diện có thư mục tên như này
 $enable_theme_dir_update = 'echbaytwo';
@@ -790,7 +794,7 @@ $enable_theme_dir_update = 'echbaytwo';
 // hiển thị nút update theme
 if ( $current_theme_dir_update == $enable_theme_dir_update ) {
 ?>
-<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update; ?></strong>. Nền này đang được hỗ trợ cập nhật miễn phí từ hệ thống, nếu bạn muốn cập nhật hoặc cài đặt lại, vui lòng bấm nút bên dưới để thực hiện:</p>
+<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update . $current_theme_version_update; ?></strong>. Nền này đang được hỗ trợ cập nhật miễn phí từ hệ thống, nếu bạn muốn cập nhật hoặc cài đặt lại, vui lòng bấm nút bên dưới để thực hiện:</p>
 <h2 class="text-center"><a href="#" class="click-connect-to-echbay-update-eb-theme">[ Bấm vào đây để cập nhật lại giao diện nền cho website! ]</a></h2>
 <p class="text-center"><em>Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_theme_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_theme_eb ); ?>)</strong></em></p>
 <br>
@@ -798,7 +802,7 @@ if ( $current_theme_dir_update == $enable_theme_dir_update ) {
 }
 else {
 ?>
-<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update; ?></strong>. Nền này hiện chưa hỗ trợ cập nhật miễn phí từ hệ thống của chúng tôi.</p>
+<p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update . $current_theme_version_update; ?></strong>. Nền này hiện chưa hỗ trợ cập nhật miễn phí từ hệ thống của chúng tôi.</p>
 <?php
 }
 ?>
