@@ -600,7 +600,9 @@ if ( $('.each-to-bgimg').length > 0 ) {
 
 
 // Hủy lưu URL mỗi khi người dùng bấm vào link
-$('#adminmenu a').click(function () {
+//$('#adminmenu a').click(function () {
+// chỉ lưu cookie khi người dùng bấm vào link của EchBay
+$('#toplevel_page_eb-order a').click(function () {
 	// Nếu phiên lưu URL đã hết hạn
 	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
 		// -> lưu phiên mới luôn
