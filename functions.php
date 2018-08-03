@@ -683,7 +683,7 @@ function EBE_add_js_compiler_in_cache (
 	// chỉ cập nhật file khi có sự thay đổi
 //	if ( file_exists( $file_in_cache ) ) {
 	// cập nhật file định kỳ
-	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 300 ) > 1800 ) {
+	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 30 ) > 1800 ) {
 		
 		//
 		$new_content = '';
@@ -1226,6 +1226,9 @@ function WGR_remove_js_multi_comment ( $a ) {
 
 // add css thẳng vào HTML
 function _eb_add_compiler_css ( $arr ) {
+	global $__cf_row;
+	
+	
 //	print_r( $arr );
 	
 	/*
@@ -1252,7 +1255,9 @@ function _eb_add_compiler_css ( $arr ) {
 //		print_r( $new_arr2 );
 		
 		// nếu là dạng tester -> chỉ có 1 kiểu add thôi -> nhúng link CSS
-		if ( eb_code_tester == true ) {
+//		if ( eb_code_tester == true ) {
+		// Nếu không có lệnh opimize CSS -> nhúng thẳng link vào
+		if ( $__cf_row['cf_css_optimize'] != 1 ) {
 			echo '<!-- CSS node 0 -->' . "\n";
 			_eb_add_compiler_css_v2( $new_arr1 );
 			
@@ -1262,7 +1267,8 @@ function _eb_add_compiler_css ( $arr ) {
 		// sử dụng thật thì có 2 kiểu add: inline và add link
 		else {
 			// nhúng nội dung file css
-			_eb_add_compiler_css_v2( $new_arr1 );
+//			_eb_add_compiler_css_v2( $new_arr1 );
+			_eb_add_compiler_css_v2( $new_arr1, 0 );
 			
 			// nhúng link CSS
 			_eb_add_compiler_css_v2( $new_arr2, 0 );
@@ -1271,6 +1277,7 @@ function _eb_add_compiler_css ( $arr ) {
 }
 
 function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
+	global $__cf_row;
 	
 	// nhúng link trực tiếp
 //	if ( eb_code_tester == true ) {
@@ -1294,6 +1301,14 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		//
 		return true;
 	}
+	
+	
+	/*
+	echo '<!-- ';
+	print_r( $arr );
+	echo $css_inline . '<br>' . "\n";
+	echo ' -->';
+	*/
 	
 	
 	// nhúng link đã qua cache
@@ -1351,7 +1366,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		// nếu chưa -> tạo file cache
 //		if ( ! file_exists( $file_save ) ) {
 		// tạo file cache định kỳ
-		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 300 ) > 1800 ) {
+		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 30 ) > 1800 ) {
 			$cache_content = '';
 			foreach ( $new_arr as $v => $k ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );
