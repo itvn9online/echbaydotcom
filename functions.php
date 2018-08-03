@@ -619,7 +619,8 @@ function EBE_add_js_compiler_in_cache (
 	
 	
 	//
-	if ( eb_code_tester == true ) {
+//	if ( eb_code_tester == true ) {
+	if ( $__cf_row['cf_js_optimize'] != 1 ) {
 		$content_dir = basename( WP_CONTENT_DIR );
 //		echo $content_dir . "\n";
 		
@@ -1272,7 +1273,8 @@ function _eb_add_compiler_css ( $arr ) {
 function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 	
 	// nhúng link trực tiếp
-	if ( eb_code_tester == true ) {
+//	if ( eb_code_tester == true ) {
+	if ( $__cf_row['cf_css_optimize'] != 1 ) {
 		$content_dir = basename( WP_CONTENT_DIR );
 //		echo $content_dir . "\n";
 		

@@ -155,6 +155,8 @@ $__cf_row_default = array(
 	'cf_blog_public' => 1,
 	'cf_tester_mode' => 'off',
 	'cf_debug_mode' => 1,
+	'cf_js_optimize' => 1,
+	'cf_css_optimize' => 1,
 	'cf_theme_dir' => '',
 	
 	// với 1 số website, chuyển từ URL cũ sang -> dùng chức năng này để đồng bộ nội dung từ cũ sang mới (chủ yếu là các link ảnh)

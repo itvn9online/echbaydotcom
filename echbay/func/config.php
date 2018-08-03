@@ -65,6 +65,10 @@ $_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 
 $_POST['cf_debug_mode'] = WGR_default_config('cf_debug_mode');
 
+$_POST['cf_js_optimize'] = WGR_default_config('cf_js_optimize');
+
+$_POST['cf_css_optimize'] = WGR_default_config('cf_css_optimize');
+
 $_POST['cf_gtag_id'] = WGR_default_config('cf_gtag_id');
 
 $_POST['cf_disable_tracking'] = WGR_default_config('cf_disable_tracking');
