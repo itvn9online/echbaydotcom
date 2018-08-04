@@ -321,6 +321,11 @@ $___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fab fa-google-plus';
 $___eb_lang[eb_key_for_site_lang . 'social_pinterest'] = 'fab fa-pinterest';
 
 
+// tự chỉnh câu chữ trong nút mua của bản mobile
+$___eb_lang[eb_key_for_site_lang . 'details_mobilemua_mua'] = '<i class="fa fa-shopping-cart"></i> <span>Mua ngay</span>';
+$___eb_lang[eb_key_for_site_lang . 'details_mobilemua_top'] = '<i class="fa fa-arrow-up"></i> Đầu trang';
+
+
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';
 $___eb_lang[eb_key_for_site_lang . 'custom_text1'] = 'Custom text 1';

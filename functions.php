@@ -458,7 +458,7 @@ function EBE_get_page_custom_options ( $page_name ) {
 	return '';
 }
 
-function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML ) {
+function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML, $f_css = '' ) {
 	global $wpdb;
 	global $__cf_row;
 	global $arr_for_add_css;
@@ -549,6 +549,11 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML ) {
 			
 //			$arr_for_show_html_file_load[] = '<!-- global CSS: ' . $page_name . ' -->';
 //		}
+	}
+	
+	// nếu có css riêng -> add luôn vào
+	if ( $f_css != '' ) {
+		$arr_for_add_css[ $f_css ] = 1;
 	}
 	
 	//

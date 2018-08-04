@@ -1,0 +1,24 @@
+.thread-details-mobilemua {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba( 255, 255, 255, .9 );
+	border-top: 2px #f2f2f2 solid;
+	line-height: 19px;
+	z-index: 99;
+	overflow: hidden;
+}
+.thread-details-mobilemua ul {
+	max-width: 999px;
+	margin: 0 auto;
+}
+.thread-details-mobilemua li {
+	cursor: pointer;
+	padding: 8px 10px;
+}
+.thread-details-mobilemua li strong {
+	display: block;
+	border-radius: 3px;
+	padding: 8px 0;
+}

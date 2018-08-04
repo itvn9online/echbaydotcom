@@ -749,7 +749,7 @@ foreach ( $arr as $k => $v ) {
 //print_r( $arr_for_get_template );
 
 //
-$arr_for_get_template['details_mobilemua'] = 'details_mobilemua.html (file trong theme cha)';
+$arr_for_get_template['details_mobilemua'] = 'Tự tạo trong theme cha';
 
 //
 $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_config(
