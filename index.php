@@ -1113,7 +1113,7 @@ function EBE_register_scripts() {
 //	wp_deregister_script( 'jquery-migrate' );
 	
 	// add jquery mới
-	wp_register_script('jquery', str_replace( ABSPATH, web_link, EB_THEME_CACHE . 'jquery.js' ), false, '3.2.1');
+	wp_register_script('jquery', str_replace( ABSPATH, web_link, EB_THEME_CACHE . 'jquery.js' ), false, '3.3.1');
 //	wp_register_script('jquery-migrate', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js', false, '3.0.0');
 	
 	// gọi jquery

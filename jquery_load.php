@@ -1,7 +1,7 @@
 <?php
 
 //
-$file_jquery_js = '3.2.1.min';
+$file_jquery_js = '3.3.1.min';
 $dir_optimize_jquery_js = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/';
 
 // các file compiler trước khi xuất ra
