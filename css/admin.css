@@ -1195,6 +1195,7 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	min-width: 21px;
 }
 /* open order details in popup */
+body.order_open_in_popup .update-nag,
 .show-if-order-fullsize,
 body.order_open_in_popup #wpadminbar,
 body.order_open_in_popup #adminmenumain,

@@ -517,66 +517,76 @@ function jEBE_slider ( jd, conf, callBack ) {
 			jQuery('a', this).hide();
 			
 			// tính toán chiều rộng để tạo video
-			var h = jQuery('div.banner-ads-media', this).height() || 0,
-				w = jQuery('div.banner-ads-media', this).width() || 0,
-				h_video = h,
-				w_video = w;
-//			console.log('W Slider: ' + w);
-//			console.log('H Slider: ' + h);
-			
-			// nếu chiều rộng < chiều cao -> màn hình dọc
-			if ( w < h ) {
-				w_video = h * ( 560/ 315 );
-				
-				// test -> tính lại xem có đúng chiều cao không
-//				console.log('TEST h: ' + w_video/ 560 * 315);
-			}
-			// màn hình ngang
-			else {
-				// tính chiều cao của video dựa theo chiều rộng, tỉ lệ youtube_video_default_size
-				h_video = w * youtube_video_default_size;
-			}
+			var h = jQuery('div.banner-ads-media', this).height(),
+//				w = h / youtube_video_default_size;
+				w = '100%',
+				w_video = jQuery(this).width(),
+				h_video = '',
+				t = 0;
 //			console.log('W Video: ' + w_video);
+			
+			//
+			h_video = w_video * youtube_video_default_size;
 //			console.log('H Video: ' + h_video);
+			
+			//
+			// chiều cao thực sự đang trình chiếu -> để điều chỉnh lại top cho slider -> làm cân slider
+			if ( h_video > h ) {
+				t = parseInt( ( h - h_video ) / 2, 10 );
+			}
+//			console.log('Top: ' + t);
 			
 			//
 			jQuery('div.banner-ads-media', this)
 			.addClass('banner-video-media')
-			.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+			.html('<div style="top: ' + t + 'px">\
+				<iframe width="' + w + '" height="' + h_video + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>\
+			</div>');
 		}
 		else if ( vd.split('.mp4').length > 1 ) {
 			// xóa thẻ a
 //			jQuery('a', this).hide();
 			
 			// tính toán chiều rộng để tạo video
-			var h = jQuery('div.banner-ads-media', this).height() || 0,
-				w = jQuery('div.banner-ads-media', this).width() || 0,
-				h_video = '100%',
-				w_video = '100%';
-//			console.log('W Slider: ' + w);
-//			console.log('H Slider: ' + h);
+			var h = jQuery('div.banner-ads-media', this).height(),
+//			var h = '',
+				w = '100%',
+				w_video = jQuery(this).width(),
+				h_video = '',
+				t = '';
+			console.log('W Video: ' + w_video);
+			console.log('H Slider: ' + h);
 			
 			// nếu chiều rộng < chiều cao -> màn hình dọc
-			if ( w < h ) {
-				w_video = Math.ceil( h * ( 16/ 9 ) );
+			if ( w_video < h ) {
+				h_video = '100%';
+				w = 16/ 9;
+				w = Math.ceil( h * w );
 				
 				// test -> tính lại xem có đúng chiều cao không
-//				console.log('TEST h: ' + w_video/ 16 * 9);
+				console.log('TEST h_video: ' + w_video/ 16 * 9);
 			}
 			// màn hình ngang
 			else {
 				// tính chiều cao của video dựa theo chiều rộng, tỉ lệ 16:9
-//				h_video = parseInt( w_video/ 16 * 9, 10 );
-				h_video = Math.ceil( w * ( 9/ 16 ) );
+				h_video = parseInt( w_video/ 16 * 9, 10 );
+				
+				// chiều cao thực sự đang trình chiếu -> để điều chỉnh lại top cho slider -> làm cân slider
+				/*
+				if ( h_video > h ) {
+					t += 'top:' + parseInt( ( h - h_video ) / 2, 10 ) + 'px;';
+				}
+				console.log('Top: ' + t);
+				*/
 			}
-//			console.log('W Video: ' + w_video);
-//			console.log('H Video: ' + h_video);
+			console.log('W: ' + w);
+			console.log('H Video: ' + h_video);
 			
 			// tạo video
 			// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
 			jQuery('div.banner-ads-media', this)
 			.addClass('banner-video-media')
-			.html('<video width="' + w_video + '" height="' + h_video + '" autoplay muted loop preload="auto">\
+			.html('<video width="' + w + '" height="' + h_video + '" autoplay muted loop preload="auto">\
 				<source src="' + vd + '" type="video/mp4">\
 			</video>');
 		}

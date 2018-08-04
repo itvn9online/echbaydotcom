@@ -668,12 +668,14 @@ function EBE_add_js_compiler_in_cache (
 	$file_name_cache = 'zjs-' . $file_name_cache . '-' . $current_server_minute . '.js';
 	
 	// file hiển thị sẽ hiển thị sớm hơn chút
+	/*
 	if ( $current_server_minute == 0 ) {
 		$current_server_minute = 5;
 	}
 	else {
+		*/
 		$current_server_minute = $current_server_minute - 1;
-	}
+//	}
 	$file_show = 'zjs-' . $file_show . '-' . $current_server_minute . '.js';
 	
 	
@@ -683,7 +685,7 @@ function EBE_add_js_compiler_in_cache (
 	// chỉ cập nhật file khi có sự thay đổi
 //	if ( file_exists( $file_in_cache ) ) {
 	// cập nhật file định kỳ
-	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 30 ) > 1800 ) {
+	if ( ! file_exists( $file_in_cache ) || date_time - filemtime ( $file_in_cache ) + rand( 0, 30 ) > 500 ) {
 		
 		//
 		$new_content = '';
@@ -1230,6 +1232,14 @@ function _eb_add_compiler_css ( $arr ) {
 	
 	
 //	print_r( $arr );
+	/*
+	if ( $__cf_row['cf_css_optimize'] == 1 ) {
+		_eb_add_compiler_css_v2( $arr, 0 );
+		return true;
+	}
+	*/
+	
+	
 	
 	/*
 	// nếu là dạng tester -> chỉ có 1 kiểu add thôi
@@ -1266,6 +1276,10 @@ function _eb_add_compiler_css ( $arr ) {
 		}
 		// sử dụng thật thì có 2 kiểu add: inline và add link
 		else {
+			_eb_add_compiler_css_v2( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
+			
+			
+			//
 			// nhúng nội dung file css
 //			_eb_add_compiler_css_v2( $new_arr1 );
 			_eb_add_compiler_css_v2( $new_arr1, 0 );
@@ -1348,15 +1362,18 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		
 		// thêm khoảng thời gian lưu file
 		$current_server_minute = (int) substr( date( 'i', date_time ), 0, 1 );
+//		$current_server_minute = ceil( date( 'i', date_time ) );
 		$file_cache = 'zss-' . $file_cache . '-' . $current_server_minute . '.css';
 		
 		// file hiển thị sẽ hiển thị sớm hơn chút
+		/*
 		if ( $current_server_minute == 0 ) {
 			$current_server_minute = 5;
 		}
 		else {
+			*/
 			$current_server_minute = $current_server_minute - 1;
-		}
+//		}
 		$file_show = 'zss-' . $file_show . '-' . $current_server_minute . '.css';
 		
 		
@@ -1366,7 +1383,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		// nếu chưa -> tạo file cache
 //		if ( ! file_exists( $file_save ) ) {
 		// tạo file cache định kỳ
-		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 30 ) > 1800 ) {
+		if ( ! file_exists( $file_save ) || date_time - filemtime ( $file_save ) + rand( 0, 30 ) > 500 ) {
 			$cache_content = '';
 			foreach ( $new_arr as $v => $k ) {
 				$file_content = explode( "\n", file_get_contents( $v, 1 ) );

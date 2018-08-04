@@ -26,6 +26,25 @@ foreach ( $_SERVER as $k => $v ) {
 }
 
 
+//
+global $client_ip;
+
+$other = array(
+	'DB NAME' => DB_NAME,
+	'Your IP' => $client_ip,
+	'Date time' => date( 'r', date_time ),
+	'Server time' => date( 'r', $_SERVER['REQUEST_TIME'] )
+);
+
+foreach ( $other as $k => $v ) {
+	echo '
+	<tr>
+		<td class="t">' . str_replace( ' ', '_', strtoupper( $k ) ) . '</td>
+		<td class="i">' . $v . '</td>
+	</tr>';
+}
+
+
 
 //
 echo '</table>';

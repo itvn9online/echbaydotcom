@@ -1237,13 +1237,22 @@ color: #333;
 	background-color: #000;
 	background-image: none !important;
 }
+/*
 .banner-video-media div,
+*/
+.banner-video-media iframe,
 .banner-video-media video {
 	position: absolute;
+	bottom: auto;
+	/*
 	top: 0;
 	right: 0;
-	bottom: auto;
 	left: 0;
+	*/
+	top: 50%;
+	right: auto;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
 /* search */
