@@ -9,6 +9,7 @@ $eb_type_lang = array();
 
 // ghi chú
 $eb_note_lang = array();
+$eb_note_first_lang = array();
 
 // URL file gốc từ github (nếu có)
 $eb_ex_from_github = array();
@@ -25,6 +26,7 @@ $___eb_lang[eb_key_for_site_lang . 'home'] = 'Trang chủ';
 $___eb_lang[eb_key_for_site_lang . 'widget_products_more'] = 'Xem thêm <span>&raquo;</span>';
 
 //
+$eb_note_first_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 $___eb_lang[eb_key_for_site_lang . 'search'] = 'Tìm kiếm';
 // placeholder for search
 $___eb_lang[eb_key_for_site_lang . 'searchp'] = $___eb_lang[eb_key_for_site_lang . 'search'] . ' sản phẩm';
@@ -34,11 +36,15 @@ $___eb_lang[eb_key_for_site_lang . 'search_addon'] = '';
 $eb_type_lang[eb_key_for_site_lang . 'search_addon'] = 'textarea';
 //$___eb_lang[eb_key_for_site_lang . 'search_title_addon'] = '';
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'thoat'] = 'Thoát';
 $___eb_lang[eb_key_for_site_lang . 'xacnhan_thoat'] = 'Xác nhận đăng xuất khỏi hệ thống';
@@ -49,6 +55,8 @@ $___eb_lang[eb_key_for_site_lang . 'dangky'] = 'Đăng ký';
 $___eb_lang[eb_key_for_site_lang . 'home_hot'] = '<i class="fa fa-dollar"></i> Sản phẩm HOT';
 $___eb_lang[eb_key_for_site_lang . 'home_new'] = '<i class="fa fa-star"></i> Sản phẩm MỚI';
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'order_by'] = 'Phần sắp xếp trong trang danh sách sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'order_by'] = 'Sắp xếp theo';
 $___eb_lang[eb_key_for_site_lang . 'order_view'] = 'Xem nhiều';
 $___eb_lang[eb_key_for_site_lang . 'order_price_down'] = 'Giá giảm dần';
@@ -57,6 +65,7 @@ $___eb_lang[eb_key_for_site_lang . 'order_az'] = 'Tên sản phẩm ( từ A đ�
 $___eb_lang[eb_key_for_site_lang . 'order_za'] = 'Tên sản phẩm ( từ Z đến A )';
 
 //
+$eb_note_first_lang[eb_key_for_site_lang . 'post_giacu'] = 'Bản dịch cứng cho trang chi tiết sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'post_giacu'] = 'Giá cũ';
 $___eb_lang[eb_key_for_site_lang . 'post_giamgia'] = 'Giảm<br>giá';
 $___eb_lang[eb_key_for_site_lang . 'post_giamoi'] = 'Giá mới';
@@ -95,6 +104,7 @@ $___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
 $eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
 
 // default status
+$eb_note_first_lang[eb_key_for_site_lang . 'ads_status1'] = 'Phân loại trạng thái Quảng cáo';
 $___eb_lang[eb_key_for_site_lang . 'ads_status1'] = 'Banner chính ( 1366 x Auto )';
 $___eb_lang[eb_key_for_site_lang . 'ads_status2'] = 'Chờ sử dụng';
 $___eb_lang[eb_key_for_site_lang . 'ads_status3'] = $___eb_lang[eb_key_for_site_lang . 'ads_status2'];
@@ -111,6 +121,8 @@ $___eb_lang[eb_key_for_site_lang . 'ads_status13'] = $___eb_lang[eb_key_for_site
 $___eb_lang[eb_key_for_site_lang . 'ads_status14'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 $___eb_lang[eb_key_for_site_lang . 'ads_status15'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'product_status0'] = 'Phân loại Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'product_status0'] = 'Mặc định';
 $___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'Sản phẩm HOT';
 $___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'Sản phẩm MỚI';
@@ -123,6 +135,8 @@ $___eb_lang[eb_key_for_site_lang . 'product_status8'] = $___eb_lang[eb_key_for_s
 $___eb_lang[eb_key_for_site_lang . 'product_status9'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 $___eb_lang[eb_key_for_site_lang . 'product_status10'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'product_male_gender'] = 'Phân loại Sản phẩm theo giới tính (dùng để tạo bộ lọc cho Google product)';
 $___eb_lang[eb_key_for_site_lang . 'product_male_gender'] = 'Nam';
 $___eb_lang[eb_key_for_site_lang . 'product_female_gender'] = 'Nữ';
 $___eb_lang[eb_key_for_site_lang . 'product_unisex_gender'] = 'Không phân loại';
@@ -133,6 +147,7 @@ $___eb_lang[eb_key_for_site_lang . 'chitietsp'] = 'Chi tiết Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'tuongtu'] = 'Sản phẩm tương tự';
 
 // footer
+$eb_note_first_lang[eb_key_for_site_lang . 'copyright'] = 'Tùy chỉnh phần bản quyền dưới chân trang';
 $___eb_lang[eb_key_for_site_lang . 'copyright'] = 'Bản quyền';
 $___eb_lang[eb_key_for_site_lang . 'allrights'] = ' - Toàn bộ phiên bản.';
 $___eb_lang[eb_key_for_site_lang . 'joinus'] = 'Kết nối với chúng tôi';
@@ -141,12 +156,14 @@ $___eb_lang[eb_key_for_site_lang . 'dienthoai'] = $___eb_lang[eb_key_for_site_la
 $___eb_lang[eb_key_for_site_lang . 'poweredby'] = 'Cung cấp bởi';
 
 // echbay two footer sologan
+$eb_note_first_lang[eb_key_for_site_lang . 'ebslogan1'] = 'Mẫu slogan mặc định';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan1'] = '<i class="fa fa-refresh"></i> Đổi hàng<br />trong 7 ngày';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan2'] = '<i class="fa fa-truck"></i> Giao hàng Miễn phí<br />Toàn Quốc';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan3'] = '<i class="fa fa-dollar"></i> Thanh toán<br />khi nhận hàng';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan4'] = '<i class="fa fa-check-square"></i> Bảo hành VIP<br />12 tháng';
 
 // quick cart
+$eb_note_first_lang[eb_key_for_site_lang . 'cart_muangay'] = 'Mua hàng nhanh';
 $___eb_lang[eb_key_for_site_lang . 'cart_muangay'] = $___eb_lang[eb_key_for_site_lang . 'muangay'];
 $___eb_lang[eb_key_for_site_lang . 'cart_mausac'] = 'Màu sắc';
 $___eb_lang[eb_key_for_site_lang . 'cart_kichco'] = 'Kích cỡ';
@@ -162,6 +179,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart_emailformat'] = 'Email không đúng đ
 $___eb_lang[eb_key_for_site_lang . 'billing_custom_style'] = '/* Thêm custom CSS cho trang in đơn hàng */';
 
 // contact
+$eb_note_first_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ với chúng tôi';
 $___eb_lang[eb_key_for_site_lang . 'lh_luuy'] = 'Để liên hệ với chúng tôi, bạn có thể gửi email tới <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a>, sử dụng phom liên hệ phía dưới hoặc liên hệ trực tiếp theo địa chỉ và số điện thoại chúng tôi cung cấp.';
 $___eb_lang[eb_key_for_site_lang . 'lh_hoten'] = $___eb_lang[eb_key_for_site_lang . 'cart_hoten'];
@@ -174,6 +192,7 @@ $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin c�
 
 
 // register
+$eb_note_first_lang[eb_key_for_site_lang . 'reg_no_email'] = 'Đăng ký tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'reg_no_email'] = 'Dữ liệu đầu vào không chính xác';
 $___eb_lang[eb_key_for_site_lang . 'reg_pass_short'] = 'Mật khẩu tối thiểu phải có 6 ký tự';
 $___eb_lang[eb_key_for_site_lang . 'reg_pass_too'] = 'Mật khẩu xác nhận không chính xác';
@@ -184,12 +203,14 @@ $___eb_lang[eb_key_for_site_lang . 'reg_done'] = 'Đăng ký nhận bản tin th
 $___eb_lang[eb_key_for_site_lang . 'reg_error'] = 'Lỗi chưa xác định!';
 
 // quick register
+$eb_note_first_lang[eb_key_for_site_lang . 'qreg_name'] = 'Đăng ký tài khoản (nhanh)';
 $___eb_lang[eb_key_for_site_lang . 'qreg_name'] = 'Họ tên';
 $___eb_lang[eb_key_for_site_lang . 'qreg_phone'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'qreg_email'] = 'Email';
 $___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
 
 // profile
+$eb_note_first_lang[eb_key_for_site_lang . 'pr_tonquan'] = 'Trang tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'pr_tonquan'] = 'Tổng quan về tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'pr_email'] = 'E-mail';
 $___eb_lang[eb_key_for_site_lang . 'pr_id'] = 'Mã tài khoản';
@@ -207,6 +228,7 @@ $___eb_lang[eb_key_for_site_lang . 'pr_short_matkhau'] = 'Mật khẩu tối thi
 
 
 // AMP
+$eb_note_first_lang[eb_key_for_site_lang . 'amp_full_version'] = 'Bản AMP';
 $___eb_lang[eb_key_for_site_lang . 'amp_full_version'] = 'Xem phiên bản đầy đủ';
 $___eb_lang[eb_key_for_site_lang . 'amp_to_top'] = 'Về đầu trang';
 $___eb_lang[eb_key_for_site_lang . 'amp_development'] = 'Nhà phát triển';
@@ -216,6 +238,7 @@ $___eb_lang[eb_key_for_site_lang . 'amp_buy_now'] = '{tmp.web_link}cart?id={tmp.
 $eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu trúc URL dẫn tới giỏ hàng, nhập <strong>null</strong> để tắt tính năng này.';
 
 // footer address
+$eb_note_first_lang[eb_key_for_site_lang . 'fd_diachi'] = 'Thông tin liên hệ ở chân trang';
 $___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fa fa-phone"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
@@ -313,6 +336,7 @@ $___eb_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'off';
 $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
 
 // icon cho khối mạng xã hội
+$eb_note_first_lang[eb_key_for_site_lang . 'social_facebook'] = 'Icons cho phần mạng xã hội (sử dụng font awesome)';
 $___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';
 $___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fab fa-instagram';
 $___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fa fa-twitter';
@@ -322,11 +346,13 @@ $___eb_lang[eb_key_for_site_lang . 'social_pinterest'] = 'fab fa-pinterest';
 
 
 // tự chỉnh câu chữ trong nút mua của bản mobile
+$eb_note_first_lang[eb_key_for_site_lang . 'details_mobilemua_mua'] = 'Bản dịch cho nút Mua ngay trong trang chi tiết sản phẩm (phiên bản mobile)';
 $___eb_lang[eb_key_for_site_lang . 'details_mobilemua_mua'] = '<i class="fa fa-shopping-cart"></i> <span>Mua ngay</span>';
 $___eb_lang[eb_key_for_site_lang . 'details_mobilemua_top'] = '<i class="fa fa-arrow-up"></i> Đầu trang';
 
 
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
+$eb_note_first_lang[eb_key_for_site_lang . 'custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho các theme khác nhau';
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';
 $___eb_lang[eb_key_for_site_lang . 'custom_text1'] = 'Custom text 1';
 $___eb_lang[eb_key_for_site_lang . 'custom_text2'] = 'Custom text 2';
@@ -340,6 +366,7 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
+$eb_note_first_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết sản phẩm</strong>';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Post custom text';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text1'] = 'Post custom text 1';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text2'] = 'Post custom text 2';

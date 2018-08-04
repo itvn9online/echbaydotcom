@@ -7,6 +7,7 @@ global $___eb_default_lang;
 global $___eb_lang;
 global $eb_type_lang;
 global $eb_note_lang;
+global $eb_note_first_lang;
 global $eb_ex_from_github;
 global $eb_class_css_lang;
 
@@ -58,6 +59,16 @@ global $eb_class_css_lang;
 			
 			//
 			$pla = esc_html( $___eb_default_lang[ $k ] );
+			
+			
+			// phần ghi chú
+			if ( isset( $eb_note_first_lang[ $k ] ) ) {
+				echo '
+				<tr>
+					<td colspan="2" class="orgcolor">* ' . $eb_note_first_lang[ $k ] . '</td>
+				</tr>';
+			}
+			
 			
 			// phần ngôn ngữ
 			echo '
