@@ -10,6 +10,9 @@
 
 //console.log( typeof jQuery );
 //console.log( typeof $ );
+if ( typeof $ == 'undefined' ) {
+	$ = jQuery;
+}
 
 
 

@@ -309,6 +309,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 			jQuery(jd_to_class + ' .jEBE_slider-thumbnail').attr({
 				id: j_id
 			});
+//			console.log(Math.random());
 			
 			/*
 			// các option mặc định thì chuyển về false hết
@@ -374,11 +375,12 @@ function jEBE_slider ( jd, conf, callBack ) {
 				
 				//
 				jQuery('#' + j_id_right).click(function () {
+//					console.log(Math.random());
 					var a = jQuery('#' + j_id + ' ul').attr('data-scroll') || 0,
 						max_li = jQuery('#' + j_id + ' li').length/ 4;
 					a = a - (0 - 1);
-					console.log(a);
-					console.log(max_li);
+//					console.log(a);
+//					console.log(max_li);
 					if ( a > max_li ) {
 //						a = max_li;
 						a = 0;
@@ -484,8 +486,12 @@ function jEBE_slider ( jd, conf, callBack ) {
 			i = 0;
 		}
 		
+		//
+		var w = jQuery(jd).width();
+		
 		jQuery(jd + ' ul').css({
 			left: ( 0 - i * 100 ) + '%'
+//			left: ( 0 - i * w ) + 'px'
 //			left: ( 0 - i * 100/ conf['visible'] ) + '%'
 		});
 		
@@ -493,7 +499,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 //		.scrollLeft(0)
 		.attr({
 			'data-i' : i,
-			'data-scroll' : i * jQuery(jd).width()
+//			'data-scroll' : i * jQuery(jd).width()
+			'data-scroll' : i * w
 		});
 		
 		jEBE_slider_dang_scroll = false;
@@ -580,6 +587,11 @@ function jEBE_slider ( jd, conf, callBack ) {
 				<source src="' + vd + '" type="video/mp4">\
 			</video>');
 		}
+		
+		//
+		setTimeout(function () {
+			jEBE_slider_cache_option[jd]['scroll_runing'] = false;
+		}, 200);
 		
 	});
 	jQuery(jd + ' li[data-i="0"]').click();
@@ -680,33 +692,68 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// người dùng đang xem trên màn ảnh rộng
 		// hiển thì mỗi ảnh 1 cái
 		if ( jQuery(window).width() > 750 || conf['visible'] == 1 ) {
-			jQuery( jd_to_class + ' .jEBE_slider-toLeft' ).css({
-				'width': conf['sliderArrowWidthLeft']
-			});
-			jQuery( jd_to_class + ' .jEBE_slider-toRight' ).css({
-				'width': conf['sliderArrowWidthRight']
-			});
+			if ( conf['sliderArrowWidthLeft'] != '' ) {
+				jQuery( jd_to_class + ' .jEBE_slider-toLeft' ).css({
+					'width': conf['sliderArrowWidthLeft']
+				});
+			}
+			if ( conf['sliderArrowWidthRight'] != '' ) {
+				jQuery( jd_to_class + ' .jEBE_slider-toRight' ).css({
+					'width': conf['sliderArrowWidthRight']
+				});
+			}
 		}
 		
+		//
+//		console.log(jd);
+//		console.log(jd_to_class);
+		/*
+		if ( jEBE_slider_cache_option[jd]['autoplay'] == false ) {
+			jQuery(jd).scroll(function () {
+				//
+				if ( jEBE_slider_cache_option[jd]['scroll_runing'] == true ) {
+					return false;
+				}
+				jEBE_slider_cache_option[jd]['scroll_runing'] = true;
+				
+				// lấy chiều rộng của khung hiện tại
+//				var w = jQuery(this).width();
+				var w = jQuery(this).attr('data-scroll') || 0;
+				console.log( w );
+				
+				// scroll của UL trong đó
+				var sr = 0 - jQuery('ul', this).offset().left;
+				console.log( sr );
+			});
+		}
+		*/
 		
-		// sử dụng swipe
+		
+		// sử dụng swipe để chuyển ảnh
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
-		/*
-		jQuery(jd).swipe( {
-			// Generic swipe handler for all directions
-			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-				if ( direction == 'left' ) {
-					jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
-				}
-				else if ( direction == 'right' ) {
-					jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
-				}
-			},
-			// Default is 75px, set to 0 for demo so any distance triggers swipe
-			threshold:0
-		});
-		*/
+		if ( jQuery(window).width() < 750 ) {
+//			jQuery(jd).swipe( {
+			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+				// Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+//					console.log( direction );
+					
+					//
+					if ( direction == 'left' ) {
+//					if ( direction == 'left' || direction == 'up' ) {
+						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
+					}
+					else if ( direction == 'right' ) {
+//					else if ( direction == 'right' || direction == 'down' ) {
+//					else {
+						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
+					}
+				},
+				// Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold: 0
+			});
+		}
 		
 		
 		// https://www.w3schools.com/jquerymobile/jquerymobile_events_touch.asp

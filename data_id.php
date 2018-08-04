@@ -64,7 +64,7 @@ $add_data_id = array (
 		'cf_slider_big_play' => $__cf_row['cf_slider_big_play'],
 		
 		// chế độ chuyển slider cho trang chi tiết
-		'cf_details_right_thumbnail' => ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] ) ? 1 : 0,
+		'cf_details_right_thumbnail' => ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] == 1 ) ? 1 : 0,
 		
 		'cf_details_content_slider' => '\'' . $__cf_row['cf_details_content_slider'] . '\'',
 		'cf_details_show_list_next' => '\'' . $__cf_row['cf_details_show_list_next'] . '\'',

@@ -2225,6 +2225,13 @@ iframe[name="google_conversion_frame"] {
 }
 .thread-details-index li:hover { text-decoration: underline; }
 .footer-address-address p { margin: 0; }
+/* chỉnh chiều rộng nút bấm trong slider của trang chi tiết */
+.child-thread-details-mobileAvt .jEBE_slider-toLeft { width: 40%; }
+.child-thread-details-mobileAvt .jEBE_slider-toRight { width: 60%; }
+/*
+.style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toLeft,
+.style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toRight { width: auto; }
+*/
 /* pro version */
 .fa-pro,
 .fa-pro-version {

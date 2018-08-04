@@ -265,6 +265,7 @@ function ___eb_details_slider_v2 () {
 //	}
 	
 	var str = '',
+		str_swiper = '',
 		str_thumb = '',
 		i = 0,
 		sr = '',
@@ -327,6 +328,8 @@ function ___eb_details_slider_v2 () {
 		//
 		str += '<li data-node="' +i+ '" data-src="' + sr + '" style="background-image:url(\'' + sr + '\')">&nbsp;</li>';
 		
+		str_swiper += '<div data-node="' +i+ '" data-src="' + sr + '" class="swiper-slide" style="background-image:url(\'' + sr + '\')">&nbsp;</div>';
+		
 		str_thumb += '<li data-node="' +i+ '" data-src="' + sr + '"><div style="background-image:url(\'' + sr + '\')">&nbsp;</div></li>';
 		
 		slider_btn += '<li data-node="' +i+ '"><i class="fa fa-circle"></i></li>';
@@ -346,11 +349,11 @@ function ___eb_details_slider_v2 () {
 //	jQuery('.thread-details-mobileLeft, .thread-details-mobileRight').show();
 	
 	
+	
 	// tạo thumb nếu đủ ảnh
 	jQuery('.thread-details-mobileAvt').html('<ul class="cf">' + str + '</ul>').css({
 		'background-image' : ''
 	});
-	
 	
 	
 	
@@ -363,8 +366,10 @@ function ___eb_details_slider_v2 () {
 		speedNext : cf_slider_details_play,
 		
 		sliderArrow: true,
-		sliderArrowWidthLeft : '40%',
-		sliderArrowWidthRight : '60%',
+//		sliderArrowWidthLeft : '40%',
+		sliderArrowWidthLeft : '',
+//		sliderArrowWidthRight : '60%',
+		sliderArrowWidthRight : '',
 		sliderArrowLeft : 'fa-chevron-circle-left',
 		sliderArrowRight : 'fa-chevron-circle-right',
 		
@@ -438,6 +443,13 @@ function ___eb_details_slider_v2 () {
 		}
 		
 	});
+	
+	
+	/*
+	jQuery(".jEBE_slider-toRight").on("swipeleft", function() {
+		console.log('to left');
+	});
+	*/
 	
 }
 
