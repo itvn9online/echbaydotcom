@@ -2158,7 +2158,8 @@ function ___eb_details_post_run ( r ) {
 	// tạo hiệu ứng thu gọn nội dung -> bấm xem thêm để hiển thị đầy đủ
 	(function () {
 		// thiết lập bằng 0 -> tắt chức năng
-		if ( cf_product_details_viewmore == 0 ) {
+//		if ( cf_product_details_viewmore == 0 ) {
+		if ( cf_product_details_viewmore < 90 ) {
 			return false;
 		}
 		

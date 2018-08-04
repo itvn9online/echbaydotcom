@@ -278,6 +278,9 @@ $__cf_row_default = array(
 	'cf_required_email_cart' => 'off',
 	'cf_required_address_cart' => 'off',
 	
+	// giao diện nút mua ngay trên mobile
+	'cf_details_mobilemua' => 'mobilemua1',
+	
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,
 	'cf_details_bold_excerpt' => 'off',

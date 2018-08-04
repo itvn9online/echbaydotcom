@@ -145,7 +145,7 @@ a {
 	text-align: center;
 	color: #333;
 	font-size: 15px;
-	z-index: 2;
+	z-index: 5;
 }
 .big-banner-button li {
 	display: inline-block;

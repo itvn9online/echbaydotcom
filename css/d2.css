@@ -884,7 +884,7 @@ span.hd_status9 { background: #F00; }
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 2;
+	z-index: 3;
 }
 .search-select-option {
 	position: relative;
@@ -1234,8 +1234,9 @@ color: #333;
 	background-size: contain;
 }
 .banner-video-media {
-	background-color: #000;
+	background-color: #666;
 	background-image: none !important;
+	overflow: hidden;
 }
 /*
 .banner-video-media div,
@@ -1253,6 +1254,7 @@ color: #333;
 	right: auto;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	z-index: 1;
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
 /* search */
