@@ -20,24 +20,27 @@ $file_optimize_jquery_js = array(
 	// jQuery plugin
 //	$dir_optimize_jquery_js . 'jcarousellite.js',
 	$dir_optimize_jquery_js . 'lazyload.js',
-//	$dir_optimize_jquery_js . 'swiper.min.js',
+	$dir_optimize_jquery_js . 'swiper.min.js',
 //	$dir_optimize_jquery_js . 'jquery.touchSwipe.min.js',
 //) );
 );
 
 // tổng hợp các file jQuery cần thiết rồi cho hết vào 1 file để optimize
+/*
 $str_optimize_jquery_js = '';
 foreach ( $file_optimize_jquery_js as $v ) {
 	$str_optimize_jquery_js .= basename( $v );
 }
+*/
 //$str_optimize_jquery_js = $dir_optimize_jquery_js . 'jquery.js';
+$str_optimize_jquery_js = 'jquery.js';
 //$str_optimize_jquery_js = EB_THEME_CACHE . 'jquery.js';
-$str_optimize_jquery_js = EB_THEME_CACHE . $str_optimize_jquery_js;
+$str_optimize_jquery_js = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/optimize/' . $str_optimize_jquery_js;
 //echo $str_optimize_jquery_js . '<br>' . "\n";
 
 // tạo file trên localhost hoặc nếu chưa có
-//if ( $localhost == 1 && ! file_exists( $str_optimize_jquery_js ) ) {
-if ( ! file_exists( $str_optimize_jquery_js ) ) {
+if ( $localhost == 1 && ! file_exists( $str_optimize_jquery_js ) ) {
+//if ( ! file_exists( $str_optimize_jquery_js ) ) {
 //	echo $localhost . '<br>' . "\n";
 	
 	//
