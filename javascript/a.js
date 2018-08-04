@@ -603,16 +603,18 @@ if ( $('.each-to-bgimg').length > 0 ) {
 
 // Hủy lưu URL mỗi khi người dùng bấm vào link
 //$('#adminmenu a').click(function () {
-// chỉ lưu cookie khi người dùng bấm vào link của EchBay
-$('#toplevel_page_eb-order a').click(function () {
+$('#adminmenu, a, #toplevel_page_eb-order a').click(function () {
 	// Nếu phiên lưu URL đã hết hạn
 	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
 		// -> lưu phiên mới luôn
 		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
 //		g_func.setc( 'wgr_last_url_user_visit', '', 60 );
 	}
-	
-	// chỉ lưu các URL nằm trong menu chính
+});
+
+// chỉ lưu cookie khi người dùng bấm vào link của EchBay
+$('#toplevel_page_eb-order a').click(function () {
+	// chỉ lưu các URL nằm trong menu chính của EchBay
 	var a = $(this).attr('href') || '';
 	if ( a != '' ) {
 		g_func.setc( 'wgr_last_url_user_visit', escape( a ), 0, 7 );
