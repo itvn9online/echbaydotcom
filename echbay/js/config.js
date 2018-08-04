@@ -195,7 +195,7 @@ function create_deault_css () {
 	
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
 	a = f.cf_top_banner_size.value;
-	if ( a == 'auto' ) {
+	if ( a == 'auto' || a == 'full' ) {
 		a = 400;
 	}
 	else {
