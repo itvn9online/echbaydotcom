@@ -123,7 +123,7 @@ function invoice_func_check_search () {
 	}
 	
 	// chuẩn định dạng trước khi submit
-	f.invoice_key.value = escape( unescape( f.invoice_key.value ) );
+	f.invoice_key.value = escape( unescape( $.trim( f.invoice_key.value ) ) );
 	
 	//
 	return true;
