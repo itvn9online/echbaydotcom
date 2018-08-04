@@ -749,6 +749,28 @@ function jEBE_slider ( jd, conf, callBack ) {
 //					else {
 						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
 					}
+					// hỗ trợ người dùng cuộn trang, do lệnh làm liệt chức năng cuộn trang ở đây
+					else {
+						// lấy scroll hiện tại
+						var a = window.scrollY || jQuery(window).scrollTop(),
+							w2 = jQuery(window).height()/ 2;
+						
+						//
+						if ( direction == 'up' ) {
+							a += w2;
+						}
+						else if ( direction == 'down' ) {
+							a -= w2;
+							if ( a < 0 ) {
+								a = 0;
+							}
+						}
+						
+						//
+						jQuery('body,html').animate({
+							scrollTop: a
+						}, 200);
+					}
 				},
 				// Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold: 0
