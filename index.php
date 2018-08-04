@@ -1090,7 +1090,10 @@ else {
 	add_filter('after_setup_theme', 'EB_remove_admin_bar_in_theme');
 	
 	// xóa các script không sử dụng đến
-	add_filter( 'wp_footer', 'EBE_deregister_scripts' );
+	add_filter( 'init', 'EBE_deregister_scripts' );
+	
+	// add các script hay dùng
+	add_filter( 'init', 'EBE_register_scripts' );
 	
 }
 
@@ -1101,6 +1104,17 @@ function EB_remove_admin_bar_in_theme() {
 
 function EBE_deregister_scripts() {
 	wp_deregister_script( 'wp-embed' );
+}
+
+function EBE_register_scripts() {
+	// xóa jquery mặc định
+//	wp_deregister_script( 'jquery' );
+	
+	// add jquery mới
+//	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.2.1.min.js', false, '3.2.1'); 
+	
+	// gọi jquery
+	wp_enqueue_script('jquery');
 }
 
 

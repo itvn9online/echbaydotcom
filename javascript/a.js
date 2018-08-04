@@ -532,7 +532,8 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	
 	
 	// kiểm tra phiên bản plugin
-	if ( wgr_plugin_current_version != wgr_plugin_github_version ) {
+//	if ( wgr_plugin_current_version != wgr_plugin_github_version ) {
+	if ( parseInt(wgr_plugin_current_version.replace(/\./g, ''), 10) < parseInt(wgr_plugin_github_version.replace(/\./g, ''), 10) ) {
 		console.log('UPDATE NEW PLUGIN VERSION');
 		
 		$('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&confirm_eb_process=1&connect_to=github" class="orgcolor">Update WGR Plugin</a></li>');
@@ -541,7 +542,8 @@ if ( cf_hide_supper_admin_menu == 1 ) {
 	
 	
 	// kiểm tra phiên bản theme -> theme thì chỉ có sử dụng child-theme thì mới có version
-	if ( wgr_theme_current_version != '' && wgr_theme_current_version != wgr_theme_github_version ) {
+//	if ( wgr_theme_current_version != '' && wgr_theme_current_version != wgr_theme_github_version ) {
+	if ( wgr_theme_current_version != '' && parseInt(wgr_theme_current_version.replace(/\./g, ''), 10) < parseInt(wgr_theme_github_version.replace(/\./g, ''), 10) ) {
 		console.log('UPDATE NEW THEME VERSION');
 		
 		$('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&confirm_eb_process=1&connect_to=theme" class="orgcolor">Update WGR Theme</a></li>');

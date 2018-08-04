@@ -65,8 +65,10 @@ if ( $act != 'cart' ) {
 include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 
 
-//
+// nạp footer cho website -> các theme khác có thể sẽ dùng
 get_footer();
+
+// hàm để các plugin khác còn nhúng dữ liệu vào chân trang
 wp_footer();
 
 
