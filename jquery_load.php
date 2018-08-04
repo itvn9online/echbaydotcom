@@ -7,11 +7,11 @@ $dir_optimize_jquery_js = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/';
 // các file compiler trước khi xuất ra
 //EBE_add_js_compiler_in_cache( array(
 $file_optimize_jquery_js = array(
-	$dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.js',
+//	$dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.js',
 	
 	// Bản hỗ trợ chuyển đổi từ jQuery thấp lên jQuery cao hơn
 //	$dir_optimize_jquery_js . 'jquery/migrate-1.4.1.min.js',
-	$dir_optimize_jquery_js . 'jquery/migrate-3.0.0.min.js',
+//	$dir_optimize_jquery_js . 'jquery/migrate-3.0.0.min.js',
 	
 	// jquery cho bản mobile -> đang gây lỗi cho bản PC nên thôi
 //	$dir_optimize_jquery_js . 'jquery.mobile-1.4.5.min.js',
@@ -26,13 +26,13 @@ $file_optimize_jquery_js = array(
 );
 
 // tổng hợp các file jQuery cần thiết rồi cho hết vào 1 file để optimize
-/*
 $str_optimize_jquery_js = '';
 foreach ( $file_optimize_jquery_js as $v ) {
 	$str_optimize_jquery_js .= basename( $v );
 }
-*/
-$str_optimize_jquery_js = EB_THEME_CACHE . 'jquery.js';
+//$str_optimize_jquery_js = $dir_optimize_jquery_js . 'jquery.js';
+//$str_optimize_jquery_js = EB_THEME_CACHE . 'jquery.js';
+$str_optimize_jquery_js = EB_THEME_CACHE . $str_optimize_jquery_js;
 //echo $str_optimize_jquery_js . '<br>' . "\n";
 
 // tạo file trên localhost hoặc nếu chưa có
@@ -54,7 +54,7 @@ echo basename( WP_CONTENT_DIR ) . '<br>' . "\n";
 echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
 echo $str_optimize_jquery_js . '<br>' . "\n";
 */
-/*
+/* */
 echo '<script type="text/javascript" src="' . strstr( $str_optimize_jquery_js, EB_DIR_CONTENT ) . '"></script>' . "\n";
 /* */
 

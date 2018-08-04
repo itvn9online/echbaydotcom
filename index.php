@@ -1093,7 +1093,15 @@ else {
 	add_filter( 'init', 'EBE_deregister_scripts' );
 	
 	// add các script hay dùng
-	add_filter( 'init', 'EBE_register_scripts' );
+	/*
+	if ( strstr( $_SERVER['REQUEST_URI'], '/wp-login.php' ) == true
+	|| is_admin() ) {
+//	|| strstr( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) == true ) {
+	}
+	else {
+		*/
+		add_filter( 'init', 'EBE_register_scripts' );
+//	}
 	
 }
 
@@ -1109,11 +1117,11 @@ function EBE_deregister_scripts() {
 // https://developer.wordpress.org/reference/functions/wp_register_script/
 function EBE_register_scripts() {
 	// xóa jquery mặc định
-	wp_deregister_script( 'jquery' );
+//	wp_deregister_script( 'jquery' );
 //	wp_deregister_script( 'jquery-migrate' );
 	
 	// add jquery mới
-	wp_register_script('jquery', str_replace( ABSPATH, web_link, EB_THEME_CACHE . 'jquery.js' ), false, '3.3.1');
+//	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery.js', false, '3.3.1');
 //	wp_register_script('jquery-migrate', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js', false, '3.0.0');
 	
 	// gọi jquery
