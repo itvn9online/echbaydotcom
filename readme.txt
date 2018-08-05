@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.1.4
-Version: 1.1.4
+Stable tag: 1.1.5
+Version: 1.1.5
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 Version 1.0.*: https://github.com/itvn9online/echbaydotcom-2018-07-16
@@ -116,6 +116,15 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.1.5 =
+* Tối ưu việc quản trị đơn hàng
+* Thêm khả năng phát hiện vị trí gửi đơn trong phiên bản Pro
+* Tối ưu event swipe trên bản mobile
+* Nâng cấp phiên bản jQuery mới nhất
+* Hỗ trợ tạo nhiều giá cho mỗi Kích thước hoặc Màu sản phẩm khác nhau
+* Thêm chức năng chọn nút mua trên mobile
+* Thêm chức năng chọn thiết kế menu trên mobile
+
 = Version 1.0.5 =
 * Thêm chức năng phân trang cho sitemap.xml tăng giới hạn sitemap lên 99,000 bản ghi. Hỗ trợ thêm sitemap image theo chuẩn google. Xem thêm: https://www.facebook.com/groups/wordpresseb/permalink/500753096956466/
 
