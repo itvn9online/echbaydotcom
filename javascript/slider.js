@@ -846,10 +846,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 
 
 function jEBE_swipe_slider ( jd_to_class ) {
-	console.log( 'Swipe for ' + jd_to_class );
-	
-	//
 	try {
+		console.log( 'Swipe for ' + jd_to_class );
+		
+		//
 //		jQuery(jd).swipe( {
 		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
 			// Generic swipe handler for all directions
