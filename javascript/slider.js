@@ -611,10 +611,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 		jQuery(jd + ' li[data-i="' + i + '"]').click();
 		
 		// tắt auto play
-		if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
+//		if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
 			jEBE_slider_cache_option[jd]['autoplay'] = false;
-			console.log('Stop autoplay for ' + jd);
-		}
+//			console.log('Stop autoplay for ' + jd);
+//		}
 	});
 	
 	
@@ -665,6 +665,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 			}
 			
 			jQuery(jd + ' li[data-i="' + i + '"]').click();
+			
+			//
+			jEBE_slider_cache_option[jd]['autoplay'] = false;
 		});
 		
 		jQuery(jd_to_class + ' .jEBE_slider-toRight').click(function () {
@@ -680,9 +683,12 @@ function jEBE_slider ( jd, conf, callBack ) {
 			}
 			
 			jQuery(jd + ' li[data-i="' + i + '"]').click();
+			
+			//
+			jEBE_slider_cache_option[jd]['autoplay'] = false;
 		});
 		
-		// tạo css cho nut next
+		// tạo css cho nút next
 		jQuery( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
 			'font-size': conf['sliderArrowSize'] + 'px',
 			'line-height' : conf['lineHeight']
