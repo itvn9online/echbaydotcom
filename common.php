@@ -82,6 +82,8 @@ $pid = 0;
 $eb_product_price = 0;
 $eb_wp_post_type = '';
 //$eb_background_for_mobile_post = array();
+$html_search_nav_mobile = '';
+//$html_details_mobilemua = '';
 
 
 

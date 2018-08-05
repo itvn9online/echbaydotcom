@@ -1017,7 +1017,7 @@ if ( $__post->post_type == 'post' && $__cf_row['cf_details_mobilemua'] != '' ) {
 	
 	// v3
 	$main_content .= EBE_html_template(
-		EBE_get_custom_template( $__cf_row['cf_search_nav_mobile'], 'details' ),
+		EBE_get_custom_template( $__cf_row['cf_details_mobilemua'], 'details' ),
 		/*
 		EBE_get_page_template(
 			$__cf_row['cf_details_mobilemua'],
