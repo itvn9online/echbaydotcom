@@ -1008,7 +1008,7 @@ $main_content = str_replace ( '{tmp.admin_edit}', $admin_edit, $main_content );
 
 
 // thêm thanh công cụ mua trên mobile
-if ( $__post->post_type == 'post' && $__cf_row['cf_details_mobilemua'] != '' ) {
+if ( $__post->post_type == 'post' && $__cf_row['cf_details_mobilemua'] != 'none' ) {
 	// v1
 //	$main_content .= EBE_html_template( EBE_get_page_template( 'details_mobilemua' ) );
 	

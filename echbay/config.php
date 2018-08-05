@@ -742,7 +742,7 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 $arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/', '.{html}' );
 //print_r( $arr );
 $arr_for_get_template = array(
-	'' => '[ Không hiển thị ]'
+	'none' => '[ Không hiển thị ]'
 );
 foreach ( $arr as $k => $v ) {
 	$v = basename( $v, '.html' );
@@ -769,7 +769,7 @@ $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_confi
 $arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/search/', '.{html}' );
 //print_r( $arr );
 $arr_for_get_template = array(
-	'' => '[ Không hiển thị ]'
+	'none' => '[ Không hiển thị ]'
 );
 foreach ( $arr as $k => $v ) {
 	$v = basename( $v, '.html' );

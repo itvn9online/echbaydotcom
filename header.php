@@ -46,7 +46,7 @@ if ( $__cf_row['cf_facebook_id'] != '' ) {
 
 
 // thêm NAV menu cho bản mobile
-if ( $__cf_row['cf_search_nav_mobile'] != '' ) {
+if ( $__cf_row['cf_search_nav_mobile'] != 'none' ) {
 	
 	
 	//
