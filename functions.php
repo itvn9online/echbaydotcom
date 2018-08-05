@@ -459,8 +459,8 @@ function EBE_get_page_custom_options ( $page_name ) {
 }
 
 function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML, $f_css = '' ) {
-	global $wpdb;
-	global $__cf_row;
+//	global $wpdb;
+//	global $__cf_row;
 	global $arr_for_add_css;
 //	global $arr_for_add_theme_css;
 	global $arr_for_show_html_file_load;
@@ -562,6 +562,45 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML, $f_css =
 	//
 	return $html;
 }
+
+
+// lấy template HTML cho NAV mobile hoặc nút mua trên mobile
+function EBE_get_custom_template ( $n, $plugin_dir ) {
+	global $arr_for_add_css;
+	
+	// file html
+	$f = EB_THEME_THEME . 'html/' . $n . '.html';
+	
+	// kiểm tra trong child theme
+	$tmp_child_theme = '';
+	if ( using_child_wgr_theme == 1 ) {
+		$tmp_child_theme = EB_CHILD_THEME_URL . 'html/' . $n . '.html';
+	}
+	
+	// child theme
+	if ( $tmp_child_theme != '' && file_exists($tmp_child_theme) ) {
+		$h = file_get_contents($tmp_child_theme, 1);
+		
+		$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/' . $n . '.css' ] = 1;
+	}
+	// kiểm tra trong theme
+	else if ( file_exists($f) ) {
+		$h = file_get_contents($f, 1);
+		
+		$arr_for_add_css[ EB_THEME_THEME . 'css/' . $n . '.css' ] = 1;
+	}
+	// lấy mặc định trong plugin
+	else {
+		$f = EB_THEME_PLUGIN_INDEX . 'html/' . $plugin_dir . '/' . $n . '.html';
+		
+		$h = file_get_contents($f, 1);
+		
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'html/' . $plugin_dir . '/' . $n . '.css' ] = 1;
+	}
+	
+	return $h;
+}
+
 
 
 

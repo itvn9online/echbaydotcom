@@ -40,39 +40,17 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 // kiểm tra NAV mobile theo theme, nếu không có -> dùng bản dùng chung
 if ( $__cf_row['cf_search_nav_mobile'] != '' ) {
 	
-	// file html
-	$file_search_nav_mobile = EB_THEME_THEME . 'html/' . $__cf_row['cf_search_nav_mobile'] . '.html';
-	
-	// kiểm tra trong child theme
-	$tmp_child_theme = '';
-	if ( using_child_wgr_theme == 1 ) {
-		$tmp_child_theme = EB_CHILD_THEME_URL . 'html/' . $__cf_row['cf_search_nav_mobile'] . '.html';
-	}
-	
-	// child theme
-	if ( $tmp_child_theme != '' && file_exists($tmp_child_theme) ) {
-		$html_search_nav_mobile = file_get_contents($tmp_child_theme, 1);
-		
-		$arr_for_add_css[ EB_CHILD_THEME_URL . 'css/' . $__cf_row['cf_search_nav_mobile'] . '.css' ] = 1;
-	}
-	// kiểm tra trong theme
-	else if ( file_exists($file_search_nav_mobile) ) {
-		$html_search_nav_mobile = file_get_contents($file_search_nav_mobile, 1);
-		
-		$arr_for_add_css[ EB_THEME_THEME . 'css/' . $__cf_row['cf_search_nav_mobile'] . '.css' ] = 1;
-	}
-	// lấy mặc định trong plugin
-	else {
-		$file_search_nav_mobile = EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row['cf_search_nav_mobile'] . '.html';
-		
-		$html_search_nav_mobile = file_get_contents($file_search_nav_mobile, 1);
-		
-		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row['cf_search_nav_mobile'] . '.css' ] = 1;
-	}
 	
 	//
 	echo EBE_html_template(
-		$html_search_nav_mobile,
+		EBE_get_custom_template( $__cf_row['cf_search_nav_mobile'], 'search' ),
+		/*
+		EBE_get_page_template(
+			$__cf_row['cf_search_nav_mobile'],
+			EB_THEME_PLUGIN_INDEX . 'html/search/',
+			EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row['cf_search_nav_mobile'] . '.css'
+		),
+		*/
 		array(
 			'tmp.str_nav_mobile_top' => $str_nav_mobile_top,
 			
