@@ -1316,9 +1316,11 @@ var big_banner_timeout1 = null;
 	// tải slider theo code mới
 	jEBE_slider( '.oi_big_banner', {
 		autoplay : cf_slider_big_play > 0 ? true : false,
+//		swipemobile : true,
+		swipemobile: WGR_check_option_on ( cf_swipe_big_banner ) ? true : false,
 		speedNext: cf_slider_big_play,
 		
-		sliderArrow: ( WGR_check_option_on ( cf_arrow_big_banner ) ) ? true : false,
+		sliderArrow: WGR_check_option_on ( cf_arrow_big_banner ) ? true : false,
 		
 //		thumbnail : '.banner-ads-media',
 		size : jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''

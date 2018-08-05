@@ -477,12 +477,25 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	
 	// hiệu ứng khi click vào thẻ LI
-	var  i = 0;
+	var  i = 0,
+		// nếu slider đầu tiên mà là video -> xử lý khác đi chút
+		first_this_video = false;
+	
 	jQuery(jd + ' li').each(function() {
 		jQuery(this).attr({
 			'data-i' : i
 		});
 		
+		// Kiểm tra xem slide đầu tiên có phải là video không
+		if ( i == 0 ) {
+			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+			
+			if ( vd.split('youtube.com').length > 1 || vd.split('.mp4').length > 1 ) {
+				first_this_video = true;
+			}
+		}
+		
+		//
 		i += 1;
 	}).click(function () {
 		var i = jQuery(this).attr('data-i') || 0;
@@ -587,8 +600,21 @@ function jEBE_slider ( jd, conf, callBack ) {
 			// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
 			jQuery('div.banner-ads-media', this)
 			.addClass('banner-video-media')
+			// mẫu html mặc định
+			/*
 			.html('<video width="' + w_video + '" height="' + h_video + '" autoplay muted loop preload="auto">\
 				<source src="' + vd + '" type="video/mp4">\
+			</video>')
+			*/
+			// làm theo mẫu của rolls-royce (có poster)
+			/*
+			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" poster="' + ( jQuery('div.banner-ads-media', this).attr('data-mobile-img') || '' ) + '" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">\
+				<track kind="metadata" label="segment-metadata">\
+			</video>')
+			*/
+			// không poster
+			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">\
+				<track kind="metadata" label="segment-metadata">\
 			</video>');
 		}
 		
@@ -598,7 +624,18 @@ function jEBE_slider ( jd, conf, callBack ) {
 		}, 200);
 		
 	});
-	jQuery(jd + ' li[data-i="0"]').click();
+	
+	// video ở đầu -> load chậm lại chút -> do chưa kịp định khung
+//	console.log(first_this_video);
+	if ( first_this_video == true ) {
+		setTimeout(function () {
+//			alert( Math.random() );
+			jQuery(jd + ' li[data-i="0"]').click();
+		}, 600);
+	}
+	else {
+		jQuery(jd + ' li[data-i="0"]').click();
+	}
 	
 	
 	//
@@ -745,7 +782,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
 		if ( conf['swipemobile'] == true && jQuery(window).width() < 750 ) {
 			setTimeout(function () {
-				jEBE_swipe_slider( jd_to_class );
+				jEBE_swipe_slider( jd, jd_to_class );
 			}, 3000);
 		}
 		
@@ -845,13 +882,14 @@ function jEBE_slider ( jd, conf, callBack ) {
 }
 
 
-function jEBE_swipe_slider ( jd_to_class ) {
+function jEBE_swipe_slider ( jd, jd_to_class ) {
 	try {
-		console.log( 'Swipe mobile for ' + jd_to_class );
+		console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
 		
 		//
 //		jQuery(jd).swipe( {
-		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+//		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+		jQuery(jd + ' ul li, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
 			// Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 //				console.log( direction );

@@ -141,6 +141,8 @@ $_POST['cf_global_big_banner'] = WGR_default_config('cf_global_big_banner');
 
 $_POST['cf_arrow_big_banner'] = WGR_default_config('cf_arrow_big_banner');
 
+$_POST['cf_swipe_big_banner'] = WGR_default_config('cf_swipe_big_banner');
+
 $_POST['cf_auto_get_ads_size'] = WGR_default_config('cf_auto_get_ads_size');
 
 

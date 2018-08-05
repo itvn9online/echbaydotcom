@@ -488,6 +488,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_search_by_echbay' );
 	show_note_for_checkbox_config( 'cf_global_big_banner' );
 	show_note_for_checkbox_config( 'cf_arrow_big_banner' );
+	show_note_for_checkbox_config( 'cf_swipe_big_banner' );
 	show_note_for_checkbox_config( 'cf_auto_get_ads_size' );
 	
 	

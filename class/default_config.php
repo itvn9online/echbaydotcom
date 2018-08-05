@@ -256,6 +256,8 @@ $__cf_row_default = array(
 	
 	// nút chuyển ảnh trên slider
 	'cf_arrow_big_banner' => 1,
+	// bật tắt chế độ swipe trên mobile cho banner chính
+	'cf_swipe_big_banner' => 'off',
 	
 	// tựu động lấy size cho phần quảng cáo theo ảnh đầu tiên trong chuỗi tìm được
 	'cf_auto_get_ads_size' => 'off',

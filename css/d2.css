@@ -1235,7 +1235,9 @@ color: #333;
 }
 .banner-video-media {
 	background-color: #666;
+	/*
 	background-image: none !important;
+	*/
 	overflow: hidden;
 }
 /*
