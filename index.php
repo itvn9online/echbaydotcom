@@ -1130,11 +1130,11 @@ function EBE_register_scripts() {
 //	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery.js', false, '3.3.1');
 	
 	// add file lẻ
-	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js', array(), '3.0.0');
-//	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js', array(), '3.0.0');
+	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js');
+//	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js');
 	
 	// migrate
-	wp_register_script('jquery-migrate', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0');
+	wp_register_script('jquery-migrate', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js');
 	
 	// gọi jquery
 	wp_enqueue_script('jquery');
