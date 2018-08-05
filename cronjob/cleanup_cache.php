@@ -14,15 +14,19 @@ if ($check_Cleanup_cache == false) {
 	
 	// ép lưu cache
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
-}
-
-
-
-// in thông báo nếu là xóa cache thủ công
-if ( isset( $_GET['tab'] ) ) {
-//	echo '<p>Xóa bộ nhớ tạm thành công!</p>';
 	
-	_eb_alert('Xóa bộ nhớ tạm thành công!');
+	
+	// in thông báo nếu là xóa cache thủ công
+	if ( isset( $_GET['tab'] ) ) {
+//		echo '<p>Xóa bộ nhớ tạm thành công!</p>';
+		
+		_eb_alert('Xóa bộ nhớ tạm thành công!');
+	}
+}
+else {
+	if ( isset( $_GET['tab'] ) ) {
+		_eb_alert('Giãn cách mỗi lần xóa tối thiểu là ' . $_GET['time_auto_cleanup_cache'] . ' giây!');
+	}
 }
 
 

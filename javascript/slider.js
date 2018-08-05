@@ -13,6 +13,8 @@ var jEBE_slider_cache_option = {},
 *
 // tự động chạy (true|false) nếu được set là true (mặc định false)
 autoplay: true
+// cho phép chuyển ảnh trên mobile bẳng touch (true|false) nếu được set là true (mặc định false)
+swipemobile: true
 // hiển thị nút bấm chuyển ảnh (true|false) nếu được set là true (mặc định true)
 buttonListNext: true
 // kích thước cố định (mặc định là tự động tính theo tham số size bên dưới)
@@ -152,6 +154,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	// tự động chạy
 	set_default_conf( 'autoplay', false );
+	// bật touch
+	set_default_conf( 'swipemobile', false );
 	// tốc độ chuyển slide ( mini giây )
 	set_default_conf( 'speed', 0 );
 	if ( conf['speed'] > 0 ) {
@@ -703,6 +707,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 					'width': conf['sliderArrowWidthLeft']
 				});
 			}
+			
 			if ( conf['sliderArrowWidthRight'] != '' ) {
 				jQuery( jd_to_class + ' .jEBE_slider-toRight' ).css({
 					'width': conf['sliderArrowWidthRight']
@@ -738,49 +743,10 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// sử dụng swipe để chuyển ảnh
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
-		if ( jQuery(window).width() < 750 ) {
-//			jQuery(jd).swipe( {
-			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
-				// Generic swipe handler for all directions
-				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-//					console.log( direction );
-					
-					//
-					if ( direction == 'left' ) {
-//					if ( direction == 'left' || direction == 'up' ) {
-						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
-					}
-					else if ( direction == 'right' ) {
-//					else if ( direction == 'right' || direction == 'down' ) {
-//					else {
-						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
-					}
-					// hỗ trợ người dùng cuộn trang, do lệnh làm liệt chức năng cuộn trang ở đây
-					else {
-						// lấy scroll hiện tại
-						var a = window.scrollY || jQuery(window).scrollTop(),
-							w2 = jQuery(window).height()/ 2;
-						
-						//
-						if ( direction == 'up' ) {
-							a += w2;
-						}
-						else if ( direction == 'down' ) {
-							a -= w2;
-							if ( a < 0 ) {
-								a = 0;
-							}
-						}
-						
-						//
-						jQuery('body,html').animate({
-							scrollTop: a
-						}, 200);
-					}
-				},
-				// Default is 75px, set to 0 for demo so any distance triggers swipe
-				threshold: 0
-			});
+		if ( conf['swipemobile'] == true && jQuery(window).width() < 750 ) {
+			setTimeout(function () {
+				jEBE_swipe_slider( jd_to_class );
+			}, 3000);
 		}
 		
 		
@@ -879,4 +845,55 @@ function jEBE_slider ( jd, conf, callBack ) {
 }
 
 
+function jEBE_swipe_slider ( jd_to_class ) {
+	console.log( 'Swipe for ' + jd_to_class );
+	
+	//
+	try {
+//		jQuery(jd).swipe( {
+		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+			// Generic swipe handler for all directions
+			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+//				console.log( direction );
+				
+				//
+				if ( direction == 'left' ) {
+//				if ( direction == 'left' || direction == 'up' ) {
+					jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
+				}
+				else if ( direction == 'right' ) {
+//				else if ( direction == 'right' || direction == 'down' ) {
+//				else {
+					jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
+				}
+				// hỗ trợ người dùng cuộn trang, do lệnh làm liệt chức năng cuộn trang ở đây
+				else {
+					// lấy scroll hiện tại
+					var a = window.scrollY || jQuery(window).scrollTop(),
+						w2 = jQuery(window).height()/ 2;
+					
+					//
+					if ( direction == 'up' ) {
+						a += w2;
+					}
+					else if ( direction == 'down' ) {
+						a -= w2;
+						if ( a < 0 ) {
+							a = 0;
+						}
+					}
+					
+					//
+					jQuery('body,html').animate({
+						scrollTop: a
+					}, 200);
+				}
+			},
+			// Default is 75px, set to 0 for demo so any distance triggers swipe
+			threshold: 0
+		});
+	} catch ( e ) {
+		console.log( WGR_show_try_catch_err( e ) );
+	}
+}
 

@@ -363,6 +363,7 @@ function ___eb_details_slider_v2 () {
 		
 		// tự động chạy slider theo thời gian mà người dùng chỉ định
 		autoplay : cf_slider_details_play > 0 ? true : false,
+		swipemobile : true,
 		speedNext : cf_slider_details_play,
 		
 		sliderArrow: true,
