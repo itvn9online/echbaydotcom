@@ -61,6 +61,10 @@ $main_content = str_replace( '{tmp.print_content}', EBE_get_page_template( $prin
 
 
 
+//
+$bill_static_version = date( 'ym.d.H', date_time );
+
+
 // tham số theo hóa đơn
 //$main_content = EBE_html_template( EBE_get_page_template( $print_type ), array(
 $main_content = EBE_html_template( $main_content, array(
@@ -71,15 +75,15 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 	print_type = "' . $print_type . '";
 	' ),
 	
-	'tmp.head' => WGR_show_header_favicon( web_link . eb_default_vaficon . '?v=' . date_time ) . trim( '
-<link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d.css?v=' . date_time . '" type="text/css">
-<link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d2.css?v=' . date_time . '" type="text/css">
+	'tmp.head' => WGR_show_header_favicon( web_link . eb_default_vaficon . '?v=' . $bill_static_version ) . trim( '
+<link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d.css?v=' . $bill_static_version . '" type="text/css">
+<link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d2.css?v=' . $bill_static_version . '" type="text/css">
 
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/3.2.1.min.js"></script>
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/migrate-1.4.1.min.js"></script>
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/migrate-3.0.0.min.js"></script>
 
-<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/eb.js?v=' . date_time . '"></script>
+<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/eb.js?v=' . $bill_static_version . '"></script>
 	' ),
 	'tmp.id' => $id,
 	
