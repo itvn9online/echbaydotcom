@@ -889,7 +889,8 @@ function jEBE_swipe_slider ( jd, jd_to_class ) {
 		//
 //		jQuery(jd).swipe( {
 //		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
-		jQuery(jd + ' ul li, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+//		jQuery(jd + ' ul li, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+		jQuery(jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
 			// Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 //				console.log( direction );
