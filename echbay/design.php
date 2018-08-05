@@ -13,7 +13,8 @@ global $wpdb;
 //echo EB_THEME_HTML;
 
 
-$arr = glob ( EB_THEME_HTML . '*.html' );
+//$arr = glob ( EB_THEME_HTML . '*.html' );
+$arr = EBE_get_file_in_folder ( EB_THEME_URL, '.{html}' );
 //print_r($arr);
 
 //

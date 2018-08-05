@@ -117,17 +117,20 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 	// lấy trong plugin
 	if ( $in_theme == 0 ) {
 //		echo EB_THEME_PLUGIN_INDEX . "\n";
-		$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/*.{' . $files_type_support . '}', GLOB_BRACE );
+//		$arr_file_name = glob ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/*.{' . $files_type_support . '}', GLOB_BRACE );
+		$arr_file_name = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'themes/' . $type . '/', '.{' . $files_type_support . '}' );
 	}
 	// lấy trong theme
 	else {
 //		echo EB_THEME_URL . "\n";
 		if ( using_child_wgr_theme == 1 ) {
 //			echo EB_CHILD_THEME_URL . "\n";
-			$arr_file_name = glob ( EB_CHILD_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
+//			$arr_file_name = glob ( EB_CHILD_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
+			$arr_file_name = EBE_get_file_in_folder ( EB_CHILD_THEME_URL . 'ui/', '.{' . $files_type_support . '}' );
 		}
 		else {
-			$arr_file_name = glob ( EB_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
+//			$arr_file_name = glob ( EB_THEME_URL . 'ui/*.{' . $files_type_support . '}', GLOB_BRACE );
+			$arr_file_name = EBE_get_file_in_folder ( EB_THEME_URL . 'ui/', '.{' . $files_type_support . '}' );
 		}
 	}
 //	print_r( $arr_file_name );
@@ -546,7 +549,8 @@ $arr_for_set_template['dir_for_save_include_theme'] = EB_THEME_PLUGIN_INDEX;
 
 
 // list toàn bộ các themes đã đươc liệt kê
-$arr_list_all_themes = glob ( EB_THEME_PLUGIN_INDEX . 'themes/all/*.{php}', GLOB_BRACE );
+//$arr_list_all_themes = glob ( EB_THEME_PLUGIN_INDEX . 'themes/all/*.{php}', GLOB_BRACE );
+$arr_list_all_themes = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'themes/all/', '.{php}' );
 //print_r($arr_list_all_themes);
 foreach ( $arr_list_all_themes as $v ) {
 	include $v;

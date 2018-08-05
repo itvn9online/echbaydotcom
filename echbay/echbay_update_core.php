@@ -9,7 +9,8 @@
 
 // chuyển từ vesion cũ sang version mới
 if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
-	$arr = glob ( EB_THEME_URL . 'theme/*' );
+//	$arr = glob ( EB_THEME_URL . 'theme/*' );
+	$arr = EBE_get_file_in_folder ( EB_THEME_URL . 'theme/' );
 //	print_r( $arr );
 	
 	// lần đầu chỉ copy thư mục và các file trong đó
@@ -29,7 +30,8 @@ if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
 				EBE_create_dir( $path );
 				
 				//
-				$arr2 = glob ( $v . '/*' );
+//				$arr2 = glob ( $v . '/*' );
+				$arr2 = EBE_get_file_in_folder ( $v . '/' );
 //				print_r( $arr2 );
 				
 				foreach ( $arr2 as $v2 ) {
@@ -77,7 +79,8 @@ function EBE_get_list_file_update_echbay_core ( $dir, $arr_dir = array(), $arr_f
 		$dir = substr( $dir, 0, -1 );
 	}
 	
-	$arr = glob ( $dir . '/*' );
+//	$arr = glob ( $dir . '/*' );
+	$arr = EBE_get_file_in_folder ( $dir . '/' );
 //	print_r( $arr );
 	
 	//

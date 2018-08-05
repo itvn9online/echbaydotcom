@@ -1455,12 +1455,49 @@ else {
 
 
 
-function EBE_get_file_in_folder($open_folder, $type = '', $brace = '') {
-	if ($brace != '') {
-		$arr = glob ( $open_folder . $brace, GLOB_BRACE );
-	} else {
-		$arr = glob ( $open_folder . '*' );
+function EBE_get_file_in_folder( $dir, $file_type = '', $type = '', $get_basename = false ) {
+	/*
+	* chuẩn hóa đầu vào
+	*/
+	// bỏ dấu * nếu có
+	if ( substr( $dir, -1 ) == '*' ) {
+		$dir = substr( $dir, 0, -1 );
 	}
+	if ( substr( $file_type, 0, 1 ) == '*' ) {
+		$file_type = substr( $file_type, 1 );
+	}
+	// thêm dấu / nếu chưa có
+	if ( substr( $dir, -1 ) != '/' ) {
+		$dir .= '/';
+	}
+	
+	// lấy danh sách file
+	if ($file_type != '') {
+		$arr = glob ( $dir . '*' . $file_type, GLOB_BRACE );
+	} else {
+		$arr = glob ( $dir . '*' );
+	}
+	
+	// chỉ lấy file
+	if ($type == 'file') {
+		$arr = array_filter ( $arr, 'is_file' );
+	}
+	// chỉ lấy thư mục
+	else if ($type == 'dir') {
+		$arr = array_filter ( $arr, 'is_dir' );
+	}
+	
+//	print_r($arr);
+//	exit();
+	
+	// chỉ lấy mỗi tên file hoặc thư mục
+	if ( $get_basename == true ) {
+		foreach ( $arr as $k => $v ) {
+			$arr[$k] = basename( $v );
+		}
+	}
+	
+	return $arr;
 }
 
 function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
@@ -1476,7 +1513,8 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
 	
 	
 	// lấy d.sách file và thư mục trong thư mục cần xóa
-	$arr = glob ( $dir . '/*' );
+//	$arr = glob ( $dir . '/*' );
+	$arr = EBE_get_file_in_folder ( $dir . '/' );
 //	print_r( $arr ); exit();
 	
 	

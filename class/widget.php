@@ -421,7 +421,8 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 		$dir = substr( $dir, 0, -1 );
 	}
 //	echo $dir;
-	$arr = glob ( $dir . '/*' );
+//	$arr = glob ( $dir . '/*' );
+	$arr = EBE_get_file_in_folder ( $dir . '/' );
 //	print_r( $arr );
 	
 	//

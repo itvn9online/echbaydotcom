@@ -485,7 +485,8 @@ date_default_timezone_set( $__cf_row['cf_timezone'] );
 $list_file_for_lang = '';
 
 //
-$arr_file_for_lang = glob ( EB_THEME_PLUGIN_INDEX . 'lang/*.{php}', GLOB_BRACE );
+//$arr_file_for_lang = glob ( EB_THEME_PLUGIN_INDEX . 'lang/*.{php}', GLOB_BRACE );
+$arr_file_for_lang = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'lang/' . $type . '/', '.{php}' );
 //print_r($arr_file_for_lang);
 $arr_file_for_lang = array_filter ( $arr_file_for_lang, 'is_file' );
 //print_r($arr_file_for_lang);
@@ -737,7 +738,8 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 
 
 // lựa chọn giao diện nút mua ngay trên mobile
-$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/details/*' );
+//$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/details/*' );
+$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/', '.{html}' );
 //print_r( $arr );
 $arr_for_get_template = array(
 	'' => '[ Không hiển thị ]'
@@ -763,7 +765,8 @@ $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_confi
 
 
 // lựa chọn giao diện nút mua ngay trên mobile
-$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search/*' );
+//$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search/*' );
+$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/search/', '.{html}' );
 //print_r( $arr );
 $arr_for_get_template = array(
 	'' => '[ Không hiển thị ]'
