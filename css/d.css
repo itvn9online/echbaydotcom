@@ -229,7 +229,7 @@ body.home .thread-details-tohome { display: none; }
 .jEBE_slider-toLeft,
 .jEBE_slider-toRight {
 	position: absolute;
-	z-index: 3;
+	z-index: 4;
 	cursor: pointer;
 	font-size: 30px;
 }
