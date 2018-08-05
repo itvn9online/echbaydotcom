@@ -398,7 +398,8 @@
 			</tr>
 			<tr>
 				<td class="t">Nút mua ngay trên mobile</td>
-				<td class="i">{tmp.cf_details_mobilemua}</td>
+				<td class="i">{tmp.cf_details_mobilemua}
+					<div class="small">Chúng tôi đã thiết kế sẵn một số mẫu nút Mua ngay cho phiên bản mobile trong trang chi tiết sản phẩm, bạn có thể sử dụng nó hoặc tự thiết kế mẫu riêng bằng cách tạo file .html và đặt tên giống với lựa chọn hiện tại rồi cho vào thư mục html trong theme của bạn.</div></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -597,6 +598,14 @@
 			</tr>
 		</tbody>
 		-->
+		
+		<tbody title="Phom nhập liệu (form)" id="eb-admin-config-theme-form" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">Menu NAV trên mobile</td>
+				<td class="i">{tmp.cf_search_nav_mobile}
+					<div class="small">Chúng tôi đã thiết kế sẵn một số mẫu menu cho phiên bản mobile, bạn có thể sử dụng nó hoặc tự thiết kế mẫu riêng bằng cách tạo file .html và đặt tên giống với lựa chọn hiện tại rồi cho vào thư mục html trong theme của bạn.</div></td>
+			</tr>
+		</tbody>
 		<tbody title="Phom nhập liệu (form)" id="eb-admin-config-theme-form" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
 				<td colspan="2"><span class="t">Giỏ hàng (đầy đủ)</span> [<span class="cur bluecolor small">Mặc định</span>]</td>
@@ -628,10 +637,12 @@
 		<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />
 	</div>
 </form>
-<textarea name="cf_tmp_form_cart" id="cf_tmp_form_cart"></textarea>
-<textarea name="cf_tmp_form_quick_cart" id="cf_tmp_form_quick_cart"></textarea>
-<textarea name="cf_tmp_form_register" id="cf_tmp_form_register"></textarea>
-<textarea name="cf_tmp_form_contact" id="cf_tmp_form_contact"></textarea>
+<div class="d-none">
+	<textarea name="cf_tmp_form_cart" id="cf_tmp_form_cart"></textarea>
+	<textarea name="cf_tmp_form_quick_cart" id="cf_tmp_form_quick_cart"></textarea>
+	<textarea name="cf_tmp_form_register" id="cf_tmp_form_register"></textarea>
+	<textarea name="cf_tmp_form_contact" id="cf_tmp_form_contact"></textarea>
+</div>
 <div class="change-eb-design-fixed">
 	<div data-key="private">
 		<div class="change-eb-design-padding">{tmp.str_private_include_file}</div>

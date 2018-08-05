@@ -1016,10 +1016,17 @@ if ( $__post->post_type == 'post' && $__cf_row['cf_details_mobilemua'] != '' ) {
 //	$details_mobilemua = EBE_get_page_template( 'details_mobilemua' );
 	
 	// v3
-	$main_content .= EBE_html_template( EBE_get_page_template( $__cf_row['cf_details_mobilemua'], EB_THEME_PLUGIN_INDEX . 'html/details/', EB_THEME_PLUGIN_INDEX . 'html/details/' . $__cf_row['cf_details_mobilemua'] . '.css' ), array(
-		'tmp.details_mobilemua_mua' => EBE_get_lang('details_mobilemua_mua'),
-		'tmp.details_mobilemua_top' => EBE_get_lang('details_mobilemua_top')
-	) );
+	$main_content .= EBE_html_template(
+		EBE_get_page_template(
+			$__cf_row['cf_details_mobilemua'],
+			EB_THEME_PLUGIN_INDEX . 'html/details/',
+			EB_THEME_PLUGIN_INDEX . 'html/details/' . $__cf_row['cf_details_mobilemua'] . '.css'
+		),
+		array(
+			'tmp.details_mobilemua_mua' => EBE_get_lang('details_mobilemua_mua'),
+			'tmp.details_mobilemua_top' => EBE_get_lang('details_mobilemua_top')
+		)
+	);
 }
 
 

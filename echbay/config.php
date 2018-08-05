@@ -761,6 +761,32 @@ $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_confi
 
 
 
+
+// lựa chọn giao diện nút mua ngay trên mobile
+$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search_nav_mobile/*' );
+//print_r( $arr );
+$arr_for_get_template = array(
+	'' => '[ Không hiển thị ]'
+);
+foreach ( $arr as $k => $v ) {
+	$v = basename( $v, '.html' );
+	$arr_for_get_template[$v] = $v;
+}
+//print_r( $arr_for_get_template );
+
+//
+$arr_for_get_template['custom_mobile_menu'] = 'Tự tạo trong theme cha';
+
+//
+$arr_for_set_template['cf_search_nav_mobile'] = __eb_create_select_checked_config(
+	$arr_for_get_template,
+	$__cf_row['cf_search_nav_mobile'],
+	'cf_search_nav_mobile'
+);
+
+
+
+
 //
 if ( $include_page == 'config_theme' ) {
 	include ECHBAY_PRI_CODE . 'config_theme_arr.php';

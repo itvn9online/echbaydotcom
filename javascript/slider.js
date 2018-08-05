@@ -847,7 +847,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 
 function jEBE_swipe_slider ( jd_to_class ) {
 	try {
-		console.log( 'Swipe for ' + jd_to_class );
+		console.log( 'Swipe mobile for ' + jd_to_class );
 		
 		//
 //		jQuery(jd).swipe( {
