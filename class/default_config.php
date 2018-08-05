@@ -282,7 +282,7 @@ $__cf_row_default = array(
 	'cf_details_mobilemua' => 'mobilemua1',
 	
 	// menu trên bản mobile
-	'cf_search_nav_mobile' => '01',
+	'cf_search_nav_mobile' => 'nav_mobile1',
 	
 	// chế độ điều khiển post excerpt cho trang chi tiết sản phẩm
 	'cf_details_excerpt' => 1,

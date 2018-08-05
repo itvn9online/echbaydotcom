@@ -542,18 +542,21 @@ function EBE_get_page_template ( $page_name = '', $dir = EB_THEME_HTML, $f_css =
 		
 		$html = file_get_contents($f, 1);
 		
-		// dùng chung thì gán CSS dùng chung luôn (nếu có)
-		$css = EB_THEME_PLUGIN_INDEX . 'css/default/' . $page_name . '.css';
-//		if ( file_exists( $css ) ) {
-			$arr_for_add_css[ $css ] = 1;
-			
-//			$arr_for_show_html_file_load[] = '<!-- global CSS: ' . $page_name . ' -->';
+		// nếu có css riêng -> add luôn vào
+		/*
+		if ( $f_css != '' ) {
+			$arr_for_add_css[ $f_css ] = 1;
+		}
+		else {
+			*/
+			// dùng chung thì gán CSS dùng chung luôn (nếu có)
+			$css = EB_THEME_PLUGIN_INDEX . 'css/default/' . $page_name . '.css';
+//			if ( file_exists( $css ) ) {
+				$arr_for_add_css[ $css ] = 1;
+				
+//				$arr_for_show_html_file_load[] = '<!-- global CSS: ' . $page_name . ' -->';
+//			}
 //		}
-	}
-	
-	// nếu có css riêng -> add luôn vào
-	if ( $f_css != '' ) {
-		$arr_for_add_css[ $f_css ] = 1;
 	}
 	
 	//

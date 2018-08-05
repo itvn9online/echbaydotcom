@@ -763,7 +763,7 @@ $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_confi
 
 
 // lựa chọn giao diện nút mua ngay trên mobile
-$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search_nav_mobile/*' );
+$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search/*' );
 //print_r( $arr );
 $arr_for_get_template = array(
 	'' => '[ Không hiển thị ]'
