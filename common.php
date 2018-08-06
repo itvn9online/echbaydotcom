@@ -214,6 +214,7 @@ else {
 	echo '<!-- ' . $inc_file . ' -->' . "\n";
 	include EB_THEME_PLUGIN_INDEX . 'global/null.php';
 }
+//echo '<!-- ' . $inc_file . ' -->' . "\n";
 
 // chuẩn hóa nội dung theo tiêu chuẩn
 include EB_THEME_PLUGIN_INDEX . 'common_content.php';

@@ -126,6 +126,9 @@ EBE_print_product_img_css_class( $eb_background_for_post );
 // reset lại mục này, để còn insert CSS xuống footer nếu có
 $eb_background_for_post = array();
 
+//
+//print_r( $css_m_css );
+
 ?>
 </head>
 <!--Thêm class tượng trưng cho mỗi trang lên BODY để tùy biến-->

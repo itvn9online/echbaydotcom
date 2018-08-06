@@ -396,7 +396,13 @@ if ( $__cf_row['cf_reset_cache'] > 0 ) {
 
 
 //
-$css_m_css = get_body_class();
+if ( isset( $css_m_css ) ) {
+//	print_r( $css_m_css );
+	$css_m_css = array_merge( $css_m_css, get_body_class() );
+}
+else {
+	$css_m_css = get_body_class();
+}
 
 // css riêng của post, page...
 $class_css_of_post = '';
