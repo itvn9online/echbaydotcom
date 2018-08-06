@@ -120,20 +120,6 @@ function EBE_get_html_address () {
 		'tmp.fd_email' => EBE_get_lang('fd_email'),
 		'tmp.cf_email' => $__cf_row['cf_email']
 	) );
-	
-	//
-	return '
-	<div class="footer-address">
-		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
-		<div class="footer-address-info l19">
-			<div class="footer-address-address">' . $dc . '</div>
-			<div class="footer-address-phone">
-				<div class="footer-address-hotline">' . EBE_get_lang('fd_hotline') . ' <span class="phone-numbers-inline">' . $__cf_row['cf_call_hotline'] . '</span></div>
-				<div class="footer-address-cell">' . EBE_get_lang('fd_dienthoai') . ' <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></div>
-			</div>
-			<div class="footer-address-email">' . EBE_get_lang('fd_email') . ' <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></div>
-		</div>
-	</div>';
 }
 
 function WGR_get_bigbanner () {
