@@ -33,6 +33,9 @@ else {
 		*/
 //		$web_link = get_option ( 'siteurl' );
 		$web_link = _eb_get_option ( 'siteurl' );
+		
+		// do cơ chế update config của WGR sẽ khai báo WP_SITEURL, nên khi chưa có thì kiểm tra siteurl luôn
+		WGR_auto_update_link_for_demo ( $web_link, $web_link );
 //	}
 }
 
