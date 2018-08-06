@@ -31,12 +31,35 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 	
 }
 
-function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
+function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 	
 	//
 	if ( typeof hd_id != "number" ) {
 		console.log( "order ID not found" );
 		return false;
+	}
+	
+	// kiểm tra xem GA với FB đã load được chưa, chờ tụi nó 1 lúc, nếu không thể load được thì đành chạy tiếp
+//	if ( typeof ga == 'undefined' || typeof fbq == 'undefined' ) {
+	if ( typeof ga == 'undefined' ) {
+		if ( typeof max_for == "undefined" ) {
+			max_for = 20;
+		}
+//		console.log( 'Max for: ' + max_for );
+		
+		//
+		if ( max_for > 0 ) {
+			setTimeout(function () {
+				___eb_add_convertsion_gg_fb ( hd_id, arr, max_for - 1 );
+			}, 500);
+			
+			console.log( 'Re-load tranking (' + max_for + ')...' );
+			
+			return false;
+		}
+		
+		//
+		console.log( 'Max for: ' + max_for );
 	}
 	
 	// nếu giá trị tuyền vào không phải là mảng
@@ -71,8 +94,11 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 					'price': arr[i].price,
 					'quantity': arr[i].quan
 				};
-//				console.log( ga_add_product );
 				ga('ec:addProduct', ga_add_product);
+				
+				//
+				console.log( 'ec addProduct:' );
+				console.log( ga_add_product );
 			}
 //		}
 	}
@@ -89,7 +115,7 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 	
 	// google analytics track -> by order
 	if ( typeof ga != 'undefined' ) {
-		ga("ec:setAction", "purchase", {
+		var ga_set_action = {
 //			"id": arr[0].id,
 			"id": hd_id,
 			"affiliation": window.location.href.split('//')[1].split('/')[0].replace('www.', ''),
@@ -98,7 +124,12 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr ) {
 			"tax": "0",
 			"shipping": "0",
 			"coupon": ""
-		});
+		};
+		ga("ec:setAction", "purchase", ga_set_action);
+		
+		//
+		console.log( 'ec setAction:' );
+		console.log( ga_set_action );
 	}
 	
 }

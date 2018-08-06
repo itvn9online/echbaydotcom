@@ -1846,6 +1846,8 @@ input[type="number"].s { width: 90px; }
 .thread-details-title,
 .thread-module-name,
 .blogs-module-name { font-size: 18px; }
+.thread-module-name,
+.blogs-module-name { padding-bottom: 10px; }
 .page-details-title,
 .blog-details-title { font-size: 23px; }
 .thread-details-title,

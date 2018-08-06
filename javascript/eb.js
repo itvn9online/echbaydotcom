@@ -2617,12 +2617,7 @@ var _global_js_eb = {
 	
 	// google analytics tracking
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-	ga_event_track : function ( eventCategory, eventAction, eventLabel ) {
-		
-		if ( typeof ga != 'function' ) {
-			console.log('ga not found');
-			return false;
-		}
+	ga_event_track : function ( eventCategory, eventAction, eventLabel, max_for ) {
 		
 		// không track đối với người dùng đã đăng nhập
 		if ( isLogin > 0 && WGR_check_option_on( cf_disable_tracking ) ) {
@@ -2650,11 +2645,32 @@ var _global_js_eb = {
 			eventLabel = document.title;
 		}
 		
-		//
-		console.log('Google analytics event tracking (' + eventAction + ') by EchBay.com');
+		if ( typeof ga != 'function' ) {
+			if ( typeof max_for == "undefined" ) {
+				max_for = 20;
+			}
+			
+			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
+			if ( max_for > 0 ) {
+				setTimeout(function () {
+					_global_js_eb.ga_event_track( eventCategory, eventAction, eventLabel, max_for - 1 );
+				}, 500);
+				
+				console.log( 'Re-load GG tracking (' + max_for + ')...' );
+				
+				return false;
+			}
+			
+			// 
+			console.log( 'Max for GG track: ' + max_for );
+			return false;
+		}
 		
 		//
 		ga( 'send', 'event', eventCategory + ' (EB)', eventAction, eventLabel );
+		
+		//
+		console.log('Google analytics event tracking (' + eventAction + ') by EchBay.com');
 		
 		//
 		return true;
@@ -2662,7 +2678,7 @@ var _global_js_eb = {
 	
 	// facebook dynamic remarketing
 	// https://developers.facebook.com/docs/marketing-api/facebook-pixel/v2.8
-	fb_track : function ( track_name, track_arr, not_reload_track ) {
+	fb_track : function ( track_name, track_arr, max_for ) {
 		//
 //		console.log('aaaaaaaaa');
 		
@@ -2675,19 +2691,6 @@ var _global_js_eb = {
 		// không track đối với người dùng đã đăng nhập
 		if ( isLogin > 0 && WGR_check_option_on( cf_disable_tracking ) ) {
 			console.log('fb_track disable by user login');
-			return false;
-		}
-		
-		// nếu fb chưa được nạp -> thoát luôn mà không nói gì
-		if ( typeof fbq == 'undefined' ) {
-			
-			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
-			if ( typeof not_reload_track == 'undefined' || not_reload_track != 1 ) {
-				setTimeout(function () {
-					_global_js_eb.fb_track( track_name, track_arr, 1 );
-				}, 1200);
-			}
-			
 			return false;
 		}
 		
@@ -2706,11 +2709,35 @@ var _global_js_eb = {
 				track_arr.content_type = 'product';
 			}
 		}
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Facebook pixel (' + track_name + ') by EchBay.com');
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( track_arr );
+		
+		// nếu fb chưa được nạp -> thử kiểm tra và chờ load lại
+		if ( typeof fbq == 'undefined' ) {
+			if ( typeof max_for == "undefined" ) {
+				max_for = 20;
+			}
+			
+			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
+			if ( max_for > 0 ) {
+				setTimeout(function () {
+					_global_js_eb.fb_track( track_name, track_arr, max_for - 1 );
+				}, 500);
+				
+				console.log( 'Re-load tracking (' + max_for + ')...' );
+				
+				return false;
+			}
+			
+			// 
+			console.log( 'Max for FB track: ' + max_for );
+			return false;
+		}
 		
 		//
 		fbq('track', track_name, track_arr);
+		
+		//
+		console.log('Facebook pixel tracking (' + track_name + ') by EchBay.com');
+		console.log(track_arr);
 		
 		//
 		return true;
