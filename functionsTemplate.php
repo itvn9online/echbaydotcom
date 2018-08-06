@@ -103,6 +103,25 @@ function EBE_get_html_address () {
 	}
 	
 	//
+	$custom_lang_html = EBE_get_lang('footer_address');
+	// mặc định là lấy theo file HTML -> act
+	if ( trim( $custom_lang_html ) == 'footer_address' ) {
+		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );
+	}
+	
+	//
+	return EBE_html_template( $custom_lang_html, array(
+		'tmp.cf_ten_cty' => $__cf_row['cf_ten_cty'],
+		'tmp.dc' => $dc,
+		'tmp.fd_hotline' => EBE_get_lang('fd_hotline'),
+		'tmp.cf_call_hotline' => $__cf_row['cf_call_hotline'],
+		'tmp.fd_dienthoai' => EBE_get_lang('fd_dienthoai'),
+		'tmp.cf_call_dienthoai' => $__cf_row['cf_call_dienthoai'],
+		'tmp.fd_email' => EBE_get_lang('fd_email'),
+		'tmp.cf_email' => $__cf_row['cf_email']
+	) );
+	
+	//
 	return '
 	<div class="footer-address">
 		<div class="footer-address-company bold">' . $__cf_row['cf_ten_cty'] . '</div>
