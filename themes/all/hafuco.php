@@ -11,7 +11,7 @@ $eb_all_themes_support[$eb_all_themes_name] = array();
 $eb_all_themes_support[$eb_all_themes_name]["name"] = $eb_all_themes_name;
 $eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/hafuco.jpg";
 $eb_all_themes_support[$eb_all_themes_name]["author"] = "";
-$eb_all_themes_support[$eb_all_themes_name]["demo"] = "";
+$eb_all_themes_support[$eb_all_themes_name]["demo"] = "themes.webgiare.org/hafuco";
 $eb_all_themes_support[$eb_all_themes_name]["price"] = 4500000;
 //
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "hafuco-top1.php";

@@ -3270,6 +3270,14 @@ function _eb_ssl_template ($c) {
 	}
 	
 	//
+	$c = str_replace( 'http://' . $_SERVER ['HTTP_HOST'], '//' . $_SERVER ['HTTP_HOST'], $c );
+//	$c = str_replace ( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $c );
+	
+	//
+	return $c;
+	
+	
+	// v1
 	$host = str_replace( 'www.', '', $_SERVER ['HTTP_HOST'] ) . '/';
 	
 	// Không replace thẻ A
