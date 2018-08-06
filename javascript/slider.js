@@ -782,7 +782,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
 		if ( conf['swipemobile'] == true && jQuery(window).width() < 750 ) {
 			setTimeout(function () {
-				jEBE_swipe_slider( jd, jd_to_class );
+				jEBE_swipe_slider( jd, jd_to_class, conf );
 			}, 3000);
 		}
 		
@@ -882,15 +882,20 @@ function jEBE_slider ( jd, conf, callBack ) {
 }
 
 
-function jEBE_swipe_slider ( jd, jd_to_class ) {
+function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 	try {
-		console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
+//		console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
+//		console.log( 'Config of swipe:' );
+//		console.log( conf );
 		
 		//
-//		jQuery(jd).swipe( {
-//		jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
-//		jQuery(jd + ' ul li, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
-		jQuery(jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').swipe( {
+//		var str_process = jd;
+//		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+//		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		var str_process = jd + ' ul li, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		
+		//
+		jQuery( str_process ).swipe( {
 			// Generic swipe handler for all directions
 			swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
 //				console.log( direction );
@@ -931,6 +936,28 @@ function jEBE_swipe_slider ( jd, jd_to_class ) {
 			// Default is 75px, set to 0 for demo so any distance triggers swipe
 			threshold: 0
 		});
+		
+		// nếu có thumbnail -> kích hoạt cả touch ở thumb -> lỗi không click vào thumb được nên thôi
+		/*
+		if ( conf['thumbnailSlider'] == true ) {
+			jQuery( jd_to_class + ' .jEBE_slider-thumbnail' ).swipe( {
+				// Generic swipe handler for all directions
+				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+//					console.log( direction );
+					
+					//
+					if ( direction == 'left' || direction == 'up' ) {
+						jQuery(jd_to_class + ' .jEBE_slider-arrow-thumbnail .jEBE_slider-right-thumbnail').click();
+					}
+					else if ( direction == 'right' || direction == 'down' ) {
+						jQuery(jd_to_class + ' .jEBE_slider-arrow-thumbnail .jEBE_slider-left-thumbnail').click();
+					}
+				},
+				// Default is 75px, set to 0 for demo so any distance triggers swipe
+				threshold: 0
+			});
+		}
+		*/
 	} catch ( e ) {
 		console.log( WGR_show_try_catch_err( e ) );
 	}
