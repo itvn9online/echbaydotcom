@@ -1746,9 +1746,9 @@ function _eb_create_html_breadcrumb ($c) {
 	$cat_custom_css = _eb_get_cat_object( $c->term_id, '_eb_category_custom_css' );
 //	echo $cat_custom_css . '<br>' . "\n";
 	if ( $cat_custom_css != '' ) {
-		$css_m_css .= ' ' . $cat_custom_css;
+		$css_m_css[] = $cat_custom_css;
 	}
-	$css_m_css .= ' ebcat-' . $c->slug;
+	$css_m_css[] = 'ebcat-' . $c->slug;
 	
 	//
 	if ( $c->parent > 0 ) {
@@ -1760,14 +1760,14 @@ function _eb_create_html_breadcrumb ($c) {
 		$cat_custom_css = _eb_get_cat_object( $c->parent, '_eb_category_custom_css' );
 //		echo $cat_custom_css . '<br>' . "\n";
 		if ( $cat_custom_css != '' ) {
-			$css_m_css .= ' ' . $cat_custom_css;
+			$css_m_css[] = $cat_custom_css;
 		}
 		
 		//
 //		$parent_cat = get_term_by( 'id', $c->parent, $c->taxonomy );
 		$parent_cat = get_term( $c->parent, $c->taxonomy );
 //		print_r( $parent_cat );
-		$css_m_css .= ' ebcat-' . $parent_cat->slug;
+		$css_m_css[] = 'ebcat-' . $parent_cat->slug;
 		
 		//
 		if ( _eb_get_cat_object( $parent_cat->term_id, '_eb_category_hidden', 0 ) != 1 ) {

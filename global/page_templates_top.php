@@ -13,4 +13,16 @@ else {
 
 
 
+//
+// thêm CSS theo slug để tiện sử dụng cho việc custom CSS
+$_eb_product_css = _eb_get_post_object( $post->ID, '_eb_product_css' );
+if ( $_eb_product_css != '' ) {
+//	$class_css_of_post = ' ' . $_eb_product_css;
+	$css_m_css[] = $_eb_product_css;
+}
+//echo $class_css_of_post;
+
+
+
+
 ob_start();

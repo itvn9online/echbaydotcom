@@ -396,7 +396,10 @@ if ( $__cf_row['cf_reset_cache'] > 0 ) {
 
 
 //
-$css_m_css = implode( ' ', get_body_class() );
+$css_m_css = get_body_class();
+
+// css riêng của post, page...
+$class_css_of_post = '';
 
 
 // load file index theo theme
@@ -411,7 +414,7 @@ if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'i.php' ) )
 if ( $enable_echbay_super_cache == 1 ) {
 
 	// check device (có cache) -> mặc định là 1 class css để lát replace nếu là mobile
-	$css_m_css .= ' eb-set-css-pc-mobile';
+	$css_m_css[] = 'eb-set-css-pc-mobile';
 	
 	
 	
@@ -457,7 +460,7 @@ else {
 //	$css_m_css = '';
 	// dùng tính năng cache toàn trang thì tạm thời tắt chức năng phát hiện mobile bằng php
 	if ( _eb_checkDevice() == 'mobile' ) {
-		$css_m_css .= ' style-for-mobile';
+		$css_m_css[] = 'style-for-mobile';
 	}
 	
 	

@@ -361,7 +361,7 @@ if ( $__post->post_type == 'post' ) {
 		$con_hay_het = 0;
 		
 		// thêm class ẩn nút mua hàng
-		$css_m_css .= ' details-hideif-hethang';
+		$css_m_css[] = 'details-hideif-hethang';
 	}
 	
 	// Thêm phần tình trạng hàng hóa nếu người dùng có thiết lập số lượng
@@ -1048,8 +1048,10 @@ $___eb_post__not_in = '';
 // thêm CSS theo slug để tiện sử dụng cho việc custom CSS
 $_eb_product_css = _eb_get_post_object( $pid, '_eb_product_css' );
 if ( $_eb_product_css != '' ) {
-	$css_m_css .= ' ' . $_eb_product_css;
+//	$class_css_of_post = ' ' . $_eb_product_css;
+	$css_m_css[] = $_eb_product_css;
 }
-//$css_m_css .= ' ' . $__post->post_type . '-' . $__post->post_name;
+//$css_m_css[] = $__post->post_type . '-' . $__post->post_name;
+//echo $class_css_of_post;
 
 
