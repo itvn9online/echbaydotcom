@@ -3263,18 +3263,32 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 	arr.sort( function ( a, b ) {
 		return parseFloat(b.order) - parseFloat(a.order);
 	} );
-	console.log( arr );
+//	console.log( arr );
 	
 	//
 //	var str = '<!-- JS for sub-category menu -->';
-	var str = '';
+	var str = '',
+		avt = '',
+		icon = '';
 	
 	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		// tạo style ảnh nền cho menu
+		avt = '';
+		if ( arr[i].avt != '' ) {
+			avt = 'background-image:url(\'' + arr[i].avt + '\')';
+		}
+		icon = '';
+		if ( arr[i].icon != '' ) {
+			icon = 'background-image:url(\'' + arr[i].icon + '\')';
+		}
+		
+		//
+		str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '" class="js-mega-menu"><span class="d-none avt_mega_menu avt_mega_menu' + arr[i].id + '" style="' + avt + '">&nbsp;</span> <span class="d-none icon_mega_menu icon_mega_menu' + arr[i].id + '" style="' + icon + '">&nbsp;</span> ' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
 	str += '</ul>';
 	
+	//
 	return str;
 }
 
