@@ -3263,7 +3263,7 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 	arr.sort( function ( a, b ) {
 		return parseFloat(b.order) - parseFloat(a.order);
 	} );
-//	console.log( arr );
+	console.log( arr );
 	
 	//
 //	var str = '<!-- JS for sub-category menu -->';

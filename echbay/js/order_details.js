@@ -539,22 +539,59 @@ $('#eb_vandon_print').click(function () {
 
 
 // TEST API tạo đơn hàng tới GHN
-function WGR_GHN_get_json ( datas ) {
+function WGR_GHN_get_json ( datas, uri, callBack ) {
 	jQuery.ajax({
 		type: "POST",
 		processData: false,
 		data: JSON.stringify(datas),
 		dataType: "json",
-		contentType: "application/json; charset=utf-8",	
-//		url: "https://console.ghn.vn/api/v1/apiv3/CreateOrder"				
-		url: "//api.serverapi.host/api/v1/apiv3/CreateOrder"				
+		contentType: "application/json; charset=utf-8",
+//		url: 'https://console.ghn.vn/api/v1/apiv3/" + uri
+		url: '//api.serverapi.host/api/v1/apiv3/' + uri
 	}).done(function( data ){
-		console.log(data);
+		if ( typeof data.msg != 'undefined' && data.msg == 'Success' ) {
+			// danh sách quận huyện
+			if ( uri == 'GetDistricts' ) {
+				var a = data.data,
+					j = 0,
+					k = 0;
+				console.log(a.length);
+				
+				//
+				for ( var i = 0; i < a.length; i++ ) {
+					// tỉnh/ thành phố
+					if ( a[i].Code == '' ) {
+						console.log( a[i] );
+						j++;
+					}
+					// quận/ huyện
+					else {
+						k++;
+					}
+				}
+				console.log( j );
+				console.log( k );
+			}
+			// kết quả mặc định
+			else {
+				console.log(data);
+			}
+		}
+		else {
+			console.log('ERROR');
+			console.log(data);
+		}
 	});			
 }
+
 // https://api.ghn.vn/home/docs/detail?id=28
 if ( window.location.href.split('localhost:8888').length > 1 ) {
 	console.log('TEST GHN');
+	
+	//
+	WGR_GHN_get_json( {
+		"token": "TokenStaging"
+	}, 'GetDistricts' );
 	
 	//
 	WGR_GHN_get_json( {
@@ -598,7 +635,7 @@ if ( window.location.href.split('localhost:8888').length > 1 ) {
 		"ReturnDistrictCode": "",
 		"ExternalReturnCode": "",
 		"IsCreditCreate": true
-	} );
+	}, 'CreateOrder' );
 }
 
 
