@@ -237,6 +237,12 @@ label,
 .oi_member_func a:first-child { margin-right: 15px }
 .oi_member_func i { margin-right: 5px; }
 .thread-details-relative { position: relative; }
+.thread-details-relative a {
+	position: absolute;
+	right: 0;
+	display: inline-block;
+	z-index: 99;
+}
 .echbay-tintuc-ngaygui {
 	font-style: italic;
 	font-size: 14px;
