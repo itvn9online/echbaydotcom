@@ -1434,23 +1434,44 @@ function _eb_getCucki ( $c_name, $default_value = '' ) {
 
 
 function _eb_alert($m) {
+	return _eb_html_alert($m);
+	
+	//
 	die ( '<script type="text/javascript">alert("' . str_replace( '"', '\'', $m ) . '");</script>' );
 }
 
 function _eb_html_alert($m) {
 	die ( '<script type="text/javascript">
-if ( top != self ) {
-	parent.WGR_html_alert("' . $m . '");
-}
-else {
-	if ( typeof WGR_html_alert == "function" ) {
-		WGR_html_alert("' . $m . '");
+(function () {
+	try {
+		if ( top != self ) {
+			if ( typeof parent.WGR_html_alert == "function" ) {
+				parent.WGR_html_alert("' . $m . '");
+				return true;
+			}
+		}
+		else {
+			if ( typeof WGR_html_alert == "function" ) {
+				WGR_html_alert("' . $m . '");
+				return true;
+			}
+			else if ( typeof window.opener.WGR_html_alert == "function" ) {
+				window.opener.WGR_html_alert("' . $m . '");
+				return true;
+			}
+		}
+		
+		//
+		alert("' . str_replace( '"', '\'', $m ) . '");
+	} catch ( e ) {
+		console.log( e );
+		alert("' . str_replace( '"', '\'', $m ) . '");
 	}
-	else {
-		window.opener.WGR_html_alert("' . $m . '");
-	}
-}
+})();
 </script>' );
+	
+	//
+	return false;
 }
 
 

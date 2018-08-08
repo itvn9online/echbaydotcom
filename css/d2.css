@@ -2250,3 +2250,17 @@ iframe[name="google_conversion_frame"] {
 }
 .fa-pro:before { content: "Pro"; }
 .fa-pro-version:before { content: "Pro version"; }
+#WGR_html_alert {
+	max-width: 600px;
+	border-radius: 5px;
+	cursor: pointer;
+	position: fixed;
+	left: 50%;
+	top: 10px;
+	z-index: 99999;
+	transform: translate(-50%, 0);
+	box-shadow: 0 0 20px #666;
+	text-shadow: 1px 1px 5px #fff;
+	background: rgba(255, 193, 7, .9);
+	padding: 30px;
+}

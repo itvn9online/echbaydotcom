@@ -146,8 +146,7 @@ parent.WGR_order_details_after_update();
 
 
 //
-//_eb_alert('Cập nhật thông tin đơn hàng thành công');
-_eb_html_alert('Cập nhật thông tin đơn hàng thành công');
+_eb_alert('Cập nhật thông tin đơn hàng thành công');
 
 
 

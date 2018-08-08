@@ -2585,16 +2585,3 @@ function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
 }
 
 
-
-//
-var time_for_hide_html_alert = null;
-function WGR_html_alert ( m ) {
-	$('#WGR_html_alert').html( m ).fadeIn();
-	
-	clearTimeout( time_for_hide_html_alert );
-	time_for_hide_html_alert = setTimeout(function () {
-		$('#WGR_html_alert').fadeOut();
-	}, 5000);
-}
-
-

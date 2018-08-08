@@ -623,13 +623,6 @@ $('#toplevel_page_eb-order a').click(function () {
 
 
 
-//
-$('#WGR_html_alert').click(function () {
-	$('#WGR_html_alert').fadeOut();
-});
-
-
-
 // Thêm icon cho link bản PRO -> gạ gẫm người dùng nâng cấp thì mới có tiền chứ
 $('#toplevel_page_eb-order li a[href="admin.php?page=eb-licenses"]').append(' <i class="fa-pro small upper"></i>');
 

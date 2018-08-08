@@ -666,8 +666,7 @@ include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 
 //
-//_eb_alert('Cập nhật cấu hình website thành công');
-_eb_html_alert('Cập nhật cấu hình website thành công');
+_eb_alert('Cập nhật cấu hình website thành công');
 
 
 

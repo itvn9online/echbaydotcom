@@ -1109,7 +1109,6 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	right: 0;
 	text-align: center;
 }
-#WGR_html_alert,
 .show-if-duplicator-null div {
 	max-width: 600px;
 	border-radius: 5px;
@@ -1120,17 +1119,6 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	width: 60%;
 	background: rgba(255, 193, 7, .8);
 	padding: 10px;
-}
-#WGR_html_alert {
-	position: fixed;
-	left: 50%;
-	top: 10px;
-	z-index: 99999;
-	transform: translate(-50%, 0);
-	box-shadow: 0 0 20px #666;
-	text-shadow: 1px 1px 5px #fff;
-	background: rgba(255, 193, 7, .9);
-	padding: 30px;
 }
 /* */
 .bill-detail-submit {

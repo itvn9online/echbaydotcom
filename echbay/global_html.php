@@ -179,5 +179,3 @@
 		<div>Plugin <strong>Post Duplicator</strong> chưa được cài đặt hoặc định dạng bài viết này chưa được hỗ trợ Nhân bản! Hãy <a href="<?php echo admin_link; ?>plugin-install.php?s=Post+Duplicator&tab=search&type=term">bấm vào đây</a> tìm rồi cài đặt plugin có tên là: <strong class="redcolor">Post Duplicator</strong>.</div>
 	</div>
 </div>
-<!-- Thay cái alert mặc định bằng cái alert HTML này cho thân thiện -->
-<div id="WGR_html_alert" class="d-none"></div>

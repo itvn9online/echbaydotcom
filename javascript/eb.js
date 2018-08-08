@@ -75,6 +75,26 @@ function WGR_check_option_on ( a ) {
 }
 
 
+// Thay cái alert mặc định bằng cái alert HTML này cho thân thiện
+var time_for_hide_html_alert = null;
+function WGR_html_alert ( m ) {
+	if ( dog('WGR_html_alert') == null ) {
+		jQuery('body').append('<div id="WGR_html_alert" class="d-none"></div>');
+	}
+	
+	//
+	$('#WGR_html_alert').html( m ).fadeIn().off('click').click(function () {
+		$('#WGR_html_alert').fadeOut();
+	});
+	
+	//
+	clearTimeout( time_for_hide_html_alert );
+	time_for_hide_html_alert = setTimeout(function () {
+		$('#WGR_html_alert').fadeOut();
+	}, 5000);
+}
+
+
 function _date(phomat, t) {
 	var result = '';
 	if (typeof phomat != 'string' || phomat.replace(/\s/g, '') == '') {
