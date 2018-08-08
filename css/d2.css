@@ -2261,6 +2261,14 @@ iframe[name="google_conversion_frame"] {
 	transform: translate(-50%, 0);
 	box-shadow: 0 0 20px #666;
 	text-shadow: 1px 1px 5px #fff;
-	background: rgba(255, 193, 7, .9);
-	padding: 30px;
+	background: #fde67f;
+	border: 1px #c7af31 solid;
+	padding: 12px 15px;
+}
+#WGR_html_alert div {
+	padding: 10px 15px;
+	background: #ebf8a6;
+	border-radius: 4px;
+	line-height: 19px;
+	border: 1px #c0e06f solid;
 }

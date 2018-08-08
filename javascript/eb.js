@@ -83,7 +83,7 @@ function WGR_html_alert ( m ) {
 	}
 	
 	//
-	$('#WGR_html_alert').html( m ).fadeIn().off('click').click(function () {
+	$('#WGR_html_alert').html( '<div>' + m + '</div>' ).fadeIn().off('click').click(function () {
 		$('#WGR_html_alert').fadeOut();
 	});
 	
