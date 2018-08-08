@@ -3429,7 +3429,14 @@ setTimeout(function () {
 	//
 	jQuery('.click-jquery-show-quick-cart').click(function() {
 		if ( pid == 0 ) {
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('for post only');
 			return false;
+		}
+		
+		// nếu có URL một website nào đó -> nhảy sang link web đó -> bán hàng thông qua lazada, shopee để cắt giảm chi phí
+		if ( _eb_product_supper_shop != '' ) {
+			_global_js_eb.ga_event_track( 'Go to supper shop (' + document.domain + ')' );
+			window.open( _eb_product_supper_shop, '_blank' );
 		}
 		
 		// Hiển thị quick cart dạng popup nếu quick cart không hiển thị sẵn

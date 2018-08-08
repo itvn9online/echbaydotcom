@@ -863,6 +863,7 @@ $trv_ngayhethan = 0;
 $_eb_product_ngayhethan = '';
 $_eb_product_giohethan = '';
 $_eb_product_leech_source = '';
+$_eb_product_supper_shop = '';
 if ( $__post->post_type == 'post' ) {
 	$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
 	$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
@@ -886,6 +887,12 @@ if ( $__post->post_type == 'post' ) {
 	$_eb_product_leech_source = _eb_get_post_object( $pid, '_eb_product_leech_source' );
 	if ( $_eb_product_leech_source != '' ) {
 		$_eb_product_leech_source = str_replace( '/', '\/', $_eb_product_leech_source );
+	}
+	
+	//
+	$_eb_product_supper_shop = _eb_get_post_object( $pid, '_eb_product_supper_shop' );
+	if ( $_eb_product_supper_shop != '' ) {
+		$_eb_product_supper_shop = str_replace( '/', '\/', $_eb_product_supper_shop );
 	}
 	
 	
@@ -945,6 +952,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
 	_eb_product_leech_source="' . $_eb_product_leech_source . '",
+	_eb_product_supper_shop="' . $_eb_product_supper_shop . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
 	cf_details_bold_excerpt="' . $__cf_row['cf_details_bold_excerpt'] . '",
 	cf_options_excerpt="' . $__cf_row['cf_options_excerpt'] . '",

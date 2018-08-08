@@ -203,6 +203,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_css' => 'Bạn có thể thêm một class class CSS vào đây, class này sẽ xuất hiện trong thẻ BODY, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
 	'_eb_product_avatar' => 'Ảnh đại diện dự phòng (nhiều trường hợp chuyển dữ liệu hoặc làm demo sẽ tiện)',
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
+	'_eb_product_supper_shop' => 'Nhập vào URL mà bạn muốn chuyển tới khi người dùng bấm vào nút [Mua ngay] trong trang chi tiết sản phẩm (Mặc định sẽ thêm vào giỏ hoặc mở popup mua ngay).',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
 	
 	'_eb_category_avt' => 'Ảnh đại diện của phân nhóm, kích thước khuyến nghị là 500x400 pixel. Ảnh này sẽ xuất hiện khi chia sẻ nhóm lên các mạng xã hội như: Facebook, Twiter...',
@@ -300,6 +301,7 @@ $eb_arr_blog_2content_meta_box = array(
 
 // thông tin phụ của trang sản phẩm
 $eb_arr_phu_meta_box = array(
+	'_eb_product_supper_shop' => 'Liên kết sàn TMĐT',
 	'_eb_product_leech_source' => 'URL đồng bộ',
 	'_eb_product_old_url' => 'URL cũ',
 	'_eb_product_video_url' => 'URL Youtube video',
