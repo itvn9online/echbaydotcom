@@ -3435,8 +3435,29 @@ setTimeout(function () {
 		
 		// nếu có URL một website nào đó -> nhảy sang link web đó -> bán hàng thông qua lazada, shopee để cắt giảm chi phí
 		if ( _eb_product_supper_shop != '' ) {
+			// thêm các thông số track
+			var a = [];
+			if ( _eb_product_supper_shop.split('utm_source').length == 1 ) {
+				a.push( 'utm_source=' + document.domain.replace(/\./g,'_') );
+			}
+			if ( _eb_product_supper_shop.split('utm_medium').length == 1 ) {
+				a.push( 'utm_medium=echbay_com' );
+			}
+			if ( _eb_product_supper_shop.split('utm_campaign').length == 1 ) {
+				a.push( 'utm_medium=webgiare_org' );
+			}
+			a = a.join('&');
+			
+			// nếu url không có dấu ? -> đổi lại dấu hỏi luôn
+			if ( _eb_product_supper_shop.split('?').length == 1 ) {
+				a = '?' + a.substr( 1 );
+			}
+			_eb_product_supper_shop += a;
+			
+			//
 			_global_js_eb.ga_event_track( 'Go to supper shop (' + document.domain + ')' );
 			window.open( _eb_product_supper_shop, '_blank' );
+			return false;
 		}
 		
 		// Hiển thị quick cart dạng popup nếu quick cart không hiển thị sẵn
