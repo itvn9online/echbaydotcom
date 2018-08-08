@@ -133,6 +133,8 @@ $_POST['cf_remove_raovat_meta'] = WGR_default_config('cf_remove_raovat_meta');
 
 $_POST['cf_echbay_migrate_version'] = WGR_default_config('cf_echbay_migrate_version');
 
+$_POST['cf_redirecting_matched_slugs'] = WGR_default_config('cf_redirecting_matched_slugs');
+
 $_POST['cf_search_advanced_auto_submit'] = WGR_default_config('cf_search_advanced_auto_submit');
 
 $_POST['cf_search_by_echbay'] = WGR_default_config('cf_search_by_echbay');
@@ -664,7 +666,8 @@ include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 
 //
-_eb_alert('Cập nhật cấu hình website thành công');
+//_eb_alert('Cập nhật cấu hình website thành công');
+_eb_html_alert('Cập nhật cấu hình website thành công');
 
 
 

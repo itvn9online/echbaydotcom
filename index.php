@@ -1106,6 +1106,21 @@ else {
 		add_filter( 'wp_enqueue_scripts', 'EBE_register_scripts' );
 //	}
 	
+	//
+	if ( $__cf_row['cf_redirecting_matched_slugs'] != 1 ) {
+		add_filter('redirect_canonical', 'WGR_no_redirect_same_slug_on_404');
+	}
+}
+
+/*
+tắt tính năng tự động redirect sang slug tương tự của WP
+http://www.kondorwithak.com/blog/2014/07/stopping-wordpress-from-redirecting-matched-slugs/
+*/
+function WGR_no_redirect_same_slug_on_404($redirect_url) {
+	if( is_404() ) {
+		return false;
+	}
+	return $redirect_url;
 }
 
 //
