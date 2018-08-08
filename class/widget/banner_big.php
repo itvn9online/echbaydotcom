@@ -18,7 +18,8 @@ class ___echbay_widget_banner_big extends WP_Widget {
 			'width' => '',
 			'custom_style' => '',
 			'full_mobile' => '',
-			'hide_mobile' => ''
+			'hide_mobile' => '',
+			'for_home' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -34,6 +35,9 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		
 		// form dùng chung cho phần top, footer
 		_eb_top_footer_form_for_widget( $instance, $arr_field_name );
+		
+		//
+		_eb_widget_echo_widget_input_checkbox( $arr_field_name['for_home'], $for_home, 'For home', 'Khi sử dụng template page, chức năng load big banner không hoạt động, khi đó cần phải kích hoạt chức năng này để nó có thể lấy big banner theo tiêu chuẩn mặc định.' );
 		
 	}
 	
@@ -61,6 +65,8 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		$full_mobile = isset( $instance ['full_mobile'] ) ? $instance ['full_mobile'] : 'off';
 		if ( $full_mobile == 'on' ) $width .= ' fullsize-if-mobile';
 		
+		$for_home = isset( $instance ['for_home'] ) ? $instance ['for_home'] : 'off';
+		
 		
 		//
 //		_eb_echo_widget_name( $this->name, $before_widget );
@@ -68,7 +74,23 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		
 		//
 		if ( $str_big_banner == '' ) {
-			return false;
+			if ( $for_home == 'on' ) {
+				global $__cf_row;
+				
+				if ( $__cf_row['cf_global_big_banner'] != 1 ) {
+					$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
+						'category__not_in' => ''
+					) );
+				}
+				
+				//
+				if ( $str_big_banner == '' ) {
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
 		}
 		
 		//

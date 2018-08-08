@@ -22,9 +22,23 @@ $str_eb_warning = '';
 //if ( ! defined('WP_DEBUG') || WP_DEBUG == true ) {
 if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	$str_eb_warning .= '
-	<div><i class="fa fa-warning orgcolor"></i> CẢNH BÁO: Nên tắt tính năng kiểm thử lỗi trên wordpress khi chạy chính thức, chỉ bật nó lên khi làm việc trên localhost hoặc cần kiểm tra lỗi khi website đã chạy chính thức. Khuyên dùng:
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Nên TẮT tính năng kiểm thử lỗi trên wordpress khi chạy chính thức, chỉ bật nó lên khi làm việc trên localhost hoặc cần kiểm tra lỗi khi website đã chạy chính thức.
 		<pre class="d-none"><code>define( \'WP_DEBUG\', false );</code></pre>
 		<div>Bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_tester_mode" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
+	</div>';
+}
+
+if ( $__cf_row['cf_js_optimize'] != 1 ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Nên BẬT tính năng nén tệp Javascript trước khi in ra để giảm bớt request tới website cũng như giảm bớt dung lượng giup website chạy nhanh và mượt hơn.
+		<div>Bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_js_optimize" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
+	</div>';
+}
+
+if ( $__cf_row['cf_css_optimize'] != 1 ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Nên BẬT tính năng nén tệp CSS trước khi in ra để giảm bớt request tới website cũng như giảm bớt dung lượng giup website chạy nhanh và mượt hơn.
+		<div>Bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_css_optimize" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
 	</div>';
 }
 
