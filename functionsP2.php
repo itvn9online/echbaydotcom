@@ -1444,25 +1444,15 @@ function _eb_html_alert($m) {
 	die ( '<script type="text/javascript">
 (function () {
 	try {
-		if ( top != self ) {
-			if ( typeof parent.WGR_html_alert == "function" ) {
-				parent.WGR_html_alert("' . $m . '");
-				return true;
-			}
+		if ( top != self && typeof parent.WGR_html_alert == "function" ) {
+			parent.WGR_html_alert("' . $m . '");
+		}
+		else if ( typeof WGR_html_alert == "function" ) {
+			WGR_html_alert("' . $m . '");
 		}
 		else {
-			if ( typeof WGR_html_alert == "function" ) {
-				WGR_html_alert("' . $m . '");
-				return true;
-			}
-			else if ( typeof window.opener.WGR_html_alert == "function" ) {
-				window.opener.WGR_html_alert("' . $m . '");
-				return true;
-			}
+			alert("' . str_replace( '"', '\'', $m ) . '");
 		}
-		
-		//
-		alert("' . str_replace( '"', '\'', $m ) . '");
 	} catch ( e ) {
 		console.log( e );
 		alert("' . str_replace( '"', '\'', $m ) . '");
