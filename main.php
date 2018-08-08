@@ -381,7 +381,11 @@ if ( $__cf_row['cf_reset_cache'] > 0 ) {
 		$enable_echbay_super_cache = 3;
 	}
 	// sử dụng cache echbay cho một số trang thôi, dùng nhiều chưa kiểm chứng lỗi
-	else if ( $act == '' || $act == 'archive' || $act == 'single' || $act == 'page' || isset( $is_page_templates ) ) {
+	else if ( $act == ''
+	|| $act == 'archive'
+	|| $act == 'single'
+	|| $act == 'page'
+	|| isset( $is_page_templates ) ) {
 //	else if ( $act == 'archive' || $act == 'single' || $act == 'page' ) {
 		$enable_echbay_super_cache = 1;
 		
