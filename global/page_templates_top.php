@@ -2,6 +2,12 @@
 
 
 
+
+// khai báo biến này để khẳng định đây là page templates -> lưu cache được
+$is_page_templates = true;
+
+
+
 // thiết lập tiêu đề theo mẫu chung
 if ( $__cf_row['cf_set_link_for_h1'] == 1 ) {
 	$trv_h1_tieude = '<a href="' . _eb_p_link( $post->ID ) . '" rel="nofollow">' . $post->post_title . '</a>';

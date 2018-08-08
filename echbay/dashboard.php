@@ -43,6 +43,15 @@ if ( $__cf_row['cf_css_optimize'] != 1 ) {
 }
 
 
+//
+if ( $__cf_row['cf_reset_cache'] == 1 ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Nên BẬT tính năng tạo cache để giảm thiểu việc request quá nhiều đến Mysql, PHP...
+		<div>Bạn có thể <a href="' . admin_link . 'admin.php?page=eb-config&tab=cache&support_tab=config_label_id600" target="_blank" rel="nofollow">vào đây</a> để thay đổi trực tiếp cài đặt này.</div>
+	</div>';
+}
+
+
 // Nên tắt WP_AUTO_UPDATE_CORE = true
 /*
 if ( ! defined('WP_AUTO_UPDATE_CORE') || WP_AUTO_UPDATE_CORE != false ) {
