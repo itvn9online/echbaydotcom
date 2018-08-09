@@ -188,19 +188,19 @@ var eb_global_product_size = '',
 	}
 	// thêm tài khoản thành viên
 	else if ( admin_act == 'user-new' ) {
-		$('#createuser .form-table tr:last').after('\
-		<tr class="form-field">\
-			<th>&nbsp;</th>\
-			<td>' + ( $('#echbay_role_user_note').html() || 'DIV #echbay_role_user_note not found' ) + '</td>\
-		</tr>');
+		$('#createuser .form-table tr:last').after('' +
+		'<tr class="form-field">' +
+			'<th>&nbsp;</th>' +
+			'<td>' + ( $('#echbay_role_user_note').html() || 'DIV #echbay_role_user_note not found' ) + '</td>' +
+		'</tr>');
 	}
 	// sửa tài khoản thành viên
 	else if ( admin_act == 'user-edit' ) {
-		$('.user-role-wrap').after('\
-		<tr class="form-field">\
-			<th>&nbsp;</th>\
-			<td>' + ( $('#echbay_role_user_note').html() || 'DIV #echbay_role_user_note not found' ) + '</td>\
-		</tr>');
+		$('.user-role-wrap').after('' +
+		'<tr class="form-field">' +
+			'<th>&nbsp;</th>' +
+			'<td>' + ( $('#echbay_role_user_note').html() || 'DIV #echbay_role_user_note not found' ) + '</td>' +
+		'</tr>');
 	}
 	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
 	else if ( admin_act == 'media' ) {
@@ -354,10 +354,10 @@ var eb_global_product_size = '',
 	
 	// thêm CSS hiển thị nút add IMG cho category
 	if ( $('#_eb_category_avt').length > 0 || $('#_eb_category_favicon').length ) {
-		$('head').append('<style>\
-div.gallery-add-to-category_avt,\
-div.gallery-add-to-category_favicon { display: block; }\
-</style>');
+		$('head').append('<style>' +
+'div.gallery-add-to-category_avt,' +
+'div.gallery-add-to-category_favicon { display: block; }' +
+'</style>');
 	}
 	
 	// mở gallery tự viết

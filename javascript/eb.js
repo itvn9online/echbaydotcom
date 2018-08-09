@@ -1284,6 +1284,7 @@ var _global_js_eb = {
 			}, 1200);
 			
 			//
+			/*
 			return false;
 			
 			
@@ -1315,6 +1316,7 @@ var _global_js_eb = {
 				return false;
 			}
 			g_func.setc('ss_ads_referre', encodeURIComponent(a), 3600 * 6);
+			*/
 		}, 600);
 	},
 	
@@ -2832,7 +2834,7 @@ var _global_js_eb = {
 		else {
 			jQuery('form[name="' + form_name + '"] input[type="text"], form[name="' + form_name + '"] textarea').each(function() {
 				if ( jQuery(this).val() != '' ) {
-					jQuery(this).val() = g_func.strip_tags( jQuery(this).val() );
+					jQuery(this).val( g_func.strip_tags( jQuery(this).val() ) );
 				}
 			});
 		}

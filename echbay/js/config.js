@@ -350,6 +350,7 @@ function config_test_send_mail() {
 	} );
 	
 	//
+	/*
 	return false;
 	
 	//
@@ -361,6 +362,7 @@ function config_test_send_mail() {
 		alert('Nhập đầy đủ Email, Host, Pass để thử');
 		f.cf_smtp_email.focus();
 	}
+	*/
 	
 }
 

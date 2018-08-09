@@ -613,9 +613,9 @@ function jEBE_slider ( jd, conf, callBack ) {
 			</video>')
 			*/
 			// không poster
-			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">\
-				<track kind="metadata" label="segment-metadata">\
-			</video>');
+			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
+				'<track kind="metadata" label="segment-metadata">' +
+			'</video>');
 		}
 		
 		//

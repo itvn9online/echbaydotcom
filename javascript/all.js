@@ -920,11 +920,13 @@ function auto_get_user_position ( current_position ) {
 	// TEST
 //	_global_js_eb.user_auto_loc();
 	
-	return false;
-	
-	
-	
-	// V1
+	//
+//	return false;
+}
+
+
+// V1
+function auto_get_user_position_v1 ( current_position ) {
 	
 	//
 	var f = document.frm_config;
@@ -2121,6 +2123,7 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 	});
 	
 	//
+	/*
 	return false;
 	
 	
@@ -2160,7 +2163,8 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 		} else {
 			alert('Ch\u1ecdn ng\u00e0y th\u00e1ng c\u1ea7n xem')
 		}
-	})
+	});
+	*/
 }
 
 
@@ -2560,6 +2564,7 @@ function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
 	}
 	
 	//
+	/*
 	return false;
 	
 	
@@ -2582,6 +2587,7 @@ function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
 			WGR_add_class_for_custom_link_menu( lnk, nem, a, i - 1 );
 		}, 600);
 	}
+	*/
 }
 
 

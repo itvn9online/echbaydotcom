@@ -1618,13 +1618,13 @@ function ___eb_click_open_video_popup () {
 			}
 			
 			//
-			str += '\
-			<div class="quick-video-node">\
-				<div class="quick-video-width" style="width:' + wit + 'px">\
-					<div class="quick-video-title bold">' +tit+ '</div>\
-					<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +a+ '?autoplay=1" frameborder="0" allowfullscreen></iframe>\
-				</div>\
-			</div>';
+			str += '' +
+			'<div class="quick-video-node">' +
+				'<div class="quick-video-width" style="width:' + wit + 'px">' +
+					'<div class="quick-video-title bold">' +tit+ '</div>' +
+					'<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +a+ '?autoplay=1" frameborder="0" allowfullscreen></iframe>' +
+				'</div>' +
+			'</div>';
 			
 			
 			
@@ -1660,13 +1660,13 @@ function ___eb_click_open_video_popup () {
 			for ( var x in arr_list_video ) {
 				
 				//
-				str += '\
-				<div class="quick-video-node">\
-					<div class="quick-video-width" style="width:' + wit + 'px">\
-						<div class="quick-video-title bold">' +arr_list_video[x]+ '</div>\
-						<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>\
-					</div>\
-				</div>';
+				str += '' +
+				'<div class="quick-video-node">' +
+					'<div class="quick-video-width" style="width:' + wit + 'px">' +
+						'<div class="quick-video-title bold">' +arr_list_video[x]+ '</div>' +
+						'<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>' +
+					'</div>' +
+				'</div>';
 				
 			}
 			
@@ -2992,11 +2992,11 @@ function ___eb_thread_details_timeend () {
 					//
 					jQuery(this).attr({
 						'data-timeend' : te - 1
-					}).html( '\
-					<li><div><span>' +ngay+ '<em>Ngày</em></span></div></li>\
-					<li><div><span>' +gio+ '<em>Giờ</em></span></div></li>\
-					<li><div><span>' +phut+ '<em>Phút</em></span></div></li>\
-					<li><div><span>' +giay+ '<em>Giây</em></span></div></li>' ).show();
+					}).html( '<li><div><span>' +ngay+ '<em>Ngày</em></span></div></li>' +
+						'<li><div><span>' +gio+ '<em>Giờ</em></span></div></li>' +
+						'<li><div><span>' +phut+ '<em>Phút</em></span></div></li>' +
+						'<li><div><span>' +giay+ '<em>Giây</em></span></div></li>' )
+					.show();
 				} else {
 					jQuery(this).removeClass('thread-details-timeend');
 				}
@@ -3080,12 +3080,14 @@ function ___eb_thread_details_timeend () {
 		}
 		
 		// nếu người dùng nhấn cách -> tìm luôn
+		/*
 		if ( data_auto_search != 'off' && e.keyCode == 32 ) {
 //			console.log(2);
 //			ajaxl('guest.php?act=search&key=' + a.replace(/\s/gi, '+'), 'oiSearchAjax', 9);
 //		} else {
 //			console.log(3);
 		}
+		*/
 	});
 })();
 
