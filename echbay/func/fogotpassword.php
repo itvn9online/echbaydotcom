@@ -27,7 +27,7 @@ if ( $user_id > 0 ) {
 	/*
 	* Tự viết chức năng quên pass
 	*/
-	$link = web_link . 'resetpassword?t=' . date_time . '&u=' . $user_email . '&code=' . _eb_mdnam ( $user_email ) . '&block=' . _eb_mdnam ( date_time );
+	$link = web_link . 'resetpassword?t=' . date_time . '&u=' . _eb_encode( $user_email ) . '&code=' . _eb_mdnam ( $user_email ) . '&block=' . _eb_mdnam ( date_time );
 	
 	//
 	$message = EBE_str_template( 'fogotpassword.html', array(

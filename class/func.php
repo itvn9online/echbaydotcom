@@ -164,7 +164,7 @@ class EchBayCommerce {
 	}
 	
 	// function tạo chuỗi vô định bất kỳ cho riêng mềnh
-	function code64 ($str, $code) {
+	function code64 ($str, $code = 0) {
 		return _eb_code64 ($str, $code);
 	}
 	

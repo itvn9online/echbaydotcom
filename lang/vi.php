@@ -244,6 +244,12 @@ $___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
 $___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fa fa-envelope-o"></i>';
 
+// footer address -> cho phép mọi người có thể tùy chỉnh HTML của khung địa chỉ
+//$___eb_lang[eb_key_for_site_lang . 'footer_address'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );
+$___eb_lang[eb_key_for_site_lang . 'footer_address'] = 'footer_address';
+$eb_type_lang[eb_key_for_site_lang . 'footer_address'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'footer_address'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/footer_address.html';
+
 
 
 
@@ -279,12 +285,6 @@ $eb_ex_from_github[eb_key_for_site_lang . 'mail_main'] = 'https://github.com/itv
 $___eb_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'quick_register_mail';
 $eb_type_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'quick_register_mail'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/qregister.html';
-
-// footer address -> cho phép mọi người có thể tùy chỉnh HTML của khung địa chỉ
-//$___eb_lang[eb_key_for_site_lang . 'footer_address'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );
-$___eb_lang[eb_key_for_site_lang . 'footer_address'] = 'footer_address';
-$eb_type_lang[eb_key_for_site_lang . 'footer_address'] = 'textarea';
-$eb_ex_from_github[eb_key_for_site_lang . 'footer_address'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/footer_address.html';
 
 
 

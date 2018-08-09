@@ -17,7 +17,7 @@ if (isset ( $_GET ['t'], $_GET ['block'], $_GET ['u'], $_GET ['code'] )) {
 	$block = $_GET ['block'];
 	
 	// mail
-	$u = trim( $_GET ['u'] );
+	$u = _eb_decode( trim( $_GET ['u'] ) );
 	$code = $_GET ['code'];
 	
 	

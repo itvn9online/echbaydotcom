@@ -2167,11 +2167,18 @@ function _eb_mdnam($str) {
 }
 
 // function tạo chuỗi vô định bất kỳ cho riêng mềnh
-function _eb_code64 ($str, $code) {
+function _eb_code64 ($str, $code = 0) {
+	
+	//
+	if ( $str == '' ) {
+		return '';
+	}
+	
 	// chuỗi để tọa ra một chuỗi vô định bất kỳ ^^! chả để làm gì
 	$hoc_code = str_split('qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM');
-	// bắt đầu tạo chuỗi
-	if ($code == 1) {
+	
+	// bắt đầu tạo chuỗi -> mã hóa
+	if ($code == 0) {
 		// cắt chuỗi thành từng ký tự 1
 		$arr = str_split($str);
 		$str = '';
@@ -2182,21 +2189,28 @@ function _eb_code64 ($str, $code) {
 		// mã hóa chuỗi trc khi trả về
 		return base64_encode($str);
 	}
-	// lật chuỗi
-	else {
-		// bỏ mã hóa chuỗi
-		$str = base64_decode($str);
-		// cắt chuỗi thành từng ký tự
-		$arr = str_split($str);
-		$str = '';
-		// chạy vòng lặp và lấy chuỗi theo vị trí xác định
-		foreach ($arr as $k => $v) {
-			if ($k % 2 == 0) {
-				$str .= $v;
-			}
+	
+	// lật chuỗi -> giải mã chuỗi
+	$str = base64_decode($str);
+	// cắt chuỗi thành từng ký tự
+	$arr = str_split($str);
+	$str = '';
+	// chạy vòng lặp và lấy chuỗi theo vị trí xác định
+	foreach ($arr as $k => $v) {
+		if ($k % 2 == 0) {
+			$str .= $v;
 		}
-		return $str;
 	}
+	return $str;
+	
+}
+
+function _eb_encode ($str) {
+	return _eb_code64( $str );
+}
+
+function _eb_decode ($str) {
+	return _eb_code64( $str, 1 );
 }
 
 
