@@ -420,6 +420,10 @@ function process_for_press_esc () {
 	$('.click-to-exit-design').click();
 	$('#oi_admin_popup, .hide-if-press-esc').hide();
 	
+	// xóa nội dung trong 1 số phần
+	$('.remove-if-press-esc').html('');
+	
+	//
 	$('body').removeClass('ebdesign-no-scroll').removeClass('body-no-scroll');
 	
 	window.history.pushState("", '', current_ls_url);
@@ -623,8 +627,75 @@ $('#toplevel_page_eb-order a').click(function () {
 
 
 
+
+// hiển thị các video youtube trong các phần hướng dẫn ra ngoài
+$('.admin-add-youtube-video').each(function () {
+	// chỉ lưu các URL nằm trong menu chính của EchBay
+	var a = $(this).attr('data-src') || '';
+	a = _global_js_eb.youtube_id( a );
+	
+	//
+	if ( a != '' ) {
+		// tính chiều rộng của video
+		var w = jQuery(window).width(),
+			h = w;
+		w = w/ 100 * 90;
+		if ( w > 800 ) {
+			w = 800;
+		}
+		h = w * youtube_video_default_size;
+		
+		//
+		$(this).html( '<iframe width="' + w + '" height="' + h + '" src="https://www.youtube.com/embed/' + a + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' );
+	}
+});
+
+// TEST
+/*
+if ( window.location.href.split('?page=eb-products').length > 1 ) {
+	jQuery('#rAdminME').append('<div data-src="https://www.youtube.com/watch?v=M4xVAyNEBUg" class="admin-open-youtube-video cur">Test xem video youtube</div>');
+}
+*/
+
+// hiển thị video youtube khi người dùng bấm
+jQuery(window).on('load', function () {
+	$('.admin-open-youtube-video').off('click').click(function () {
+		// chỉ lưu các URL nằm trong menu chính của EchBay
+		var a = $(this).attr('data-src') || '';
+		a = _global_js_eb.youtube_id( a );
+		
+		//
+		if ( a != '' ) {
+			// tính chiều rộng của video
+			var w = jQuery(window).width(),
+				h = w;
+			w = w/ 100 * 90;
+			if ( w > 800 ) {
+				w = 800;
+			}
+			h = w * youtube_video_default_size;
+			
+			//
+			if ( dog('quick_youtube_support') == null ) {
+				jQuery('body').append('<div id="quick_youtube_support" class="hide-if-press-esc remove-if-press-esc"></div>');
+			}
+			
+			//
+			$('#quick_youtube_support').show().html( '<div onclick="process_for_press_esc();" class="cur">Bấm vào đây hoặc phím <em><strong>ESC</strong></em> để thoát</div> <iframe width="' + w + '" height="' + h + '" src="https://www.youtube.com/embed/' + a + '?rel=0&autoplay=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' );
+		}
+	});
+});
+
+
+
 // Thêm icon cho link bản PRO -> gạ gẫm người dùng nâng cấp thì mới có tiền chứ
 $('#toplevel_page_eb-order li a[href="admin.php?page=eb-licenses"]').append(' <i class="fa-pro small upper"></i>');
+
+
+// thêm neu chỉnh sửa nhanh cho các hạng mục
+jQuery('#menu-posts ul.wp-submenu li.wp-first-item').after('<li><a href="admin.php?page=eb-products">Chỉnh sửa nhanh</a></li>');
+jQuery('#menu-posts-ads ul.wp-submenu li.wp-first-item').after('<li><a href="admin.php?page=eb-products&by_post_type=ads">Chỉnh sửa nhanh</a></li>');
+jQuery('#menu-posts-blog ul.wp-submenu li.wp-first-item').after('<li><a href="admin.php?page=eb-products&by_post_type=blog">Chỉnh sửa nhanh</a></li>');
 
 
 

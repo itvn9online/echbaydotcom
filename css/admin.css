@@ -1217,6 +1217,33 @@ body.body-no-scroll #oi_order_iframe {
 	right: 0;
 	opacity: 1;
 }
+#quick_youtube_support {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999999;
+	background: rgba(0,0,0,.5);
+}
+#quick_youtube_support iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#quick_youtube_support div {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: #fff;
+	font-size: 16px;
+	left: 0;
+	padding: 10px;
+	text-align: right;
+	background: rgba(0,0,0,.6);
+	overflow: hidden;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

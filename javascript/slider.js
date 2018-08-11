@@ -537,36 +537,39 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		//
 		if ( vd.split('youtube.com').length > 1 ) {
-			// xóa thẻ a
-			jQuery('a', this).hide();
-			
-			// tính toán chiều rộng để tạo video
-			var h = jQuery('div.banner-ads-media', this).height() || 0,
-				w = jQuery('div.banner-ads-media', this).width() || 0,
-				h_video = h,
-				w_video = w;
-//			console.log('W Slider: ' + w);
-//			console.log('H Slider: ' + h);
-			
-			// nếu chiều rộng < chiều cao -> màn hình dọc
-			if ( w < h ) {
-				w_video = h * ( 560/ 315 );
+			vd = _global_js_eb.youtube_id( vd );
+			if ( vd != '' ) {
+				// xóa thẻ a
+				jQuery('a', this).hide();
 				
-				// test -> tính lại xem có đúng chiều cao không
-//				console.log('TEST h: ' + w_video/ 560 * 315);
+				// tính toán chiều rộng để tạo video
+				var h = jQuery('div.banner-ads-media', this).height() || 0,
+					w = jQuery('div.banner-ads-media', this).width() || 0,
+					h_video = h,
+					w_video = w;
+//				console.log('W Slider: ' + w);
+//				console.log('H Slider: ' + h);
+				
+				// nếu chiều rộng < chiều cao -> màn hình dọc
+				if ( w < h ) {
+					w_video = h * ( 560/ 315 );
+					
+					// test -> tính lại xem có đúng chiều cao không
+//					console.log('TEST h: ' + w_video/ 560 * 315);
+				}
+				// màn hình ngang
+				else {
+					// tính chiều cao của video dựa theo chiều rộng, tỉ lệ youtube_video_default_size
+					h_video = w * youtube_video_default_size;
+				}
+//				console.log('W Video: ' + w_video);
+//				console.log('H Video: ' + h_video);
+				
+				//
+				jQuery('div.banner-ads-media', this)
+				.addClass('banner-video-media')
+				.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 			}
-			// màn hình ngang
-			else {
-				// tính chiều cao của video dựa theo chiều rộng, tỉ lệ youtube_video_default_size
-				h_video = w * youtube_video_default_size;
-			}
-//			console.log('W Video: ' + w_video);
-//			console.log('H Video: ' + h_video);
-			
-			//
-			jQuery('div.banner-ads-media', this)
-			.addClass('banner-video-media')
-			.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 		}
 		else if ( vd.split('.mp4').length > 1 ) {
 			// xóa thẻ a
