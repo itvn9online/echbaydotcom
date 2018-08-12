@@ -1,5 +1,8 @@
 <?php
 
+//
+//echo 'aaaaaaaaaa';
+
 if ( have_posts() ) {
 //	echo '<!-- TEST -->' . "\n";
 //	print_r( $post );

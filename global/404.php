@@ -86,6 +86,7 @@ if ( isset( $_GET['cat'] ) && $_GET['cat'] > 0 ) {
 
 //
 //print_r( $_GET );
+//print_r( $_SERVER );
 $act = '';
 /*
 if ( isset( $_GET['ebaction'] ) ) {
@@ -101,12 +102,25 @@ else */ if ( isset( $_SERVER['REQUEST_URI'] ) ) {
 	//echo $act . '<br>';
 	
 	$act = basename( $act );
-	//echo $act . '<br>';
+//	echo $act . '<br>';
 }
 //echo $act . '<br>';
 
 // 404 thì không thể không có trường này được
 if ( $act == '' || $act == '/' ) {
+	// nếu có tham số p -> short link của bài nào đó -> kiểm tra và chuyển sang full link
+	if ( isset( $_GET['p'] ) ) {
+		$p = _eb_number_only( $_GET['p'] );
+		if ( $p > 0 ) {
+			$redirect_url = _eb_p_link( $p, false );
+//			echo $redirect_url; exit();
+			if ( $redirect_url != '' ) {
+				wp_redirect( $redirect_url, 301 ); exit();
+			}
+		}
+	}
+	
+	//
 	die('Template not found');
 }
 

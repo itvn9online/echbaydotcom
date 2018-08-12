@@ -624,13 +624,18 @@ function _eb_s_link ($id, $seo = 'p') {
 }
 
 // link cho sản phẩm
-function _eb_p_link ($id, $seo = '') {
+function _eb_p_link ($id, $short_link = true) {
 	$strCacheFilter = 'prod_link' . $id;
 	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
 	if ($a == false) {
 		$a = get_the_permalink( $id );
 		if ( $a == '' ) {
-			$a = _eb_s_link($id);
+			if ( $short_link == true ) {
+				$a = _eb_s_link($id);
+			}
+			else {
+				$a = web_link . '404?redirect_from=' . urlencode( _eb_full_url() );
+			}
 		}
 		
 		//
