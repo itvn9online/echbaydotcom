@@ -278,7 +278,7 @@ function ___eb_cache_mobile_class ( $data ) {
 		$data = str_replace( 'eb-set-css-pc-mobile', 'style-for-mobile', $data );
 	}
 	
-	echo $data;
+	echo _eb_ssl_template( $data );
 	
 }
 

@@ -3282,6 +3282,7 @@ function _eb_ssl_template ($c) {
 	if ( eb_web_protocol != 'https' ) {
 		return $c;
 	}
+//	echo 'aaaaaaaaaaaaaaaaaaaaaaa';
 	
 	//
 	$c = str_replace( 'http://' . $_SERVER ['HTTP_HOST'], '//' . $_SERVER ['HTTP_HOST'], $c );
