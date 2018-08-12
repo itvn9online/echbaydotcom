@@ -722,6 +722,7 @@ function EBE_get_text_version ( $str ) {
 			
 			$version_in_github = EBE_get_text_version( $version_in_github );
 			*/
+			$version_in_github = _eb_del_line( strip_tags( $version_in_github ) );
 			
 			_eb_get_static_html ( $strCacheFilter, $version_in_github, '', 60 );
 		}
