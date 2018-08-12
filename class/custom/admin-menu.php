@@ -388,7 +388,8 @@ function echbay_admin_footer_styles() {
 	$strCacheFilter = 'github_version';
 	$current_github_version = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
 	if ( $current_github_version == false ) {
-		$current_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
+		$current_github_version = _eb_getUrlContent( 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION' );
+//		$current_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
 		$current_github_version = _eb_del_line( strip_tags( $current_github_version ) );
 		
 		_eb_get_static_html ( $strCacheFilter, $current_github_version, '', 60 );
@@ -406,7 +407,8 @@ function echbay_admin_footer_styles() {
 	$strCacheFilter = 'github_theme_version';
 	$current_theme_github_version = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
 	if ( $current_theme_github_version == false ) {
-		$current_theme_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION' );
+		$current_theme_github_version = _eb_getUrlContent( 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION' );
+//		$current_theme_github_version = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION' );
 		$current_theme_github_version = _eb_del_line( strip_tags( $current_theme_github_version ) );
 		
 		_eb_get_static_html ( $strCacheFilter, $current_theme_github_version, '', 60 );
