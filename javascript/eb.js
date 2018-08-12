@@ -2589,6 +2589,12 @@ var _global_js_eb = {
 		}
 		
 		return _global_js_eb.add_primari_iframe();
+		/*
+	},
+	
+	
+	_eb_code64 : function ( str, type ) {
+		*/
 	}
 	
 };

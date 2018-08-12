@@ -175,19 +175,29 @@
 .details-tu-van {
 	height: 70px;
 	display: block;
+	max-width: 320px;
+	margin: 0 auto;
 }
 .details-mua-ngay {
-	/* background: #d71921; */
+	/*
+	background: #d71921;
+	margin-right: 10px;
+	*/
 	border: 0 none;
 	cursor: pointer;
-	margin-right: 10px;
 	width: 100%;
 }
+/*
 .details-tu-van {
 	background: #585858;
 	margin-left: 10px;
 }
 .style-for-mobile .details-tu-van { margin-left: 0; }
+*/
+.detail-muangay-bottom-padding .details-mua-ngay { margin-right: 10px; }
+.detail-muangay-bottom-padding .details-tu-van { margin-left: 10px; }
+.style-for-mobile .details-mua-ngay,
+.style-for-mobile .details-tu-van { margin: 0 auto; }
 .details-tu-van span {
 	display: block;
 	padding-top: 14px;

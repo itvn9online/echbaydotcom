@@ -393,6 +393,14 @@ $___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham kh
 
 
 
+// gọi tới function ngôn ngữ riêng của từng website
+if ( function_exists('WGR_child_lang') ) {
+	WGR_child_lang();
+}
+
+
+
+
 //
 $___eb_default_lang = $___eb_lang;
 //$___eb_lang_default = $___eb_lang;
