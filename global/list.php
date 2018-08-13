@@ -22,7 +22,7 @@
 
 //
 $__category = get_queried_object();
-//print_r( $__category );
+//print_r( $__category ); exit();
 
 
 

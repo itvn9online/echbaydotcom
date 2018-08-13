@@ -581,54 +581,140 @@ $arr_category_custom_fields['_eb_category_avt'] = 'Ảnh đại diện lớn (ba
 $arr_category_custom_fields['_eb_category_favicon'] = 'Ảnh đại diện nhỏ (favicon)';
 $arr_category_custom_fields['_eb_category_custom_css'] = 'CSS riêng';
 $arr_category_custom_fields['_eb_category_gender'] = 'Giới tính';
+$arr_category_custom_fields['_eb_category_status'] = 'Trạng thái/ Định dạng';
+$arr_category_custom_fields['_eb_category_order'] = 'Số thứ tự';
+$arr_category_custom_fields['_eb_category_content'] = 'Giới thiệu';
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
 if ( cf_on_off_echbay_seo == 1 ) {
-	$arr_category_custom_fields['_eb_category_status'] = 'Trạng thái/ Định dạng';
-	$arr_category_custom_fields['_eb_category_order'] = 'Số thứ tự';
-	$arr_category_custom_fields['_eb_category_content'] = 'Giới thiệu';
-	
 	$arr_category_custom_fields['_eb_category_title'] = 'Title';
 	$arr_category_custom_fields['_eb_category_keywords'] = 'Keywords';
 	$arr_category_custom_fields['_eb_category_description'] = 'Description';
 	$arr_category_custom_fields['_eb_category_google_product'] = 'Google product category';
 	$arr_category_custom_fields['_eb_category_noindex'] = 'Noindex';
-	$arr_category_custom_fields['_eb_category_hidden'] = 'Ẩn nhóm này';
-	
-	$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
-	$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';
 }
 
 // thuộc tính này luôn tồn tại cho category
+$arr_category_custom_fields['_eb_category_hidden'] = 'Ẩn nhóm này';
+$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
+$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';
 $arr_category_custom_fields['_eb_category_primary'] = 'Đặt làm nhóm chính';
 
 
+
+
+// các trường dữ liệu
+$arr_category_coupon_custom_fields = array();
+// định dạng dữ liệu (mặc định là text)
+$eb_arr_type_coupon_custom_meta_box = array();
+// ghi chú
+$eb_arr_placeholder_coupon_custom_meta_box = array();
+
+//
+$arr_category_coupon_custom_fields['_eb_category_coupon_giagiam'] = 'Giảm giá sản phẩm cố định';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_giagiam'] = '';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_giagiam'] = 'Nhập số tiền mã bạn muốn giảm trực tiếp cho mỗi đơn hàng';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_phantramgiam'] = 'Giảm giá theo phần trăm';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'Nhập số phần trăm mà bạn muốn giảm cho mỗi đơn hàng (tham số này sẽ phủ định tham số [Giảm giá sản phẩm cố định] ở trên nếu chúng được thiết lập cùng nhau)';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_ngayhethan'] = 'Ngày hết hạn mã ưu đãi';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = '';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = 'Mã sẽ hiển thị thông báo hết hạn khi qua ngày này. Thời gian tính vào giờ phút cuối cùng của ngày đó, ví dụ bạn thiết lập là: <strong>' . date('Y-m-d', date_time) . '</strong>, mã sẽ hết hạn vào lúc: <strong>' . date('Y-m-d', date_time) . ' 23:59</strong>';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_toithieu'] = 'Chi tiêu tối thiểu';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_toithieu'] = '';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_toithieu'] = 'Khi thông số này được thiết lập, đơn hàng phải đạt tổng thanh toán lớn hơn hoặc bằng số này thì Mã giảm giá mới được kích hoạt.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_toida'] = 'Chi tiêu tối đa';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_toida'] = '';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_toida'] = 'Khi thông số này được thiết lập, đơn hàng có tổng giá trị lớn hơn con số này cũng chỉ tính bằng số này.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_product'] = 'Sản phẩm';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_product'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_product'] = 'Thiết lập khi muốn Mã giảm giá chỉ kích hoạt cho Sản phẩm cụ thể.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon__product'] = 'Loại trừ sản phẩm';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__product'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon__product'] = 'Thiết lập khi muốn mã giảm giá không áp dụng cho Sản phẩm nào đó.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_category'] = 'Danh mục sản phẩm';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_category'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_category'] = 'Thiết lập khi muốn Mã giảm giá chỉ kích hoạt cho Danh mục sản phẩm cụ thể.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon__category'] = 'Loại trừ các danh mục';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__category'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon__category'] = 'Thiết lập khi muốn mã giảm giá không áp dụng cho Danh mục sản phẩm nào đó.';
+
+/*
+$arr_category_coupon_custom_fields['_eb_category_coupon_email'] = 'Dành cho các email';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_email'] = '';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_email'] = '';
+*/
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_max'] = 'Giới hạn sử dụng cho mỗi mã giảm giá';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_max'] = 'number';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_max'] = 'Thiết lập khi muốn dừng chạy Mã giảm giá này nếu đạt ngưỡng.';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_using'] = 'Đã sử dụng';
+$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_using'] = 'hidden';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_using'] = 'Số lượt sử dụng mã giảm giá';
+
+
+
+
+
 // Thêm trường dữ liệu cho phần category -> luôn kích hoạt
-add_filter ( 'edit_category_form_fields', 'EBextra_category_fields');
-add_filter ( 'edited_category', 'EBsave_extra_category_fileds');
+// https://developer.wordpress.org/reference/hooks/edit_category_form_fields/
+//add_filter ( 'edit_category_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
+add_filter ( 'category_edit_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
+add_filter ( 'edited_category', 'WGR_luu_thong_tin_khi_submit_taxonomy');
 
 
 // các trường còn lại, chỉ kích hoạt khi EchBay Seo plugin được bật
-if ( cf_on_off_echbay_seo == 1 ) {
-	add_filter ( 'edit_tag_form_fields', 'EBextra_category_fields');
+//if ( cf_on_off_echbay_seo == 1 ) {
+	// https://developer.wordpress.org/reference/hooks/edit_tag_form_fields/
+//	add_filter ( 'edit_tag_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
+	
+	//
+	add_filter ( 'post_tag_edit_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
+	add_filter ( 'post_options_edit_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
+	add_filter ( 'discount_code_edit_form_fields', 'WGR_them_cot_du_lieu_cho_from_coupon');
+	
+	add_filter ( EB_BLOG_POST_LINK . '_edit_form_fields', 'WGR_them_cot_du_lieu_cho_from_taxonomy');
 	
 	
 	// Lưu dữ liệu edited_ + tên của taxonomy
-	add_filter ( 'edited_post_tag', 'EBsave_extra_category_fileds');
-	add_filter ( 'edited_post_options', 'EBsave_extra_category_fileds');
-	//add_filter ( 'edited_blogs', 'EBsave_extra_category_fileds');
-	add_filter ( 'edited_' . EB_BLOG_POST_LINK, 'EBsave_extra_category_fileds');
-}
+	add_filter ( 'edited_post_tag', 'WGR_luu_thong_tin_khi_submit_taxonomy');
+	add_filter ( 'edited_post_options', 'WGR_luu_thong_tin_khi_submit_taxonomy');
+	add_filter ( 'edited_discount_code', 'WGR_luu_thong_tin_khi_submit_coupon');
+	
+//	add_filter ( 'edited_blogs', 'WGR_luu_thong_tin_khi_submit_taxonomy');
+	add_filter ( 'edited_' . EB_BLOG_POST_LINK, 'WGR_luu_thong_tin_khi_submit_taxonomy');
+//}
 
 
 
 // add extra fields to category edit form callback function
-function EBextra_category_fields( $tag ) {
+function WGR_them_cot_du_lieu_cho_from_taxonomy ( $tag ) {
 	global $arr_category_custom_fields;
 	global $eb_arr_type_custom_meta_box;
 	global $eb_arr_placeholder_custom_meta_box;
 	
+	WGR_them_cot_du_lieu_cho_from_HTML_taxonomy( $tag, $arr_category_custom_fields, $eb_arr_type_custom_meta_box, $eb_arr_placeholder_custom_meta_box );
+}
+
+function WGR_them_cot_du_lieu_cho_from_coupon ( $tag ) {
+	global $arr_category_coupon_custom_fields;
+	global $eb_arr_type_coupon_custom_meta_box;
+	global $eb_arr_placeholder_coupon_custom_meta_box;
+	
+	WGR_them_cot_du_lieu_cho_from_HTML_taxonomy( $tag, $arr_category_coupon_custom_fields, $eb_arr_type_coupon_custom_meta_box, $eb_arr_placeholder_coupon_custom_meta_box );
+}
+	
+function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr_type, $arr_placeholder ) {
 	//
 //	print_r( $tag );
 //	echo 'aaaaaaaaaaaaaaa';
@@ -637,10 +723,10 @@ function EBextra_category_fields( $tag ) {
 //	$cat_id = $tag->term_id;
 	
 	//
-	foreach ( $arr_category_custom_fields as $k => $v ) {
+	foreach ( $arr_category as $k => $v ) {
 		
 		//
-		$tai = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $tai = $eb_arr_type_custom_meta_box[ $k ] : 'text';
+		$tai = isset( $arr_type[ $k ] ) ? $tai = $arr_type[ $k ] : 'text';
 //		echo $tai;
 		
 		// Giá trị (nếu có)
@@ -658,13 +744,13 @@ function EBextra_category_fields( $tag ) {
 		$other_attr = '';
 		
 		//
-//		$other_attr .= 'placeholder="' . ( isset($eb_arr_placeholder_custom_meta_box[$k]) ? $eb_arr_placeholder_custom_meta_box[$k] : '' ) . '"';
-		if ( ! isset( $eb_arr_placeholder_custom_meta_box[$k] ) ) {
-			$eb_arr_placeholder_custom_meta_box[$k] = '';
+//		$other_attr .= 'placeholder="' . ( isset($arr_placeholder[$k]) ? $arr_placeholder[$k] : '' ) . '"';
+		if ( ! isset( $arr_placeholder[$k] ) ) {
+			$arr_placeholder[$k] = '';
 		}
 		/*
 		else {
-			$eb_arr_placeholder_custom_meta_box[$k] = '<div class="small">' . $eb_arr_placeholder_custom_meta_box[$k] . '</div>';
+			$arr_placeholder[$k] = '<div class="small">' . $arr_placeholder[$k] . '</div>';
 		}
 		*/
 		
@@ -697,7 +783,7 @@ function EBextra_category_fields( $tag ) {
 			echo '</select>';
 		}
 		else if ( $tai == 'checkbox' ) {
-			echo '<label for="' . $k . '"><input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" />' . $eb_arr_placeholder_custom_meta_box[$k] . '</label>';
+			echo '<label for="' . $k . '"><input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" />' . $arr_placeholder[$k] . '</label>';
 		}
 		else if ( $tai == 'textarea' ) {
 			wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
@@ -709,7 +795,7 @@ function EBextra_category_fields( $tag ) {
 		
 		//
 		if ( $tai != 'checkbox' ) {
-			echo WGR_echo_label_for_edit_form( $eb_arr_placeholder_custom_meta_box[$k] );
+			echo WGR_echo_label_for_edit_form( $arr_placeholder[$k] );
 		}
 		
 		//
@@ -720,24 +806,23 @@ function EBextra_category_fields( $tag ) {
 }
 
 
+
 // save extra category extra fields callback function
 /*
 https://developer.wordpress.org/reference/functions/delete_term_meta/
 https://developer.wordpress.org/reference/functions/update_term_meta/
 */
-function EBsave_extra_category_fileds( $term_id ) {
-	global $arr_category_custom_fields;
-	global $eb_arr_type_custom_meta_box;
+function WGR_luu_thong_tin_khi_capnhat_taxonomy ( $term_id, $arr_category, $arr_type ) {
 //	global $__cf_row;
 	
 	// cần phải lấy cả mảng dữ liệu cũ để save vào 1 thể, nếu không sẽ bị thiếu
 //	$arr_save = _eb_get_object_post_meta( $term_id, eb_cat_obj_data );
 	
 	// chạy vòng lặp rồi kiểm tra trong POST có tương ứng thì update
-	foreach ( $arr_category_custom_fields as $k => $v ) {
+	foreach ( $arr_category as $k => $v ) {
 		
 		// lọc mã html với các input thường
-		$loc_html = isset( $eb_arr_type_custom_meta_box[ $k ] ) ? $eb_arr_type_custom_meta_box[ $k ] : '';
+		$loc_html = isset( $arr_type[ $k ] ) ? $arr_type[ $k ] : '';
 		
 		if ( isset( $_POST[ $k ] ) ){
 //			echo $k . '<br>' . "\n";
@@ -800,6 +885,21 @@ function EBsave_extra_category_fileds( $term_id ) {
 //	print_r( $arr_save ); exit();
 	
 }
+
+function WGR_luu_thong_tin_khi_submit_taxonomy ( $term_id ) {
+	global $arr_category_custom_fields;
+	global $eb_arr_type_custom_meta_box;
+	
+	WGR_luu_thong_tin_khi_capnhat_taxonomy( $term_id, $arr_category_custom_fields, $eb_arr_type_custom_meta_box );
+}
+
+function WGR_luu_thong_tin_khi_submit_coupon ( $term_id ) {
+	global $arr_category_coupon_custom_fields;
+	global $eb_arr_type_coupon_custom_meta_box;
+	
+	WGR_luu_thong_tin_khi_capnhat_taxonomy( $term_id, $arr_category_coupon_custom_fields, $eb_arr_type_coupon_custom_meta_box );
+}
+
 
 
 

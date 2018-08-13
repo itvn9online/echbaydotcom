@@ -41,7 +41,7 @@ function dang_ky_taxonomy() {
 	*/
 	$taxonomy_post_type = EB_BLOG_POST_TYPE;
 	
-	// cat
+	// register_taxonomy blogs
 	$labels = array(
 		'name' => 'Danh mục tin',
 		'singular_name' => 'Danh mục tin',
@@ -53,7 +53,7 @@ function dang_ky_taxonomy() {
 		'update_item' => 'Cập nhật danh mục',
 		'add_new_item' => 'Thêm danh mục mới',
 		'new_item_name' => 'New Danh mục Name',
-		'menu_name' => 'Danh mục tin',
+		'menu_name' => 'Danh mục tin'
 	);
 	
 	$args = array(
@@ -64,7 +64,7 @@ function dang_ky_taxonomy() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'show_in_nav_menus' => true,
-		'show_tagcloud' => true,
+		'show_tagcloud' => true
 	);
 	
 	// Hàm register_taxonomy để khởi tạo taxonomy
@@ -73,7 +73,7 @@ function dang_ky_taxonomy() {
 	
 	
 	
-	// tag
+	// register_taxonomy blog_tag
 	$labels = array(
 		'name' => 'Danh sách từ khóa',
 //		'singular' => 'Từ khóa',
@@ -86,7 +86,7 @@ function dang_ky_taxonomy() {
 		'update_item' => 'Cập nhật từ khóa',
 		'add_new_item' => 'Thêm từ khóa sản phẩm',
 		'new_item_name' => 'New từ khóa Name',
-		'menu_name' => 'Các từ khóa',
+		'menu_name' => 'Các từ khóa'
 	);
 	
 	//
@@ -98,7 +98,7 @@ function dang_ky_taxonomy() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'show_in_nav_menus' => false,
-		'show_tagcloud' => true,
+		'show_tagcloud' => true
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_tag', $taxonomy_post_type, $args);
@@ -110,11 +110,11 @@ function dang_ky_taxonomy() {
 	
 	
 	/*
-	* Sản phẩm/ Bài viết
+	* Sản phẩm/ Bài viết register_taxonomy post_options
 	*/
 	$taxonomy_post_type = 'post';
 	
-	// cat
+	//
 	$labels = array(
 		'name' => 'Thông số khác',
 		'singular_name' => 'Thông số khác',
@@ -126,7 +126,7 @@ function dang_ky_taxonomy() {
 		'update_item' => 'Cập nhật Thông số',
 		'add_new_item' => 'Thêm Thông số mới',
 		'new_item_name' => 'New Thông số Name',
-		'menu_name' => 'Thông số khác',
+		'menu_name' => 'Thông số khác'
 	);
 	
 	//
@@ -138,11 +138,42 @@ function dang_ky_taxonomy() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'show_in_nav_menus' => false,
-		'show_tagcloud' => true,
+		'show_tagcloud' => true
 	);
 	
 	register_taxonomy($taxonomy_post_type . '_options', $taxonomy_post_type, $args);
 	WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_options' );
+	
+	
+	// register_taxonomy discount_code
+	$labels = array(
+		'name' => 'Mã giảm giá',
+		'singular_name' => 'Mã giảm giá',
+		'search_items' => 'Tìm Mã giảm giá',
+		'all_items' => 'Tất cả',
+		'parent_item' => 'Mã giảm giá cha',
+		'parent_item_colon' => 'Mã giảm giá cha:',
+		'edit_item' => 'Sửa Mã giảm giá',
+		'update_item' => 'Cập nhật Mã giảm giá',
+		'add_new_item' => 'Thêm Mã giảm giá mới',
+		'new_item_name' => 'Tên Mã giảm giá mới',
+		'menu_name' => 'Mã giảm giá'
+	);
+	
+	//
+	$args = array(
+		'labels' => $labels,
+		// cho phép phân cấp
+		'hierarchical' => false,
+		'public' => true,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => false
+//		'show_tagcloud' => true
+	);
+	
+	register_taxonomy( 'discount_code', $taxonomy_post_type, $args );
+	WGR_custom_term_slug_edit_success( 'discount_code' );
 }
 // Hook into the 'init' action
 add_filter( 'init', 'dang_ky_taxonomy');
