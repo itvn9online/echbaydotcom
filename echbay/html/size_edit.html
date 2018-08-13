@@ -63,7 +63,7 @@
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_quan"><strong>Số lượng</strong></label></td>
 				<td class="i"><input type="number" id="eb_input_edit_product_color_quan" name="eb_input_edit_product_color_quan" placeholder="Số lượng" class="m">
-					<p class="description">Mặc định sẽ lấy theo <strong>Số lượng</strong> của sản phẩm chính hoặc hiển thị hết hàng nếu để là <strong>0</strong>.</p></td>
+					<p class="description">Mặc định sẽ lấy theo <strong>Số lượng</strong> của sản phẩm chính hoặc hiển thị hết hàng nếu để là <strong>0</strong>, sẽ <strong>Ẩn</strong> khi để số lượng là <strong>-1</strong>.</p></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_sku"><strong>Mã màu (nếu có)</strong></label></td>
@@ -80,7 +80,10 @@
 			</tr>
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_size"><strong>Kích cỡ/ Số lượng</strong></label></td>
-				<td class="i"><p class="description">Mỗi màu bạn có thể thiết lập <strong>size</strong> riêng và <strong>số lượng</strong> riêng cho từng size nếu muốn, nếu không có size riêng nào được thiết lập, size từ sản phẩm chính sẽ được sử dụng.<br>
+				<td class="i"><ul class="cf eb-admin-product-color-size">
+						<li><i class="fa fa-plus"></i></li>
+					</ul>
+					<p class="description">Mỗi màu bạn có thể thiết lập <strong>size</strong> riêng và <strong>số lượng</strong> riêng cho từng size nếu muốn, nếu không có size riêng nào được thiết lập, size từ sản phẩm chính sẽ được sử dụng.<br>
 						* Phần giá riêng của của từng size theo mầu sẽ là giá được ưu tiên cao nhất để hiển thị.</p></td>
 			</tr>
 			<tr>

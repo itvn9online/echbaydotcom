@@ -1338,7 +1338,12 @@ color: #333;
 	z-index: 2;
 	border: 1px #f2f2f2 solid;
 }
+.eb-product-size li:hover { border-color: #999; }
 .eb-product-size li:hover span { display: inline-block; }
+.eb-product-size li[data-quan="0"] {
+	border-color: #f0f0f0;
+	color: #999;
+}
 /* */
 #click_show_cpa {
 	background: rgba(0, 0, 0, .6);
@@ -1809,6 +1814,17 @@ input[type="number"].s { width: 90px; }
 	position: relative;
 	text-transform: capitalize;
 }
+.product-color li:before {
+	background: url(../images-global/tick.png) bottom right no-repeat;
+	background-size: auto 100%;
+	content: "";
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: none;
+}
 .product-color li.text-color-center {
 	width: auto;
 	min-width: 35px;
@@ -1829,7 +1845,10 @@ input[type="number"].s { width: 90px; }
 	border-radius: 2px;
 }
 .product-color li.selected { border-color: #f00 !important; }
+.product-color li.selected:before,
 .product-color li.selected div { display: block; }
+.product-color li[data-quan="0"] { border-color: #f0f0f0; }
+/* */
 .thread-details-options {
 	min-width: 250px;
 	max-width: 600px;

@@ -822,7 +822,8 @@ function ___eb_details_product_color () {
 	
 	//
 	var str = '',
-		i = 0;
+		i = 0,
+		select_default_color = null;
 	jQuery('#export_img_list_color img').each(function() {
 		var s = jQuery(this).attr('data-src') || jQuery(this).attr('src') || '';
 		
@@ -835,7 +836,8 @@ function ___eb_details_product_color () {
 			if ( status > 0 ) {
 				var color_name = jQuery(this).attr('alt') || jQuery(this).attr('title') || jQuery(this).attr('data-color') || '',
 					color_quan = jQuery(this).attr('data-quan') || '',
-					color_price = jQuery(this).attr('data-price') || '';
+					color_price = jQuery(this).attr('data-price') || '',
+					in_sctock = '';
 				
 				// Để trống -> coi như còn hàng
 				if ( color_quan == '' ) {
@@ -844,8 +846,16 @@ function ___eb_details_product_color () {
 				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('color_quan: ' + color_quan);
 				
 				// còn hàng thì mới hiển thị
-				if ( color_quan > 0 ) {
-					str += '<li title="' + color_name + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + '</div></li>';
+				if ( color_quan >= 0 ) {
+					if ( color_quan == 0 ) {
+						in_sctock = ' (Hết hàng)';
+					}
+					else if ( select_default_color == null ) {
+						select_default_color = i;
+					}
+					
+					//
+					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
 					
 					arr_product_color.push( img_fullsize );
 					
@@ -949,15 +959,26 @@ function ___eb_details_product_color () {
 	});
 	
 	//
-	jQuery('.oi_product_color:first li:first').click();
+	jQuery('.oi_product_color li[data-quan="0"]').off('click').click(function () {
+		a_lert('Xin lỗi quý khách! Sản phẩm này tạm thời đang cháy hàng...');
+		return false;
+	});
 	
-	// nếu không có size theo màu và không có size của sản phẩm chính -> hẹn giờ lấy giá của màu đầu tiên (nếu có)
-	// nếu có thì đã có 1 lệnh sau đó tìm và lấy giá theo size rồi
-	if ( size_rieng_cua_tung_mau == '' && arr_product_size.length == 0 ) {
-		setTimeout(function () {
-			console.log('load price in color');
-			jQuery('.oi_product_color:first li:first').click();
-		}, 600);
+	//
+//	console.log('select_default_color: ' + select_default_color);
+	if ( select_default_color != null ) {
+//		jQuery('.oi_product_color:first li:first').click();
+		jQuery('.oi_product_color:first li[data-node="' + select_default_color + '"]').click();
+		
+		// nếu không có size theo màu và không có size của sản phẩm chính -> hẹn giờ lấy giá của màu đầu tiên (nếu có)
+		// nếu có thì đã có 1 lệnh sau đó tìm và lấy giá theo size rồi -> lệnh đó sẽ phủ nhận cái lệnh này đi nếu nó vẫn diễn ra
+		if ( size_rieng_cua_tung_mau == '' && arr_product_size.length == 0 ) {
+			setTimeout(function () {
+				console.log('load price in color');
+//				jQuery('.oi_product_color:first li:first').click();
+				jQuery('.oi_product_color:first li[data-node="' + select_default_color + '"]').click();
+			}, 300);
+		}
 	}
 	
 	//
@@ -1058,7 +1079,7 @@ function ___eb_details_product_size () {
 	
 	// nếu có mảng giá trị truyền vào từ màu -> sử dụng màu này
 	if ( size_rieng_cua_tung_mau != '' ) {
-		arr_product_size = eval( size_rieng_cua_tung_mau );
+		arr_product_size = eval( unescape( size_rieng_cua_tung_mau ) );
 	}
 	
 	
@@ -1103,7 +1124,8 @@ function ___eb_details_product_size () {
 		
 		// Giá trị mảng phải khác null -> null = xóa
 		if ( arr_product_size[i].val != null && arr_product_size[i].val >= 0 ) {
-			if ( select_default_size == null ) {
+			// chọn size nếu còn hàng
+			if ( select_default_size == null && arr_product_size[i].val > 0 ) {
 				select_default_size = i;
 			}
 			
@@ -1211,13 +1233,23 @@ function ___eb_details_product_size () {
 		}
 	});
 	
+	// với các size hết hàng -> hủy chọn
+	jQuery('.oi_product_size li[data-quan="0"]').off('click').click(function () {
+		a_lert('Xin lỗi quý khách! Sản phẩm này tạm thời đang cháy hàng...');
+		return false;
+	});
+	
+	
 	//
 //	jQuery('.oi_product_size li:first').click();
-	jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
-	setTimeout(function () {
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('select_default_size: ' + select_default_size);
+	// nếu còn 1 size nào đó còn hàng -> chọn sẵn cho khách
+	if ( select_default_size != null ) {
 		jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
-	}, 800);
+		setTimeout(function () {
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('select_default_size: ' + select_default_size);
+			jQuery('.oi_product_size:first li[data-size-node="' + select_default_size + '"]').click();
+		}, 500);
+	}
 	
 }
 

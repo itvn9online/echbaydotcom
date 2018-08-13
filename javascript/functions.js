@@ -155,7 +155,7 @@ function WGR_html_alert ( m ) {
 	//
 	clearTimeout( time_for_hide_html_alert );
 	time_for_hide_html_alert = setTimeout(function () {
-		$('#WGR_html_alert').fadeOut();
+		$('#WGR_html_alert').fadeOut(2000);
 	}, 5000);
 }
 

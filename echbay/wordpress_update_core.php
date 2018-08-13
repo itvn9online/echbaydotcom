@@ -23,7 +23,12 @@
 			_eb_create_file( $file_cache_test, date_time );
 			
 			//
-			echo _eb_postUrlContent( 'https://www.echbay.com/actions/wordpress_core_update&domain=' . $_SERVER['HTTP_HOST'] );
+			$url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&domain=' . $_SERVER['HTTP_HOST'] . '&wgr_update_to=';
+			$url_udpate_via_api .= base64_encode( ABSPATH );
+//			$url_udpate_via_api .= urlencode( ABSPATH );
+//			echo $url_udpate_via_api . '<br>' . "\n";
+			echo _eb_postUrlContent( $url_udpate_via_api );
+			
 		}
 		else {
 			echo '<h3>Giãn cách mỗi lần update core tối thiểu là 6 tiếng</h3>';

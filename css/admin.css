@@ -45,6 +45,7 @@ body.ebdesign-no-scroll { overflow: hidden; }
 	color: #fff;
 }
 /* product size */
+.eb-admin-product-color-size li,
 .eb-admin-product-size li {
 	line-height: 30px;
 	min-width: 20px;
