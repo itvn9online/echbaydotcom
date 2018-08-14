@@ -837,7 +837,10 @@ else {
 var show_update_status = '',
 	timeout_remove_update_cache_file = null;
 function update_wgr_plugin_theme_done ( h ) {
-	$('#' + show_update_status).html(h);
+	h = h.replace( /uploads\/ebcache\/echbaydotcom-master\//gi, 'echbaydotcom/' );
+	h = h.replace( /uploads\/ebcache\/echbaytwo-master\//gi, 'echbaytwo/' );
+	$('#' + show_update_status).html( h );
+	
 	$('body').addClass('wgr-process-update-complete').removeClass('wgr-waiting-update-complete');
 	
 	jQuery('body,html').animate({
