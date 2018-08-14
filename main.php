@@ -14,7 +14,9 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 	$time_for_bao_tri = file_get_contents( EB_THEME_CACHE . 'update_running.txt', 1 );
 	
 	// Hiển thị chế độ bảo trì trong vòng 2 phút thôi
-	if ( date_time - $time_for_bao_tri < 120 ) {
+//	if ( date_time - $time_for_bao_tri < 30 ) {
+	if ( date_time - $time_for_bao_tri < 60 ) {
+//	if ( date_time - $time_for_bao_tri < 120 ) {
 //	if ( date_time - $time_for_bao_tri < 300 ) {
 		
 		// Set trạng thái cho trang 404
@@ -28,6 +30,9 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 		
 	}
 	else {
+		// xóa file
+		_eb_remove_file( EB_THEME_CACHE . 'update_running.txt' );
+		
 		echo '<!-- Remove update_running.txt in ebcache dir -->';
 	}
 }

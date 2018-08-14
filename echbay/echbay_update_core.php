@@ -7,6 +7,14 @@
 
 
 
+//
+//print_r( $_GET );
+if ( isset( $_GET['remove_update_running_file'] ) ) {
+	_eb_remove_file( EB_THEME_CACHE . 'update_running.txt' );
+	exit();
+}
+
+
 
 // chuyển từ vesion cũ sang version mới
 if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
@@ -690,17 +698,21 @@ function EBE_get_text_version ( $str ) {
 					echo '<div id="eb_core_update_all_done"></div>';
 					
 					// cho website vào chế độ chờ
-					sleep(15);
+//					sleep(15);
+//					sleep(5);
 					
 				}
 				
 				// tắt chế độ bảo trì
+				_eb_create_file( $bat_che_do_bao_tri, date_time );
+				/*
 				if ( _eb_remove_file( $bat_che_do_bao_tri ) == true ) {
 					echo '<br><h2>TẮT chế độ bảo trì website!</h2>';
 				}
 				else {
 					echo '<br><h2>Không TẮT được chế độ bảo trì! Hãy vào thư mục ebcache và xóa file update_running.txt thủ công.</h2>';
 				}
+				*/
 				
 			}
 			else {
@@ -822,7 +834,8 @@ else {
 <script type="text/javascript">
 
 //
-var show_update_status = '';
+var show_update_status = '',
+	timeout_remove_update_cache_file = null;
 function update_wgr_plugin_theme_done ( h ) {
 	$('#' + show_update_status).html(h);
 	$('body').addClass('wgr-process-update-complete').removeClass('wgr-waiting-update-complete');
@@ -835,6 +848,14 @@ function update_wgr_plugin_theme_done ( h ) {
 	a_lert('Xin chúc mừng! quá trình cập nhật mã nguồn thành công...');
 	
 	$('#target_eb_iframe').removeClass('show-target-echbay');
+	
+	// xóa file bảo trì sau khi update xong
+	clearTimeout( timeout_remove_update_cache_file );
+	timeout_remove_update_cache_file = setTimeout(function () {
+		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
+		
+		console.log('Remvoe update running file');
+	}, 15000);
 }
 
 function update_wgr_plugin_theme_begin ( i ) {
