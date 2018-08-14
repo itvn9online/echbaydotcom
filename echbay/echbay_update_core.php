@@ -854,7 +854,7 @@ function update_wgr_plugin_theme_done ( h ) {
 	timeout_remove_update_cache_file = setTimeout(function () {
 		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
 		
-		console.log('Remvoe update running file');
+		console.log('Remove update running file');
 	}, 15000);
 }
 
