@@ -723,6 +723,9 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 //	$cat_id = $tag->term_id;
 	
 	//
+	echo '<tbody class="wgr-custom-taxonomy">';
+	
+	//
 	foreach ( $arr_category as $k => $v ) {
 		
 		//
@@ -790,7 +793,7 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 //			echo '<textarea id="' . $k . '" name="' . $k . '" ' . $other_attr . '>' .$val. '</textarea>';
 		}
 		else {
-			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' />';
+			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' class="m" />';
 		}
 		
 		//
@@ -803,6 +806,9 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 	</td>
 </tr>';
 	}
+	
+	//
+	echo '</tbody>';
 }
 
 

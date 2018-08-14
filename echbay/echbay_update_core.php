@@ -2,7 +2,8 @@
 <p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
 <p>Lịch sử chi tiết các cập nhật sẽ được liệt kê tại đây: <a href="https://github.com/itvn9online/echbaydotcom/commits/master" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom/commits/master</a></p>
 <!-- <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1> -->
-<?php
+<div id="get_list_wgr_process_update">
+	<?php
 
 
 
@@ -792,6 +793,8 @@ $enable_theme_dir_update = 'echbaytwo';
 
 
 ?>
+</div>
+<div id="show_list_wgr_plugin_update" class="content-process-update-complete"></div>
 <p><em>* Xin lưu ý! các tính năng được cập nhật là xây dựng và phát triển cho phiên bản trả phí, nên với phiên bản miễn phí, một số tính năng sẽ không tương thích hoặc phải chỉnh lại giao diện sau khi cập nhật. Lần cập nhật trước: <strong><?php echo date( 'r', $last_time_update_eb ); ?> (<?php echo EBE_eb_update_time_to_new_time( $last_time_update_eb ); ?>)</strong></em></p>
 <br>
 <?php
@@ -811,39 +814,123 @@ else {
 <?php
 }
 ?>
+<div id="show_list_wgr_theme_update" class="content-process-update-complete"></div>
 <br>
+<div class="content-waiting-update-complete">
+	<div class="bg-waiting-update-complete whitecolor medium18 l25 bold">Tiến trình cập nhật đang chạy, vui lòng không đóng cửa sổ này!</div>
+</div>
 <script type="text/javascript">
+
+//
+var show_update_status = '';
+function update_wgr_plugin_theme_done ( h ) {
+	$('#' + show_update_status).html(h);
+	$('body').addClass('wgr-process-update-complete').removeClass('wgr-waiting-update-complete');
+	
+	jQuery('body,html').animate({
+		scrollTop: jQuery(document).height()
+	}, 6000);
+	console.log('All done');
+	
+	a_lert('Xin chúc mừng! quá trình cập nhật mã nguồn thành công...');
+	
+	$('#target_eb_iframe').removeClass('show-target-echbay');
+}
+
+function update_wgr_plugin_theme_begin ( i ) {
+	show_update_status = i;
+	$('body').addClass('wgr-waiting-update-complete');
+	
+	// hiển thị phần nội dung trong target
+	setTimeout(function () {
+		$('.click-show-eb-target').click();
+	}, 600);
+}
+
+function update_wgr_plugin_theme_alert () {
+	a_lert('Quá trình Cập nhật này vừa được thực thi, không thể thực hiện lại ngay được!');
+}
 
 // cập nhật plugin từ server của EchBay.com
 jQuery('.click-connect-to-echbay-update-eb-core').attr({
+	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1'
 }).click(function () {
-	$(this).hide();
+	$(this)
+	.hide()
+	/*
+	.attr({
+		href : 'javascript:;'
+	})
+	.off('click').click(function () {
+		update_wgr_plugin_theme_alert();
+	})
+	*/
+	;
+	
+	update_wgr_plugin_theme_begin( 'show_list_wgr_plugin_update' );
 });
 
 // cập nhật plugin từ github
 jQuery('.click-connect-to-github-update-eb-core').attr({
+	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=github'
 }).click(function () {
-	$(this).hide();
+	$(this)
+	.hide()
+	/*
+	.attr({
+		href : 'javascript:;'
+	})
+	.off('click').click(function () {
+		update_wgr_plugin_theme_alert();
+	})
+	*/
+	;
+	
+	update_wgr_plugin_theme_begin( 'show_list_wgr_plugin_update' );
 });
 
 // cập nhật theme
 jQuery('.click-connect-to-echbay-update-eb-theme').attr({
+	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=theme'
 }).click(function () {
-	$(this).hide();
+	$(this)
+	.hide()
+	/*
+	.attr({
+		href : 'javascript:;'
+	})
+	.off('click').click(function () {
+		update_wgr_plugin_theme_alert();
+	})
+	*/
+	;
+	
+	update_wgr_plugin_theme_begin( 'show_list_wgr_theme_update' );
 });
 
 //
 if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
+	
+	// nếu lệnh đang chạy trong iframe -> lệnh update đang chạy -> hiển thị thông báo đang update
+	if ( top != self ) {
+		parent.update_wgr_plugin_theme_done( jQuery('#get_list_wgr_process_update').html() );
+	}
+	
+	//
 	_global_js_eb.change_url_tab( 'confirm_eb_process' );
 //	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
+	
 }
 
+//
+/*
 if ( jQuery('#eb_core_update_all_done').length > 0 ) {
 	window.scroll( 0, jQuery(document).height() );
 	console.log('All done');
 }
+*/
 
 </script> 

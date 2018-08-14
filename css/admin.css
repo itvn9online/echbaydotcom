@@ -1245,6 +1245,48 @@ body.body-no-scroll #oi_order_iframe {
 	background: rgba(0,0,0,.6);
 	overflow: hidden;
 }
+/* chỉnh sửa input của custom taxonomy */
+.wgr-custom-taxonomy .l { }
+.wgr-custom-taxonomy .m { }
+.wgr-custom-taxonomy .n { }
+.wgr-custom-taxonomy .s { }
+/* hiển thị quá trình update core, plugin */
+.content-process-update-complete {
+	-moz-transition: all 5s ease;
+	-o-transition: all 5s ease;
+	-webkit-transition: all 5s ease;
+	transition: all 5s ease;
+	height: 20px;
+	display: none;
+}
+.wgr-process-update-complete .content-process-update-complete {
+	height: auto;
+	display: block;
+}
+.content-waiting-update-complete {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .6);
+	z-index: 99999;
+	display: none;
+}
+.bg-waiting-update-complete {
+	background: url(../images-global/load_2.gif) bottom center no-repeat;
+	position: absolute;
+	top: 33%;
+	left: 0;
+	right: 0;
+	min-height: 25px;
+	margin: -25px;
+	background-size: auto 30px;
+	text-align: center;
+	padding-bottom: 35px;
+}
+.wgr-waiting-update-complete { opacity: .5; }
+.wgr-waiting-update-complete .content-waiting-update-complete { display: block; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
