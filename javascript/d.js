@@ -837,6 +837,7 @@ function ___eb_details_product_color () {
 				var color_name = jQuery(this).attr('alt') || jQuery(this).attr('title') || jQuery(this).attr('data-color') || '',
 					color_quan = jQuery(this).attr('data-quan') || '',
 					color_price = jQuery(this).attr('data-price') || '',
+					color_size = jQuery(this).attr('data-size') || '',
 					in_sctock = '';
 				
 				// Để trống -> coi như còn hàng
@@ -855,7 +856,7 @@ function ___eb_details_product_color () {
 					}
 					
 					//
-					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
+					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" data-size="' + color_size + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
 					
 					arr_product_color.push( img_fullsize );
 					
@@ -1036,6 +1037,7 @@ function ___eb_details_convert_product_size () {
 			arr_product_size = [];
 		} else {
 			var a = arr_product_size.slice();
+			a = unescape( a );
 //			console.log(a);
 			
 			//
@@ -1049,7 +1051,12 @@ function ___eb_details_convert_product_size () {
 			// convert to array
 //			a = JSON.parse( a );
 //			a = jQuery.parseJSON( a );
-			a = eval( a );
+			try {
+				a = eval( a );
+			} catch ( e ) {
+				a = [];
+				console.log( WGR_show_try_catch_err( e ) );
+			}
 //			console.log( JSON.stringify( a ) );
 			
 			// gán lại mảng size từ mảng a0 nếu chưa đúng
@@ -1077,66 +1084,73 @@ function ___eb_details_product_size () {
 	___eb_details_convert_product_size();
 	
 	
+	// mặc định sẽ dùng mảng size chính
+	var sa = arr_product_size.slice();
 	// nếu có mảng giá trị truyền vào từ màu -> sử dụng màu này
 	if ( size_rieng_cua_tung_mau != '' ) {
-		arr_product_size = eval( unescape( size_rieng_cua_tung_mau ) );
+		try {
+			sa = eval( unescape( size_rieng_cua_tung_mau ) );
+		} catch ( e ) {
+			sa = [];
+			console.log( WGR_show_try_catch_err( e ) );
+		}
 	}
 	
 	
 	// có 1 size thì bỏ qua, mặc định rồi
-//	if ( arr_product_size.length <= 1 || jQuery('.oi_product_size').length == 0 ) {
+//	if ( sa.length <= 1 || jQuery('.oi_product_size').length == 0 ) {
 	// có 1 size cũng hiển thị, mặc định select cái size đấy cho khách là được
-	if ( arr_product_size.length < 1 || jQuery('.oi_product_size').length == 0 ) {
+	if ( sa.length < 1 || jQuery('.oi_product_size').length == 0 ) {
 		return false;
 	}
-	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(arr_product_size);
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(sa);
 	
 	// có nhiều size thì tạo list
 	var str = '',
 		select_default_size = null;
 	
-	for (var i = 0; i < arr_product_size.length; i++) {
+	for (var i = 0; i < sa.length; i++) {
 		// conver từ bản code cũ sang
-		if ( typeof arr_product_size[i].name == 'undefined' ) {
-			if ( typeof arr_product_size[i].ten != 'undefined' ) {
-				arr_product_size[i].name = arr_product_size[i].ten;
+		if ( typeof sa[i].name == 'undefined' ) {
+			if ( typeof sa[i].ten != 'undefined' ) {
+				sa[i].name = sa[i].ten;
 			}
 			else {
-				arr_product_size[i].name = '';
+				sa[i].name = '';
 			}
 		}
 		
-		if ( typeof arr_product_size[i].val == 'undefined' ) {
-			if ( typeof arr_product_size[i].soluong != 'undefined' ) {
-				arr_product_size[i].val = arr_product_size[i].soluong;
+		if ( typeof sa[i].val == 'undefined' ) {
+			if ( typeof sa[i].soluong != 'undefined' ) {
+				sa[i].val = sa[i].soluong;
 			}
 			else {
-				arr_product_size[i].val = 0;
+				sa[i].val = 0;
 			}
 		}
-		else if ( arr_product_size[i].val == '' ) {
-			arr_product_size[i].val = 0;
+		else if ( sa[i].val == '' ) {
+			sa[i].val = 0;
 		}
 		
-		if ( typeof arr_product_size[i].price == 'undefined' || arr_product_size[i].price == '' ) {
-			arr_product_size[i].price = 0;
+		if ( typeof sa[i].price == 'undefined' || sa[i].price == '' ) {
+			sa[i].price = 0;
 		}
 		
 		// Giá trị mảng phải khác null -> null = xóa
-		if ( arr_product_size[i].val != null && arr_product_size[i].val >= 0 ) {
+		if ( sa[i].val != null && sa[i].val >= 0 ) {
 			// chọn size nếu còn hàng
-			if ( select_default_size == null && arr_product_size[i].val > 0 ) {
+			if ( select_default_size == null && sa[i].val > 0 ) {
 				select_default_size = i;
 			}
 			
 			// Tên và Số lượng phải tồn tại
-//			if ( arr_product_size[i].val != '' && arr_product_size[i].name != '' ) {
-			if ( arr_product_size[i].name != '' ) {
+//			if ( sa[i].val != '' && sa[i].name != '' ) {
+			if ( sa[i].name != '' ) {
 				var str_alert = '',
 					str_title = '';
-				if ( arr_product_size[i].val > 0 ) {
-					if ( arr_product_size[i].val < 5 ) {
-						str_title = 'C\u00f2n ' + arr_product_size[i].val + ' s\u1ea3n ph\u1ea9m';
+				if ( sa[i].val > 0 ) {
+					if ( sa[i].val < 5 ) {
+						str_title = 'C\u00f2n ' + sa[i].val + ' s\u1ea3n ph\u1ea9m';
 						str_alert = '<span class="bluecolor">' + str_title + '</span>';
 					} else {
 						str_title = 'S\u1eb5n h\u00e0ng';
@@ -1148,7 +1162,7 @@ function ___eb_details_product_size () {
 				}
 				
 				//
-				str += '<li title="' + str_title + '" data-size-node="' + i + '" data-name="' + arr_product_size[i].name + '" data-quan="' + arr_product_size[i].val + '" data-price="' + arr_product_size[i].price + '"><div>' + arr_product_size[i].name + '</div>' + str_alert + '</li>';
+				str += '<li title="' + str_title + '" data-size-node="' + i + '" data-name="' + sa[i].name + '" data-quan="' + sa[i].val + '" data-price="' + sa[i].price + '"><div>' + sa[i].name + '</div>' + str_alert + '</li>';
 			}
 		}
 	}
@@ -3675,7 +3689,12 @@ setTimeout(function () {
 						a = "[" + a + "]";
 					}
 //					console.log(a);
-					a = eval( a );
+					try {
+						a = eval( a );
+					} catch ( e ) {
+						a = [];
+						console.log( WGR_show_try_catch_err( e ) );
+					}
 //					console.log(a);
 //					console.log(a.length);
 					

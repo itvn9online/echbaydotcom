@@ -32,9 +32,7 @@ _global_js_eb.add_primari_iframe();
 
 
 // chức năng xử lý cho product size
-var eb_global_product_size = '',
-	eb_inner_html_product_size = '',
-	gallery_has_been_load = false,
+var gallery_has_been_load = false,
 	current_ls_url = window.location.href;
 
 

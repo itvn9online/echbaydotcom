@@ -92,6 +92,10 @@ body.ebdesign-no-scroll { overflow: hidden; }
 .eb-input-edit-product-size {
 	max-width: 350px;
 	width: 90%;
+	top: 50%;
+	left: 50%;
+	bottom: auto;
+	transform: translate(0, -50%);
 }
 /* .eb-input-edit-product-size button, */
 .edit-product-sizecolor button {

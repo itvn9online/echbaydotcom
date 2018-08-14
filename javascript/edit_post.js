@@ -1,6 +1,217 @@
 
 
 
+//
+var eb_global_product_size = '',
+	eb_inner_html_product_size = '',
+	// size theo color
+	admin_global_size_color = [];
+
+
+// xóa các mảng bị null
+function WGR_remove_add_null_value ( arr ) {
+	var new_arr = [];
+	
+	for ( var i = 0; i < arr.length; i++ ) {
+		if ( arr[i] != null ) {
+			new_arr.push( arr[i] );
+		}
+	}
+	
+	return new_arr;
+}
+
+
+function WGR_add_value_form_edit_size ( arr ) {
+	$('#eb_input_edit_product_size_name').val( arr.name );
+	$('#eb_input_edit_product_size_sku').val( arr.sku );
+	$('#eb_input_edit_product_size_quan').val( arr.val );
+	$('#eb_input_edit_product_size_price').val( g_func.money_format( arr.price ) );
+	
+	//
+	$('.eb-input-edit-product-size').css({
+//		top : $(current_select).offset().top + $(current_select).height(),
+//		top : $(current_select).offset().top + 30,
+//		left : $(current_select).offset().left
+	}).show();
+	
+	//
+	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').focus();
+	
+	//
+	$('.eb-input-edit-product-size button').off('click').click(function () {
+		var a = $(this).attr('data-action') || '';
+		console.log(a);
+		
+		// size theo màu
+		if ( $('#eb_input_edit_color_size_node').val() != '' ) {
+			console.log('Edit size for color');
+			
+			//
+			var a_node = $('#eb_input_edit_color_size_node').val();
+			
+			//
+			if ( a == 'save' ) {
+				admin_global_size_color[ a_node ] = {
+					name : $('#eb_input_edit_product_size_name').val(),
+					sku : $('#eb_input_edit_product_size_sku').val(),
+					val : $('#eb_input_edit_product_size_quan').val(),
+					price : $('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
+				};
+			}
+			else if ( a == 'remove' ) {
+				admin_global_size_color[ a_node ] = null;
+				admin_global_size_color = WGR_remove_add_null_value( admin_global_size_color );
+			}
+			
+			//
+			WGR_show_list_size_in_color();
+		}
+		// size chính
+		else {
+			if ( a == 'save' ) {
+				check_eb_input_edit_product_size();
+			}
+			else if ( a == 'remove' ) {
+//				eb_global_product_size[ a_parent ][ a_node ] = null;
+//				eb_global_product_size[ a_node ] = null;
+				eb_global_product_size[ $('#eb_input_edit_product_size_node').val() ] = null;
+				eb_global_product_size = WGR_remove_add_null_value( eb_global_product_size );
+				
+				//
+				eb_func_global_product_size();
+			}
+		}
+		
+		//
+		$('.eb-input-edit-product-size').hide();
+	});
+}
+
+
+function WGR_show_list_size_in_color () {
+	var str = '';
+	for ( var i = 0; i < admin_global_size_color.length; i++ ) {
+		str += WGR_create_note_for_product_size( admin_global_size_color[i], i );
+	}
+	str += '<li data-add="1" title="Thêm size (color) mới"><i class="fa fa-plus"></i></li>';
+	
+	$('.eb-admin-product-color-size').html( str );
+	
+	// hiệu ứng chỉnh size
+	$('.eb-admin-product-color-size li').off('click').click(function () {
+		console.log( admin_global_size_color );
+		
+		// Bỏ phần sửa size chính
+		$('#eb_input_edit_product_size_node').val('');
+		
+		var a = $(this).attr('data-add') || '',
+			a_node = 0;
+//		console.log(a);
+		
+		// nếu không có thông số add -> sửa size
+		if ( a == '' ) {
+			a_node = $(this).attr('data-node') || 0;
+		}
+		else {
+			// thêm size cho màu
+			admin_global_size_color.push( {
+				name : "",
+				val : ""
+			});
+//			console.log( admin_global_size_color );
+			
+			//
+			WGR_show_list_size_in_color();
+			
+			//
+			a_node = admin_global_size_color.length - 1;
+		}
+		
+		// kích hoạt chế độ lưu size theo màu
+		$('#eb_input_edit_color_size_node').val(a_node);
+		
+		//
+		WGR_add_value_form_edit_size( admin_global_size_color[ a_node ] );
+	});
+	
+	//
+	if ( admin_global_size_color.length > 0 ) {
+		$('#eb_input_edit_product_size_bycolor_id').val( escape( JSON.stringify( admin_global_size_color ) ) );
+	} else {
+		$('#eb_input_edit_product_size_bycolor_id').val('');
+	}
+}
+
+
+function WGR_create_note_for_product_size ( arr, j ) {
+//	console.log( arr );
+	
+	var str = '',
+		show_text = '',
+		show_title = '';
+	
+	if ( typeof arr == 'object' ) {
+		// khi chuyển size sang còn 1 mảng duy nhất -> khai báo j để đỡ phải viết lại nhiều code
+//		var j = 0;
+//		arr[j] = arr;
+		
+		//
+//		for ( var j = 0; j < arr.length; j++ ) {
+			/*
+			if ( arr == null ) {
+			}
+			else {
+				*/
+				// conver từ bản code cũ sang
+				if ( typeof arr.name == 'undefined' ) {
+					if ( typeof arr.ten != 'undefined' ) {
+						arr.name = arr.ten;
+					}
+					else {
+						arr.name = '';
+					}
+				}
+				
+				if ( typeof arr.val == 'undefined' ) {
+					if ( typeof arr.soluong != 'undefined' ) {
+						arr.val = arr.soluong;
+					}
+					else {
+						arr.val = 0;
+					}
+				}
+				
+				if ( typeof arr.sku == 'undefined' ) {
+					arr.sku = '';
+				}
+				
+				if ( typeof arr.price == 'undefined' ) {
+					arr.price = '';
+				}
+				
+				//
+				show_text = arr.name + '/ ' + arr.val;
+				show_title = 'Size: ' + arr.name + '/ Số lượng: ' + arr.val;
+				if ( arr.sku != '' ) {
+					show_text += '/ ' + arr.sku;
+					show_title += '/ Mã sản phẩm: ' + arr.sku;
+				}
+				if ( arr.price != '' ) {
+					show_text += '/ ' + g_func.money_format( arr.price );
+					show_title += '/ Giá bán: ' + g_func.money_format( arr.price );
+				}
+				
+				//
+				str += '<li data-parent="0" data-node="' + j + '" data-size="' + arr.name + '" data-sku="' + arr.sku + '" data-quan="' + arr.val + '" data-price="' + arr.price + '" title="' + show_title + '">' + show_text + '</li>';
+//			}
+//		}
+	}
+	
+	return str;
+};
+
+
 // kích hoạt chức năng hiển thị tên nhóm hoặc bài viết được chọn
 function WGR_ads_get_current_select_category_or_post_name ( action_id ) {
 	if ( typeof action_id == 'undefined' ) {
@@ -282,6 +493,7 @@ function check_eb_input_edit_product_color () {
 	sku = f.eb_input_edit_product_color_sku.value;
 	quan = f.eb_input_edit_product_color_quan.value;
 	price = f.eb_input_edit_product_color_price.value;
+	size_color = f.eb_input_edit_product_size_bycolor_id.value;
 	
 	//
 	var iff_id = '_eb_product_list_color_ifr';
@@ -290,7 +502,8 @@ function check_eb_input_edit_product_color () {
 		'alt' : ten,
 		'data-sku' : sku,
 		'data-quan' : quan,
-		'data-price' : price.replace( /\,/g, '' )
+		'data-price' : price.replace( /\,/g, '' ),
+		'data-size' : size_color
 	});
 	
 	return false;
@@ -337,8 +550,9 @@ function eb_func_show_product_size () {
 		
 		//
 		eb_global_product_size = $('#_eb_product_size').val() || '';
-//		console.log( eb_global_product_size );
+//		console.log( eb_global_product_size ); return false;
 		if ( eb_global_product_size != '' ) {
+//			eb_global_product_size = unescape( eb_global_product_size );
 			
 			// xử lý với các dữ liệu cũ đang bị lệch sóng
 			if ( eb_global_product_size.substr(0, 1) == ',' ) {
@@ -349,9 +563,16 @@ function eb_func_show_product_size () {
 				eb_global_product_size = "[" + eb_global_product_size + "]";
 			}
 //			console.log( eb_global_product_size );
+			eb_global_product_size = eb_global_product_size.replace( /\[\[/g, '[' ).replace( /\]\]/g, ']' );
+//			console.log( eb_global_product_size );
 			
 			// chuyển từ string sang object
-			eb_global_product_size = eval( eb_global_product_size );
+			try {
+				eb_global_product_size = eval( eb_global_product_size );
+			} catch ( e ) {
+				eb_global_product_size = [];
+				console.log( WGR_show_try_catch_err( e ) );
+			}
 			
 		} else {
 			eb_global_product_size = [];
@@ -359,6 +580,17 @@ function eb_func_show_product_size () {
 //		console.log( JSON.stringify( eb_global_product_size ) );
 		
 		// nếu mảng số 0 tồn tại tham số name -> kiểu dữ liệu cũ -> convert sang dữ liệu mới
+		if ( eb_global_product_size.length > 0
+		&& typeof eb_global_product_size[0].name == 'undefined' ) {
+			if ( typeof eb_global_product_size[0][0].name != 'undefined' ) {
+				eb_global_product_size = eb_global_product_size[0];
+			}
+			else {
+				console.log('ERROR fixed arr product size!');
+				eb_global_product_size = [];
+			}
+		}
+		/*
 		if ( typeof eb_global_product_size[0] != 'undefined' ) {
 			if ( typeof eb_global_product_size[0][0] == 'undefined' ) {
 				var eb_global_product_size_v2 = eb_global_product_size.slice();
@@ -370,95 +602,50 @@ function eb_func_show_product_size () {
 //				console.log( JSON.stringify( eb_global_product_size ) );
 			}
 		}
+		*/
 		
 	}
-	console.log( eb_global_product_size );
+//	console.log( eb_global_product_size );
 //	console.log( eb_global_product_size.length );
+//	return false;
 	
 	var str_size = '';
 	if ( eb_global_product_size.length > 0 ) {
 		for ( var i = 0; i < eb_global_product_size.length; i++ ) {
 //			console.log( i );
 			
-			var str_node_size = (function ( arr ) {
-//				console.log( arr );
-				
-				var str = '',
-					show_text = '',
-					show_title = '';
-				
-				if ( typeof arr == 'object' ) {
-					for ( var j = 0; j < arr.length; j++ ) {
-						/*
-						if ( arr[j] == null ) {
-						}
-						else {
-							*/
-							// conver từ bản code cũ sang
-							if ( typeof arr[j].name == 'undefined' ) {
-								if ( typeof arr[j].ten != 'undefined' ) {
-									arr[j].name = arr[j].ten;
-								}
-								else {
-									arr[j].name = '';
-								}
-							}
-							
-							if ( typeof arr[j].val == 'undefined' ) {
-								if ( typeof arr[j].soluong != 'undefined' ) {
-									arr[j].val = arr[j].soluong;
-								}
-								else {
-									arr[j].val = 0;
-								}
-							}
-							
-							if ( typeof arr[j].sku == 'undefined' ) {
-								arr[j].sku = '';
-							}
-							
-							if ( typeof arr[j].price == 'undefined' ) {
-								arr[j].price = '';
-							}
-							
-							//
-							show_text = arr[j].name + '/ ' + arr[j].val;
-							show_title = 'Size: ' + arr[j].name + '/ Số lượng: ' + arr[j].val;
-							if ( arr[j].sku != '' ) {
-								show_text += '/ ' + arr[j].sku;
-								show_title += '/ Mã sản phẩm: ' + arr[j].sku;
-							}
-							if ( arr[j].price != '' ) {
-								show_text += '/ ' + g_func.money_format( arr[j].price );
-								show_title += '/ Giá bán: ' + g_func.money_format( arr[j].price );
-							}
-							
-							//
-							str += '<li data-parent="' + i + '" data-node="' + j + '" data-size="' + arr[j].name + '" data-sku="' + arr[j].sku + '" data-quan="' + arr[j].val + '" data-price="' + arr[j].price + '" title="' + show_title + '">' + show_text + '</li>';
-//						}
-					}
-				}
-				
-				return str;
-			})( eb_global_product_size[i] );
+			//
+//			var arr = eb_global_product_size[i];
+//			var str_node_size = (function ( arr ) {
+//			str_size += (function ( arr ) {
+//			})( eb_global_product_size[i] );
+			str_size += WGR_create_note_for_product_size( eb_global_product_size[i], i );
 			
 			//
+			/*
 			if ( str_node_size != '' ) {
 				str_size += eb_func_add_nut_product_size( str_node_size, i );
 			}
+			*/
 			
 			//
+			/*
 			if ( eb_global_product_size.length > 1 ) {
 				console.log('Chỉ sử dụng một mảng để tạo size!');
 			}
 			break;
+			*/
 		}
+		/*
 	} else {
 		str_size += eb_func_add_nut_product_size();
+		*/
 	}
+	str_size = eb_func_add_nut_product_size( str_size );
 	
 	//
 //	console.log(eb_inner_html_product_size);
+//	console.log(str_size);
 	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có). Nếu phần giá riêng này được thiết lập, nó sẽ được sử dụng để thay thế giá mặc định của sản phẩm.</div>' );
 //	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
 	
@@ -466,12 +653,14 @@ function eb_func_show_product_size () {
 	/*
 	eb_global_product_size = JSON.parse(eb_global_product_size);
 	eb_global_product_size = $.parseJSON(eb_global_product_size);
-	console.log( eb_global_product_size );
-	console.log( eb_global_product_size.length );
 	*/
+//	console.log( eb_global_product_size );
+//	console.log( eb_global_product_size.length );
 	
 	// gán trở lại để còn lưu dữ liệu
 	if ( eb_global_product_size.length > 0 ) {
+//		console.log( escape( JSON.stringify( eb_global_product_size ) ) );
+//		$('#_eb_product_size').val( escape( JSON.stringify( eb_global_product_size ) ) );
 		$('#_eb_product_size').val( JSON.stringify( eb_global_product_size ) );
 	} else {
 		$('#_eb_product_size').val('');
@@ -504,16 +693,18 @@ function check_eb_input_edit_product_size () {
 //		a_node = $(current_select).attr('data-node') || 0;
 	var a_parent = 0,
 		a_node = $('#eb_input_edit_product_size_node').val() || 0;
-	console.log( a_parent );
+//	console.log( a_parent );
 	console.log( a_node );
 	
 	//
-	eb_global_product_size[ a_parent ][ a_node ] = {
+//	eb_global_product_size[ a_parent ][ a_node ] = {
+	eb_global_product_size[ a_node ] = {
 		name : $('#eb_input_edit_product_size_name').val(),
 		sku : $('#eb_input_edit_product_size_sku').val(),
 		val : $('#eb_input_edit_product_size_quan').val(),
 		price : $('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
 	};
+	console.log( eb_global_product_size );
 	
 	//
 	eb_func_global_product_size();
@@ -569,11 +760,14 @@ function eb_func_click_modife_product_size () {
 	$('#' + eb_inner_html_product_size + ' li').off('click').click(function () {
 //		console.log(1);
 		
+		// Bỏ phần lưu theo màu
+		$('#eb_input_edit_color_size_node').val('');
+		
 		$('#' + eb_inner_html_product_size + ' li').removeClass('redcolor').removeClass('selected');
 		
 		//
 		var a = $(this).attr('data-add') || '';
-		console.log(a);
+//		console.log(a);
 		
 		// nếu không có thông số add -> sửa size
 		if ( a == '' ) {
@@ -583,55 +777,23 @@ function eb_func_click_modife_product_size () {
 			
 			//
 			var a_node = $(this).attr('data-node') || 0;
+//			console.log('Edit size #' + a_node);
 			
 			// lưu vị trí cấn chỉnh sửa dữ liệu
 			$('#eb_input_edit_product_size_node').val( a_node );
-			// Bỏ phần lưu theo màu
-			$('#eb_input_edit_color_size_node').val('');
 			
 			//
+			/*
 			var current_select = '#' + eb_inner_html_product_size + ' li.selected';
 			console.log(eb_inner_html_product_size);
 			if ( $( current_select ).length == 0 ) {
 				console.log('current_select not found!');
 			}
+			*/
 			
 			//
-			$('#eb_input_edit_product_size_name').val( eb_global_product_size[ 0 ][ a_node ].name );
-			$('#eb_input_edit_product_size_sku').val( eb_global_product_size[ 0 ][ a_node ].sku );
-			$('#eb_input_edit_product_size_quan').val( eb_global_product_size[ 0 ][ a_node ].val );
-			$('#eb_input_edit_product_size_price').val( g_func.money_format( eb_global_product_size[ 0 ][ a_node ].price ) );
-			
-			//
-			$('.eb-input-edit-product-size').css({
-//				top : $(current_select).offset().top + $(current_select).height(),
-//				top : $(current_select).offset().top + 30,
-				left : $(current_select).offset().left
-			}).show();
-			
-			//
-			$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').focus();
-			
-			//
-			$('.eb-input-edit-product-size button').off('click').click(function () {
-				var a = $(this).attr('data-action') || '';
-				console.log(a);
-				
-				if ( a == 'save' ) {
-					check_eb_input_edit_product_size();
-				}
-				/*
-				else if ( a == 'remove' ) {
-					eb_global_product_size[ a_parent ][ a_node ] = null;
-					
-					//
-					eb_func_global_product_size();
-				}
-				*/
-				
-				//
-				$('.eb-input-edit-product-size').hide();
-			});
+//			WGR_add_value_form_edit_size( eb_global_product_size[ 0 ][ a_node ] );
+			WGR_add_value_form_edit_size( eb_global_product_size[ a_node ] );
 		}
 		else {
 			// thêm nhóm size
@@ -650,13 +812,16 @@ function eb_func_click_modife_product_size () {
 			else {
 				
 				//
+				/*
 				var size_parent = $(this).attr('data-parent') || 0;
 				
 				if ( typeof eb_global_product_size[size_parent] == 'undefined' ) {
 					eb_global_product_size[size_parent] = [];
 				}
+				*/
 				
-				eb_global_product_size[ size_parent ].push( {
+//				eb_global_product_size[ size_parent ].push( {
+				eb_global_product_size.push( {
 					name : "",
 					val : ""
 				});
@@ -668,11 +833,14 @@ function eb_func_click_modife_product_size () {
 			
 			// tạo select cho LI để tiếp tục
 			if ( a != 'group' ) {
+				/*
 //				$(this).prev().addClass('redcolor').addClass('selected');
 				setTimeout(function () {
 //					$('.eb-admin-product-size li[data-add="1"]').prev().addClass('redcolor').addClass('selected').click();
 					$('.eb-admin-product-size li[data-add="1"]').prev().click();
 				}, 200);
+				*/
+				$('.eb-admin-product-size li[data-node="' + ( eb_global_product_size.length - 1 ) + '"]').click();
 			}
 		}
 		
@@ -1003,17 +1171,37 @@ function WGR_run_for_admin_edit_post () {
 					var ten = $(this).attr('alt') || '',
 						sku = $(this).attr('data-sku') || '',
 						quan = $(this).attr('data-quan') || '',
-						price = $(this).attr('data-price') || '';
+						price = $(this).attr('data-price') || '',
+						size_color = $(this).attr('data-size') || '';
 					
 					//
 					f.eb_input_edit_product_color_id.value = jd;
-					$('#eb_input_edit_color_size_node').val(jd);
 					f.eb_input_edit_product_color_name.value = ten;
 					f.eb_input_edit_product_color_sku.value = sku;
 					f.eb_input_edit_product_color_quan.value = quan;
 //					f.eb_input_edit_product_color_price.value = price;
 					f.eb_input_edit_product_color_price.value = g_func.money_format( price );
 //					$('#oi_input_edit_product_color_price').html( g_func.money_format( price ) );
+					f.eb_input_edit_product_size_bycolor_id.value = size_color;
+					
+					
+					// 
+					console.log('Add or edit size for color');
+					
+					// reset lại mảng size
+					admin_global_size_color = [];
+					
+					//
+					if ( size_color != '' ) {
+						try {
+							admin_global_size_color = eval( unescape( size_color ) );
+						} catch ( e ) {
+							admin_global_size_color = [];
+							console.log( WGR_show_try_catch_err( e ) );
+						}
+					}
+					WGR_show_list_size_in_color();
+					
 				});
 			}
 		}
