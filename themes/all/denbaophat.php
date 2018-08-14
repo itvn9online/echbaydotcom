@@ -8,8 +8,8 @@
 */
 $eb_all_themes_support["denbaophat"]=array();
 $eb_all_themes_support["denbaophat"]["screenshot"] = "https://img1.webgiare.org/denbaophat.jpg";
-$eb_all_themes_support["denbaophat"]["price"] = 3500000;
-$eb_all_themes_support["denbaophat"]["demo"] = "denbaophat.com";
+$eb_all_themes_support["denbaophat"]["price"] = 4500000;
+$eb_all_themes_support["denbaophat"]["demo"] = "themes.webgiare.org/denbaophat";
 //
 $eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top1.php";
 $eb_all_themes_support["denbaophat"]["top"][] = "denbaophat-top2.php";
