@@ -334,6 +334,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
 	- <strong>bgtrans</strong>: nền trong suốt cho ảnh đại diện.<br>
+	- <strong>hideavt</strong>: ẩn ảnh đại diện.<br>
 	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
 	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.</p>';
 	

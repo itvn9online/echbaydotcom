@@ -69,6 +69,7 @@ label,
 }
 /* widget custom style */
 .bgtrans .echbay-blog-avt { background-color: transparent; }
+.hideavt .echbay-blog-avt { opacity: .001; }
 .nomargin .echbay-blog { }
 .nomargin .echbay-blog,
 .nomargin .echbay-blog-padding { margin: 0; }
