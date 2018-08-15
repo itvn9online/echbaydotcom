@@ -33,13 +33,13 @@
 								<div id="cart_user_agent" class="d-none"></div>
 								<ul class="cart-ultable">
 									<li class="cf">
-										<div class="lf f25">Họ và tên</div>
+										<div class="lf f25">{tmp.cart_hoten}</div>
 										<div class="lf f75">
 											<input type="text" name="t_ten" id="t_ten" value="" placeholder="{tmp.cart_hoten}"{tmp.cf_required_name_cart} />
 										</div>
 									</li>
 									<li class="cf">
-										<div class="lf f25">Điện thoại <span class="redcolor">*</span></div>
+										<div class="lf f25">{tmp.cart_dienthoai} <span class="redcolor">*</span></div>
 										<div class="lf f75">
 											<input type="text" name="t_dienthoai" id="t_dienthoai" value="" placeholder="{tmp.cart_pla_dienthoai}" aria-required="true" required />
 										</div>
@@ -51,22 +51,28 @@
 										</div>
 									</li>
 									<li class="cf">
-										<div class="lf f25">Địa chỉ</div>
+										<div class="lf f25">{tmp.cart_diachi}</div>
 										<div class="lf f75">
 											<input type="text" name="t_diachi" id="t_diachi" value="" placeholder="{tmp.cart_diachi2}"{tmp.cf_required_address_cart} />
 										</div>
 									</li>
 									<li class="cf eb-global-cart-ghichu">
-										<div class="lf f25">Ghi chú</div>
+										<div class="lf f25">{tmp.cart_ghichu}</div>
 										<div class="lf f75">
 											<textarea name="t_ghichu" id="t_ghichu" placeholder="{tmp.cart_vidu}"></textarea>
+										</div>
+									</li>
+									<li class="cf eb-global-cart-ghichu">
+										<div class="lf f25">{tmp.cart_discount_code}</div>
+										<div class="lf f75">
+											<input type="text" name="t_discount_code" value="" placeholder="{tmp.cart_discount_code}" class="auto-check-discount-code" />
 										</div>
 									</li>
 									{tmp.chinhsach}
 									<li class="cf">
 										<div class="lf f25">&nbsp;</div>
 										<div>
-											<input type="submit" id="sb_submit_cart" value="Gửi đơn hàng" class="cart-mua-button upper cur" />
+											<input type="submit" id="sb_submit_cart" value="{tmp.cart_gui}" class="cart-mua-button upper cur" />
 										</div>
 									</li>
 								</ul>
@@ -75,19 +81,19 @@
 						<div class="lf f38 fullsize-if-mobile">
 							<div class="cart-table-title upper bold medium">Hình thức thanh toán</div>
 							<div class="cart-pay-method">
-								<div class="cart-paymethod-tt">
-									<input id="cart_tt_tructiep" type="radio" name="t_thanhtoan" value="tructiep" checked>
-									<label for="cart_tt_tructiep">Thanh toán trực tiếp tại cửa hàng</label>
-								</div>
 								<div class="cart-paymethod-cod">
-									<input id="cart_tt_cod" type="radio" name="t_thanhtoan" value="cod">
+									<input id="cart_tt_cod" type="radio" name="t_thanhtoan" value="cod" checked>
 									<label for="cart_tt_cod">Thanh toán khi nhận hàng (COD)</label>
+								</div>
+								<div class="cart-paymethod-tt">
+									<input id="cart_tt_tructiep" type="radio" name="t_thanhtoan" value="tructiep">
+									<label for="cart_tt_tructiep">Thanh toán trực tiếp tại cửa hàng</label>
 								</div>
 								<div class="cart-paymethod-ib">
 									<input id="cart_tt_bank" type="radio" name="t_thanhtoan" value="bank">
 									<label for="cart_tt_bank">Thanh toán trực tuyến qua ngân hàng</label>
 								</div>
-								<div class="cart-paymethod-paygate d-none">
+								<div class="cart-paymethod-paygate">
 									<div class="show-if-pay-baokim d-none">
 										<input id="cart_tt_bk" type="radio" name="t_thanhtoan" value="bk">
 										<label for="cart_tt_bk">Thanh toán trực tuyến qua Bảo Kim</label>

@@ -91,6 +91,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
 $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';
+$___eb_lang[eb_key_for_site_lang . 'cart_discount_code'] = 'Mã giảm giá';
 
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Giờ vàng';

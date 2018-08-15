@@ -39,7 +39,6 @@ var gallery_has_been_load = false,
 
 
 // tạo url chung cho các module
-//$(document).ready(function() {
 (function ( admin_body_class ) {
 	
 	
@@ -444,6 +443,27 @@ $(document).keydown(function(e) {
 		console.log('ESC to close');
 		
 		process_for_press_esc();
+	}
+})
+.ready(function() {
+	// điều chỉnh dữ liệu phần discount code
+	if ( dog('_eb_category_coupon_ngayhethan') != null ) {
+		_global_js_eb.select_date('#_eb_category_coupon_ngayhethan');
+		
+		// chuyển định dạng số cho phần giá
+		$('#_eb_category_coupon_giagiam, #_eb_category_coupon_toithieu, #_eb_category_coupon_toida').change(function () {
+			var a = $(this).val() || 0;
+			
+//				a = g_func.number_only( a );
+			a = g_func.money_format( a );
+			
+			if ( a == '' ) {
+				a = 0;
+			}
+			
+//			console.log(a);
+			$(this).val(a);
+		}).change();
 	}
 });
 
