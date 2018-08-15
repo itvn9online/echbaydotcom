@@ -36,6 +36,8 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 	WHERE
 		`" . wp_posts . "`.post_type = '" . $post_type . "'
 		" . $op['filter'] . $op['filter2'] . "
+	GROUP BY
+		ID
 	ORDER BY
 		ID
 	LIMIT 0, " . $op['limit'];
