@@ -304,10 +304,15 @@ function ___eb_details_slider_v2 () {
 		
 		//
 		if ( a != '' ) {
+			/*
 			jQuery('.thread-details-mobileAvt').removeClass('ti-le-global').height('auto').css({
 				'background-image' : 'none',
 				'line-height' : 'normal'
 			}).html( '<img src="' + ___eb_set_thumb_to_fullsize(a) + '" data-width="' + wit + '" style="max-width:' + wit + 'px;" />' );
+			*/
+			jQuery('.thread-details-mobileAvt').css({
+				'background-image' : 'url(' + ___eb_set_thumb_to_fullsize(a) + ')'
+			});
 		}
 		
 		//

@@ -9,12 +9,14 @@ function update_wgr_plugin_theme_done ( h ) {
 	h = h.replace( /uploads\/ebcache\/echbaytwo-master\//gi, 'echbaytwo/' );
 	jQuery('#' + show_update_status).html( h );
 	
-	jQuery('body').addClass('wgr-process-update-complete').removeClass('wgr-waiting-update-complete');
+	jQuery('body').addClass('wgr-process-update-complete');
 	
 	jQuery('body,html').animate({
 		scrollTop: jQuery(document).height()
-	}, 6000);
-	console.log('All done');
+	}, 6000, function () {
+		a_lert('Đang nạp lại bộ nhớ đệm...');
+		console.log('All done! show page after 15 secondes...');
+	});
 	
 	a_lert('Xin chúc mừng! quá trình cập nhật mã nguồn thành công...');
 	
@@ -23,6 +25,8 @@ function update_wgr_plugin_theme_done ( h ) {
 	// xóa file bảo trì sau khi update xong
 	clearTimeout( timeout_remove_update_cache_file );
 	timeout_remove_update_cache_file = setTimeout(function () {
+		jQuery('body').removeClass('wgr-waiting-update-complete');
+		
 		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
 		
 		console.log('Remove update running file');
