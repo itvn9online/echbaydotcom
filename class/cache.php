@@ -15,9 +15,15 @@
 // lấy URL trong config wp
 if ( defined('WP_SITEURL') ) {
 	$web_link = WP_SITEURL;
+	
+	if ( ! defined('WP_HOME') ) {
+		define( 'WP_HOME', WP_SITEURL );
+	}
 }
 else if ( defined('WP_HOME') ) {
 	$web_link = WP_HOME;
+	
+	define( 'WP_SITEURL', WP_HOME );
 }
 else {
 //	$web_link = get_bloginfo ( 'url' );
@@ -33,6 +39,9 @@ else {
 		*/
 //		$web_link = get_option ( 'siteurl' );
 		$web_link = _eb_get_option ( 'siteurl' );
+		
+		define( 'WP_SITEURL', $web_link );
+		define( 'WP_HOME', WP_SITEURL );
 		
 		// do cơ chế update config của WGR sẽ khai báo WP_SITEURL, nên khi chưa có thì kiểm tra siteurl luôn
 		WGR_auto_update_link_for_demo ( $web_link, $web_link );

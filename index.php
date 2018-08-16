@@ -372,9 +372,10 @@ if ( ! defined('WP_AUTO_UPDATE_CORE') ) {
 }
 
 // cấu hình URL dạng tĩnh -> khuyên dùng
-if ( ! defined('WP_SITEURL') ) {
+//if ( ! defined('WP_SITEURL') ) {
 //	if ( eb_web_protocol == 'https' ) {
-		define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+//		define( 'WP_SITEURL', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
+//		define( 'WP_SITEURL', web_link );
 		/*
 	}
 	else {
@@ -382,12 +383,13 @@ if ( ! defined('WP_SITEURL') ) {
 		define( 'WP_SITEURL', _eb_get_option ( 'siteurl' ) );
 	}
 	*/
-}
+//}
 //echo WP_SITEURL . '<br>';
-
+/*
 if ( ! defined('WP_HOME') ) {
 	define( 'WP_HOME', WP_SITEURL );
 }
+*/
 //echo WP_HOME . '<br>'; exit();
 
 /*
