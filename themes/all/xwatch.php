@@ -12,15 +12,15 @@ $eb_all_themes_support["xwatch"]["price"] = 28000000;
 $eb_all_themes_support["xwatch"]["demo"] = "xwatch.vn";
 //
 $eb_all_themes_support["xwatch"]["top"][] = "xwatch-top1.php";
-$eb_all_themes_support["xwatch"]["top"][] = "xwatch-top2.php";
-$eb_all_themes_support["xwatch"]["top"][] = "xwatch-top3.php";
+//$eb_all_themes_support["xwatch"]["top"][] = "xwatch-top2.php";
+//$eb_all_themes_support["xwatch"]["top"][] = "xwatch-top3.php";
 $eb_all_themes_support["xwatch"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["xwatch"]["top"][] = "top_widget.php";
 $eb_all_themes_support["xwatch"]["top"][] = "echbaytwo-top4.php";
 //
 $eb_all_themes_support["xwatch"]["footer"][] = "footer_widget.php";
 $eb_all_themes_support["xwatch"]["footer"][] = "xwatch-footer1.php";
-$eb_all_themes_support["xwatch"]["footer"][] = "xwatch-footer2.php";
+//$eb_all_themes_support["xwatch"]["footer"][] = "xwatch-footer2.php";
 $eb_all_themes_support["xwatch"]["footer"][] = "echbaytwo-footer3.php";
 //
 $eb_all_themes_support["xwatch"]["home"][] = "home_widget.php";

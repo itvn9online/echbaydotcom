@@ -423,6 +423,9 @@ $arr_active_for_404_page = array(
 	
 	"temp" => 1,
 	
+	// cài đặt tự động tài khoản admin
+	"wgr-install" => 1,
+	
 	"profile" => 1,
 	"password" => 1,
 	"process" => 1,
