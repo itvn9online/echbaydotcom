@@ -14,7 +14,9 @@ function update_wgr_plugin_theme_done ( h ) {
 	jQuery('body,html').animate({
 		scrollTop: jQuery(document).height()
 	}, 6000, function () {
-		a_lert('Đang nạp lại bộ nhớ đệm...');
+		setTimeout(function () {
+			a_lert('Đang nạp lại bộ nhớ đệm...');
+		}, 1000);
 		console.log('All done! show page after 15 secondes...');
 	});
 	
@@ -26,6 +28,8 @@ function update_wgr_plugin_theme_done ( h ) {
 	clearTimeout( timeout_remove_update_cache_file );
 	timeout_remove_update_cache_file = setTimeout(function () {
 		jQuery('body').removeClass('wgr-waiting-update-complete');
+		
+		a_lert('Hoàn tất quá trình cập nhật Plugin...');
 		
 		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
 		
