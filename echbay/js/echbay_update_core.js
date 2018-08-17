@@ -27,7 +27,8 @@ function update_wgr_plugin_theme_done ( h ) {
 	// xóa file bảo trì sau khi update xong
 	clearTimeout( timeout_remove_update_cache_file );
 	timeout_remove_update_cache_file = setTimeout(function () {
-		jQuery('body').removeClass('wgr-waiting-update-complete');
+		// ẩn khung thông báo đang update đi
+		jQuery('body').removeClass('wgr-waiting-update-complete').removeClass('ebdesign-no-scroll');
 		
 		a_lert('Hoàn tất quá trình cập nhật Plugin...');
 		
@@ -39,7 +40,7 @@ function update_wgr_plugin_theme_done ( h ) {
 
 function update_wgr_plugin_theme_begin ( i ) {
 	show_update_status = i;
-	jQuery('body').addClass('wgr-waiting-update-complete');
+	jQuery('body').addClass('wgr-waiting-update-complete').addClass('ebdesign-no-scroll');
 	
 	// hiển thị phần nội dung trong target
 	setTimeout(function () {
@@ -124,17 +125,20 @@ if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
 //	window.history.pushState("", '', window.location.href.split('&confirm_eb_process=')[0]);
 	
 }
+// tự chạy chức năng update khi click từ link sang
 else if ( window.location.href.split('&click_to_update_core=').length > 1 ) {
 	// chức năng này chỉ hoạt động trong cửa sổ cha
 	if ( top == self ) {
-		// update theme
-		if ( window.location.href.split('&connect_to=theme').length > 1 ) {
-			jQuery('.click-connect-to-echbay-update-eb-theme').click();
-		}
-		// update plugin
-		else {
-			jQuery('.click-connect-to-github-update-eb-core').click();
-		}
+		setTimeout(function () {
+			// update theme
+			if ( window.location.href.split('&connect_to=theme').length > 1 ) {
+				jQuery('.click-connect-to-echbay-update-eb-theme').click();
+			}
+			// update plugin
+			else {
+				jQuery('.click-connect-to-github-update-eb-core').click();
+			}
+		}, 800);
 	}
 	
 	//
