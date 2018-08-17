@@ -71,6 +71,10 @@ $add_data_id = array (
 		'cf_details_show_list_next' => '\'' . $__cf_row['cf_details_show_list_next'] . '\'',
 		'cf_details_show_list_thumb' => '\'' . $__cf_row['cf_details_show_list_thumb'] . '\'',
 		
+		// tỷ lệ khung ảnh trên mobile
+		'cf_product_details_mobile_size' => '\'' . $__cf_row['cf_product_details_mobile_size'] . '\'',
+		'cf_product_mobile2_size' => '\'' . $__cf_row['cf_product_mobile2_size'] . '\'',
+		
 		'cf_post_index_content' => '\'' . $__cf_row['cf_post_index_content'] . '\'',
 		
 //		'tid' => $tid,

@@ -468,7 +468,25 @@ var _global_js_eb = {
 	},
 	
 	
-	//
+	// chuyển kích thước cho bản mobile
+	set_mobile_size: function() {
+		if ( global_window_width > 768 ) {
+			return false;
+		}
+		
+		if ( pid > 0 && cf_product_details_mobile_size != '' ) {
+			jQuery('.thread-details-mobileCenter .ti-le-global').attr({
+				'data-size' : cf_product_details_mobile_size
+			});
+		}
+		
+		if ( cf_product_mobile2_size != '' ) {
+			jQuery('.thread-list .ti-le-global').attr({
+				'data-size' : cf_product_mobile2_size
+			});
+		}
+	},
+	
 	auto_margin: function() {
 		
 //		if ( window.location.href.split('localhost').length == 1 ) {
