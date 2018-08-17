@@ -3,8 +3,10 @@
 
 //
 var show_update_status = '',
-	timeout_remove_update_cache_file = null;
-function update_wgr_plugin_theme_done ( h ) {
+	timeout_remove_update_cache_file = null,
+	show_done1 = '',
+	show_done2 = '';
+function update_wgr_plugin_theme_done ( h, done_or_error ) {
 	h = h.replace( /uploads\/ebcache\/echbaydotcom-master\//gi, 'echbaydotcom/' );
 	h = h.replace( /uploads\/ebcache\/echbaytwo-master\//gi, 'echbaytwo/' );
 	jQuery('#' + show_update_status).html( h );
@@ -20,7 +22,19 @@ function update_wgr_plugin_theme_done ( h ) {
 		console.log('All done! show page after 15 secondes...');
 	});
 	
-	a_lert('Xin chúc mừng! quá trình cập nhật mã nguồn thành công...');
+	// kiểm tra xem quá trình cập nhật có thành công không
+	if ( typeof done_or_error == 'undefined' ) {
+		done_or_error = 0;
+	}
+	if ( done_or_error > 0 ) {
+		show_done1 = 'Xin chúc mừng! quá trình cập nhật mã nguồn thành công...';
+		show_done2 = 'Hoàn tất quá trình cập nhật Plugin....';
+	}
+	else {
+		show_done1 = 'Lỗi trong quá trình cập nhật, vui lòng thử lại sau ít phút...';
+		show_done2 = show_done1;
+	}
+	a_lert(show_done1);
 	
 	jQuery('#target_eb_iframe').removeClass('show-target-echbay');
 	
@@ -30,7 +44,7 @@ function update_wgr_plugin_theme_done ( h ) {
 		// ẩn khung thông báo đang update đi
 		jQuery('body').removeClass('wgr-waiting-update-complete').removeClass('ebdesign-no-scroll');
 		
-		a_lert('Hoàn tất quá trình cập nhật Plugin...');
+		a_lert(show_done2);
 		
 		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
 		
@@ -117,7 +131,7 @@ if ( window.location.href.split('&confirm_eb_process=').length > 1 ) {
 	
 	// nếu lệnh đang chạy trong iframe -> lệnh update đang chạy -> hiển thị thông báo đang update
 	if ( top != self ) {
-		parent.update_wgr_plugin_theme_done( jQuery('#get_list_wgr_process_update').html() );
+		parent.update_wgr_plugin_theme_done( jQuery('#get_list_wgr_process_update').html(), jQuery('#eb_core_update_all_done').length || 0 );
 	}
 	
 	//
@@ -144,14 +158,6 @@ else if ( window.location.href.split('&click_to_update_core=').length > 1 ) {
 	//
 	_global_js_eb.change_url_tab( 'click_to_update_core' );
 }
-
-//
-/*
-if ( jQuery('#eb_core_update_all_done').length > 0 ) {
-	window.scroll( 0, jQuery(document).height() );
-	console.log('All done');
-}
-*/
 
 
 
