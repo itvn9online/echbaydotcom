@@ -418,7 +418,7 @@ if ( $bai_san_pham == true ) {
 	}
 	
 	//
-	if ( $trv_trangthai == 7 || $trv_mua >= $trv_max_mua ) {
+	if ( $trv_trangthai == 7 || ( $trv_mua > 0 && $trv_mua >= $trv_max_mua ) ) {
 		$schema_availability = 'http://schema.org/SoldOut';
 		
 		$str_tinh_trang = '<span class="redcolor">' . EBE_get_lang('post_outstock') . '</span>';
