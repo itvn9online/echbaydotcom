@@ -103,7 +103,7 @@ $__cf_row_default = array(
 	
 	
 	'cf_product_size' => 1,
-	'cf_product_mobile_size' => '',
+	'cf_product_mobile2_size' => '',
 	'cf_product_mobile_size' => '140',
 	'cf_product_table_size' => '200',
 	'cf_product_details_size' => 1,

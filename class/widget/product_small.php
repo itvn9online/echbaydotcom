@@ -139,7 +139,7 @@ class ___echbay_widget_random_product extends WP_Widget {
 		$html_node = EBE_get_page_template( $html_node );
 		if ( $custom_size != '' ) {
 			$html_node = str_replace( '{tmp.cf_product_size}', $custom_size, $html_node );
-			$html_node = str_replace( '{tmp.cf_product_mobile_size}', $custom_size, $html_node );
+			$html_node = str_replace( '{tmp.cf_product_mobile2_size}', $custom_size, $html_node );
 			$html_node = str_replace( '{tmp.cf_blog_size}', $custom_size, $html_node );
 		}
 		

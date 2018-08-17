@@ -302,7 +302,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 	$post->ngaycapnhats = $post->ngaycapnhat . ' ' . date( $__cf_row['cf_time_format'], $post_time );
 	
 	$post->cf_product_size = $__cf_row['cf_product_size'];
-	$post->cf_product_mobile_size = $__cf_row['cf_product_mobile_size'];
+	$post->cf_product_mobile2_size = $__cf_row['cf_product_mobile2_size'];
 	$post->cf_blog_size = $__cf_row['cf_blog_size'];
 	
 	
