@@ -2808,6 +2808,18 @@ jQuery('.elementor-image').addClass('img-max-width');
 
 //_global_js_eb.ebBgLazzyLoadOffset();
 _global_js_eb.ebBgLazzyLoad();
+
+// chuyển kích thước cho bản mobile
+if ( jQuery(window).width() < 768 ) {
+	jQuery('.ti-le-global').each(function() {
+		var a = $(this).attr('data-mobile-size') || '';
+		if ( a != '' ) {
+			$(this).attr({
+				'data-size' : a
+			});
+		}
+	});
+}
 _global_js_eb.auto_margin();
 setTimeout(function () {
 	_global_js_eb.auto_margin();

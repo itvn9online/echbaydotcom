@@ -246,17 +246,22 @@
 					<div class="border-file-design border-threadnode-design">{tmp.str_threadnode_design_preview}</div></td>
 			</tr>
 			<tr>
-				<td class="t"><label for="cf_product_size">Kích thước ảnh Sản phẩm</label></td>
+				<td class="t"><label for="cf_product_size">Tỷ lệ ảnh Sản phẩm</label></td>
 				<td class="i"><input type="text" name="cf_product_size" id="cf_product_size" value="{tmp.cf_product_size}" class="s fixed-size-for-config" maxlength="10" />
 					<div class="small">Ví dụ: 400x400, 4x4, 200x300, 2x3... trong đó: 4x4 tương đương với 400x400, 2x3 tương đương với 200x300.</div></td>
 			</tr>
 			<tr>
-				<td class="t"><label for="cf_product_mobile_size">K.Thước ảnh S.Phẩm trên mobile</label></td>
+				<td class="t"><label for="cf_product_size">Tỷ lệ ảnh Sản phẩm (mobile)</label></td>
+				<td class="i"><input type="text" name="cf_product_mobile_size" id="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" class="s fixed-size-for-config" maxlength="10" />
+					<div class="small">Sử dụng khi bạn muốn tỷ lệ khung ảnh sản phẩm trên mobile khác với trên PC.</div></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_product_mobile_size">Chiều rộng ảnh S.Phẩm (mobile)</label></td>
 				<td class="i"><input type="number" name="cf_product_mobile_size" id="cf_product_mobile_size" value="{tmp.cf_product_mobile_size}" data-width="375" class="s fixed-width-for-config" maxlength="10" />
 					<div class="small">Đây là chiều rộng tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 7 inch trở xuống. Màn hình tiêu chuẩn được sử dụng để tính toán tự động là iPhone 7 (375 x 667 pixel) -&gt; bạn muốn hiển thị bao nhiêu sản phẩm trên hàng thì nhập số đó vào (ví dụ: 3) hệ thống sẽ tự tính toán kích thước phù hợp.</div></td>
 			</tr>
 			<tr>
-				<td class="t"><label for="cf_product_table_size">K.Thước ảnh S.Phẩm trên table</label></td>
+				<td class="t"><label for="cf_product_table_size">Chiều rộng ảnh S.Phẩm (table)</label></td>
 				<td class="i"><input type="number" name="cf_product_table_size" id="cf_product_table_size" value="{tmp.cf_product_table_size}" data-width="768" class="s fixed-width-for-config" maxlength="10" />
 					<div class="small">Đây là chiều rộng tiêu chuẩn mà bạn muốn khung sản phẩm hiển thị trên các thiết bị có màn hình có chiều rộng từ 11 inch trở xuống. Màn hình tiêu chuẩn được sử dụng để tính toán tự động là iPad (768 x 1024 pixel) -&gt; bạn muốn hiển thị bao nhiêu sản phẩm trên hàng thì nhập số đó vào (ví dụ: 4) hệ thống sẽ tự tính toán kích thước phù hợp.</div></td>
 			</tr>
@@ -320,9 +325,14 @@
 					<div class="border-file-design border-threaddetails-design">{tmp.str_threaddetails_design_preview}</div></td>
 			</tr>
 			<tr>
-				<td class="t">Slide chi tiết sản phẩm</td>
+				<td class="t">Tỷ lệ Slide chi tiết sản phẩm</td>
 				<td class="i"><input type="text" name="cf_product_details_size" value="{tmp.cf_product_details_size}" class="s fixed-size-for-config" maxlength="10" />
-					<div class="small">Kích thước slider trong phần chi tiết sản phẩm.</div></td>
+					<div class="small">Tỷ lệ khung ảnh của slider trong phần chi tiết sản phẩm.</div></td>
+			</tr>
+			<tr>
+				<td class="t">Tỷ lệ Slide chi tiết S.Phẩm (mobile)</td>
+				<td class="i"><input type="text" name="cf_product_details_mobile_size" value="{tmp.cf_product_details_mobile_size}" class="s fixed-size-for-config" maxlength="10" />
+					<div class="small">Nếu bạn muốn khung ảnh slider trên bản mobile khác với bản PC thì hãy nhập thông số mới ở đây.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Lấy ảnh trong nội dung</td>

@@ -102,10 +102,12 @@ $__cf_row_default = array(
 	'cf_default_amp_bg' => '#0a89c0',
 	
 	
-	'cf_product_size' => '1',
+	'cf_product_size' => 1,
+	'cf_product_mobile_size' => '',
 	'cf_product_mobile_size' => '140',
 	'cf_product_table_size' => '200',
-	'cf_product_details_size' => '1',
+	'cf_product_details_size' => 1,
+	'cf_product_details_mobile_size' => '',
 	'cf_product_details_viewmore' => 0,
 	'cf_slider_details_play' => 0,
 	'cf_img_details_maxwidth' => 0,
