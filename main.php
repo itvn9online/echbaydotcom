@@ -26,7 +26,13 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 		//echo $protocol;
 //		header( $protocol . ' 404 Not Found' );
 		
-		die('<title>He thong dang duoc bao tri</title><h1>He thong dang duoc bao tri! Vui long quay lai sau ' . ( 60 - ( date_time - $time_for_bao_tri ) ) . ' giay</h1>');
+		$m = 'He thong dang duoc bao tri</title><h1>He thong dang duoc bao tri! Vui long quay lai sau ' . ( 60 - ( date_time - $time_for_bao_tri ) ) . ' giay';
+		
+		die('<title>' . $m . '</h1><script>
+		if ( top != self ) {
+			alert("' . $m . '");
+		}
+		</script>');
 		
 	}
 	else {
