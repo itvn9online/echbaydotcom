@@ -19,6 +19,7 @@ if ( defined('WP_SITEURL') ) {
 	if ( ! defined('WP_HOME') ) {
 		define( 'WP_HOME', WP_SITEURL );
 	}
+//	echo $web_link;
 }
 else if ( defined('WP_HOME') ) {
 	$web_link = WP_HOME;

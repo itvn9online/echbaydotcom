@@ -200,7 +200,7 @@ function WGR_parameter_not_found ( $f ) {
 // host không phải là bản demo -> cập nhật lại url mới luôn và ngay
 function WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl ) {
 //	if ( $_SERVER['HTTP_HOST'] == 'demo.webgiare.org' ) {
-	if ( $_SERVER['HTTP_HOST'] == 'webgiare.org' ) {
+	if ( $_SERVER['HTTP_HOST'] == 'webgiare.org' || $_SERVER['HTTP_HOST'] == 'themes.webgiare.org' ) {
 		return false;
 	}
 	
