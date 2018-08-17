@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 3.3
 Tested up to: 4.8
-Stable tag: 1.1.5
-Version: 1.1.5
+Stable tag: 1.1.6
+Version: 1.1.6
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 Version 1.0.*: https://github.com/itvn9online/echbaydotcom-2018-07-16
@@ -116,6 +116,10 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.1.6 =
+* Thêm phần tạo kích cỡ sản phẩm theo từng màu sắc, trong mỗi kích thước riêng này, cũng có thể tạo nhiều giá khác nhau
+* Tinh chỉnh lại URL mặc định khi chưa được setup
+
 = Version 1.1.5 =
 * Tối ưu việc quản trị đơn hàng
 * Thêm khả năng phát hiện vị trí gửi đơn trong phiên bản Pro
