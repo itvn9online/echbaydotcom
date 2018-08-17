@@ -1785,27 +1785,188 @@ var _global_js_eb = {
 		
 		// khi thay đổi số lượng sản phẩm
 		jQuery('.change-select-quanlity').change(function () {
-			
-			// tính lại tổng tiền theo thời gian thực
-			var total = 0,
-				line = 0;
-			jQuery('.each-for-set-cart-value').each(function () {
-				var gia = jQuery(this).attr('data-price') || 0,
-					soluong = jQuery('.change-select-quanlity', this).val() || 1;
-				
-				// tổng tiền trên mỗi dòng
-				line = gia * soluong;
-				jQuery('.cart-total-inline .global-details-giamoi', this).html( g_func.money_format( line ) );
-				
-				// tính tổng tiền
-				total -= 0 - line;
-			});
-			jQuery('.cart-table-total .global-details-giamoi').html( g_func.money_format( total ) );
-			
-			// cập nhật lại thông số cho cả giỏ hàng
-			_global_js_eb.cart_create_arr_poruduct();
-			
+			_global_js_eb.cart_calculator();
 		});
+		
+	},
+	
+	// load size và color trong giỏ hàng
+	cart_size_color : function () {
+		
+		// Size cho phần giỏ hàng
+		jQuery('.show-list-size').each(function() {
+			var a = jQuery(this).html() || '',
+				t_post_id = jQuery(this).attr('data-id') || '';
+			if ( a != '' ) {
+//				console.log(a);
+				if ( a.substr(0, 1) == ',' ) {
+					a = a.substr(1);
+				}
+				if ( a.substr(0, 1) != '[' ) {
+					a = "[" + a + "]";
+				}
+//				console.log(a);
+				try {
+					a = eval( a );
+				} catch ( e ) {
+					a = [];
+					console.log( WGR_show_try_catch_err( e ) );
+				}
+//				console.log(a);
+//				console.log(a.length);
+				
+				//
+				if ( typeof a[0] != 'undefined' && typeof a[0].name == 'undefined' ) {
+//				if ( a.length == 1 && typeof a[0][0].ten != 'undefined' ) {
+					a = a[0];
+				}
+				
+				var str = '',
+					data_price = '';
+				for ( var i = 0; i < a.length; i++ ) {
+					// conver từ bản code cũ sang
+					if ( typeof a[i].name == 'undefined' ) {
+						if ( typeof a[i].ten != 'undefined' ) {
+							a[i].name = a[i].ten;
+						}
+						else {
+							a[i].name = '';
+						}
+					}
+					
+					if ( typeof a[i].val == 'undefined' ) {
+						if ( typeof a[i].soluong != 'undefined' ) {
+							a[i].val = a[i].soluong;
+						}
+						else {
+							a[i].val = 0;
+						}
+					}
+					else if ( a[i].val == '' ) {
+						a[i].val = 0;
+					}
+					
+					//
+					if ( a[i].name != '' && a[i].val >= 0 ) {
+						data_price = '';
+						if ( a[i].price != '' && a[i].price > 0 ) {
+							data_price = ' data-price="' + a[i].price + '"';
+						}
+						
+						//
+						str += '<option' + data_price + ' value="' + a[i].name + '">' + a[i].name + '</option>';
+					}
+				}
+				
+				//
+				if ( str != '' ) {
+					jQuery(this).show().html( '<div class="lf f20">' + ( jQuery(this).attr('data-name') || '' ) + '</div>'
+					+ '<div class="lf f80"><select name="t_size[' + t_post_id + ']">' + str + '</select></div>');
+				}
+			}
+		});
+		
+		//
+		jQuery('.show-list-size select').change(function () {
+			_global_js_eb.cart_create_arr_poruduct();
+			_global_js_eb.cart_calculator();
+		});
+		
+		
+		//
+		jQuery('.show-list-color').each(function() {
+			var t_post_id = jQuery(this).attr('data-id') || '';
+//			console.log(t_post_id);
+//			console.log(jQuery('img', this).length);
+			
+			//
+			var str = '';
+			
+			jQuery('img', this).each(function() {
+				var s = jQuery(this).attr('data-src') || jQuery(this).attr('src') || '';
+				
+				if ( s != '' ) {
+					// trạng thái
+					var status = jQuery(this).attr('data-status') || 1;
+					
+					if ( status > 0 ) {
+						var color_name = jQuery(this).attr('alt') || jQuery(this).attr('title') || jQuery(this).attr('data-color') || '',
+							color_quan = jQuery(this).attr('data-quan') || '',
+							color_price = jQuery(this).attr('data-price') || '',
+							data_price = '';
+						
+						// Để trống -> coi như còn hàng
+						if ( color_quan == '' ) {
+							color_quan = 1;
+						}
+						if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('color_quan: ' + color_quan);
+						
+						// còn hàng thì mới hiển thị
+						if ( color_quan > 0 ) {
+							if ( color_price != '' && color_price > 0 ) {
+								data_price = ' data-price="' + color_price + '"';
+							}
+							
+							//
+							str += '<option' + data_price + ' value="' + color_name + '">' + color_name + '</option>';
+						}
+					}
+				}
+			});
+			
+			//
+			if ( str != '' ) {
+				jQuery(this).show().html( '<div class="lf f20">' + ( jQuery(this).attr('data-name') || '' ) + '</div>'
+				+ '<div class="lf f80"><select name="t_color[' + t_post_id + ']">' + str + '</select></div>');
+			}
+		});
+		
+		//
+		jQuery('.show-list-color select').change(function () {
+			_global_js_eb.cart_create_arr_poruduct();
+			_global_js_eb.cart_calculator();
+		});
+		
+		//
+		_global_js_eb.cart_create_arr_poruduct();
+		_global_js_eb.cart_calculator();
+		
+	},
+	
+	// tính toán lại giá trị giỏ hàng mỗi lần đổi số lượng, size, color
+	cart_calculator : function () {
+		
+		// tính lại tổng tiền theo thời gian thực
+		var total = 0,
+			line = 0;
+		jQuery('.each-for-set-cart-value').each(function () {
+			// lấy giá sản phẩm, ưu tiên lấy giá theo size trước
+			var gia = jQuery('.show-list-size select option:selected', this).attr('data-price') || 0,
+				soluong = jQuery('.change-select-quanlity', this).val() || 1;
+			
+			// nếu không có giá theo size
+			if ( gia <= 0 ) {
+				// lấy giá theo màu
+				gia = jQuery('.show-list-color select option:selected', this).attr('data-price') || 0;
+				
+				// lấy giá sản phẩm hiện tại nếu không có giá theo size hoặc màu
+				if ( gia <= 0 ) {
+					gia = jQuery(this).attr('data-price') || 0;
+				}
+			}
+			
+			// tổng tiền trên mỗi dòng
+			line = gia * soluong;
+			jQuery('.cart-price-inline .global-details-giamoi', this).html( g_func.money_format( gia ) );
+			jQuery('.cart-total-inline .global-details-giamoi', this).html( g_func.money_format( line ) );
+			
+			// tính tổng tiền
+			total -= 0 - line;
+		});
+		jQuery('.cart-table-total .global-details-giamoi').html( g_func.money_format( total ) );
+		
+		// cập nhật lại thông số cho cả giỏ hàng
+		_global_js_eb.cart_create_arr_poruduct();
 		
 	},
 	
