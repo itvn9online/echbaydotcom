@@ -35,6 +35,7 @@ include EB_THEME_CORE . 'widget/same_price.php';
 include EB_THEME_CORE . 'widget/view_history.php';
 include EB_THEME_CORE . 'widget/youtube.php';
 include EB_THEME_CORE . 'widget/adsense.php';
+include EB_THEME_CORE . 'widget/facebook_likebox.php';
 
 
 
@@ -112,10 +113,14 @@ function _eb_top_footer_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
 	
 	
-	_eb_menu_width_form_for_widget( $field_name['width'], $width );
+	if ( isset( $field_name['width'] ) ) {
+		_eb_menu_width_form_for_widget( $field_name['width'], $width );
+	}
 	
 	
-	_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:', '', '' );
+	if ( isset( $field_name['custom_style'] ) ) {
+		_eb_widget_echo_widget_input_title( $field_name['custom_style'], $custom_style, 'Custom CSS:', '', '' );
+	}
 	
 	
 	_eb_widget_echo_widget_input_checkbox( $field_name['hide_mobile'], $hide_mobile, 'Ẩn trên mobile', 'Mặc định, module này sẽ được hiển thị trên mọi thiết bị, tích vào đây nếu muốn nó bị ẩn trên mobile.' );

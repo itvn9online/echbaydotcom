@@ -165,6 +165,14 @@ function WGR_get_footer_social () {
 }
 
 function WGR_get_fb_like_box () {
+	global $__cf_row;
+	
+	//
+	if ( $__cf_row['cf_facebook_page'] == '' ) {
+		return '<div class="facebook-likebox-null medium orgcolor">* <em>Dữ liệu của bạn đang bị thiếu, <a href="' . admin_link . 'admin.php?page=eb-config&tab=social&support_tab=cf_facebook_page" target="_blank" rel="nofollow">Bấm vào đây</a> để bổ sung thêm URL cho Fanpage Facebook của bạn.</em></div>';
+	}
+	
+	//
 	return '
 	<div class="each-to-facebook">
 		<div class="fb-page" data-small-header="false" data-hide-cover="false" data-show-facepile="true"></div>
