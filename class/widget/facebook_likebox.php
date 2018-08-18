@@ -17,6 +17,7 @@ class ___echbay_widget_facebook_likebox extends WP_Widget {
 		
 		$default = array (
 			'title' => 'EchBay Facebook Likebox',
+			'custom_style' => '',
 			'full_mobile' => '',
 			'hide_mobile' => ''
 		);
@@ -48,6 +49,8 @@ class ___echbay_widget_facebook_likebox extends WP_Widget {
 		
 //		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+		
+		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		
 		$hide_mobile = isset( $instance ['hide_mobile'] ) ? $instance ['hide_mobile'] : 'off';
 //		$hide_mobile = $hide_mobile == 'on' ? ' hide-if-mobile' : '';
