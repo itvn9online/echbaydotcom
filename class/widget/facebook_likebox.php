@@ -5,7 +5,7 @@
 /*
 * Widget blog ngẫu nhiên
 */
-class ___echbay_widget_set_social_menu extends WP_Widget {
+class ___echbay_widget_facebook_likebox extends WP_Widget {
 	function __construct() {
 		parent::__construct ( 'echbay_set_social_menu', 'zEchBay Facebook Likebox', array (
 				'description' => 'Thêm hộp like của Facebook vào website' 

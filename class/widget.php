@@ -76,6 +76,7 @@ function ___add_echbay_widget() {
 	register_widget ( '___echbay_widget_menu_close_tag' );
 	
 	register_widget ( '___echbay_widget_set_social_menu' );
+	register_widget ( '___echbay_widget_facebook_likebox' );
 	
 	register_widget ( '___echbay_widget_set_contact_menu' );
 	
