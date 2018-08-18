@@ -144,19 +144,34 @@ else if ( window.location.href.split('&click_to_update_core=').length > 1 ) {
 	// chức năng này chỉ hoạt động trong cửa sổ cha
 	if ( top == self ) {
 		setTimeout(function () {
+			var a = '',
+				b = '',
+				c = '';
+			
 			// update theme
 			if ( window.location.href.split('&connect_to=theme').length > 1 ) {
-				jQuery('.click-connect-to-echbay-update-eb-theme').click();
+				a = jQuery('.click-connect-to-echbay-update-eb-theme').attr('href') || '';
+				c = '.click-connect-to-echbay-update-eb-theme';
+				b = 'show_list_wgr_theme_update';
 			}
 			// update plugin
 			else {
-				jQuery('.click-connect-to-github-update-eb-core').click();
+				a = jQuery('.click-connect-to-github-update-eb-core').attr('href') || '';
+				c = '.click-connect-to-github-update-eb-core';
+				b = 'show_list_wgr_plugin_update';
 			}
+			
+			//
+			if ( a != '' && a != 'javascript:;' ) {
+				window.open( a, 'target_eb_iframe' );
+				update_wgr_plugin_theme_begin( b );
+				jQuery(c).hide();
+			}
+			
+			//
+			_global_js_eb.change_url_tab( 'click_to_update_core' );
 		}, 800);
 	}
-	
-	//
-	_global_js_eb.change_url_tab( 'click_to_update_core' );
 }
 
 
