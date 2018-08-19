@@ -268,6 +268,9 @@ $__cf_row_default = array(
 	'cf_auto_get_ads_size' => 'off',
 	'cf_slider_big_play' => 5000,
 	
+	// đổi style cho sidebar trang danh mục sản phẩm
+	'cf_list_sidebar_new_style' => 'off',
+	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
 	*/
@@ -277,6 +280,7 @@ $__cf_row_default = array(
 	'cf_details_show_list_next' => 'off',
 	'cf_details_show_list_thumb' => 1,
 	'cf_details_show_quick_cart' => 1,
+	'cf_details_short_quick_cart' => 1,
 	'cf_details_right_thumbnail' => 'off',
 	'cf_details_left_thumbnail' => 'off',
 	

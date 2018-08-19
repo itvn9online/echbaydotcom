@@ -305,6 +305,12 @@ if ( $main_content == false ) {
 				'tmp.category_content_sidebar' => _eb_echbay_get_sidebar( 'category_content_sidebar' ),
 			);
 			
+			
+			// chỉnh lại CSS cho phần menu của trang danh mục
+			if ( $__cf_row['cf_cats_column_style'] != '' && $__cf_row['cf_list_sidebar_new_style'] == 1 ) {
+				$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/col-sidebar-content.css' ] = 1;
+			}
+			
 		}
 		// blog
 		else if ( $switch_taxonomy == EB_BLOG_POST_LINK

@@ -20,6 +20,8 @@ $_POST['cf_using_home_default'] = WGR_default_config('cf_using_home_default');
 
 $_POST['cf_using_footer_default'] = WGR_default_config('cf_using_footer_default');
 
+$_POST['cf_list_sidebar_new_style'] = WGR_default_config('cf_list_sidebar_new_style');
+
 $_POST['cf_details_content_slider'] = WGR_default_config('cf_details_content_slider');
 
 $_POST['cf_details_show_list_next'] = WGR_default_config('cf_details_show_list_next');
@@ -31,6 +33,8 @@ $_POST['cf_details_right_thumbnail'] = WGR_default_config('cf_details_right_thum
 $_POST['cf_details_left_thumbnail'] = WGR_default_config('cf_details_left_thumbnail');
 
 $_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
+
+$_POST['cf_details_short_quick_cart'] = WGR_default_config('cf_details_short_quick_cart');
 
 $_POST['cf_required_name_cart'] = WGR_default_config('cf_required_name_cart');
 

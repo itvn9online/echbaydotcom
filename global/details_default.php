@@ -976,6 +976,11 @@ if ( $bai_san_pham == true ) {
 	if ( $__cf_row['cf_details_ul_options'] == 1 ) {
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/thread-details2-options.css' ] = 1;
 	}
+	
+	// nếu có hiển thị phom mua ngay và đặt chế độ rút gọn phom -> rút luôn
+	if ( $__cf_row['cf_details_show_quick_cart'] == 1 && $__cf_row['cf_details_short_quick_cart'] == 1 ) {
+		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/clone-show-quick-cart.css' ] = 1;
+	}
 }
 
 

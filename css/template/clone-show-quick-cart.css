@@ -1,0 +1,71 @@
+/* Chỉnh CSS mặc định cho phần Quick cart chỉ còn mỗi số điện thoại thôi -> đặt hàng cho tiện */
+.clone-show-quick-cart .eb-global-frm-cart {
+	/*
+	background: #f29901;
+	color: #fff;
+	text-align: center;
+	*/
+	padding: 10px 10px 0 10px;
+	border-radius: 4px;
+	position: relative;
+	border: 2px #f59231 solid;
+	color: #fff;
+	background: #f59231;
+}
+.clone-show-quick-cart .eb-quickcart-node { display: none; }
+.clone-show-quick-cart .eb-quickcart-tel {
+	display: block;
+	background: url(../../images-global/icon-lighthing.png) left no-repeat;
+	background-size: auto 99%;
+	padding-left: 40px;
+}
+.clone-show-quick-cart .eb-quickcart-left { /*
+	float: none;
+	width: 100%;
+	line-height: 19px;
+	padding-bottom: 5px;
+	*/
+	text-transform: uppercase;
+	line-height: 37px;
+	font-size: 16px;
+}
+.clone-show-quick-cart .eb-quickcart-left span { text-transform: none; }
+.clone-show-quick-cart .eb-quickcart-left span.redcolor { display: none; }
+/*
+.clone-show-quick-cart .eb-quickcart-right {
+	float: none;
+	width: 80%;
+}
+*/
+.clone-show-quick-cart .eb-quickcart-table input[type=text] {
+	padding: 0 3px;
+	height: 35px;
+	width: 75%;
+}
+.clone-show-quick-cart #sb_submit_cart {
+	position: absolute;
+	right: 10px;
+	width: 12%;
+	padding: 0;
+	height: 35px;
+	border-radius: 4px;
+	max-width: 100px;
+	top: 6px;
+	background: #d81c22;
+	font-size: 16px;
+}
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-tel {
+	background: none;
+	padding: 0;
+}
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-left { text-align: center; }
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-left,
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-right {
+	float: none;
+	width: auto;
+}
+.style-for-mobile .clone-show-quick-cart #sb_submit_cart {
+	top: auto;
+	bottom: 8px;
+	width: 18%;
+}

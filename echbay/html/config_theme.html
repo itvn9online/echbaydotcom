@@ -209,6 +209,12 @@
 				<td class="i">{tmp.cf_cats_column_style}</td>
 			</tr>
 			<tr>
+				<td class="t">Đổi style cho sidebar danh mục</td>
+				<td class="i"><input type="checkbox" name="cf_list_sidebar_new_style" id="cf_list_sidebar_new_style" value="{tmp.cf_list_sidebar_new_style}" />
+					<label for="cf_list_sidebar_new_style" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Thêm CSS cho menu của phần danh mục, biến tấu khác đi so với mặc định, có thể sẽ đẹp hơn.</div></td>
+			</tr>
+			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr class="d-none">
@@ -338,36 +344,31 @@
 				<td class="t">Lấy ảnh trong nội dung</td>
 				<td class="i"><input type="checkbox" name="cf_details_content_slider" id="cf_details_content_slider" value="{tmp.cf_details_content_slider}" />
 					<label for="cf_details_content_slider" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Tự động lấy ảnh trong content nếu ảnh trong gallery không có cái nào.</div>
-					</div></td>
+					<div class="small l19">Tự động lấy ảnh trong content nếu ảnh trong gallery không có cái nào.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Kích hoạt nút chuyển ảnh nhỏ</td>
 				<td class="i"><input type="checkbox" name="cf_details_show_list_next" id="cf_details_show_list_next" value="{tmp.cf_details_show_list_next}" />
 					<label for="cf_details_show_list_next" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Slider trang chi tiết sản phẩm, để cho gọn thì mặc định nút chuyển ảnh loại nhỏ được ẩn đi, nếu bạn muốn bật lên, hãy kích hoạt ở đây.</div>
-					</div></td>
+					<div class="small l19">Slider trang chi tiết sản phẩm, để cho gọn thì mặc định nút chuyển ảnh loại nhỏ được ẩn đi, nếu bạn muốn bật lên, hãy kích hoạt ở đây.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Hiển thị ảnh nhỏ (thumbnail)</td>
 				<td class="i"><input type="checkbox" name="cf_details_show_list_thumb" id="cf_details_show_list_thumb" value="{tmp.cf_details_show_list_thumb}" />
 					<label for="cf_details_show_list_thumb" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Hiển thị thêm danh sách các ảnh nhỏ giúp người dùng dễ sử dụng slider hơn.</div>
-					</div></td>
+					<div class="small l19">Hiển thị thêm danh sách các ảnh nhỏ giúp người dùng dễ sử dụng slider hơn.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Thumbnail về bên phải</td>
 				<td class="i"><input type="checkbox" name="cf_details_right_thumbnail" id="cf_details_right_thumbnail" value="{tmp.cf_details_right_thumbnail}" />
 					<label for="cf_details_right_thumbnail" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên PHẢI thì bấm vào đây.</div>
-					</div></td>
+					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên PHẢI thì bấm vào đây.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Thumbnail về bên trái</td>
 				<td class="i"><input type="checkbox" name="cf_details_left_thumbnail" id="cf_details_left_thumbnail" value="{tmp.cf_details_left_thumbnail}" />
 					<label for="cf_details_left_thumbnail" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên TRÁI thì bấm vào đây.</div>
-					</div></td>
+					<div class="small l19">Thumbnail mặc định sẽ nằm dưới chân slideshow, nếu bạn muốn hiển thị về bên TRÁI thì bấm vào đây.</div></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_slider_details_play">Tự động chạy slider</label></td>
@@ -382,29 +383,31 @@
 				<td class="t">Hiển thị phom mua ngay</td>
 				<td class="i"><input type="checkbox" name="cf_details_show_quick_cart" id="cf_details_show_quick_cart" value="{tmp.cf_details_show_quick_cart}" />
 					<label for="cf_details_show_quick_cart" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Thông thường, với các web bán hàng! việc hiển thị phom mua ngay sẽ tăng tỉ lệ tương tác của người dùng với hệ thống, tạo sự thuận lợi nhất định cho việc mua hàng của người dùng. Tuy nhiên, với một số giao diện, phom này hiển thị ra sẽ không phù hợp lắm thì bạn có thể để chế độ ẩn, và phom chỉ hiển thị khi được gọi ra (nếu giao diện có hỗ trợ).</div>
-					</div></td>
+					<div class="small l19">Thông thường, với các web bán hàng! việc hiển thị phom mua ngay sẽ tăng tỉ lệ tương tác của người dùng với hệ thống, tạo sự thuận lợi nhất định cho việc mua hàng của người dùng. Tuy nhiên, với một số giao diện, phom này hiển thị ra sẽ không phù hợp lắm thì bạn có thể để chế độ ẩn, và phom chỉ hiển thị khi được gọi ra (nếu giao diện có hỗ trợ).</div></td>
+			</tr>
+			<tr>
+				<td class="t">Rút gọn phom mua ngay</td>
+				<td class="i"><input type="checkbox" name="cf_details_short_quick_cart" id="cf_details_short_quick_cart" value="{tmp.cf_details_short_quick_cart}" />
+					<label for="cf_details_short_quick_cart" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<div class="small l19">Trong thời gian sử dụng và phân tích dữ liệu, chúng tôi nhận thấy việc tối giản phương thức đặt mua cho khách hàng sẽ giúp tăng tương tác và thu được nhiều số điện thoại của khách hơn.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Bắt buộc nhập Họ tên</td>
 				<td class="i"><input type="checkbox" name="cf_required_name_cart" id="cf_required_name_cart" value="{tmp.cf_required_name_cart}" />
 					<label for="cf_required_name_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Họ tên khi mua hàng.</div>
-					</div></td>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Họ tên khi mua hàng.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Bắt buộc nhập Email</td>
 				<td class="i"><input type="checkbox" name="cf_required_email_cart" id="cf_required_email_cart" value="{tmp.cf_required_email_cart}" />
 					<label for="cf_required_email_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Email khi mua hàng.</div>
-					</div></td>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Email khi mua hàng.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Bắt buộc nhập Địa chỉ</td>
 				<td class="i"><input type="checkbox" name="cf_required_address_cart" id="cf_required_address_cart" value="{tmp.cf_required_address_cart}" />
 					<label for="cf_required_address_cart" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Địa chỉ khi mua hàng.</div>
-					</div></td>
+					<div class="small l19">Khi chế độ này được kích hoạt, người dùng sẽ phải nhập đầy đủ Địa chỉ khi mua hàng.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Nút mua ngay trên mobile</td>
@@ -447,8 +450,7 @@
 				<td class="t">Banner trang chi tiết S.Phẩm</td>
 				<td class="i"><input type="checkbox" name="cf_post_big_banner" id="cf_post_big_banner" value="{tmp.cf_post_big_banner}" />
 					<label for="cf_post_big_banner" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, banner chính sẽ được load cho cả trang chi tiết sản phẩm, nếu bạn không muốn nó xuất hiện ở đây, hãy bỏ chọn và lưu lại.</div>
-					</div></td>
+					<div class="small l19">Mặc định, banner chính sẽ được load cho cả trang chi tiết sản phẩm, nếu bạn không muốn nó xuất hiện ở đây, hãy bỏ chọn và lưu lại.</div></td>
 			</tr>
 			<tr>
 				<td class="t">Mục lục cho nội dung</td>

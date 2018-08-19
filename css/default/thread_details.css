@@ -26,10 +26,7 @@
 	color: #09F;
 }
 .thread-details-slogan { }
-.thread-details-slogan li {
-	background: #F4F4F4;
-	margin-bottom: 5px;
-}
+.thread-details-slogan li { margin-bottom: 5px; }
 .thread-details-slogan div {
 	position: relative;
 	padding: 8px 0 8px 60px;
@@ -40,7 +37,6 @@
 	left: 0;
 	display: block;
 	font-size: 35px;
-	color: #888282;
 	display: block;
 	line-height: 40px;
 	width: 60px;

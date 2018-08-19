@@ -1,0 +1,27 @@
+/* Đổi css mặc định của phần tìm theo giá ở trang danh mục */
+.global-cats-reverse-sidebar .echbay-widget-title {
+	background: #f2f2f2;
+	padding: 6px 5px 6px 10px;
+	border: 1px #ccc solid;
+	margin: 0;
+	border-radius: 5px 5px 0 0;
+}
+.global-cats-reverse-sidebar .echbay-widget-title:before { display: none; }
+.global-cats-reverse-sidebar .echbay-product-price-between,
+.global-cats-reverse-sidebar .echbay-category-in-js {
+	border: 1px #ccc solid;
+	border-top: 0 none;
+	margin-bottom: 20px;
+}
+.global-cats-reverse-sidebar .echbay-product-price-between li,
+.global-cats-reverse-sidebar .echbay-category-in-js li {
+	list-style: none;
+	margin: 0;
+	border-top: 1px #f2f2f2 solid;
+}
+.global-cats-reverse-sidebar .echbay-product-price-between a,
+.global-cats-reverse-sidebar .echbay-category-in-js a {
+	display: block;
+	padding: 8px 10px;
+}
+.global-cats-reverse-sidebar .widget_random_blog li { border-bottom: 1px #f2f2f2 solid; }

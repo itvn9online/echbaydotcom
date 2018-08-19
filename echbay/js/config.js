@@ -534,12 +534,15 @@ if ( current_module_config != 'config_theme' ) {
 }
 // config_theme
 else {
+	show_note_for_checkbox_config( 'cf_list_sidebar_new_style' );
+	
 	show_note_for_checkbox_config( 'cf_details_content_slider' );
 	show_note_for_checkbox_config( 'cf_details_show_list_next' );
 	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
 	show_note_for_checkbox_config( 'cf_details_right_thumbnail' );
 	show_note_for_checkbox_config( 'cf_details_left_thumbnail' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
+	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
 	show_note_for_checkbox_config( 'cf_required_name_cart' );
 	show_note_for_checkbox_config( 'cf_required_email_cart' );
 	show_note_for_checkbox_config( 'cf_required_address_cart' );
