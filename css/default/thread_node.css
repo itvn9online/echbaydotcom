@@ -108,3 +108,5 @@
 }
 .thread-list-more:hover,
 .thread-list-mua:hover { opacity: .8; }
+/* */
+.style-for-mobile .thread-list-padding { margin: 5px; }
