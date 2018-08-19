@@ -1,34 +1,32 @@
 /* Chỉnh CSS mặc định cho phần Quick cart chỉ còn mỗi số điện thoại thôi -> đặt hàng cho tiện */
-.clone-show-quick-cart .eb-global-frm-cart {
-	/*
-	background: #f29901;
-	color: #fff;
-	text-align: center;
-	*/
-	padding: 10px 10px 0 10px;
-	border-radius: 4px;
-	position: relative;
-	border: 2px #f59231 solid;
-	color: #fff;
-	background: #f59231;
-}
+.clone-show-quick-cart .eb-global-frm-cart { position: relative; }
 .clone-show-quick-cart .eb-quickcart-node { display: none; }
 .clone-show-quick-cart .eb-quickcart-tel {
 	display: block;
+	background: #f59231;
+	padding: 10px 5px 10px 46px;
+	border-radius: 4px 4px 0 0;
+	border: 2px #f59231 solid;
+	color: #fff;
+	position: relative;
+	margin: 0;
+}
+.clone-show-quick-cart .eb-quickcart-tel:before {
+	display: inline-block;
+	content: "";
 	background: url(../../images-global/icon-lighthing.png) left no-repeat;
 	background-size: auto 99%;
-	padding-left: 40px;
+	width: 42px;
+	height: 36px;
+	position: absolute;
+	left: 5px;
 }
-.clone-show-quick-cart .eb-quickcart-left { /*
-	float: none;
-	width: 100%;
-	line-height: 19px;
-	padding-bottom: 5px;
-	*/
+.clone-show-quick-cart .eb-quickcart-left {
 	text-transform: uppercase;
 	line-height: 37px;
 	font-size: 16px;
 }
+.clone-show-quick-cart .eb-quickcart-tel .eb-quickcart-left { }
 .clone-show-quick-cart .eb-quickcart-left span { text-transform: none; }
 .clone-show-quick-cart .eb-quickcart-left span.redcolor { display: none; }
 /*
@@ -40,17 +38,19 @@
 .clone-show-quick-cart .eb-quickcart-table input[type=text] {
 	padding: 0 3px;
 	height: 35px;
-	width: 75%;
+	width: 95%;
+}
+.clone-show-quick-cart .eb-quickcart-submit {
+	background: #f59231;
+	border-radius: 0 0 4px 4px;
+	padding-bottom: 6px;
 }
 .clone-show-quick-cart #sb_submit_cart {
-	position: absolute;
-	right: 10px;
-	width: 12%;
+	width: 99%;
 	padding: 0;
-	height: 35px;
-	border-radius: 4px;
-	max-width: 100px;
-	top: 6px;
+	height: 42px;
+	border-radius: 30px;
+	max-width: 250px;
 	background: #d81c22;
 	font-size: 16px;
 }
