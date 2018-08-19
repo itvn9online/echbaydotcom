@@ -56,18 +56,22 @@
 	*/
 	font-size: 16px;
 }
-.style-for-mobile .clone-show-quick-cart .eb-quickcart-tel {
-	background: none;
-	padding: 0;
-}
-.style-for-mobile .clone-show-quick-cart .eb-quickcart-left { text-align: center; }
+/* */
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-tel:before { display: none; }
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-tel { padding-left: 5px; }
+/*
+.style-for-mobile .clone-show-quick-cart .eb-quickcart-left { }
+*/
 .style-for-mobile .clone-show-quick-cart .eb-quickcart-left,
 .style-for-mobile .clone-show-quick-cart .eb-quickcart-right {
 	float: none;
 	width: auto;
+	text-align: center;
 }
+/*
 .style-for-mobile .clone-show-quick-cart #sb_submit_cart {
 	top: auto;
 	bottom: 8px;
 	width: 18%;
 }
+*/
