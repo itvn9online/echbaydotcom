@@ -333,13 +333,22 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 //			$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $end_i . '_include_file"] = "breadcrumb-top1.php";' . "\n";
 			$str .= '// Banner tràn màn hình' . "\n";
 			$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "bigbanner-top1.php";' . "\n";
+			
 			$str .= '// Banner bo gọn trong khung' . "\n";
 			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "bigbannerFixed-top1.php";' . "\n";
 			
+			
 			$str .= '// breadcrumb tràn màn hình' . "\n";
 			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb-top1.php";' . "\n";
+			
 			$str .= '// breadcrumb gọn trong khung' . "\n";
-			$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb2-top1.php";' . "\n";
+			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb2-top1.php";' . "\n";
+			
+			$str .= '// breadcrumb tràn màn hình (kèm nền mặc định)' . "\n";
+			$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumbbg-top1.php";' . "\n";
+			
+			$str .= '// breadcrumb gọn trong khung (kèm nền mặc định)' . "\n";
+			$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "breadcrumb2bg-top1.php";' . "\n";
 		}
 		
 	}
