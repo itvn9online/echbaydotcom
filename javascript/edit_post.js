@@ -937,6 +937,15 @@ function WGR_run_for_admin_edit_post () {
 			
 //			console.log(a);
 			$(this).val(a);
+			
+			// kiểm tra và phân bổ lại giá
+			var giacu = $('#_eb_product_oldprice').val(),
+				giaban = $('#_eb_product_price').val();
+			
+			if ( giaban == 0 && giacu > 0 ) {
+				$('#_eb_product_oldprice').val( 0 );
+				$('#_eb_product_price').val( giacu );
+			}
 		}).change();
 		
 		
