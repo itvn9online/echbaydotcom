@@ -282,14 +282,16 @@ function _eb_checkPostServerClient() {
 //	$checkPostServer = $checkPostServer [0];
 	
 	$checkPostClient = isset ( $_SERVER ['HTTP_REFERER'] ) ? $_SERVER ['HTTP_REFERER'] : '';
-	$checkPostClient = explode( '//', $checkPostClient );
-	$checkPostClient = $checkPostClient[1];
-	$checkPostClient = str_replace ( 'www.', '', $checkPostClient );
-	$checkPostClient = explode ( '/', $checkPostClient );
-	$checkPostClient = $checkPostClient [0];
+	if ( $checkPostClient != '' ) {
+		$checkPostClient = explode( '//', $checkPostClient );
+		$checkPostClient = $checkPostClient[1];
+		$checkPostClient = str_replace ( 'www.', '', $checkPostClient );
+		$checkPostClient = explode ( '/', $checkPostClient );
+		$checkPostClient = $checkPostClient [0];
+	}
 	
 	//
-	if ( strtolower ( $checkPostServer ) != strtolower ( $checkPostClient ) ) {
+	if ( $checkPostClient == '' || strtolower ( $checkPostServer ) != strtolower ( $checkPostClient ) ) {
 		die ( '<h1>REFERER DIE</h1>' );
 		exit ();
 	}
@@ -306,7 +308,7 @@ function _eb_checkPostServerClient() {
 	if ( get_magic_quotes_gpc () ) {
 		$magic_quotes = 1;
 	}
-	echo $magic_quotes . '<br>' . "\n";
+//	echo $magic_quotes . '<br>' . "\n";
 	
 	//
 	foreach ( $_POST as $k => $v ) {
