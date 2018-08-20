@@ -546,8 +546,9 @@ function WGR_GHN_get_json ( datas, uri, callBack ) {
 		data: JSON.stringify(datas),
 		dataType: "json",
 		contentType: "application/json; charset=utf-8",
+		crossDomain: false,
 //		url: 'https://console.ghn.vn/api/v1/apiv3/" + uri
-		url: '//api.serverapi.host/api/v1/apiv3/' + uri
+		url: 'http://api.serverapi.host/api/v1/apiv3/' + uri
 	}).done(function( data ){
 		if ( typeof data.msg != 'undefined' && data.msg == 'Success' ) {
 			// danh sách quận huyện
@@ -585,7 +586,7 @@ function WGR_GHN_get_json ( datas, uri, callBack ) {
 }
 
 // https://api.ghn.vn/home/docs/detail?id=28
-if ( window.location.href.split('localhost:8888').length > 1 ) {
+if ( window.location.href.split('localhost:8888').length > 1 || window.location.href.split('webgiare.org/').length > 1 ) {
 	console.log('TEST GHN');
 	
 	//

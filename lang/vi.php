@@ -88,6 +88,8 @@ $___eb_lang[eb_key_for_site_lang . 'thread_list_more'] = '<i class="fa fa-eye"><
 
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_diachi'] = 'Địa chỉ';
+$___eb_lang[eb_key_for_site_lang . 'cart_tinhthanh'] = 'Quận/ Huyện';
+$___eb_lang[eb_key_for_site_lang . 'cart_tinhthanh2'] = 'Vui lòng nhập Quận/ Huyện cho việc giao hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
 $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';

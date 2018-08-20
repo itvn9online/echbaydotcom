@@ -70,6 +70,14 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>"<?php if ( $__cf_row['cf_required_address_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?>></textarea>
 						</div>
 					</div>
+					<!--
+					<div class="eb-quickcart-node eb-quickcart-districts cf">
+						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_tinhthanh'); ?></div>
+						<div class="eb-quickcart-right">
+							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_tinhthanh2'); ?>" class="auto-set-cart-districts"<?php if ( $__cf_row['cf_required_address_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?>></textarea>
+						</div>
+					</div>
+					-->
 					<div class="eb-quickcart-node eb-quickcart-note cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_ghichu'); ?></div>
 						<div class="eb-quickcart-right">
