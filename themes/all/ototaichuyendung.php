@@ -19,8 +19,9 @@ $eb_all_themes_support["ototaichuyendung"]["top"][] = "top_widget.php";
 $eb_all_themes_support["ototaichuyendung"]["top"][] = "bigbanner-top1.php";
 // Banner bo gọn trong khung 
 //$eb_all_themes_support["ototaichuyendung"]["top"][] = "bigbannerFixed-top1.php";
-// breadcrumb tràn màn hình 
-$eb_all_themes_support["ototaichuyendung"]["top"][] = "breadcrumb-top1.php";
+// breadcrumb tràn màn hình
+//$eb_all_themes_support["ototaichuyendung"]["top"][] = "breadcrumb-top1.php";
+$eb_all_themes_support["ototaichuyendung"]["top"][] = "breadcrumb2-top1.php";
 // breadcrumb gọn trong khung 
 //$eb_all_themes_support["ototaichuyendung"]["top"][] = "breadcrumb2-top1.php";
 //

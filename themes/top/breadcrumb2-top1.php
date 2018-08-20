@@ -1,6 +1,6 @@
 <?php
 /*
-Description: Breadcrumb cho website, thiết kế bo gọn theo kích thước của TOP trong mục Cài đặt giao diện.
+Description: Breadcrumb cho website, thiết kế bo gọn theo kích thước của TOP trong mục Cài đặt giao diện, có kèm màu nền mặc định có thể điều chỉnh trong cấu hình website.
 */
 ?>
 
