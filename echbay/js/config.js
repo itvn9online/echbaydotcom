@@ -281,7 +281,13 @@ function create_deault_css () {
 	// lấy các thuộc tính để CSS cho logo
 	str += create_css_for_custom_in_js( '.each-to-css-for-logo', '#cf_css_logo', {
 //		'mobile' : '',
-		'pc' : 'web-logo'
+		'pc' : '.web-logo'
+	} );
+	
+	// và body
+	str += create_css_for_custom_in_js( '.each-to-css-for-body', '#cf_css_body', {
+		'mobile' : 'body.style-for-mobile',
+		'pc' : 'body'
 	} );
 	
 	
@@ -503,6 +509,7 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 		//
 		$( jd ).val( arr );
 		
+		// trả về kết quả với css for pc trước, mobile sau
 		return str + str_mobile;
 //	})( '.each-to-css-for-logo', '#cf_css_logo', {
 //		'mobile' : '',
