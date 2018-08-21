@@ -18,6 +18,7 @@ div.gallery-add-to-og_image { display: block; }
 		<textarea name="cf_default_amp_bg" id="cf_default_amp_bg" style="width:90%;">{tmp.cf_default_amp_bg}</textarea>
 		<textarea name="cf_p_diachi" id="cf_p_diachi" style="width:90%;">{tmp.cf_p_diachi}</textarea>
 		<textarea name="cf_css_logo" id="cf_css_logo" style="width:90%;">{tmp.cf_css_logo}</textarea>
+		<textarea name="cf_css_body" id="cf_css_body" style="width:90%;">{tmp.cf_css_body}</textarea>
 		<textarea style="width:90%;">{tmp.cf_replace_content}</textarea>
 	</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-support-table fix-textarea-height">
@@ -25,36 +26,36 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Tên website</td>
 				<td class="i"><input type="text" name="cf_web_name" value="{tmp.cf_web_name}" class="n" maxlength="155" />
-					<div class="small">Tên website sẽ xuất hiện trong tiêu đề, đề mục của EchBay SEO plugin...</div></td>
+					<p class="description">Tên website sẽ xuất hiện trong tiêu đề, đề mục của EchBay SEO plugin...</p></td>
 			</tr>
 			<tr>
 				<td class="t">Menu chính</td>
 				<td class="i"><input type="text" name="cf_chu_de_chinh" value="{tmp.cf_chu_de_chinh}" class="n" maxlength="25" />
-					<div class="small">Nếu bạn muốn đổi tên menu bài viết sang tên mới thì nhập vào đây, ví dụ: Sản phẩm, Bài viết, Video...</div></td>
+					<p class="description">Nếu bạn muốn đổi tên menu bài viết sang tên mới thì nhập vào đây, ví dụ: Sản phẩm, Bài viết, Video...</p></td>
 			</tr>
 			<tr>
 				<td class="t">Chế độ kiểm thử</td>
 				<td class="i"><input type="checkbox" name="cf_tester_mode" id="cf_tester_mode" value="{tmp.cf_tester_mode}" />
 					<label for="cf_tester_mode" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi website đang trong quá trình hiển thị hoặc phát hiện ra lỗi thì nên bật chế độ này để kiểm tra và rà soát lỗi cho dễ. Bởi vì khi đó, các file CSS, JS sẽ được nhúng link thay vì nhúng trực tiếp vào HTML.</div></td>
+					<p class="description">Khi website đang trong quá trình hiển thị hoặc phát hiện ra lỗi thì nên bật chế độ này để kiểm tra và rà soát lỗi cho dễ. Bởi vì khi đó, các file CSS, JS sẽ được nhúng link thay vì nhúng trực tiếp vào HTML.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Hiển thị lỗi</td>
 				<td class="i"><input type="checkbox" name="cf_debug_mode" id="cf_debug_mode" value="{tmp.cf_debug_mode}" />
 					<label for="cf_debug_mode" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Hiển thị lỗi trên website giúp cho việc xử lý lỗi được tốt hơn, việc giấu lỗi chỉ để làm đẹp website trong khi lỗi vẫn còn đó, nên chúng tôi khuyến khích hiển thị lỗi để việc vá lỗi được thuận lợi.</div></td>
+					<p class="description">Hiển thị lỗi trên website giúp cho việc xử lý lỗi được tốt hơn, việc giấu lỗi chỉ để làm đẹp website trong khi lỗi vẫn còn đó, nên chúng tôi khuyến khích hiển thị lỗi để việc vá lỗi được thuận lợi.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Nén tệp JS</td>
 				<td class="i"><input type="checkbox" name="cf_js_optimize" id="cf_js_optimize" value="{tmp.cf_js_optimize}" />
 					<label for="cf_js_optimize" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Gộp các tệp Javascript lại để giảm bớt request tới server, cũng giúp tăng tốc độ tải trang.</div></td>
+					<p class="description">Gộp các tệp Javascript lại để giảm bớt request tới server, cũng giúp tăng tốc độ tải trang.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Nén tệp CSS</td>
 				<td class="i"><input type="checkbox" name="cf_css_optimize" id="cf_css_optimize" value="{tmp.cf_css_optimize}" />
 					<label for="cf_css_optimize" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Gộp các tệp CSS lại để giảm bớt request tới server, cũng giúp tăng tốc độ tải trang.</div></td>
+					<p class="description">Gộp các tệp CSS lại để giảm bớt request tới server, cũng giúp tăng tốc độ tải trang.</p></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">Nội dung thẻ META mặc định</td>
@@ -90,7 +91,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Ảnh đại diện mặc định</td>
 				<td class="i"><div title="Bấm vào đây để thay đổi Ảnh đại diện mặc định" data-show="gallery-add-to-og_image" class="cf_og_image ad-admin-avt-size cur click-open-new-gallery">&nbsp;</div>
-					<div class="small">Ảnh đại diện mặc định là ảnh mà khi thực hiện thao tác chia sẻ lên facebook, thì facebook nó sẽ lấy ảnh này làm ảnh đại diện cho bản tin. [<span data-id="cf_og_image" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_og_image')">[ Đặt về mặc định ]</a>.</div>
+					<p class="description">Ảnh đại diện mặc định là ảnh mà khi thực hiện thao tác chia sẻ lên facebook, thì facebook nó sẽ lấy ảnh này làm ảnh đại diện cho bản tin. [<span data-id="cf_og_image" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_og_image')">[ Đặt về mặc định ]</a>.</p>
 					<input type="text" name="cf_og_image" id="cf_og_image" value="{tmp.cf_og_image}" placeholder="Nhập trực tiếp URL ảnh cho phần Ảnh đại diện mặc định" class="m click-open-new-gallery" />
 					<br>
 					<a href="https://developers.facebook.com/tools/debug/og/object/?hc_location=ufi" target="_blank" rel="nofollow">Trình gỡ lỗi đối tượng Open Graph</a></td>
@@ -101,35 +102,35 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">ID G.Analytics</td>
 				<td class="i"><input type="text" name="cf_ga_id" value="{tmp.cf_ga_id}" class="n" maxlength="25" />
-					<div class="small"><a href="http://www.google.com.vn/analytics/" target="_blank" rel="nofollow">ID theo dõi thuộc tính trên Google Analytics</a></div></td>
+					<p class="description"><a href="http://www.google.com.vn/analytics/" target="_blank" rel="nofollow">ID theo dõi thuộc tính trên Google Analytics</a></p></td>
 			</tr>
 			<tr>
 				<td class="t">GTag</td>
 				<td class="i"><input type="checkbox" name="cf_gtag_id" id="cf_gtag_id" value="{tmp.cf_gtag_id}" />
 					<label for="cf_gtag_id" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Mặc định, mã nhúng Analytics cũ sẽ được triển khai, khi bạn bấm chọn ở đây, thì mã Gtag sẽ được triển khai, tuy nhiên Gtag là bản mới nên có nhiều tính năng liên quan đến thương mại điện tử chưa được cập nhật kịp trong code.</div></td>
+					<p class="description">Mặc định, mã nhúng Analytics cũ sẽ được triển khai, khi bạn bấm chọn ở đây, thì mã Gtag sẽ được triển khai, tuy nhiên Gtag là bản mới nên có nhiều tính năng liên quan đến thương mại điện tử chưa được cập nhật kịp trong code.</p></td>
 			</tr>
 			<tr>
 				<td class="t">ID GSE</td>
 				<td class="i"><input type="text" name="cf_gse" value="{tmp.cf_gse}" class="m" maxlength="100" />
-					<div class="small"><a href="https://www.google.com/cse/all?hl=vi" target="_blank" rel="nofollow">ID công cụ tìm kiếm tùy chỉnh</a></div></td>
+					<p class="description"><a href="https://www.google.com/cse/all?hl=vi" target="_blank" rel="nofollow">ID công cụ tìm kiếm tùy chỉnh</a></p></td>
 			</tr>
 			<tr>
 				<td class="t">Google product category</td>
 				<td class="i"><input type="text" name="cf_google_product_category" value="{tmp.cf_google_product_category}" class="n" maxlength="25" />
-					<div class="small">Theo tiêu chuẩn sản phẩm của google, mỗi sản phẩm sẽ thuộc một nhóm nào sản phẩm cụ thể mà họ đã liệt kê ra. Thường thì bạn có thể liệt kê cho toàn bộ website ở đây, hoặc liệt kê chi tiết từng danh mục khi vào chỉnh sửa danh mục. Xem thêm: <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt" target="_blank" rel="nofollow">Danh sách tất cả các danh mục sản phẩm của Google</a> hoặc <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">phiên bản dành cho code</a>.</div></td>
+					<p class="description">Theo tiêu chuẩn sản phẩm của google, mỗi sản phẩm sẽ thuộc một nhóm nào sản phẩm cụ thể mà họ đã liệt kê ra. Thường thì bạn có thể liệt kê cho toàn bộ website ở đây, hoặc liệt kê chi tiết từng danh mục khi vào chỉnh sửa danh mục. Xem thêm: <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt" target="_blank" rel="nofollow">Danh sách tất cả các danh mục sản phẩm của Google</a> hoặc <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">phiên bản dành cho code</a>.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Disable tracking</td>
 				<td class="i"><input type="checkbox" name="cf_disable_tracking" id="cf_disable_tracking" value="{tmp.cf_disable_tracking}" />
 					<label for="cf_disable_tracking" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi tính năng này được bật, các tài khoản truy cập vào website và đã đăng nhập sẽ bị bỏ qua việc tracking dữ liệu qua mạng xã hội. Mục đích là để tracking khách mới, còn khách cũ hoặc nhân viên thì không cần track.</div></td>
+					<p class="description">Khi tính năng này được bật, các tài khoản truy cập vào website và đã đăng nhập sẽ bị bỏ qua việc tracking dữ liệu qua mạng xã hội. Mục đích là để tracking khách mới, còn khách cũ hoặc nhân viên thì không cần track.</p></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">URL trang chính</td>
 			</tr>
 			<tr>
-				<td class="small" colspan="2">* Nếu để trống, hệ thống sẽ tự động tìm và tối ưu lại.</td>
+				<td colspan="2"><p class="description">* Nếu để trống, hệ thống sẽ tự động tìm và tối ưu lại.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Site URL</td>
@@ -156,19 +157,19 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Đơn vị tiền tệ</td>
 				<td class="i">{tmp.cf_current_price}
-					<div class="small">Sử dụng bảng mã riêng cho CSS, tham khảo <a href="http://www.salisbury.edu/weboffice/CMS/htmlcodes.html" target="_blank" rel="nofollow">tại đây</a>.</div></td>
+					<p class="description">Sử dụng bảng mã riêng cho CSS, tham khảo <a href="http://www.salisbury.edu/weboffice/CMS/htmlcodes.html" target="_blank" rel="nofollow">tại đây</a>.</p></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
 				<td class="i"><input type="text" id="cf_current_sd_price_show" value="{tmp.cf_current_sd_price}" disabled />
 					<input type="hidden" name="cf_current_sd_price" id="cf_current_sd_price" value="{tmp.cf_current_sd_price}" />
-					<div class="small">Đây là đơn vị tiền tệ cho phần structured data của google hoặc các công cụ tìm kiếm khác. Hiển thị CSS có thể là nhiều kiểu, còn cho phần SEO thì chỉ một kiểu.</div></td>
+					<p class="description">Đây là đơn vị tiền tệ cho phần structured data của google hoặc các công cụ tìm kiếm khác. Hiển thị CSS có thể là nhiều kiểu, còn cho phần SEO thì chỉ một kiểu.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Xuất hiện ở phía trước</td>
 				<td class="i"><input type="checkbox" name="cf_current_price_before" id="cf_current_price_before" value="{tmp.cf_current_price_before}" />
 					<label for="cf_current_price_before" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Mặc định, đơn vị tiền tệ sẽ xuất hiện ở phía sau giá tiền (ưu tiên cho web sử dụng Việt Nam đồng), nếu bạn muốn nó xuất hiện ở phía trước, hãy đánh dấu vào đây và lưu lại.</div></td>
+					<p class="description">Mặc định, đơn vị tiền tệ sẽ xuất hiện ở phía sau giá tiền (ưu tiên cho web sử dụng Việt Nam đồng), nếu bạn muốn nó xuất hiện ở phía trước, hãy đánh dấu vào đây và lưu lại.</p></td>
 			</tr>
 		</tbody>
 		<tbody title="Nâng cao" id="eb-admin-config-advanced" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -178,7 +179,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td valign="top" class="t">Logo website</td>
 				<td class="i"><div title="Bấm vào đây để thay đổi Logo" data-show="gallery-add-to-logo" class="cf_logo ad-admin-avt-size cur click-open-new-gallery">&nbsp;</div>
-					<div class="small">Bấm vào Logo hoặc Favicon để chọn và thay tệp ảnh mới. Nếu chưa có ảnh, <strong><a href="upload.php" target="_blank">hãy vào đây</a></strong> để upload ảnh sau đó bấm lại vào Logo, Favicon để tải lại thư viện ảnh. [<span data-id="cf_logo" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_logo')">[ Đặt về mặc định ]</a>.</div>
+					<p class="description">Bấm vào Logo hoặc Favicon để chọn và thay tệp ảnh mới. Nếu chưa có ảnh, <strong><a href="upload.php" target="_blank">hãy vào đây</a></strong> để upload ảnh sau đó bấm lại vào Logo, Favicon để tải lại thư viện ảnh. [<span data-id="cf_logo" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_logo')">[ Đặt về mặc định ]</a>.</p>
 					<input type="text" name="cf_logo" id="cf_logo" value="{tmp.cf_logo}" placeholder="Nhập trực tiếp URL ảnh cho phần Logo" class="m click-open-new-gallery" /></td>
 			</tr>
 			<tr>
@@ -191,37 +192,40 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="number" name="cf_height_mobile_logo" value="{tmp.cf_height_mobile_logo}" class="s" /></td>
 			</tr>
 			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
 				<td class="t">Favicon</td>
 				<td class="i"><div title="Bấm vào đây để thay đổi Favicon" data-show="gallery-add-to-favicon" class="cf_favicon ad-admin-avt-size cur click-open-new-gallery">&nbsp;</div>
-					<div class="small">Favicon là ảnh nhỏ, định dạng PNG, hình vuông (32x32) xuất hiện ở góc của mỗi tab trình duyệt. [<span data-id="cf_favicon" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_favicon')">[ Đặt về mặc định ]</a>.</div>
+					<p class="description">Favicon là ảnh nhỏ, định dạng PNG, hình vuông (32x32) xuất hiện ở góc của mỗi tab trình duyệt. [<span data-id="cf_favicon" class="cur click-add-url-for-logo greencolor">Nhập URL ảnh</span>] hoặc <a href="javascript:;" onClick="EBA_add_img_logo('', 'cf_favicon')">[ Đặt về mặc định ]</a>.</p>
 					<input type="text" name="cf_favicon" id="cf_favicon" value="{tmp.cf_favicon}" placeholder="Nhập trực tiếp URL ảnh cho phần Favicon" class="m click-open-new-gallery" /></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">Màu cơ bản</td>
 			</tr>
-			<tr>
+			<tr id="custom_css_for_body">
 				<td valign="top" class="t">Màu nền website</td>
 				<td class="i"><input type="color" name="cf_default_body_bg" value="{tmp.cf_default_body_bg}" placeholder="{aaa.cf_default_body_bg}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_body_bg" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_body_bg" class="click-to-reset-site-color">Mặc định</a>
-					<div class="small">Là màu nền của toàn bộ website (BODY), thường sử dụng màu trắng, khi đổi sang các gam màu khác cần kiểm tra sự tương thích của theme dành cho các gam màu đó có cân đối không.</div></td>
+					<p class="description">Là màu nền của toàn bộ website (BODY), thường sử dụng màu trắng, khi đổi sang các gam màu khác cần kiểm tra sự tương thích của theme dành cho các gam màu đó có cân đối không.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Màu nền module</td>
 				<td class="i"><input type="color" name="cf_default_div_bg" value="{tmp.cf_default_div_bg}" placeholder="{aaa.cf_default_div_bg}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_div_bg" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_div_bg" class="click-to-reset-site-color">Mặc định</a> - CSS: <strong>default-div-bg</strong>
-					<div class="small">Là màu nền của các thẻ DIV hoặc module riêng lẻ, thường dùng với các website có áp dụng kiểu thiết kế từng khối độc lập.</div></td>
+					<p class="description">Là màu nền của các thẻ DIV hoặc module riêng lẻ, thường dùng với các website có áp dụng kiểu thiết kế từng khối độc lập.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Màu chữ cơ bản</td>
 				<td class="i"><input type="color" name="cf_default_color" value="{tmp.cf_default_color}" placeholder="{aaa.cf_default_color}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_color" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_color" class="click-to-reset-site-color">Mặc định</a> - CSS: <strong>default-color, mcb</strong>
-					<div class="small">Là màu chữ mặc định cho toàn bộ website, màu này sẽ không can thiệp vào các màu danh mục, nút bấm ở dưới.</div></td>
+					<p class="description">Là màu chữ mặc định cho toàn bộ website, màu này sẽ không can thiệp vào các màu danh mục, nút bấm ở dưới.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Màu liên kết cơ bản</td>
 				<td class="i"><input type="color" name="cf_default_link_color" value="{tmp.cf_default_link_color}" placeholder="{aaa.cf_default_link_color}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_link_color" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_link_color" class="click-to-reset-site-color">Mặc định</a>
-					<div class="small">Là màu chữ mặc định cho toàn bộ <strong>liên kết</strong> website, màu này sẽ không can thiệp vào các màu danh mục, nút bấm ở dưới.</div></td>
+					<p class="description">Là màu chữ mặc định cho toàn bộ <strong>liên kết</strong> website, màu này sẽ không can thiệp vào các màu danh mục, nút bấm ở dưới.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Kích cỡ chữ</td>
@@ -232,19 +236,19 @@ div.gallery-add-to-og_image { display: block; }
 				<td valign="top" class="t">Màu nền danh mục, nút bấm</td>
 				<td class="i"><input type="color" name="cf_default_bg" value="{tmp.cf_default_bg}" placeholder="{aaa.cf_default_bg}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_bg" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_bg" class="click-to-reset-site-color">Mặc định</a> - CSS: <strong>default-bg</strong>
-					<div class="small">Là màu nền đặc trưng cho các menu, nút bấm trên toàn bộ website.</div></td>
+					<p class="description">Là màu nền đặc trưng cho các menu, nút bấm trên toàn bộ website.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Màu nền danh mục, nút bấm (2)</td>
 				<td class="i"><input type="color" name="cf_default_2bg" value="{tmp.cf_default_2bg}" placeholder="{aaa.cf_default_2bg}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_2bg" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_2bg" class="click-to-reset-site-color">Mặc định</a> - CSS: <strong>default2-bg</strong>
-					<div class="small">Tương tự như màu danh mục nút bấm ở trên, nhưng có thể đậm hoặc nhạt hơn để tạo điểm nhấn, đỡ nhàm chán cho website.</div></td>
+					<p class="description">Tương tự như màu danh mục nút bấm ở trên, nhưng có thể đậm hoặc nhạt hơn để tạo điểm nhấn, đỡ nhàm chán cho website.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Màu chữ danh mục, nút bấm</td>
 				<td class="i"><input type="color" name="cf_default_bg_color" value="{tmp.cf_default_bg_color}" placeholder="{aaa.cf_default_bg_color}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_bg_color" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_bg_color" class="click-to-reset-site-color">Mặc định</a>
-					<div class="small">Là màu chữ cho màu nền ở trên, thường là màu tương phản để tạo sự nổi bật và dễ nhìn cho người dùng.</div></td>
+					<p class="description">Là màu chữ cho màu nền ở trên, thường là màu tương phản để tạo sự nổi bật và dễ nhìn cho người dùng.</p></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">Kích thước tiêu chuẩn hình ảnh/ clip</td>
@@ -263,22 +267,19 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Banner toàn trang (global)</td>
 				<td class="i"><input type="checkbox" name="cf_global_big_banner" id="cf_global_big_banner" value="{tmp.cf_global_big_banner}" />
 					<label for="cf_global_big_banner" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, banner chính sẽ load riêng biệt theo từng trang (trang chủ, trang danh mục, trang blog...) nếu muốn toàn bộ web sử dụng chung hết một slide thì kích hoạt chức năng này.</div>
-					</div></td>
+					<p class="description l19">Mặc định, banner chính sẽ load riêng biệt theo từng trang (trang chủ, trang danh mục, trang blog...) nếu muốn toàn bộ web sử dụng chung hết một slide thì kích hoạt chức năng này.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Nút chuyển ảnh trên slider chính</td>
 				<td class="i"><input type="checkbox" name="cf_arrow_big_banner" id="cf_arrow_big_banner" value="{tmp.cf_arrow_big_banner}" />
 					<label for="cf_arrow_big_banner" data-on="Đang TẮT bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, sẽ có một nút mũi tên nhỏ được đặt trên slider chính, để người dùng có thể chuyển ảnh từ nút này, nếu muốn tắt nó đi, hãy bỏ chọn và lưu lại.</div>
-					</div></td>
+					<p class="description l19">Mặc định, sẽ có một nút mũi tên nhỏ được đặt trên slider chính, để người dùng có thể chuyển ảnh từ nút này, nếu muốn tắt nó đi, hãy bỏ chọn và lưu lại.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Vuốt màn hình để chuyển ảnh</td>
 				<td class="i"><input type="checkbox" name="cf_swipe_big_banner" id="cf_swipe_big_banner" value="{tmp.cf_swipe_big_banner}" />
 					<label for="cf_swipe_big_banner" data-on="Đang TẮT (<em>Khuyên dùng</em>) bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Trên các thiết bị di động, có thể bật chế độ chuyển ảnh khi vuốt màn hình, tuy nhiên, chế độ này xung đột với các URL có trong banner, nên chỉ kích hoạt chúng khi không sử dụng URL này.</div>
-					</div></td>
+					<p class="description l19">Trên các thiết bị di động, có thể bật chế độ chuyển ảnh khi vuốt màn hình, tuy nhiên, chế độ này xung đột với các URL có trong banner, nên chỉ kích hoạt chúng khi không sử dụng URL này.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Các banner khác</td>
@@ -288,14 +289,13 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Tự động lấy size ảnh</td>
 				<td class="i"><input type="checkbox" name="cf_auto_get_ads_size" id="cf_auto_get_ads_size" value="{tmp.cf_auto_get_ads_size}" />
 					<label for="cf_auto_get_ads_size" data-on="Đang TẮT bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Khi chức năng này được kích hoạt, mỗi khi ảnh quảng cáo được gọi, hệ thống sẽ lấy size ảnh thật để tạo khung ảnh sao cho khớp khung nhất có thể.</div>
-					</div></td>
+					<p class="description l19">Khi chức năng này được kích hoạt, mỗi khi ảnh quảng cáo được gọi, hệ thống sẽ lấy size ảnh thật để tạo khung ảnh sao cho khớp khung nhất có thể.</p></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_slider_big_play">Tự động chạy slider</label></td>
 				<td class="i"><input type="number" name="cf_slider_big_play" value="{tmp.cf_slider_big_play}" id="cf_slider_big_play" class="s" />
 					(mini giây)
-					<div class="small">Khi thông số này được thiết lập lớn hơn 0, slider chính sẽ được kích hoạt tự động chạy theo số mini giây đã được thiết lập (1 giây = 1000 mini giây).</div></td>
+					<p class="description">Khi thông số này được thiết lập lớn hơn 0, slider chính sẽ được kích hoạt tự động chạy theo số mini giây đã được thiết lập (1 giây = 1000 mini giây).</p></td>
 			</tr>
 			<tr>
 				<td class="t">Chất lượng hình ảnh (desktop)</td>
@@ -328,12 +328,12 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Thời gian lưu cache</td>
 				<td class="i">{tmp.cf_reset_cache}
-					<div class="small">Cache giúp cho website chạy nhanh và mượt hơn, mặc định hệ thống để 1 phút, khuyến nghị để 10 phút hoặc hơn.</div></td>
+					<p class="description">Cache giúp cho website chạy nhanh và mượt hơn, mặc định hệ thống để 1 phút, khuyến nghị để 10 phút hoặc hơn.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Dọn sạch bộ nhớ đệm</td>
 				<td class="i"><a href="admin.php?page=eb-coder&tab=cleanup_cache" target="target_eb_iframe" class="eb-btn">Dọn ngay</a>
-					<div class="small">Dọn sạch tất cả các thành phần có liên quan đến bộ nhớ đệm, bao gồm tất cả các tập tin khuôn mẫu và lệnh truy xuất dữ liệu đã được tạo bởi bộ nhớ đệm. Sử dụng khi bạn muốn tất cả các dữ liệu được nạp mới trở lại. </div></td>
+					<p class="description">Dọn sạch tất cả các thành phần có liên quan đến bộ nhớ đệm, bao gồm tất cả các tập tin khuôn mẫu và lệnh truy xuất dữ liệu đã được tạo bởi bộ nhớ đệm. Sử dụng khi bạn muốn tất cả các dữ liệu được nạp mới trở lại.</p></td>
 			</tr>
 			<tr>
 				<td class="i bold redcolor bborder" colspan="2">Xử lý dữ liệu cũ</td>
@@ -341,20 +341,20 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t" valign="top">Tên miền cũ</td>
 				<td class="i"><input type="text" name="cf_old_domain" value="{tmp.cf_old_domain}" placeholder="Ví dụ: v1.echbay.com" class="m" />
-					<div class="small">Sử dụng khi bạn có dữ liệu được lấy từ một domain khác, trong bài viết có chứa URL là của domain cũ, và giờ bạn muốn thay đổi tất cả sang domain mới (chủ yếu là URL ảnh).<br>
+					<p class="description">Sử dụng khi bạn có dữ liệu được lấy từ một domain khác, trong bài viết có chứa URL là của domain cũ, và giờ bạn muốn thay đổi tất cả sang domain mới (chủ yếu là URL ảnh).<br>
 						* Lưu ý! chỉ nhập domain, <strong>không bao gồm</strong> http:// hoặc dấu /<br>
 						Ví dụ:
 						<pre><code class="d-block">echbay.com, webgiare.org</code></pre>
-					</div></td>
+					</p></td>
 			</tr>
 			<tr>
 				<td class="t" valign="top">Thay thế dữ liệu (CDN)</td>
 				<td class="i"><textarea name="cf_replace_content_full" id="cf_replace_content_full" placeholder="Ví dụ: Hello word! | Xin chào Việt Nam!">{tmp.cf_replace_content_full}</textarea>
-					<div class="small">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
+					<p class="description">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
 						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
 						Ví dụ:
 						<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
-					</div></td>
+					</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -362,13 +362,13 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">DNS prefetch</td>
 				<td class="i"><textarea name="cf_dns_prefetch" id="cf_dns_prefetch" placeholder="Ví dụ: cdn.echbay.com">{tmp.cf_dns_prefetch}</textarea>
-					<div class="small">Khi có khai báo DNS prefetch thì trình duyệt sẽ tự động phân giải tên miền, các tài nguyên css, js sẽ được load mà không cần đợi thời gian xử lí DNS.<br>
+					<p class="description">Khi có khai báo DNS prefetch thì trình duyệt sẽ tự động phân giải tên miền, các tài nguyên css, js sẽ được load mà không cần đợi thời gian xử lí DNS.<br>
 						<span class="redcolor">*</span> Vui lòng không sử dụng nếu bạn chưa rõ DNS prefetch là gì.<br>
 						* Phải nhập URL cả www. nếu CDN chạy chính trên bản www.<br>
 						* DNS prefetch chỉ sử dụng cho các file tĩnh như: Ảnh, JS, CSS nên khi khách hàng truy cập vào website thông qua tên miền này hệ thống sẽ báo lỗi <strong>403</strong>.<br>
 						Ví dụ:
 						<pre><code class="d-block">cdn.echbay.net</code><code class="d-block">cdn1.echbay.net</code><code class="d-block">cdn2.echbay.com</code></pre>
-					</div></td>
+					</p></td>
 			</tr>
 		</tbody>
 		<tbody title="Thông tin liên hệ" id="eb-admin-config-contact" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -387,13 +387,13 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t" valign="top">Điện thoại</td>
 				<td class="i"><textarea name="cf_dienthoai" id="cf_dienthoai">{tmp.cf_dienthoai}</textarea>
 					<textarea name="cf_call_dienthoai" id="cf_call_dienthoai" class="d-none">{tmp.cf_call_dienthoai}</textarea>
-					<div class="small">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</div></td>
+					<p class="description">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</p></td>
 			</tr>
 			<tr>
 				<td class="t" valign="top">Hotline</td>
 				<td class="i"><textarea name="cf_hotline" id="cf_hotline">{tmp.cf_hotline}</textarea>
 					<textarea name="cf_call_hotline" id="cf_call_hotline" class="d-none">{tmp.cf_call_hotline}</textarea>
-					<div class="small">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</div></td>
+					<p class="description">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</p></td>
 				<!--
 				<td class="i"><input type="text" name="cf_hotline" id="cf_hotline" value="{tmp.cf_hotline}" class="m" maxlength="15" /></td>
 				--> 
@@ -401,12 +401,12 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t" valign="top">Địa chỉ</td>
 				<td class="i"><textarea name="cf_diachi" id="cf_diachi">{tmp.cf_diachi}</textarea>
-					<div class="small">Có thể nhập nhiều địa chỉ, mỗi địa chỉ cách nhau bởi một dấu xuống dòng. Địa chỉ đầu tiên sẽ là địa chỉ chính cho mọi trường hợp.</div></td>
+					<p class="description">Có thể nhập nhiều địa chỉ, mỗi địa chỉ cách nhau bởi một dấu xuống dòng. Địa chỉ đầu tiên sẽ là địa chỉ chính cho mọi trường hợp.</p></td>
 			</tr>
 			<tr>
 				<td class="t" valign="top">Thông tin chuyển khoản</td>
 				<td class="i"><textarea name="cf_bank" id="cf_bank">{tmp.cf_bank}</textarea>
-					<div class="small">Thông tin này sẽ hiển thị trong phần hướng dẫn thanh toán.</div></td>
+					<p class="description">Thông tin này sẽ hiển thị trong phần hướng dẫn thanh toán.</p></td>
 			</tr>
 		</tbody>
 		<tbody title="Thiết lập gửi mail" id="eb-admin-config-smtp" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -419,33 +419,33 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">SMTP Email</td>
 				<td class="i"><input type="text" name="cf_smtp_email" value="{tmp.cf_smtp_email}" class="m" maxlength="68" />
-					<div class="small">Email hoặc tài khoản đăng nhập</div></td>
+					<p class="description">Email hoặc tài khoản đăng nhập</p></td>
 			</tr>
 			<tr>
 				<td class="t">SMTP Pass</td>
 				<td class="i"><input type="hidden" name="cf_smtp_pass" value="{tmp.cf_smtp_pass}" />
 					<input type="text" id="oi_smtp_pass" value="" class="m" maxlength="55" />
-					<div class="small">Mật khẩu đăng nhập</div></td>
+					<p class="description">Mật khẩu đăng nhập</p></td>
 			</tr>
 			<tr>
 				<td class="t">SMTP Host</td>
 				<td class="i"><input type="text" name="cf_smtp_host" value="{tmp.cf_smtp_host}" class="n" maxlength="25" />
-					<div class="small">IP hoặc host name của server mail. Gmail SMTP: <strong>smtp.gmail.com</strong>, Pepipost SMTP: <strong>smtp.pepipost.com</strong></div></td>
+					<p class="description">IP hoặc host name của server mail. Gmail SMTP: <strong>smtp.gmail.com</strong>, Pepipost SMTP: <strong>smtp.pepipost.com</strong></p></td>
 			</tr>
 			<tr>
 				<td class="t">SMTP Port</td>
 				<td class="i"><input type="number" name="cf_smtp_port" value="{tmp.cf_smtp_port}" class="s" maxlength="6" />
-					<div class="small">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong>, Pepipost port 2525. <a href="http://support.pepipost.com/knowledge_base/topics/wp-mail-smtp?utm_source=WordPress&utm_campaign=Plugins&utm_medium=echbaydotcom&utm_term=organic" target="_blank">Tìm hiểu thêm</a> về việc gửi email qua Pepipost.</div></td>
+					<p class="description">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong>, Pepipost port 2525. <a href="http://support.pepipost.com/knowledge_base/topics/wp-mail-smtp?utm_source=WordPress&utm_campaign=Plugins&utm_medium=echbaydotcom&utm_term=organic" target="_blank">Tìm hiểu thêm</a> về việc gửi email qua Pepipost.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Mã hóa</td>
 				<td class="i">{tmp.cf_smtp_encryption}
-					<div class="small">Hầu hết các server mail đều hỗ trợ phương thức SSL, nhưng nếu có TLS thì bạn nên sử dụng TLS thay cho SSL.</div></td>
+					<p class="description">Hầu hết các server mail đều hỗ trợ phương thức SSL, nhưng nếu có TLS thì bạn nên sử dụng TLS thay cho SSL.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Dịch vụ gửi mail</td>
 				<td class="i">{tmp.cf_sys_email}
-					<div class="small">* Lựa chọn dịch vụ gửi mail mà bạn muốn sử dụng.</div></td>
+					<p class="description">* Lựa chọn dịch vụ gửi mail mà bạn muốn sử dụng.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Kiểm tra hệ thống gửi email</td>
@@ -455,7 +455,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Email nhận thông báo</td>
 				<td class="i"><input type="email" name="cf_email_note" value="{tmp.cf_email_note}" class="m" />
-					<div class="small">* Nếu trường này có dữ liệu, mỗi khi có đơn hàng sẽ đồng thời gửi email thông báo tới email này.</div></td>
+					<p class="description">* Nếu trường này có dữ liệu, mỗi khi có đơn hàng sẽ đồng thời gửi email thông báo tới email này.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="l19">Google hiện đang là nhà cung cấp mail phổ biến, ngoài ra bạn cũng có thể dùng SMTP của google để tiến hành gửi mail. Trước tiên bạn cần phải kích hoạt dịch vụ theo các bước dưới đây:<br>
@@ -492,11 +492,11 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td valign="top" class="t">Admin Facebook ID</td>
 				<td class="i"><input type="text" name="cf_facebook_admin_id" value="{tmp.cf_facebook_admin_id}" placeholder="ID tài khoản Facebook quản lý chính" class="m" />
-					<div class="small">Nhiều ID, mỗi ID cách nhau bởi dấu phẩy ( <font class="redcolor bold">,</font> )</div>
+					<p class="description">Nhiều ID, mỗi ID cách nhau bởi dấu phẩy ( <font class="redcolor bold">,</font> )</p>
 					<div><a href="https://developers.facebook.com/apps/" target="_blank" rel="nofollow">Tạo và lấy App ID Facebook tại đây</a><br>
 						<a href="https://www.google.com.vn/search?q=get+id+fb" target="_blank" rel="nofollow">Lấy ID tài khoản Facebook của bạn tại đây</a><br>
 						<a href="https://developers.facebook.com/tools/comments" target="_blank" rel="nofollow">Vào đây để quản lý comments facebook trên website</a><br>
-						<a data-src="https://www.youtube.com/watch?v=hFYrbMmm2KE" href="javascript:;" class="admin-open-youtube-video"><i class="fa fa-play"></i> Xem video hướng dẫn...</a></div></td>
+						<a data-src="https://www.youtube.com/watch?v=hFYrbMmm2KE" href="javascript:;" class="admin-open-youtube-video"><i class="fa fa-play"></i> Xem video hướng dẫn...</a></p></td>
 			</tr>
 			<tr>
 				<td class="t">Instagram</td>
@@ -517,12 +517,12 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t" valign="top">Yahoo</td>
 				<td class="i"><textarea name="cf_yahoo" id="cf_yahoo">{tmp.cf_yahoo}</textarea>
-					<div class="small">Nhập nhiều địa chỉ Yahoo, mỗi địa chỉ cách nhau bởi dấu xuống dòng</div></td>
+					<p class="description">Nhập nhiều địa chỉ Yahoo, mỗi địa chỉ cách nhau bởi dấu xuống dòng</p></td>
 			</tr>
 			<tr>
 				<td class="t" valign="top">Skype</td>
 				<td class="i"><textarea name="cf_skype" id="cf_skype">{tmp.cf_skype}</textarea>
-					<div class="small">Nhập nhiều địa chỉ Skype, mỗi địa chỉ cách nhau bởi dấu xuống dòng</div></td>
+					<p class="description">Nhập nhiều địa chỉ Skype, mỗi địa chỉ cách nhau bởi dấu xuống dòng</p></td>
 			</tr>
 		</tbody>
 		<tbody title="Mã nhúng ngoài" id="eb-admin-config-outsource" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -535,7 +535,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td valign="top" class="t">Tất cả các trang cuối HEAD</td>
 				<td class="i"><textarea name="cf_js_head_full" id="cf_js_head_full" placeholder="Mã nhúng HTML ở tất cả các trang, trước &lt;/HEAD&gt;">{tmp.cf_js_head_full}</textarea>
-					<div class="small">Đây là nơi để nhúng một số mã nhúng yêu cầu phải nhúng trong thẻ HEAD.</div></td>
+					<p class="description">Đây là nơi để nhúng một số mã nhúng yêu cầu phải nhúng trong thẻ HEAD.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Mẫu CSS hay dùng</td>
@@ -545,17 +545,17 @@ div.gallery-add-to-og_image { display: block; }
 							<div class="lf f25 text-center"><i data-href="[jmp.url_css]" class="fa fa-plus greencolor cur click-add-css-to-head"></i></div>
 						</div>
 					</div>
-					<div class="small">* Đây là tổng hợp các mẫu CSS hay dùng, sẽ được viết sẵn vào file chờ, dùng file nào thì copy mã nhúng cho vào HEAD là được!</div></td>
+					<p class="description">* Đây là tổng hợp các mẫu CSS hay dùng, sẽ được viết sẵn vào file chờ, dùng file nào thì copy mã nhúng cho vào HEAD là được!</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Tất cả các trang cuối BODY</td>
 				<td class="i"><textarea name="cf_js_allpage_full" id="cf_js_allpage_full" placeholder="Mã nhúng HTML ở tất cả các trang, trước &lt;/BODY&gt;">{tmp.cf_js_allpage_full}</textarea>
-					<div class="small">Nơi dành để nhúng các mã như: Re Marketing, Chat code... hoặc Mã nhúng điều khiển nội dung website nếu quản trị website thông thạo về Javascript.</div></td>
+					<p class="description">Nơi dành để nhúng các mã như: Re Marketing, Chat code... hoặc Mã nhúng điều khiển nội dung website nếu quản trị website thông thạo về Javascript.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Trang hoàn tất đơn hàng</td>
 				<td class="i"><textarea name="cf_js_hoan_tat_full" id="cf_js_hoan_tat_full" placeholder="Mã nhúng HTML ở Trang hoàn tất đơn hàng">{tmp.cf_js_hoan_tat_full}</textarea>
-					<div class="small">Nơi dành để nhúng các mã như: Conversion Marketing, lưu thông tin đơn hàng đã được gửi.</div></td>
+					<p class="description">Nơi dành để nhúng các mã như: Conversion Marketing, lưu thông tin đơn hàng đã được gửi.</p></td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Trang chi tiết S.Phẩm (HEAD)</td>
@@ -568,7 +568,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td valign="top" class="t">Google Adsense code</td>
 				<td class="i"><textarea name="cf_js_gadsense_full" id="cf_js_gadsense_full" placeholder="Mã Google Adsense! dành cho ai thích nuôi GÀ (có cả widget hỗ trợ)">{tmp.cf_js_gadsense_full}</textarea>
-					<div class="small">Nơi dành để nhúng mã Google Adsense, thường là mã Auto vì chỗ này chỉ nhúng được một mã duy nhất.</div></td>
+					<p class="description">Nơi dành để nhúng mã Google Adsense, thường là mã Auto vì chỗ này chỉ nhúng được một mã duy nhất.</p></td>
 			</tr>
 			<tr>
 				<td class="t">ID Nhà xuất bản</td>
@@ -591,17 +591,17 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">geo.region</td>
 				<td class="i"><input type="text" name="cf_region" value="{tmp.cf_region}" placeholder="VN" class="s" maxlength="55" />
-					<div class="small">Mã Quốc gia. Ví dụ: VN, US</div></td>
+					<p class="description">Mã Quốc gia. Ví dụ: VN, US</p></td>
 			</tr>
 			<tr>
 				<td class="t">geo.placename</td>
 				<td class="i"><input type="text" name="cf_placename" value="{tmp.cf_placename}" placeholder="Thanh Pho Ha Noi" class="n" maxlength="155" />
-					<div class="small">Ví dụ: Hanoi, Ha Noi, Ho Chi Minh, Saigon...</div></td>
+					<p class="description">Ví dụ: Hanoi, Ha Noi, Ho Chi Minh, Saigon...</p></td>
 			</tr>
 			<tr>
 				<td class="t">geo.position</td>
 				<td class="i"><input type="text" name="cf_position" value="{tmp.cf_position}" placeholder="21.036873;105.8009913" class="n" maxlength="55" />
-					<div class="small">Tọa độ Công ty/ Tổ chức của bạn trên bản đồ</div>
+					<p class="description">Tọa độ Công ty/ Tổ chức của bạn trên bản đồ</p>
 					<div id="mapholder"></div></td>
 			</tr>
 			<!--
@@ -621,7 +621,7 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Google API key (Map)</td>
 				<td class="i"><input type="text" name="cf_gg_api_key" value="{tmp.cf_gg_api_key}" placeholder="Dùng để tạo bản đồ dưới dạng iframe (nếu có)" class="l" maxlength="255" />
-					<div><a href="https://developers.google.com/maps/documentation/embed/guide" target="_blank" rel="nofollow">https://developers.google.com/maps/documentation/embed/guide</a></div></td>
+					<p class="description"><a href="https://developers.google.com/maps/documentation/embed/guide" target="_blank" rel="nofollow">https://developers.google.com/maps/documentation/embed/guide</a></p></td>
 			</tr>
 		</tbody>
 		<tbody title="Thanh toán trực tuyến" id="eb-admin-config-payments" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -646,10 +646,10 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Chia sẻ dữ liệu qua JSON</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_json" id="cf_on_off_json" value="{tmp.cf_on_off_json}" />
 					<label for="cf_on_off_json" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						<div>- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a></div>
-						<div>- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></div>
-					</div></td>
+					<p class="description l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a><br>
+
+						- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -658,26 +658,24 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
 					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">XML-RPC là một giao thức kết nối với website WordPress từ xa sử dụng XML để trao đổi dữ liệu qua lại! Thường sử dụng khi thiết lập đăng bài từ một ứng dụng khác, nếu bạn không có nhu cầu này, hãy tắt nó đi. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						<div>- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a></div>
-					</div></td>
+					<p class="description l19">XML-RPC là một giao thức kết nối với website WordPress từ xa sử dụng XML để trao đổi dữ liệu qua lại! Thường sử dụng khi thiết lập đăng bài từ một ứng dụng khác, nếu bạn không có nhu cầu này, hãy tắt nó đi. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a>
+					</p></td>
 			</tr>
 			<tr>
 				<td class="t">Bật/ Tắt chức năng Cron Job</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_wpcron" id="cf_on_off_wpcron" value="{tmp.cf_on_off_wpcron}" />
 					<label for="cf_on_off_wpcron" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						<div>- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></div>
-					</div></td>
+					<p class="description l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></p></td>
 			</tr>
 			<tr>
 				<td class="t">Bật/ Tắt Feed (RSS)</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_feed" id="cf_on_off_feed" value="{tmp.cf_on_off_feed}" />
 					<label for="cf_on_off_feed" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Chức năng Feed (RSS) sẽ giúp cho việc chia sẻ dữ liệu trên website của bạn được thuận lợi hơn, đa dạng hơn. Về cơ bản là nên bật nó, trường hợp bạn không muốn chia sẻ dữ liệu này thì hãy tắt nó đi.<br>
-						<div>- <a href="{tmp.web_link}feed" target="_blank">{tmp.web_link}feed</a><br>
-							- <a href="{tmp.web_link}blog/feed" target="_blank">{tmp.web_link}blog/feed</a></div>
-					</div></td>
+					<p class="description l19">Chức năng Feed (RSS) sẽ giúp cho việc chia sẻ dữ liệu trên website của bạn được thuận lợi hơn, đa dạng hơn. Về cơ bản là nên bật nó, trường hợp bạn không muốn chia sẻ dữ liệu này thì hãy tắt nó đi.<br>
+						- <a href="{tmp.web_link}feed" target="_blank">{tmp.web_link}feed</a><br>
+							- <a href="{tmp.web_link}blog/feed" target="_blank">{tmp.web_link}blog/feed</a></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -686,29 +684,29 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Xóa URL phân nhóm cha</td>
 				<td class="i"><input type="checkbox" name="cf_remove_category_base" id="cf_remove_category_base" value="{tmp.cf_remove_category_base}" />
 					<label for="cf_remove_category_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại.
-						<div class="redcolor">* Việc xóa URL nhóm cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích.</div>
-					</div></td>
+					<p class="description l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
+						<span class="redcolor">* Việc xóa URL nhóm cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích.</span>
+					</p></td>
 			</tr>
 			<tr>
 				<td class="t">Xóa URL post_option cha</td>
 				<td class="i"><input type="checkbox" name="cf_remove_post_option_base" id="cf_remove_post_option_base" value="{tmp.cf_remove_post_option_base}" />
 					<label for="cf_remove_post_option_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, các post_option con sẽ mang thêm URL của post_option cha, để xóa nó đi, hãy bấm chọn và lưu lại.
-						<div class="redcolor">* Việc xóa URL post_option cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích. <strong>Ngoài ra, nó có thể làm xung đột URL với phần phân nhóm nên dễ tạo lỗi cho website rất nhiều</strong>.</div>
-					</div></td>
+					<p class="description l19">Mặc định, các post_option con sẽ mang thêm URL của post_option cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
+						<span class="redcolor">* Việc xóa URL post_option cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích. <strong>Ngoài ra, nó có thể làm xung đột URL với phần phân nhóm nên dễ tạo lỗi cho website rất nhiều</strong>.</span>
+					</p></td>
 			</tr>
 			<tr>
 				<td class="t">Cho phép index với post_option</td>
 				<td class="i"><input type="checkbox" name="cf_alow_post_option_index" id="cf_alow_post_option_index" value="{tmp.cf_alow_post_option_index}" />
 					<label for="cf_alow_post_option_index" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, các post option sẽ không được index, do nó chỉ được coi là phân nhóm phụ, phục vụ cho module tìm kiếm nâng cao, nếu bạn muốn nó vẫn được index bình thường, có thể kích hoạt nó lên.</div></td>
+					<p class="description l19">Mặc định, các post option sẽ không được index, do nó chỉ được coi là phân nhóm phụ, phục vụ cho module tìm kiếm nâng cao, nếu bạn muốn nó vẫn được index bình thường, có thể kích hoạt nó lên.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Cho phép index với post_tag</td>
 				<td class="i"><input type="checkbox" name="cf_alow_post_tag_index" id="cf_alow_post_tag_index" value="{tmp.cf_alow_post_tag_index}" />
 					<label for="cf_alow_post_tag_index" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19"></div></td>
+					<p class="description l19"></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -717,7 +715,7 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">EchBay SEO plugin</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_echbay_seo" id="cf_on_off_echbay_seo" value="{tmp.cf_on_off_echbay_seo}" />
 					<label for="cf_on_off_echbay_seo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</div></td>
+					<p class="description l19">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -726,7 +724,7 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Cung cấp bởi Ếch Bay</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_echbay_logo" id="cf_on_off_echbay_logo" value="{tmp.cf_on_off_echbay_logo}" />
 					<label for="cf_on_off_echbay_logo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</div></td>
+					<p class="description l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -745,7 +743,7 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">AMP Chi tiết Sản phẩm</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_amp_product" id="cf_on_off_amp_product" value="{tmp.cf_on_off_amp_product}" />
 					<label for="cf_on_off_amp_product" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">* AMP là trang tối giản cho website, nên không phù hợp với các trang chi tiết của trang bán hàng, trường hợp bạn sử dụng plugin này làm trang <strong>Tin tức</strong> thì có thể kích hoạt nó lên.</div></td>
+					<p class="description">* AMP là trang tối giản cho website, nên không phù hợp với các trang chi tiết của trang bán hàng, trường hợp bạn sử dụng plugin này làm trang <strong>Tin tức</strong> thì có thể kích hoạt nó lên.</p></td>
 			</tr>
 			<tr>
 				<td class="t">AMP Danh mục Blogs/ Tin tức</td>
@@ -772,7 +770,7 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Không lấy thumbnail</td>
 				<td class="i"><input type="checkbox" name="cf_disable_auto_get_thumb" id="cf_disable_auto_get_thumb" value="{tmp.cf_disable_auto_get_thumb}" />
 					<label for="cf_disable_auto_get_thumb" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Mặc định! các hình ảnh hiển thị ra web sẽ được hệ thống lọc với kích cỡ vừa khung nhất, để đảm bảo tốc độ tải cho web site. Nếu bạn muốn giữ nguyên ảnh gốc khi xuất ra, hãy bỏ chọn để tắt chức năng này.</div></td>
+					<p class="description">Mặc định! các hình ảnh hiển thị ra web sẽ được hệ thống lọc với kích cỡ vừa khung nhất, để đảm bảo tốc độ tải cho web site. Nếu bạn muốn giữ nguyên ảnh gốc khi xuất ra, hãy bỏ chọn để tắt chức năng này.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -781,25 +779,25 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Nhúng URL vào thẻ H1</td>
 				<td class="i"><input type="checkbox" name="cf_set_link_for_h1" id="cf_set_link_for_h1" value="{tmp.cf_set_link_for_h1}" />
 					<label for="cf_set_link_for_h1" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Mặc định, chúng tôi sẽ nhúng URL nhắc lại vào thẻ H1 trong các mục như: danh sách sản phẩm, bài viết, chi tiết sản phẩm, bài viết... Nếu bạn không muốn điều này xảy ra, hãy bỏ chọn để tắt nó đi.</div></td>
+					<p class="description">Mặc định, chúng tôi sẽ nhúng URL nhắc lại vào thẻ H1 trong các mục như: danh sách sản phẩm, bài viết, chi tiết sản phẩm, bài viết... Nếu bạn không muốn điều này xảy ra, hãy bỏ chọn để tắt nó đi.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Tạo mặt nạ cho nội dung</td>
 				<td class="i"><input type="checkbox" name="cf_set_mask_for_details" id="cf_set_mask_for_details" value="{tmp.cf_set_mask_for_details}" />
 					<label for="cf_set_mask_for_details" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Việc tạo mặt nạ cho nội dung sẽ khiến cho việc copy nội dung trên website của bạn khó khăn hơn, đồng nghĩa với việc bảo vệ nội dung cho website của bạn tốt hơn.</div></td>
+					<p class="description">Việc tạo mặt nạ cho nội dung sẽ khiến cho việc copy nội dung trên website của bạn khó khăn hơn, đồng nghĩa với việc bảo vệ nội dung cho website của bạn tốt hơn.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Nhúng thẻ H1 vào logo trang chủ</td>
 				<td class="i"><input type="checkbox" name="cf_h1_logo" id="cf_h1_logo" value="{tmp.cf_h1_logo}" />
 					<label for="cf_h1_logo" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi chế độ này được bật, thẻ H1 sẽ được nhúng vào Logo trong trang chủ (nếu theme có hỗ trợ). Tuy nhiên đây chỉ là phương thức chống chế với các công cụ check SEO, nên chúng tôi không khuyến nghị.</div></td>
+					<p class="description">Khi chế độ này được bật, thẻ H1 sẽ được nhúng vào Logo trong trang chủ (nếu theme có hỗ trợ). Tuy nhiên đây chỉ là phương thức chống chế với các công cụ check SEO, nên chúng tôi không khuyến nghị.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Tự động thêm nofollow</td>
 				<td class="i"><input type="checkbox" name="cf_auto_nofollow" id="cf_auto_nofollow" value="{tmp.cf_auto_nofollow}" />
 					<label for="cf_auto_nofollow" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi chế độ này được bật, các thẻ A chứa URL của website khác sẽ bị gán thêm thuộc tính nofollow vào để đánh dấu URL không quan trọng đối với các bot tìm kiếm.</div></td>
+					<p class="description">Khi chế độ này được bật, các thẻ A chứa URL của website khác sẽ bị gán thêm thuộc tính nofollow vào để đánh dấu URL không quan trọng đối với các bot tìm kiếm.</p></td>
 			</tr>
 			<tr class="show-administrator-only">
 				<td colspan="2"><hr></td>
@@ -808,19 +806,19 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Ẩn các menu quan trọng</td>
 				<td class="i"><input type="checkbox" name="cf_hide_supper_admin_menu" id="cf_hide_supper_admin_menu" value="{tmp.cf_hide_supper_admin_menu}" />
 					<label for="cf_hide_supper_admin_menu" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Mặc định, để lược bớt menu, tạo độ thông thoáng cho admin, một số menu ít khi dùng đến sẽ được ẩn đi, nó chỉ được hiển thị với tài khoản có quyền admin cấp cao.</div></td>
+					<p class="description">Mặc định, để lược bớt menu, tạo độ thông thoáng cho admin, một số menu ít khi dùng đến sẽ được ẩn đi, nó chỉ được hiển thị với tài khoản có quyền admin cấp cao.</p></td>
 			</tr>
 			<tr class="show-administrator-only">
 				<td class="t">Cho phép chỉnh sửa Theme</td>
 				<td class="i"><input type="checkbox" name="cf_alow_edit_theme_plugin" id="cf_alow_edit_theme_plugin" value="{tmp.cf_alow_edit_theme_plugin}" />
 					<label for="cf_alow_edit_theme_plugin" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Việc sửa theme/ plugin đôi khi có thể gây bất cập hoặc giảm độ bảo mật cho website, nếu bạn không chắc chắn về vấn đề này có thể tắt nó đi, và chỉ bật khi cần thiết.</div></td>
+					<p class="description">Việc sửa theme/ plugin đôi khi có thể gây bất cập hoặc giảm độ bảo mật cho website, nếu bạn không chắc chắn về vấn đề này có thể tắt nó đi, và chỉ bật khi cần thiết.</p></td>
 			</tr>
 			<tr class="show-administrator-only">
 				<td class="t">Cho phép chỉnh sửa Plugin</td>
 				<td class="i"><input type="checkbox" name="cf_alow_edit_plugin_theme" id="cf_alow_edit_plugin_theme" value="{tmp.cf_alow_edit_plugin_theme}" />
 					<label for="cf_alow_edit_plugin_theme" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Việc sửa theme/ plugin đôi khi có thể gây bất cập hoặc giảm độ bảo mật cho website, nếu bạn không chắc chắn về vấn đề này có thể tắt nó đi, và chỉ bật khi cần thiết.</div></td>
+					<p class="description">Việc sửa theme/ plugin đôi khi có thể gây bất cập hoặc giảm độ bảo mật cho website, nếu bạn không chắc chắn về vấn đề này có thể tắt nó đi, và chỉ bật khi cần thiết.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -829,21 +827,21 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Đặt làm trang Tin tức</td>
 				<td class="i"><input type="checkbox" name="cf_set_news_version" id="cf_set_news_version" value="{tmp.cf_set_news_version}" />
 					<label for="cf_set_news_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Plugin này được thiết kế chủ yếu cho các website bán hàng, nếu dùng để làm website tin tức thì đánh dấu vào đây để ẩn các chức năng của trang bán hàng đi cho dễ sử dụng.</div></td>
+					<p class="description">Plugin này được thiết kế chủ yếu cho các website bán hàng, nếu dùng để làm website tin tức thì đánh dấu vào đây để ẩn các chức năng của trang bán hàng đi cho dễ sử dụng.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Đặt làm trang Rao vặt</td>
 				<td class="i"><input type="checkbox" name="cf_set_raovat_version" id="cf_set_raovat_version" value="{tmp.cf_set_raovat_version}" />
 					<label for="cf_set_raovat_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Trường hợp muốn sử dụng plugin này làm trang Tin tức hoặc Rao vặt, nên kích hoạt tính năng này để sử dụng bảng dữ liệu riêng thay vì bảng mặc định của wordpress. Điều này giúp cho việc lấy dữ liệu diễn ra ổn định hơn.<br>
+					<p class="description">Trường hợp muốn sử dụng plugin này làm trang Tin tức hoặc Rao vặt, nên kích hoạt tính năng này để sử dụng bảng dữ liệu riêng thay vì bảng mặc định của wordpress. Điều này giúp cho việc lấy dữ liệu diễn ra ổn định hơn.<br>
 						<span class="orgcolor">* Đây là một tính năng cao cấp, đồng nghĩa với việc quản trị và vận hành sẽ phức tạp hơn, nên chi phí cũng đắt hơn so với bản thường. Vì thế, chỉ bật tính năng này khi bạn nắm rõ nguyên lý hoạt động của nó để đảm bảo an toàn dữ liệu cho chính bạn.</span><br>
-						Sau khi kích hoạt tính năng này, cần bấm vào <a href="{tmp.web_link}404?update_db_struct=1" target="_blank" rel="nofollow">đây: {tmp.web_link}404?update_db_struct=1</a> để đồng bộ dữ liệu.</div></td>
+						Sau khi kích hoạt tính năng này, cần bấm vào <a href="{tmp.web_link}404?update_db_struct=1" target="_blank" rel="nofollow">đây: {tmp.web_link}404?update_db_struct=1</a> để đồng bộ dữ liệu.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Xóa POSTMETA Rao vặt</td>
 				<td class="i"><input type="checkbox" name="cf_remove_raovat_meta" id="cf_remove_raovat_meta" value="{tmp.cf_remove_raovat_meta}" />
 					<label for="cf_remove_raovat_meta" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small redcolor">* Tính năng này đi kèm với tính năng Rao vặt ở trên, nhưng tăng độ nguy hiểm lên vài lần. Lưu ý khi kích hoạt nó.</div></td>
+					<p class="description redcolor">* Tính năng này đi kèm với tính năng Rao vặt ở trên, nhưng tăng độ nguy hiểm lên vài lần. Lưu ý khi kích hoạt nó.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -852,14 +850,14 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Tự động tìm kiếm nâng cao</td>
 				<td class="i"><input type="checkbox" name="cf_search_advanced_auto_submit" id="cf_search_advanced_auto_submit" value="{tmp.cf_search_advanced_auto_submit}" />
 					<label for="cf_search_advanced_auto_submit" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi người dùng bấm chọn các option trong khung tìm kiếm nâng cao, nếu tắt chức năng này thì nút submit sẽ xuất hiện để người dùng bấm chọn, hoặc tự submit nếu chức năng này được bật.</div></td>
+					<p class="description">Khi người dùng bấm chọn các option trong khung tìm kiếm nâng cao, nếu tắt chức năng này thì nút submit sẽ xuất hiện để người dùng bấm chọn, hoặc tự submit nếu chức năng này được bật.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Công cụ tìm kiếm của EchBay</td>
 				<td class="i"><input type="checkbox" name="cf_search_by_echbay" id="cf_search_by_echbay" value="{tmp.cf_search_by_echbay}" />
 					<label for="cf_search_by_echbay" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Chức năng tìm kiếm mặc định của wordpress là tìm toàn bộ bài viết theo tên, category, tag... nên dữ liệu trả về thường khá rối! Nên nếu bạn muốn sử dụng chức năng tìm kiếm chính xác theo tiêu đề bài viết thì hãy kích hoạt chức năng này.<br>
-						<em class="redcolor">* Lưu ý: trường hợp dùng chức năng này nhưng không tìm kiếm được sản phẩm, có thể do sản phẩm chưa được đồng bộ hết, hãy <a href="{tmp.web_link}ebsearch/?q=&post_type=post&update_key_version=1" target="_blank" rel="nofollow"><strong>bấm vào đây</strong></a> và thử lại!</em></div></td>
+					<p class="description">Chức năng tìm kiếm mặc định của wordpress là tìm toàn bộ bài viết theo tên, category, tag... nên dữ liệu trả về thường khá rối! Nên nếu bạn muốn sử dụng chức năng tìm kiếm chính xác theo tiêu đề bài viết thì hãy kích hoạt chức năng này.<br>
+						<em class="redcolor">* Lưu ý: trường hợp dùng chức năng này nhưng không tìm kiếm được sản phẩm, có thể do sản phẩm chưa được đồng bộ hết, hãy <a href="{tmp.web_link}ebsearch/?q=&post_type=post&update_key_version=1" target="_blank" rel="nofollow"><strong>bấm vào đây</strong></a> và thử lại!</em></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -868,13 +866,13 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t">Đồng bộ URL version 1</td>
 				<td class="i"><input type="checkbox" name="cf_echbay_migrate_version" id="cf_echbay_migrate_version" value="{tmp.cf_echbay_migrate_version}" />
 					<label for="cf_echbay_migrate_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Chức năng này dùng để đồng bộ URL của phiên bản 1 với phiên bản hiện tại, chỉ có tác dụng với web nâng cấp, nếu web của bạn là web mới, vui lòng không kích hoạt.</div></td>
+					<p class="description">Chức năng này dùng để đồng bộ URL của phiên bản 1 với phiên bản hiện tại, chỉ có tác dụng với web nâng cấp, nếu web của bạn là web mới, vui lòng không kích hoạt.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Tự động chuyển hướng</td>
 				<td class="i"><input type="checkbox" name="cf_redirecting_matched_slugs" id="cf_redirecting_matched_slugs" value="{tmp.cf_redirecting_matched_slugs}" />
 					<label for="cf_redirecting_matched_slugs" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<div class="small">Khi một URL bị 404, hệ thống sẽ tìm URL giống như thế và chuyển hướng tới, nếu muốn bỏ tính năng này, hãy tắt nó đi.</div></td>
+					<p class="description">Khi một URL bị 404, hệ thống sẽ tìm URL giống như thế và chuyển hướng tới, nếu muốn bỏ tính năng này, hãy tắt nó đi.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -882,12 +880,12 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t"><label for="cf_max_revision_cleanup">Dọn dẹp Revision</label></td>
 				<td class="i"><input type="number" name="cf_max_revision_cleanup" id="cf_max_revision_cleanup" value="{tmp.cf_max_revision_cleanup}" placeholder="{aaa.cf_max_revision_cleanup}" class="s" />
-					<div class="small">Nếu đặt số &gt; 1, cứ mỗi 6 tiếng, các post_type = revision sẽ được kiểm tra và xóa một lần, số bạn nhập vào đây chính là số lượng các bản revision mới nhất được giữ lại. Nếu đặt là 1, cứ đến lịch là xóa, không giữ lại gì cả.</div></td>
+					<p class="description">Nếu đặt số &gt; 1, cứ mỗi 6 tiếng, các post_type = revision sẽ được kiểm tra và xóa một lần, số bạn nhập vào đây chính là số lượng các bản revision mới nhất được giữ lại. Nếu đặt là 1, cứ đến lịch là xóa, không giữ lại gì cả.</p></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="cf_max_post_cleanup">Giới hạn số bài viết</label></td>
 				<td class="i"><input type="number" name="cf_max_post_cleanup" id="cf_max_post_cleanup" value="{tmp.cf_max_post_cleanup}" placeholder="{aaa.cf_max_post_cleanup}" class="s" />
-					<div class="small">Để hiệu suất web luôn được đảm bảo, chúng tôi sẽ đặt mặc định ngưỡng bài viết tối đa cho mỗi code là <strong>{aaa.cf_max_post_cleanup}</strong> cho mỗi loại bài viết (post_type), khi website đạt ngưỡng này, các bài cũ hơn sẽ được chuyển sang dạng lưu trữ XML. Để tắt tính năng này, hãy nhập vào số nhỏ hơn 10, hoặc nếu muốn tăng ngưỡng thì cũng không nên để quá 25,000 bài viết.</div></td>
+					<p class="description">Để hiệu suất web luôn được đảm bảo, chúng tôi sẽ đặt mặc định ngưỡng bài viết tối đa cho mỗi code là <strong>{aaa.cf_max_post_cleanup}</strong> cho mỗi loại bài viết (post_type), khi website đạt ngưỡng này, các bài cũ hơn sẽ được chuyển sang dạng lưu trữ XML. Để tắt tính năng này, hãy nhập vào số nhỏ hơn 10, hoặc nếu muốn tăng ngưỡng thì cũng không nên để quá 25,000 bài viết.</p></td>
 			</tr>
 		</tbody>
 	</table>

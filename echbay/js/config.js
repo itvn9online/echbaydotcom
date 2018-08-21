@@ -279,58 +279,10 @@ function create_deault_css () {
 	
 	
 	// lấy các thuộc tính để CSS cho logo
-	str += (function () {
-//	$('.each-to-css-for-logo').off('change').change(function () {
-		var str = '',
-			str_mobile = '',
-			arr = {};
-		$('.each-to-css-for-logo').each(function () {
-			var a = $(this).val() || '',
-				n = $(this).attr('name') || '';
-			
-			if ( a != '' && n != '' ) {
-				n = n.replace('custom_logo_css_', '');
-				arr[n] = a;
-				
-				//
-				if ( n.split('_for_mobile').length > 1 ) {
-					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + ';';
-				}
-				else {
-					str += n.replace(/\_/g, '-') + ':' + a + ';';
-				}
-			}
-		});
-//		console.log(str);
-//		console.log(str_mobile);
-//		console.log(arr);
-		
-		//
-		if ( str == '' && str_mobile == '' ) {
-			arr = '';
-		}
-		else {
-			if ( str != '' ) {
-				str = '.web-logo{' + str + '}';
-			}
-//			console.log(str);
-			
-			if ( str_mobile != '' ) {
-				str_mobile = '.style-for-mobile .web-logo{' + str_mobile + '}';
-			}
-//			console.log(str_mobile);
-			
-			//
-			arr = escape( JSON.stringify( arr ) );
-//			console.log(arr);
-		}
-		
-		//
-		$('#cf_css_logo').val( arr );
-		
-		return str + str_mobile;
-	})();
-//	});
+	str += create_css_for_custom_in_js( '.each-to-css-for-logo', '#cf_css_logo', {
+//		'mobile' : '',
+		'pc' : 'web-logo'
+	} );
 	
 	
 	//
@@ -420,6 +372,143 @@ function config_test_send_mail() {
 	}
 	*/
 	
+}
+
+
+function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a, op ) {
+	var str = '',
+		str_input = '',
+		sl = '';
+	
+	//
+	if ( a != '' ) {
+		console.log(a);
+		a = unescape( a );
+		console.log(a);
+		a = eval( '[' + a + ']' );
+		a = a[0];
+//			a = eval( unescape( a ) );
+	}
+	else {
+		a = {};
+	}
+	console.log(arr);
+//	console.log(arr_name);
+//	console.log(arr_alt);
+	
+	//
+	for ( var x in arr ) {
+//		console.log(x);
+		
+		// kiểm tra và bổ sung những mảng chưa có, hoặc xóa những mảng dư thừa
+		/*
+		if ( a != '' && typeof a[x] != 'undefined' ) {
+			arr[x] = a[x];
+		}
+		console.log(arr[x]);
+		*/
+		
+		// tạo input
+		str_input = '';
+		if ( typeof arr[x] == 'object' ) {
+			for ( var x2 in arr[x] ) {
+				sl = '';
+				if ( x2 == a[x] ) {
+					sl = ' selected="selected"';
+				}
+				
+				//
+				str_input += '<option value="' + x2 + '"' + sl + '>' + arr[x][x2] + '</option>';
+			}
+			str_input = '<select name="custom_css_in_js_' + x + '" value="' + x2 + '" class="' + op['input_css'] + '">' + str_input + '</select>';
+		}
+		else if ( typeof arr_input_type[x] != 'undefined' && arr_input_type[x] == 'number' ) {
+			str_input = '<input type="number" name="custom_css_in_js_' + x + '" value="' + arr[x] + '" class="s ' + op['input_css'] + '" />';
+		}
+		else {
+			str_input = '<input type="text" name="custom_css_in_js_' + x + '" value="' + arr[x] + '" class="n ' + op['input_css'] + '" maxlength="155" />';
+		}
+		
+		// ghi chú
+		if ( typeof arr_alt[x] != 'undefined' ) {
+			str_input += '<div class="small">' + arr_alt[x] + '</div>';
+		}
+		
+		//
+		str += '' +
+		'<tr>' +
+			'<td valign="top" class="t">' + arr_name[x] + '</td>' +
+			'<td class="i">' + str_input + '</td>' +
+		'</tr>';
+	}
+	
+	//
+	$('#' + op['after_html']).after(str);
+}
+
+function create_css_for_custom_in_js ( clat, jd, cs ) {
+//	str += (function ( clat, jd, cs ) {
+//	$('.each-to-css-for-logo').off('change').change(function () {
+		var str = '',
+			str_mobile = '',
+			arr = {};
+		
+		// class cho bản mobile
+		if ( typeof cs['mobile'] == 'undefined' || cs['mobile'] == '' ) {
+			cs['mobile'] = '.style-for-mobile ' + cs['pc'];
+		}
+		
+		//
+		$( clat ).each(function () {
+			var a = $(this).val() || '',
+				n = $(this).attr('name') || '';
+			
+			if ( a != '' && n != '' ) {
+				n = n.replace('custom_css_in_js_', '');
+				arr[n] = a;
+				
+				//
+				if ( n.split('_for_mobile').length > 1 ) {
+					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + ';';
+				}
+				else {
+					str += n.replace(/\_/g, '-') + ':' + a + ';';
+				}
+			}
+		});
+//		console.log(str);
+//		console.log(str_mobile);
+//		console.log(arr);
+		
+		//
+		if ( str == '' && str_mobile == '' ) {
+			arr = '';
+		}
+		else {
+			if ( str != '' ) {
+				str = cs['pc'] + '{' + str + '}';
+			}
+//			console.log(str);
+			
+			if ( str_mobile != '' ) {
+				str_mobile = cs['mobile'] + '{' + str_mobile + '}';
+			}
+//			console.log(str_mobile);
+			
+			//
+			arr = escape( JSON.stringify( arr ) );
+//			console.log(arr);
+		}
+		
+		//
+		$( jd ).val( arr );
+		
+		return str + str_mobile;
+//	})( '.each-to-css-for-logo', '#cf_css_logo', {
+//		'mobile' : '',
+//		'pc' : 'web-logo'
+//	} );
+//	});
 }
 
 
@@ -591,111 +680,118 @@ if ( current_module_config != 'config_theme' ) {
 	
 	// thêm các thông số điều chỉnh CSS cho logo
 	(function () {
-		console.log('CUSTOM CSS FOR LOGO');
 		
-		var a = $('#cf_css_logo').val() || '',
-			arr = {
-				'background_position' : {
-					'' : 'Mặc định',
-					'top left' : 'Góc trên bên trái',
-					'top center' : 'Góc trên ở giữa',
-					'top right' : 'Góc trên bên phải',
-					'center left' : 'Giữa bên trái',
-					'center center' : 'Chính giữa',
-					'center right' : 'Giữa bên phải',
-					'bottom left' : 'Phía dưới Bên trái',
-					'bottom center' : 'Phía dưới ở giữa',
-					'bottom right' : 'Góc phải phía dưới'
-				},
-				'background_size' : {
-					'' : 'Mặc định',
-					'auto' : 'Tự động',
-					'cover' : 'Bao phủ',
-					'contain' : 'Contain'
-				}
+		//
+		console.log('CUSTOM CSS FOR LOGO');
+		var arr = {
+			'background_position' : {
+				'' : 'Mặc định',
+				'top left' : 'Góc trên bên trái',
+				'top center' : 'Góc trên ở giữa',
+				'top right' : 'Góc trên bên phải',
+				'center left' : 'Giữa bên trái',
+				'center center' : 'Chính giữa',
+				'center right' : 'Giữa bên phải',
+				'bottom left' : 'Phía dưới Bên trái',
+				'bottom center' : 'Phía dưới ở giữa',
+				'bottom right' : 'Góc phải phía dưới'
 			},
-			arr_name = {
-				'background_position' : 'Vị trí',
-				'background_size' : 'Kích thước',
-				'background_position_for_mobile' : 'Kích thước (mobile)',
-				'background_size_for_mobile' : 'Kích thước (mobile)'
-			},
-			arr_alt = {
-				'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của logo',
-				'background_size' : 'Với mỗi logo, sẽ có tỷ lệ giữa chiều rộng với chiều cao khác nhau, dùng thuộc tính này để định hành tránh bị vỡ khung logo',
-				'background_position_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile ở một vị trí khác so với bản desktop',
-				'background_size_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile có kích thước khác so với bản desktop'
-			},
-			str = '',
-			str_input = '',
-			sl = '';
+			'background_size' : {
+				'' : 'Mặc định',
+				'auto' : 'Tự động',
+				'cover' : 'Bao phủ',
+				'contain' : 'Contain'
+			}
+		};
 		
 		// thêm dữ liệu cho bản mobile
 		arr['background_position_for_mobile'] = arr['background_position'];
 		arr['background_size_for_mobile'] = arr['background_size'];
 		
 		//
-		if ( a != '' ) {
-			console.log(a);
-			a = unescape( a );
-			console.log(a);
-			a = eval( '[' + a + ']' );
-			a = a[0];
-//			a = eval( unescape( a ) );
-		}
-		else {
-			a = {};
-		}
-		console.log(arr);
-//		console.log(arr_name);
-//		console.log(arr_alt);
+		load_config_for_custom_logo(
+			arr,
+			{
+				'background_position' : 'Vị trí',
+				'background_size' : 'Kích thước',
+				'background_position_for_mobile' : 'Kích thước (mobile)',
+				'background_size_for_mobile' : 'Kích thước (mobile)'
+			}, {
+				'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của logo',
+				'background_size' : 'Với mỗi logo, sẽ có tỷ lệ giữa chiều rộng với chiều cao khác nhau, dùng thuộc tính này để định hành tránh bị vỡ khung logo',
+				'background_position_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile ở một vị trí khác so với bản desktop',
+				'background_size_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile có kích thước khác so với bản desktop'
+			},
+			{},
+			a = $('#cf_css_logo').val() || '',
+			{
+				'input_css' : 'each-to-css-for-logo',
+				'after_html' : 'custom_css_for_logo'
+			}
+		);
+		
+		
 		
 		//
-		for ( var x in arr ) {
-//			console.log(x);
-			
-			// kiểm tra và bổ sung những mảng chưa có, hoặc xóa những mảng dư thừa
-			/*
-			if ( a != '' && typeof a[x] != 'undefined' ) {
-				arr[x] = a[x];
-			}
-			console.log(arr[x]);
-			*/
-			
-			// tạo input
-			str_input = '';
-			if ( typeof arr[x] == 'object' ) {
-				for ( var x2 in arr[x] ) {
-					sl = '';
-					if ( x2 == a[x] ) {
-						sl = ' selected="selected"';
-					}
-					
-					//
-					str_input += '<option value="' + x2 + '"' + sl + '>' + arr[x][x2] + '</option>';
-				}
-				str_input = '<select name="custom_logo_css_' + x + '" value="' + x2 + '" class="each-to-css-for-logo">' + str_input + '</select>';
-			}
-			else {
-				str_input = '<input type="text" name="custom_logo_css_' + x + '" value="' + arr[x] + '" class="n each-to-css-for-logo" maxlength="155" />';
-			}
-			
-			// ghi chú
-			if ( typeof arr_alt[x] != 'undefined' ) {
-				str_input += '<div class="small">' + arr_alt[x] + '</div>';
-			}
-			
-			//
-			str += '' +
-			'<tr>' +
-				'<td class="t">' + arr_name[x] + '</td>' +
-				'<td class="i">' + str_input + '</td>' +
-			'</tr>';
-		}
+		console.log('CUSTOM CSS FOR BODY');
 		
-		//
-		$('#custom_css_for_logo').after(str);
+		load_config_for_custom_logo(
+			{
+//				'max_width' : '',
+				'max_width' : {
+					'' : 'Mặc định (HD 1366px)',
+					'1024px' : 'XGA 1024px',
+					'1280px' : 'WXGA 1280px',
+					'1600px' : 'HD+ 1600px',
+					'1920px' : 'Full HD 1920px',
+					'2560px' : 'WQHD 2560px'
+				},
+//				'font_size' : '',
+				'font_size' : {
+					'' : 'Mặc định (13px)',
+					'10px' : '10px',
+					'11px' : '11px',
+					'12px' : '12px',
+					'14px' : '14px',
+					'15px' : '15px',
+					'16px' : '16px',
+					'17px' : '17px',
+					'18px' : '18px',
+					'19px' : '19px',
+					'20px' : '20px',
+					'21px' : '21px',
+					'22px' : '22px',
+					'23px' : '23px',
+					'24px' : '24px',
+					'25px' : '25px',
+					'26px' : '26px',
+					'27px' : '27px',
+					'28px' : '28px',
+					'29px' : '29px',
+					'30px' : '30px'
+				},
+				'font_family' : ''
+			}, {
+				'max_width' : 'Chiều rộng tối đa',
+				'font_size' : 'Cỡ chữ mặc định',
+				'font_family' : 'Phông chữ'
+			}, {
+//				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn. Gợi ý một số kích thước phổ biến khác mà bạn có thể chọn: HD+ <strong>1600</strong>, Full HD <strong>1920</strong>, QWXGA <strong>2048</strong>, WQHD <strong>2560</strong>.',
+				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn.',
+				'font_size' : 'Mặc định sẽ sử dụng cỡ chữ tiêu chuẩn là <strong>13px</strong> (~10pt), bạn có thể thay đổi kích thước này tại đây',
+				'font_family' : 'Phông chữ mặc định là <strong>\'Helvetica Neue\', Helvetica, Arial, Tahoma, Verdana, sans-serif</strong>, trường hợp bạn muốn sử dụng phông chữ khác, hãy nhập tại đây.'
+			}, {
+				'max_width' : 'number'
+			},
+			$('#cf_css_body').val() || '',
+			{
+				'input_css' : 'each-to-css-for-body',
+				'after_html' : 'custom_css_for_body'
+			}
+		);
+		
 	})();
+	
 }
 // config_theme
 else {

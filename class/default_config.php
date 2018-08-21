@@ -46,6 +46,8 @@ $__cf_row_default = array(
 	// ảnh đại diện mặc định khi chia sẻ trên fb
 	'cf_og_image' => '',
 	
+	'cf_css_body' => '',
+	
 	'cf_ten_cty' => 'Thiết kế web giá rẻ',
 //	'web_name' => '',
 	
