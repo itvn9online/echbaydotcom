@@ -6,3 +6,9 @@
 	line-height: 40px;
 	height: 40px;
 }
+.style-for-mobile #breadcrumb2-top1 .thread-details-tohome {
+	border-radius: 0;
+	border-left: 0 none;
+	border-right: 0 none;
+	padding: 0 8px;
+}

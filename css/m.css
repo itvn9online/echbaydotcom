@@ -109,8 +109,12 @@ body.style-for-mobile {
 	padding-left: 0 !important;
 	padding-top: 8px !important;
 }
+.style-for-mobile .thread-details-title,
+.style-for-mobile .thread-module-name,
+.style-for-mobile .blogs-module-name,
 /* .style-for-mobile #main-content, */
-.style-for-mobile .mobile-padding { padding: 0 6px; }
+.style-for-mobile .fullsize-if-mobile .footer-address,
+.style-for-mobile .mobile-padding { padding: 0 8px; }
 .style-for-mobile .jEBE_slider-position {
 	overflow-y: hidden;
 	overflow-x: auto;
@@ -156,7 +160,10 @@ body.style-for-mobile {
 	float: none;
 }
 .style-for-mobile .echbay-blog33 li { width: 50%; }
-.style-for-mobile .thread-list-order { display: none; }
+.style-for-mobile .thread-list-order {
+	display: none;
+	margin: 0 8px;
+}
 .style-for-mobile .text-left-if-mobile { text-align: left; }
 .style-for-mobile .text-right-if-mobile { text-align: right; }
 .style-for-mobile .ebe-quick-view .quick-view-close i {

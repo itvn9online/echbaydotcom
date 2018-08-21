@@ -2,7 +2,7 @@
 
 # Redirect to new domain
 #RewriteCond %{HTTP_HOST} ^old-domain\.com$ [NC]
-#RewriteRule ^(.*)$ http://new-domain.vn/%{REQUEST_URI} [R=301,L]
+#RewriteRule ^(.*)$ http://new-domain\.vn/%{REQUEST_URI} [R=301,L]
 
 
 # HTTPS redirect
