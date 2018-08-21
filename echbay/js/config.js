@@ -531,6 +531,81 @@ if ( current_module_config != 'config_theme' ) {
 			auto_get_user_position();
 		}
 	})();
+	
+	
+	// thêm các thông số điều chỉnh CSS cho logo
+	(function () {
+		var a = $('#cf_css_logo').val() || '',
+			arr = {
+				'background_position' : {
+					'' : 'Mặc định',
+					'top left' : 'Góc trên bên trái',
+					'top center' : 'Góc trên ở giữa',
+					'top right' : 'Góc trên bên phải',
+					'center left' : 'Giữa bên trái',
+					'center center' : 'Chính giữa',
+					'center right' : 'Giữa bên phải',
+					'bottom left' : 'Phía dưới Bên trái',
+					'bottom center' : 'Phía dưới ở giữa',
+					'bottom right' : 'Góc phải phía dưới'
+				},
+				'background_size' : {
+					'' : 'Mặc định',
+					'auto' : 'Tự động',
+					'cover' : 'Bao phủ',
+					'contain' : 'Contain'
+				}
+			},
+			arr_name = {
+				'background_position' : 'Vị trí',
+				'background_size' : 'Kích thước'
+			},
+			arr_alt = {
+				'background_position' : 'Vị trí',
+				'background_size' : 'Kích thước'
+			},
+			str = '',
+			str_input = '';
+		
+		//
+		if ( a == '' ) {
+			a = arr;
+		}
+		else {
+			a = eval( unescape( a ) );
+		}
+		
+		//
+		for ( var x in arr ) {
+			// kiểm tra và bổ sung những mảng chưa có, hoặc xóa những mảng dư thừa
+			if ( typeof a.x != 'undefined' ) {
+				arr.x = a.x;
+			}
+			
+			// tạo input
+			str_input = '';
+			if ( typeof arr.x == 'object' ) {
+			}
+			else {
+				str_input = '<input type="text" name="custom_logo_css_' + x + '" value="' + arr.x + '" class="n" maxlength="155" />';
+			}
+			
+			// ghi chú
+			if ( typeof arr_alt.x != 'undefined' ) {
+				str_input += '<div class="small">' + arr_alt.x + '</div>';
+			}
+			
+			//
+			str += '' +
+			'<tr>' +
+				'<td class="t">' + arr_name.x + '</td>' +
+				'<td class="i">' + str_input + '</td>' +
+			'</tr>';
+		}
+		
+		//
+		$('#custom_css_for_logo').after('');
+	})();
 }
 // config_theme
 else {

@@ -17,6 +17,7 @@ div.gallery-add-to-og_image { display: block; }
 		<textarea name="cf_default_css" id="cf_default_css" style="width:90%;">{tmp.cf_default_css}</textarea>
 		<textarea name="cf_default_amp_bg" id="cf_default_amp_bg" style="width:90%;">{tmp.cf_default_amp_bg}</textarea>
 		<textarea name="cf_p_diachi" id="cf_p_diachi" style="width:90%;">{tmp.cf_p_diachi}</textarea>
+		<textarea name="cf_css_logo" id="cf_css_logo" style="width:90%;">{tmp.cf_css_logo}</textarea>
 		<textarea style="width:90%;">{tmp.cf_replace_content}</textarea>
 	</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-support-table fix-textarea-height">
@@ -183,6 +184,11 @@ div.gallery-add-to-og_image { display: block; }
 			<tr>
 				<td class="t">Chiều cao logo</td>
 				<td class="i"><input type="number" name="cf_height_logo" value="{tmp.cf_height_logo}" class="s" /></td>
+			</tr>
+			<!-- ID để thêm các thuộc tính chỉnh sửa logo -->
+			<tr id="custom_css_for_logo">
+				<td class="t">Chiều cao logo (mobile)</td>
+				<td class="i"><input type="number" name="cf_height_mobile_logo" value="{tmp.cf_height_mobile_logo}" class="s" /></td>
 			</tr>
 			<tr>
 				<td class="t">Favicon</td>

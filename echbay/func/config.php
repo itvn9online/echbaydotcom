@@ -396,6 +396,11 @@ if ( (int) $_POST['cf_height_logo'] < 10 ) {
 // Thêm chiều cao cố định cho logo vào CSS
 $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px;line-height:' . $_POST['cf_height_logo'] . 'px;}';
 
+// nếu có chiều cao cho logo phiên bản mobile -> set luôn
+if ( (int) $_POST['cf_height_mobile_logo'] > 10 ) {
+	$_POST['cf_default_css'] .= '.style-for-mobile .web-logo{height:' . $_POST['cf_height_mobile_logo'] . 'px;line-height:' . $_POST['cf_height_mobile_logo'] . 'px;}';
+}
+
 
 // rút gọn css lại
 $_POST['cf_default_css'] = WGR_remove_css_multi_comment( $_POST['cf_default_css'] );

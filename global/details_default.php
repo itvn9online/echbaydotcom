@@ -652,10 +652,16 @@ $str_for_details_top_sidebar = '';
 $trv_masanpham = '';
 $product_gallery = '';
 $product_list_color = '';
+$wgr_comment_list = '';
+
+
+//
+$trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );
 
 
 // post
 if ( $__post->post_type == 'post' ) {
+	
 	//
 	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
 	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
@@ -667,12 +673,23 @@ if ( $__post->post_type == 'post' ) {
 	
 	//
 	include EB_THEME_PLUGIN_INDEX . 'global/details_post.php';
+//	include EB_THEME_PLUGIN_INDEX . 'global/details_comments.php';
+	$wgr_comment_list = '<div data-id="' . $pid . '" id="comments" class="comments-area"></div>';
+	
 }
 // với blog -> sử dụng giao diện khác post
 // cơ bản là các hàm khác với post mặc định
 else {
 	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
 	include EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php';
+	
+	//
+	/*
+	if ( $__post->post_type == 'product' || $__post->post_type == EB_BLOG_POST_TYPE ) {
+		include EB_THEME_PLUGIN_INDEX . 'global/details_comments.php';
+	}
+	*/
+	$wgr_comment_list = '<div data-id="' . $pid . '" id="comments" class="comments-area"></div>';
 }
 
 //
@@ -712,9 +729,6 @@ if ( $__post->post_type == 'post' ) {
 }
 */
 
-//
-$trv_h1_tieude = str_replace( '<', '&lt;', str_replace( '>', '&gt;', $__post->post_title ) );
-
 
 
 // tạo mảng để khởi tạo nội dung
@@ -724,7 +738,7 @@ $arr_main_content = array(
 //	'tmp.trv_masanpham' => $trv_masanpham == '' ? '#' . $pid : $trv_masanpham,
 	
 	'tmp.link_for_fb_comment' => $link_for_fb_comment,
-	'tmp.html_for_fb_comment' => '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div> <!-- <div class="d-none"><div class="fb-comments-count check-new-fb-comment" data-href="' . $link_for_fb_comment . '">0</div></div> -->',
+	'tmp.html_for_fb_comment' => '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div> <!-- <div class="d-none"><div class="fb-comments-count check-new-fb-comment" data-href="' . $link_for_fb_comment . '">0</div></div> -->' . $wgr_comment_list,
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
 	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '" rel="nofollow">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
