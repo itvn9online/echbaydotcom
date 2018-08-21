@@ -277,6 +277,62 @@ function create_deault_css () {
 		str += '.powered-by-echbay { display: none; }';
 	}
 	
+	
+	// lấy các thuộc tính để CSS cho logo
+	str += (function () {
+//	$('.each-to-css-for-logo').off('change').change(function () {
+		var str = '',
+			str_mobile = '',
+			arr = {};
+		$('.each-to-css-for-logo').each(function () {
+			var a = $(this).val() || '',
+				n = $(this).attr('name') || '';
+			
+			if ( a != '' && n != '' ) {
+				n = n.replace('custom_logo_css_', '');
+				arr[n] = a;
+				
+				//
+				if ( n.split('_for_mobile').length > 1 ) {
+					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + ';';
+				}
+				else {
+					str += n.replace(/\_/g, '-') + ':' + a + ';';
+				}
+			}
+		});
+//		console.log(str);
+//		console.log(str_mobile);
+//		console.log(arr);
+		
+		//
+		if ( str == '' && str_mobile == '' ) {
+			arr = '';
+		}
+		else {
+			if ( str != '' ) {
+				str = '.web-logo{' + str + '}';
+			}
+//			console.log(str);
+			
+			if ( str_mobile != '' ) {
+				str_mobile = '.style-for-mobile .web-logo{' + str_mobile + '}';
+			}
+//			console.log(str_mobile);
+			
+			//
+			arr = escape( JSON.stringify( arr ) );
+//			console.log(arr);
+		}
+		
+		//
+		$('#cf_css_logo').val( arr );
+		
+		return str + str_mobile;
+	})();
+//	});
+	
+	
 	//
 	$('#cf_default_css').val(str);
 }
@@ -535,6 +591,8 @@ if ( current_module_config != 'config_theme' ) {
 	
 	// thêm các thông số điều chỉnh CSS cho logo
 	(function () {
+		console.log('CUSTOM CSS FOR LOGO');
+		
 		var a = $('#cf_css_logo').val() || '',
 			arr = {
 				'background_position' : {
@@ -558,53 +616,85 @@ if ( current_module_config != 'config_theme' ) {
 			},
 			arr_name = {
 				'background_position' : 'Vị trí',
-				'background_size' : 'Kích thước'
+				'background_size' : 'Kích thước',
+				'background_position_for_mobile' : 'Kích thước (mobile)',
+				'background_size_for_mobile' : 'Kích thước (mobile)'
 			},
 			arr_alt = {
-				'background_position' : 'Vị trí',
-				'background_size' : 'Kích thước'
+				'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của logo',
+				'background_size' : 'Với mỗi logo, sẽ có tỷ lệ giữa chiều rộng với chiều cao khác nhau, dùng thuộc tính này để định hành tránh bị vỡ khung logo',
+				'background_position_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile ở một vị trí khác so với bản desktop',
+				'background_size_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile có kích thước khác so với bản desktop'
 			},
 			str = '',
-			str_input = '';
+			str_input = '',
+			sl = '';
+		
+		// thêm dữ liệu cho bản mobile
+		arr['background_position_for_mobile'] = arr['background_position'];
+		arr['background_size_for_mobile'] = arr['background_size'];
 		
 		//
-		if ( a == '' ) {
-			a = arr;
+		if ( a != '' ) {
+			console.log(a);
+			a = unescape( a );
+			console.log(a);
+			a = eval( '[' + a + ']' );
+			a = a[0];
+//			a = eval( unescape( a ) );
 		}
 		else {
-			a = eval( unescape( a ) );
+			a = {};
 		}
+		console.log(arr);
+//		console.log(arr_name);
+//		console.log(arr_alt);
 		
 		//
 		for ( var x in arr ) {
+//			console.log(x);
+			
 			// kiểm tra và bổ sung những mảng chưa có, hoặc xóa những mảng dư thừa
-			if ( typeof a.x != 'undefined' ) {
-				arr.x = a.x;
+			/*
+			if ( a != '' && typeof a[x] != 'undefined' ) {
+				arr[x] = a[x];
 			}
+			console.log(arr[x]);
+			*/
 			
 			// tạo input
 			str_input = '';
-			if ( typeof arr.x == 'object' ) {
+			if ( typeof arr[x] == 'object' ) {
+				for ( var x2 in arr[x] ) {
+					sl = '';
+					if ( x2 == a[x] ) {
+						sl = ' selected="selected"';
+					}
+					
+					//
+					str_input += '<option value="' + x2 + '"' + sl + '>' + arr[x][x2] + '</option>';
+				}
+				str_input = '<select name="custom_logo_css_' + x + '" value="' + x2 + '" class="each-to-css-for-logo">' + str_input + '</select>';
 			}
 			else {
-				str_input = '<input type="text" name="custom_logo_css_' + x + '" value="' + arr.x + '" class="n" maxlength="155" />';
+				str_input = '<input type="text" name="custom_logo_css_' + x + '" value="' + arr[x] + '" class="n each-to-css-for-logo" maxlength="155" />';
 			}
 			
 			// ghi chú
-			if ( typeof arr_alt.x != 'undefined' ) {
-				str_input += '<div class="small">' + arr_alt.x + '</div>';
+			if ( typeof arr_alt[x] != 'undefined' ) {
+				str_input += '<div class="small">' + arr_alt[x] + '</div>';
 			}
 			
 			//
 			str += '' +
 			'<tr>' +
-				'<td class="t">' + arr_name.x + '</td>' +
+				'<td class="t">' + arr_name[x] + '</td>' +
 				'<td class="i">' + str_input + '</td>' +
 			'</tr>';
 		}
 		
 		//
-		$('#custom_css_for_logo').after('');
+		$('#custom_css_for_logo').after(str);
 	})();
 }
 // config_theme
@@ -788,7 +878,7 @@ var add_class_bg_for_tr_support = false;
 	var a = window.location.href.split('&tab=');
 	if ( a.length > 1 ) {
 		a = a[1].split('&')[0].split('#')[0];
-		console.log(a);
+		console.log('Config tab: ' + a);
 		
 		$('.eb-admin-tab a[data-tab="' +a+ '"]').addClass('selected');
 		$('#list-tab-eb-admin-config li[data-tab="' +a+ '"]').click();
