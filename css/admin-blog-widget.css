@@ -15,7 +15,9 @@
 .eb-widget-fixed .eb-get-widget-category option { display: none; }
 .eb-widget-fixed[data-type="post"] option[data-taxonomy="category"],
 .eb-widget-fixed[data-type="post"] option[data-taxonomy="post_options"],
+.eb-widget-fixed[data-type="post"] option[data-taxonomy="post_tag"],
 .eb-widget-fixed[data-type="ads"] option[data-taxonomy="category"],
 .eb-widget-fixed[data-type="ads"] option[data-taxonomy="post_options"],
 .eb-widget-fixed[data-type="blog"] option[data-taxonomy="blogs"],
+.eb-widget-fixed[data-type="blog"] option[data-taxonomy="blog_tag"],
 .eb-get-widget-category option[value="0"] { display: block; }

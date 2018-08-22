@@ -737,39 +737,56 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 		) );
 		
 		//
-		$categories2 = get_categories( array(
+		$a = get_categories( array(
 			'taxonomy' => EB_BLOG_POST_LINK,
 			'hide_empty' => 0,
 			'parent' => 0
 		) );
-		$categories[] = '[ Danh mục tin tức ]';
-		foreach ( $categories2 as $v ) {
-			$categories[] = $v;
+		if ( ! empty( $a ) ) {
+			$categories[] = '[ Danh mục tin tức ]';
+			foreach ( $a as $v ) {
+				$categories[] = $v;
+			}
 		}
 		
 		//
-		$categories3 = get_categories( array(
+		$a = get_categories( array(
 			'taxonomy' => 'post_options',
 			'hide_empty' => 0,
 			'parent' => 0
 		) );
-		$categories[] = '[ Thuộc tính sản phẩm ]';
-		foreach ( $categories3 as $v ) {
-			$categories[] = $v;
+		if ( ! empty( $a ) ) {
+			$categories[] = '[ Thuộc tính sản phẩm ]';
+			foreach ( $a as $v ) {
+				$categories[] = $v;
+			}
 		}
 		
 		//
-		/*
-		$categories4 = get_categories( array(
+		$a = get_categories( array(
 			'taxonomy' => 'post_tag',
 			'hide_empty' => 0,
 			'parent' => 0
 		) );
-		$categories[] = '[ Thẻ ]';
-		foreach ( $categories4 as $v ) {
-			$categories[] = $v;
+		if ( ! empty( $a ) ) {
+			$categories[] = '[ Thẻ (Post) ]';
+			foreach ( $a as $v ) {
+				$categories[] = $v;
+			}
 		}
-		*/
+		
+		//
+		$a = get_categories( array(
+			'taxonomy' => 'blog_tag',
+			'hide_empty' => 0,
+			'parent' => 0
+		) );
+		if ( ! empty( $a ) ) {
+			$categories[] = '[ Thẻ (Blog) ]';
+			foreach ( $a as $v ) {
+				$categories[] = $v;
+			}
+		}
 	}
 	// chỉ lấy 1 taxonomy theo chỉ định
 	else {
