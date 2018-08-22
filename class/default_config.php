@@ -41,7 +41,7 @@ $__cf_row_default = array(
 	'cf_height_logo' => 50,
 	'cf_height_mobile_logo' => 0,
 	// mảng chứa các thông tin điều chỉnh CSS cho logo -> dùng mảng JS để giảm bớt dữ liệu cho vào DB
-	'cf_css_logo' => '',
+//	'cf_css_logo' => '',
 	'cf_favicon' => eb_default_vaficon,
 	// ảnh đại diện mặc định khi chia sẻ trên fb
 	'cf_og_image' => '',

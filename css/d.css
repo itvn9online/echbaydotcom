@@ -43,7 +43,7 @@ body {
 	font-size: 10pt;
 	color: #000;
 	font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma, Verdana, sans-serif;
-	max-width: 1366px;
+	max-width: 1600px;
 	margin: 0 auto;
 }
 ul {
@@ -125,8 +125,8 @@ a {
 .w99 { width: 999px; }
 .w90 {
 	width: 90%;
-	min-width: 999px;
 	max-width: 1366px;
+	min-width: 999px;
 }
 .d-block { display: block }
 .d-iblock { display: inline-block }

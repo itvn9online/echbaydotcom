@@ -59,7 +59,8 @@ function xu_ly_du_lieu_js(fun) {
 }
 
 //
-var khong_cho_update_config_lien_tuc = false;
+var khong_cho_update_config_lien_tuc = false,
+	arr_cf_css_body = {};
 
 function khong_update_lien_tuc () {
 	
@@ -279,16 +280,28 @@ function create_deault_css () {
 	
 	
 	// lấy các thuộc tính để CSS cho body
-	str += create_css_for_custom_in_js( '.each-to-css-for-body', '#cf_css_body', {
+	str += create_css_for_custom_in_js( '.each-to-css-for-body', 'cf_css_body', {
 		'mobile' : 'body.style-for-mobile',
 		'pc' : 'body'
 	} );
 	
-	// và logo
-	str += create_css_for_custom_in_js( '.each-to-css-for-logo', '#cf_css_logo', {
+	// logo
+	str += create_css_for_custom_in_js( '.each-to-css-for-logo', 'cf_css_logo', {
 //		'mobile' : '',
 		'pc' : '.web-logo'
 	} );
+	
+	// w90
+	str += create_css_for_custom_in_js( '.each-to-css-for-w90', 'cf_css_w90', {
+//		'mobile' : '',
+		'pc' : '.w90'
+	} );
+	
+	//
+	console.log( arr_cf_css_body );
+//	console.log( JSON.stringify( arr_cf_css_body ) );
+//	console.log( escape( JSON.stringify( arr_cf_css_body ) ) );
+	$( '#cf_css_body' ).val( escape( JSON.stringify( arr_cf_css_body ) ) );
 	
 	
 	//
@@ -387,17 +400,20 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		sl = '';
 	
 	//
-	if ( a != '' ) {
-		console.log(a);
-		a = unescape( a );
-		console.log(a);
-		a = eval( '[' + a + ']' );
-		a = a[0];
+	if ( typeof a != 'object' ) {
+		if ( a != '' ) {
+//			console.log(a);
+			a = unescape( a );
+//			console.log(a);
+			a = eval( '[' + a + ']' );
+			a = a[0];
 //			a = eval( unescape( a ) );
+		}
+		else {
+			a = {};
+		}
 	}
-	else {
-		a = {};
-	}
+	console.log(a);
 	console.log(arr);
 //	console.log(arr_name);
 //	console.log(arr_alt);
@@ -419,7 +435,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		if ( typeof arr[x] == 'object' ) {
 			for ( var x2 in arr[x] ) {
 				sl = '';
-				if ( x2 == a[x] ) {
+				if ( typeof a[x] != 'undefined' && x2 == a[x] ) {
 					sl = ' selected="selected"';
 				}
 				
@@ -482,32 +498,34 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 				}
 			}
 		});
-//		console.log(str);
-//		console.log(str_mobile);
 //		console.log(arr);
 		
 		//
 		if ( str == '' && str_mobile == '' ) {
-			arr = '';
+//			arr = '';
+			arr = {};
 		}
 		else {
 			if ( str != '' ) {
 				str = cs['pc'] + '{' + str + '}';
+				console.log(str);
 			}
 //			console.log(str);
 			
 			if ( str_mobile != '' ) {
 				str_mobile = cs['mobile'] + '{' + str_mobile + '}';
+				console.log(str_mobile);
 			}
 //			console.log(str_mobile);
 			
 			//
-			arr = escape( JSON.stringify( arr ) );
+//			arr = escape( JSON.stringify( arr ) );
 //			console.log(arr);
 		}
 		
 		//
-		$( jd ).val( arr );
+//		$( jd ).val( arr );
+		arr_cf_css_body[jd] = arr;
 		
 		// trả về kết quả với css for pc trước, mobile sau
 		return str + str_mobile;
@@ -687,9 +705,43 @@ if ( current_module_config != 'config_theme' ) {
 	
 	// thêm các thông số điều chỉnh CSS cho logo
 	(function () {
+		console.log('CUSTOM CSS FOR LOGO');
+		
+		// lấy mảng dữ liệu đã được gán sẵn
+		var data = $('#cf_css_body').val() || '';
+		if ( data == '' ) {
+			data = {};
+		}
+		// chỉnh lại data nếu chưa có
+		else {
+//			console.log(data);
+			data = unescape( data );
+//			console.log(data);
+			data = eval( '[' + data + ']' );
+			data = data[0];
+//			console.log(data);
+			
+			// nếu không có mảng dữ liệu -> vẫn là mảng cũ -> loại luôn
+			if ( typeof data['cf_css_body'] == 'undefined' ) {
+				data = {
+					'cf_css_body' : data
+				};
+			}
+		}
+		
+		// gán dữ liệu nếu chưa có
+		if ( typeof data['cf_css_logo'] == 'undefined' ) {
+			data['cf_css_logo'] = {};
+		}
+		if ( typeof data['cf_css_w90'] == 'undefined' ) {
+			data['cf_css_w90'] = {};
+		}
+		if ( typeof data['cf_css_body'] == 'undefined' ) {
+			data['cf_css_body'] = {};
+		}
+		console.log(data);
 		
 		//
-		console.log('CUSTOM CSS FOR LOGO');
 		var arr = {
 			'background_position' : {
 				'' : 'Mặc định',
@@ -730,7 +782,8 @@ if ( current_module_config != 'config_theme' ) {
 				'background_size_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile có kích thước khác so với bản desktop'
 			},
 			{},
-			a = $('#cf_css_logo').val() || '',
+//			a = $('#cf_css_logo').val() || '',
+			data['cf_css_logo'],
 			{
 				'input_css' : 'each-to-css-for-logo',
 				'after_html' : 'custom_css_for_logo'
@@ -740,8 +793,6 @@ if ( current_module_config != 'config_theme' ) {
 		
 		
 		//
-		console.log('CUSTOM CSS FOR BODY');
-		
 		load_config_for_custom_logo(
 			{
 //				'max_width' : '',
@@ -749,7 +800,38 @@ if ( current_module_config != 'config_theme' ) {
 					'' : 'Mặc định (HD 1366px)',
 					'1024px' : 'XGA 1024px',
 					'1280px' : 'WXGA 1280px',
+//					'1366px' : 'HD 1366px',
 					'1600px' : 'HD+ 1600px',
+					'1920px' : 'Full HD 1920px',
+					'2560px' : 'WQHD 2560px'
+				}
+			}, {
+				'max_width' : 'Chiều rộng tối đa (khung)'
+			}, {
+				'max_width' : 'Bạn có thể thiết lập chiều rộng tối đa cho khung, điều này giúp cho các khối HTML trong đó giữ được tính ổn định cao.'
+			}, {
+				'max_width' : 'number'
+			},
+//			$('#cf_css_body').val() || '',
+			data['cf_css_w90'],
+			{
+				'input_css' : 'each-to-css-for-w90',
+				'after_html' : 'custom_css_for_body'
+			}
+		);
+		
+		
+		
+		//
+		load_config_for_custom_logo(
+			{
+//				'max_width' : '',
+				'max_width' : {
+					'' : 'Mặc định (HD+ 1600px)',
+					'1024px' : 'XGA 1024px',
+					'1280px' : 'WXGA 1280px',
+					'1366px' : 'HD 1366px',
+//					'1600px' : 'HD+ 1600px',
 					'1920px' : 'Full HD 1920px',
 					'2560px' : 'WQHD 2560px'
 				},
@@ -779,7 +861,7 @@ if ( current_module_config != 'config_theme' ) {
 				},
 				'font_family' : ''
 			}, {
-				'max_width' : 'Chiều rộng tối đa',
+				'max_width' : 'Chiều rộng tối đa (BODY)',
 				'font_size' : 'Cỡ chữ mặc định',
 				'font_family' : 'Phông chữ'
 			}, {
@@ -790,7 +872,8 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'max_width' : 'number'
 			},
-			$('#cf_css_body').val() || '',
+//			$('#cf_css_body').val() || '',
+			data['cf_css_body'],
 			{
 				'input_css' : 'each-to-css-for-body',
 				'after_html' : 'custom_css_for_body'
