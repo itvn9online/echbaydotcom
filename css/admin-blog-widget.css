@@ -3,8 +3,7 @@
 .eb-widget-fixed .ebe-ads-status,
 */
 .eb-widget-fixed .ebe-widget-post-show,
-.eb-widget-fixed .ebe-widget-ads-show,
-.eb-widget-fixed { display: none; }
+.eb-widget-fixed .ebe-widget-ads-show { display: none; }
 /*
 .eb-widget-fixed[data-type="post"] .ebe-post-status,
 .eb-widget-fixed[data-type="ads"] .ebe-ads-status,

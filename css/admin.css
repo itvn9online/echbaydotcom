@@ -441,6 +441,7 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	height: 30px;
 }
 */
+.eb-widget-fixed { display: none; }
 .ebe-color-picker {
 	padding: 0;
 	margin: 0;
