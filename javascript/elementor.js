@@ -39,6 +39,7 @@
 //		'css/d2.css',
 		// -> admin css làm bị tràn khung thiết kế của widget blog -> bỏ
 //		'css/admin.css',
+		'css/admin-blog-widget.css',
 		'css/elementor.css',
 		''
 	];

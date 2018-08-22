@@ -441,28 +441,6 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	height: 30px;
 }
 */
-/*
-.eb-widget-fixed .ebe-post-status,
-.eb-widget-fixed .ebe-ads-status,
-*/
-.eb-widget-fixed .ebe-widget-post-show,
-.eb-widget-fixed .ebe-widget-ads-show,
-.eb-widget-fixed { display: none; }
-/*
-.eb-widget-fixed[data-type="post"] .ebe-post-status,
-.eb-widget-fixed[data-type="ads"] .ebe-ads-status,
-*/
-.eb-widget-fixed[data-type="post"] .ebe-widget-post-show,
-.eb-widget-fixed[data-type="ads"] .ebe-widget-ads-show { display: block !important; }
-/* .eb-widget-fixed[data-type="blog"] { } */
-/* ẩn phần danh mục ở khu vực chọn widget của sản phẩm */
-.eb-widget-fixed .eb-get-widget-category option { display: none; }
-.eb-widget-fixed[data-type="post"] option[data-taxonomy="category"],
-.eb-widget-fixed[data-type="post"] option[data-taxonomy="post_options"],
-.eb-widget-fixed[data-type="ads"] option[data-taxonomy="category"],
-.eb-widget-fixed[data-type="ads"] option[data-taxonomy="post_options"],
-.eb-widget-fixed[data-type="blog"] option[data-taxonomy="blogs"],
-.eb-get-widget-category option[value="0"] { display: block; }
 .ebe-color-picker {
 	padding: 0;
 	margin: 0;
