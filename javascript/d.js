@@ -3569,14 +3569,17 @@ setTimeout(function () {
 		var a = jQuery(this).html() || '';
 		
 		if ( a != '' ) {
-			jQuery(this).show();
+			jQuery(this).removeClass('vhidden');
 			
 			//
 		var str = '',
 			wit = jQuery(this).width(),
-			hai = wit * youtube_video_default_size;
+			hai = Math.ceil( wit * youtube_video_default_size );
+			wit = Math.ceil( wit );
 			
 			//
+//			console.log(wit);
+//			console.log(hai);
 //			console.log(a);
 			a = a.split("\n");
 //			console.log(a);

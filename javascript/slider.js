@@ -490,8 +490,14 @@ function jEBE_slider ( jd, conf, callBack ) {
 		if ( i == 0 ) {
 			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
 			
-			if ( vd.split('youtube.com').length > 1 || vd.split('.mp4').length > 1 ) {
-				first_this_video = true;
+			if ( vd != '' ) {
+//				vd = vd.split('.');
+//				vd = vd[ vd.length - 1 ];
+				if ( vd.split('youtube.com').length > 1
+				|| vd.split('.mp4').length > 1
+				|| vd.split('.m4v').length > 1 ) {
+					first_this_video = true;
+				}
 			}
 		}
 		
@@ -571,7 +577,8 @@ function jEBE_slider ( jd, conf, callBack ) {
 				.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 			}
 		}
-		else if ( vd.split('.mp4').length > 1 ) {
+		else if ( vd.split('.mp4').length > 1
+		|| vd.split('.m4v').length > 1 ) {
 			// xóa thẻ a
 //			jQuery('a', this).hide();
 			

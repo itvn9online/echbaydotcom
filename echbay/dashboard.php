@@ -125,7 +125,9 @@ if ( get_option( 'timezone_string' ) == '' ) {
 //	if ( defined('FTP_USER') && defined('FTP_PASS') && defined('FTP_HOST') ) {
 if ( defined('FTP_USER') && defined('FTP_PASS') ) {
 	$str_eb_warning .= '
-	<div class="orgcolor"><i class="fa fa-warning"></i> NGUY HIỂM: Bạn đang cho phép website được update hoặc ghi file thông qua tài khoản FTP. Điều này làm giảm khả năng bảo mật của website khi bị dính mã độc hại. Chúng tôi khuyên bạn <strong>HÃY NHẬP THỦ CÔNG NẾU CÓ THỂ</strong>.</div>';
+	<div class="orgcolor"><i class="fa fa-warning"></i> NGUY HIỂM: Bạn đang cho phép website được update hoặc ghi file thông qua tài khoản FTP. Điều này làm giảm khả năng bảo mật của website khi bị dính mã độc hại. Chúng tôi khuyên bạn <strong>HÃY NHẬP THỦ CÔNG NẾU CÓ THỂ</strong>.<br>
+	User: <span class="graycolor">' . FTP_USER . '</span><br>
+	Host: ' . FTP_HOST . '</div>';
 }
 else {
 	$str_eb_warning .= '

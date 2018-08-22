@@ -559,12 +559,13 @@ var _global_js_eb = {
 				if ( wit > max_width ) {
 					wit = max_width - 1;
 				}
+//				console.log(wit);
 				
 				// chỉ xử lý với video youtube
 				if ( a.split('youtube.com/').length > 1 ) {
 					jQuery(this).attr({
 //						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
-						'data-width' : wit
+						'data-width' : Math.ceil( wit )
 					});
 				}
 			});
@@ -716,7 +717,7 @@ var _global_js_eb = {
 						//
 						jQuery(this).attr({
 							'width' : max_width,
-							'height' : max_width * youtube_video_default_size
+							'height' : Math.ceil( max_width * youtube_video_default_size )
 						});
 					}
 				});
@@ -808,7 +809,7 @@ var _global_js_eb = {
 					var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
 					jQuery(this).attr({
 						'width' : wit,
-						'height' : wit * youtube_video_default_size
+						'height' : Math.ceil( wit * youtube_video_default_size )
 					});
 				}
 			});
