@@ -20,7 +20,7 @@ buttonListNext: true
 // kích thước cố định (mặc định là tự động tính theo tham số size bên dưới)
 width: 1
 height: 1
-// tỷ lệ giữa chiều cao và chiều rộng, thiets lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)
+// tỷ lệ giữa chiều cao và chiều rộng, thiết lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)
 size: "width/height"
 // thiết lập chiều cao dòng cho phần slider (ít khi sử dụng vì nó sẽ được tự động tính toán)
 lineHeight: ""

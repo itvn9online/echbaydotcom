@@ -83,24 +83,35 @@ else if ( act == '404' ) {
 	}
 	
 	//
-	jQuery('.ebwidget-run-slider').each(function() {
-		var c = 'ebwidget-run-slider' + i;
-		console.log(c);
-		
-		jQuery(this).addClass( c );
-		
-		c = '.' + c;
-		
-		jEBE_slider( c, {
-			size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
-			visible: jQuery( c + ' ul').attr('data-visible') || 1,
-//			buttonListNext: false,
-			autoplay: true
-//		}, function () {
-		} );
-		
-		i++;
-	});
+	setTimeout(function () {
+		jQuery('.ebwidget-run-slider').each(function() {
+			var c = 'ebwidget-run-slider' + i,
+				s = '';
+			
+			jQuery(this).addClass( c );
+			
+			c = '.' + c;
+			
+			//
+			s = jQuery( c + ' li:first').height() + '/' + jQuery( c + ' li:first').width();
+			
+			//
+			console.log('Run widget slider ' + c + ' with size: ' + s);
+			setTimeout(function () {
+				jEBE_slider( c, {
+//					size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
+					size : s,
+					
+					visible: jQuery( c + ' ul').attr('data-visible') || 1,
+//					buttonListNext: false,
+					autoplay: true
+//				}, function () {
+				} );
+			}, 2000);
+			
+			i++;
+		});
+	}, 1000);
 })();
 
 

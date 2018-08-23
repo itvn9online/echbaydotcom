@@ -257,6 +257,10 @@ body.home .thread-details-tohome { display: none; }
 	transition: all 0.8s ease;
 }
 .jEBE_slider-position li { float: left; }
+.ebwidget-run-slider {
+	overflow: hidden;
+	height: 90px;
+}
 .web-logo {
 	line-height: 50px;
 	background: center no-repeat;
