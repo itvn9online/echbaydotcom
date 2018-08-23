@@ -84,7 +84,7 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 							<textarea name="t_ghichu" placeholder="<?php echo EBE_get_lang('cart_vidu'); ?>"></textarea>
 						</div>
 					</div>
-					<div class="eb-quickcart-node eb-quickcart-coupon cf">
+					<div class="eb-quickcart-node eb-quickcart-coupon d-none cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_discount_code'); ?></div>
 						<div class="eb-quickcart-right">
 							<input type="text" name="t_discount_code" value="" placeholder="<?php echo EBE_get_lang('cart_discount_code'); ?>" class="auto-check-discount-code" />
