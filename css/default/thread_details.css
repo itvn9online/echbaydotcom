@@ -24,6 +24,7 @@
 	background: #09F;
 	width: 1px;
 	color: #09F;
+	color: transparent !important;
 }
 .thread-details-slogan { }
 .thread-details-slogan li { margin-bottom: 5px; }

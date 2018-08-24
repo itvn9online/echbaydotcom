@@ -236,12 +236,12 @@ function create_deault_css () {
 	else {
 		new_css += 'background-color: ' + a + ';';
 	}
-	
+	/*
 	a = f.cf_default_size.value;
 	if ( a != '' && a > 0 && a != 10 ) {
 		new_css += 'font-size: ' + a + 'pt;';
 	}
-	
+	*/
 	if ( new_css != '' ) {
 		str += 'body {' + new_css + '}';
 	}
@@ -298,10 +298,27 @@ function create_deault_css () {
 	} );
 	
 	//
+	str += create_css_for_custom_in_js( '.each-to-css-for-details', 'cf_css_details', {
+//		'mobile' : '',
+		'pc' : '.thread-details-tab li.selected'
+	} );
+	
+	//
 	console.log( arr_cf_css_body );
 //	console.log( JSON.stringify( arr_cf_css_body ) );
 //	console.log( escape( JSON.stringify( arr_cf_css_body ) ) );
 	$( '#cf_css_body' ).val( escape( JSON.stringify( arr_cf_css_body ) ) );
+	
+	
+	// các mã màu được sinh ra sau khi bộ JS kia chạy
+	try {
+		a = f.details_custom_css_in_js_background_color.value;
+		if ( a != '' && a.substr( 0, 1 ) == '#' && ( a.length == 4 || a.length == 7 ) ) {
+			str += '.thread-details-tab,.thread-list-filter{border-bottom-color:' + a + '}.thread-list-filter div{background-color:' + a + '}';
+		}
+	} catch ( e ) {
+		console.log( WGR_show_try_catch_err( e ) );
+	}
 	
 	
 	//
@@ -394,10 +411,15 @@ function config_test_send_mail() {
 }
 
 
-function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a, op ) {
+function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a, op, ops ) {
 	var str = '',
 		str_input = '',
-		sl = '';
+		sl = '',
+		// ký tự tối đa cảu input text
+		maxlength = '',
+		// class định hình độ dài của input text
+		with_class = '',
+		name_input = '';
 	
 	//
 	if ( typeof a != 'object' ) {
@@ -413,10 +435,25 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			a = {};
 		}
 	}
-	console.log(a);
 	console.log(arr);
+	console.log(a);
+	console.log('---------------');
 //	console.log(arr_name);
 //	console.log(arr_alt);
+	
+	//
+	if ( typeof ops != 'object' ) {
+		ops = {};
+	}
+	
+	//
+	if ( typeof op['input_css'] == 'undefined' ) {
+		op['input_css'] = 'each-to-css-for-' + op['input_name'];
+	}
+	if ( typeof op['after_html'] == 'undefined' ) {
+		op['after_html'] = 'custom_css_for_' + op['input_name'];
+	}
+	console.log( op );
 	
 	//
 	for ( var x in arr ) {
@@ -429,31 +466,66 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		}
 		console.log(arr[x]);
 		*/
+		if ( typeof a[x] == 'undefined' ) {
+			a[x] = '';
+		}
+		
+		// xong mới tạo tên cho input
+		name_input = op['input_name'] + '_custom_css_in_js_' + x;
+		
+		//
+		if ( typeof arr_input_type[x] == 'undefined' ) {
+			arr_input_type[x] = 'text';
+		}
 		
 		// tạo input
 		str_input = '';
 		if ( typeof arr[x] == 'object' ) {
 			for ( var x2 in arr[x] ) {
 				sl = '';
-				if ( typeof a[x] != 'undefined' && x2 == a[x] ) {
+//				if ( typeof a[x] != 'undefined' && x2 == a[x] ) {
+				if ( x2 == a[x] ) {
 					sl = ' selected="selected"';
 				}
 				
 				//
 				str_input += '<option value="' + x2 + '"' + sl + '>' + arr[x][x2] + '</option>';
 			}
-			str_input = '<select name="custom_css_in_js_' + x + '" value="' + x2 + '" class="' + op['input_css'] + '">' + str_input + '</select>';
+			str_input = '<select name="' + name_input + '" class="' + op['input_css'] + '">' + str_input + '</select>';
 		}
-		else if ( typeof arr_input_type[x] != 'undefined' && arr_input_type[x] == 'number' ) {
-			str_input = '<input type="number" name="custom_css_in_js_' + x + '" value="' + arr[x] + '" class="s ' + op['input_css'] + '" />';
+		else if ( arr_input_type[x] == 'number' ) {
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" class="s ' + op['input_css'] + '" />';
+		}
+		else if ( arr_input_type[x] == 'color' ) {
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" placeholder="#notset" class="ebe-color-picker ' + op['input_css'] + '" />';
+			
+			str_input += ' - <a href="javascript:;" data-set="' + name_input + '" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="' + name_input + '" class="click-to-reset-site-color">Mặc định</a> ';
 		}
 		else {
-			str_input = '<input type="text" name="custom_css_in_js_' + x + '" value="' + arr[x] + '" class="n ' + op['input_css'] + '" maxlength="155" />';
+			maxlength = 155;
+			if ( typeof ops['maxlength'] != 'undefined' && typeof ops['maxlength'][x] != 'undefined' ) {
+				maxlength = ops['maxlength'][x];
+			}
+			
+			//
+			with_class = 's';
+			if ( maxlength > 155 ) {
+				with_class = 'l';
+			}
+			else if ( maxlength > 75 ) {
+				with_class = 'm';
+			}
+			else if ( maxlength > 25 ) {
+				with_class = 'n';
+			}
+			
+			//
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
 		}
 		
 		// ghi chú
 		if ( typeof arr_alt[x] != 'undefined' ) {
-			str_input += '<div class="small">' + arr_alt[x] + '</div>';
+			str_input += '<p class="description">' + arr_alt[x] + '</p>';
 		}
 		
 		//
@@ -486,7 +558,8 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 				n = $(this).attr('name') || '';
 			
 			if ( a != '' && n != '' ) {
-				n = n.replace('custom_css_in_js_', '');
+//				n = n.replace('custom_css_in_js_', '');
+				n = n.split('_custom_css_in_js_')[1];
 				arr[n] = a;
 				
 				//
@@ -739,6 +812,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_body'] == 'undefined' ) {
 			data['cf_css_body'] = {};
 		}
+		if ( typeof data['cf_css_details'] == 'undefined' ) {
+			data['cf_css_details'] = {};
+		}
 		console.log(data);
 		
 		//
@@ -785,8 +861,9 @@ if ( current_module_config != 'config_theme' ) {
 //			a = $('#cf_css_logo').val() || '',
 			data['cf_css_logo'],
 			{
-				'input_css' : 'each-to-css-for-logo',
-				'after_html' : 'custom_css_for_logo'
+//				'input_css' : 'each-to-css-for-logo',
+//				'after_html' : 'custom_css_for_logo',
+				'input_name' : 'logo'
 			}
 		);
 		
@@ -812,11 +889,11 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'max_width' : 'number'
 			},
-//			$('#cf_css_body').val() || '',
 			data['cf_css_w90'],
 			{
-				'input_css' : 'each-to-css-for-w90',
-				'after_html' : 'custom_css_for_body'
+//				'input_css' : 'each-to-css-for-w90',
+				'after_html' : 'custom_css_for_body',
+				'input_name' : 'w90'
 			}
 		);
 		
@@ -875,8 +952,34 @@ if ( current_module_config != 'config_theme' ) {
 //			$('#cf_css_body').val() || '',
 			data['cf_css_body'],
 			{
-				'input_css' : 'each-to-css-for-body',
-				'after_html' : 'custom_css_for_body'
+//				'input_css' : 'each-to-css-for-body',
+//				'after_html' : 'custom_css_for_body',
+				'input_name' : 'body'
+			}
+		);
+		
+		
+		
+		//
+		load_config_for_custom_logo(
+			{
+				'background_color' : ''
+			}, {
+				'background_color' : 'Màu tab trang chi tiết'
+			}, {
+				'background_color' : 'Màu nền tab nội dung trong trang chi tiết. Mã màu gồm dấu # và 3 hoặc 6 ký tự đại diện đằng sau.'
+			}, {
+//				'background_color' : 'color'
+			},
+			data['cf_css_details'],
+			{
+//				'input_css' : 'each-to-css-for-details',
+//				'after_html' : 'custom_css_for_details',
+				'input_name' : 'details'
+			}, {
+				'maxlength' : {
+					'background_color' : 7
+				}
 			}
 		);
 		

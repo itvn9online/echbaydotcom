@@ -38,7 +38,8 @@
 .clone-show-quick-cart .eb-quickcart-table input[type=text] {
 	padding: 0 3px;
 	height: 35px;
-	width: 95%;
+	width: 92%;
+	padding-left: 3%;
 }
 .clone-show-quick-cart .eb-quickcart-submit {
 	background: #f59231;

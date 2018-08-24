@@ -229,11 +229,13 @@ div.gallery-add-to-og_image { display: block; }
 					- <a href="javascript:;" data-set="cf_default_link_color" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_link_color" class="click-to-reset-site-color">Mặc định</a>
 					<p class="description">Là màu chữ mặc định cho toàn bộ <strong>liên kết</strong> website, màu này sẽ không can thiệp vào các màu danh mục, nút bấm ở dưới.</p></td>
 			</tr>
+			<!--
 			<tr>
 				<td class="t">Kích cỡ chữ</td>
 				<td class="i"><input type="number" name="cf_default_size" value="{tmp.cf_default_size}" placeholder="{aaa.cf_default_size}" class="s" />
 					/ point (1 px = 0.75 point)</td>
 			</tr>
+			-->
 			<tr>
 				<td valign="top" class="t">Màu nền danh mục, nút bấm</td>
 				<td class="i"><input type="color" name="cf_default_bg" value="{tmp.cf_default_bg}" placeholder="{aaa.cf_default_bg}" class="ebe-color-picker" />
@@ -246,7 +248,7 @@ div.gallery-add-to-og_image { display: block; }
 					- <a href="javascript:;" data-set="cf_default_2bg" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_2bg" class="click-to-reset-site-color">Mặc định</a> - CSS: <strong>default2-bg</strong>
 					<p class="description">Tương tự như màu danh mục nút bấm ở trên, nhưng có thể đậm hoặc nhạt hơn để tạo điểm nhấn, đỡ nhàm chán cho website.</p></td>
 			</tr>
-			<tr>
+			<tr id="custom_css_for_details">
 				<td valign="top" class="t">Màu chữ danh mục, nút bấm</td>
 				<td class="i"><input type="color" name="cf_default_bg_color" value="{tmp.cf_default_bg_color}" placeholder="{aaa.cf_default_bg_color}" class="ebe-color-picker" />
 					- <a href="javascript:;" data-set="cf_default_bg_color" class="click-to-set-site-color">Nhập mã màu</a> - <a href="javascript:;" data-set="cf_default_bg_color" class="click-to-reset-site-color">Mặc định</a>
@@ -346,7 +348,8 @@ div.gallery-add-to-og_image { display: block; }
 					<p class="description">Sử dụng khi bạn có dữ liệu được lấy từ một domain khác, trong bài viết có chứa URL là của domain cũ, và giờ bạn muốn thay đổi tất cả sang domain mới (chủ yếu là URL ảnh).<br>
 						* Lưu ý! chỉ nhập domain, <strong>không bao gồm</strong> http:// hoặc dấu /<br>
 						Ví dụ:
-						<pre><code class="d-block">echbay.com, webgiare.org</code></pre>
+					
+					<pre><code class="d-block">echbay.com, webgiare.org</code></pre>
 					</p></td>
 			</tr>
 			<tr>
@@ -355,7 +358,8 @@ div.gallery-add-to-og_image { display: block; }
 					<p class="description">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
 						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
 						Ví dụ:
-						<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
+					
+					<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
 					</p></td>
 			</tr>
 			<tr>
@@ -369,7 +373,8 @@ div.gallery-add-to-og_image { display: block; }
 						* Phải nhập URL cả www. nếu CDN chạy chính trên bản www.<br>
 						* DNS prefetch chỉ sử dụng cho các file tĩnh như: Ảnh, JS, CSS nên khi khách hàng truy cập vào website thông qua tên miền này hệ thống sẽ báo lỗi <strong>403</strong>.<br>
 						Ví dụ:
-						<pre><code class="d-block">cdn.echbay.net</code><code class="d-block">cdn1.echbay.net</code><code class="d-block">cdn2.echbay.com</code></pre>
+					
+					<pre><code class="d-block">cdn.echbay.net</code><code class="d-block">cdn1.echbay.net</code><code class="d-block">cdn2.echbay.com</code></pre>
 					</p></td>
 			</tr>
 		</tbody>
@@ -643,98 +648,12 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="email" name="cf_paypal_email" value="{tmp.cf_paypal_email}" class="m" /></td>
 			</tr>
 		</tbody>
-		<tbody title="Tính năng khác" id="eb-admin-config-permalinks" class="eb-admin-config-tab eb-admin-hide-config-tab">
-			<tr>
-				<td class="t">Chia sẻ dữ liệu qua JSON</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_json" id="cf_on_off_json" value="{tmp.cf_on_off_json}" />
-					<label for="cf_on_off_json" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a><br>
-
-						- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></p></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
-					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">XML-RPC là một giao thức kết nối với website WordPress từ xa sử dụng XML để trao đổi dữ liệu qua lại! Thường sử dụng khi thiết lập đăng bài từ một ứng dụng khác, nếu bạn không có nhu cầu này, hãy tắt nó đi. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a>
-					</p></td>
-			</tr>
-			<tr>
-				<td class="t">Bật/ Tắt chức năng Cron Job</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_wpcron" id="cf_on_off_wpcron" value="{tmp.cf_on_off_wpcron}" />
-					<label for="cf_on_off_wpcron" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
-						- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></p></td>
-			</tr>
-			<tr>
-				<td class="t">Bật/ Tắt Feed (RSS)</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_feed" id="cf_on_off_feed" value="{tmp.cf_on_off_feed}" />
-					<label for="cf_on_off_feed" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Chức năng Feed (RSS) sẽ giúp cho việc chia sẻ dữ liệu trên website của bạn được thuận lợi hơn, đa dạng hơn. Về cơ bản là nên bật nó, trường hợp bạn không muốn chia sẻ dữ liệu này thì hãy tắt nó đi.<br>
-						- <a href="{tmp.web_link}feed" target="_blank">{tmp.web_link}feed</a><br>
-							- <a href="{tmp.web_link}blog/feed" target="_blank">{tmp.web_link}blog/feed</a></p></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td class="t">Xóa URL phân nhóm cha</td>
-				<td class="i"><input type="checkbox" name="cf_remove_category_base" id="cf_remove_category_base" value="{tmp.cf_remove_category_base}" />
-					<label for="cf_remove_category_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
-						<span class="redcolor">* Việc xóa URL nhóm cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích.</span>
-					</p></td>
-			</tr>
-			<tr>
-				<td class="t">Xóa URL post_option cha</td>
-				<td class="i"><input type="checkbox" name="cf_remove_post_option_base" id="cf_remove_post_option_base" value="{tmp.cf_remove_post_option_base}" />
-					<label for="cf_remove_post_option_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Mặc định, các post_option con sẽ mang thêm URL của post_option cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
-						<span class="redcolor">* Việc xóa URL post_option cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích. <strong>Ngoài ra, nó có thể làm xung đột URL với phần phân nhóm nên dễ tạo lỗi cho website rất nhiều</strong>.</span>
-					</p></td>
-			</tr>
-			<tr>
-				<td class="t">Cho phép index với post_option</td>
-				<td class="i"><input type="checkbox" name="cf_alow_post_option_index" id="cf_alow_post_option_index" value="{tmp.cf_alow_post_option_index}" />
-					<label for="cf_alow_post_option_index" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Mặc định, các post option sẽ không được index, do nó chỉ được coi là phân nhóm phụ, phục vụ cho module tìm kiếm nâng cao, nếu bạn muốn nó vẫn được index bình thường, có thể kích hoạt nó lên.</p></td>
-			</tr>
-			<tr>
-				<td class="t">Cho phép index với post_tag</td>
-				<td class="i"><input type="checkbox" name="cf_alow_post_tag_index" id="cf_alow_post_tag_index" value="{tmp.cf_alow_post_tag_index}" />
-					<label for="cf_alow_post_tag_index" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19"></p></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td class="t">EchBay SEO plugin</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_echbay_seo" id="cf_on_off_echbay_seo" value="{tmp.cf_on_off_echbay_seo}" />
-					<label for="cf_on_off_echbay_seo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</p></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
-			<tr>
-				<td class="t">Cung cấp bởi Ếch Bay</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_echbay_logo" id="cf_on_off_echbay_logo" value="{tmp.cf_on_off_echbay_logo}" />
-					<label for="cf_on_off_echbay_logo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</p></td>
-			</tr>
-			<tr>
-				<td colspan="2"><hr></td>
-			</tr>
+		<tbody title="Phiên bản AMP" id="eb-admin-config-amp" class="eb-admin-config-tab eb-admin-hide-config-tab">
 			<tr>
 				<td class="t">AMP logo</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_amp_logo" id="cf_on_off_amp_logo" value="{tmp.cf_on_off_amp_logo}" />
-					<label for="cf_on_off_amp_logo" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label></td>
+					<label for="cf_on_off_amp_logo" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description">Hình ảnh được tiết kiệm tối đa cho bản rút gọn (AMP) nên logo cũng mặc định sẽ không được kích hoạt.</p></td>
 			</tr>
 			<tr>
 				<td class="t">AMP Danh mục Sản phẩm</td>
@@ -757,22 +676,68 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="checkbox" name="cf_on_off_amp_blog" id="cf_on_off_amp_blog" value="{tmp.cf_on_off_amp_blog}" />
 					<label for="cf_on_off_amp_blog" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label></td>
 			</tr>
+		</tbody>
+		<tbody title="SEO" id="eb-admin-config-seo" class="eb-admin-config-tab eb-admin-hide-config-tab">
+			<tr>
+				<td class="t">EchBay SEO plugin</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_echbay_seo" id="cf_on_off_echbay_seo" value="{tmp.cf_on_off_echbay_seo}" />
+					<label for="cf_on_off_echbay_seo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Mặc định, plugin SEO của EchBay sẽ được bật, tuy nhiên, trong một số trường hợp nếu sử dụng các plugin SEO khác mà bị xung đột hoặc trùng lặp dữ liệu thì nên tắt nó đi.</p></td>
+			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td class="t">Tự động cập nhật WordPress</td>
-				<td class="i"><input type="checkbox" name="cf_on_off_auto_update_wp" id="cf_on_off_auto_update_wp" value="{tmp.cf_on_off_auto_update_wp}" />
-					<label for="cf_on_off_auto_update_wp" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label></td>
+				<td class="t">Xóa URL phân nhóm cha</td>
+				<td class="i"><input type="checkbox" name="cf_remove_category_base" id="cf_remove_category_base" value="{tmp.cf_remove_category_base}" />
+					<label for="cf_remove_category_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Mặc định, các phân nhóm con sẽ mang thêm URL của nhóm cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
+						<span class="redcolor">* Việc xóa URL nhóm cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích.</span> </p></td>
+			</tr>
+			<tr>
+				<td class="t">Xóa URL post_option cha</td>
+				<td class="i"><input type="checkbox" name="cf_remove_post_option_base" id="cf_remove_post_option_base" value="{tmp.cf_remove_post_option_base}" />
+					<label for="cf_remove_post_option_base" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Mặc định, các post_option con sẽ mang thêm URL của post_option cha, để xóa nó đi, hãy bấm chọn và lưu lại.<br>
+						<span class="redcolor">* Việc xóa URL post_option cha sẽ làm cho wordpress sinh ra nhiều rule cho việc truy cập, nên điều này là không được khuyến khích. <strong>Ngoài ra, nó có thể làm xung đột URL với phần phân nhóm nên dễ tạo lỗi cho website rất nhiều</strong>.</span> </p></td>
+			</tr>
+			<tr>
+				<td class="t">Cho phép index với post_option</td>
+				<td class="i"><input type="checkbox" name="cf_alow_post_option_index" id="cf_alow_post_option_index" value="{tmp.cf_alow_post_option_index}" />
+					<label for="cf_alow_post_option_index" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Mặc định, các post option sẽ không được index, do nó chỉ được coi là phân nhóm phụ, phục vụ cho module tìm kiếm nâng cao, nếu bạn muốn nó vẫn được index bình thường, có thể kích hoạt nó lên.</p></td>
+			</tr>
+			<tr>
+				<td class="t">Cho phép index với post_tag</td>
+				<td class="i"><input type="checkbox" name="cf_alow_post_tag_index" id="cf_alow_post_tag_index" value="{tmp.cf_alow_post_tag_index}" />
+					<label for="cf_alow_post_tag_index" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19"></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td class="t">Không lấy thumbnail</td>
-				<td class="i"><input type="checkbox" name="cf_disable_auto_get_thumb" id="cf_disable_auto_get_thumb" value="{tmp.cf_disable_auto_get_thumb}" />
-					<label for="cf_disable_auto_get_thumb" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description">Mặc định! các hình ảnh hiển thị ra web sẽ được hệ thống lọc với kích cỡ vừa khung nhất, để đảm bảo tốc độ tải cho web site. Nếu bạn muốn giữ nguyên ảnh gốc khi xuất ra, hãy bỏ chọn để tắt chức năng này.</p></td>
+				<td class="t">Tự động thêm nofollow</td>
+				<td class="i"><input type="checkbox" name="cf_auto_nofollow" id="cf_auto_nofollow" value="{tmp.cf_auto_nofollow}" />
+					<label for="cf_auto_nofollow" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description">Khi chế độ này được bật, các thẻ A chứa URL của website khác sẽ bị gán thêm thuộc tính nofollow vào để đánh dấu URL không quan trọng đối với các bot tìm kiếm.</p></td>
+			</tr>
+			<tr>
+				<td class="t">Tự động chuyển hướng</td>
+				<td class="i"><input type="checkbox" name="cf_redirecting_matched_slugs" id="cf_redirecting_matched_slugs" value="{tmp.cf_redirecting_matched_slugs}" />
+					<label for="cf_redirecting_matched_slugs" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt.">Tới bài viết có slug tương ứng</label>
+					<p class="description">Khi một URL bị 404, hệ thống sẽ tìm URL giống như thế và chuyển hướng tới, nếu muốn bỏ tính năng này, hãy tắt nó đi.</p></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Bật/ Tắt Feed (RSS)</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_feed" id="cf_on_off_feed" value="{tmp.cf_on_off_feed}" />
+					<label for="cf_on_off_feed" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Chức năng Feed (RSS) sẽ giúp cho việc chia sẻ dữ liệu trên website của bạn được thuận lợi hơn, đa dạng hơn. Về cơ bản là nên bật nó, trường hợp bạn không muốn chia sẻ dữ liệu này thì hãy tắt nó đi.<br>
+						- <a href="{tmp.web_link}feed" target="_blank">{tmp.web_link}feed</a><br>
+						- <a href="{tmp.web_link}blog/feed" target="_blank">{tmp.web_link}blog/feed</a></p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
@@ -795,11 +760,55 @@ div.gallery-add-to-og_image { display: block; }
 					<label for="cf_h1_logo" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<p class="description">Khi chế độ này được bật, thẻ H1 sẽ được nhúng vào Logo trong trang chủ (nếu theme có hỗ trợ). Tuy nhiên đây chỉ là phương thức chống chế với các công cụ check SEO, nên chúng tôi không khuyến nghị.</p></td>
 			</tr>
+		</tbody>
+		<tbody title="Tính năng khác" id="eb-admin-config-permalinks" class="eb-admin-config-tab eb-admin-hide-config-tab">
 			<tr>
-				<td class="t">Tự động thêm nofollow</td>
-				<td class="i"><input type="checkbox" name="cf_auto_nofollow" id="cf_auto_nofollow" value="{tmp.cf_auto_nofollow}" />
-					<label for="cf_auto_nofollow" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description">Khi chế độ này được bật, các thẻ A chứa URL của website khác sẽ bị gán thêm thuộc tính nofollow vào để đánh dấu URL không quan trọng đối với các bot tìm kiếm.</p></td>
+				<td class="t">Chia sẻ dữ liệu qua JSON</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_json" id="cf_on_off_json" value="{tmp.cf_on_off_json}" />
+					<label for="cf_on_off_json" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}wp-json/wp/v2/posts" target="_blank">{tmp.web_link}wp-json/wp/v2/posts</a><br>
+						- <a href="{tmp.web_link}wp-json/wp/v2/users" target="_blank">{tmp.web_link}wp-json/wp/v2/users</a></p></td>
+			</tr>
+			<tr>
+				<td class="t">Chia sẻ dữ liệu qua XML-RPC</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_xmlrpc" id="cf_on_off_xmlrpc" value="{tmp.cf_on_off_xmlrpc}" />
+					<label for="cf_on_off_xmlrpc" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">XML-RPC là một giao thức kết nối với website WordPress từ xa sử dụng XML để trao đổi dữ liệu qua lại! Thường sử dụng khi thiết lập đăng bài từ một ứng dụng khác, nếu bạn không có nhu cầu này, hãy tắt nó đi. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}xmlrpc.php" target="_blank">{tmp.web_link}xmlrpc.php</a> </p></td>
+			</tr>
+			<tr>
+				<td class="t">Bật/ Tắt chức năng Cron Job</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_wpcron" id="cf_on_off_wpcron" value="{tmp.cf_on_off_wpcron}" />
+					<label for="cf_on_off_wpcron" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">WordPress sử dụng file wp-cron.php để thiết lập chế độ auto post bài viết theo thời gian định trước! Nếu bạn không sử dụng chức năng này, hãy tắt nó đi để tiết kiệm tài nguyên cho website. Hãy mở thử liên kết sau để kiểm tra kết quả (có thể có cache nên thay đổi sẽ diễn ra trong vòng 120 giây):<br>
+						- <a href="{tmp.web_link}wp-cron.php" target="_blank">{tmp.web_link}wp-cron.php</a></p></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Cung cấp bởi Ếch Bay</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_echbay_logo" id="cf_on_off_echbay_logo" value="{tmp.cf_on_off_echbay_logo}" />
+					<label for="cf_on_off_echbay_logo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</p></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Tự động cập nhật WordPress</td>
+				<td class="i"><input type="checkbox" name="cf_on_off_auto_update_wp" id="cf_on_off_auto_update_wp" value="{tmp.cf_on_off_auto_update_wp}" />
+					<label for="cf_on_off_auto_update_wp" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><hr></td>
+			</tr>
+			<tr>
+				<td class="t">Không lấy thumbnail</td>
+				<td class="i"><input type="checkbox" name="cf_disable_auto_get_thumb" id="cf_disable_auto_get_thumb" value="{tmp.cf_disable_auto_get_thumb}" />
+					<label for="cf_disable_auto_get_thumb" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description">Mặc định! các hình ảnh hiển thị ra web sẽ được hệ thống lọc với kích cỡ vừa khung nhất, để đảm bảo tốc độ tải cho web site. Nếu bạn muốn giữ nguyên ảnh gốc khi xuất ra, hãy bỏ chọn để tắt chức năng này.</p></td>
 			</tr>
 			<tr class="show-administrator-only">
 				<td colspan="2"><hr></td>
@@ -822,16 +831,16 @@ div.gallery-add-to-og_image { display: block; }
 					<label for="cf_alow_edit_plugin_theme" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
 					<p class="description">Việc sửa theme/ plugin đôi khi có thể gây bất cập hoặc giảm độ bảo mật cho website, nếu bạn không chắc chắn về vấn đề này có thể tắt nó đi, và chỉ bật khi cần thiết.</p></td>
 			</tr>
-			<tr>
+			<tr class="show-administrator-only">
 				<td colspan="2"><hr></td>
 			</tr>
-			<tr>
+			<tr class="show-administrator-only">
 				<td class="t">Đặt làm trang Tin tức</td>
 				<td class="i"><input type="checkbox" name="cf_set_news_version" id="cf_set_news_version" value="{tmp.cf_set_news_version}" />
 					<label for="cf_set_news_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<p class="description">Plugin này được thiết kế chủ yếu cho các website bán hàng, nếu dùng để làm website tin tức thì đánh dấu vào đây để ẩn các chức năng của trang bán hàng đi cho dễ sử dụng.</p></td>
 			</tr>
-			<tr>
+			<tr class="show-administrator-only">
 				<td class="t">Đặt làm trang Rao vặt</td>
 				<td class="i"><input type="checkbox" name="cf_set_raovat_version" id="cf_set_raovat_version" value="{tmp.cf_set_raovat_version}" />
 					<label for="cf_set_raovat_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
@@ -839,7 +848,7 @@ div.gallery-add-to-og_image { display: block; }
 						<span class="orgcolor">* Đây là một tính năng cao cấp, đồng nghĩa với việc quản trị và vận hành sẽ phức tạp hơn, nên chi phí cũng đắt hơn so với bản thường. Vì thế, chỉ bật tính năng này khi bạn nắm rõ nguyên lý hoạt động của nó để đảm bảo an toàn dữ liệu cho chính bạn.</span><br>
 						Sau khi kích hoạt tính năng này, cần bấm vào <a href="{tmp.web_link}404?update_db_struct=1" target="_blank" rel="nofollow">đây: {tmp.web_link}404?update_db_struct=1</a> để đồng bộ dữ liệu.</p></td>
 			</tr>
-			<tr>
+			<tr class="show-administrator-only">
 				<td class="t">Xóa POSTMETA Rao vặt</td>
 				<td class="i"><input type="checkbox" name="cf_remove_raovat_meta" id="cf_remove_raovat_meta" value="{tmp.cf_remove_raovat_meta}" />
 					<label for="cf_remove_raovat_meta" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
@@ -869,12 +878,6 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="checkbox" name="cf_echbay_migrate_version" id="cf_echbay_migrate_version" value="{tmp.cf_echbay_migrate_version}" />
 					<label for="cf_echbay_migrate_version" data-on="Đang TẮT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT! bấm vào đây sau đó lưu lại để tắt."></label>
 					<p class="description">Chức năng này dùng để đồng bộ URL của phiên bản 1 với phiên bản hiện tại, chỉ có tác dụng với web nâng cấp, nếu web của bạn là web mới, vui lòng không kích hoạt.</p></td>
-			</tr>
-			<tr>
-				<td class="t">Tự động chuyển hướng</td>
-				<td class="i"><input type="checkbox" name="cf_redirecting_matched_slugs" id="cf_redirecting_matched_slugs" value="{tmp.cf_redirecting_matched_slugs}" />
-					<label for="cf_redirecting_matched_slugs" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description">Khi một URL bị 404, hệ thống sẽ tìm URL giống như thế và chuyển hướng tới, nếu muốn bỏ tính năng này, hãy tắt nó đi.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>
