@@ -191,6 +191,7 @@ body.style-for-mobile {
 	width: 60px;
 	height: 60px;
 }
+.style-for-mobile .clone-show-quick-cart { padding: 0 8px; }
 /* for mobile
 @media screen and (max-width:768px) {
 }
