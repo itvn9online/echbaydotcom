@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
+body { max-width: none; }
 body.ebdesign-no-scroll { overflow: hidden; }
 .eb-admin-tab {
 	line-height: 35px;
