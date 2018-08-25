@@ -662,6 +662,10 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 			console.log( 'Not get height of LI in ' + jd );
 			return false;
 		}
+		// gấp rưỡi chiều cao để xử lý dễ hơn chút
+		else {
+			min_tab_height *= 1.5;
+		}
 	}
 	
 	//
@@ -672,10 +676,13 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 		var j = 30;
 		for ( var i = 0; i < 28; i++ ) {
 			jQuery( jd + ' ' + tag ).css({
-				padding: '0 ' +j+ 'px'
+//				padding: '0 ' +j+ 'px',
+				'padding-left' : j + 'px',
+				'padding-right' : j + 'px'
 			});
 			
 			//
+//			console.log( jQuery( jd ).height() );
 			if ( jQuery( jd ).height() < min_tab_height ) {
 				break;
 			}
@@ -689,11 +696,12 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 	if ( jQuery( jd ).height() > min_tab_height ) {
 		var j = 17;
 		for ( var i = 0; i < 5; i++ ) {
-			jQuery('.thread-details-tab').css({
+			jQuery( jd + ' ' + tag ).css({
 				'font-size' : j+ 'px'
 			});
 			
 			//
+//			console.log( jQuery( jd ).height() );
 			if ( jQuery( jd ).height() < min_tab_height ) {
 				break;
 			}
@@ -4020,11 +4028,11 @@ _global_js_eb._log_click_ref();
 
 // báo lỗi nếu có thẻ dynamic_title_tag chưa được chuyển đổi
 if ( jQuery('dynamic_title_tag').length > 0 ) {
-	alert('dynamic_title_tag cần được thay đổi sang DIV hoặc H*');
+	a_lert('dynamic_title_tag cần được thay đổi sang DIV hoặc H*');
 	console.log('================= dynamic_title_tag =================');
 }
 else if ( jQuery('dynamic_widget_tag').length > 0 ) {
-	alert('dynamic_widget_tag cần được thay đổi sang DIV hoặc H*');
+	a_lert('dynamic_widget_tag cần được thay đổi sang DIV hoặc H*');
 	console.log('================= dynamic_widget_tag =================');
 }
 
