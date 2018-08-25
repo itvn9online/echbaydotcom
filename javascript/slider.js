@@ -70,11 +70,16 @@ function jEBE_multi_slider ( jd, conf, callBack ) {
 	
 }
 
-function jEBE_slider ( jd, conf, callBack ) {
+function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
-	//
+	// nếu có function kết thúc phiên làm việc -> xử lý luôn
 	if ( typeof callBack != 'function' ) {
 		callBack = null;
+	}
+	
+	// xem có phải là load lại slider hay không, nếu có -> không gọi lại 1 số chức năng
+	if ( typeof slider_reload == 'undefined' ) {
+		slider_reload = false;
 	}
 	
 	// kiểm tra và nạp jQuery
@@ -119,28 +124,6 @@ function jEBE_slider ( jd, conf, callBack ) {
 		}
 		return img;
 	};
-	/*
-	var inner_css = function ( str ) {
-		if ( document.getElementById('jEBE_slider_css') == null ) {
-//			jQuery('head').append('<style id="jEBE_slider_css"></style>');
-			jQuery('link').after('<style id="jEBE_slider_css"></style>');
-		}
-		
-		if ( typeof str == 'undefined' || str == '' ) {
-			return false;
-		}
-		str = str.split("\n");
-		var new_str = '';
-		for ( var i = 0; i < str.length; i++ ) {
-			str[i] = jQuery.trim( str[i] );
-			if ( str[i] != '' ) {
-				new_str += str[i] + "\n";
-			}
-		}
-		
-		jQuery('#jEBE_slider_css').append( jQuery.trim( new_str ) );
-	};
-	*/
 	
 	// mặc định là ẩn nếu không có LI nào
 	set_default_conf( 'hide_if_null', true );
@@ -245,7 +228,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		if ( cf_tester_mode == 1 ) console.log( 'slider has been RETURN size = auto' );
 		
 		//
-		if ( typeof callBack == 'function' ) {
+		if ( typeof callBack == 'function' && callBack != null ) {
 			if ( cf_tester_mode == 1 ) console.log(' call to callBack function before return');
 			callBack();
 		}
@@ -362,7 +345,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 				});
 				
 				//
-				jQuery('#' + j_id_left).click(function () {
+				jQuery('#' + j_id_left).off('click').click(function () {
 					var a = jQuery('#' + j_id + ' ul').attr('data-scroll') || 0;
 					a = a - 1;
 					if ( a < 0 ) {
@@ -378,7 +361,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 				});
 				
 				//
-				jQuery('#' + j_id_right).click(function () {
+				jQuery('#' + j_id_right).off('click').click(function () {
 //					console.log(Math.random());
 					var a = jQuery('#' + j_id + ' ul').attr('data-scroll') || 0,
 						max_li = jQuery('#' + j_id + ' li').length/ 4;
@@ -428,30 +411,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 	}
 	
 	// tạo css cho slider
-	jQuery(jd)
-	/*
-	.scroll(function(e) {
-		if ( jEBE_slider_dang_scroll == true ) {
-			return false;
-		}
-		jEBE_slider_dang_scroll = true;
-		
-		var a = jQuery(this).attr('data-scroll') || 0,
-			b = jQuery(this).scrollLeft(),
-			i = jQuery(this).attr('data-i') || 0;
-//		console.log( b );
-		if ( a - b > 0 ) {
-			i -= 1;
-			console.log('left');
-		} else {
-			i -= -1;
-			console.log('right');
-		}
-		console.log( i );
-		jQuery(jd + ' li[data-i="' + i + '"]').click();
-	})
-	*/
-	.addClass('jEBE_slider-position');
+	jQuery(jd).addClass('jEBE_slider-position');
 	
 	/*
 	jQuery(jd).css({
@@ -460,196 +420,209 @@ function jEBE_slider ( jd, conf, callBack ) {
 	});
 	*/
 	
-	jQuery(jd + ' ul').width( ( 100 * len/ conf['visible'] ) + '%' );
-	if ( conf['speed'] > 0 ) {
-		jQuery(jd + ' ul').css({
-			'-moz-transition': 'all ' + conf['speed'] + 's ease',
-			'-o-transition': 'all ' + conf['speed'] + 's ease',
-			'-webkit-transition': 'all ' + conf['speed'] + 's ease',
-			transition: 'all ' + conf['speed'] + 's ease'
-		});
-	}
-	
-	jQuery(jd + ' li').css({
-//		width: ( 100/ len/ conf['visible'] ) + '%',
-		width: ( 100/ len ) + '%'
-	});
-	
 	
 	// hiệu ứng khi click vào thẻ LI
-	var  i = 0,
-		// nếu slider đầu tiên mà là video -> xử lý khác đi chút
-		first_this_video = false;
-	
-	jQuery(jd + ' li').each(function() {
-		jQuery(this).attr({
-			'data-i' : i
+	if ( slider_reload == false ) {
+		
+		jQuery(jd + ' ul').width( ( 100 * len/ conf['visible'] ) + '%' );
+		if ( conf['speed'] > 0 ) {
+			jQuery(jd + ' ul').css({
+				'-moz-transition': 'all ' + conf['speed'] + 's ease',
+				'-o-transition': 'all ' + conf['speed'] + 's ease',
+				'-webkit-transition': 'all ' + conf['speed'] + 's ease',
+				transition: 'all ' + conf['speed'] + 's ease'
+			});
+		}
+		
+		jQuery(jd + ' li').css({
+	//		width: ( 100/ len/ conf['visible'] ) + '%',
+			width: ( 100/ len ) + '%'
 		});
 		
-		// Kiểm tra xem slide đầu tiên có phải là video không
-		if ( i == 0 ) {
-			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+		
+		//
+		var  i = 0,
+			// nếu slider đầu tiên mà là video -> xử lý khác đi chút
+			first_this_video = false;
+		
+		jQuery(jd + ' li').each(function() {
+			jQuery(this).attr({
+				'data-i' : i
+			});
 			
-			if ( vd != '' ) {
-//				vd = vd.split('.');
-//				vd = vd[ vd.length - 1 ];
-				if ( vd.split('youtube.com').length > 1
-				|| vd.split('.mp4').length > 1
-				|| vd.split('.m4v').length > 1 ) {
-					first_this_video = true;
+			// Kiểm tra xem slide đầu tiên có phải là video không
+			if ( i == 0 ) {
+				var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+				
+				if ( vd != '' ) {
+//					vd = vd.split('.');
+//					vd = vd[ vd.length - 1 ];
+					if ( vd.split('youtube.com').length > 1
+					|| vd.split('.mp4').length > 1
+					|| vd.split('.m4v').length > 1 ) {
+						first_this_video = true;
+					}
 				}
 			}
-		}
-		
-		//
-		i += 1;
-	}).click(function () {
-		var i = jQuery(this).attr('data-i') || 0;
-		if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
-			i = 0;
-		}
-		
-		//
-		var w = jQuery(jd).width();
-		
-		jQuery(jd + ' ul').css({
-			left: ( 0 - i * 100 ) + '%'
-//			left: ( 0 - i * w ) + 'px'
-//			left: ( 0 - i * 100/ conf['visible'] ) + '%'
-		});
-		
-		jQuery(jd)
-//		.scrollLeft(0)
-		.attr({
-			'data-i' : i,
-//			'data-scroll' : i * jQuery(jd).width()
-			'data-scroll' : i * w
-		});
-		
-		jEBE_slider_dang_scroll = false;
-		
-		//
-		jQuery('.' + jd_class + ' li').removeClass('selected');
-		jQuery('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
-		
-		
-		
-		// kiểm tra xem có video không -> có thì tự phát video thôi
-		var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
-//		console.log(vd);
-		
-		// xóa các video trong cùng slide
-		jQuery(jd + ' .banner-video-media').html('&nbsp;');
-		
-		//
-		if ( vd.split('youtube.com').length > 1 ) {
-			vd = _global_js_eb.youtube_id( vd );
-			if ( vd != '' ) {
+			
+			//
+			i += 1;
+		}).off('click').click(function () {
+			var i = jQuery(this).attr('data-i') || 0;
+			if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
+				i = 0;
+			}
+			
+			//
+			var w = jQuery(jd).width();
+			
+			jQuery(jd + ' ul').css({
+				left: ( 0 - i * 100 ) + '%'
+//				left: ( 0 - i * w ) + 'px'
+//				left: ( 0 - i * 100/ conf['visible'] ) + '%'
+			});
+			
+			jQuery(jd)
+//			.scrollLeft(0)
+			.attr({
+				'data-i' : i,
+//				'data-scroll' : i * jQuery(jd).width()
+				'data-scroll' : i * w
+			});
+			
+			jEBE_slider_dang_scroll = false;
+			
+			//
+			jQuery('.' + jd_class + ' li').removeClass('selected');
+			jQuery('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
+			
+			
+			
+			// kiểm tra xem có video không -> có thì tự phát video thôi
+			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+//			console.log(vd);
+			
+			// xóa các video trong cùng slide
+			jQuery(jd + ' .banner-video-media').html('&nbsp;');
+			
+			//
+			if ( vd.split('youtube.com').length > 1 ) {
+				vd = _global_js_eb.youtube_id( vd );
+				if ( vd != '' ) {
+					// xóa thẻ a
+					jQuery('a', this).hide();
+					
+					// tính toán chiều rộng để tạo video
+					var h = jQuery('div.banner-ads-media', this).height() || 0,
+						w = jQuery('div.banner-ads-media', this).width() || 0,
+						h_video = h,
+						w_video = w;
+//					console.log('W Slider: ' + w);
+//					console.log('H Slider: ' + h);
+					
+					// nếu chiều rộng < chiều cao -> màn hình dọc
+					if ( w < h ) {
+						w_video = h * ( 560/ 315 );
+						
+						// test -> tính lại xem có đúng chiều cao không
+//						console.log('TEST h: ' + w_video/ 560 * 315);
+					}
+					// màn hình ngang
+					else {
+						// tính chiều cao của video dựa theo chiều rộng, tỉ lệ youtube_video_default_size
+						h_video = w * youtube_video_default_size;
+					}
+//					console.log('W Video: ' + w_video);
+//					console.log('H Video: ' + h_video);
+					
+					//
+					jQuery('div.banner-ads-media', this)
+					.addClass('banner-video-media')
+					.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+				}
+			}
+			else if ( vd.split('.mp4').length > 1
+			|| vd.split('.m4v').length > 1 ) {
 				// xóa thẻ a
-				jQuery('a', this).hide();
+//				jQuery('a', this).hide();
 				
 				// tính toán chiều rộng để tạo video
 				var h = jQuery('div.banner-ads-media', this).height() || 0,
 					w = jQuery('div.banner-ads-media', this).width() || 0,
-					h_video = h,
-					w_video = w;
+					h_video = '100%',
+					w_video = '100%';
 //				console.log('W Slider: ' + w);
 //				console.log('H Slider: ' + h);
 				
 				// nếu chiều rộng < chiều cao -> màn hình dọc
 				if ( w < h ) {
-					w_video = h * ( 560/ 315 );
+					w_video = Math.ceil( h * ( 16/ 9 ) );
 					
 					// test -> tính lại xem có đúng chiều cao không
-//					console.log('TEST h: ' + w_video/ 560 * 315);
+//					console.log('TEST h: ' + w_video/ 16 * 9);
 				}
 				// màn hình ngang
 				else {
-					// tính chiều cao của video dựa theo chiều rộng, tỉ lệ youtube_video_default_size
-					h_video = w * youtube_video_default_size;
+					// tính chiều cao của video dựa theo chiều rộng, tỉ lệ 16:9
+	//				h_video = parseInt( w_video/ 16 * 9, 10 );
+					h_video = Math.ceil( w * ( 9/ 16 ) );
 				}
 //				console.log('W Video: ' + w_video);
 //				console.log('H Video: ' + h_video);
 				
-				//
-				jQuery('div.banner-ads-media', this)
-				.addClass('banner-video-media')
-				.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+				// tạo video
+				// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
+				jQuery('div.banner-ads-media', this).addClass('banner-video-media')
+				// mẫu html mặc định
+				/*
+				.html('<video width="' + w_video + '" height="' + h_video + '" autoplay muted loop preload="auto">\
+					<source src="' + vd + '" type="video/mp4">\
+				</video>')
+				*/
+				// làm theo mẫu của rolls-royce (có poster)
+				/*
+				.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" poster="' + ( jQuery('div.banner-ads-media', this).attr('data-mobile-img') || '' ) + '" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">\
+					<track kind="metadata" label="segment-metadata">\
+				</video>')
+				*/
+				// không poster
+				.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
+					'<track kind="metadata" label="segment-metadata">' +
+				'</video>');
 			}
-		}
-		else if ( vd.split('.mp4').length > 1
-		|| vd.split('.m4v').length > 1 ) {
-			// xóa thẻ a
-//			jQuery('a', this).hide();
 			
-			// tính toán chiều rộng để tạo video
-			var h = jQuery('div.banner-ads-media', this).height() || 0,
-				w = jQuery('div.banner-ads-media', this).width() || 0,
-				h_video = '100%',
-				w_video = '100%';
-//			console.log('W Slider: ' + w);
-//			console.log('H Slider: ' + h);
+			//
+			setTimeout(function () {
+				jEBE_slider_cache_option[jd]['scroll_runing'] = false;
+			}, 200);
 			
-			// nếu chiều rộng < chiều cao -> màn hình dọc
-			if ( w < h ) {
-				w_video = Math.ceil( h * ( 16/ 9 ) );
-				
-				// test -> tính lại xem có đúng chiều cao không
-//				console.log('TEST h: ' + w_video/ 16 * 9);
-			}
-			// màn hình ngang
-			else {
-				// tính chiều cao của video dựa theo chiều rộng, tỉ lệ 16:9
-//				h_video = parseInt( w_video/ 16 * 9, 10 );
-				h_video = Math.ceil( w * ( 9/ 16 ) );
-			}
-//			console.log('W Video: ' + w_video);
-//			console.log('H Video: ' + h_video);
-			
-			// tạo video
-			// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
-			jQuery('div.banner-ads-media', this)
-			.addClass('banner-video-media')
-			// mẫu html mặc định
-			/*
-			.html('<video width="' + w_video + '" height="' + h_video + '" autoplay muted loop preload="auto">\
-				<source src="' + vd + '" type="video/mp4">\
-			</video>')
-			*/
-			// làm theo mẫu của rolls-royce (có poster)
-			/*
-			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" poster="' + ( jQuery('div.banner-ads-media', this).attr('data-mobile-img') || '' ) + '" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">\
-				<track kind="metadata" label="segment-metadata">\
-			</video>')
-			*/
-			// không poster
-			.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
-				'<track kind="metadata" label="segment-metadata">' +
-			'</video>');
-		}
-		
-		//
-		setTimeout(function () {
-			jEBE_slider_cache_option[jd]['scroll_runing'] = false;
-		}, 200);
-		
-	});
+		});
+	}
 	
 	// video ở đầu -> load chậm lại chút -> do chưa kịp định khung
 //	console.log(first_this_video);
-	if ( first_this_video == true ) {
-		setTimeout(function () {
-//			alert( Math.random() );
+	if ( slider_reload == false ) {
+		if ( first_this_video == true ) {
+			setTimeout(function () {
+	//			alert( Math.random() );
+				jQuery(jd + ' li[data-i="0"]').click();
+			}, 600);
+		}
+		else {
 			jQuery(jd + ' li[data-i="0"]').click();
-		}, 600);
+		}
 	}
 	else {
-		jQuery(jd + ' li[data-i="0"]').click();
+		var current_li_show = jQuery(jd).attr('data-i') || '';
+		if ( current_li_show != '' ) {
+			jQuery(jd + ' li[data-i="' + current_li_show + '"]').click();
+//			console.log( current_li_show );
+		}
 	}
 	
 	
 	//
-	jQuery('.' + jd_class + ' li').click(function () {
+	jQuery('.' + jd_class + ' li').off('click').click(function () {
 		var i = jQuery(this).attr('data-i') || 0;
 //		console.log(i);
 //		console.log(jd);
@@ -670,31 +643,33 @@ function jEBE_slider ( jd, conf, callBack ) {
 	
 	
 	//
-	if ( conf['autoplay'] == true ) {
-		jEBE_slider_cache_option[jd] = {
-			autoplay: true
-		};
-		
-		setInterval(function () {
-			if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
-				var i = jQuery(jd).attr('data-i') || 0;
-				i -= -1;
-//				i -= 0 - conf['visible'];
-//				console.log(i);
-//				console.log(jd);
-				
-//				if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-				if ( i >= jQuery(jd + ' li').length ) {
-					i = 0;
+	if ( slider_reload == false ) {
+		if ( conf['autoplay'] == true ) {
+			jEBE_slider_cache_option[jd] = {
+				autoplay: true
+			};
+			
+			setInterval(function () {
+				if ( jEBE_slider_cache_option[jd]['autoplay'] == true ) {
+					var i = jQuery(jd).attr('data-i') || 0;
+					i -= -1;
+	//				i -= 0 - conf['visible'];
+	//				console.log(i);
+	//				console.log(jd);
+					
+	//				if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
+					if ( i >= jQuery(jd + ' li').length ) {
+						i = 0;
+					}
+					
+					jQuery(jd + ' li[data-i="' + i + '"]').click();
 				}
-				
-				jQuery(jd + ' li[data-i="' + i + '"]').click();
-			}
-		}, conf['speedNext']);
-	} else {
-		jEBE_slider_cache_option[jd] = {
-			autoplay: false
-		};
+			}, conf['speedNext']);
+		} else {
+			jEBE_slider_cache_option[jd] = {
+				autoplay: false
+			};
+		}
 	}
 	
 	
@@ -704,7 +679,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		
 		
 		//
-		jQuery(jd_to_class + ' .jEBE_slider-toLeft').click(function () {
+		jQuery(jd_to_class + ' .jEBE_slider-toLeft').off('click').click(function () {
 			var i = jQuery(jd).attr('data-i') || 0;
 			i -= 1;
 //			i -= conf['visible'];
@@ -721,7 +696,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 			jEBE_slider_cache_option[jd]['autoplay'] = false;
 		});
 		
-		jQuery(jd_to_class + ' .jEBE_slider-toRight').click(function () {
+		jQuery(jd_to_class + ' .jEBE_slider-toRight').off('click').click(function () {
 			var i = jQuery(jd).attr('data-i') || 0;
 			i -= -1;
 //			i -= 0 - conf['visible'];
@@ -748,7 +723,7 @@ function jEBE_slider ( jd, conf, callBack ) {
 		// tạo nút bấm chuyển ảnh ngay trên khung ảnh nếu:
 		// người dùng đang xem trên màn ảnh rộng
 		// hiển thì mỗi ảnh 1 cái
-		if ( jQuery(window).width() > 750 || conf['visible'] == 1 ) {
+		if ( global_window_width > 750 || conf['visible'] == 1 ) {
 			if ( conf['sliderArrowWidthLeft'] != '' ) {
 				jQuery( jd_to_class + ' .jEBE_slider-toLeft' ).css({
 					'width': conf['sliderArrowWidthLeft']
@@ -765,128 +740,49 @@ function jEBE_slider ( jd, conf, callBack ) {
 		//
 //		console.log(jd);
 //		console.log(jd_to_class);
-		/*
-		if ( jEBE_slider_cache_option[jd]['autoplay'] == false ) {
-			jQuery(jd).scroll(function () {
-				//
-				if ( jEBE_slider_cache_option[jd]['scroll_runing'] == true ) {
-					return false;
-				}
-				jEBE_slider_cache_option[jd]['scroll_runing'] = true;
-				
-				// lấy chiều rộng của khung hiện tại
-//				var w = jQuery(this).width();
-				var w = jQuery(this).attr('data-scroll') || 0;
-				console.log( w );
-				
-				// scroll của UL trong đó
-				var sr = 0 - jQuery('ul', this).offset().left;
-				console.log( sr );
-			});
-		}
-		*/
 		
 		
 		// sử dụng swipe để chuyển ảnh
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
-		if ( conf['swipemobile'] == true && jQuery(window).width() < 750 ) {
+		if ( slider_reload == false && conf['swipemobile'] == true && global_window_width < 750 ) {
 			setTimeout(function () {
 				jEBE_swipe_slider( jd, jd_to_class, conf );
 			}, 3000);
 		}
 		
-		
-		// https://www.w3schools.com/jquerymobile/jquerymobile_events_touch.asp
-		/*
-		if ( jQuery(window).width() < 750 ) {
-			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight').on("swiperight", function() {
-				jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
-			}).on("swipeleft",function(){
-				jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
-			});
-		}
-		*/
-		
-		
-		
-		// https://coderwall.com/p/bxxjfq/detecting-swipe-using-jquery
-		/*
-		if ( jQuery(window).width() < 750 ) {
-			jQuery(jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight')
-//			.on('mousedown touchstart', function (e) {
-			.on('touchstart', function (e) {
-//			.on('click', function (e) {
-//			.click(function(e) {
-//			.on('mousedown', function (e) {
-//			.mousedown(function(e) {
-//			.on('mouseover', function (e) {
-//				console.log( e.originalEvent.touches[0] );
-//				console.log("Start: (x,y) = (" + e.pageX + "," + e.pageY +")");
-				xDown = e.pageX || 0;
-				yDown = e.pageY || 0;
-			})
-//			.on('mouseup touchend',function (e) {
-			.on('touchend',function (e) {
-//			.touchend(function(e) {
-//			.on('mouseup',function (e) {
-//			.on('mouseout',function (e) {
-//				console.log( e.originalEvent.changedTouches[0] );
-//				console.log("End: (x,y) = (" + e.pageX + "," + e.pageY +")");
-				xUp = e.pageX || 0;
-				yUp = e.pageY || 0;
-				
-				var xDiff = xDown - xUp;
-				var yDiff = yDown - yUp;
-				
-				// most significant
-				if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-//				if ( xDiff > yDiff ) {
-					if ( xDiff > 0 ) {
-						// left swipe
-//						console.log('left');
-						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
-					} else {
-						// right swipe
-//						console.log('right');
-						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
-					}
-				} else {
-					if ( yDiff > 0 ) {
-						// up swipe
-						console.log('up');
-						jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
-					} else { 
-						// down swipe
-						console.log('down');
-						jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
-					}
-				}
-				
-				//
-//				jQuery(this)
-//				.mouseout()
-//				.mousedown()
-//				.mouseover()
-//				;
-				
-				return true;
-				
-			})
-			;
-		}
-		*/
-		
-		
-		//
-		
 	}
 	
 	
 	//
-	if ( typeof callBack == 'function' ) {
+	if ( typeof callBack == 'function' && callBack != null ) {
 		if ( cf_tester_mode == 1 ) console.log(' call to callBack function');
 		callBack();
+	}
+	
+	
+	
+	// mỗi khi người dùng thay đổi kích thước trình duyệt
+//	if ( slider_reload == false ) {
+	if ( slider_reload == false && global_window_width < 1100 ) {
+		jQuery(window).resize(function(e) {
+//			console.log( jd_class );
+//			console.log( conf );
+			
+			// xóa các class liên quan của slider này đí
+			jQuery( jd_to_class ).remove();
+			
+			// căn chỉnh lại chiều cao của banner, để quá trình định hình thực hiện lại từ đầu
+			/*
+			jQuery( jd + ' .ti-le-global' ).height('auto').css({
+				'line-height': 'normal'
+			});
+			*/
+			_global_js_eb.auto_margin();
+			
+			// nạp lại slider
+			jEBE_slider ( jd, conf, callBack, true );
+		});
 	}
 	
 }
@@ -946,28 +842,6 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 			// Default is 75px, set to 0 for demo so any distance triggers swipe
 			threshold: 0
 		});
-		
-		// nếu có thumbnail -> kích hoạt cả touch ở thumb -> lỗi không click vào thumb được nên thôi
-		/*
-		if ( conf['thumbnailSlider'] == true ) {
-			jQuery( jd_to_class + ' .jEBE_slider-thumbnail' ).swipe( {
-				// Generic swipe handler for all directions
-				swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-//					console.log( direction );
-					
-					//
-					if ( direction == 'left' || direction == 'up' ) {
-						jQuery(jd_to_class + ' .jEBE_slider-arrow-thumbnail .jEBE_slider-right-thumbnail').click();
-					}
-					else if ( direction == 'right' || direction == 'down' ) {
-						jQuery(jd_to_class + ' .jEBE_slider-arrow-thumbnail .jEBE_slider-left-thumbnail').click();
-					}
-				},
-				// Default is 75px, set to 0 for demo so any distance triggers swipe
-				threshold: 0
-			});
-		}
-		*/
 	} catch ( e ) {
 		console.log( WGR_show_try_catch_err( e ) );
 	}
