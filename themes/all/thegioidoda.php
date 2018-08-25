@@ -14,8 +14,8 @@ $eb_all_themes_support["thegioidoda"]["demo"] = "";
 $eb_all_themes_support["thegioidoda"]["price"] = 8000000;
 //
 $eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top1.php";
-$eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top2.php";
-$eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top3.php";
+//$eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top2.php";
+//$eb_all_themes_support["thegioidoda"]["top"][] = "thegioidoda-top3.php";
 $eb_all_themes_support["thegioidoda"]["top"][] = "top_widget.php";
 $eb_all_themes_support["thegioidoda"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["thegioidoda"]["top"][] = "breadcrumb-top1.php";
