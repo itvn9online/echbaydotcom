@@ -629,6 +629,11 @@ ___eb_set_url_for_search_advanced_button();
 
 
 
+// chỉnh lại chiều cao của các menu ngang, để nó không vượt quá chiều cao tổng thể
+WGR_fixed_tab_height_in_line ( '.auto-fixed-menu-height' );
+
+
+
 // đánh dấu sản phẩm yêu thích
 function WGR_click_add_product_to_favorite () {
 	var cookie_name = 'wgr_product_id_user_favorite',

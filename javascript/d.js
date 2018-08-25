@@ -638,6 +638,66 @@ function ___eb_details_product_rating () {
 
 
 
+function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
+	// tab sẽ chịu ảnh hưởng, thường là thẻ A hoặc LI
+	if ( typeof for_tag == 'undefined' || for_tag == '' ) {
+		for_tag = 'a';
+	}
+	
+	// chiều cao dùng để so sánh, chiều cao menu phổ thông là 30px, gấp đôi lên sẽ hơn 40px
+	if ( typeof max_height == 'undefined' ) {
+		max_height = 40;
+	}
+	
+	// Chiều cao định vị cho tab
+	var min_tab_height = jQuery( jd ).attr('data-max-height') || max_height,
+		tag = jQuery( jd ).attr('data-tag') || for_tag;
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Fixed data height (max ' + min_tab_height + 'px) for ' + jd );
+	
+//	console.log( jQuery('.thread-details-tab').height() );
+	if ( jQuery( jd ).height() > min_tab_height ) {
+		var j = 30;
+		for ( var i = 0; i < 28; i++ ) {
+			jQuery( jd + ' ' + tag ).css({
+				padding: '0 ' +j+ 'px'
+			});
+			
+			//
+			if ( jQuery( jd ).height() < min_tab_height ) {
+				break;
+			}
+			
+			//
+			j--;
+		}
+	}
+	
+	// nếu vẫn chưa được -> màn hình có thể còn nhỏ hơn nữa -> tiếp tục thu font-size
+	if ( jQuery( jd ).height() > min_tab_height ) {
+		var j = 17;
+		for ( var i = 0; i < 5; i++ ) {
+			jQuery('.thread-details-tab').css({
+				'font-size' : j+ 'px'
+			});
+			
+			//
+			if ( jQuery( jd ).height() < min_tab_height ) {
+				break;
+			}
+			
+			//
+			j--;
+		}
+	}
+	
+	return true;
+}
+
+
+
+
+
+
 // hiệu ứng với các tab nội dung
 function ___eb_details_product_tab () {
 	
@@ -675,45 +735,7 @@ function ___eb_details_product_tab () {
 	setTimeout(function () {
 		// định vị lại style cho bản PC
 		if ( g_func.mb_v2() == false ) {
-			// Chiều cao định vị cho tab
-			var min_tab_height = jQuery('.thread-details-tab').attr('data-max-height') || 40;
-			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Fixed data height (max ' + min_tab_height + 'px) for thread-details-tab' );
-			
-	//		console.log( jQuery('.thread-details-tab').height() );
-			if ( jQuery('.thread-details-tab').height() > min_tab_height ) {
-				var j = 30;
-				for ( var i = 0; i < 28; i++ ) {
-					jQuery('.thread-details-tab li').css({
-						padding: '0 ' +j+ 'px'
-					});
-					
-					//
-					if ( jQuery('.thread-details-tab').height() < min_tab_height ) {
-						break;
-					}
-					
-					//
-					j--;
-				}
-			}
-			
-			// nếu vẫn chưa được -> màn hình có thể còn nhỏ hơn nữa -> tiếp tục thu font-size
-			if ( jQuery('.thread-details-tab').height() > min_tab_height ) {
-				var j = 17;
-				for ( var i = 0; i < 5; i++ ) {
-					jQuery('.thread-details-tab').css({
-						'font-size' : j+ 'px'
-					});
-					
-					//
-					if ( jQuery('.thread-details-tab').height() < min_tab_height ) {
-						break;
-					}
-					
-					//
-					j--;
-				}
-			}
+			WGR_fixed_tab_height_in_line ( '.thread-details-tab', 'li' );
 		}
 	}, 600);
 	
