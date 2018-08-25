@@ -645,13 +645,26 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 	}
 	
 	// chiều cao dùng để so sánh, chiều cao menu phổ thông là 30px, gấp đôi lên sẽ hơn 40px
-	if ( typeof max_height == 'undefined' ) {
-		max_height = 40;
-	}
+//	if ( typeof max_height == 'undefined' ) {
+//		max_height = 40;
+//	}
 	
 	// Chiều cao định vị cho tab
-	var min_tab_height = jQuery( jd ).attr('data-max-height') || max_height,
+	var min_tab_height = jQuery( jd ).attr('data-max-height') || '',
 		tag = jQuery( jd ).attr('data-tag') || for_tag;
+	
+	//
+	if ( min_tab_height == '' ) {
+		min_tab_height = jQuery( jd + ' li:first' ).height() || '';
+		
+		//
+		if ( min_tab_height == '' ) {
+			console.log( 'Not get height of LI in ' + jd );
+			return false;
+		}
+	}
+	
+	//
 	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Fixed data height (max ' + min_tab_height + 'px) for ' + jd );
 	
 //	console.log( jQuery('.thread-details-tab').height() );
