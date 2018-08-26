@@ -396,8 +396,12 @@ if ( (int) $_POST['cf_height_logo'] < 10 ) {
 // Thêm chiều cao cố định cho logo vào CSS
 $_POST['cf_default_css'] .= '.web-logo{height:' . $_POST['cf_height_logo'] . 'px;line-height:' . $_POST['cf_height_logo'] . 'px;}';
 
+// nếu để nhỏ hơn 0 -> ẩn trên mobile
+if ( (int) $_POST['cf_height_mobile_logo'] < 0 ) {
+	$_POST['cf_default_css'] .= '.style-for-mobile #webgiare__top .web-logo{display:none;}';
+}
 // nếu có chiều cao cho logo phiên bản mobile -> set luôn
-if ( (int) $_POST['cf_height_mobile_logo'] > 10 ) {
+else if ( (int) $_POST['cf_height_mobile_logo'] > 10 ) {
 	$_POST['cf_default_css'] .= '.style-for-mobile .web-logo{height:' . $_POST['cf_height_mobile_logo'] . 'px;line-height:' . $_POST['cf_height_mobile_logo'] . 'px;}';
 }
 

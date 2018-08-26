@@ -287,7 +287,7 @@ function create_deault_css () {
 	
 	// logo
 	str += create_css_for_custom_in_js( '.each-to-css-for-logo', 'cf_css_logo', {
-//		'mobile' : '',
+		'mobile' : '.style-for-mobile #webgiare__top .web-logo, .style-for-mobile .menu-for-mobile .web-mobile-logo',
 		'pc' : '.web-logo'
 	} );
 	
@@ -849,7 +849,7 @@ if ( current_module_config != 'config_theme' ) {
 			{
 				'background_position' : 'Vị trí',
 				'background_size' : 'Kích thước',
-				'background_position_for_mobile' : 'Kích thước (mobile)',
+				'background_position_for_mobile' : 'Vị trí (mobile)',
 				'background_size_for_mobile' : 'Kích thước (mobile)'
 			}, {
 				'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của logo',
