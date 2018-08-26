@@ -291,6 +291,16 @@ function create_deault_css () {
 		'pc' : '.web-logo'
 	} );
 	
+	// các mã màu được sinh ra sau khi bộ JS kia chạy
+	try {
+		a = f.mobile_logo_custom_css_in_js_background_image.value;
+		if ( a != '' ) {
+			str += '.style-for-mobile .web-logo, .style-for-mobile .web-mobile-logo{background-image: url(' + a + ') !important;}';
+		}
+	} catch ( e ) {
+		console.log( WGR_show_try_catch_err( e ) );
+	}
+	
 	// w90
 	str += create_css_for_custom_in_js( '.each-to-css-for-w90', 'cf_css_w90', {
 //		'mobile' : '',
@@ -803,6 +813,9 @@ if ( current_module_config != 'config_theme' ) {
 		}
 		
 		// gán dữ liệu nếu chưa có
+		if ( typeof data['cf_css_mobile_logo'] == 'undefined' ) {
+			data['cf_css_mobile_logo'] = {};
+		}
 		if ( typeof data['cf_css_logo'] == 'undefined' ) {
 			data['cf_css_logo'] = {};
 		}
@@ -816,6 +829,8 @@ if ( current_module_config != 'config_theme' ) {
 			data['cf_css_details'] = {};
 		}
 //		console.log(data);
+		
+		
 		
 		// LOGO
 		var arr = {
@@ -884,6 +899,30 @@ if ( current_module_config != 'config_theme' ) {
 //				'input_css' : 'each-to-css-for-logo',
 //				'after_html' : 'custom_css_for_logo',
 				'input_name' : 'logo'
+			}
+		);
+		
+		
+		// Mobile Logo
+		load_config_for_custom_logo(
+			{
+				'background_image' : ''
+			},
+			{
+				'background_image' : 'Logo (mobile)'
+			}, {
+				'background_image' : 'Sử dụng khi bạn muốn logo trên bản mobile khác với Logo bản desktop. Copy và nhập URL ảnh vào đây là được, tính năng này chỉ hỗ trợ các phiên bản theme có sử dụng logo trên mobile.'
+			},
+			{},
+			data['cf_css_mobile_logo'],
+			{
+//				'input_css' : 'each-to-css-for-logo',
+				'after_html' : 'custom_css_for_logo',
+				'input_name' : 'mobile_logo'
+			}, {
+				'maxlength' : {
+					'background_image' : 255
+				}
 			}
 		);
 		
