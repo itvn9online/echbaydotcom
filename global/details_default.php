@@ -70,6 +70,13 @@ if ( $__post->post_type == 'post' || $__post->post_type == 'product' ) {
 //		echo _eb_get_post_object( $pid, '_eb_product_price' ) . '<br>';
 	}
 	
+	//
+	if ( $trv_giamoi == 0 && $trv_giaban > 0 ) {
+		$trv_giamoi = $trv_giaban;
+		$trv_giaban = 0;
+	}
+	
+	//
 	$eb_product_price = $trv_giamoi;
 	
 	if ($trv_giaban > $trv_giamoi) {
