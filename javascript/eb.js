@@ -618,6 +618,14 @@ var _global_js_eb = {
 				jQuery('body').addClass('style-for-mobile').addClass('style-for-table');
 			}
 			
+			// set màn hình theo kiểu ngang, dọc
+			if ( global_window_width > jQuery(window).height() ) {
+				jQuery('body').addClass('style-for-ngang-mobile');
+			}
+			else {
+				jQuery('body').removeClass('style-for-ngang-mobile');
+			}
+			
 			
 			
 			
@@ -726,7 +734,7 @@ var _global_js_eb = {
 		// for PC
 		else {
 //			jQuery('#' + css_m_id).remove();
-			jQuery('body').removeClass('style-for-mobile').removeClass('style-for-table');
+			jQuery('body').removeClass('style-for-mobile').removeClass('style-for-table').removeClass('style-for-ngang-mobile');
 			
 			//
 			jQuery('.fix-li-wit').each(function () {
@@ -859,6 +867,7 @@ var _global_js_eb = {
 			}
 			else if ( new_size == 'full' ) {
 				a = jQuery(window).height();
+//				console.log(a);
 				
 				//
 				jQuery(this).css({

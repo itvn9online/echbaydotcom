@@ -835,7 +835,7 @@ if ( current_module_config != 'config_theme' ) {
 		// LOGO
 		var arr = {
 			'background_position' : {
-				'' : 'Mặc định',
+				'' : 'Mặc định (theo thiết kế của tác giả)',
 				'top left' : 'Góc trên bên trái',
 				'top center' : 'Góc trên ở giữa',
 				'top right' : 'Góc trên bên phải',
@@ -847,7 +847,7 @@ if ( current_module_config != 'config_theme' ) {
 				'bottom right' : 'Góc phải phía dưới'
 			},
 			'background_size' : {
-				'' : 'Mặc định',
+				'' : 'Mặc định (theo thiết kế của tác giả)',
 				'cover' : 'Bao phủ',
 				'contain' : 'Contain',
 				'auto' : 'Tự động',

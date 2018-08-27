@@ -93,7 +93,19 @@ else if ( act == '404' ) {
 			c = '.' + c;
 			
 			//
-			s = jQuery( c + ' li:first').height() + '/' + jQuery( c + ' li:first').width();
+			s = jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '';
+			if ( s == 'full' ) {
+				var lh = jQuery(window).height();
+				
+				jQuery(c).height( 'auto' );
+				
+				jQuery(c + ' .echbay-blog-avt').height( lh ).css({
+					'line-height' : lh + 'px'
+				});
+			}
+			else {
+				s = jQuery( c + ' li:first').height() + '/' + jQuery( c + ' li:first').width();
+			}
 			
 			//
 			console.log('Run widget slider ' + c + ' with size: ' + s);
