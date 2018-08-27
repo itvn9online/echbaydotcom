@@ -24,9 +24,21 @@ define('GeoLite2Helper_PATH', WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2/');
 
 //
 if ( is_dir( GeoLite2Helper_PATH ) ) {
+	
+	// URL phụ, dùng để test trên localhost thôi
+	define('GeoLite2Helper_DBPATH', ABSPATH . 'geolite2-db/');
+	echo GeoLite2Helper_DBPATH . '<br>';
+	
+	// file db sẽ để trong thư mục upload -> theo woo
+	$arr = wp_upload_dir();
+	define('GeoLite2Helper_UploadPATH', $arr['basedir'] . '/');
+	echo GeoLite2Helper_UploadPATH . '<br>';
+	
+	//
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2HelperInc.php';
 	
 	$cGeoLite2 = new WGR_GeoLite2Helper();
+	
 }
 else {
 	$cGeoLite2 = NULL;

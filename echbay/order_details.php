@@ -149,6 +149,8 @@ if ( $order_user_can == 1 ) {
 }
 else {
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+	
+	//
 	if ( $cGeoLite2 != NULL ) {
 //		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
 		echo $cGeoLite2->getUserOptionByIp( $post->order_ip );
