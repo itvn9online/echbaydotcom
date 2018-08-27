@@ -47,6 +47,7 @@ $__cf_row_default = array(
 	'cf_og_image' => '',
 	
 	'cf_css_body' => '',
+	'cf_css_theme_body' => '',
 	
 	'cf_ten_cty' => 'Thiết kế web giá rẻ',
 //	'web_name' => '',

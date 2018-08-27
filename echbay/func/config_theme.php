@@ -128,7 +128,7 @@ if ( $cf_global_width_sidebar > 0 ) {
 	$cf_blogs_width_sidebar = ( $cf_blogs_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blogs_width_sidebar;
 	$cf_blog_width_sidebar = ( $cf_blog_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blog_width_sidebar;
 }
-$_POST['cf_default_themes_css'] = '';
+$_POST['cf_default_themes_css'] = $_POST['cf_css_theme_body'];
 
 //
 $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_home_column_style'], $cf_home_width_sidebar, 'home_noidung_menu', 'home_menu_noidung' );

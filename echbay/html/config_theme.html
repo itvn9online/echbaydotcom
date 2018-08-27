@@ -13,7 +13,9 @@
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
-	<div class="d-none">{tmp.str_list_all_include_file}</div>
+	<div class="d-none">{tmp.str_list_all_include_file}
+		<textarea name="cf_css_theme_body" id="cf_css_theme_body" style="width:90%;">{tmp.cf_css_theme_body}</textarea>
+	</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-support-table maxwidth-public-table fix-textarea-height">
 		<tbody title="Giao diện" id="eb-admin-config-theme-themes" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">
 			<tr>
@@ -522,7 +524,7 @@
 				<td class="t">Số tin trên mỗi dòng</td>
 				<td class="i">{tmp.cf_blogs_num_line}</td>
 			</tr>
-			<tr>
+			<tr id="custom_css_for_blog_avt">
 				<td class="t">Kích thước ảnh Tin tức/ blog</td>
 				<td class="i"><input type="text" name="cf_blog_size" value="{tmp.cf_blog_size}" class="s fixed-size-for-config" maxlength="10" /></td>
 			</tr>
@@ -751,5 +753,6 @@
 <script type="text/javascript">
 {tmp.js}
 </script> 
+<script type="text/javascript" src="{tmp.admin_js_uri}config_function.js?v={tmp.js_version}"></script> 
 <script type="text/javascript" src="{tmp.admin_js_uri}config.js?v={tmp.js_version}"></script> 
 <script type="text/javascript" src="{tmp.admin_js_uri}config_theme.js?v={tmp.js_version}"></script> 
