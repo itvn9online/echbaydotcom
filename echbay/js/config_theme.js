@@ -15,6 +15,50 @@ var id_for_set_new_include_file = '',
 
 
 
+function check_update_config_theme () {
+	if ( khong_cho_update_config_lien_tuc == true ) {
+		console.log('Vui lòng chờ...');
+		return false;
+	}
+	
+	khong_update_lien_tuc();
+	
+	
+	
+	//
+	var str = '';
+	
+	
+	// lấy các thuộc tính để CSS cho echbay-blog-avt
+	str += create_css_for_custom_in_js( '.each-to-css-for-blog_avt', 'cf_css_blog_avt', {
+//		'mobile' : '',
+		'pc' : '.echbay-blog-avt'
+	} );
+	
+	
+	// lấy các thuộc tính để CSS cho thread-list-avt
+	str += create_css_for_custom_in_js( '.each-to-css-for-post_avt', 'cf_css_post_avt', {
+//		'mobile' : '',
+		'pc' : '.thread-list-avt'
+	} );
+	
+	
+	//
+	console.log( arr_cf_css_body );
+//	console.log( JSON.stringify( arr_cf_css_body ) );
+//	console.log( escape( JSON.stringify( arr_cf_css_body ) ) );
+	$( '#cf_css_theme_body' ).val( escape( JSON.stringify( arr_cf_css_body ) ) );
+	
+	
+	//
+	$('#cf_default_themes_css').val(str);
+	
+	//
+	return true;
+}
+
+
+
 function check_create_theme () {
 	
 	if ( confirm('Xác nhận tạo theme') == false ) {
@@ -555,6 +599,96 @@ function WGR_show_bg_for_skins_adminedit () {
 	}
 	
 }
+
+
+
+
+//
+(function () {
+	console.log('CUSTOM CSS FOR THEME CONFIG');
+	
+	// lấy mảng dữ liệu đã được gán sẵn
+	var data = $('#cf_css_theme_body').val() || '';
+	if ( data == '' ) {
+		data = {};
+	}
+	// chỉnh lại data nếu chưa có
+	else {
+//		console.log(data);
+		data = unescape( data );
+//		console.log(data);
+		data = eval( '[' + data + ']' );
+		data = data[0];
+//		console.log(data);
+	}
+	
+	// gán dữ liệu nếu chưa có
+	if ( typeof data['cf_css_post_avt'] == 'undefined' ) {
+		data['cf_css_post_avt'] = {};
+	}
+	if ( typeof data['cf_css_blog_avt'] == 'undefined' ) {
+		data['cf_css_blog_avt'] = {};
+	}
+//	console.log(data);
+	
+	
+	
+	// LOGO
+	var arr = {
+		'background_position' : arr_bg_background_position,
+		'background_size' : arr_bg_background_size
+	},
+	arr_name = {
+		'background_position' : 'Vị trí',
+		'background_size' : 'Kích thước',
+		'background_position_for_mobile' : 'Vị trí (mobile)',
+		'background_size_for_mobile' : 'Kích thước (mobile)'
+	},
+	arr_description = {
+		'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của ảnh đại diện',
+		'background_size' : 'Mặc định thì ảnh đại diện sẽ tràn khung, bạn có thể biến tấu cho nó có các kích thước nhỏ hơn theo chiều cao hoặc chiều rộng hoawcjc ả hai chiều',
+		'background_position_for_mobile' : 'Căn vị trí của ảnh đại diện trên phiên bản mobile',
+		'background_size_for_mobile' : 'Căn kích thước ảnh đại diện trên bản mobile'
+	};
+	
+	// thêm dữ liệu cho bản mobile
+	arr['background_position_for_mobile'] = arr['background_position'];
+	arr['background_size_for_mobile'] = arr['background_size'];
+	
+	//
+	load_config_for_custom_logo(
+		arr,
+		arr_name,
+		arr_description,
+		{},
+		data['cf_css_blog_avt'],
+		{
+//			'input_css' : '',
+//			'after_html' : '',
+			'input_name' : 'blog_avt'
+		}
+	);
+	
+	
+	//
+	load_config_for_custom_logo(
+		arr,
+		arr_name,
+		arr_description,
+		{},
+		data['cf_css_post_avt'],
+		{
+//			'input_css' : '',
+//			'after_html' : '',
+			'input_name' : 'post_avt'
+		}
+	);
+	
+})();
+
+
+
+
 
 //
 $('.skins-adminedit-bg').on('hover', function () {

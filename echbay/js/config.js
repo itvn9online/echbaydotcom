@@ -58,9 +58,6 @@ function xu_ly_du_lieu_js(fun) {
 	return str;
 }
 
-//
-var khong_cho_update_config_lien_tuc = false,
-	arr_cf_css_body = {};
 
 function khong_update_lien_tuc () {
 	
@@ -77,24 +74,6 @@ function khong_update_lien_tuc () {
 		});
 	});
 	
-}
-
-function check_update_config_theme () {
-	if ( khong_cho_update_config_lien_tuc == true ) {
-		console.log('Vui lòng chờ...');
-		return false;
-	}
-	
-	khong_update_lien_tuc();
-	
-	
-	
-	//
-	var str = '';
-	$('#cf_default_themes_css').val(str);
-	
-	//
-	return true;
 }
 
 function check_update_config() {
@@ -613,11 +592,13 @@ if ( current_module_config != 'config_theme' ) {
 //			console.log(data);
 			
 			// nếu không có mảng dữ liệu -> vẫn là mảng cũ -> loại luôn
+			/*
 			if ( typeof data['cf_css_body'] == 'undefined' ) {
 				data = {
 					'cf_css_body' : data
 				};
 			}
+			*/
 		}
 		
 		// gán dữ liệu nếu chưa có
@@ -839,71 +820,6 @@ else {
 	show_note_for_checkbox_config( 'cf_post_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blog_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blogs_content_bottom' );
-	
-	
-	
-	
-	//
-	(function () {
-		console.log('CUSTOM CSS FOR THEME CONFIG');
-		
-		// lấy mảng dữ liệu đã được gán sẵn
-		var data = $('#cf_default_themes_css').val() || '';
-		if ( data == '' ) {
-			data = {};
-		}
-		// chỉnh lại data nếu chưa có
-		else {
-//			console.log(data);
-			data = unescape( data );
-//			console.log(data);
-			data = eval( '[' + data + ']' );
-			data = data[0];
-//			console.log(data);
-		}
-		
-		// gán dữ liệu nếu chưa có
-		if ( typeof data['cf_css_blog_avt'] == 'undefined' ) {
-			data['cf_css_blog_avt'] = {};
-		}
-//		console.log(data);
-		
-		
-		
-		// LOGO
-		var arr = {
-			'background_position' : arr_bg_background_position,
-			'background_size' : arr_bg_background_size
-		};
-		
-		// thêm dữ liệu cho bản mobile
-		arr['background_position_for_mobile'] = arr['background_position'];
-		arr['background_size_for_mobile'] = arr['background_size'];
-		
-		//
-		load_config_for_custom_logo(
-			arr,
-			{
-				'background_position' : 'Vị trí',
-				'background_size' : 'Kích thước',
-				'background_position_for_mobile' : 'Vị trí (mobile)',
-				'background_size_for_mobile' : 'Kích thước (mobile)'
-			}, {
-				'background_position' : 'Căn vị trí hình ảnh sẽ xuất hiện trên khung của logo',
-				'background_size' : 'Với mỗi logo, sẽ có tỷ lệ giữa chiều rộng với chiều cao khác nhau, dùng thuộc tính này để định hành tránh bị vỡ khung logo',
-				'background_position_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile ở một vị trí khác so với bản desktop',
-				'background_size_for_mobile' : 'Sử dụng khi bạn muốn logo trên bản mobile có kích thước khác so với bản desktop'
-			},
-			{},
-			data['cf_css_blog_avt'],
-			{
-//				'input_css' : 'each-to-css-for-logo',
-//				'after_html' : 'custom_css_for_logo',
-				'input_name' : 'blog_avt'
-			}
-		);
-		
-	})();
 }
 
 

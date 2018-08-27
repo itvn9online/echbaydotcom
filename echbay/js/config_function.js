@@ -19,28 +19,30 @@ arr_bg_background_size = {
 	'cover' : 'Bao phủ',
 	'contain' : 'Contain',
 	'auto' : 'Tự động',
-	'auto 95%' : 'Rộng (tự động) x Cao (95%)',
+//	'auto 95%' : 'Rộng (tự động) x Cao (95%)',
 	'auto 90%' : 'Rộng (tự động) x Cao (90%)',
-	'auto 85%' : 'Rộng (tự động) x Cao (85%)',
+//	'auto 85%' : 'Rộng (tự động) x Cao (85%)',
 	'auto 80%' : 'Rộng (tự động) x Cao (80%)',
-	'auto 75%' : 'Rộng (tự động) x Cao (75%)',
+//	'auto 75%' : 'Rộng (tự động) x Cao (75%)',
 	'auto 70%' : 'Rộng (tự động) x Cao (70%)',
-	'auto 65%' : 'Rộng (tự động) x Cao (65%)',
+//	'auto 65%' : 'Rộng (tự động) x Cao (65%)',
 	'auto 60%' : 'Rộng (tự động) x Cao (60%)',
-	'auto 55%' : 'Rộng (tự động) x Cao (55%)',
+//	'auto 55%' : 'Rộng (tự động) x Cao (55%)',
 	'auto 50%' : 'Rộng (tự động) x Cao (50%)',
-	'95% auto' : 'Rộng (95%) x Cao (tự động)',
+//	'95% auto' : 'Rộng (95%) x Cao (tự động)',
 	'90% auto' : 'Rộng (90%) x Cao (tự động)',
-	'85% auto' : 'Rộng (85%) x Cao (tự động)',
+//	'85% auto' : 'Rộng (85%) x Cao (tự động)',
 	'80% auto' : 'Rộng (80%) x Cao (tự động)',
-	'75% auto' : 'Rộng (75%) x Cao (tự động)',
+//	'75% auto' : 'Rộng (75%) x Cao (tự động)',
 	'70% auto' : 'Rộng (70%) x Cao (tự động)',
-	'65% auto' : 'Rộng (65%) x Cao (tự động)',
+//	'65% auto' : 'Rộng (65%) x Cao (tự động)',
 	'60% auto' : 'Rộng (60%) x Cao (tự động)',
-	'55% auto' : 'Rộng (55%) x Cao (tự động)',
-	'50% auto' : 'Rộng (50%) x Cao (tự động)'
-};
-
+//	'55% auto' : 'Rộng (55%) x Cao (tự động)',
+	'50% auto' : 'Rộng (50%) x Cao (tự động)',
+	'50% auto' : 'Rộng x Cao (aaaaaa%)'
+},
+arr_cf_css_body = {},
+khong_cho_update_config_lien_tuc = false;
 
 
 
