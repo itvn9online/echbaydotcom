@@ -38,12 +38,15 @@ sliderArrowSize: 30
 // Chiều rộng cố định cho nút bấm (mặc định là tự động thiết lập)
 sliderArrowWidthLeft: "auto"
 sliderArrowWidthRight: "auto"
+// tốc độ chuyển slider
 speed: 0
+// giãn cách chuyển slider nếu tính năng tự động chạy được bật
 speedNext: 5000
 thumbnail: false
-thumbnailHeight: 90
-thumbnailSlider: true
 thumbnailWidth: 90
+thumbnailHeight: 90
+// Tạo slider cho thumbnail
+thumbnailSlider: true
 // Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider
 visible: 1
 *
@@ -596,9 +599,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 				</video>')
 				*/
 				// không poster
-				.html('<video id="' + video_id + '" width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
+				.html('<video id="' + video_id + '" width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
 					'<track kind="metadata" label="segment-metadata">' +
 				'</video>');
+				
+				// tự động play -> thay thế cho attr autoplay ở trên, có vẻ cũng không khả thi
+				dog(video_id).play();
 			}
 			
 			//
@@ -620,7 +626,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 				//
 				if ( check_and_reload_video == true ) {
 					setTimeout(function () {
-						// kiểm tra video đã được play chưa
+						// kiểm tra video đã được play chưa -> đang bị lỗi autoplay trên chroem mobile
 //						if ( dog(first_this_id_video).playing ) {
 						if ( dog(first_this_id_video).currentTime > 0 ) { }
 						// vẫn chưa được bật -> kích hoạt lại
@@ -632,9 +638,27 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //							dog(first_this_id_video).play();
 //							jEBE_slider ( jd, conf, callBack, true );
 							jQuery(jd + ' li[data-i="0"]').click();
+							
+							// thử kiểm tra lại lần nữa, trên iphone vẫn thấy được
+							setTimeout(function () {
+//								jQuery( '#bigbanner-top1' ).before( dog(first_this_id_video).currentTime + '<br>' );
+								
+								//
+								if ( dog(first_this_id_video).currentTime > 0 ) { }
+								else {
+									// không được thì đành mở tab số 2 vậy
+									if ( jQuery(jd + ' li[data-i="1"]').length > 0 ) {
+										jQuery(jd + ' li[data-i="1"]').click();
+									}
+									// ko có tab 2 thì đành click lại tab 1
+									else {
+										jQuery(jd + ' li[data-i="0"]').click();
+									}
+								}
+							}, 2500);
 						}
 //						jQuery( '#bigbanner-top1' ).before( dog(first_this_id_video).currentTime + '<br>' );
-					}, 1200);
+					}, 2500);
 					
 					//
 					/*
