@@ -116,6 +116,9 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.1.8 =
+* Tối ưu việc load font bằng option, mặc định là tắt việc tải font awesome v5 để giảm tải cho website tầm 3mb mỗi lần load trang.
+
 = Version 1.1.7 =
 * Thêm chức chỉnh CSS cho Logo và Body
 * Chỉnh lại CSS mặc định cho bản mobile, tối ưu cho dễ đọc hơn chút
