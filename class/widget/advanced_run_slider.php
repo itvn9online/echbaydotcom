@@ -7,8 +7,8 @@
 */
 class ___echbay_widget_advanced_run_slider extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_set_adsense_code', 'zEchBay GAdsense', array (
-				'description' => 'Nhúng mã Google Adsense vào website' 
+		parent::__construct ( 'echbay_set_adsense_code', 'zEchBay run slider', array (
+				'description' => 'Tạo mã kích hoạt slider của EchBay' 
 		) );
 	}
 	
@@ -23,9 +23,9 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			'size' => '',
 			'for_class' => '',
 			'sliderArrow' => '',
-			'sliderArrowLeft' => 'fa-angle-left',
+			'sliderArrowLeft' => '',
 			'sliderArrowRight' => '',
-			'sliderArrowSize' => '30',
+			'sliderArrowSize' => '',
 			'sliderArrowWidthLeft' => '',
 			'sliderArrowWidthRight' => '',
 			'speed' => '',
@@ -34,7 +34,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			'thumbnailWidth' => '',
 			'thumbnailHeight' => '',
 			'thumbnailSlider' => '',
-			'visible' => '1'
+			'visible' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -48,26 +48,56 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('autoplay'), $autoplay, 'Tự động chạy' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('speedNext'), $speedNext, 'Giãn cách chuyển slider nếu tính năng tự động chạy được bật' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('speedNext'), $speedNext, 'Giãn cách chuyển slider nếu tính năng tự động chạy được bật', 'Nhập số giây (số hoặc số thập phân)', '', array(
+			'type' => 'number'
+		) );
+		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('swipemobile'), $swipemobile, 'Cho phép chuyển ảnh trên mobile bẳng touch' );
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('buttonListNext'), $buttonListNext, 'Hiển thị nút bấm chuyển ảnh' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('size'), $size, 'Tỷ lệ giữa chiều cao và chiều rộng, thiết lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('for_class'), $for_class, 'Mặc định là điều khiển các thẻ LI làm slider, nếu muốn thẻ khác hãy đặt theo class hoặc ID. Ví dụ: .node1, #node2' );
+		
+		_eb_widget_echo_widget_input_title( $this->get_field_name('size'), $size, 'Tỷ lệ giữa chiều cao và chiều rộng, thiết lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)', 'Height/Width or auto or full' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('for_class'), $for_class, 'Mặc định là điều khiển các thẻ LI làm slider, nếu muốn thẻ khác hãy đặt theo class hoặc ID. Ví dụ: .node1, #node2', '.node1, #node2' );
+		
+		
+		
 		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrow'), $sliderArrow, 'Nút bấm chuyển ảnh trên slider' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrowLeft'), $sliderArrowLeft, 'Icon cho nút bấm bên trái' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrowRight'), $sliderArrowRight, 'Icon cho nút bấm bên phải' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowLeft'), $sliderArrowLeft, 'Icon cho nút bấm bên trái', 'fa-angle-left' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowRight'), $sliderArrowRight, 'Icon cho nút bấm bên phải', 'fa-angle-right' );
 		echo '<p>Các icon trên web sử dụng Font Awesome tại đây: <a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank" rel="nofollow">https://fontawesome.com/icons?d=gallery&m=free</a></p>';
 		
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrowSize'), $sliderArrowSize, 'Kích thước cho nút bấm (font-size), tính theo pixel (px)' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowSize'), $sliderArrowSize, 'Kích thước cho nút bấm (font-size), tính theo pixel (px)', '30', array(
+			'type' => 'number'
+		) );
 		
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrowWidthLeft'), $sliderArrowWidthLeft, 'Chiều rộng cố định cho nút bấm bên trái (nhập đầy đủ cả đơn vị, ví dụ: 40% hoặc 200px)' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrowWidthRight'), $sliderArrowWidthRight, 'Chiều rộng cố định cho nút bấm bên phải (nhập đầy đủ cả đơn vị, ví dụ: 40% hoặc 200px)' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('speed'), $speed, 'Tốc độ chuyển slider' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnail'), $thumbnail, 'aaaaaaaa' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnailWidth'), $thumbnailWidth, 'aaaaaaaa' );
+		
+		
+		
+		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowWidthLeft'), $sliderArrowWidthLeft, 'Chiều rộng cố định cho nút bấm bên trái (nhập đầy đủ cả đơn vị, ví dụ: 40% hoặc 200px)', '40%' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowWidthRight'), $sliderArrowWidthRight, 'Chiều rộng cố định cho nút bấm bên phải (nhập đầy đủ cả đơn vị, ví dụ: 40% hoặc 200px)', '60%' );
+		
+		
+		
+		_eb_widget_echo_widget_input_title( $this->get_field_name('speed'), $speed, 'Tốc độ chuyển slider', 'Nhập số giây', array(
+			'type' => 'number'
+		) );
+		
+		
+		
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnail'), $thumbnail, 'Tạo ảnh nhỏ (thumbnail)' );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('thumbnailWidth'), $thumbnailWidth, 'Chiều rộng của bộ ảnh nhỏ', '90', array(
+			'type' => 'number'
+		) );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('thumbnailHeight'), $thumbnailHeight, 'Chiều cao của bộ ảnh nhỏ', '90', array(
+			'type' => 'number'
+		) );
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnailSlider'), $thumbnailSlider, 'Tạo slider cho thumbnail' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('visible'), $visible, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider' );
+		
+		
+		
+		_eb_widget_echo_widget_input_title( $this->get_field_name('visible'), $visible, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider', '1', array(
+			'type' => 'number'
+		) );
 		
 	}
 	
@@ -85,8 +115,74 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		
 		//
+		$code = '';
+		
+		
+		//
 		$id_class = isset( $instance ['id_class'] ) ? $instance ['id_class'] : '';
-//		$hide_quick_view = isset( $instance ['hide_quick_view'] ) ? $instance ['hide_quick_view'] : 'off';
+		$autoplay = isset( $instance ['autoplay'] ) ? $instance ['autoplay'] : 'off';
+		$swipemobile = isset( $instance ['swipemobile'] ) ? $instance ['swipemobile'] : 'off';
+		$buttonListNext = isset( $instance ['buttonListNext'] ) ? $instance ['buttonListNext'] : 'off';
+		$size = isset( $instance ['size'] ) ? $instance ['size'] : '';
+		$for_class = isset( $instance ['for_class'] ) ? $instance ['for_class'] : '';
+		$sliderArrow = isset( $instance ['sliderArrow'] ) ? $instance ['sliderArrow'] : 'off';
+		$sliderArrowLeft = isset( $instance ['sliderArrowLeft'] ) ? $instance ['sliderArrowLeft'] : '';
+		$sliderArrowRight = isset( $instance ['sliderArrowRight'] ) ? $instance ['sliderArrowRight'] : '';
+		$sliderArrowSize = isset( $instance ['sliderArrowSize'] ) ? $instance ['sliderArrowSize'] : '';
+		$sliderArrowWidthLeft = isset( $instance ['sliderArrowWidthLeft'] ) ? $instance ['sliderArrowWidthLeft'] : '';
+		$sliderArrowWidthRight = isset( $instance ['sliderArrowWidthRight'] ) ? $instance ['sliderArrowWidthRight'] : '';
+		$speed = isset( $instance ['speed'] ) ? $instance ['speed'] : '';
+		$speedNext = isset( $instance ['speedNext'] ) ? $instance ['speedNext'] : '';
+		$thumbnail = isset( $instance ['thumbnail'] ) ? $instance ['thumbnail'] : 'off';
+		$thumbnailWidth = isset( $instance ['thumbnailWidth'] ) ? $instance ['thumbnailWidth'] : '';
+		$thumbnailHeight = isset( $instance ['thumbnailHeight'] ) ? $instance ['thumbnailHeight'] : '';
+		$thumbnailSlider = isset( $instance ['thumbnailSlider'] ) ? $instance ['thumbnailSlider'] : 'off';
+		$visible = isset( $instance ['visible'] ) ? $instance ['visible'] : '';
+		
+		//
+		if ( $autoplay == 'on' ) $code .= ',autoplay: true';
+		else $code .= ',autoplay: false';
+		
+		if ( $swipemobile == 'on' ) $code .= ',swipemobile: true';
+		else $code .= ',swipemobile: false';
+		
+		if ( $buttonListNext == 'on' ) $code .= ',buttonListNext: true';
+		else $code .= ',buttonListNext: false';
+		
+		if ( $sliderArrow == 'on' ) $code .= ',sliderArrow: true';
+		else $code .= ',sliderArrow: false';
+		
+		if ( $thumbnail == 'on' ) $code .= ',thumbnail: true';
+		else $code .= ',thumbnail: false';
+		
+		if ( $thumbnailSlider == 'on' ) $code .= ',thumbnailSlider: true';
+		else $code .= ',thumbnailSlider: false';
+		
+		//
+		if ( $size != '' ) $code .= ',size:"' . $size . '"';
+		
+		if ( $for_class != '' ) $code .= ',for_class:"' . $for_class . '"';
+		
+		if ( $sliderArrowLeft != '' ) $code .= ',sliderArrowLeft:"' . $sliderArrowLeft . '"';
+		
+		if ( $sliderArrowRight != '' ) $code .= ',sliderArrowRight:"' . $sliderArrowRight . '"';
+		
+		if ( $sliderArrowSize != '' ) $code .= ',sliderArrowSize:"' . $sliderArrowSize . '"';
+		
+		if ( $sliderArrowWidthLeft != '' ) $code .= ',sliderArrowWidthLeft:"' . $sliderArrowWidthLeft . '"';
+		
+		if ( $sliderArrowWidthRight != '' ) $code .= ',sliderArrowWidthRight:"' . $sliderArrowWidthRight . '"';
+		
+		if ( $speed != '' ) $code .= ',speed:"' . $speed . '"';
+		
+		if ( $speedNext != '' ) $code .= ',speedNext:"' . $speedNext . '"';
+		
+		if ( $thumbnailWidth != '' ) $code .= ',thumbnailWidth:"' . $thumbnailWidth . '"';
+		
+		if ( $thumbnailHeight != '' ) $code .= ',thumbnailHeight:"' . $thumbnailHeight . '"';
+		
+		if ( $visible != '' ) $code .= ',visible:"' . $visible . '"';
+		
 		
 		
 		//
@@ -94,7 +190,16 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		echo '<!-- ' . $this->name . ' (' . $id_class . ') -->';
 		
 		//
-		echo $code;
+		if ( $code != '' ) {
+			$code = substr( $code, 1 );
+		}
+		
+		//
+		echo '<script>
+jQuery(window).on("load", function () {
+	jEBE_slider( "' . $id_class . '", {' . $code . '});
+});
+		</script>';
 	}
 }
 

@@ -462,7 +462,9 @@ function _eb_widget_echo_widget_input_title (
 	$menu_name = '',
 	$pla = '',
 	// class CSS để phân định các điểm khác nhau
-	$class_css = 'eb-get-widget-title'
+	$class_css = 'eb-get-widget-title',
+	// các option khác
+	$op = array()
 ) {
 	
 	if ( $menu_name == '' ) {
@@ -471,8 +473,11 @@ function _eb_widget_echo_widget_input_title (
 	if ( $pla == '' ) {
 		$pla = $menu_name;
 	}
+	if ( ! isset( $op['type'] ) || $op['type'] == '' ) {
+		$op['type'] = 'text';
+	}
 	
-	echo '<p><strong>' . $menu_name . '</strong> <input type="text" class="widefat ' . $class_css . '" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
+	echo '<p><strong>' . $menu_name . '</strong> <input type="' . $op['type'] . '" class="widefat ' . $class_css . '" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
 	
 }
 
