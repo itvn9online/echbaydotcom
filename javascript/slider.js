@@ -443,7 +443,10 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		//
 		var  i = 0,
 			// nếu slider đầu tiên mà là video -> xử lý khác đi chút
-			first_this_video = false;
+			first_this_video = false,
+			// ID của phần video
+			first_this_id_video = '',
+			check_and_reload_video = false;
 		
 		jQuery(jd + ' li').each(function() {
 			jQuery(this).attr({
@@ -461,6 +464,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 					|| vd.split('.mp4').length > 1
 					|| vd.split('.m4v').length > 1 ) {
 						first_this_video = true;
+						first_this_id_video = 'video_' + jd.replace( /\.|\#\-/g, '_' ) + i;
+						
+						// kiểm tra và load lại đối với 1 số video (không phải youtube là được)
+						if ( vd.split('youtube.com').length == 1 ) {
+							check_and_reload_video = true;
+						}
 					}
 				}
 			}
@@ -468,7 +477,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			//
 			i += 1;
 		}).off('click').click(function () {
-			var i = jQuery(this).attr('data-i') || 0;
+			var i = jQuery(this).attr('data-i') || 0,
+				video_id = 'video_' + jd.replace( /\.|\#\-/g, '_' ) + i;
 			if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
 				i = 0;
 			}
@@ -493,8 +503,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			jEBE_slider_dang_scroll = false;
 			
 			//
-			jQuery('.' + jd_class + ' li').removeClass('selected');
-			jQuery('.' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
+			jQuery(jd + ' li, .' + jd_class + ' li').removeClass('selected');
+			jQuery(jd + ' li[data-i="' + i + '"], .' + jd_class + ' li[data-i="' + i + '"]').addClass('selected');
 			
 			
 			
@@ -538,7 +548,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 					//
 					jQuery('div.banner-ads-media', this)
 					.addClass('banner-video-media')
-					.html('<iframe width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+					.html('<iframe id="' + video_id + '" width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 				}
 			}
 			else if ( vd.split('.mp4').length > 1
@@ -586,7 +596,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 				</video>')
 				*/
 				// không poster
-				.html('<video width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
+				.html('<video id="' + video_id + '" width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
 					'<track kind="metadata" label="segment-metadata">' +
 				'</video>');
 			}
@@ -603,10 +613,37 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //	console.log(first_this_video);
 	if ( slider_reload == false ) {
 		if ( first_this_video == true ) {
-			setTimeout(function () {
-	//			alert( Math.random() );
+			jQuery(window).on('load', function () {
+//				alert( Math.random() );
 				jQuery(jd + ' li[data-i="0"]').click();
-			}, 600);
+				
+				//
+				if ( check_and_reload_video == true ) {
+					setTimeout(function () {
+						// kiểm tra video đã được play chưa
+//						if ( dog(first_this_id_video).playing ) {
+						if ( dog(first_this_id_video).currentTime > 0 ) { }
+						// vẫn chưa được bật -> kích hoạt lại
+						else {
+//							jQuery( '#bigbanner-top1' ).before( first_this_id_video + '<br>' );
+//							jQuery( '#bigbanner-top1' ).before( dog(first_this_id_video).src + '<br>' );
+							
+							//
+//							dog(first_this_id_video).play();
+//							jEBE_slider ( jd, conf, callBack, true );
+							jQuery(jd + ' li[data-i="0"]').click();
+						}
+//						jQuery( '#bigbanner-top1' ).before( dog(first_this_id_video).currentTime + '<br>' );
+					}, 1200);
+					
+					//
+					/*
+					setInterval(function () {
+						console.log( dog(first_this_id_video).currentTime );
+					}, 500);
+					*/
+				}
+			});
 		}
 		else {
 			jQuery(jd + ' li[data-i="0"]').click();
@@ -746,9 +783,11 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
 		if ( slider_reload == false && conf['swipemobile'] == true && global_window_width < 750 ) {
-			setTimeout(function () {
+//			setTimeout(function () {
+			jQuery(window).on('load', function () {
 				jEBE_swipe_slider( jd, jd_to_class, conf );
-			}, 3000);
+			});
+//			}, 3000);
 		}
 		
 	}

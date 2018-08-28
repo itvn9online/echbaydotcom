@@ -2,7 +2,10 @@
 #aabbcc .top1-menu ul { }
 #aabbcc .top1-menu li { float: left; }
 #aabbcc .top1-menu a { display: block; }
-#aabbcc .top1-menu a:hover { background: rgba(0, 0, 0, .2); }
+#aabbcc .top1-menu a:hover {
+	background: rgba(0, 0, 0, .2);
+	text-decoration: underline;
+}
 #aabbcc .top1-menu .sub-menu {
 	display: none;
 	position: absolute;

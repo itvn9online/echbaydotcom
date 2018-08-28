@@ -13,7 +13,7 @@ $eb_all_themes_support["mevutu"]["price"] = 6000000;
 $eb_all_themes_support["mevutu"]["demo"] = "mevutu.com";
 //
 $eb_all_themes_support["mevutu"]["top"][] = "mevutu-top1.php";
-$eb_all_themes_support["mevutu"]["top"][] = "mevutu-top2.php";
+//$eb_all_themes_support["mevutu"]["top"][] = "mevutu-top2.php";
 $eb_all_themes_support["mevutu"]["top"][] = "bigbanner-top1.php";
 $eb_all_themes_support["mevutu"]["top"][] = "breadcrumb-top1.php";
 $eb_all_themes_support["mevutu"]["top"][] = "top_widget.php";
@@ -24,8 +24,8 @@ $eb_all_themes_support["mevutu"]["footer"][] = "estyle-footer2.php";
 $eb_all_themes_support["mevutu"]["footer"][] = "denbaophat-footer3.php";
 //
 $eb_all_themes_support["mevutu"]["home"][] = "mevutu-home1.php";
-$eb_all_themes_support["mevutu"]["home"][] = "mevutu-home2.php";
-$eb_all_themes_support["mevutu"]["home"][] = "mevutu-home3.php";
+//$eb_all_themes_support["mevutu"]["home"][] = "mevutu-home2.php";
+//$eb_all_themes_support["mevutu"]["home"][] = "mevutu-home3.php";
 $eb_all_themes_support["mevutu"]["home"][] = "widget-home1.php";
 //
 $eb_all_themes_support["mevutu"]["cf_threaddetails_include_file"] = "depqua-threaddetails.html";
