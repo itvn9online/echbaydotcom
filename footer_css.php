@@ -9,11 +9,13 @@
 
 
 // font awesome version 4
-echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 
 
 // font awesome version 5
+if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
+	
 //echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
 /*
 echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" async></script>' . "\n";
@@ -21,7 +23,13 @@ echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" 
 
 //
 //echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.13/web-fonts-with-css/css/fa.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+
+//
+echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+	
+}
 
 
 

@@ -69,6 +69,8 @@ $_POST['cf_js_optimize'] = WGR_default_config('cf_js_optimize');
 
 $_POST['cf_css_optimize'] = WGR_default_config('cf_css_optimize');
 
+$_POST['cf_fontawesome_v5'] = WGR_default_config('cf_fontawesome_v5');
+
 $_POST['cf_gtag_id'] = WGR_default_config('cf_gtag_id');
 
 $_POST['cf_disable_tracking'] = WGR_default_config('cf_disable_tracking');

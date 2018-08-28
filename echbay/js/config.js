@@ -492,6 +492,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_debug_mode' );
 	show_note_for_checkbox_config( 'cf_js_optimize' );
 	show_note_for_checkbox_config( 'cf_css_optimize' );
+	show_note_for_checkbox_config( 'cf_fontawesome_v5' );
 	show_note_for_checkbox_config( 'cf_gtag_id' );
 	show_note_for_checkbox_config( 'cf_disable_tracking' );
 	show_note_for_checkbox_config( 'cf_on_off_json' );

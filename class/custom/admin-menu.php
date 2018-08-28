@@ -241,7 +241,7 @@ var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
 	$a = array(
 		EB_THEME_PLUGIN_INDEX . 'outsource/fonts/font-awesome.css',
 //		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.13/web-fonts-with-css/css/fa.css',
+		EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d2.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css',
