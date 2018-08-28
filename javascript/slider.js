@@ -2,7 +2,8 @@
 
 
 var jEBE_slider_cache_option = {},
-	jEBE_slider_dang_scroll = false;
+	jEBE_slider_dang_scroll = false,
+	jEBE_active_swipe_slider = {};
 
 /*
 * jd: ID hoặc class của thẻ HTML cần tạo slider. Ví dụ: .slider1, #slider2
@@ -619,7 +620,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //	console.log(first_this_video);
 	if ( slider_reload == false ) {
 		if ( first_this_video == true ) {
-			jQuery(window).on('load', function () {
+			jQuery(document).ready(function() {
+//			jQuery(window).on('load', function () {
 //				alert( Math.random() );
 				jQuery(jd + ' li[data-i="0"]').click();
 				
@@ -799,18 +801,31 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		}
 		
 		//
-//		console.log(jd);
-//		console.log(jd_to_class);
+		if ( cf_tester_mode == 1 ) {
+			console.log(jd);
+			console.log(jd_to_class);
+			console.log(slider_reload);
+//			console.log(conf['swipemobile']);
+//			console.log(global_window_width);
+		}
 		
 		
 		// sử dụng swipe để chuyển ảnh
 		// https://github.com/mattbryson/TouchSwipe-Jquery-Plugin
 		// http://labs.rampinteractive.co.uk/touchSwipe/demos/Basic_swipe.html
 		if ( slider_reload == false && conf['swipemobile'] == true && global_window_width < 750 ) {
+//			console.log('jEBE_swipe_slider');
 //			setTimeout(function () {
+			
 			jQuery(window).on('load', function () {
+//				console.log('jEBE_swipe_slider');
 				jEBE_swipe_slider( jd, jd_to_class, conf );
 			});
+			
+			jQuery(document).ready(function() {
+				jEBE_swipe_slider( jd, jd_to_class, conf );
+			});
+			
 //			}, 3000);
 		}
 		
@@ -853,9 +868,18 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 
 function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 	try {
-//		console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
-//		console.log( 'Config of swipe:' );
-//		console.log( conf );
+		if ( typeof jEBE_active_swipe_slider[ jd ] != 'undefined' ) {
+			if ( cf_tester_mode == 1 ) console.log( 'Swipe runing... ' + jd );
+			return false;
+		}
+		jEBE_active_swipe_slider[ jd ] = true;
+		
+		//
+		if ( cf_tester_mode == 1 ) {
+			console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
+			console.log( 'Config of swipe:' );
+			console.log( conf );
+		}
 		
 		//
 //		var str_process = jd;

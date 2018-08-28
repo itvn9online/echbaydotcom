@@ -14,8 +14,8 @@
 	border-bottom: 1px #f2f2f2 solid;
 }
 .thread-list-title {
-	height: 40px;
-	line-height: 20px;
+	line-height: 22px;
+	max-height: 44px;
 	overflow: hidden;
 	margin: 8px 0;
 	font-size: 14px;
