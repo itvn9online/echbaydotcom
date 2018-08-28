@@ -2,11 +2,11 @@
 
 // v1
 if ( ! file_exists( GeoLite2Helper_PATH . '/Reader.php' ) && file_exists( GeoLite2Helper_PATH . '/Db/Reader.php' ) ) {
-	include GeoLite2Helper_PATH . '/Reader.php';
-	include GeoLite2Helper_PATH . '/Reader/Db/Decoder.php';
-	include GeoLite2Helper_PATH . '/Reader/Db/InvalidDatabaseException.php';
-	include GeoLite2Helper_PATH . '/Reader/Db/Metadata.php';
-	include GeoLite2Helper_PATH . '/Reader/Db/Util.php';
+	include GeoLite2Helper_PATH . '/Db/Reader.php';
+	include GeoLite2Helper_PATH . '/Db/Reader/Decoder.php';
+	include GeoLite2Helper_PATH . '/Db/Reader/InvalidDatabaseException.php';
+	include GeoLite2Helper_PATH . '/Db/Reader/Metadata.php';
+	include GeoLite2Helper_PATH . '/Db/Reader/Util.php';
 }
 // v2
 else {
