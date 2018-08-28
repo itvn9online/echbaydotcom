@@ -1,16 +1,5 @@
 /* Global style for EchBay code */
 @charset "utf-8";
-/* font icon css */
-/*
-@import url("../outsource/fonts/font-awesome.css?v=4.7.0");
-*/
-/*
-i.fa,
-em.fa { font-style: normal; }
-.fa:before,
-.fa:after { font-family: FontAwesome; }
-*/
-/* default css */
 html,
 body,
 div,
