@@ -27,12 +27,12 @@ if ( is_dir( GeoLite2Helper_PATH ) ) {
 	
 	// URL phụ, dùng để test trên localhost thôi
 	define('GeoLite2Helper_DBPATH', ABSPATH . 'geolite2-db/');
-	echo GeoLite2Helper_DBPATH . '<br>';
+//	echo GeoLite2Helper_DBPATH . '<br>';
 	
 	// file db sẽ để trong thư mục upload -> theo woo
 	$arr = wp_upload_dir();
 	define('GeoLite2Helper_UploadPATH', $arr['basedir'] . '/');
-	echo GeoLite2Helper_UploadPATH . '<br>';
+//	echo GeoLite2Helper_UploadPATH . '<br>';
 	
 	//
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2HelperInc.php';

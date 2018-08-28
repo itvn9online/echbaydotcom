@@ -1,18 +1,30 @@
 <?php
 
-//
-include GeoLite2Helper_PATH . '/Reader.php';
-include GeoLite2Helper_PATH . '/Reader/Decoder.php';
-include GeoLite2Helper_PATH . '/Reader/InvalidDatabaseException.php';
-include GeoLite2Helper_PATH . '/Reader/Metadata.php';
-include GeoLite2Helper_PATH . '/Reader/Util.php';
+// v1
+if ( ! file_exists( GeoLite2Helper_PATH . '/Reader.php' ) && file_exists( GeoLite2Helper_PATH . '/Db/Reader.php' ) ) {
+	include GeoLite2Helper_PATH . '/Reader.php';
+	include GeoLite2Helper_PATH . '/Reader/Db/Decoder.php';
+	include GeoLite2Helper_PATH . '/Reader/Db/InvalidDatabaseException.php';
+	include GeoLite2Helper_PATH . '/Reader/Db/Metadata.php';
+	include GeoLite2Helper_PATH . '/Reader/Db/Util.php';
+}
+// v2
+else {
+	include GeoLite2Helper_PATH . '/Reader.php';
+	include GeoLite2Helper_PATH . '/Reader/Decoder.php';
+	include GeoLite2Helper_PATH . '/Reader/InvalidDatabaseException.php';
+	include GeoLite2Helper_PATH . '/Reader/Metadata.php';
+	include GeoLite2Helper_PATH . '/Reader/Util.php';
+}
 
 use MaxMind\Db\Reader;
 
 class WGR_GeoLite2Helper {
 //	public $ipAddress;
 	
-	private $db_not_found = 'GeoLite2 DB not found!';
+	private function db_not_found () {
+		return 'GeoLite2 DB not found! <a href="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz" rel="nofollow" target="_blank">Click here</a> Download and up to folder: <strong>' . GeoLite2Helper_UploadPATH . '</strong>';
+	}
 	
 	/*
 	function __construct() {
@@ -85,12 +97,20 @@ class WGR_GeoLite2Helper {
 		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' );
 		}
+		// v1
+		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-City.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_PATH . '/GeoLite2-City.mmdb' );
+		}
 		// mặc định chỉ lấy Country
 		else if ( file_exists( GeoLite2Helper_UploadPATH . '/GeoLite2-Country.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_UploadPATH . '/GeoLite2-Country.mmdb' );
 		}
 		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' );
+		}
+		// v1
+		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-Country.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_PATH . '/GeoLite2-Country.mmdb' );
 		}
 		// ngoài ra thì bỏ qua
 		else {
@@ -111,7 +131,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy nhiều thông tin cùng lúc
 	public function getUserOptionByIp($ip = NULL, $o = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 //		if ( mtv_id == 1 ) print_r( $a );
 		
 		//
@@ -181,7 +201,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo tỉnh thành hoặc quốc gia
 	public function getUserAddressByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		$r = array();
@@ -200,7 +220,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo quốc gia
 	public function getUserCountryByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		return $a['country']['names']['en'];
@@ -208,7 +228,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo quốc gia (mã code)
 	public function getUserCountryCodeByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		return $a['country']['iso_code'];
@@ -217,7 +237,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo tỉnh thành (mã code)
 	public function getUserCityByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		if ( isset( $a['subdivisions'] ) ) {
@@ -232,7 +252,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo tỉnh thành (mã code)
 	public function getUserCityCodeByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		if ( isset( $a['subdivisions'] ) ) {
@@ -245,7 +265,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy vị trí theo trên bản đồ google
 	public function getUserLocByIp($ip = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found;
+		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
 		
 		//
 		if ( isset( $a['location'] ) ) {
