@@ -9,7 +9,7 @@
 
 
 // font awesome version 4
-echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 
 
