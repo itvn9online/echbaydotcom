@@ -13,7 +13,7 @@
 
 
 
-// font awesome version 5
+// font awesome version 5 -> đồng bộ v4 và v5
 if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
 	
 //echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
@@ -26,8 +26,8 @@ echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" 
 //echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 
 //
-echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 	
 }
 

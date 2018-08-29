@@ -1164,16 +1164,31 @@ function EBE_register_scripts() {
 	wp_deregister_style('font-awesome');
 	
 	
-	// không có thì dùng của WGR -> lười update hơn
-	$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
+	//
+	global $__cf_row;
 	
-	// ưu tiên sử dụng của elementor -> họ update liên tục
-	if ( file_exists( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
-		$url = web_link . EB_DIR_CONTENT . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css';
+	// load Font Awesome v5
+	if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
+		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css';
+		
+		//
+		wp_register_style( 'font-awesome', $url, array(), '5.3.0' );
 	}
-	wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
+	// v4
+	else {
+		// không có thì dùng của WGR -> lười update hơn
+		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
+		
+		// ưu tiên sử dụng của elementor -> họ update liên tục
+		if ( file_exists( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
+			$url = web_link . EB_DIR_CONTENT . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css';
+		}
+		
+		//
+		wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
+	}
 	
-	
+	//
 	wp_enqueue_style('font-awesome');
 	
 	
