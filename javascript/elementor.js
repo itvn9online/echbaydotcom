@@ -13,6 +13,8 @@
 	
 	// add js
 	var arr = [
+		'javascript/slider.js',
+		'javascript/functions.js',
 		'javascript/eb.js',
 		'javascript/all.js',
 		''

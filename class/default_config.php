@@ -275,6 +275,9 @@ $__cf_row_default = array(
 	'cf_auto_get_ads_size' => 'off',
 	'cf_slider_big_play' => 5000,
 	
+	//
+	'cf_on_primary_slider' => 1,
+	
 	// đổi style cho sidebar trang danh mục sản phẩm
 	'cf_list_sidebar_new_style' => 'off',
 	
@@ -290,6 +293,7 @@ $__cf_row_default = array(
 	'cf_details_short_quick_cart' => 'off',
 	'cf_details_right_thumbnail' => 'off',
 	'cf_details_left_thumbnail' => 'off',
+	'cf_on_details_slider' => 1,
 	
 	// các chức năng bắt buộc ở giỏ hàng
 	'cf_required_name_cart' => 'off',

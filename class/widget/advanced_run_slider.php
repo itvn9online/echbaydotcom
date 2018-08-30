@@ -7,7 +7,7 @@
 */
 class ___echbay_widget_advanced_run_slider extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_set_adsense_code', 'zEchBay run slider', array (
+		parent::__construct ( 'echbay_run_slider', 'zEchBay run slider', array (
 				'description' => 'Tạo mã kích hoạt slider của EchBay' 
 		) );
 	}
@@ -44,7 +44,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name('id_class'), $id_class, 'ID/ Class' );
-		echo '<p>ID hoặc class của thẻ HTML cần tạo slider. Ví dụ: .slider1, #slider2</p>';
+		echo '<p>ID hoặc class của thẻ HTML cần tạo slider. Ví dụ: .slider1, #slider2, <em>.oi_big_banner, .thread-details-mobileAvt, .banner-chan-trang</em></p>';
 		
 		//
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('autoplay'), $autoplay, 'Tự động chạy' );
@@ -197,7 +197,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		//
 		echo '<script>
 jQuery(window).on("load", function () {
-	jEBE_slider( "' . $id_class . '", {' . $code . '});
+	jEBE_slider( "' . $id_class . '", {' . $code . '} );
 });
 		</script>';
 	}

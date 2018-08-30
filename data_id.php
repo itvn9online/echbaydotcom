@@ -48,6 +48,7 @@ $add_data_id = array (
 		'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
 		'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
 		'cf_disable_tracking' => '\'' . $__cf_row['cf_disable_tracking'] . '\'',
+		'cf_on_primary_slider' => '\'' . $__cf_row['cf_on_primary_slider'] . '\'',
 		
 		// tự động submit trong phần tìm kiếm nâng cao
 		'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',
@@ -70,6 +71,7 @@ $add_data_id = array (
 		'cf_details_content_slider' => '\'' . $__cf_row['cf_details_content_slider'] . '\'',
 		'cf_details_show_list_next' => '\'' . $__cf_row['cf_details_show_list_next'] . '\'',
 		'cf_details_show_list_thumb' => '\'' . $__cf_row['cf_details_show_list_thumb'] . '\'',
+		'cf_on_details_slider' => '\'' . $__cf_row['cf_on_details_slider'] . '\'',
 		
 		// tỷ lệ khung ảnh trên mobile
 		'cf_product_details_mobile_size' => '\'' . $__cf_row['cf_product_details_mobile_size'] . '\'',

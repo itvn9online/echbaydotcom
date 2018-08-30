@@ -252,6 +252,73 @@ function WGR_zero_price_quick_cart ( quan, price ) {
 }
 
 
+function WGR_after_load_details_lisder () {
+	jQuery('.thread-details-mobileAvt li').click(function () {
+		var a = jQuery(this).attr('data-src') || '';
+		if ( a != '' ) {
+			a = ___eb_set_thumb_to_fullsize( a );
+			if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
+			
+			jQuery(this).css({
+				'background-image': 'url("' + a + '")'
+			});
+		}
+	});
+	
+	// click vào cái đầu tiên luôn
+	jQuery('.thread-details-mobileAvt li:first').click();
+	
+	// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
+	// trên mobile thì để 1 chế độ xem thôi
+	if ( WGR_check_option_on ( cf_details_right_thumbnail ) && global_window_width >= 775 ) {
+		
+		//
+		var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
+		
+		//
+		jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
+//			var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+			var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
+				len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
+//			console.log(a);
+			a = a - ( 0 - 1 );
+			if ( a >= len ) {
+				a = len - 1;
+			}
+//			console.log(a);
+			
+			//
+			jQuery(effect_for_post_slider).css({
+				top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+			}).attr({
+				'data-scroll' : a
+			});
+			
+			//
+			jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
+		});
+		
+		jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
+//			var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
+			var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
+//			console.log(a);
+			a = a - 1;
+			if ( a < 0 ) {
+				a = 0;
+			}
+//			console.log(a);
+			
+			//
+			jQuery(effect_for_post_slider).css({
+				top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
+			}).attr({
+				'data-scroll' : a
+			});
+		});
+		
+	}
+}
+
 function ___eb_details_slider_v2 () {
 	
 	// trên mobile thì để 1 chế độ xem thôi -> xóa CSS điều khiển định dạng slider trước khi lệnh JS chạy để không bị vỡ khung
@@ -364,92 +431,33 @@ function ___eb_details_slider_v2 () {
 	
 	
 	// tải slider theo code mới
-	jEBE_slider( '.thread-details-mobileAvt', {
-		buttonListNext: WGR_check_option_on ( cf_details_show_list_next ) ? true : false,
-		
-		// tự động chạy slider theo thời gian mà người dùng chỉ định
-		autoplay : cf_slider_details_play > 0 ? true : false,
-		swipemobile : true,
-		speedNext : cf_slider_details_play,
-		
-		sliderArrow: true,
-//		sliderArrowWidthLeft : '40%',
-		sliderArrowWidthLeft : '',
-//		sliderArrowWidthRight : '60%',
-		sliderArrowWidthRight : '',
-		sliderArrowLeft : 'fa-chevron-circle-left',
-		sliderArrowRight : 'fa-chevron-circle-right',
-		
-//		thumbnail : 'ul li',
-		thumbnail : WGR_check_option_on ( cf_details_show_list_thumb ) ? 'ul li' : false,
-		size : jQuery('.thread-details-mobileAvt').attr('data-size') || ''
-	}, function () {
-		jQuery('.thread-details-mobileAvt li').click(function () {
-			var a = jQuery(this).attr('data-src') || '';
-			if ( a != '' ) {
-				a = ___eb_set_thumb_to_fullsize( a );
-				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
-				
-				jQuery(this).css({
-					'background-image': 'url("' + a + '")'
-				});
-			}
+	if ( WGR_check_option_on( cf_on_details_slider ) ) {
+		jEBE_slider( '.thread-details-mobileAvt', {
+			buttonListNext: WGR_check_option_on ( cf_details_show_list_next ) ? true : false,
+			
+			// tự động chạy slider theo thời gian mà người dùng chỉ định
+			autoplay : cf_slider_details_play > 0 ? true : false,
+			swipemobile : true,
+			speedNext : cf_slider_details_play,
+			
+			sliderArrow: true,
+//			sliderArrowWidthLeft : '40%',
+			sliderArrowWidthLeft : '',
+//			sliderArrowWidthRight : '60%',
+			sliderArrowWidthRight : '',
+			sliderArrowLeft : 'fa-chevron-circle-left',
+			sliderArrowRight : 'fa-chevron-circle-right',
+			
+//			thumbnail : 'ul li',
+			thumbnail : WGR_check_option_on ( cf_details_show_list_thumb ) ? 'ul li' : false,
+			size : jQuery('.thread-details-mobileAvt').attr('data-size') || ''
+		}, function () {
+			WGR_after_load_details_lisder();
 		});
-		
-		// click vào cái đầu tiên luôn
-		jQuery('.thread-details-mobileAvt li:first').click();
-		
-		// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
-		// trên mobile thì để 1 chế độ xem thôi
-		if ( WGR_check_option_on ( cf_details_right_thumbnail ) && global_window_width >= 775 ) {
-			
-			//
-			var effect_for_post_slider = '.child-thread-details-mobileAvt .jEBE_slider-thumbnail ul';
-			
-			//
-			jQuery('.child-thread-details-mobileAvt .jEBE_slider-right-thumbnail').off('click').click(function () {
-//				var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1,
-					len = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li').length - 1;
-//					console.log(a);
-				a = a - ( 0 - 1 );
-				if ( a >= len ) {
-					a = len - 1;
-				}
-//					console.log(a);
-				
-				//
-				jQuery(effect_for_post_slider).css({
-					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-				}).attr({
-					'data-scroll' : a
-				});
-				
-				//
-				jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').show();
-			});
-			
-			jQuery('.child-thread-details-mobileAvt .jEBE_slider-left-thumbnail').off('click').click(function () {
-//					var a = jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li.selected').attr('data-i') || 0;
-				var a = jQuery(effect_for_post_slider).attr('data-scroll') || 1;
-//					console.log(a);
-				a = a - 1;
-				if ( a < 0 ) {
-					a = 0;
-				}
-//					console.log(a);
-				
-				//
-				jQuery(effect_for_post_slider).css({
-					top: ( 0 - a * jQuery('.child-thread-details-mobileAvt .jEBE_slider-thumbnail li:first').height() - a * 5 ) + 'px'
-				}).attr({
-					'data-scroll' : a
-				});
-			});
-			
-		}
-		
-	});
+	}
+	else {
+		console.log('thread-details-mobileAvt run by wiget: zEchBay run slider');
+	}
 	
 	
 	/*
@@ -1409,17 +1417,22 @@ var big_banner_timeout1 = null;
 	}
 	
 	// tải slider theo code mới
-	jEBE_slider( '.oi_big_banner', {
-		autoplay : cf_slider_big_play > 0 ? true : false,
-//		swipemobile : true,
-		swipemobile: WGR_check_option_on ( cf_swipe_big_banner ) ? true : false,
-		speedNext: cf_slider_big_play,
-		
-		sliderArrow: WGR_check_option_on ( cf_arrow_big_banner ) ? true : false,
-		
-//		thumbnail : '.banner-ads-media',
-		size : jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
-	});
+	if ( WGR_check_option_on( cf_on_primary_slider ) ) {
+		jEBE_slider( '.oi_big_banner', {
+			autoplay : cf_slider_big_play > 0 ? true : false,
+//			swipemobile : true,
+			swipemobile: WGR_check_option_on ( cf_swipe_big_banner ) ? true : false,
+			speedNext: cf_slider_big_play,
+			
+			sliderArrow: WGR_check_option_on ( cf_arrow_big_banner ) ? true : false,
+			
+//			thumbnail : '.banner-ads-media',
+			size : jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
+		});
+	}
+	else {
+		console.log('oi_big_banner run by wiget: zEchBay run slider');
+	}
 	
 	// Hiển thị menu NAV dưới dạng hover
 	if ( big_banner_len > 0 && jQuery('.show-menu-if-banner').length > 0 ) {

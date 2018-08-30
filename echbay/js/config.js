@@ -533,6 +533,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_arrow_big_banner' );
 	show_note_for_checkbox_config( 'cf_swipe_big_banner' );
 	show_note_for_checkbox_config( 'cf_auto_get_ads_size' );
+	show_note_for_checkbox_config( 'cf_on_primary_slider' );
 	
 	
 	//
@@ -808,6 +809,7 @@ else {
 	show_note_for_checkbox_config( 'cf_details_show_list_thumb' );
 	show_note_for_checkbox_config( 'cf_details_right_thumbnail' );
 	show_note_for_checkbox_config( 'cf_details_left_thumbnail' );
+	show_note_for_checkbox_config( 'cf_on_details_slider' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
 	show_note_for_checkbox_config( 'cf_required_name_cart' );
