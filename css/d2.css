@@ -1267,7 +1267,7 @@ color: #333;
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
 /* cho phần link của banner về gọn 1 bên để còn sử dụng touch được */
-.jEBE_swipe_slider .ads-link { left: 85%; }
+.jEBE_swipe_slider .ads-link { display:none; }
 /* search */
 .thread-search { }
 .thread-search li {

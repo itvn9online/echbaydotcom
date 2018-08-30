@@ -519,7 +519,22 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //			console.log(vd);
 			
 			// xóa các video trong cùng slide
-			jQuery(jd + ' .banner-video-media').html('&nbsp;');
+//			jQuery(jd + ' .banner-video-media').html('&nbsp;');
+			jQuery(jd + ' .banner-youtube-video').html('&nbsp;');
+			
+			// tạm dừng các video đang phát
+			$('.banner-mp4-video video').each(function () {
+				var video_id = $(this).attr('id') || '';
+				
+				if ( video_id != '' ) {
+					dog(video_id).pause();
+					$(this).hide();
+					
+					//
+					console.log('Pause video #' + video_id);
+				}
+//				$(this).get(0).pause();
+			});
 			
 			//
 			if ( vd.split('youtube.com').length > 1 ) {
@@ -554,6 +569,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 					//
 					jQuery('div.banner-ads-media', this)
 					.addClass('banner-video-media')
+					.addClass('banner-youtube-video')
 					.html('<iframe id="' + video_id + '" width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
 				}
 			}
@@ -586,9 +602,33 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //				console.log('W Video: ' + w_video);
 //				console.log('H Video: ' + h_video);
 				
+				
+				// nếu đã có video -> chỉ gọi play, không cần inner lại
+				if ( jQuery('div.banner-mp4-video', this).length > 0 ) {
+					// play video này lên
+					dog(video_id).play();
+					jQuery('#' +video_id)
+					.show()
+					.width( w_video )
+					.height( h_video )
+					.attr({
+						width : w_video,
+						height : h_video
+					});
+					
+					//
+					console.log('Play video #' + video_id);
+					
+					// trả về luôn
+					return true;
+				}
+				
+				
 				// tạo video
 				// https://www.w3schools.com/howto/howto_css_fullscreen_video.asp
-				jQuery('div.banner-ads-media', this).addClass('banner-video-media')
+				jQuery('div.banner-ads-media', this)
+				.addClass('banner-video-media')
+				.addClass('banner-mp4-video')
 				// mẫu html mặc định
 				/*
 				.html('<video width="' + w_video + '" height="' + h_video + '" autoplay muted loop preload="auto">\
@@ -602,12 +642,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 				</video>')
 				*/
 				// không poster
-				.html('<video id="' + video_id + '" width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
+				.html('<video id="' + video_id + '" width="' + w_video + '" height="' + h_video + '" data-player="" data-embed="default" tabindex="-1" autoplay muted loop preload="true" src="' + vd + '" playsinline="playsinline">' +
 					'<track kind="metadata" label="segment-metadata">' +
 				'</video>');
 				
 				// tự động play -> thay thế cho attr autoplay ở trên, có vẻ cũng không khả thi
-				dog(video_id).play();
+//				dog(video_id).play();
 			}
 			
 			//
