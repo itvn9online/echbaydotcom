@@ -1023,9 +1023,9 @@ if ( $bai_san_pham == true ) {
 		'hide_empty' => 0,
 		'taxonomy' => 'discount_code'
 	) );
-	echo '<!-- ';
-	print_r($arr_discount_code);
-	echo ' -->';
+//	echo '<!-- ';
+//	print_r($arr_discount_code);
+//	echo ' -->';
 	
 }
 
