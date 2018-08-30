@@ -165,9 +165,9 @@ function dang_ky_taxonomy() {
 		'labels' => $labels,
 		// cho phép phân cấp
 		'hierarchical' => false,
-		'public' => true,
+		'public' => false,
 		'show_ui' => true,
-		'show_admin_column' => true,
+		'show_admin_column' => false,
 		'show_in_nav_menus' => false
 //		'show_tagcloud' => true
 	);

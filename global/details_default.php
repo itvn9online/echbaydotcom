@@ -937,8 +937,13 @@ $_eb_product_ngayhethan = '';
 $_eb_product_giohethan = '';
 $_eb_product_leech_source = '';
 $_eb_product_supper_shop = '';
+// nếu website có mã giảm giá -> kích hoạt chức năng nhập mã giảm giá
+$co_ma_giam_gia = '';
+
 //if ( $__post->post_type == 'post' ) {
 if ( $bai_san_pham == true ) {
+	
+	//
 	if ( $__post->post_type == 'post' ) {
 		$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
 		$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
@@ -1010,6 +1015,17 @@ if ( $bai_san_pham == true ) {
 	if ( $__cf_row['cf_details_show_quick_cart'] == 1 && $__cf_row['cf_details_short_quick_cart'] == 1 ) {
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/clone-show-quick-cart.css' ] = 1;
 	}
+	
+	// kiểm tra xem có mã giảm giá không
+	echo '<!-- ';
+	$arr_discount_code = get_categories( array(
+		'hide_empty' => 0,
+		'taxonomy' => 'discount_code'
+	) );
+	print_r($arr_discount_code);
+	echo ' -->';
+	
+	
 }
 
 
