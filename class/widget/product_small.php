@@ -177,7 +177,12 @@ class ___echbay_widget_random_product extends WP_Widget {
 		echo '<div class="' . $custom_style . '">';
 		
 		echo EBE_html_template( EBE_get_page_template( $html_template ), array(
-			'tmp.widget_title' => _eb_get_echo_widget_title( $title, 'echbay-widget-product-title', $before_title, $dynamic_tag ),
+			'tmp.widget_title' => _eb_get_echo_widget_title(
+				$title,
+				'echbay-widget-product-title',
+				$before_title,
+				$dynamic_tag
+			),
 			'tmp.content' => $content,
 			'tmp.num_line' => trim( $num_line . $post_cloumn ),
 			'tmp.max_width' => $max_width,

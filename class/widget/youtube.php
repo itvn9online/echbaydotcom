@@ -51,7 +51,11 @@ class ___echbay_widget_youtube_video extends WP_Widget {
 		echo '<div class="echbay-widget-youtube-padding">';
 		
 		//
-		_eb_echo_widget_title( $title, 'echbay-widget-youtube-title', $before_title );
+		_eb_echo_widget_title(
+			$title,
+			'echbay-widget-youtube-title',
+			$before_title
+		);
 		
 		//
 		echo '<div class="img-max-width vhidden">' . $url_video . '</div>';

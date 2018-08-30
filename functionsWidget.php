@@ -797,7 +797,13 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	//
 	$widget_title = '';
 	if ( ! isset( $instance ['hide_widget_title'] ) ||  $instance ['hide_widget_title'] == 'off' ) {
-		$widget_title = _eb_get_echo_widget_title( $cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>', 'echbay-widget-blogs-title', $before_title, $dynamic_tag );
+		$widget_title = _eb_get_echo_widget_title(
+			$cat_link == '' ? $title : '<a href="' . $cat_link . '">' . $title . '</a>',
+			'echbay-widget-blogs-title',
+//			$before_title,
+			'',
+			$dynamic_tag
+		);
 		
 		if ( $description != '' ) {
 			$widget_title .= '<div class="echbay-widget-blogs-desc">' . $description . '</div>';

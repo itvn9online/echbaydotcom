@@ -662,7 +662,13 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 	echo '<!-- Widget name: ' . $name . ' -->' . "\n" . $before_widget;
 }
 
-function _eb_get_echo_widget_title ( $title, $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {
+function _eb_get_echo_widget_title (
+	$title,
+	$clat = '',
+	$before_title = '',
+	$dynamic_tag = 'div',
+	$after_title = ''
+) {
 	if ( $title == '' ) {
 		return '';
 	}
@@ -676,12 +682,24 @@ function _eb_get_echo_widget_title ( $title, $clat = '', $before_title = '', $dy
 //	echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
 	return '
 	<div class="echbay-widget-title ' . $clat . '">
-		<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
+		<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="echbay-widget-node-title ' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
 	</div>';
 }
 
-function _eb_echo_widget_title ( $title = '', $clat = '', $before_title = '', $dynamic_tag = 'div', $after_title = '' ) {
-	echo _eb_get_echo_widget_title( $title, $clat, $before_title, $dynamic_tag, $after_title );
+function _eb_echo_widget_title (
+	$title = '',
+	$clat = '',
+	$before_title = '',
+	$dynamic_tag = 'div',
+	$after_title = ''
+) {
+	echo _eb_get_echo_widget_title(
+		$title,
+		$clat,
+		$before_title,
+		$dynamic_tag,
+		$after_title
+	);
 }
 
 
@@ -935,7 +953,11 @@ class ___echbay_widget_google_map extends WP_Widget {
 		_eb_echo_widget_name( $this->name, $before_widget );
 		
 		//
-		_eb_echo_widget_title( $title, 'echbay-widget-ggmap-title', $before_title );
+		_eb_echo_widget_title(
+			$title,
+			'echbay-widget-ggmap-title',
+			$before_title
+		);
 		
 		//
 		echo '<div class="url-to-google-map d-none">' . $url_video . '</div>';

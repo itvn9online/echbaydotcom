@@ -142,7 +142,11 @@ class ___echbay_widget_loc_san_pham_theo_gia extends WP_Widget {
 		echo '<div class="' . trim( $list_tyle ) . '">';
 		
 		//
-		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
+		_eb_echo_widget_title(
+			$title,
+			'echbay-widget-price-title',
+			$before_title
+		);
 //		echo $custom_price;
 		
 		//

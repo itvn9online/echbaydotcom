@@ -69,11 +69,11 @@ class ___echbay_widget_search_advanced extends WP_Widget {
 		
 		// category
 		$arrs = get_categories( array(
-	//		'taxonomy' => 'post_options',
-	//		'hide_empty' => 0,
+//			'taxonomy' => 'post_options',
+//			'hide_empty' => 0,
 			'parent' => 0,
 		) );
-		print_r($arrs);
+//		print_r($arrs);
 		
 		
 		
@@ -141,7 +141,11 @@ class ___echbay_widget_search_advanced extends WP_Widget {
 			'tmp.max_width' => $max_width,
 			'tmp.blog_title' => $title,
 			'tmp.post_cloumn' => $post_cloumn,
-			'tmp.widget_title' => _eb_get_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title ),
+			'tmp.widget_title' => _eb_get_echo_widget_title(
+				$title,
+				'echbay-widget-blogs-title',
+				$before_title
+			),
 			'tmp.content' => $content,
 		) );
 		
