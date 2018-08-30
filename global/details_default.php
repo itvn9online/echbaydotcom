@@ -1016,15 +1016,18 @@ if ( $bai_san_pham == true ) {
 		$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/clone-show-quick-cart.css' ] = 1;
 	}
 	
+	
+	
 	// kiểm tra xem có mã giảm giá không
-	echo '<!-- ';
 	$arr_discount_code = get_categories( array(
 		'hide_empty' => 0,
 		'taxonomy' => 'discount_code'
 	) );
+	/*
+	echo '<!-- ';
 	print_r($arr_discount_code);
 	echo ' -->';
-	
+	*/
 	
 }
 

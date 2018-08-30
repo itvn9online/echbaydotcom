@@ -171,6 +171,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	//
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
+	echo '<p><em>* Hỗ trợ một số mã BBCode đơn giản như: [b], [i], [u] (chỉ nhận chữ viết thường)</em></p>';
 	
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_widget_title' ], $hide_widget_title, 'Ẩn tiêu đề widget.' );
@@ -662,6 +663,34 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 	echo '<!-- Widget name: ' . $name . ' -->' . "\n" . $before_widget;
 }
 
+function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
+	// danh sách các tag được hỗ trợ
+	$arr = array(
+		'b' => 'strong',
+		'strong' => 'strong',
+		'i' => 'em',
+		'em' => 'em',
+		'u' => 'u'
+	);
+	
+	//
+	if ( $remove_tag == true ) {
+		foreach ( $arr as $k => $v ) {
+			$str = str_replace( '[' . $k . ']', '', $str );
+			$str = str_replace( '[/' . $k . ']', '', $str );
+		}
+	}
+	else {
+		foreach ( $arr as $k => $v ) {
+			$str = str_replace( '[' . $k . ']', '<' . $v . '>', $str );
+			$str = str_replace( '[/' . $k . ']', '</' . $v . '>', $str );
+		}
+	}
+	
+	//
+	return $str;
+}
+
 function _eb_get_echo_widget_title (
 	$title,
 	$clat = '',
@@ -682,7 +711,7 @@ function _eb_get_echo_widget_title (
 //	echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
 	return '
 	<div class="echbay-widget-title ' . $clat . '">
-		<' . $dynamic_tag . ' title="' . strip_tags( $title ) . '" class="echbay-widget-node-title ' . $before_title . '">' . $title . '</' . $dynamic_tag . '>
+		<' . $dynamic_tag . ' title="' . WGR_widget_title_with_bbcode( strip_tags( $title ) ) . '" class="echbay-widget-node-title ' . $before_title . '">' . WGR_widget_title_with_bbcode( $title, false ) . '</' . $dynamic_tag . '>
 	</div>';
 }
 
