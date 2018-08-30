@@ -630,22 +630,22 @@ $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_toithieu'] = 'Kh
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_toida'] = 'Chi tiêu tối đa';
 //$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_toida'] = '';
-$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_toida'] = 'Khi thông số này được thiết lập, đơn hàng có tổng giá trị lớn hơn con số này cũng chỉ tính bằng số này.';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_toida'] = 'Khi thông số này được thiết lập, đơn hàng có tổng giá trị lớn hơn con số này thì phần chiếu khấu theo % cũng chỉ tính theo số đã nhập.';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_product'] = 'Sản phẩm';
-$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_product'] = 'number';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_product'] = 'number';
 $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_product'] = 'Thiết lập khi muốn Mã giảm giá chỉ kích hoạt cho Sản phẩm cụ thể.';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon__product'] = 'Loại trừ sản phẩm';
-$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__product'] = 'number';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__product'] = 'number';
 $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon__product'] = 'Thiết lập khi muốn mã giảm giá không áp dụng cho Sản phẩm nào đó.';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_category'] = 'Danh mục sản phẩm';
-$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_category'] = 'number';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_category'] = 'number';
 $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_category'] = 'Thiết lập khi muốn Mã giảm giá chỉ kích hoạt cho Danh mục sản phẩm cụ thể.';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon__category'] = 'Loại trừ các danh mục';
-$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__category'] = 'number';
+//$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon__category'] = 'number';
 $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon__category'] = 'Thiết lập khi muốn mã giảm giá không áp dụng cho Danh mục sản phẩm nào đó.';
 
 /*
@@ -656,7 +656,7 @@ $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_email'] = '';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_max'] = 'Giới hạn sử dụng cho mỗi mã giảm giá';
 $eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_max'] = 'number';
-$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_max'] = 'Thiết lập khi muốn dừng chạy Mã giảm giá này nếu đạt ngưỡng.';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_max'] = 'Thiết lập khi muốn dừng chạy Mã giảm giá này nếu đạt ngưỡng sử dụng.';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_using'] = 'Đã sử dụng';
 $eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_using'] = 'hidden';

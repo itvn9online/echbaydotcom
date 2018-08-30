@@ -1230,10 +1230,10 @@ body.body-no-scroll #oi_order_iframe {
 	overflow: hidden;
 }
 /* chỉnh sửa input của custom taxonomy */
-.wgr-custom-taxonomy .l { }
-.wgr-custom-taxonomy .m { }
-.wgr-custom-taxonomy .n { }
-.wgr-custom-taxonomy .s { }
+.wgr-custom-taxonomy input.l { }
+.wgr-custom-taxonomy input.m { }
+.wgr-custom-taxonomy input.n { width: 200px; }
+.wgr-custom-taxonomy input.s { width: 110px; }
 /* hiển thị quá trình update core, plugin */
 .content-process-update-complete {
 	-moz-transition: all 5s ease;

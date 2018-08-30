@@ -17,6 +17,7 @@
 //$currentUrl = str_replace($search, $replace, $_SERVER['REQUEST_URI']);
 //echo $currentUrl;
 //print_r($_GET);
+//echo $act; exit();
 
 
 
@@ -30,6 +31,7 @@ $__category = get_queried_object();
 
 //
 $switch_taxonomy = isset( $__category->taxonomy ) ? $__category->taxonomy : '';
+$wgr_support_taxonomy = '';
 
 
 
@@ -43,7 +45,14 @@ if ( $__cf_row['cf_cats_column_style'] == '' ) {
 
 
 // Chỉ nhận bài viết với định dạng được hỗ trợ
-if ( $switch_taxonomy != '' ) {
+//if ( $switch_taxonomy != '' ) {
+if ( $switch_taxonomy == 'post_tag'
+	
+	|| $switch_taxonomy == EB_BLOG_POST_LINK
+	|| $switch_taxonomy == 'blog_tag'
+	
+	|| $switch_taxonomy == 'post_options'
+	|| $switch_taxonomy == 'category' ) {
 	
 	
 	//
@@ -105,18 +114,27 @@ var current_order="' . $current_order . '",
 	
 }
 // nếu người dùng sử dụng taxonomy riêng -> include taxonomy này vào
+// for child-theme
+else if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'archive-' . $switch_taxonomy . '.php' ) ) {
+	
+	include EB_CHILD_THEME_URL . 'archive-' . $switch_taxonomy . '.php';
+	
+}
+// for theme
 else if ( file_exists( EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php' ) ) {
 	
 	// nếu sử dụng giao diện riêng -> người dùng tự exist chứ mình mặc định là không exist
 	include EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php';
 	
 }
+/*
 else if ( $act == 'archive' ) {
 	include EB_THEME_PHP . 'archive.php';
 }
+*/
 // không thì in ra file 404 thôi
 else {
-	echo '<!-- ' .$act . ' --> <br>' . "\n";
+	echo '<!-- ' .$act . ' -->' . "\n";
 	
 	include EB_THEME_PHP . '404.php';
 }

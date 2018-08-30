@@ -182,6 +182,27 @@ var gallery_has_been_load = false,
 		WGR_check_if_value_this_is_one('_eb_category_primary');
 		WGR_check_if_value_this_is_one('_eb_category_noindex');
 		WGR_check_if_value_this_is_one('_eb_category_hidden');
+		
+		// riêng từng phần
+		if ( typeof pagenow != 'undefined' ) {
+			if ( pagenow == 'edit-discount_code' ) {
+				$('#_eb_category_coupon_giagiam').removeClass('m').addClass('n');
+				$('#_eb_category_coupon_phantramgiam').removeClass('m').addClass('s');
+				
+				$('#_eb_category_coupon_ngayhethan').removeClass('m').addClass('n');
+				
+				$('#_eb_category_coupon_toithieu').removeClass('m').addClass('n');
+				$('#_eb_category_coupon_toida').removeClass('m').addClass('n');
+				
+				$('#_eb_category_coupon_product').removeClass('m').addClass('n');
+				$('#_eb_category_coupon__product').removeClass('m').addClass('n');
+				
+				$('#_eb_category_coupon_category').removeClass('m').addClass('n');
+				$('#_eb_category_coupon__category').removeClass('m').addClass('n');
+				
+				$('#_eb_category_coupon_max').removeClass('m').addClass('s');
+			}
+		}
 	}
 	// thêm tài khoản thành viên
 	else if ( admin_act == 'user-new' ) {
