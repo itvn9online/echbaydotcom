@@ -533,7 +533,9 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 					//
 					console.log('Pause video #' + video_id);
 				}
-//				$(this).get(0).pause();
+				else {
+					$(this).get(0).pause();
+				}
 			});
 			
 			//
