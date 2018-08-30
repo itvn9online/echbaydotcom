@@ -1266,6 +1266,7 @@ color: #333;
 	z-index: 1;
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
+.jEBE_swipe_slider .ads-link { display: none; }
 /* search */
 .thread-search { }
 .thread-search li {

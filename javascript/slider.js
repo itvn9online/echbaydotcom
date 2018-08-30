@@ -885,7 +885,11 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 //		var str_process = jd;
 //		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
 //		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
-		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+//		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		var str_process = jd + ' .echbay-blog-left, ' + jd + ' .banner-ads-media';
+		
+		//
+		jQuery( jd ).addClass('jEBE_swipe_slider');
 		
 		//
 		jQuery( str_process ).swipe( {
@@ -896,12 +900,40 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 				//
 				if ( direction == 'left' ) {
 //				if ( direction == 'left' || direction == 'up' ) {
-					jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
+//					jQuery(jd_to_class + ' .jEBE_slider-toRight').click();
+					
+					//
+					var i = jQuery( jd ).attr('data-i') || '';
+					if ( i != '' ) {
+						i++;
+						if ( i >= jQuery( jd + ' li' ).length ) {
+							i = 0;
+						}
+//						console.log(i);
+						jQuery( jd + ' li[data-i="' + i + '"]').click();
+						
+						//
+						jEBE_slider_cache_option[jd]['autoplay'] = false;
+					}
 				}
 				else if ( direction == 'right' ) {
 //				else if ( direction == 'right' || direction == 'down' ) {
 //				else {
-					jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
+//					jQuery(jd_to_class + ' .jEBE_slider-toLeft').click();
+					
+					//
+					var i = jQuery( jd ).attr('data-i') || '';
+					if ( i != '' ) {
+						i--;
+						if ( i < 0 ) {
+							i = jQuery( jd + ' li' ).length - 1;
+						}
+//						console.log(i);
+						jQuery( jd + ' li[data-i="' + i + '"]').click();
+						
+						//
+						jEBE_slider_cache_option[jd]['autoplay'] = false;
+					}
 				}
 				// hỗ trợ người dùng cuộn trang, do lệnh làm liệt chức năng cuộn trang ở đây
 				else {

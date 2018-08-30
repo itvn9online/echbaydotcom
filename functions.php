@@ -3581,6 +3581,7 @@ function _eb_load_ads (
 		if ( $html == '' ) {
 			$html = EBE_get_page_template( 'ads_node' );
 		}
+		$html = str_replace( '{tmp.other_attr}', '', $html );
 		
 		//
 		$str = '';
