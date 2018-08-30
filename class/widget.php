@@ -164,14 +164,21 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	// tạo ID riêng cho từng widget để điều khiển cho dễ
 	$random_current_widget_id = 'ebe_widget_id_change' . md5( rand( 1, 1000 ) );
+	$bbcode_current_widget_id = 'bbcode-' . $random_current_widget_id;
 	
 	//
 	echo '<div class="eb-widget-fixed ' . $random_current_widget_id . '">';
 	
 	
 	//
+	echo '<div class="' . $bbcode_current_widget_id . '">';
 	_eb_widget_echo_widget_input_title( $field_name['title'], $title );
-	echo '<p><em>* Hỗ trợ một số mã BBCode đơn giản như: [b], [i], [u] (chỉ nhận chữ viết thường)</em></p>';
+	echo '<p><em>* Hỗ trợ một số mã BBCode đơn giản như:
+		<a data-set="' . $bbcode_current_widget_id . '" data-tag="b" class="click-set-bbcode-to-title">[b]</a>,
+		<a data-set="' . $bbcode_current_widget_id . '" data-tag="u" class="click-set-bbcode-to-title">[u]</a>,
+		<a data-set="' . $bbcode_current_widget_id . '" data-tag="i" class="click-set-bbcode-to-title">[i]</a>
+		(chỉ nhận chữ viết thường)</em></p>';
+	echo '</div>';
 	
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_widget_title' ], $hide_widget_title, 'Ẩn tiêu đề widget.' );
@@ -667,9 +674,9 @@ function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 	// danh sách các tag được hỗ trợ
 	$arr = array(
 		'b' => 'strong',
-		'strong' => 'strong',
+//		'strong' => 'strong',
 		'i' => 'em',
-		'em' => 'em',
+//		'em' => 'em',
 		'u' => 'u'
 	);
 	

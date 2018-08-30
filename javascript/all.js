@@ -1132,6 +1132,7 @@ function convert_size_to_one_format () {
 }
 
 function WGR_widget_show_option_by_post_type ( select_id ) {
+	
 //	console.log(select_id);
 	
 	var a = $('.' + select_id + ' .ebe-post-type').val() || '';
@@ -1148,6 +1149,20 @@ function WGR_widget_show_option_by_post_type ( select_id ) {
 			'data-type': a
 		});
 	});
+	
+	
+	// thêm BBCode cho title
+	$('.click-set-bbcode-to-title').attr({
+		href: 'javascript:;'
+	}).click(function() {
+		var set = $(this).attr('data-set') || '',
+			tag = $(this).attr('data-tag') || '',
+			a = $('.' + set + ' input');
+		
+		//
+		a.val( '[' + tag + ']' + a.val().replace( '[' + tag + ']', '' ).replace( '[/' + tag + ']', '' ) + '[/' + tag + ']' );
+	});
+	
 }
 
 
