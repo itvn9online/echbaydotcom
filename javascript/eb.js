@@ -502,11 +502,11 @@ var _global_js_eb = {
 //			console.log('aaaaaaaaaaa: ' + max_width);
 			if ( max_width == '' || max_width < 90 ) {
 				max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+				max_width = Math.ceil( max_width ) - 1;
 				jQuery(this).attr({
 					'data-max-width': max_width
 				});
 			}
-			max_width = Math.ceil( max_width ) - 1;
 //			console.log('bbbbbbbbbbb: ' + max_width);
 			
 			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)

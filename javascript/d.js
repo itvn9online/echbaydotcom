@@ -2341,10 +2341,12 @@ function ___eb_details_post_run ( r ) {
 	
 	// thêm chiều rộng tuyệt đối cho khung nội dung
 	var a = jQuery('#content_img_product').attr('data-max-width') || '';
-	if ( a == '' ) {
-		jQuery('#content_img_product').attr({
-			'data-max-width': cf_img_details_maxwidth
-		});
+	if ( a == '' || a == '0' || a == 0 ) {
+		if ( cf_img_details_maxwidth > 0 ) {
+			jQuery('#content_img_product').attr({
+				'data-max-width': cf_img_details_maxwidth
+			});
+		}
 	}
 	
 }
