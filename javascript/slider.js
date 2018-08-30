@@ -459,7 +459,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			
 			// Kiểm tra xem slide đầu tiên có phải là video không
 			if ( i == 0 ) {
-				var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+//				var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+				var vd = jQuery('div.banner-ads-media', this).attr('data-ytb-url') || '';
 				
 				if ( vd != '' ) {
 //					vd = vd.split('.');
@@ -513,7 +514,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			
 			
 			// kiểm tra xem có video không -> có thì tự phát video thôi
-			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+//			var vd = jQuery('div.banner-ads-media', this).attr('data-video') || '';
+			var vd = jQuery('div.banner-ads-media', this).attr('data-ytb-url') || '';
 //			console.log(vd);
 			
 			// xóa các video trong cùng slide

@@ -1266,7 +1266,8 @@ color: #333;
 	z-index: 1;
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
-.jEBE_swipe_slider .ads-link { display: none; }
+/* cho phần link của banner về gọn 1 bên để còn sử dụng touch được */
+.jEBE_swipe_slider .ads-link { left: 85%; }
 /* search */
 .thread-search { }
 .thread-search li {
