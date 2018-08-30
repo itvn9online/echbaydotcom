@@ -100,6 +100,12 @@ var gallery_has_been_load = false,
 	// nếu đang trong phần sửa bài viết
 	if ( admin_act == 'post' ) {
 		WGR_run_for_admin_edit_post();
+		
+		// ẩn phần mã giảm gí đi, không sử dụng ở đây
+		if ( typeof pagenow != 'undefined' && pagenow == 'post' ) {
+			$('#tagsdiv-discount_code, #tagsdiv-discount_code-hide, label[for="tagsdiv-discount_code-hide"]').hide().addClass('hide-if-js').addClass('d-none');
+			console.log('Hide tagsdiv-discount_code');
+		}
 	}
 	// thêm bài viết mới
 	else if ( admin_act == 'post-new' ) {
