@@ -543,8 +543,11 @@ label,
 .medium { font-size: 15px; }
 .medium18 { font-size: 18px; }
 .big { font-size: 23px; }
+.big2,
 .big30 { font-size: 30px; }
+.big3,
 .big35 { font-size: 35px; }
+.big4,
 .big50,
 .big-big { font-size: 50px; }
 .upper { text-transform: uppercase; }

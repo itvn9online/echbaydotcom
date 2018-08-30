@@ -287,6 +287,12 @@ function create_deault_css () {
 		console.log( WGR_show_try_catch_err( e ) );
 	}
 	
+	// fcb
+	str += create_css_for_custom_in_js( '.each-to-css-for-fcb', 'cf_css_fcb', {
+//		'mobile' : '',
+		'pc' : '.fcb'
+	} );
+	
 	// w90
 	str += create_css_for_custom_in_js( '.each-to-css-for-w90', 'cf_css_w90', {
 //		'mobile' : '',
@@ -610,6 +616,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_logo'] == 'undefined' ) {
 			data['cf_css_logo'] = {};
 		}
+		if ( typeof data['cf_css_fcb'] == 'undefined' ) {
+			data['cf_css_fcb'] = {};
+		}
 		if ( typeof data['cf_css_w90'] == 'undefined' ) {
 			data['cf_css_w90'] = {};
 		}
@@ -678,6 +687,25 @@ if ( current_module_config != 'config_theme' ) {
 				'maxlength' : {
 					'background_image' : 255
 				}
+			}
+		);
+		
+		
+		
+		// fcb
+		load_config_for_custom_logo(
+			{
+				'font_family' : ''
+			}, {
+				'font_family' : 'Font cơ bản'
+			}, {
+				'font_family' : 'Khác với Font chữ (toàn trang), font này chỉ dùng cho 1 số module nhất định, để cho code trang trí và biến tấu website trên một số module nhất định (sử dụng class CSS: <strong>fcb</strong>). Mặc định chỉ hỗ trợ một font khác, trường hợp cần dùng thêm font, hãy sử dụng custom style để khai báo.'
+			}, {
+			},
+			data['cf_css_fcb'],
+			{
+				'after_html' : 'custom_css_for_body',
+				'input_name' : 'fcb'
 			}
 		);
 		
@@ -754,12 +782,12 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'max_width' : 'Chiều rộng tối đa (BODY)',
 				'font_size' : 'Cỡ chữ mặc định',
-				'font_family' : 'Phông chữ'
+				'font_family' : 'Font chữ (toàn trang)'
 			}, {
 //				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn. Gợi ý một số kích thước phổ biến khác mà bạn có thể chọn: HD+ <strong>1600</strong>, Full HD <strong>1920</strong>, QWXGA <strong>2048</strong>, WQHD <strong>2560</strong>.',
 				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn.',
 				'font_size' : 'Mặc định sẽ sử dụng cỡ chữ tiêu chuẩn là <strong>13px</strong> (~10pt), bạn có thể thay đổi kích thước này tại đây',
-				'font_family' : 'Phông chữ mặc định là <strong>\'Helvetica Neue\', Helvetica, Arial, Tahoma, Verdana, sans-serif</strong>, trường hợp bạn muốn sử dụng phông chữ khác, hãy nhập tại đây. <br><span class="orgcolor">* Lưu ý là các font chữ bạn chọn nếu không phải font phổ biến thì cần nhúng font vào website. Khuyên dùng: <a href="https:\/\/fonts.google.com\/" rel="nofollow" target="_blank">https:\/\/fonts.google.com\/</a></span>'
+				'font_family' : 'Font chữ mặc định là <strong>\'Helvetica Neue\', Helvetica, Arial, Tahoma, Verdana, sans-serif</strong>, trường hợp bạn muốn sử dụng font chữ khác, hãy nhập tại đây. <br><span class="orgcolor">* Lưu ý là các font chữ bạn chọn nếu không phải font phổ biến thì cần nhúng font vào website. Khuyên dùng: <a href="https:\/\/fonts.google.com\/" rel="nofollow" target="_blank">https:\/\/fonts.google.com\/</a></span>'
 			}, {
 				'max_width' : 'number'
 			},

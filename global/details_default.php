@@ -738,6 +738,12 @@ if ( $__post->post_type == 'post' ) {
 
 
 
+// số Hotline -> luôn lấy số đầu tiên nếu có nhiều số
+$cf_hotline = explode( "\n", trim( $__cf_row['cf_hotline'] ) );
+$cf_hotline = trim( $cf_hotline[0] );
+
+
+
 // tạo mảng để khởi tạo nội dung
 $arr_main_content = array(
 	'tmp.trv_id' => $pid,
@@ -752,6 +758,8 @@ $arr_main_content = array(
 	
 	'tmp.trv_luotxem' => $trv_luotxem,
 	'tmp.trv_luotthich' => $trv_luotthich,
+	
+	'tmp.cf_hotline' => $cf_hotline,
 	
 	'tmp.trv_goithieu' => $__post->post_excerpt,
 	'tmp.trv_noidung' => $trv_noidung,
