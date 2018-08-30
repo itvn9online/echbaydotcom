@@ -937,8 +937,9 @@ $_eb_product_ngayhethan = '';
 $_eb_product_giohethan = '';
 $_eb_product_leech_source = '';
 $_eb_product_supper_shop = '';
+
 // nếu website có mã giảm giá -> kích hoạt chức năng nhập mã giảm giá
-$co_ma_giam_gia = '';
+$co_ma_giam_gia = 0;
 
 //if ( $__post->post_type == 'post' ) {
 if ( $bai_san_pham == true ) {
@@ -1023,9 +1024,34 @@ if ( $bai_san_pham == true ) {
 		'hide_empty' => 0,
 		'taxonomy' => 'discount_code'
 	) );
-//	echo '<!-- ';
-//	print_r($arr_discount_code);
-//	echo ' -->';
+	
+	/*
+	echo '<!-- ';
+	print_r($arr_discount_code);
+	echo ' -->';
+	*/
+	
+	//
+	if ( ! empty( $arr_discount_code ) ) {
+		$ngay_hom_nay = date( 'Ymd', date_time );
+		
+		//
+		foreach ( $arr_discount_code as $v ) {
+			$check_discount_ex = _eb_get_cat_object( $v->term_id, '_eb_category_coupon_ngayhethan' );
+			
+			// nếu chưa tìm thấy mã giảm giá nào
+			if ( $co_ma_giam_gia == 0
+			// có ngày hết hạn
+			&& $check_discount_ex != ''
+			// độ dài ngày hết hạn chuẩn
+			&& strlen( $check_discount_ex ) == 10
+			&& str_replace( '/', '', $check_discount_ex ) >= $ngay_hom_nay ) {
+				$co_ma_giam_gia = 1;
+				break;
+			}
+//			echo $check_discount_ex . '<br>' . "\n";
+		}
+	}
 	
 }
 
@@ -1060,7 +1086,8 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
 	cf_slider_details_play=' . $__cf_row['cf_slider_details_play'] . ',
 	cf_img_details_maxwidth=' . $__cf_row['cf_img_details_maxwidth'] . ',
-	trv_ngayhethan=' . $trv_ngayhethan . ';
+	trv_ngayhethan=' . $trv_ngayhethan . ',
+	co_ma_giam_gia=' . $co_ma_giam_gia . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
 
