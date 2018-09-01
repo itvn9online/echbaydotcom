@@ -8,6 +8,19 @@ ob_end_clean();
 
 
 
+// thay thế dữ liệu
+/*
+if ( $__cf_row['cf_replace_content'] != '' ) {
+	$main_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $main_content );
+}
+
+// nếu tồn tại tham số URL cũ -> thay nội dung cũ sang mới
+if ( $__cf_row['cf_old_domain'] != '' ) {
+	$main_content = WGR_sync_old_url_in_content( $__cf_row['cf_old_domain'], $main_content );
+}
+*/
+
+
 
 // nếu bài viết được đánh dấu để set noindex -> set thuộc tính noindex
 if ( _eb_get_post_object( $post->ID, '_eb_product_noindex', 0 ) == 1 ) {
