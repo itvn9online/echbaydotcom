@@ -964,7 +964,15 @@ var _global_js_eb = {
 			
 			if ( a != '' && a.length == 10 && df != '' ) {
 				a = a.replace(/\-|\s/g, '/').split('/');
-				jQuery(this).val( a.join('/') );
+				if ( df.split('/').length > 1 ) {
+					jQuery(this).val( a.join('/') );
+				}
+				else if ( df.split('-').length > 1 ) {
+					jQuery(this).val( a.join('-') );
+				}
+				else if ( df.split(' ').length > 1 ) {
+					jQuery(this).val( a.join(' ') );
+				}
 				
 				//
 				df = df.toLowerCase().replace(/\-|\s/g, '/').split('/');
