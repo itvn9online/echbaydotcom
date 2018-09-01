@@ -93,7 +93,6 @@ else if ( act == '404' ) {
 			c = '.' + c;
 			
 			//
-			s = jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '';
 			if ( s == 'full' ) {
 				var lh = jQuery(window).height();
 				
@@ -103,8 +102,11 @@ else if ( act == '404' ) {
 					'line-height' : lh + 'px'
 				});
 			}
+			else if ( s == 'li' ) {
+//				s = jQuery( c + ' li:first').height() + '/' + jQuery( c + ' li:first').width();
+			}
 			else {
-				s = jQuery( c + ' li:first').height() + '/' + jQuery( c + ' li:first').width();
+				s = jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '';
 			}
 			
 			//

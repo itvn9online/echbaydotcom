@@ -199,9 +199,15 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		hai = '';
 	
 	// thêm chức năng cho chiều cao tự động (auto)
-	if ( conf['size'] == '' ) {
-		hai = jQuery(jd + ' li:first').height();
+	if ( conf['size'] == '' || conf['size'] == 'li' ) {
+		hai = Math.ceil( jQuery(jd + ' li:first').height() ) - 1;
+		
+		//
+		if ( conf['size'] == 'li' ) {
+			conf['size'] = hai + '/' + ( Math.ceil( jQuery( jd + ' li:first').width() ) - 1 );
+		}
 	}
+	//
 	else if ( conf['size'] == 'auto' ) {
 		// Nếu có class auto resize -> trước đó bị hàm khác chặn mất rồi -> add lại class mới để xử lý
 		if ( jQuery(jd + ' .auto-size').length > 1 ) {
@@ -247,6 +253,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		// thêm class khẳng định full size theo màn hình
 		jQuery(jd).addClass('slider-window-size');
 	}
+	// tính toán chiều cao từ tỷ lệ của chiều rộng
 	else {
 		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
 	}

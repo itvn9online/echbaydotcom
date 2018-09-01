@@ -56,6 +56,11 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('buttonListNext'), $buttonListNext, 'Hiển thị nút bấm chuyển ảnh' );
 		
 		_eb_widget_echo_widget_input_title( $this->get_field_name('size'), $size, 'Tỷ lệ giữa chiều cao và chiều rộng, thiết lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)', 'Height/Width or auto or full' );
+		echo '<p>- <strong>height/width</strong>: thiết lập tỷ lệ cố định<br>
+		- <strong>auto</strong>: thiết lập tỷ lệ tự động<br>
+		- <strong>full</strong>: thiết lập tỷ lệ bằng với màn hình thiết bị của người dùng<br>
+		- <strong>li</strong>: thiết lập tỷ lệ bằng với kích thước của thẻ LI đầu tiên.</p>';
+		
 		_eb_widget_echo_widget_input_title( $this->get_field_name('for_class'), $for_class, 'Mặc định là điều khiển các thẻ LI làm slider, nếu muốn thẻ khác hãy đặt theo class hoặc ID. Ví dụ: .node1, #node2', '.node1, #node2' );
 		
 		
