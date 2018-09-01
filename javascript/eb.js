@@ -950,7 +950,54 @@ var _global_js_eb = {
 			dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 		};
 		jQuery.datepicker.setDefaults(jQuery.datepicker.regional.vi);
-		jQuery(id).datepicker(op);
+		
+		//
+		jQuery(id).attr({
+			'date-format' : op['dateFormat']
+		}).change(function () {
+			var a = jQuery(this).val() || '',
+				df = jQuery(this).attr('date-format') || '',
+				b = '';
+			a = jQuery.trim(a);
+//			console.log(a);
+//			console.log(df);
+			
+			if ( a != '' && a.length == 10 && df != '' ) {
+				a = a.replace(/\-|\s/g, '/').split('/');
+				jQuery(this).val( a.join('/') );
+				
+				//
+				df = df.toLowerCase().replace(/\-|\s/g, '/').split('/');
+//				console.log(a);
+//				console.log(df);
+				
+				//
+				if ( df.length == 3 ) {
+					// định dạng năm/ tháng/ ngày
+					if ( df[0] == 'yy' || df[0] == 'yyyy' ) {
+						// nếu mảng đầu tiên không phải là năm -> bỏ luốn
+						if ( a[0].toString().length != 4 && a[2].toString().length == 4 ) {
+							b = a[0];
+							a[0] = a[2];
+							a[2] = b;
+							
+							jQuery(this).val( a.join('/') );
+						}
+					}
+					// ngày/ tháng/ năm
+					else if ( df[2] == 'yy' || df[2] == 'yyyy' ) {
+						// nếu mảng cuối không phải là năm -> bỏ luốn
+						if ( a[2].toString().length != 4 && a[0].toString().length == 4 ) {
+							b = a[2];
+							a[2] = a[0];
+							a[0] = b;
+							
+							jQuery(this).val( a.join('/') );
+						}
+					}
+				}
+			}
+		}).datepicker(op);
 	},
 	
 	_log_click_ref: function() {
