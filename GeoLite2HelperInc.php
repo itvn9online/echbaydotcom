@@ -94,23 +94,33 @@ class WGR_GeoLite2Helper {
 		if ( file_exists( GeoLite2Helper_UploadPATH . '/GeoLite2-City.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_UploadPATH . '/GeoLite2-City.mmdb' );
 		}
-		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' ) ) {
-			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' );
+		// echbay hosting
+		else if ( file_exists( '/root/lib/geolite2-db/GeoLite2-City.mmdb' ) ) {
+			$reader = new Reader( '/root/lib/geolite2-db/GeoLite2-City.mmdb' );
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-City.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_PATH . '/GeoLite2-City.mmdb' );
 		}
+		// localhost
+		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-City.mmdb' );
+		}
 		// mặc định chỉ lấy Country
 		else if ( file_exists( GeoLite2Helper_UploadPATH . '/GeoLite2-Country.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_UploadPATH . '/GeoLite2-Country.mmdb' );
 		}
-		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' ) ) {
-			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' );
+		// echbay hosting
+		else if ( file_exists( '/root/lib/geolite2-db/GeoLite2-Country.mmdb' ) ) {
+			$reader = new Reader( '/root/lib/geolite2-db/GeoLite2-Country.mmdb' );
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-Country.mmdb' ) ) {
 			$reader = new Reader( GeoLite2Helper_PATH . '/GeoLite2-Country.mmdb' );
+		}
+		// localhost
+		else if ( file_exists( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_DBPATH . '/GeoLite2-Country.mmdb' );
 		}
 		// ngoài ra thì bỏ qua
 		else {
