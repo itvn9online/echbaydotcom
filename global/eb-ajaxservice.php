@@ -67,7 +67,7 @@ else {
 		}
 	}
 	else {
-		echo 'Module not found (ajaxl). Please check in <strong>' . EB_THEME_PLUGIN_INDEX . 'global/temp/</strong>';
+		echo 'Module not found (ajaxl). Please check in <strong>' . strstr( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) . 'global/temp/[' . $action_module . ']</strong>';
 		
 		// -> thoát luôn, không cho nó đẻ trứng
 		exit();

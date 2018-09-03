@@ -360,6 +360,12 @@ $___eb_lang[eb_key_for_site_lang . 'details_mobilemua_mua'] = '<i class="fa fa-s
 $___eb_lang[eb_key_for_site_lang . 'details_mobilemua_top'] = '<i class="fa fa-arrow-up"></i> Đầu trang';
 
 
+$eb_note_first_lang[eb_key_for_site_lang . 'dc_is_null'] = 'Bản dịch cho khâu kiểm tra sự tồn tại của mã giảm giá';
+$___eb_lang[eb_key_for_site_lang . 'dc_is_null'] = 'Không xác định được Mã giảm giá!';
+$___eb_lang[eb_key_for_site_lang . 'dc_too_short'] = 'Mã giảm giá quá ngắn, tối thiểu phải có 3 ký tự!';
+$___eb_lang[eb_key_for_site_lang . 'dc_not_found'] = 'Không tìm thấy Mã giảm giá hợp lệ!';
+
+
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
 $eb_note_first_lang[eb_key_for_site_lang . 'custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho các theme khác nhau';
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';

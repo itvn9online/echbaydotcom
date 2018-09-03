@@ -1415,6 +1415,7 @@ var _global_js_eb = {
 			hd_email: '',
 			hd_diachi: '',
 			hd_ghichu: '',
+			hd_discount_code: '',
 			hd_thanhtoan: 'tructiep',
 			
 			// user agent
@@ -1447,14 +1448,34 @@ var _global_js_eb = {
 			arr.hd_email = f.t_email.value;
 			arr.hd_diachi = f.t_diachi.value;
 			arr.hd_ghichu = f.t_ghichu.value;
+			arr.hd_discount_code = f.t_discount_code.value;
 		}
+		// cart
 		else {
-			arr.hd_ten = jQuery('#t_ten').val() || '';
-			arr.hd_dienthoai = jQuery('#t_dienthoai').val() || '';
-			arr.hd_email = jQuery('#t_email').val() || '';
-			arr.hd_diachi = jQuery('#t_diachi').val() || '';
-			arr.hd_ghichu = jQuery('#t_ghichu').val() || '';
-			arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+			var f = document.frm_cart;
+			
+			//
+			try {
+				arr.hd_ten = f.t_ten.value;
+				arr.hd_dienthoai = f.t_dienthoai.value;
+				arr.hd_email = f.t_email.value;
+				arr.hd_diachi = f.t_diachi.value;
+				arr.hd_ghichu = f.t_ghichu.value;
+				arr.hd_discount_code = f.t_discount_code.value;
+				arr.hd_thanhtoan = f.t_thanhtoan.value;
+			}
+			catch ( e ) {
+				arr.hd_ten = jQuery('#t_ten').val() || '';
+				arr.hd_dienthoai = jQuery('#t_dienthoai').val() || '';
+				arr.hd_email = jQuery('#t_email').val() || '';
+				arr.hd_diachi = jQuery('#t_diachi').val() || '';
+				arr.hd_ghichu = jQuery('#t_ghichu').val() || '';
+				arr.hd_discount_code = f.t_discount_code.value;
+				arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+				
+				//
+				console.log( WGR_show_try_catch_err( e ) );
+			}
 		}
 		
 		// key tìm kiếm đơn hàng
@@ -1856,11 +1877,14 @@ var _global_js_eb = {
 	},
 	
 	cart_discount_code : function ( co_ma_giam_gia, cl ) {
+		
 		if ( co_ma_giam_gia != 1 ) {
 			return false;
 		}
 		
-		jQuery( cl ).show().off('change').change(function () {
+		jQuery( cl ).show()
+		
+		jQuery('.auto-check-discount-code').off('change').change(function () {
 			var a = jQuery(this).val() || '',
 				jd = 'oi_check_discount_code';
 			
@@ -1874,13 +1898,18 @@ var _global_js_eb = {
 			
 			//
 			if ( dog( jd ) == null ) {
-				jQuery( cl ).after( '<div id="' + jd + '"></div>' );
+				jQuery( cl ).after( '<div id="' + jd + '" class="small text-center"></div>' );
 			}
 			
 			//
 			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
 			});
+			/*
+		}).off('keyup').keyup(function () {
+			return false;
+			*/
 		});
+		
 	},
 	
 	// load size và color trong giỏ hàng

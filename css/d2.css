@@ -1126,6 +1126,11 @@ color: #333;
 	margin-bottom: 10px;
 	padding: 8px 5px;
 }
+.cart-paymethod-paygate {
+	background: none;
+	padding: 0;
+	margin: 0;
+}
 .cart-pay-method label { }
 .cart-pay-method { }
 .cart-table-free { line-height: 20px; }
@@ -1270,7 +1275,7 @@ color: #333;
 }
 .slider-window-size .banner-ads-media { background-size: cover; }
 /* cho phần link của banner về gọn 1 bên để còn sử dụng touch được */
-.jEBE_swipe_slider .ads-link { display:none; }
+.jEBE_swipe_slider .ads-link { display: none; }
 /* search */
 .thread-search { }
 .thread-search li {
@@ -1394,7 +1399,7 @@ color: #333;
 }
 .eb-quickcart-table {
 	font-size: 14px;
-	line-height: 28px;
+	line-height: 34px;
 }
 .eb-quickcart-table select {
 	padding: 8px;
