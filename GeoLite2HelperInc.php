@@ -80,7 +80,7 @@ class WGR_GeoLite2Helper {
 			$this->ipAddress = 'UNKNOWN';
 	}
 	
-	private function getPath() {
+	public function getPath() {
 		
 		//
 		$f_City = '/GeoLite2-City.mmdb';

@@ -421,7 +421,7 @@ if ( $_POST['cf_region'] == '' || $_POST['cf_placename'] == '' ) {
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
 	
 	//
-	if ( $cGeoLite2->getPath != NULL ) {
+	if ( $cGeoLite2->getPath() != NULL ) {
 		if ( $_POST['cf_region'] == '' ) {
 			$_POST['cf_region'] = $cGeoLite2->getUserCountryCodeByIp();
 		}
