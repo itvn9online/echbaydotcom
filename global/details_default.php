@@ -1020,38 +1020,7 @@ if ( $bai_san_pham == true ) {
 	
 	
 	// kiểm tra xem có mã giảm giá không
-	$arr_discount_code = get_categories( array(
-		'hide_empty' => 0,
-		'taxonomy' => 'discount_code'
-	) );
-	
-	/*
-	echo '<!-- ';
-	print_r($arr_discount_code);
-	echo ' -->';
-	*/
-	
-	//
-	if ( ! empty( $arr_discount_code ) ) {
-		$ngay_hom_nay = date( 'Ymd', date_time );
-		
-		//
-		foreach ( $arr_discount_code as $v ) {
-			$check_discount_ex = _eb_get_cat_object( $v->term_id, '_eb_category_coupon_ngayhethan' );
-			
-			// nếu chưa tìm thấy mã giảm giá nào
-			if ( $co_ma_giam_gia == 0
-			// có ngày hết hạn
-			&& $check_discount_ex != ''
-			// độ dài ngày hết hạn chuẩn
-			&& strlen( $check_discount_ex ) == 10
-			&& str_replace( '/', '', $check_discount_ex ) >= $ngay_hom_nay ) {
-				$co_ma_giam_gia = 1;
-				break;
-			}
-//			echo $check_discount_ex . '<br>' . "\n";
-		}
-	}
+	$co_ma_giam_gia = WGR_check_discount_code_exist();
 	
 }
 

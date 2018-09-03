@@ -1855,6 +1855,34 @@ var _global_js_eb = {
 		
 	},
 	
+	cart_discount_code : function ( co_ma_giam_gia, cl ) {
+		if ( co_ma_giam_gia != 1 ) {
+			return false;
+		}
+		
+		jQuery( cl ).show().off('change').change(function () {
+			var a = jQuery(this).val() || '',
+				jd = 'oi_check_discount_code';
+			
+			if ( a == '' ) {
+				return false;
+			}
+			else if ( a.length < 3 ) {
+				console.log('DISCOUNT CODE too short!');
+				return false;
+			}
+			
+			//
+			if ( dog( jd ) == null ) {
+				jQuery( cl ).after( '<div id="' + jd + '"></div>' );
+			}
+			
+			//
+			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
+			});
+		});
+	},
+	
 	// load size và color trong giỏ hàng
 	cart_size_color : function () {
 		

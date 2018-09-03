@@ -50,6 +50,9 @@ else if ( act == 'contact' ) {
 // for cart
 else if ( act == 'cart' ) {
 	_global_js_eb.cart_func();
+	
+	// hiển thị hộp nhập mã giảm giá nếu có
+	_global_js_eb.cart_discount_code( co_ma_giam_gia, '.eb-global-cart-coupon' );
 }
 // end cart
 

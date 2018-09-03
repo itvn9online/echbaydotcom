@@ -2178,6 +2178,9 @@ function ___eb_details_post_run ( r ) {
 //	}
 	jQuery('.eb-global-frm-cart input[name^=t_muangay]').val( pid );
 	
+	// hiển thị hộp nhập mã giảm giá nếu có
+	_global_js_eb.cart_discount_code( co_ma_giam_gia, '.eb-quickcart-coupon' );
+	
 	// color
 	___eb_details_product_color();
 	

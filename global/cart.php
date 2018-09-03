@@ -209,7 +209,7 @@ if ( trim( $custom_lang_html ) == $act ) {
 
 //
 $main_content = EBE_html_template( $custom_lang_html, array(
-	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ';',
+	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ',co_ma_giam_gia=' . WGR_check_discount_code_exist() . ';',
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),

@@ -20,7 +20,7 @@ https://dev.maxmind.com/geoip/geoip2/geolite2/
 //
 //define('GeoLite2Helper_PATH', dirname(__FILE__));
 //define('GeoLite2Helper_PATH', WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2');
-define('GeoLite2Helper_PATH', EB_THEME_PLUGIN_INDEX . 'geolite2');
+define('GeoLite2Helper_PATH', EB_THEME_PLUGIN_INDEX . 'outsource/geolite2');
 //echo GeoLite2Helper_PATH . '<br>';
 
 //
