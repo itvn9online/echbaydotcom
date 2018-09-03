@@ -1,6 +1,7 @@
 <?php
 
 // v1
+/*
 if ( ! file_exists( GeoLite2Helper_PATH . '/Reader.php' ) && file_exists( GeoLite2Helper_PATH . '/Db/Reader.php' ) ) {
 	include GeoLite2Helper_PATH . '/Db/Reader.php';
 	include GeoLite2Helper_PATH . '/Db/Reader/Decoder.php';
@@ -10,13 +11,16 @@ if ( ! file_exists( GeoLite2Helper_PATH . '/Reader.php' ) && file_exists( GeoLit
 }
 // v2
 else {
+	*/
 	include GeoLite2Helper_PATH . '/Reader.php';
 	include GeoLite2Helper_PATH . '/Reader/Decoder.php';
 	include GeoLite2Helper_PATH . '/Reader/InvalidDatabaseException.php';
 	include GeoLite2Helper_PATH . '/Reader/Metadata.php';
 	include GeoLite2Helper_PATH . '/Reader/Util.php';
-}
+//}
 
+
+//
 use MaxMind\Db\Reader;
 
 class WGR_GeoLite2Helper {
@@ -95,8 +99,8 @@ class WGR_GeoLite2Helper {
 			$reader = new Reader( GeoLite2Helper_UploadPATH . '/GeoLite2-City.mmdb' );
 		}
 		// echbay hosting
-		else if ( file_exists( '/root/lib/geolite2-db/GeoLite2-City.mmdb' ) ) {
-			$reader = new Reader( '/root/lib/geolite2-db/GeoLite2-City.mmdb' );
+		else if ( file_exists( GeoLite2Helper_EBPATH . '/GeoLite2-City.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_EBPATH . '/GeoLite2-City.mmdb' );
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-City.mmdb' ) ) {
@@ -111,8 +115,8 @@ class WGR_GeoLite2Helper {
 			$reader = new Reader( GeoLite2Helper_UploadPATH . '/GeoLite2-Country.mmdb' );
 		}
 		// echbay hosting
-		else if ( file_exists( '/root/lib/geolite2-db/GeoLite2-Country.mmdb' ) ) {
-			$reader = new Reader( '/root/lib/geolite2-db/GeoLite2-Country.mmdb' );
+		else if ( file_exists( GeoLite2Helper_EBPATH . '/GeoLite2-Country.mmdb' ) ) {
+			$reader = new Reader( GeoLite2Helper_EBPATH . '/GeoLite2-Country.mmdb' );
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . '/GeoLite2-Country.mmdb' ) ) {
@@ -128,14 +132,14 @@ class WGR_GeoLite2Helper {
 		}
 		
 		//
-//		$result = $reader->get($this->ipAddress);
-		$result = $reader->get($ip);
-//		print_r( $result );
+//		$r = $reader->get($this->ipAddress);
+		$r = $reader->get($ip);
+//		print_r( $r );
 		
 		//
 		$reader->close();
 		
-		return $result;
+		return $r;
 	}
 	
 	
