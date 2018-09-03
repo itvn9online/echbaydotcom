@@ -27,7 +27,8 @@ define('GeoLite2Helper_PATH', EB_THEME_PLUGIN_INDEX . 'outsource/geolite2');
 //if ( is_dir( GeoLite2Helper_PATH ) ) {
 	
 	// path dành riêng cho EchBay Hosting
-	define('GeoLite2Helper_EBPATH', '/root/lib/geolite2-db');
+	define('GeoLite2Helper_EBPATH', '/home/echbay_libary/geolite2-db');
+//	echo GeoLite2Helper_EBPATH . '<br>';
 	
 	// file db sẽ để trong thư mục upload -> theo woo
 	$arr = wp_upload_dir();
