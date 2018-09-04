@@ -16,17 +16,27 @@ body.style-for-mobile {
 .style-for-mobile .col-sidebar-content,
 */
 .style-for-mobile .fullsize-if-mobile {
-	margin: 0 0 0 auto;
+	max-width: 999px;
 	/*
 	width: 100% !important;
 	width: auto !important;
 	*/
-	max-width: 999px;
 	float: none;
 }
 .style-for-mobile .w90,
-.style-for-mobile .w99 { width: 100% !important; }
-.style-for-mobile .fullsize-if-mobile { width: 98% !important; }
+.style-for-mobile .w99 {
+	width: 100% !important;
+	margin: 0 0 0 auto;
+}
+.style-for-mobile .fullsize-if-mobile {
+	width: 96% !important;
+	margin: 0 auto;
+}
+.style-for-mobile .fullsize-if-mobile .fullsize-if-mobile {
+	width: 100% !important;
+	margin: 0;
+	max-width: none;
+}
 /*
 .style-for-mobile .fullsize-if-mobile { }
 */
