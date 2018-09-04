@@ -6,10 +6,10 @@ Author: Dao Quoc Dai
 Author URI: https://www.facebook.com/ech.bay
 Text Domain: echbayecom
 Tags: e-commerce
-Requires at least: 3.3
-Tested up to: 4.8
-Stable tag: 1.1.8
-Version: 1.1.8
+Requires at least: 4.0
+Tested up to: 4.9
+Stable tag: 1.1.9
+Version: 1.1.9
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 Version 1.0.*: https://github.com/itvn9online/echbaydotcom-2018-07-16
