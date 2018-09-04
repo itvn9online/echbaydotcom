@@ -57,7 +57,7 @@ if ( isset( $_GET['create_category'], $_GET['category_slug'] )
 // đọc và lấy thông tin bài viết
 else if ( isset($_GET['categories_url']) ) {
 	$url = str_replace( '&amp;', '&', urldecode( trim( $_GET['categories_url'] ) ) );
-	echo $url . '<br>';
+	echo '<!-- ' . $url . ' -->' . "\n";
 //	exit();
 	
 	//
@@ -107,7 +107,7 @@ else if ( isset($_GET['categories_url']) ) {
 	
 	$f = $dir_leech_cache . $f . '.txt';
 //	$f = $dir_for_ebcache . 'lech_data_' . md5( $url ) . '.txt';
-	echo $f . '<br>';
+	echo '<!-- ' . $f . ' -->' . "\n";
 	
 	// lấy trong cache
 	if ( file_exists($f) ) {
@@ -117,13 +117,18 @@ else if ( isset($_GET['categories_url']) ) {
 	else {
 		
 		//
-		$c = _eb_getUrlContent( $url, 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html', array(), 1 );
+		$c = _eb_getUrlContent( $url, 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html', array(), 0 );
 		if ( $c == '' ) {
 			$c = file_get_contents( $url, 1 );
 		}
 		
 		// nếu có dữ liệu mới lưu lại
 		if ( $c != '' ) {
+			// lỗi khi biên in nội dung từ tiếng Trung -> phải conver nó như thế này
+			if ( isset( $_GET['convert_encoding'] ) ) {
+				$c = mb_convert_encoding( $c, 'UTF-8', mb_detect_encoding( $c, 'UTF-8, GBK, ISO-8859-1', true ) );
+			}
+			
 			// Thay URL chuẩn của tên miền đang lấy tin, do thi thoảng bị lỗi domain (như của amazon)
 			if ( isset( $_GET['source_url'] ) ) {
 				$c = str_replace( web_link, urldecode( $_GET['source_url'] ), $c );
