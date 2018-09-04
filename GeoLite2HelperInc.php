@@ -26,6 +26,8 @@ use MaxMind\Db\Reader;
 class WGR_GeoLite2Helper {
 //	public $ipAddress;
 	
+	private $cachePath = '';
+	
 	private function db_not_found () {
 		return 'GeoLite2 DB not found! <a href="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz" rel="nofollow" target="_blank">Click here</a> Download and up to folder: <strong>' . GeoLite2Helper_UploadPATH . '</strong>';
 	}
@@ -82,9 +84,17 @@ class WGR_GeoLite2Helper {
 	
 	public function getPath() {
 		
+		// nếu có rồi -> dùng luôn
+		if ( $this->cachePath != '' ) {
+			return $this->cachePath;
+		}
+		
 		//
 		$f_City = '/GeoLite2-City.mmdb';
 		$f_Country = '/GeoLite2-Country.mmdb';
+		
+		// mặc định là NULL
+		$path = NULL;
 		
 		//
 //		echo GeoLite2Helper_EBPATH . $f_City . '<br>';
@@ -93,39 +103,41 @@ class WGR_GeoLite2Helper {
 		// nạp DB, ưu tiên nạp trong thư mục Upload trước
 		// nếu có cấp độ City -> lấy theo cấp độ City
 		if ( file_exists( GeoLite2Helper_UploadPATH . $f_City ) ) {
-			return GeoLite2Helper_UploadPATH . $f_City;
+			$path = GeoLite2Helper_UploadPATH . $f_City;
 		}
 		// echbay hosting
 		else if ( file_exists( GeoLite2Helper_EBPATH . $f_City ) ) {
-			return GeoLite2Helper_EBPATH . $f_City;
+			$path = GeoLite2Helper_EBPATH . $f_City;
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . $f_City ) ) {
-			return GeoLite2Helper_PATH . $f_City;
+			$path = GeoLite2Helper_PATH . $f_City;
 		}
 		// localhost
 		else if ( file_exists( GeoLite2Helper_DBPATH . $f_City ) ) {
-			return GeoLite2Helper_DBPATH . $f_City;
+			$path = GeoLite2Helper_DBPATH . $f_City;
 		}
 		// mặc định chỉ lấy Country
 		else if ( file_exists( GeoLite2Helper_UploadPATH . $f_Country ) ) {
-			return GeoLite2Helper_UploadPATH . $f_Country;
+			$path = GeoLite2Helper_UploadPATH . $f_Country;
 		}
 		// echbay hosting
 		else if ( file_exists( GeoLite2Helper_EBPATH . $f_Country ) ) {
-			return GeoLite2Helper_EBPATH . $f_Country;
+			$path = GeoLite2Helper_EBPATH . $f_Country;
 		}
 		// v1
 		else if ( file_exists( GeoLite2Helper_PATH . $f_Country ) ) {
-			return GeoLite2Helper_PATH . $f_Country;
+			$path = GeoLite2Helper_PATH . $f_Country;
 		}
 		// localhost
 		else if ( file_exists( GeoLite2Helper_DBPATH . $f_Country ) ) {
-			return GeoLite2Helper_DBPATH . $f_Country;
+			$path = GeoLite2Helper_DBPATH . $f_Country;
 		}
 		
-		// ngoài ra thì bỏ qua
-		return NULL;
+		//
+		$this->cachePath = $path;
+		
+		return $path;
 		
 	}
 	
