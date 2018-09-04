@@ -1882,7 +1882,7 @@ var _global_js_eb = {
 			return false;
 		}
 		
-		jQuery( cl ).show()
+		jQuery( cl ).show();
 		
 		jQuery('.auto-check-discount-code').off('change').change(function () {
 			var a = jQuery(this).val() || '',
@@ -1902,8 +1902,9 @@ var _global_js_eb = {
 			}
 			
 			//
-			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
-			});
+			ajaxl('check_discount_code&code=' + a, jd, 1 );
+//			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
+//			});
 			/*
 		}).off('keyup').keyup(function () {
 			return false;
