@@ -660,7 +660,10 @@ $trv_masanpham = '';
 $product_gallery = '';
 $product_list_color = '';
 $wgr_comment_list = '';
+
+//
 $post_buy_size_color = '';
+$post_buy_bottom = '';
 
 
 //
@@ -687,6 +690,15 @@ if ( $__post->post_type == 'post' ) {
 	
 	//
 	$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color' );
+	
+	/*
+	$post_buy_size_color = EBE_html_template( $post_buy_size_color, array(
+		'tmp.post-buy-button' => WGR_get_html_template_lang( 'post_buy' )
+	) );
+	*/
+	
+	//
+	$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom' ) . '</div>';
 	
 }
 // với blog -> sử dụng giao diện khác post
@@ -847,6 +859,7 @@ $arr_main_content = array(
 	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
 	
 	'tmp.post-buy-size-color' => $post_buy_size_color,
+	'tmp.post-buy-bottom' => $post_buy_bottom,
 	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
