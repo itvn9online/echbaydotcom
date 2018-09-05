@@ -31,6 +31,7 @@ body.style-for-mobile {
 .style-for-mobile .fullsize-if-mobile {
 	width: 96% !important;
 	margin: 0 auto;
+	float: none !important;
 }
 .style-for-mobile .fullsize-if-mobile .fullsize-if-mobile {
 	width: 100% !important;
@@ -200,6 +201,9 @@ body.style-for-mobile {
 	height: 60px;
 }
 .style-for-mobile .clone-show-quick-cart { padding: 0 8px; }
+/* for elemetor */
+.style-for-mobile .fullsize-if-mobile .elementor-column-wrap,
+.style-for-mobile .fullsize-if-mobile .elementor-widget-container { padding: 0 !important; }
 /* for mobile
 @media screen and (max-width:768px) {
 }

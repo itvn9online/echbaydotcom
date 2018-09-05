@@ -353,6 +353,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>bgtrans</strong>: nền trong suốt cho ảnh đại diện.<br>
 	- <strong>hideavt</strong>: ẩn ảnh đại diện.<br>
 	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
+	- <strong>oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
 	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.</p>';
 	
 	
