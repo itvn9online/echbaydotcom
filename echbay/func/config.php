@@ -117,8 +117,6 @@ $_POST['cf_h1_logo'] = WGR_default_config('cf_h1_logo');
 
 $_POST['cf_auto_nofollow'] = WGR_default_config('cf_auto_nofollow');
 
-$_POST['cf_set_mask_for_details'] = WGR_default_config('cf_set_mask_for_details');
-
 $_POST['cf_current_price_before'] = WGR_default_config('cf_current_price_before');
 
 $_POST['cf_hide_supper_admin_menu'] = WGR_default_config('cf_hide_supper_admin_menu');

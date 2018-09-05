@@ -524,7 +524,6 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_set_link_for_h1' );
 	show_note_for_checkbox_config( 'cf_h1_logo' );
 	show_note_for_checkbox_config( 'cf_auto_nofollow' );
-	show_note_for_checkbox_config( 'cf_set_mask_for_details' );
 	show_note_for_checkbox_config( 'cf_current_price_before' );
 	show_note_for_checkbox_config( 'cf_hide_supper_admin_menu' );
 	show_note_for_checkbox_config( 'cf_alow_edit_plugin_theme' );
@@ -851,6 +850,7 @@ else {
 	show_note_for_checkbox_config( 'cf_post_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blog_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blogs_content_bottom' );
+	show_note_for_checkbox_config( 'cf_set_mask_for_details' );
 }
 
 

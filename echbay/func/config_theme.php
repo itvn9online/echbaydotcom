@@ -56,6 +56,8 @@ $_POST['cf_post_big_banner'] = WGR_default_config('cf_post_big_banner');
 
 $_POST['cf_post_rm_img_width'] = WGR_default_config('cf_post_rm_img_width');
 
+$_POST['cf_set_mask_for_details'] = WGR_default_config('cf_set_mask_for_details');
+
 $_POST['cf_blog_rm_img_width'] = WGR_default_config('cf_blog_rm_img_width');
 
 $_POST['cf_blogs_content_bottom'] = WGR_default_config('cf_blogs_content_bottom');
