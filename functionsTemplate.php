@@ -103,14 +103,7 @@ function EBE_get_html_address () {
 	}
 	
 	//
-	$custom_lang_html = EBE_get_lang('footer_address');
-	// mặc định là lấy theo file HTML -> act
-	if ( trim( $custom_lang_html ) == 'footer_address' ) {
-		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );
-	}
-	
-	//
-	return EBE_html_template( $custom_lang_html, array(
+	return EBE_html_template( WGR_get_html_template_lang( 'footer_address' ), array(
 		'tmp.cf_ten_cty' => $__cf_row['cf_ten_cty'],
 		'tmp.dc' => $dc,
 		'tmp.fd_hotline' => EBE_get_lang('fd_hotline'),

@@ -1859,7 +1859,9 @@ input[type="number"].s { width: 90px; }
 .product-color li.selected:before,
 .product-color li.selected div { display: block; }
 .product-color li[data-quan="0"] { border-color: #f0f0f0; }
+.remove-if-clone-quickcart .show-if-size-exist,
 .remove-if-clone-quickcart.show-if-size-exist,
+.remove-if-clone-quickcart .show-if-color-exist,
 .remove-if-clone-quickcart.show-if-color-exist { padding-bottom: 15px; }
 /* */
 .thread-details-options {

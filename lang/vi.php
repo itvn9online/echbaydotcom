@@ -42,6 +42,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
+$___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
 
 //
 $eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
@@ -81,6 +82,12 @@ $___eb_lang[eb_key_for_site_lang . 'post_sku'] = 'Mã sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'post_stock'] = 'Tình trạng';
 $___eb_lang[eb_key_for_site_lang . 'post_instock'] = 'Sẵn hàng';
 $___eb_lang[eb_key_for_site_lang . 'post_outstock'] = 'Hết hàng';
+
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'post_size_color'] = 'Nút Mua ngay và phần Size, Color trong trang chi tiết';
+$___eb_lang[eb_key_for_site_lang . 'post_size_color'] = 'post_size_color';
+$eb_type_lang[eb_key_for_site_lang . 'post_size_color'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'post_size_color'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/post_size_color.html';
 
 //
 $___eb_lang[eb_key_for_site_lang . 'thread_list_mua'] = '<i class="fa fa-shopping-cart"></i> Mua ngay';

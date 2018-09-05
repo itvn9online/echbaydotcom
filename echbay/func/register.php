@@ -131,14 +131,7 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	
 	
 	// Gửi email thông báo
-	$custom_lang_html = EBE_get_lang('quick_register_mail');
-	// mặc định là lấy theo file HTML -> act
-	if ( trim( $custom_lang_html ) == 'quick_register_mail' ) {
-		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/qregister.html' );
-	}
-	
-	//
-	$message = EBE_html_template( $custom_lang_html, array(
+	$message = EBE_html_template( WGR_get_html_template_lang( 'quick_register_mail', 'qregister', EB_THEME_PLUGIN_INDEX . 'html/mail/' ), array(
 			'tmp.web_link' => web_link,
 			'tmp.web_name' => $web_name,
 			'tmp.t_ten' => $t_ten == '' ? $user_email : $t_ten,

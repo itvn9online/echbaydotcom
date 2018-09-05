@@ -351,15 +351,8 @@ foreach ( $arr as $k => $v ) {
 
 
 // Gửi email thông báo
-$custom_lang_html = EBE_get_lang('booking_mail');
-// mặc định là lấy theo file HTML -> act
-if ( trim( $custom_lang_html ) == 'booking_mail' ) {
-	$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
-}
-
-//
 //$message = EBE_str_template ( 'html/mail/booking.html', array (
-$message = EBE_html_template( $custom_lang_html, array(
+$message = EBE_html_template( WGR_get_html_template_lang( 'booking_mail', 'booking', EB_THEME_PLUGIN_INDEX . 'html/mail/' ), array(
 		'tmp.web_link' => web_link,
 		'tmp.t_ten' => $t_ten == '' ? $t_email : $t_ten,
 		

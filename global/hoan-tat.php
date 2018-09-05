@@ -115,16 +115,9 @@ $main_content = EBE_str_template ( 'hoan-tat.html', array (
 
 
 //
-$custom_lang_html = EBE_get_lang('booking_done');
-// mặc định là lấy theo file HTML -> act
-if ( trim( $custom_lang_html ) == 'booking_done' ) {
-	$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
-}
-
-//
 //$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 //$main_content = EBE_html_template( EBE_get_lang('booking_done'), array(
-$main_content = EBE_html_template( $custom_lang_html, array(
+$main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', 'hoan-tat' ), array(
 //	'tmp.js' => '',
 	'tmp.hd_id' => $hd_id,
 	'tmp.hd_mahoadon' => $hd_mahoadon,

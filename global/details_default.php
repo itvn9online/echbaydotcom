@@ -660,6 +660,7 @@ $trv_masanpham = '';
 $product_gallery = '';
 $product_list_color = '';
 $wgr_comment_list = '';
+$post_buy_size_color = '';
 
 
 //
@@ -682,6 +683,10 @@ if ( $__post->post_type == 'post' ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/details_post.php';
 //	include EB_THEME_PLUGIN_INDEX . 'global/details_comments.php';
 	$wgr_comment_list = '<div data-id="' . $pid . '" id="comments" class="comments-area"></div>';
+	
+	
+	//
+	$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color' );
 	
 }
 // với blog -> sử dụng giao diện khác post
@@ -841,13 +846,15 @@ $arr_main_content = array(
 	'tmp.lang_btn_giamgia' => EBE_get_lang('post_giamgia'),
 	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
 	
+	'tmp.post-buy-size-color' => $post_buy_size_color,
 	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
+	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
+	'tmp.lang_details_tu_van' => EBE_get_lang('details_tu_van'),
 	
 	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
 	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
 	'tmp.lang_btn_other' => EBE_get_lang('post_other'),
-	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 	

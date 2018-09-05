@@ -616,6 +616,38 @@ function EBE_get_custom_template ( $n, $plugin_dir ) {
 	return $h;
 }
 
+// chức năng lấy template mặc định trong child-theme (nếu có)
+function WGR_get_html_template_lang ( $f, $file_name = '', $default_dir = '' ) {
+	$c = EBE_get_lang( $f );
+	
+	//
+	if ( trim( $c ) == $f ) {
+		if ( $file_name == '' ) {
+			$file_name = $f;
+		}
+		
+		//
+		if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'html/' . $file_name . '.html' ) ) {
+			$c = file_get_contents( EB_CHILD_THEME_URL . 'html/' . $file_name . '.html' );
+		}
+		/*
+		else if ( file_exists( EB_THEME_URL . 'html/' . $file_name . '.html' ) ) {
+			$c = file_get_contents( EB_THEME_URL . 'html/' . $file_name . '.html' );
+		}
+		*/
+		else {
+			if ( $default_dir == '' ) {
+				$default_dir = EB_THEME_PLUGIN_INDEX . 'html/';
+			}
+			
+			//
+			$c = file_get_contents( $default_dir . $file_name . '.html' );
+		}
+	}
+	
+	return $c;
+}
+
 
 
 
@@ -3060,15 +3092,8 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	//
-	$custom_lang_html = EBE_get_lang('mail_main');
-	// mặc định là lấy theo file HTML -> act
-	if ( trim( $custom_lang_html ) == 'mail_main' ) {
-		$custom_lang_html = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/mail.html' );
-	}
-	
-	//
 //	$message = _eb_del_line( EBE_str_template ( 'html/mail/mail.html', array (
-	$message = _eb_del_line( EBE_html_template( $custom_lang_html, array(
+	$message = _eb_del_line( EBE_html_template( WGR_get_html_template_lang( 'mail_main', 'mail', EB_THEME_PLUGIN_INDEX . 'html/mail/' ), array(
 			'tmp.message' => $message,
 			
 			'tmp.web_name' => web_name,
