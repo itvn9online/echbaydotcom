@@ -4,7 +4,7 @@ Description: Breadcrumb cho website, sử dụng thiết kế tràn khung, tràn
 */
 ?>
 
-<div id="breadcrumb-top1">
+<div id="breadcrumbbg-top1">
 	<div class="thread-details-tohome default-bg">
 		<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
 			<ul class="cf">

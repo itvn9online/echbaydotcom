@@ -4,7 +4,7 @@ Description: Breadcrumb cho website, thiết kế bo gọn theo kích thước c
 */
 ?>
 
-<div id="breadcrumb2-top1">
+<div id="breadcrumb2bg-top1">
 	<div class="<?php echo $__cf_row['cf_top_class_style']; ?> default-bg">
 		<div class="thread-details-tohome">
 			<ul class="cf">
