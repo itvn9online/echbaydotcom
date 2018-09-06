@@ -207,6 +207,13 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			$code = substr( $code, 1 );
 		}
 		
+		// nếu đầu vào không chỉ rõ là ID hay class -> mặc định là class
+		$first_chart = substr( $id_class, 0, 1 );
+		if ( $first_chart == '.' || $first_chart == '#' ) { }
+		else {
+			$id_class = '.' . $id_class;
+		}
+		
 		//
 		echo '<script>
 jQuery(window).on("load", function () {

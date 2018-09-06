@@ -674,7 +674,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	//
 	var first_click = 0;
 	if ( conf['showRandom'] == true ) {
-		first_click = g_func.rand( 0, jQuery(jd + ' li[data-i="0"]').length - 1 );
+		first_click = g_func.rand( 0, jQuery(jd + ' li').length - 1 );
+		console.log('Random node: ' + first_click);
 	}
 	
 	// video ở đầu -> load chậm lại chút -> do chưa kịp định khung
@@ -733,6 +734,21 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			});
 		}
 		else {
+			// nếu loạt bấm đầu tiên không phải cái số 0 -> ẩn tạm đi, để che mắt người dùng
+			if ( first_click > 0 ) {
+				jQuery(jd).css({
+					opacity: .01
+				});
+				
+				//
+				setTimeout(function () {
+					jQuery(jd).animate({
+						opacity: 1
+					});
+				}, conf['speed'] * 1000 + 500 );
+			}
+			
+			//
 			jQuery(jd + ' li[data-i="' + first_click + '"]').click();
 		}
 	}
