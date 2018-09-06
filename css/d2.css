@@ -2332,3 +2332,12 @@ iframe[name="google_conversion_frame"] {
 	line-height: 19px;
 	border: 1px #c0e06f solid;
 }
+/* */
+.default-bg .thread-details-tohome {
+	background: none;
+	padding: 0 15px;
+}
+.default-bg .thread-details-tohome,
+.default-bg .thread-details-tohome a {
+	color: unset;
+}
