@@ -1,4 +1,4 @@
-{
+var arr_vn_distics = {
 	"1": {
 		"name": "Thành phố Cần Thơ",
 		"districts": {
@@ -1012,4 +1012,4 @@
 			"767": "Thị xã Nghĩa Lộ"
 		}
 	}
-}
+};
