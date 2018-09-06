@@ -62,14 +62,14 @@
 					<p class="description">Tên của màu sẽ được hiển thị khi người dùng chọn mua hàng. Ví dụ: Màu đỏ, xanh, đen...</p></td>
 			</tr>
 			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_color"><strong>Mã màu</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_color" name="eb_input_edit_product_color_color" placeholder="Mã màu" class="m" maxlength="6">
+					<p class="description">Gồm 3 hoặc 6 ký tự, là một loại mã CSS dùng để tạo màu thay thế cho hình ảnh, khi được nhập, mã này sẽ hiển thị thay vì hiển thị ảnh (web sẽ chạy nhẹ hơn).</p></td>
+			</tr>
+			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_quan"><strong>Số lượng</strong></label></td>
 				<td class="i"><input type="number" id="eb_input_edit_product_color_quan" name="eb_input_edit_product_color_quan" placeholder="Số lượng" class="m">
 					<p class="description">Mặc định sẽ lấy theo <strong>Số lượng</strong> của sản phẩm chính hoặc hiển thị hết hàng nếu để là <strong>0</strong>, sẽ <strong>Ẩn</strong> khi để số lượng là <strong>-1</strong>.</p></td>
-			</tr>
-			<tr>
-				<td class="t"><label for="eb_input_edit_product_color_sku"><strong>Mã màu (nếu có)</strong></label></td>
-				<td class="i"><input type="text" id="eb_input_edit_product_color_sku" name="eb_input_edit_product_color_sku" placeholder="Mã màu (nếu có)" class="m">
-					<p class="description">Ít khi sử dụng, thường sẽ sử dụng <strong>Tên màu</strong> ở trên.</p></td>
 			</tr>
 			<tr>
 				<td class="t"><label for="eb_input_edit_product_color_price"><strong>Giá bán (nếu có)</strong></label></td>
@@ -85,6 +85,11 @@
 					</ul>
 					<p class="description">Mỗi màu bạn có thể thiết lập <strong>size</strong> riêng và <strong>số lượng</strong> riêng cho từng size nếu muốn, nếu không có size riêng nào được thiết lập, size từ sản phẩm chính sẽ được sử dụng.<br>
 						* Phần giá riêng của của từng size theo mầu sẽ là giá được ưu tiên cao nhất để hiển thị.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="eb_input_edit_product_color_sku"><strong>Mã sản phẩm (nếu có)</strong></label></td>
+				<td class="i"><input type="text" id="eb_input_edit_product_color_sku" name="eb_input_edit_product_color_sku" placeholder="Mã sản phẩm (nếu có)" class="m">
+					<p class="description">Ít khi sử dụng, thường sẽ sử dụng <strong>Tên màu</strong> ở trên.</p></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>

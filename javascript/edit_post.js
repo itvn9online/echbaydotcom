@@ -491,6 +491,7 @@ function check_eb_input_edit_product_color () {
 	jd = f.eb_input_edit_product_color_id.value;
 	ten = f.eb_input_edit_product_color_name.value;
 	sku = f.eb_input_edit_product_color_sku.value;
+	color = f.eb_input_edit_product_color_color.value;
 	quan = f.eb_input_edit_product_color_quan.value;
 	price = f.eb_input_edit_product_color_price.value;
 	size_color = f.eb_input_edit_product_size_bycolor_id.value;
@@ -501,6 +502,7 @@ function check_eb_input_edit_product_color () {
 	$('#' + iff_id).contents().find( 'img#' + jd ).attr({
 		'alt' : ten,
 		'data-sku' : sku,
+		'data-color' : color,
 		'data-quan' : quan,
 		'data-price' : price.replace( /\,/g, '' ),
 		'data-size' : size_color
@@ -1179,6 +1181,7 @@ function WGR_run_for_admin_edit_post () {
 					// các thông số của màu sắc đang chỉnh sửa
 					var ten = $(this).attr('alt') || '',
 						sku = $(this).attr('data-sku') || '',
+						color = $(this).attr('data-color') || '',
 						quan = $(this).attr('data-quan') || '',
 						price = $(this).attr('data-price') || '',
 						size_color = $(this).attr('data-size') || '';
@@ -1187,6 +1190,7 @@ function WGR_run_for_admin_edit_post () {
 					f.eb_input_edit_product_color_id.value = jd;
 					f.eb_input_edit_product_color_name.value = ten;
 					f.eb_input_edit_product_color_sku.value = sku;
+					f.eb_input_edit_product_color_color.value = color;
 					f.eb_input_edit_product_color_quan.value = quan;
 //					f.eb_input_edit_product_color_price.value = price;
 					f.eb_input_edit_product_color_price.value = g_func.money_format( price );

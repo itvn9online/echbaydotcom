@@ -266,7 +266,10 @@ function WGR_after_load_details_lisder () {
 	});
 	
 	// click vào cái đầu tiên luôn
-	jQuery('.thread-details-mobileAvt li:first').click();
+	if ( cf_slider_details_play <= 0 ) {
+		jQuery('.thread-details-mobileAvt li:first').click();
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto click to first details slider');
+	}
 	
 	// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
 	// trên mobile thì để 1 chế độ xem thôi
@@ -438,7 +441,8 @@ function ___eb_details_slider_v2 () {
 			// tự động chạy slider theo thời gian mà người dùng chỉ định
 			autoplay : cf_slider_details_play > 0 ? true : false,
 			swipemobile : true,
-			speedNext : cf_slider_details_play,
+			// nếu số giây tự chuyển slider nhỏ quá -> chuyển sang tính theo giây
+			speedNext : cf_slider_details_play < 60 ? cf_slider_details_play * 1000: cf_slider_details_play,
 			
 			sliderArrow: true,
 //			sliderArrowWidthLeft : '40%',
@@ -673,6 +677,7 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 		// gấp rưỡi chiều cao để xử lý dễ hơn chút
 		else {
 			min_tab_height *= 1.5;
+			min_tab_height = Math.ceil( min_tab_height );
 		}
 	}
 	
@@ -942,6 +947,7 @@ function ___eb_details_product_color () {
 		jQuery('.oi_product_color li').removeClass('selected');
 //		jQuery(this).addClass('selected');
 		
+		// đổi ảnh đại diện khi click đổi màu
 		jQuery('.thread-details-mobileAvt li').css({
 			'background-image' : 'url(' + ( jQuery(this).attr('data-img') || '' ) + ')'
 		});
@@ -1422,7 +1428,8 @@ var big_banner_timeout1 = null;
 			autoplay : cf_slider_big_play > 0 ? true : false,
 //			swipemobile : true,
 			swipemobile: WGR_check_option_on ( cf_swipe_big_banner ) ? true : false,
-			speedNext: cf_slider_big_play,
+			// nếu số giây tự chuyển slider nhỏ quá -> chuyển sang tính theo giây
+			speedNext : cf_slider_big_play < 60 ? cf_slider_big_play * 1000: cf_slider_big_play,
 			
 			sliderArrow: WGR_check_option_on ( cf_arrow_big_banner ) ? true : false,
 			
