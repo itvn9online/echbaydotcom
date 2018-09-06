@@ -377,6 +377,7 @@ $eb_note_first_lang[eb_key_for_site_lang . 'dc_is_null'] = 'Bản dịch cho kh�
 $___eb_lang[eb_key_for_site_lang . 'dc_is_null'] = 'Không xác định được Mã giảm giá!';
 $___eb_lang[eb_key_for_site_lang . 'dc_too_short'] = 'Mã giảm giá quá ngắn, tối thiểu phải có 3 ký tự!';
 $___eb_lang[eb_key_for_site_lang . 'dc_not_found'] = 'Không tìm thấy Mã giảm giá hợp lệ!';
+$___eb_lang[eb_key_for_site_lang . 'dc_expires'] = 'Mã giảm giá đã hết hạn hoặc không còn sử dụng!';
 
 
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng

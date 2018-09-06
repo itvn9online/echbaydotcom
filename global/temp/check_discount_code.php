@@ -37,6 +37,7 @@ if ( empty( $arr_discount_code ) ) {
 
 //
 $ngay_hom_nay = date( 'Ymd', date_time );
+$khong_tim_thay_ma = true;
 
 //
 foreach ( $arr_discount_code as $v ) {
@@ -47,9 +48,20 @@ foreach ( $arr_discount_code as $v ) {
 	// độ dài ngày hết hạn chuẩn
 	&& strlen( $check_discount_ex ) == 10
 	&& str_replace( '/', '', $check_discount_ex ) >= $ngay_hom_nay ) {
+		
 		echo $v->category_description;
+		
+		$khong_tim_thay_ma = false;
+		
 		break;
 	}
+}
+
+
+
+//
+if ( $khong_tim_thay_ma == true ) {
+	die( EBE_get_lang('dc_expires') );
 }
 
 
