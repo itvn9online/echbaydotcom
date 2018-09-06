@@ -359,6 +359,28 @@ var g_func = {
 	},
 	mb: function(a) {
 		return g_func.mb_v2();
+	},
+	
+	
+	/**
+	* Returns a random number between min (inclusive) and max (exclusive)
+	*/
+	getRandomArbitrary: function (min, max) {
+		return Math.random() * (max - min) + min;
+	},
+	
+	/**
+	* Returns a random integer between min (inclusive) and max (inclusive)
+	* Using Math.round() will give you a non-uniform distribution!
+	*/
+	getRandomInt: function (min, max) {
+		if ( min != max && min < max ) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		return 0;
+	},
+	rand: function (min, max) {
+		return g_func.getRandomInt( min, max );
 	}
 };
 

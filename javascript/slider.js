@@ -50,6 +50,8 @@ thumbnailHeight: 90
 thumbnailSlider: true
 // Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider
 visible: 1
+// hiển thị ngẫu nhiên 1 ảnh nào đó
+showRandom: false
 *
 *
 *
@@ -174,6 +176,8 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	// Kích thước nút bấm slider
 	set_default_conf( 'sliderArrowWidthLeft', 'auto' );
 	set_default_conf( 'sliderArrowWidthRight', 'auto' );
+	
+	set_default_conf( 'showRandom', false );
 	
 	// conf['sliderArrow']
 	if ( cf_tester_mode == 1 ) {
@@ -667,6 +671,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		});
 	}
 	
+	//
+	var first_click = 0;
+	if ( conf['showRandom'] == true ) {
+		first_click = g_func.rand( 0, jQuery(jd + ' li[data-i="0"]').length - 1 );
+	}
+	
 	// video ở đầu -> load chậm lại chút -> do chưa kịp định khung
 //	console.log(first_this_video);
 	if ( slider_reload == false ) {
@@ -723,7 +733,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			});
 		}
 		else {
-			jQuery(jd + ' li[data-i="0"]').click();
+			jQuery(jd + ' li[data-i="' + first_click + '"]').click();
 		}
 	}
 	else {

@@ -34,7 +34,8 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			'thumbnailWidth' => '',
 			'thumbnailHeight' => '',
 			'thumbnailSlider' => '',
-			'visible' => ''
+			'visible' => '',
+			'showRandom' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -104,6 +105,9 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			'type' => 'number'
 		) );
 		
+		
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('showRandom'), $showRandom, 'Kích hoạt ngẫu nhiên 1 ảnh bất kỳ trong slider' );
+		
 	}
 	
 	function update($new_instance, $old_instance) {
@@ -143,6 +147,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		$thumbnailHeight = isset( $instance ['thumbnailHeight'] ) ? $instance ['thumbnailHeight'] : '';
 		$thumbnailSlider = isset( $instance ['thumbnailSlider'] ) ? $instance ['thumbnailSlider'] : 'off';
 		$visible = isset( $instance ['visible'] ) ? $instance ['visible'] : '';
+		$showRandom = isset( $instance ['showRandom'] ) ? $instance ['showRandom'] : '';
 		
 		//
 		if ( $autoplay == 'on' ) $code .= ',autoplay: true';
@@ -162,6 +167,9 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		if ( $thumbnailSlider == 'on' ) $code .= ',thumbnailSlider: true';
 		else $code .= ',thumbnailSlider: false';
+		
+		if ( $showRandom == 'on' ) $code .= ',showRandom: true';
+		else $code .= ',showRandom: false';
 		
 		//
 		if ( $size != '' ) $code .= ',size:"' . $size . '"';
