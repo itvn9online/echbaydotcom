@@ -195,6 +195,15 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 			if ( a != '' && n != '' ) {
 //				n = n.replace('custom_css_in_js_', '');
 				n = n.split('_custom_css_in_js_')[1];
+				
+				if ( n.split('background_image').length > 1 ) {
+					// bỏ URL đi nếu có
+					if ( a.split( '(' ).length > 1 ) {
+						a = jQuery.trim( a.split( '(' )[1].split( ')' )[0] );
+					}
+					a = 'url(' + a + ') !important';
+				}
+				
 				arr[n] = a;
 				
 				//
@@ -220,7 +229,7 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 			}
 //			console.log(str);
 			
-			if ( str_mobile != '' ) {
+			if ( str_mobile != '' && cs['mobile'] != null ) {
 				str_mobile = cs['mobile'] + '{' + str_mobile + '}';
 				console.log(str_mobile);
 			}

@@ -160,8 +160,15 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			$cat_name = EBE_get_lang('home_new');
 		}
 		
-		//
-		$home_node_cat = _eb_load_post( $post_number, $args );
+		// nếu có set size riêng -> gán cái size này vào
+		if ( $custom_size != '' ) {
+			$html = str_replace( '{tmp.cf_product_size}', $custom_size, __eb_thread_template );
+//			echo $html;
+			$home_node_cat = _eb_load_post( $post_number, $args, $html );
+		}
+		else {
+			$home_node_cat = _eb_load_post( $post_number, $args );
+		}
 		
 		
 		//

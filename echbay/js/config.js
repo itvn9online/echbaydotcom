@@ -277,15 +277,32 @@ function create_deault_css () {
 		'pc' : '.web-logo'
 	} );
 	
+	str += create_css_for_custom_in_js( '.each-to-css-for-mobile_logo', 'cf_css_mobile_logo', {
+		'mobile' : null,
+		'pc' : '.style-for-mobile .web-logo, .style-for-mobile .web-mobile-logo'
+	} );
+	
+	str += create_css_for_custom_in_js( '.each-to-css-for-footer_logo', 'cf_css_footer_logo', {
+		'mobile' : null,
+		'pc' : '.web2-logo .web-logo'
+	} );
+	
 	// các mã màu được sinh ra sau khi bộ JS kia chạy
+	/*
 	try {
 		a = f.mobile_logo_custom_css_in_js_background_image.value;
 		if ( a != '' ) {
 			str += '.style-for-mobile .web-logo, .style-for-mobile .web-mobile-logo{background-image: url(' + a + ') !important;}';
 		}
+		
+		a = f.footer_logo_custom_css_in_js_background_image.value;
+		if ( a != '' ) {
+			str += '.web2-logo .web-logo{background-image: url(' + a + ') !important;}';
+		}
 	} catch ( e ) {
 		console.log( WGR_show_try_catch_err( e ) );
 	}
+	*/
 	
 	// fcb
 	str += create_css_for_custom_in_js( '.each-to-css-for-fcb', 'cf_css_fcb', {
@@ -612,6 +629,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_mobile_logo'] == 'undefined' ) {
 			data['cf_css_mobile_logo'] = {};
 		}
+		if ( typeof data['cf_css_footer_logo'] == 'undefined' ) {
+			data['cf_css_footer_logo'] = {};
+		}
 		if ( typeof data['cf_css_logo'] == 'undefined' ) {
 			data['cf_css_logo'] = {};
 		}
@@ -682,6 +702,30 @@ if ( current_module_config != 'config_theme' ) {
 //				'input_css' : 'each-to-css-for-logo',
 				'after_html' : 'custom_css_for_logo',
 				'input_name' : 'mobile_logo'
+			}, {
+				'maxlength' : {
+					'background_image' : 255
+				}
+			}
+		);
+		
+		
+		// Footer Logo
+		load_config_for_custom_logo(
+			{
+				'background_image' : ''
+			},
+			{
+				'background_image' : 'Logo (footer)'
+			}, {
+				'background_image' : 'Sử dụng khi bạn muốn có từ 2 Logo trở lên, chỗ nào muốn sử dụng logo thứ 2 này thì nhập class CSS <strong>web2-logo</strong> bao ngoài để phủ định class web-logo mặc định.'
+			},
+			{},
+			data['cf_css_footer_logo'],
+			{
+//				'input_css' : 'each-to-css-for-logo',
+				'after_html' : 'custom_css_for_logo',
+				'input_name' : 'footer_logo'
 			}, {
 				'maxlength' : {
 					'background_image' : 255
