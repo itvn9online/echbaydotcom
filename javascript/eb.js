@@ -1483,20 +1483,25 @@ var _global_js_eb = {
 				arr.hd_email = f.t_email.value;
 				arr.hd_diachi = f.t_diachi.value;
 				arr.hd_ghichu = f.t_ghichu.value;
-				arr.hd_discount_code = f.t_discount_code.value;
+				if ( typeof t_discount_code != 'undefined' ) arr.hd_discount_code = f.t_discount_code.value;
 				arr.hd_thanhtoan = f.t_thanhtoan.value;
 			}
 			catch ( e ) {
-				arr.hd_ten = jQuery('#t_ten').val() || '';
-				arr.hd_dienthoai = jQuery('#t_dienthoai').val() || '';
-				arr.hd_email = jQuery('#t_email').val() || '';
-				arr.hd_diachi = jQuery('#t_diachi').val() || '';
-				arr.hd_ghichu = jQuery('#t_ghichu').val() || '';
-				arr.hd_discount_code = f.t_discount_code.value;
-				arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+				console.log( WGR_show_try_catch_err( e ) );
 				
 				//
-				console.log( WGR_show_try_catch_err( e ) );
+				try {
+					arr.hd_ten = jQuery('#t_ten').val() || '';
+					arr.hd_dienthoai = jQuery('#t_dienthoai').val() || '';
+					arr.hd_email = jQuery('#t_email').val() || '';
+					arr.hd_diachi = jQuery('#t_diachi').val() || '';
+					arr.hd_ghichu = jQuery('#t_ghichu').val() || '';
+					if ( typeof t_discount_code != 'undefined' ) arr.hd_discount_code = f.t_discount_code.value;
+					arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
+				}
+				catch ( e ) {
+					console.log( WGR_show_try_catch_err( e ) );
+				}
 			}
 		}
 		
@@ -2458,6 +2463,8 @@ var _global_js_eb = {
 	},
 	
 	cart_add_item : function ( new_cart_id, action_obj ) {
+		console.log( 'Add ' + new_cart_id + ' to cart with obj: ' );
+		console.log( action_obj );
 		
 		//
 		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
