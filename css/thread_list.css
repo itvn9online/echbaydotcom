@@ -51,7 +51,8 @@
 .style-for-mobile .thread-small-right,
 */
 /* nếu chỉ có 1 cột -> cùng chỉnh về 100% */
-.oneline-in-mobile .echbay-blog li,
+.style-for-mobile .oneline-in-mobile .echbay-blog li,
+.style-for-mobile .oneline-in-mobile .thread-list li,
 .style-for-mobile .echbay-blog-number1 .echbay-blog li,
 .style-for-mobile .echbay-blog-number1 .thread-list li,
 .style-for-mobile .ebwidget-run-slider .echbay-blog100 li,

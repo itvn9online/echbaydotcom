@@ -345,6 +345,11 @@ if ( $_POST['cf_logo'] != '' ) {
 		$file_name = $file_name[ count( $file_name ) - 1 ];
 		$file_name = EB_THEME_CACHE . $file_name;
 		
+		// thêm http vào trước nếu chưa có
+		if ( substr( $_POST['cf_logo'], 0, 2 ) == '//' ) {
+			$_POST['cf_logo'] = eb_web_protocol . ':' . $_POST['cf_logo'];
+		}
+		
 		//
 		/*
 		$url_copy_logo = $_POST['cf_logo'];
@@ -477,11 +482,11 @@ foreach( $_POST as $k => $v ) {
 //			$arr_for_update_eb_config[ $k ] = $v;
 		}
 		else {
-			echo 'Update __cf_row_default only<br>' . "\n";
+			echo 'Update __cf_row_default only (<em>' . $k . '</em>)<br>' . "\n";
 		}
 	}
 	else {
-		echo 'Update cf_ only (' . $k . ')<br>' . "\n";
+		echo 'Update <strong>cf_</strong> only (<em>' . $k . '</em>)<br>' . "\n";
 	}
 }
 
