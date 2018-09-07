@@ -1889,7 +1889,7 @@ function _eb_tieu_de_chuan_seo( $str ) {
 	global $__cf_row;
 	
 	// nếu sử dụng module SEO của EchBay
-	if ( cf_on_off_echbay_seo == 1 || is_404() ) {
+	if ( cf_on_off_echbay_seo == 1 ) {
 		$str = trim( $str );
 		
 		// hoặc tự bổ sung nếu có dữ liệu đầu vào
@@ -1901,7 +1901,11 @@ function _eb_tieu_de_chuan_seo( $str ) {
 				$str = _eb_short_string( $str, 70 );
 			}
 		}
-//		echo '<!-- title by EchBay -->';
+		echo '<!-- title by EchBay -->' . "\n";
+	}
+	//
+	else if ( is_404() ) {
+		$str = '404 not found!';
 	}
 	// mặc định thì lấy theo mẫu của wordpress
 	else {
@@ -1914,7 +1918,7 @@ function _eb_tieu_de_chuan_seo( $str ) {
 			$str = wp_title( '|', false, 'right' );
 		}
 //		$str = wp_title( '', false );
-//		echo '<!-- title by other plugin -->';
+		echo '<!-- title by other plugin -->' . "\n";
 	}
 	
 	//
