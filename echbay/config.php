@@ -109,8 +109,8 @@ _eb_get_config( true );
 //print_r( $__cf_row );
 
 // Các chức năng dùng chung với config của wp
-$__cf_row['cf_title'] = _eb_get_option('blogname');
-$__cf_row['cf_description'] = _eb_get_option('blogdescription');
+//$__cf_row['cf_title'] = _eb_get_option('blogname');
+//$__cf_row['cf_description'] = _eb_get_option('blogdescription');
 
 //
 if ( (int) $__cf_row['cf_reset_cache'] < 0 ) {
