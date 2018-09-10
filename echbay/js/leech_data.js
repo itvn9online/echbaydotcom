@@ -473,7 +473,7 @@ function check_category_by_auto_slug ( a, alert_now ) {
 			//
 			if ( tim_thay_category == 0 ) {
 				if ( typeof alert_now != 'undefined' && alert_now == 1 ) {
-					alert('Không tìm thấy category by slug: ' + auto_category);
+					a_lert('Không tìm thấy category by slug: ' + auto_category);
 				}
 				
 				console.log('Slug: ' + auto_category);
@@ -1206,7 +1206,7 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 	else {
 		jQuery('.click-submit-url-categories').click();
 //		jQuery('#categories_url').change();
-//		alert('Không tìm thấy dữ liệu nguồn');
+//		a_lert('Không tìm thấy dữ liệu nguồn');
 	}
 }
 
@@ -1225,7 +1225,7 @@ function check_lech_data_submit ( _alert ) {
 		if ( typeof _alert != 'undefined' && _alert == 'no' ) {
 		}
 		else {
-			alert('Không thấy phân nhóm sản phẩm');
+			a_lert('Không thấy phân nhóm sản phẩm');
 			
 			window.scroll( 0, jQuery('#oiAnt').offset().top - 90 );
 		}
@@ -1309,7 +1309,7 @@ jQuery('#categories_url').off('change').change(function () {
 		}
 		
 		// gán d.sách tìm được
-		jQuery('#details_list_url').html( str );
+		jQuery('#details_list_url').append( str );
 		jQuery('#categories_url').val( '' ).focus();
 		
 		return false;
@@ -1629,7 +1629,7 @@ jQuery('.click-submit-url-details').off('click').click(function () {
 	if ( a != true ) {
 		/*
 		if ( a == 2 ) {
-			alert('Tự động chạy sau 5 giây');
+			a_lert('Tự động chạy sau 5 giây');
 			return false;
 		}
 		else */ if ( confirm( 'Chưa chọn Phân nhóm sản phẩm! Bạn có muốn chọn lại không?' ) == true ) {
@@ -1968,7 +1968,7 @@ jQuery('.click-submit-url-categories').off('click').click(function () {
 	
 	//
 	if ( html_tags == '' ) {
-		alert('html_tags không được để trống');
+		a_lert('html_tags không được để trống');
 		jQuery('#categories_tags').focus();
 		return false;
 	}
