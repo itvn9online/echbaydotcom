@@ -38,8 +38,8 @@ arr_bg_background_size = {
 //	'65% auto' : 'Rộng (65%) x Cao (tự động)',
 	'60% auto' : 'Rộng (60%) x Cao (tự động)',
 //	'55% auto' : 'Rộng (55%) x Cao (tự động)',
-	'50% auto' : 'Rộng (50%) x Cao (tự động)',
-	'50% auto' : 'Rộng x Cao (aaaaaa%)'
+	'50% auto' : 'Rộng (50%) x Cao (tự động)'
+//	'50% auto' : 'Rộng x Cao (aaaaaa%)'
 },
 arr_cf_css_body = {},
 khong_cho_update_config_lien_tuc = false;
