@@ -249,6 +249,8 @@ label,
 	padding-bottom: 8px;
 	padding-left: 0;
 }
+.blogs_node_anhtren_chuduoi.echbay-blog100 .echbay-blog-left,
+.blogs_node_anhtren_chuduoi.echbay-blog100 .echbay-blog-right { width: auto; }
 /* end flex blog */
 .details-hideif-hethang .details-ankhi-hethang { display: none; }
 /*
@@ -2338,6 +2340,4 @@ iframe[name="google_conversion_frame"] {
 	padding: 0 15px;
 }
 .default-bg .thread-details-tohome,
-.default-bg .thread-details-tohome a {
-	color: unset;
-}
+.default-bg .thread-details-tohome a { color: unset; }
