@@ -674,6 +674,7 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 	// danh sách các tag được hỗ trợ
 	$arr = array(
+		'span' => 'span',
 		'b' => 'strong',
 //		'strong' => 'strong',
 		'i' => 'em',
@@ -686,12 +687,21 @@ function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 		foreach ( $arr as $k => $v ) {
 			$str = str_replace( '[' . $k . ']', '', $str );
 			$str = str_replace( '[/' . $k . ']', '', $str );
+			
+			//
+			$pattern = '|[[\/\!]*?[^\[\]]*?]|si';
+			$str = preg_replace($pattern, '', $str);
 		}
 	}
 	else {
 		foreach ( $arr as $k => $v ) {
 			$str = str_replace( '[' . $k . ']', '<' . $v . '>', $str );
 			$str = str_replace( '[/' . $k . ']', '</' . $v . '>', $str );
+			
+			// với các thẻ có lẫn cả attr -> replace từng phần
+			$str = str_replace( '[' . $k . ' ', '<' . $v . ' ', $str );
+			$str = str_replace( '"]', '">', $str );
+			$str = str_replace( "']", "'>", $str );
 		}
 	}
 	

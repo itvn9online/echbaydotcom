@@ -60,6 +60,21 @@
 			}
 		}
 	}
+	
+	
+	//
+	/*
+	if ( typeof _global_js_eb != 'undefined' && typeof jQuery != 'undefined' ) {
+//		console.log( Math.random() );
+		console.log( jQuery(document).height() * 2 );
+		
+		_global_js_eb.ebBgLazzyLoad();
+		
+		setTimeout(function () {
+			_global_js_eb.ebBgLazzyLoad( jQuery(document).height() * 2 );
+		}, 600);
+	}
+	*/
 })();
 
 
