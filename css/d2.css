@@ -219,6 +219,7 @@ label,
 .blogs_node_chi_anh .echbay-blog-right { display: none; }
 .blogs_node_chi_anh li { margin: 0; }
 .blogs_node_chi_anh .echbay-blog-padding { padding: 0; }
+.noborder .echbay-blog-avt,
 .blogs_node_chi_anh .echbay-blog-avt { border: 0 none; }
 /* */
 .blogs_node_chu_anh .echbay-blog-padding,

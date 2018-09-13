@@ -439,6 +439,24 @@ if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'i.php' ) )
 
 // cache chỉ được kích hoạt khi tham số này = 1
 if ( $enable_echbay_super_cache == 1 ) {
+	
+	
+	// nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
+	if ( $__cf_row['cf_dns_prefetch'] != '' ) {
+		$arr_dns_prefetch = explode( "\n", trim( $__cf_row['cf_dns_prefetch'] ) );
+		
+		// trùng thì hủy bỏ truy cập này luôn
+		foreach ( $arr_dns_prefetch as $v ) {
+			if ( trim( $v ) == $_SERVER['HTTP_HOST'] ) {
+				EBE_set_header(403);
+				
+				echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
+				
+				exit();
+			}
+		}
+	}
+	
 
 	// check device (có cache) -> mặc định là 1 class css để lát replace nếu là mobile
 	$css_m_css[] = 'eb-set-css-pc-mobile';
