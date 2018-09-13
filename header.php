@@ -73,6 +73,9 @@ if ( $__cf_row['cf_search_nav_mobile'] != 'none' ) {
 		)
 	);
 }
+else {
+	$__cf_row['cf_default_css'] .= 'body.style-for-mobile{margin-top:0}';
+}
 
 
 
