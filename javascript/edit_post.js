@@ -580,17 +580,40 @@ function eb_func_show_product_size () {
 			eb_global_product_size = [];
 		}
 //		console.log( JSON.stringify( eb_global_product_size ) );
+		console.log(eb_global_product_size);
 		
 		// nếu mảng số 0 tồn tại tham số name -> kiểu dữ liệu cũ -> convert sang dữ liệu mới
 		if ( eb_global_product_size.length > 0
 		&& typeof eb_global_product_size[0].name == 'undefined' ) {
-			if ( typeof eb_global_product_size[0][0].name != 'undefined' ) {
-				eb_global_product_size = eb_global_product_size[0];
+			
+			//
+			for ( var i = 0; i < eb_global_product_size.length; i++ ) {
+				// chuyển ten -> name
+				if ( typeof eb_global_product_size[i].ten != 'undefined'
+				&& typeof eb_global_product_size[i].name == 'undefined' ) {
+					eb_global_product_size[i].name = eb_global_product_size[i].ten;
+				}
+				
+				// chuyển số lượng sang val
+				if ( typeof eb_global_product_size[i].soluong != 'undefined'
+				&& typeof eb_global_product_size[i].val == 'undefined' ) {
+					eb_global_product_size[i].val = eb_global_product_size[i].soluong;
+				}
 			}
-			else {
-				console.log('ERROR fixed arr product size!');
-				eb_global_product_size = [];
+			console.log(eb_global_product_size);
+			
+			// kiểm tra lại lần nữa
+			if ( eb_global_product_size.length > 0
+			&& typeof eb_global_product_size[0].name == 'undefined' ) {
+				if ( typeof eb_global_product_size[0][0].name != 'undefined' ) {
+					eb_global_product_size = eb_global_product_size[0];
+				}
+				else {
+					console.log('ERROR fixed arr product size!');
+					eb_global_product_size = [];
+				}
 			}
+			
 		}
 		/*
 		if ( typeof eb_global_product_size[0] != 'undefined' ) {
