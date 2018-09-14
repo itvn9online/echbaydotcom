@@ -356,6 +356,11 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	// với footer -> thêm phần copyright vào cuối trang
 	else if ( $position == 'footer' ) {
 //		$str .= '$eb_all_themes_support[$eb_all_themes_name]["cf_' . $position . $end_i . '_include_file"] = "echbaytwo-footer3.php";' . "\n";
+		
+		//
+		$str .= '// Logo đối tác' . "\n";
+		$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "doitac-footer1.php";' . "\n";
+		
 		$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "echbaytwo-footer3.php";' . "\n";
 		
 	}
