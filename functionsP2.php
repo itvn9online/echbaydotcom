@@ -3535,7 +3535,7 @@ function EBE_insert_comment ( $data =  array() ) {
 		'comment_author_IP' => $client_ip,
 		'comment_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '',
 		'comment_date' => date( 'Y-m-d H:i:s', date_time ),
-		'comment_approved' => 1,
+		'comment_approved' => 1
 	);
 	
 	// dữ liệu phủ định

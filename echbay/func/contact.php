@@ -63,7 +63,7 @@ EBE_insert_comment( array(
 	'comment_author' => $user_login,
 	'comment_author_email' => $t_email,
 	'comment_content' => $message,
-	'user_id' => $tv_id,
+	'user_id' => $tv_id
 ) );
 
 

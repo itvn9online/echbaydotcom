@@ -1,8 +1,10 @@
-<!--
+<?php
+
+/*
 Description: Tạo danh sách logo đối tác theo dạng slider -> danh sách các quảng cáo có trạng thái là: Banner/ Logo đối tác ( chân trang ).
 Tags: logo doi tac, quang cao chan trang
--->
-<?php
+*/
+
 $check_load_logo_doitac = _eb_number_only( EBE_get_lang('doitac_num') );
 
 if ( $check_load_logo_doitac > 0 ) {
