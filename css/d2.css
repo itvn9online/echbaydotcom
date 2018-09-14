@@ -69,6 +69,8 @@ label,
 }
 /* widget custom style */
 .bgtrans .echbay-blog-avt { background-color: transparent; }
+.bgcover .echbay-blog-avt { background-size: cover; }
+.bgcontain .echbay-blog-avt { background-size: contain; }
 .hideavt .echbay-blog-avt { opacity: .001; }
 /*
 .nomargin .echbay-blog { }
