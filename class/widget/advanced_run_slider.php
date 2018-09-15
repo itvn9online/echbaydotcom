@@ -129,6 +129,11 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		//
 		$id_class = isset( $instance ['id_class'] ) ? $instance ['id_class'] : '';
+		if ( $id_class == '' ) {
+			echo '<!-- add ID/ Class for widget ' . $this->name . ' -->';
+			return false;
+		}
+		
 		$autoplay = isset( $instance ['autoplay'] ) ? $instance ['autoplay'] : 'off';
 		$swipemobile = isset( $instance ['swipemobile'] ) ? $instance ['swipemobile'] : 'off';
 		$buttonListNext = isset( $instance ['buttonListNext'] ) ? $instance ['buttonListNext'] : 'off';
