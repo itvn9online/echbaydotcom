@@ -302,6 +302,11 @@ $___eb_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'quick_register_mail
 $eb_type_lang[eb_key_for_site_lang . 'quick_register_mail'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'quick_register_mail'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/mail/qregister.html';
 
+// HTML cho trang liên hệ
+$___eb_lang[eb_key_for_site_lang . 'contact_html'] = 'contact';
+$eb_type_lang[eb_key_for_site_lang . 'contact_html'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'contact_html'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/contact.html';
+
 
 
 

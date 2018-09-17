@@ -28,7 +28,15 @@ $main_content = EBE_str_template ( 'contact.html', array (
 */
 
 //
-$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
+$custom_lang_html = EBE_get_lang('contact_html');
+// mặc định là lấy theo file HTML -> act
+if ( trim( $custom_lang_html ) == $act ) {
+	$custom_lang_html = EBE_get_page_template( $act );
+}
+
+//
+//$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
+$main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.cf_diachi' => nl2br( $__cf_row['cf_diachi'] ),
 	'tmp.cf_email' => $__cf_row['cf_email'],
 	
