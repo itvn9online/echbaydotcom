@@ -1036,8 +1036,8 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 .click-set-nhanban {
 	position: fixed;
 	bottom: 20px;
-	left: 12%;
 	z-index: 9999;
+	right: 120px;
 }
 .button-redprimary {
 	background: #c00 !important;
@@ -1051,6 +1051,37 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	box-shadow: 0 1px 0 #b74c00 !important;
 	text-shadow: 0 -1px 1px #b74c00, 1px 0 1px #b74c00, 0 1px 1px #b74c00, -1px 0 1px #b74c00 !important;
 }
+/* */
+.edit-post-wgr-tab {
+	position: fixed;
+	left: 12%;
+	bottom: 20px;
+	border: 1px #ccc solid;
+	border-bottom: 0 none;
+	background: rgba( 255, 255, 255, .8 );
+	box-shadow: 0 0 20px #ccc;
+	min-width: 220px;
+	cursor: pointer;
+	z-index: 9999;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	overflow: hidden;
+}
+.edit-post-wgr-tab:hover {
+	background: #fff;
+	overflow: auto;
+}
+.edit-post-wgr-tab li {
+	border-bottom: 1px #ccc solid;
+	margin: 0;
+	padding: 10px;
+	display: none;
+}
+.edit-post-wgr-tab li:hover { text-decoration: underline; }
+.edit-post-wgr-tab li:first-child,
+.edit-post-wgr-tab:hover li { display: block; }
 /* */
 .echbay-subsubsub {
 	margin: 10px 0;

@@ -52,7 +52,13 @@
 #aabbcc li.footer-social-yt { background-color: #CA3737; }
 #aabbcc li.footer-social-gg { background-color: #DE4B39; }
 #aabbcc li.footer-social-it { background-color: #ec4938; }
-/* ==================================  ================================== */
+/* ================================== transition ================================== */
+.abc {
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
 /* ==================================  ================================== */
 /* ==================================  ================================== */
 /* ==================================  ================================== */

@@ -23,40 +23,40 @@ function WGR_remove_add_null_value ( arr ) {
 
 
 function WGR_add_value_form_edit_size ( arr ) {
-	$('#eb_input_edit_product_size_name').val( arr.name );
-	$('#eb_input_edit_product_size_sku').val( arr.sku );
-	$('#eb_input_edit_product_size_quan').val( arr.val );
-	$('#eb_input_edit_product_size_price').val( g_func.money_format( arr.price ) );
+	jQuery('#eb_input_edit_product_size_name').val( arr.name );
+	jQuery('#eb_input_edit_product_size_sku').val( arr.sku );
+	jQuery('#eb_input_edit_product_size_quan').val( arr.val );
+	jQuery('#eb_input_edit_product_size_price').val( g_func.money_format( arr.price ) );
 	
 	//
-	$('.eb-input-edit-product-size').css({
-//		top : $(current_select).offset().top + $(current_select).height(),
-//		top : $(current_select).offset().top + 30,
-//		left : $(current_select).offset().left
+	jQuery('.eb-input-edit-product-size').css({
+//		top : jQuery(current_select).offset().top + jQuery(current_select).height(),
+//		top : jQuery(current_select).offset().top + 30,
+//		left : jQuery(current_select).offset().left
 	}).show();
 	
 	//
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').focus();
+	jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').focus();
 	
 	//
-	$('.eb-input-edit-product-size button').off('click').click(function () {
-		var a = $(this).attr('data-action') || '';
+	jQuery('.eb-input-edit-product-size button').off('click').click(function () {
+		var a = jQuery(this).attr('data-action') || '';
 		console.log(a);
 		
 		// size theo màu
-		if ( $('#eb_input_edit_color_size_node').val() != '' ) {
+		if ( jQuery('#eb_input_edit_color_size_node').val() != '' ) {
 			console.log('Edit size for color');
 			
 			//
-			var a_node = $('#eb_input_edit_color_size_node').val();
+			var a_node = jQuery('#eb_input_edit_color_size_node').val();
 			
 			//
 			if ( a == 'save' ) {
 				admin_global_size_color[ a_node ] = {
-					name : $('#eb_input_edit_product_size_name').val(),
-					sku : $('#eb_input_edit_product_size_sku').val(),
-					val : $('#eb_input_edit_product_size_quan').val(),
-					price : $('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
+					name : jQuery('#eb_input_edit_product_size_name').val(),
+					sku : jQuery('#eb_input_edit_product_size_sku').val(),
+					val : jQuery('#eb_input_edit_product_size_quan').val(),
+					price : jQuery('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
 				};
 			}
 			else if ( a == 'remove' ) {
@@ -75,7 +75,7 @@ function WGR_add_value_form_edit_size ( arr ) {
 			else if ( a == 'remove' ) {
 //				eb_global_product_size[ a_parent ][ a_node ] = null;
 //				eb_global_product_size[ a_node ] = null;
-				eb_global_product_size[ $('#eb_input_edit_product_size_node').val() ] = null;
+				eb_global_product_size[ jQuery('#eb_input_edit_product_size_node').val() ] = null;
 				eb_global_product_size = WGR_remove_add_null_value( eb_global_product_size );
 				
 				//
@@ -84,7 +84,7 @@ function WGR_add_value_form_edit_size ( arr ) {
 		}
 		
 		//
-		$('.eb-input-edit-product-size').hide();
+		jQuery('.eb-input-edit-product-size').hide();
 	});
 }
 
@@ -96,22 +96,22 @@ function WGR_show_list_size_in_color () {
 	}
 	str += '<li data-add="1" title="Thêm size (color) mới"><i class="fa fa-plus"></i></li>';
 	
-	$('.eb-admin-product-color-size').html( str );
+	jQuery('.eb-admin-product-color-size').html( str );
 	
 	// hiệu ứng chỉnh size
-	$('.eb-admin-product-color-size li').off('click').click(function () {
+	jQuery('.eb-admin-product-color-size li').off('click').click(function () {
 		console.log( admin_global_size_color );
 		
 		// Bỏ phần sửa size chính
-		$('#eb_input_edit_product_size_node').val('');
+		jQuery('#eb_input_edit_product_size_node').val('');
 		
-		var a = $(this).attr('data-add') || '',
+		var a = jQuery(this).attr('data-add') || '',
 			a_node = 0;
 //		console.log(a);
 		
 		// nếu không có thông số add -> sửa size
 		if ( a == '' ) {
-			a_node = $(this).attr('data-node') || 0;
+			a_node = jQuery(this).attr('data-node') || 0;
 		}
 		else {
 			// thêm size cho màu
@@ -129,7 +129,7 @@ function WGR_show_list_size_in_color () {
 		}
 		
 		// kích hoạt chế độ lưu size theo màu
-		$('#eb_input_edit_color_size_node').val(a_node);
+		jQuery('#eb_input_edit_color_size_node').val(a_node);
 		
 		//
 		WGR_add_value_form_edit_size( admin_global_size_color[ a_node ] );
@@ -137,9 +137,9 @@ function WGR_show_list_size_in_color () {
 	
 	//
 	if ( admin_global_size_color.length > 0 ) {
-		$('#eb_input_edit_product_size_bycolor_id').val( escape( JSON.stringify( admin_global_size_color ) ) );
+		jQuery('#eb_input_edit_product_size_bycolor_id').val( escape( JSON.stringify( admin_global_size_color ) ) );
 	} else {
-		$('#eb_input_edit_product_size_bycolor_id').val('');
+		jQuery('#eb_input_edit_product_size_bycolor_id').val('');
 	}
 }
 
@@ -221,7 +221,7 @@ function WGR_ads_get_current_select_category_or_post_name ( action_id ) {
 	}
 	
 	//
-	var a = $('#' + action_id).val() || '';
+	var a = jQuery('#' + action_id).val() || '';
 //	console.log(a);
 	if ( a != '' ) {
 		a = g_func.number_only(a);
@@ -256,7 +256,7 @@ function WGR_ads_show_current_select_category_or_post_name ( a, arr, id ) {
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( a == arr[i].id ) {
-			$('.show-for-' + id).html( arr[i].ten );
+			jQuery('.show-for-' + id).html( arr[i].ten );
 			r = true;
 			break;
 		}
@@ -281,7 +281,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 	
 	//
 //	console.log(action_id);
-	$('#' + action_id).after('<div><em class="small bluecolor show-for-' + action_id + '"></em></div>');
+	jQuery('#' + action_id).after('<div><em class="small bluecolor show-for-' + action_id + '"></em></div>');
 	
 	//
 	WGR_ads_get_current_select_category_or_post_name( action_id );
@@ -289,7 +289,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 	// nhập ID blog, product, page mà q.cáo alias tới
 	var jd_for_quick_search_post = 'quick_sreach_for' + action_id,
 		action_for_quick_search_post = '';
-	$('#' + action_id).attr({
+	jQuery('#' + action_id).attr({
 		autocomplete: 'off'
 	}).click(function () {
 //		console.log(eb_site_group);
@@ -299,43 +299,43 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		
 		//
 		if ( dog(jd_for_quick_search_post) == null ) {
-			$(this).after('<div class="admin-show-quick-search"><div id="' + jd_for_quick_search_post + '" class="ads-show-quick-search-post"></div></div>');
+			jQuery(this).after('<div class="admin-show-quick-search"><div id="' + jd_for_quick_search_post + '" class="ads-show-quick-search-post"></div></div>');
 			
 			//
 			if ( action_id == '_eb_ads_for_post' ) {
 				if ( eb_posts_list.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_posts_list, 'Sản phẩm (Post)' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_posts_list, 'Sản phẩm (Post)' ) );
 				}
 				
 				if ( eb_blogs_list.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_blogs_list, 'Blog/ Tin tức' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_blogs_list, 'Blog/ Tin tức' ) );
 				}
 				
 				if ( eb_pages_list.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_pages_list, 'Trang tĩnh (Page)' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_post_for_quick_search( eb_pages_list, 'Trang tĩnh (Page)' ) );
 				}
 			}
 			else {
 				if ( eb_site_group.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_site_group, 'Chuyên mục sản phẩm' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_site_group, 'Chuyên mục sản phẩm' ) );
 				}
 				
 				if ( eb_blog_group.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_blog_group, 'Blog/ Tin tức', 'blogs' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_blog_group, 'Blog/ Tin tức', 'blogs' ) );
 				}
 				
 				if ( eb_tags_group.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_tags_group, 'Thẻ', 'post_tag' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_tags_group, 'Thẻ', 'post_tag' ) );
 				}
 				
 				if ( eb_options_group.length > 0 ) {
-					$('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_options_group, 'Thông số khác', 'post_options' ) );
+					jQuery('#' + jd_for_quick_search_post).append( edit_post_load_list_taxonomy_for_quick_search( eb_options_group, 'Thông số khác', 'post_options' ) );
 				}
 			}
 			
 			//
-			$('#' + jd_for_quick_search_post + ' li').click(function () {
-				$('#' + action_id).val( $(this).attr('data-id') || '' );
+			jQuery('#' + jd_for_quick_search_post + ' li').click(function () {
+				jQuery('#' + action_id).val( jQuery(this).attr('data-id') || '' );
 				$('body').addClass('hide-module-advanced-ads');
 				window.scroll( 0, 0 );
 				WGR_ads_get_current_select_category_or_post_name(action_id);
@@ -343,31 +343,31 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		}
 		
 		//
-		$('#' + jd_for_quick_search_post).show();
+		jQuery('#' + jd_for_quick_search_post).show();
 	}).focus(function () {
 		if ( dog(jd_for_quick_search_post) == null ) {
-			$(this).click();
+			jQuery(this).click();
 		}
 		
 		action_for_quick_search_post = jd_for_quick_search_post;
-		$('#' + jd_for_quick_search_post).show();
+		jQuery('#' + jd_for_quick_search_post).show();
 	}).blur(function () {
-		$('#' + jd_for_quick_search_post).fadeOut();
+		jQuery('#' + jd_for_quick_search_post).fadeOut();
 		
 		//
-		if ( $('#_eb_ads_for_post').val() == '' && $('#_eb_ads_for_category').val() == '' ) {
+		if ( jQuery('#_eb_ads_for_post').val() == '' && jQuery('#_eb_ads_for_category').val() == '' ) {
 			$('body').removeClass('hide-module-advanced-ads');
 		}
 	});
 	
 	// thêm class để ẩn các chức năng không còn cần thiết khi q.cáo có alias
-	if ( $('#_eb_ads_for_post').val() != '' || $('#_eb_ads_for_category').val() != '' ) {
+	if ( jQuery('#_eb_ads_for_post').val() != '' || jQuery('#_eb_ads_for_category').val() != '' ) {
 		$('body').addClass('hide-module-advanced-ads');
 	}
 	
 	
 	// kích hoạt chức năng tìm kiếm nhanh
-	$('#' + action_id).keyup(function (e) {
+	jQuery('#' + action_id).keyup(function (e) {
 //		console.log(e.keyCode);
 		
 		//
@@ -379,12 +379,12 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		}
 		// ESC
 		else if (e.keyCode == 27) {
-			$('#' + action_for_quick_search_post).fadeOut();
+			jQuery('#' + action_for_quick_search_post).fadeOut();
 			return false;
 		}
 		
 		//
-		var key = $(this).val() || '';
+		var key = jQuery(this).val() || '';
 		if (key != '') {
 			key = g_func.non_mark_seo(key);
 			key = key.replace(/[^0-9a-zA-Z]/g, '');
@@ -393,14 +393,14 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		//
 		if (key != '') {
 			$(fix_id).hide().each(function() {
-				var a = $(this).attr('data-key') || '';
+				var a = jQuery(this).attr('data-key') || '';
 				
 				//
 				if ( a != '' ) {
 					if ( key.length == 1 && a.substr(0, 1) == key) {
-						$(this).show();
+						jQuery(this).show();
 					} else if ( a.split(key).length > 1) {
-						$(this).show();
+						jQuery(this).show();
 					}
 				}
 			});
@@ -499,7 +499,7 @@ function check_eb_input_edit_product_color () {
 	//
 	var iff_id = '_eb_product_list_color_ifr';
 	
-	$('#' + iff_id).contents().find( 'img#' + jd ).attr({
+	jQuery('#' + iff_id).contents().find( 'img#' + jd ).attr({
 		'alt' : ten,
 		'data-sku' : sku,
 		'data-color' : color,
@@ -545,13 +545,13 @@ function eb_func_show_product_size () {
 		// TEST
 		/*
 		console.log('TEST');
-		if ( $('#_eb_product_size').val() == '' ) {
-			$('#_eb_product_size').val(',{name:"800x1200",val:"1554000"},{name:"1000x1200",val:"1849000"},{name:"1200x1500",val:"2432000"},{name:"1200x1600",val:"2566000"},{name:"1200x1800",val:"2814000"},{name:"1200x2000",val:"2981000"},{name:"1200x2200",val:"3239000"},{name:"1200x2400",val:"3496000"}');
+		if ( jQuery('#_eb_product_size').val() == '' ) {
+			jQuery('#_eb_product_size').val(',{name:"800x1200",val:"1554000"},{name:"1000x1200",val:"1849000"},{name:"1200x1500",val:"2432000"},{name:"1200x1600",val:"2566000"},{name:"1200x1800",val:"2814000"},{name:"1200x2000",val:"2981000"},{name:"1200x2200",val:"3239000"},{name:"1200x2400",val:"3496000"}');
 		}
 		*/
 		
 		//
-		eb_global_product_size = $('#_eb_product_size').val() || '';
+		eb_global_product_size = jQuery('#_eb_product_size').val() || '';
 //		console.log( eb_global_product_size ); return false;
 		if ( eb_global_product_size != '' ) {
 //			eb_global_product_size = unescape( eb_global_product_size );
@@ -671,8 +671,8 @@ function eb_func_show_product_size () {
 	//
 //	console.log(eb_inner_html_product_size);
 //	console.log(str_size);
-	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có). Nếu phần giá riêng này được thiết lập, nó sẽ được sử dụng để thay thế giá mặc định của sản phẩm.</div>' );
-//	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
+	jQuery('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có). Nếu phần giá riêng này được thiết lập, nó sẽ được sử dụng để thay thế giá mặc định của sản phẩm.</div>' );
+//	jQuery('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
 	
 	// chuyển từ object sang string
 	/*
@@ -685,10 +685,10 @@ function eb_func_show_product_size () {
 	// gán trở lại để còn lưu dữ liệu
 	if ( eb_global_product_size.length > 0 ) {
 //		console.log( escape( JSON.stringify( eb_global_product_size ) ) );
-//		$('#_eb_product_size').val( escape( JSON.stringify( eb_global_product_size ) ) );
-		$('#_eb_product_size').val( JSON.stringify( eb_global_product_size ) );
+//		jQuery('#_eb_product_size').val( escape( JSON.stringify( eb_global_product_size ) ) );
+		jQuery('#_eb_product_size').val( JSON.stringify( eb_global_product_size ) );
 	} else {
-		$('#_eb_product_size').val('');
+		jQuery('#_eb_product_size').val('');
 	}
 	
 }
@@ -696,7 +696,7 @@ function eb_func_show_product_size () {
 function check_eb_input_edit_product_size () {
 	
 	// nếu là thay đổi size riêng của màu -> chơi function riêng và mới cho nó ổn định
-	if ( $('#eb_input_edit_color_size_node').val() != '' ) {
+	if ( jQuery('#eb_input_edit_color_size_node').val() != '' ) {
 		console.log('size for color!');
 		return false;
 	}
@@ -714,20 +714,20 @@ function check_eb_input_edit_product_size () {
 	*/
 	
 	//
-//	var a_parent = $(current_select).attr('data-parent') || 0,
-//		a_node = $(current_select).attr('data-node') || 0;
+//	var a_parent = jQuery(current_select).attr('data-parent') || 0,
+//		a_node = jQuery(current_select).attr('data-node') || 0;
 	var a_parent = 0,
-		a_node = $('#eb_input_edit_product_size_node').val() || 0;
+		a_node = jQuery('#eb_input_edit_product_size_node').val() || 0;
 //	console.log( a_parent );
 	console.log( a_node );
 	
 	//
 //	eb_global_product_size[ a_parent ][ a_node ] = {
 	eb_global_product_size[ a_node ] = {
-		name : $('#eb_input_edit_product_size_name').val(),
-		sku : $('#eb_input_edit_product_size_sku').val(),
-		val : $('#eb_input_edit_product_size_quan').val(),
-		price : $('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
+		name : jQuery('#eb_input_edit_product_size_name').val(),
+		sku : jQuery('#eb_input_edit_product_size_sku').val(),
+		val : jQuery('#eb_input_edit_product_size_quan').val(),
+		price : jQuery('#eb_input_edit_product_size_price').val().replace( /\,/g, '' )
 	};
 	console.log( eb_global_product_size );
 	
@@ -745,18 +745,18 @@ function check_eb_input_edit_product_size () {
 		return false;
 	}
 	
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val( eb_global_product_size[ a_parent ][ a_node ].sku );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val( eb_global_product_size[ a_parent ][ a_node ].price );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val( eb_global_product_size[ a_parent ][ a_node ].val );
-	$('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val( eb_global_product_size[ a_parent ][ a_node ].name );
+	jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val( eb_global_product_size[ a_parent ][ a_node ].sku );
+	jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val( eb_global_product_size[ a_parent ][ a_node ].price );
+	jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val( eb_global_product_size[ a_parent ][ a_node ].val );
+	jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val( eb_global_product_size[ a_parent ][ a_node ].name );
 	
 	
 	
 	//
-	var ten = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val() || '',
-		sku = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val() || '',
-		sai = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val() || '',
-		price = $('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val() || '';
+	var ten = jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]').val() || '',
+		sku = jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]').val() || '',
+		sai = jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]').val() || '',
+		price = jQuery('.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]').val() || '';
 	
 	/*
 	if ( ten == '' || sai == '' ) {
@@ -782,30 +782,30 @@ function check_eb_input_edit_product_size () {
 // các hiệu ứng khi click ào thẻ LI
 function eb_func_click_modife_product_size () {
 	
-	$('#' + eb_inner_html_product_size + ' li').off('click').click(function () {
+	jQuery('#' + eb_inner_html_product_size + ' li').off('click').click(function () {
 //		console.log(1);
 		
 		// Bỏ phần lưu theo màu
-		$('#eb_input_edit_color_size_node').val('');
+		jQuery('#eb_input_edit_color_size_node').val('');
 		
-		$('#' + eb_inner_html_product_size + ' li').removeClass('redcolor').removeClass('selected');
+		jQuery('#' + eb_inner_html_product_size + ' li').removeClass('redcolor').removeClass('selected');
 		
 		//
-		var a = $(this).attr('data-add') || '';
+		var a = jQuery(this).attr('data-add') || '';
 //		console.log(a);
 		
 		// nếu không có thông số add -> sửa size
 		if ( a == '' ) {
 			
 			//
-			$(this).addClass('redcolor').addClass('selected');
+			jQuery(this).addClass('redcolor').addClass('selected');
 			
 			//
-			var a_node = $(this).attr('data-node') || 0;
+			var a_node = jQuery(this).attr('data-node') || 0;
 //			console.log('Edit size #' + a_node);
 			
 			// lưu vị trí cấn chỉnh sửa dữ liệu
-			$('#eb_input_edit_product_size_node').val( a_node );
+			jQuery('#eb_input_edit_product_size_node').val( a_node );
 			
 			//
 			/*
@@ -838,7 +838,7 @@ function eb_func_click_modife_product_size () {
 				
 				//
 				/*
-				var size_parent = $(this).attr('data-parent') || 0;
+				var size_parent = jQuery(this).attr('data-parent') || 0;
 				
 				if ( typeof eb_global_product_size[size_parent] == 'undefined' ) {
 					eb_global_product_size[size_parent] = [];
@@ -859,13 +859,13 @@ function eb_func_click_modife_product_size () {
 			// tạo select cho LI để tiếp tục
 			if ( a != 'group' ) {
 				/*
-//				$(this).prev().addClass('redcolor').addClass('selected');
+//				jQuery(this).prev().addClass('redcolor').addClass('selected');
 				setTimeout(function () {
-//					$('.eb-admin-product-size li[data-add="1"]').prev().addClass('redcolor').addClass('selected').click();
-					$('.eb-admin-product-size li[data-add="1"]').prev().click();
+//					jQuery('.eb-admin-product-size li[data-add="1"]').prev().addClass('redcolor').addClass('selected').click();
+					jQuery('.eb-admin-product-size li[data-add="1"]').prev().click();
 				}, 200);
 				*/
-				$('.eb-admin-product-size li[data-node="' + ( eb_global_product_size.length - 1 ) + '"]').click();
+				jQuery('.eb-admin-product-size li[data-node="' + ( eb_global_product_size.length - 1 ) + '"]').click();
 			}
 		}
 		
@@ -892,7 +892,7 @@ function eb_func_global_product_size () {
 	//
 	/*
 	console.log('TEST');
-	$('#' + kk).attr({
+	jQuery('#' + kk).attr({
 		type : 'text'
 	});
 	*/
@@ -902,7 +902,7 @@ function eb_func_global_product_size () {
 	
 	// nếu chưa có HTML để tạo hiệu ứng -> tạo
 //	if ( dog(eb_inner_html_product_size) == null ) {
-	if ( $('#' + eb_inner_html_product_size).length == 0 ) {
+	if ( jQuery('#' + eb_inner_html_product_size).length == 0 ) {
 		
 		$('tr[data-row="_eb_product_color"]').after('\
 		<tr data-row="' + kk + '">\
@@ -929,12 +929,12 @@ function WGR_run_for_admin_edit_post () {
 	if ( win_href.split('www.webgiare.org').length > 1 ) {
 		$(document).ready(function() {
 			setTimeout(function () {
-				$('#click_remove_content_style').click();
+				jQuery('#click_remove_content_style').click();
 			}, 2000);
 		});
 		
 		//
-		$('#excerpt').val( $('#excerpt').val().replace( /\&nbsp\;/gi, ' ' ) );
+		jQuery('#excerpt').val( jQuery('#excerpt').val().replace( /\&nbsp\;/gi, ' ' ) );
 	}
 	*/
 	
@@ -950,8 +950,8 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		// chuyển định dạng số cho phần giá
-		$('#_eb_product_oldprice, #_eb_product_price').change(function () {
-			var a = $(this).val() || 0;
+		jQuery('#_eb_product_oldprice, #_eb_product_price').change(function () {
+			var a = jQuery(this).val() || 0;
 			
 //				a = g_func.number_only( a );
 			a = g_func.money_format( a );
@@ -961,15 +961,15 @@ function WGR_run_for_admin_edit_post () {
 			}
 			
 //			console.log(a);
-			$(this).val(a);
+			jQuery(this).val(a);
 			
 			// kiểm tra và phân bổ lại giá
-			var giacu = $('#_eb_product_oldprice').val(),
-				giaban = $('#_eb_product_price').val();
+			var giacu = jQuery('#_eb_product_oldprice').val(),
+				giaban = jQuery('#_eb_product_price').val();
 			
 			if ( giaban == 0 && giacu > 0 ) {
-				$('#_eb_product_oldprice').val( 0 );
-				$('#_eb_product_price').val( giacu );
+				jQuery('#_eb_product_oldprice').val( 0 );
+				jQuery('#_eb_product_price').val( giacu );
 			}
 		}).change();
 		
@@ -982,13 +982,13 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		//
-		var a = $('#_eb_product_avatar').val() || '',
+		var a = jQuery('#_eb_product_avatar').val() || '',
 			b = $('tr[data-row="_eb_product_avatar"]').length;
 		if ( a != '' && b > 0 ) {
 			
 			// xử lý hình ảnh lỗi cho xwatch cũ
 			a = a.replace( '/home/pictures/', '/Home/Pictures/' );
-			$('#_eb_product_avatar').val( a );
+			jQuery('#_eb_product_avatar').val( a );
 			
 			//
 			$('tr[data-row="_eb_product_avatar"]').after( '\
@@ -1000,16 +1000,17 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		// xử lý hình ảnh lỗi cho xwatch cũ
+		/*
 		setTimeout(function () {
 			console.log('for xwatch domain');
 			if ( $("#_eb_product_gallery_ifr").length > 0 ) {
 				$("#_eb_product_gallery_ifr").contents().find('img').each(function() {
-					var a = $(this).attr('src') || '',
+					var a = jQuery(this).attr('src') || '',
 						b = a;
 					if (a != '') {
 						a = a.replace( '/home/pictures/', '/Home/Pictures/' );
 						
-						$(this).attr({
+						jQuery(this).attr({
 							src : a,
 							'data-old-src' : b
 						});
@@ -1017,11 +1018,12 @@ function WGR_run_for_admin_edit_post () {
 				});
 			}
 		}, 2000);
+		*/
 		
 		
 		
 		
-		$('#postdivrich').after('<div class="ebe-fixed-content-style">\
+		jQuery('#postdivrich').after('<div class="ebe-fixed-content-style">\
 			<input type="checkbox" id="click_remove_content_style" />\
 			<label for="click_remove_content_style">Loại bỏ toàn bộ các style tĩnh để chuẩn hóa style cho bài viết theo một thiết kế chung.</label>\
 		</div>\
@@ -1081,38 +1083,38 @@ function WGR_run_for_admin_edit_post () {
 		}
 		
 		//
-		if ( $('#' + iff_id).length > 0 ) {
+		if ( jQuery('#' + iff_id).length > 0 ) {
 //			console.log(iff_id);
 			
 			// xử lý hình ảnh trong nội dung
-			$('#' + iff_id).contents().find( 'img' ).each(function() {
+			jQuery('#' + iff_id).contents().find( 'img' ).each(function() {
 				// current style
-				var cs = $(this).attr('style') || '',
+				var cs = jQuery(this).attr('style') || '',
 					// height
-					h = $(this).attr('height') || '',
+					h = jQuery(this).attr('height') || '',
 					// width
-//					w = $(this).attr('width') || default_h,
-					w = $(this).attr('width') || '',
+//					w = jQuery(this).attr('width') || default_h,
+					w = jQuery(this).attr('width') || '',
 					// ID
-					current_id = $(this).attr('id') || '';
+					current_id = jQuery(this).attr('id') || '';
 				
 				if ( cs != '' ) {
-					$(this).removeAttr('style').removeAttr('data-mce-src');
+					jQuery(this).removeAttr('style').removeAttr('data-mce-src');
 				}
 				
 				// nếu không tìm thấy chiều cao
 				if ( h == '' || w == '' ) {
 					// reset lại toàn bộ size ảnh
-					$(this).removeAttr('width').removeAttr('height').width('auto').height('auto');
-//					$(this).removeAttr('width').removeAttr('height');
+					jQuery(this).removeAttr('width').removeAttr('height').width('auto').height('auto');
+//					jQuery(this).removeAttr('width').removeAttr('height');
 					
 					// tìm chiều cao mặc định
-					h = $(this).height() || 0;
-					w = $(this).width() || 0;
+					h = jQuery(this).height() || 0;
+					w = jQuery(this).width() || 0;
 					
 					// khi nào tìm được mới thôi
 					if ( h > 0 && w > 0 ) {
-						$(this).attr({
+						jQuery(this).attr({
 //							'width' : Math.ceil( w ) - 1,
 							'width' : w.toString().split('.')[0],
 //							'height' : Math.ceil( h ) - 1
@@ -1123,8 +1125,8 @@ function WGR_run_for_admin_edit_post () {
 				// có chiều cao -> set thuộc tính mới luôn
 //				else if ( h > default_h && fix_height == 1 ) {
 				else if ( h != default_h && fix_height == 1 ) {
-					var dh = $(this).attr('data-height') || h,
-						dw = $(this).attr('data-width') || w;
+					var dh = jQuery(this).attr('data-height') || h,
+						dw = jQuery(this).attr('data-width') || w;
 					
 					
 					var nw = dh/ default_h;
@@ -1133,7 +1135,7 @@ function WGR_run_for_admin_edit_post () {
 //					console.log(nw);
 					
 					//
-					$(this).attr({
+					jQuery(this).attr({
 						'data-width' : dw,
 						'data-height' : dh,
 //						'width' : Math.ceil( nw ),
@@ -1143,7 +1145,7 @@ function WGR_run_for_admin_edit_post () {
 				}
 				// nếu có chiều cao -> set data mới
 				else {
-					$(this).attr({
+					jQuery(this).attr({
 						'data-width' : w,
 						'data-height' : h
 					});
@@ -1154,11 +1156,11 @@ function WGR_run_for_admin_edit_post () {
 				if ( iff_id == '_eb_product_list_color_ifr' ) {
 					if ( current_id == '' ) {
 						// tạo ID ngẫu nhiên để add cho IMG
-						current_id = $('#post_ID').val() || '';
+						current_id = jQuery('#post_ID').val() || '';
 						
 						if ( current_id != '' ) {
 							current_id = '_' + current_id + '_' + Math.random(32).toString().replace('.', '_');
-							$(this).attr({
+							jQuery(this).attr({
 								'id' : current_id
 							});
 						}
@@ -1170,8 +1172,8 @@ function WGR_run_for_admin_edit_post () {
 			// riêng đối với phần list của màu sắc thì chuyển caption sang alt để lấy tên màu cho chuẩn
 			if ( iff_id == '_eb_product_list_color_ifr' ) {
 //				console.log(iff_id);
-				$('#' + iff_id).contents().find( 'dl' ).each(function() {
-					var a = $('.wp-caption-dd', this).html() || '',
+				jQuery('#' + iff_id).contents().find( 'dl' ).each(function() {
+					var a = jQuery('.wp-caption-dd', this).html() || '',
 						b = $('img', this).attr('alt') || '';
 //						console.log(a);
 					if ( a != '' && a != b ) {
@@ -1184,8 +1186,8 @@ function WGR_run_for_admin_edit_post () {
 				});
 				
 				// hiệu ứng khi click vào
-				$('#' + iff_id).contents().find( 'img' ).off('click').click(function () {
-					var jd = $(this).attr('id') || '';
+				jQuery('#' + iff_id).contents().find( 'img' ).off('click').click(function () {
+					var jd = jQuery(this).attr('id') || '';
 					
 					if ( jd == '' ) {
 						return false;
@@ -1193,21 +1195,21 @@ function WGR_run_for_admin_edit_post () {
 					console.log('Edit color #' + jd);
 					
 					//
-					$('.eb-input-edit-product-color') /* .css({
-						left : $(this).offset().left + $('#' + iff_id).offset().left
+					jQuery('.eb-input-edit-product-color') /* .css({
+						left : jQuery(this).offset().left + jQuery('#' + iff_id).offset().left
 					}) */ .show();
-					$('#eb_input_edit_product_color_name').focus();
+					jQuery('#eb_input_edit_product_color_name').focus();
 					
 					//
 					var f = document.frm_eb_input_edit_product_color;
 					
 					// các thông số của màu sắc đang chỉnh sửa
-					var ten = $(this).attr('alt') || '',
-						sku = $(this).attr('data-sku') || '',
-						color = $(this).attr('data-color') || '',
-						quan = $(this).attr('data-quan') || '',
-						price = $(this).attr('data-price') || '',
-						size_color = $(this).attr('data-size') || '';
+					var ten = jQuery(this).attr('alt') || '',
+						sku = jQuery(this).attr('data-sku') || '',
+						color = jQuery(this).attr('data-color') || '',
+						quan = jQuery(this).attr('data-quan') || '',
+						price = jQuery(this).attr('data-price') || '',
+						size_color = jQuery(this).attr('data-size') || '';
 					
 					//
 					f.eb_input_edit_product_color_id.value = jd;
@@ -1217,7 +1219,7 @@ function WGR_run_for_admin_edit_post () {
 					f.eb_input_edit_product_color_quan.value = quan;
 //					f.eb_input_edit_product_color_price.value = price;
 					f.eb_input_edit_product_color_price.value = g_func.money_format( price );
-//					$('#oi_input_edit_product_color_price').html( g_func.money_format( price ) );
+//					jQuery('#oi_input_edit_product_color_price').html( g_func.money_format( price ) );
 					f.eb_input_edit_product_size_bycolor_id.value = size_color;
 					
 					
@@ -1257,26 +1259,26 @@ function WGR_run_for_admin_edit_post () {
 	
 	//
 	setTimeout(function () {
-		$('#_eb_product_list_color_ifr').height( 250 );
+		jQuery('#_eb_product_list_color_ifr').height( 250 );
 		
 		setTimeout(function () {
-			$('#_eb_product_list_color_ifr').height( 250 );
+			jQuery('#_eb_product_list_color_ifr').height( 250 );
 			
 			setTimeout(function () {
-				$('#_eb_product_list_color_ifr').height( 250 );
+				jQuery('#_eb_product_list_color_ifr').height( 250 );
 			}, 2000);
 		}, 2000);
 		
 		
 		//
-		$('.eb-input-edit-product-color button').off('click').click(function () {
-			var a = $(this).attr('data-action') || '';
+		jQuery('.eb-input-edit-product-color button').off('click').click(function () {
+			var a = jQuery(this).attr('data-action') || '';
 			
 			if ( a == 'save' ) {
 				check_eb_input_edit_product_color();
 			}
 			
-			$('.eb-input-edit-product-color').hide();
+			jQuery('.eb-input-edit-product-color').hide();
 		});
 	}, 2000);
 	
@@ -1285,7 +1287,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	//
-	$('#publish').addClass('publish-position-fixed')
+	jQuery('#publish').addClass('publish-position-fixed')
 	/*
 	.css({
 		'position' : 'fixed',
@@ -1303,19 +1305,19 @@ function WGR_run_for_admin_edit_post () {
 	
 	// thêm nút nhân bản bài viết
 //	$('body').append('');
-	$('#wgr-for-duplicator').show();
-	$('.show-if-duplicator-null div').click(function () {
-		$('.show-if-duplicator-null').fadeOut();
+	jQuery('#wgr-for-duplicator').show();
+	jQuery('.show-if-duplicator-null div').click(function () {
+		jQuery('.show-if-duplicator-null').fadeOut();
 	});
 	
 	//
-	$('.click-set-nhanban').click(function () {
+	jQuery('.click-set-nhanban').click(function () {
 		// sử dụng plugin Post duplicator
 		if ( dog('duplicator') == null ) {
-			$('.show-if-duplicator-null').fadeIn();
+			jQuery('.show-if-duplicator-null').fadeIn();
 			
 			setTimeout(function () {
-				$('.show-if-duplicator-null').fadeOut();
+				jQuery('.show-if-duplicator-null').fadeOut();
 			}, 5000);
 			
 			return false;
@@ -1327,7 +1329,7 @@ function WGR_run_for_admin_edit_post () {
 		}
 		
 		//
-		$('#duplicator a').click();
+		jQuery('#duplicator a').click();
 		
 		//
 		return true;
@@ -1337,7 +1339,7 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		//
-		var a = $('#post_ID').val() || 0;
+		var a = jQuery('#post_ID').val() || 0;
 		
 		if ( a <= 0 ) {
 			alert('Post ID not found!');
@@ -1405,7 +1407,7 @@ function WGR_run_for_admin_edit_post () {
 			//
 			$( content_id ).contents().find( 'img' ).each(function() {
 				
-				var a = $(this).attr('src') || $(this).attr('data-mce-src') || '';
+				var a = jQuery(this).attr('src') || jQuery(this).attr('data-mce-src') || '';
 //				console.log(a);
 				
 				//
@@ -1426,7 +1428,7 @@ function WGR_run_for_admin_edit_post () {
 					}
 					
 					//
-					$(this).attr({
+					jQuery(this).attr({
 						'data-mce-src' : a,
 						src : a
 					});
@@ -1435,20 +1437,20 @@ function WGR_run_for_admin_edit_post () {
 			});
 			
 			//
-			var a = $('#_eb_product_avatar').val() || '';
+			var a = jQuery('#_eb_product_avatar').val() || '';
 			if ( a != '' ) {
 				for ( var i = 0; i < arr_old_domain.length; i++ ) {
 					a = a.replace( '//' + arr_old_domain[i] + '/', '//' + dm + '/' );
 				}
 				
-				$('#_eb_product_avatar').val( a );
+				jQuery('#_eb_product_avatar').val( a );
 			}
 			
 		}
 		// chuyển URL ảnh về url tuyệt đối
 		else {
 			$( content_id ).contents().find( 'img' ).each(function() {
-				var a = $(this).attr('src') || $(this).attr('data-mce-src') || '';
+				var a = jQuery(this).attr('src') || jQuery(this).attr('data-mce-src') || '';
 //				console.log(a);
 				
 				//
@@ -1465,13 +1467,51 @@ function WGR_run_for_admin_edit_post () {
 					}
 					
 					//
-					$(this).attr({
+					jQuery(this).attr({
 						'data-mce-src' : a,
 						src : a
 					});
 				}
 			});
 		}
+		
+		
+		
+		// tạo các quick menu cho phần edit post
+		var str = '<li>Về đầu trang <i class="fa fa-arrow-up"></i></li>';
+		jQuery('#normal-sortables .postbox, #advanced-sortables .postbox, #side-sortables .postbox').each(function() {
+			var a = $('h2 span', this).html() || '',
+				jd = jQuery(this).attr('id') || '',
+				cl = jQuery(this).attr('class') || '';
+//			console.log(a);
+			
+			//
+			if ( a != '' && jd != '' && jd != 'submitdiv' && cl.split('hide-if-js').length == 1 ) {
+				str += '<li data-id="' + jd + '">' + a + '</li>';
+			}
+		});
+//		console.log(str);
+		
+		//
+		$('body').append('<ul class="edit-post-wgr-tab">' + str + '</ul>');
+		
+		jQuery('.edit-post-wgr-tab li').click(function () {
+			var jd = jQuery(this).attr('data-id') || '',
+				to_id = 0;
+			
+			//
+			if ( jd != '' ) {
+				to_id = jQuery('#' + jd).offset().top - 50;
+				
+				jQuery('.postbox h2').removeClass('orgcolor');
+				jQuery('#' + jd + ' h2').addClass('orgcolor');
+			}
+			
+			//
+			jQuery('body,html').animate({
+				scrollTop: to_id
+			}, 600);
+		});
 		
 	});
 	
