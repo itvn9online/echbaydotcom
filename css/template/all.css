@@ -1,0 +1,62 @@
+/* ================================== menu ================================== */
+#aabbcc .top1-menu { }
+#aabbcc .top1-menu ul { }
+#aabbcc .top1-menu li { float: left; }
+#aabbcc .top1-menu a { display: block; }
+#aabbcc .top1-menu a:hover {
+	background: rgba(0, 0, 0, .2);
+	text-decoration: underline;
+}
+#aabbcc .top1-menu .sub-menu {
+	display: none;
+	position: absolute;
+	min-width: 220px;
+	z-index: 9;
+}
+#aabbcc .top1-menu li:hover .sub-menu { display: block; }
+.style-for-mobile #aabbcc .top1-menu li,
+#aabbcc .top1-menu .sub-menu li {
+	float: none;
+	width: auto;
+}
+#aabbcc .top1-menu .sub-menu a { }
+#aabbcc .top1-menu .sub-menu .sub-menu { display: none !important; }
+#aabbcc .top1-menu .sub-menu .sub-menu li { }
+#aabbcc .top1-menu .sub-menu .sub-menu a { }
+#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu { }
+#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu li { }
+#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu a { }
+#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu .sub-menu { }
+/* ================================== address ================================== */
+#aabbcc .footer-address { }
+#aabbcc .footer-address-company { }
+#aabbcc .footer-address-info { }
+#aabbcc .footer-address-info strong { }
+#aabbcc .footer-address-info i { }
+#aabbcc .footer-address-info div { margin-top: 6px; }
+#aabbcc div.footer-address-phone { margin: 0; }
+#aabbcc .footer-address-address { }
+#aabbcc .footer-address-phone { }
+#aabbcc .footer-address-hotline { }
+#aabbcc .footer-address-hotline:after { }
+#aabbcc .footer-address-cell { }
+#aabbcc .footer-address-email { }
+/* ================================== social ================================== */
+#aabbcc .footer-social { }
+#aabbcc .footer-social li { }
+#aabbcc .footer-social a { }
+#aabbcc .footer-social span { }
+#aabbcc .footer-social i { }
+#aabbcc li.footer-social-fb { background-color: #3A589B; }
+#aabbcc li.footer-social-tw { background-color: #25AAE1; }
+#aabbcc li.footer-social-yt { background-color: #CA3737; }
+#aabbcc li.footer-social-gg { background-color: #DE4B39; }
+#aabbcc li.footer-social-it { background-color: #ec4938; }
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */
+/* ==================================  ================================== */

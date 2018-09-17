@@ -29,7 +29,7 @@ $eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb2-top1.php";
 // breadcrumb gọn trong khung (kèm nền mặc định)
 //$eb_all_themes_support[$eb_all_themes_name]["top"][] = "breadcrumb2bg-top1.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "doitac-footer1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "doitac-footer1.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "footer_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "thietkebeboi-footer1.php";
 $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
