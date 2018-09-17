@@ -5,6 +5,7 @@ $main_content = ob_get_contents();
 
 //
 ob_end_clean();
+//echo $main_content;
 
 
 
