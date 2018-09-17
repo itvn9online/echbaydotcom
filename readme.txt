@@ -8,8 +8,8 @@ Text Domain: echbayecom
 Tags: e-commerce
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 1.1.9
-Version: 1.1.9
+Stable tag: 1.2.0
+Version: 1.2.0
 Contributors: itvn9online
 Donate link: https://paypal.me/itvn9online/5
 Version 1.0.*: https://github.com/itvn9online/echbaydotcom-2018-07-16
@@ -116,6 +116,9 @@ Nếu bạn sử dụng theme được viết bởi EchBay thì các plugin này
 
 
 === CÁC THAY ĐỔI QUAN TRỌNG ===
+= Version 1.2.0 =
+* Thêm tba để chuyển giữa các phần soạn thảo khi sửa bài viết, giúp việc sửa bài viết thuận tiện hơn.
+
 = Version 1.1.8 =
 * Tối ưu việc load font bằng option, mặc định là tắt việc tải font awesome v5 để giảm tải cho website tầm 3mb mỗi lần load trang.
 
