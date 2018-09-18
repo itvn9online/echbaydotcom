@@ -1929,7 +1929,7 @@ input[type="number"].s { width: 90px; }
 .product-color li[data-quan="0"] { border-color: #f0f0f0; }
 /* với màu sử dụng mã màu */
 .product-color li.color-color {
-	border: 0 none;
+	border-color: #ccc !important;
 	border-radius: 50%;
 	background: center no-repeat;
 }
