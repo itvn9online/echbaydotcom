@@ -315,6 +315,7 @@ $product_size = '';
 $product_color_name = '';
 $_eb_product_chinhhang = 0;
 $_eb_product_video_url = '';
+$trv_masanpham = '';
 
 
 //
@@ -656,7 +657,6 @@ $str_for_details_sidebar = '';
 $str_for_details_top_sidebar = '';
 
 //
-$trv_masanpham = '';
 $product_gallery = '';
 $product_list_color = '';
 $wgr_comment_list = '';
