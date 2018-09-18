@@ -120,6 +120,7 @@ a {
 	min-width: 999px;
 }
 .d-block { display: block }
+.d-inline,
 .d-iblock { display: inline-block }
 /* ads banner */
 .banner-ads-media {
