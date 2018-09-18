@@ -357,7 +357,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>hideavt</strong>: ẩn ảnh đại diện.<br>
 	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
 	- <strong>oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
-	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.</p>';
+	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
+	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
+	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
+	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.</p>';
 	
 	
 	//
