@@ -115,6 +115,7 @@ if ( document.domain != 'localhost' ) {
 }
 */
 </script>
+<!-- HEAD by EchBay -->
 <?php echo $__cf_row['cf_js_head']; ?>
 <!-- // Global site format by EchBay -->
 <?php

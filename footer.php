@@ -69,6 +69,7 @@ wp_footer();
 
 ?>
 </div>
+<!-- FOOTER by EchBay -->
 <?php
 
 
@@ -95,4 +96,5 @@ if ( eb_code_tester == true ) {
 
 
 ?>
+<!-- // FOOTER by EchBay -->
 </body></html>
