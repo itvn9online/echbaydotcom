@@ -728,8 +728,9 @@ function EBE_get_text_version ( $str ) {
 		// Kiểm tra phiên bản trên github
 		$strCacheFilter = 'github_version';
 		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
+		$url_check_version = 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION';
 		if ( $version_in_github == false ) {
-			$version_in_github = _eb_getUrlContent( 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION' );
+			$version_in_github = _eb_getUrlContent( $url_check_version );
 //			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
 			/*
 			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
@@ -758,6 +759,9 @@ function EBE_get_text_version ( $str ) {
 		
 		// Link cập nhật core từ github
 		echo '<p><center><a href="#" class="click-connect-to-github-update-eb-core">[ Cập nhật mã nguồn cho EchBay theo thời gian thực! Server quốc tế (GitHub) ]</a></center></p>';
+		
+		//
+		echo '<p class="bluecolor"><em>' . $url_check_version . '</em></p>';
 		
 	}
 
