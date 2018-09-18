@@ -2956,10 +2956,15 @@ jQuery(window).resize(function() {
 //	WGR_show_or_hide_to_top();
 });
 
-//
-setInterval(function () {
-	WGR_show_or_hide_to_top();
-}, 250);
+// khi document đã load xong
+jQuery(document).ready(function() {
+	// chiều cao của document đủ lớn
+	if ( jQuery(document).height() > jQuery(window).height() * 1.5 ) {
+		setInterval(function () {
+			WGR_show_or_hide_to_top();
+		}, 250);
+	}
+});
 
 
 //
