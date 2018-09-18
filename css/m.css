@@ -201,6 +201,7 @@ body.style-for-mobile {
 	height: 60px;
 }
 .style-for-mobile .clone-show-quick-cart { padding: 0 8px; }
+.style-for-mobile .center-if-mobile { text-align: center !important; }
 /* for elemetor */
 .style-for-mobile .fullsize-if-mobile .elementor-column-wrap,
 .style-for-mobile .fullsize-if-mobile .elementor-widget-container { padding: 0 !important; }

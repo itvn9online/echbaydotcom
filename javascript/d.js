@@ -172,6 +172,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 //	console.log( sr );
 	
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
+	// cf_disable_auto_get_thumb
 	if ( typeof eb_disable_auto_get_thumb == 'number' && WGR_check_option_on ( eb_disable_auto_get_thumb ) ) {
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto get thumbnail disable');
 	}
@@ -435,6 +436,12 @@ function ___eb_details_slider_v2 () {
 	
 	// tải slider theo code mới
 	if ( WGR_check_option_on( cf_on_details_slider ) ) {
+		/*
+		if ( typeof eb_disable_auto_get_thumb == 'number' && WGR_check_option_on ( eb_disable_auto_get_thumb ) ) {
+		}
+		*/
+		
+		//
 		jEBE_slider( '.thread-details-mobileAvt', {
 			buttonListNext: WGR_check_option_on ( cf_details_show_list_next ) ? true : false,
 			
