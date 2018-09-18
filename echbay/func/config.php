@@ -109,8 +109,6 @@ $_POST['cf_on_off_amp_blog'] = WGR_default_config('cf_on_off_amp_blog');
 
 $_POST['cf_on_off_auto_update_wp'] = WGR_default_config('cf_on_off_auto_update_wp');
 
-$_POST['cf_disable_auto_get_thumb'] = WGR_default_config('cf_disable_auto_get_thumb');
-
 $_POST['cf_set_link_for_h1'] = WGR_default_config('cf_set_link_for_h1');
 
 $_POST['cf_h1_logo'] = WGR_default_config('cf_h1_logo');

@@ -550,7 +550,6 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_on_off_amp_blogs' );
 	show_note_for_checkbox_config( 'cf_on_off_amp_blog' );
 	show_note_for_checkbox_config( 'cf_on_off_auto_update_wp' );
-	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 	show_note_for_checkbox_config( 'cf_set_link_for_h1' );
 	show_note_for_checkbox_config( 'cf_h1_logo' );
 	show_note_for_checkbox_config( 'cf_auto_nofollow' );
@@ -930,6 +929,7 @@ else {
 	show_note_for_checkbox_config( 'cf_details_right_thumbnail' );
 	show_note_for_checkbox_config( 'cf_details_left_thumbnail' );
 	show_note_for_checkbox_config( 'cf_on_details_slider' );
+	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
 	show_note_for_checkbox_config( 'cf_required_name_cart' );

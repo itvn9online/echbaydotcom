@@ -34,6 +34,8 @@ $_POST['cf_details_left_thumbnail'] = WGR_default_config('cf_details_left_thumbn
 
 $_POST['cf_on_details_slider'] = WGR_default_config('cf_on_details_slider');
 
+$_POST['cf_disable_auto_get_thumb'] = WGR_default_config('cf_disable_auto_get_thumb');
+
 $_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
 
 $_POST['cf_details_short_quick_cart'] = WGR_default_config('cf_details_short_quick_cart');

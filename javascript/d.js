@@ -173,7 +173,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 	
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
 	if ( typeof eb_disable_auto_get_thumb == 'number' && WGR_check_option_on ( eb_disable_auto_get_thumb ) ) {
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto get thumb disable');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto get thumbnail disable');
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
 	else if ( sr.split(wp_content + '/uploads/').length > 1 ) {
