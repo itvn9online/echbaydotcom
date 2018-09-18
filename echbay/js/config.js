@@ -266,23 +266,26 @@ function create_deault_css () {
 	
 	
 	// lấy các thuộc tính để CSS cho body
-	str += create_css_for_custom_in_js( '.each-to-css-for-body', 'cf_css_body', {
+	str += create_css_for_custom_in_js( '', '', {
 		'mobile' : 'body.style-for-mobile',
 		'pc' : 'body'
 	} );
 	
 	// logo
-	str += create_css_for_custom_in_js( '.each-to-css-for-logo', 'cf_css_logo', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'logo',
 		'mobile' : '.style-for-mobile #webgiare__top .web-logo, .style-for-mobile .menu-for-mobile .web-mobile-logo',
 		'pc' : '.web-logo'
 	} );
 	
-	str += create_css_for_custom_in_js( '.each-to-css-for-mobile_logo', 'cf_css_mobile_logo', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'mobile_logo',
 		'mobile' : null,
 		'pc' : '.style-for-mobile .web-logo, .style-for-mobile .web-mobile-logo'
 	} );
 	
-	str += create_css_for_custom_in_js( '.each-to-css-for-footer_logo', 'cf_css_footer_logo', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'footer_logo',
 		'mobile' : null,
 		'pc' : '.web2-logo .web-logo'
 	} );
@@ -305,19 +308,29 @@ function create_deault_css () {
 	*/
 	
 	// fcb
-	str += create_css_for_custom_in_js( '.each-to-css-for-fcb', 'cf_css_fcb', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'fcb',
 //		'mobile' : '',
 		'pc' : '.fcb'
 	} );
 	
 	// w90
-	str += create_css_for_custom_in_js( '.each-to-css-for-w90', 'cf_css_w90', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'w90',
 //		'mobile' : '',
 		'pc' : '.w90'
 	} );
 	
+	// w99
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'w99',
+//		'mobile' : '',
+		'pc' : '.w99'
+	} );
+	
 	//
-	str += create_css_for_custom_in_js( '.each-to-css-for-details', 'cf_css_details', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'details',
 //		'mobile' : '',
 		'pc' : '.thread-details-tab li.selected'
 	} );
@@ -641,6 +654,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_w90'] == 'undefined' ) {
 			data['cf_css_w90'] = {};
 		}
+		if ( typeof data['cf_css_w99'] == 'undefined' ) {
+			data['cf_css_w99'] = {};
+		}
 		if ( typeof data['cf_css_body'] == 'undefined' ) {
 			data['cf_css_body'] = {};
 		}
@@ -740,7 +756,7 @@ if ( current_module_config != 'config_theme' ) {
 			{
 				'font_family' : ''
 			}, {
-				'font_family' : 'Font cơ bản'
+				'font_family' : 'Font cơ bản (font-family)'
 			}, {
 				'font_family' : 'Khác với Font chữ (toàn trang), font này chỉ dùng cho 1 số module nhất định, để cho code trang trí và biến tấu website trên một số module nhất định (sử dụng class CSS: <strong>fcb</strong>). Mặc định chỉ hỗ trợ một font khác, trường hợp cần dùng thêm font, hãy sử dụng custom style để khai báo.'
 			}, {
@@ -768,17 +784,50 @@ if ( current_module_config != 'config_theme' ) {
 					'2560px' : 'WQHD 2560px'
 				}
 			}, {
-				'max_width' : 'Chiều rộng tối đa (khung)'
+				'max_width' : 'Chiều rộng tối đa (khung w90)'
 			}, {
 				'max_width' : 'Bạn có thể thiết lập chiều rộng tối đa cho khung, điều này giúp cho các khối HTML trong đó giữ được tính ổn định cao.'
 			}, {
-				'max_width' : 'number'
+//				'max_width' : 'number'
 			},
 			data['cf_css_w90'],
 			{
 //				'input_css' : 'each-to-css-for-w90',
 				'after_html' : 'custom_css_for_body',
 				'input_name' : 'w90'
+			}
+		);
+		
+		// w99
+		load_config_for_custom_logo(
+			{
+				'width' : '',
+				'max_width' : {
+					'' : 'Mặc định (999px)',
+					'1024px' : 'XGA 1024px',
+					'1280px' : 'WXGA 1280px',
+					'1366px' : 'HD 1366px',
+					'1600px' : 'HD+ 1600px',
+					'1920px' : 'Full HD 1920px',
+					'2560px' : 'WQHD 2560px'
+				}
+			}, {
+				'width' : 'Chiều rộng (khung w99)',
+				'max_width' : 'Chiều rộng tối đa (khung w99)'
+			}, {
+				'width' : 'Fixed cứng chiều rộng khung w99. Mặc định là 999px, bạn có thể set thành auto hoặc một số cụ thể.',
+				'max_width' : 'Bạn có thể thiết lập chiều rộng tối đa cho khung, điều này giúp cho các khối HTML trong đó giữ được tính ổn định cao.'
+			}, {
+//				'max_width' : 'number'
+			},
+			data['cf_css_w99'],
+			{
+				'after_html' : 'custom_css_for_body',
+				'input_name' : 'w99'
+			}, {
+				'maxlength' : {
+					'width' : 10
+				}
 			}
 		);
 		
@@ -825,14 +874,14 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'max_width' : 'Chiều rộng tối đa (BODY)',
 				'font_size' : 'Cỡ chữ mặc định',
-				'font_family' : 'Font chữ (toàn trang)'
+				'font_family' : 'Font chữ (font-family toàn trang)'
 			}, {
 //				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn. Gợi ý một số kích thước phổ biến khác mà bạn có thể chọn: HD+ <strong>1600</strong>, Full HD <strong>1920</strong>, QWXGA <strong>2048</strong>, WQHD <strong>2560</strong>.',
 				'max_width' : 'Đây là kích thước lớn nhất của website mà bạn muốn đạt tới, thông thường thì ngưỡng phổ biến là HD 1366px, với các kích thước lớn hơn thì chi phí thiết kế cũng sẽ đắt đỏ hơn.',
 				'font_size' : 'Mặc định sẽ sử dụng cỡ chữ tiêu chuẩn là <strong>13px</strong> (~10pt), bạn có thể thay đổi kích thước này tại đây',
 				'font_family' : 'Font chữ mặc định là <strong>\'Helvetica Neue\', Helvetica, Arial, Tahoma, Verdana, sans-serif</strong>, trường hợp bạn muốn sử dụng font chữ khác, hãy nhập tại đây. <br><span class="orgcolor">* Lưu ý là các font chữ bạn chọn nếu không phải font phổ biến thì cần nhúng font vào website. Khuyên dùng: <a href="https:\/\/fonts.google.com\/" rel="nofollow" target="_blank">https:\/\/fonts.google.com\/</a></span>'
 			}, {
-				'max_width' : 'number'
+//				'max_width' : 'number'
 			},
 //			$('#cf_css_body').val() || '',
 			data['cf_css_body'],

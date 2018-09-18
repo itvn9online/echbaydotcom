@@ -900,7 +900,10 @@ function ___eb_details_product_color () {
 					color_quan = jQuery(this).attr('data-quan') || '',
 					color_price = jQuery(this).attr('data-price') || '',
 					color_size = jQuery(this).attr('data-size') || '',
-					in_sctock = '';
+					color_color = jQuery(this).attr('data-color') || '',
+					in_sctock = '',
+					bg = '',
+					cl = '';
 				
 				// Để trống -> coi như còn hàng
 				if ( color_quan == '' ) {
@@ -918,7 +921,17 @@ function ___eb_details_product_color () {
 					}
 					
 					//
-					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" data-size="' + color_size + '" style="background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ');">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
+					if ( color_color != '' && ( color_color.length == 3 || color_color.length == 6 ) ) {
+						bg = 'background-color:#' + color_color;
+						cl = 'color-color';
+					}
+					else {
+						bg = 'background-image:url(' + ___eb_set_img_to_thumbnail( s ) + ')';
+						cl = '';
+					}
+					
+					//
+					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" data-size="' + color_size + '" data-color="' + color_color + '" class="' + cl + '" style="' + bg + ';">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
 					
 					arr_product_color.push( img_fullsize );
 					
@@ -947,17 +960,22 @@ function ___eb_details_product_color () {
 		jQuery('.oi_product_color li').removeClass('selected');
 //		jQuery(this).addClass('selected');
 		
-		// đổi ảnh đại diện khi click đổi màu
-		jQuery('.thread-details-mobileAvt li').css({
-			'background-image' : 'url(' + ( jQuery(this).attr('data-img') || '' ) + ')'
-		});
-		
 		// Lấy tên màu
 		var color_name = jQuery(this).attr('title') || '',
 			color_img = jQuery(this).attr('data-img') || '',
+			color_color = jQuery(this).attr('data-color') || '',
 			color_price = jQuery(this).attr('data-price') || '',
 			color_size = jQuery(this).attr('data-size') || '',
 			color_node = jQuery(this).attr('data-node') || 0;
+		
+		// đổi ảnh đại diện khi click đổi màu
+		if ( color_color != '' && ( color_color.length == 3 || color_color.length == 6 ) ) {
+		}
+		else {
+			jQuery('.thread-details-mobileAvt li').css({
+				'background-image' : 'url(' + color_img + ')'
+			});
+		}
 		
 		//
 		jQuery('.oi_product_color li[data-node="' + color_node + '"]').addClass('selected');

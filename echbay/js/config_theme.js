@@ -30,16 +30,34 @@ function check_update_config_theme () {
 	
 	
 	// lấy các thuộc tính để CSS cho echbay-blog-avt
-	str += create_css_for_custom_in_js( '.each-to-css-for-blog_avt', 'cf_css_blog_avt', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'blog_avt',
 //		'mobile' : '',
 		'pc' : '.echbay-blog-avt'
 	} );
 	
 	
 	// lấy các thuộc tính để CSS cho thread-list-avt
-	str += create_css_for_custom_in_js( '.each-to-css-for-post_avt', 'cf_css_post_avt', {
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'post_avt',
 //		'mobile' : '',
 		'pc' : '.thread-list-avt'
+	} );
+	
+	
+	// tạo CSS cho khung nội dung của sản phẩm
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'content_product',
+//		'mobile' : '',
+		'pc' : '#content_img_product'
+	} );
+	
+	
+	// tạo CSS cho khung nội dung của blog
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'tintuc_noidung',
+//		'mobile' : '',
+		'pc' : '.echbay-tintuc-noidung'
 	} );
 	
 	
@@ -629,6 +647,12 @@ function WGR_show_bg_for_skins_adminedit () {
 	if ( typeof data['cf_css_blog_avt'] == 'undefined' ) {
 		data['cf_css_blog_avt'] = {};
 	}
+	if ( typeof data['cf_css_tintuc_noidung'] == 'undefined' ) {
+		data['cf_css_tintuc_noidung'] = {};
+	}
+	if ( typeof data['cf_css_content_product'] == 'undefined' ) {
+		data['cf_css_content_product'] = {};
+	}
 //	console.log(data);
 	
 	
@@ -681,6 +705,87 @@ function WGR_show_bg_for_skins_adminedit () {
 //			'input_css' : '',
 //			'after_html' : '',
 			'input_name' : 'post_avt'
+		}
+	);
+	
+	
+	
+	// font-size, line-height của các khung nội dung
+	var arr_font_size = {
+		'' : 'Mặc định',
+		'10px' : '10px',
+		'11px' : '11px',
+		'12px' : '12px',
+		'13px' : '13px',
+		'14px' : '14px',
+		'15px' : '15px',
+		'16px' : '16px',
+		'17px' : '17px',
+		'18px' : '18px',
+		'19px' : '19px',
+		'20px' : '20px',
+		'21px' : '21px',
+		'22px' : '22px',
+		'23px' : '23px',
+		'24px' : '24px',
+		'25px' : '25px',
+		'26px' : '26px',
+		'27px' : '27px',
+		'28px' : '28px',
+		'29px' : '29px',
+		'30px' : '30px'
+	};
+//	console.log( arr_font_size );
+	
+	//
+	load_config_for_custom_logo(
+		{
+			'font_size' : arr_font_size,
+			'line_height' : arr_font_size,
+			'font_family' : ''
+		}, {
+			'font_size' : 'Cỡ chữ mặc định',
+			'line_height' : 'Chiều cao mỗi dòng',
+			'font_family' : 'Font chữ (font-family)'
+		}, {
+		}, {
+		},
+		data['cf_css_tintuc_noidung'],
+		{
+//			'after_html' : 'custom_css_for_custom_css',
+			'input_name' : 'tintuc_noidung'
+			/*
+		}, {
+			'maxlength' : {
+				'font_family' : 10
+			}
+			*/
+		}
+	);
+	
+	//
+	load_config_for_custom_logo(
+		{
+			'font_size' : arr_font_size,
+			'line_height' : arr_font_size,
+			'font_family' : ''
+		}, {
+			'font_size' : 'Cỡ chữ mặc định',
+			'line_height' : 'Chiều cao mỗi dòng',
+			'font_family' : 'Font chữ (font-family)'
+		}, {
+		}, {
+		},
+		data['cf_css_content_product'],
+		{
+//			'after_html' : 'custom_css_for_custom_css',
+			'input_name' : 'content_product'
+			/*
+		}, {
+			'maxlength' : {
+				'font_family' : 10
+			}
+			*/
 		}
 	);
 	

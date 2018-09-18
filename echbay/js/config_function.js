@@ -82,10 +82,10 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 	}
 	
 	//
-	if ( typeof op['input_css'] == 'undefined' ) {
+	if ( typeof op['input_css'] == 'undefined' || typeof op['input_css'] == '' ) {
 		op['input_css'] = 'each-to-css-for-' + op['input_name'];
 	}
-	if ( typeof op['after_html'] == 'undefined' ) {
+	if ( typeof op['after_html'] == 'undefined' || typeof op['after_html'] == '' ) {
 		op['after_html'] = 'custom_css_for_' + op['input_name'];
 	}
 //	console.log( op );
@@ -172,12 +172,30 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 	}
 	
 	//
+	console.log( 'After HTML ' + op['after_html'] );
 	$('#' + op['after_html']).after(str);
 }
 
 function create_css_for_custom_in_js ( clat, jd, cs ) {
 //	str += (function ( clat, jd, cs ) {
 //	$('.each-to-css-for-logo').off('change').change(function () {
+		
+		// tạo class để gọi tới chức năng lấy nội dung
+		if ( typeof cs['for'] == 'undefined' || cs['for'] == '' ) {
+			cs['for'] = cs['pc'];
+		}
+		
+		if ( clat == '' ) {
+			clat = '.each-to-css-for-' + cs['for'];
+		}
+		
+		if ( jd == '' ) {
+			jd = 'cf_css_' + cs['for'];
+		}
+		console.log('Each to CSS in: ' + clat + '/ ' + jd);
+		
+		
+		//
 		var str = '',
 			str_mobile = '',
 			arr = {};
