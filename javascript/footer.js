@@ -959,6 +959,16 @@ ___eb_click_open_video_popup();
 
 
 
+// ẩn các khối không có dữ liệu
+jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
+	if ( jQuery('li', this).length == 0 ) {
+		jQuery(this).hide();
+	}
+});
+
+
+
+
 //
 //jQuery('.fa').addClass('fas').removeClass('fa');
 
