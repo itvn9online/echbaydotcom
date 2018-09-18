@@ -1058,7 +1058,6 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	bottom: 20px;
 	border: 1px #ccc solid;
 	border-bottom: 0 none;
-	background: rgba( 255, 255, 255, .8 );
 	box-shadow: 0 0 20px #ccc;
 	min-width: 220px;
 	cursor: pointer;
@@ -1068,20 +1067,21 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	-webkit-transition: all 0.8s ease;
 	transition: all 0.8s ease;
 	overflow: hidden;
+	height: 41px;
 }
 .edit-post-wgr-tab:hover {
-	background: #fff;
 	overflow: auto;
+	height: auto;
 }
 .edit-post-wgr-tab li {
 	border-bottom: 1px #ccc solid;
 	margin: 0;
 	padding: 10px;
-	display: none;
+	line-height: 20px;
+	background: rgba( 255, 255, 255, .8 );
 }
 .edit-post-wgr-tab li:hover { text-decoration: underline; }
-.edit-post-wgr-tab li:first-child,
-.edit-post-wgr-tab:hover li { display: block; }
+.edit-post-wgr-tab:hover li { background: #fff; }
 /* */
 .echbay-subsubsub {
 	margin: 10px 0;
