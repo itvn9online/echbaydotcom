@@ -129,13 +129,15 @@ body.style-for-mobile {
 /* chỉnh padding mặc định cho 1 số hạng mục, giúp cho content dễ coi hơn chút */
 .style-for-mobile #webgiare__top .fullsize-if-mobile,
 .style-for-mobile #webgiare__footer .fullsize-if-mobile { padding: 0 1%; }
+/*
 .style-for-mobile .thread-details-title,
 .style-for-mobile .thread-module-name,
 .style-for-mobile .blogs-module-name,
+*/
 /* .style-for-mobile #main-content, */
 /* .style-for-mobile .fullsize-if-mobile .footer-address, */
 .style-for-mobile .mobile-padding { padding: 0 8px; }
-.style-for-mobile .fullsize-if-mobile .thread-details-title { padding: 0; }
+/* .style-for-mobile .fullsize-if-mobile .thread-details-title { padding: 0; } */
 /* */
 .style-for-mobile .jEBE_slider-position {
 	overflow-y: hidden;
