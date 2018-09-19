@@ -973,18 +973,21 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 		jEBE_active_swipe_slider[ jd ] = true;
 		
 		//
+//		var str_process = jd;
+//		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+//		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		if ( jQuery( jd + ' .echbay-blog-left' ).length > 0 ) {
+			str_process = jd + ' .echbay-blog-left, ' + jd + ' .banner-ads-media';
+		}
+		
+		//
 		if ( cf_tester_mode == 1 ) {
 			console.log( 'Swipe mobile for ' + jd + ', ' + jd_to_class );
 			console.log( 'Config of swipe:' );
 			console.log( conf );
+			console.log( 'Process: ' + str_process );
 		}
-		
-		//
-//		var str_process = jd;
-//		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
-//		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
-//		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
-		var str_process = jd + ' .echbay-blog-left, ' + jd + ' .banner-ads-media';
 		
 		//
 		jQuery( jd ).addClass('jEBE_swipe_slider');
@@ -1063,7 +1066,7 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 		console.log( WGR_show_try_catch_err( e ) );
 		
 		//
-		jEBE_active_swipe_slider[ jd ] = false;
+//		jEBE_active_swipe_slider[ jd ] = false;
 	}
 }
 
