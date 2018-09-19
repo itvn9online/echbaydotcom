@@ -21,7 +21,7 @@ $file_optimize_jquery_js = array(
 //	$dir_optimize_jquery_js . 'jcarousellite.js',
 	$dir_optimize_jquery_js . 'lazyload.js',
 //	$dir_optimize_jquery_js . 'swiper.min.js',
-	$dir_optimize_jquery_js . 'jquery.touchSwipe.min.js',
+	$dir_optimize_jquery_js . 'jquery.touchSwipe.min.js'
 //) );
 );
 

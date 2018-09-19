@@ -966,7 +966,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 
 function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 	try {
-		if ( typeof jEBE_active_swipe_slider[ jd ] != 'undefined' ) {
+		if ( typeof jEBE_active_swipe_slider[ jd ] != 'undefined' && jEBE_active_swipe_slider[ jd ] == true ) {
 			if ( cf_tester_mode == 1 ) console.log( 'Swipe runing... ' + jd );
 			return false;
 		}
@@ -1061,6 +1061,9 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 		});
 	} catch ( e ) {
 		console.log( WGR_show_try_catch_err( e ) );
+		
+		//
+		jEBE_active_swipe_slider[ jd ] = false;
 	}
 }
 
