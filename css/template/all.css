@@ -59,7 +59,35 @@
 	-webkit-transition: all 0.8s ease;
 	transition: all 0.8s ease;
 }
-/* ==================================  ================================== */
+/* ================================== quick-register ================================== */
+#aabbcc .hpsbnlbx {
+	position: relative;
+	background: #fff;
+	max-width: 450px;
+}
+#aabbcc .quick-register-left { }
+#aabbcc .quick-register-hoten { display: none; }
+#aabbcc .quick-register-hoten input[type="text"] { }
+#aabbcc .quick-register-phone { }
+#aabbcc .quick-register-phone input[type="text"] { }
+#aabbcc .quick-register-email { }
+#aabbcc .quick-register-email input[type="email"] {
+	width: 85%;
+	padding-left: 6px;
+	height: 35px;
+}
+#aabbcc .quick-register-submit { }
+#aabbcc .quick-register-submit button {
+	position: absolute;
+	top: 0px;
+	right: 0;
+	bottom: 0;
+	width: 15%;
+	background-color: #333;
+	border: 0 none;
+	color: #fff;
+	text-transform: uppercase;
+}
 /* ==================================  ================================== */
 /* ==================================  ================================== */
 /* ==================================  ================================== */
