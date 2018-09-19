@@ -976,7 +976,10 @@ function jEBE_swipe_slider ( jd, jd_to_class, conf ) {
 //		var str_process = jd;
 //		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
 //		var str_process = jd + ' ul li a, ' + jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		
+		// swipe trên nút chuyển ảnh
 		var str_process = jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight';
+		// nếu là blog hoặc ads -> swipe trên banner luôn
 		if ( jQuery( jd + ' .echbay-blog-left' ).length > 0 ) {
 			str_process = jd + ' .echbay-blog-left, ' + jd + ' .banner-ads-media';
 		}
