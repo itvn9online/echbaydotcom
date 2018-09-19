@@ -19,7 +19,7 @@ else if ( $__cf_row ["cf_blog_public"] == 0 ) {
 
 
 //
-if ( $__cf_row ["cf_phone_detection"] == 0 ) {
+if ( $__cf_row ["cf_phone_detection"] != 1 ) {
 	echo '<meta name="format-detection" content="telephone=no">' . "\n";
 }
 
