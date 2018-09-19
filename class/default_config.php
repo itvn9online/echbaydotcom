@@ -243,6 +243,9 @@ $__cf_row_default = array(
 	// Với các website nâng cấp từ version 1 lên version, URL có thể sẽ khác nhau -> dùng chức năng này để đồng bộ
 	'cf_echbay_migrate_version' => 'off',
 	
+	// tự động định dạng số điện thoại
+	'cf_phone_detection' => 'off',
+	
 	// bật tắt chế độ tự động redirect sang url mới của wp
 	'cf_redirecting_matched_slugs' => 1,
 	

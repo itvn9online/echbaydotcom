@@ -23,7 +23,6 @@ echo WGR_show_header_favicon();
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE AUTHOR" content="EchBay.Com" />
 <meta name="COPYRIGHT" content="Copyright (c) 2011 by EchBay.com - lienhe@echbay.com" />
-<!-- <meta name="format-detection" content="telephone=no"> -->
 <!-- // META for design by EchBay -->
 <?php
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
