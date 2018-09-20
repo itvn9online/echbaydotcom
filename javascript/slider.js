@@ -541,18 +541,18 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			jQuery(jd + ' .banner-youtube-video').html('&nbsp;');
 			
 			// tạm dừng các video đang phát
-			$('.banner-mp4-video video').each(function () {
-				var video_id = $(this).attr('id') || '';
+			jQuery('.banner-mp4-video video').each(function () {
+				var video_id = jQuery(this).attr('id') || '';
 				
 				if ( video_id != '' ) {
 					dog(video_id).pause();
-					$(this).hide();
+					jQuery(this).hide();
 					
 					//
 					console.log('Pause video #' + video_id);
 				}
 				else {
-					$(this).get(0).pause();
+					jQuery(this).get(0).pause();
 				}
 			});
 			

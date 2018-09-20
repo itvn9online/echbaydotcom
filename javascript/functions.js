@@ -148,14 +148,14 @@ function WGR_html_alert ( m ) {
 	}
 	
 	//
-	$('#WGR_html_alert').html( '<div>' + m + '</div>' ).fadeIn().off('click').click(function () {
-		$('#WGR_html_alert').fadeOut();
+	jQuery('#WGR_html_alert').html( '<div>' + m + '</div>' ).fadeIn().off('click').click(function () {
+		jQuery('#WGR_html_alert').fadeOut();
 	});
 	
 	//
 	clearTimeout( time_for_hide_html_alert );
 	time_for_hide_html_alert = setTimeout(function () {
-		$('#WGR_html_alert').fadeOut(2000);
+		jQuery('#WGR_html_alert').fadeOut(2000);
 	}, 5000);
 }
 
