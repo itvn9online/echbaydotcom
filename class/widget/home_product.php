@@ -159,6 +159,9 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		else if ( $cat_name == '' ) {
 			$cat_name = EBE_get_lang('home_new');
 		}
+		else {
+			$cat_name = WGR_widget_title_with_bbcode($cat_name, false);
+		}
 		
 		// nếu có set size riêng -> gán cái size này vào
 		if ( $custom_size != '' ) {
@@ -202,7 +205,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
 			'tmp.cat_name' => $cat_name,
 			'tmp.cat_count' => $cat_count,
-			'tmp.description' => $description,
+			'tmp.description' => WGR_widget_title_with_bbcode( $description, false ),
 			'tmp.more_link' => $more_link,
 			
 			// danh sách nhóm cấp 2

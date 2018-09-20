@@ -98,6 +98,7 @@ label,
 /*
 .title-center .echbay-widget-title a { }
 */
+.title-center .home-list-desc,
 .title-center .home-hot-title,
 .title-center .home-hot-desc,
 .title-center .details-other-title,
@@ -112,8 +113,17 @@ label,
 .title-center .thread-home-c2 {
 	text-align: center;
 	border: 0 none;
+	margin: 0;
 }
-.title-center .thread-home-c2:before {
+.title-center .thread-home-c2:before { display: none; }
+.title-center .thread-home-c2 h2:first-child { background: none; }
+.title-center .thread-home-c2 a { color: #000 !important; }
+.title-center .home-list-list { margin-top: 15px; }
+/* */
+.title-bold .echbay-widget-title { font-weight: bold; }
+.title-upper .echbay-widget-title { text-transform: uppercase; }
+/* */
+.title-line .thread-home-c2:after {
 	height: 1px;
 	border-bottom: 1px #ccc solid;
 	left: 0;
@@ -122,15 +132,11 @@ label,
 	top: 50%;
 	width: auto;
 }
-.title-center .thread-home-c2 h2 {
+.title-line .thread-home-c2 h2 {
 	background: #fff !important;
 	position: relative;
 }
-.title-center .thread-home-c2 h2:first-child { }
-.title-center .thread-home-c2 a { color: #000 !important; }
 /* */
-.title-bold .echbay-widget-title { font-weight: bold; }
-.title-upper .echbay-widget-title { text-transform: uppercase; }
 .title-line .echbay-widget-title,
 .title-line .echbay-widget-title div { position: relative; }
 .title-line .echbay-widget-title {
