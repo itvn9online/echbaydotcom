@@ -560,28 +560,13 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	// Tách lấy từng dòng -> để tạo style cho thống nhất
 	a = a.split("\n");
 	
-	// 1 dòng thì cũng bỏ qua luôn
-	if ( a.length <= 1 ) {
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('thread-details-comment is one line');
-		return false;
-	}
 	
-	// dữ liệu phụ họa
-	if ( typeof a_before == 'undefined' ) {
-		a_before = '';
-	}
-	
-	if ( typeof a_after == 'undefined' ) {
-		a_after = '';
-	}
-	
-	// bắt đầu tạo style
-	for (var i = 0; i < a.length; i++) {
-		a[i] = g_func.trim( a[i] );
-		
-		if ( a[i] != '' ) {
-			// tạo dưới dạng bảng -> cho vào bảng post options luôn
-			if ( WGR_check_option_on( cf_options_excerpt ) ) {
+	// tạo dưới dạng bảng -> cho vào bảng post options luôn
+	if ( WGR_check_option_on( cf_options_excerpt ) ) {
+		for (var i = 0; i < a.length; i++) {
+			a[i] = g_func.trim( a[i] );
+			
+			if ( a[i] != '' ) {
 				var a_bold = a[i].split(':');
 				
 				// in đậm đề mục
@@ -598,23 +583,54 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 				//
 				jQuery('.thread-details-options').append( '<tr>' + a_bold.join('') + '</tr>' );
 			}
+		}
+		
+		//
+		jQuery('.thread-details-comment').hide();
+		
+		//
+		return false;
+	}
+	
+	
+	// 1 dòng thì cũng bỏ qua luôn
+	if ( a.length <= 1 ) {
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('thread-details-comment is one line');
+		return false;
+	}
+	
+	// dữ liệu phụ họa
+	if ( typeof a_before == 'undefined' ) {
+		a_before = '';
+	}
+	
+	if ( typeof a_after == 'undefined' ) {
+		a_after = '';
+	}
+//	console.log( WGR_check_option_on( cf_options_excerpt ) );
+	
+	// bắt đầu tạo style
+	for (var i = 0; i < a.length; i++) {
+		a[i] = g_func.trim( a[i] );
+		
+		if ( a[i] != '' ) {
 			// Tạo LI thông thường
-			else {
-				// in đậm đề mục
-				if ( WGR_check_option_on( cf_details_bold_excerpt ) ) {
-					var a_bold = a[i].split(':');
-					a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
-					
-					a[i] = a_bold.join(':');
-				}
+			// in đậm đề mục
+			if ( WGR_check_option_on( cf_details_bold_excerpt ) ) {
+				var a_bold = a[i].split(':');
+				a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
 				
-				str += '<li>' + a_before + a[i] + a_after + '</li>';
+				a[i] = a_bold.join(':');
 			}
+			
+			str += '<li>' + a_before + a[i] + a_after + '</li>';
 		}
 	}
 	
 	// In ra dữ liệu mới
-	jQuery('.thread-details-comment').show().html( '<ul>' +str+ '</ul>' );
+	if ( str != '' ) {
+		jQuery('.thread-details-comment').show().html( '<ul>' +str+ '</ul>' );
+	}
 	
 }
 
