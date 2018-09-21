@@ -2260,6 +2260,7 @@ iframe[name="google_conversion_frame"] {
 .fb-comments {
 	background: #fff;
 	width: 99.8%;
+	z-index: 9;
 }
 .add-to-favorite.selected i.fa-heart-o:before { content: "\f004"; }
 /* quick view */
