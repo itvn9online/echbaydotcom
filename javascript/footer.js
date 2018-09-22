@@ -969,6 +969,31 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 
+// tạo nút share lên các mạng xã hội
+(function () {
+	var url = encodeURIComponent( post_canonical_url ),
+		des = encodeURIComponent( jQuery('meta[name="description"]').attr('content') || '' ),
+		arr = {
+		'facebook' : 'https://facebook.com/sharer/sharer.php?u=' + url,
+		'google' : 'https://plus.google.com/share?url=' + url,
+		'twitter' : 'https://twitter.com/share?url=' + url + '&amp;text=' + des,
+		'linkedin' : 'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + url,
+		'pinterest' : 'https://pinterest.com/pin/create/bookmarklet/?&amp;url=' + url + '&amp;description=' + des
+	},
+	str = '';
+	
+	//
+	for ( var x in arr ) {
+		str += '<div class="jssocials-share jssocials-share-' + x + '"><a rel="nofollow" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffu-05.web4s.vn%2Fthanh-truot-sen-tam-loai-vuong-toto-tbw02011b.html" class="jssocials-share-link"><i class="fa fa-' + x + ' jssocials-share-logo"></i></a></div>';
+	}
+	
+	//
+	jQuery('.each-to-share-social').html( str ).addClass('jssocials-shares');
+})();
+
+
+
+
 //
 //jQuery('.fa').addClass('fas').removeClass('fa');
 

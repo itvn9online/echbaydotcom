@@ -38,6 +38,8 @@ $_POST['cf_disable_auto_get_thumb'] = WGR_default_config('cf_disable_auto_get_th
 
 $_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
 
+$_POST['cf_details_show_share_button'] = WGR_default_config('cf_details_show_share_button');
+
 $_POST['cf_details_short_quick_cart'] = WGR_default_config('cf_details_short_quick_cart');
 
 $_POST['cf_required_name_cart'] = WGR_default_config('cf_required_name_cart');

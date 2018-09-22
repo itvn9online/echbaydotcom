@@ -660,6 +660,10 @@ $str_for_details_top_sidebar = '';
 $product_gallery = '';
 $product_list_color = '';
 $wgr_comment_list = '';
+$each_to_share_social = '';
+if ( $__cf_row['cf_details_show_share_button'] == 1 ) {
+	$each_to_share_social = WGR_get_html_template_lang( 'share_to_social' );
+}
 
 //
 $post_buy_size_color = '';
@@ -859,11 +863,13 @@ $arr_main_content = array(
 	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
 	
 	'tmp.post-buy-size-color' => $post_buy_size_color,
+	'tmp.each-to-share-social' => $each_to_share_social,
 	'tmp.post-buy-bottom' => $post_buy_bottom,
 	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
 	'tmp.lang_details_tu_van' => EBE_get_lang('details_tu_van'),
+	'tmp.lang_details_share' => EBE_get_lang('details_share'),
 	
 	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
 	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
@@ -1056,6 +1062,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	pid=' . $pid . ',
 	eb_site_comment_open=' . $eb_site_comment_open . ',
 	con_hay_het=' . $con_hay_het . ',
+	post_canonical_url="' . $url_og_url . '",
 	product_js={' . substr ( $product_js, 1 ) . '},
 	arr_product_size="' . $product_size . '",
 	arr_product_color=[],

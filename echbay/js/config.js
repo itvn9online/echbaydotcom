@@ -936,6 +936,7 @@ else {
 	show_note_for_checkbox_config( 'cf_required_name_cart' );
 	show_note_for_checkbox_config( 'cf_required_email_cart' );
 	show_note_for_checkbox_config( 'cf_required_address_cart' );
+	show_note_for_checkbox_config( 'cf_details_show_share_button' );
 	show_note_for_checkbox_config( 'cf_details_excerpt' );
 	show_note_for_checkbox_config( 'cf_details_bold_excerpt' );
 	show_note_for_checkbox_config( 'cf_options_excerpt' );

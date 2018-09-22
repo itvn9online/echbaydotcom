@@ -677,7 +677,21 @@ function _eb_echo_widget_name ( $name, $before_widget ) {
 	echo '<!-- Widget name: ' . $name . ' -->' . "\n" . $before_widget;
 }
 
-function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
+function WGR_widget_title_remove_bbcode ( $str ) {
+	return WGR_widget_title_with_bbcode( $str, true );
+}
+
+function WGR_widget_title_with_bbcode ( $str, $remove_tag = false ) {
+	/*
+	echo strstr( $str, '[' ) . '<br>';
+	if ( strstr( $str, '[' ) == false || strstr( $str, ']' ) == false ) {
+		return $str;
+	}
+	*/
+//	echo $str . '<br>' . "\n";
+	$str = str_replace('&#8221;', '"', $str);
+//	$str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
+	
 	// danh sách các tag được hỗ trợ
 	$arr = array(
 		'span' => 'span',
@@ -688,7 +702,7 @@ function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 		'u' => 'u'
 	);
 	
-	//
+	// revmoe bbcode
 	if ( $remove_tag == true ) {
 		foreach ( $arr as $k => $v ) {
 			$str = str_replace( '[' . $k . ']', '', $str );
@@ -699,6 +713,7 @@ function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 			$str = preg_replace($pattern, '', $str);
 		}
 	}
+	// add bbcode
 	else {
 		foreach ( $arr as $k => $v ) {
 			$str = str_replace( '[' . $k . ']', '<' . $v . '>', $str );
@@ -710,6 +725,7 @@ function WGR_widget_title_with_bbcode ( $str, $remove_tag = true ) {
 			$str = str_replace( "']", "'>", $str );
 		}
 	}
+//	echo $str . '<br>' . "\n";
 	
 	//
 	return $str;
@@ -735,7 +751,7 @@ function _eb_get_echo_widget_title (
 //	echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
 	return '
 	<div class="echbay-widget-title ' . $clat . '">
-		<' . $dynamic_tag . ' title="' . WGR_widget_title_with_bbcode( strip_tags( $title ) ) . '" class="echbay-widget-node-title ' . $before_title . '">' . WGR_widget_title_with_bbcode( $title, false ) . '</' . $dynamic_tag . '>
+		<' . $dynamic_tag . ' title="' . WGR_widget_title_remove_bbcode( strip_tags( $title ) ) . '" class="echbay-widget-node-title ' . $before_title . '">' . WGR_widget_title_with_bbcode( $title ) . '</' . $dynamic_tag . '>
 	</div>';
 }
 

@@ -129,7 +129,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,
-				'tmp.home_hot_title' => $title,
+				'tmp.home_hot_title' => WGR_widget_title_with_bbcode( $title ),
 				'tmp.home_hot' => $str_same_price
 			) );
 			

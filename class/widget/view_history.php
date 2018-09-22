@@ -190,6 +190,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
+//		echo WGR_widget_title_with_bbcode( $title ) . '<br>' . "\n";
 		
 		
 		//
@@ -198,7 +199,7 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			
 			echo WGR_show_home_hot( array(
 				'tmp.num_post_line' => $num_line,
-				'tmp.home_hot_title' => $title,
+				'tmp.home_hot_title' => WGR_widget_title_with_bbcode( $title ),
 				'tmp.home_hot' => $str_view_history
 			) );
 			

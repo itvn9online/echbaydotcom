@@ -806,7 +806,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		);
 		
 		if ( $description != '' ) {
-			$widget_title .= '<div class="echbay-widget-blogs-desc">' . WGR_widget_title_with_bbcode( $description, false ) . '</div>';
+			$widget_title .= '<div class="echbay-widget-blogs-desc">' . WGR_widget_title_with_bbcode( $description ) . '</div>';
 		}
 //		echo $description;
 	}

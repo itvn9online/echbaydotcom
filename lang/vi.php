@@ -43,6 +43,7 @@ $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_sit
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
 $___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
+$___eb_lang[eb_key_for_site_lang . 'details_share'] = 'Chia sẻ';
 
 //
 $eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
