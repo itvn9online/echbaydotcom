@@ -95,6 +95,12 @@ $___eb_lang[eb_key_for_site_lang . 'post_buy_bottom'] = 'post_buy_bottom';
 $eb_type_lang[eb_key_for_site_lang . 'post_buy_bottom'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'post_buy_bottom'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/post_buy_bottom.html';
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'share_to_social'] = 'Mã html để tạo vòng lặp các nút chia sẻ trên mạng xã hội';
+$___eb_lang[eb_key_for_site_lang . 'share_to_social'] = 'share_to_social';
+$eb_type_lang[eb_key_for_site_lang . 'share_to_social'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'share_to_social'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/share_to_social.html';
+
 
 //
 $___eb_lang[eb_key_for_site_lang . 'thread_list_mua'] = '<i class="fa fa-shopping-cart"></i> Mua ngay';
