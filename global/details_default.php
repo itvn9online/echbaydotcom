@@ -663,6 +663,8 @@ $wgr_comment_list = '';
 $each_to_share_social = '';
 if ( $__cf_row['cf_details_show_share_button'] == 1 ) {
 	$each_to_share_social = WGR_get_html_template_lang( 'share_to_social' );
+	
+	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/share_to_social.css' ] = 1;
 }
 
 //

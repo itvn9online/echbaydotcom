@@ -1,0 +1,42 @@
+.each-to-share-social { }
+.each-to-share-social div {
+	display: inline-block;
+	margin-right: 8px;
+}
+.each-to-share-social a {
+	background: #c00;
+	border: 1px solid #c00;
+	display: block;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	border-radius: 50%;
+	box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.15);
+	color: #fff;
+	font-size: 14px;
+	-webkit-transition: background 200ms ease-in-out;
+	transition: background 200ms ease-in-out;
+}
+.each-to-share-social .jssocials-share-facebook a {
+	background: #3b5998;
+	border: 1px solid #344e86;
+}
+.each-to-share-social .jssocials-share-google a {
+	background: #dd4b39;
+	border: 1px solid #d73925;
+}
+.each-to-share-social .jssocials-share-twitter a {
+	background: #00aced;
+	border: 1px solid #0099d4;
+}
+.each-to-share-social .jssocials-share-linkedin a {
+	background: #007bb6;
+	border: 1px solid #006a9d;
+}
+.each-to-share-social .jssocials-share-pinterest a {
+	background: #cb2027;
+	border: 1px solid #b51d23;
+}
+.each-to-share-social a:hover { opacity: .8; }
+.each-to-share-social i { }
