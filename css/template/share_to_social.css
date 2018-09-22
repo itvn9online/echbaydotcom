@@ -1,4 +1,3 @@
-.each-to-share-social { }
 .each-to-share-social div {
 	display: inline-block;
 	margin-right: 8px;
@@ -39,4 +38,3 @@
 	border: 1px solid #b51d23;
 }
 .each-to-share-social a:hover { opacity: .8; }
-.each-to-share-social i { }

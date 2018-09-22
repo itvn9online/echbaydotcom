@@ -984,7 +984,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 	
 	//
 	for ( var x in arr ) {
-		str += '<div class="jssocials-share jssocials-share-' + x + '"><a rel="nofollow" target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffu-05.web4s.vn%2Fthanh-truot-sen-tam-loai-vuong-toto-tbw02011b.html" class="jssocials-share-link"><i class="fa fa-' + x + ' jssocials-share-logo"></i></a></div>';
+		str += '<div class="jssocials-share jssocials-share-' + x + '"><a rel="nofollow" target="_blank" href="' + arr[x] + '" class="jssocials-share-link"><i class="fa fa-' + x + ' jssocials-share-logo"></i></a></div>';
 	}
 	
 	//
