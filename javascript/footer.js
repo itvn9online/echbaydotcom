@@ -971,6 +971,11 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 // tạo nút share lên các mạng xã hội
 (function () {
+	if ( pid == 0 || typeof post_canonical_url == 'undefined' || post_canonical_url == '' ) {
+		return false;
+	}
+	
+	//
 	var url = encodeURIComponent( post_canonical_url ),
 		des = encodeURIComponent( jQuery('meta[name="description"]').attr('content') || '' ),
 		arr = {
