@@ -2,6 +2,12 @@
 
 
 //
+/*
+$eb_user_info = wp_get_current_user();
+print_r( $eb_user_info );
+*/
+
+//
 if ( mtv_id == 0 ) {
 	die('For user only');
 }
