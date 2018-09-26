@@ -407,7 +407,7 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
-$eb_note_first_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết sản phẩm</strong>';
+$eb_note_first_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết sản phẩm</strong>. Cách sử dụng: <strong>{tmp.lang_}</strong>post_custom_text';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text'] = 'Post custom text';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text1'] = 'Post custom text 1';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text2'] = 'Post custom text 2';

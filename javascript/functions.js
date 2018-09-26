@@ -382,6 +382,10 @@ function ajaxl( url, id, bg, callBack, ajax_option ) {
 }
 
 
+function _alert(m) {
+	WGR_html_alert(m);
+}
+
 function a_lert(m) {
 	WGR_html_alert(m);
 	/*
