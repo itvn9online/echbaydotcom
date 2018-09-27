@@ -2620,15 +2620,28 @@ var _global_js_eb = {
 		
 		//
 		setTimeout(function () {
+			
 			//
 			if ( top != self ) {
 				parent.window.location = web_link + 'cart/';
 			}
 			// Hiển thị bình thường
 			else {
-				window.location = web_link + 'cart/';
-//				window.location = web_link + 'cart/?id=' + new_cart_id;
+				// mở trong iframe
+				if ( typeof action_obj.open_iframe != 'undefined' && action_obj.open_iframe == 1  ) {
+					// nạp iframe
+					_global_js_eb.add_primari_iframe();
+					
+					//
+					window.open( web_link + 'cart/', 'target_eb_iframe' );
+				}
+				// mở trong cửa sổ hiện tại
+				else {
+					window.location = web_link + 'cart/';
+//					window.location = web_link + 'cart/?id=' + new_cart_id;
+				}
 			}
+			
 		}, time_to_cart );
 		
 		/*

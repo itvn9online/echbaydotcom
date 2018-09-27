@@ -3569,7 +3569,8 @@ setTimeout(function () {
 		
 		//
 		var product_price = jQuery(this).attr('data-gia') || jQuery(this).attr('data-price') || '',
-			product_object = {};
+			product_object = {},
+			tr = $(this).attr('data-open-iframe') || '';
 		
 		//
 		if ( product_price == '' ) {
@@ -3589,6 +3590,11 @@ setTimeout(function () {
 					product_price = product_js.gm;
 				}
 			}
+		}
+		
+		//
+		if ( tr == 1 || tr == '1' ) {
+			product_object.open_iframe = 1;
 		}
 		
 		//
