@@ -37,7 +37,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 }
 
 
-function _eb_load_post_obj ( $posts_per_page, $_eb_query ) {
+function _eb_load_post_obj ( $posts_per_page, $_eb_query = array() ) {
 	
 	//
 	$arr['post_type'] = 'post';

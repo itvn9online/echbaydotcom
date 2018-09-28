@@ -975,6 +975,7 @@ if ( $bai_san_pham == true ) {
 	//
 	if ( $__post->post_type == 'post' ) {
 		$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
+//		echo $_eb_product_ngayhethan . '<br>';
 		$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
 		if ( $_eb_product_ngayhethan != '' ) {
 			if ( $_eb_product_giohethan == '' ) {
@@ -989,6 +990,17 @@ if ( $bai_san_pham == true ) {
 				$trv_ngayhethan = $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan;
 //				echo $trv_ngayhethan;
 				$trv_ngayhethan = strtotime( $trv_ngayhethan );
+//				echo $trv_ngayhethan . '<br>';
+				
+				// nếu sản phẩm hết hạn
+				if ( $trv_ngayhethan > 0 && $trv_ngayhethan < date_time ) {
+					if ( $trv_giaban > 0 && $trv_giaban > $trv_giamoi && $trv_giamoi > 0 ) {
+						// cập nhật lại giả phẩm
+						WGR_update_meta_post( $pid, '_eb_product_oldprice', 0 );
+						WGR_update_meta_post( $pid, '_eb_product_price', $trv_giaban );
+					}
+					$trv_ngayhethan = 0;
+				}
 			}
 		}
 		
