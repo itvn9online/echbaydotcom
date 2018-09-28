@@ -946,6 +946,7 @@ else {
 	show_note_for_checkbox_config( 'cf_blog_rm_img_width' );
 	show_note_for_checkbox_config( 'cf_blogs_content_bottom' );
 	show_note_for_checkbox_config( 'cf_set_mask_for_details' );
+	show_note_for_checkbox_config( 'cf_update_price_if_hethan' );
 }
 
 

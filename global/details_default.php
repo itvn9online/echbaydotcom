@@ -993,7 +993,7 @@ if ( $bai_san_pham == true ) {
 //				echo $trv_ngayhethan . '<br>';
 				
 				// nếu sản phẩm hết hạn
-				if ( $trv_ngayhethan > 0 && $trv_ngayhethan < date_time ) {
+				if ( $__cf_row['cf_update_price_if_hethan'] == 1 && $trv_ngayhethan > 0 && $trv_ngayhethan < date_time ) {
 					if ( $trv_giaban > 0 && $trv_giaban > $trv_giamoi && $trv_giamoi > 0 ) {
 						// cập nhật lại giả phẩm
 						WGR_update_meta_post( $pid, '_eb_product_oldprice', 0 );

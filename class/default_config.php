@@ -222,6 +222,9 @@ $__cf_row_default = array(
 	// Tạo mặt nạ bảo vệ copy nội dung theo cách thông thường
 	'cf_set_mask_for_details' => 'off',
 	
+	// chuyển về 1 giá sau khi hết hạn khuyến mại
+	'cf_update_price_if_hethan' => 'off',
+	
 	// vị trí của đơn vị tiền tệ
 	'cf_current_price' => '',
 	'cf_current_price_before' => 'off',
