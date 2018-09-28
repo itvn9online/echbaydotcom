@@ -2303,7 +2303,8 @@ function ___eb_details_post_run ( r ) {
 			// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
 			if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
 				dog('oi_time_line').innerHTML = lang_details_time_soldout;
-				jQuery('#' + id_for_show).removeClass('bold');
+				jQuery('#' + id_for_show).removeClass('bold').addClass('product-soldout');
+				jQuery('.details-ankhi-hethang').hide();
 			}
 			// điều chỉnh class theo style riêng
 			else {
