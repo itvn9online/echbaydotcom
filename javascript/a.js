@@ -652,14 +652,15 @@ if ( jQuery('.each-to-bgimg').length > 0 ) {
 
 // Hủy lưu URL mỗi khi người dùng bấm vào link
 //jQuery('#adminmenu a').click(function () {
-jQuery('#adminmenu, a, #toplevel_page_eb-order a').click(function () {
-	// Nếu phiên lưu URL đã hết hạn
-	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
-		// -> lưu phiên mới luôn
-		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
-//		g_func.setc( 'wgr_last_url_user_visit', '', 60 );
-	}
+	/*
+jQuery('#toplevel_page_eb-order a').click(function () {
 });
+*/
+
+// tự động lưu phiên định kỳ
+setInterval(function () {
+	g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
+}, 1800);
 
 // chỉ lưu cookie khi người dùng bấm vào link của EchBay
 jQuery('#toplevel_page_eb-order a').click(function () {
@@ -667,6 +668,13 @@ jQuery('#toplevel_page_eb-order a').click(function () {
 	var a = jQuery(this).attr('href') || '';
 	if ( a != '' ) {
 		g_func.setc( 'wgr_last_url_user_visit', escape( a ), 0, 7 );
+	}
+	
+	// Nếu phiên lưu URL đã hết hạn
+	if ( g_func.getc('wgr_check_last_user_visit') == null ) {
+		// -> lưu phiên mới luôn
+		g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
+//		g_func.setc( 'wgr_last_url_user_visit', '', 60 );
 	}
 });
 
