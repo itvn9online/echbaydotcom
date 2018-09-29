@@ -660,7 +660,7 @@ jQuery('#toplevel_page_eb-order a').click(function () {
 // tự động lưu phiên định kỳ
 setInterval(function () {
 	g_func.setc( 'wgr_check_last_user_visit', 'webgiare.org', 2 * 3600 );
-}, 1800);
+}, 1800 * 1000);
 
 // chỉ lưu cookie khi người dùng bấm vào link của EchBay
 jQuery('#toplevel_page_eb-order a').click(function () {

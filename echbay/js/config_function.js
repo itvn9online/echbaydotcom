@@ -50,8 +50,9 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 	var str = '',
 		str_input = '',
 		sl = '',
-		// ký tự tối đa cảu input text
+		// ký tự tối đa của input text
 		maxlength = '',
+		donvi = '',
 		// class định hình độ dài của input text
 		with_class = '',
 		name_input = '';
@@ -113,6 +114,12 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			arr_input_type[x] = 'text';
 		}
 		
+		//
+		donvi = '';
+		if ( typeof ops['donvi'] != 'undefined' && typeof ops['donvi'][x] != 'undefined' ) {
+			donvi = ops['donvi'][x];
+		}
+		
 		// tạo input
 		str_input = '';
 		if ( typeof arr[x] == 'object' ) {
@@ -126,10 +133,10 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 				//
 				str_input += '<option value="' + x2 + '"' + sl + '>' + arr[x][x2] + '</option>';
 			}
-			str_input = '<select name="' + name_input + '" class="' + op['input_css'] + '">' + str_input + '</select>';
+			str_input = '<select name="' + name_input + '" data-donvi="' + donvi + '" class="' + op['input_css'] + '">' + str_input + '</select>';
 		}
 		else if ( arr_input_type[x] == 'number' ) {
-			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" class="s ' + op['input_css'] + '" />';
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" class="s ' + op['input_css'] + '" />';
 		}
 		else if ( arr_input_type[x] == 'color' ) {
 			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" placeholder="#notset" class="ebe-color-picker ' + op['input_css'] + '" />';
@@ -155,7 +162,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			}
 			
 			//
-			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
 		}
 		
 		// ghi chú
@@ -208,7 +215,9 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 		//
 		$( clat ).each(function () {
 			var a = $(this).val() || '',
-				n = $(this).attr('name') || '';
+				n = $(this).attr('name') || '',
+				// đơn vị tính với các số đo: px, pt
+				donvi = $(this).attr('data-donvi') || '';
 			
 			if ( a != '' && n != '' ) {
 //				n = n.replace('custom_css_in_js_', '');
@@ -222,14 +231,16 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 					a = 'url(' + a + ') !important';
 				}
 				
+				//
 				arr[n] = a;
+//				console.log(donvi);
 				
 				//
 				if ( n.split('_for_mobile').length > 1 ) {
-					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + ';';
+					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + donvi + ';';
 				}
 				else {
-					str += n.replace(/\_/g, '-') + ':' + a + ';';
+					str += n.replace(/\_/g, '-') + ':' + a + donvi + ';';
 				}
 			}
 		});

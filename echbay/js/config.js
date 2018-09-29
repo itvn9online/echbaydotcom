@@ -773,7 +773,8 @@ if ( current_module_config != 'config_theme' ) {
 		// w90
 		load_config_for_custom_logo(
 			{
-//				'max_width' : '',
+				'max_width' : '',
+				/*
 				'max_width' : {
 					'' : 'Mặc định (HD 1366px)',
 					'1024px' : 'XGA 1024px',
@@ -783,18 +784,28 @@ if ( current_module_config != 'config_theme' ) {
 					'1920px' : 'Full HD 1920px',
 					'2560px' : 'WQHD 2560px'
 				}
+				*/
 			}, {
 				'max_width' : 'Chiều rộng tối đa (khung w90)'
 			}, {
 				'max_width' : 'Bạn có thể thiết lập chiều rộng tối đa cho khung, điều này giúp cho các khối HTML trong đó giữ được tính ổn định cao.'
 			}, {
-//				'max_width' : 'number'
+				'max_width' : 'number'
 			},
 			data['cf_css_w90'],
 			{
 //				'input_css' : 'each-to-css-for-w90',
 				'after_html' : 'custom_css_for_body',
 				'input_name' : 'w90'
+			}, {
+				/*
+				'maxlength' : {
+					'max_width' : 5
+				},
+				*/
+				'donvi' : {
+					'max_width' : 'px'
+				}
 			}
 		);
 		
@@ -802,6 +813,8 @@ if ( current_module_config != 'config_theme' ) {
 		load_config_for_custom_logo(
 			{
 				'width' : '',
+				'max_width' : '',
+				/*
 				'max_width' : {
 					'' : 'Mặc định (999px)',
 					'1024px' : 'XGA 1024px',
@@ -811,6 +824,7 @@ if ( current_module_config != 'config_theme' ) {
 					'1920px' : 'Full HD 1920px',
 					'2560px' : 'WQHD 2560px'
 				}
+				*/
 			}, {
 				'width' : 'Chiều rộng (khung w99)',
 				'max_width' : 'Chiều rộng tối đa (khung w99)'
@@ -818,15 +832,23 @@ if ( current_module_config != 'config_theme' ) {
 				'width' : 'Fixed cứng chiều rộng khung w99. Mặc định là 999px, bạn có thể set thành auto hoặc một số cụ thể.',
 				'max_width' : 'Bạn có thể thiết lập chiều rộng tối đa cho khung, điều này giúp cho các khối HTML trong đó giữ được tính ổn định cao.'
 			}, {
-//				'max_width' : 'number'
+				'width' : 'number',
+				'max_width' : 'number'
 			},
 			data['cf_css_w99'],
 			{
 				'after_html' : 'custom_css_for_body',
 				'input_name' : 'w99'
 			}, {
+				/*
 				'maxlength' : {
-					'width' : 10
+					'width' : 5,
+					'max_width' : 5
+				},
+				*/
+				'donvi' : {
+					'width' : 'px',
+					'max_width' : 'px'
 				}
 			}
 		);
@@ -836,7 +858,8 @@ if ( current_module_config != 'config_theme' ) {
 		// BODY
 		load_config_for_custom_logo(
 			{
-//				'max_width' : '',
+				'max_width' : '',
+				/*
 				'max_width' : {
 					'' : 'Mặc định (HD+ 1600px)',
 					'1024px' : 'XGA 1024px',
@@ -846,7 +869,9 @@ if ( current_module_config != 'config_theme' ) {
 					'1920px' : 'Full HD 1920px',
 					'2560px' : 'WQHD 2560px'
 				},
-//				'font_size' : '',
+				*/
+				'font_size' : '',
+				/*
 				'font_size' : {
 					'' : 'Mặc định (13px)',
 					'10px' : '10px',
@@ -870,6 +895,7 @@ if ( current_module_config != 'config_theme' ) {
 					'29px' : '29px',
 					'30px' : '30px'
 				},
+				*/
 				'font_family' : ''
 			}, {
 				'max_width' : 'Chiều rộng tối đa (BODY)',
@@ -881,7 +907,8 @@ if ( current_module_config != 'config_theme' ) {
 				'font_size' : 'Mặc định sẽ sử dụng cỡ chữ tiêu chuẩn là <strong>13px</strong> (~10pt), bạn có thể thay đổi kích thước này tại đây',
 				'font_family' : 'Font chữ mặc định là <strong>\'Helvetica Neue\', Helvetica, Arial, Tahoma, Verdana, sans-serif</strong>, trường hợp bạn muốn sử dụng font chữ khác, hãy nhập tại đây. <br><span class="orgcolor">* Lưu ý là các font chữ bạn chọn nếu không phải font phổ biến thì cần nhúng font vào website. Khuyên dùng: <a href="https:\/\/fonts.google.com\/" rel="nofollow" target="_blank">https:\/\/fonts.google.com\/</a></span>'
 			}, {
-//				'max_width' : 'number'
+				'max_width' : 'number',
+				'font_size' : 'number'
 			},
 //			$('#cf_css_body').val() || '',
 			data['cf_css_body'],
@@ -889,6 +916,17 @@ if ( current_module_config != 'config_theme' ) {
 //				'input_css' : 'each-to-css-for-body',
 //				'after_html' : 'custom_css_for_body',
 				'input_name' : 'body'
+			}, {
+				/*
+				'maxlength' : {
+					'width' : 5,
+					'max_width' : 5
+				},
+				*/
+				'donvi' : {
+					'width' : 'px',
+					'max_width' : 'px'
+				}
 			}
 		);
 		

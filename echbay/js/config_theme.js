@@ -740,8 +740,10 @@ function WGR_show_bg_for_skins_adminedit () {
 	//
 	load_config_for_custom_logo(
 		{
-			'font_size' : arr_font_size,
-			'line_height' : arr_font_size,
+//			'font_size' : arr_font_size,
+			'font_size' : '',
+//			'line_height' : arr_font_size,
+			'line_height' : '',
 			'font_family' : ''
 		}, {
 			'font_size' : 'Cỡ chữ mặc định',
@@ -749,25 +751,33 @@ function WGR_show_bg_for_skins_adminedit () {
 			'font_family' : 'Font chữ (font-family)'
 		}, {
 		}, {
+			'font_size' : 'number',
+			'line_height' : 'number'
 		},
 		data['cf_css_tintuc_noidung'],
 		{
 //			'after_html' : 'custom_css_for_custom_css',
 			'input_name' : 'tintuc_noidung'
-			/*
 		}, {
+			/*
 			'maxlength' : {
 				'font_family' : 10
-			}
+			},
 			*/
+			'donvi' : {
+				'font_size' : 'px',
+				'line_height' : 'px'
+			}
 		}
 	);
 	
 	//
 	load_config_for_custom_logo(
 		{
-			'font_size' : arr_font_size,
-			'line_height' : arr_font_size,
+//			'font_size' : arr_font_size,
+			'font_size' : '',
+//			'line_height' : arr_font_size,
+			'line_height' : '',
 			'font_family' : ''
 		}, {
 			'font_size' : 'Cỡ chữ mặc định',
@@ -775,17 +785,23 @@ function WGR_show_bg_for_skins_adminedit () {
 			'font_family' : 'Font chữ (font-family)'
 		}, {
 		}, {
+			'font_size' : 'number',
+			'line_height' : 'number'
 		},
 		data['cf_css_content_product'],
 		{
 //			'after_html' : 'custom_css_for_custom_css',
 			'input_name' : 'content_product'
-			/*
 		}, {
+			/*
 			'maxlength' : {
 				'font_family' : 10
-			}
+			},
 			*/
+			'donvi' : {
+				'font_size' : 'px',
+				'line_height' : 'px'
+			}
 		}
 	);
 	
