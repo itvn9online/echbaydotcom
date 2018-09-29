@@ -3560,13 +3560,15 @@ function WGR_show_or_scroll_to_quick_cart () {
 }
 
 // nút thêm sản phẩm vào giỏ hàng
+var add_to_cart_running = false;
 setTimeout(function () {
 	jQuery('.click-jquery-add-to-cart').click(function() {
-		/*
-		if ( pid == 0 ) {
+//		if ( pid == 0 ) {
+		if ( add_to_cart_running == true ) {
+			console.log('add to cart running');
 			return false;
 		}
-		*/
+		add_to_cart_running = true;
 		
 		//
 		var product_price = jQuery(this).attr('data-gia') || jQuery(this).attr('data-price') || '',

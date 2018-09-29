@@ -870,6 +870,7 @@ $arr_main_content = array(
 	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
+	'tmp.add_to_cart' => EBE_get_lang('add_to_cart'),
 	'tmp.lang_details_tu_van' => EBE_get_lang('details_tu_van'),
 	'tmp.lang_details_share' => EBE_get_lang('details_share'),
 	

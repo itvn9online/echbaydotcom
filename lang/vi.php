@@ -42,6 +42,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
+$___eb_lang[eb_key_for_site_lang . 'add_to_cart'] = 'Cho vào giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
 $___eb_lang[eb_key_for_site_lang . 'details_share'] = 'Chia sẻ';
 
@@ -197,7 +198,7 @@ $___eb_lang[eb_key_for_site_lang . 'cart_diachi2'] = 'Địa chỉ nhận hàng.
 $___eb_lang[eb_key_for_site_lang . 'cart_ghichu'] = 'Ghi chú';
 $___eb_lang[eb_key_for_site_lang . 'cart_vidu'] = 'Ví dụ: Giao hàng trong giờ hành chính, gọi điện trước khi giao...';
 $___eb_lang[eb_key_for_site_lang . 'cart_gui'] = '<i class="fa fa-shopping-cart"></i> Gửi đơn hàng';
-$___eb_lang[eb_key_for_site_lang . 'cart_them'] = 'Cho vào giỏ hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_them'] = $___eb_lang[eb_key_for_site_lang . 'add_to_cart'];
 $___eb_lang[eb_key_for_site_lang . 'cart_emailformat'] = 'Email không đúng định dạng';
 $___eb_lang[eb_key_for_site_lang . 'billing_custom_style'] = '/* Thêm custom CSS cho trang in đơn hàng */';
 

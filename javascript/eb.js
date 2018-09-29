@@ -2642,6 +2642,9 @@ var _global_js_eb = {
 				}
 			}
 			
+			//
+			add_to_cart_running = false;
+			
 		}, time_to_cart );
 		
 		/*
