@@ -2298,7 +2298,7 @@ function ___eb_details_post_run ( r ) {
 			}
 			
 			// nếu có -> hiển thị thời gian
-			jQuery('#' + id_for_show).before('<div class="medium l35">' + lang_details_time_discount + '</div>');
+			jQuery('#' + id_for_show).before('<div class="medium l35 thread-details-countdown-left">' + lang_details_time_discount + '</div>');
 			
 			// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
 			if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
@@ -2529,6 +2529,9 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 //	return false;
 	
 	//
+	var str = '';
+	
+	//
 	var so_du = thoi_gian_con_lai % 3600;
 	var gio = (thoi_gian_con_lai - so_du) / 3600;
 	if ( gio < 10 ) gio = '0' + gio;
@@ -2542,11 +2545,13 @@ function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 		ngay = gio;
 		gio = gio % 24;
 		ngay = (ngay - gio)/ 24;
+		
+		str += '<span>' + ngay + '<em>ngày</em></span>';
 	}
 	
 	//
 //	console.log(gio + ':' + phut + ':' + giay);
-	dog('oi_time_line').innerHTML = '<span>' + ngay + '<em>ngày</em></span><span>' + gio + '<em>giờ</em></span><span>' + phut + '<em>phút</em></span><span>' + giay + '<em>giây</em></span>';
+	dog('oi_time_line').innerHTML = str + '<span>' + gio + '<em>giờ</em></span><span>' + phut + '<em>phút</em></span><span>' + giay + '<em>giây</em></span>';
 	
 	return true;
 	

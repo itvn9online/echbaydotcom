@@ -202,8 +202,12 @@ $default_all_site_lang = 'vi';
 // cấu hình mặc định của web
 include EB_THEME_CORE . 'default_config.php';
 
-// ngôn ngũ/ bản dịch mặc định của web
+// ngôn ngũ/ bản dịch mặc định của web -> tiếng Việt
 include EB_THEME_PLUGIN_INDEX . 'lang/vi.php';
+// Nếu không phải tiếng Việt -> add mặc định tiếng anh
+if ( $__cf_row['cf_content_language'] != 'vi' ) {
+	include EB_THEME_PLUGIN_INDEX . 'lang/en.php';
+}
 
 
 
