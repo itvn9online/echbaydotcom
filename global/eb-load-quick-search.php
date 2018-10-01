@@ -48,6 +48,7 @@ header("Content-Type: application/javascript");
 $strCacheFilter = basename( __FILE__, '.php' );
 $quick_search_in_cache = EB_THEME_CACHE . $strCacheFilter . '.txt';
 $get_list_quick_search = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
+//$eb_code_tester = true;
 if ( $get_list_quick_search == false || eb_code_tester == true ) {
 	
 	// tạo file mới, với dòng comment đầu tiên -> đỡ lỗi cho JS

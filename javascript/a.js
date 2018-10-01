@@ -146,9 +146,21 @@ var gallery_has_been_load = false,
 			for ( var i = 0; i < arr_eb_ads_status.length; i++ ) {
 				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&ads_filter_status=' + arr_eb_ads_status[i].id + '">' + arr_eb_ads_status[i].ten + '</a></li>';
 			}
-			console.log(ads_loc);
+//			console.log(ads_loc);
 			
 			jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
+			
+			
+			// xem theo post option
+			ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			for ( var i = 0; i < eb_options_group.length; i++ ) {
+				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&post_options=' + eb_options_group[i].slug + '">' + eb_options_group[i].ten + '</a></li>';
+			}
+			
+			jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
+			
+			
+			//
 			jQuery('ul.subsubsub').addClass('cf').css({
 				float: 'none'
 			});
