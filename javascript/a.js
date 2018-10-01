@@ -679,7 +679,7 @@ jQuery('#toplevel_page_eb-order a').click(function () {
 	// chỉ lưu các URL nằm trong menu chính của EchBay
 	var a = jQuery(this).attr('href') || '';
 	if ( a != '' ) {
-		g_func.setc( 'wgr_last_url_user_visit', escape( a ), 0, 7 );
+		g_func.setc( 'wgr_last_url_user_visit', escape( a ), 4 * 3600 );
 	}
 	
 	// Nếu phiên lưu URL đã hết hạn

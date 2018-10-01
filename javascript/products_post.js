@@ -289,3 +289,75 @@ jQuery('.ebe-currency-format').each(function() {
 
 
 
+// quick multi edit
+function load_list_thread_check () {
+	var str = '';
+	$('.eb-uix-thread-checkbox:checkbox:checked').each(function() {
+//		console.log( $(this).val() );
+		str += ',' + $(this).val();
+	});
+	
+	//
+	document.frm_multi_edit_post.t_list_id.value = str;
+}
+
+
+function WGR_after_update_multi_post () {
+	f = document.frm_multi_edit_post;
+	
+	//
+	ajaxl( 'products&by_post_type=' + f.by_post_type.value + '&by_cat_id=' + f.by_cat_id.value + '&trang=' + f.current_page.value, 'rAdminME', 9, function () {
+		$('#rAdminME').css({
+			opacity: 1
+		});
+	});
+}
+
+
+$('.click-show-tools').off('click').click(function () {
+	$('.show-if-click-tools').toggle('slow');
+});
+
+
+//
+$('#thread-all-checkbox').off('click').click(function () {
+	$('input[name=\'thread-checkbox\']').prop( 'checked', dog('thread-all-checkbox').checked );
+	
+	//
+	load_list_thread_check();
+});
+
+
+//
+$('.eb-uix-thread-checkbox').off('click').click(function () {
+	load_list_thread_check();
+});
+
+
+//
+$('.click-set-actions-for').off('click').click(function () {
+	var a = $(this).attr('data-for') || '',
+		b = $(this).attr('data-id-for') || 0,
+		f = document.frm_multi_edit_post;
+	
+	if ( f.t_list_id.value == '' ) {
+		a_lert('Không xác định được sản phẩm cần sửa');
+	}
+	else if ( a == '' ) {
+		a_lert('Không xác định được thao tác');
+	}
+	else {
+		$('#rAdminME').css({
+			opacity: 0.2
+		});
+		
+		//
+		f.actions_for.value = a;
+		f.actions_id_for.value = b;
+		f.submit();
+	}
+});
+
+
+
+
