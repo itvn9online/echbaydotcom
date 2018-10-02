@@ -212,12 +212,12 @@ $other_option_list = '';
 //
 //if ( isset( $post_categories[0] ) ) {
 if ( ! empty( $post_categories ) ) {
-	print_r( $post_categories );
+//	print_r( $post_categories );
 	
 	// parent
 	foreach($post_categories as $c){
 		$cat = get_term( $c );
-		print_r( $cat );
+//		print_r( $cat );
 //		$cat = get_category( $c );
 //		print_r( $cat );
 		
