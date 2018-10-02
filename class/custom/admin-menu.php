@@ -56,7 +56,16 @@ function register_mysettings() {
 
 // tạo menu admin
 function echbay_create_admin_menu() {
-	$parent_slug = 'eb-order';
+	// hiển thị menu dựa theo quyền
+	if ( current_user_can('publish_pages') ) {
+		$parent_slug = 'eb-order';
+	}
+	else if ( current_user_can('edit_posts') ) {
+		$parent_slug = 'eb-dashboard';
+	}
+	else {
+		$parent_slug = 'eb-about';
+	}
 	
 	/*
 	* EchBay menu -> mọi người đều có thể nhìn thấy menu này
@@ -65,21 +74,21 @@ function echbay_create_admin_menu() {
 	
 	
 	/*
-	* submenu -> Super Admin, Administrator, Contributor
+	* submenu -> Super Admin, Administrator, Editor
 	*/
-	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'edit_posts', 'eb-order', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_pages', 'eb-order', 'func_include_eb_private_code' );
 	
 	
 	/*
-	* submenu -> Super Admin, Administrator, Author
+	* submenu -> Super Admin, Administrator, Editor, Author, Contributor
 	*/
-	add_submenu_page( $parent_slug, 'Tổng quan về website', 'Tổng quan', 'publish_posts', 'eb-dashboard', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Tổng quan về website', 'Tổng quan', 'edit_posts', 'eb-dashboard', 'func_include_eb_private_code' );
 	
 //	add_submenu_page( $parent_slug, 'Danh sách banner quảng cáo', 'Quảng cáo', 'manage_options', 'eb-ads', 'func_include_eb_private_code' );
 	
 	
-	// menu chỉnh sửa sản phẩm nhanh
-	add_submenu_page( $parent_slug, 'Công cụ hỗ trợ chỉnh sửa nhanh dữ liệu', 'Chỉnh sửa nhanh', 'delete_posts', 'eb-products', 'func_include_eb_private_code' );
+	// menu chỉnh sửa sản phẩm nhanh -> Super Admin, Administrator, Editor
+	add_submenu_page( $parent_slug, 'Công cụ hỗ trợ chỉnh sửa nhanh dữ liệu', 'Chỉnh sửa nhanh', 'publish_pages', 'eb-products', 'func_include_eb_private_code' );
 	
 	
 	/*

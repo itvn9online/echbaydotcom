@@ -2,6 +2,15 @@
 
 
 
+// chỉ tiếp tục khi tài khoản có quyền admin
+/*
+if ( ! current_user_can('publish_pages') ) {
+	die('Permission ERROR!');
+}
+*/
+
+
+
 global $wpdb;
 
 

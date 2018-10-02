@@ -3,13 +3,14 @@
 
 
 // nếu có quyền xem đơn -> hiển thị đơn hàng
-if ( current_user_can('publish_posts') )  {
-	include ECHBAY_PRI_CODE . 'order_main.php';
+/*
+if ( ! current_user_can('publish_posts') )  {
+	die('Permission ERROR!');
 }
-// mặc định chỉ cho xem dashboard
-else {
-	echo '<br><br><h2>Permission ERROR!</h2>';
-}
+*/
+
+//
+include ECHBAY_PRI_CODE . 'order_main.php';
 
 
 
