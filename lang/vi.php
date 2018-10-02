@@ -37,7 +37,7 @@ $eb_type_lang[eb_key_for_site_lang . 'search_addon'] = 'textarea';
 //$___eb_lang[eb_key_for_site_lang . 'search_title_addon'] = '';
 
 //
-$eb_note_first_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
+$eb_note_first_lang[eb_key_for_site_lang . 'cart'] = 'Bản dịch cho trang Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'cart'] = 'Giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_site_lang . 'cart'];
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
@@ -46,8 +46,24 @@ $___eb_lang[eb_key_for_site_lang . 'add_to_cart'] = 'Cho vào giỏ hàng';
 $___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
 $___eb_lang[eb_key_for_site_lang . 'details_share'] = 'Chia sẻ';
 
+$___eb_lang[eb_key_for_site_lang . 'cart_str_list'] = 'Danh sách Sản phẩm';
+$___eb_lang[eb_key_for_site_lang . 'cart_price'] = 'Giá';
+//$___eb_lang[eb_key_for_site_lang . 'cart_soluong'] = 'Số lượng';
+$___eb_lang[eb_key_for_site_lang . 'cart_str_total'] = 'Cộng';
+$___eb_lang[eb_key_for_site_lang . 'cart_str_totals'] = 'Tổng số';
+$___eb_lang[eb_key_for_site_lang . 'cart_is_null'] = 'Không có sản phẩm nào trong giỏ hàng của bạn';
+$___eb_lang[eb_key_for_site_lang . 'cart_continue'] = '&laquo; Tiếp tục mua hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_customer_info'] = 'Thông tin khách hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_method'] = 'Hình thức thanh toán';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_cod'] = 'Thanh toán khi nhận hàng (COD)';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_tt'] = 'Thanh toán trực tiếp tại cửa hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_bank'] = 'Thanh toán trực tuyến qua ngân hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_bk'] = 'Thanh toán trực tuyến qua Bảo Kim';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_nl'] = 'Thanh toán trực tuyến qua Ngân Lượng';
+$___eb_lang[eb_key_for_site_lang . 'cart_payment_pp'] = 'Thanh toán trực tuyến qua Paypal';
+
 //
-$eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
+$eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Bản dịch cho trang Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'thoat'] = 'Thoát';
 $___eb_lang[eb_key_for_site_lang . 'xacnhan_thoat'] = 'Xác nhận đăng xuất khỏi hệ thống';

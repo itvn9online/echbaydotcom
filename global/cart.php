@@ -52,7 +52,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 	for ( $i = 1; $i < 11; $i++ ) {
 		$select_soluong .= '<option value="' . $i . '">' . $i . '</option>';
 	}
-	$select_soluong = '<select name="t_soluong[{cart.post_id}]" data-name="{cart.post_id}" class="change-select-quanlity">' . $select_soluong . '</select>';
+	$select_soluong = '<select name="t_soluong[{cart.post_id}]" data-name="{cart.post_id}" class="change-select-quantity">' . $select_soluong . '</select>';
 	
 	// v1
 	/*
@@ -225,6 +225,28 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.cart_vidu' => EBE_get_lang('cart_vidu'),
 	'tmp.cart_discount_code' => EBE_get_lang('cart_discount_code'),
 	'tmp.cart_gui' => EBE_get_lang('cart_gui'),
+	
+	'tmp.cart_soluong' => EBE_get_lang('cart_soluong'),
+	'tmp.cart_str_list' => EBE_get_lang('cart_str_list'),
+	'tmp.cart_price' => EBE_get_lang('cart_price'),
+	'tmp.cart_str_total' => EBE_get_lang('cart_str_total'),
+	'tmp.cart_str_totals' => EBE_get_lang('cart_str_totals'),
+	'tmp.cart_is_null' => EBE_get_lang('cart_is_null'),
+	'tmp.cart_continue' => EBE_get_lang('cart_continue'),
+	'tmp.cart_customer_info' => EBE_get_lang('cart_customer_info'),
+	'tmp.cart_payment_method' => EBE_get_lang('cart_payment_method'),
+	'tmp.cart_payment_cod' => EBE_get_lang('cart_payment_cod'),
+	'tmp.cart_payment_tt' => EBE_get_lang('cart_payment_tt'),
+	'tmp.cart_payment_bank' => EBE_get_lang('cart_payment_bank'),
+	'tmp.cart_payment_bk' => EBE_get_lang('cart_payment_bk'),
+	'tmp.cart_payment_nl' => EBE_get_lang('cart_payment_nl'),
+	'tmp.cart_payment_pp' => EBE_get_lang('cart_payment_pp'),
+	
+	// slogan
+	'tmp.lang_ebslogan1' => EBE_get_lang('ebslogan1'),
+	'tmp.lang_ebslogan2' => EBE_get_lang('ebslogan2'),
+	'tmp.lang_ebslogan3' => EBE_get_lang('ebslogan3'),
+	'tmp.lang_ebslogan4' => EBE_get_lang('ebslogan4'),
 	
 	'tmp.cf_required_name_cart' => ( $__cf_row['cf_required_name_cart'] == 1 ) ? ' aria-required="true" required' : '',
 	'tmp.cf_required_email_cart' => ( $__cf_row['cf_required_email_cart'] == 1 ) ? ' aria-required="true" required' : '',

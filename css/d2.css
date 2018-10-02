@@ -1223,6 +1223,7 @@ color: #333;
 .cart-table-free li:last-child div { margin-left: 10px; }
 .cart-ultable { line-height: 33px; }
 .cart-ultable li { padding: 7px 0; }
+.cart-ultable input[type="tel"],
 .cart-ultable input[type="email"],
 .cart-ultable input[type="text"],
 .cart-ultable textarea {
@@ -1246,7 +1247,7 @@ color: #333;
 	font-size: 18px;
 	border: 0 none;
 }
-.change-select-quanlity {
+.change-select-quantity {
 	padding: 5px;
 	border-radius: 3px;
 	box-shadow: 0 0 10px #ccc;

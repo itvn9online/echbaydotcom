@@ -1865,7 +1865,7 @@ var _global_js_eb = {
 					"color" : jQuery('.show-list-color[data-id="' + cart_pid + '"] select').val() || '',
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
 					"price" : jQuery(this).attr('data-price') || 0,
-					"quan" : jQuery('.change-select-quanlity', this).val() || 1,
+					"quan" : jQuery('.change-select-quantity', this).val() || 1,
 					"sku" : jQuery(this).attr('data-sku') || ''
 				} );
 			});
@@ -1897,7 +1897,7 @@ var _global_js_eb = {
 		_global_js_eb.cart_customer_cache();
 		
 		// khi thay đổi số lượng sản phẩm
-		jQuery('.change-select-quanlity').change(function () {
+		jQuery('.change-select-quantity').change(function () {
 			_global_js_eb.cart_calculator();
 		});
 		
@@ -2092,7 +2092,7 @@ var _global_js_eb = {
 		jQuery('.each-for-set-cart-value').each(function () {
 			// lấy giá sản phẩm, ưu tiên lấy giá theo size trước
 			var gia = jQuery('.show-list-size select option:selected', this).attr('data-price') || 0,
-				soluong = jQuery('.change-select-quanlity', this).val() || 1;
+				soluong = jQuery('.change-select-quantity', this).val() || 1;
 			
 			// nếu không có giá theo size
 			if ( gia <= 0 ) {
@@ -2529,7 +2529,7 @@ var _global_js_eb = {
 					list_cart_id = '';
 				jQuery('.each-for-set-cart-value').each(function () {
 					var gia = jQuery(this).attr('data-price') || 0,
-						soluong = jQuery('.change-select-quanlity', this).val() || 1,
+						soluong = jQuery('.change-select-quantity', this).val() || 1,
 						post_id = jQuery(this).attr('data-id') || 0;
 					
 					total -= 0 - ( gia * soluong );
