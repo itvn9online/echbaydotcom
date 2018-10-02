@@ -190,7 +190,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		// dọn cache định kỳ -> chỉ dọn khi không phải tháo tác thủ công
 		if ( mtv_id > 0
 //		&& strstr( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) == true
-		&& is_admin ()
+//		&& is_admin ()
 		&& ! isset( $_GET['tab'] ) ) {
 			$_GET['time_auto_cleanup_cache'] = 6 * 3600;
 			

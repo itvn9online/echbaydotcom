@@ -875,8 +875,9 @@ $arr_main_content = array(
 	'tmp.lang_btn_giamoi' => EBE_get_lang('post_giamoi'),
 	
 	'tmp.post-buy-size-color' => $post_buy_size_color,
-	'tmp.each-to-share-social' => $each_to_share_social,
 	'tmp.post-buy-bottom' => $post_buy_bottom,
+	
+	'tmp.each-to-share-social' => $each_to_share_social,
 	'tmp.lang_btn_kichco' => EBE_get_lang('cart_kichco'),
 	'tmp.lang_btn_mausac' => EBE_get_lang('cart_mausac'),
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),

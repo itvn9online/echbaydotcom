@@ -606,6 +606,9 @@ label,
 .bluecolor { color: #00f !important }
 .greencolor { color: #090 !important }
 .graycolor { color: #999 !important }
+.gray8color { color: #888 !important }
+.gray7color { color: #777 !important }
+.gray6color { color: #666 !important }
 .orgcolor,
 .a-orgcolor,
 .a-orgcolor a,
