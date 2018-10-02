@@ -55,7 +55,7 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 					<div class="eb-quickcart-node eb-quickcart-tel cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_dienthoai'); ?> <span class="redcolor">*</span></div>
 						<div class="eb-quickcart-right">
-							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>" aria-required="true" required />
+							<input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>"<?php if ( $__cf_row['cf_required_phone_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
 						</div>
 					</div>
 					<div class="eb-quickcart-node eb-quickcart-email cf">

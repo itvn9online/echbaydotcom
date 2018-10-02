@@ -248,6 +248,7 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.lang_ebslogan3' => EBE_get_lang('ebslogan3'),
 	'tmp.lang_ebslogan4' => EBE_get_lang('ebslogan4'),
 	
+	'tmp.cf_required_phone_cart' => ( $__cf_row['cf_required_phone_cart'] == 1 ) ? ' aria-required="true" required' : '',
 	'tmp.cf_required_name_cart' => ( $__cf_row['cf_required_name_cart'] == 1 ) ? ' aria-required="true" required' : '',
 	'tmp.cf_required_email_cart' => ( $__cf_row['cf_required_email_cart'] == 1 ) ? ' aria-required="true" required' : '',
 	'tmp.cf_required_address_cart' => ( $__cf_row['cf_required_address_cart'] == 1 ) ? ' aria-required="true" required' : '',

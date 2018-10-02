@@ -973,6 +973,7 @@ else {
 	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
+	show_note_for_checkbox_config( 'cf_required_phone_cart' );
 	show_note_for_checkbox_config( 'cf_required_name_cart' );
 	show_note_for_checkbox_config( 'cf_required_email_cart' );
 	show_note_for_checkbox_config( 'cf_required_address_cart' );

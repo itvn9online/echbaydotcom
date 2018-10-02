@@ -42,6 +42,8 @@ $_POST['cf_details_show_share_button'] = WGR_default_config('cf_details_show_sha
 
 $_POST['cf_details_short_quick_cart'] = WGR_default_config('cf_details_short_quick_cart');
 
+$_POST['cf_required_phone_cart'] = WGR_default_config('cf_required_phone_cart');
+
 $_POST['cf_required_name_cart'] = WGR_default_config('cf_required_name_cart');
 
 $_POST['cf_required_email_cart'] = WGR_default_config('cf_required_email_cart');
