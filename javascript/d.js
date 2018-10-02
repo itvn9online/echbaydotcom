@@ -267,10 +267,10 @@ function WGR_after_load_details_lisder () {
 	});
 	
 	// click vào cái đầu tiên luôn
-	if ( cf_slider_details_play <= 0 ) {
+//	if ( cf_slider_details_play <= 0 ) {
 		jQuery('.thread-details-mobileAvt li:first').click();
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto click to first details slider');
-	}
+//	}
 	
 	// thay đổi kiểu tải thumb nếu thumb được chuyển sang chiều dọc
 	// trên mobile thì để 1 chế độ xem thôi

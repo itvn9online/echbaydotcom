@@ -1232,8 +1232,11 @@ color: #333;
 	padding: 8px;
 	border-radius: 2px;
 	border: 1px #999 solid;
-	background: #fff;
+	background: #fff right center no-repeat;
+	background-size: 9px;
 }
+.cart-ultable input[aria-required="true"],
+.cart-ultable textarea[aria-required="true"] { background-image: url(../images-global/required.png); }
 .cart-ultable textarea { height: 90px; }
 .cart-ultable select {
 	min-width: 160px;

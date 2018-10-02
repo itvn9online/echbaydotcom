@@ -759,7 +759,9 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 //			console.log('First click: ' + first_click);
 			
 			//
-			jQuery(jd + ' li[data-i="' + first_click + '"]').click();
+//			setTimeout(function () {
+				jQuery(jd + ' li[data-i="' + first_click + '"]').click();
+//			}, 200);
 		}
 	}
 	else {
