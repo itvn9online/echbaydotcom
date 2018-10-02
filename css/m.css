@@ -188,8 +188,6 @@ body.style-for-mobile {
 	display: none;
 	margin: 0 8px;
 }
-.style-for-mobile .text-left-if-mobile { text-align: left; }
-.style-for-mobile .text-right-if-mobile { text-align: right; }
 .style-for-mobile .ebe-quick-view .quick-view-close i {
 	right: 10px;
 	top: 15px;
@@ -204,6 +202,10 @@ body.style-for-mobile {
 	height: 60px;
 }
 .style-for-mobile .clone-show-quick-cart { padding: 0 8px; }
+.style-for-mobile .text-right-if-mobile,
+.style-for-mobile .right-if-mobile { text-align: right !important; }
+.style-for-mobile .text-left-if-mobile,
+.style-for-mobile .left-if-mobile { text-align: left !important; }
 .style-for-mobile .center-if-mobile { text-align: center !important; }
 /* for elemetor */
 .style-for-mobile .fullsize-if-mobile .elementor-column-wrap,
