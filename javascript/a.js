@@ -183,7 +183,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			/*
 			console.log(arr_eb_product_status);
 			
-			var ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			var ads_loc = '<li class="bold">Trạng thái:</li>';
 			for ( var i = 0; i < arr_eb_product_status.length; i++ ) {
 				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=post&post_filter_status=' + arr_eb_product_status[i].id + '">' + arr_eb_product_status[i].ten + '</a></li>';
 			}
@@ -202,7 +202,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 //			console.log(arr_eb_product_status);
-			ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			ads_loc = '<li class="bold">Trạng thái:</li>';
 			for ( var i = 0; i < arr_eb_product_status.length; i++ ) {
 				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=post&post_filter_status=' + arr_eb_product_status[i].id + '" data-slug="' + arr_eb_product_status[i].id + '">' + arr_eb_product_status[i].ten + '</a></li>';
 			}
@@ -217,7 +217,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 			WGR_create_html_loc_to_admin_post_list( eb_options_group, {
-				'name' : 'Lọc theo Thông số khác',
+				'name' : 'Thông số khác',
 				'get' : 'post_options',
 				'url' : 'edit.php?post_type=post&'
 			} );
@@ -226,7 +226,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 			WGR_create_html_loc_to_admin_post_list( eb_site_group, {
-				'name' : 'Lọc theo Chuyên mục',
+				'name' : 'Chuyên mục',
 				'get' : 'category_name',
 				'url' : 'edit.php?post_type=post&'
 			} );
@@ -244,7 +244,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 //			console.log(arr_eb_ads_status);
-			ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			ads_loc = '<li class="bold">Trạng thái:</li>';
 			for ( var i = 0; i < arr_eb_ads_status.length; i++ ) {
 				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&ads_filter_status=' + arr_eb_ads_status[i].id + '" data-slug="' + arr_eb_ads_status[i].id + '">' + arr_eb_ads_status[i].ten + '</a></li>';
 			}
@@ -259,7 +259,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 			WGR_create_html_loc_to_admin_post_list( eb_options_group, {
-				'name' : 'Lọc theo Thông số khác',
+				'name' : 'Thông số khác',
 				'get' : 'post_options',
 				'url' : 'edit.php?post_type=ads&'
 			} );
@@ -268,7 +268,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 			WGR_create_html_loc_to_admin_post_list( eb_site_group, {
-				'name' : 'Lọc theo Chuyên mục',
+				'name' : 'Chuyên mục',
 				'get' : 'category_name',
 				'url' : 'edit.php?post_type=ads&'
 			} );
@@ -277,7 +277,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			
 			//
 			WGR_create_html_loc_to_admin_post_list( eb_blog_group, {
-				'name' : 'Lọc theo Danh mục tin',
+				'name' : 'Danh mục tin',
 				'get' : 'blogs',
 				'url' : 'edit.php?post_type=ads&'
 			} );
@@ -292,7 +292,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
 		else if ( win_href.split('post_type=blog').length > 1 ) {
 			WGR_create_html_loc_to_admin_post_list( eb_blog_group, {
-				'name' : 'Lọc theo Danh mục tin',
+				'name' : 'Danh mục tin',
 				'get' : 'blogs',
 				'url' : 'edit.php?post_type=blog&'
 			} );
