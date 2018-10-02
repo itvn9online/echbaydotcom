@@ -281,11 +281,12 @@ $strAjaxLink .= '&trang=' . $trang;
 						<br>
 					</div>
 					<br>
+					-->
 					<div class="bborder">
 						<div class="cf">
 							<div class="lf f20 bold">Ngày hết hạn</div>
 							<div class="lf f60 thread-multi-input">
-								<input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày" maxlength="10" class="thread-list-ngayhethan" />
+								<input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày" maxlength="10" autocomplete="off" class="thread-list-ngayhethan" />
 							</div>
 							<div class="lf f20">
 								<button type="button" data-for="enddate" class="click-set-actions-for">Cập nhật</button>
@@ -294,7 +295,6 @@ $strAjaxLink .= '&trang=' . $trang;
 						<br>
 					</div>
 					<br>
-					-->
 					<div class="bborder">
 						<div class="cf">
 							<div class="lf f20 bold">Số thứ tự</div>

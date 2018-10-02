@@ -119,7 +119,9 @@ a {
 	max-width: 1366px;
 	min-width: 999px;
 }
+.dblock,
 .d-block { display: block }
+.dinline,
 .d-inline,
 .d-iblock { display: inline-block }
 /* ads banner */

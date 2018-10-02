@@ -54,6 +54,26 @@ if ( $actions_for == 'status' ) {
 		_eb_alert('Chưa chọn [Trạng thái] mới');
 	}
 }
+else if ( $actions_for == 'enddate' ) {
+	$trv_ngayhethan = trim($_POST['t_ngayhethan']);
+	
+	if ( strlen( $trv_ngayhethan ) == 10 ) {
+		foreach ( $list_id as $v ) {
+			$v = (int) trim( $v );
+			if ( $v > 0 ) {
+				WGR_update_meta_post( $v, '_eb_product_ngayhethan', $trv_ngayhethan );
+			}
+		}
+	}
+	else {
+		foreach ( $list_id as $v ) {
+			$v = (int) trim( $v );
+			if ( $v > 0 ) {
+				delete_post_meta( $v, '_eb_product_ngayhethan' );
+			}
+		}
+	}
+}
 else if ( $actions_for == 'giamgia' ) {
 	$phantram_giamgia = (int)$_POST['t_giamgia'];
 	echo '<script>WHR_show_console_in_multi("' . $phantram_giamgia . '");</script>';

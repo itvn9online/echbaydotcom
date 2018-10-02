@@ -355,9 +355,20 @@ $('.click-set-actions-for').off('click').click(function () {
 		f.actions_for.value = a;
 		f.actions_id_for.value = b;
 		f.submit();
+		
+		//
+		$('#target_eb_iframe').on('load', function () {
+			$('#rAdminME').css({
+				opacity: 1
+			});
+		});
 	}
 });
 
+
+
+
+_global_js_eb.select_date('.thread-list-ngayhethan');
 
 
 
