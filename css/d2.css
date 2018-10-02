@@ -1202,9 +1202,9 @@ color: #333;
 	padding: 8px 5px;
 }
 .cart-paymethod-paygate {
-	background: none;
-	padding: 0;
-	margin: 0;
+	background: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 .cart-pay-method label { }
 .cart-pay-method { }

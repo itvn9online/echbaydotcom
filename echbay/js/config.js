@@ -574,17 +574,19 @@ if ( current_module_config != 'config_theme' ) {
 	//
 	$('select[name="cf_current_price"]').change(function () {
 		var a = $(this).val() || '',
-			new_a = 'VND';
+			new_a = 'VND',
+			arr_new_a = {
+				'/20A9' : 'WON',
+				'/20B1' : 'PHP',
+				'/00A5' : 'CNY',
+				'$' : 'USD'
+			};
 		
 		// tạo định dạng tiền tệ tương ứng
 		if ( a == '' || a == 'vn/0111' || a == 'VN/00d0' ) {
 		}
-		else if ( a == '$' ) {
-			new_a = 'USD';
-		}
-		// nhân dân tệ
-		else if ( a == '/00A5' ) {
-			new_a = 'CNY';
+		else if ( typeof arr_new_a[a] != 'undefined' ) {
+			new_a = arr_new_a[a];
 		}
 		else {
 			new_a = a;

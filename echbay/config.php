@@ -718,6 +718,7 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 
 
 //
+//echo $__cf_row['cf_current_price'] . 'aaaaaaaaaaaaaaaa<br>';
 $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 	array(
 		'' => 'đ',
@@ -728,6 +729,10 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 		'NT$' => 'NT$',
 		'$' => '$',
 		'USD' => 'USD',
+//		'KRW' => 'Korean won',
+		'/20A9' => '&#8361;',
+//		'PHP' => '&#8369;',
+		'/20B1' => '&#8369;'
 	),
 	$__cf_row['cf_current_price'],
 	'cf_current_price'
