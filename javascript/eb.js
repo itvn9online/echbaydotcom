@@ -394,7 +394,7 @@ var _global_js_eb = {
 			return true;
 		}
 		if (alert_true && alert_true == 1) {
-			alert('Email kh\u00f4ng \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng');
+			a_lert('Email kh\u00f4ng \u0111\u00fang \u0111\u1ecbnh d\u1ea1ng');
 		}
 		return false;
 	},
@@ -2153,7 +2153,7 @@ var _global_js_eb = {
 		
 		// chọn size
 		if ( arr_product_size.length > 0 && jQuery('#cart_user_agent input[name^=t_size]').val() == '' ) {
-			alert('Vui lòng chọn Kích cỡ sản phẩm bạn muốn mua');
+			a_lert('Vui lòng chọn Kích cỡ sản phẩm bạn muốn mua');
 			
 			jQuery('body,html').animate({
 				scrollTop: jQuery('.oi_product_size').offset().top - 110
@@ -2164,7 +2164,7 @@ var _global_js_eb = {
 		
 		// chọn màu
 		if ( arr_product_color.length > 0 && jQuery('#cart_user_agent input[name^=t_color]').val() == '' ) {
-			alert('Vui lòng chọn Màu sắc sản phẩm bạn muốn mua');
+			a_lert('Vui lòng chọn Màu sắc sản phẩm bạn muốn mua');
 			
 			jQuery('body,html').animate({
 				scrollTop: jQuery('.oi_product_color').offset().top - 110
@@ -2188,7 +2188,7 @@ var _global_js_eb = {
 		
 		// nếu giỏ hàng trống -> bỏ qua
 		if ( _global_js_eb.check_null_cart() == false ) {
-			alert('Vui lòng chọn sản phẩm trước khi tiếp tục');
+			a_lert('Vui lòng chọn sản phẩm trước khi tiếp tục');
 			return false;
 		}
 		
@@ -2223,7 +2223,7 @@ var _global_js_eb = {
 		var check_phone_number = g_func.number_only( f.t_dienthoai.value );
 		
 		if (check_phone_number.toString().length < 9) {
-			alert('Vui lòng nhập ít nhất một số điện thoại bạn đang sử dụng');
+			a_lert('Vui lòng nhập ít nhất một số điện thoại bạn đang sử dụng');
 			f.t_dienthoai.focus();
 			return false;
 		}
@@ -2238,7 +2238,7 @@ var _global_js_eb = {
 			f.t_email.value = new_email;
 			
 			if (_global_js_eb.check_email(f.t_email.value) == false) {
-				alert('Email không đúng định dạng');
+				a_lert('Email không đúng định dạng');
 				f.t_email.focus();
 				return false;
 			}
@@ -2292,7 +2292,7 @@ var _global_js_eb = {
 		
 		//
 		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
-			alert('Không xác định được sản phẩm');
+			a_lert('Không xác định được sản phẩm');
 			return false;
 		}
 		
@@ -2468,7 +2468,7 @@ var _global_js_eb = {
 		
 		//
 		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
-			alert('Không xác định được sản phẩm');
+			a_lert('Không xác định được sản phẩm');
 			return false;
 		}
 		
