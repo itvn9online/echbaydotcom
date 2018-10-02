@@ -51,8 +51,6 @@
 .style-for-mobile .thread-small-right,
 */
 /* nếu chỉ có 1 cột -> cùng chỉnh về 100% */
-.style-for-mobile .oneline-in-mobile .echbay-blog li,
-.style-for-mobile .oneline-in-mobile .thread-list li,
 .style-for-mobile .echbay-blog-number1 .echbay-blog li,
 .style-for-mobile .echbay-blog-number1 .thread-list li,
 .style-for-mobile .ebwidget-run-slider .echbay-blog100 li,
@@ -66,6 +64,8 @@
 .style-for-mobile .thread-list20 li:first-child,
 .style-for-mobile .echbay-blog33 li:first-child,
 .style-for-mobile .thread-list33 li:first-child { width: 100%; }
+.style-for-mobile .oneline-in-mobile .echbay-blog li,
+.style-for-mobile .oneline-in-mobile .thread-list li { width: 100% !important; }
 .style-for-mobile .echbay-blog-number1 .echbay-blog li,
 .style-for-mobile .echbay-blog-number1 .thread-list li { float: none; }
 .style-for-mobile .echbay-blog100 .echbay-blog-padding,

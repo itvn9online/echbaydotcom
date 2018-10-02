@@ -212,11 +212,12 @@ $other_option_list = '';
 //
 //if ( isset( $post_categories[0] ) ) {
 if ( ! empty( $post_categories ) ) {
+	print_r( $post_categories );
 	
 	// parent
 	foreach($post_categories as $c){
 		$cat = get_term( $c );
-//		print_r( $cat );
+		print_r( $cat );
 //		$cat = get_category( $c );
 //		print_r( $cat );
 		
@@ -242,6 +243,13 @@ if ( ! empty( $post_categories ) ) {
 				$cats_child[] = $cat;
 			}
 		}
+		
+		// ưu tiên lấy tên nhóm sản phẩm theo nhóm chính
+		if ( $ant_ten == '' && _eb_get_cat_object( $cat->term_id, '_eb_category_primary', 0 ) == 1 ) {
+			$ant_ten = $cat->name;
+			$ant_id = $cat->term_id;
+			$cid = $ant_id;
+		}
 	}
 	
 	// child
@@ -259,9 +267,11 @@ if ( ! empty( $post_categories ) ) {
 //
 //if ( isset( $cats[0] ) ) {
 if ( ! empty( $cats ) ) {
-	$ant_ten = $cats[0]->name;
-	$ant_id = $cats[0]->term_id;
-	$cid = $ant_id;
+	if ( $ant_ten == '' ) {
+		$ant_ten = $cats[0]->name;
+		$ant_id = $cats[0]->term_id;
+		$cid = $ant_id;
+	}
 	
 	// tìm nhóm cha (nếu có)
 	$parent_cid = _eb_create_html_breadcrumb( $cats[0] );
