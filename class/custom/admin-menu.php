@@ -584,12 +584,23 @@ function eb_run_post_column_content($column, $post_id) {
 
 function WGR_admin_load_ads_by_status ( $query ) {
 	$ads_filter_status = isset ( $_GET ['ads_filter_status'] ) ? trim ( strtolower( $_GET ['ads_filter_status'] ) ) : '';
+	$post_filter_status = isset ( $_GET ['post_filter_status'] ) ? trim ( strtolower( $_GET ['post_filter_status'] ) ) : '';
 	
 	//
 	if ( $ads_filter_status != '' ) {
 		$status_in = array(
 			'key' => '_eb_ads_status',
 			'value' => $ads_filter_status,
+			'compare' => '=',
+			'type' => 'NUMERIC'
+		);
+		
+		$query->set( 'meta_query', array( $status_in ) );
+	}
+	else if ( $post_filter_status != '' ) {
+		$status_in = array(
+			'key' => '_eb_product_status',
+			'value' => $post_filter_status,
 			'compare' => '=',
 			'type' => 'NUMERIC'
 		);

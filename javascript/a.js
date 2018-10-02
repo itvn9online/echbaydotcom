@@ -37,6 +37,62 @@ var gallery_has_been_load = false,
 
 
 
+function WGR_get_parameter_in_url ( s ) {
+	// tìm theo dấu ?
+	var a = current_ls_url.split('&' + s + '=');
+	if ( a.length > 1 ) {
+		return a[ 1 ].split('&')[0];
+	}
+	
+	//
+	a = current_ls_url.split('?' + s + '=');
+	if ( a.length > 1 ) {
+		return a[ 1 ].split('&')[0];
+	}
+	
+	return '';
+}
+
+function WGR_set_class_parameter_in_url ( s ) {
+	s = WGR_get_parameter_in_url( s );
+	console.log(s);
+	
+	if ( s != '' ) {
+		jQuery('ul.echbay-subsubsub a[data-slug="' + s + '"]').addClass('redcolor');
+	}
+}
+
+function WGR_set_html_loc_to_admin_post_list ( op ) {
+	if ( typeof op['inner'] == 'undefined' || op['inner'] == '' ) {
+		op['inner'] = '#posts-filter';
+	}
+	
+	//
+	jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + op['str'] + '</ul>');
+	
+	//
+	if ( typeof op['get'] != 'undefined' && op['get'] != '' ) {
+		WGR_set_class_parameter_in_url( op['get'] );
+	}
+}
+
+function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
+//	console.log(arr);
+	console.log(op);
+	
+	//
+	var str = '<li class="bold">' + op['name'] + ':</li>';
+	for ( var i = 0; i < arr.length; i++ ) {
+		str += '<li><a href="' + admin_link + op['url'] + op['get'] + '=' + arr[i].slug + '" data-slug="' + arr[i].slug + '">' + arr[i].ten + '</a></li>';
+	}
+	
+	//
+	WGR_set_html_loc_to_admin_post_list( {
+		'get' : op['get'],
+		'str' : str
+	} );
+}
+
 
 // tạo url chung cho các module
 (function ( admin_body_class ) {
@@ -118,8 +174,9 @@ var gallery_has_been_load = false,
 	// danh sách post, page, custom post type
 	else if ( admin_act == 'list' ) {
 		// nếu là post
-		if ( win_href.split('post_type=').length == 1
-		|| win_href.split('post_type=post').length > 1 ) {
+//		if ( win_href.split('post_type=').length == 1
+//		|| win_href.split('post_type=post').length > 1 ) {
+		if ( pagenow == 'edit-post' && typenow == 'post' ) {
 			jQuery('table.wp-list-table').addClass('admin-list-product-avt')/* .width( '150%' ) */;
 			
 			//
@@ -137,27 +194,109 @@ var gallery_has_been_load = false,
 				float: 'none'
 			});
 			*/
+			
+			
+			
+			//
+			var ads_loc = '';
+			
+			//
+//			console.log(arr_eb_product_status);
+			ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
+			for ( var i = 0; i < arr_eb_product_status.length; i++ ) {
+				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=post&post_filter_status=' + arr_eb_product_status[i].id + '" data-slug="' + arr_eb_product_status[i].id + '">' + arr_eb_product_status[i].ten + '</a></li>';
+			}
+			
+			//
+			WGR_set_html_loc_to_admin_post_list( {
+				'get' : 'post_filter_status',
+				'str' : ads_loc
+			} );
+			
+			
+			
+			//
+			WGR_create_html_loc_to_admin_post_list( eb_options_group, {
+				'name' : 'Lọc theo Thông số khác',
+				'get' : 'post_options',
+				'url' : 'edit.php?post_type=post&'
+			} );
+			
+			
+			
+			//
+			WGR_create_html_loc_to_admin_post_list( eb_site_group, {
+				'name' : 'Lọc theo Chuyên mục',
+				'get' : 'category_name',
+				'url' : 'edit.php?post_type=post&'
+			} );
+			
+			
+			
+			//
+			jQuery('ul.subsubsub').addClass('cf').css({
+				float: 'none'
+			});
 		}
 		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
 		else if ( win_href.split('post_type=ads').length > 1 ) {
-			console.log(arr_eb_ads_status);
+			var ads_loc = '';
 			
-			var ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
-			for ( var i = 0; i < arr_eb_ads_status.length; i++ ) {
-				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&ads_filter_status=' + arr_eb_ads_status[i].id + '">' + arr_eb_ads_status[i].ten + '</a></li>';
-			}
-//			console.log(ads_loc);
-			
-			jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
-			
-			
-			// xem theo post option
+			//
+//			console.log(arr_eb_ads_status);
 			ads_loc = '<li class="bold">Lọc theo trạng thái:</li>';
-			for ( var i = 0; i < eb_options_group.length; i++ ) {
-				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&post_options=' + eb_options_group[i].slug + '">' + eb_options_group[i].ten + '</a></li>';
+			for ( var i = 0; i < arr_eb_ads_status.length; i++ ) {
+				ads_loc += '<li><a href="' + admin_link + 'edit.php?post_type=ads&ads_filter_status=' + arr_eb_ads_status[i].id + '" data-slug="' + arr_eb_ads_status[i].id + '">' + arr_eb_ads_status[i].ten + '</a></li>';
 			}
 			
-			jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + ads_loc + '</ul>');
+			//
+			WGR_set_html_loc_to_admin_post_list( {
+				'get' : 'ads_filter_status',
+				'str' : ads_loc
+			} );
+			
+			
+			
+			//
+			WGR_create_html_loc_to_admin_post_list( eb_options_group, {
+				'name' : 'Lọc theo Thông số khác',
+				'get' : 'post_options',
+				'url' : 'edit.php?post_type=ads&'
+			} );
+			
+			
+			
+			//
+			WGR_create_html_loc_to_admin_post_list( eb_site_group, {
+				'name' : 'Lọc theo Chuyên mục',
+				'get' : 'category_name',
+				'url' : 'edit.php?post_type=ads&'
+			} );
+			
+			
+			
+			//
+			WGR_create_html_loc_to_admin_post_list( eb_blog_group, {
+				'name' : 'Lọc theo Danh mục tin',
+				'get' : 'blogs',
+				'url' : 'edit.php?post_type=ads&'
+			} );
+			
+			
+			
+			//
+			jQuery('ul.subsubsub').addClass('cf').css({
+				float: 'none'
+			});
+		}
+		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
+		else if ( win_href.split('post_type=blog').length > 1 ) {
+			WGR_create_html_loc_to_admin_post_list( eb_blog_group, {
+				'name' : 'Lọc theo Danh mục tin',
+				'get' : 'blogs',
+				'url' : 'edit.php?post_type=blog&'
+			} );
+			
 			
 			
 			//
