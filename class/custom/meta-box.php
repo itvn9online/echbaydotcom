@@ -201,7 +201,7 @@ if ( mtv_id == 1 ) {
 // Hiển thị câu ghi chú đối với meta box
 $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_css' => 'Bạn có thể thêm một class class CSS vào đây, class này sẽ xuất hiện trong thẻ BODY, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
-	'_eb_product_avatar' => 'Ảnh đại diện dự phòng, dùng để làm hiệu ứng chuyển ảnh đại diện khi di chuột hoặc  chuyển dữ liệu và làm demo sẽ tiện',
+	'_eb_product_avatar' => 'Ảnh đại diện dự phòng, dùng để làm <a href="' . admin_link . 'admin.php?page=eb-config_theme&tab=theme-list&support_tab=cf_list_avt_hover" target="_blank">hiệu ứng chuyển ảnh đại diện khi di chuột</a> hoặc  chuyển dữ liệu và làm demo sẽ tiện',
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_supper_shop' => 'Nhập vào URL mà bạn muốn chuyển tới khi người dùng bấm vào nút [Mua ngay] trong trang chi tiết sản phẩm (Mặc định sẽ thêm vào giỏ hoặc mở popup mua ngay).',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
