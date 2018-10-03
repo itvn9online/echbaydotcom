@@ -559,7 +559,13 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			dog('oi_admin_popup').innerHTML = 'waiting...';
 			
 			//
-			ajaxl('gallery', 'oi_admin_popup', 9, function () {
+			var post_ID = $('#post_ID').val() || '';
+			if ( post_ID != '' ) {
+				post_ID = '&post_ID=' + post_ID;
+			}
+			
+			//
+			ajaxl('gallery' + post_ID, 'oi_admin_popup', 9, function () {
 				// Nếu có thuộc tính hiển thị option
 				if ( show_only != '' ) {
 					// chỉ hiển thị option theo chỉ định
