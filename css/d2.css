@@ -1227,6 +1227,8 @@ color: #333;
 	position: absolute;
 	left: 10px;
 	font-size: 23px;
+	top: 50%;
+	transform: translate(0, -50%);
 }
 .cart-table-free li:first-child div { margin-right: 10px; }
 .cart-table-free li:last-child div { margin-left: 10px; }
