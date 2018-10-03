@@ -202,7 +202,7 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			if ( $__cf_row['cf_list_avt_hover'] == 1 ) {
 				$img_hover = _eb_get_post_object( $post->ID, '_eb_product_avatar' );
 				if ( $img_hover != '' ) {
-					$__cf_row['cf_default_css'] .= '.thread-list li[data-id="' . $post->ID . '"]:hover .thread-list-avt{background-image: url("' . $img_hover . '") !important}';
+					$__cf_row['cf_default_css'] .= '.thread-list li[data-id="' . $post->ID . '"]:hover .thread-list-avt{background-image:url("' . $img_hover . '") !important}';
 				}
 			}
 			
