@@ -287,6 +287,12 @@ $__cf_row_default = array(
 	// đổi style cho sidebar trang danh mục sản phẩm
 	'cf_list_sidebar_new_style' => 'off',
 	
+	// hệ thống comment qua fb
+	'cf_show_fb_cmt_posts' => 1,
+	'cf_show_fb_cmt_post' => 1,
+	'cf_show_fb_cmt_blogs' => 1,
+	'cf_show_fb_cmt_blog' => 1,
+	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm
 	*/

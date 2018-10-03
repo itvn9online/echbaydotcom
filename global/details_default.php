@@ -784,7 +784,7 @@ $arr_main_content = array(
 //	'tmp.trv_masanpham' => $trv_masanpham == '' ? '#' . $pid : $trv_masanpham,
 	
 	'tmp.link_for_fb_comment' => $link_for_fb_comment,
-	'tmp.html_for_fb_comment' => '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list,
+//	'tmp.html_for_fb_comment' => '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list,
 	
 	'tmp.trv_tieude' => $trv_h1_tieude,
 	'tmp.trv_h1_tieude' => ( $__cf_row['cf_set_link_for_h1'] == 1 ) ? '<a href="' . $url_og_url . '" rel="nofollow">' . $trv_h1_tieude . '</a>' : $trv_h1_tieude,
@@ -910,6 +910,17 @@ $arr_main_content = array(
 	'tmp.lang_post_custom_text9' => EBE_get_lang('post_custom_text9'),
 	'tmp.lang_post_custom_text10' => EBE_get_lang('post_custom_text10')
 );
+
+//
+if ( $switch_taxonomy == 'category' && $__cf_row['cf_show_fb_cmt_post'] == 1 ) {
+	$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list;
+}
+else if ( $switch_taxonomy == EB_BLOG_POST_LINK && $__cf_row['cf_show_fb_cmt_blog'] == 1 ) {
+	$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list;
+}
+else {
+	$arr_main_content['tmp.html_for_fb_comment'] = '';
+}
 
 
 // gọi đến function riêng của từng site

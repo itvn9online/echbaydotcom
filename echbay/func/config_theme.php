@@ -22,6 +22,11 @@ $_POST['cf_using_footer_default'] = WGR_default_config('cf_using_footer_default'
 
 $_POST['cf_list_sidebar_new_style'] = WGR_default_config('cf_list_sidebar_new_style');
 
+$_POST['cf_show_fb_cmt_posts'] = WGR_default_config('cf_show_fb_cmt_posts');
+$_POST['cf_show_fb_cmt_post'] = WGR_default_config('cf_show_fb_cmt_post');
+$_POST['cf_show_fb_cmt_blogs'] = WGR_default_config('cf_show_fb_cmt_blogs');
+$_POST['cf_show_fb_cmt_blog'] = WGR_default_config('cf_show_fb_cmt_blog');
+
 $_POST['cf_details_content_slider'] = WGR_default_config('cf_details_content_slider');
 
 $_POST['cf_details_show_list_next'] = WGR_default_config('cf_details_show_list_next');

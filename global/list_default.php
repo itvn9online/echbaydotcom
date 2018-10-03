@@ -442,7 +442,19 @@ if ( $main_content == false ) {
 		$arr_main_content['tmp.list_post'] = EBE_check_list_post_null( $list_post );
 		
 		$arr_main_content['tmp.link_for_fb_comment'] = $link_for_fb_comment;
-		$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>';
+		
+		//
+		if ( $switch_taxonomy == 'category' && $__cf_row['cf_show_fb_cmt_posts'] == 1 ) {
+			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>';
+		}
+		else if ( $switch_taxonomy == EB_BLOG_POST_LINK && $__cf_row['cf_show_fb_cmt_blogs'] == 1 ) {
+			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>';
+		}
+		else {
+			$arr_main_content['tmp.html_for_fb_comment'] = '';
+		}
+		
+		//
 		$arr_main_content['tmp.str_page'] = $str_page;
 		$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '" rel="nofollow">' . $__category->name . '</a>' : $__category->name;
 		

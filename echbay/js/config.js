@@ -988,6 +988,11 @@ else {
 	show_note_for_checkbox_config( 'cf_blogs_content_bottom' );
 	show_note_for_checkbox_config( 'cf_set_mask_for_details' );
 	show_note_for_checkbox_config( 'cf_update_price_if_hethan' );
+	
+	show_note_for_checkbox_config( 'cf_show_fb_cmt_posts' );
+	show_note_for_checkbox_config( 'cf_show_fb_cmt_post' );
+	show_note_for_checkbox_config( 'cf_show_fb_cmt_blogs' );
+	show_note_for_checkbox_config( 'cf_show_fb_cmt_blog' );
 }
 
 
