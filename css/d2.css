@@ -1770,6 +1770,7 @@ a.search-advanced-btn {
 .ebe-currency:before {
 	display: none;
 	margin-right: 2px;
+	font-weight: normal;
 }
 .global-cats-description {
 	font-size: 15px;
