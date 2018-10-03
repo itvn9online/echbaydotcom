@@ -286,6 +286,7 @@ $__cf_row_default = array(
 	
 	// đổi style cho sidebar trang danh mục sản phẩm
 	'cf_list_sidebar_new_style' => 'off',
+	'cf_list_avt_hover' => 'off',
 	
 	// hệ thống comment qua fb
 	'cf_show_fb_cmt_posts' => 1,

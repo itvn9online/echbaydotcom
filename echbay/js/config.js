@@ -963,6 +963,7 @@ if ( current_module_config != 'config_theme' ) {
 // config_theme
 else {
 	show_note_for_checkbox_config( 'cf_list_sidebar_new_style' );
+	show_note_for_checkbox_config( 'cf_list_avt_hover' );
 	
 	show_note_for_checkbox_config( 'cf_details_content_slider' );
 	show_note_for_checkbox_config( 'cf_details_show_list_next' );
