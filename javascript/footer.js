@@ -598,14 +598,14 @@ ___eb_set_url_for_search_advanced_button();
 				if ( a != '' ) {
 					jQuery(this).on('click', function () {
 						var goto = 0;
-						if ( jQuery('.' + a).length > 0 ) {
-							goto = jQuery('.' + a).offset().top;
-						}
-						else if ( jQuery('#' + a).length > 0 ) {
+						if ( jQuery('#' + a).length > 0 ) {
 							goto = jQuery('#' + a).offset().top;
 						}
 						else if ( jQuery('a[name="' + a + '"]').length > 0 ) {
 							goto = jQuery('a[name="' + a + '"]').offset().top;
+						}
+						else if ( jQuery('.' + a).length > 0 ) {
+							goto = jQuery('.' + a).offset().top;
 						}
 						
 						if ( goto > 90 ) {
