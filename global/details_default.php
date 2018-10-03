@@ -912,10 +912,10 @@ $arr_main_content = array(
 );
 
 //
-if ( $switch_taxonomy == 'category' && $__cf_row['cf_show_fb_cmt_post'] == 1 ) {
+if ( $__post->post_type == 'post' && $__cf_row['cf_show_fb_cmt_post'] == 1 ) {
 	$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list;
 }
-else if ( $switch_taxonomy == EB_BLOG_POST_LINK && $__cf_row['cf_show_fb_cmt_blog'] == 1 ) {
+else if ( $__post->post_type == EB_BLOG_POST_TYPE && $__cf_row['cf_show_fb_cmt_blog'] == 1 ) {
 	$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>' . $wgr_comment_list;
 }
 else {
