@@ -27,14 +27,14 @@ function WGR_gallery_by_post_edit ( $sql ) {
 	$str = '';
 	
 	foreach ( $sql as $v ) {
-	//	echo $v->guid . '<br>' . "\n";
+//		echo $v->guid . '<br>' . "\n";
 		
 		//
 		$a_full = wp_get_attachment_image_src( $v->ID, 'full' );
-	//	print_r( $a_full );
+//		print_r( $a_full );
 		
 		$a_thumb = wp_get_attachment_image_src( $v->ID, 'thumbnail' );
-	//	print_r( $a_thumb );
+//		print_r( $a_thumb );
 		
 		//
 		$str .= '
@@ -100,7 +100,11 @@ if ( $post_ID > 0 && $trang == 1 ) {
 //	print_r( $sql );
 	
 	//
-	$str_list_file .= WGR_gallery_by_post_edit( $sql );
+	if ( ! empty( $sql ) ) {
+		$str_list_file .= WGR_gallery_by_post_edit( $sql );
+//		$str_list_file .= '<li style="float:none;width:auto;"><hr></li>';
+		$str_list_file .= '<!-- END image by post -->';
+	}
 }
 
 
