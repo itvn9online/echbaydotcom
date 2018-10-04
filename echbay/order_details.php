@@ -227,7 +227,7 @@ else {
 		$str_select_trangthai = '';
 		$str_button_trangthai = '';
 		foreach ( $arr_hd_trangthai as $k => $v ) {
-			if ( $k >= 0 ) {
+			if ( $k >= 0 && $v != 'none' ) {
 				$sl = '';
 				$cl = '';
 				if ( $k == $hd_trangthai ) {

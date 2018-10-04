@@ -409,6 +409,31 @@ $___eb_lang[eb_key_for_site_lang . 'dc_not_found'] = 'Không tìm thấy Mã gi�
 $___eb_lang[eb_key_for_site_lang . 'dc_expires'] = 'Mã giảm giá đã hết hạn hoặc không còn sử dụng!';
 
 
+// ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
+$eb_note_first_lang[eb_key_for_site_lang . 'order_status_name-1'] = 'Phần bản dịch để đặt tên cho trạng thái của đơn hàng (trạng thái sẽ bị ẩn khi đặt là none)';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name-1'] = '[ XÓA ]';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name0'] = 'Chưa xác nhận';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name1'] = 'Xác nhận, chờ giao';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name2'] = 'Đơn giờ vàng';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name3'] = 'Đang xác nhận';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name4'] = '[ Đã hủy ]';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name5'] = 'Xác nhận, chờ hàng';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name6'] = 'Không liên lạc được';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name7'] = 'Liên hệ lại';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name8'] = 'Đặt trước, đã thanh toán';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name9'] = 'Hoàn tất';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name10'] = 'Xác nhận, chờ in';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name11'] = 'Đang vận chuyển';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name12'] = 'Danh sách đen';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name13'] = 'Ẩn';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name14'] = 'Đang nhập hàng';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name15'] = 'Hàng hoàn';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name16'] = 'none';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name17'] = 'none';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name18'] = 'none';
+$___eb_lang[eb_key_for_site_lang . 'order_status_name19'] = 'none';
+
+
 // phần ngôn ngữ riêng, để sử dụng cho các câu từ mà một số website sẽ dùng
 $eb_note_first_lang[eb_key_for_site_lang . 'custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho các theme khác nhau';
 $___eb_lang[eb_key_for_site_lang . 'custom_text'] = 'Custom text';

@@ -246,6 +246,9 @@ input[id="_eb_category_order"] { width: 90px; }
 	min-width: 21px;
 	font-size: 11px;
 }
+.eb-order-filter-tab li a:before,
+.poup-change-status .order-list-icon:before,
+.bill-detail-status button span:before { content: "\f06e"; }
 .eb-order-filter-tab li[data-tab="0"] a:before,
 .bill-detail-status button[data-tab="0"] span:before,
 .hd_status0 .order-list-icon:before { content: "\f07a"; }
@@ -288,8 +291,12 @@ input[id="_eb_category_order"] { width: 90px; }
 .eb-order-filter-tab li[data-tab="13"] a:before,
 .bill-detail-status button[data-tab="13"] span:before,
 .hd_status13 .order-list-icon:before { content: "\f070"; }
-.hd_status14 .order-list-icon:before { content: ""; }
-.hd_status15 .order-list-icon:before { content: ""; }
+.eb-order-filter-tab li[data-tab="14"] a:before,
+.bill-detail-status button[data-tab="14"] span:before,
+.hd_status14 .order-list-icon:before { content: "\f1b3"; }
+.eb-order-filter-tab li[data-tab="15"] a:before,
+.bill-detail-status button[data-tab="15"] span:before,
+.hd_status15 .order-list-icon:before { content: "\f1e2"; }
 .eb-order-filter-tab li:first-child a:before { display: none; }
 /* */
 .bill-detail-status,

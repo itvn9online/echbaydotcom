@@ -331,21 +331,27 @@ $url_for_js_lang = EB_DIR_CONTENT . '/uploads/ebcache/lang.js';
 
 // trạng thái đơn
 $arr_hd_trangthai = array (
-		-1 => '[ XÓA ]',
-		0 => 'Chưa xác nhận',
-		1 => 'Xác nhận, chờ giao',
-		2 => 'Đơn giờ vàng',
-		3 => 'Đang xác nhận',
-		4 => '[ Đã hủy ]',
-		5 => 'Xác nhận, chờ hàng',
-		6 => 'Không liên lạc được',
-		7 => 'Liên hệ lại',
-		8 => 'Đặt trước, đã thanh toán',
-		9 => 'Hoàn tất',
-		10 => 'Xác nhận, chờ in',
-		11 => 'Đang vận chuyển',
-		12 => 'Danh Sách Đen',
-		13 => 'Ẩn'
+		-1 => EBE_get_lang('order_status_name-1'),
+		0 => EBE_get_lang('order_status_name0'),
+		1 => EBE_get_lang('order_status_name1'),
+		2 => EBE_get_lang('order_status_name2'),
+		3 => EBE_get_lang('order_status_name3'),
+		4 => EBE_get_lang('order_status_name4'),
+		5 => EBE_get_lang('order_status_name5'),
+		6 => EBE_get_lang('order_status_name6'),
+		7 => EBE_get_lang('order_status_name7'),
+		8 => EBE_get_lang('order_status_name8'),
+		9 => EBE_get_lang('order_status_name9'),
+		10 => EBE_get_lang('order_status_name10'),
+		11 => EBE_get_lang('order_status_name11'),
+		12 => EBE_get_lang('order_status_name12'),
+		13 => EBE_get_lang('order_status_name13'),
+		14 => EBE_get_lang('order_status_name14'),
+		15 => EBE_get_lang('order_status_name15'),
+		16 => EBE_get_lang('order_status_name16'),
+		17 => EBE_get_lang('order_status_name17'),
+		18 => EBE_get_lang('order_status_name18'),
+		19 => EBE_get_lang('order_status_name19')
 );
 
 

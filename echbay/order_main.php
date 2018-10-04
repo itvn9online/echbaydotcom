@@ -7,7 +7,7 @@
 		
 		//
 		foreach ( $arr_hd_trangthai as $k => $v ) {
-			if ( $k >= 0 ) {
+			if ( $k >= 0 && $v != 'none' ) {
 				echo '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
 			}
 		}
@@ -120,7 +120,7 @@ if ( $order_by_time_line != '' ) {
 }
 //echo $strCountFilter . '<br>' . "\n";
 foreach ( $arr_hd_trangthai as $k => $v ) {
-	if ( $k >= 0 ) {
+	if ( $k >= 0 && $v != 'none' ) {
 		$totalTabThread = _eb_c ( "SELECT COUNT(order_id) AS c
 		FROM
 			`eb_in_con_voi`
