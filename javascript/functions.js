@@ -180,97 +180,109 @@ function WGR_check_option_on ( a ) {
 
 
 function _date(phomat, t) {
-	var result = '';
+	
+	//
 	if (typeof phomat != 'string' || phomat.replace(/\s/g, '') == '') {
 		return _date('D, M d,Y H:i:s');
-	} else {
-		var type = typeof t,
-			js_date = function(d) {
-				var arr_D = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
-					arr_M = "January February March April May June July August September October November December".split(" ");
-				for (var i = 0, str = ''; i < phomat.length; i++) {
-					str += (function(a) {
-						if (typeof a == 'undefined') {
-							return '';
-						}
-						a = a.replace(/\s/g, ' ');
-						switch (a) {
-							case "d":
-								a = d.getDate();
-								break;
-							case "D":
-								a = arr_D[d.getDay()].substr(0, 3);
-								break;
-							case "l":
-								a = arr_D[d.getDay()];
-								break;
-							case "F":
-								a = arr_M[d.getMonth()];
-								break;
-							case "M":
-								a = arr_M[d.getMonth()].substr(0, 3);
-								break;
-							case "m":
-								a = d.getMonth() + 1;
-								break;
-							case "Y":
-								a = d.getFullYear();
-								break;
-							case "y":
-								a = d.getFullYear().toString().substr(2);
-								break;
-							case "a":
-								a = d.getHours();
-								if (a >= 12) {
-									a = 'am';
-								} else {
-									a = 'pm';
-								}
-								break;
-							case "A":
-								a = d.getHours();
-								if (a >= 12) {
-									a = 'AM';
-								} else {
-									a = 'PM';
-								}
-								break;
-							case "H":
-								a = d.getHours();
-								break;
-							case "h":
-								a = d.getHours();
-								if (a > 12) {
-									a -= 12;
-								}
-								break;
-							case "i":
-								a = d.getMinutes();
-								break;
-							case "s":
-								a = d.getSeconds();
-								break;
-						}
-						if (a != ' ' && !isNaN(a) && a < 10) {
-							a = '0' + a;
-						}
-						return a;
-					}( phomat.substr(i, 1) ));
-				}
-				return str;
-			};
-		if (type == 'string') {
-			t = parseInt(t, 10);
-		}
-		if (type == 'undefined' || isNaN(t)) {
-			t = new Date().getTime();
-		} else {
-			t = t * 1000;
-		}
-		var nd = new Date(t);
-		result = js_date(nd);
 	}
-	return result;
+	
+	//
+	var type = typeof t,
+		js_date = function(d) {
+			var arr_D = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),
+				arr_M = "January February March April May June July August September October November December".split(" ");
+			for (var i = 0, str = ''; i < phomat.length; i++) {
+				str += (function(a) {
+					if (typeof a == 'undefined') {
+						return '';
+					}
+					a = a.replace(/\s/g, ' ');
+					switch (a) {
+						case "d":
+							a = d.getDate();
+							break;
+						case "D":
+							a = arr_D[d.getDay()].substr(0, 3);
+							break;
+						case "l":
+							a = arr_D[d.getDay()];
+							break;
+						case "F":
+							a = arr_M[d.getMonth()];
+							break;
+						case "M":
+							a = arr_M[d.getMonth()].substr(0, 3);
+							break;
+						case "m":
+							a = d.getMonth() + 1;
+							break;
+						case "Y":
+							a = d.getFullYear();
+							break;
+						case "y":
+							a = d.getFullYear().toString().substr(2);
+							break;
+						case "a":
+							a = d.getHours();
+							if (a >= 12) {
+								a = 'am';
+							} else {
+								a = 'pm';
+							}
+							break;
+						case "A":
+							a = d.getHours();
+							if (a >= 12) {
+								a = 'AM';
+							} else {
+								a = 'PM';
+							}
+							break;
+						case "H":
+							a = d.getHours();
+							break;
+						case "h":
+							a = d.getHours();
+							if (a > 12) {
+								a -= 12;
+							}
+							break;
+						case "i":
+							a = d.getMinutes();
+							break;
+						case "s":
+							a = d.getSeconds();
+							break;
+					}
+					if (a != ' ' && !isNaN(a) && a < 10) {
+						a = '0' + a;
+					}
+					return a;
+				}( phomat.substr(i, 1) ));
+			}
+			return str;
+		};
+	
+	//
+	if (type == 'string') {
+		t = t * 1;
+//		t = parseInt(t, 10);
+	}
+	else if (type == 'undefined' || isNaN(t)) {
+		if ( typeof date_time != 'undefined' ) {
+			t = date_time * 1000;
+		}
+		else {
+			t = new Date().getTime();
+		}
+	}
+	else {
+		t = t * 1000;
+	}
+	var nd = new Date(t);
+	
+	//
+	return js_date(nd);
 }
 
 

@@ -2287,31 +2287,7 @@ function ___eb_details_post_run ( r ) {
 	// đếm thời gian hiển thị
 //	console.log(trv_ngayhethan);
 	if ( trv_ngayhethan > 0 ) {
-		(function () {
-			
-			var id_for_show = 'oi_time_line';
-			
-			// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
-			if ( dog(id_for_show) == null ) {
-				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
-				return false;
-			}
-			
-			// nếu có -> hiển thị thời gian
-			jQuery('#' + id_for_show).before('<div class="medium l35 thread-details-countdown-left">' + lang_details_time_discount + '</div>');
-			
-			// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
-			if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
-				dog('oi_time_line').innerHTML = lang_details_time_soldout;
-				jQuery('#' + id_for_show).removeClass('bold').addClass('product-soldout');
-				jQuery('.details-ankhi-hethang').hide();
-			}
-			// điều chỉnh class theo style riêng
-			else {
-				jQuery('#' + id_for_show).addClass('global-details-countdown');
-			}
-			
-		})();
+		WGR_check_and_begin_load_count_down();
 	}
 	
 	// hiển thị con dấu hàng chính hãng
@@ -2510,6 +2486,32 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 }
 
 
+
+function WGR_check_and_begin_load_count_down () {
+	
+	var id_for_show = 'oi_time_line';
+	
+	// nếu ko có ID để hiển thị thời gian -> hủy bỏ luôn
+	if ( dog(id_for_show) == null ) {
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Thời gian hết hạn được kích hoạt, nhưng không tìm thấy DIV id="' + id_for_show + '"');
+		return false;
+	}
+	
+	// nếu có -> hiển thị thời gian
+	jQuery('#' + id_for_show).before('<div class="medium l35 thread-details-countdown-left">' + lang_details_time_discount + '</div>');
+	
+	// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
+	if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
+		dog('oi_time_line').innerHTML = lang_details_time_soldout;
+		jQuery('#' + id_for_show).removeClass('bold').addClass('product-soldout');
+		jQuery('.details-ankhi-hethang').hide();
+	}
+	// điều chỉnh class theo style riêng
+	else {
+		jQuery('#' + id_for_show).addClass('global-details-countdown');
+	}
+	
+}
 
 function ___wgr_dem_thoi_gian_san_pham ( thoi_gian_con_lai ) {
 	

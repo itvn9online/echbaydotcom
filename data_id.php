@@ -7,6 +7,7 @@
 
 $add_data_id = array (
 		'date_time' => date_time,
+//		'tomorrow_time' => strtotime( date( 'Y/m/d', date_time + 24 * 3600 ) ),
 //		'check_lazyload' => $check_lazyload,
 //		'web_link' => '\'' . web_link . '\'',
 		'base_url_href' => '\'' . web_link . '\'',
