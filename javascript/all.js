@@ -1828,6 +1828,7 @@ function EBE_set_default_img_avt () {
 		
 		if ( a != '' ) {
 			dog('_eb_product_avatar').value = a;
+			console.log('Set default avt for #_eb_product_avatar');
 		}
 	}
 }
