@@ -77,6 +77,11 @@ function WGR_set_html_loc_to_admin_post_list ( op ) {
 }
 
 function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
+	if ( arr.length == 0 ) {
+		return false;
+	}
+	
+	//
 //	console.log(arr);
 	console.log(op);
 	
