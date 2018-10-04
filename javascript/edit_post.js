@@ -336,7 +336,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 			//
 			jQuery('#' + jd_for_quick_search_post + ' li').click(function () {
 				jQuery('#' + action_id).val( jQuery(this).attr('data-id') || '' );
-				$('body').addClass('hide-module-advanced-ads');
+				jQuery('body').addClass('hide-module-advanced-ads');
 				window.scroll( 0, 0 );
 				WGR_ads_get_current_select_category_or_post_name(action_id);
 			});
@@ -356,13 +356,13 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		
 		//
 		if ( jQuery('#_eb_ads_for_post').val() == '' && jQuery('#_eb_ads_for_category').val() == '' ) {
-			$('body').removeClass('hide-module-advanced-ads');
+			jQuery('body').removeClass('hide-module-advanced-ads');
 		}
 	});
 	
 	// thêm class để ẩn các chức năng không còn cần thiết khi q.cáo có alias
 	if ( jQuery('#_eb_ads_for_post').val() != '' || jQuery('#_eb_ads_for_category').val() != '' ) {
-		$('body').addClass('hide-module-advanced-ads');
+		jQuery('body').addClass('hide-module-advanced-ads');
 	}
 	
 	
@@ -392,7 +392,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 		
 		//
 		if (key != '') {
-			$(fix_id).hide().each(function() {
+			jQuery(fix_id).hide().each(function() {
 				var a = jQuery(this).attr('data-key') || '';
 				
 				//
@@ -405,7 +405,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 				}
 			});
 		} else {
-			$(fix_id).show();
+			jQuery(fix_id).show();
 		}
 	});
 }
@@ -677,7 +677,7 @@ function eb_func_show_product_size () {
 	// chuyển từ object sang string
 	/*
 	eb_global_product_size = JSON.parse(eb_global_product_size);
-	eb_global_product_size = $.parseJSON(eb_global_product_size);
+	eb_global_product_size = jQuery.parseJSON(eb_global_product_size);
 	*/
 //	console.log( eb_global_product_size );
 //	console.log( eb_global_product_size.length );
@@ -707,7 +707,7 @@ function check_eb_input_edit_product_size () {
 	/*
 	var current_select = '#' + eb_inner_html_product_size + ' li.selected';
 	console.log(current_select);
-	if ( $( current_select ).length == 0 ) {
+	if ( jQuery( current_select ).length == 0 ) {
 		console.log('current_select(2) not found!');
 		return false;
 	}
@@ -811,7 +811,7 @@ function eb_func_click_modife_product_size () {
 			/*
 			var current_select = '#' + eb_inner_html_product_size + ' li.selected';
 			console.log(eb_inner_html_product_size);
-			if ( $( current_select ).length == 0 ) {
+			if ( jQuery( current_select ).length == 0 ) {
 				console.log('current_select not found!');
 			}
 			*/
@@ -904,14 +904,14 @@ function eb_func_global_product_size () {
 //	if ( dog(eb_inner_html_product_size) == null ) {
 	if ( jQuery('#' + eb_inner_html_product_size).length == 0 ) {
 		
-		$('tr[data-row="_eb_product_color"]').after('\
+		jQuery('tr[data-row="_eb_product_color"]').after('\
 		<tr data-row="' + kk + '">\
 			<td class="t bold">Kích thước</div></td>\
 			<td id="' + eb_inner_html_product_size + '" class="i"></td>\
 		</tr>');
 		
 		// thêm chức năng sửa size
-//		$('body').append('\');
+//		jQuery('body').append('\');
 		
 	}
 	
@@ -927,7 +927,7 @@ function WGR_run_for_admin_edit_post () {
 	//
 	/*
 	if ( win_href.split('www.webgiare.org').length > 1 ) {
-		$(document).ready(function() {
+		jQuery(document).ready(function() {
 			setTimeout(function () {
 				jQuery('#click_remove_content_style').click();
 			}, 2000);
@@ -976,14 +976,14 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		// tạo hiệu ứng cho textarea
-		if ( $('textarea[id="excerpt"]').length > 0 ) {
-			$('textarea[id="excerpt"]').addClass('fix-textarea-height');
+		if ( jQuery('textarea[id="excerpt"]').length > 0 ) {
+			jQuery('textarea[id="excerpt"]').addClass('fix-textarea-height');
 		}
 		
 		
 		//
 		var a = jQuery('#_eb_product_avatar').val() || '',
-			b = $('tr[data-row="_eb_product_avatar"]').length;
+			b = jQuery('tr[data-row="_eb_product_avatar"]').length;
 		if ( a != '' && b > 0 ) {
 			
 			// xử lý hình ảnh lỗi cho xwatch cũ
@@ -991,7 +991,7 @@ function WGR_run_for_admin_edit_post () {
 			jQuery('#_eb_product_avatar').val( a );
 			
 			//
-			$('tr[data-row="_eb_product_avatar"]').after( '\
+			jQuery('tr[data-row="_eb_product_avatar"]').after( '\
 			<tr data-row="_eb_show_product_avatar">\
 				<td class="t">&nbsp;</td>\
 				<td class="i"><img src="' + a + '" height="110" /></td>\
@@ -1003,8 +1003,8 @@ function WGR_run_for_admin_edit_post () {
 		/*
 		setTimeout(function () {
 			console.log('for xwatch domain');
-			if ( $("#_eb_product_gallery_ifr").length > 0 ) {
-				$("#_eb_product_gallery_ifr").contents().find('img').each(function() {
+			if ( jQuery("#_eb_product_gallery_ifr").length > 0 ) {
+				jQuery("#_eb_product_gallery_ifr").contents().find('img').each(function() {
 					var a = jQuery(this).attr('src') || '',
 						b = a;
 					if (a != '') {
@@ -1174,10 +1174,10 @@ function WGR_run_for_admin_edit_post () {
 //				console.log(iff_id);
 				jQuery('#' + iff_id).contents().find( 'dl' ).each(function() {
 					var a = jQuery('.wp-caption-dd', this).html() || '',
-						b = $('img', this).attr('alt') || '';
+						b = jQuery('img', this).attr('alt') || '';
 //						console.log(a);
 					if ( a != '' && a != b ) {
-						$('img', this).attr({
+						jQuery('img', this).attr({
 							alt: a
 						});
 						
@@ -1304,7 +1304,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	// thêm nút nhân bản bài viết
-//	$('body').append('');
+//	jQuery('body').append('');
 	jQuery('#wgr-for-duplicator').show();
 	jQuery('.show-if-duplicator-null div').click(function () {
 		jQuery('.show-if-duplicator-null').fadeOut();
@@ -1359,7 +1359,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	//
-	$(window).on('load', function () {
+	jQuery(window).on('load', function () {
 		EBE_set_default_title_for_seo();
 	});
 	
@@ -1372,7 +1372,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	//
-	jQuery(document).ready(function($) {
+	jQuery(document).ready(function() {
 		if ( dog('_eb_product_ngayhethan') != null ) {
 			_global_js_eb.select_date('#_eb_product_ngayhethan');
 		}
@@ -1389,7 +1389,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	// thêm CSS hiển thị nút add ảnh đại diện
-	$('body').append( '<style>div.gallery-add-to-post_avt { display: block; }</style>' );
+	jQuery('body').append( '<style>div.gallery-add-to-post_avt { display: block; }</style>' );
 	
 	
 	
@@ -1399,13 +1399,13 @@ function WGR_run_for_admin_edit_post () {
 		dm = document.domain;
 	
 	//
-	$(window).on('load', function () {
+	jQuery(window).on('load', function () {
 		if ( cf_old_domain != '' ) {
 			
 			var arr_old_domain = cf_old_domain.replace(/\s/g, '').split(',');
 			
 			//
-			$( content_id ).contents().find( 'img' ).each(function() {
+			jQuery( content_id ).contents().find( 'img' ).each(function() {
 				
 				var a = jQuery(this).attr('src') || jQuery(this).attr('data-mce-src') || '';
 //				console.log(a);
@@ -1449,7 +1449,7 @@ function WGR_run_for_admin_edit_post () {
 		}
 		// chuyển URL ảnh về url tuyệt đối
 		else {
-			$( content_id ).contents().find( 'img' ).each(function() {
+			jQuery( content_id ).contents().find( 'img' ).each(function() {
 				var a = jQuery(this).attr('src') || jQuery(this).attr('data-mce-src') || '';
 //				console.log(a);
 				
@@ -1478,9 +1478,9 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		// tạo các quick menu cho phần edit post
-		var str = '<li>Về đầu trang <i class="fa fa-arrow-up"></i></li>';
+		var str = '';
 		jQuery('#normal-sortables .postbox, #advanced-sortables .postbox, #side-sortables .postbox').each(function() {
-			var a = $('h2 span', this).html() || '',
+			var a = jQuery('h2 span', this).html() || '',
 				jd = jQuery(this).attr('id') || '',
 				cl = jQuery(this).attr('class') || '';
 //			console.log(a);
@@ -1490,10 +1490,11 @@ function WGR_run_for_admin_edit_post () {
 				str += '<li data-id="' + jd + '">' + a + '</li>';
 			}
 		});
+		str += '<li>Về đầu trang <i class="fa fa-arrow-up"></i></li>';
 //		console.log(str);
 		
 		//
-		$('body').append('<ul class="edit-post-wgr-tab">' + str + '</ul>');
+		jQuery('body').append('<ul class="edit-post-wgr-tab">' + str + '</ul>');
 		
 		jQuery('.edit-post-wgr-tab li').click(function () {
 			var jd = jQuery(this).attr('data-id') || '',

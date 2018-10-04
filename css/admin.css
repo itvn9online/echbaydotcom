@@ -1073,12 +1073,6 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	-o-transition: all 0.8s ease;
 	-webkit-transition: all 0.8s ease;
 	transition: all 0.8s ease;
-	overflow: hidden;
-	height: 41px;
-}
-.edit-post-wgr-tab:hover {
-	overflow: auto;
-	height: auto;
 }
 .edit-post-wgr-tab li {
 	border-bottom: 1px #ccc solid;
@@ -1086,11 +1080,14 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	padding: 10px;
 	line-height: 20px;
 	background: rgba( 255, 255, 255, .8 );
+	display: none;
 }
 .edit-post-wgr-tab li:hover {
 	text-decoration: underline;
 	color: #f00;
 }
+.edit-post-wgr-tab li:last-child,
+.edit-post-wgr-tab:hover li { display: list-item; }
 .edit-post-wgr-tab:hover li { background: #fff; }
 /* */
 .echbay-subsubsub {

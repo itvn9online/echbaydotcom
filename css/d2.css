@@ -2418,3 +2418,9 @@ iframe[name="google_conversion_frame"] {
 	border-radius: 2px;
 	box-shadow: 0 0 5px #ccc;
 }
+.hoantat-cus-padding,
+.hoantat-post-padding { padding: 18px; }
+.hoan-tat-avt {
+	max-width: 110px;
+	margin: 0 auto;
+}

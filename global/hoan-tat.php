@@ -33,6 +33,7 @@ $hd_mahoadon = '';
 
 //
 $current_hd_object = '[]';
+$current_tv_object = '[]';
 
 $ga_ecom_update = 0;
 
@@ -77,6 +78,7 @@ if ( $hd_id > 0 ) {
 		//
 		$hd_mahoadon = $sql->order_sku;
 		$current_hd_object = $sql->order_products;
+		$current_tv_object = $sql->order_customer;
 		
 		
 		//
@@ -84,6 +86,7 @@ if ( $hd_id > 0 ) {
 		$__cf_row ['cf_js_allpage'] .= '
 		<script type="text/javascript">
 		setTimeout(function () {
+			WGR_show_hoan_tat_product_for_gg ( current_hd_object, current_tv_object );
 			___eb_add_convertsion_gg_fb ( ' . $hd_id . ', current_hd_object );
 		}, 800);
 		</script>';
@@ -130,7 +133,19 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 
 // thêm mã JS vào luôn trong phần PHP, để HTML làm bản dịch
 $main_content .= '<script type="text/javascript">
-var current_hd_id = "' . $hd_id . '", current_hd_object = "' . $current_hd_object . '";
+var current_hd_id = "' . $hd_id . '",
+	current_tv_object = "' . $current_tv_object . '",
+	current_hd_object = "' . $current_hd_object . '",
+	arr_lang_hoan_tat = {
+		"customer_info" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_customer_info') ) . '",
+		"payment_method" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_method') ) . '",
+		"cod" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_cod') ) . '",
+		"tructiep" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_tt') ) . '",
+		"bank" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_bank') ) . '",
+		"bk" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_bk') ) . '",
+		"nl" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_nl') ) . '",
+		"pp" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_pp') ) . '"
+	};
 </script>';
 
 

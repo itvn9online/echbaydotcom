@@ -24,11 +24,83 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 		console.log( arr );
 		
 		//
-		current_hd_object = arr;
+//		current_hd_object = arr;
 	}
 	
 	return arr;
 	
+}
+
+function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
+	current_hd_object = ___eb_add_conver_string_cart_to_arr_cart( arr );
+	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
+	
+	//
+	if ( current_hd_object == false || current_hd_object.length == 0 ) {
+		return false;
+	}
+	
+	//
+	var str = '',
+		str2 = '',
+		total = 0;
+	
+	//
+	str += '<br><h3 class="l35 text-center">' + arr_lang_hoan_tat['customer_info'] + '</h3>' +
+	'<div class="hoantat-cus-padding l20 gray2bg">' +
+		'<div>Số đơn hàng: <strong>' + current_tv_object['hd_thanhtoan'] + '</strong></div>' +
+		'<div>Khách hàng: <strong>' + current_tv_object['hd_ten'] + '</strong></div>' +
+		'<div>Số điện thoại: <strong>' + current_tv_object['hd_dienthoai'] + '</strong></div>' +
+		'<div>Địa chỉ nhận hàng: <strong>' + current_tv_object['hd_diachi'] + '</strong></div>' +
+		'<div>Ghi chú của khách hàng: <strong>' + current_tv_object['hd_ghichu'] + '</strong></div>' +
+		'<br>' +
+		'<div>' + arr_lang_hoan_tat['payment_method'] + ': <strong>' + ( typeof arr_lang_hoan_tat [ current_tv_object['hd_thanhtoan'] ] != 'undefined' ? arr_lang_hoan_tat [ current_tv_object['hd_thanhtoan'] ] : '<em>NULL</em>' ) + '</strong></div>' +
+		'<div>Trạng thái thanh toán: <strong>Chưa thanh toán</strong></div>' +
+	'</div>';
+	
+	//
+	for ( var i = 0; i < current_hd_object.length; i++ ) {
+		str2 += '' +
+		'<div class="cf">' +
+			'<div class="lf f25 fullsize-if-mobile">' +
+				'<div data-size="1" data-img="" class="ti-le-global hoan-tat-avt each-to-bgimg">&nbsp;</div>' +
+			'</div>' +
+			'<div class="lf f75 fullsize-if-mobile">' +
+				'<div class="left-menu-space">' +
+					'<h4><a href="' + web_link + '?p=' + current_hd_object[i].id + '" target="_blank" class="bluecolor">' + current_hd_object[i].name + '</a></h4>' +
+					'<div class="l30">' +
+						'<div class="redcolor"><strong class="ebe-currency ebe-currency-format">' + g_func.money_format( current_hd_object[i].price ) + '</strong></div>' +
+						'<div>Màu sắc: ' + current_hd_object[i].color + '</div>' +
+						'<div>Kích thước: ' + current_hd_object[i].size + '</div>' +
+						'<div>Số lượng: ' + current_hd_object[i].quan + '</div>' +
+					'</div>' +
+				'</div>' +
+			'</div>' +
+		'</div>';
+		
+		//
+		total += current_hd_object[i].price * current_hd_object[i].quan;
+	}
+	
+	//
+	str += '<h3 class="l35 text-center">Sản phẩm đặt mua</h3>' +
+	'<div class="hoantat-post-padding l20 tborder lborder rborder bborder">' +
+		str2 +
+	'</div>' +
+	'<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
+		'<div class="lf f25 fullsize-if-mobile text-right">Tổng giá trị đơn hàng</div>' +
+		'<div class="lf f25 fullsize-if-mobile">' +
+			'<div class="left-menu-space"><strong class="ebe-currency ebe-currency-format medium18 redcolor">' + g_func.money_format( total ) + '</strong></div>' +
+		'</div>' +
+	'</div>';
+	
+	//
+	if ( $('#show-product-for-google').length > 0 ) {
+		$('#show-product-for-google').html( str );
+	}
+	else if ( $('.col-booking-done-padding').length > 0 ) {
+		$('.col-booking-done-padding').append( str );
+	}
 }
 
 function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {

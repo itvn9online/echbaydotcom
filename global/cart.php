@@ -235,6 +235,8 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.cart_continue' => EBE_get_lang('cart_continue'),
 	'tmp.cart_customer_info' => EBE_get_lang('cart_customer_info'),
 	'tmp.cart_payment_method' => EBE_get_lang('cart_payment_method'),
+	
+	//
 	'tmp.cart_payment_cod' => EBE_get_lang('cart_payment_cod'),
 	'tmp.cart_payment_tt' => EBE_get_lang('cart_payment_tt'),
 	'tmp.cart_payment_bank' => EBE_get_lang('cart_payment_bank'),
