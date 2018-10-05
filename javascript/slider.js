@@ -148,6 +148,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
 	// tự động chạy
 	set_default_conf( 'autoplay', false );
+	
+	// tắt chế độ tự động chạy khi trong soạn thảo
+	if ( top != self || window.location.href.split('?elementor-preview=').length > 1 ) {
+		conf['autoplay'] = false;
+	}
+	
 	// bật touch
 	set_default_conf( 'swipemobile', false );
 	// tốc độ chuyển slide ( mini giây )
