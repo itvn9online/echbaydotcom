@@ -63,6 +63,12 @@ $get_site_select_taxonomy = _eb_categories_list_v3( 't_ant', $by_taxonomy );
 				<div id="oiAnt"><?php echo $get_site_select_taxonomy; ?></div>
 				<br>
 				<div>
+					<input type="checkbox" name="t_change_parent" id="t_change_parent" value="1">
+					<label for="t_change_parent" class="l25 bold">Thay đổi nhóm cha</label>
+					<p>* Khi tính năng này được bật, các nhóm đã tồn tại sẽ được chuyển sang nhóm cha mới.</p>
+				</div>
+				<br>
+				<div>
 					<label for="t_multi_taxonomy" class="l25 bold">Nhập danh sách các nhóm cần thêm:</label>
 					<p>* Nếu không có Category slug -&gt; slug sẽ tự động tạo theo Category name</p>
 					<textarea name="t_multi_taxonomy" id="t_multi_taxonomy" placeholder="Category name [ | category slug ]" style="width:99%;height:300px;"></textarea>
@@ -226,6 +232,8 @@ function WGR_get_and_oders_taxonomy_category (
 		$c_link = _eb_c_link( $v->term_id );
 		
 		//
+//		echo str_replace( web_link, '', $c_link ) . '<br>';
+		
 		$str .= '
 		<div class="cf">
 			<div class="lf">
@@ -281,6 +289,7 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_taxonomy.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_taxonomy.js' ) . '"></script>' . "\n";
+
 
 
 

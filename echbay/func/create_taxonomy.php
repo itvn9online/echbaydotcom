@@ -56,12 +56,36 @@ foreach ( $a as $v ) {
 		else {
 //			$check_term_exist = term_exists( $v, $_POST['t_taxonomy'] );
 			$check_term_exist = term_exists( $slug, $_POST['t_taxonomy'] );
-//			print_r( $check_term_exist );
+			print_r( $check_term_exist );
 		}
 		
 		//
 		if ( $check_term_exist !== 0 && $check_term_exist !== null ) {
-			echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' | ' . $slug . ' (<span class=redcolor>EXIST</span>)");</script>';
+			// đổi nhóm cha
+			if ( isset( $_POST['t_change_parent'] ) && $_POST['t_change_parent'] == 1 ) {
+				$done = wp_update_term(
+					$check_term_exist['term_id'],
+					// the taxonomy
+					$_POST['t_taxonomy'],
+					array(
+						// get numeric term id
+						'parent'=> (int) $_POST['t_ant']
+					)
+				);
+//				print_r( $done );
+				
+				//
+//				if ( isset( $done['errors'] ) || isset( $done->errors ) ) {
+				if ( is_wp_error( $done ) ) {
+					echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (<span class=redcolor>ERROR: ' . str_replace( '"', '&quot;', $done->get_error_message() ) . ')</span>");</script>';
+				}
+				else {
+					echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (<span class=orgcolor>Change parent #' . $_POST['t_ant'] . '</span>)");</script>';
+				}
+			}
+			else {
+				echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' | ' . $slug . ' (<span class=redcolor>EXIST</span>)");</script>';
+			}
 		}
 		else {
 			if ( $_POST['t_taxonomy'] == 'eb_discount_code' ) {
@@ -82,7 +106,7 @@ foreach ( $a as $v ) {
 //				print_r( $done );
 				
 				//
-	//			if ( isset( $done['errors'] ) || isset( $done->errors ) ) {
+//				if ( isset( $done['errors'] ) || isset( $done->errors ) ) {
 				if ( is_wp_error( $done ) ) {
 					echo '<script>parent.WGR_after_create_taxonomy("' . $v . ' (ERROR: ' . str_replace( '"', '&quot;', $done->get_error_message() ) . ')");</script>';
 				}

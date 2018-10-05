@@ -29,12 +29,12 @@ function WGR_admin_quick_edit_taxonomy ( connect_to, url_request, parameter ) {
 	waiting_for_ajax_running = true;
 	
 	//
-	$('#rAdminME').css({
+	jQuery('#rAdminME').css({
 		opacity: 0.2
 	});
 	
 	ajaxl( connect_to + url_request + parameter, 'rAdminME', 9, function () {
-		$('#rAdminME').css({
+		jQuery('#rAdminME').css({
 			opacity: 1
 		});
 		
@@ -43,15 +43,15 @@ function WGR_admin_quick_edit_taxonomy ( connect_to, url_request, parameter ) {
 }
 
 //
-$('.click-order-thread').off('click').click(function () {
-	WGR_admin_quick_edit_taxonomy( 'products', $(this).attr('data-ajax') || '' );
+jQuery('.click-order-thread').off('click').click(function () {
+	WGR_admin_quick_edit_taxonomy( 'products', jQuery(this).attr('data-ajax') || '' );
 });
 
 
 
 //
-$('.change-update-new-stt').off('change').change(function () {
-	var a = $(this).val() || 0;
+jQuery('.change-update-new-stt').off('change').change(function () {
+	var a = jQuery(this).val() || 0;
 	a = g_func.number_only(a);
 	if ( a < 0 ) {
 		a = 0;
@@ -63,31 +63,37 @@ $('.change-update-new-stt').off('change').change(function () {
 //	console.log( a );
 	
 	//
-	WGR_admin_quick_edit_taxonomy( 'products', $(this).attr('data-ajax') || '', a );
+	WGR_admin_quick_edit_taxonomy( 'products', jQuery(this).attr('data-ajax') || '', a );
 });
 
 
 
 // chuyển nhóm cha cho 1 nhóm con
-$('.click-change-parent-category').off('click').click(function () {
-	$('#edit_parent_for_category').show();
+jQuery('.click-change-parent-category').off('click').click(function () {
+	jQuery('#edit_parent_for_category').show();
 	
 	//
-	var uri = $(this).attr('data-ajax') || '',
-		name = $(this).attr('data-name') || '',
-		parent = $(this).attr('data-val') || 0,
+	var uri = jQuery(this).attr('data-ajax') || '',
+		name = jQuery(this).attr('data-name') || '',
+		parent = jQuery(this).attr('data-val') || 0,
 		f = document.frm_quick_edit_parent;
 	
 	//
 	f.t_uri.value = uri;
 	
-	$('.edit_parent_for').html(name);
+	jQuery('.edit_parent_for').html(name);
 	
 	//
-	$('.edit_parent_by select').val(parent);
+	jQuery('.edit_parent_by select').val(parent).off('change').change(function () {
+//		a_lert( jQuery(this).val() );
+		setTimeout(function () {
+//			document.frm_quick_edit_parent.submit();
+			WGR_check_quick_edit_parent ();
+		}, 200);
+	});
 	/*
-	$('.edit_parent_by select option').removeAttr('selected');
-	$('.edit_parent_by select option[value="' + parent + '"]').attr({
+	jQuery('.edit_parent_by select option').removeAttr('selected');
+	jQuery('.edit_parent_by select option[value="' + parent + '"]').attr({
 		'selected' : 'selected'
 	});
 	*/
@@ -117,8 +123,8 @@ WGR_click_open_quick_edit_seo();
 eb_drop_menu('oiAnt');
 
 function WGR_check_create_taxonomy () {
-	if ( $.trim( $('#t_multi_taxonomy').val() ) == '' ) {
-		$('#t_multi_taxonomy').focus();
+	if ( jQuery.trim( jQuery('#t_multi_taxonomy').val() ) == '' ) {
+		jQuery('#t_multi_taxonomy').focus();
 		alert('Nhập danh sách nhóm cần thêm');
 		return false;
 	}
@@ -127,12 +133,12 @@ function WGR_check_create_taxonomy () {
 }
 
 function WGR_after_create_taxonomy ( m ) {
-	$('#create_taxonomy_result').append( m + '<br>' );
+	jQuery('#create_taxonomy_result').append( m + '<br>' );
 }
 
-$('.click-show-quick-add-taxonomy').off('click').click(function () {
-	$('.show-quick-add-taxonomy').toggle('slow');
-	$('#t_multi_taxonomy').focus();
+jQuery('.click-show-quick-add-taxonomy').off('click').click(function () {
+	jQuery('.show-quick-add-taxonomy').toggle('slow');
+	jQuery('#t_multi_taxonomy').focus();
 });
 
 
