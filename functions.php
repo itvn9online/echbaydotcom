@@ -814,21 +814,7 @@ function EBE_add_js_compiler_in_cache (
 					
 					// thu gọn nội dung
 					if ( $optimize == 1 ) {
-						$file_content = WGR_remove_js_multi_comment( $file_content );
-						$file_content = explode( "\n", $file_content );
-						
-						foreach ( $file_content as $v ) {
-							$v = trim( $v );
-							
-							if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
-							}
-							else {
-								if ( strstr( $v, '//' ) == true ) {
-									$v .= "\n";
-								}
-								$new_content .= $v;
-							}
-						}
+						$new_content = WGR_remove_js_comment( WGR_remove_js_multi_comment( $file_content ) );
 					}
 					// chỉ gộp nội dung thành 1 file
 					else {
@@ -1304,6 +1290,25 @@ function WGR_remove_css_multi_comment ( $a ) {
 	
 	return $str;
 	
+}
+
+function WGR_remove_js_comment ( $a, $chim = false ) {
+	$a = explode( "\n", $a );
+	
+	$str = '';
+	foreach ( $a as $v ) {
+		$v = trim( $v );
+		
+		if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {
+		}
+		else {
+			if ( $chim == true || strstr( $v, '//' ) == true ) {
+				$v .= "\n";
+			}
+			$str .= $v;
+		}
+	}
+	return $str;
 }
 
 function WGR_remove_js_multi_comment ( $a ) {

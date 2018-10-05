@@ -499,8 +499,8 @@ if ( $trv_giamoi > 0 ) {
 		$trv_coccoc_giamoi = $trv_coccoc_giamoi/ 100 * $__cf_row['cf_coccoc_discount_price'];
 	}
 	
-	//
-	$structured_data_detail = '
+	// loại bỏ phần mã dư thừa để không bị lỗi trên fb
+	$structured_data_detail = WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
 <script type="application/ld+json">
 {
 	"@context": "http:\/\/schema.org\/",
@@ -544,7 +544,7 @@ if ( $trv_giamoi > 0 ) {
 	//
 	"productID": "' .$pid. '"
 }
-</script>';
+</script>' ), true );
 	
 }
 else {
