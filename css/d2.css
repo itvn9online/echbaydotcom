@@ -2392,6 +2392,7 @@ iframe[name="google_conversion_frame"] {
 	background-size: 9px;
 }
 .eb-quickcart-right input[aria-required="true"],
+.eb-quickcart-right textarea[aria-required="true"],
 .cart-ultable input[aria-required="true"],
 .cart-ultable textarea[aria-required="true"] { background-image: url(../images-global/required.png); }
 .cart-ultable textarea { height: 90px; }
