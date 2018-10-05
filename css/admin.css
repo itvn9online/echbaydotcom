@@ -1090,9 +1090,30 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 .edit-post-wgr-tab:hover li { display: list-item; }
 .edit-post-wgr-tab:hover li { background: #fff; }
 /* */
-.echbay-subsubsub {
+.div-subsubsub,
+.echbay-subsubsub { height: 19px; }
+.div-subsubsub {
+	position: relative;
 	margin: 10px 0;
+}
+.echbay-subsubsub {
 	font-size: 12px;
+	position: absolute;
+	overflow: hidden;
+	left: 0;
+	right: 0;
+	background: #fff;
+	z-index: 9;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.echbay-subsubsub:hover {
+	height: auto;
+	z-index: 10;
+	box-shadow: 0 0 15px #ccc;
+	padding: 6px;
 }
 .echbay-subsubsub li { display: inline-block; }
 .echbay-subsubsub li:after {

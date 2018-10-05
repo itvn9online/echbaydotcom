@@ -135,6 +135,27 @@ else if ( $actions_for == 'giamgia' ) {
 		}
 	}
 }
+else if ( $actions_for == 'stt' ) {
+	$trv_stt = _eb_number_only( $_POST ['t_stt'] );
+	
+	if ( $trv_stt < 0 ) {
+		$trv_stt = 0;
+	}
+	
+	//
+	$arr_for_update = array();
+	$arr_for_update['menu_order'] = $trv_stt;
+	
+	//
+	foreach ( $list_id as $v ) {
+		$v = (int) trim( $v );
+		if ( $v > 0 ) {
+			$arr_for_update['ID'] = $v;
+			
+			$post_id = WGR_update_post( $arr_for_update, 'ERROR!' );
+		}
+	}
+}
 else {
 	_eb_alert('Không xác định được chức năng cần thiết!');
 }

@@ -68,7 +68,7 @@ function WGR_set_html_loc_to_admin_post_list ( op ) {
 	}
 	
 	//
-	jQuery('#posts-filter').before('<ul class="echbay-subsubsub cf">' + op['str'] + '</ul>');
+	jQuery('#posts-filter').before('<div class="div-subsubsub"><ul class="echbay-subsubsub cf l19">' + op['str'] + '</ul></div>');
 	
 	//
 	if ( typeof op['get'] != 'undefined' && op['get'] != '' ) {
