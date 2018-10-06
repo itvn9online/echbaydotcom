@@ -2785,6 +2785,7 @@ var _global_js_eb = {
 	// google analytics tracking
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 	// https://developers.google.com/analytics/devguides/collection/gtagjs/events
+	// https://developers.google.com/analytics/devguides/collection/gtagjs/enhanced-ecommerce
 	ga_event_track : function ( eventCategory, eventAction, eventLabel, ops, max_for ) {
 		
 		// không track đối với người dùng đã đăng nhập
@@ -2841,10 +2842,19 @@ var _global_js_eb = {
 			console.log(ops);
 			
 			//
-			gtag('event', ops['action'], {
+			var para = {
 				'event_category' : ops['category'],
 				'event_label' : ops['label']
-			});
+			};
+			
+			//
+			if ( typeof ops['items'] == 'undefined' ) {
+				para['items'] = ops['items'];
+			}
+			console.log(para);
+			
+			//
+			gtag('event', ops['action'], para);
 			console.log('Google analytics (gtag) event tracking (' + eventAction + ') by EchBay.com');
 		}
 		// rồi đến ga

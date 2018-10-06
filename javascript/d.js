@@ -3584,7 +3584,7 @@ setTimeout(function () {
 		//
 		var product_price = jQuery(this).attr('data-gia') || jQuery(this).attr('data-price') || '',
 			product_object = {},
-			tr = $(this).attr('data-open-iframe') || '';
+			tr = jQuery(this).attr('data-open-iframe') || '';
 		
 		//
 		if ( product_price == '' ) {
@@ -3794,7 +3794,12 @@ setTimeout(function () {
 			_global_js_eb.ga_event_track( 'View product', document.title, '', {
 //				'category' : '',
 //				'label' : '',
-				'action' : 'view_item'
+				'items' : [{
+					"id": "P" + pid,
+					"name": product_js.tieude,
+					"price": product_js.gm > 0 ? product_js.gm : product_js.gia
+				}],
+				'action' : 'view_item',
 			});
 		}
 		// mặc định là cho blog
@@ -3818,13 +3823,21 @@ setTimeout(function () {
 			};
 			
 			//
-			var ids = '';
+			var ids = '',
+				args = [];
 			jQuery('.thread-list li').slice(0, 10).each(function() {
 				var a = jQuery(this).attr('data-id') || '';
 				
 				if ( a != '' ) {
 					ids += ',' + a;
 				}
+				
+				//
+				args.push({
+					"id": "P" + a,
+					"name": jQuery('a:first', this).attr('title') || '',
+					"price": jQuery(this).attr('data-price') || 0
+				});
 			});
 			if ( ids != '' ) {
 				track_arr['content_ids'] = ids.substr(1).split(',');
@@ -3840,6 +3853,7 @@ setTimeout(function () {
 			_global_js_eb.ga_event_track( 'View list', 'Xem danh sach san pham', '', {
 //				'category' : '',
 //				'label' : '',
+				'items' : args,
 				'action' : 'view_item_list'
 			});
 		}
