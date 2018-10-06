@@ -69,7 +69,7 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 				'<div class="left-menu-space">' +
 					'<h4><a href="' + web_link + '?p=' + current_hd_object[i].id + '" target="_blank" class="bluecolor">' + current_hd_object[i].name + '</a></h4>' +
 					'<div class="l30">' +
-						'<div class="redcolor"><strong class="ebe-currency ebe-currency-format">' + g_func.money_format( current_hd_object[i].price ) + '</strong></div>' +
+						'<div class="redcolor"><strong class="ebe-currency">' + g_func.money_format( current_hd_object[i].price ) + '</strong></div>' +
 						'<div>Màu sắc: ' + current_hd_object[i].color + '</div>' +
 						'<div>Kích thước: ' + current_hd_object[i].size + '</div>' +
 						'<div>Số lượng: ' + current_hd_object[i].quan + '</div>' +
@@ -90,7 +90,7 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	'<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
 		'<div class="lf f25 fullsize-if-mobile text-right">Tổng giá trị đơn hàng</div>' +
 		'<div class="lf f25 fullsize-if-mobile">' +
-			'<div class="left-menu-space"><strong class="ebe-currency ebe-currency-format medium18 redcolor">' + g_func.money_format( total ) + '</strong></div>' +
+			'<div class="left-menu-space"><strong class="ebe-currency medium18 redcolor">' + g_func.money_format( total ) + '</strong></div>' +
 		'</div>' +
 	'</div>';
 	

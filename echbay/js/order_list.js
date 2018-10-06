@@ -65,6 +65,11 @@ if ( $(window).width() > 768 ) {
 		// nếu vẫn là mở đơn hàng cũ -> không load lại nữa
 		var a = $(this).attr('data-id') || '',
 			h = jQuery(this).attr('href') || '';
+		
+		// thay đổi URL
+		window.history.pushState("", '', h);
+		
+		//
 		if ( a == no_reload_current_order_details ) {
 			console.log('Order details has been load!');
 			
@@ -73,9 +78,6 @@ if ( $(window).width() > 768 ) {
 			return false;
 		}
 		no_reload_current_order_details = a;
-		
-		// thay đổi URL
-		window.history.pushState("", '', h);
 		
 		// chỉnh lại chiều cao của iframe
 //		$('#target_order_iframe').on('load', function () {

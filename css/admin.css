@@ -1333,6 +1333,12 @@ body.body-no-scroll #oi_order_iframe {
 .wgr-waiting-update-complete .content-waiting-update-complete { display: block; }
 /* */
 .search-select-option li.selected:after { font-family: "Font Awesome 5 Free"; }
+/* */
+form[name="frm_invoice_details"] input[type="number"],
+form[name="frm_invoice_details"] input[type="text"] {
+	padding: 6px 5px 6px 10px;
+	height: auto;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

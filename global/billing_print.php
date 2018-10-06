@@ -85,6 +85,9 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/eb.js?v=' . $bill_static_version . '"></script>
 	' ),
+	'tmp.footer' => trim( '
+<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/print_order.js?v=' . $bill_static_version . '"></script>
+	' ),
 	'tmp.id' => $id,
 	
 	// thông tin đơn

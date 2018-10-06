@@ -37,6 +37,69 @@ function WGR_order_details_after_update () {
 	}
 }
 
+function WGR_admin_tinh_tong_hoa_don ( tong ) {
+	
+	//
+//	console.log( tong );
+	$('.show-total-order strong').html( g_func.money_format( tong ) );
+	
+	var ck = $('#hd_chietkhau').val() || '',
+		vc = g_func.float_only( $('#hd_phivanchuyen').val() || '' );
+//	console.log( ck );
+//	console.log( vc );
+	
+	// Tính số tiền vận chuyển với khuyến mại nếu có
+	if ( ck != '' ) {
+		// tính theo %
+		if ( ck.split('%').length > 1 ) {
+			ck = g_func.float_only( ck );
+			ck = tong/ 100 * ck;
+		}
+		// chiết khấu trực tiếp
+		else {
+			ck = g_func.float_only( ck );
+		}
+		tong = tong - ( ck * 1 );
+//		console.log( tong );
+	}
+	
+	// phí vận chuyển tính sau cùng
+	if ( vc != 0 ) {
+		tong = tong + ( vc * 1 );
+//		console.log( tong );
+	}
+	
+	//
+	$('.show-totals-order strong').html( g_func.money_format( tong ) );
+	
+}
+
+function WGR_admin_tinh_so_luong_hoa_don () {
+	
+	// chạy vòng lặp đếm số lượng và giá trước
+	var tong = 0;
+	$('.change-update-cart-quantity').each(function() {
+		
+		var gia = $(this).attr('data-price') || '',
+			a = $(this).val() || 0;
+//		console.log( gia );
+//		console.log( a );
+		
+		//
+		if ( a < 0 ) {
+			a = 0;
+		}
+		
+		//
+		tong = gia * a;
+		
+	});
+	
+	// sau đó mới tính theo phần chiết khấu
+	WGR_admin_tinh_tong_hoa_don( tong );
+	
+}
+
 function ___eb_admin_update_order_details () {
 	
 	//
@@ -45,10 +108,12 @@ function ___eb_admin_update_order_details () {
 	
 	//
 //	console.log( arr_global_js_order_customter );
-	arr_global_js_order_customter['hd_ten'] = $('#oi_hd_ten').val() || '';
-	arr_global_js_order_customter['hd_dienthoai'] = $('#oi_hd_dienthoai').val() || '';
-	arr_global_js_order_customter['hd_diachi'] = $('#oi_hd_diachi').val() || '';
-	arr_global_js_order_customter['hd_admin_ghichu'] = $('#hd_admin_ghichu').val() || '';
+	arr_global_js_order_customter['hd_ten'] = $.trim( $('#oi_hd_ten').val() || '' );
+	arr_global_js_order_customter['hd_dienthoai'] = $.trim( $('#oi_hd_dienthoai').val() || '' );
+	arr_global_js_order_customter['hd_diachi'] = $.trim( $('#oi_hd_diachi').val() || '' );
+	arr_global_js_order_customter['hd_chietkhau'] = $.trim( $('#hd_chietkhau').val() || '' );
+	arr_global_js_order_customter['hd_phivanchuyen'] = $.trim( $('#hd_phivanchuyen').val() || '' );
+	arr_global_js_order_customter['hd_admin_ghichu'] = $.trim( $('#hd_admin_ghichu').val() || '' );
 	
 	// tạo key để sau này tìm kiếm đơn hàng cho tiện
 	arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] );
@@ -169,6 +234,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 	arr_global_js_order_details = arr.slice();
 	
 	//
+	var total_current_order = 0;
 	for ( var i = 0; i < arr.length; i++ ) {
 //		console.log(arr[i]);
 		
@@ -221,13 +287,17 @@ function WGR_hide_html_alert_auto_order_submit () {
 		}
 		
 		//
-		$('.order-danhsach-sanpham').append('\
+		var total_line = product_price * arr[i].quan;
+		total_current_order += total_line * 1;
+		
+		//
+		$('.order-title-sanpham').after('\
 		<tr>\
 			<td>' + arr[i].id + '</td>\
 			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + '</a>' + arr[i].color + arr[i].size + '</td>\
-			<td>' + g_func.money_format( product_price ) + '</td>\
-			<td><input type="number" value="' + arr[i].quan + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity s" size="5" maxlength="10" /></td>\
-			<td>' + g_func.money_format( product_price * arr[i].quan ) + '</td>\
+			<td><span class="ebe-currency">' + g_func.money_format( product_price ) + '</span></td>\
+			<td><input type="number" value="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity s" size="5" maxlength="10" /></td>\
+			<td><span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></td>\
 		</tr>');
 		
 	}
@@ -236,7 +306,12 @@ function WGR_hide_html_alert_auto_order_submit () {
 	$('.change-update-cart-quantity').change(function() {
 		
 		var oi = $(this).attr('data-id') || '',
-			a = $(this).val();
+			a = $(this).val() || '';
+		
+		//
+		if ( a < 0 ) {
+			a = 0;
+		}
 		
 		//
 		for ( var i = 0; i < arr_global_js_order_details.length; i++ ) {
@@ -248,7 +323,15 @@ function WGR_hide_html_alert_auto_order_submit () {
 		
 		//
 		___eb_admin_update_order_details();
+		WGR_admin_tinh_so_luong_hoa_don();
 		
+	});
+	
+	//
+	$('#hd_chietkhau, #hd_phivanchuyen').change(function () {
+		WGR_admin_tinh_so_luong_hoa_don();
+	}).click(function () {
+		$(this).select();
 	});
 	
 	
@@ -274,11 +357,26 @@ function WGR_hide_html_alert_auto_order_submit () {
 	$('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
 	$('#oi_hd_diachi').val( cus['hd_diachi'] );
 	$('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
+	if ( typeof cus['hd_discount_code'] != 'undefined' ) {
+		$('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
+	}
 	
 	// Hiển thị ghi chú của admin nếu có
 	if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
 		$('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
 	}
+	
+	// một số tính năng khác
+	if ( typeof cus['hd_chietkhau'] != 'undefined' ) {
+		$('#hd_chietkhau').val( cus['hd_chietkhau'] );
+	}
+	if ( typeof cus['hd_phivanchuyen'] != 'undefined' ) {
+		$('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
+	}
+	
+	// bắt đầu tính tổng tiền sau khi nạp các giá trị khác thành công
+	WGR_admin_tinh_tong_hoa_don( total_current_order );
+	
 	
 	// tự động cập nhật key tìm kiếm thông tin khách hàng
 	if ( typeof arr_global_js_order_customter['hd_key'] == 'undefined' ) {

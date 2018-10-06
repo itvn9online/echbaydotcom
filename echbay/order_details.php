@@ -172,14 +172,38 @@ else {
 	<br>
 	<div class="medium18 redcolor l30">Thông tin hóa đơn <strong>#<?php echo $post->order_sku; ?></strong></div>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="order-danhsach-sanpham">
-		<tr>
+		<tr class="order-title-sanpham">
 			<td>ID</td>
 			<td>Sản phẩm</td>
 			<td>Đơn giá</td>
 			<td>Số lượng</td>
 			<td>Cộng</td>
 		</tr>
+		<tr class="medium">
+			<td colspan="3" class="tborder text-right">Tổng</td>
+			<td colspan="2" class="tborder show-total-order"><strong class="ebe-currency">&nbsp;</strong></td>
+		</tr>
+		<tr class="medium">
+			<td colspan="3" class="tborder text-right">Mã giảm giá</td>
+			<td colspan="2" id="oi_ma_giam_gia" class="tborder"><em>Không áp dụng</em></td>
+		</tr>
+		<tr class="medium">
+			<td colspan="3" class="tborder text-right">Chiết khấu</td>
+			<td colspan="2" class="tborder"><input type="text" id="hd_chietkhau" placeholder="Ví dụ: 50000 hoặc 20%" maxlength="10" />
+				<span class="ebe-currency"></span> hoặc %</td>
+		</tr>
+		<tr class="medium">
+			<td colspan="3" class="tborder text-right">Phí vận chuyển</td>
+			<td colspan="2" class="tborder"><input type="text" id="hd_phivanchuyen" placeholder="Ví dụ: 50000" maxlength="10" />
+				<span class="ebe-currency"></span></td>
+		</tr>
+		<tr class="medium">
+			<td colspan="3" class="tborder text-right">Tổng cộng</td>
+			<td colspan="2" class="tborder show-totals-order"><strong class="ebe-currency redcolor">&nbsp;</strong></td>
+		</tr>
 	</table>
+	<p class="description">* <strong>Chiết khấu</strong>: Số tiền giảm trực tiếp cho khách hàng hoặc khách được giảm khi nhập mã giảm giá.</p>
+	<p class="description">* <strong>Phí vận chuyển</strong>: Cước vận chuyển khách sẽ phải trả thêm khi nhận hàng trong trường hợp có phí vận chuyển.</p>
 	<br>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="eb-public-table">
 		<tr>
