@@ -357,7 +357,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 	$('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
 	$('#oi_hd_diachi').val( cus['hd_diachi'] );
 	$('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
-	if ( typeof cus['hd_discount_code'] != 'undefined' ) {
+	if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
 		$('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
 	}
 	
@@ -367,10 +367,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 	}
 	
 	// một số tính năng khác
-	if ( typeof cus['hd_chietkhau'] != 'undefined' ) {
+	if ( typeof cus['hd_chietkhau'] != 'undefined' && cus['hd_chietkhau'] != '' ) {
 		$('#hd_chietkhau').val( cus['hd_chietkhau'] );
 	}
-	if ( typeof cus['hd_phivanchuyen'] != 'undefined' ) {
+	if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
 		$('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
 	}
 	
