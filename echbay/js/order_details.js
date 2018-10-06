@@ -4,14 +4,14 @@
 // nếu hóa đơn được mở trong popup -> ẩn 1 số thông tin đi cho gọn
 if ( top != self ) {
 	// thêm class để ẩn bớt dữ liệu
-	$('body').addClass('order_open_in_popup').addClass('folded');
-	$('html').addClass('order_open_in_popup');
+	jQuery('body').addClass('order_open_in_popup').addClass('folded');
+	jQuery('html').addClass('order_open_in_popup');
 	
 	//
 	parent.WGR_after_open_order_details_popup();
 	
 	//
-	$('a').attr({
+	jQuery('a').attr({
 		target: '_blank'
 	});
 }
@@ -33,7 +33,7 @@ var arr_global_js_order_details = [],
 function WGR_order_details_after_update () {
 	// nếu đơn hàng được sửa trong popup -> xử lý phần trạng thái đơn
 	if ( top != self ) {
-		parent.WGR_order_list_after_update( order_id, document.frm_invoice_details.t_trangthai.value, $('.bill-detail-status button.selected span').html() );
+		parent.WGR_order_list_after_update( order_id, document.frm_invoice_details.t_trangthai.value, jQuery('.bill-detail-status button.selected span').html() );
 	}
 }
 
@@ -41,10 +41,10 @@ function WGR_admin_tinh_tong_hoa_don ( tong ) {
 	
 	//
 //	console.log( tong );
-	$('.show-total-order strong').html( g_func.money_format( tong ) );
+	jQuery('.show-total-order strong').html( g_func.money_format( tong ) );
 	
-	var ck = $('#hd_chietkhau').val() || '',
-		vc = g_func.float_only( $('#hd_phivanchuyen').val() || '' );
+	var ck = jQuery('#hd_chietkhau').val() || '',
+		vc = g_func.float_only( jQuery('#hd_phivanchuyen').val() || '' );
 //	console.log( ck );
 //	console.log( vc );
 	
@@ -70,7 +70,7 @@ function WGR_admin_tinh_tong_hoa_don ( tong ) {
 	}
 	
 	//
-	$('.show-totals-order strong').html( g_func.money_format( tong ) );
+	jQuery('.show-totals-order strong').html( g_func.money_format( tong ) );
 	
 }
 
@@ -78,10 +78,10 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 	
 	// chạy vòng lặp đếm số lượng và giá trước
 	var tong = 0;
-	$('.change-update-cart-quantity').each(function() {
+	jQuery('.change-update-cart-quantity').each(function() {
 		
-		var gia = $(this).attr('data-price') || '',
-			a = $(this).val() || 0;
+		var gia = jQuery(this).attr('data-price') || '',
+			a = jQuery(this).val() || 0;
 //		console.log( gia );
 //		console.log( a );
 		
@@ -104,16 +104,16 @@ function ___eb_admin_update_order_details () {
 	
 	//
 	console.log( arr_global_js_order_details );
-	$('#order_products').val( escape( JSON.stringify( arr_global_js_order_details ) ) );
+	jQuery('#order_products').val( escape( JSON.stringify( arr_global_js_order_details ) ) );
 	
 	//
 //	console.log( arr_global_js_order_customter );
-	arr_global_js_order_customter['hd_ten'] = $.trim( $('#oi_hd_ten').val() || '' );
-	arr_global_js_order_customter['hd_dienthoai'] = $.trim( $('#oi_hd_dienthoai').val() || '' );
-	arr_global_js_order_customter['hd_diachi'] = $.trim( $('#oi_hd_diachi').val() || '' );
-	arr_global_js_order_customter['hd_chietkhau'] = $.trim( $('#hd_chietkhau').val() || '' );
-	arr_global_js_order_customter['hd_phivanchuyen'] = $.trim( $('#hd_phivanchuyen').val() || '' );
-	arr_global_js_order_customter['hd_admin_ghichu'] = $.trim( $('#hd_admin_ghichu').val() || '' );
+	arr_global_js_order_customter['hd_ten'] = jQuery.trim( jQuery('#oi_hd_ten').val() || '' );
+	arr_global_js_order_customter['hd_dienthoai'] = jQuery.trim( jQuery('#oi_hd_dienthoai').val() || '' );
+	arr_global_js_order_customter['hd_diachi'] = jQuery.trim( jQuery('#oi_hd_diachi').val() || '' );
+	arr_global_js_order_customter['hd_chietkhau'] = jQuery.trim( jQuery('#hd_chietkhau').val() || '' );
+	arr_global_js_order_customter['hd_phivanchuyen'] = jQuery.trim( jQuery('#hd_phivanchuyen').val() || '' );
+	arr_global_js_order_customter['hd_admin_ghichu'] = jQuery.trim( jQuery('#hd_admin_ghichu').val() || '' );
 	
 	// tạo key để sau này tìm kiếm đơn hàng cho tiện
 	arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] );
@@ -121,7 +121,7 @@ function ___eb_admin_update_order_details () {
 	
 	//
 	console.log( arr_global_js_order_customter );
-	$('#order_customer').val( escape( JSON.stringify( arr_global_js_order_customter ) ) );
+	jQuery('#order_customer').val( escape( JSON.stringify( arr_global_js_order_customter ) ) );
 	
 	return true;
 }
@@ -130,12 +130,12 @@ function ___eb_admin_update_order_details () {
 function WGR_hide_html_alert_auto_order_submit () {
 	
 	// ẩn html alert tự động
-	$('#WGR_html_alert').css({
+	jQuery('#WGR_html_alert').css({
 		opacity: .01
 	});
 	
-	$('#target_eb_iframe').on('load', function () {
-		$('#WGR_html_alert').css({
+	jQuery('#target_eb_iframe').on('load', function () {
+		jQuery('#WGR_html_alert').css({
 			opacity: 1
 		}).hide();
 	});
@@ -147,7 +147,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 (function () {
 	
 	// đồng bộ hóa v1 với v2
-	if ( $('#order_old_type').val() > 0
+	if ( jQuery('#order_old_type').val() > 0
 	&& order_details_arr_cart_product_list == ''
 	&& typeof order_details_arr_cart_product_list_v1 == 'object' ) {
 		
@@ -201,7 +201,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 			___eb_admin_update_order_details();
 			
 			//
-			if ( $('#order_products').val().length > 100 && $('#order_customer').val().length > 100 ) {
+			if ( jQuery('#order_products').val().length > 100 && jQuery('#order_customer').val().length > 100 ) {
 				console.log( 'auto update old order' );
 				document.frm_invoice_details.submit();
 				WGR_hide_html_alert_auto_order_submit();
@@ -219,7 +219,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 	
 //	console.log(arr);
 	if ( typeof arr != 'object' ) {
-		arr = $.parseJSON( unescape( arr ) );
+		arr = jQuery.parseJSON( unescape( arr ) );
 		
 		// kiểm tra lại mà vẫn thế -> lỗi
 		if ( typeof arr != "object" ) {
@@ -239,22 +239,27 @@ function WGR_hide_html_alert_auto_order_submit () {
 //		console.log(arr[i]);
 		
 		//
+		var str_edit_size_color = '';
+		
+		//
 		if ( arr[i].color != '' ) {
-			arr[i].color = $.trim( arr[i].color );
+			arr[i].color = jQuery.trim( arr[i].color );
 			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
 				arr[i].color = '- ' + arr[i].color;
 			}
+//			arr[i].color = ' ' + arr[i].color;
 			
-			arr[i].color = ' ' + arr[i].color;
+			str_edit_size_color += ' <span title="Đổi màu mới" data-id="' + arr[i].id + '" class="cur click-edit-order-color bluecolor">' + arr[i].color + ' <i class="fa fa-edit"></i></span>';
 		}
 		
 		if ( arr[i].size != '' ) {
-			arr[i].size = $.trim( arr[i].size );
+			arr[i].size = jQuery.trim( arr[i].size );
 			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
 				arr[i].size = '(Size: ' + arr[i].size + ')';
 			}
+//			arr[i].size = ' ' + arr[i].size;
 			
-			arr[i].size = ' ' + arr[i].size;
+			str_edit_size_color += ' <span title="Đổi size mới" data-id="' + arr[i].id + '" class="cur click-edit-order-size bluecolor">' + arr[i].size + ' <i class="fa fa-edit"></i></span>';
 		}
 		
 		// bổ sung thêm slug để sau tìm kiếm cho nó tiện
@@ -291,10 +296,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 		total_current_order += total_line * 1;
 		
 		//
-		$('.order-title-sanpham').after('\
+		jQuery('.order-title-sanpham').after('\
 		<tr>\
 			<td>' + arr[i].id + '</td>\
-			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + '</a>' + arr[i].color + arr[i].size + '</td>\
+			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + ' <i class="fa fa-eye"></i></a>' + str_edit_size_color + '</td>\
 			<td><span class="ebe-currency">' + g_func.money_format( product_price ) + '</span></td>\
 			<td><input type="number" value="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity s" size="5" maxlength="10" /></td>\
 			<td><span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></td>\
@@ -303,10 +308,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 	}
 	
 	//
-	$('.change-update-cart-quantity').change(function() {
+	jQuery('.change-update-cart-quantity').change(function() {
 		
-		var oi = $(this).attr('data-id') || '',
-			a = $(this).val() || '';
+		var oi = jQuery(this).attr('data-id') || '',
+			a = jQuery(this).val() || '';
 		
 		//
 		if ( a < 0 ) {
@@ -318,20 +323,89 @@ function WGR_hide_html_alert_auto_order_submit () {
 			if ( typeof arr_global_js_order_details[i].id != 'undefined'
 			&& arr_global_js_order_details[i].id == oi ) {
 				arr_global_js_order_details[i].quan = a;
+				
+				//
+				___eb_admin_update_order_details();
+				WGR_admin_tinh_so_luong_hoa_don();
+				
+				//
+				break;
 			}
 		}
 		
-		//
-		___eb_admin_update_order_details();
-		WGR_admin_tinh_so_luong_hoa_don();
+	});
+	
+	// đổi màu
+	$('.click-edit-order-color').click(function () {
+		var oi = jQuery(this).attr('data-id') || '',
+			cache = jQuery(this).html() || '';
 		
+		// Lấy tên màu, bỏ các mã lằng nhằng đi
+		$('span, i', this).remove();
+		var v = jQuery(this).html() || '';
+		v = jQuery.trim( v.replace( /\-/g, ' ' ) );
+		
+		//
+		var a = prompt( 'Nhập màu mới:', v );
+		
+		// Nếu có màu mới -> nhập luôn
+		if ( a != null && a != v ) {
+			jQuery(this).html( ' - ' + a + ' <i class="fa fa-edit"></i>' );
+			
+			// gán vào dữ liệu
+			for ( var i = 0; i < arr_global_js_order_details.length; i++ ) {
+				if ( typeof arr_global_js_order_details[i].id != 'undefined'
+				&& arr_global_js_order_details[i].id == oi ) {
+					arr_global_js_order_details[i].color = a;
+					
+					//
+					___eb_admin_update_order_details();
+					
+					//
+					break;
+				}
+			}
+		}
+		// Hiển thị lại tên màu cũ
+		else {
+			jQuery(this).html( cache );
+		}
+	});
+	
+	// thay đổi size
+	$('.click-edit-order-size').click(function () {
+		var oi = jQuery(this).attr('data-id') || '',
+			v = jQuery(this).html() || '';
+		v = jQuery.trim( v.replace( /\-/g, ' ' ) );
+		
+		//
+		var a = prompt('Nhập size mới:', '');
+		
+		// Nếu có size mới -> nhập luôn
+		if ( a != null && a != v ) {
+			jQuery(this).html( ' - ' + a + ' <i class="fa fa-edit"></i>' );
+			
+			// gán vào dữ liệu
+			for ( var i = 0; i < arr_global_js_order_details.length; i++ ) {
+				if ( typeof arr_global_js_order_details[i].id != 'undefined'
+				&& arr_global_js_order_details[i].id == oi ) {
+					arr_global_js_order_details[i].size = a;
+					
+					//
+					___eb_admin_update_order_details();
+					
+					//
+					break;
+				}
+			}
+		}
 	});
 	
 	//
-	$('#hd_chietkhau, #hd_phivanchuyen').change(function () {
+	jQuery('#hd_chietkhau, #hd_phivanchuyen').change(function () {
 		WGR_admin_tinh_so_luong_hoa_don();
 	}).click(function () {
-		$(this).select();
+		jQuery(this).select();
 	});
 	
 	
@@ -340,7 +414,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 	//
 //	console.log(cus);
 	if ( typeof cus != 'object' ) {
-		cus = $.parseJSON( unescape( cus ) );
+		cus = jQuery.parseJSON( unescape( cus ) );
 		
 		// kiểm tra lại mà vẫn thế -> lỗi
 		if ( typeof cus != "object" ) {
@@ -353,25 +427,25 @@ function WGR_hide_html_alert_auto_order_submit () {
 	arr_global_js_order_customter = cus;
 	
 	//
-	$('#oi_hd_ten').val( cus['hd_ten'] );
-	$('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
-	$('#oi_hd_diachi').val( cus['hd_diachi'] );
-	$('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
+	jQuery('#oi_hd_ten').val( cus['hd_ten'] );
+	jQuery('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
+	jQuery('#oi_hd_diachi').val( cus['hd_diachi'] );
+	jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
 	if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
-		$('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
+		jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
 	}
 	
 	// Hiển thị ghi chú của admin nếu có
 	if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
-		$('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
+		jQuery('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
 	}
 	
 	// một số tính năng khác
 	if ( typeof cus['hd_chietkhau'] != 'undefined' && cus['hd_chietkhau'] != '' ) {
-		$('#hd_chietkhau').val( cus['hd_chietkhau'] );
+		jQuery('#hd_chietkhau').val( cus['hd_chietkhau'] );
 	}
 	if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
-		$('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
+		jQuery('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
 	}
 	
 	// bắt đầu tính tổng tiền sau khi nạp các giá trị khác thành công
@@ -425,7 +499,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 //				if ( typeof cus[x] == 'string' ) {
 				if ( cus[x].toString().split('1970').length > 1 ) {
 					console.log( typeof cus[x] );
-					cus[x] = $('.order-time-server').attr('data-time') || 0;
+					cus[x] = jQuery('.order-time-server').attr('data-time') || 0;
 				}
 				
 				a = _date( 'd-m-Y H:i', cus[x] );
@@ -440,7 +514,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 			}
 			
 			//
-			$('.dulieu-thamkhao').append( '\
+			jQuery('.dulieu-thamkhao').append( '\
 			<tr>\
 				<td class="t">' + arr_dich[x] + '</td>\
 				<td class="i">' + a + '</td>\
@@ -461,13 +535,13 @@ var arr_user_blacklist = [],
 setTimeout(function () {
 	
 	// đánh dấu tab cùng trạng thái với dơn hiện tại
-	$('.eb-order-filter-tab li a').removeClass('selected');
-	$('.eb-order-filter-tab li[data-tab="' + document.frm_invoice_details.t_trangthai.value + '"] a').addClass('selected');
+	jQuery('.eb-order-filter-tab li a').removeClass('selected');
+	jQuery('.eb-order-filter-tab li[data-tab="' + document.frm_invoice_details.t_trangthai.value + '"] a').addClass('selected');
 	
 	
 	// tìm các đơn hàng thuộc tiện báo xấu cùng thông tin với đơn hàng này để báo lại khách
-	var dt = $('#oi_hd_dienthoai').val() || '',
-		e = $('#get-order-email').html() || '',
+	var dt = jQuery('#oi_hd_dienthoai').val() || '',
+		e = jQuery('#get-order-email').html() || '',
 		uri = '';
 //	console.log( dt );
 //	console.log( e );
@@ -502,18 +576,18 @@ setTimeout(function () {
 					}
 					else {
 						// hiển thị thông báo báo xấu
-						$('#open_list_bao_xau strong').html( arr_user_blacklist.length );
+						jQuery('#open_list_bao_xau strong').html( arr_user_blacklist.length );
 						
 						// ẩn đi để lúc nữa còn dùng lệnh toggle
-						$('#order_show_bao_xau').hide();
+						jQuery('#order_show_bao_xau').hide();
 						
 						//
-						$('#open_list_bao_xau').fadeIn().on('click', function () {
+						jQuery('#open_list_bao_xau').fadeIn().on('click', function () {
 							
 							//
-							$('#open_list_bao_xau').fadeOut();
-//							$('#order_show_bao_xau').fadeIn();
-							$('#order_show_bao_xau').toggle('slow');
+							jQuery('#open_list_bao_xau').fadeOut();
+//							jQuery('#order_show_bao_xau').fadeIn();
+							jQuery('#order_show_bao_xau').toggle('slow');
 							
 							//
 							if ( da_load_danh_sach_bao_xau == true ) {
@@ -530,7 +604,7 @@ setTimeout(function () {
 								//
 	//							console.log( arr_user_blacklist[i].order_customer );
 								try {
-									var custom_info = $.parseJSON( unescape( arr_user_blacklist[i].order_customer ) );
+									var custom_info = jQuery.parseJSON( unescape( arr_user_blacklist[i].order_customer ) );
 									console.log( custom_info );
 									
 									//
@@ -556,15 +630,15 @@ setTimeout(function () {
 							}
 							
 							//
-							$('#order_show_bao_xau ul').html( str );
+							jQuery('#order_show_bao_xau ul').html( str );
 							
 						});
 						
 						//
-						$('#close_list_bao_xau').on('click', function () {
-							$('#open_list_bao_xau').fadeIn();
-//							$('#order_show_bao_xau').fadeOut();
-							$('#order_show_bao_xau').toggle('slow');
+						jQuery('#close_list_bao_xau').on('click', function () {
+							jQuery('#open_list_bao_xau').fadeIn();
+//							jQuery('#order_show_bao_xau').fadeOut();
+							jQuery('#order_show_bao_xau').toggle('slow');
 						});
 					}
 				}
@@ -575,7 +649,7 @@ setTimeout(function () {
 					var str = '';
 					for ( var i = 0; i < arr_list_orther_order.length; i++ ) {
 						try {
-							var custom_info = $.parseJSON( unescape( arr_list_orther_order[i].order_customer ) );
+							var custom_info = jQuery.parseJSON( unescape( arr_list_orther_order[i].order_customer ) );
 							console.log( custom_info );
 							
 							//
@@ -599,13 +673,13 @@ setTimeout(function () {
 					}
 					
 					//
-					$('#order_show_too_order table').append( str );
-					$('#order_show_too_order').toggle('slow');
+					jQuery('#order_show_too_order table').append( str );
+					jQuery('#order_show_too_order').toggle('slow');
 				}
 			}, 600);
 			
 			//
-//			var msg = $('#oi_customer_blacklist').html();
+//			var msg = jQuery('#oi_customer_blacklist').html();
 //			console.log( msg );
 //		}, {
 //			dataType: "json"
@@ -621,16 +695,16 @@ setTimeout(function () {
 
 
 //
-$('.show-if-js-enable').show();
+jQuery('.show-if-js-enable').show();
 //dog('eb_cart_submit').disabled = false;
 
 //dog('eb_cart_print').disabled = false;
-$('#eb_cart_print').click(function () {
+jQuery('#eb_cart_print').click(function () {
 	window.open( web_link + 'billing_print?order_id=' + order_id, '_blank' );
 });
 
 //dog('eb_vandon_print').disabled = false;
-$('#eb_vandon_print').click(function () {
+jQuery('#eb_vandon_print').click(function () {
 	window.open( web_link + 'billing_print?order_id=' + order_id + '&f=print_van_don', '_blank' );
 });
 
