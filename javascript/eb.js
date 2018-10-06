@@ -330,6 +330,22 @@ var g_func = {
 		}
 		
 		//
+		if ( o == 'login' ) {
+			_global_js_eb.ga_event_track( '', '', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'login'
+			});
+		}
+		else if ( o == 'register' ) {
+			_global_js_eb.ga_event_track( '', '', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'sign_up'
+			});
+		}
+		
+		//
 		dog('oi_popup', '<div id="oi_popup_inner"><div align="center" style="padding:168px 0">Loading...</div></div>');
 		
 		//
@@ -2285,6 +2301,13 @@ var _global_js_eb = {
 		}, 5000);
 		
 		//
+		_global_js_eb.ga_event_track( '', '', '', {
+//			'category' : '',
+//			'label' : '',
+			'action' : 'checkout_progress'
+		});
+		
+		//
 		return true;
 	},
 	
@@ -2346,6 +2369,14 @@ var _global_js_eb = {
 			if ( confirm( lang_cart_confirm_remove ) == false ) {
 				return false;
 			}
+			
+			//
+			_global_js_eb.ga_event_track( '', '', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'remove_from_cart'
+			});
+			
 			
 			//
 			for ( var i = 0; i < cart_arr_in_cookie.length; i++ ) {
@@ -2424,7 +2455,12 @@ var _global_js_eb = {
 //			_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
 			
 			//
-			_global_js_eb.ga_event_track( 'Add to cart', 'Product ' + new_cart_id );
+			_global_js_eb.ga_event_track( 'Add to cart', 'Product ' + new_cart_id, '', {
+//				'category' : '',
+//				'label' : '',
+//				'action' : 'add_to_cart'
+				'action' : 'begin_checkout'
+			});
 		}, 200);
 		
 		
@@ -2503,6 +2539,14 @@ var _global_js_eb = {
 			if ( confirm( lang_cart_confirm_remove ) == false ) {
 				return false;
 			}
+			
+			//
+			_global_js_eb.ga_event_track( '', '', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'remove_from_cart'
+			});
+			
 			
 			// v1
 			/*
@@ -2587,7 +2631,12 @@ var _global_js_eb = {
 		*/
 		setTimeout(function () {
 //			_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
-			_global_js_eb.ga_event_track( 'Add to cart', 'Product ' + new_cart_id );
+			_global_js_eb.ga_event_track( 'Add to cart', 'Product ' + new_cart_id, '', {
+//				'category' : '',
+//				'label' : '',
+//				'action' : 'add_to_cart'
+				'action' : 'begin_checkout'
+			});
 		}, 200);
 		
 		
@@ -2735,7 +2784,8 @@ var _global_js_eb = {
 	
 	// google analytics tracking
 	// https://developers.google.com/analytics/devguides/collection/analyticsjs/events
-	ga_event_track : function ( eventCategory, eventAction, eventLabel, max_for ) {
+	// https://developers.google.com/analytics/devguides/collection/gtagjs/events
+	ga_event_track : function ( eventCategory, eventAction, eventLabel, ops, max_for ) {
 		
 		// không track đối với người dùng đã đăng nhập
 		if ( isLogin > 0 && WGR_check_option_on( cf_disable_tracking ) ) {
@@ -2750,20 +2800,60 @@ var _global_js_eb = {
 		}
 		*/
 		
-		//
+		// Mảng dành cho các option nâng cao khác
+		if ( typeof ops != 'object' ) {
+			ops = {};
+		}
+		
 		if ( typeof eventCategory == 'undefined' || eventCategory == '' ) {
-			eventCategory = 'Null Category';
+			if ( typeof ops['action'] != 'undefined' && ops['action'] != '' ) {
+				eventCategory = ops['action'];
+			}
+			else {
+				eventCategory = 'Null Category';
+			}
 		}
 		
 		if ( typeof eventAction == 'undefined' || eventAction == '' ) {
-			eventAction = 'Null Action';
+			if ( typeof ops['action'] != 'undefined' && ops['action'] != '' ) {
+				eventAction = ops['action'];
+			}
+			else {
+				eventAction = 'Null Action';
+			}
 		}
 		
 		if ( typeof eventLabel == 'undefined' || eventLabel == '' ) {
 			eventLabel = document.title;
 		}
 		
-		if ( typeof ga != 'function' ) {
+		// ưu tiên gtag
+		if ( typeof gtag == 'function' ) {
+			if ( typeof ops['action'] == 'undefined' ) {
+				ops['action'] = eventAction;
+			}
+			if ( typeof ops['category'] == 'undefined' ) {
+				ops['category'] = eventCategory;
+			}
+			if ( typeof ops['label'] == 'undefined' ) {
+				ops['label'] = eventLabel;
+			}
+			console.log(ops);
+			
+			//
+			gtag('event', ops['action'], {
+				'event_category' : ops['category'],
+				'event_label' : ops['label']
+			});
+			console.log('Google analytics (gtag) event tracking (' + eventAction + ') by EchBay.com');
+		}
+		// rồi đến ga
+		else if ( typeof ga == 'function' ) {
+			ga( 'send', 'event', eventCategory + ' (EB)', eventAction, eventLabel );
+			console.log('Google analytics event tracking (' + eventAction + ') by EchBay.com');
+		}
+		else {
+//		if ( typeof ga != 'function' ) {
 			if ( typeof max_for == "undefined" ) {
 				max_for = 20;
 			}
@@ -2771,7 +2861,7 @@ var _global_js_eb = {
 			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
 			if ( max_for > 0 ) {
 				setTimeout(function () {
-					_global_js_eb.ga_event_track( eventCategory, eventAction, eventLabel, max_for - 1 );
+					_global_js_eb.ga_event_track( eventCategory, eventAction, eventLabel, ops, max_for - 1 );
 				}, 500);
 //				console.log( 'Re-load GG tracking (' + max_for + ')...' );
 				
@@ -2782,12 +2872,6 @@ var _global_js_eb = {
 			console.log( 'Max for GG track: ' + max_for );
 			return false;
 		}
-		
-		//
-		ga( 'send', 'event', eventCategory + ' (EB)', eventAction, eventLabel );
-		
-		//
-		console.log('Google analytics event tracking (' + eventAction + ') by EchBay.com');
 		
 		//
 		return true;

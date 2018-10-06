@@ -2847,7 +2847,11 @@ jQuery('a.gg-phone-conversion').click(function () {
 	// nếu có chức năng kiểm tra lượt bấm gọi của gg -> nạp vào
 	_global_js_eb.gg_track( a );
 	
-	_global_js_eb.ga_event_track( 'Click to phone', a );
+	_global_js_eb.ga_event_track( 'Click to phone', a, '', {
+//		'category' : '',
+//		'label' : '',
+		'action' : 'click_to_call'
+	});
 	
 	
 	// khi người dùng nhấp gọi điện
@@ -3643,7 +3647,11 @@ setTimeout(function () {
 			_eb_product_supper_shop += a;
 			
 			//
-			_global_js_eb.ga_event_track( 'Go to supper shop (' + document.domain + ')' );
+			_global_js_eb.ga_event_track( 'Go to supper shop (' + document.domain + ')', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'go_to_shop'
+			});
 			window.open( _eb_product_supper_shop, '_blank' );
 			return false;
 		}
@@ -3769,6 +3777,13 @@ setTimeout(function () {
 //
 if ( act == 'search' ) {
 	jQuery('.thread-search-avt[data-img=""]').hide();
+	
+	//
+	_global_js_eb.ga_event_track( '', '', '', {
+//		'category' : '',
+//		'label' : '',
+		'action' : 'view_search_results'
+	});
 }
 
 // google analytics event tracking
@@ -3776,11 +3791,19 @@ setTimeout(function () {
 	if ( pid > 0 ) {
 		// đối với sản phẩm
 		if ( eb_wp_post_type == 'post' ) {
-			_global_js_eb.ga_event_track( 'View product', document.title );
+			_global_js_eb.ga_event_track( 'View product', document.title, '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'view_item'
+			});
 		}
 		// mặc định là cho blog
 		else {
-			_global_js_eb.ga_event_track( 'View blog', document.title );
+			_global_js_eb.ga_event_track( 'View blog', document.title, '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'view_blog'
+			});
 		}
 	}
 	else if ( act == 'archive' ) {
@@ -3812,15 +3835,30 @@ setTimeout(function () {
 			else {
 				console.log('ids for facebok track not found');
 			}
+			
+			//
+			_global_js_eb.ga_event_track( 'View list', 'Xem danh sach san pham', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'view_item_list'
+			});
 		}
 	}
 	else if ( act == 'cart' ) {
-		_global_js_eb.ga_event_track( 'View cart', 'Xem gio hang' );
+		_global_js_eb.ga_event_track( 'View cart', 'Xem gio hang', '', {
+//			'category' : '',
+//			'label' : '',
+			'action' : 'view_cart'
+		});
 		
 		_global_js_eb.cart_size_color();
 	}
 	else if ( act == 'hoan-tat' ) {
-		_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong' );
+		_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong', '', {
+//			'category' : '',
+//			'label' : '',
+			'action' : 'purchase'
+		});
 		
 		//
 //		setTimeout(function () {

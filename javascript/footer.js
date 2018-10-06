@@ -691,6 +691,13 @@ function WGR_click_add_product_to_favorite () {
 //			jQuery(this).addClass('selected');
 //			jQuery('.add-to-favorite[data-id="' + a + '"]').addClass('selected').removeClass('fa-heart-o').addClass('fa-heart');
 			jQuery('.add-to-favorite[data-id="' + a + '"]').addClass('selected');
+			
+			//
+			_global_js_eb.ga_event_track( '', '', '', {
+//				'category' : '',
+//				'label' : '',
+				'action' : 'add_to_wishlist'
+			});
 		}
 		
 		// nếu người dùng đang đăng nhập
