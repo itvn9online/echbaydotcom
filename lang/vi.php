@@ -63,6 +63,10 @@ $___eb_lang[eb_key_for_site_lang . 'cart_payment_nl'] = 'Thanh toán trực tuy�
 $___eb_lang[eb_key_for_site_lang . 'cart_payment_pp'] = 'Thanh toán trực tuyến qua Paypal';
 
 //
+$___eb_lang[eb_key_for_site_lang . 'cart_confirm_remove'] = 'Xác nhận xóa sản phẩm khỏi giỏ hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_post_null'] = 'Không xác định được sản phẩm';
+
+//
 $eb_note_first_lang[eb_key_for_site_lang . 'taikhoan'] = 'Bản dịch cho trang Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'taikhoan'] = 'Tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'thoat'] = 'Thoát';

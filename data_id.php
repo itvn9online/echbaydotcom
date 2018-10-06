@@ -29,6 +29,8 @@ $add_data_id = array (
 		
 		'lang_details_time_discount' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('post_time_discount') ) . '\'',
 		'lang_details_time_soldout' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('post_time_soldout') ) . '\'',
+		'lang_cart_post_null' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('cart_post_null') ) . '\'',
+		'lang_cart_confirm_remove' => '\'' . _eb_str_block_fix_content ( EBE_get_lang('cart_confirm_remove') ) . '\'',
 		
 //		'service_name' => '\'' . $service_name . '\'',
 //		'co_quick_register' => '\'c_quick_register\'',

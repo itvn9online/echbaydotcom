@@ -2292,7 +2292,7 @@ var _global_js_eb = {
 		
 		//
 		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
-			a_lert('Không xác định được sản phẩm');
+			a_lert( lang_cart_post_null );
 			return false;
 		}
 		
@@ -2343,7 +2343,7 @@ var _global_js_eb = {
 		
 		// xóa khỏi giỏ hàng
 		if ( remove_item == 1 ) {
-			if ( confirm('Xác nhận xóa sản phẩm khỏi giỏ hàng') == false ) {
+			if ( confirm( lang_cart_confirm_remove ) == false ) {
 				return false;
 			}
 			
@@ -2468,7 +2468,7 @@ var _global_js_eb = {
 		
 		//
 		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
-			a_lert('Không xác định được sản phẩm');
+			a_lert( lang_cart_post_null );
 			return false;
 		}
 		
@@ -2500,7 +2500,7 @@ var _global_js_eb = {
 		
 		// xóa khỏi giỏ hàng
 		if ( remove_item == 1 ) {
-			if ( confirm('Xác nhận xóa sản phẩm khỏi giỏ hàng') == false ) {
+			if ( confirm( lang_cart_confirm_remove ) == false ) {
 				return false;
 			}
 			
