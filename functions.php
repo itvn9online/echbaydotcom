@@ -627,6 +627,9 @@ function EBE_get_custom_template ( $n, $plugin_dir ) {
 
 // chức năng lấy template mặc định trong child-theme (nếu có)
 function WGR_get_html_template_lang ( $f, $file_name = '', $default_dir = '' ) {
+	global $arr_for_add_css;
+	
+	//
 	$c = EBE_get_lang( $f );
 	
 	//

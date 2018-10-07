@@ -244,18 +244,19 @@ function WGR_hide_html_alert_auto_order_submit () {
 		//
 		if ( arr[i].color != '' ) {
 			arr[i].color = jQuery.trim( arr[i].color );
-			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
-				arr[i].color = '- ' + arr[i].color;
+			if ( arr[i].color.substr( 0, 1 ) == '-' ) {
+//				arr[i].color = '- ' + arr[i].color;
+				arr[i].color = jQuery.trim( arr[i].color.substr( 1 ) );
 			}
 //			arr[i].color = ' ' + arr[i].color;
 			
-			str_edit_size_color += ' <span title="Đổi màu mới" data-id="' + arr[i].id + '" class="cur click-edit-order-color bluecolor">' + arr[i].color + ' <i class="fa fa-edit"></i></span>';
+			str_edit_size_color += '<span title="Đổi màu mới" data-id="' + arr[i].id + '" class="cur click-edit-order-color bluecolor"><strong> - Color: </strong>' + arr[i].color + ' <i class="fa fa-edit"></i></span>';
 		}
 		
 		if ( arr[i].size != '' ) {
 			arr[i].size = jQuery.trim( arr[i].size );
 			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
-				arr[i].size = '(Size: ' + arr[i].size + ')';
+				arr[i].size = '(<strong>Size: </strong>' + arr[i].size + ')';
 			}
 //			arr[i].size = ' ' + arr[i].size;
 			
@@ -341,16 +342,16 @@ function WGR_hide_html_alert_auto_order_submit () {
 			cache = jQuery(this).html() || '';
 		
 		// Lấy tên màu, bỏ các mã lằng nhằng đi
-		$('span, i', this).remove();
+		$('span, i, strong', this).remove();
 		var v = jQuery(this).html() || '';
-		v = jQuery.trim( v.replace( /\-/g, ' ' ) );
+		v = jQuery.trim( v.replace( /\-/g, ' ' ).replace( 'Color: ', '' ) );
 		
 		//
 		var a = prompt( 'Nhập màu mới:', v );
 		
 		// Nếu có màu mới -> nhập luôn
 		if ( a != null && a != v ) {
-			jQuery(this).html( ' - ' + a + ' <i class="fa fa-edit"></i>' );
+			jQuery(this).html( '<strong> - Color: </strong>' + a + ' <i class="fa fa-edit"></i>' );
 			
 			// gán vào dữ liệu
 			for ( var i = 0; i < arr_global_js_order_details.length; i++ ) {
@@ -375,15 +376,19 @@ function WGR_hide_html_alert_auto_order_submit () {
 	// thay đổi size
 	$('.click-edit-order-size').click(function () {
 		var oi = jQuery(this).attr('data-id') || '',
-			v = jQuery(this).html() || '';
-		v = jQuery.trim( v.replace( /\-/g, ' ' ) );
+			cache = jQuery(this).html() || '';
+		
+		// Lấy tên màu, bỏ các mã lằng nhằng đi
+		$('span, i, strong', this).remove();
+		var v = jQuery(this).html() || '';
+		v = jQuery.trim( v.replace( /\(|\)/g, ' ' ).replace( 'Size: ', '' ) );
 		
 		//
-		var a = prompt('Nhập size mới:', '');
+		var a = prompt('Nhập size mới:', v);
 		
 		// Nếu có size mới -> nhập luôn
 		if ( a != null && a != v ) {
-			jQuery(this).html( ' - ' + a + ' <i class="fa fa-edit"></i>' );
+			jQuery(this).html( ' (<strong>Size: </strong>' + a + ') <i class="fa fa-edit"></i>' );
 			
 			// gán vào dữ liệu
 			for ( var i = 0; i < arr_global_js_order_details.length; i++ ) {
@@ -398,6 +403,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 					break;
 				}
 			}
+		}
+		// Hiển thị lại tên màu cũ
+		else {
+			jQuery(this).html( cache );
 		}
 	});
 	
