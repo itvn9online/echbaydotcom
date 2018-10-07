@@ -27,8 +27,26 @@ else if ( typeof window.opener == 'object' ) {
 //
 var arr_global_js_order_details = [],
 	arr_global_js_order_customter = {},
-	auto_add_slug_if_not_exist = false;
+	auto_add_slug_if_not_exist = false,
+	co_thay_doi_chua_duoc_luu = false,
+	auto_submit_order_details = false,
+	time_submit_order_details = null;
 
+
+function WGR_auto_submit_order_details () {
+	
+	//
+	auto_submit_order_details = true;
+	
+	// hẹn giờ sau 1 chút, nếu vẫn true -> auto submit
+	clearTimeout( time_submit_order_details );
+	time_submit_order_details = setTimeout(function () {
+		if ( auto_submit_order_details == true ) {
+			document.frm_invoice_details.submit();
+			console.log('Auto save order details!');
+		}
+	}, 2500);
+}
 
 function WGR_order_details_after_update () {
 	// nếu đơn hàng được sửa trong popup -> xử lý phần trạng thái đơn
@@ -75,6 +93,9 @@ function WGR_admin_tinh_tong_hoa_don ( tong ) {
 }
 
 function WGR_admin_tinh_so_luong_hoa_don () {
+	
+	//
+	___eb_admin_update_order_details();
 	
 	// chạy vòng lặp đếm số lượng và giá trước
 	var tong = 0;
@@ -123,6 +144,19 @@ function ___eb_admin_update_order_details () {
 	console.log( arr_global_js_order_customter );
 	jQuery('#order_customer').val( escape( JSON.stringify( arr_global_js_order_customter ) ) );
 	
+	//
+	co_thay_doi_chua_duoc_luu = false;
+	/*
+	console.log( co_thay_doi_chua_duoc_luu );
+	setTimeout(function () {
+		console.log( co_thay_doi_chua_duoc_luu );
+	}, 600);
+	*/
+	
+	//
+	auto_submit_order_details = false;
+	
+	//
 	return true;
 }
 
@@ -326,8 +360,11 @@ function WGR_hide_html_alert_auto_order_submit () {
 				arr_global_js_order_details[i].quan = a;
 				
 				//
-				___eb_admin_update_order_details();
 				WGR_admin_tinh_so_luong_hoa_don();
+				co_thay_doi_chua_duoc_luu = true;
+				
+				//
+				WGR_auto_submit_order_details();
 				
 				//
 				break;
@@ -361,6 +398,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 					
 					//
 					___eb_admin_update_order_details();
+					co_thay_doi_chua_duoc_luu = true;
+					
+					//
+					WGR_auto_submit_order_details();
 					
 					//
 					break;
@@ -398,6 +439,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 					
 					//
 					___eb_admin_update_order_details();
+					co_thay_doi_chua_duoc_luu = true;
+					
+					//
+					WGR_auto_submit_order_details();
 					
 					//
 					break;
@@ -413,6 +458,10 @@ function WGR_hide_html_alert_auto_order_submit () {
 	//
 	jQuery('#hd_chietkhau, #hd_phivanchuyen').change(function () {
 		WGR_admin_tinh_so_luong_hoa_don();
+		co_thay_doi_chua_duoc_luu = true;
+		
+		//
+		WGR_auto_submit_order_details();
 	}).click(function () {
 		jQuery(this).select();
 	});
@@ -767,7 +816,8 @@ function WGR_GHN_get_json ( datas, uri, callBack ) {
 }
 
 // https://api.ghn.vn/home/docs/detail?id=28
-if ( window.location.href.split('localhost:8888').length > 1 || window.location.href.split('webgiare.org/').length > 1 ) {
+//if ( window.location.href.split('localhost:8888').length > 1 || window.location.href.split('webgiare.org/').length > 1 ) {
+if ( window.location.href.split('localhost:8888').length > 1 ) {
 	console.log('TEST GHN');
 	
 	//
@@ -819,6 +869,21 @@ if ( window.location.href.split('localhost:8888').length > 1 || window.location.
 		"IsCreditCreate": true
 	}, 'CreateOrder' );
 }
+
+
+
+//
+/*
+setTimeout(function () {
+	console.log( co_thay_doi_chua_duoc_luu );
+}, 600);
+window.onbeforeunload = function(e) {
+	if ( co_thay_doi_chua_duoc_luu == true ) {
+		return 'Các thay đổi của bạn sẽ không được lưu lại!';
+	}
+	return true;
+};
+*/
 
 
 
