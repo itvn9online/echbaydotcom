@@ -2441,7 +2441,7 @@ iframe[name="google_conversion_frame"] {
 	padding-top: 6px;
 	padding-bottom: 6px;
 }
-.style-for-mobile .cart-table-total { padding: 10px 0; }
+.style-for-mobile .cart-table-total { padding: 10px 0 6px 0; }
 .style-for-mobile .cart-table-title { line-height: 30px; }
 .style-for-mobile .cart-ultable li { padding: 0; }
 .style-for-mobile .cart-ultable li div.f25 { font-size: 13px; }
