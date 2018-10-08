@@ -90,7 +90,9 @@ body.style-for-mobile {
 	max-width: 900px;
 }
 .style-for-mobile .cart-table-free div { margin: 5px 0 !important; }
+/*
 .style-for-mobile .cart-ultable li div.f25,
+*/
 .style-for-mobile .cart-ultable li div.f75 { width: 100%; }
 /* other style mobile */
 .style-for-mobile #oi_scroll_top {

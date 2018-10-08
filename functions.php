@@ -651,11 +651,11 @@ function WGR_get_html_template_lang ( $f, $file_name = '', $default_dir = '' ) {
 		*/
 		else {
 			if ( $default_dir == '' ) {
-				$default_dir = EB_THEME_PLUGIN_INDEX;
+				$default_dir = EB_THEME_PLUGIN_INDEX . 'html/';
 			}
 			
 			//
-			$c = file_get_contents( $default_dir . 'html/' . $file_name . '.html' );
+			$c = file_get_contents( $default_dir . $file_name . '.html' );
 			
 			$arr_for_add_css[ $default_dir . 'css/' . $file_name . '.css' ] = 1;
 		}

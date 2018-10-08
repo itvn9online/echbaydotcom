@@ -26,6 +26,15 @@ $cart_total = 0;
 
 
 
+//
+$cart_node_html = EBE_get_lang('cart_node');
+// mặc định là lấy theo file HTML -> act
+if ( trim( $cart_node_html ) == 'cart_node' ) {
+	$cart_node_html = EBE_get_page_template( 'cart_node' );
+}
+
+
+
 
 
 if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
@@ -129,6 +138,29 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		
 		
 		//
+		$cart_list .= EBE_html_template( $cart_node_html, array(
+			'tmp.trv_masanpham' => $trv_masanpham,
+			'tmp.c_link' => $c_link,
+			'tmp.trv_img' => $trv_img,
+			'tmp.p_link' => $p_link,
+			'tmp.post->post_title' => $post->post_title,
+			'tmp.product_color_name' => $product_color_name,
+			'tmp.cart_mausac' => str_replace( '"', '&quot;', EBE_get_lang('cart_mausac') ),
+			'tmp.product_list_color' => $product_list_color,
+			'tmp.cart_kichco' => str_replace( '"', '&quot;', EBE_get_lang('cart_kichco') ),
+			'tmp.product_size' => $product_size,
+			'tmp.trv_giamoi' => EBE_add_ebe_currency_class ( $trv_giamoi ),
+			'tmp.c_name' => $c_name,
+			'tmp.animate_id' => $animate_id,
+			'tmp.num_trv_giaban' => $trv_giaban,
+			'tmp.num_trv_giamoi' => $trv_giamoi,
+			'tmp.trv_giamoi' => EBE_add_ebe_currency_class ( $trv_giamoi ),
+			'tmp.select_soluong' => str_replace( '{cart.post_id}', $post->ID, $select_soluong ),
+			'tmp.total_line' => EBE_add_ebe_currency_class ( $total_line ),
+			'tmp.post->ID' => $post->ID
+		));
+		
+		/*
 		$cart_list .= '
 <tr data-id="' . $post->ID . '" data-old-price="' . $trv_giaban . '" data-price="' . $trv_giamoi . '" data-sku="' . $trv_masanpham . '" id="' . $animate_id . '" class="each-for-set-cart-value">
 	<td class="cf">
@@ -156,6 +188,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 	<td>' . str_replace( '{cart.post_id}', $post->ID, $select_soluong ) . '</td>
 	<td class="bold big hide-if-mobile cart-total-inline">' . EBE_add_ebe_currency_class ( $total_line ) . '</td>
 </tr>';
+		*/
 		
 		//
 	}

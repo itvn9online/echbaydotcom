@@ -306,6 +306,10 @@ $___eb_lang[eb_key_for_site_lang . 'cart_html'] = 'cart';
 $eb_type_lang[eb_key_for_site_lang . 'cart_html'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'cart_html'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/cart.html';
 
+$___eb_lang[eb_key_for_site_lang . 'cart_node'] = 'cart_node';
+$eb_type_lang[eb_key_for_site_lang . 'cart_node'] = 'textarea';
+$eb_ex_from_github[eb_key_for_site_lang . 'cart_node'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/cart_node.html';
+
 // booking done
 //$___eb_lang[eb_key_for_site_lang . 'booking_done'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/hoan-tat.html' );
 $___eb_lang[eb_key_for_site_lang . 'booking_done'] = 'booking_done';

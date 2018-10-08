@@ -2141,11 +2141,12 @@ var _global_js_eb = {
 			return true;
 		}
 		
-		var a = jQuery('.cart-count-tr tr').length || 0;
+		var a = jQuery('#oi_cart .each-for-set-cart-value').length || jQuery('.cart-count-tr tr').length || 0;
 //		console.log(a);
 		
 		// Nếu có sản phẩm trong giỏ hàng (bỏ đi tr đầu tiên)
-		if ( a > 1 ) {
+//		if ( a > 1 ) {
+		if ( a > 0 ) {
 			jQuery('#cart_null').hide();
 			jQuery('#oi_cart, #oi_send_invoice').fadeIn();
 			

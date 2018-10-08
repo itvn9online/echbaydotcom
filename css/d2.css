@@ -2425,3 +2425,34 @@ iframe[name="google_conversion_frame"] {
 	max-width: 110px;
 	margin: 0 auto;
 }
+/* giỏ hàng dạng div */
+#cart_null,
+#cart_null { padding-bottom: 20px; }
+.cart-div-title {
+	padding-bottom: 8px;
+	margin-bottom: 15px;
+}
+.style-for-mobile .cart-select-quantity { padding: 10px 0; }
+.style-for-mobile .cart-select-quantity select {
+	display: inline-block;
+	width: 99%;
+	width: 99.5%;
+	max-width: 375px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+.style-for-mobile .cart-table-total { padding: 10px 0; }
+.style-for-mobile .cart-table-title { line-height: 30px; }
+.style-for-mobile .cart-ultable li { padding: 0; }
+.style-for-mobile .cart-ultable li div.f25 { font-size: 13px; }
+.style-for-mobile .cart-mua-button {
+	padding: 10px;
+	width: 99%;
+	max-width: 250px;
+	border-radius: 3px;
+}
+.style-for-mobile .cart-table-free div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.style-for-mobile .cart-ultable textarea { height: 35px; }

@@ -3,6 +3,14 @@
 		<div class="cart-pro-phet">
 			<form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();">
 				<div id="oi_cart" class="d-none">
+					<div class="cart-div-title cf medium gray6color bborder">
+						<div class="lf f60 fullsize-if-mobile">{tmp.cart_str_list}</div>
+						<div class="lf f15 text-center hide-if-mobile">{tmp.cart_price}</div>
+						<div class="lf f10 text-center hide-if-mobile">{tmp.cart_soluong}</div>
+						<div class="lf f15 text-center hide-if-mobile">{tmp.cart_str_total}</div>
+					</div>
+					{tmp.cart_list} 
+					<!--
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cart-table cart-count-tr">
 						<tr class="cart-table-subject">
 							<td>{tmp.cart_str_list}</td>
@@ -10,15 +18,16 @@
 							<td>{tmp.cart_soluong}</td>
 							<td class="hide-if-mobile">{tmp.cart_str_total}</td>
 						</tr>
-						{tmp.cart_list}
 					</table>
-					<div class="cart-table-total upper bold">{tmp.cart_str_totals}: {tmp.cart_total}</div>
+					-->
+					<div class="cart-table-total center-if-mobile bold"><span class="upper">{tmp.cart_str_totals}</span>: {tmp.cart_total}</div>
 				</div>
 				<div id="cart_null" class="text-center">{tmp.cart_is_null}</div>
-				<br>
-				<div class="cf"><a href="./" class="cart-table-prev d-block lf">{tmp.cart_continue}</a></div>
-				<br>
-				<br>
+				<div class="hide-if-mobile">
+					<div class="cf"><a href="./" class="cart-table-prev d-block lf">{tmp.cart_continue}</a></div>
+					<br>
+					<br>
+				</div>
 				<div id="oi_send_invoice" class="d-none"> 
 					<!--
 					<div class="cart-table-title upper bold medium cf">
@@ -78,8 +87,8 @@
 									</li>
 									{tmp.chinhsach}
 									<li class="cf">
-										<div class="lf f25">&nbsp;</div>
-										<div>
+										<div class="lf f25 hide-if-mobile">&nbsp;</div>
+										<div class="lf f75 center-if-mobile">
 											<button type="submit" id="sb_submit_cart" class="cart-mua-button upper cur">{tmp.cart_gui}</button>
 										</div>
 									</li>
