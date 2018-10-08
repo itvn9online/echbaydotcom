@@ -2456,3 +2456,9 @@ iframe[name="google_conversion_frame"] {
 	padding-bottom: 5px;
 }
 .style-for-mobile .cart-ultable textarea { height: 35px; }
+.style-for-mobile .cart-node-info { position: relative; }
+.style-for-mobile .cart-table-remove {
+	position: absolute;
+	top: 5px;
+	right: 0;
+}
