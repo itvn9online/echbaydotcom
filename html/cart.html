@@ -3,7 +3,7 @@
 		<div class="cart-pro-phet">
 			<form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();">
 				<div id="oi_cart" class="d-none">
-					<div class="cart-div-title cf medium gray6color bborder">
+					<div class="cart-div-title cf medium gray6color">
 						<div class="lf f60 fullsize-if-mobile">{tmp.cart_str_list}</div>
 						<div class="lf f15 text-center hide-if-mobile">{tmp.cart_price}</div>
 						<div class="lf f10 text-center hide-if-mobile">{tmp.cart_soluong}</div>
@@ -86,7 +86,7 @@
 										</div>
 									</li>
 									{tmp.chinhsach}
-									<li class="cf">
+									<li class="cf eb-global-cart-submit">
 										<div class="lf f25 hide-if-mobile">&nbsp;</div>
 										<div class="lf f75 center-if-mobile">
 											<button type="submit" id="sb_submit_cart" class="cart-mua-button upper cur">{tmp.cart_gui}</button>

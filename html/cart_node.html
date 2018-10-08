@@ -2,23 +2,32 @@
 <div data-id="{tmp.post->ID}" data-old-price="{tmp.num_trv_giaban}" data-price="{tmp.num_trv_giamoi}" data-sku="{tmp.trv_masanpham}" id="{tmp.animate_id}" class="cf each-for-set-cart-value">
 	<div class="lf f60 fullsize-if-mobile">
 		<div class="cf cart-node-info">
-			<div class="lf f30 fullsize-if-mobile2">
-				<div><a href="{tmp.p_link}"><img src="{tmp.trv_img}" height="90" /></a></div>
-				<br>
+			<div class="lf f30">
+				<div class="cart-div-left">
+					<div><a href="{tmp.p_link}" class="cart-list-avt" style="background-image:url('{tmp.trv_img}');">&nbsp;</a></div>
+					<br>
+				</div>
 			</div>
-			<div class="lf f70 cart-div-margin fullsize-if-mobile2">
-				<div class="medium l30 show-if-mobile">{tmp.trv_giamoi}</div>
-				<div class="hide-if-mobile"><a href="{tmp.p_link}" class="bold medium blackcolor"><span class="get-product-name-for-cart">{tmp.post->post_title}</span><span class="show-product-color-name{tmp.post->ID}">{tmp.product_color_name}</span></a></div>
-				<div data-id="{tmp.post->ID}" data-name="{tmp.cart_mausac}" class="show-list-color cf l25 d-none">{tmp.product_list_color}</div>
-				<div data-id="{tmp.post->ID}" data-name="{tmp.cart_kichco}" class="show-list-size cf l25 d-none">{tmp.product_size}</div>
-				<div class="hide-if-mobile"><a href="{tmp.c_link}" class="upper blackcolor">{tmp.c_name}</a></div>
-				<div class="cart-table-remove"><i onClick="_global_js_eb.cart_remove_item({tmp.post->ID}, '{tmp.animate_id}');" class="fa fa-remove cur"></i></div>
-				<input type="hidden" name="t_muangay[]" value="{tmp.post->ID}" />
+			<div class="lf f70 cart-div-margin">
+				<div class="cart-div-right">
+					<div class="medium l30 show-if-mobile">{tmp.trv_giamoi}</div>
+					<div class="hide-if-mobile cart-node-title"><a href="{tmp.p_link}" class="bold medium blackcolor"><span class="get-product-name-for-cart">{tmp.post->post_title}</span><span class="show-product-color-name{tmp.post->ID}">{tmp.product_color_name}</span></a></div>
+					<div data-id="{tmp.post->ID}" data-name="{tmp.cart_mausac}" class="show-list-color cf l25 d-none">{tmp.product_list_color}</div>
+					<div data-id="{tmp.post->ID}" data-name="{tmp.cart_kichco}" class="show-list-size cf l25 d-none">{tmp.product_size}</div>
+					<div class="hide-if-mobile"><a href="{tmp.c_link}" class="upper blackcolor">{tmp.c_name}</a></div>
+					<div class="cart-table-remove"><i onClick="_global_js_eb.cart_remove_item({tmp.post->ID}, '{tmp.animate_id}');" class="fa fa-remove cur"></i></div>
+					<input type="hidden" name="t_muangay[]" value="{tmp.post->ID}" />
+				</div>
 			</div>
 		</div>
-		<div class="show-if-mobile"><a href="{tmp.p_link}" class="medium blackcolor"><span class="get-product-name-for-cart">{tmp.post->post_title}</span><span class="show-product-color-name{tmp.post->ID}">{tmp.product_color_name}</span></a></div>
+		<div class="show-if-mobile cart-node-title cart-node-mobile-title"><a href="{tmp.p_link}" class="medium blackcolor"><span class="get-product-name-for-cart">{tmp.post->post_title}</span><span class="show-product-color-name{tmp.post->ID}">{tmp.product_color_name}</span></a></div>
 	</div>
 	<div class="lf f15 text-center hide-if-mobile l30 medium18 cart-price-inline">{tmp.trv_giamoi}</div>
-	<div class="lf f10 text-center fullsize-if-mobile cart-select-quantity">{tmp.select_soluong}</div>
+	<div class="lf f10 text-center fullsize-if-mobile cart-selects-quantity">
+		<div class="cf cart-select-mobile">
+			<div class="cart-select-name lf f30 l30 medium gray6color show-if-mobile">{tmp.cart_soluong}</div>
+			<div class="cart-select-quantity left-if-mobile">{tmp.select_soluong}</div>
+		</div>
+	</div>
 	<div class="lf f15 text-center fullsize-if-mobile l30 medium18 cart-total-inline">{tmp.total_line}</div>
 </div>
