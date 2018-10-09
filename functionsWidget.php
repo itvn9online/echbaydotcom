@@ -411,6 +411,9 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //	$title = apply_filters ( 'widget_title', $instance ['title'] );
 	$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
 	$custom_cat_link = isset( $instance ['custom_cat_link'] ) ? $instance ['custom_cat_link'] : '';
+	if ( trim( $custom_cat_link ) == '#' ) {
+		$custom_cat_link = 'javascript:;';
+	}
 	$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 	$dynamic_post_tag = isset( $instance ['dynamic_post_tag'] ) ? $instance ['dynamic_post_tag'] : '';
 	$description = isset( $instance ['description'] ) ? $instance ['description'] : '';

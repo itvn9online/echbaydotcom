@@ -62,6 +62,17 @@ $___eb_lang[eb_key_for_site_lang . 'cart_payment_bk'] = 'Thanh toán trực tuy�
 $___eb_lang[eb_key_for_site_lang . 'cart_payment_nl'] = 'Thanh toán trực tuyến qua Ngân Lượng';
 $___eb_lang[eb_key_for_site_lang . 'cart_payment_pp'] = 'Thanh toán trực tuyến qua Paypal';
 
+$___eb_lang[eb_key_for_site_lang . 'cart_done_madon'] = 'Số đơn hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_khachhang'] = 'Khách hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_dienthoai'] = 'Số điện thoại';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_diachi'] = 'Địa chỉ nhận hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_ghichu'] = 'Ghi chú của khách hàng';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_trangthai'] = 'Trạng thái thanh toán: <strong>Chưa thanh toán</strong>';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_size'] = 'Kích thước';
+//$___eb_lang[eb_key_for_site_lang . 'cart_done_quan'] = $___eb_lang[eb_key_for_site_lang . 'post_soluong'];
+$___eb_lang[eb_key_for_site_lang . 'cart_done_list'] = 'Sản phẩm đặt mua';
+$___eb_lang[eb_key_for_site_lang . 'cart_done_tong'] = 'Tổng giá trị đơn hàng';
+
 //
 $___eb_lang[eb_key_for_site_lang . 'cart_confirm_remove'] = 'Xác nhận xóa sản phẩm khỏi giỏ hàng!';
 $___eb_lang[eb_key_for_site_lang . 'cart_post_null'] = 'Không xác định được sản phẩm';

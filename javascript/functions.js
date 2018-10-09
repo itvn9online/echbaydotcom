@@ -48,14 +48,14 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	//
 	str += '<br><h3 class="l35 text-center">' + arr_lang_hoan_tat['customer_info'] + '</h3>' +
 	'<div class="hoantat-cus-padding l20 gray2bg">' +
-		'<div>Số đơn hàng: <strong>' + current_tv_object['hd_thanhtoan'] + '</strong></div>' +
-		'<div>Khách hàng: <strong>' + current_tv_object['hd_ten'] + '</strong></div>' +
-		'<div>Số điện thoại: <strong>' + current_tv_object['hd_dienthoai'] + '</strong></div>' +
-		'<div>Địa chỉ nhận hàng: <strong>' + current_tv_object['hd_diachi'] + '</strong></div>' +
-		'<div>Ghi chú của khách hàng: <strong>' + current_tv_object['hd_ghichu'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_madon'] + ': <strong>' + current_tv_object['hd_thanhtoan'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_khachhang'] + ': <strong>' + current_tv_object['hd_ten'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_dienthoai'] + ': <strong>' + current_tv_object['hd_dienthoai'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_diachi'] + ': <strong>' + current_tv_object['hd_diachi'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_ghichu'] + ': <strong>' + current_tv_object['hd_ghichu'] + '</strong></div>' +
 		'<br>' +
 		'<div>' + arr_lang_hoan_tat['payment_method'] + ': <strong>' + ( typeof arr_lang_hoan_tat [ current_tv_object['hd_thanhtoan'] ] != 'undefined' ? arr_lang_hoan_tat [ current_tv_object['hd_thanhtoan'] ] : '<em>NULL</em>' ) + '</strong></div>' +
-		'<div>Trạng thái thanh toán: <strong>Chưa thanh toán</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_trangthai'] + '</div>' +
 	'</div>';
 	
 	//
@@ -70,9 +70,9 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 					'<h4><a href="' + web_link + '?p=' + current_hd_object[i].id + '" target="_blank" class="bluecolor">' + current_hd_object[i].name + '</a></h4>' +
 					'<div class="l30">' +
 						'<div class="redcolor"><strong class="ebe-currency">' + g_func.money_format( current_hd_object[i].price ) + '</strong></div>' +
-						'<div>Màu sắc: ' + current_hd_object[i].color + '</div>' +
-						'<div>Kích thước: ' + current_hd_object[i].size + '</div>' +
-						'<div>Số lượng: ' + current_hd_object[i].quan + '</div>' +
+						'<div>' + arr_lang_hoan_tat['cart_done_color'] + ': ' + current_hd_object[i].color + '</div>' +
+						'<div>' + arr_lang_hoan_tat['cart_done_size'] + ': ' + current_hd_object[i].size + '</div>' +
+						'<div>' + arr_lang_hoan_tat['cart_done_quan'] + ': ' + current_hd_object[i].quan + '</div>' +
 					'</div>' +
 				'</div>' +
 			'</div>' +
@@ -83,12 +83,12 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	}
 	
 	//
-	str += '<h3 class="l35 text-center">Sản phẩm đặt mua</h3>' +
+	str += '<h3 class="l35 text-center">' + arr_lang_hoan_tat['cart_done_list'] + '</h3>' +
 	'<div class="hoantat-post-padding l20 tborder lborder rborder bborder">' +
 		str2 +
 	'</div>' +
 	'<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
-		'<div class="lf f25 fullsize-if-mobile text-right">Tổng giá trị đơn hàng</div>' +
+		'<div class="lf f25 fullsize-if-mobile text-right">' + arr_lang_hoan_tat['cart_done_tong'] + '</div>' +
 		'<div class="lf f25 fullsize-if-mobile">' +
 			'<div class="left-menu-space"><strong class="ebe-currency medium18 redcolor">' + g_func.money_format( total ) + '</strong></div>' +
 		'</div>' +
