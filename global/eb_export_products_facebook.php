@@ -38,7 +38,7 @@ function WGR_rss_get_parent_cat ( $id ) {
 //$rssCacheFilter = 'rss-' . $export_type;
 $rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 300 );
 //$rss_content = false;
-if ($rss_content == false) {
+if ($rss_content == false || isset($_GET['wgr_real_time'])) {
 	
 	
 	
@@ -85,11 +85,37 @@ foreach ( $sql as $v ) {
 	$post_categories = wp_get_post_categories( $v->ID );
 //	print_r( $post_categories );
 	if ( ! empty( $post_categories ) ) {
-		foreach($post_categories as $c){
-			$ant_id = WGR_rss_get_parent_cat( $c );
+		
+		//
+		if ( count( $post_categories ) == 1 ) {
+			$ant_id = $post_categories[0];
+		}
+		else {
+			// tìm nhóm chính trước
+			foreach($post_categories as $c){
+				// có thì trả về luôn
+				if ( _eb_get_cat_object( $c, '_eb_category_primary', 0 ) > 0 ) {
+					$ant_id = $c;
+					break;
+				}
+			}
 			
-			if ( $ant_id > 0 ) {
-				break;
+			// nếu không có -> tìm nhóm cấp 2 trước
+			if ( $ant_id == 0 ) {
+				foreach($post_categories as $c){
+					$a = WGR_rss_get_parent_cat( $c );
+					
+					// nếu có nhóm cha -> đây là nhóm cấp 2 -> dừng luôn
+					if ( $a > 0 ) {
+						$ant_id = $c;
+						break;
+					}
+				}
+				
+				// vẫn không có -> đành lấy nhóm cấp 1 -> lấy nhóm đầu tiên
+				if ( $ant_id == 0 ) {
+					$ant_id = $post_categories[0];
+				}
 			}
 		}
 	}
