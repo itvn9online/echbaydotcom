@@ -74,9 +74,9 @@ function echbay_create_admin_menu() {
 	
 	
 	/*
-	* submenu -> Super Admin, Administrator, Editor
+	* submenu -> Super Admin, Administrator, Editor, Author
 	*/
-	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_pages', 'eb-order', 'func_include_eb_private_code' );
+	add_submenu_page( $parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_posts', 'eb-order', 'func_include_eb_private_code' );
 	
 	
 	/*
