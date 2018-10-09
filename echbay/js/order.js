@@ -13,7 +13,7 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 			return false;
 		}
 		
-		arr = $.parseJSON( unescape( arr ) );
+		arr = jQuery.parseJSON( unescape( arr ) );
 		
 		// kiểm tra lại mà vẫn thế -> lỗi
 		if ( typeof arr != "object" ) {
@@ -30,7 +30,7 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 		}
 		
 		try {
-			cus = $.parseJSON( unescape( cus ) );
+			cus = jQuery.parseJSON( unescape( cus ) );
 		} catch (e) {
 			arr = {};
 		}
@@ -38,13 +38,13 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 //	console.log(cus);
 	
 	//
-	var f_tr = $('tr.eb-set-order-list-info:first');
+	var f_tr = jQuery('tr.eb-set-order-list-info:first');
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		
 		if ( arr[i].color != '' ) {
-			arr[i].color = $.trim( arr[i].color );
+			arr[i].color = jQuery.trim( arr[i].color );
 			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
 				arr[i].color = '- ' + arr[i].color;
 			}
@@ -53,7 +53,7 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 		}
 		
 		if ( arr[i].size != '' ) {
-			arr[i].size = $.trim( arr[i].size );
+			arr[i].size = jQuery.trim( arr[i].size );
 			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
 				arr[i].size = '(Size: ' + arr[i].size + ')';
 			}
@@ -88,7 +88,7 @@ function post_excerpt_to_prodcut_list_v1 (arr) {
 //	console.log(arr);
 	
 	//
-	var f_tr = $('tr.eb-set-order-list-info:first');
+	var f_tr = jQuery('tr.eb-set-order-list-info:first');
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
@@ -123,7 +123,7 @@ function invoice_func_check_search () {
 	}
 	
 	// chuẩn định dạng trước khi submit
-	f.invoice_key.value = escape( unescape( $.trim( f.invoice_key.value ) ) );
+	f.invoice_key.value = escape( unescape( jQuery.trim( f.invoice_key.value ) ) );
 	
 	//
 	return true;
@@ -132,8 +132,8 @@ function invoice_func_check_search () {
 
 
 function click_set_search_order_by_type () {
-	$('.click-search-by-type a').off('click').click(function () {
-		var a = $(this).attr('data-type') || '';
+	jQuery('.click-search-by-type a').off('click').click(function () {
+		var a = jQuery(this).attr('data-type') || '';
 		
 		if ( a != '' ) {
 			var f = document.frm_search_invoice;
@@ -146,8 +146,8 @@ function click_set_search_order_by_type () {
 				f.submit();
 			}
 			else {
-				$('.click-search-by-type a').removeClass('bold');
-				$(this).addClass('bold');
+				jQuery('.click-search-by-type a').removeClass('bold');
+				jQuery(this).addClass('bold');
 			}
 		}
 	});
@@ -165,26 +165,26 @@ function click_set_search_order_by_type () {
 	
 	//
 	if ( f.type_search.value == '' ) {
-		$('.click-search-by-type a:first').addClass('bold');
+		jQuery('.click-search-by-type a:first').addClass('bold');
 	}
 	else {
-		$('.click-search-by-type a[data-type="' + f.type_search.value + '"]').addClass('bold');
+		jQuery('.click-search-by-type a[data-type="' + f.type_search.value + '"]').addClass('bold');
 	}
 }
 
 
 //
 setTimeout(function () {
-	$('.each-to-count-tab').each(function() {
-		var a = $(this).attr('data-id') || '',
-			c = $(this).html();
+	jQuery('.each-to-count-tab').each(function() {
+		var a = jQuery(this).attr('data-id') || '',
+			c = jQuery(this).html();
 		if ( c != '0') {
 			if ( c.toString().length > 3 ) {
 				c = g_func.number_format(c);
 			}
 			
 			//
-			$('#show_count_order_by' + a).html( c ).attr({
+			jQuery('#show_count_order_by' + a).html( c ).attr({
 				'data-value' : c
 			});
 		}
@@ -207,16 +207,16 @@ setTimeout(function () {
 		
 		//
 //		console.log( str );
-		$('head').append('<style>' + str + '</style>');
+		jQuery('head').append('<style>' + str + '</style>');
 		
 		// hiệu ứng khi bấm vào nút trạng thái -> cho phép cập nhật luôn
-		$('.bill-detail-status button').off().click(function () {
-			$('.bill-detail-status button').removeClass('selected');
-			$(this).addClass('selected');
+		jQuery('.bill-detail-status button').off().click(function () {
+			jQuery('.bill-detail-status button').removeClass('selected');
+			jQuery(this).addClass('selected');
 			
 			//
 			var f = document.frm_invoice_details,
-				st = $(this).attr('data-tab') || 0;
+				st = jQuery(this).attr('data-tab') || 0;
 			
 			//
 			if ( st != f.t_trangthai.value ) {
@@ -225,6 +225,16 @@ setTimeout(function () {
 				___eb_admin_update_order_details();
 				
 				f.submit();
+				
+				// lưu sự kiện vào google analytics để đối sánh
+				_global_js_eb.ga_event_track(
+					// cho trạng thái đơn vào mục category
+					g_func.non_mark_seo( jQuery(this).attr('title') || '' ),
+					// cho ID quản trị đơn hàng vào action
+					'staff' + mtv_id + '_view_order',
+					// cho ID đơn vào label
+					'status_order' + document.frm_invoice_details.order_id.value
+				);
 			}
 		});
 		
