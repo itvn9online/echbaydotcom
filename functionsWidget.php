@@ -7,6 +7,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 	$arr = array (
 		'title' => 'EchBay Widget for product',
 		'hide_widget_title' => 0,
+		'custom_cat_link' => '',
 		'dynamic_tag' => 'div',
 		'dynamic_post_tag' => '',
 		'description' => '',
@@ -409,6 +410,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	
 //	$title = apply_filters ( 'widget_title', $instance ['title'] );
 	$title = isset( $instance ['title'] ) ? $instance ['title'] : '';
+	$custom_cat_link = isset( $instance ['custom_cat_link'] ) ? $instance ['custom_cat_link'] : '';
 	$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 	$dynamic_post_tag = isset( $instance ['dynamic_post_tag'] ) ? $instance ['dynamic_post_tag'] : '';
 	$description = isset( $instance ['description'] ) ? $instance ['description'] : '';
@@ -473,7 +475,8 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	
 	
 	//
-	$cat_link = '';
+//	$cat_link = '';
+	$cat_link = $custom_cat_link;
 	
 	//
 //	_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );
@@ -586,7 +589,9 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			else {
 				$terms_categories[] = $cat_ids;
 			}
-			$cat_link = _eb_c_link( $cat_ids, $cat_type );
+			if ( $cat_link == '' ) {
+				$cat_link = _eb_c_link( $cat_ids, $cat_type );
+			}
 			$more_link = '<div class="widget-blog-more"><a href="' . $cat_link . '">Xem thêm <span>&raquo;</span></a></div>';
 			
 			if ( $title == '' ) {

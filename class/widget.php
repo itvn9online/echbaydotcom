@@ -184,6 +184,9 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_widget_title' ], $hide_widget_title, 'Ẩn tiêu đề widget.' );
 	
 	//
+	echo '<p><strong>Tùy chỉnh URL</strong>: <input type="text" class="widefat" name="' . $field_name['custom_cat_link'] . '" value="' . $custom_cat_link . '" /> * Mặc định URL sẽ được tạo theo URL của phân nhóm hoặc để trống nếu không có nhóm. Bạn muốn thiết lập cứng URL cho phần này thì có thể thiết lập tại đây.</p>';
+	
+	//
 	echo '<p><strong>HTML tag cho Tiêu đề</strong>: ';
 	
 	__eb_widget_load_select(
