@@ -570,6 +570,11 @@ function _eb_str_block_fix_content ($str) {
 		'"' => '&quot;',
 //		'' => ''
 	);
+	
+	//
+	$str = str_replace('\\', '\\\\', $str);
+	
+	//
 	foreach ($arr as $k => $v) {
 		if ($v != '') {
 			$str = str_replace($k, $v, $str);
@@ -2750,7 +2755,7 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 		}
 		
 		//
-		$str .= ',{id:' . $v->term_id . ',ten:"' . _eb_str_block_fix_content ( $v->name ) . '",slug:"' . $v->slug . '",lnk:"' . $c_link . '",order:' . $cat_order . ',avt:"' . _eb_get_cat_object( $v->term_id, '_eb_category_avt' ) . '",icon:"' . _eb_get_cat_object( $v->term_id, '_eb_category_favicon' ) . '",arr:[' . _eb_get_full_category_v2 ( $v->term_id, $taxx, $get_full_link ) . ']}';
+		$str .= ',{id:' . $v->term_id . ',ten:"' . _eb_str_block_fix_content ( $v->name ) . '",slug:"' . $v->slug . '",lnk:"' . str_replace( '/', '\/', $c_link ) . '",order:' . $cat_order . ',avt:"' . _eb_get_cat_object( $v->term_id, '_eb_category_avt' ) . '",icon:"' . _eb_get_cat_object( $v->term_id, '_eb_category_favicon' ) . '",arr:[' . _eb_get_full_category_v2 ( $v->term_id, $taxx, $get_full_link ) . ']}';
 	}
 	$str = substr ( $str, 1 );
 	

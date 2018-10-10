@@ -671,7 +671,8 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 
 
 //
-_eb_log_admin( 'Update config' );
+//_eb_log_admin( 'Update config' );
+_eb_log_ga_event( 'Update config' );
 
 
 

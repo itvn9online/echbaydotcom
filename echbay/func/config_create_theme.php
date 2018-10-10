@@ -426,7 +426,8 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 
 
 //
-_eb_log_admin( 'Tạo giao diện mẫu' );
+//_eb_log_admin( 'Tạo giao diện mẫu' );
+_eb_log_ga_event( 'Tạo giao diện mẫu' );
 
 
 

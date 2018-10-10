@@ -229,7 +229,7 @@ setTimeout(function () {
 				// lưu sự kiện vào google analytics để đối sánh
 				_global_js_eb.ga_event_track(
 					// cho trạng thái đơn vào mục category
-					g_func.non_mark_seo( jQuery(this).attr('title') || '' ),
+					g_func.non_mark_seo( jQuery('span', this).html() || jQuery(this).attr('title') || '' ),
 					// cho ID quản trị đơn hàng vào action
 					'staff' + mtv_id + '_view_order',
 					// cho ID đơn vào label

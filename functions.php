@@ -2695,6 +2695,40 @@ function _eb_get_log_user( $limit = '' ) {
 	" . $limit);
 }
 
+function _eb_log_ga_event( $event_category, $event_action = '', $event_label = '' ) {
+	
+	//
+	echo '<script>
+(function () {
+	var arr = [
+		"' . str_replace( '"', '\"', $event_category ) . '",
+		"' . str_replace( '"', '\"', $event_action ) . '",
+		"' . str_replace( '"', '\"', $event_label ) . '"
+	];
+	
+	//
+	if ( top != self ) {
+		if ( typeof parent._global_js_eb != "undefined" ) {
+			parent._global_js_eb.ga_event_log( arr[0], arr[1], arr[1] );
+		}
+		else if ( typeof _global_js_eb != "undefined" ) {
+			_global_js_eb.ga_event_log( arr[0], arr[1], arr[1] );
+		}
+		else {
+			console.log("ga_event_log not found!");
+		}
+	}
+	else if ( typeof _global_js_eb != "undefined" ) {
+		_global_js_eb.ga_event_log( arr[0], arr[1], arr[1] );
+	}
+	else {
+		console.log("ga_event_log nt found!");
+	}
+})();
+</script>';
+	
+}
+
 function _eb_log_admin($m, $post_id = 0) {
 //	return false;
 	

@@ -2954,6 +2954,27 @@ var _global_js_eb = {
 		return true;
 	},
 	
+	// lưu log phiên làm việc vào ga luôn
+	ga_event_log : function ( eventCategory, eventAction, eventLabel ) {
+		if ( typeof eventAction == 'undefined' || eventAction == '' ) {
+			eventAction = 'staff';
+			if ( typeof mtv_id != 'undefined' ) {
+				eventAction += mtv_id;
+			}
+			else if ( typeof isLogin != 'undefined' ) {
+				eventAction += isLogin;
+			}
+		}
+		
+		//
+		try {
+			_global_js_eb.ga_event_track( eventCategory, eventAction, eventLabel );
+		}
+		catch ( e ) {
+			console.log( WGR_show_try_catch_err( e ) );
+		}
+	},
+	
 	
 	/*
 	* Nạp iframe để submit
