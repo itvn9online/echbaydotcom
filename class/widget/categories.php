@@ -544,7 +544,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		);
 		
 		//
-		echo '<ul class="echbay-category-in-js">';
+		echo '<ul class="echbay-category-in-js cf">';
 //		echo '<ul>';
 		
 		

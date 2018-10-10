@@ -46,7 +46,19 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 //			print_r( $sql );
 			// gán post mới nếu có
 			if ( ! empty( $sql ) ) {
+				//
+				$cache_ads_id = $post->ID;
+				$cache_ads_name = $post->post_title;
+				$cache_ads_excerpt = $post->post_excerpt;
+				
+				//
 				$post = $sql[0];
+				
+				// lấy tên của Q.Cáo thay vì phân nhóm
+				if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) != 1 ) {
+					$post->post_title = $cache_ads_name;
+					$post->post_excerpt = $cache_ads_excerpt;
+				}
 			}
 		}
 	}
@@ -64,12 +76,14 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			
 			//
 			if ( ! isset($new_name->errors) ) {
-				$post->post_title = $new_name->name;
 //				$post->p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
 				$post->p_link = _eb_cs_link( $new_name );
 				
-				//
-				$post->post_excerpt = $new_name->description;
+				// lấy tên của Q.Cáo thay vì phân nhóm
+				if ( _eb_get_post_meta( $post->ID, '_eb_ads_name' ) != 1 ) {
+					$post->post_title = $new_name->name;
+					$post->post_excerpt = $new_name->description;
+				}
 			}
 		}
 		else {
@@ -3707,7 +3721,19 @@ function _eb_load_ads (
 					AND post_status = 'publish'");
 //				print_r( $strsql );
 				if ( ! empty( $strsql ) ) {
+					//
+					$cache_ads_id = $post->ID;
+					$cache_ads_name = $post->post_title;
+					$cache_ads_excerpt = $post->post_excerpt;
+					
+					//
 					$post = $strsql[0];
+					
+					// lấy tên của Q.Cáo thay vì phân nhóm
+					if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) != 1 ) {
+						$post->post_title = $cache_ads_name;
+						$post->post_excerpt = $cache_ads_excerpt;
+					}
 					$p_link = _eb_p_link( $post->ID );
 				}
 			}
@@ -3716,7 +3742,11 @@ function _eb_load_ads (
 				
 				//
 				if ( ! isset($new_name->errors) ) {
-					$post->post_title = $new_name->name;
+					// lấy tên của Q.Cáo thay vì phân nhóm
+					if ( _eb_get_post_meta( $post->ID, '_eb_ads_name' ) != 1 ) {
+						$post->post_title = $new_name->name;
+					}
+					
 //					$p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
 					$p_link = _eb_cs_link( $new_name );
 				}

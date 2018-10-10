@@ -174,6 +174,7 @@ $eb_arr_type_custom_meta_box = array(
 	// ads
 	'_eb_ads_status' => $arr_eb_ads_status,
 	'_eb_ads_target' => 'checkbox',
+	'_eb_ads_name' => 'checkbox',
 //	'_eb_ads_for_post' => 'number',
 //	'_eb_ads_for_category' => 'number',
 	
@@ -219,6 +220,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_hidden' => 'Trong một số trường hợp, bạn tạm thời không muốn nhóm này xuất hiện thì sử dụng chức năng này để ẩn nó đi.',
 	
 	'_eb_ads_target' => 'Mặc định, các URL trong quảng cáo sẽ được mở đè lên tab hiện tại, đánh dấu và lưu lại để mở URL trong tab mới.',
+	'_eb_ads_name' => 'Khi chế độ này được thiết lập, dù quảng cáo có chiếu xạ tới bài viết hay phân nhóm nào đó thì tên và tóm tắt của quảng cáo vẫn được giữ nguyên.',
 	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	'_eb_ads_video_url' => 'Bạn có thể nhập vào URL video trên Youtube (Ví dụ: <strong>https://youtu.be/{ID}</strong>) hoặc URL video MP4, các định dạng khác hiện chưa được hỗ trợ.',
@@ -383,6 +385,7 @@ $eb_ads_custom_meta_box = array(
 	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
 	'_eb_ads_url' => 'Đường dẫn',
 	'_eb_ads_target' => 'Mở trong tab mới',
+	'_eb_ads_name' => 'Giữ nguyên tên',
 	'_eb_ads_video_url' => 'URL Video',
 	'_eb_ads_status' => 'Khu vực hiển thị',
 	'_eb_product_avatar' => 'Ảnh đại diện',

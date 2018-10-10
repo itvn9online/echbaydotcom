@@ -67,6 +67,7 @@ function WGR_run_for_admin_edit_ads_post ( action_id ) {
 	
 	//
 	WGR_check_if_value_this_is_one('_eb_ads_target');
+	WGR_check_if_value_this_is_one('_eb_ads_name');
 	
 	//
 //	console.log(action_id);
