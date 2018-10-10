@@ -3058,6 +3058,17 @@ var _global_js_eb = {
 	
 	_eb_code64 : function ( str, type ) {
 		*/
+	},
+	
+	// giả lập GET của PHP
+	_get : function ( p ) {
+		var wl = window.location.href.replace(/\&amp\;/g, '&').replace(/\?/g, '&'),
+			a = wl.split('&' + p + '='),
+			s = '';
+		if (a.length > 1) {
+			s = a[1].split('&')[0].split('#')[0];
+		}
+		return s;
 	}
 	
 };

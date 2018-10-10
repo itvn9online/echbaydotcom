@@ -1962,6 +1962,47 @@ function EBE_get_current_wp_module ( s ) {
 
 
 
+function WGR_load_GA_for_admin_tracking () {
+	if ( cf_ga_id == '' ) {
+		console.log('Admin tracking disable by cf_ga_id is NULL');
+		return false;
+	}
+	
+	//
+	if ( typeof adminpage == 'undefined' || adminpage == '' ) {
+		console.log('adminpage not found!');
+		return false;
+	}
+	
+	// các trang được phép tracking
+	if ( adminpage == 'toplevel_page_eb-order' ) {
+		/*
+		var i = g_func.number_only( _global_js_eb._get( 'id' ) );
+		
+		//
+		if ( i <= 0 ) {
+			console.log('ID is zero!');
+			return false;
+		}
+		*/
+	}
+	else {
+		console.log('adminpage not support for GA tracking!');
+		return false;
+	}
+	
+	//
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', cf_ga_id, 'auto');
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
+}
+
+
+
 
 //
 var time_out_for_set_new_tile = null;
@@ -2056,13 +2097,7 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 		str = '',
 //		click_click_lick_lick = false,
 		_get = function(p) {
-			var wl = window.location.href.replace(/\&amp\;/g, '&').replace(/\?/g, '&'),
-				a = wl.split('&' + p + '='),
-				s = '';
-			if (a.length > 1) {
-				s = a[1].split('&')[0];
-			}
-			return s;
+			return _global_js_eb._get( p );
 		},
 		/*
 		__hide_popup_day_select = function() {

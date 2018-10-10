@@ -219,6 +219,7 @@ var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
 	mtv_id = ' . mtv_id . ',
 	isLogin = mtv_id,
 	cf_disable_tracking = "off",
+	cf_ga_id = "' . $__cf_row['cf_ga_id'] . '",
 	date_time = ' . date_time . ',
 	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
 	year_curent = ' . $year_curent . ',
@@ -343,21 +344,7 @@ var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
 //	print_r( $_GET );
 	
 	// nếu là trang chi tiết đơn -> hiển thị cả google analytics
-	if ( $__cf_row['cf_ga_id'] != ''
-	&& isset( $_GET['page'] ) && $_GET['page'] == 'eb-order'
-	&& isset( $_GET['id'] ) && (int) $_GET['id'] > 0 ) {
-		?>
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', '<?php echo $__cf_row['cf_ga_id']; ?>', 'auto');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-</script>
-		<?php
-	}
+	echo '<script type="text/javascript">WGR_load_GA_for_admin_tracking();</script>';
 	
 }
 add_filter('admin_head', 'echbay_admin_styles');
