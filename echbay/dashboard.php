@@ -28,6 +28,13 @@ if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	</div>';
 }
 
+if ( $__cf_row['cf_ga_id'] == '' ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Chúng tôi đã thiết lập sẵn bộ code tracking thông qua Google analytics, điều này giúp cho việc quản trị và theo dõi dữ liệu trên website của bạn được đầy đủ và hoàn hảo hơn.
+		<div>Hiện tại, ID tài khoản Google analytics của bạn đang trống, hãy <a href="' . admin_link . 'admin.php?page=eb-config&tab=meta-home&support_tab=cf_ga_id" target="_blank" rel="nofollow">vào đây</a> để thiết lập cài đặt này.</div>
+	</div>';
+}
+
 if ( $__cf_row['cf_js_optimize'] != 1 ) {
 	$str_eb_warning .= '
 	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Nên BẬT tính năng nén tệp Javascript trước khi in ra để giảm bớt request tới website cũng như giảm bớt dung lượng giup website chạy nhanh và mượt hơn.
