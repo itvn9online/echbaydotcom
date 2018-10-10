@@ -48,14 +48,17 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 			if ( ! empty( $sql ) ) {
 				//
 				$cache_ads_id = $post->ID;
+//				echo $cache_ads_id . '<br>' . "\n";
 				$cache_ads_name = $post->post_title;
+//				echo $cache_ads_name . '<br>' . "\n";
 				$cache_ads_excerpt = $post->post_excerpt;
+//				echo $cache_ads_excerpt . '<br>' . "\n";
 				
 				//
 				$post = $sql[0];
 				
 				// lấy tên của Q.Cáo thay vì phân nhóm
-				if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) != 1 ) {
+				if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) == 1 ) {
 					$post->post_title = $cache_ads_name;
 					$post->post_excerpt = $cache_ads_excerpt;
 				}
@@ -3723,6 +3726,7 @@ function _eb_load_ads (
 				if ( ! empty( $strsql ) ) {
 					//
 					$cache_ads_id = $post->ID;
+//					echo $cache_ads_id . '<br>' . "\n";
 					$cache_ads_name = $post->post_title;
 					$cache_ads_excerpt = $post->post_excerpt;
 					
@@ -3730,7 +3734,7 @@ function _eb_load_ads (
 					$post = $strsql[0];
 					
 					// lấy tên của Q.Cáo thay vì phân nhóm
-					if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) != 1 ) {
+					if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) == 1 ) {
 						$post->post_title = $cache_ads_name;
 						$post->post_excerpt = $cache_ads_excerpt;
 					}
