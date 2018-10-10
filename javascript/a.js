@@ -459,13 +459,24 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 		
 		
 		// tạo menu tìm kiếm bài viết cho phần menu, do tìm kiếm của wp tìm không chính xác
-		jQuery('#nav-menus-frame').before('<br><div><input type="text" id="wgr_search_product_in_menu" placeholder="Tìm kiếm Sản phẩm/ Bài viết... để thêm vào menu" class="wgr-search-post-menu" /></div>');
+		jQuery('#nav-menus-frame').before('<br><div class="quick-add-menu-to-admin-menu"><input type="text" id="wgr_search_product_in_menu" placeholder="Tìm kiếm Sản phẩm/ Bài viết... để thêm vào menu" class="wgr-search-post-menu" /></div>');
 		
 //		WGR_custom_search_and_add_menu( 1, 'post' );
 		
 		// nạp danh sách sản phẩm, tin tức... khi người dùng nhấn vào ô tìm kiếm
 		jQuery('#wgr_search_product_in_menu').click(function () {
 			if ( dog('show_all_list_post_page_menu') == null ) {
+				
+				// nút đóng
+				jQuery('#wgr_search_product_in_menu').before('<div><i class="fa fa-close cur click-close-tool-admin-menu d-none"></i></div>');
+				
+				// hiệu ứng cho nút đóng
+				jQuery('.click-close-tool-admin-menu').off('click').click(function () {
+					jQuery('body').removeClass('fixed-tool-admin-menu');
+				});
+				
+				
+				// nội dung tìm kiếm
 				jQuery('#wgr_search_product_in_menu').after('<p class="orgcolor">* Nhập từ khóa vào ô tìm kiếm để tìm kiếm Sản phẩm, bài viết tin tức, trang tĩnh, chuyên mục, danh mục... sau đó bấm chọn trong danh sách vừa tim được để thêm vào menu.</p><div id="show_all_list_post_page_menu"><ul></ul></div>');
 				
 				//
@@ -482,6 +493,10 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 				WGR_press_for_search_post_page();
 				
 			}
+			
+			// hiển thị tool dưới dạng fixed cho dễ làm việc
+			jQuery('body').addClass('fixed-tool-admin-menu');
+			
 		});
 		
 		
@@ -610,7 +625,10 @@ function process_for_press_esc () {
 	jQuery('.remove-if-press-esc').html('');
 	
 	//
-	jQuery('body').removeClass('ebdesign-no-scroll').removeClass('body-no-scroll');
+	jQuery('body')
+	.removeClass('ebdesign-no-scroll')
+	.removeClass('body-no-scroll')
+	.removeClass('fixed-tool-admin-menu');
 	
 	window.history.pushState("", '', current_ls_url);
 	

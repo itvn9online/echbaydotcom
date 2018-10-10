@@ -997,7 +997,11 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	border: 1px #ccc solid;
 	padding: 5px 0;
 }
-#show_all_list_post_page_menu li { padding: 5px 15px; }
+#show_all_list_post_page_menu li {
+	padding: 5px 15px;
+	border-bottom: 1px #f2f2f2 solid;
+	margin: 0;
+}
 #show_all_list_post_page_menu li:hover { background-color: #f2f2f2; }
 /* video support đầu trang */
 .eb-admin-bar-support li {
@@ -1338,6 +1342,35 @@ form[name="frm_invoice_details"] input[type="number"],
 form[name="frm_invoice_details"] input[type="text"] {
 	padding: 6px 5px 6px 10px;
 	height: auto;
+}
+/* fixed tool for admin menu */
+.fixed-tool-admin-menu .quick-add-menu-to-admin-menu {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+	background: #fff;
+	box-shadow: 0 0 10px #ccc;
+	width: 33%;
+	max-width: 150px;
+	top: 30%;
+	padding: 15px;
+}
+.fixed-tool-admin-menu .quick-add-menu-to-admin-menu:hover { max-width: 350px; }
+.fixed-tool-admin-menu .click-close-tool-admin-menu {
+	display: inline-block;
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	background: #333;
+	color: #fff;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 16px;
+	box-shadow: 0 0 10px #ccc;
 }
 
 @media screen and (max-width:775px) {
