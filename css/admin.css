@@ -929,6 +929,7 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 .admin-show-quick-search h4,
 .admin-show-quick-search li { padding: 5px 15px; }
 .ebe-fixed-content-style { padding-top: 8px; }
+.post-type-ads tr[data-row="_eb_ads_name"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_url"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_target"],
 .hide-module-advanced-ads tr[data-row="_eb_ads_video_url"],
@@ -938,6 +939,7 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 */
 .hide-module-advanced-ads .ebe-fixed-content-style,
 .hide-module-advanced-ads #postexcerpt { display: none; }
+.hide-module-advanced-ads tr[data-row="_eb_ads_name"] { display: table-row; }
 .hide-module-advanced-ads #postdivrich {
 	height: 50px;
 	overflow: hidden;
