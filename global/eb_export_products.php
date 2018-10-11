@@ -66,13 +66,21 @@ if ( isset($_GET['test']) ) {
 	$limit = 20;
 }
 */
+// cache theo số bản ghi
 $rssCacheFilter .= '-limit' . $limit;
 
 
 
-//
+// kiểu export
 $export_type = isset( $_GET['export_type'] ) ? $_GET['export_type'] : '';
 $rssCacheFilter .= '-type' . $export_type;
+
+
+
+// theo ID người dùng
+$user_export = isset( $_GET['user_export'] ) ? $_GET['user_export'] : '';
+$rssCacheFilter .= '-user' . $user_export;
+
 
 
 

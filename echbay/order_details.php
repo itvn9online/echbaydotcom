@@ -61,7 +61,7 @@ else {
 		if ( $post->order_status == 0 || $post->order_status == 3 ) {
 			// kiểm tra thời gian xác nhận lần cuối để thông báo tới người dùng
 			if ( $show_dang_xac_nhan == '' && date_time - $v->l_ngay < 300 ) {
-				$show_dang_xac_nhan = '<a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a>';
+				$show_dang_xac_nhan = '<a data-id="' . $v->tv_id . '" href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a>';
 			}
 		}
 		

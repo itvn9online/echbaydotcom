@@ -41,6 +41,29 @@ $rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 300 );
 if ($rss_content == false || isset($_GET['wgr_real_time'])) {
 	
 	
+	// The advertising or marketing medium, for example: cpc, banner, email newsletter
+	$utm_medium = 'cpc';
+	
+	// The individual campaign name, slogan, promo code, etc. for a product
+	$utm_campaign = 'rss' . $user_export;
+	
+	// Used to differentiate similar content, or links within the same ad. For example, if you have two call-to-action links within the same email message, you can use utm_content and set different values for each so you can tell which version is more effective
+	$utm_content = date( 'Y-m', date_time );
+	
+	//
+	if ( $export_type == 'google' ) {
+		$utm_source = 'google';
+	}
+	// mặc định là facebook
+	else {
+		// Identify the advertiser, site, publication, etc. that is sending traffic to your property, for example: google, newsletter4, billboard
+		$utm_source = 'facebook';
+	}
+	
+	//
+	$url_tracking = '?utm_source=' . $utm_source . '&amp;utm_medium=' . $utm_medium . '&amp;utm_campaign=' . $utm_campaign . '&amp;utm_content=' . $utm_content;
+	
+	
 	
 	//
 $rss_content = '';
@@ -197,7 +220,7 @@ $rss_content .= '<item>
 <g:condition>new</g:condition>
 <g:description><![CDATA[' . $v->post_excerpt . ']]></g:description>
 <g:image_link>' . _eb_get_post_img( $v->ID ) . '</g:image_link>
-<g:link>' . $p_link . '</g:link>
+<g:link>' . $p_link . $url_tracking . '</g:link>
 <g:title><![CDATA[' . $v->post_title . ']]></g:title>
 <g:price>' . $before_price . $price . $after_price . '</g:price>' . $add_on_data . '
 <g:gender><![CDATA[' . $arr_sex_lang_xml[$post_gender] . ']]></g:gender>

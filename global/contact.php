@@ -35,8 +35,14 @@ if ( trim( $custom_lang_html ) == $act ) {
 }
 
 //
+if ( ! isset( $main_content ) ) {
+	$main_content = '';
+}
+
+//
 //$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 $main_content = EBE_html_template( $custom_lang_html, array(
+	'tmp.content' => $main_content,
 	'tmp.cf_diachi' => nl2br( $__cf_row['cf_diachi'] ),
 	'tmp.cf_email' => $__cf_row['cf_email'],
 	

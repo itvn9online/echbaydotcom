@@ -1229,9 +1229,17 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	padding: 9px 7px;
 }
 .bill-detail-status button[data-tab="13"].selected { color: #333; }
+.order-list-info div {
+	position: relative;
+	padding-left: 25px;
+	line-height: 18px;
+}
 .order-list-info i.fa {
 	display: inline-block;
 	min-width: 21px;
+	position: absolute;
+	left: 0;
+	line-height: 18px;
 }
 /* open order details in popup */
 body.order_open_in_popup .update-nag,
@@ -1244,6 +1252,25 @@ body.order_open_in_popup #wpcontent { margin-left: 0; }
 html.order_open_in_popup { padding-top: 0; }
 .show-order-120size .eb-to-product,
 .show-order-120size .eb-to-adress { width: 250px; }
+/* ẩn bớt nội dung của khách ở phần đơn hàng, để telesale phải vào trong chi tiết đơn */
+.hide-order-info-list .order-list-info .eb-to-adress,
+.hide-order-info-list .order-list-info .eb-to-phone {
+	position: relative;
+	display: inline-block;
+	height: 18px;
+	overflow: hidden;
+	line-height: 18px;
+}
+.hide-order-info-list .order-list-info .eb-to-adress:before,
+.hide-order-info-list .order-list-info .eb-to-phone:before {
+	content: "";
+	position: absolute;
+	top: 33%;
+	left: 0;
+	width: 50%;
+	height: 6px;
+	background: #fff;
+}
 .time-for-send-bill {
 	font-weight: normal;
 	font-size: 12px;

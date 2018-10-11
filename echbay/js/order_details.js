@@ -374,12 +374,12 @@ function WGR_hide_html_alert_auto_order_submit () {
 	});
 	
 	// đổi màu
-	$('.click-edit-order-color').click(function () {
+	jQuery('.click-edit-order-color').click(function () {
 		var oi = jQuery(this).attr('data-id') || '',
 			cache = jQuery(this).html() || '';
 		
 		// Lấy tên màu, bỏ các mã lằng nhằng đi
-		$('span, i, strong', this).remove();
+		jQuery('span, i, strong', this).remove();
 		var v = jQuery(this).html() || '';
 		v = jQuery.trim( v.replace( /\-/g, ' ' ).replace( 'Color: ', '' ) );
 		
@@ -415,12 +415,12 @@ function WGR_hide_html_alert_auto_order_submit () {
 	});
 	
 	// thay đổi size
-	$('.click-edit-order-size').click(function () {
+	jQuery('.click-edit-order-size').click(function () {
 		var oi = jQuery(this).attr('data-id') || '',
 			cache = jQuery(this).html() || '';
 		
 		// Lấy tên màu, bỏ các mã lằng nhằng đi
-		$('span, i, strong', this).remove();
+		jQuery('span, i, strong', this).remove();
 		var v = jQuery(this).html() || '';
 		v = jQuery.trim( v.replace( /\(|\)/g, ' ' ).replace( 'Size: ', '' ) );
 		
@@ -748,6 +748,31 @@ setTimeout(function () {
 	}
 	
 }, 600);
+
+
+
+
+// nếu hóa đơn đang được xác nhận -> ẩn đơn đi
+(function () {
+	if ( jQuery('.dang-xac-nhan').length > 0 ) {
+		var a = jQuery('.dang-xac-nhan a').attr('data-id') || '';
+		
+		// đưa ra thông báo nếu người xác nhận khác với người đang xem
+		if ( a != '' && a * 1 != mtv_id ) {
+			a_lert( jQuery('.dang-xac-nhan').html() );
+			
+			jQuery('form[name="frm_invoice_details"]').css({
+				opacity: .1
+			}).animate({
+				opacity: 1
+			}, 15000);
+		}
+		// không thì ẩn nó đi thôi
+		else {
+			jQuery('.dang-xac-nhan').hide();
+		}
+	}
+})();
 
 
 

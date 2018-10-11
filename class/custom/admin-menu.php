@@ -57,12 +57,15 @@ function register_mysettings() {
 // tạo menu admin
 function echbay_create_admin_menu() {
 	// hiển thị menu dựa theo quyền
-	if ( current_user_can('publish_pages') ) {
+	// từ quyền tác giả là được vào xem đơn
+	if ( current_user_can('publish_posts') ) {
 		$parent_slug = 'eb-order';
 	}
+	// dưới đó thì chỉ xem thông tin cơ bản
 	else if ( current_user_can('edit_posts') ) {
 		$parent_slug = 'eb-dashboard';
 	}
+	// dưới nữa thì cho xem giới thiệu
 	else {
 		$parent_slug = 'eb-about';
 	}

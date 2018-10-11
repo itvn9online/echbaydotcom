@@ -109,7 +109,7 @@ foreach ( $arrs_cats as $v ) {
 	}
 	
 	//
-	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . '</a>';
+	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . ' (' . $v->count . ')</a>';
 	
 	
 	// lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
@@ -132,7 +132,7 @@ foreach ( $arrs_cats as $v ) {
 			}
 			
 			//
-			echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . '</a>';
+			echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
 		}
 		
 		echo '</ul>';
@@ -210,7 +210,7 @@ $strAjaxLink .= '&trang=' . $trang;
 			$export_token = _eb_mdnam( $_SERVER['HTTP_HOST'] );
 			
 			foreach ( $arr_button_export as $k => $v ) {
-				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&limit=2000" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
+				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&user_export=' . mtv_id . '&limit=2000" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
 			}
 			
 			?>
