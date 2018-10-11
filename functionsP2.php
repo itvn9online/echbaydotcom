@@ -2129,6 +2129,7 @@ function EBE_resize_mobile_table_img ( $attachment_id, $_size, $new_size = 160 )
 	// lấy ảnh full
 	$source_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
 	$source_file = $source_file[0];
+//	return $source_file;
 	
 	// -> ảnh cho bản mobile
 	$file_type = explode( '.', $source_file );
@@ -2148,32 +2149,44 @@ function EBE_resize_mobile_table_img ( $attachment_id, $_size, $new_size = 160 )
 		
 		// resize sang ảnh mới
 		$image = new Imagick();
-		$image->readImage($source_file);
 		
-		// copy và resize theo chiều rộng
-		if ( $arr_parent_size[0] > $arr_parent_size[1] ) {
-			$image->resizeImage($new_size, 0, Imagick::FILTER_CATROM, 1);
+		//
+		try {
+			$image->readImage($source_file);
+			
+			// copy và resize theo chiều rộng
+			if ( $arr_parent_size[0] > $arr_parent_size[1] ) {
+				$image->resizeImage($new_size, 0, Imagick::FILTER_CATROM, 1);
+			}
+			// theo chiều cao
+			else {
+				$image->resizeImage(0, $new_size, Imagick::FILTER_CATROM, 1);
+			}
+			/*
+			if ( $arr_parent_size['mime'] == 'image/jpeg' ) {
+				$image->setImageFormat( 'jpg' );
+				$image->setImageCompression(Imagick::COMPRESSION_JPEG);
+			}
+			else {
+				$image->setImageCompression(Imagick::COMPRESSION_UNDEFINED);
+			}
+			$image->setImageCompressionQuality( 75 );
+			$image->optimizeImageLayers();
+			*/
+			
+			$image->writeImages($check_file, true);
+			$image->destroy();
+			
+			chmod ( $check_file, 0666 );
 		}
-		// theo chiều cao
-		else {
-			$image->resizeImage(0, $new_size, Imagick::FILTER_CATROM, 1);
+		catch (Exception $e) {
+			echo '<!-- Caught exception: ';
+//			print_r( $e );
+			echo 'File: ' . $e->getFile() . "\n";
+			echo 'Line: ' . $e->getLine() . "\n";
+			echo 'Message: ' . $e->getMessage() . "\n";
+			echo ' -->' . "\n";
 		}
-		/*
-		if ( $arr_parent_size['mime'] == 'image/jpeg' ) {
-			$image->setImageFormat( 'jpg' );
-			$image->setImageCompression(Imagick::COMPRESSION_JPEG);
-		}
-		else {
-			$image->setImageCompression(Imagick::COMPRESSION_UNDEFINED);
-		}
-		$image->setImageCompressionQuality( 75 );
-		$image->optimizeImageLayers();
-		*/
-		
-		$image->writeImages($check_file, true);
-		$image->destroy();
-		
-		chmod ( $check_file, 0666 );
 		
 //		return $check_file;
 	}
