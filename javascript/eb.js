@@ -1446,6 +1446,15 @@ var _global_js_eb = {
 		}
 		
 		//
+		var ck_utm = g_func.getc( 'WGR_ref_for_campaign' );
+		if ( ck_utm == null ) {
+			ck_utm = {};
+		}
+		else {
+			ck_utm = jQuery.parseJSON( unescape( ck_utm ) );
+		}
+		
+		//
 		var arr = {
 			// user info
 			hd_ten: '',
@@ -1474,7 +1483,10 @@ var _global_js_eb = {
 			hd_document: jQuery(document).width() + 'x' + jQuery(document).height(),
 			hd_screen: screen.width + 'x' + screen.height,
 			hd_agent: navigator.userAgent,
-			hd_referrer: eb_referrer
+			hd_referrer: eb_referrer,
+			hd_utm_source: typeof ck_utm['src'] != 'undefined' ? ck_utm['src'] : '',
+			hd_utm_medium: typeof ck_utm['med'] != 'undefined' ? ck_utm['med'] : '',
+			hd_utm_campaign: typeof ck_utm['cam'] != 'undefined' ? ck_utm['cam'] : ''
 		};
 		
 		// user info

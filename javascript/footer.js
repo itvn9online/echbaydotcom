@@ -1006,6 +1006,27 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 
+// lưu thông tin các thuộc tính utm nếu có
+(function ( src ) {
+	if ( src == '' ) {
+		return false;
+	}
+	
+	//
+	var med = _global_js_eb._get('utm_medium'),
+		cam = _global_js_eb._get('utm_campaign');
+	
+	//
+	g_func.setc( 'WGR_ref_for_campaign', escape( JSON.stringify( {
+		'src' : src,
+		'med' : med,
+		'cam' : cam
+	} ) ), 1, 30 );
+})( _global_js_eb._get('utm_source') );
+
+
+
+
 //
 //jQuery('.fa').addClass('fas').removeClass('fa');
 
