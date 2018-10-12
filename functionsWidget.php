@@ -773,7 +773,8 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	if ( $html_node == 'thread_node' ) {
 		$html_node = __eb_thread_template;
 		$html_template = 'widget_echbay_thread';
-	} else {
+	}
+	else {
 		$html_node = EBE_get_page_template( $html_node );
 		
 		// chỉnh lại kích thước nếu có

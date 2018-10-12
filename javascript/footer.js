@@ -636,9 +636,9 @@ ___eb_set_url_for_search_advanced_button();
 	
 	
 	jQuery('.ebe-currency-format').each(function() {
-		var a = jQuery(this).attr('data-num') || '';
+		var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
 		
-		if ( a != '' ) {
+		if ( a != '' && a != '0' ) {
 			jQuery(this).html( g_func.money_format( a ) );
 		}
 	});

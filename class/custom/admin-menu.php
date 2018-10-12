@@ -579,7 +579,7 @@ function eb_run_post_column_content($column, $post_id) {
 //		$b = _eb_get_post_meta ( $post_id, '_eb_product_price', true, 0 );
 		$b = _eb_float_only( _eb_get_post_object ( $post_id, '_eb_product_price' ) );
 		
-		echo $a . '/ ' . $b;
+		echo '<span class="ebe-currency ebe-currency-format">' . $a . '</span>/ <strong class="ebe-currency ebe-currency-format">' . $b . '</strong>';
 	}
 	// ảnh đại diện
 	else if ($column == 'img') {

@@ -278,13 +278,6 @@ function auto_submit_products_post_search () {
 WGR_click_open_quick_edit_seo();
 
 
-jQuery('.ebe-currency-format').each(function() {
-	var a = jQuery(this).html() || '';
-	
-	if ( a != '' && a != '0' ) {
-		jQuery(this).html( g_func.money_format( a ) );
-	}
-});
 
 
 

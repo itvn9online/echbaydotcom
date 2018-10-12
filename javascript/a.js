@@ -934,3 +934,14 @@ jQuery('#menu-posts-blog ul.wp-submenu li.wp-first-item').after('<li><a href="ad
 
 
 
+//
+jQuery('.ebe-currency-format').each(function() {
+	var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
+	
+	if ( a != '' && a != '0' ) {
+		jQuery(this).html( g_func.money_format( a ) );
+	}
+});
+
+
+
