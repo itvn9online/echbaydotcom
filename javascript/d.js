@@ -747,6 +747,9 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 		}
 	}
 	
+	//
+//	jQuery( jd ).addClass('fixed-height-auto-height');
+	
 	return true;
 }
 
