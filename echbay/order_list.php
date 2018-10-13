@@ -41,6 +41,7 @@ if( isset ( $_GET ['invoice_key'] ) ) {
 			$type_search = _eb_getCucki('eb_admin_order_type_search');
 		}
 //		$invoice_key = urlencode( str_replace( '+', ' ', $invoice_key ) );
+		$strLinkPager .= '&invoice_key=' . $invoice_key;
 		
 		// tìm kiếm theo key
 		$invoice_slug_key = _eb_non_mark_seo( urldecode( $invoice_key ) );
@@ -58,6 +59,7 @@ if( isset ( $_GET ['invoice_key'] ) ) {
 		else {
 			$strFilter .= " AND ( order_customer LIKE '%{$invoice_slug_key}%' OR order_customer LIKE '%{$invoice_key}%' ) ";
 		}
+		$strLinkPager .= '&type_search=' . $type_search;
 	}
 }
 
@@ -83,14 +85,13 @@ if ( isset( $_GET['tab'] ) ) {
 		$status_by = (int) $status_by;
 		
 		$strFilter .= " AND order_status = " . $status_by;
-		
-		$strLinkPager .= '&tab=' . $status_by;
 	}
 }
 // mặc định thì bỏ qua cái đơn đã hủy
 else {
 	$strFilter .= " AND order_status != 4 AND order_status != 13 ";
 }
+$strLinkPager .= '&tab=' . $status_by;
 $jsLinkPager = $strLinkPager;
 
 
