@@ -104,7 +104,7 @@ echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 <script type="text/javascript">
 /* data_id */
 <?php include EB_THEME_PLUGIN_INDEX . 'data_id.php'; ?>
-var web_link = '<?php echo web_link; ?>';
+var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 /*
 if ( document.domain != 'localhost' ) {
 	web_link = window.location.protocol + '//' + document.domain + '/';

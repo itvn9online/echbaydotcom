@@ -10,7 +10,7 @@ $add_data_id = array (
 //		'tomorrow_time' => strtotime( date( 'Y/m/d', date_time + 24 * 3600 ) ),
 //		'check_lazyload' => $check_lazyload,
 //		'web_link' => '\'' . web_link . '\'',
-		'base_url_href' => '\'' . web_link . '\'',
+		'base_url_href' => '\'' . str_replace( '/', '\/', web_link ) . '\'',
 		'web_name' => '\'' . _eb_str_block_fix_content ( web_name ) . '\'',
 		'wp_content' => '\'' . EB_DIR_CONTENT . '\'',
 		
