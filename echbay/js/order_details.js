@@ -538,6 +538,9 @@ function WGR_hide_html_alert_auto_order_submit () {
 	var arr_dich = {
 		'hd_url' : 'URL',
 		'hd_referrer' : 'Nguồn',
+		'hd_utm_campaign' : 'Chiến dịch',
+		'hd_utm_medium' : 'utm_medium',
+		'hd_utm_source' : 'Nguồn (chiến dịch)',
 		'hd_title' : 'Tiêu đề',
 		'hd_timezone' : 'Múi giờ',
 		'hd_lang' : 'Ngôn ngữ',
