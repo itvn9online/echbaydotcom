@@ -277,8 +277,8 @@ if ($totalPage > 1) {
 ?>
 </div>
 <br>
-<div class="text-right cf div-inline-block">
-	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&tab=' . $status_by; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
+<div class="text-center cf div-inline-block">
+	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&d=' . $filterDay . '&tab=' . $status_by; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
 </div>
 <br>
 

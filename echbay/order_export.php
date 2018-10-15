@@ -15,7 +15,7 @@ _eb_log_admin( 'Export order in ' . _eb_full_url() );
 
 
 
-$threadInPage = 68;
+$threadInPage = 1000;
 $strFilter = "";
 $strLinkPager = '';
 $offset = 0;
@@ -83,27 +83,56 @@ include EB_THEME_PLUGIN_INDEX . 'class/custom/admin-js.php';
 
 ?>
 <style type="text/css">
+body { opacity: .1; }
+body.done {
+	opacity: 1;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
+body,
 a { color: #000; }
 a:hover { text-decoration: underline; }
-table {
-	border-left: 1px #ccc solid;
-	border-top: 1px #ccc solid;
-}
-table td {
-	padding: 5px 6px;
+#headerTable { line-height: 16px; }
+/*
+#headerTable { border-left: 1px #ccc solid; }
+#headerTable td {
 	border-right: 1px #ccc solid;
+	padding: 0 3px 0 6px;
+}
+#headerTable.pd { border-top: 1px #ccc solid; }
+#headerTable.pd td {
+	padding: 5px 3px 5px 6px;
 	border-bottom: 1px #ccc solid;
 }
+*/
+#headerTable.pd tr:first-child { font-weight: bold; }
+/*
+#headerTable.pd tr:first-child td,
+#headerTable td.text-center {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+*/
+#headerTable tr.selected,
+#headerTable tr:hover { background: #f2f2f2; }
 </style>
 </head>
 
 <body>
-<table id="headerTable" border="0" cellpadding="0" cellspacing="0" width="100%">
-	<tr class="bold text-center">
-		<td>id</td>
+<table id="headerTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="small">
+	<tr class="text-center gray2bg">
+		<td>ID</td>
 		<td>Mã hóa đơn</td>
 		<td>Trạng thái</td>
+		<td>Sản phẩm</td>
+		<td>SL</td>
+		<td>M.sắc</td>
+		<td>K.Thước</td>
+		<!--
 		<td>Sản phẩm (S.Lượng/ Màu sắc/ Kích thước)</td>
+			--> 
 		<!--
 		<td><div class="cf">
 				<div class="lf f80">Sản phẩm</div>
@@ -130,8 +159,9 @@ $a = array(
 	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery/migrate-3.0.0.min.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/all.js'
+	EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
+	EB_THEME_PLUGIN_INDEX . 'echbay/js/order_export.js'
 );
 foreach ( $a as $v ) {
 //	if ( file_exists( $v ) ) {
@@ -150,69 +180,7 @@ foreach ( $a as $v ) {
 
 ?>
 <script>
-function WGR_order_export_products ( arr ) {
-//	arr = jQuery.parseJSON( unescape( arr ) );
-//	console.log( arr );
-	
-	//
-	var str = '';
-	
-	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<div class="cf">' +
-			'<div class="lf f80"><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank" rel="nofollow">- ' + arr[i].name + '</a></div>' +
-			'<div class="lf f5 text-center">' + arr[i].quan + '</div>' +
-			'<div class="lf f10 text-center remove-size-color-tag">' + arr[i].color + '</div>' +
-			'<div class="lf f5 text-center remove-size-color-tag">' + arr[i].size + '</div>' +
-		'</div>';
-	}
-	
-	return str;
-}
-
-
-//
-(function ( arr, arr_status ) {
-	
-	console.log( arr );
-	
-	//
-	var order_lnk = admin_link + 'admin.php?page=eb-order&id=';
-	
-	//
-	for ( var i = 0; i < arr.length; i++ ) {
-		//
-		var prod = jQuery.parseJSON( unescape( arr[i].order_products ) );
-		console.log( prod );
-		//
-		var cus = jQuery.parseJSON( unescape( arr[i].order_customer ) );
-		console.log( cus );
-		
-		//
-		$('#headerTable').append('<tr>' +
-			'<td><a href="' + order_lnk + arr[i].order_id + '" target="_blank" rel="nofollow">' + arr[i].order_id + '</a></td>' +
-			'<td><a href="' + order_lnk + arr[i].order_id + '" target="_blank" rel="nofollow">' + arr[i].order_sku + '</a></td>' +
-			'<td>' + ( typeof arr_status[ arr[i].order_status ] != 'undefined' ? arr_status[ arr[i].order_status ] : 'Unknown' ) + '</td>' +
-			'<td>' + WGR_order_export_products( prod ) + '</td>' +
-			'<td class="upper">' + ( cus['hd_ten'] == '' ? 'No-name' : cus['hd_ten'] ) + '</td>' +
-			'<td>' + cus['hd_dienthoai'] + '</td>' +
-			'<td>' + cus['hd_diachi'] + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-		'</tr>');
-		
-	}
-	
-	//
-	$('.remove-size-color-tag strong').remove();
-	
-})( <?php echo $main_content; ?>, <?php echo json_encode( $arr_hd_trangthai ); ?> );
-
-
-// xác định chiều rộng cho table hiển thị cho đẹp
-
-
-
+WGR_order_export_run ( <?php echo $main_content; ?>, <?php echo json_encode( $arr_hd_trangthai ); ?> );
 </script>
 </html>
 <?php
