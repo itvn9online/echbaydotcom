@@ -107,7 +107,7 @@ foreach ( $sql as $v ) {
 	$ant_id = $by_cat_id;
 	
 	// nếu không có request -> lấy động theo sản phẩm
-	if ( $ant_id == 0 ) {
+//	if ( $ant_id == 0 ) {
 		$post_categories = wp_get_post_categories( $v->ID );
 //		print_r( $post_categories );
 		if ( ! empty( $post_categories ) ) {
@@ -146,7 +146,7 @@ foreach ( $sql as $v ) {
 				}
 			}
 		}
-	}
+//	}
 	
 	//
 	$google_product_category = '';
