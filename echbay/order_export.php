@@ -8,6 +8,9 @@ if ( ! current_user_can('manage_options') ) {
 }
 
 //
+WGR_check_token();
+
+//
 _eb_log_admin( 'Export order in ' . _eb_full_url() );
 
 

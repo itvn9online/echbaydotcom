@@ -829,3 +829,18 @@ function WGR_check_discount_code_exist () {
 }
 
 
+function WGR_check_token ( $check_with = '' ) {
+	if ( $check_with == '' ) {
+		$check_with = $_SERVER['HTTP_HOST'];
+	}
+	
+	//
+	if ( ! isset( $_GET['token'] ) || $_GET['token'] != _eb_mdnam( $check_with ) ) {
+		die('<h1>Permission deny!</h1>');
+	}
+	
+	return true;
+}
+
+
+

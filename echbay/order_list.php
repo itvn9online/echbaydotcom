@@ -111,6 +111,7 @@ $str_hom_nay = date( 'md', date_time );
 
 
 ?>
+
 <div class="wrap">
 	<div class="cf">
 		<div class="lf f60">
@@ -271,9 +272,16 @@ $str_hom_nay = date( 'md', date_time );
 if ($totalPage > 1) {
 	echo EBE_part_page ( $trang, $totalPage, $strLinkPager . '&trang=' );
 }
+
+
 ?>
 </div>
 <br>
+<div class="text-right cf div-inline-block">
+	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&tab=' . $status_by; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
+</div>
+<br>
+
 <!-- mở cửa sổ chỉnh đơn hàng trong popup -->
 <div id="oi_order_iframe" class="hide-if-press-esc2">
 	<iframe id="target_order_iframe" name="target_order_iframe" src="about:blank" width="100%" height="600">AJAX form</iframe>
