@@ -521,6 +521,12 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 		});
 		
 	}
+	// hỗ trợ cho cái chuyển đổi taxonomy
+	else if ( pagenow == 'tools_page_taxonomy-switcher' ) {
+		jQuery('select#from_tax option, select#to_tax option').each(function() {
+			jQuery(this).html( jQuery(this).html() + ' (' + ( jQuery(this).val() || jQuery(this).attr('value') || '' ) + ')' );
+		});
+	}
 	
 	
 	
@@ -579,7 +585,7 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 			dog('oi_admin_popup').innerHTML = 'waiting...';
 			
 			//
-			var post_ID = $('#post_ID').val() || '';
+			var post_ID = jQuery('#post_ID').val() || '';
 			if ( post_ID != '' ) {
 				post_ID = '&post_ID=' + post_ID;
 			}

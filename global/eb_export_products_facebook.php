@@ -103,41 +103,46 @@ foreach ( $sql as $v ) {
 	$p_link = _eb_p_link( $v->ID );
 	
 	
-	// tìm ID của nhóm -> chỉ lấy nhóm cấp 1
-	$ant_id = 0;
-	$post_categories = wp_get_post_categories( $v->ID );
-//	print_r( $post_categories );
-	if ( ! empty( $post_categories ) ) {
-		
-		//
-		if ( count( $post_categories ) == 1 ) {
-			$ant_id = $post_categories[0];
-		}
-		else {
-			// tìm nhóm chính trước
-			foreach($post_categories as $c){
-				// có thì trả về luôn
-				if ( _eb_get_cat_object( $c, '_eb_category_primary', 0 ) > 0 ) {
-					$ant_id = $c;
-					break;
-				}
-			}
+	// tìm ID của nhóm -> mặc định lấy theo request
+	$ant_id = $by_cat_id;
+	
+	// nếu không có request -> lấy động theo sản phẩm
+	if ( $ant_id == 0 ) {
+		$post_categories = wp_get_post_categories( $v->ID );
+//		print_r( $post_categories );
+		if ( ! empty( $post_categories ) ) {
 			
-			// nếu không có -> tìm nhóm cấp 2 trước
-			if ( $ant_id == 0 ) {
+			//
+			if ( count( $post_categories ) == 1 ) {
+				$ant_id = $post_categories[0];
+			}
+			else {
+				// tìm nhóm chính trước
 				foreach($post_categories as $c){
-					$a = WGR_rss_get_parent_cat( $c );
-					
-					// nếu có nhóm cha -> đây là nhóm cấp 2 -> dừng luôn
-					if ( $a > 0 ) {
+					// có thì trả về luôn
+					if ( _eb_get_cat_object( $c, '_eb_category_primary', 0 ) > 0
+					|| _eb_get_cat_object( $c, '_eb_category_google_product' ) != '' ) {
 						$ant_id = $c;
 						break;
 					}
 				}
 				
-				// vẫn không có -> đành lấy nhóm cấp 1 -> lấy nhóm đầu tiên
+				// nếu không có -> tìm nhóm cấp 2 trước
 				if ( $ant_id == 0 ) {
-					$ant_id = $post_categories[0];
+					foreach($post_categories as $c){
+						$a = WGR_rss_get_parent_cat( $c );
+						
+						// nếu có nhóm cha -> đây là nhóm cấp 2 -> dừng luôn
+						if ( $a > 0 ) {
+							$ant_id = $c;
+							break;
+						}
+					}
+					
+					// vẫn không có -> đành lấy nhóm cấp 1 -> lấy nhóm đầu tiên
+					if ( $ant_id == 0 ) {
+						$ant_id = $post_categories[0];
+					}
 				}
 			}
 		}
