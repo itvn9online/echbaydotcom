@@ -1854,7 +1854,14 @@ function EBE_set_default_title_for_seo () {
 	/*
 	* Yoast SEO default value
 	*/
-	if ( $('#snippet-editor-title').length > 0 ) {
+	if ( $('#yoast_wpseo_title').length > 0 ) {
+		tit = $('#yoast_wpseo_title').val() || '';
+		
+		if ( tit == '' || tit == str_title ) {
+			$('#yoast_wpseo_title').val( '%%title%%' );
+		}
+	}
+	else if ( $('#snippet-editor-title').length > 0 ) {
 		tit = $('#snippet-editor-title').val() || '';
 		
 		if ( tit == '' || tit == str_title ) {
@@ -1862,7 +1869,21 @@ function EBE_set_default_title_for_seo () {
 		}
 	}
 	
-	if ( $('#snippet-editor-meta-description').length > 0 ) {
+	if ( $('#yoast_wpseo_metadesc').length > 0 ) {
+		des = $('#yoast_wpseo_metadesc').val() || '';
+		
+		// nếu không có tóm tắt mặc định mà có tóm tắt của yoast -> chuyển sang mặc định
+		if ( str_excerpt == '' && des != '' ) {
+			$('#excerpt').val( des );
+			des = '';
+		}
+		
+		// gán lại dữ liệu
+		if ( des == '' || des == str_excerpt ) {
+			$('#yoast_wpseo_metadesc').val( des_default );
+		}
+	}
+	else if ( $('#snippet-editor-meta-description').length > 0 ) {
 		des = $('#snippet-editor-meta-description').val() || '';
 		
 //		if ( des == '' && str_excerpt != '' ) {
