@@ -93,9 +93,16 @@ var g_func = {
 		return str;
 	},
 	strip_tags: function(input, allowed) {
-		if (!allowed) {
+		if (typeof input == 'undefined' || input == '') {
+			return '';
+		}
+		
+		//
+		if (typeof allowed == 'undefined') {
 			allowed = '';
 		}
+		
+		//
 		allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
 		var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
 			cm = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;

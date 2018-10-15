@@ -216,34 +216,7 @@ function echbay_admin_styles() {
 	}
 	
 	//
-	echo '<script type="text/javascript">
-var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
-	admin_link = "' . str_replace( '/', '\/', $web_ad_link ) . WP_ADMIN_DIR . '\/",
-	
-	mtv_id = ' . mtv_id . ',
-	isLogin = mtv_id,
-	
-	// luôn luôn cho phép tracking để có thể lưu log website qua google
-	cf_disable_tracking = "off",
-	cf_ga_id = "' . $__cf_row['cf_ga_id'] . '",
-	
-	date_time = ' . date_time . ',
-	lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
-	year_curent = ' . $year_curent . ',
-	
-	client_ip = "' . $client_ip . '",
-	
-	cf_old_domain = "' . $__cf_row['cf_old_domain'] . '",
-	order_max_post_new = ' . $order_max_post_new . ',
-	
-	cf_tester_mode = "' . $__cf_row['cf_tester_mode'] . '",
-	cf_hide_supper_admin_menu = "' . $__cf_row['cf_hide_supper_admin_menu'] . '",
-	
-	arr_eb_ads_status = [' . substr( $str_ads_status, 1 ) . '],
-	arr_eb_product_status = [' . substr( $str_product_status, 1 ) . '];';
-	
-	//
-	echo '</script>';
+	include EB_THEME_PLUGIN_INDEX . 'class/custom/admin-js.php';
 	
 	
 	
@@ -275,9 +248,9 @@ var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
 	foreach ( $a as $v ) {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $v ) ) {
-			echo '<link rel="stylesheet" href="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
-		}
+//		if ( file_exists( $v ) ) {
+			echo '<link rel="stylesheet" href="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
+//		}
 	}
 	
 	
@@ -298,14 +271,14 @@ var web_link = "' . str_replace( '/', '\/', $web_ad_link ) . '",
 		EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 		EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 		EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
-		EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
 	);
 	foreach ( $a as $v ) {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
-		}
+//		if ( file_exists( $v ) ) {
+			echo '<script type="text/javascript" src="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+//		}
 	}
 	
 	//
@@ -473,7 +446,9 @@ function echbay_admin_footer_styles() {
 	
 	// Thêm file admin của child theme nếu có
 	if ( using_child_wgr_theme == 1 ) {
-		$a[] = EB_CHILD_THEME_URL . 'ui/a.js';
+		if ( file_exists( EB_CHILD_THEME_URL . 'ui/a.js' ) ) {
+			$a[] = EB_CHILD_THEME_URL . 'ui/a.js';
+		}
 	}
 //	print_r( $a );
 //	echo 'aaaaaaaaaaaaaaaaaaaaaa/' . EB_DIR_CONTENT . "\n";
@@ -483,9 +458,9 @@ function echbay_admin_footer_styles() {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		$k =  $v;
 //		echo $k . '<br>' . "\n";
-		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . $web_ad_link . str_replace( '\\', '/', strstr( $v, EB_DIR_CONTENT ) ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
-		}
+//		if ( file_exists( $v ) ) {
+			echo '<script type="text/javascript" src="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+//		}
 	}
 	
 	
