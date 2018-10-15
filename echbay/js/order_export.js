@@ -1,5 +1,12 @@
 
 
+function WGR_order_export_exist ( a, k ) {
+	if ( typeof a[k] != 'undefined' && a[k] != '' ) {
+		return a[k];
+	}
+	return '&nbsp;';
+}
+
 function WGR_order_export_null ( s ) {
 	return s == '' ? '&nbsp;' : s;
 }
@@ -69,9 +76,9 @@ function WGR_order_export_run ( arr, arr_status ) {
 			'<td class="upper">' + ( cus['hd_ten'] == '' ? 'No-name' : cus['hd_ten'] ) + '</td>' +
 			'<td>' + cus['hd_dienthoai'] + '</td>' +
 			'<td>' + cus['hd_diachi'] + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
+			'<td>' + WGR_order_export_exist( cus, 'hd_utm_source' ) + '</td>' +
+			'<td>' + WGR_order_export_exist( cus, 'hd_utm_medium' ) + '</td>' +
+			'<td>[' + WGR_order_export_exist( cus, 'hd_utm_campaign' ) + ']</td>' +
 		'</tr>' +
 		WGR_order_export__products( prod )
 		);

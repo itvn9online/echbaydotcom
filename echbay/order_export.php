@@ -145,8 +145,8 @@ a:hover { text-decoration: underline; }
 		<td>Điện thoại</td>
 		<td>Địa chỉ</td>
 		<td>Nguồn</td>
+		<td>Phương tiện</td>
 		<td>Chiến dịch</td>
-		<td>Cộng tác viên</td>
 	</tr>
 </table>
 <?php
