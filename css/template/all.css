@@ -118,12 +118,13 @@
 /* mobile */
 @media screen and (min-width:768px) {
 }
-
 /* ================================== search ================================== */
 #aabbcc .div-search-margin { }
 #aabbcc .div-search { }
 #aabbcc input[type="search"] { padding-left: 2%; }
 #aabbcc button { }
+#aabbcc button i { }
+#aabbcc button span { }
 /* ================================== oi_member_func ================================== */
 #aabbcc .oi_member_func { }
 #aabbcc .oi_member_func a { }

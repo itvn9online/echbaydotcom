@@ -1365,6 +1365,7 @@ color: #333;
 .eb-quickcart-table textarea {
 	background: #f2f2f2 right center no-repeat;
 	background-size: 9px;
+	background-position: 98%;
 	border: 1px #ccc solid;
 	border-radius: 3px;
 	width: 92%;
@@ -2390,6 +2391,7 @@ iframe[name="google_conversion_frame"] {
 	border: 1px #999 solid;
 	background: #fff right center no-repeat;
 	background-size: 9px;
+	background-position: 98%;
 }
 .eb-quickcart-right input[aria-required="true"],
 .eb-quickcart-right textarea[aria-required="true"],

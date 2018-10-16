@@ -1763,6 +1763,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 				$a = $all_cats;
 			}
 		}
+		// mặc định với menu thông thường
 		else {
 			// xóa các ID và class trong menu
 			$a = preg_replace('/ id=\"menu-item-(.*)\"/iU', '', $a );
@@ -1782,7 +1783,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	}
 	*/
 	
-	//
+	// nhập một số dữ liệu từ config
 	$arr = array(
 		'cf_diachi' => $__cf_row['cf_diachi'],
 		'cf_email' => $__cf_row['cf_email'],
@@ -1790,7 +1791,12 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 		'cf_hotline' => $__cf_row['cf_hotline']
 	);
 	foreach ( $arr as $k => $v ) {
+		// temp mặc định
 		$a = str_replace( '{tmp.' . $k . '}' , $v, $a );
+		// temp trong menu
+		$a = str_replace( '%tmp.' . $k . '%' , $v, $a );
+		$a = str_replace( '%' . $k . '%' , $v, $a );
+		$a = str_replace( '%%' . $k . '%%' , $v, $a );
 	}
 	
 	//

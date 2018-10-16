@@ -3,7 +3,8 @@
 
 
 //
-if ( ! current_user_can('manage_options') ) {
+//if ( ! current_user_can('manage_options') ) {
+if ( ! current_user_can('publish_pages') ) {
 	die('Permission ERROR!');
 }
 
