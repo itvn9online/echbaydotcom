@@ -843,4 +843,13 @@ function WGR_check_token ( $check_with = '' ) {
 }
 
 
+// chuyển đường dẫn file sang link web
+function WGR_path_to_lnk ( $v ) {
+	// for window
+	$a = substr( ABSPATH, 0, -1 ) . '\\';
+//	echo $a . "\n";
+	
+	//
+	return str_replace( ABSPATH, web_link, str_replace( $a, web_link, $v ) );
+}
 

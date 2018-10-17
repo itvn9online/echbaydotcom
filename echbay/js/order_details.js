@@ -336,7 +336,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 			<td>' + arr[i].id + '</td>\
 			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + ' <i class="fa fa-eye"></i></a>' + str_edit_size_color + '</td>\
 			<td><span class="ebe-currency">' + g_func.money_format( product_price ) + '</span></td>\
-			<td><input type="number" value="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity s" size="5" maxlength="10" /></td>\
+			<td><input type="number" value="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity ss" size="5" maxlength="10" /></td>\
 			<td><span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></td>\
 		</tr>');
 		
@@ -349,7 +349,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 			a = jQuery(this).val() || '';
 		
 		//
-		if ( a < 0 ) {
+		if ( a < 0 || a == '' ) {
 			a = 0;
 		}
 		

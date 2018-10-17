@@ -153,6 +153,7 @@ a:hover { text-decoration: underline; }
 		<td>Chiến dịch</td>
 	</tr>
 </table>
+<p class="small">* Bấm Ctrl + A rồi copy toàn bộ trang này cho vào file Excel hoặc Google trang tính.</p>
 <?php
 
 

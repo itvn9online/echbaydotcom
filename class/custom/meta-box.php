@@ -89,7 +89,14 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 //			echo '<div><strong>' . $v . '</strong></div>';
 			
 			//
-			wp_editor( $val, $k );
+			// cho chỉnh sửa khi SEO echbay đang bật
+//			if ( cf_on_off_echbay_seo == 1 ) {
+//				wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
+				wp_editor( $val, $k );
+//			}
+			// còn lại thì hiển thị thông thường
+//			else {
+//			}
 			
 //			echo '<br>';
 		}
@@ -762,9 +769,12 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 		
 		// tạo class riêng cho textarea
 		$description_wrap = 'term-echbay-wrap';
+		/*
 		if ( $tai == 'textarea' ) {
+			// đang bị xung đột với yoast SEO nếu để thông số này
 			$description_wrap = 'term-description-wrap';
 		}
+		*/
 		
 		//
 		echo '
@@ -792,8 +802,14 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 			echo '<label for="' . $k . '"><input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" />' . $arr_placeholder[$k] . '</label>';
 		}
 		else if ( $tai == 'textarea' ) {
-			wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
-//			echo '<textarea id="' . $k . '" name="' . $k . '" ' . $other_attr . '>' .$val. '</textarea>';
+			// cho chỉnh sửa khi SEO echbay đang bật
+			if ( cf_on_off_echbay_seo == 1 ) {
+				wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
+			}
+			// còn lại thì hiển thị thông thường
+			else {
+				echo '<textarea id="' . $k . '" name="' . $k . '" ' . $other_attr . '>' .$val. '</textarea>';
+			}
 		}
 		else {
 			echo '<input type="' . $tai . '" name="' . $k . '" id="' . $k . '" value="' . $val . '" ' . $other_attr . ' class="m" />';

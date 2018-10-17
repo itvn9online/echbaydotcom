@@ -245,11 +245,15 @@ function echbay_admin_styles() {
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin-blog-widget.css'
 	);
+//	echo EB_THEME_PLUGIN_INDEX . 'aaaaaaaaaaaaaaaaaa' . "\n";
+//	echo ABSPATH . 'aaaaaaaaaaaaaaaaaa' . "\n";
+//	echo web_link . 'aaaaaaaaaaaaaaaaaa' . "\n";
+//	echo WGR_path_to_lnk('aaaaaaaa') . 'aaaaaaaaaaaaaaaaaa' . "\n";
 	foreach ( $a as $v ) {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 //		if ( file_exists( $v ) ) {
-			echo '<link rel="stylesheet" href="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
+			echo '<link rel="stylesheet" href="' . WGR_path_to_lnk( $v ) . '?v=' . filemtime( $v ) . '" type="text/css" media="all" />' . "\n";
 //		}
 	}
 	
@@ -277,7 +281,7 @@ function echbay_admin_styles() {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;
 //		echo $k . '<br>' . "\n";
 //		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . WGR_path_to_lnk( $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 //		}
 	}
 	
@@ -459,7 +463,7 @@ function echbay_admin_footer_styles() {
 //		$k =  $v;
 //		echo $k . '<br>' . "\n";
 //		if ( file_exists( $v ) ) {
-			echo '<script type="text/javascript" src="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
+			echo '<script type="text/javascript" src="' . WGR_path_to_lnk( $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 //		}
 	}
 	

@@ -51,6 +51,9 @@ function WGR_order_export___products ( arr, arr2 ) {
 function WGR_order_export__products ( arr, arr2 ) {
 	var str = '';
 	
+	// không tính cước vận chuyển lần 2
+	arr2['hd_phivanchuyen'] = '';
+	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( i > 0 ) {

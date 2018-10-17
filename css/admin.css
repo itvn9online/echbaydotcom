@@ -1372,6 +1372,9 @@ form[name="frm_invoice_details"] input[type="text"] {
 	padding: 6px 5px 6px 10px;
 	height: auto;
 }
+form[name="frm_invoice_details"] input[type="number"].s,
+form[name="frm_invoice_details"] input[type="number"].ss { padding-right: 1px; }
+form[name="frm_invoice_details"] input[type="text"] { }
 /* fixed tool for admin menu */
 .fixed-tool-admin-menu .quick-add-menu-to-admin-menu {
 	position: fixed;
