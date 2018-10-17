@@ -1563,8 +1563,20 @@ function ___eb_big_banner () {
 //	console.log( global_chantrang_len );
 	
 	//
-	jQuery('.banner-chan-trang:first li').width( ( 100/ global_chantrang_len ) + '%' );
+	jQuery('.banner-chan-trang li').width( ( 100/ global_chantrang_len ) + '%' );
 	_global_js_eb.auto_margin();
+	
+	
+	// tính toán lại chiều rộng mới nếu sau khi chỉnh mà vẫn còn thừa nhiều quá
+//	console.log( jQuery('.banner-chan-trang:first ul').width() );
+//	console.log( jQuery('.banner-chan-trang:first ul li:first').width() );
+//	console.log( len );
+//	console.log( jQuery('.banner-chan-trang:first ul li:first').width() * jQuery('.banner-chan-trang:first li').length );
+	if ( jQuery('.banner-chan-trang:first ul').width() > jQuery('.banner-chan-trang:first ul li:first').width() * len ) {
+		jQuery('.banner-chan-trang li').width( ( 100/ len ) + '%' );
+		_global_js_eb.auto_margin();
+	}
+	
 	
 	//
 //	jQuery('.home-next-chantrang, .home-prev-chantrang').hide();
@@ -1572,7 +1584,7 @@ function ___eb_big_banner () {
 	// không đủ thì thôi, ẩn nút next
 	if ( len <= global_chantrang_len ) {
 		
-		jQuery('.banner-chan-trang:first').height('auto').css({
+		jQuery('.banner-chan-trang').height('auto').css({
 			'line-height' : jQuery('.banner-chan-trang:first').height() + 'px'
 		});
 		

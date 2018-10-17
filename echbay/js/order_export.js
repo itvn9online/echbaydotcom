@@ -11,11 +11,32 @@ function WGR_order_export_null ( s ) {
 	return s == '' ? '&nbsp;' : s;
 }
 
-function WGR_order_export___products ( arr ) {
+function WGR_order_export___products ( arr, arr2 ) {
+	if ( typeof arr2['hd_phivanchuyen'] == 'undefined' || arr2['hd_phivanchuyen'] == '' ) {
+		arr2['hd_phivanchuyen'] = 0;
+	}
+	
+	//
+	var tong = arr.quan * arr.price;
+	if ( typeof arr2['hd_chietkhau'] == 'undefined' || arr2['hd_chietkhau'] == '' ) {
+		arr2['hd_chietkhau'] = 0;
+	}
+	else {
+		// tính theo %
+		if ( arr2['hd_chietkhau'].split('%').length > 1 ) {
+			arr2['hd_chietkhau'] = tong/ 100 * g_func.float_only( arr2['hd_chietkhau'] );
+		}
+	}
+	
+	//
 	return '<td>' + arr.name + '</td>' +
 		'<td class="text-center">' + arr.quan + '</td>' +
 		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.color ) + '</td>' +
-		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.size ) + '</td>';
+		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.size ) + '</td>' +
+		'<td class="text-center">' + tong + '</td>' +
+		'<td class="text-center">' + WGR_order_export_null( arr2['hd_chietkhau'] ) + '</td>' +
+		'<td class="text-center">' + WGR_order_export_null( arr2['hd_phivanchuyen'] ) + '</td>' +
+		'<td class="text-center">' + ( tong - arr2['hd_chietkhau'] + arr2['hd_phivanchuyen'] * 1 ) + '</td>';
 		
 		/*
 	return '<div class="cf">' +
@@ -27,21 +48,21 @@ function WGR_order_export___products ( arr ) {
 		*/
 }
 
-function WGR_order_export__products ( arr ) {
+function WGR_order_export__products ( arr, arr2 ) {
 	var str = '';
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( i > 0 ) {
-			str += '<tr><td colspan="3">&nbsp;</td>' + WGR_order_export___products( arr[i] ) + '<td colspan="6">&nbsp;</td></tr>';
+			str += '<tr><td colspan="3">&nbsp;</td>' + WGR_order_export___products( arr[i], arr2 ) + '<td colspan="6">&nbsp;</td></tr>';
 		}
 	}
 	
 	return str;
 }
 
-function WGR_order_export_products ( arr ) {
-	return WGR_order_export___products( arr[0] );
+function WGR_order_export_products ( arr, arr2 ) {
+	return WGR_order_export___products( arr[0], arr2 );
 }
 
 
@@ -57,11 +78,12 @@ function WGR_order_export_run ( arr, arr_status ) {
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		//
-		var prod = jQuery.parseJSON( unescape( arr[i].order_products ) );
-//		console.log( prod );
-		//
-		var cus = jQuery.parseJSON( unescape( arr[i].order_customer ) );
-//		console.log( cus );
+		var prod = jQuery.parseJSON( unescape( arr[i].order_products ) ),
+			cus = jQuery.parseJSON( unescape( arr[i].order_customer ) );
+		if ( i == 0 ) {
+			console.log( prod );
+			console.log( cus );
+		}
 		
 		//
 		$('#headerTable').append(
@@ -70,8 +92,8 @@ function WGR_order_export_run ( arr, arr_status ) {
 			'<td>' + arr[i].order_sku + '</td>' +
 			'<td>' + ( typeof arr_status[ arr[i].order_status ] != 'undefined' ? arr_status[ arr[i].order_status ] : 'Unknown' ) + '</td>' +
 			
-//			'<td>' + WGR_order_export_products( prod ) + '</td>' +
-			WGR_order_export_products( prod ) +
+//			'<td>' + WGR_order_export_products( prod, cus ) + '</td>' +
+			WGR_order_export_products( prod, cus ) +
 			
 			'<td class="upper">' + ( cus['hd_ten'] == '' ? 'No-name' : cus['hd_ten'] ) + '</td>' +
 			'<td>' + cus['hd_dienthoai'] + '</td>' +
@@ -80,7 +102,7 @@ function WGR_order_export_run ( arr, arr_status ) {
 			'<td>' + WGR_order_export_exist( cus, 'hd_utm_medium' ) + '</td>' +
 			'<td>[' + WGR_order_export_exist( cus, 'hd_utm_campaign' ) + ']</td>' +
 		'</tr>' +
-		WGR_order_export__products( prod )
+		WGR_order_export__products( prod, cus )
 		);
 		
 	}

@@ -782,6 +782,16 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			$html_node = str_replace( '{tmp.cf_blog_size}', $custom_size, $html_node );
 			$html_node = str_replace( '{tmp.cf_product_size}', $custom_size, $html_node );
 		}
+		
+		// xóa bỏ các HTML thừa theo option
+		if ( isset( $instance ['hide_description'] ) && $instance ['hide_description'] == 'on' ) {
+			$html_node = str_replace( '{tmp.trv_gioithieu}', '', $html_node );
+		}
+		
+		if ( isset( $instance ['hide_info'] ) && $instance ['hide_info'] == 'on' ) {
+			$html_node = str_replace( '{tmp.ngaycapnhat}', '', $html_node );
+			$html_node = str_replace( '{tmp.ant_ten}', '', $html_node );
+		}
 	}
 	
 	//

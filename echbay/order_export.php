@@ -142,7 +142,10 @@ a:hover { text-decoration: underline; }
 				<div class="lf f5">Kích thước</div>
 			</div></td>
 			-->
-		<td>Khách hàng</td>
+		<td>Cộng</td>
+		<td>Giảm</td>
+		<td>Cước</td>
+		<td>Tổng</td>
 		<td>Điện thoại</td>
 		<td>Địa chỉ</td>
 		<td>Nguồn</td>
