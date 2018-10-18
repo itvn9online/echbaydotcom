@@ -37,6 +37,9 @@ $sql = _eb_load_order( $threadInPage, array(
 
 //
 //print_r( $sql );
+echo $threadInPage . '<br>' . "\n";
+echo $strFilter . '<br>' . "\n";
+echo count( $sql ) . '<br>' . "\n";
 $main_content = json_encode( $sql );
 
 
@@ -124,6 +127,7 @@ a:hover { text-decoration: underline; }
 <body>
 <table id="headerTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="small">
 	<tr class="text-center gray2bg">
+		<td>STT</td>
 		<td>ID</td>
 		<td>Mã hóa đơn</td>
 		<td>Trạng thái</td>

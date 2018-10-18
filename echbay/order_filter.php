@@ -4,7 +4,7 @@
 
 // lọc theo trạng thái đơn
 $status_by = '';
-if ( isset( $_GET['tab'] ) ) {
+if ( isset( $_GET['tab'] ) &&  $_GET['tab'] != '' ) {
 	$status_by = $_GET['tab'];
 	
 	// với đơn hàng đã ẩn, chỉ có supper admin mới được xem
@@ -23,6 +23,7 @@ if ( isset( $_GET['tab'] ) ) {
 else {
 	$strFilter .= " AND order_status != 4 AND order_status != 13 ";
 }
+//echo $strFilter . '<br>' . "\n";
 $strLinkPager .= '&tab=' . $status_by;
 $jsLinkPager = $strLinkPager;
 

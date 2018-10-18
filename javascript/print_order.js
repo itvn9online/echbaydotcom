@@ -95,7 +95,7 @@
 			
 			// tính theo %
 			var ck = 0;
-			if ( order_details_arr_cart_customer_info['hd_chietkhau'].split('%').length > 1 ) {
+			if ( order_details_arr_cart_customer_info['hd_chietkhau'].toString().split('%').length > 1 ) {
 				if ( $('#show_chiet_khau').length > 0 ) {
 					$('#show_chiet_khau').html( '-<span>' + order_details_arr_cart_customer_info['hd_chietkhau'] + '</span>' );
 				}

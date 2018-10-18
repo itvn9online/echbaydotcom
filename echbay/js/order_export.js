@@ -23,7 +23,7 @@ function WGR_order_export___products ( arr, arr2 ) {
 	}
 	else {
 		// tính theo %
-		if ( arr2['hd_chietkhau'].split('%').length > 1 ) {
+		if ( arr2['hd_chietkhau'] != '' && arr2['hd_chietkhau'].toString().split('%').length > 1 ) {
 			arr2['hd_chietkhau'] = tong/ 100 * g_func.float_only( arr2['hd_chietkhau'] );
 		}
 	}
@@ -91,6 +91,7 @@ function WGR_order_export_run ( arr, arr_status ) {
 		//
 		$('#headerTable').append(
 		'<tr>' +
+			'<td>' + ( i + 1 ) + '</td>' +
 			'<td>' + arr[i].order_id + '</td>' +
 			'<td>' + arr[i].order_sku + '</td>' +
 			'<td>' + ( typeof arr_status[ arr[i].order_status ] != 'undefined' ? arr_status[ arr[i].order_status ] : 'Unknown' ) + '</td>' +

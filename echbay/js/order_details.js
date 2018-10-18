@@ -69,7 +69,7 @@ function WGR_admin_tinh_tong_hoa_don ( tong ) {
 	// Tính số tiền vận chuyển với khuyến mại nếu có
 	if ( ck != '' ) {
 		// tính theo %
-		if ( ck.split('%').length > 1 ) {
+		if ( ck.toString().split('%').length > 1 ) {
 			ck = g_func.float_only( ck );
 			ck = tong/ 100 * ck;
 		}
