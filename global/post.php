@@ -31,6 +31,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 //	if ( $__cf_row ['cf_keywords'] == '' ) $__cf_row ['cf_keywords'] = $__post->post_title;
 	
 	$__cf_row ['cf_description'] = _eb_get_post_object( $pid, '_eb_product_description', $__post->post_excerpt );
+//	echo '<!-- ' . $__cf_row ['cf_description'] . ' -->';
 	if ( $__cf_row ['cf_description'] == '' ) {
 		/*
 		if ( $__post->post_excerpt != '' ) {
@@ -41,7 +42,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 //		}
 	}
 //	$__cf_row['cf_description'] = esc_html( $__cf_row['cf_description'] );
-	$__cf_row['cf_description'] = str_replace( '"', '&quot;', $__cf_row['cf_description'] );
+	$__cf_row['cf_description'] = _eb_del_line( str_replace( '"', '&quot;', strip_tags( $__cf_row['cf_description'] ) ) );
 }
 
 
