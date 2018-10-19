@@ -229,6 +229,7 @@ include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 * Tổng hợp lại thẻ META lần nữa
 */
 // mặc định là giới thiệu về chủ sở hữu website
+// https://developers.google.com/search/docs/guides/intro-structured-data
 //if ( $schema_BreadcrumbList == '' ) {
 if ( count( $schema_BreadcrumbList ) == 0 ) {
 	
@@ -262,7 +263,12 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
     "@type": "' . EBE_get_lang('schema_home_type') . '",
     "url": "' .web_link. '",
     "sameAs": [' . substr( $json_social_sameAs, 1 ) . '],
-    "name": "' ._eb_str_block_fix_content ( $web_name ). '"
+    "name": "' ._eb_str_block_fix_content ( $web_name ). '",
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"telephone": "' . $__cf_row['cf_hotline'] . '",
+		"contactType": "Hotline"
+	}
 }
 </script>', "", "/\t/" );
 	

@@ -150,6 +150,7 @@ a:hover { text-decoration: underline; }
 		<td>Giảm</td>
 		<td>Cước</td>
 		<td>Tổng</td>
+		<td>Khách hàng</td>
 		<td>Điện thoại</td>
 		<td>Địa chỉ</td>
 		<td>Nguồn</td>

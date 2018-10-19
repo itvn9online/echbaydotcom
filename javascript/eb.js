@@ -172,7 +172,7 @@ var g_func = {
 		
 		
 		//
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain + ', time: ' + seconds );
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( 'Set cookie: ' + name + ' with value: ' + value + ' for domain: ' + cdomain + ' time: ' + seconds + ' (' + days + ' day)' );
 	},
 	getc: function (name) {
 		var nameEQ = encodeURIComponent(name) + "=",

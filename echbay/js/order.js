@@ -141,6 +141,7 @@ function click_set_search_order_by_type () {
 			// gán giá trị mới, và lưu cookie để sử dụng lần sau
 			f.type_search.value = a;
 			g_func.setc('eb_admin_order_type_search', a, 0, 7);
+//			console.log(a);
 			
 			if ( invoice_func_check_search() == true ) {
 				f.submit();
@@ -151,6 +152,12 @@ function click_set_search_order_by_type () {
 			}
 		}
 	});
+	
+	// đánh dấu phiên tìm kiếm trước
+	var a = g_func.getc('eb_admin_order_type_search');
+	if ( a != null && a != '' ) {
+		jQuery('.click-search-by-type a[data-type="' + a + '"]').click();
+	}
 	
 	//
 	var f = document.frm_search_invoice;

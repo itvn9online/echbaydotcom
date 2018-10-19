@@ -2,6 +2,44 @@
 
 
 
+
+$type_search = '';
+$invoice_key = '';
+if( isset ( $_GET ['invoice_key'] ) ) {
+	$invoice_key = $_GET['invoice_key'];
+	
+	if ( $invoice_key != '' ) {
+		if( isset ( $_GET ['type_search'] ) ) {
+			$type_search = $_GET['type_search'];
+		}
+		else {
+			$type_search = _eb_getCucki('eb_admin_order_type_search');
+		}
+//		$invoice_key = urlencode( str_replace( '+', ' ', $invoice_key ) );
+		$strLinkPager .= '&invoice_key=' . $invoice_key;
+		
+		// tìm kiếm theo key
+		$invoice_slug_key = _eb_non_mark_seo( urldecode( $invoice_key ) );
+//		echo $invoice_slug_key . '<br>';
+		$invoice_slug_key = str_replace( '.', '', str_replace( '-', '', $invoice_slug_key ) );
+//		echo $invoice_slug_key . '<br>';
+		
+		// cấu trúc thẻ tìm kiếm theo từng hạng mục
+		if ( $type_search == 'sp' ) {
+			$strFilter .= " AND ( order_products LIKE '%{$invoice_slug_key}%' OR order_products LIKE '%{$invoice_key}%' ) ";
+		}
+		else if ( $type_search == 'id' ) {
+			$strFilter .= " AND ( order_sku LIKE '%{$invoice_key}%' OR order_id LIKE '%{$invoice_key}%' ) ";
+		}
+		else {
+			$strFilter .= " AND ( order_customer LIKE '%{$invoice_slug_key}%' OR order_customer LIKE '%{$invoice_key}%' ) ";
+		}
+		$strLinkPager .= '&type_search=' . $type_search;
+	}
+}
+
+
+
 // lọc theo trạng thái đơn
 $status_by = '';
 if ( isset( $_GET['tab'] ) &&  $_GET['tab'] != '' ) {

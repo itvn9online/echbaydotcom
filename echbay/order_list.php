@@ -26,42 +26,7 @@ $threadInPage = 68;
 $strFilter = "";
 $totalThread = 0;
 $totalPage = 0;
-$strLinkPager = admin_link . 'admin.php?page=eb-order';
-
-$type_search = '';
-$invoice_key = '';
-if( isset ( $_GET ['invoice_key'] ) ) {
-	$invoice_key = $_GET['invoice_key'];
-	
-	if ( $invoice_key != '' ) {
-		if( isset ( $_GET ['type_search'] ) ) {
-			$type_search = $_GET['type_search'];
-		}
-		else {
-			$type_search = _eb_getCucki('eb_admin_order_type_search');
-		}
-//		$invoice_key = urlencode( str_replace( '+', ' ', $invoice_key ) );
-		$strLinkPager .= '&invoice_key=' . $invoice_key;
-		
-		// tìm kiếm theo key
-		$invoice_slug_key = _eb_non_mark_seo( urldecode( $invoice_key ) );
-//		echo $invoice_slug_key . '<br>';
-		$invoice_slug_key = str_replace( '.', '', str_replace( '-', '', $invoice_slug_key ) );
-//		echo $invoice_slug_key . '<br>';
-		
-		// cấu trúc thẻ tìm kiếm theo từng hạng mục
-		if ( $type_search == 'sp' ) {
-			$strFilter .= " AND ( order_products LIKE '%{$invoice_slug_key}%' OR order_products LIKE '%{$invoice_key}%' ) ";
-		}
-		else if ( $type_search == 'id' ) {
-			$strFilter .= " AND ( order_sku LIKE '%{$invoice_key}%' OR order_id LIKE '%{$invoice_key}%' ) ";
-		}
-		else {
-			$strFilter .= " AND ( order_customer LIKE '%{$invoice_slug_key}%' OR order_customer LIKE '%{$invoice_key}%' ) ";
-		}
-		$strLinkPager .= '&type_search=' . $type_search;
-	}
-}
+$strLinkPager = '';
 
 
 //
@@ -270,7 +235,7 @@ $str_hom_nay = date( 'md', date_time );
 <div class="admin-part-page">
 	<?php
 if ($totalPage > 1) {
-	echo EBE_part_page ( $trang, $totalPage, $strLinkPager . '&trang=' );
+	echo EBE_part_page ( $trang, $totalPage, admin_link . 'admin.php?page=eb-order' . $strLinkPager . '&trang=' );
 }
 
 
@@ -278,7 +243,7 @@ if ($totalPage > 1) {
 </div>
 <br>
 <div class="text-center cf div-inline-block">
-	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&d=' . $filterDay . '&tab=' . $status_by; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
+	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&d=' . $filterDay . '&tab=' . $status_by; ?>&type_search=<?php echo $type_search; ?>&invoice_key=<?php echo $invoice_key; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
 </div>
 <br>
 
