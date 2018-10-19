@@ -4,34 +4,34 @@
 function WGR_admin_quick_edit_select_menu () {
 	
 	//
-	$('.set-url-post-post-type').each(function() {
-		var a = $(this).attr('data-type') || 'post';
+	jQuery('.set-url-post-post-type').each(function() {
+		var a = jQuery(this).attr('data-type') || 'post';
 		
-		$(this).attr({
+		jQuery(this).attr({
 			href: window.location.href.split('&by_post_type=')[0].split('&by_taxonomy=')[0] + '&by_post_type=' + a
 		});
 	});
 	
 	//
-	$('.set-url-taxonomy-category').each(function(index, element) {
-		var a = $(this).attr('data-type') || 'post';
+	jQuery('.set-url-taxonomy-category').each(function(index, element) {
+		var a = jQuery(this).attr('data-type') || 'post';
 		
-		$(this).attr({
+		jQuery(this).attr({
 			href: window.location.href.split('&by_post_type=')[0].split('&by_taxonomy=')[0] + '&by_taxonomy=' + a
 		});
 	});
 	
 	//
 	if ( window.location.href.split('&by_taxonomy=').length > 1 ) {
-		$('.set-url-taxonomy-category[data-type="' + by_taxonomy + '"]').addClass('bold');
+		jQuery('.set-url-taxonomy-category[data-type="' + by_taxonomy + '"]').addClass('bold');
 	}
 	/*
 	else if ( window.location.href.split('&check_post_name=').length > 1 ) {
-		$('.check-post-name').addClass('bold');
+		jQuery('.check-post-name').addClass('bold');
 	}
 	*/
 	else {
-		$('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');
+		jQuery('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');
 	}
 }
 
@@ -43,11 +43,11 @@ function WGR_click_open_quick_edit_seo () {
 	
 	//
 	if ( dog('oi_eb_products') == null ) {
-		$('#rAdminME').after('<div id="oi_eb_products" class="hide-if-press-esc"></div>');
+		jQuery('#rAdminME').after('<div id="oi_eb_products" class="hide-if-press-esc"></div>');
 	}
 	
 	//
-	$('.click-open-quick-edit-seo').off('click').click(function () {
+	jQuery('.click-open-quick-edit-seo').off('click').click(function () {
 		
 		// không cho bấm liên tiếp
 		if ( waiting_for_ajax_running == true ) {
@@ -57,7 +57,7 @@ function WGR_click_open_quick_edit_seo () {
 		waiting_for_ajax_running = true;
 		
 		//
-		var a = $(this).attr('data-id') || '';
+		var a = jQuery(this).attr('data-id') || '';
 		
 		if ( a == '' ) {
 			return false;
@@ -65,15 +65,15 @@ function WGR_click_open_quick_edit_seo () {
 //		console.log(a);
 		
 		//
-		$('#rAdminME').css({
+		jQuery('#rAdminME').css({
 			opacity: 0.2
 		});
-		$('#oi_eb_products').show();
-		$('body').addClass('ebdesign-no-scroll');
+		jQuery('#oi_eb_products').show();
+		jQuery('body').addClass('ebdesign-no-scroll');
 		
 		//
 		ajaxl( 'products_seo&id=' + a + '&type=' + js_for_tax_or_post, 'oi_eb_products', 1, function () {
-			$('#rAdminME').css({
+			jQuery('#rAdminME').css({
 				opacity: 1
 			});
 			
@@ -84,7 +84,7 @@ function WGR_click_open_quick_edit_seo () {
 }
 
 //
-function WGR_admin_quick_edit_products ( connect_to, url_request, parameter ) {
+function WGR_admin_quick_edit_products ( connect_to, url_request, parameter, func_done ) {
 	
 	// kiểm tra dữ liệu đầu vào
 	if ( typeof connect_to == 'undefined' || connect_to == '' ) {
@@ -99,6 +99,12 @@ function WGR_admin_quick_edit_products ( connect_to, url_request, parameter ) {
 	// các tham số khác
 	if ( typeof parameter == 'undefined' ) {
 		parameter = '';
+	}
+	
+	//
+	if ( typeof func_done != 'function' ) {
+		func_done = function () {
+		};
 	}
 	
 	// không cho bấm liên tiếp
@@ -119,6 +125,9 @@ function WGR_admin_quick_edit_products ( connect_to, url_request, parameter ) {
 		});
 		
 		waiting_for_ajax_running = false;
+		
+		//
+		func_done();
 	});
 }
 
@@ -137,7 +146,8 @@ function change_update_new_stt () {
 	jQuery('.change-update-new-stt').keydown(function(e) {
 //		console.log(e.keyCode);
 		if ( e.keyCode == 13 ) {
-			var a = jQuery(this).val() || 0;
+			var a = jQuery(this).val() || 0,
+				j = jQuery(this).attr('id') || '';
 			a = g_func.number_only(a);
 			if ( a < 0 ) {
 				a = 0;
@@ -149,7 +159,11 @@ function change_update_new_stt () {
 //			console.log( a );
 			
 			//
-			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', a );
+			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', a, function () {
+				if ( j != '' ) {
+					jQuery('#' + j).focus();
+				}
+			});
 		}
 	});
 	
@@ -159,9 +173,14 @@ function change_update_new_stt () {
 	jQuery('.change-update-custom-meta').keydown(function(e) {
 //		console.log(e.keyCode);
 		if ( e.keyCode == 13 ) {
-			var a = jQuery(this).val() || '';
+			var a = jQuery(this).val() || '',
+				j = jQuery(this).attr('id') || '';
 			
-			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', '&new_value=' + a );
+			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', '&t=change&new_value=' + a, function () {
+				if ( j != '' ) {
+					jQuery('#' + j).focus();
+				}
+			});
 			
 			return false;
 		}

@@ -471,7 +471,7 @@ if ( $totalThread > 0 ) {
 				
 				// text
 				if ( $v == 1 ) {
-					$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="' . $k . ' n change-update-custom-meta" />';
+					$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" id="' . $trv_id . $k . '" class="' . $k . ' n change-update-custom-meta" />';
 				}
 				// select
 				else {
@@ -566,7 +566,7 @@ if ( $totalThread > 0 ) {
 			' . $str_edit_custom_meta . '
 		</div>
 	</td>
-	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></td>
+	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $v->term_id . 'menu_order" class="s change-update-new-stt" /></td>
 	<td>
 		<div class="text-center">
 			<i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $trv_stt . '" class="fa fa-refresh fa-icons cur click-order-thread"></i>

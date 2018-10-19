@@ -1358,6 +1358,17 @@ function WGR_run_for_admin_edit_post () {
 	});
 	
 	
+	// sau khi nhân bản xong, chuyển sang bài đó luôn
+	if ( window.location.href.split('&post-duplicated=').length > 1 ) {
+		var a = $('#wpbody-content .updated a').attr('href') || '';
+		
+		if ( a != '' ) {
+			window.location = a;
+			return false;
+		}
+	}
+	
+	
 	
 	//
 	jQuery(window).on('load', function () {

@@ -136,7 +136,7 @@ if ( $post_id > 0 && $type != '' ) {
 		//
 		WGR_update_meta_post( $post_id, '_eb_product_chinhhang', $new_status );
 		
-		echo '<br>Dat S.Pham chinh hang: ' . $new_status;
+		echo '<br>Đặt <strong>' . WGR_admin_lang( '_eb_product_chinhhang' ) . '</strong>: ' . $new_status;
 	}
 	// sản phẩm nổi bật
 	else if ( isset( $_GET['current_sticky'] ) ) {
@@ -185,7 +185,22 @@ if ( $post_id > 0 && $type != '' ) {
 		}
 		
 		//
-		echo '<br>Cập nhật giá cho sản phẩm: ' . $old_price . ' - ' . $new_price;
+		echo '<br>Cập nhật <strong>' . WGR_admin_lang( '_eb_product_price' ) . '</strong> cho sản phẩm: ' . $old_price . ' - ' . $new_price;
+	}
+	// cập nhật custom meta
+	else if ( isset( $_GET['custom_meta'] ) && isset( $_GET['new_value'] ) ) {
+		$custom_meta = trim( $_GET['custom_meta'] );
+		
+		//
+		if ( $custom_meta != '' ) {
+			WGR_update_meta_post( $post_id, $custom_meta, trim( $_GET['new_value'] ) );
+			
+			//
+			echo '<br>Cập nhật <strong>' . WGR_admin_lang( $custom_meta ) . '</strong> cho sản phẩm: #' . $post_id . ' with value: ' . $_GET['new_value'];
+		}
+		else {
+			echo '<br>custom_meta not found!';
+		}
 	}
 	else {
 		echo '<br>method not found';

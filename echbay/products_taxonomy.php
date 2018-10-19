@@ -238,7 +238,7 @@ function WGR_get_and_oders_taxonomy_category (
 		<div class="cf">
 			<div class="lf">
 				<div class="div-inline-block">
-					<div><input type="number" value="' . $cat_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></div>
+					<div><input type="number" value="' . $cat_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $v->term_id . '_eb_category_order" class="s change-update-new-stt" /></div>
 					
 					<div><i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $cat_stt . '" class="fa fa-refresh fa-icons cur click-order-thread"></i></div>
 					
