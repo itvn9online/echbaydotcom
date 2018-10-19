@@ -486,10 +486,25 @@ if ( $bai_san_pham == true ) {
 	
 	
 	
-	
+
 // dữ liệu có cấu trúc
+// https://developers.google.com/search/docs/data-types/product
+// https://developers.google.com/search/docs/data-types/article
 $structured_data_detail = '';
 $structured_data_post_title = str_replace( '"', '&quot;', $__post->post_title );
+
+//
+$trv_width_img = 400;
+$trv_height_img = 400;
+//$get_img_size = str_replace( web_link, ABSPATH, $trv_img );
+$get_img_size = ABSPATH . strstr( $trv_img, EB_DIR_CONTENT );
+//echo $get_img_size;
+if ( file_exists( $get_img_size ) ) {
+	$get_img_size = getimagesize( $get_img_size );
+//	print_r( $get_img_size );
+	$trv_width_img = $get_img_size[0];
+	$trv_height_img = $get_img_size[1];
+}
 
 if ( $trv_giamoi > 0 ) {
 	
@@ -506,7 +521,13 @@ if ( $trv_giamoi > 0 ) {
 	"@context": "http:\/\/schema.org\/",
 	"@type": "' . EBE_get_lang('schema_post_type') . '",
 	"name": "' . $structured_data_post_title . '",
-	"image": "' . str_replace( '/', '\/', $trv_img ) . '",
+//	"image": "' . str_replace( '/', '\/', $trv_img ) . '",
+	"image": {
+		"@type": "ImageObject",
+		"width": "' . $trv_width_img . '",
+		"height": "' . $trv_height_img . '",
+		"url": "' . str_replace( '/', '\/', $trv_img ) . '"
+	},
 	"description": "' . $__cf_row ['cf_description'] . '",
 //	"mpn": "' .$pid. '"
 	"url": "' . str_replace( '/', '\/', $url_og_url ) . '",
@@ -568,19 +589,6 @@ else {
 	}
 	
 	//
-	$trv_width_img = 400;
-	$trv_height_img = 400;
-//	$get_img_size = str_replace( web_link, ABSPATH, $trv_img );
-	$get_img_size = ABSPATH . strstr( $trv_img, EB_DIR_CONTENT );
-//	echo $get_img_size;
-	if ( file_exists( $get_img_size ) ) {
-		$get_img_size = getimagesize( $get_img_size );
-//		print_r( $get_img_size );
-		$trv_width_img = $get_img_size[0];
-		$trv_height_img = $get_img_size[1];
-	}
-	
-	// https://developers.google.com/search/docs/data-types/article
 	$structured_data_detail = WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
 <script type="application/ld+json">
 {
