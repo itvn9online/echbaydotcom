@@ -247,6 +247,18 @@ function WGR_after_update_multi_post () {
 
 jQuery('.click-show-tools').off('click').click(function () {
 	jQuery('.show-if-click-tools, .show-if-quick-edit').toggle('slow');
+	
+	//
+	var a = g_func.getc('eb_admin_quick_edit_post_taxonomy');
+	
+	// nếu -> đang mở -> đóng lại
+	if ( a != null || a == 1 ) {
+		g_func.delck( 'eb_admin_quick_edit_post_taxonomy' );
+	}
+	// chưa có -> gán lệnh đang mở
+	else {
+		g_func.setc( 'eb_admin_quick_edit_post_taxonomy', 1, 6 * 3600 );
+	}
 });
 
 

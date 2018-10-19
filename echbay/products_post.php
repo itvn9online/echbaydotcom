@@ -419,6 +419,9 @@ if ( $totalThread > 0 ) {
 		$trv_giaban = 0;
 		$trv_giamoi = 0;
 		
+		//
+		$str_edit_custom_meta = '';
+		
 		// các tính năng chỉ có ở post
 		if ( $o->post_type == 'post' ) {
 			if ( in_array( $o->ID, $arr_all_stick ) ) {
@@ -447,6 +450,36 @@ if ( $totalThread > 0 ) {
 			//
 			if ( $trv_giaban > 0 && $trv_giaban == $trv_giamoi ) {
 				delete_post_meta( $o->ID, '_eb_product_oldprice' );
+			}
+			
+			//
+			$arr_edit_custom_meta = array(
+				'_eb_product_status' => 0,
+				'_eb_product_gender' => 0,
+				'_eb_product_color' => 1,
+				'_eb_product_sku' => 1,
+				'_eb_product_leech_sku' => 1,
+				'_eb_product_buyer' => 1,
+				'_eb_product_quantity' => 1,
+				'_eb_product_ngayhethan' => 1
+			);
+			foreach ( $arr_edit_custom_meta as $k => $v ) {
+				$str_edit_custom_meta .= '
+				<div class="cf">
+					<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
+					<div class="lf f70">';
+				
+				// text
+				if ( $v == 1 ) {
+					$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="' . $k . ' n change-update-custom-meta" />';
+				}
+				// select
+				else {
+				}
+				
+				//
+				$str_edit_custom_meta .= '</div>
+				</div>';
 			}
 		}
 		
@@ -514,37 +547,6 @@ if ( $totalThread > 0 ) {
 				
 //				echo $seo_color . '<br>';
 			}
-		}
-		
-		//
-		$arr_edit_custom_meta = array(
-			'_eb_product_status' => 0,
-			'_eb_product_gender' => 0,
-			'_eb_product_color' => 1,
-			'_eb_product_sku' => 1,
-			'_eb_product_leech_sku' => 1,
-			'_eb_product_buyer' => 1,
-			'_eb_product_quantity' => 1,
-			'_eb_product_ngayhethan' => 1
-		);
-		$str_edit_custom_meta = '';
-		foreach ( $arr_edit_custom_meta as $k => $v ) {
-			$str_edit_custom_meta .= '
-			<div class="cf">
-				<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
-				<div class="lf f70">';
-			
-			// text
-			if ( $v == 1 ) {
-				$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="' . $k . ' n change-update-custom-meta" />';
-			}
-			// select
-			else {
-			}
-			
-			//
-			$str_edit_custom_meta .= '</div>
-			</div>';
 		}
 		
 		//

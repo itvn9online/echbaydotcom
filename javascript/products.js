@@ -167,6 +167,13 @@ function change_update_new_stt () {
 		}
 	});
 	
+	
+	// đánh dấu phiên tìm kiếm trước
+	var a = g_func.getc('eb_admin_quick_edit_post_taxonomy');
+	if ( a != null || a == 1 ) {
+		jQuery('.show-if-click-tools, .show-if-quick-edit').show();
+	}
+	
 }
 
 
