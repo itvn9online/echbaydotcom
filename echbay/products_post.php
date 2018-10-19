@@ -517,6 +517,37 @@ if ( $totalThread > 0 ) {
 		}
 		
 		//
+		$arr_edit_custom_meta = array(
+			'_eb_product_status' => 1,
+			'_eb_product_gender' => 1,
+			'_eb_product_color' => 0,
+			'_eb_product_sku' => 0,
+			'_eb_product_leech_sku' => 0,
+			'_eb_product_buyer' => 0,
+			'_eb_product_quantity' => 0,
+			'_eb_product_ngayhethan' => 0
+		);
+		$str_edit_custom_meta = '';
+		foreach ( $arr_edit_custom_meta as $k => $v ) {
+			$str_edit_custom_meta .= '
+			<div class="cf">
+				<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
+				<div class="lf f70">';
+			
+			// select
+			if ( $v == 1 ) {
+			}
+			// text
+			else {
+				$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="n change-update-custom-meta" />';
+			}
+			
+			//
+			$str_edit_custom_meta .= '</div>
+			</div>';
+		}
+		
+		//
 		echo '
 <tr>
 	<td class="text-center"><input type="checkbox" name="thread-checkbox" value="' . $trv_id . '" class="eb-uix-thread-checkbox thread-multi-checkbox" /></td>
@@ -530,40 +561,7 @@ if ( $totalThread > 0 ) {
 		<div>' . $view_by_group . '</div>
 		
 		<div class="show-if-quick-edit d-none2">
-			<div class="cf">
-				<div class="lf f30">Trạng thái</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_status" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">Giới tính</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_gender" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">Màu sắc</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_color" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">Mã sản phẩm</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_color" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">aaaaaaaaaa</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_color" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">aaaaaaaaaa</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_color" class="n change-update-custom-meta" /></div>
-			</div>
-			
-			<div class="cf">
-				<div class="lf f30">aaaaaaaaaa</div>
-				<div class="lf f70"><input type="text" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=_eb_product_color" class="n change-update-custom-meta" /></div>
-			</div>
+			' . $str_edit_custom_meta . '
 		</div>
 	</td>
 	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" class="s change-update-new-stt" /></td>
