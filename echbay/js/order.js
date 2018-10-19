@@ -153,14 +153,15 @@ function click_set_search_order_by_type () {
 		}
 	});
 	
+	//
+	var f = document.frm_search_invoice;
+	
 	// đánh dấu phiên tìm kiếm trước
 	var a = g_func.getc('eb_admin_order_type_search');
 	if ( a != null && a != '' ) {
-		jQuery('.click-search-by-type a[data-type="' + a + '"]').click();
+		f.type_search.value = a;
+		jQuery('.click-search-by-type a[data-type="' + a + '"]').addClass('bold');
 	}
-	
-	//
-	var f = document.frm_search_invoice;
 	
 	//
 //	console.log( f.invoice_key.value );
