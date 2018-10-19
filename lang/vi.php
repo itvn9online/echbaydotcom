@@ -405,6 +405,17 @@ $___eb_lang[eb_key_for_site_lang . 'tag_blog_excerpt'] = 'h2';
 $___eb_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'off';
 $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
 
+
+
+// icon cho khối mạng xã hội
+$eb_note_first_lang[eb_key_for_site_lang . 'schema_home_type'] = 'Định nghĩa Type cho phần dữ liệu có cấu trúc';
+$___eb_lang[eb_key_for_site_lang . 'schema_post_type'] = 'Product';
+$___eb_lang[eb_key_for_site_lang . 'schema_blog_type'] = 'BlogPosting';
+$___eb_lang[eb_key_for_site_lang . 'schema_home_type'] = 'Person';
+$eb_ex_from_github[eb_key_for_site_lang . 'schema_home_type'] = 'https://developers.google.com/search/docs/data-types/article';
+
+
+
 // icon cho khối mạng xã hội
 $eb_note_first_lang[eb_key_for_site_lang . 'social_facebook'] = 'Icons cho phần mạng xã hội (sử dụng font awesome)';
 $___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';

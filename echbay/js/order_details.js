@@ -476,34 +476,45 @@ function WGR_hide_html_alert_auto_order_submit () {
 		
 		// kiểm tra lại mà vẫn thế -> lỗi
 		if ( typeof cus != "object" ) {
-			cus = {};
+//			cus = {};
+			cus = null;
 		}
 	}
 	console.log(cus);
 	
 	//
+	if ( cus == null || cus == {} ) {
+		console.log( 'ERROR load data in JSON!!!!!!!!!!!!!!!!!!!' );
+		return false;
+	}
+	
+	//
 	arr_global_js_order_customter = cus;
 	
 	//
-	jQuery('#oi_hd_ten').val( cus['hd_ten'] );
-	jQuery('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
-	jQuery('#oi_hd_diachi').val( cus['hd_diachi'] );
-	jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
-	if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
-		jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
-	}
-	
-	// Hiển thị ghi chú của admin nếu có
-	if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
-		jQuery('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
-	}
-	
-	// một số tính năng khác
-	if ( typeof cus['hd_chietkhau'] != 'undefined' && cus['hd_chietkhau'] != '' ) {
-		jQuery('#hd_chietkhau').val( cus['hd_chietkhau'] );
-	}
-	if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
-		jQuery('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
+	try {
+		jQuery('#oi_hd_ten').val( cus['hd_ten'] );
+		jQuery('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
+		jQuery('#oi_hd_diachi').val( cus['hd_diachi'] );
+		jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
+		if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
+			jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
+		}
+		
+		// Hiển thị ghi chú của admin nếu có
+		if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
+			jQuery('#hd_admin_ghichu').val( cus['hd_admin_ghichu'] );
+		}
+		
+		// một số tính năng khác
+		if ( typeof cus['hd_chietkhau'] != 'undefined' && cus['hd_chietkhau'] != '' ) {
+			jQuery('#hd_chietkhau').val( cus['hd_chietkhau'] );
+		}
+		if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
+			jQuery('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
+		}
+	} catch (e) {
+		console.log( WGR_show_try_catch_err( e ) );
 	}
 	
 	// bắt đầu tính tổng tiền sau khi nạp các giá trị khác thành công

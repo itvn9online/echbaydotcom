@@ -259,7 +259,7 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
 <script type="application/ld+json">
 {
     "@context": "http:\/\/schema.org",
-    "@type": "Person",
+    "@type": "' . EBE_get_lang('schema_home_type') . '",
     "url": "' .web_link. '",
     "sameAs": [' . substr( $json_social_sameAs, 1 ) . '],
     "name": "' ._eb_str_block_fix_content ( $web_name ). '"

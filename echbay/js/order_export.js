@@ -57,7 +57,7 @@ function WGR_order_export__products ( arr, arr2 ) {
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( i > 0 ) {
-			str += '<tr><td colspan="3">&nbsp;</td>' + WGR_order_export___products( arr[i], arr2 ) + '<td colspan="6">&nbsp;</td></tr>';
+			str += '<tr><td colspan="4">&nbsp;</td>' + WGR_order_export___products( arr[i], arr2 ) + '</tr>';
 		}
 	}
 	
@@ -70,19 +70,37 @@ function WGR_order_export_products ( arr, arr2 ) {
 
 
 //
-function WGR_order_export_run ( arr, arr_status ) {
+function WGR_order_export_run ( arr, i ) {
+	
+	//
+	arr_status = arr_hd_trangthai;
+	
+	//
+	if ( arr.order_products == '' || arr.order_customer == '' ) {
+		$('#headerTable').append(
+		'<tr>' +
+			'<td>' + ( i + 1 ) + '</td>' +
+			'<td>' + arr.order_id + '</td>' +
+			'<td>' + arr.order_sku + '</td>' +
+			'<td>' + ( typeof arr_status[ arr.order_status ] != 'undefined' ? arr_status[ arr.order_status ] : 'Unknown' ) + '</td>' +
+			'<td>ERROR load data in JSON!!!!!!!!!!!!!!!!!!!</td>' +
+		'</tr>'
+		);
+		console.log( arr );
+		return false;
+	}
 	
 	//
 //	console.log( arr );
 	
 	//
-	var order_lnk = admin_link + 'admin.php?page=eb-order&id=';
+//	var order_lnk = admin_link + 'admin.php?page=eb-order&id=';
 	
 	//
-	for ( var i = 0; i < arr.length; i++ ) {
+//	for ( var i = 0; i < arr.length; i++ ) {
 		//
-		var prod = jQuery.parseJSON( unescape( arr[i].order_products ) ),
-			cus = jQuery.parseJSON( unescape( arr[i].order_customer ) );
+		var prod = jQuery.parseJSON( unescape( arr.order_products ) ),
+			cus = jQuery.parseJSON( unescape( arr.order_customer ) );
 		if ( i == 0 ) {
 			console.log( prod );
 			console.log( cus );
@@ -92,9 +110,9 @@ function WGR_order_export_run ( arr, arr_status ) {
 		$('#headerTable').append(
 		'<tr>' +
 			'<td>' + ( i + 1 ) + '</td>' +
-			'<td>' + arr[i].order_id + '</td>' +
-			'<td>' + arr[i].order_sku + '</td>' +
-			'<td>' + ( typeof arr_status[ arr[i].order_status ] != 'undefined' ? arr_status[ arr[i].order_status ] : 'Unknown' ) + '</td>' +
+			'<td>' + arr.order_id + '</td>' +
+			'<td>' + arr.order_sku + '</td>' +
+			'<td>' + ( typeof arr_status[ arr.order_status ] != 'undefined' ? arr_status[ arr.order_status ] : 'Unknown' ) + '</td>' +
 			
 //			'<td>' + WGR_order_export_products( prod, cus ) + '</td>' +
 			WGR_order_export_products( prod, cus ) +
@@ -109,7 +127,7 @@ function WGR_order_export_run ( arr, arr_status ) {
 		WGR_order_export__products( prod, cus )
 		);
 		
-	}
+//	}
 	
 	//
 	$('.remove-size-color-tag strong').remove();

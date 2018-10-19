@@ -221,8 +221,11 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		//
 		echo '<script>
-jQuery(window).on("load", function () {
-	jEBE_slider( "' . $id_class . '", {' . $code . '} );
+//jQuery(window).on("load", function () {
+jQuery(document).ready(function() {
+	setTimeout(function () {
+		jEBE_slider( "' . $id_class . '", {' . $code . '} );
+	}, 1200);
 });
 		</script>';
 	}

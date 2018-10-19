@@ -220,6 +220,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		//
 		if ( conf['size'] == 'li' ) {
 			conf['size'] = hai + '/' + ( Math.ceil( jQuery( jd + ' li:first').width() ) - 1 );
+			console.log('LI to size: ' + conf['size']);
 		}
 	}
 	//

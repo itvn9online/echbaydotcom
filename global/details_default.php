@@ -504,7 +504,7 @@ if ( $trv_giamoi > 0 ) {
 <script type="application/ld+json">
 {
 	"@context": "http:\/\/schema.org\/",
-	"@type": "Product",
+	"@type": "' . EBE_get_lang('schema_post_type') . '",
 	"name": "' . $structured_data_post_title . '",
 	"image": "' . str_replace( '/', '\/', $trv_img ) . '",
 	"description": "' . $__cf_row ['cf_description'] . '",
@@ -560,12 +560,32 @@ else {
 		$blog_img_logo = web_link . $blog_img_logo;
 	}
 	
+	
 	//
-	$structured_data_detail = '
+	$this_post_author = get_the_author();
+	if ( $this_post_author == '' ) {
+		$this_post_author = get_the_author_meta( 'nickname', $__post->post_author );
+	}
+	
+	//
+	$trv_width_img = 400;
+	$trv_height_img = 400;
+//	$get_img_size = str_replace( web_link, ABSPATH, $trv_img );
+	$get_img_size = ABSPATH . strstr( $trv_img, EB_DIR_CONTENT );
+//	echo $get_img_size;
+	if ( file_exists( $get_img_size ) ) {
+		$get_img_size = getimagesize( $get_img_size );
+//		print_r( $get_img_size );
+		$trv_width_img = $get_img_size[0];
+		$trv_height_img = $get_img_size[1];
+	}
+	
+	// https://developers.google.com/search/docs/data-types/article
+	$structured_data_detail = WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
 <script type="application/ld+json">
 {
 	"@context": "http:\/\/schema.org",
-	"@type": "BlogPosting",
+	"@type": "' . EBE_get_lang('schema_blog_type') . '",
 	"publisher": {
 		"@type": "Organization",
 		"name": "' . str_replace( '"', '&quot;', web_name ) . '",
@@ -580,17 +600,17 @@ else {
 	"dateModified": "' . $__post->post_modified . '",
 	"author": {
 		"@type": "Person",
-		"name": "itvn9online"
+		"name": "' . $this_post_author . '"
 	},
 	"description": "' . str_replace( '"', '&quot;', $__cf_row ['cf_description'] ) . '",
 	"image": {
 		"@type": "ImageObject",
-		"width": "400",
-		"height": "400",
+		"width": "' . $trv_width_img . '",
+		"height": "' . $trv_height_img . '",
 		"url": "' . str_replace( '/', '\/', $trv_img ) . '"
 	}
 }
-</script>';
+</script>' ), true );
 	
 }
 

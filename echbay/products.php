@@ -131,5 +131,5 @@ if ($totalPage > 1) {
 }
 ?>
 </div>
-<p>* Số thứ tự (STT) càng lớn thì độ ưu tiên càng cao, sản phẩm sẽ được sắp xếp theo STT từ cao đến thấp.</p>
+<p class="orgcolor">* Số thứ tự (STT) càng lớn thì độ ưu tiên càng cao, sản phẩm sẽ được sắp xếp theo STT từ cao đến thấp.</p>
 <br>

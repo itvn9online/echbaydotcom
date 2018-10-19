@@ -37,10 +37,10 @@ $sql = _eb_load_order( $threadInPage, array(
 
 //
 //print_r( $sql );
-echo $threadInPage . '<br>' . "\n";
-echo $strFilter . '<br>' . "\n";
-echo count( $sql ) . '<br>' . "\n";
-$main_content = json_encode( $sql );
+//echo $threadInPage . '<br>' . "\n";
+//echo $strFilter . '<br>' . "\n";
+//echo count( $sql ) . '<br>' . "\n";
+//$main_content = json_encode( $sql );
 
 
 
@@ -189,10 +189,20 @@ foreach ( $a as $v ) {
 
 ?>
 <script>
-WGR_order_export_run ( <?php echo $main_content; ?>, <?php echo json_encode( $arr_hd_trangthai ); ?> );
+var arr_hd_trangthai = <?php echo json_encode( $arr_hd_trangthai ); ?>;
+<?php
+
+foreach ( $sql as $k => $v ) {
+	echo 'WGR_order_export_run( ' . json_encode( $v ) . ', ' . $k . ' );' . "\n";
+}
+
+?>
 </script>
 </html>
 <?php
+/*
+WGR_order_export_run ( <?php echo $main_content; ?>, <?php echo json_encode( $arr_hd_trangthai ); ?> );
+*/
 
 
 

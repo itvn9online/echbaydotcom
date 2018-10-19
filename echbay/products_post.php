@@ -365,7 +365,7 @@ $strAjaxLink .= '&trang=' . $trang;
 		<td width="10%">ID</td>
 		<td width="8%">Ảnh</td>
 		<td>Sản phẩm/ Giá cũ/ Giá mới</td>
-		<td width="8%">STT</td>
+		<td title="Dữ liệu được sắp xếp theo STT giảm dần" width="8%">STT <i class="fa fa-caret-down"></i></td>
 		<td width="10%">Công cụ</td>
 		<td width="14%">Ngày Đăng/ Cập nhật</td>
 	</tr>
