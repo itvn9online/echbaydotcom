@@ -270,7 +270,7 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
 		"contactType": "Hotline"
 	}
 }
-</script>', "", "/\t/" );
+</script>', "\n", "/\t/" );
 	
 }
 // hoặc breadcrumb nếu có

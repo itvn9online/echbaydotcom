@@ -42,7 +42,7 @@ if ( cf_on_off_echbay_seo == 1 ) {
 //		}
 	}
 //	$__cf_row['cf_description'] = esc_html( $__cf_row['cf_description'] );
-	$__cf_row['cf_description'] = _eb_del_line( str_replace( '"', '&quot;', strip_tags( $__cf_row['cf_description'] ) ) );
+	$__cf_row['cf_description'] = _eb_del_line( str_replace( '"', '&quot;', strip_tags( $__cf_row['cf_description'] ) ), ' ' );
 }
 
 

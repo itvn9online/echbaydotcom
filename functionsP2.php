@@ -1955,6 +1955,19 @@ function _eb_short_string( $str, $len, $more = 1 ) {
 }
 
 function _eb_del_line ( $str, $re = "", $pe = "/\r\n|\n\r|\n|\t/i" ) {
+	// v2
+	$str = explode( "\n", $str );
+	$s = '';
+	foreach ( $str as $k => $v ) {
+		$v = trim( $v );
+		
+		if ( $v != '' ) {
+			$s .= $v . $re;
+		}
+	}
+	return $s;
+	
+	// v1
 	return preg_replace( $pe, $re, trim( $str ) );
 }
 
