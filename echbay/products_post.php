@@ -566,7 +566,7 @@ if ( $totalThread > 0 ) {
 			' . $str_edit_custom_meta . '
 		</div>
 	</td>
-	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $v->term_id . 'menu_order" class="s change-update-new-stt" /></td>
+	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $trv_id . 'menu_order" class="s change-update-new-stt" /></td>
 	<td>
 		<div class="text-center">
 			<i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $trv_stt . '" class="fa fa-refresh fa-icons cur click-order-thread"></i>
