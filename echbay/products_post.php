@@ -454,14 +454,14 @@ if ( $totalThread > 0 ) {
 			
 			//
 			$arr_edit_custom_meta = array(
-				'_eb_product_status' => 0,
-				'_eb_product_gender' => 0,
-				'_eb_product_color' => 1,
-				'_eb_product_sku' => 1,
-				'_eb_product_leech_sku' => 1,
-				'_eb_product_buyer' => 1,
-				'_eb_product_quantity' => 1,
-				'_eb_product_ngayhethan' => 1
+//				'_eb_product_status' => '',
+//				'_eb_product_gender' => '',
+				'_eb_product_color' => 'text',
+				'_eb_product_sku' => 'text',
+				'_eb_product_leech_sku' => 'text',
+				'_eb_product_buyer' => 'number',
+				'_eb_product_quantity' => 'number'
+//				'_eb_product_ngayhethan' => 'text'
 			);
 			foreach ( $arr_edit_custom_meta as $k => $v ) {
 				$str_edit_custom_meta .= '
@@ -469,9 +469,9 @@ if ( $totalThread > 0 ) {
 					<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
 					<div class="lf f70">';
 				
-				// text
-				if ( $v == 1 ) {
-					$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" id="' . $trv_id . $k . '" class="' . $k . ' n change-update-custom-meta" />';
+				// input
+				if ( $v != '' ) {
+					$str_edit_custom_meta .= '<input type="' . $v . '" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" id="' . $trv_id . $k . '" class="' . $k . ' n change-update-custom-meta" />';
 				}
 				// select
 				else {
