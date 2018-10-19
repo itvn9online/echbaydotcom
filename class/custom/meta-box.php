@@ -6,7 +6,6 @@
 
 
 
-
 /*
 * in ra HTML của các mảng đã nhập vào
 * Khai báo callback
@@ -233,7 +232,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_video_url' => 'Bạn có thể nhập vào URL video trên Youtube (Ví dụ: <strong>https://youtu.be/{ID}</strong>) hoặc URL video MP4, các định dạng khác hiện chưa được hỗ trợ.',
 	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
-	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiê bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
+	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiên bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
 	
 //	'_eb_product_size' => '',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
@@ -251,15 +250,15 @@ $eb_arr_placeholder_custom_meta_box['_eb_category_leech_url'] = $eb_arr_placehol
 * Nhiều form cần dùng đoạn này
 */
 $eb_meta_custom_meta_box = array(
-	'_eb_product_title' => 'Title',
-	'_eb_product_keywords' => 'Keywords',
-	'_eb_product_description' => 'Description',
-	'_eb_product_noindex' => 'Noindex',
+	'_eb_product_title' => WGR_admin_lang('_eb_product_title'),
+	'_eb_product_keywords' => WGR_admin_lang('_eb_product_keywords'),
+	'_eb_product_description' => WGR_admin_lang('_eb_product_description'),
+	'_eb_product_noindex' => WGR_admin_lang('_eb_product_noindex'),
 	
 	//
-	'_eb_product_avatar' => 'Ảnh đại diện',
-	'_eb_product_css' => 'Tùy chỉnh CSS',
-//	'_eb_product_leech_source' => 'URL đồng bộ',
+	'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar'),
+	'_eb_product_css' => WGR_admin_lang('_eb_product_css')
+//	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source')
 );
 
 
@@ -269,51 +268,51 @@ $eb_meta_custom_meta_box = array(
 * Form sản phẩm
 */
 $eb_arr_custom_meta_box = array(
-	'_eb_product_status' => 'Trạng thái',
-	'_eb_product_gender' => 'Giới tính',
-	'_eb_product_color' => 'Màu sắc',
-	'_eb_product_size' => 'Kích thước',
-	'_eb_product_searchkey' => 'EB Search',
-	'_eb_product_sku' => 'Mã sản phẩm',
-	'_eb_product_leech_sku' => 'SKU (leech data)',
-	'_eb_product_oldprice' => EBE_get_lang('post_giacu') . ' (nếu có)',
-	'_eb_product_price' => EBE_get_lang('post_giamoi'),
-	'_eb_product_buyer' => EBE_get_lang('post_luotmua'),
-	'_eb_product_quantity' => EBE_get_lang('post_soluong'),
-	'_eb_product_ngayhethan' => 'Ngày hết hạn',
-	'_eb_product_giohethan' => 'Giờ hết hạn',
-	'_eb_product_chinhhang' => 'Đảm bảo chính hãng',
+	'_eb_product_status' => WGR_admin_lang('_eb_product_status'),
+	'_eb_product_gender' => WGR_admin_lang('_eb_product_gender'),
+	'_eb_product_color' => WGR_admin_lang('_eb_product_color'),
+	'_eb_product_size' => WGR_admin_lang('_eb_product_size'),
+	'_eb_product_searchkey' => WGR_admin_lang('_eb_product_searchkey'),
+	'_eb_product_sku' => WGR_admin_lang('_eb_product_sku'),
+	'_eb_product_leech_sku' => WGR_admin_lang('_eb_product_leech_sku'),
+	'_eb_product_oldprice' => WGR_admin_lang('_eb_product_oldprice'),
+	'_eb_product_price' => WGR_admin_lang('_eb_product_price'),
+	'_eb_product_buyer' => WGR_admin_lang('_eb_product_buyer'),
+	'_eb_product_quantity' => WGR_admin_lang('_eb_product_quantity'),
+	'_eb_product_ngayhethan' => WGR_admin_lang('_eb_product_ngayhethan'),
+	'_eb_product_giohethan' => WGR_admin_lang('_eb_product_giohethan'),
+	'_eb_product_chinhhang' => WGR_admin_lang('_eb_product_chinhhang'),
 	
-	'_eb_product_rating_value' => 'Điểm đánh giá',
-	'_eb_product_rating_count' => 'Tổng số đánh giá',
+	'_eb_product_rating_value' => WGR_admin_lang('_eb_product_rating_value'),
+	'_eb_product_rating_count' => WGR_admin_lang('_eb_product_rating_count')
 );
 
 $eb_arr_gallery_meta_box = array(
-	'_eb_product_gallery' => 'Thư viện ảnh',
+	'_eb_product_gallery' => WGR_admin_lang('_eb_product_gallery')
 );
 
 $eb_arr_list_color_meta_box = array(
-	'_eb_product_list_color' => 'Danh sách màu sắc',
+	'_eb_product_list_color' => WGR_admin_lang('_eb_product_list_color')
 );
 
 $eb_arr_dieukien_meta_box = array(
-	'_eb_product_dieukien' => 'Điều kiện',
+	'_eb_product_dieukien' => WGR_admin_lang('_eb_product_dieukien')
 );
 
 $eb_arr_noibat_meta_box = array(
-	'_eb_product_noibat' => 'Điểm nổi bật',
+	'_eb_product_noibat' => WGR_admin_lang('_eb_product_noibat')
 );
 
 $eb_arr_blog_2content_meta_box = array(
-	'_eb_blog_2content' => 'Nội dung phụ',
+	'_eb_blog_2content' => WGR_admin_lang('_eb_blog_2content')
 );
 
 // thông tin phụ của trang sản phẩm
 $eb_arr_phu_meta_box = array(
-	'_eb_product_supper_shop' => 'Liên kết sàn TMĐT',
-	'_eb_product_leech_source' => 'URL đồng bộ',
-	'_eb_product_old_url' => 'URL cũ',
-	'_eb_product_video_url' => 'URL Youtube video',
+	'_eb_product_supper_shop' => WGR_admin_lang('_eb_product_supper_shop'),
+	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source'),
+	'_eb_product_old_url' => WGR_admin_lang('_eb_product_old_url'),
+	'_eb_product_video_url' => WGR_admin_lang('_eb_product_video_url')
 );
 
 
@@ -388,14 +387,14 @@ function EchBayBlog2Content ( $post ) {
 * Form quảng cáo
 */
 $eb_ads_custom_meta_box = array(
-	'_eb_ads_for_post' => 'ID Sản phẩm/ Blog/ Page',
-	'_eb_ads_for_category' => 'Chuyên mục/ Danh mục',
-	'_eb_ads_url' => 'Đường dẫn',
-	'_eb_ads_target' => 'Mở trong tab mới',
-	'_eb_ads_name' => 'Giữ nguyên tên',
-	'_eb_ads_video_url' => 'URL Video',
-	'_eb_ads_status' => 'Khu vực hiển thị',
-	'_eb_product_avatar' => 'Ảnh đại diện',
+	'_eb_ads_for_post' => WGR_admin_lang('_eb_ads_for_post'),
+	'_eb_ads_for_category' => WGR_admin_lang('_eb_ads_for_category'),
+	'_eb_ads_url' => WGR_admin_lang('_eb_ads_url'),
+	'_eb_ads_target' => WGR_admin_lang('_eb_ads_target'),
+	'_eb_ads_name' => WGR_admin_lang('_eb_ads_name'),
+	'_eb_ads_video_url' => WGR_admin_lang('_eb_ads_video_url'),
+	'_eb_ads_status' => WGR_admin_lang('_eb_ads_status')
+//	'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar')
 );
 
 function EchBayQuangCaoOutput( $post ) {
@@ -587,29 +586,29 @@ foreach ( array( 'term_description' ) as $filter ) {
 $arr_category_custom_fields = array();
 
 //
-$arr_category_custom_fields['_eb_category_avt'] = 'Ảnh đại diện lớn (banner)';
-$arr_category_custom_fields['_eb_category_favicon'] = 'Ảnh đại diện nhỏ (favicon)';
-$arr_category_custom_fields['_eb_category_custom_css'] = 'CSS riêng';
-$arr_category_custom_fields['_eb_category_gender'] = 'Giới tính';
-$arr_category_custom_fields['_eb_category_status'] = 'Trạng thái/ Định dạng';
-$arr_category_custom_fields['_eb_category_order'] = 'Số thứ tự';
-$arr_category_custom_fields['_eb_category_content'] = 'Giới thiệu';
+$arr_category_custom_fields['_eb_category_avt'] = WGR_admin_lang('_eb_category_avt');
+$arr_category_custom_fields['_eb_category_favicon'] = WGR_admin_lang('_eb_category_favicon');
+$arr_category_custom_fields['_eb_category_custom_css'] = WGR_admin_lang('_eb_category_custom_css');
+$arr_category_custom_fields['_eb_category_gender'] = WGR_admin_lang('_eb_product_gender');
+$arr_category_custom_fields['_eb_category_status'] = WGR_admin_lang('_eb_category_status');
+$arr_category_custom_fields['_eb_category_order'] = WGR_admin_lang('_eb_category_order');
+$arr_category_custom_fields['_eb_category_content'] = WGR_admin_lang('_eb_category_content');
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
 if ( cf_on_off_echbay_seo == 1 ) {
-	$arr_category_custom_fields['_eb_category_title'] = 'Title';
-	$arr_category_custom_fields['_eb_category_keywords'] = 'Keywords';
-	$arr_category_custom_fields['_eb_category_description'] = 'Description';
-	$arr_category_custom_fields['_eb_category_google_product'] = 'Google product category';
-	$arr_category_custom_fields['_eb_category_noindex'] = 'Noindex';
+	$arr_category_custom_fields['_eb_category_title'] = WGR_admin_lang('_eb_product_title');
+	$arr_category_custom_fields['_eb_category_keywords'] = WGR_admin_lang('_eb_product_keywords');
+	$arr_category_custom_fields['_eb_category_description'] = WGR_admin_lang('_eb_product_description');
+	$arr_category_custom_fields['_eb_category_google_product'] = WGR_admin_lang('_eb_category_google_product');
+	$arr_category_custom_fields['_eb_category_noindex'] = WGR_admin_lang('_eb_product_noindex');
 }
 
 // thuộc tính này luôn tồn tại cho category
-$arr_category_custom_fields['_eb_category_hidden'] = 'Ẩn nhóm này';
-$arr_category_custom_fields['_eb_category_old_url'] = 'URL cũ (nếu có)';
-$arr_category_custom_fields['_eb_category_leech_url'] = 'URL đồng bộ';
-$arr_category_custom_fields['_eb_category_primary'] = 'Đặt làm nhóm chính';
+$arr_category_custom_fields['_eb_category_hidden'] = WGR_admin_lang('_eb_category_hidden');
+$arr_category_custom_fields['_eb_category_old_url'] = WGR_admin_lang('_eb_product_old_url');
+$arr_category_custom_fields['_eb_category_leech_url'] = WGR_admin_lang('_eb_product_leech_source');
+$arr_category_custom_fields['_eb_category_primary'] = WGR_admin_lang('_eb_category_primary');
 
 
 
