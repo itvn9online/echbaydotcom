@@ -220,7 +220,7 @@ $strAjaxLink .= '&trang=' . $trang;
 			<div class="cf">
 				<div class="lf f50">
 					<input type="checkbox" id="thread-all-checkbox" value="0" class="thread-multi-checkbox" />
-					<button type="button" class="small bold click-show-tools">Hành động <i class="fa fa-caret-down"></i></button>
+					<button type="button" class="small bold click-show-tools">Công cụ chỉnh sửa nhiều và nhanh <i class="fa fa-caret-down"></i></button>
 				</div>
 				<div align="right" class="lf f50"> Số sản phẩm trên mỗi trang
 					<select id="change_set_thread_show_in_page" style="padding:3px;">
@@ -518,14 +518,14 @@ if ( $totalThread > 0 ) {
 		
 		//
 		$arr_edit_custom_meta = array(
-			'_eb_product_status' => 1,
-			'_eb_product_gender' => 1,
-			'_eb_product_color' => 0,
-			'_eb_product_sku' => 0,
-			'_eb_product_leech_sku' => 0,
-			'_eb_product_buyer' => 0,
-			'_eb_product_quantity' => 0,
-			'_eb_product_ngayhethan' => 0
+			'_eb_product_status' => 0,
+			'_eb_product_gender' => 0,
+			'_eb_product_color' => 1,
+			'_eb_product_sku' => 1,
+			'_eb_product_leech_sku' => 1,
+			'_eb_product_buyer' => 1,
+			'_eb_product_quantity' => 1,
+			'_eb_product_ngayhethan' => 1
 		);
 		$str_edit_custom_meta = '';
 		foreach ( $arr_edit_custom_meta as $k => $v ) {
@@ -534,12 +534,12 @@ if ( $totalThread > 0 ) {
 				<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
 				<div class="lf f70">';
 			
-			// select
-			if ( $v == 1 ) {
-			}
 			// text
+			if ( $v == 1 ) {
+				$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="' . $k . ' n change-update-custom-meta" />';
+			}
+			// select
 			else {
-				$str_edit_custom_meta .= '<input type="text" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" class="n change-update-custom-meta" />';
 			}
 			
 			//
@@ -560,7 +560,7 @@ if ( $totalThread > 0 ) {
 		
 		<div>' . $view_by_group . '</div>
 		
-		<div class="show-if-quick-edit d-none2">
+		<div class="show-if-quick-edit d-none">
 			' . $str_edit_custom_meta . '
 		</div>
 	</td>

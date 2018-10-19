@@ -33,5 +33,5 @@ else {
 
 ?>
 <script>
-parent.WGR_admin_quick_edit_taxonomy( 'products', '&by_taxonomy=category' );
+parent.WGR_admin_quick_edit_products( 'products', '&by_taxonomy=category' );
 </script>
