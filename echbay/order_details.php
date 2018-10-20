@@ -133,6 +133,14 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 			<td class="i"><input type="text" name="t_diachi" id="oi_hd_diachi" value="" class="l" /></td>
 		</tr>
 		<tr>
+			<td class="t">Quận/ Huyện</td>
+			<td class="i"><input type="text" name="t_quanhuyen" id="oi_hd_quanhuyen" value="" class="n" /></td>
+		</tr>
+		<tr>
+			<td class="t">Tỉnh/ Thành phố</td>
+			<td class="i"><input type="text" name="t_tinhthanh" id="oi_hd_tinhthanh" value="" class="n" /></td>
+		</tr>
+		<tr>
 			<td valign="top" class="t">Vị trí địa lý</td>
 			<td class="i"><?php
 
@@ -351,5 +359,6 @@ var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>"
 	order_user_can = "<?php echo $order_user_can; ?>";
 
 </script> 
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'javascript/districts_vn.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_api.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_api.js' ); ?>"></script> 

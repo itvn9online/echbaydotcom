@@ -845,6 +845,15 @@ function WGR_check_token ( $check_with = '' ) {
 
 // chuyển đường dẫn file sang link web
 function WGR_path_to_lnk ( $v ) {
+	// test
+//	return $v;
+	
+	// v2
+	$v = explode( EB_DIR_CONTENT, $v );
+	$v[0] = web_link;
+	return implode( EB_DIR_CONTENT, $v );
+	
+	// v1
 	// for window
 	$a = substr( ABSPATH, 0, -1 ) . '\\';
 //	echo $a . "\n";
