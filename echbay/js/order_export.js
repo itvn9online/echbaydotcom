@@ -77,7 +77,7 @@ function WGR_order_export_run ( arr, i ) {
 	
 	//
 	if ( arr.order_products == '' || arr.order_customer == '' ) {
-		$('#headerTable').append(
+		jQuery('#headerTable').append(
 		'<tr>' +
 			'<td>' + ( i + 1 ) + '</td>' +
 			'<td>' + arr.order_id + '</td>' +
@@ -107,7 +107,21 @@ function WGR_order_export_run ( arr, i ) {
 		}
 		
 		//
-		$('#headerTable').append(
+		if ( typeof cus['hd_quanhuyen'] != 'undefined' && cus['hd_quanhuyen'] != '' ) {
+			cus['hd_quanhuyen'] = ', ' + cus['hd_quanhuyen'];
+		}
+		else {
+			cus['hd_quanhuyen'] = '';
+		}
+		if ( typeof cus['hd_tinhthanh'] != 'undefined' && cus['hd_tinhthanh'] != '' ) {
+			cus['hd_tinhthanh'] = ', ' + cus['hd_tinhthanh'];
+		}
+		else {
+			cus['hd_tinhthanh'] = '';
+		}
+		
+		//
+		jQuery('#headerTable').append(
 		'<tr>' +
 			'<td>' + ( i + 1 ) + '</td>' +
 			'<td>' + arr.order_id + '</td>' +
@@ -119,7 +133,7 @@ function WGR_order_export_run ( arr, i ) {
 			
 			'<td class="upper">' + ( cus['hd_ten'] == '' ? 'No-name' : cus['hd_ten'] ) + '</td>' +
 			'<td>' + cus['hd_dienthoai'] + '</td>' +
-			'<td>' + cus['hd_diachi'] + '</td>' +
+			'<td>' + cus['hd_diachi'] + cus['hd_quanhuyen'] + cus['hd_tinhthanh'] + '</td>' +
 			'<td>' + WGR_order_export_exist( cus, 'hd_utm_source' ) + '</td>' +
 			'<td>' + WGR_order_export_exist( cus, 'hd_utm_medium' ) + '</td>' +
 			'<td>[' + WGR_order_export_exist( cus, 'hd_utm_campaign' ) + ']</td>' +
@@ -130,16 +144,16 @@ function WGR_order_export_run ( arr, i ) {
 //	}
 	
 	//
-	$('.remove-size-color-tag strong').remove();
+	jQuery('.remove-size-color-tag strong').remove();
 	
 }
 
 
 // xác định chiều rộng cho table hiển thị cho đẹp
-$(document).ready(function() {
+jQuery(document).ready(function() {
 	(function () {
 		// tính tổng số thẻ tr
-		var c = $('#headerTable tr').length;
+		var c = jQuery('#headerTable tr').length;
 		if ( c <= 1 ) {
 			return false;
 		}
@@ -148,32 +162,32 @@ $(document).ready(function() {
 		// -> chiều cao của body -> thêm 10 đơn vị để dự phòng
 		c = c * 16 + 10;
 //		console.log( c );
-//		console.log( $('#headerTable').height() );
+//		console.log( jQuery('#headerTable').height() );
 		
 		//
 		for ( var i = 0; i < 150; i++ ) {
-			if ( $('#headerTable').height() > c ) {
-//				console.log( $('#headerTable').height() );
-				$('#headerTable').width( ( 100 + i * 1 ) + '%' );
+			if ( jQuery('#headerTable').height() > c ) {
+//				console.log( jQuery('#headerTable').height() );
+				jQuery('#headerTable').width( ( 100 + i * 1 ) + '%' );
 			}
 			else {
 				
 				// thêm lần dữ phòng nữa
-				$('#headerTable').width( ( 110 + i * 1 ) + '%' ).addClass('pd');
+				jQuery('#headerTable').width( ( 110 + i * 1 ) + '%' ).addClass('pd');
 //				console.log( i );
-//				console.log( $('#headerTable').height() );
+//				console.log( jQuery('#headerTable').height() );
 				
 				//
-				$('body').addClass('done');
+				jQuery('body').addClass('done');
 				
 				break;
 			}
 		}
 		
 		//
-		$('#headerTable tr').click(function () {
-			$('#headerTable tr').removeClass('selected');
-			$(this).addClass('selected');
+		jQuery('#headerTable tr').click(function () {
+			jQuery('#headerTable tr').removeClass('selected');
+			jQuery(this).addClass('selected');
 		});
 	})();
 });

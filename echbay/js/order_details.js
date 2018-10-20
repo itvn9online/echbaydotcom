@@ -30,7 +30,8 @@ var arr_global_js_order_details = [],
 	auto_add_slug_if_not_exist = false,
 	co_thay_doi_chua_duoc_luu = false,
 	auto_submit_order_details = false,
-	time_submit_order_details = null;
+	time_submit_order_details = null,
+	khong_submit_khi_bame_enter = false;
 
 
 function WGR_auto_submit_order_details () {
@@ -122,6 +123,10 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 }
 
 function ___eb_admin_update_order_details () {
+	//
+	if ( khong_submit_khi_bame_enter == true ) {
+		return false;
+	}
 	
 	//
 	console.log( arr_global_js_order_details );
@@ -132,6 +137,14 @@ function ___eb_admin_update_order_details () {
 	arr_global_js_order_customter['hd_ten'] = jQuery.trim( jQuery('#oi_hd_ten').val() || '' );
 	arr_global_js_order_customter['hd_dienthoai'] = jQuery.trim( jQuery('#oi_hd_dienthoai').val() || '' );
 	arr_global_js_order_customter['hd_diachi'] = jQuery.trim( jQuery('#oi_hd_diachi').val() || '' );
+	
+	// địa chỉ nâng cao
+	arr_global_js_order_customter['hd_quanhuyen'] = jQuery.trim( jQuery('#oi_hd_quanhuyen').val() || '' );
+	arr_global_js_order_customter['hd_id_quanhuyen'] = jQuery.trim( jQuery('#oi_hd_id_quanhuyen').val() || '' );
+	arr_global_js_order_customter['hd_tinhthanh'] = jQuery.trim( jQuery('#oi_hd_tinhthanh').val() || '' );
+	arr_global_js_order_customter['hd_id_tinhthanh'] = jQuery.trim( jQuery('#oi_hd_id_tinhthanh').val() || '' );
+	
+	//
 	arr_global_js_order_customter['hd_chietkhau'] = jQuery.trim( jQuery('#hd_chietkhau').val() || '' );
 	arr_global_js_order_customter['hd_phivanchuyen'] = jQuery.trim( jQuery('#hd_phivanchuyen').val() || '' );
 	arr_global_js_order_customter['hd_admin_ghichu'] = jQuery.trim( jQuery('#hd_admin_ghichu').val() || '' );
@@ -495,7 +508,15 @@ function WGR_hide_html_alert_auto_order_submit () {
 	try {
 		jQuery('#oi_hd_ten').val( cus['hd_ten'] );
 		jQuery('#oi_hd_dienthoai').val( cus['hd_dienthoai'] );
+		
+		//
 		jQuery('#oi_hd_diachi').val( cus['hd_diachi'] );
+		if ( typeof cus['hd_quanhuyen'] != 'undefined' ) jQuery('#oi_hd_quanhuyen').val( cus['hd_quanhuyen'] );
+		if ( typeof cus['hd_id_quanhuyen'] != 'undefined' ) jQuery('#oi_hd_id_quanhuyen').val( cus['hd_id_quanhuyen'] );
+		if ( typeof cus['hd_tinhthanh'] != 'undefined' ) jQuery('#oi_hd_tinhthanh').val( cus['hd_tinhthanh'] );
+		if ( typeof cus['hd_id_tinhthanh'] != 'undefined' ) jQuery('#oi_hd_id_tinhthanh').val( cus['hd_id_tinhthanh'] );
+		
+		//
 		jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
 		if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
 			jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
@@ -804,6 +825,218 @@ jQuery('#eb_cart_print').click(function () {
 jQuery('#eb_vandon_print').click(function () {
 	window.open( web_link + 'billing_print?order_id=' + order_id + '&f=print_van_don', '_blank' );
 });
+
+
+
+
+// tổng số LI đang được hiển thị
+var tong_so_li_quan_huyen = 0;
+
+// khi người dùng gõ tìm địa chỉ -> dưa ra gợi ý luôn
+jQuery('#oi_hd_quanhuyen').focus(function () {
+	khong_submit_khi_bame_enter = true;
+	
+	// chưa có danh sách tỉnh thành -> load
+	if ( dog('ui_hd_quanhuyen') == null ) {
+		// nạp danh sách quận huyện
+		(function () {
+			var str = '',
+				a = {},
+				k = '',
+				key = '';
+			for ( var x in arr_vn_distics ) {
+				a = arr_vn_distics[x].districts;
+				
+				//
+				k = g_func.non_mark_seo(arr_vn_distics[x].name);
+				k = k.replace(/[^0-9a-zA-Z]/g, '');
+				
+				//
+				for ( var x2 in a ) {
+					key = g_func.non_mark_seo(a[x2]);
+					key = key.replace(/[^0-9a-zA-Z]/g, '');
+					
+					//
+					str += '<li data-key="' + k + key + '" data-city="' + x + '" data-city-name="' + arr_vn_distics[x].name + '" data-dist="' + x2 + '" data-dist-name="' + a[x2] + '" class="d-none">' + a[x2] + ', ' + arr_vn_distics[x].name + '</li>';
+				}
+			}
+			
+			//
+			jQuery('#oi_hd_quanhuyen').after('<div id="ui_hd_quanhuyen"><ul>' + str + '</ul></div>');
+		})();
+		
+		//
+		jQuery('#ui_hd_quanhuyen li').click(function() {
+			// xóa hết orgcolor đi
+			jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+			// add cái hiện tại
+			jQuery(this).addClass('orgcolor');
+			// nạp dữ liệu
+			WGR_order_details_add_city();
+		});
+	}
+	
+	//
+	jQuery('#ui_hd_quanhuyen').show();
+}).blur(function () {
+	khong_submit_khi_bame_enter = false;
+	
+	//
+	setTimeout(function () {
+		jQuery('#ui_hd_quanhuyen').hide();
+	}, 200);
+}).off('keyup').keyup(function(e) {
+//	console.log(e.keyCode);
+	
+	// khi bấm nút lên
+	if (e.keyCode == 38) {
+		if ( tong_so_li_quan_huyen == 0 ) {
+			tong_so_li_quan_huyen = jQuery('#ui_hd_quanhuyen li.d-block').length;
+		}
+//		console.log('tong_so_li_quan_huyen: ' + tong_so_li_quan_huyen)
+		
+		// nếu có nhiều hơn 1 d-block
+		if ( tong_so_li_quan_huyen > 1 ) {
+			// nếu chưa có select nào -> add cái cuối cùng
+			if ( jQuery('#ui_hd_quanhuyen li.orgcolor').length == 0 ) {
+				jQuery('#ui_hd_quanhuyen li.d-block:last').addClass('orgcolor');
+			}
+			// nếu đã có -> kiểm tra LI trước đó
+			else {
+				tong_so_li_quan_huyen--;
+				
+				//
+				var i = 1;
+				jQuery('#ui_hd_quanhuyen li.d-block').each(function() {
+//					console.log('i: ' + i)
+					if ( i == tong_so_li_quan_huyen ) {
+						// xóa hết orgcolor đi
+						jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+						// add cái hiện tại
+						jQuery(this).addClass('orgcolor');
+						// thoát
+						return false;
+					}
+					i++;
+				});
+			}
+		}
+		// chỉ còn 1 d-block
+		else if ( tong_so_li_quan_huyen == 1 ) {
+			jQuery('#ui_hd_quanhuyen li.d-block').addClass('orgcolor');
+			
+			// nếu có nhiều hơn 1 orgcolor (hệ quả từ việc each ở trên)
+			if ( jQuery('#ui_hd_quanhuyen li.orgcolor').length != 1 ) {
+				// xóa hết đi
+				jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+				// và lấy cái cuối cùng
+				jQuery('#ui_hd_quanhuyen li.d-block:last').addClass('orgcolor');
+				// tính tổng li lại
+				tong_so_li_quan_huyen = jQuery('#ui_hd_quanhuyen li.d-block').length;
+			}
+		}
+		return false;
+	}
+	// khi bấm nút xuống
+	else if (e.keyCode == 40) {
+		// nếu có nhiều hơn 1 orgcolor
+		if ( jQuery('#ui_hd_quanhuyen li.orgcolor').length != 1 ) {
+			// xóa hết đi
+			jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+			// và lấy cái đầu tiên
+			jQuery('#ui_hd_quanhuyen li.d-block:first').addClass('orgcolor');
+		}
+		else {
+			var i = false,
+				j = false;
+			jQuery('#ui_hd_quanhuyen li.d-block').each(function() {
+				if ( i == true ) {
+					// xóa hết orgcolor đi
+					jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+					// add cái hiện tại
+					jQuery(this).addClass('orgcolor');
+					//
+					j = true;
+					// thoát
+					return false;
+				}
+				else {
+					var a = jQuery(this).attr('class') || '';
+					
+					if ( a != '' && a.split('orgcolor').length > 1 ) {
+						i = true;
+					}
+				}
+			});
+			
+			// xong việc mà i vẫn false
+			if ( j == false ) {
+				// xóa hết đi
+				jQuery('#ui_hd_quanhuyen li.orgcolor').removeClass('orgcolor');
+				// và lấy cái đầu tiên
+				jQuery('#ui_hd_quanhuyen li.d-block:first').addClass('orgcolor');
+			}
+		}
+		return false;
+	}
+	// khi bấm enter
+	else if (e.keyCode == 13) {
+		// nạp dữ liệu
+		WGR_order_details_add_city();
+		//
+		return false;
+	}
+	
+	//
+	tong_so_li_quan_huyen = 0;
+	
+	//
+	var key = jQuery(this).val() || '';
+	if (key != '') {
+		key = g_func.non_mark_seo(key);
+		key = key.replace(/[^0-9a-zA-Z]/g, '');
+	}
+//	console.log(key);
+	
+	//
+	if (key.length > 2) {
+		jQuery('#ui_hd_quanhuyen li')
+		.addClass('d-none')
+		.removeClass('orgcolor')
+		.removeClass('d-block')
+		.each(function() {
+			var a = jQuery(this).attr('data-key') || '';
+			if (a != '' && a.split(key).length > 1) {
+				jQuery(this)
+				.removeClass('d-none')
+				.addClass('d-block');
+			}
+		});
+	}
+	else {
+		jQuery('#ui_hd_quanhuyen li')
+		.addClass('d-none')
+		.removeClass('orgcolor')
+		.removeClass('d-block');
+	}
+});
+
+//
+function WGR_order_details_add_city () {
+	jQuery('#oi_hd_quanhuyen').val( jQuery('#ui_hd_quanhuyen li.orgcolor').attr('data-dist-name') || '' );
+	jQuery('#oi_hd_id_quanhuyen').val( jQuery('#ui_hd_quanhuyen li.orgcolor').attr('data-dist') || '' );
+	
+	jQuery('#oi_hd_tinhthanh').val( jQuery('#ui_hd_quanhuyen li.orgcolor').attr('data-city-name') || '' );
+	jQuery('#oi_hd_id_tinhthanh').val( jQuery('#ui_hd_quanhuyen li.orgcolor').attr('data-city') || '' );
+	
+	//
+	/*
+	setTimeout(function () {
+		document.frm_invoice_details.submit();
+		WGR_hide_html_alert_auto_order_submit();
+	}, 600);
+	*/
+}
 
 
 

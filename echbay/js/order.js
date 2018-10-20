@@ -68,6 +68,14 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 	
 	//
 	f_tr.find('.eb-to-adress').html( cus['hd_diachi'] );
+	if ( typeof cus['hd_quanhuyen'] != 'undefined' && cus['hd_quanhuyen'] != '' ) {
+		f_tr.find('.eb-to-adress').append( ', ' + cus['hd_quanhuyen'] );
+	}
+	if ( typeof cus['hd_tinhthanh'] != 'undefined' && cus['hd_tinhthanh'] != '' ) {
+		f_tr.find('.eb-to-adress').append( ', ' + cus['hd_tinhthanh'] );
+	}
+	
+	//
 	f_tr.find('.eb-to-phone').html( cus['hd_dienthoai'] );
 	
 	// xong là xóa luôn ông tr này đi

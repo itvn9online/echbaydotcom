@@ -134,11 +134,13 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 		</tr>
 		<tr>
 			<td class="t">Quận/ Huyện</td>
-			<td class="i"><input type="text" name="t_quanhuyen" id="oi_hd_quanhuyen" value="" class="n" /></td>
+			<td class="i"><input type="text" name="t_quanhuyen" id="oi_hd_quanhuyen" value="" autocomplete="off" class="m" />
+				<input type="hidden" name="t_id_quanhuyen" id="oi_hd_id_quanhuyen" value="" /></td>
 		</tr>
 		<tr>
 			<td class="t">Tỉnh/ Thành phố</td>
-			<td class="i"><input type="text" name="t_tinhthanh" id="oi_hd_tinhthanh" value="" class="n" /></td>
+			<td class="i"><input type="text" name="t_tinhthanh" id="oi_hd_tinhthanh" value="" class="m" />
+				<input type="hidden" name="t_id_tinhthanh" id="oi_hd_id_tinhthanh" value="" /></td>
 		</tr>
 		<tr>
 			<td valign="top" class="t">Vị trí địa lý</td>
