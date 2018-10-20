@@ -57,6 +57,43 @@ showRandom: false
 *
 * callBack: function sẽ được chạy sau khi tạo slider xong, thường dùng để xử lý các chức năng riêng ngoài việc tạo slider mặc định
 */
+function jEBE_timeout_slider ( jd, conf, timeo, callBack ) {
+	
+	if ( typeof conf != 'object' ) {
+		conf = {};
+	}
+	
+	//
+	if ( typeof callBack != 'function' ) {
+		callBack = null;
+	}
+	
+	//
+	if ( typeof timeo != 'number' ) {
+		timeo = 3000;
+	}
+	
+	//
+	if ( jQuery( jd + ' li' ).length > 0 ) {
+		jQuery( jd ).addClass('jEBE_slider-position').height( jQuery( jd + ' li:first' ).height() );
+		
+		//
+		setTimeout(function () {
+			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
+		}, timeo/ 3 );
+		
+		setTimeout(function () {
+			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
+		}, timeo/ 3 * 2 );
+	}
+	
+	//
+	setTimeout(function () {
+		jEBE_slider ( jQuery.trim( jd ), conf, callBack );
+	}, timeo );
+	
+}
+
 function jEBE_multi_slider ( jd, conf, callBack ) {
 	
 	if ( typeof conf != 'object' ) {
