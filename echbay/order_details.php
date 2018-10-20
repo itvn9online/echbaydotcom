@@ -352,3 +352,4 @@ var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>"
 
 </script> 
 <script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_api.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_api.js' ); ?>"></script> 

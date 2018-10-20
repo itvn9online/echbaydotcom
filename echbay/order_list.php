@@ -260,7 +260,7 @@ $('.check_hom_nay' + str_hom_nay + ':last').after('<tr><td colspan="' + $('.chec
 $('body').addClass('folded');
 
 
-WGR_view_by_time_line( '<?php echo $jsLinkPager; ?>', '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>' );
+WGR_view_by_time_line( '<?php echo admin_link . 'admin.php?page=eb-order' . $jsLinkPager; ?>', '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>' );
 
 click_set_search_order_by_type();
 
