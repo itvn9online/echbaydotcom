@@ -497,9 +497,23 @@ $structured_data_post_title = str_replace( '"', '&quot;', $__post->post_title );
 $trv_width_img = 400;
 $trv_height_img = 400;
 //$get_img_size = str_replace( web_link, ABSPATH, $trv_img );
-$get_img_size = ABSPATH . strstr( $trv_img, EB_DIR_CONTENT );
-//echo $get_img_size;
-if ( file_exists( $get_img_size ) ) {
+//$get_img_size = ABSPATH . strstr( $trv_img, EB_DIR_CONTENT );
+$get_img_size = explode( EB_DIR_CONTENT, $trv_img );
+//print_r( $get_img_size );
+
+//
+if ( count( $get_img_size ) > 1 ) {
+	$get_img_size[0] = ABSPATH;
+	$get_img_size = implode( EB_DIR_CONTENT, $get_img_size );
+}
+else {
+	$get_img_size = '';
+}
+
+//
+//echo $trv_img . '<br>';
+//echo $get_img_size . '<br>';
+if ( $get_img_size != '' && file_exists( $get_img_size ) ) {
 	$get_img_size = getimagesize( $get_img_size );
 //	print_r( $get_img_size );
 	$trv_width_img = $get_img_size[0];
