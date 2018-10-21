@@ -33,6 +33,7 @@ function WGR_order_export___products ( arr, arr2 ) {
 		'<td class="text-center">' + arr.quan + '</td>' +
 		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.color ) + '</td>' +
 		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.size ) + '</td>' +
+		'<td>' + WGR_order_export_exist( arr, 'weight' ) + '</td>' +
 		'<td class="text-center">' + tong + '</td>' +
 		'<td class="text-center">' + WGR_order_export_null( arr2['hd_chietkhau'] ) + '</td>' +
 		'<td class="text-center">' + WGR_order_export_null( arr2['hd_phivanchuyen'] ) + '</td>' +
@@ -107,20 +108,6 @@ function WGR_order_export_run ( arr, i ) {
 		}
 		
 		//
-		if ( typeof cus['hd_quanhuyen'] != 'undefined' && cus['hd_quanhuyen'] != '' ) {
-			cus['hd_quanhuyen'] = ', ' + cus['hd_quanhuyen'];
-		}
-		else {
-			cus['hd_quanhuyen'] = '';
-		}
-		if ( typeof cus['hd_tinhthanh'] != 'undefined' && cus['hd_tinhthanh'] != '' ) {
-			cus['hd_tinhthanh'] = ', ' + cus['hd_tinhthanh'];
-		}
-		else {
-			cus['hd_tinhthanh'] = '';
-		}
-		
-		//
 		jQuery('#headerTable').append(
 		'<tr>' +
 			'<td>' + ( i + 1 ) + '</td>' +
@@ -133,7 +120,9 @@ function WGR_order_export_run ( arr, i ) {
 			
 			'<td class="upper">' + ( cus['hd_ten'] == '' ? 'No-name' : cus['hd_ten'] ) + '</td>' +
 			'<td>' + cus['hd_dienthoai'] + '</td>' +
-			'<td>' + cus['hd_diachi'] + cus['hd_quanhuyen'] + cus['hd_tinhthanh'] + '</td>' +
+			'<td>' + cus['hd_diachi'] + '</td>' +
+			'<td>' + WGR_order_export_exist( cus, 'hd_quanhuyen' ) + '</td>' +
+			'<td>' + WGR_order_export_exist( cus, 'hd_tinhthanh' ) + '</td>' +
 			'<td>' + WGR_order_export_exist( cus, 'hd_utm_source' ) + '</td>' +
 			'<td>' + WGR_order_export_exist( cus, 'hd_utm_medium' ) + '</td>' +
 			'<td>[' + WGR_order_export_exist( cus, 'hd_utm_campaign' ) + ']</td>' +
@@ -180,6 +169,13 @@ jQuery(document).ready(function() {
 				//
 				jQuery('body').addClass('done');
 				
+				//
+				/*
+				setTimeout(function () {
+					jQuery('#headerTable').addClass('moz-transition');
+				}, 800);
+				*/
+				
 				break;
 			}
 		}
@@ -190,6 +186,13 @@ jQuery(document).ready(function() {
 			jQuery(this).addClass('selected');
 		});
 	})();
+});
+
+
+
+//
+jQuery('.click-change-css-table').click(function () {
+	jQuery('#headerTable').toggleClass('set-border');
 });
 
 

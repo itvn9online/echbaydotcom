@@ -99,28 +99,31 @@ body,
 a { color: #000; }
 a:hover { text-decoration: underline; }
 #headerTable { line-height: 16px; }
-/*
-#headerTable { border-left: 1px #ccc solid; }
-#headerTable td {
+#headerTable.pd tr:first-child { font-weight: bold; }
+#headerTable tr.selected,
+#headerTable tr:hover { background: #f2f2f2; }
+/* thêm border cho table */
+#headerTable.set-border { border-left: 1px #ccc solid; }
+#headerTable.set-border td {
 	border-right: 1px #ccc solid;
 	padding: 0 3px 0 6px;
 }
-#headerTable.pd { border-top: 1px #ccc solid; }
-#headerTable.pd td {
+#headerTable.set-border { border-top: 1px #ccc solid; }
+#headerTable.set-border td {
 	padding: 5px 3px 5px 6px;
 	border-bottom: 1px #ccc solid;
 }
-*/
-#headerTable.pd tr:first-child { font-weight: bold; }
-/*
-#headerTable.pd tr:first-child td,
-#headerTable td.text-center {
+#headerTable.set-border tr:first-child td,
+#headerTable.set-border td.text-center {
 	padding-left: 3px;
 	padding-right: 3px;
 }
-*/
-#headerTable tr.selected,
-#headerTable tr:hover { background: #f2f2f2; }
+#headerTable.moz-transition {
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
 </style>
 </head>
 
@@ -135,6 +138,7 @@ a:hover { text-decoration: underline; }
 		<td>SL</td>
 		<td>M.sắc</td>
 		<td>K.Thước</td>
+		<td>C.Nặng</td>
 		<!--
 		<td>Sản phẩm (S.Lượng/ Màu sắc/ Kích thước)</td>
 			--> 
@@ -153,12 +157,15 @@ a:hover { text-decoration: underline; }
 		<td>Khách hàng</td>
 		<td>Điện thoại</td>
 		<td>Địa chỉ</td>
+		<td>Quận/ Huyện</td>
+		<td>Tỉnh/ Thành phố</td>
 		<td>Nguồn</td>
 		<td>Phương tiện</td>
 		<td>Chiến dịch</td>
 	</tr>
 </table>
 <p class="small">* Bấm Ctrl + A rồi copy toàn bộ trang này cho vào file Excel hoặc Google trang tính.</p>
+<p class="bold"><span class="cur click-change-css-table">Thêm border cho table để xem cho dễ</span></p>
 <?php
 
 
@@ -202,7 +209,8 @@ foreach ( $sql as $k => $v ) {
 </html>
 <?php
 /*
-WGR_order_export_run ( <?php echo $main_content; ?>, <?php echo json_encode( $arr_hd_trangthai ); ?> );
+WGR_order_export_run ( <?php echo $main_content; ?>
+,<?php echo json_encode( $arr_hd_trangthai ); ?>);
 */
 
 
@@ -210,7 +218,3 @@ WGR_order_export_run ( <?php echo $main_content; ?>, <?php echo json_encode( $ar
 
 
 exit();
-
-
-
-
