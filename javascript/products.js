@@ -162,6 +162,12 @@ function change_update_new_stt () {
 			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', a, function () {
 				if ( j != '' ) {
 					jQuery('#' + j).focus();
+					
+					//
+					setTimeout(function () {
+//						window.scroll( 0, jQuery('#' + j).offset().top - 90 );
+						window.scroll( 0, window.scrollY || jQuery(window).scrollTop() || jQuery('#' + j).offset().top - 90 );
+					}, 600);
 				}
 			});
 		}
@@ -179,6 +185,12 @@ function change_update_new_stt () {
 			WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', '&t=change&new_value=' + a, function () {
 				if ( j != '' ) {
 					jQuery('#' + j).focus();
+					
+					//
+					setTimeout(function () {
+//						window.scroll( 0, jQuery('#' + j).offset().top - 90 );
+						window.scroll( 0, window.scrollY || jQuery(window).scrollTop() || jQuery('#' + j).offset().top - 90 );
+					}, 600);
 				}
 			});
 			
