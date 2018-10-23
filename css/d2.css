@@ -980,6 +980,8 @@ span.hd_status9 { background: #F00; }
 	bottom: 0;
 	z-index: 3;
 }
+.global-a-posi a.thread-list-ant_ten,
+.global-position-relative a.thread-list-ant_ten { position: relative; }
 .search-select-option {
 	position: relative;
 	background: #fff;
