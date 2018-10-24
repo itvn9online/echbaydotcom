@@ -20,9 +20,5 @@
 	width: 68px;
 }
 #echbaytwo-top2 .div-search:hover { background-color: #fff; }
-#echbaytwo-top2 .web-logo {
-	line-height: 68px;
-	background: left no-repeat;
-	background-size: 90% auto;
-}
+#echbaytwo-top2 .web-logo { }
 #echbaytwo-top2 .web-top-logo { padding: 10px 0; }

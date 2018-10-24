@@ -375,6 +375,12 @@ function func_download_img_to_my_host ( img, dm ) {
 	
 	// nếu ảnh chưa được download -> download về thôi
 	if ( img.split('/' + dm + '/').length == 1 ) {
+		//
+		if ( img.split('//')[0] == '' ) {
+			img = 'http:' + img;
+		}
+		
+		//
 		var download_url = web_link + 'download_img_to_site/?img=' + encodeURIComponent( img );
 		var file_name = decodeURIComponent(img).split('/');
 		file_name = file_name[ file_name.length - 1 ];
