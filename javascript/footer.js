@@ -880,7 +880,7 @@ function add_fb_messages_for_page () {
 			
 			
 			//
-			var fb_src = (function() {
+			var fb_lang = (function() {
 				var lang = jQuery('html').attr('lang') || navigator.language || navigator.userLanguage || '';
 				if (lang != '') {
 					lang = lang.split('_')[0].split('-')[0].toLowerCase();
@@ -891,7 +891,7 @@ function add_fb_messages_for_page () {
 				}
 				return 'en_US';
 			})();
-//			console.log( fb_src );
+//			console.log( fb_lang );
 			
 			//
 			(function(d, s, id) {
@@ -899,10 +899,21 @@ function add_fb_messages_for_page () {
 				if (d.getElementById(id)) return;
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/" + fb_src + "/sdk.js#xfbml=1&version=v2.9&appId=" + __global_facebook_id;
+				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.2&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 			
+			
+			/*
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/" + fb_lang + "/sdk.js#xfbml=1&version=v2.9&appId=" + __global_facebook_id;
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			*/
 			
 			
 			//
@@ -924,7 +935,7 @@ function add_fb_messages_for_page () {
 				}
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/" + fb_src + "/sdk.js";
+				js.src = "//connect.facebook.net/" + fb_lang + "/sdk.js";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 			*/
