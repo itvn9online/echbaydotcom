@@ -291,8 +291,11 @@ $__cf_row_default = array(
 	// hệ thống comment qua fb
 	'cf_show_fb_cmt_posts' => 1,
 	'cf_show_fb_cmt_post' => 1,
+	'cf_show_cmt_post' => 0,
+	
 	'cf_show_fb_cmt_blogs' => 1,
 	'cf_show_fb_cmt_blog' => 1,
+	'cf_show_cmt_blog' => 0,
 	
 	/*
 	* Cấu hình slider cho trang chi tiết sản phẩm

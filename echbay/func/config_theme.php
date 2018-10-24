@@ -26,8 +26,10 @@ $_POST['cf_list_avt_hover'] = WGR_default_config('cf_list_avt_hover');
 
 $_POST['cf_show_fb_cmt_posts'] = WGR_default_config('cf_show_fb_cmt_posts');
 $_POST['cf_show_fb_cmt_post'] = WGR_default_config('cf_show_fb_cmt_post');
+$_POST['cf_show_cmt_post'] = WGR_default_config('cf_show_cmt_post');
 $_POST['cf_show_fb_cmt_blogs'] = WGR_default_config('cf_show_fb_cmt_blogs');
 $_POST['cf_show_fb_cmt_blog'] = WGR_default_config('cf_show_fb_cmt_blog');
+$_POST['cf_show_cmt_blog'] = WGR_default_config('cf_show_cmt_blog');
 
 $_POST['cf_details_content_slider'] = WGR_default_config('cf_details_content_slider');
 
