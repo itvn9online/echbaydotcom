@@ -442,7 +442,9 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 		// khi người dùng bấm thêm vào menu
 		jQuery('.click-to-add-custom-link').click(function () {
 			var lnk = jQuery(this).attr('data-link') || '#',
-				nem = jQuery(this).attr('data-text') || 'Home';
+				nem = jQuery(this).attr('data-text') || 'Home',
+				rel = jQuery(this).attr('data-rel') || '',
+				tar = jQuery(this).attr('data-target') || '';
 			jQuery('#custom-menu-item-url').val( lnk );
 			jQuery('#custom-menu-item-name').val( nem );
 			jQuery('#submit-customlinkdiv').click();
@@ -454,6 +456,18 @@ function WGR_create_html_loc_to_admin_post_list ( arr, op ) {
 //				console.log( a );
 				WGR_done_add_class_for_custom_link_menu = false;
 				WGR_add_class_for_custom_link_menu( lnk, nem, a );
+			}
+			
+			// rel nofollow
+			if ( rel != '' ) {
+				WGR_done_add_rel_for_custom_link_menu = false;
+				WGR_add_rel_for_custom_link_menu( lnk, nem, rel );
+			}
+			
+			// nếu là mở trong tab mới
+			if ( tar != '' ) {
+				WGR_done_add_target_for_custom_link_menu = false;
+				WGR_add_target_for_custom_link_menu( lnk, nem, tar );
 			}
 		});
 		

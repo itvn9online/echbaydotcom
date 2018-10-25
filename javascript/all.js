@@ -2589,15 +2589,23 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 
 
 // thêm custom menu cho code của echbay
-var WGR_done_add_class_for_custom_link_menu = false;
+var WGR_done_add_class_for_custom_link_menu = false,
+	WGR_done_add_rel_for_custom_link_menu = false,
+	WGR_done_add_target_for_custom_link_menu = false;
+
 function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
 //	console.log( lnk );
 //	console.log( nem );
 //	console.log( a );
 	
 	//
+	if ( a == '' ) {
+		return false;
+	}
+	
+	//
 	if ( typeof i != 'number' ) {
-		i = 50;
+		i = 10;
 		
 		// ẩn tạm body đi, xong mới hiển thị lại
 		jQuery('body').css({
@@ -2666,6 +2674,124 @@ function WGR_add_class_for_custom_link_menu ( lnk, nem, a, i ) {
 		}, 600);
 	}
 	*/
+}
+
+
+function WGR_add_rel_for_custom_link_menu ( lnk, nem, a, i ) {
+//	console.log( lnk );
+//	console.log( nem );
+//	console.log( a );
+	
+	//
+	if ( a == '' ) {
+		return false;
+	}
+	
+	//
+	if ( typeof i != 'number' ) {
+		i = 10;
+		
+		// ẩn tạm body đi, xong mới hiển thị lại
+		jQuery('body').css({
+			opacity: .1
+		});
+	}
+	else if ( i < 0 ) {
+		jQuery('body').css({
+			opacity: 1
+		});
+	}
+	
+	//
+	jQuery('#menu-to-edit li').each(function() {
+		var check_lnk = jQuery('.edit-menu-item-url', this).val() || '',
+			check_nem = jQuery('.edit-menu-item-title', this).val() || '',
+			check_a = jQuery('.edit-menu-item-xfn', this).val() || '';
+		
+		// Kiểm tra xem có đúng với dữ liệu định gán không
+		if ( check_a == '' && check_lnk == lnk && check_nem == nem ) {
+			// thêm rel
+			jQuery('.edit-menu-item-xfn', this).val( a );
+			
+			// hiển thị luôn cái LI này ra
+			jQuery(this).removeClass('menu-item-edit-inactive').addClass('menu-item-edit-active');
+			
+			//
+			jQuery('body').css({
+				opacity: 1
+			});
+			
+			// xác nhận add thành công
+			WGR_done_add_rel_for_custom_link_menu = true;
+		}
+	});
+	
+	//
+	if ( WGR_done_add_rel_for_custom_link_menu == false ) {
+		setTimeout(function () {
+			WGR_add_rel_for_custom_link_menu( lnk, nem, a, i - 1 );
+		}, 600);
+	}
+}
+
+
+function WGR_add_target_for_custom_link_menu ( lnk, nem, a, i ) {
+//	console.log( lnk );
+//	console.log( nem );
+//	console.log( a );
+	
+	//
+	if ( a == '' ) {
+		return false;
+	}
+	
+	//
+	if ( typeof i != 'number' ) {
+		i = 10;
+		
+		// ẩn tạm body đi, xong mới hiển thị lại
+		jQuery('body').css({
+			opacity: .1
+		});
+	}
+	else if ( i < 0 ) {
+		jQuery('body').css({
+			opacity: 1
+		});
+	}
+	
+	//
+	jQuery('#menu-to-edit li').each(function() {
+		var check_lnk = jQuery('.edit-menu-item-url', this).val() || '',
+			check_nem = jQuery('.edit-menu-item-title', this).val() || '',
+			check_a = jQuery('.field-link-target input', this).attr('id') || '';
+//		console.log( check_a );
+		
+		// Kiểm tra xem có đúng với dữ liệu định gán không
+		if ( check_a != '' && dog(check_a).checked == false && check_lnk == lnk && check_nem == nem ) {
+			// thêm target
+//			jQuery('#' + check_a, this).val( a );
+			dog(check_a).checked = true;
+			
+			// hiển thị luôn cái LI này ra
+			jQuery(this).removeClass('menu-item-edit-inactive').addClass('menu-item-edit-active');
+			
+			//
+			jQuery('body').css({
+				opacity: 1
+			});
+			
+			// xác nhận add thành công
+			WGR_done_add_target_for_custom_link_menu = true;
+		}
+	});
+	
+	//
+	if ( WGR_done_add_target_for_custom_link_menu == false ) {
+		setTimeout(function () {
+			WGR_add_target_for_custom_link_menu( lnk, nem, a, i - 1 );
+		}, 600);
+	}
 }
 
 
