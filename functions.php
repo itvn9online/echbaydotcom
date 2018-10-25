@@ -808,7 +808,7 @@ function EBE_add_js_compiler_in_cache (
 	
 	// nếu file có rồi -> nhúng luôn file
 //	$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
-	$file_in_cache = EB_THEME_CACHE . $file_name_cache;
+	$file_in_cache = EB_THEME_CACHE . 'noclean/' . $file_name_cache;
 	// chỉ cập nhật file khi có sự thay đổi
 //	if ( file_exists( $file_in_cache ) ) {
 	// cập nhật file định kỳ
@@ -834,12 +834,14 @@ function EBE_add_js_compiler_in_cache (
 					
 					// thu gọn nội dung
 					if ( $optimize == 1 ) {
-						$new_content = WGR_remove_js_comment( WGR_remove_js_multi_comment( $file_content ) );
+						$file_content = WGR_remove_js_comment( $file_content );
+//						$file_content = WGR_remove_js_multi_comment( $file_content );
 					}
+					
 					// chỉ gộp nội dung thành 1 file
-					else {
+//					else {
 						$new_content .= $file_content . "\n";
-					}
+//					}
 					
 					//
 					/*
@@ -866,14 +868,15 @@ function EBE_add_js_compiler_in_cache (
 	//			}
 			}
 		}
+//		echo $new_content;
 		
 		//
 		_eb_create_file( $file_in_cache, create_cache_infor_by( $full_file_name ) . $new_content );
 		
 		// chưa có file phụ -> tạo luôn file phụ
-		if ( ! file_exists( EB_THEME_CACHE . $file_show ) ) {
-			if ( copy( $file_in_cache, EB_THEME_CACHE . $file_show ) ) {
-				chmod( EB_THEME_CACHE . $file_show, 0777 );
+		if ( ! file_exists( EB_THEME_CACHE . 'noclean/' . $file_show ) ) {
+			if ( copy( $file_in_cache, EB_THEME_CACHE . 'noclean/' . $file_show ) ) {
+				chmod( EB_THEME_CACHE . 'noclean/' . $file_show, 0777 );
 			}
 		}
 		
@@ -883,7 +886,7 @@ function EBE_add_js_compiler_in_cache (
 	}
 	
 	//
-	echo '<!-- ' . $file_name_cache . ' --><script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
+	echo '<!-- ' . $file_name_cache . ' --><script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/noclean/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -1509,7 +1512,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		$file_show = 'zss-' . $file_show . '-' . $current_server_minute . '.css';
 		
 		
-		$file_save = EB_THEME_CACHE . $file_cache;
+		$file_save = EB_THEME_CACHE . 'noclean/' . $file_cache;
 //		echo $file_save . "\n";
 		
 		// nếu chưa -> tạo file cache
@@ -1533,9 +1536,9 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 			_eb_create_file ( $file_save, create_cache_infor_by( $full_file_name ) . EBE_replace_link_in_cache_css ( $cache_content ) );
 			
 			// chưa có file phụ -> tạo luôn file phụ
-			if ( ! file_exists( EB_THEME_CACHE . $file_show ) ) {
-				if ( copy( $file_save, EB_THEME_CACHE . $file_show ) ) {
-					chmod( EB_THEME_CACHE . $file_show, 0777 );
+			if ( ! file_exists( EB_THEME_CACHE . 'noclean/' . $file_show ) ) {
+				if ( copy( $file_save, EB_THEME_CACHE . 'noclean/' . $file_show ) ) {
+					chmod( EB_THEME_CACHE . 'noclean/' . $file_show, 0777 );
 				}
 			}
 			
@@ -1544,7 +1547,7 @@ function _eb_add_compiler_css_v2 ( $arr, $css_inline = 1 ) {
 		}
 		
 		// -> done
-		echo '<!-- ' . $file_cache . ' --><link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
+		echo '<!-- ' . $file_cache . ' --><link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/noclean/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
 		
 		//
 		return true;

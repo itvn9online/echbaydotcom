@@ -214,6 +214,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			// lưu cache của các file css, js
 			'static',
 			'all',
+			// thư mục mà các file trong này, chỉ bị reset khi hết hạn
+			'noclean',
 			// mail khi người dùng đặt hàng thành công sẽ gửi ở trang hoàn tất
 			'booking_mail',
 			'booking_mail_cache',

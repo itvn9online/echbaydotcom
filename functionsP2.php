@@ -1531,16 +1531,20 @@ function EBE_get_file_in_folder( $dir, $file_type = '', $type = '', $get_basenam
 }
 
 function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
-//		echo $dir . '<br>'; exit();
+//	echo $dir . '<br>'; exit();
 	
 	// nếu ký tự cuối là dấu / -> bỏ đi
 	if ( substr( $dir, -1 ) == '/' ) {
 		$dir = substr( $dir, 0, -1 );
 	}
-//		echo $dir . '<br>';
+//	echo $dir . '<br>';
 	
-//		exit();
+//	exit();
 	
+	// không xóa cache trong 1 số thư mục
+	if ( basename( $dir ) == 'noclean' ) {
+		return false;
+	}
 	
 	// lấy d.sách file và thư mục trong thư mục cần xóa
 //	$arr = glob ( $dir . '/*' );
