@@ -2063,7 +2063,16 @@ function _eb_categories_list_v3 ( $select_name = 't_ant', $taxx = 'category' ) {
 
 $cache_thumbnail_id = array();
 //$cache_attachment_image_src = array();
-function _eb_get_post_img ( $id, $_size = 'full' ) {
+function _eb_get_post_img (
+	// post ID
+	$id,
+	// size cần lấy
+	$_size = 'full',
+	// chỉnh lại thumbnail theo tiêu chuẩn của wordpress
+	$fixed_thumb = false
+) {
+	
+	//
 	global $cache_thumbnail_id;
 //	global $cache_attachment_image_src;
 	
@@ -2097,6 +2106,7 @@ function _eb_get_post_img ( $id, $_size = 'full' ) {
 		global $__cf_row;
 		*/
 		
+		// thumbnail của wp
 		if ( has_post_thumbnail( $id ) ) {
 			
 			// lưu ID thumbnail vào biến để sử dụng lại
@@ -2122,8 +2132,42 @@ function _eb_get_post_img ( $id, $_size = 'full' ) {
 //			print_r( $a );
 //			$a = esc_url( $a[0] );
 			$a = $a[0];
-		} else {
+		}
+		// thumbnail lúc chuyển dữ liệu qua
+		else {
 			$a = _eb_get_post_object( $id, '_eb_product_avatar' );
+			
+			// chỉnh sửa lại thumbnail nếu người dùng đang dùng thumbnail chuẩn của wp nhưng lại set thông qua tool của WGR
+			if ( $fixed_thumb == true && $a != '' ) {
+				$img = explode( EB_DIR_CONTENT, $a );
+				
+				// tìm ảnh theo tiêu chuẩn của wp
+				if ( count( $img ) > 1 ) {
+					$img[0] = '';
+					$img = implode( EB_DIR_CONTENT, $img );
+//					echo $img . '<br>' . "\n";
+					
+					// tìm ID thumbnail
+					$sql = _eb_q( "SELECT *
+					FROM
+						`" . wp_posts . "`
+					WHERE
+						post_type = 'attachment'
+						AND guid LIKE '%{$img}'
+					ORDER BY
+						ID DESC
+					LIMIT 0, 1" );
+//					print_r( $sql );
+					
+					// nếu có -> set luôn
+					if ( ! empty( $sql ) ) {
+//						echo $sql[0]->ID . '<br>' . "\n";
+						
+						//
+						set_post_thumbnail( $id, $sql[0]->ID );
+					}
+				}
+			}
 		}
 		
 		/*

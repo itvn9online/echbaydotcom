@@ -70,7 +70,7 @@ print_r( $test_sql );
 
 
 //
-$trv_img = _eb_get_post_img( $__post->ID );
+$trv_img = _eb_get_post_img( $__post->ID, 'full', true );
 if ( $trv_img != '' ) {
 	$image_og_image = $trv_img;
 }

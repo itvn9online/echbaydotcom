@@ -89,14 +89,14 @@ $str_list_file = '';
 //
 $post_ID = isset( $_GET['post_ID'] ) ? (int)$_GET['post_ID'] : 0;
 if ( $post_ID > 0 && $trang == 1 ) {
-	$sql = $wpdb->get_results( "SELECT *
+	$sql = _eb_q( "SELECT *
 	FROM
 		`" . wp_posts . "`
 	WHERE
 		post_type = 'attachment'
 		AND post_parent = " . $post_ID . "
 	ORDER BY
-		ID DESC", OBJECT );
+		ID DESC" );
 //	print_r( $sql );
 	
 	//
@@ -109,14 +109,14 @@ if ( $post_ID > 0 && $trang == 1 ) {
 
 
 //
-$sql = $wpdb->get_results( "SELECT *
+$sql = _eb_q( "SELECT *
 	FROM
 		`" . wp_posts . "`
 	WHERE
 		post_type = 'attachment'
 	ORDER BY
 		ID DESC
-	LIMIT " . $offset . ", " . $post_per_page, OBJECT );
+	LIMIT " . $offset . ", " . $post_per_page );
 //print_r( $sql );
 
 //
