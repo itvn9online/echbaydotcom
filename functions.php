@@ -674,7 +674,10 @@ function WGR_get_html_template_lang ( $f, $file_name = '', $default_dir = '' ) {
 			//
 			$c = file_get_contents( $default_dir . $file_name . '.html' );
 			
+			$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/' . $file_name . '.css' ] = 1;
 			$arr_for_add_css[ $default_dir . 'css/' . $file_name . '.css' ] = 1;
+			$arr_for_add_css[ $default_dir . $file_name . '.css' ] = 1;
+//			print_r( $arr_for_add_css );
 		}
 	}
 	
