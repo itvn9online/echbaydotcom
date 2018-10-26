@@ -22,6 +22,7 @@ $save_to = ABSPATH . 'ebarchive/';
 // tạo thư mục để download ảnh về
 EBE_create_dir( $save_to, 1, 0777 );
 
+
 // thêm năm vào khu vực lưu trữ
 $set_year = $year_curent;
 if ( isset( $_GET['set_year'] ) ) {
@@ -32,6 +33,12 @@ if ( isset( $_GET['set_year'] ) ) {
 }
 $save_to .= $set_year . '/';
 EBE_create_dir( $save_to, 1, 0777 );
+
+
+// thêm tháng luôn
+$save_to .= $month_curent . '/';
+EBE_create_dir( $save_to, 1, 0777 );
+
 
 // file download
 $file_name = $_GET['file_name'];
