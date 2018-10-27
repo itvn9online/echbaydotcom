@@ -626,8 +626,13 @@ if ( current_module_config != 'config_theme' ) {
 //			console.log(data);
 			data = unescape( data );
 //			console.log(data);
-			data = eval( '[' + data + ']' );
-			data = data[0];
+			try {
+				data = eval( '[' + data + ']' );
+				data = data[0];
+			} catch ( e ) {
+				console.log( WGR_show_try_catch_err( e ) );
+				data = {};
+			}
 //			console.log(data);
 			
 			// nếu không có mảng dữ liệu -> vẫn là mảng cũ -> loại luôn
