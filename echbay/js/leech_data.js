@@ -356,7 +356,7 @@ function func_download_img_content_to_my_host () {
 	
 	// tạo url file download luôn
 	jQuery('#leech_data_fix_content img.download-img-to-here:first').attr({
-		'download-src': web_link + 'ebarchive/' + year_curent + '/' + file_name
+		'download-src': web_link + 'ebarchive/' + year_curent + '/' + month_curent + '/' + file_name
 	}).removeClass('download-img-to-here');
 	
 	// bắt đầu download ảnh về host
@@ -407,7 +407,7 @@ function func_download_img_to_my_host ( img, dm ) {
 		});
 		
 		//
-		return web_link + 'ebarchive/' + year_curent + '/' + file_name;
+		return web_link + 'ebarchive/' + year_curent + '/' + month_curent + '/' + file_name;
 	}
 	
 	return img;

@@ -19,6 +19,7 @@ lang_date_time_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_optio
 lang_date_format = "' . _eb_get_option('date_format') . '",
 lang_time_format = "' . _eb_get_option('time_format') . '",
 year_curent = ' . $year_curent . ',
+month_curent = ' . $month_curent . ',
 
 client_ip = "' . $client_ip . '",
 
