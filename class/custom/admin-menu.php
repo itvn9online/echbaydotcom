@@ -166,6 +166,7 @@ function echbay_admin_styles() {
 	global $wpdb;
 	global $client_ip;
 	global $year_curent;
+	global $month_curent;
 	global $web_ad_link;
 //	global $web_link;
 	
