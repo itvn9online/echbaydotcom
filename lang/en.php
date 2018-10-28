@@ -98,14 +98,14 @@ $___eb_lang[eb_key_for_site_lang . 'cart_discount_code'] = 'Discount code';
 
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Golden time';
-$___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
-$___eb_lang[eb_key_for_site_lang . 'limit_golden_time'] = 50;
-$eb_type_lang[eb_key_for_site_lang . 'limit_golden_time'] = 'number';
+//$___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
+//$___eb_lang[eb_key_for_site_lang . 'limit_golden_time'] = 50;
+//$eb_type_lang[eb_key_for_site_lang . 'limit_golden_time'] = 'number';
 
 //
 $___eb_lang[eb_key_for_site_lang . 'favorite'] = 'Favorite';
-$___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
-$eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
+//$___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
+//$eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
 
 // default status
 $eb_note_first_lang[eb_key_for_site_lang . 'ads_status1'] = 'Phân loại trạng thái Quảng cáo';

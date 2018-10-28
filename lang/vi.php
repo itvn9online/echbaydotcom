@@ -147,16 +147,22 @@ $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_fo
 $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';
 $___eb_lang[eb_key_for_site_lang . 'cart_discount_code'] = 'Mã giảm giá';
 
+
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Giờ vàng';
-$___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
-$___eb_lang[eb_key_for_site_lang . 'limit_golden_time'] = 50;
-$eb_type_lang[eb_key_for_site_lang . 'limit_golden_time'] = 'number';
+//$___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
+//$___eb_lang[eb_key_for_site_lang . 'limit_golden_time'] = 50;
+//$eb_type_lang[eb_key_for_site_lang . 'limit_golden_time'] = 'number';
 
 //
 $___eb_lang[eb_key_for_site_lang . 'favorite'] = 'Sản phẩm yêu thích';
-$___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
-$eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
+//$___eb_lang[eb_key_for_site_lang . 'limit_favorite'] = 50;
+//$eb_type_lang[eb_key_for_site_lang . 'limit_favorite'] = 'number';
+
+//
+$___eb_lang[eb_key_for_site_lang . 'limit_products_list'] = 36;
+$eb_type_lang[eb_key_for_site_lang . 'limit_products_list'] = 'number';
+
 
 // default status
 $eb_note_first_lang[eb_key_for_site_lang . 'ads_status1'] = 'Phân loại trạng thái Quảng cáo';

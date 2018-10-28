@@ -404,8 +404,14 @@ $arr_active_for_404_page = array(
 	
 	"cart" => 1,
 	"contact" => 1,
+	
 	"favorite" => 1,
 	"golden_time" => 1,
+	"products_hot" => 1,
+	"products_new" => 1,
+	"products_selling" => 1,
+	"products_sales_off" => 1,
+	
 	"hoan-tat" => 1,
 	"ebsearch" => 1,
 	"duplicate_post" => 1,
