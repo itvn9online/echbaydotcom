@@ -71,8 +71,19 @@ $jsLinkPager = $strLinkPager;
 $filterDay = isset( $_GET['d'] ) ? $_GET['d'] : '';
 
 if ( $filterDay != '' ) {
-	$strFilter .= WGR_cereate_order_filter ( $filterDay );
+	$strFilter .= WGR_create_order_filter ( $filterDay );
 	
+	//
+	if ( isset ( $_GET ['d1'] ) ) {
+		$filterDay .= '&d1=' . $_GET ['d1'];
+		
+		//
+		if ( isset ( $_GET ['d2'] ) ) {
+			$filterDay .= '&d2=' . $_GET ['d2'];
+		}
+	}
+	
+	//
 	$strLinkPager .= '&d=' . $filterDay;
 }
 //echo $strFilter . '<br>' . "\n";

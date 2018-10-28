@@ -369,7 +369,7 @@ function _time_date() {
 			a = parseInt(a, 10);
 			if (!isNaN(a)) {
 				if (a > date_time) {
-					jQuery(this).html(_date(lang_date_format, a));
+					jQuery(this).html(_date(lang_date_time_format, a));
 				} else if (a > _1_ngay_truoc) {
 					var str_truoc_sau = 'tr\u01b0\u1edbc';
 					if (a > date_time) {
@@ -392,12 +392,12 @@ function _time_date() {
 						phut = (sodu - (sodu % 60)) / 60;
 						str = gio + ((phut > 5) ? ',' + phut : '') + ' gi\u1edd ' + str_truoc_sau;
 						jQuery(this).attr({
-							title: _date(lang_date_format, a_cache)
+							title: _date(lang_date_time_format, a_cache)
 						});
 					}
 					jQuery(this).html(str);
 				} else {
-					jQuery(this).html(_date(lang_date_format, a));
+					jQuery(this).html(_date(lang_date_time_format, a));
 				}
 			}
 		}

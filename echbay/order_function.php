@@ -6,7 +6,7 @@
 
 
 
-function WGR_cereate_order_filter($o) {
+function WGR_create_order_filter($o) {
 	global $date_server;
 //	echo $date_server . '<br>' . "\n";
 	
@@ -35,8 +35,8 @@ function WGR_cereate_order_filter($o) {
 				} else {
 					$d2 = $d1;
 				}
-				$thang_trc = strtotime ( $d1 );
-				$thang_sau = strtotime ( $d2 ) + (24 * 3600);
+				$thang_trc = strtotime ( urldecode( $d1 ) );
+				$thang_sau = strtotime ( urldecode( $d2 ) ) + (24 * 3600);
 				$return_filter = "order_time > " . $thang_trc . " AND order_time < " . $thang_sau;
 			}
 			break;
@@ -75,6 +75,7 @@ function WGR_cereate_order_filter($o) {
 			$return_filter = "order_time > " . (date_time - (24 * 3600 * 7));
 //			$return_filter = " order_time > " . (date_time - (24 * 3600));
 	}
+//	echo $return_filter . ' - aaaaaaaaaaaaaaaa<br>' . "\n";
 	
 	if ($return_filter != "") {
 		return " AND " . $return_filter;

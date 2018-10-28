@@ -713,7 +713,7 @@ setTimeout(function () {
 											<li>Điện thoại: ' + custom_info.hd_dienthoai + '</li>\
 											<li>Email: ' + custom_info.hd_email + '</li>\
 											<li>Địa chỉ: ' + custom_info.hd_diachi + '</li>\
-											<li>Ngày gửi: ' + _date( lang_date_format, custom_info.hd_usertime ) + '</li>\
+											<li>Ngày gửi: ' + _date( lang_date_time_format, custom_info.hd_usertime ) + '</li>\
 											<li class="d-none">Thiết bị: ' + custom_info.hd_agent + '</li>\
 										</ul>\
 									</li>';
@@ -757,7 +757,7 @@ setTimeout(function () {
 								<td><a href="' + admin_link + 'admin.php?page=eb-order&id=' + arr_list_orther_order[i].order_id + '" target="_blank" class="bold">' + custom_info.hd_ten + '</a></td>\
 								<td>' + custom_info.hd_dienthoai + '</td>\
 								<td>' + custom_info.hd_diachi + '</td>\
-								<td>' + _date( lang_date_format, custom_info.hd_usertime ) + '</td>\
+								<td>' + _date( lang_date_time_format, custom_info.hd_usertime ) + '</td>\
 								<td class="orgcolor">' + custom_info.hd_admin_ghichu + '</li>\
 							</tr>';
 						} catch ( e ) {

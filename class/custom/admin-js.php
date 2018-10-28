@@ -15,7 +15,9 @@ cf_disable_tracking = "off",
 cf_ga_id = "' . $__cf_row['cf_ga_id'] . '",
 
 date_time = ' . date_time . ',
-lang_date_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
+lang_date_time_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
+lang_date_format = "' . _eb_get_option('date_format') . '",
+lang_time_format = "' . _eb_get_option('time_format') . '",
 year_curent = ' . $year_curent . ',
 
 client_ip = "' . $client_ip . '",

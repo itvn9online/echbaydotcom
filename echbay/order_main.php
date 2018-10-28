@@ -31,7 +31,26 @@ $str_for_order_cookie_name = 'get_order_by_time_line';
 // lấy theo cookie nếu có
 $order_by_time_line = _eb_getCucki( $str_for_order_cookie_name );
 if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
-	$_GET ['d'] = $order_by_time_line;
+//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
+	$order_by_time_line = urldecode( $order_by_time_line );
+//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
+	
+	//
+	$order_by_time_line = explode( '&d2=', $order_by_time_line );
+	
+	//
+	if ( count( $order_by_time_line ) > 1 ) {
+		$_GET ['d1'] = str_replace( 'between&d1=', '', $order_by_time_line[0] );
+		$_GET ['d2'] = $order_by_time_line[1];
+		
+		//
+		$order_by_time_line = 'between';
+		$_GET ['d'] = $order_by_time_line;
+	}
+	else {
+		$_GET ['d'] = $order_by_time_line[0];
+	}
+//	print_r( $_GET );
 }
 
 
@@ -40,7 +59,7 @@ if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
 //print_r( $arr_hd_trangthai );
 $strCountFilter = "";
 if ( $order_by_time_line != '' ) {
-	$strCountFilter .= WGR_cereate_order_filter ( $order_by_time_line );
+	$strCountFilter .= WGR_create_order_filter ( $order_by_time_line );
 }
 //echo $strCountFilter . '<br>' . "\n";
 foreach ( $arr_hd_trangthai as $k => $v ) {

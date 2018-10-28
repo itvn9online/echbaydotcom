@@ -2084,11 +2084,57 @@ function WGR_check_if_value_this_is_one ( a ) {
 }
 
 
+function WGR_get_between_12_thang ( t, time_select ) {
+	//
+	console.log( time_select );
+	
+	//
+	var g = 24 * 3600,
+		j = 1,
+		a = '',
+		str = '',
+		sl = '';
+	
+	// lấy ngày đầu tiên của tháng trước
+	for ( var i = 0; i < 366; i++ ) {
+//		console.log( _date( 'd', t ) );
+		if ( _date( 'd', t ) == '01' ) {
+			// chỉ lấy dữ liệu từ 2 tháng trước
+			if ( j > 1 ) {
+				// trừ thêm 1 ngày để lấy ngày cuối tháng của tháng trước đó
+				t -= g;
+				
+				//
+				a = _date( 'Y/m', t ) + '/01&d2=' + _date( 'Y/m/d', t );
+//				console.log( a );
+				
+				//
+				sl = '';
+				if ( 'between&d1=' + a == time_select ) {
+					sl = ' selected="selected"';
+				}
+				
+				//
+				str += '<option value="between&d1=' + a + '"' + sl + '>Tháng ' + _date( lang_date_format.replace( /d\/|\/d/, '' ), t ) + '</option>';
+			}
+			
+			//
+//			console.log( j );
+			j++;
+		}
+		t -= g;
+	}
+	
+	//
+	return str;
+}
 
 function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 	
 	//
-//	console.log('test');
+	console.log(time_lnk);
+	console.log(time_select);
+	console.log(private_cookie);
 //	return false;
 	
 	//
@@ -2117,8 +2163,8 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 			yesterday: 'H\u00f4m qua',
 			last7days: '7 ng\u00e0y qua',
 			last30days: '30 ng\u00e0y qua',
-			thismonth: 'Th\u00e1ng n\u00e0y',
-			lastmonth: 'Th\u00e1ng tr\u01b0\u1edbc',
+			thismonth: 'Th\u00e1ng n\u00e0y (' + _date( lang_date_format.replace( /d\/|\/d/, '' ), date_time ) + ')',
+			lastmonth: 'Th\u00e1ng tr\u01b0\u1edbc (' + _date( lang_date_format.replace( /d\/|\/d/, '' ), date_time - 24 * 3600 * 30 ) + ')',
 			custom_time: 'Tùy chỉnh'
 		},
 		str = '',
@@ -2169,6 +2215,11 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 		//
 //		str += '<li><a href="' + time_lnk + x + '">' + arr_quick_connect[x] + '</a></li>';
 		str += '<option value="' + x + '"' + sl + '>' + arr_quick_connect[x] + '</option>';
+		
+		// thêm tùy chỉnh theo 12 thàng gần đây
+		if ( x == 'lastmonth' ) {
+			str += WGR_get_between_12_thang( date_time, time_select );
+		}
 	}
 	
 	//
@@ -2177,7 +2228,7 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 	//
 	jQuery('#oi_quick_connect select').off('change').change(function () {
 		var a = jQuery(this).val() || '';
-//		console.log(a);
+		console.log(a);
 		
 		// nếu là custom time -> hiển thị khung chọn thời gian
 		if ( a == 'custom_time' ) {
@@ -2190,7 +2241,7 @@ function WGR_view_by_time_line ( time_lnk, time_select, private_cookie ) {
 			}
 			// lưu cookie cho phiên này
 			else {
-				g_func.setc(private_cookie, a, 0, 7 );
+				g_func.setc(private_cookie, encodeURIComponent( a ), 0, 7 );
 			}
 			
 			// chuyển đến link cần đến
