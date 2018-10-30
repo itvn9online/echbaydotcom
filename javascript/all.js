@@ -2086,7 +2086,10 @@ function WGR_check_if_value_this_is_one ( a ) {
 
 function WGR_get_between_12_thang ( t, time_select ) {
 	//
-	console.log( time_select );
+	if (typeof time_select == 'undefined') {
+		time_select = '';
+	}
+//	console.log( time_select );
 	
 	//
 	var g = 24 * 3600,

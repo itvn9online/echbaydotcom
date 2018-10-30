@@ -242,8 +242,12 @@ function WGR_zero_price_quick_cart ( quan, price ) {
 		jQuery('#oi_details_zero_price').show();
 		return false;
 	}
-	if ( typeof quan != 'number' || quan == '' ) {
+//	if ( typeof quan != 'number' || quan == '' ) {
+	if ( typeof quan == 'undefined' || quan == '' ) {
 		quan = 1;
+	}
+	else {
+		quan = quan * 1;
 	}
 	
 	//

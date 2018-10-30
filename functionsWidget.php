@@ -850,7 +850,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //		print_r( $sql );
 		
 		// lấy và in ra nội dung tìm được
-		echo '<div class="img-max-width">';
+		echo '<div class="img-max-width each-to-fix-ptags">';
 		
 		// in thẳng
 		if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
