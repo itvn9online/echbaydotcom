@@ -1958,6 +1958,16 @@ li.footer-social-it { background-color: #ec4938; }
 	z-index: 2;
 	display: none;
 }
+.thread-list-status1,
+.thread-list-status2 {
+	right: 0;
+	top: 15px;
+	padding: 0 15px;
+	line-height: 25px;
+	color: #fff;
+}
+.thread-list-status1 { background: rgba(255, 0, 0, .8); }
+.thread-list-status2 { background-color: #090; }
 .thread-list-status6 {
 	background: url(../images-global/golden_time.png) center no-repeat;
 	background-size: 100% auto;
