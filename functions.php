@@ -1715,11 +1715,13 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 		}
 		$menu['menu_class'] .= ' eb-set-menu-selected ' . $slug;
 		
+		//
+//		print_r($menu_cache_locations);
+		
 		// lấy tên menu nếu có yêu cầu
 		$menu_name = '';
 		if ( $tag_menu_name != '' ) {
 //			$menu_cache_locations = get_nav_menu_locations();
-//			print_r($menu_cache_locations);
 			
 			if ( isset($menu_cache_locations[ $slug ]) ) {
 				$menu_obj = wp_get_nav_menu_object( $menu_cache_locations[ $slug ] );
@@ -1816,7 +1818,7 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 	}
 	
 	// trả về menu và URL tương đối
-	return '<!-- menu slug: ' . $slug . ' -->' . $menu_name . str_replace( web_link, '', _eb_supper_del_line( $a ) );
+	return '<!-- menu slug: ' . $slug . ' --><div data-id="' . $menu_cache_locations[ $slug ] . '" class="each-to-edit-menu"></div>' . $menu_name . str_replace( web_link, '', _eb_supper_del_line( $a ) );
 }
 
 // load menu theo số thứ tự tăng dần

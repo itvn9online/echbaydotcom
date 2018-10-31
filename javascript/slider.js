@@ -68,28 +68,80 @@ function jEBE_timeout_slider ( jd, conf, timeo, callBack ) {
 		callBack = null;
 	}
 	
-	//
+	// hẹn giờ mặc định để tạo slider
 	if ( typeof timeo != 'number' ) {
 		timeo = 3000;
 	}
 	
-	//
-	if ( jQuery( jd + ' li' ).length > 0 ) {
-		jQuery( jd ).addClass('jEBE_slider-position').height( jQuery( jd + ' li:first' ).height() );
-		
-		//
-		setTimeout(function () {
-			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
-		}, timeo/ 3 );
-		
-		setTimeout(function () {
-			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
-		}, timeo/ 3 * 2 );
+	
+	// chuẩn hóa đối tượng
+	jd = jQuery.trim( jd );
+	
+	// nếu đầu vào không chỉ rõ là ID hay class -> mặc định là class
+	var first_chart = jd.substr( 0, 1 );
+	if ( first_chart == '.' || first_chart == '#' ) { }
+	else {
+		jd = '.' + jd;
 	}
 	
-	//
+	// nếu là slider của Echbay Blog widget -> kiểm tra class đầu vào chuẩn chưa
+	if ( jd.split('.widget-run-slider').length == 1 && jQuery( jd + ' li' ).length > 0 ) {
+		// thiếu thì bổ sung thêm
+		jd += ' .widget-run-slider';
+	}
+	
+	
+	// căn chỉnh chiều cao cho slider theo LI đã
+	if ( jQuery( jd + ' li' ).length > 0 ) {
+		if ( typeof _global_js_eb != 'undefined' ) {
+			_global_js_eb.auto_margin();
+			
+			//
+//			console.log( jQuery( jd + ' li:first' ).height() );
+//			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() ).addClass('jEBE_slider-position');
+			jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
+		}
+		
+		// chỉ hiển thị những LI đầu tiên
+		if ( typeof conf['visible'] == 'undefined' ) {
+			conf['visible'] = 1;
+		}
+		if ( jQuery( jd + ' li' ).length > conf['visible'] ) {
+			jQuery( jd + ' li' ).css({
+				opacity: .01
+			});
+			
+			jQuery( jd + ' li' ).slice( 0, conf['visible'] ).each(function() {
+				jQuery( this ).css({
+					opacity: 1
+				});
+			});
+		}
+		
+		// chỉnh lại chiều cao cho LI
+		if ( timeo > 1000 ) {
+			setTimeout(function () {
+				jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
+//			}, timeo/ 3 * 2 );
+			}, 1000 );
+		}
+		
+		//
+		if ( timeo > 2000 ) {
+			setTimeout(function () {
+				jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
+//			}, timeo/ 3 * 2 );
+			}, 2000 );
+		}
+	}
+	
+	// rồi hẹn giờ tạo slider
 	setTimeout(function () {
-		jEBE_slider ( jQuery.trim( jd ), conf, callBack );
+		jQuery( jd + ' li' ).css({
+			opacity: 1
+		});
+		
+		jEBE_slider ( jd, conf, callBack );
 	}, timeo );
 	
 }
