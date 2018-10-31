@@ -60,10 +60,13 @@
 .style-for-mobile .thread-list100 li,
 */
 /* chỉnh li đầu tiên của một số trường hợp bị lẻ số cột */
+/* thử nghiệm dùng class fullsize-li-first để gán cho dữ liệu lẻ
 .style-for-mobile .echbay-blog20 li:first-child,
 .style-for-mobile .thread-list20 li:first-child,
 .style-for-mobile .echbay-blog33 li:first-child,
-.style-for-mobile .thread-list33 li:first-child { width: 100%; }
+.style-for-mobile .thread-list33 li:first-child,
+*/
+.style-for-mobile .fullsize-li-first li:first-child { width: 100%; }
 .style-for-mobile .oneline-in-mobile .echbay-blog li,
 .style-for-mobile .oneline-in-mobile .thread-list li { width: 100% !important; }
 .style-for-mobile .echbay-blog-number1 .echbay-blog li,

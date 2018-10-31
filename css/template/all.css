@@ -27,6 +27,8 @@
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu li { }
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu a { }
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu .sub-menu { }
+.style-for-mobile #aabbcc .top1-menu li { margin-top: 20px; }
+#aabbcc .top1-menu .sub-menu li { margin-top: 0; }
 /* ================================== address ================================== */
 #aabbcc .footer-address { }
 #aabbcc .footer-address-company { }
@@ -44,6 +46,7 @@
 /* ================================== social ================================== */
 #aabbcc .footer-social { }
 #aabbcc .footer-social li { }
+#aabbcc .footer-social li:last-child { }
 #aabbcc .footer-social a { }
 #aabbcc .footer-social span { }
 #aabbcc .footer-social i { }

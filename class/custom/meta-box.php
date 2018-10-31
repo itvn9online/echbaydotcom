@@ -393,8 +393,8 @@ $eb_ads_custom_meta_box = array(
 	'_eb_ads_target' => WGR_admin_lang('_eb_ads_target'),
 	'_eb_ads_name' => WGR_admin_lang('_eb_ads_name'),
 	'_eb_ads_video_url' => WGR_admin_lang('_eb_ads_video_url'),
-	'_eb_ads_status' => WGR_admin_lang('_eb_ads_status')
-//	'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar')
+	'_eb_ads_status' => WGR_admin_lang('_eb_ads_status'),
+	'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar')
 );
 
 function EchBayQuangCaoOutput( $post ) {

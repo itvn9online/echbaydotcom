@@ -52,6 +52,14 @@ if ( global_window_width > 768 ) {
 		});
 	});
 }
+// tạo hiệu ứng chẵn lẻ cho nội dung sản phẩm
+else {
+	jQuery('.thread-list, .echbay-blog').each(function() {
+		if ( jQuery('li', this).length % 2 != 0 ) {
+			jQuery(this).addClass('fullsize-li-first');
+		}
+	});
+}
 
 
 
