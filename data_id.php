@@ -34,6 +34,7 @@ $add_data_id = array (
 		
 //		'service_name' => '\'' . $service_name . '\'',
 //		'co_quick_register' => '\'c_quick_register\'',
+		'isQuanly' => $mtv_id > 0 && current_user_can('manage_options') ? 1 : 0,
 		'isLogin' => $mtv_id,
 		'uEmail' => '\'' . $mtv_email . '\'',
 		'eb_wp_post_type' => '\'' . $eb_wp_post_type . '\'',

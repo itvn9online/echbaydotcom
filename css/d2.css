@@ -2506,3 +2506,30 @@ iframe[name="google_conversion_frame"] {
 	border-radius: 3px;
 	text-transform: none;
 }
+/* link chỉnh sửa menu */
+.each-to-edit-menu {
+	position: relative !important;
+	z-index: 9999;
+}
+.each-to-edit-menu a {
+	position: absolute !important;
+	background: rgba(255,255,255,.6) !important;
+	top: 0 !important;
+	right: 0 !important;
+}
+.each-to-edit-menu i {
+	background: inherit !important;
+	color: #000 !important;
+}
+.each-to-edit-menu a,
+.each-to-edit-menu i {
+	font-size: 10pt !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	display: inline-block !important;
+	width: 20px !important;
+	height: 20px !important;
+	line-height: 20px !important;
+	text-align: center !important;
+	border-radius: 3px !important;
+}

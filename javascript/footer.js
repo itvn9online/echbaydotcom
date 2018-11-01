@@ -1039,6 +1039,22 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 
+// tạo link để admin chỉnh sửa menu khi cần
+(function () {
+	if ( isQuanly == 1 ) {
+		jQuery('.each-to-edit-menu').each(function() {
+			var a = jQuery(this).attr('data-id') || 0;
+			
+			if ( a * 1 > 0 ) {
+				jQuery(this).html( '<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank"><i class="fa fa-edit"></i></a>' );
+			}
+		});
+	}
+})();
+
+
+
+
 //
 //jQuery('.fa').addClass('fas').removeClass('fa');
 
