@@ -1717,6 +1717,9 @@ function _eb_echbay_menu( $slug, $menu = array(), $in_cache = 1, $tag_menu_name 
 		
 		//
 //		print_r($menu_cache_locations);
+		if ( ! isset( $menu_cache_locations[ $slug ] ) ) {
+			$menu_cache_locations[ $slug ] = 0;
+		}
 		
 		// lấy tên menu nếu có yêu cầu
 		$menu_name = '';
