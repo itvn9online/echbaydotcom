@@ -13,7 +13,7 @@ function WGR_admin_quick_edit_select_menu () {
 	});
 	
 	//
-	jQuery('.set-url-taxonomy-category').each(function(index, element) {
+	jQuery('.set-url-taxonomy-category').each(function() {
 		var a = jQuery(this).attr('data-type') || 'post';
 		
 		jQuery(this).attr({
@@ -143,7 +143,7 @@ function change_update_new_stt () {
 	
 	//
 //	jQuery('.change-update-new-stt').off('change').change(function () {
-	jQuery('.change-update-new-stt').keydown(function(e) {
+	jQuery('.change-update-new-stt').off('keydown').keydown(function(e) {
 //		console.log(e.keyCode);
 		if ( e.keyCode == 13 ) {
 			var a = jQuery(this).val() || 0,
@@ -176,7 +176,7 @@ function change_update_new_stt () {
 	
 	
 	//
-	jQuery('.change-update-custom-meta').keydown(function(e) {
+	jQuery('input.change-update-custom-meta').off('keydown').keydown(function(e) {
 //		console.log(e.keyCode);
 		if ( e.keyCode == 13 ) {
 			var a = jQuery(this).val() || '',
@@ -195,6 +195,27 @@ function change_update_new_stt () {
 			});
 			
 			return false;
+		}
+	});
+	
+	//
+	jQuery('select.change-update-custom-meta').off('change').change(function() {
+		var a = jQuery(this).val() || '',
+			j = jQuery(this).attr('id') || '';
+		
+		WGR_admin_quick_edit_products( 'products', jQuery(this).attr('data-ajax') || '', '&t=change&new_value=' + a, function () {
+			if ( j != '' ) {
+				setTimeout(function () {
+//					window.scroll( 0, jQuery('#' + j).offset().top - 90 );
+					window.scroll( 0, window.scrollY || jQuery(window).scrollTop() || jQuery('#' + j).offset().top - 90 );
+				}, 600);
+			}
+		});
+	}).each(function() {
+		var a = jQuery(this).attr('data-value') || 0;
+		
+		if ( a * 1 > 0 ) {
+			jQuery('option[value="' + a + '"]', this).prop('selected', true);
 		}
 	});
 	

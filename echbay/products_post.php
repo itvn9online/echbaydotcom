@@ -453,9 +453,12 @@ if ( $totalThread > 0 ) {
 			}
 			
 			//
+			global $arr_eb_product_status;
+			global $arr_eb_product_gender;
+			
 			$arr_edit_custom_meta = array(
-//				'_eb_product_status' => '',
-//				'_eb_product_gender' => '',
+				'_eb_product_status' => 'status',
+				'_eb_product_gender' => 'gender',
 				'_eb_product_color' => 'text',
 				'_eb_product_sku' => 'text',
 				'_eb_product_leech_sku' => 'text',
@@ -463,17 +466,40 @@ if ( $totalThread > 0 ) {
 				'_eb_product_quantity' => 'number'
 //				'_eb_product_ngayhethan' => 'text'
 			);
+			
 			foreach ( $arr_edit_custom_meta as $k => $v ) {
+				//
+				$data_attr = 'data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" id="' . $trv_id . $k . '" class="' . $k . ' n change-update-custom-meta"';
+				
+				//
 				$str_edit_custom_meta .= '
 				<div class="cf">
 					<div class="lf f30">' . WGR_admin_lang( $k ) . '</div>
 					<div class="lf f70">';
 				
-				// input
-				if ( $v != '' ) {
-					$str_edit_custom_meta .= '<input type="' . $v . '" value="' . _eb_get_post_object( $trv_id, $k ) . '" data-ajax="' . $strLinkAjaxl . '&custom_meta=' . $k . '" id="' . $trv_id . $k . '" class="' . $k . ' n change-update-custom-meta" />';
-				}
 				// select
+				if ( $v == 'status' ) {
+					$str_edit_custom_meta .= '<select data-value="' . _eb_get_post_object( $trv_id, $k ) . '" ' . $data_attr . '>';
+					
+					foreach ( $arr_eb_product_status as $k2 => $v2 ) {
+						$str_edit_custom_meta .= '<option value="' . $k2 . '">' . $v2 . '</option>';
+					}
+					
+					$str_edit_custom_meta .= '</select>';
+				}
+				else if ( $v == 'gender' ) {
+					$str_edit_custom_meta .= '<select data-value="' . _eb_get_post_object( $trv_id, $k ) . '" ' . $data_attr . '>';
+					
+					foreach ( $arr_eb_product_gender as $k2 => $v2 ) {
+						$str_edit_custom_meta .= '<option value="' . $k2 . '">' . $v2 . '</option>';
+					}
+					
+					$str_edit_custom_meta .= '</select>';
+				}
+				// input
+				else if ( $v != '' ) {
+					$str_edit_custom_meta .= '<input type="' . $v . '" value="' . _eb_get_post_object( $trv_id, $k ) . '" ' . $data_attr . ' />';
+				}
 				else {
 				}
 				
