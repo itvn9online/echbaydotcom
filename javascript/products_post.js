@@ -85,6 +85,7 @@ jQuery('.click-quick-edit-price').off('click').click(function  () {
 	f.t_product_id.value = id;
 	f.t_old_price.value = g_func.money_format( old_price );
 	f.t_new_price.value = g_func.money_format( new_price );
+	f.data_ajax.value = $(this).attr('data-ajax') || '';
 	
 	//
 	jQuery('#frm_quick_edit_price').show();
@@ -178,7 +179,8 @@ jQuery('#quick_edit_old_price').off('change').change(function () {
 function WGR_check_quick_edit_price () {
 	var f = document.frm_quick_edit_price;
 	var a = g_func.only_number( f.t_old_price.value ),
-		b = g_func.only_number( f.t_new_price.value );
+		b = g_func.only_number( f.t_new_price.value ),
+		aj = f.data_ajax.value;
 	
 	//
 //	if ( a <= b ) {
@@ -188,7 +190,8 @@ function WGR_check_quick_edit_price () {
 	
 	//
 	var trang = jQuery('.admin-part-page strong').html() || 1,
-		uri = '&post_id=' + f.t_product_id.value + '&by_post_type=post&trang=' + trang + '&t=update_price&old_price=' + a + '&new_price=' + b;
+//		uri = '&post_id=' + f.t_product_id.value + '&by_post_type=post&trang=' + trang + '&t=update_price&old_price=' + a + '&new_price=' + b;
+		uri = aj + '&t=update_price&old_price=' + a + '&new_price=' + b;
 //	console.log( uri );
 	
 	//

@@ -331,6 +331,7 @@ $strAjaxLink .= '&trang=' . $trang;
 		<div class="text-right"><i class="fa fa-close cur" onClick="$('#frm_quick_edit_price').fadeOut();"></i></div>
 		<form name="frm_quick_edit_price" method="get" action="javascript:;" onSubmit="return WGR_check_quick_edit_price();">
 			<input type="hidden" name="t_product_id" value="0">
+			<input type="hidden" name="data_ajax" value="">
 			<div class="cf">
 				<div class="lf f30">Giá cũ</div>
 				<div class="lf f70">
@@ -584,7 +585,7 @@ if ( $totalThread > 0 ) {
 	<td>
 		<div><a title="' . $trv_tieude . '" href="' . admin_link . 'post.php?post=' . $trv_id . '&action=edit" target="_blank"><strong>' . $trv_tieude . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></a></div>
 		
-		<div class="quick-show-if-post">Mã sản phẩm: <strong class="upper">' . _eb_get_post_object( $trv_id, '_eb_product_sku' ) . '</strong> | <span data-id="' . $trv_id . '" data-old-price="' . $trv_giaban . '"  data-new-price="' . $trv_giamoi . '" class="click-quick-edit-price cur">Giá: <span class="graycolor ebe-currency ebe-currency-format">' . $trv_giaban . '</span>/ <strong class="ebe-currency ebe-currency-format">' . $trv_giamoi . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></span></div>
+		<div class="quick-show-if-post">Mã sản phẩm: <strong class="upper">' . _eb_get_post_object( $trv_id, '_eb_product_sku' ) . '</strong> | <span data-id="' . $trv_id . '" data-old-price="' . $trv_giaban . '"  data-new-price="' . $trv_giamoi . '" data-ajax="' . $strLinkAjaxl . '" class="click-quick-edit-price cur">Giá: <span class="graycolor ebe-currency ebe-currency-format">' . $trv_giaban . '</span>/ <strong class="ebe-currency ebe-currency-format">' . $trv_giamoi . '</strong> <i title="Sửa" class="fa fa-edit greencolor"></i></span></div>
 		
 		<div>' . $view_by_group . '</div>
 		
