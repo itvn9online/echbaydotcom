@@ -30,5 +30,5 @@ $eb_all_themes_support["thegioidoda"]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support["thegioidoda"]["threaddetails"][] = "thegioidoda-threaddetails.html";
 //
-$eb_all_themes_support["thegioidoda"]["threadnode"][] = "thegioidoda-threadnode.html";
-//$eb_all_themes_support["thegioidoda"]["threadnode"][] = "parina-threadnode.html";
+//$eb_all_themes_support["thegioidoda"]["threadnode"][] = "thegioidoda-threadnode.html";
+$eb_all_themes_support["thegioidoda"]["threadnode"][] = "parina-threadnode.html";

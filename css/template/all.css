@@ -13,7 +13,11 @@
 	min-width: 220px;
 	z-index: 9;
 }
-#aabbcc .top1-menu li:hover .sub-menu { display: block; }
+#aabbcc .top1-menu li:hover .sub-menu {
+	display: block;
+	display: -webkit-flex;
+	display: flex;
+}
 .style-for-mobile #aabbcc .top1-menu li,
 #aabbcc .top1-menu .sub-menu li {
 	float: none;
