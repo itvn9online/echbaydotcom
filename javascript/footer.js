@@ -635,6 +635,7 @@ ___eb_set_url_for_search_advanced_button();
 	});
 	
 	
+	/*
 	jQuery('.ebe-currency-format').each(function() {
 		var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
 		
@@ -642,6 +643,8 @@ ___eb_set_url_for_search_advanced_button();
 			jQuery(this).html( g_func.money_format( a ) );
 		}
 	});
+	*/
+	_global_js_eb.ebe_currency_format();
 })();
 
 

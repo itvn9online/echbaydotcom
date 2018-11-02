@@ -955,6 +955,7 @@ jQuery('#menu-posts-blog ul.wp-submenu li.wp-first-item').after('<li><a href="ad
 
 
 //
+/*
 jQuery('.ebe-currency-format').each(function() {
 	var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
 	
@@ -962,6 +963,7 @@ jQuery('.ebe-currency-format').each(function() {
 		jQuery(this).html( g_func.money_format( a ) );
 	}
 });
-
+*/
+_global_js_eb.ebe_currency_format();
 
 

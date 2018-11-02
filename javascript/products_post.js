@@ -315,6 +315,7 @@ jQuery('.click-set-actions-for').off('click').click(function () {
 
 
 _global_js_eb.select_date('.thread-list-ngayhethan');
+_global_js_eb.ebe_currency_format();
 
 
 

@@ -3088,6 +3088,17 @@ var _global_js_eb = {
 			s = a[1].split('&')[0].split('#')[0];
 		}
 		return s;
+	},
+	
+	
+	ebe_currency_format : function () {
+		jQuery('.ebe-currency-format').each(function() {
+			var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
+			
+			if ( a != '' && a != '0' ) {
+				jQuery(this).html( g_func.money_format( a ) );
+			}
+		}).removeClass('ebe-currency-format');
 	}
 	
 };
