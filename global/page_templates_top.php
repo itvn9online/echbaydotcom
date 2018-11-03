@@ -27,7 +27,7 @@ if ( $_eb_product_css != '' ) {
 	$css_m_css[] = $_eb_product_css;
 }
 //echo $class_css_of_post;
-
+//echo 'aaaaaaaaaa';
 
 
 

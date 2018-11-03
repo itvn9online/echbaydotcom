@@ -1679,6 +1679,7 @@ function WGR_create_page( $page_url, $page_name = '', $other_option = array() ) 
 			'post_name' => $page_url,
 		);
 		$pageid = WGR_insert_post ($page);
+//		echo $pageid; exit();
 		
 		//
 		if ( ! is_wp_error($pageid) ) {
@@ -1687,7 +1688,12 @@ function WGR_create_page( $page_url, $page_name = '', $other_option = array() ) 
 				update_post_meta( $pageid, '_wp_page_template', $other_option['page_template'] );
 			}
 			
-			// sau đó trả về page vừa được insert
+			// nạp lại trang
+			if ( isset( $other_option['reload'] ) && $other_option['page_template'] == 1 ) {
+				return wp_redirect( _eb_p_link( $pageid ) );
+			}
+			
+			// hoặc trả về page vừa được insert
 			return WGR_create_page( $page_url, $page_name );
 		}
 		//there was an error in the post insertion, 

@@ -209,7 +209,9 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		// Chuyển header sang 200
 		EBE_set_header();
 		
-		echo 'aaaa';
+		//
+//		echo 'aaaa';
+		
 		// cấu hình riêng cho 1 số file
 		if ( $act == 'favorite'
 		|| $act == 'golden_time'

@@ -5,8 +5,15 @@
 include EB_THEME_PLUGIN_INDEX . 'global/page_static.php';
 
 
+//
+if ( $act == '' ) {
+	$act = $__post->post_name;
+}
+//echo $act;
+
+
 // giờ vàng thì vẫn cho index bình thường
-$__cf_row ["cf_blog_public"] = 1;
+//$__cf_row ["cf_blog_public"] = 1;
 
 
 //
@@ -29,12 +36,12 @@ $dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
 $schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, EBE_get_lang( $act ), 0, 'nofollow' );
 
 //
-echo 'aaaaa';
+//echo 'aaaaa';
 
 //
 if ( $products_list != '' ) {
 	//
-	echo $products_list;
+//	echo $products_list;
 	
 	// Lấy theo mẫu của widget #home_hot
 //	$main_content = EBE_html_template( EBE_get_page_template( 'home_hot' ), array(

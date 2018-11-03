@@ -209,6 +209,14 @@ else if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'templ
 else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
 }
+else if ( $act == 'favorite'
+	|| $act == 'golden_time'
+	|| $act == 'products_hot'
+	|| $act == 'products_new'
+	|| $act == 'products_selling'
+	|| $act == 'products_sales_off' )
+{
+}
 // nếu không -> hiển thị trang 404
 else {
 	echo '<!-- ' . $inc_file . ' -->' . "\n";
