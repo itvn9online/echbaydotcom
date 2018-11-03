@@ -1812,8 +1812,9 @@ input[type="number"].ss { width: 50px; }
 	left: -100%;
 	bottom: -18px;
 	text-align: center;
-	background: rgba(255,255,255,.8);
+	background: rgba(255,255,255,.6);
 	border-radius: 2px;
+	z-index: 1;
 }
 .product-color li.selected { border-color: #f00 !important; }
 .product-color li.selected:before,
