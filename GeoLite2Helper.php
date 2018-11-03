@@ -13,6 +13,8 @@ https://drive.google.com/file/d/0B7AGuhjjjSK5b0N2T05RZ2hsVGc/view?usp=sharing
 Download database:
 https://dev.maxmind.com/geoip/geoip2/geolite2/
 
+=============> download and save to dir lib
+
 Run update via:
 EB/vpseb/update_geolite2
 */
