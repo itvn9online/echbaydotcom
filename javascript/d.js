@@ -3611,7 +3611,7 @@ setTimeout(function () {
 		//
 		var product_price = jQuery(this).attr('data-gia') || jQuery(this).attr('data-price') || '',
 			product_object = {},
-			tr = jQuery(this).attr('data-open-iframe') || '';
+			tr = jQuery(this).attr('data-open-iframe') || 0;
 		
 		//
 		if ( product_price == '' ) {
@@ -3634,7 +3634,8 @@ setTimeout(function () {
 		}
 		
 		//
-		if ( tr == 1 || tr == '1' ) {
+//		if ( tr == 1 || tr == '1' ) {
+		if ( tr * 1 == 1 ) {
 			product_object.open_iframe = 1;
 		}
 		

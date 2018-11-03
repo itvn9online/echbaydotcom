@@ -1639,7 +1639,7 @@ function _eb_create_account_auto ( $arr = array() ) {
 /*
 * Tự động tạo trang nếu chưa có
 */
-function WGR_create_page( $page_url, $page_name = '' ) {
+function WGR_create_page( $page_url, $page_name = '', $other_option = array() ) {
 	global $wpdb;
 	
 	//
@@ -1681,7 +1681,12 @@ function WGR_create_page( $page_url, $page_name = '' ) {
 		$pageid = WGR_insert_post ($page);
 		
 		//
-		if( ! is_wp_error($pageid) ){
+		if ( ! is_wp_error($pageid) ) {
+			// thêm page template luôn
+			if ( isset( $other_option['page_template'] ) && $other_option['page_template'] != '' ) {
+				update_post_meta( $pageid, '_wp_page_template', $other_option['page_template'] );
+			}
+			
 			// sau đó trả về page vừa được insert
 			return WGR_create_page( $page_url, $page_name );
 		}

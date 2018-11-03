@@ -7,7 +7,7 @@ $arr_get_by_status = array(
 	'products_new' => 2,
 	'products_selling' => 3,
 	'products_sales_off' => 4,
-//	'products_hot' => 5,
+//	'all' => 5,
 	'golden_time' => 6
 );
 

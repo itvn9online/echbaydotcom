@@ -2,7 +2,7 @@
 
 
 // tự động tạo page nếu chưa có
-WGR_create_page( $act );
+WGR_create_page( $act, '', 'templates/products_all.php' );
 
 
 // gọi tới file dùng chung của post

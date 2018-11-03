@@ -24,6 +24,12 @@ if ( $path != NULL ) {
 <?php
 
 }
+else {
+	?>
+<div class="medium18">Phiên bản <i class="fa-pro upper small"></i> là phiên bản cấp phát riêng cho khách hàng sử dụng dịch vụ Hosting cung cấp bởi <a href="https://www.echbay.com/" target="_blank" rel="nofollow">EchBay.com</a></div>
+<?php
+}
+
 
 
 

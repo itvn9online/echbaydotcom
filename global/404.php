@@ -165,6 +165,7 @@ switch ( $act ) {
 	// gờ vàng
 	case "gio-vang":
 	case "giovang":
+	case "golden-time":
 		$act = 'golden_time';
 		break;
 	
@@ -208,18 +209,30 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		// Chuyển header sang 200
 		EBE_set_header();
 		
-		// kiểm tra HTML riêng của theme
-		$private_html_template = EB_THEME_HTML . $act . '.html';
-		
-		// nếu không có -> sử dụng html mặc định
-		if ( ! file_exists( $private_html_template ) ) {
-			$private_html_template = EB_THEME_PLUGIN_INDEX . 'html/' . $act . '.html';
+		echo 'aaaa';
+		// cấu hình riêng cho 1 số file
+		if ( $act == 'favorite'
+		|| $act == 'golden_time'
+		|| $act == 'products_hot'
+		|| $act == 'products_new'
+		|| $act == 'products_selling'
+		|| $act == 'products_sales_off' ) {
+			include EB_THEME_PLUGIN_INDEX . 'global/products_list.php';
 		}
-//		echo $private_html_template . '<br>';
-		
-		
-		//
-		include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
+		else {
+			// kiểm tra HTML riêng của theme
+			$private_html_template = EB_THEME_HTML . $act . '.html';
+			
+			// nếu không có -> sử dụng html mặc định
+			if ( ! file_exists( $private_html_template ) ) {
+				$private_html_template = EB_THEME_PLUGIN_INDEX . 'html/' . $act . '.html';
+			}
+	//		echo $private_html_template . '<br>';
+			
+			
+			//
+			include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
+		}
 		
 		//
 		$css_m_css[] = 'eb-' . $act;
