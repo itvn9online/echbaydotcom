@@ -1009,7 +1009,7 @@ function ___eb_details_product_color () {
 		// đổi ảnh đại diện khi click đổi màu
 		if ( color_color != '' && ( color_color.length == 3 || color_color.length == 6 ) ) {
 		}
-		else {
+		else if ( WGR_check_option_on( cf_show_img_color ) ) {
 			jQuery('.thread-details-mobileAvt li').css({
 				'background-image' : 'url(' + color_img + ')'
 			});
@@ -3610,8 +3610,8 @@ setTimeout(function () {
 		
 		//
 		var product_price = jQuery(this).attr('data-gia') || jQuery(this).attr('data-price') || '',
-			product_object = {},
-			tr = jQuery(this).attr('data-open-iframe') || 0;
+//			tr = jQuery(this).attr('data-open-iframe') || 0,
+			product_object = {};
 		
 		//
 		if ( product_price == '' ) {
@@ -3635,7 +3635,8 @@ setTimeout(function () {
 		
 		//
 //		if ( tr == 1 || tr == '1' ) {
-		if ( tr * 1 == 1 ) {
+//		if ( tr * 1 == 1 ) {
+		if ( WGR_check_option_on ( cf_add_to_cart_iframe ) ) {
 			product_object.open_iframe = 1;
 		}
 		

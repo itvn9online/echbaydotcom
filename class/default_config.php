@@ -216,6 +216,8 @@ $__cf_row_default = array(
 	// tự tìm và lấy link thumbnail bằng javascript
 	'cf_disable_auto_get_thumb' => 'off',
 	
+	'cf_show_img_color' => 1,
+	
 	// nhúng URL vào các thẻ H1 ở trang chi tiết sản phẩm, bài viết, danh mục...
 	'cf_set_link_for_h1' => 1,
 	
@@ -311,6 +313,7 @@ $__cf_row_default = array(
 	'cf_details_right_thumbnail' => 'off',
 	'cf_details_left_thumbnail' => 'off',
 	'cf_on_details_slider' => 1,
+	'cf_add_to_cart_iframe' => 'off',
 	
 	// các chức năng bắt buộc ở giỏ hàng
 	'cf_required_phone_cart' => 1,

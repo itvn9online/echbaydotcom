@@ -977,6 +977,7 @@ else {
 	show_note_for_checkbox_config( 'cf_details_left_thumbnail' );
 	show_note_for_checkbox_config( 'cf_on_details_slider' );
 	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
+	show_note_for_checkbox_config( 'cf_show_img_color' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
 	show_note_for_checkbox_config( 'cf_required_phone_cart' );
@@ -984,6 +985,7 @@ else {
 	show_note_for_checkbox_config( 'cf_required_email_cart' );
 	show_note_for_checkbox_config( 'cf_required_address_cart' );
 	show_note_for_checkbox_config( 'cf_details_show_share_button' );
+	show_note_for_checkbox_config( 'cf_add_to_cart_iframe' );
 	show_note_for_checkbox_config( 'cf_details_excerpt' );
 	show_note_for_checkbox_config( 'cf_details_bold_excerpt' );
 	show_note_for_checkbox_config( 'cf_options_excerpt' );
