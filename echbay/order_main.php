@@ -49,6 +49,7 @@ if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
 	}
 	else {
 		$_GET ['d'] = $order_by_time_line[0];
+		$order_by_time_line = $order_by_time_line[0];
 	}
 //	print_r( $_GET );
 }

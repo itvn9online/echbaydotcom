@@ -24,6 +24,7 @@ function WGR_create_order_filter($o) {
 	if ($o == 'all') {
 		return '';
 	}
+//	echo $o . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
 	
 	
 	//

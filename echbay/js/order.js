@@ -192,9 +192,10 @@ function click_set_search_order_by_type () {
 //
 setTimeout(function () {
 	jQuery('.each-to-count-tab').each(function() {
-		var a = jQuery(this).attr('data-id') || '',
+		var a = jQuery(this).attr('data-id') || 0,
 			c = jQuery(this).html();
-		if ( c != '0') {
+//		if ( c != '0') {
+		if ( c * 1 > 0 ) {
 			if ( c.toString().length > 3 ) {
 				c = g_func.number_format(c);
 			}
