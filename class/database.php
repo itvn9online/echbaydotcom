@@ -411,6 +411,7 @@ $arr_active_for_404_page = array(
 	"products_new" => 1,
 	"products_selling" => 1,
 	"products_sales_off" => 1,
+	"products_all" => 1,
 	
 	"hoan-tat" => 1,
 	"ebsearch" => 1,

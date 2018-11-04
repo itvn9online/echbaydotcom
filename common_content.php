@@ -9,6 +9,7 @@ $arr_global_main = array(
 	'tmp.cf_call_hotline' => $__cf_row['cf_call_hotline'],
 	'tmp.cf_diachi' => $__cf_row['cf_diachi'],
 	'tmp.cf_email' => $__cf_row['cf_email'],
+	'tmp.cf_mailto_email' => '<a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a>',
 	
 	'tmp.cf_yahoo' => $__cf_row['cf_yahoo'],
 //	'tmp.theme_static_url' => EB_URL_OF_THEME,

@@ -169,6 +169,14 @@ switch ( $act ) {
 		$act = 'golden_time';
 		break;
 	
+	// all products
+	case "all-products":
+	case "products":
+	case "tat-ca-san-pham":
+	case "san-pham":
+		$act = 'products_all';
+		break;
+	
 	// contact
 	case "lien-he":
 	case "lienhe":
@@ -218,7 +226,8 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		|| $act == 'products_hot'
 		|| $act == 'products_new'
 		|| $act == 'products_selling'
-		|| $act == 'products_sales_off' ) {
+		|| $act == 'products_sales_off'
+		|| $act == 'products_all' ) {
 			include EB_THEME_PLUGIN_INDEX . 'global/products_list.php';
 		}
 		else {

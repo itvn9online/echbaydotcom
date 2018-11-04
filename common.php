@@ -214,7 +214,8 @@ else if ( $act == 'favorite'
 	|| $act == 'products_hot'
 	|| $act == 'products_new'
 	|| $act == 'products_selling'
-	|| $act == 'products_sales_off' )
+	|| $act == 'products_sales_off'
+	|| $act == 'products_all' )
 {
 }
 // nếu không -> hiển thị trang 404
