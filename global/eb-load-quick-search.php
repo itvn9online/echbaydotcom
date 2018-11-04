@@ -41,6 +41,7 @@ function WGR_quick_search_set_content ( $data ) {
 
 // tạo file javascript
 header("Content-Type: application/javascript");
+EBE_set_header();
 
 
 
