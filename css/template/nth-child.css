@@ -1,6 +1,0 @@
-/* elementer ở vị trí được xác định */
-#aabbcc .aabbcc div:nth-child(1) { }
-#aabbcc .aabbcc div:nth-child(2) { }
-#aabbcc .aabbcc div:nth-child(3) { }
-/* elementer ở vị trí chẵn */
-#aabbcc .aabbcc div:nth-child(odd) { }

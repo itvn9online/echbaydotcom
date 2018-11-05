@@ -44,6 +44,13 @@ if ( eb_this_current_url == web_link ) {
 
 
 
+//
+if ( act != '' && jQuery('body.home').length > 0 ) {
+	act = '';
+}
+
+
+
 // chỉnh lại ảnh của big banner sang ảnh to với bản pc
 if ( global_window_width > 768 ) {
 	jQuery('.oi_big_banner .ti-le-global').each(function() {
