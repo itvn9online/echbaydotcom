@@ -50,7 +50,8 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
 		
 		
-		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
+		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng:<br>
+		- <strong>hide-widget-title</strong>: Ẩn tiêu đề của widget.</p>';
 		
 		
 		echo '<p class="orgcolor">* Hệ thống hỗ trợ tối đa 25 sản phẩm trong bộ nhớ đệm, khi bộ nhớ đạt đến con số này, sản phẩm đã xem trước nhất sẽ bị loại bỏ.</p>';
