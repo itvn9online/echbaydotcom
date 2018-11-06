@@ -97,8 +97,14 @@ jQuery('.click-quick-edit-price').off('click').click(function  () {
 
 //
 jQuery('#quick_edit_new_price').off('change').change(function () {
-	var a = jQuery(this).val() || '',
-		b = jQuery('#quick_edit_old_price').val() || '';
+	// v2
+	WGR_check_quick_edit_price( true ); return false;
+	
+	
+	
+	// v1
+	var a = jQuery(this).val() || 0,
+		b = jQuery('#quick_edit_old_price').val() || 0;
 	
 	//
 	if ( a == '' ) {
@@ -108,9 +114,10 @@ jQuery('#quick_edit_new_price').off('change').change(function () {
 	b = b.toLowerCase();
 	
 	// tính theo % của giá cũ
-	if ( a.split('%').length > 1 ) {
+	if ( a.toString().split('%').length > 1 ) {
 		// nếu giá cũ không có giá trị gì -> lấy theo giá mới, sau đó mới gán lại giá trị cho giá mới
-		if ( b == '' || b == 0 ) {
+//		if ( b == '' || b == 0 ) {
+		if ( b * 1 == 0 ) {
 			b = jQuery('.click-quick-edit-price[data-id="' + document.frm_quick_edit_price.t_product_id.value + '"]').attr('data-new-price') || '';
 			jQuery('#quick_edit_old_price').val( b );
 		}
@@ -141,17 +148,17 @@ jQuery('#quick_edit_new_price').off('change').change(function () {
 		}
 		
 		//
-		jQuery(this).val( g_func.money_format( a ) );
+//		jQuery(this).val( g_func.money_format( a ) );
 	}
 	// đơn vị k -> nhân thêm 1000
-	else if ( a.split('k').length > 1 ) {
+	else if ( a.toString().split('k').length > 1 ) {
 		a = g_func.only_number( a );
-		jQuery(this).val( g_func.money_format( a * 1000 ) );
+		a = a * 1000;
+//		jQuery(this).val( g_func.money_format( a * 1000 ) );
 	}
-	// lấy giá trực tiếp theo số liệu nhập vào
-	else {
-		jQuery(this).val( g_func.money_format( a ) );
-	}
+	
+	// gán lại giá trị
+	jQuery(this).val( g_func.money_format( a ) );
 	
 	//
 	return false;
@@ -159,43 +166,99 @@ jQuery('#quick_edit_new_price').off('change').change(function () {
 
 //
 jQuery('#quick_edit_old_price').off('change').change(function () {
+	// v2
+	WGR_check_quick_edit_price( true ); return false;
+	
+	
+	
+	// v1
 	var a = jQuery(this).val() || '';
 	
 	// đơn vị k -> nhân thêm 1000
-	if ( a.split('k').length > 1 ) {
+	if ( a.toString().split('k').length > 1 ) {
 		a = g_func.only_number( a );
-		jQuery(this).val( g_func.money_format( a * 1000 ) );
+		a = a * 1000;
+//		jQuery(this).val( g_func.money_format( a * 1000 ) );
 	}
-	// lấy giá trực tiếp theo số liệu nhập vào
-	else {
-		jQuery(this).val( g_func.money_format( a ) );
-	}
+	
+	// gán lại giá trị
+	jQuery(this).val( g_func.money_format( a ) );
 	
 	//
 	return false;
 });
 
 //
-function WGR_check_quick_edit_price () {
+function WGR_fixed_quick_edit_price ( a, b ) {
+	a = jQuery.trim( a );
+//	console.log( a );
+	
+	// thiết lập giá trị mặc định nếu chưa có
+	if ( a == '' ) {
+		return 0;
+	}
+	else {
+		// nhân thêm 1000
+		if ( a.toString().toLowerCase().split('k').length > 1 ) {
+			a = g_func.only_number( a );
+			a = a * 1000;
+		}
+		// tính theo %
+		else if ( a.toString().split('%').length > 1 ) {
+			if ( typeof b == 'undefined' ) {
+				b = a;
+			}
+			b = g_func.only_number( b );
+			
+			// giảm theo số %
+			if ( a.toString().split('-').length > 1 ) {
+				a = b/ 100 * g_func.only_number( a );
+				a = b + a;
+			}
+			// bằng số %
+			else {
+				a = b/ 100 * g_func.only_number( a );
+			}
+		}
+	}
+//	console.log( a );
+//	console.log( g_func.only_number( a ) );
+	
+	//
+	return g_func.only_number( a ) * 1;
+}
+
+function WGR_check_quick_edit_price ( no_auto_submit ) {
 	var f = document.frm_quick_edit_price;
-	var a = g_func.only_number( f.t_old_price.value ),
-		b = g_func.only_number( f.t_new_price.value ),
+	var a = WGR_fixed_quick_edit_price( f.t_old_price.value ),
+		b = WGR_fixed_quick_edit_price( f.t_new_price.value, a ),
 		aj = f.data_ajax.value;
 	
-	//
-//	if ( a <= b ) {
-	if ( a == b ) {
+	// nếu giá cũ nhỏ hơn giá mới -> set về 0 luôn
+	if ( b <= 0 && a > 0 ) {
+		b = a;
 		a = 0;
 	}
+	else if ( a <= b ) {
+//	else if ( a == b ) {
+		a = 0;
+	}
+//	console.log( a ); console.log( b ); return false;
 	
 	//
-	var trang = jQuery('.admin-part-page strong').html() || 1,
-//		uri = '&post_id=' + f.t_product_id.value + '&by_post_type=post&trang=' + trang + '&t=update_price&old_price=' + a + '&new_price=' + b;
-		uri = aj + '&t=update_price&old_price=' + a + '&new_price=' + b;
-//	console.log( uri );
-	
-	//
-	WGR_admin_quick_edit_products( 'products', uri );
+	if ( typeof no_auto_submit == 'undefined' ) {
+		var trang = jQuery('.admin-part-page strong').html() || 1,
+//			uri = '&post_id=' + f.t_product_id.value + '&by_post_type=post&trang=' + trang + '&t=update_price&old_price=' + a + '&new_price=' + b;
+			uri = aj + '&t=update_price&old_price=' + a + '&new_price=' + b;
+//		console.log( uri );
+		
+		//
+		WGR_admin_quick_edit_products( 'products', uri );
+	}
+	else {
+		f.t_old_price.value = g_func.money_format( a );
+		f.t_new_price.value = g_func.money_format( b );
+	}
 	
 	//
 	return false;

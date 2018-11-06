@@ -38,6 +38,35 @@ function WHR_show_console_in_multi ( m ) {
 
 
 //
+function WGR_multi_edit_search_old_price ( $v, $k = '_eb_product_price' ) {
+	$sql = _eb_q("SELECT *
+	FROM
+		`" . wp_postmeta . "`
+	WHERE
+		meta_key = '" . $k . "'
+		AND post_id = " . $v . "
+	ORDER BY
+		meta_id DESC
+	LIMIT 0, 1");
+//	print_r( $sql );
+	if ( ! empty( $sql ) ) {
+		return $sql[0]->meta_value;
+	}
+	else {
+		WGR_multi_edit_price_script_log('Product price not found! #' . $v . ' (' . $k . ')');
+	}
+	
+	//
+	return 0;
+}
+
+function WGR_multi_edit_price_script_log ( $v ) {
+	echo '<script>WHR_show_console_in_multi("' . $v . '");</script>';
+}
+
+
+
+//
 if ( $actions_for == 'status' ) {
 	if ( isset( $_POST['t_trangthai'] ) ) {
 		$trv_trangthai = ( int ) $_POST ['t_trangthai'];
@@ -75,64 +104,56 @@ else if ( $actions_for == 'enddate' ) {
 	}
 }
 else if ( $actions_for == 'giamgia' ) {
-	$phantram_giamgia = (int)$_POST['t_giamgia'];
-	echo '<script>WHR_show_console_in_multi("' . $phantram_giamgia . '");</script>';
+	$phantram_giamgia = (int) $_POST['t_giamgia'];
+	if ( $phantram_giamgia < 0 ) {
+		$phantram_giamgia = 0;
+	}
+	WGR_multi_edit_price_script_log( $phantram_giamgia );
 	
 	//
-	foreach ( $list_id as $v ) {
-		$v = (int) trim( $v );
-		if ( $v > 0 ) {
-			$sql = _eb_q("SELECT *
-			FROM
-				`" . wp_postmeta . "`
-			WHERE
-				meta_key = '_eb_product_oldprice'
-				AND post_id = " . $v . "
-			ORDER BY
-				meta_id DESC
-			LIMIT 0, 1");
-//			print_r( $sql );
-			
-			//
-			if ( ! empty( $sql ) ) {
-				$gia = $sql[0]->meta_value;
+	if ( cf_set_raovat_version != 1 ) {
+//	if ( $phantram_giamgia > 0 ) {
+		foreach ( $list_id as $v ) {
+			$v = (int) trim( $v );
+			if ( $v > 0 ) {
+				// tìm theo giá cũ
+				$giacu = WGR_multi_edit_search_old_price( $v, '_eb_product_oldprice' );
+				$gia = WGR_multi_edit_search_old_price( $v );
 				
-				// nếu không có giá cu -> tìm theo giá mới
-				if ( $sql[0]->meta_value == 0 ) {
-					$sql = _eb_q("SELECT *
-					FROM
-						`" . wp_postmeta . "`
-					WHERE
-						meta_key = '_eb_product_price'
-						AND post_id = " . $v . "
-					ORDER BY
-						meta_id DESC
-					LIMIT 0, 1");
-//					print_r( $sql );
-					if ( ! empty( $sql ) ) {
-						$gia = $sql[0]->meta_value;
-					}
-					else {
-						echo '<script>WHR_show_console_in_multi("Product not found (2) #' . $v . '");</script>';
+				// nếu giá cũ < giá mới -> cập nhật lại luôn
+				if ( $giacu <= $gia ) {
+					$giacu = $gia;
+					
+					// chuyển giá cũ sang giá mới luôn
+					if ( $giacu > 0 ) {
+						WGR_update_meta_post( $v, '_eb_product_oldprice', $giacu );
 					}
 				}
 				
 				// tìm được giá thì mới xử lý
-				if ( $gia == 0 ) {
-					echo '<script>WHR_show_console_in_multi("Product price is zero #' . $v . '");</script>';
+				if ( $giacu == 0 ) {
+					WGR_multi_edit_price_script_log('Product price is zero #' . $v);
 				}
+				// tính toán giá mới
 				else {
-					$gia = $gia - ceil( $gia/ 100 * $phantram_giamgia );
+					if ( $phantram_giamgia > 0 ) {
+						$gia = $giacu - ceil( $giacu/ 100 * $phantram_giamgia );
+						
+						// cập nhật giá mới
+						WGR_update_meta_post( $v, '_eb_product_price', $gia );
+					}
+					// cập nhật theo giá cũ
+					else {
+						WGR_update_meta_post( $v, '_eb_product_price', $giacu );
+					}
 //					echo $gia . '<br>';
-					
-					// cập nhật giá
-					WGR_update_meta_post( $v, '_eb_product_price', $gia );
 				}
-			}
-			else {
-				echo '<script>WHR_show_console_in_multi("Product not found #' . $v . '");</script>';
 			}
 		}
+	}
+	else {
+//		WGR_multi_edit_price_script_log('Percent is zero!');
+		WGR_multi_edit_price_script_log('Not running in raovat site!');
 	}
 }
 else if ( $actions_for == 'stt' ) {

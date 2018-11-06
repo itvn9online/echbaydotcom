@@ -349,7 +349,8 @@ $strAjaxLink .= '&trang=' . $trang;
 				[<strong>70%</strong>] -&gt; hệ thống tự tính toán giá mới bằng 70% giá cũ -&gt; 700,000đ.<br>
 				[<strong>-70%</strong>] -&gt; hệ thống tự tính toán giá mới bằng giá cũ trừ đi 70% -&gt; 300,000đ.<br>
 				[<strong>600k</strong>] -&gt; hệ thống tự tính toán giá mới bằng 600 nhân với 1000 -&gt; 600,000đ.<br>
-				* Giá cũ nhỏ hơn hoặc bằng Giá mới -&gt; Giá cũ sẽ được set bằng 0.</div>
+				* Giá cũ nhỏ hơn hoặc bằng Giá mới -&gt; Giá cũ sẽ được set bằng 0.<br>
+				* Giá mới nhỏ hơn hoặc bằng 0 -&gt; Giá mới sẽ được set bằng Giá cũ, Giá cũ sẽ được set về 0.</div>
 			<br>
 			<div class="cf">
 				<div class="lf f30">&nbsp;</div>
