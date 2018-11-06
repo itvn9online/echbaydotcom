@@ -166,6 +166,18 @@ if ( $_POST['cf_description'] == '' ) {
 }
 _eb_update_option( 'blogdescription', $_POST['cf_description'] );
 
+// cập nhật luôn phần title với desiption cho trang chủ khi dùng page
+if ( _eb_get_option('show_on_front') == 'page' ) {
+	$id_front = _eb_get_option('page_on_front');
+	
+	if ( $id_front > 0 ) {
+		WGR_update_meta_post( $id_front, '_eb_product_title', $_POST['cf_title'] );
+		WGR_update_meta_post( $id_front, '_eb_product_description', $_POST['cf_description'] );
+	}
+}
+
+
+
 // cập nhật email chính cho website
 $for_update_site_email = '';
 if ( $_POST['cf_email_note'] != '' ) {

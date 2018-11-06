@@ -36,6 +36,38 @@ if ( mtv_id == 1 ) {
 
 
 
+// chỉnh lại phần SEO dành riêng cho trang chủ
+//echo _eb_get_option('show_on_front') . '<br>' . "\n";
+//echo _eb_get_option('page_on_front') . '<br>' . "\n";
+
+/*
+//if ( cf_on_off_echbay_seo == 1 && is_home() ) {
+if ( cf_on_off_echbay_seo == 1 && is_front_page() ) {
+//	echo 'aaaaaaaaaaaaaaaaaaaaa';
+	
+	//
+	$__cf_row ['cf_title'] = _eb_get_post_object( $post->ID, '_eb_product_title' );
+//	echo $__cf_row ['cf_title'] . '<br>' . "\n";
+	if ( $__cf_row ['cf_title'] == '' ) {
+		$__cf_row ['cf_title'] = _eb_get_option('blogname');
+	}
+//	echo $__cf_row ['cf_title'] . '<br>' . "\n";
+	
+	$__cf_row ['cf_keywords'] = _eb_get_post_object( $post->ID, '_eb_product_keywords' );
+	if ( $__cf_row ['cf_keywords'] == '' ) {
+		$__cf_row ['cf_keywords'] = $__cf_row ['cf_title'];
+	}
+	
+	$__cf_row ['cf_description'] = _eb_get_post_object( $post->ID, '_eb_product_description', $post->post_excerpt );
+	if ( $__cf_row ['cf_description'] == '' ) {
+		$__cf_row ['cf_description'] = $post->post_title;
+	}
+	$__cf_row['cf_description'] = _eb_del_line( str_replace( '"', '&quot;', strip_tags( $__cf_row['cf_description'] ) ), ' ' );
+}
+*/
+
+
+
 
 // thêm phần sidebar vào chân trang
 $main_content .= _eb_echbay_get_sidebar( 'page_content_sidebar' );
