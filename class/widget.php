@@ -363,7 +363,8 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
 	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
 	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
-	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.</p>';
+	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
+	- <strong>height-auto-gioithieu</strong>: chuyển style của <em>echbay-blog-gioithieu</em> sang thành height:atuo</p>';
 	
 	
 	//

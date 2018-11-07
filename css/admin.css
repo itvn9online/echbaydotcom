@@ -936,9 +936,9 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 /*
 .hide-module-advanced-ads tr[data-row="_eb_product_avatar"],
 .hide-module-advanced-ads tr[data-row="_eb_show_product_avatar"],
+.hide-module-advanced-ads #postexcerpt,
 */
-.hide-module-advanced-ads .ebe-fixed-content-style,
-.hide-module-advanced-ads #postexcerpt { display: none; }
+.hide-module-advanced-ads .ebe-fixed-content-style { display: none; }
 .hide-module-advanced-ads tr[data-row="_eb_ads_name"] { display: table-row; }
 .hide-module-advanced-ads #postdivrich {
 	height: 50px;

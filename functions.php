@@ -87,6 +87,9 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 					$post->post_title = $new_name->name;
 					$post->post_excerpt = $new_name->description;
 				}
+				else if ( $post->post_excerpt == '' && $new_name->description != '' ) {
+					$post->post_excerpt = $new_name->description;
+				}
 			}
 		}
 		else {
