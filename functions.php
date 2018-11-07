@@ -62,6 +62,9 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 					$post->post_title = $cache_ads_name;
 					$post->post_excerpt = $cache_ads_excerpt;
 				}
+				else if ( $post->post_excerpt == '' && $cache_ads_excerpt != '' ) {
+					$post->post_excerpt = $cache_ads_excerpt;
+				}
 			}
 		}
 	}
@@ -3696,6 +3699,9 @@ function _eb_load_ads (
 						$post->post_title = $cache_ads_name;
 						$post->post_excerpt = $cache_ads_excerpt;
 					}
+					else if ( $post->post_excerpt == '' && $cache_ads_excerpt != '' ) {
+						$post->post_excerpt = $cache_ads_excerpt;
+					}
 					$p_link = _eb_p_link( $post->ID );
 				}
 			}
@@ -3707,6 +3713,9 @@ function _eb_load_ads (
 					// lấy tên của Q.Cáo thay vì phân nhóm
 					if ( _eb_get_post_meta( $post->ID, '_eb_ads_name' ) != 1 ) {
 						$post->post_title = $new_name->name;
+					}
+					else if ( $post->post_excerpt == '' && $new_name->description != '' ) {
+						$post->post_excerpt = $new_name->description;
 					}
 					
 //					$p_link = _eb_c_link( $alias_taxonomy, $new_name->taxonomy );
