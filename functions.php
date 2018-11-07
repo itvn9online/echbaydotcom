@@ -60,7 +60,9 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 				// lấy tên của Q.Cáo thay vì phân nhóm
 				if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) == 1 ) {
 					$post->post_title = $cache_ads_name;
-					$post->post_excerpt = $cache_ads_excerpt;
+					if ( $cache_ads_excerpt != '' ) {
+						$post->post_excerpt = $cache_ads_excerpt;
+					}
 				}
 				else if ( $post->post_excerpt == '' && $cache_ads_excerpt != '' ) {
 					$post->post_excerpt = $cache_ads_excerpt;
@@ -88,7 +90,9 @@ function EBE_select_thread_list_all ( $post, $html = __eb_thread_template, $pot_
 				// lấy tên của Q.Cáo thay vì phân nhóm
 				if ( _eb_get_post_meta( $post->ID, '_eb_ads_name' ) != 1 ) {
 					$post->post_title = $new_name->name;
-					$post->post_excerpt = $new_name->description;
+					if ( $new_name->description != '' ) {
+						$post->post_excerpt = $new_name->description;
+					}
 				}
 				else if ( $post->post_excerpt == '' && $new_name->description != '' ) {
 					$post->post_excerpt = $new_name->description;
@@ -3697,7 +3701,9 @@ function _eb_load_ads (
 					// lấy tên của Q.Cáo thay vì phân nhóm
 					if ( _eb_get_post_meta( $cache_ads_id, '_eb_ads_name' ) == 1 ) {
 						$post->post_title = $cache_ads_name;
-						$post->post_excerpt = $cache_ads_excerpt;
+						if ( $cache_ads_excerpt != '' ) {
+							$post->post_excerpt = $cache_ads_excerpt;
+						}
 					}
 					else if ( $post->post_excerpt == '' && $cache_ads_excerpt != '' ) {
 						$post->post_excerpt = $cache_ads_excerpt;
@@ -3713,6 +3719,9 @@ function _eb_load_ads (
 					// lấy tên của Q.Cáo thay vì phân nhóm
 					if ( _eb_get_post_meta( $post->ID, '_eb_ads_name' ) != 1 ) {
 						$post->post_title = $new_name->name;
+						if ( $new_name->description != '' ) {
+							$post->post_excerpt = $new_name->description;
+						}
 					}
 					else if ( $post->post_excerpt == '' && $new_name->description != '' ) {
 						$post->post_excerpt = $new_name->description;

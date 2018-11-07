@@ -2140,6 +2140,7 @@ iframe[name="google_conversion_frame"] {
 .hide-widget-title .home-hot-title,
 .hide-widget-title .thread-home-c2,
 .hide-widget-title .echbay-widget-title { display: none; }
+.height-auto-title .echbay-blog-title,
 .height-auto-gioithieu .echbay-blog-gioithieu { height: auto; }
 .echbay-blog-avt.auto-size,
 .ti-le-global.auto-size {

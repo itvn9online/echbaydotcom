@@ -364,6 +364,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
 	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
 	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
+	- <strong>height-auto-title</strong>: chuyển style của <em>echbay-blog-title</em> sang thành height:atuo<br>
 	- <strong>height-auto-gioithieu</strong>: chuyển style của <em>echbay-blog-gioithieu</em> sang thành height:atuo</p>';
 	
 	
