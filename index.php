@@ -1289,7 +1289,8 @@ $arr_for_add_outsource_async_js = array();
 
 // TEST thư mục root của tài khoản FTP
 //echo EBE_get_ftp_root_dir();
-
+//echo plugin_dir_path( __FILE__ );
+//echo WP_CONTENT_DIR . '/plugins/';
 
 
 
