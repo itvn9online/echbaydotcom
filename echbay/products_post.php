@@ -244,7 +244,7 @@ $strAjaxLink .= '&trang=' . $trang;
 						<div class="cf">
 							<div class="lf f20 bold">Giảm giá (%)</div>
 							<div class="lf f60 thread-multi-input">
-								<input type="text" name="t_giamgia" value="" placeholder="Phần trăm giảm giá" maxlength="2" class="s" />
+								<input type="text" name="t_giamgia" value="" placeholder="Phần trăm giảm giá" data-for="giamgia" maxlength="2" class="focus-set-actions-for s" />
 								<p class="description">Nhập phần trăm muốn giảm cho các sản phẩm đã được chọn, hệ thống sẽ cập nhật Giá mới theo Giá cũ của chính sản phẩm đó. Ví dụ: <strong>Giá cũ</strong>: 10,000, nhập vào 30, <strong>Giá mới</strong> sẽ được thiết lập là: 7,000.</p>
 							</div>
 							<div class="lf f20">
@@ -286,7 +286,7 @@ $strAjaxLink .= '&trang=' . $trang;
 						<div class="cf">
 							<div class="lf f20 bold">Ngày hết hạn</div>
 							<div class="lf f60 thread-multi-input">
-								<input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày" maxlength="10" autocomplete="off" class="thread-list-ngayhethan" />
+								<input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày" data-for="enddate" maxlength="10" autocomplete="off" class="focus-set-actions-for thread-list-ngayhethan" />
 							</div>
 							<div class="lf f20">
 								<button type="button" data-for="enddate" class="click-set-actions-for">Cập nhật</button>
@@ -299,7 +299,7 @@ $strAjaxLink .= '&trang=' . $trang;
 						<div class="cf">
 							<div class="lf f20 bold">Số thứ tự</div>
 							<div class="lf f60 thread-multi-input">
-								<input type="text" name="t_stt" value="0" placeholder="Số thứ tự" maxlength="5" />
+								<input type="text" name="t_stt" value="0" placeholder="Số thứ tự" data-for="stt" maxlength="5" class="focus-set-actions-for" />
 							</div>
 							<div class="lf f20">
 								<button type="button" data-for="stt" class="click-set-actions-for">Cập nhật</button>

@@ -344,6 +344,21 @@ jQuery('.eb-uix-thread-checkbox').off('click').click(function () {
 
 
 //
+jQuery('.focus-set-actions-for').off('change').change(function () {
+	var a = jQuery(this).attr('data-for') || '',
+		b = jQuery(this).attr('data-id-for') || 0,
+		f = document.frm_multi_edit_post;
+	
+	//
+	if ( a == '' ) {
+		a_lert('Không xác định được thao tác');
+	}
+	
+	//
+	f.actions_for.value = a;
+	f.actions_id_for.value = b;
+});
+
 jQuery('.click-set-actions-for').off('click').click(function () {
 	var a = jQuery(this).attr('data-for') || '',
 		b = jQuery(this).attr('data-id-for') || 0,
