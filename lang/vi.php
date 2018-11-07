@@ -148,6 +148,13 @@ $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Hotline';
 $___eb_lang[eb_key_for_site_lang . 'cart_discount_code'] = 'Mã giảm giá';
 
 
+// các loại sản phẩm
+$___eb_lang[eb_key_for_site_lang . 'products_hot'] = 'Sản phẩm HOT';
+$___eb_lang[eb_key_for_site_lang . 'products_new'] = 'Sản phẩm MỚI';
+$___eb_lang[eb_key_for_site_lang . 'products_selling'] = 'Sản phẩm BÁN CHẠY';
+$___eb_lang[eb_key_for_site_lang . 'products_sales_off'] = 'Sản phẩm GIẢM GIÁ';
+$___eb_lang[eb_key_for_site_lang . 'products_all'] = 'Sản phẩm';
+
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Giờ vàng';
 //$___eb_lang[eb_key_for_site_lang . 'golden_desc_time'] = 'Giờ vàng GIÁ SỐC, khuyến mại tận GỐC';
@@ -185,10 +192,10 @@ $___eb_lang[eb_key_for_site_lang . 'ads_status15'] = $___eb_lang[eb_key_for_site
 //
 $eb_note_first_lang[eb_key_for_site_lang . 'product_status0'] = 'Phân loại Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'product_status0'] = 'Mặc định';
-$___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'Sản phẩm HOT';
-$___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'Sản phẩm MỚI';
-$___eb_lang[eb_key_for_site_lang . 'product_status3'] = 'Sản phẩm BÁN CHẠY';
-$___eb_lang[eb_key_for_site_lang . 'product_status4'] = 'Sản phẩm GIẢM GIÁ';
+$___eb_lang[eb_key_for_site_lang . 'product_status1'] = $___eb_lang[eb_key_for_site_lang . 'products_hot'];
+$___eb_lang[eb_key_for_site_lang . 'product_status2'] = $___eb_lang[eb_key_for_site_lang . 'products_new'];
+$___eb_lang[eb_key_for_site_lang . 'product_status3'] = $___eb_lang[eb_key_for_site_lang . 'products_selling'];
+$___eb_lang[eb_key_for_site_lang . 'product_status4'] = $___eb_lang[eb_key_for_site_lang . 'products_sales_off'];
 $___eb_lang[eb_key_for_site_lang . 'product_status5'] = 'Sản phẩm KHÁC';
 $___eb_lang[eb_key_for_site_lang . 'product_status6'] = $___eb_lang[eb_key_for_site_lang . 'golden_time'];
 $___eb_lang[eb_key_for_site_lang . 'product_status7'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];

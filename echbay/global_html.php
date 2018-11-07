@@ -116,13 +116,43 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80"><i class="fa fa-link"></i> <?php echo EBE_get_lang('products_all'); ?> <em>(/products_all)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="./products_all" data-text="<?php echo EBE_get_lang('products_all'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-link"></i> <?php echo EBE_get_lang('products_hot'); ?> <em>(/products_hot)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="./products_hot" data-text="<?php echo EBE_get_lang('products_hot'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-link"></i> <?php echo EBE_get_lang('products_new'); ?> <em>(/products_new)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="./products_new" data-text="<?php echo EBE_get_lang('products_new'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-link"></i> <?php echo EBE_get_lang('products_selling'); ?> <em>(/products_selling)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="./products_selling" data-text="<?php echo EBE_get_lang('products_selling'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-link"></i> <?php echo EBE_get_lang('products_sales_off'); ?> <em>(/products_sales_off)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="./products_sales_off" data-text="<?php echo EBE_get_lang('products_sales_off'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80"><i class="fa fa-diamond"></i> <?php echo EBE_get_lang('golden_time'); ?> <em>(/golden_time)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="./golden_time" data-text="<?php echo EBE_get_lang('golden_time'); ?>" data-css="nav-about-giovang" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-diamond"></i> <?php echo EBE_get_lang('favorite'); ?> <em>(/favorite)</em></div>
+				<div class="lf f80"><i class="fa fa-heart"></i> <?php echo EBE_get_lang('favorite'); ?> <em>(/favorite)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="./favorite" data-text="<?php echo EBE_get_lang('favorite'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
