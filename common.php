@@ -275,11 +275,11 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
     "name": "' ._eb_str_block_fix_content ( $web_name ). '",
 	"contactPoint": {
 		"@type": "ContactPoint",
-		"telephone": "' . $__cf_row['cf_hotline'] . '",
+		"telephone": "' . _eb_del_line( $__cf_row['cf_hotline'], ' - ' ) . '",
 		"contactType": "Hotline"
 	}
 }
-</script>', "\n", "/\t/" );
+</script>', "\n" );
 	
 }
 // hoặc breadcrumb nếu có
@@ -301,7 +301,7 @@ else {
 		}
 	} ' . implode ( ' ', $schema_BreadcrumbList ) . ' ]
 }
-</script>', "", "/\t/" );
+</script>', "\n" );
 	
 }
 
