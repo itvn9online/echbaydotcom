@@ -989,8 +989,8 @@ var _global_js_eb = {
 		}
 		jQuery.datepicker.regional.vi = {
 			monthNames: ['Th\u00e1ng 1', 'Th\u00e1ng 2', 'Th\u00e1ng 3', 'Th\u00e1ng 4', 'Th\u00e1ng 5', 'Th\u00e1ng 6', 'Th\u00e1ng 7', 'Th\u00e1ng 8', 'Th\u00e1ng 9', 'Th\u00e1ng 10', 'Th\u00e1ng 11', 'Th\u00e1ng 12'],
-			monthNamesShort: ['Jan', 'Feb', 'M&auml;r', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-			dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+			monthNamesShort: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'],
+			dayNames: ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
 			dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
 			dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 		};
@@ -1007,6 +1007,7 @@ var _global_js_eb = {
 //			console.log(a);
 //			console.log(df);
 			
+			// kiểm tra và chuyển về 1 định dạng
 			if ( a != '' && a.length == 10 && df != '' ) {
 				a = a.replace(/\-|\s/g, '/').split('/');
 				if ( df.split('/').length > 1 ) {
