@@ -222,3 +222,4 @@ pc only
 /*
 .style-for-mobile .reponsive-for-table { overflow-x: auto; }
 */
+.style-for-mobile .reponsive-for-table td { width: auto !important; }
