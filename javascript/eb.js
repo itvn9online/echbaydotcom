@@ -620,11 +620,9 @@ var _global_js_eb = {
 			var i = 0;
 			jQuery('table', this)
 			// fixed chiều rộng tối đa cho table
-			/*
 			.css({
 				'max-width' : max_width + 'px'
 			})
-			*/
 			.each(function() {
 				var a = $(this).attr('data-no-reponsive') || '';
 				

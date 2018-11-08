@@ -176,9 +176,10 @@ function change_update_new_stt () {
 	
 	
 	//
-	jQuery('input.change-update-custom-meta').off('keydown').keydown(function(e) {
+//	jQuery('input.change-update-custom-meta').off('keydown').keydown(function(e) {
+	jQuery('input.change-update-custom-meta').off('change').change(function(e) {
 //		console.log(e.keyCode);
-		if ( e.keyCode == 13 ) {
+//		if ( e.keyCode == 13 ) {
 			var a = jQuery(this).val() || '',
 				j = jQuery(this).attr('id') || '';
 			
@@ -195,7 +196,7 @@ function change_update_new_stt () {
 			});
 			
 			return false;
-		}
+//		}
 	});
 	
 	//

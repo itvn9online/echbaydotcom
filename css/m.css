@@ -84,7 +84,7 @@ body.style-for-mobile {
 .style-for-mobile .show-search-mobile .div-search-margin { display: block; }
 */
 /* touch mobile */
-.style-for-mobile .home-video-scroll { overflow: auto; }
+.style-for-mobile .home-video-scroll { overflow-x: auto; }
 .style-for-mobile .home-video-scroll ul {
 	width: 250%;
 	max-width: 900px;
@@ -219,4 +219,6 @@ pc only
 @media screen and (min-width:768px) {
 }
 */
+/*
 .style-for-mobile .reponsive-for-table { overflow-x: auto; }
+*/
