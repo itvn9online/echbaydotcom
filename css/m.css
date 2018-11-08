@@ -219,3 +219,4 @@ pc only
 @media screen and (min-width:768px) {
 }
 */
+.style-for-mobile .reponsive-for-table { overflow-x: auto; }

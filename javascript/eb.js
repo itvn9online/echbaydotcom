@@ -617,8 +617,32 @@ var _global_js_eb = {
 			
 			
 			// thẻ TABLE
-			jQuery('table', this).css({
+			var i = 0;
+			jQuery('table', this)
+			// fixed chiều rộng tối đa cho table
+			/*
+			.css({
 				'max-width' : max_width + 'px'
+			})
+			*/
+			.each(function() {
+				var a = $(this).attr('data-no-reponsive') || '';
+				
+				//
+				if ( a == '' ) {
+					$(this).before( '<div class="reponsive-for-table reponsive-for-table' + i + '"></div>' );
+					
+					$(this).clone().appendTo('.reponsive-for-table' + i);
+					
+					$(this).remove();
+					
+					i++;
+				}
+			});
+			
+			//
+			$('.reponsive-for-table table').attr({
+				'data-no-reponsive': 1
 			});
 			
 		});
