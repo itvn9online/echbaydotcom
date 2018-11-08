@@ -5,7 +5,7 @@
 
 $type_search = '';
 $invoice_key = '';
-if( isset ( $_GET ['invoice_key'] ) ) {
+if ( isset ( $_GET ['invoice_key'] ) ) {
 	$invoice_key = $_GET['invoice_key'];
 	
 	if ( $invoice_key != '' ) {
@@ -55,6 +55,13 @@ if ( isset( $_GET['tab'] ) &&  $_GET['tab'] != '' ) {
 		$status_by = (int) $status_by;
 		
 		$strFilter .= " AND order_status = " . $status_by;
+	}
+}
+// khi người dùng tìm kiếm
+else if ( isset ( $_GET ['invoice_key'] ) ) {
+	// nếu tài khoản không phải là supper admin -> ẩn các đơn đã hủy
+	if ( ! current_user_can('create_users') ) {
+		$strFilter .= " AND order_status != 13 ";
 	}
 }
 // mặc định thì bỏ qua cái đơn đã hủy

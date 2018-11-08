@@ -243,7 +243,7 @@ if ($totalPage > 1) {
 </div>
 <br>
 <div class="text-center cf div-inline-block">
-	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&d=' . $filterDay . '&tab=' . $status_by; ?>&type_search=<?php echo $type_search; ?>&invoice_key=<?php echo $invoice_key; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export</a></div>
+	<div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam( $_SERVER['HTTP_HOST'] ) . '&d=' . $filterDay . '&tab=' . $status_by; ?>&type_search=<?php echo $type_search; ?>&invoice_key=<?php echo $invoice_key; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export to HTML</a></div>
 </div>
 <br>
 
