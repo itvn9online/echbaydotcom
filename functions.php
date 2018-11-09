@@ -1257,18 +1257,18 @@ function _eb_replace_css_space ( $str, $new_array = array() ) {
 function EBE_replace_link_in_cache_css ( $c ) {
 	return _eb_replace_css_space ( $c, array(
 		// IMG của theme
-//		'../images/' => '../../themes/' . basename( get_template_directory() ) . '/images/',
-		'../images/' => '../../themes/' . basename( EB_THEME_URL ) . '/images/',
+//		'../images/' => '../../../themes/' . basename( get_template_directory() ) . '/images/',
+		'../images/' => '../../../themes/' . basename( EB_THEME_URL ) . '/images/',
 		
 		// IMG của plugin tổng
 //		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-		'../../images-global/' => '../../echbaydotcom/images-global/',
+		'../../images-global/' => '../../../echbaydotcom/images-global/',
 //		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
-		'../images-global/' => '../../echbaydotcom/images-global/',
+		'../images-global/' => '../../../echbaydotcom/images-global/',
 		
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => '../../echbaydotcom/outsource/',
-		'../fonts/' => '../../echbaydotcom/outsource/fonts/',
+		'../outsource/' => '../../../echbaydotcom/outsource/',
+		'../fonts/' => '../../../echbaydotcom/outsource/fonts/',
 	) );
 }
 
