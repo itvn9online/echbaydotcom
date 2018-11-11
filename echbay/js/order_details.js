@@ -1040,6 +1040,60 @@ function WGR_order_details_add_city () {
 
 
 
+// tự add tỉnh thành nếu chưa có
+(function ( a ) {
+	// chỉ kiểm tra khi dữ liệu kia chưa có
+	if ( jQuery.trim( jQuery('#oi_hd_quanhuyen').val() ) == '' && jQuery.trim( jQuery('#oi_hd_tinhthanh').val() ) == '' ) {
+		a = a.split(',');
+		
+		// phải có từ 3 cụm địa chỉ trở lên
+		if ( a.length > 2 ) {
+			jQuery('#oi_hd_quanhuyen').focus().val( jQuery.trim( a[ a.length - 2 ] ) ).keyup();
+			
+			// và chỉ 1 địa chỉ được tìm thấy thì mới tự add
+			if ( jQuery('#ui_hd_quanhuyen li.d-block').length == 1 ) {
+				jQuery('#ui_hd_quanhuyen li.d-block').click();
+				
+				// xóa 2 dòng địa chỉ cuối đi
+				a[ a.length - 1 ] = '';
+				a[ a.length - 2 ] = '';
+				/*
+				try {
+					delete a[ a.length - 1 ];
+					delete a[ a.length - 2 ];
+				} catch (e) {
+					console.log( WGR_show_try_catch_err( e ) );
+				}
+				*/
+				a = a.join( ',' ).replace( ',,', '' );
+//				console.log( a );
+				
+				// backup lại địa chỉ mà khách đã ghi, cho vào phần ghi chú của admin
+				if ( jQuery.trim( jQuery('#hd_admin_ghichu').val() ) == '' ) {
+					jQuery('#hd_admin_ghichu').val( 'Địa chỉ: ' + jQuery('#oi_hd_diachi').val() );
+				}
+				else {
+					jQuery('#hd_admin_ghichu').val(
+						jQuery.trim( jQuery('#hd_admin_ghichu').val() )
+						+ "\n"
+						+ 'Địa chỉ: ' + jQuery('#oi_hd_diachi').val()
+					);
+				}
+				
+				// thiết lập địa chỉ mới
+				jQuery('#oi_hd_diachi').val( a );
+			}
+			/*
+			var s = g_func.non_mark_seo( a[ a.length - 2 ] );
+			s = s.replace( /\-/g, '' );
+			console.log( s );
+			*/
+		}
+	}
+})( jQuery('#oi_hd_diachi').val() );
+
+
+
 //
 /*
 setTimeout(function () {
