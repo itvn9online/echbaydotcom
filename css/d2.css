@@ -1976,7 +1976,7 @@ li.footer-social-it { background-color: #ec4938; }
 .thread-list-status2 { background-color: #090; }
 .thread-list-status4 { }
 .thread-list-status6 {
-	background: url(../images-global/golden_time.png) center no-repeat;
+	background: url(../images-global/golden_time.png) top left no-repeat;
 	background-size: 100% auto;
 	width: 90px;
 	height: 90px;

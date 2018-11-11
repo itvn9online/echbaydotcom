@@ -199,10 +199,35 @@ body.style-for-mobile {
 	height: 30px;
 	line-height: 30px;
 }
-.style-for-mobile .thread-list-status6 {
-	width: 60px;
-	height: 60px;
+/* */
+.style-for-mobile .thread-list-per,
+.style-for-mobile .thread-list-status1,
+.style-for-mobile .thread-list-status2,
+.style-for-mobile .thread-list-status4 {
+	min-width: 25%;
+	font-size: 70%;
+	line-height: normal;
+	padding: 3px 0;
 }
+.style-for-mobile .thread-list-per {
+	top: 1px;
+	right: 0;
+}
+.style-for-mobile .thread-list-status1,
+.style-for-mobile .thread-list-status2,
+.style-for-mobile .thread-list-status4 {
+	top: 10%;
+	right: 0;
+}
+.style-for-mobile .thread-list-status6 {
+	width: 33%;
+	max-width: 60px;
+	height: 33%;
+	max-height: 60px;
+	top: 0;
+	left: 0;
+}
+/* */
 .style-for-mobile .clone-show-quick-cart { padding: 0 8px; }
 .style-for-mobile .text-right-if-mobile,
 .style-for-mobile .right-if-mobile { text-align: right !important; }
