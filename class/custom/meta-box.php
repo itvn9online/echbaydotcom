@@ -629,9 +629,9 @@ $arr_category_coupon_custom_fields['_eb_category_coupon_phantramgiam'] = 'Giảm
 $eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'number';
 $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'Nhập số phần trăm mà bạn muốn giảm cho mỗi đơn hàng (tham số này sẽ phủ định tham số [Giảm giá sản phẩm cố định] ở trên nếu chúng được thiết lập cùng nhau)';
 
-$arr_category_coupon_custom_fields['_eb_category_coupon_ngayhethan'] = 'Ngày hết hạn mã ưu đãi';
+$arr_category_coupon_custom_fields['_eb_category_coupon_ngayhethan'] = 'Ngày hết hạn mã ưu đãi <span class="redcolor">*</span>';
 //$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = '';
-$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = 'Mã sẽ hiển thị thông báo hết hạn khi qua ngày này. Thời gian tính vào giờ phút cuối cùng của ngày đó, ví dụ bạn thiết lập là: <strong>' . date('Y-m-d', date_time) . '</strong>, mã sẽ hết hạn vào lúc: <strong>' . date('Y-m-d', date_time) . ' 23:59</strong>';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = 'Mã sẽ hiển thị thông báo hết hạn khi qua ngày này. Thời gian tính vào giờ phút cuối cùng của ngày đó, ví dụ bạn thiết lập là: <strong>' . date('Y-m-d', date_time) . '</strong>, mã sẽ hết hạn vào lúc: <strong>' . date('Y-m-d', date_time) . ' 23:59</strong><br><span class="orgcolor">* Đây là trường bắt buộc phải điền, và bạn có thể đặt 5 năm, 10 năm tùy ý...</span>';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_toithieu'] = 'Chi tiêu tối thiểu';
 //$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_toithieu'] = '';
