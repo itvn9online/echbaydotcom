@@ -2872,7 +2872,7 @@ var _global_js_eb = {
 		}
 		
 		// ưu tiên gtag
-		if ( typeof gtag == 'function' ) {
+		if ( WGR_check_option_on ( cf_gtag_id ) && typeof gtag == 'function' ) {
 			if ( typeof ops['action'] == 'undefined' ) {
 				ops['action'] = eventAction;
 			}
@@ -2913,6 +2913,12 @@ var _global_js_eb = {
 			
 			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
 			if ( max_for > 0 ) {
+				// từ lần lặp cuối, cho phép tracking qua cả gtag
+				if ( max_for < 5 ) {
+					cf_gtag_id = 1;
+				}
+				
+				//
 				setTimeout(function () {
 					_global_js_eb.ga_event_track( eventCategory, eventAction, eventLabel, ops, max_for - 1 );
 				}, 500);
