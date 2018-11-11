@@ -892,7 +892,8 @@ jQuery('#oi_hd_quanhuyen').focus(function () {
 	setTimeout(function () {
 		jQuery('#ui_hd_quanhuyen').hide();
 	}, 200);
-}).off('keyup').keyup(function(e) {
+//}).off('keyup').keyup(function(e) {
+}).keyup(function(e) {
 //	console.log(e.keyCode);
 	
 	// khi bấm nút lên
@@ -1048,9 +1049,12 @@ function WGR_order_details_add_city () {
 
 
 // tự add tỉnh thành nếu chưa có
-(function ( a ) {
+function WGR_auto_add_city_with_address () {
 	// chỉ kiểm tra khi dữ liệu kia chưa có
 	if ( jQuery.trim( jQuery('#oi_hd_quanhuyen').val() ) == '' && jQuery.trim( jQuery('#oi_hd_tinhthanh').val() ) == '' ) {
+		var a = jQuery('#oi_hd_diachi').val();
+		
+		//
 		a = a.split(',');
 		
 		// phải có từ 3 cụm địa chỉ trở lên
@@ -1097,7 +1101,15 @@ function WGR_order_details_add_city () {
 			*/
 		}
 	}
-})( jQuery('#oi_hd_diachi').val() );
+}
+
+//
+WGR_auto_add_city_with_address();
+
+//
+jQuery('#oi_hd_diachi').change(function () {
+	WGR_auto_add_city_with_address();
+});
 
 
 
