@@ -878,6 +878,13 @@ jQuery('#oi_hd_quanhuyen').focus(function () {
 	
 	//
 	jQuery('#ui_hd_quanhuyen').show();
+	
+	//
+	setTimeout(function () {
+		if ( jQuery(this).val() != '' ) {
+			jQuery(this).keyup();
+		}
+	}, 200);
 }).blur(function () {
 	khong_submit_khi_bame_enter = false;
 	
