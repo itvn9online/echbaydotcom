@@ -153,3 +153,10 @@
 #aabbcc .aabbcc div:nth-child(3) { }
 /* elementer ở vị trí chẵn */
 #aabbcc .aabbcc div:nth-child(odd) { }
+/* ================================== nth-child ================================== */
+#aabbcc .phone-call-inline a { display: inline-block; }
+#aabbcc .phone-call-inline a:after {
+	content: "/";
+	display: inline-block;
+}
+#aabbcc .phone-call-inline a:last-child:after { display: none; }
