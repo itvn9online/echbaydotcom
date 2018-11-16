@@ -305,3 +305,4 @@ else {
 <p class="greencolor medium"><i class="fa fa-lightbulb-o orgcolor"></i> Thường xuyên xem và cải thiện tốc độ cho website bằng công cụ <a href="https://developers.google.com/speed/pagespeed/insights/?url=<?php echo urlencode( web_link ); ?>&tab=mobile" target="_blank" rel="nofollow">PageSpeed Insights</a> của Google để tối ưu tốc độ tải trang cho website của bạn.</p>
 <div data-src="https://www.youtube.com/embed/L45U7ChIMto" class="text-center admin-add-youtube-video"></div>
 <br>
+<p class="greencolor medium"><i class="fa fa-lightbulb-o orgcolor"></i> Kiểm tra độ thân thiện cho website bằng công cụ <a href="https://search.google.com/test/mobile-friendly?url=<?php echo urlencode( web_link ); ?>&tab=mobile" target="_blank" rel="nofollow">Mobile friendly</a> của Google để tối ưu trải nghiệm người cho website của bạn trên điện thoại.</p>

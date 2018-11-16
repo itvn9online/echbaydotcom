@@ -1424,16 +1424,26 @@ function _eb_add_compiler_css ( $arr ) {
 		}
 		// sử dụng thật thì có 2 kiểu add: inline và add link
 		else {
-			_eb_add_compiler_css_v2( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
+			// cho vào 1 file để giảm request
+//			_eb_add_compiler_css_v2( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
 			
 			
-			//
 			// nhúng nội dung file css
-//			_eb_add_compiler_css_v2( $new_arr1 );
-			_eb_add_compiler_css_v2( $new_arr1, 0 );
+			if ( $__cf_row['cf_css_inline'] == 1 ) {
+				_eb_add_compiler_css_v2( $new_arr1 );
+			}
+			// hoặc add link (tùy chọn ngâm cứu)
+			else {
+				_eb_add_compiler_css_v2( $new_arr1, 0 );
+			}
 			
-			// nhúng link CSS
-			_eb_add_compiler_css_v2( $new_arr2, 0 );
+			// nhúng link CSS (file 2)
+			if ( $__cf_row['cf_css2_inline'] == 1 ) {
+				_eb_add_compiler_css_v2( $new_arr2 );
+			}
+			else {
+				_eb_add_compiler_css_v2( $new_arr2, 0 );
+			}
 		}
 //	}
 }

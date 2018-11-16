@@ -68,6 +68,8 @@ $_POST['cf_debug_mode'] = WGR_default_config('cf_debug_mode');
 $_POST['cf_js_optimize'] = WGR_default_config('cf_js_optimize');
 
 $_POST['cf_css_optimize'] = WGR_default_config('cf_css_optimize');
+$_POST['cf_css_inline'] = WGR_default_config('cf_css_inline');
+$_POST['cf_css2_inline'] = WGR_default_config('cf_css2_inline');
 
 $_POST['cf_fontawesome_v5'] = WGR_default_config('cf_fontawesome_v5');
 
