@@ -204,6 +204,14 @@ function WGR_get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9, $cat_id
 }
 
 
+function WGR_sitemap_fixed_old_content ( $a, $b ) {
+	if ( $a != '' ) {
+		$b = WGR_replace_for_all_content( $a, $b );
+	}
+	return $b;
+}
+
+
 
 
 // định dạng ngày tháng
