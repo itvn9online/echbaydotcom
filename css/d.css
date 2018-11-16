@@ -261,3 +261,5 @@ body.home .thread-details-tohome { display: none; }
 	background-size: contain;
 	text-indent: -999px;
 }
+/* for elementor */
+.elementor-image { overflow: hidden; }
