@@ -45,7 +45,8 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		
 		//
 		if ( isset( $_GET['confirm_el_process'] ) ) {
-			$url_udpate_via_api .= '&first_active=1';
+//			$url_udpate_via_api .= '&first_active=1';
+			$url_udpate_via_api .= '&first_active=' . urlencode( web_link );
 		}
 		
 		//
