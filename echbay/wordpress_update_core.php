@@ -44,6 +44,11 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		$url_udpate_via_api .= '&wgr_update_to=' . base64_encode( WP_CONTENT_DIR . '/plugins' );
 		
 		//
+		if ( isset( $_GET['confirm_el_process'] ) ) {
+			$url_udpate_via_api .= '&first_active=1';
+		}
+		
+		//
 		$file_cache_test = EB_THEME_CACHE . 'el_update_core.txt';
 		
 		//

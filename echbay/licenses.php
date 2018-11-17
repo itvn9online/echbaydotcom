@@ -12,9 +12,16 @@ if ( $path != NULL ) {
 	
 	//
 	$last_update = date( 'r', filemtime( $path ) );
+	$elementor_pro = '';
 	
+	// nếu không phải là sử dụng host của EB thì in thêm thông tin ra
 	if ( strstr( $path, '/home/echbay_libary/' ) == false ) {
 		echo '<p>' . $path . '</p>';
+	}
+	// khuyến mại thêm elementor pro
+	else {
+//		echo WP_CONTENT_DIR;
+		$elementor_pro = '<p class="redcolor medium">--= Bạn được sử dụng kho 150 Landing page miễn phí của chúng tôi, hãy <a href="' . admin_link . 'admin.php?page=eb-about&confirm_el_process=1&first_active=1" class="bluecolor"><strong>bấm vào đây</strong></a> để gửi yêu cầu kích hoạt chức năng này =--</p>';
 	}
 	
 	?>
@@ -22,7 +29,10 @@ if ( $path != NULL ) {
 <div>(<em>lần cập nhật cuối: <?php echo $last_update; ?></em>)</div>
 <p>* Mặc định, khi bạn sử dụng Hosting của <a href="https://www.echbay.com/cart" target="_blank" rel="nofollow">EchBay.com</a> bạn sẽ được cung cấp các tính năng nâng cao, hỗ trợ việc quản trị website tốt hơn.</p>
 <?php
-
+	
+	//
+	echo $elementor_pro;
+	
 }
 else {
 	?>
