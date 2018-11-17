@@ -21,7 +21,12 @@ if ( $path != NULL ) {
 	// khuyến mại thêm elementor pro
 	else {
 //		echo WP_CONTENT_DIR;
-		$elementor_pro = '<p class="redcolor medium">--= Bạn được sử dụng kho 150 Landing page miễn phí của chúng tôi, hãy <a href="' . admin_link . 'admin.php?page=eb-about&confirm_el_process=1&first_active=1" class="bluecolor"><strong>bấm vào đây</strong></a> để gửi yêu cầu kích hoạt chức năng này =--</p>';
+		
+		//
+		if ( ! is_dir( WP_CONTENT_DIR . '/plugins/elementor-pro' ) ) {
+			$elementor_pro = '<p class="redcolor medium"><a href="' . admin_link . 'admin.php?page=eb-about&confirm_el_process=1&first_active=1" class="bluecolor">--= Bạn được sử dụng kho 150 Landing page miễn phí của chúng tôi, hãy <strong>bấm vào đây</strong> để gửi yêu cầu kích hoạt chức năng này =--</a></p>';
+		}
+		
 	}
 	
 	?>
