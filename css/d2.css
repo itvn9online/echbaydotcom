@@ -2135,6 +2135,11 @@ iframe[name="google_conversion_frame"] {
 	text-align: center;
 }
 .fa-icons:hover { border-color: #f00; }
+.noborder-widget-title .home-hot-title {
+	border: 0 none;
+	margin-bottom: 5px;
+}
+.noborder-widget-title .home-hot-title:before { display: none; }
 .hide-blogs-title .echbay-blog-title,
 .hide-blogs-description .echbay-blog-gioithieu,
 .hide-blogs-info .echbay-blog-infos,
@@ -2161,7 +2166,27 @@ iframe[name="google_conversion_frame"] {
 	margin: 0 auto;
 }
 .widget-other-post .home-hot-title { padding-left: 0; }
-.widget-other-post .home-hot-bg { background: none; }
+.widget-other-post .home-hot-bg {
+	background: none;
+	padding-top: 0;
+}
+/* Chỉnh style cho title phần đã xem, sản phẩm khác... */
+.home-hot2-title .home-hot-title {
+	border-bottom: 2px #333 solid;
+	padding-bottom: 1px;
+	line-height: 35px;
+}
+.home-hot2-title .home-hot-title:before { display: none; }
+.home-hot2-title .home-hot-title div {
+	display: inline-block;
+	background: #333;
+	color: #fff;
+	font-size: 13px;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding: 0 15px;
+}
+/* */
 .fb-comments {
 	background: #fff;
 	width: 99.8%;

@@ -59,7 +59,10 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		_eb_widget_number_of_posts_inline( $this->get_field_name('num_line'), $num_line );
 		
 		
-		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng.</p>';
+		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng:
+		- <strong>home-hot2-title</strong>: Style mới cho phần widget tilte.<br>
+		- <strong>noborder-widget-title</strong>: Ẩn border của widget.<br>
+		- <strong>hide-widget-title</strong>: Ẩn tiêu đề của widget.</p>';
 		
 	}
 	
