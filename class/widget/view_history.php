@@ -166,6 +166,9 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 			
 		}
 		
+		//
+		$str_css_class .= ' widget-other-post';
+		
 		
 		
 		//

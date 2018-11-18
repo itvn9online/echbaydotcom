@@ -2160,10 +2160,8 @@ iframe[name="google_conversion_frame"] {
 	max-width: 550px;
 	margin: 0 auto;
 }
-.eb-view-history .home-hot-title,
-.eb-same-price .home-hot-title { padding-left: 0; }
-.eb-view-history .home-hot-bg,
-.eb-same-price .home-hot-bg { background: none; }
+.widget-other-post .home-hot-title { padding-left: 0; }
+.widget-other-post .home-hot-bg { background: none; }
 .fb-comments {
 	background: #fff;
 	width: 99.8%;
