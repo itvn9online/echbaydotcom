@@ -1731,8 +1731,8 @@ function _eb_echbay_menu($slug, $menu = array(), $in_cache = 1, $tag_menu_name =
         $a = str_replace('{tmp.' . $k . '}', $v, $a);
         // temp trong menu
         $a = str_replace('%tmp.' . $k . '%', $v, $a);
-        $a = str_replace('%' . $k . '%', $v, $a);
         $a = str_replace('%%' . $k . '%%', $v, $a);
+        $a = str_replace('%' . $k . '%', $v, $a);
     }
 
     //
