@@ -2135,10 +2135,12 @@ iframe[name="google_conversion_frame"] {
 	text-align: center;
 }
 .fa-icons:hover { border-color: #f00; }
+.noborder-widget-title .details-other-title,
 .noborder-widget-title .home-hot-title {
 	border: 0 none;
-	margin-bottom: 5px;
+	margin-bottom: 0;
 }
+.noborder-widget-title .details-other-title:before,
 .noborder-widget-title .home-hot-title:before { display: none; }
 .hide-blogs-title .echbay-blog-title,
 .hide-blogs-description .echbay-blog-gioithieu,
