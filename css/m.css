@@ -212,6 +212,8 @@ body.style-for-mobile {
 .style-for-mobile .thread-list-per {
 	top: 1px;
 	right: 0;
+	left: auto;
+	text-align: center;
 }
 .style-for-mobile .thread-list-status1,
 .style-for-mobile .thread-list-status2,

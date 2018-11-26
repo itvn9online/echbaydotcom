@@ -2149,7 +2149,10 @@ iframe[name="google_conversion_frame"] {
 .hide-widget-title .thread-home-c2,
 .hide-widget-title .echbay-widget-title { display: none; }
 .height-auto-title .echbay-blog-title,
-.height-auto-gioithieu .echbay-blog-gioithieu { height: auto; }
+.height-auto-gioithieu .echbay-blog-gioithieu {
+	height: auto;
+	max-height: none;
+}
 .echbay-blog-avt.auto-size,
 .ti-le-global.auto-size {
 	overflow: hidden;
