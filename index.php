@@ -1180,9 +1180,11 @@ function EBE_register_scripts() {
 		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
 		
 		// ưu tiên sử dụng của elementor -> họ update liên tục
+		/*
 		if ( file_exists( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
 			$url = web_link . EB_DIR_CONTENT . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css';
 		}
+		*/
 		
 		//
 		wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
