@@ -1190,30 +1190,42 @@ function EBE_replace_link_in_cache_css($c) {
         // IMG của theme
 //		'../images/' => '../../../themes/' . basename( get_template_directory() ) . '/images/',
         '../images/' => '../../../themes/' . basename(EB_THEME_URL) . '/images/',
+		
+        // IMG của child theme
+		'../images-child/' => '../../../themes/' . basename(EB_THEME_URL) . '/images-child/',
+		
         // IMG của plugin tổng
 //		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
         '../../images-global/' => '../../../echbaydotcom/images-global/',
 //		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
         '../images-global/' => '../../../echbaydotcom/images-global/',
+		
         // các css ngoài -> trong outsource -> vd: font awesome
         '../outsource/' => '../../../echbaydotcom/outsource/',
-        '../fonts/' => '../../../echbaydotcom/outsource/fonts/',
-            ));
+        '../fonts/' => '../../../echbaydotcom/outsource/fonts/'
+	));
 }
 
 // khi css thuộc dạng inline (hiển thị trực tiếp trong HTML)
 function EBE_replace_link_in_css($c) {
     return _eb_replace_css_space($c, array(
+        // IMG của theme
 //		'../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename( get_template_directory() ) . '/images/',
         '../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename(EB_THEME_URL) . '/images/',
+		
+        // IMG của child theme
+		'../images-child/' => '../../../themes/' . basename(EB_THEME_URL) . '/images-child/',
+		
+        // IMG của plugin tổng
 //		'../../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
         '../../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
 //		'../images-global/' => EB_URL_OF_PLUGIN . 'images-global/',
         '../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
+		
         // các css ngoài -> trong outsource -> vd: font awesome
         '../outsource/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/',
-        '../fonts/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/',
-            ));
+        '../fonts/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/'
+	));
 }
 
 function WGR_remove_css_multi_comment($a) {
@@ -1247,11 +1259,18 @@ function WGR_remove_css_multi_comment($a) {
 
     // thay url ảnh của child theme thành url tuyệt đối
     if (using_child_wgr_theme == 1) {
-        $str = str_replace('../images-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'images-child/', $str);
-        $str = str_replace('../image-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'image-child/', $str);
+		return _eb_replace_css_space( $str, array(
+			'../images-child/' => '../../../themes/' . basename(EB_THEME_URL) . '/images-child/'
+		) );
+		
+		/*
+        $str = str_replace('../../images-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'images-child/', $str);
+        $str = str_replace('../../image-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'image-child/', $str);
+		*/
     }
-
-    return $str;
+	
+	//
+	return $str;
 }
 
 function WGR_remove_js_comment($a, $chim = false) {
