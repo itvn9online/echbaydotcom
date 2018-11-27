@@ -300,6 +300,10 @@ function WGR_add_li_to_thread_node ( $str ) {
 // sắp xếp lại mảng của taxonomy sau khi select, ẩn các nhóm đang bị khóa
 function WGR_order_and_hidden_taxonomy ( $arr, $order_only = 0 ) {
 	
+	//
+//	print_r( $arr );
+	
+	//
 	$a = array();
 	$a2 = array();
 	
@@ -318,7 +322,7 @@ function WGR_order_and_hidden_taxonomy ( $arr, $order_only = 0 ) {
 	else {
 		foreach ( $arr as $v ) {
 			// không lấy các nhóm đã bị khóa
-			if ( _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+			if ( isset( $v->term_id ) && _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) != 1 ) {
 				$stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
 				
 				$a[ $v->term_id ] = $stt;
