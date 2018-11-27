@@ -145,6 +145,12 @@ $main_content = EBE_str_template( 'search.html', array(
 */
 
 //
+if ( $list_post == '' ) {
+	$__cf_row ["cf_blog_public"] = 0;
+}
+
+
+//
 $main_content = EBE_html_template( EBE_get_page_template( $show_html_template ), array(
 	'tmp.search_not_found' => $search_not_found,
 	'tmp.list_post' => $list_post,

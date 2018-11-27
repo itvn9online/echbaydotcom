@@ -13,12 +13,12 @@ $eb_all_themes_support["webgiare"]["price"] = 270000000;
 //
 $eb_all_themes_support["webgiare"]["top"][] = "webgiare-top1.php";
 $eb_all_themes_support["webgiare"]["top"][] = "webgiare-top2.php";
-$eb_all_themes_support["webgiare"]["top"][] = "top_widget.php";
 $eb_all_themes_support["webgiare"]["top"][] = "webgiare-top3.php";
+$eb_all_themes_support["webgiare"]["top"][] = "top_widget.php";
 //
 $eb_all_themes_support["webgiare"]["footer"][] = "webgiare-footer1.php";
 $eb_all_themes_support["webgiare"]["footer"][] = "webgiare-footer2.php";
 //
-$eb_all_themes_support["webgiare"]["cf_threaddetails_include_file"] = "";
+$eb_all_themes_support["webgiare"]["cf_threaddetails_include_file"] = "webgiare-threaddetails.html";
 //
 $eb_all_themes_support["webgiare"]["cf_threadnode_include_file"] = "webgiare-threadnode.html";
