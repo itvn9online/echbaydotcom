@@ -4,9 +4,12 @@
 function EBE_get_big_banner ( $limit = 5, $option = array () ) {
 	global $__cf_row;
 	
-	//
+	// lấy mẫu q.cáo
 	$html = EBE_get_page_template( 'ads_node' );
-	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html );
+	
+	// tạo sẵn bg -> ưu tiên load ảnh mobile trước cho nó nhẹ, tạo hình cho nhanh
+//	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html );
+	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_mobile_img});"', $html );
 	
 	//
 	$a = _eb_load_ads(
