@@ -802,7 +802,7 @@ $arr_eb_add_full_js, $async = '',
                 // thu gọn nội dung
                 if ($optimize == 1) {
                     $file_content = WGR_remove_js_comment($file_content);
-//						$file_content = WGR_remove_js_multi_comment( $file_content );
+//					$file_content = WGR_remove_js_multi_comment( $file_content );
                 }
 
                 // chỉ gộp nội dung thành 1 file
@@ -1289,6 +1289,38 @@ function WGR_remove_js_comment($a, $chim = false) {
             $str .= $v;
         }
     }
+	
+	// loại bỏ khoảng trắng
+	$arr = array(
+		' ( ' => '(',
+		' ) ' => ')',
+		'( \'' => '(\'',
+		'\' )' => '\')',
+		
+		'\' + ' => '\'+',
+		' + \'' => '+\'',
+		
+		' == ' => '==',
+		' != ' => '!=',
+		' || ' => '||',
+		' === ' => '===',
+		
+		' () ' => '()',
+		' && ' => '&&',
+		'\' +\'' => '\'+\'',
+		' += ' => '+=',
+		'+ \'' => '+\'',
+		'; i < ' => ';i<',
+		'var i = 0;' => 'var i=0;',
+		'; i' => ';i',
+		' = \'' => '=\''
+	);
+	
+	foreach ( $arr as $k => $v ) {
+		$str = str_replace( $k, $v, $str );
+	}
+	
+	//
     return $str;
 }
 
