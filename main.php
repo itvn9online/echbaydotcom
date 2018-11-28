@@ -325,6 +325,9 @@ function ___eb_cache_end_ob_cache ( $strEBPageDynamicCache ) {
 	// xóa các thẻ TAB đi -> rút gọn lại HTML 1 chút
 	$main_content = preg_replace( "/\t/", "", $main_content );
 	
+	// bỏ phần comment HTML
+	$main_content = WGR_remove_js_multi_comment( $main_content, '<!--', '-->' );
+	
 	// optimize javascript
 	
 	// bỏ các dấu xuống dòng thừa

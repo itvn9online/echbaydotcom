@@ -1324,12 +1324,12 @@ function WGR_remove_js_comment($a, $chim = false) {
     return $str;
 }
 
-function WGR_remove_js_multi_comment($a) {
+function WGR_remove_js_multi_comment($a, $begin = '/*', $end = '*/') {
 
     $str = $a;
 
-    $b = explode('/*', $a);
-    $a = explode('*/', $a);
+    $b = explode($begin, $a);
+    $a = explode($end, $a);
 
     // nếu số thẻ đóng với thẻ mở khác nhau -> hủy luôn
     if (count($a) != count($b)) {
@@ -1342,7 +1342,7 @@ function WGR_remove_js_multi_comment($a) {
 
     //
     foreach ($a as $v) {
-        $v = explode('/*', $v);
+        $v = explode($begin, $v);
         $str .= $v[0];
     }
 
