@@ -1256,9 +1256,9 @@ var _global_js_eb = {
 			}
 			
 			// load trước các ảnh ngoài màn hình, để lát khách kéo xuống có thể xem được luôn
-			lazzy_show += 600;
+//			lazzy_show += 600;
 //			lazzy_show += 1500;
-//			lazzy_show += jQuery(window).height();
+			lazzy_show += jQuery(window).height()/ 2;
 			
 			//
 			jQuery('.' + eb_lazzy_class).each(function() {
