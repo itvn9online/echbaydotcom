@@ -2546,20 +2546,26 @@ iframe[name="google_conversion_frame"] {
 	text-transform: none;
 }
 /* link chỉnh sửa menu */
+.each-to-edit-ads,
 .each-to-edit-menu {
 	position: relative !important;
 	z-index: 9999;
 }
+.each-to-edit-ads a,
 .each-to-edit-menu a {
 	position: absolute !important;
 	background: rgba(255,255,255,.6) !important;
-	top: 0 !important;
 	right: 0 !important;
 }
+.each-to-edit-menu a { top: 0 !important; }
+.each-to-edit-ads a { top: -20px !important; }
+.each-to-edit-ads i,
 .each-to-edit-menu i {
 	background: inherit !important;
 	color: #00f !important;
 }
+.each-to-edit-ads a,
+.each-to-edit-ads i,
 .each-to-edit-menu a,
 .each-to-edit-menu i {
 	font-size: 10pt !important;
