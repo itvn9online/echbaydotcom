@@ -529,7 +529,7 @@ if ( $trv_giamoi > 0 ) {
 	}
 	
 	// loại bỏ phần mã dư thừa để không bị lỗi trên fb
-	$structured_data_detail = WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
+	$structured_data_detail = _eb_del_line( WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
 <script type="application/ld+json">
 {
 	"@context": "http:\/\/schema.org\/",
@@ -579,7 +579,7 @@ if ( $trv_giamoi > 0 ) {
 	//
 	"productID": "' .$pid. '"
 }
-</script>' ), true );
+</script>' ), true ) );
 	
 }
 else {
@@ -603,7 +603,7 @@ else {
 	}
 	
 	//
-	$structured_data_detail = WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
+	$structured_data_detail = _eb_del_line( WGR_remove_js_comment ( WGR_remove_js_multi_comment ( '
 <script type="application/ld+json">
 {
 	"@context": "http:\/\/schema.org",
@@ -632,7 +632,7 @@ else {
 		"url": "' . str_replace( '/', '\/', $trv_img ) . '"
 	}
 }
-</script>' ), true );
+</script>' ), true ) );
 	
 }
 

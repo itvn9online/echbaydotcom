@@ -279,7 +279,7 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
 		"contactType": "Hotline"
 	}
 }
-</script>', "\n" );
+</script>' );
 	
 }
 // hoặc breadcrumb nếu có
@@ -301,7 +301,7 @@ else {
 		}
 	} ' . implode ( ' ', $schema_BreadcrumbList ) . ' ]
 }
-</script>', "\n" );
+</script>' );
 	
 }
 

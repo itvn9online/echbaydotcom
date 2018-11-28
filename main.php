@@ -121,6 +121,9 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 //	return $data;
 	
 	//
+	$data = WGR_remove_js_multi_comment( $data, '<!--', '-->' );
+	
+	//
 	$a = explode( "\n", $data );
 	$data = '';
 	$i = 0;
@@ -134,14 +137,16 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 			
 			// xóa HTML comment
 			// https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
+			/*
 			if ( substr( $v, 0, 4 ) == '<!--' && substr( $v, -3 ) == '-->' ) {
 //				$v = trim( preg_replace('/<!--(.*)-->/Uis', '', $v) );
 //				$v = trim( preg_replace('s/<!--[^>]*-->//g', '', $v) );
 				$v = WGR_remove_html_comments ( $v );
 			}
+			*/
 			
 			// nội dung hợp lệ
-			if ( $v != '' ) {
+//			if ( $v != '' ) {
 				
 //				if ( strstr( $v, '//' ) == true ) {
 					$v .= "\n";
@@ -164,7 +169,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 				}
 				$i++;
 				
-			}
+//			}
 		}
 	}
 	// v2 -> nhúng nội dung còn thiếu ở những vòng lặp cuối
@@ -173,6 +178,8 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 	}
 	
 	return true;
+	
+	
 	
 	// v1
 	// xóa một số khoảng trắng không cần thiết -> tiết kiệm từng kb =))
@@ -192,8 +199,10 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 function ___eb_cache_cache ( $filename, $data, $data_comment = '' ) {
 	
 	// v2
+	// nhúng comment vào trước
 	file_put_contents( $filename, $data_comment ) or die('ERROR: write comment main cache file');
 	
+	// rồi nhúng các nội dung khác vào sau
 	WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename );
 	
 	return true;
@@ -323,10 +332,10 @@ function ___eb_cache_end_ob_cache ( $strEBPageDynamicCache ) {
 	*/
 	
 	// xóa các thẻ TAB đi -> rút gọn lại HTML 1 chút
-	$main_content = preg_replace( "/\t/", "", $main_content );
+//	$main_content = preg_replace( "/\t/", "", $main_content );
 	
 	// bỏ phần comment HTML
-	$main_content = WGR_remove_js_multi_comment( $main_content, '<!--', '-->' );
+//	$main_content = WGR_remove_js_multi_comment( $main_content, '<!--', '-->' );
 	
 	// optimize javascript
 	
@@ -347,7 +356,6 @@ function ___eb_cache_end_ob_cache ( $strEBPageDynamicCache ) {
 Served from: ' . $_SERVER ['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . date( 'Y-m-d H:i:s', date_time ) . '
 Cache auto clean after ' . $set_time_for_main_cache . ' secondes
 Caching using hard disk drive. Recommendations using SSD for your website.
-
 Compression = gzip -->';
 	
 	//

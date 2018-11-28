@@ -41,7 +41,10 @@ function WGR_deny_or_accept_vist_php_file ( $progress_file, $deny_or_accept, $wa
 
 
 function WGR_remove_html_comments ( $a ) {
+	// v2
+	return WGR_remove_js_multi_comment( $a, '<!--', '-->' );
 	
+	// v1
 	$str = '';
 	
 	$a = explode( '-->', $a );
