@@ -2152,6 +2152,7 @@ iframe[name="google_conversion_frame"] {
 .height-auto-gioithieu .echbay-blog-gioithieu {
 	height: auto;
 	max-height: none;
+	line-height: normal;
 }
 .echbay-blog-avt.auto-size,
 .ti-le-global.auto-size {
