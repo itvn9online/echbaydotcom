@@ -1056,7 +1056,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
             var a = jQuery(this).attr('data-id') || 0,
                 t = jQuery(this).attr('data-type') || '';
 
-            if (a * 1 > 0 || t == 'ads') {
+            if (a * 1 > 0 && t == 'ads') {
                 jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank"><i class="fa fa-edit"></i></a></div>');
             }
         });
