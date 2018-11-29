@@ -512,20 +512,20 @@ function WGR_hide_html_alert_auto_order_submit () {
 		//
 		jQuery('#oi_hd_diachi').val( cus['hd_diachi'] );
 		jQuery('#oi_full_diachi').val( cus['hd_diachi'] );
-		if ( typeof cus['hd_quanhuyen'] != 'undefined' ) jQuery('#oi_hd_quanhuyen').val( cus['hd_quanhuyen'] );
-		if ( typeof cus['hd_id_quanhuyen'] != 'undefined' ) {
-			jQuery('#oi_hd_id_quanhuyen').val( cus['hd_id_quanhuyen'] );
-			if ( cus['oi_hd_id_quanhuyen'] != '' ) {
-				dog('oi_hd_diachi').value += ', ' + cus['oi_hd_id_quanhuyen'];
+		if ( typeof cus['hd_quanhuyen'] != 'undefined' ) {
+			jQuery('#oi_hd_quanhuyen').val( cus['hd_quanhuyen'] );
+			if ( cus['hd_quanhuyen'] != '' ) {
+				dog('oi_full_diachi').value += ', ' + cus['hd_quanhuyen'];
 			}
 		}
-		if ( typeof cus['hd_tinhthanh'] != 'undefined' ) jQuery('#oi_hd_tinhthanh').val( cus['hd_tinhthanh'] );
-		if ( typeof cus['hd_id_tinhthanh'] != 'undefined' ) {
-			jQuery('#oi_hd_id_tinhthanh').val( cus['hd_id_tinhthanh'] );
-			if ( cus['hd_id_tinhthanh'] != '' ) {
-				dog('oi_hd_diachi').value += ', ' + cus['hd_id_tinhthanh'];
+		if ( typeof cus['hd_id_quanhuyen'] != 'undefined' ) jQuery('#oi_hd_id_quanhuyen').val( cus['hd_id_quanhuyen'] );
+		if ( typeof cus['hd_tinhthanh'] != 'undefined' ) {
+			jQuery('#oi_hd_tinhthanh').val( cus['hd_tinhthanh'] );
+			if ( cus['hd_tinhthanh'] != '' ) {
+				dog('oi_full_diachi').value += ', ' + cus['hd_tinhthanh'];
 			}
 		}
+		if ( typeof cus['hd_id_tinhthanh'] != 'undefined' ) jQuery('#oi_hd_id_tinhthanh').val( cus['hd_id_tinhthanh'] );
 		
 		//
 		jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
