@@ -180,7 +180,20 @@ function ___eb_set_thumb_to_fullsize ( s ) {
 	return s;
 }
 
-function ___eb_set_img_to_thumbnail ( sr ) {
+function WGR_get_thumb_in_srcset ( srcset ) {
+	// tìm thumbnail trong srcset
+	srcset = srcset.split( ' 150w,' );
+	
+	// có thì trả về luôn
+	if ( srcset.length > 1 ) {
+		srcset = srcset[0].split(',');
+		return jQuery.trim( srcset[ srcset.length - 1 ] );
+	}
+	
+	return '';
+}
+
+function ___eb_set_img_to_thumbnail ( sr, srcset ) {
 	if ( typeof sr == 'undefined' || sr == '' ) {
 		return '';
 	}
@@ -189,10 +202,30 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 	// nếu có tham số này -> site không sử dụng thumb hoặc không có thumb
 	// cf_disable_auto_get_thumb
 	if ( typeof eb_disable_auto_get_thumb == 'number' && WGR_check_option_on ( eb_disable_auto_get_thumb ) ) {
+		
+		// ưu tiên lấy theo srcset -> có thumb thì vẫn dùng thumb như thường
+		if ( typeof srcset != 'undefined' && srcset != '' ) {
+			srcset = WGR_get_thumb_in_srcset( srcset );
+			if ( srcset != '' ) {
+				return srcset;
+			}
+		}
+		
+		//
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Auto get thumbnail disable');
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
 	else if ( sr.split(wp_content + '/uploads/').length > 1 ) {
+		
+		// ưu tiên lấy theo srcset
+		if ( typeof srcset != 'undefined' && srcset != '' ) {
+			srcset = WGR_get_thumb_in_srcset( srcset );
+			if ( srcset != '' ) {
+				return srcset;
+			}
+		}
+		
+		
 		// cắt lấy chuỗi cuối cùng của ảnh để kiểm tra xem có phải thumb hay không
 		var file_name = sr.split('/');
 		file_name = file_name[ file_name.length - 1 ];
@@ -215,7 +248,7 @@ function ___eb_set_img_to_thumbnail ( sr ) {
 			is_thumb = is_thumb.split('.')[0];
 //			console.log( is_thumb );
 			
-			// có chữ x -> có thể là thumb
+			// có chữ x -> có thể là thumb -> xóa cái đoạn đó đi -> có thể gây lỗi nếu đó là tên file ảnh =))
 			if ( is_thumb.split('x').length > 1 ) {
 				var re = /^\d+$/;
 				is_thumb = is_thumb.split('x');
@@ -414,11 +447,12 @@ function ___eb_details_slider_v2 () {
 	//
 	jQuery(html_for_get).each(function() {
 //		sr = jQuery(this).attr(data_get) || '';
-		sr = jQuery(this).attr('data-src') || jQuery(this).attr('src') || '';
+		sr = jQuery(this).attr('data-src') || jQuery(this).attr('src') || '',
+			srcset = jQuery(this).attr('srcset') || '';
 //		console.log( sr );
 		
 		//
-		sr = ___eb_set_img_to_thumbnail( sr );
+		sr = ___eb_set_img_to_thumbnail( sr, srcset );
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( sr );
 		
 		//

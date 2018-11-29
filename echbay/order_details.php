@@ -13,7 +13,6 @@ include ECHBAY_PRI_CODE . 'order_details_load.php';
 <div class="wrap">
 	<h1>Chi tiết đơn hàng</h1>
 </div>
-<br>
 <?php
 
 // tự chuyển lại trạng thái là chưa xác nhận nếu bấm vào xem mà không làm gì cả
@@ -143,42 +142,17 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 				<input type="hidden" name="t_id_tinhthanh" id="oi_hd_id_tinhthanh" value="" /></td>
 		</tr>
 		<tr>
-			<td valign="top" class="t">Vị trí địa lý</td>
-			<td class="i"><?php
-
-//
-/*
-echo EB_THEME_PLUGIN_INDEX . '<br>';
-echo EB_URL_OF_PLUGIN . '<br>';
-echo WP_CONTENT_DIR . '<br>';
-*/
-
-// GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
-if ( $order_user_can == 1 ) {
-	echo 'Gửi bởi Biên tập viên';
-}
-else {
-	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
-	
-	//
-	if ( $cGeoLite2->getPath() != NULL ) {
-//		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
-		echo $cGeoLite2->getUserOptionByIp( $post->order_ip );
-	}
-	else {
-		echo 'Phiên bản <i class="fa-pro upper small"></i>';
-	}
-}
-
-		?>
-				<div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div></td>
+			<td class="t">Địa chỉ (đầy đủ)</td>
+			<td class="i"><input type="text" id="oi_full_diachi" value="" onClick="this.select();" class="l" /></td>
 		</tr>
 		<tr>
-			<td class="t">Email</td>
-			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
+			<td class="t">Ghi chú của khách hàng</td>
+			<td id="oi_ghi_chu_cua_khach" class="i">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2"><textarea id="hd_admin_ghichu" placeholder="Ghi chú của nhân viên Chăm sóc khách hàng. Ví dụ: lý do hủy đơn hàng..."></textarea></td>
 		</tr>
 	</table>
-	<br>
 	<br>
 	<div class="medium18 redcolor l30">Thông tin hóa đơn <strong>#<?php echo $post->order_sku; ?></strong></div>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="order-danhsach-sanpham">
@@ -216,29 +190,6 @@ else {
 	<p class="description">* <strong>Phí vận chuyển</strong>: Cước vận chuyển khách sẽ phải trả thêm khi nhận hàng trong trường hợp có phí vận chuyển.</p>
 	<br>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="eb-public-table">
-		<tr>
-			<td class="t">Ghi chú của khách hàng</td>
-			<td id="oi_ghi_chu_cua_khach" class="i">&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="t">Ngày gửi</td>
-			<td data-time="<?php echo $post->order_time; ?>" class="i order-time-server"><?php echo date( 'd-m-Y H:i', $post->order_time ); ?></td>
-		</tr>
-		<tr>
-			<td class="t">Cập nhật cuối</td>
-			<td class="i"><?php
-			if ( isset( $post->order_update_time ) ) {
-				echo date( 'd-m-Y H:i', $post->order_update_time );
-			}
-			// nếu chưa có -> có thể bảng hóa đơn đang thiếu -> bổ sung lại
-			else {
-				EBE_tao_bang_hoa_don_cho_echbay_wp();
-			}
-			?></td>
-		</tr>
-		<tr>
-			<td colspan="2"><textarea id="hd_admin_ghichu" placeholder="Ghi chú của nhân viên Chăm sóc khách hàng. Ví dụ: lý do hủy đơn hàng..."></textarea></td>
-		</tr>
 		<?php
 		
 		$hd_trangthai = $post->order_status;
@@ -293,6 +244,57 @@ else {
 				</select></td>
 		</tr>
 		-->
+		<tr>
+			<td valign="top" class="t">Vị trí địa lý</td>
+			<td class="i"><?php
+
+//
+/*
+echo EB_THEME_PLUGIN_INDEX . '<br>';
+echo EB_URL_OF_PLUGIN . '<br>';
+echo WP_CONTENT_DIR . '<br>';
+*/
+
+// GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
+if ( $order_user_can == 1 ) {
+	echo 'Gửi bởi Biên tập viên';
+}
+else {
+	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
+	
+	//
+	if ( $cGeoLite2->getPath() != NULL ) {
+//		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+		echo $cGeoLite2->getUserOptionByIp( $post->order_ip );
+	}
+	else {
+		echo 'Phiên bản <i class="fa-pro upper small"></i>';
+	}
+}
+
+		?>
+				<div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div></td>
+		</tr>
+		<tr>
+			<td class="t">Email</td>
+			<td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
+		</tr>
+		<tr>
+			<td class="t">Ngày gửi</td>
+			<td data-time="<?php echo $post->order_time; ?>" class="i order-time-server"><?php echo date( 'd-m-Y H:i', $post->order_time ); ?></td>
+		</tr>
+		<tr>
+			<td class="t">Cập nhật cuối</td>
+			<td class="i"><?php
+			if ( isset( $post->order_update_time ) ) {
+				echo date( 'd-m-Y H:i', $post->order_update_time );
+			}
+			// nếu chưa có -> có thể bảng hóa đơn đang thiếu -> bổ sung lại
+			else {
+				EBE_tao_bang_hoa_don_cho_echbay_wp();
+			}
+			?></td>
+		</tr>
 	</table>
 	<br>
 	<div class="show-if-js-enable d-none bill-detail-submit">
