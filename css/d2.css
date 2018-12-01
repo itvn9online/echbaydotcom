@@ -1987,6 +1987,7 @@ li.footer-social-it { background-color: #ec4938; }
 }
 .thread-list li[data-status="1"] .thread-list-status1,
 .thread-list li[data-status="2"] .thread-list-status2,
+.thread-list li[data-status="4"] .thread-list-status4,
 .thread-list li[data-status="6"] .thread-list-status6 { display: inline-block !important; }
 .show-if-site-demo { display: none; }
 .golden_time-page { padding-bottom: 50px; }
