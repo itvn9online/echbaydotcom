@@ -1174,7 +1174,7 @@ function _eb_replace_css_space($str, $new_array = array()) {
 
     //
 //	print_r( $arr );
-//   $arr = array_merge($arr, $new_array);
+//	$arr = array_merge($arr, $new_array);
 //	print_r( $arr );
 
     foreach ($arr as $k => $v) {
@@ -1184,6 +1184,7 @@ function _eb_replace_css_space($str, $new_array = array()) {
     foreach ($new_array as $k => $v) {
         $str = str_replace($k, $v, $str);
     }
+//	print_r( $new_array );
 
     return $str;
 }
@@ -1235,7 +1236,7 @@ function EBE_replace_link_in_css($c) {
 	
 	// IMG của child theme
     if ( using_child_wgr_theme == 1 ) {
-		$a['../images-child/'] = '../../../themes/' . basename(EB_CHILD_THEME_URL) . '/images-child/';
+		$a['../images-child/'] = './' . EB_DIR_CONTENT . '/themes/' . basename(EB_CHILD_THEME_URL) . '/images-child/';
 	}
 	
 	//
@@ -1272,16 +1273,16 @@ function WGR_remove_css_multi_comment($a) {
     $str = str_replace('} .', '}.', $str);
 
     // thay url ảnh của child theme thành url tuyệt đối
+	/*
     if (using_child_wgr_theme == 1) {
 		return _eb_replace_css_space( $str, array(
 			'../images-child/' => '../../../themes/' . basename(EB_CHILD_THEME_URL) . '/images-child/'
 		) );
 		
-		/*
-        $str = str_replace('../../images-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'images-child/', $str);
-        $str = str_replace('../../image-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'image-child/', $str);
-		*/
+//		$str = str_replace('../../images-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'images-child/', $str);
+//		$str = str_replace('../../image-child/', str_replace('\\', '/', str_replace(ABSPATH, web_link, EB_CHILD_THEME_URL)) . 'image-child/', $str);
     }
+	*/
 	
 	//
 	return $str;
@@ -1537,9 +1538,10 @@ function _eb_add_compiler_css_v2($arr, $css_inline = 1) {
 
             //
             $cache_content = WGR_remove_css_multi_comment($cache_content);
+            $cache_content = EBE_replace_link_in_cache_css($cache_content);
 
             //
-            _eb_create_file($file_save, create_cache_infor_by($full_file_name) . EBE_replace_link_in_cache_css($cache_content));
+            _eb_create_file($file_save, create_cache_infor_by($full_file_name) . $cache_content );
 
             // chưa có file phụ -> tạo luôn file phụ
             if (!file_exists(EB_THEME_CACHE . 'noclean/' . $file_show)) {
@@ -1583,7 +1585,7 @@ function _eb_add_compiler_css_v2($arr, $css_inline = 1) {
             $file_save = EB_THEME_CACHE . $file_cache;
 //			echo $file_save . '<br>' . "\n";
             // nếu chưa -> tạo file cache
-            if (!file_exists($file_save)) {
+            if ( !file_exists($file_save) ) {
                 $file_content = explode("\n", file_get_contents($v, 1));
 
                 //
@@ -1597,9 +1599,10 @@ function _eb_add_compiler_css_v2($arr, $css_inline = 1) {
 
                 //
                 $cache_content = WGR_remove_css_multi_comment($cache_content);
+                $cache_content = EBE_replace_link_in_css($cache_content);
 
                 //
-                _eb_create_file($file_save, EBE_replace_link_in_css($cache_content));
+                _eb_create_file( $file_save, $cache_content );
             }
 
             // 
