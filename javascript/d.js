@@ -921,6 +921,24 @@ function WGR_show_price_for_size_color ( gia ) {
 }
 
 
+// kiểm tra số lượng sản phẩm trong kho -> chuẩn bị cho việc kết nối với kho woo
+function WGR_check_product_color_with_inventory () {
+	var str = '';
+	
+	jQuery('.oi_product_color li').each(function() {
+		var a = jQuery(this).attr('data-sku') || '';
+		
+		if ( a != '' ) {
+			str += ',' + a;
+		}
+	});
+	
+	if ( str != '' ) {
+		console.log( str );
+	}
+}
+
+
 // màu sắc sản phẩm
 // hiển thị tên màu trực tiếp nếu không có màu nào được chỉ định
 function WGR_show_product_color_name () {
@@ -940,15 +958,18 @@ function WGR_show_product_color_name () {
 		
 		// nếu có hình ảnh -> thêm hình ảnh vào phần size
 		if ( product_img != '' ) {
-			str += '<li title="' + product_color_name + '" data-img="' + product_img + '" data-node="0" class="selected" style="background-image:url(' + product_img + ');">&nbsp;<div>' + product_color_name + '</div></li>';
+			str += '<li title="' + product_color_name + '" data-img="' + product_img + '" data-node="0" data-sku="' + product_js.sku + '" class="selected" style="background-image:url(' + product_img + ');">&nbsp;<div>' + product_color_name + '</div></li>';
 			
 			jQuery('.oi_product_color ul').after('<div class="show-products-color-text l19 small">&nbsp;</div>');
 		}
 		// nếu không, chỉ hiển thị mỗi tên
 		else {
-			str = '<li class="text-center text-color-center">' + product_color_name + '</li>';
+			str = '<li data-sku="' + product_js.sku + '" class="text-center text-color-center">' + product_color_name + '</li>';
 		}
 		jQuery('.oi_product_color ul').html( str );
+		
+		//
+		WGR_check_product_color_with_inventory();
 	}
 	
 	return false;
@@ -1036,6 +1057,10 @@ function ___eb_details_product_color () {
 	jQuery('.show-if-color-exist').show();
 	jQuery('.oi_product_color ul').html( str ).after('<div class="show-products-color-text l19 small"></div>');
 	
+	//
+	WGR_check_product_color_with_inventory();
+	
+	//
 	jQuery('.oi_product_color li').off('click').click(function () {
 		jQuery('.oi_product_color li').removeClass('selected');
 //		jQuery(this).addClass('selected');

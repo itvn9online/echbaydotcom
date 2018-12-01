@@ -428,6 +428,7 @@ if ( $bai_san_pham == true ) {
 	//
 	$arr_product_js = array (
 		'tieude' => '\'' . _eb_str_block_fix_content ( $__post->post_title ) . '\'',
+		'sku' => '\'' . $trv_masanpham . '\'',
 		'gia' => $trv_giaban,
 		'gm' => $trv_giamoi
 	);
