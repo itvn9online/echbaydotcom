@@ -34,7 +34,6 @@ body {
 	font-size: 10pt;
 	color: #000;
 	font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma, Verdana, sans-serif;
-	max-width: 1600px;
 	margin: 0 auto;
 }
 ul {
@@ -129,7 +128,11 @@ a {
 	background: center no-repeat;
 	background-size: 100% auto;
 }
-.oi_big_banner { overflow: hidden; }
+.oi_big_banner {
+	overflow: hidden;
+	max-width: 1600px;
+	margin: 0 auto;
+}
 .big-banner-button { position: relative; }
 .big-banner-button ul {
 	position: absolute;

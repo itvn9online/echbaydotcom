@@ -934,6 +934,8 @@ function WGR_check_product_color_with_inventory () {
 	});
 	
 	if ( str != '' ) {
+		//
+		str = 'https://test.com/wgr_inventory/?skus=' + str;
 		console.log( str );
 	}
 }
