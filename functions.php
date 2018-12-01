@@ -1174,10 +1174,14 @@ function _eb_replace_css_space($str, $new_array = array()) {
 
     //
 //	print_r( $arr );
-    $arr = array_merge($arr, $new_array);
+//    $arr = array_merge($arr, $new_array);
 //	print_r( $arr );
 
     foreach ($arr as $k => $v) {
+        $str = str_replace($k, $v, $str);
+    }
+	
+    foreach ($new_array as $k => $v) {
         $str = str_replace($k, $v, $str);
     }
 
