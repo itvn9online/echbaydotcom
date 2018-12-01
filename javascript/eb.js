@@ -1898,7 +1898,7 @@ var _global_js_eb = {
 				// thêm phần giá riêng theo màu hoặc size
 				"child_price" : price_for_quick_cart,
 				"quan" : jQuery('#oi_change_soluong select').val() || 1,
-				"sku" : ''
+				"sku" : jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || ''
 			} );
 			
 			//

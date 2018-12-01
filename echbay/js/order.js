@@ -42,8 +42,8 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 	
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
-		
-		if ( arr[i].color != '' ) {
+		// color
+		if ( typeof arr[i].color != 'undefined' && arr[i].color != '' ) {
 			arr[i].color = jQuery.trim( arr[i].color );
 			if ( arr[i].color.substr( 0, 1 ) != '-' ) {
 				arr[i].color = '- ' + arr[i].color;
@@ -52,16 +52,22 @@ function post_excerpt_to_prodcut_list (arr, cus) {
 			arr[i].name += ' ' + arr[i].color;
 		}
 		
-		if ( arr[i].size != '' ) {
+		// size
+		if ( typeof arr[i].color != 'undefined' && arr[i].size != '' ) {
 			arr[i].size = jQuery.trim( arr[i].size );
 			if ( arr[i].size.substr( 0, 1 ) != '(' ) {
-				arr[i].size = '(Size: ' + arr[i].size + ')';
+				arr[i].size = ' - Size: ' + arr[i].size;
 			}
 			
 			arr[i].name += ' ' + arr[i].size;
 		}
 		
-		//
+		// SKU
+		if ( typeof arr[i].sku != 'undefined' && arr[i].sku != '' ) {
+			arr[i].name += ' - SKU: ' + jQuery.trim( arr[i].sku );
+		}
+		
+		// -> HTML
 		f_tr.find('.eb-to-product').append( '<div><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">- ' + arr[i].name + ' x ' + arr[i].quan + ' <i class="fa fa-eye bluecolor"></i></a></div>' );
 		
 	}

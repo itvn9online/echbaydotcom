@@ -980,6 +980,7 @@ function ___eb_details_product_color () {
 					color_price = jQuery(this).attr('data-price') || '',
 					color_size = jQuery(this).attr('data-size') || '',
 					color_color = jQuery(this).attr('data-color') || '',
+					color_sku = jQuery(this).attr('data-sku') || '',
 					in_sctock = '',
 					bg = '',
 					cl = '';
@@ -1010,7 +1011,7 @@ function ___eb_details_product_color () {
 					}
 					
 					//
-					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" data-size="' + color_size + '" data-color="' + color_color + '" class="' + cl + '" style="' + bg + ';">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
+					str += '<li title="' + color_name + in_sctock + '" data-img="' + img_fullsize + '" data-node="' + i + '" data-quan="' + color_quan + '" data-price="' + color_price + '" data-size="' + color_size + '" data-color="' + color_color + '" data-sku="' + color_sku + '" class="' + cl + '" style="' + bg + ';">&nbsp;<div>' + color_name + in_sctock + '</div></li>';
 					
 					arr_product_color.push( img_fullsize );
 					
