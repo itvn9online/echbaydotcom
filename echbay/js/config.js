@@ -240,6 +240,7 @@ function create_deault_css () {
 	// text color
 	a = f.cf_default_color.value;
 	str += '.default-color, .default-color a, .mcb, .mcb a { color: ' + a + '; }';
+	str += '.mcb .thread-home-c2, .mcb .thread-home-c2 a, .mcb .echbay-widget-title, .mcb .echbay-widget-title a { color: ' + a + ' !important; }';
 	
 	// link color
 	a = f.cf_default_link_color.value;

@@ -2573,10 +2573,13 @@ iframe[name="google_conversion_frame"] {
 	font-size: 10pt !important;
 	padding: 0 !important;
 	margin: 0 !important;
-	display: inline-block !important;
-	width: 20px !important;
 	height: 20px !important;
 	line-height: 20px !important;
 	text-align: center !important;
 	border-radius: 3px !important;
+}
+.each-to-edit-ads a,
+.each-to-edit-menu a {
+	display: inline-block !important;
+	width: auto !important;
 }

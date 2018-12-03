@@ -1043,23 +1043,31 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 // tạo link để admin chỉnh sửa menu khi cần
 (function() {
     if (isQuanly == 1) {
-        jQuery('.each-to-edit-menu').each(function() {
-            var a = jQuery(this).attr('data-id') || 0;
-
-            if (a * 1 > 0) {
-                jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank"><i class="fa fa-edit"></i></a>');
-            }
-        });
-
-        // hỗ trợ chỉnh sửa banner quảng cáo
-        jQuery('.echbay-blog li, .global-ul-load-ads li').each(function() {
-            var a = jQuery(this).attr('data-id') || 0,
-                t = jQuery(this).attr('data-type') || '';
-
-            if (a * 1 > 0 && t == 'ads') {
-                jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank"><i class="fa fa-edit"></i></a></div>');
-            }
-        });
+		setTimeout(function () {
+			jQuery('.each-to-edit-menu').each(function() {
+				var a = jQuery(this).attr('data-id') || 0;
+	
+				if (a * 1 > 0) {
+					jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank"><i class="fa fa-edit"></i></a>');
+				}
+			});
+	
+			// hỗ trợ chỉnh sửa banner quảng cáo
+			jQuery('.echbay-blog li, .global-ul-load-ads li').each(function() {
+				var a = jQuery(this).attr('data-id') || 0,
+					t = jQuery(this).attr('data-type') || '',
+					size = '';
+	
+				if (a * 1 > 0 && t == 'ads') {
+					//
+					size = jQuery('.ti-le-global', this).width().toString() || '0';
+					size += 'x' + jQuery('.ti-le-global', this).height().toString() || '0';
+					
+					// hiển thị nút sửa và size khung ảnh
+					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank">' + size + ' <i class="fa fa-edit"></i></a></div>');
+				}
+			});
+		}, 3000);
     }
 })();
 
