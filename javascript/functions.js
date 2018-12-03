@@ -31,15 +31,20 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 	
 }
 
+// dành cho các chức năng tracking cần lấy giá đơn hàng trước
 function WGR_get_hoan_tat_total_price () {
-	if ( current_hd_object == false || current_hd_object.length == 0 ) {
-		return 1;
-	}
+	var a = 0;
 	
 	//
-	var a = 0;
-	for ( var i = 0; i < current_hd_object.length; i++ ) {
-		a += current_hd_object[i].quan * current_hd_object[i].price;
+	try {
+		var arr = ___eb_add_conver_string_cart_to_arr_cart( current_hd_object );
+		
+		//
+		for ( var i = 0; i < arr.length; i++ ) {
+			a += arr[i].quan * arr[i].price;
+		}
+	} catch (e) {
+		console.log( WGR_show_try_catch_err( e ) );
 	}
 	
 	//
