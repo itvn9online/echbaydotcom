@@ -31,6 +31,22 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 	
 }
 
+function WGR_get_hoan_tat_total_price () {
+	if ( current_hd_object == false || current_hd_object.length == 0 ) {
+		return 1;
+	}
+	
+	//
+	var a = 0;
+	for ( var i = 0; i < current_hd_object.length; i++ ) {
+		a += current_hd_object[i].quan * current_hd_object[i].price;
+	}
+	
+	//
+	console.log( a );
+	return a;
+}
+
 function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	current_hd_object = ___eb_add_conver_string_cart_to_arr_cart( arr );
 	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
