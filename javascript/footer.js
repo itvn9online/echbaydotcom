@@ -1040,15 +1040,17 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 
-// tạo link để admin chỉnh sửa menu khi cần
+// tạo link để admin chỉnh sửa khi cần
 (function() {
     if (isQuanly == 1) {
 		setTimeout(function () {
+			
+			// chỉnh sửa menu
 			jQuery('.each-to-edit-menu').each(function() {
 				var a = jQuery(this).attr('data-id') || 0;
 	
 				if (a * 1 > 0) {
-					jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank"><i class="fa fa-edit"></i></a>');
+					jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank" rel="nofollow"><i class="fa fa-edit"></i></a>');
 				}
 			});
 	
@@ -1064,9 +1066,32 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 					size += 'x' + jQuery('.ti-le-global', this).height().toString() || '0';
 					
 					// hiển thị nút sửa và size khung ảnh
-					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank">' + size + ' <i class="fa fa-edit"></i></a></div>');
+					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank" rel="nofollow">' + size + ' <i class="fa fa-edit"></i></a></div>');
 				}
 			});
+			
+			// chỉnh sửa taxonomy
+			var edit_taxonomy = 'category',
+				edit_taxonomy_title = 'Chỉnh sửa Chuyên mục Sản phẩm';
+				edit_taxonomy_type = 'post';
+			if ( typeof switch_taxonomy != 'undefined' ) {
+				edit_taxonomy = switch_taxonomy;
+				
+				//
+				if ( switch_taxonomy == 'blogs' ) {
+					edit_taxonomy_title = 'Chỉnh sửa Danh mục Tin tức';
+					edit_taxonomy_type = 'blog';
+				}
+				else if ( switch_taxonomy == 'post_options' ) {
+					edit_taxonomy_title = 'Chỉnh sửa Thông số Sản phẩm';
+				}
+				else if ( switch_taxonomy == 'post_tag' ) {
+					edit_taxonomy_title = 'Chỉnh sửa Thẻ Sản phẩm';
+				}
+			}
+			
+			$('.thread-module-name, .blogs-module-name').addClass('each-to-edit-taxonomy').append('<a href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" target="_blank" rel="nofollow" class="click-edit-taxonomy"><i class="fa fa-edit"></i></a>');
+			
 		}, 3000);
     }
 })();

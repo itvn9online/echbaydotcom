@@ -2548,24 +2548,28 @@ iframe[name="google_conversion_frame"] {
 	text-transform: none;
 }
 /* link chỉnh sửa menu */
+.each-to-edit-taxonomy,
 .each-to-edit-ads,
-.each-to-edit-menu {
-	position: relative !important;
-	z-index: 9999;
-}
+.each-to-edit-menu { position: relative !important; }
+.each-to-edit-taxonomy a.click-edit-taxonomy,
 .each-to-edit-ads a,
 .each-to-edit-menu a {
 	position: absolute !important;
 	background: rgba(255,255,255,.6) !important;
 	right: 0 !important;
+	z-index: 9999;
 }
+.each-to-edit-taxonomy a.click-edit-taxonomy,
 .each-to-edit-menu a { top: 0 !important; }
 .each-to-edit-ads a { top: -20px !important; }
+.each-to-edit-taxonomy .click-edit-taxonomy i,
 .each-to-edit-ads i,
 .each-to-edit-menu i {
 	background: inherit !important;
 	color: #9C27B0 !important;
 }
+.each-to-edit-taxonomy a.click-edit-taxonomy,
+.each-to-edit-taxonomy .click-edit-taxonomy i,
 .each-to-edit-ads a,
 .each-to-edit-ads i,
 .each-to-edit-menu a,
@@ -2573,11 +2577,12 @@ iframe[name="google_conversion_frame"] {
 	font-size: 10pt !important;
 	padding: 0 !important;
 	margin: 0 !important;
-	height: 20px !important;
-	line-height: 20px !important;
+	height: 15px !important;
+	line-height: 15px !important;
 	text-align: center !important;
 	border-radius: 3px !important;
 }
+.each-to-edit-taxonomy a.click-edit-taxonomy,
 .each-to-edit-ads a,
 .each-to-edit-menu a {
 	display: inline-block !important;
