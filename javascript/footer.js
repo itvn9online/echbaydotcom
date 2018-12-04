@@ -1042,7 +1042,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 // tạo link để admin chỉnh sửa khi cần
 (function() {
-    if (isQuanly == 1) {
+    if (isQuanly == 1 && top == self) {
 		setTimeout(function () {
 			
 			// chỉnh sửa menu
