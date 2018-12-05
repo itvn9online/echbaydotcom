@@ -1045,6 +1045,9 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
     if (isQuanly == 1 && top == self) {
 		setTimeout(function () {
 			
+			// chỉnh sửa logo
+			jQuery('.web-logo').before('<div class="each-setup-goto-edit"><a href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" target="_blank" rel="nofollow" class="click-goto-edit"><i class="fa fa-edit"></i></a></div>');
+			
 			// chỉnh sửa menu
 			jQuery('.each-to-edit-menu').each(function() {
 				var a = jQuery(this).attr('data-id') || 0;
@@ -1090,7 +1093,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 				}
 			}
 			
-			$('.thread-module-name, .blogs-module-name').addClass('each-to-edit-taxonomy').append('<a href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" target="_blank" rel="nofollow" class="click-edit-taxonomy"><i class="fa fa-edit"></i></a>');
+			$('.thread-module-name, .blogs-module-name').addClass('each-setup-goto-edit').append('<a href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" target="_blank" rel="nofollow" class="click-goto-edit"><i class="fa fa-edit"></i></a>');
 			
 		}, 3000);
     }
