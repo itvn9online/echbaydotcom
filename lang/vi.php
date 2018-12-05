@@ -529,6 +529,7 @@ function EBE_get_lang($k) {
 	
 //	return isset( $___eb_lang[eb_key_for_site_lang . $k] ) ? $___eb_lang[eb_key_for_site_lang . $k] : '';
 	return '<eblang-element>' . $___eb_lang[eb_key_for_site_lang . $k] . '</eblang-element>';
+//	return $___eb_lang[eb_key_for_site_lang . $k];
 }
 
 function EBE_set_lang($key, $val) {
