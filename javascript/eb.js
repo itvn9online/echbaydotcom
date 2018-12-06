@@ -1564,7 +1564,7 @@ var _global_js_eb = {
 		}
 		
 		// key tìm kiếm đơn hàng
-		arr.hd_key = g_func.non_mark_seo( arr.hd_ten + arr.hd_dienthoai );
+		arr.hd_key = g_func.non_mark_seo( arr.hd_ten + arr.hd_dienthoai + arr.hd_email );
 		arr.hd_key = arr.hd_key.replace( /\-/g, '' );
 		
 //		console.log(arr);
@@ -1878,13 +1878,14 @@ var _global_js_eb = {
 			
 			//
 			var color_name = jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || '',
-				color_img = jQuery('.oi_product_color li.selected').attr('data-img') || jQuery('.oi_product_color li:first').attr('data-img') || '';
+				color_img = jQuery('.oi_product_color li.selected').attr('data-img') || jQuery('.oi_product_color li:first').attr('data-img') || '',
+				sku = jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || '';
 			if ( color_img != '' ) {
 				color_img = ' <span data-src="' + color_img + '" class="order-img-color-product"></span>';
 			}
 			
 			// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
-			var cart_product_slug = g_func.non_mark_seo( product_js.tieude );
+			var cart_product_slug = g_func.non_mark_seo( product_js.tieude + sku );
 			
 			//
 			ebe_arr_cart_product_list.push( {
@@ -1898,7 +1899,7 @@ var _global_js_eb = {
 				// thêm phần giá riêng theo màu hoặc size
 				"child_price" : price_for_quick_cart,
 				"quan" : jQuery('#oi_change_soluong select').val() || 1,
-				"sku" : jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || ''
+				"sku" : sku
 			} );
 			
 			//
@@ -1909,10 +1910,11 @@ var _global_js_eb = {
 			jQuery('.each-for-set-cart-value').each(function () {
 				var cart_pid = jQuery(this).attr('data-id') || 0,
 					cart_product_name = jQuery('.get-product-name-for-cart', this).html() || '',
-					cart_product_slug = '';
+					cart_product_slug = '',
+					sku = jQuery(this).attr('data-sku') || '';
 				
 				// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
-				cart_product_slug = g_func.non_mark_seo( cart_product_name );
+				cart_product_slug = g_func.non_mark_seo( cart_product_name + sku );
 				
 				//
 				ebe_arr_cart_product_list.push( {
@@ -1924,7 +1926,7 @@ var _global_js_eb = {
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
 					"price" : jQuery(this).attr('data-price') || 0,
 					"quan" : jQuery('.change-select-quantity', this).val() || 1,
-					"sku" : jQuery(this).attr('data-sku') || ''
+					"sku" : sku
 				} );
 			});
 		}

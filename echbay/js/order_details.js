@@ -31,7 +31,7 @@ var arr_global_js_order_details = [],
 	co_thay_doi_chua_duoc_luu = false,
 	auto_submit_order_details = false,
 	time_submit_order_details = null,
-	khong_submit_khi_bame_enter = false;
+	khong_submit_khi_bam_enter = false;
 
 
 function WGR_auto_submit_order_details () {
@@ -124,7 +124,7 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 
 function ___eb_admin_update_order_details () {
 	//
-	if ( khong_submit_khi_bame_enter == true ) {
+	if ( khong_submit_khi_bam_enter == true ) {
 		return false;
 	}
 	
@@ -150,7 +150,7 @@ function ___eb_admin_update_order_details () {
 	arr_global_js_order_customter['hd_admin_ghichu'] = jQuery.trim( jQuery('#hd_admin_ghichu').val() || '' );
 	
 	// tạo key để sau này tìm kiếm đơn hàng cho tiện
-	arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] );
+	arr_global_js_order_customter['hd_key'] = g_func.non_mark_seo( arr_global_js_order_customter['hd_ten'] + arr_global_js_order_customter['hd_dienthoai'] + arr_global_js_order_customter['hd_email'] );
 	arr_global_js_order_customter['hd_key'] = arr_global_js_order_customter['hd_key'].replace( /\-/g, '' );
 	
 	//
@@ -845,7 +845,7 @@ var tong_so_li_quan_huyen = 0;
 
 // khi người dùng gõ tìm địa chỉ -> dưa ra gợi ý luôn
 jQuery('#oi_hd_quanhuyen').focus(function () {
-	khong_submit_khi_bame_enter = true;
+	khong_submit_khi_bam_enter = true;
 	
 	// chưa có danh sách tỉnh thành -> load
 	if ( dog('ui_hd_quanhuyen') == null ) {
@@ -897,7 +897,7 @@ jQuery('#oi_hd_quanhuyen').focus(function () {
 		}
 	}, 200);
 }).blur(function () {
-	khong_submit_khi_bame_enter = false;
+	khong_submit_khi_bam_enter = false;
 	
 	//
 	setTimeout(function () {
