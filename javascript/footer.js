@@ -1061,15 +1061,22 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 			jQuery('.echbay-blog li, .global-ul-load-ads li').each(function() {
 				var a = jQuery(this).attr('data-id') || 0,
 					t = jQuery(this).attr('data-type') || '',
-					size = '';
+					w = 0,
+					h = 0;
 	
 				if (a * 1 > 0 && t == 'ads') {
 					//
-					size = jQuery('.ti-le-global', this).width().toString() || '0';
-					size += 'x' + jQuery('.ti-le-global', this).height().toString() || '0';
+					w = jQuery('.ti-le-global', this).width() || 0;
+					if ( w * 1 > 0 ) {
+						w = Math.ceil( w );
+					}
+					h = jQuery('.ti-le-global', this).height() || 0;
+					if ( h * 1 > 0 ) {
+						h = Math.ceil( h );
+					}
 					
 					// hiển thị nút sửa và size khung ảnh
-					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank" rel="nofollow">' + size + ' <i class="fa fa-edit"></i></a></div>');
+					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank" rel="nofollow">' + w.toString() + 'x' + h.toString() + ' <i class="fa fa-edit"></i></a></div>');
 				}
 			});
 			
