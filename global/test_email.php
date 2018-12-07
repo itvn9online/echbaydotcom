@@ -9,7 +9,7 @@ print_r( $eb_user_info );
 
 //
 if ( mtv_id == 0 ) {
-	die('For user only');
+	die('For user only! Please login to check this function...');
 }
 
 
