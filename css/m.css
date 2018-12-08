@@ -220,6 +220,7 @@ body.style-for-mobile {
 .style-for-mobile .thread-list-status4 {
 	top: 10%;
 	right: 0;
+	left: auto;
 }
 .style-for-mobile .thread-list-status6 {
 	width: 33%;
