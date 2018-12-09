@@ -1056,7 +1056,12 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 					jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank" rel="nofollow"><i class="fa fa-edit"></i></a>');
 				}
 			});
-	
+			
+			// ép phần quảng cáo về định dạng q.cáo -> do khi q.cáo liên kết tới post khác thì định dạng này sẽ bị thay đổi -> cần reset lại
+			jQuery('.global-ul-load-ads li').attr({
+				'data-type' : 'ads'
+			});
+			
 			// hỗ trợ chỉnh sửa banner quảng cáo
 			jQuery('.echbay-blog li, .global-ul-load-ads li').each(function() {
 				var a = jQuery(this).attr('data-id') || 0,
