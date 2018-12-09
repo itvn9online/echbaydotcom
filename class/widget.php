@@ -357,6 +357,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>bgcover</strong>: background-size: cover.<br>
 	- <strong>bgcontain</strong>: background-size: contain.<br>
 	- <strong>noborder</strong>: bỏ viền của ảnh đại diện.<br>
+	- <strong>noborder-widget-title</strong>: Ẩn border của widget.<br>
 	- <strong>hideavt</strong>: ẩn ảnh đại diện.<br>
 	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
 	- <strong>oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
