@@ -81,10 +81,19 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	
 	//
 	for ( var i = 0; i < current_hd_object.length; i++ ) {
+		//
+		if ( typeof current_hd_object[i].color_img != 'undefined' && current_hd_object[i].color_img != '' ) {
+			current_hd_object[i].color_img = 'background-image: url(' + current_hd_object[i].color_img + ');';
+		}
+		else {
+			current_hd_object[i].color_img = '';
+		}
+		
+		//
 		str2 += '' +
 		'<div class="cf">' +
 			'<div class="lf f25 fullsize-if-mobile">' +
-				'<div data-size="1" data-img="" class="ti-le-global hoan-tat-avt each-to-bgimg">&nbsp;</div>' +
+				'<div data-size="1" data-img="" class="ti-le-global hoan-tat-avt" style="' + current_hd_object[i].color_img + '">&nbsp;</div>' +
 			'</div>' +
 			'<div class="lf f75 fullsize-if-mobile">' +
 				'<div class="left-menu-space">' +

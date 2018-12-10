@@ -1880,9 +1880,11 @@ var _global_js_eb = {
 			var color_name = jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || '',
 				color_img = jQuery('.oi_product_color li.selected').attr('data-img') || jQuery('.oi_product_color li:first').attr('data-img') || '',
 				sku = jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || '';
+			/*
 			if ( color_img != '' ) {
 				color_img = ' <span data-src="' + color_img + '" class="order-img-color-product"></span>';
 			}
+			*/
 			
 			// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
 			var cart_product_slug = g_func.non_mark_seo( product_js.tieude + sku );
@@ -1893,7 +1895,9 @@ var _global_js_eb = {
 				"name" : product_js.tieude,
 				"slug" : cart_product_slug.replace( /\-/g, '' ),
 				"size" : jQuery('.oi_product_size li.selected').attr('data-name') || jQuery('.oi_product_size li:first').attr('data-name') || '',
-				"color" : color_name + color_img,
+//				"color" : color_name + color_img,
+				"color" : color_name,
+				"color_img" : color_img,
 				"old_price" : product_js.gia,
 				"price" : product_js.gm,
 				// thêm phần giá riêng theo màu hoặc size

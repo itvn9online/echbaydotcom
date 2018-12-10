@@ -340,6 +340,8 @@ $___eb_lang[eb_key_for_site_lang . 'booking_done'] = 'booking_done';
 $eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'booking_done'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/hoan-tat.html';
 
+$___eb_lang[eb_key_for_site_lang . 'hoantat_backing'] = 'Bill {tmp.hd_mahoadon}';
+
 // nội dung email đơn hàng
 //$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );
 $___eb_lang[eb_key_for_site_lang . 'booking_mail'] = 'booking_mail';

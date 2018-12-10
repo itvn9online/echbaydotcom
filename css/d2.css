@@ -33,10 +33,13 @@ label,
 	overflow: hidden;
 	height: 19px;
 }
+.hoan-tat-avt,
 .echbay-blog-avt {
 	background: #fff center no-repeat url(../images-global/noavatar.png);
 	/* background-size: auto 100%; */
 	background-size: contain;
+}
+.echbay-blog-avt {
 	height: 150px;
 	border: 1px #f2f2f2 solid;
 }

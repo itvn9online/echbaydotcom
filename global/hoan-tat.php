@@ -122,11 +122,15 @@ $main_content = EBE_str_template ( 'hoan-tat.html', array (
 //$main_content = EBE_html_template( EBE_get_lang('booking_done'), array(
 $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', 'hoan-tat' ), array(
 //	'tmp.js' => '',
-	'tmp.hd_id' => $hd_id,
-	'tmp.hd_mahoadon' => $hd_mahoadon,
+	
+	'tmp.cf_bank' => nl2br( $__cf_row['cf_bank'] ),
+	'tmp.hoantat_backing' => EBE_get_lang( 'hoantat_backing' ),
 	'tmp.cf_hotline' => $__cf_row['cf_hotline'],
 //	'tmp.echbay_plugin_url' => EB_URL_OF_PLUGIN,
 //	'tmp.echbay_plugin_version' => date_time,
+	
+	'tmp.hd_id' => $hd_id,
+	'tmp.hd_mahoadon' => $hd_mahoadon
 ) );
 
 
