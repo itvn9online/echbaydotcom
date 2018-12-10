@@ -477,6 +477,13 @@ function echbay_admin_footer_styles() {
 		) ), 'add' );
 	}
 	
+	
+	
+	// mã nhúng ngoài cho phần admin
+	echo '<!-- Custom code for admin -->' . "\n\r";
+	echo $__cf_row['cf_js_admin'];
+	
+	
 }
 add_filter('admin_footer', 'echbay_admin_footer_styles');
 

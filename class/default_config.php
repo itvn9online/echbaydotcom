@@ -84,6 +84,9 @@ $__cf_row_default = array(
 	'cf_js_details' => '',
 	'cf_js_details_full' => '',
 	
+	// mã ngoài cho phần admin
+	'cf_js_admin' => '',
+	
 	// mã dành cho chơi GA
 	'cf_js_gadsense' => '',
 	'cf_js_gadsense_full' => '',
