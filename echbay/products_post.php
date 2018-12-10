@@ -105,7 +105,7 @@ echo '<ul class="cf admin-products_post-category">';
 foreach ( $arrs_cats as $v ) {
 	$sl = '';
 	if ( $v->term_id == $by_cat_id ) {
-		$sl = 'bold';
+		$sl = 'bold redcolor';
 	}
 	
 	//

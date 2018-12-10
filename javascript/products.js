@@ -31,7 +31,7 @@ function WGR_admin_quick_edit_select_menu () {
 	}
 	*/
 	else {
-		jQuery('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold');
+		jQuery('.set-url-post-post-type[data-type="' + by_post_type + '"]').addClass('bold redcolor');
 	}
 }
 
