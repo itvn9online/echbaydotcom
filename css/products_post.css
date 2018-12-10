@@ -39,7 +39,10 @@
 .class-for-post .quick-show-if-paw,
 .class-for-blog .quick-show-if-paw { display: inline-block !important; }
 */
-.admin-products_post-category { position: relative; }
+.admin-products_post-category {
+	position: relative;
+	margin-bottom: 10px;
+}
 .admin-products_post-category li {
 	float: left;
 	margin: 0 20px 0 0;
