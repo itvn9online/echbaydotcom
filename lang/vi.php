@@ -340,7 +340,8 @@ $___eb_lang[eb_key_for_site_lang . 'booking_done'] = 'booking_done';
 $eb_type_lang[eb_key_for_site_lang . 'booking_done'] = 'textarea';
 $eb_ex_from_github[eb_key_for_site_lang . 'booking_done'] = 'https://github.com/itvn9online/echbaydotcom/blob/master/html/hoan-tat.html';
 
-$___eb_lang[eb_key_for_site_lang . 'hoantat_backing'] = 'Bill {tmp.hd_mahoadon}';
+$___eb_lang[eb_key_for_site_lang . 'hoantat_banking'] = 'Bill {tmp.hd_mahoadon}';
+$___eb_lang[eb_key_for_site_lang . 'hoantat_time'] = 'Sẽ mất khoảng 1-2 ngày làm việc để chúng tôi kiểm tra và đối soát đơn hàng của bạn, và giao hàng cho bạn trong vòng 1-2 ngày đối với đơn giao nội thành hoặc 3-6 ngày đối với đơn hàng giao liên tỉnh. Không kể chủ nhật hoặc các ngày nghỉ lễ tết khác.';
 
 // nội dung email đơn hàng
 //$___eb_lang[eb_key_for_site_lang . 'booking_mail'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/mail/booking.html' );

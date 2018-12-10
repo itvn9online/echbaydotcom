@@ -124,7 +124,8 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 //	'tmp.js' => '',
 	
 	'tmp.cf_bank' => nl2br( $__cf_row['cf_bank'] ),
-	'tmp.hoantat_backing' => EBE_get_lang( 'hoantat_backing' ),
+	'tmp.hoantat_time' => EBE_get_lang( 'hoantat_time' ),
+	'tmp.hoantat_banking' => EBE_get_lang( 'hoantat_banking' ),
 	'tmp.cf_hotline' => $__cf_row['cf_hotline'],
 //	'tmp.echbay_plugin_url' => EB_URL_OF_PLUGIN,
 //	'tmp.echbay_plugin_version' => date_time,

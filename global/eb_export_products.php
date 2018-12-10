@@ -88,6 +88,10 @@ $arr_for_slect_data = array(
 );
 
 
+//
+$header_name = 'products';
+
+
 // lọc theo cat id
 $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
 if ( $by_cat_id > 0 ) {
@@ -96,6 +100,14 @@ if ( $by_cat_id > 0 ) {
 	//
 	$cats_type = isset( $_GET['cats_type'] ) ? trim( $_GET['cats_type'] ) : 'category';
 //	$rssCacheFilter .= '-cat_type' . $cats_type;
+	
+	
+	//
+	$get_cat_name = get_term( $by_cat_id, $cats_type );
+	if ( ! empty( $get_cat_name ) ) {
+		$header_name = $get_cat_name->slug;
+	}
+	
 	
 	//
 	$arrs_cats = array(
@@ -125,6 +137,9 @@ if ( $by_cat_id > 0 ) {
 		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
 		
 }
+
+//
+header('Content-disposition: inline; filename="' . $header_name . '.xml"');
 
 
 //
