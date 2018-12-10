@@ -42,13 +42,16 @@
 .admin-products_post-category { position: relative; }
 .admin-products_post-category li {
 	float: left;
-	margin: 5px 20px 5px 0;
+	margin: 0 20px 0 0;
 }
+.admin-products_post-category span,
 .admin-products_post-category a {
 	display: inline-block;
-	padding: 10px 0;
+	padding: 6px 0;
 }
+/*
 .admin-products_post-category a:before { content: "- "; }
+*/
 .admin-products_post-category .sub-menu {
 	position: absolute;
 	left: 0;

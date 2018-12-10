@@ -387,67 +387,7 @@ class EchBayCommerce {
 	
 	
 	function checkPostServerClient() {
-		if ($_SERVER ['REQUEST_METHOD'] != 'POST') {
-			die ( '<h1>POST DIE</h1>' );
-			exit ();
-		}
-		
-		
-		$checkPostServer = $_SERVER ['HTTP_HOST'];
-		$checkPostServer = str_replace ( 'www.', '', $checkPostServer );
-//		$checkPostServer = explode ( '/', $checkPostServer );
-//		$checkPostServer = $checkPostServer [0];
-		
-		$checkPostClient = isset ( $_SERVER ['HTTP_REFERER'] ) ? $_SERVER ['HTTP_REFERER'] : '';
-		$checkPostClient = explode( '//', $checkPostClient );
-		$checkPostClient = $checkPostClient[1];
-		$checkPostClient = str_replace ( 'www.', '', $checkPostClient );
-		$checkPostClient = explode ( '/', $checkPostClient );
-		$checkPostClient = $checkPostClient [0];
-		
-		//
-		if ( strtolower ( $checkPostServer ) != strtolower ( $checkPostClient ) ) {
-			die ( '<h1>REFERER DIE</h1>' );
-			exit ();
-		}
-		
-		
-		
-		/*
-		* xử lý an toàn cho chuỗi
-		*/
-		
-		// kiểm tra get_magic_quotes_gpc đang bật hay tắt
-		// Magic_quotes_gpc là 1 giá trị tùy chọn bật chế độ tự động thêm ký tự escape vào trước các ký tự đặc biệt như: nháy đơn ('), nháy kép ("), dấu backslash (\) khi nó đc POST hoặc GET từ client lên
-		$magic_quotes = 0;
-		if ( get_magic_quotes_gpc () ) {
-			$magic_quotes = 1;
-		}
-		
-		//
-		foreach ( $_POST as $k => $v ) {
-			if ( gettype( $v ) == 'string' ) {
-				// nếu Magic_quotes_gpc đang tắt -> loại bỏ ký tự đặc biệt
-//				if ( $magic_quotes == 1 ) {
-//					$v = stripslashes ( $v );
-//				}
-				
-				// nếu Magic_quotes_gpc đang tắt -> add dữ liệu an toàn thủ công vào
-				if ( $magic_quotes == 0 ) {
-					// xử lý an toàn cho chuỗi
-					$v = addslashes ( $v );
-					
-					// mysqli_real_escape_string tương tự như addslashes, nhưng công việc sẽ do mysql xử lý
-//					$str = mysqli_real_escape_string ( $str );
-				}
-				
-				$_POST [$k] = $v;
-			}
-		}
-		
-		
-		//
-		return $_POST;
+		return _eb_checkPostServerClient ();
 	}
 	
 	

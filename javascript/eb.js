@@ -122,6 +122,9 @@ var g_func = {
 		if ( typeof days == 'number' && days > 0 ) {
 			seconds = days * 24 * 3600;
 		}
+		else {
+			days = 0;
+		}
 		
 		//
 		if ( typeof seconds == 'number' && seconds > 0 ) {

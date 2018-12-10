@@ -13,15 +13,32 @@ $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
 
 // tham khảo custom query: https://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query
 
-//
-$strFilter = " `" . wp_posts . "`.post_type = '" . $by_post_type . "'
-	AND ( `" . wp_posts . "`.post_status = 'publish' OR `" . wp_posts . "`.post_status = 'pending' OR `" . wp_posts . "`.post_status = 'draft' ) ";
-	
+// theo định dạng post
+$strFilter = " `" . wp_posts . "`.post_type = '" . $by_post_type . "' ";
+
+
 $joinFilter = "";
 $strAjaxLink = '';
 
 $strLinkPager .= '&by_post_type=' . $by_post_type;
 $strAjaxLink .= '&by_post_type=' . $by_post_type;
+
+
+// theo trạng thái post
+$by_post_status = isset( $_GET['by_post_status'] ) ? $_GET['by_post_status'] : '';
+$link_for_post_filter = '';
+
+if ( $by_post_status != '' ) {
+	$strFilter .= " AND `" . wp_posts . "`.post_status = '" . $by_post_status . "' ";
+	$strLinkPager .= '&by_post_status=' . $by_post_status;
+	$strAjaxLink .= '&by_post_status=' . $by_post_status;
+	$link_for_post_filter = '&by_post_status=' . $by_post_status;
+}
+// mặc định thì lấy các post_status phổ biến
+else {
+	$strFilter .= " AND ( `" . wp_posts . "`.post_status = 'publish' OR `" . wp_posts . "`.post_status = 'pending' OR `" . wp_posts . "`.post_status = 'draft' ) ";
+}
+
 
 $cats_type = ( $by_post_type == 'blog' ) ? 'blogs' : 'category';
 
@@ -89,6 +106,33 @@ if ( $by_search_key != '' ) {
 
 
 
+// lọc theo trạng thái post
+// tam khảo bản dịch tại: wp-admim/includes/meta-boxes.php
+$arrs_by_post_status = array(
+	'publish' => __('Published'),
+	'pending' => __('Pending Review'),
+	'draft' => __('Draft'),
+	'private' => __('Privately Published'),
+	'future' => __('Scheduled')
+);
+
+echo '<ul class="cf admin-products_post-category">
+	<li><span>Trạng thái sản phẩm: </span></li>
+	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '" class="bold">Tất cả</a></li>';
+
+foreach ( $arrs_by_post_status as $k => $v ) {
+	$sl = '';
+	if ( $k == $by_post_status ) {
+		$sl = 'bold redcolor';
+	}
+	
+	//
+	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_post_status=' . $k . '" class="' . $sl . '">' . $v . '</a></li>';
+}
+echo '</ul>';
+
+
+
 
 //
 $arrs_cats = array(
@@ -101,7 +145,10 @@ $arrs_cats = array(
 $arrs_cats = get_categories( $arrs_cats );
 //print_r( $arrs_cats );
 
-echo '<ul class="cf admin-products_post-category">';
+echo '<ul class="cf admin-products_post-category">
+	<li><span>Chuyên mục sản phẩm: </span></li>
+	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '" class="bold">Tất cả</a></li>';
+
 foreach ( $arrs_cats as $v ) {
 	$sl = '';
 	if ( $v->term_id == $by_cat_id ) {
@@ -109,7 +156,7 @@ foreach ( $arrs_cats as $v ) {
 	}
 	
 	//
-	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . ' (' . $v->count . ')</a>';
+	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '&by_cat_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . ' (' . $v->count . ')</a>';
 	
 	
 	// lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
@@ -142,8 +189,6 @@ foreach ( $arrs_cats as $v ) {
 	echo '</li>';
 }
 echo '</ul>';
-
-
 
 
 

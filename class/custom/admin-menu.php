@@ -480,8 +480,11 @@ function echbay_admin_footer_styles() {
 	
 	
 	// mã nhúng ngoài cho phần admin
-	echo '<!-- Custom code for admin -->' . "\n\r";
-	echo $__cf_row['cf_js_admin'];
+	if ($_SERVER ['REQUEST_METHOD'] != 'POST') {
+//		echo '<!-- Custom code for admin -->' . "\n\r";
+//		echo $__cf_row['cf_js_admin'];
+	}
+//	echo htmlentities( $__cf_row['cf_js_admin'], ENT_QUOTES, "UTF-8" );
 	
 	
 }
