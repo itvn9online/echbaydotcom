@@ -188,7 +188,7 @@ $__cf_row_default = array(
 	
 	
 	// bật/ tắt chia sẻ dữ liệu qua JSON
-//	'cf_on_off_json' => 'off',
+	'cf_on_off_json' => 'off',
 	'cf_on_off_xmlrpc' => 'off',
 	
 	// bật tắt cron -> chức năng tiêu tốn nhiều tài nguyên server
