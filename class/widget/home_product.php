@@ -135,7 +135,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 				$cat_name = $categories->name;
 			}
 			else {
-				$cat_name = $title;
+				$cat_name = WGR_widget_title_with_bbcode($title);
 			}
 			
 			
