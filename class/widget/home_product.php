@@ -97,7 +97,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		
 		//
-		$cat_name = $title;
+//		$cat_name = $title;
 		$cat_link = '';
 		$more_link = '';
 		$cat_count = 0;
@@ -129,7 +129,14 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			
 			// wp nó trả ra cái objec hơi dị -> foreach lấy cho dễ
 			$cat_count = $categories->count;
-			$cat_name = $categories->name;
+			
+			// Chỉ lấy tên nhóm khi người dùng không nhập title
+			if ( $title == '' ) {
+				$cat_name = $categories->name;
+			}
+			else {
+				$cat_name = $title;
+			}
 			
 			
 			
@@ -155,12 +162,13 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 //				$home_node_cat = _eb_load_post( $post_number, $args );
 			}
 		}
-		// gán tiêu đề mặc định nếu không có
-		else if ( $cat_name == '' ) {
+		// gán tiêu đề mặc định nếu không có -> mặc định nhưng có thể sửa trong phần ngôn ngữ
+		else if ( $title == '' ) {
 			$cat_name = EBE_get_lang('home_new');
 		}
+		// theo tiêu đề người dùng đã nhập -> kèm lệnh xử lý mã BBCode
 		else {
-			$cat_name = WGR_widget_title_with_bbcode($cat_name);
+			$cat_name = WGR_widget_title_with_bbcode($title);
 		}
 		
 		// nếu có set size riêng -> gán cái size này vào
