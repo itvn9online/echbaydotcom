@@ -1921,7 +1921,7 @@ function EBE_set_default_title_for_seo () {
 	if ( typeof pagenow != 'undefined' && pagenow == 'post'
 	&& typeof typenow != 'undefined' && typenow == 'post'
 	&& jQuery('#_eb_product_searchkey').length > 0 ) {
-		var new_post_title = jQuery('#title').val() || document.post.post_title.value || '';
+		var new_post_title = jQuery('#title').val() || jQuery('#post-title-0').val() || document.post.post_title.value || '';
 		if ( new_post_title != '' ) {
 			new_post_title = g_func.non_mark_seo( new_post_title );
 			if ( new_post_title != '' ) {

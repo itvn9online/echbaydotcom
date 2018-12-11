@@ -1075,9 +1075,14 @@ else {
 	/*
 	* Không cho đọc nội dung thông qua json
 	*/
+	/*
 	if ( $__cf_row['cf_on_off_json'] != 1 ) {
-		include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
+		// Từ bản 5.0, bắt buộc phải có json
+		if ( version_compare( $wp_version, '5.0', '<' ) ) {
+			include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
+		}
 	}
+	*/
 	
 	
 	//
