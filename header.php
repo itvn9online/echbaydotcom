@@ -1,4 +1,3 @@
-<!-- Plugin by EchBay.com - Theme by WebGiaRe.org -->
 <!DOCTYPE html>
 <html lang="<?php echo $__cf_row['cf_content_language']; ?>" class="no-js no-svg" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
 <head>
