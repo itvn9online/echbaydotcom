@@ -31,6 +31,30 @@ function ___eb_add_conver_string_cart_to_arr_cart ( arr ) {
 	
 }
 
+// dành cho các chức năng tracking cần lấy email đơn hàng trước
+function WGR_get_hoan_tat_user_email () {
+	var a = uEmail;
+	
+	//
+	try {
+		var arr = ___eb_add_conver_string_cart_to_arr_cart( current_tv_object );
+		
+		//
+		if ( typeof arr['hd_email'] != 'undefined' && arr['hd_email'] != '' ) {
+			a = arr['hd_email'];
+		}
+		else if ( typeof arr['hd_dienthoai'] != 'undefined' && arr['hd_dienthoai'] != '' ) {
+			a = g_func.number_only( arr['hd_dienthoai'] ) + '@' + document.doctype;
+		}
+	} catch (e) {
+		console.log( WGR_show_try_catch_err( e ) );
+	}
+	
+	//
+	console.log( a );
+	return a;
+}
+
 // dành cho các chức năng tracking cần lấy giá đơn hàng trước
 function WGR_get_hoan_tat_total_price () {
 	var a = 0;
