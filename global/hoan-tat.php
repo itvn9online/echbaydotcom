@@ -95,6 +95,33 @@ if ( $hd_id > 0 ) {
 
 
 
+// tính năng review sản phẩm sau khi mua hàng của google
+/*
+$__cf_row ['cf_js_hoan_tat'] .= '<!-- BEGIN GCR Opt-in Module Code -->
+<script src="https://apis.google.com/js/platform.js?onload=renderOptIn"
+  async defer>
+</script>
+
+<script>
+  window.renderOptIn = function() { 
+    window.gapi.load(\'surveyoptin\', function() {
+      window.gapi.surveyoptin.render(
+        {
+          "merchant_id": 0,
+          "order_id": "' . $hd_mahoadon . '",
+          "email": WGR_get_hoan_tat_user_email(),
+          "delivery_country": "VN",
+          "estimated_delivery_date": "' . date( 'Y-m-d', date_time * ( 24 * 366 * 7 ) ) . '",
+          "opt_in_style": "BOTTOM_LEFT_DIALOG"
+        }); 
+     });
+  }
+</script>
+<!-- END GCR Opt-in Module Code -->';
+*/
+
+
+
 
 
 //
@@ -165,6 +192,7 @@ var current_hd_id = "' . $hd_id . '",
 		"pp" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_pp') ) . '"
 	};
 </script>';
+
 
 
 
