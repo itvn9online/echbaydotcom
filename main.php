@@ -164,10 +164,12 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 				
 				// v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file_put_contents bị gọi nhiều quá
 				if ( $i % 55 == 0 ) {
+					// lần đầu tiên thì add nội dung, để nó reset lại file từ đầu
 					if ( $create_file == 1 ) {
 						file_put_contents( $filename, $data ) or die('ERROR: add main cache file');
 						$create_file = 0;
 					}
+					// sau đó là append
 					else {
 						file_put_contents( $filename, $data, FILE_APPEND ) or die('ERROR: append main cache file');
 					}
