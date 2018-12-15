@@ -775,6 +775,15 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		$html_template = 'widget_echbay_thread';
 	}
 	else {
+		// cố định file HTML để tối ưu với SEO
+		if ( $post_cloumn == 'chi_anh' ) {
+			$html_node = 'blogs_node_chi_anh';
+		}
+		else if ( $post_cloumn == 'chi_chu' ) {
+			$html_node = 'blogs_node_chi_chu';
+		}
+		
+		//
 		$html_node = EBE_get_page_template( $html_node );
 		
 		// chỉnh lại kích thước nếu có

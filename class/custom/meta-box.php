@@ -472,6 +472,7 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
+//				$val = sanitize_textarea_field( $val );
 			}
 			else if ( $loc_html == 'checkbox' ) {
 				$val = 1;
