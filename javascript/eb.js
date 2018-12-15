@@ -2979,6 +2979,36 @@ var _global_js_eb = {
 			}
 		}
 		
+		// kiểm tra độ chuẩn của track
+		if ( (function ( a ) {
+			a = a.toLowerCase();
+			
+			if ( a == 'purchase' ) {
+				if ( track_arr['content_type'] == 'undefined'
+				|| track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0 ) {
+					return false;
+				}
+			}
+			else if ( a == 'addtocart' ) {
+				if ( track_arr['content_type'] == 'undefined'
+				|| track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0 ) {
+					return false;
+				}
+			}
+			else if ( a == 'viewcontent' ) {
+				if ( track_arr['content_type'] == 'undefined' ) {
+					return false;
+				}
+			}
+			
+			//
+			return true;
+		})( track_name ) == false ) {
+			console.log('Facebook pixel tracking (' + track_name + ') disable by parameter is NULL');
+			console.log(track_arr);
+			return false;
+		}
+		
 		// nếu fb chưa được nạp -> thử kiểm tra và chờ load lại
 		if ( typeof fbq == 'undefined' ) {
 			if ( typeof max_for == "undefined" ) {
