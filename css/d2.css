@@ -221,13 +221,16 @@ label,
 .blogs_menu_noidung .blogs-right-space { padding-left: 25px; }
 */
 /* custom flex blogs-node */
+.blogs_node_text_only,
 .blogs_node_chi_chu {
 	padding: inherit;
 	margin: inherit;
 }
+.blogs_node_text_only .echbay-blog-left,
 .blogs_node_chi_chu .echbay-blog-left,
 .blogs_node_chi_chu .echbay-blog-gioithieu,
 .blogs_node_chi_chu .echbay-blog-ngay { display: none; }
+.blogs_node_text_only .echbay-blog-marginleft,
 .blogs_node_chi_chu .echbay-blog-marginleft { padding-left: 0; }
 /*
 .blogs_node_chi_chu .echbay-blog-marginleft {
@@ -255,6 +258,7 @@ label,
 	position: absolute;
 	left: 0;
 }
+.blogs_node_text_only .echbay-blog-padding,
 .blogs_node_chi_chu .echbay-blog-padding {
 	padding: 0;
 	display: inline-block;
@@ -282,6 +286,8 @@ label,
 	padding-right: 15px;
 	padding-left: 0;
 }
+.blogs_node_text_only .echbay-blog-left,
+.blogs_node_text_only .echbay-blog-right,
 .blogs_node_chi_chu .echbay-blog-left,
 .blogs_node_chi_chu .echbay-blog-right,
 .blogs_node_anhtren_chuduoi .echbay-blog-left,

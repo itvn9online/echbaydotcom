@@ -782,6 +782,9 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		else if ( $post_cloumn == 'chi_chu' ) {
 			$html_node = 'blogs_node_chi_chu';
 		}
+		else if ( $post_cloumn == 'text_only' ) {
+			$html_node = 'blogs_node_text_only';
+		}
 		
 		//
 		$html_node = EBE_get_page_template( $html_node );

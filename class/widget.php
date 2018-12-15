@@ -541,9 +541,10 @@ function _eb_widget_style_for_post_cloumn ( $select_name, $select_val ) {
 			'chu_anh' => 'Chữ trái - ảnh phải',
 			'anhtren_chuduoi' => 'Ảnh trên - chữ dưới',
 			'chutren_anhduoi' => 'Chữ trên - ảnh dưới',
-			'chi_chu' => 'Chỉ chữ',
-			'chi_anh' => 'Chỉ ảnh',
-			'chi_anh_chu' => 'Chỉ ảnh + chữ'
+			'chi_chu' => 'Chỉ tiêu đề (title only)',
+			'chi_anh' => 'Chỉ ảnh (image only)',
+			'text_only' => 'Chỉ chữ (text only)',
+			'chi_anh_chu' => 'Chỉ ảnh + tiêu đề (title + image)'
 		),
 		$select_name,
 		$select_val
