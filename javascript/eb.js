@@ -2979,6 +2979,27 @@ var _global_js_eb = {
 			}
 		}
 		
+		// nếu fb chưa được nạp -> thử kiểm tra và chờ load lại
+		if ( typeof fbq == 'undefined' ) {
+			if ( typeof max_for == "undefined" ) {
+				max_for = 20;
+			}
+			
+			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
+			if ( max_for > 0 ) {
+				setTimeout(function () {
+					_global_js_eb.fb_track( track_name, track_arr, max_for - 1 );
+				}, 500);
+//				console.log( 'Re-load FB tracking (' + max_for + ')...' );
+				
+				return false;
+			}
+			
+			// 
+			console.log( 'Max for FB track: ' + max_for );
+			return false;
+		}
+		
 		// kiểm tra độ chuẩn của track
 		if ( (function ( a ) {
 			a = a.toLowerCase();
@@ -3006,27 +3027,6 @@ var _global_js_eb = {
 		})( track_name ) == false ) {
 			console.log('Facebook pixel tracking (' + track_name + ') disable by parameter is NULL');
 			console.log(track_arr);
-			return false;
-		}
-		
-		// nếu fb chưa được nạp -> thử kiểm tra và chờ load lại
-		if ( typeof fbq == 'undefined' ) {
-			if ( typeof max_for == "undefined" ) {
-				max_for = 20;
-			}
-			
-			// nạp lại track này lần nữa (do fbq thường load chậm hơn website)
-			if ( max_for > 0 ) {
-				setTimeout(function () {
-					_global_js_eb.fb_track( track_name, track_arr, max_for - 1 );
-				}, 500);
-//				console.log( 'Re-load FB tracking (' + max_for + ')...' );
-				
-				return false;
-			}
-			
-			// 
-			console.log( 'Max for FB track: ' + max_for );
 			return false;
 		}
 		
