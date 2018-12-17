@@ -283,7 +283,7 @@ if ( cf_on_off_echbay_seo != 1 ) {
 // nếu đang bật, mà tồn tại plugin SEO khác -> khuyến nghị tắt
 else if ( defined( 'WPSEO_FILE' ) ) {
 	$str_eb_warning .= '
-	<div class="redcolor"><i class="fa fa-warning"></i> CẢNH BÁO: trên mỗi website, chỉ nên sử dụng một plugin SEO duy nhất, không nên chạy đồng thời cả <strong>Yoast SEO</strong> với <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>EchBay SEO plugin</strong></a>, vui lòng tắt một cái đi để web ổn định hơn.</div>';
+	<div class="redcolor"><i class="fa fa-warning"></i> CẢNH BÁO: trên mỗi website, chỉ nên sử dụng một plugin SEO duy nhất, không nên chạy đồng thời cả <strong>Yoast SEO</strong> với <a href="' . admin_link . 'admin.php?page=eb-config&tab=seo&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>EchBay SEO plugin</strong></a>, vui lòng tắt một cái đi để web ổn định hơn.</div>';
 }
 
 

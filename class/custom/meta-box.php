@@ -77,6 +77,8 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 			echo '</tr>';
 		}
 		else if ( $tai == 'textarea_one' ) {
+//			echo $val . 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+			
 			/*
 			echo '
 			<div><strong>' . $v . '</strong></div>
@@ -856,6 +858,7 @@ function WGR_luu_thong_tin_khi_capnhat_taxonomy ( $term_id, $arr_category, $arr_
 			
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
+				$val = 'aaaaaaaaaaaa';
 			}
 			// nếu là checkbox -> set giá trị là 1
 			else if ( $loc_html == 'checkbox' ) {

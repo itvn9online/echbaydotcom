@@ -1513,17 +1513,29 @@ function WGR_run_for_admin_edit_post () {
 				to_id = 0;
 			
 			//
-			if ( jd != '' ) {
-				to_id = jQuery('#' + jd).offset().top - 50;
+			if ( $('.edit-post-layout__content').length > 0 ) {
+				if ( jd != '' ) {
+					to_id = $('.edit-post-visual-editor').height();
+				}
 				
-				jQuery('.postbox h2').removeClass('orgcolor');
-				jQuery('#' + jd + ' h2').addClass('orgcolor');
+				//
+				jQuery('.edit-post-layout__content').animate({
+					scrollTop: to_id
+				}, 600);
 			}
-			
-			//
-			jQuery('body,html').animate({
-				scrollTop: to_id
-			}, 600);
+			else {
+				if ( jd != '' ) {
+					to_id = jQuery('#' + jd).offset().top - 50;
+					
+					jQuery('.postbox h2').removeClass('orgcolor');
+					jQuery('#' + jd + ' h2').addClass('orgcolor');
+				}
+				
+				//
+				jQuery('body,html').animate({
+					scrollTop: to_id
+				}, 600);
+			}
 		});
 		
 	});
