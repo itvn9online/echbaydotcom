@@ -1048,9 +1048,10 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 /* */
 .click-set-nhanban {
 	position: fixed;
-	bottom: 20px;
 	z-index: 9999;
 	right: 120px;
+	top: 42px;
+	left: 50%;
 }
 .button-redprimary {
 	background: #c00 !important;
