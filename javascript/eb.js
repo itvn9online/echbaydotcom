@@ -744,14 +744,15 @@ var _global_js_eb = {
 //				}
 				max_width = Math.ceil( max_width ) - 1;
 //				console.log('ccccccccccc: ' + max_width);
-				var max_sizes_width = jQuery(this).attr('sizes') || '';
-				if ( max_sizes_width == '' ) {
-					max_sizes_width = max_width + 99;
-					max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
-				}
 				
 				// xử lý với hình ảnh
 				jQuery('img', this).each(function() {
+					var max_sizes_width = jQuery(this).attr('sizes') || '';
+					if ( max_sizes_width == '' ) {
+						max_sizes_width = max_width + 99;
+						max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
+					}
+					
 					// chuyển phần fix kích thước về auto và xóa attr liên liên quan đến kích thước
 					jQuery(this).css({
 //						'max-width' : max_width + 'px',
@@ -761,11 +762,13 @@ var _global_js_eb = {
 //						'width' : 'auto',
 //						'height' : 'auto',
 //					}).removeAttr('width').removeAttr('height');
+					}).attr({
+						sizes : max_sizes_width
 					});
 				}).css({
 					'max-width' : max_width + 'px'
-				}).attr({
-					sizes : max_sizes_width
+//				}).attr({
+//					sizes : max_sizes_width
 				}).removeAttr('width').removeAttr('height');
 			
 			
@@ -821,8 +824,7 @@ var _global_js_eb = {
 			
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			jQuery('.img-max-width').each(function() {
-				var max_width = jQuery(this).attr('data-max-width') || 250,
-					max_sizes_width = jQuery(this).attr('sizes') || '';
+				var max_width = jQuery(this).attr('data-max-width') || 250;
 				/*
 				if ( max_width == '' || max_width < 90 ) {
 					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
@@ -830,16 +832,20 @@ var _global_js_eb = {
 				*/
 				max_width = Math.ceil( max_width ) - 1;
 //				console.log('dddddddddd: ' + max_width);
-				if ( max_sizes_width == '' ) {
-					max_sizes_width = max_width + 99;
-					max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
-				}
 				
 				// xử lý với hình ảnh
-				jQuery('img', this).css({
+				jQuery('img', this).each(function() {
+					var max_sizes_width = jQuery(this).attr('sizes') || '';
+					
+					//
+					if ( max_sizes_width == '' ) {
+						max_sizes_width = max_width + 99;
+						max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
+					}
+				}).css({
 					'max-width' : max_width + 'px'
-				}).attr({
-					sizes : max_sizes_width
+//				}).attr({
+//					sizes : max_sizes_width
 				}).removeAttr('height');
 				
 				
