@@ -2919,7 +2919,7 @@ if ( arr_detect_browser == 'safari' ) {
 //}
 
 //
-jQuery('.phone-numbers-inline a, .phone-numbers-block a').addClass('gg-phone-conversion');
+jQuery('.phone-numbers-inline a, .phone-numbers-block a, a.details-tu-van').addClass('gg-phone-conversion');
 
 
 //
