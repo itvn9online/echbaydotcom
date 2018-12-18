@@ -10,7 +10,14 @@ if ( ! isset( $_GET['time_auto_cleanup_cache'] ) ) {
 $strCacheFilter = 'cleanup_cache';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', $_GET['time_auto_cleanup_cache'] );
 if ($check_Cleanup_cache == false) {
-	_eb_remove_ebcache_content ();
+	// nếu có lệnh xóa cache -> xóa luôn cả thư mục noclean
+	if ( isset( $_GET['tab'] ) ) {
+		_eb_remove_ebcache_content ( EB_THEME_CACHE, 0, true );
+	}
+	// còn xóa định kỳ thì thôi
+	else {
+		_eb_remove_ebcache_content ();
+	}
 	
 	// ép lưu cache
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );

@@ -1533,7 +1533,7 @@ function EBE_get_file_in_folder( $dir, $file_type = '', $type = '', $get_basenam
 	return $arr;
 }
 
-function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
+function _eb_remove_ebcache_content( $dir = EB_THEME_CACHE, $remove_dir = 0, $remove_noclean = false ) {
 //	echo $dir . '<br>'; exit();
 	
 	// nếu ký tự cuối là dấu / -> bỏ đi
@@ -1545,7 +1545,7 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
 //	exit();
 	
 	// không xóa cache trong 1 số thư mục
-	if ( basename( $dir ) == 'noclean' ) {
+	if ( $remove_noclean == false && basename( $dir ) == 'noclean' ) {
 		return false;
 	}
 	
@@ -1564,7 +1564,7 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0) {
 		// nếu là thư mục -> xóa nội dung trong thư mục
 		if ( is_dir( $v ) ) {
 			// gọi lệnh xóa tiếp các file trong thư mục -> đến hết mới thôi
-			_eb_remove_ebcache_content ( $v );
+			_eb_remove_ebcache_content ( $v, $remove_dir, $remove_noclean );
 		}
 		else if ( is_file( $v ) ) {
 			unlink( $v );
