@@ -1287,7 +1287,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	
 	
-	//
+	// v4
 	jQuery('#publish').addClass('publish-position-fixed')
 	/*
 	.css({
@@ -1301,6 +1301,54 @@ function WGR_run_for_admin_edit_post () {
 		EBE_set_default_img_avt();
 		EBE_set_default_title_for_seo();
 	});
+	
+	
+	// v5
+	WGR_check_and_load_submit_v5();
+function WGR_check_and_load_submit_v5 ( i ) {
+	//
+	if ( typeof i == 'undefined' ) {
+		i = 10;
+	}
+	
+	if ( i < 0 ) {
+		return false;
+	}
+	
+	//
+	if ( $('.editor-post-publish-button').length == 0 ) {
+		setTimeout(function () {
+			WGR_check_and_load_submit_v5( i - 1 );
+		}, 200);
+		return false;
+	}
+	
+	//
+	$('.editor-post-publish-button').click(function () {
+//		console.log('Code for submit v5');
+		
+		// textarea đang lỗi -> chế cách khắc phục kiểu này
+		$('.get-html-for-v5-submit').each(function() {
+			var t = $(this).attr('name') || null;
+			
+			//
+			if ( t != null ) {
+				// lấy nội dung trong iframe
+				var a = $('#' + t.replace( '_forv5', '' ) + '_ifr').contents().find('body').html() || '';
+//				console.log(a);
+				
+				//
+				if ( a != '' ) {
+					$(this).val( a );
+				}
+			}
+		});
+	});
+	
+	//
+	console.log('Set submit for v5');
+	return true;
+}
 	
 	
 	

@@ -94,6 +94,9 @@ function EchBayPrintHTMLOutput( $arr_box, $arr_type, $post ) {
 //			if ( cf_on_off_echbay_seo == 1 ) {
 //				wp_editor( html_entity_decode($val, ENT_QUOTES, 'UTF-8'), $k );
 				wp_editor( $val, $k );
+				
+				// từ wp 5.++ thì phần submit textarea đang bị lỗi -> cần xử lý lại chút
+				echo '<div class="d-none"><textarea id="' . $k . '_forv5" name="' . $k . '_forv5" class="get-html-for-v5-submit">' .esc_attr( $val ). '</textarea></div>';
 //			}
 			// còn lại thì hiển thị thông thường
 //			else {
@@ -475,6 +478,18 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
 //				$val = sanitize_textarea_field( $val );
+//				$val = urlencode( $val );
+//				$val = 'aaaaaaaaaaaaa';
+				
+				//
+				if ( isset( $_POST[ $k .  '_forv5' ] ) ) {
+					$val = $_POST[ $k .  '_forv5' ];
+					
+					//
+					if ( trim( strip_tags( $val ) ) == '' ) {
+						$val = '';
+					}
+				}
 			}
 			else if ( $loc_html == 'checkbox' ) {
 				$val = 1;
@@ -858,7 +873,7 @@ function WGR_luu_thong_tin_khi_capnhat_taxonomy ( $term_id, $arr_category, $arr_
 			
 			// Bỏ qua với textarea
 			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
-				$val = 'aaaaaaaaaaaa';
+//				$val = 'aaaaaaaaaaaa';
 			}
 			// nếu là checkbox -> set giá trị là 1
 			else if ( $loc_html == 'checkbox' ) {
