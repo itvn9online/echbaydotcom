@@ -506,7 +506,7 @@ function _eb_widget_echo_widget_input_title (
 
 
 function _eb_widget_echo_number_of_posts_to_show ( $select_name, $select_val ) {
-	echo '<p><strong>Số lượng bài để hiển thị</strong>: <input type="number" class="tiny-text" name="' . $select_name . '" value="' . $select_val . '" min="1" max="30" size="3" /></p>';
+	echo '<p><strong>Số lượng bài để hiển thị</strong>: <input type="number" class="tiny-text" name="' . $select_name . '" value="' . $select_val . '" min="1" max="99" size="3" /></p>';
 }
 
 
