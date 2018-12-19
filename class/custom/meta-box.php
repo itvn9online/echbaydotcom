@@ -486,7 +486,7 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 					$val = $_POST[ $k .  '_forv5' ];
 					
 					//
-					if ( trim( strip_tags( $val, 'img' ) ) == '' ) {
+					if ( trim( strip_tags( $val, '<img>' ) ) == '' ) {
 						$val = '';
 					}
 				}
