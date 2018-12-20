@@ -342,7 +342,8 @@ $limit_post_get = 1000;
 $limit_image_get = $limit_post_get;
 
 // thời gian nạp lại cache cho file, để = 0 -> disable
-$time_for_relload_sitemap = 0;
+//$time_for_relload_sitemap = 0;
+$time_for_relload_sitemap = 3600;
 //$time_for_relload_sitemap = 3 * 3600;
 $get_list_sitemap = false;
 
