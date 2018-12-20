@@ -72,9 +72,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 //
 WGR_echo_sitemap_css();
 
-echo '
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-' . $get_list_sitemap . '
+echo WGR_echo_sitemap_urlset() . $get_list_sitemap . '
 </urlset>';
 
 
