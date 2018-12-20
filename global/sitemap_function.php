@@ -72,9 +72,35 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 		
 		// nếu có lệnh tìm ảnh trong bài viết
 		if ( isset( $op['get_images'] ) && $op['get_images'] > 0 ) {
-			$str_list_img .= WGR_create_sitemap_image_node( WGR_get_sitemap_post( 'attachment', array(
+//			$str_list_img .= WGR_create_sitemap_image_node( WGR_get_sitemap_post( 'attachment', array(
+			$sql = WGR_get_sitemap_post( 'attachment', array(
 				'post_parent' => $op['get_images']
-			) ) );
+			) );
+//			print_r( $sql );
+			
+			//
+			foreach ( $sql as $v ) {
+				$img = $v->guid;
+				
+				$name = $v->post_excerpt;
+				if ( $name == '' && $v->post_title != '' ) {
+					$name = str_replace( '-', ' ', $v->post_title );
+				}
+				
+				/*
+				$url = $img;
+				if ( $v->post_parent > 0 ) {
+					$url = _eb_p_link( $v->post_parent );
+				}
+				*/
+				
+				//
+				$str_list_img .= '
+	<image:image>
+		<image:loc>' . $img . '</image:loc>
+		<image:title><![CDATA[' . $name . ']]></image:title>
+	</image:image>';
+			}
 		}
 	}
 	else {
@@ -107,6 +133,7 @@ function WGR_create_sitemap_default_node () {
 
 function WGR_create_sitemap_image_node ( $sql ) {
 	
+	//
 //	print_r( $sql );
 	
 	$str = '';
