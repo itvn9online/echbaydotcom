@@ -10,6 +10,14 @@ include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 
 
 
+//
+if ( ! isset( $_GET['sitemap_post_type'] ) ) {
+	$_GET['sitemap_post_type'] = 'post';
+}
+
+
+
+
 
 /*
 * Danh sách post (sản phẩm)
@@ -33,35 +41,8 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	* media
 	*/
 	
-	// v3
-	$get_list_sitemap .= WGR_create_sitemap_image_node( WGR_get_sitemap_post( 'attachment' ) );
-	/*
-	$sql = WGR_get_sitemap_post( 'attachment' );
-//	print_r( $sql );
-	foreach ( $sql as $v ) {
-		$img = $v->guid;
-		
-		$name = $v->post_excerpt;
-		if ( $name == '' && $v->post_title != '' ) {
-			$name = str_replace( '-', ' ', $v->post_title );
-		}
-		
-		$url = $img;
-		if ( $v->post_parent > 0 ) {
-			$url = _eb_p_link( $v->post_parent );
-		}
-		
-		$get_list_sitemap .= WGR_echo_sitemap_image_node(
-			$url,
-			$img,
-			$name
-		);
-	}
-	*/
-	
 	// v2
-	/*
-	$sql = WGR_get_sitemap_post();
+	$sql = WGR_get_sitemap_post( $_GET['sitemap_post_type'] );
 	foreach ( $sql as $v ) {
 		$get_list_sitemap .= WGR_echo_sitemap_image_node(
 			_eb_p_link( $v->ID ),
@@ -69,7 +50,6 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			$v->post_title
 		);
 	}
-	*/
 	
 	/*
 	// v1
@@ -78,7 +58,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 //		'orderby' => 'menu_order',
 		'orderby' => 'ID',
 		'order' => 'DESC',
-		'post_type' => 'post',
+		'post_type' => $_GET['sitemap_post_type'],
 		'post_status' => 'publish'
 	));
 	//print_r( $sql );

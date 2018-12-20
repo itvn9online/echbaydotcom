@@ -12,7 +12,10 @@ include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 * Danh sách category, tags, options....
 */
 $strCacheFilter = basename( __FILE__, '.php' );
-$get_list_sitemap = _eb_get_static_html ( $strCacheFilter, '', '', 3 * 3600 );
+if ( $time_for_relload_sitemap > 0 ) {
+	$get_list_sitemap = _eb_get_static_html ( $strCacheFilter, '', '', $time_for_relload_sitemap );
+}
+
 if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	
@@ -24,7 +27,11 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	/*
 	* home
 	*/
-	$get_list_sitemap .= WGR_echo_sitemap_url_node( web_link, 1.0, $sitemap_current_time );
+	$get_list_sitemap .= WGR_echo_sitemap_url_node(
+		web_link,
+		1.0,
+		$sitemap_current_time
+	);
 	
 	
 	

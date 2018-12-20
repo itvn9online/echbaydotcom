@@ -58,23 +58,81 @@ function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $f
 /*
 * changefreq = hourly
 */
-function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $changefreq = 'daily' ) {
+function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) {
+	
+	//
+	$str_list_img = '';
+	
+	//
+	if ( ! empty( $op ) ) {
+		// set thời gian nạp dữ liệu mặc định
+		if ( ! isset( $op['changefreq'] ) ) {
+			$op['changefreq'] = 'daily';
+		}
+		
+		// nếu có lệnh tìm ảnh trong bài viết
+		if ( isset( $op['get_images'] ) && $op['get_images'] > 0 ) {
+			$str_list_img .= WGR_create_sitemap_image_node( WGR_get_sitemap_post( 'attachment', array(
+				'post_parent' => $op['get_images']
+			) ) );
+		}
+	}
+	else {
+		$op['changefreq'] = 'daily';
+	}
+	
+	//
 	return '
 <url>
 	<loc>' . $loc . '</loc>
 	<lastmod>' . $lastmod . '</lastmod>
-	<changefreq>' . $changefreq . '</changefreq>
+	<changefreq>' . $op['changefreq'] . '</changefreq>
 	<priority>' . $priority . '</priority>
+	' . $str_list_img . '
 </url>';
+	
 }
 
 // tạo sitemap mặc định trong trường hợp không tìm thấy sitemap
 function WGR_create_sitemap_default_node () {
 	global $sitemap_date_format;
 	
-	return WGR_echo_sitemap_url_node( web_link, 1, date( $sitemap_date_format, date_time ) );
+	return WGR_echo_sitemap_url_node(
+		web_link,
+		1,
+		date( $sitemap_date_format, date_time )
+	);
 }
 
+
+function WGR_create_sitemap_image_node ( $sql ) {
+	
+//	print_r( $sql );
+	
+	$str = '';
+	foreach ( $sql as $v ) {
+		$img = $v->guid;
+		
+		$name = $v->post_excerpt;
+		if ( $name == '' && $v->post_title != '' ) {
+			$name = str_replace( '-', ' ', $v->post_title );
+		}
+		
+		$url = $img;
+		if ( $v->post_parent > 0 ) {
+			$url = _eb_p_link( $v->post_parent );
+		}
+		
+		$str .= WGR_echo_sitemap_image_node(
+			$url,
+			$img,
+			$name
+		);
+	}
+	
+	return $str;
+	
+}
 
 function WGR_echo_sitemap_image_node ( $loc, $img, $title ) {
 	if ( $img == '' ) {
@@ -105,11 +163,15 @@ function WGR_create_sitemap_image_default_node () {
 		$__cf_row['cf_logo'] = web_link . $__cf_row['cf_logo'];
 	}
 	
-	return WGR_echo_sitemap_image_node( web_link, $__cf_row['cf_logo'], web_name );
+	return WGR_echo_sitemap_image_node(
+		web_link,
+		$__cf_row['cf_logo'],
+		web_name
+	);
 }
 
 
-function WGR_get_sitemap_post ( $type = 'post' ) {
+function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 	global $wpdb;
 	global $limit_post_get;
 //	echo wp_posts;
@@ -117,6 +179,14 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 	$status = 'publish';
 	if ( $type == 'attachment' ) {
 		$status = 'inherit';
+	}
+	
+	//
+	$strFilter = "";
+	if ( ! empty( $op ) ) {
+		if ( isset( $op['post_parent'] ) && $op['post_parent'] > 0 ) {
+			$strFilter .= " AND post_parent = " . $op['post_parent'] . " ";
+		}
 	}
 	
 	// phân trang
@@ -146,6 +216,7 @@ function WGR_get_sitemap_post ( $type = 'post' ) {
 	WHERE
 		post_type = '" . $type . "'
 		AND post_status = '" . $status . "'
+		" . $strFilter . "
 	ORDER BY
 		ID DESC
 	LIMIT " . $offset . ", " . $threadInPage);
@@ -205,7 +276,15 @@ function WGR_get_sitemap_taxonomy ( $taxx = 'category', $priority = 0.9, $cat_id
 	if ( ! empty( $categories ) ) {
 		foreach ( $categories as $cat ) {
 			if ( _eb_get_cat_object( $cat->term_id, '_eb_category_hidden', 0 ) != 1 ) {
-				$str .= WGR_echo_sitemap_url_node( _eb_c_link( $cat->term_id, $taxx ), $priority, $sitemap_current_time, 'always' ) . WGR_get_sitemap_taxonomy ( $taxx, $priority, $cat->term_id );
+				$str .= WGR_echo_sitemap_url_node(
+					_eb_c_link( $cat->term_id, $taxx ),
+					$priority,
+					$sitemap_current_time,
+					array(
+						'changefreq' => 'always'
+					)
+				)
+				. WGR_get_sitemap_taxonomy ( $taxx, $priority, $cat->term_id );
 			}
 		}
 	}
@@ -234,6 +313,11 @@ $limit_post_get = 1000;
 
 // giới hạn tạo sitemap cho hình ảnh -> google nó limit 1000 ảnh nên chỉ lấy thế thôi
 $limit_image_get = $limit_post_get;
+
+// thời gian nạp lại cache cho file, để = 0 -> disable
+$time_for_relload_sitemap = 0;
+//$time_for_relload_sitemap = 3 * 3600;
+$get_list_sitemap = false;
 
 
 
