@@ -8,6 +8,60 @@ var eb_global_product_size = '',
 	admin_global_size_color = [];
 
 
+
+function WGR_check_and_load_submit_v5 ( i ) {
+	// chờ load tầm 25 lần, tương đương với 5s
+	if ( typeof i == 'undefined' ) {
+		i = 25;
+	}
+	
+	// sau 25 lần load thì bỏ đi
+	if ( i < 0 ) {
+		console.log('Maximun load for wp v5');
+		
+		// xóa luôn textarea liên quan
+		jQuery('.get-html-for-v5-submit').remove();
+		
+		// thoát
+		return false;
+	}
+	
+	// nếu không có -> chờ load lại
+	if ( jQuery('.editor-post-publish-button').length == 0 ) {
+		setTimeout(function () {
+			WGR_check_and_load_submit_v5( i - 1 );
+		}, 200);
+		return false;
+	}
+	
+	//
+	jQuery('.editor-post-publish-button').click(function () {
+//		console.log('Code for submit v5');
+		
+		// textarea đang lỗi -> chế cách khắc phục kiểu này
+		jQuery('.get-html-for-v5-submit').each(function() {
+			var t = jQuery(this).attr('name') || null;
+			
+			//
+			if ( t != null ) {
+				// lấy nội dung trong iframe
+				var a = jQuery('#' + t.replace( '_forv5', '' ) + '_ifr').contents().find('body').html() || '';
+//				console.log(a);
+				
+				//
+				if ( a != '' ) {
+					jQuery(this).val( a );
+				}
+			}
+		});
+	});
+	
+	//
+	console.log('Set submit for v5');
+	return true;
+}
+
+
 // xóa các mảng bị null
 function WGR_remove_add_null_value ( arr ) {
 	var new_arr = [];
@@ -1305,50 +1359,6 @@ function WGR_run_for_admin_edit_post () {
 	
 	// v5
 	WGR_check_and_load_submit_v5();
-function WGR_check_and_load_submit_v5 ( i ) {
-	//
-	if ( typeof i == 'undefined' ) {
-		i = 10;
-	}
-	
-	if ( i < 0 ) {
-		return false;
-	}
-	
-	//
-	if ( $('.editor-post-publish-button').length == 0 ) {
-		setTimeout(function () {
-			WGR_check_and_load_submit_v5( i - 1 );
-		}, 200);
-		return false;
-	}
-	
-	//
-	$('.editor-post-publish-button').click(function () {
-//		console.log('Code for submit v5');
-		
-		// textarea đang lỗi -> chế cách khắc phục kiểu này
-		$('.get-html-for-v5-submit').each(function() {
-			var t = $(this).attr('name') || null;
-			
-			//
-			if ( t != null ) {
-				// lấy nội dung trong iframe
-				var a = $('#' + t.replace( '_forv5', '' ) + '_ifr').contents().find('body').html() || '';
-//				console.log(a);
-				
-				//
-				if ( a != '' ) {
-					$(this).val( a );
-				}
-			}
-		});
-	});
-	
-	//
-	console.log('Set submit for v5');
-	return true;
-}
 	
 	
 	
@@ -1408,7 +1418,7 @@ function WGR_check_and_load_submit_v5 ( i ) {
 	
 	// sau khi nhân bản xong, chuyển sang bài đó luôn
 	if ( window.location.href.split('&post-duplicated=').length > 1 ) {
-		var a = $('#wpbody-content .updated a').attr('href') || '';
+		var a = jQuery('#wpbody-content .updated a').attr('href') || '';
 		
 		if ( a != '' ) {
 			window.location = a;
@@ -1561,9 +1571,9 @@ function WGR_check_and_load_submit_v5 ( i ) {
 				to_id = 0;
 			
 			//
-			if ( $('.edit-post-layout__content').length > 0 ) {
+			if ( jQuery('.edit-post-layout__content').length > 0 ) {
 				if ( jd != '' ) {
-					to_id = $('.edit-post-visual-editor').height();
+					to_id = jQuery('.edit-post-visual-editor').height();
 				}
 				
 				//
