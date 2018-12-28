@@ -138,6 +138,11 @@ function dang_ky_taxonomy() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'show_in_nav_menus' => false,
+		'show_tagcloud_in_edit' => true,
+		'show_in_quick_edit' => true,
+		'update_count_callback' => true,
+		'show_in_quick_edit' => true,
+		'rewrite' => true,
 		'show_tagcloud' => true
 	);
 	

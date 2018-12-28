@@ -80,6 +80,15 @@ else if ( $mt == 'woo' ) {
 	WGR_woo_convert( '_regular_price', '_eb_product_oldprice' );
 	WGR_woo_convert( '_sale_price', '_eb_product_price' );
 }
+// for yoast seo
+else if ( $mt == 'yoast' ) {
+	WGR_woo_convert( '_yoast_wpseo_title', '_eb_product_title' );
+	WGR_woo_convert( '_yoast_wpseo_metadesc', '_eb_product_description' );
+}
+else if ( $mt == 'wgr_yoast' ) {
+	WGR_woo_convert( '_eb_product_title', '_yoast_wpseo_title' );
+	WGR_woo_convert( '_eb_product_description', '_yoast_wpseo_metadesc' );
+}
 
 
 
