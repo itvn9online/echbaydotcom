@@ -785,6 +785,10 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		else if ( $post_cloumn == 'text_only' ) {
 			$html_node = 'blogs_node_text_only';
 		}
+		else if ( isset( $instance ['hide_description'] ) && $instance ['hide_description'] == 'on'
+		&& isset( $instance ['hide_info'] ) && $instance ['hide_info'] == 'on' ) {
+			$html_node = 'blogs_node_avt_title';
+		}
 		
 		//
 		$html_node = EBE_get_page_template( $html_node );
