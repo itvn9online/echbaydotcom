@@ -283,11 +283,28 @@ else {
 		
 		
 		//
+		$termFilter = "";
+		
+		//
 		$current_small_404_uri = explode( '?', $current_404_uri );
 		$current_small_404_uri = $current_small_404_uri[0];
+//		echo $current_404_uri . '<br>'; echo $current_small_404_uri . '<br>'; exit();
+		
+		//
+		if ( $current_small_404_uri != $current_404_uri ) {
+			$termFilter .= " OR meta_key = '" . $current_small_404_uri . "' ";
+		}
+		
+		//
+//		echo substr( $current_404_uri, -1 ) . '<br>'; exit();
+		if ( substr( $current_404_uri, -1 ) == '/' ) {
+			$termFilter .= " OR meta_key = '" . substr( $current_404_uri, 0, -1 ) . "' ";
+		}
 //		echo $current_small_404_uri . '<br>' . "\n";
 //		echo web_link . substr( $current_small_404_uri, 1 ) . '<br>' . "\n";
 //		exit();
+//		echo $termFilter . '<br>'; exit();
+		
 		
 		// kiểm tra xem URL 404 này đã được EchBay lưu chưa
 		$sql = _eb_q("SELECT meta_value
@@ -298,7 +315,7 @@ else {
 			AND meta_value != 1
 			AND (
 				meta_key = '" . $current_404_uri . "'
-				OR meta_key = '" . $current_small_404_uri . "'
+				" . $termFilter . "
 				)
 		ORDER BY
 			meta_id DESC

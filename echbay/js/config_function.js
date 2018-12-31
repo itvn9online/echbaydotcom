@@ -239,6 +239,11 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 				if ( n.split('_for_mobile').length > 1 ) {
 					str_mobile += n.replace('_for_mobile', '').replace(/\_/g, '-') + ':' + a + donvi + ';';
 				}
+				/*
+				else if ( n.split('_for_footer').length > 1 ) {
+					str += n.replace('_for_footer', '').replace(/\_/g, '-') + ':' + a + donvi + ';';
+				}
+				*/
 				else {
 					str += n.replace(/\_/g, '-') + ':' + a + donvi + ';';
 				}
