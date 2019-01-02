@@ -1410,6 +1410,14 @@ button.btn-addto-cart {
 .eb-quickcart-left { width: 30%; }
 .eb-quickcart-right { width: 70%; }
 .eb-quickcart-quan .eb-quickcart-left { line-height: 36px; }
+/* Trên iphone, khi font-size nhỏ hơn 16px, input sẽ tự động bị zoom vào gây khó chịu, set font-size 16 để loại bỏ chức năng này */
+/*
+.style-for-mobile .eb-quickcart-table,
+*/
+.style-for-mobile .eb-quickcart-table input[type="email"],
+.style-for-mobile .eb-quickcart-table input[type="text"],
+.style-for-mobile .eb-quickcart-table textarea { font-size: 16px; }
+.style-for-mobile .eb-quickcart-table textarea { height: 90px; }
 /* thêm icon open youtube */
 .youtube-quick-view li .echbay-blog-avt { text-align: center; }
 .youtube-quick-view li .echbay-blog-avt:before {
