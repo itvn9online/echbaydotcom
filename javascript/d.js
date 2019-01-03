@@ -2309,6 +2309,9 @@ function ___eb_details_post_run ( r ) {
 		jQuery('.clone-show-quick-cart').html( jQuery('#click_show_cpa .cart-quick-padding').html() );
 		
 		// xong thì xóa cái quick cart, size, color mặc định đi
+		if ( WGR_check_option_on( cf_donot_remove_quick_cart ) ) {
+			jQuery('.donot-remove-if-quickcart').removeClass('remove-if-clone-quickcart');
+		}
 		jQuery('#click_show_cpa, .remove-if-clone-quickcart').remove();
 		
 //		jQuery('.clone-show-quick-cart input[name^="t_muangay"]').val( pid );

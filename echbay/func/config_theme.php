@@ -55,6 +55,8 @@ $_POST['cf_add_to_cart_iframe'] = WGR_default_config('cf_add_to_cart_iframe');
 
 $_POST['cf_details_short_quick_cart'] = WGR_default_config('cf_details_short_quick_cart');
 
+$_POST['cf_donot_remove_quick_cart'] = WGR_default_config('cf_donot_remove_quick_cart');
+
 $_POST['cf_required_phone_cart'] = WGR_default_config('cf_required_phone_cart');
 
 $_POST['cf_required_name_cart'] = WGR_default_config('cf_required_name_cart');
