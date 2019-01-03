@@ -867,7 +867,8 @@ $arr_main_content = array(
 //	'tmp.str_tags' => substr( $str_tags, 1 ),
 	'tmp.str_tags' => $str_tags,
 	
-	'tmp.bl_ngaygui' => date( 'd/m/Y H:i T', $post_modified ),
+//	'tmp.bl_ngaygui' => date( 'd/m/Y H:i T', $post_modified ),
+	'tmp.bl_ngaygui' => date( 'd/m/Y H:i T', strtotime( $__post->post_date ) ),
 	
 	'tmp.trv_giaban' => EBE_add_ebe_currency_class( $trv_giaban, 1 ),
 	'tmp.trv_giamoi' => EBE_add_ebe_currency_class( $trv_giamoi ),

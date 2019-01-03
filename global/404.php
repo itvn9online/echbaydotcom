@@ -268,6 +268,14 @@ else {
 //		echo $current_404_uri . '<br>' . "\n";
 //		echo web_link . substr( $current_404_uri, 1 ) . '<br>' . "\n";
 		
+		if ( isset( $_GET['gclid'] ) ) {
+			$current_404_uri = str_replace( '&amp;gclid', '?gclid', $current_404_uri );
+			$current_404_uri = str_replace( '&gclid', '?gclid', $current_404_uri );
+			$current_404_uri = explode( '?', $current_404_uri );
+			$current_404_uri = $current_404_uri[0];
+//			echo $current_404_uri . '<br>' . "\n";
+		}
+//		exit();
 		
 		
 		
