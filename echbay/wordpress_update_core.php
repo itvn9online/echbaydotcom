@@ -46,7 +46,8 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		//
 		if ( isset( $_GET['confirm_el_process'] ) ) {
 //			$url_udpate_via_api .= '&first_active=1';
-			$url_udpate_via_api .= '&first_active=' . urlencode( web_link );
+//			$url_udpate_via_api .= '&first_active=' . urlencode( web_link );
+			$url_udpate_via_api .= '&first_active=' . base64_encode( web_link );
 		}
 		
 		//
@@ -57,6 +58,9 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		if ( file_exists( $file_cache_test ) ) {
 			$lats_update_file_test = file_get_contents( $file_cache_test, 1 );
 		}
+		
+		//
+		echo $url_udpate_via_api . '<br>';
 		
 		//
 		if ( date_time - $lats_update_file_test > 6 * 3600 ) {
