@@ -1087,6 +1087,9 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				});
 			}
 			
+			// xóa thẻ H1 có trong nội dung đi
+			jQuery('#leech_data_fix_content h1').remove();
+			
 			// hình ảnh
 			firts_img_in_content = '';
 			jQuery('#leech_data_fix_content img').each(function() {

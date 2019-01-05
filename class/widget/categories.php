@@ -458,22 +458,26 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
 		if ( $cat_ids > 0 ) {
-			
-			// lấy lại taxonomy
-			$cat_type = WGR_get_taxonomy_name( $cat_ids );
-			if ( $cat_type == '' ) {
-				echo 'taxonomy for #' . $cat_ids . ' not found!';
-				return false;
-			}
-			
-			//
-			$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
-			
-			//
-			if ( ! empty ( $cats_info ) ) {
-				$cat_type = $cats_info->taxonomy;
-			}
-			
+				// lấy lại taxonomy
+				$cat_type = WGR_get_taxonomy_name( $cat_ids );
+				if ( $cat_type == '' ) {
+					echo 'taxonomy for #' . $cat_ids . ' not found!';
+					return false;
+				}
+				
+				// nếu có lệnh tìm nhóm cha -> tìm theo nhóm cha
+				if ( $get_parent == true ) {
+					$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
+				}
+				// còn không thì lấy theo nhóm đã được chỉ định
+				else {
+					$cats_info = get_term( $cat_ids, $cat_type );
+				}
+				
+				//
+				if ( ! empty ( $cats_info ) ) {
+					$cat_type = $cats_info->taxonomy;
+				}
 		}
 //		print_r( $cats_info );
 //		echo $cat_type . '<br>' . "\n";

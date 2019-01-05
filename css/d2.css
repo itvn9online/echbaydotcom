@@ -167,6 +167,18 @@ label,
 	bottom: 50%;
 	height: 1px;
 }
+.show-view-more .widget-blog-more {
+	display: block;
+	text-align: center;
+}
+.show-view-more .widget-blog-more a {
+	display: inline-block;
+	background: #c00;
+	color: #fff;
+	padding: 10px;
+	border-radius: 3px;
+	font-size: 15px;
+}
 /* tối đa cho phần giới thiệu của blog là 5 dòng */
 .thread-list100 .echbay-blog-gioithieu,
 .echbay-blog100 .echbay-blog-gioithieu { max-height: 95px; }
