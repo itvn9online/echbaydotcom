@@ -147,7 +147,8 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 //
 if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 	// nếu thời gian update cache nhỏ quá -> bỏ qua
-	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
+//	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
+	if ( file_exists ( $file_last_update ) ) {
 		$last_update = filemtime ( $file_last_update );
 //		$last_update = file_get_contents ( $file_last_update );
 		
