@@ -9,6 +9,7 @@ echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotco
 
 //
 $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
+$by_option_id = isset( $_GET['by_option_id'] ) ? (int) $_GET['by_option_id'] : 0;
 
 
 // tham khảo custom query: https://codex.wordpress.org/Displaying_Posts_Using_a_Custom_Select_Query
@@ -85,6 +86,48 @@ if ( $by_cat_id > 0 ) {
 //echo $joinFilter . '<br>' . "\n";
 
 
+//
+if ( $by_option_id > 0 ) {
+	
+	//
+//	echo $by_option_id . '<br>';
+	
+	$strLinkPager .= '&by_option_id=' . $by_option_id;
+	$strAjaxLink .= '&by_option_id=' . $by_option_id;
+	
+	//
+	$arrs_cats = array(
+		'taxonomy' => 'post_options',
+//		'hide_empty' => 0,
+		'parent' => $by_option_id
+	);
+	
+	$arrs_cats = get_categories( $arrs_cats );
+//	print_r( $arrs_cats );
+	
+	$by_child_cat_id = '';
+	if ( ! empty( $arrs_cats ) ) {
+		foreach ( $arrs_cats as $v ) {
+			$by_child_cat_id .= ',' . $v->term_id;
+		}
+//		echo $by_child_cat_id . '<br>';
+	}
+	
+	
+	// câu lệnh lọc theo taxonomy
+	$strFilter .= " AND `" . $wpdb->term_taxonomy . "`.taxonomy = 'post_options'
+		AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $by_option_id . $by_child_cat_id . ") ";
+	
+	// câu lệnh jion các bảng lại với nhau
+	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
+		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
+//	$joinFilter = ", `" . $wpdb->term_taxonomy . "`, `" . $wpdb->term_relationships . "` ";
+	
+}
+//echo $strFilter . '<br>' . "\n";
+//echo $joinFilter . '<br>' . "\n";
+
+
 
 
 // hỗ trợ tìm kiếm sản phẩm/ blog
@@ -146,7 +189,7 @@ $arrs_cats = get_categories( $arrs_cats );
 //print_r( $arrs_cats );
 
 echo '<ul class="cf admin-products_post-category">
-	<li><span>Chuyên mục sản phẩm: </span></li>
+	<li><span>' . ( $cats_type == 'blogs' ? 'Danh mục tin tức' : 'Chuyên mục sản phẩm' ) . ': </span></li>
 	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '" class="bold">Tất cả</a></li>';
 
 foreach ( $arrs_cats as $v ) {
@@ -189,6 +232,66 @@ foreach ( $arrs_cats as $v ) {
 	echo '</li>';
 }
 echo '</ul>';
+
+
+
+// Thêm phần lọc theo thông số sản phẩm
+if ( $by_post_type == 'post' || $by_post_type == 'ads' ) {
+	$arrs_cats = array(
+		'taxonomy' => 'post_options',
+//		'hide_empty' => 0,
+		'parent' => 0
+	);
+	
+	//
+	$arrs_cats = get_categories( $arrs_cats );
+//	print_r( $arrs_cats );
+	
+	echo '<ul class="cf admin-products_post-category">
+		<li><span>Thông số khác: </span></li>
+		<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '" class="bold">Tất cả</a></li>';
+	
+	foreach ( $arrs_cats as $v ) {
+		$sl = '';
+		if ( $v->term_id == $by_option_id ) {
+			$sl = 'bold redcolor';
+		}
+		
+		//
+		echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '&by_option_id=' . $v->term_id . '" class="' . $sl . '">' . $v->name . ' (' . $v->count . ')</a>';
+		
+		
+		// lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
+		$arrs_sub_cats = array(
+			'taxonomy' => 'post_options',
+//			'hide_empty' => 0,
+			'parent' => $v->term_id
+		);
+		
+		//
+		$arrs_sub_cats = get_categories( $arrs_sub_cats );
+	//	print_r( $arrs_sub_cats );
+		if ( ! empty( $arrs_sub_cats ) ) {
+			echo '<ul class="sub-menu cf">';
+			
+			foreach ( $arrs_sub_cats as $v2 ) {
+				$sl = '';
+				if ( $v2->term_id == $by_option_id ) {
+					$sl = 'bold';
+				}
+				
+				//
+				echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_option_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
+			}
+			
+			echo '</ul>';
+		}
+		
+		//
+		echo '</li>';
+	}
+	echo '</ul>';
+}
 
 
 

@@ -138,6 +138,7 @@ if ( mtv_id > 0 ) {
 // kiểm tra thời gian tạo cache
 $__eb_cache_time = date_time - $__eb_cache_time + rand ( 0, 20 );
 //$__eb_cache_time += rand ( 0, 60 );
+//echo $__eb_cache_time . '<br>';
 
 //$time_for_update_cache = $cf_reset_cache;
 $time_for_update_cache = $__cf_row['cf_reset_cache'];
@@ -155,7 +156,10 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		//
 		if ( date_time - $last_update < $time_for_update_cache / 2 ) {
 			$__eb_cache_time = 0;
-			include_once $__eb_cache_conf;
+			if ( file_exists( $__eb_cache_conf ) ) {
+				include_once $__eb_cache_conf;
+			}
+			echo '<!-- __eb_cache_time: ' . $__eb_cache_time . ' -->' . "\n";
 		}
 	}
 	
@@ -188,7 +192,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		
-		// dọn cache định kỳ -> chỉ dọn khi không phải tháo tác thủ công
+		// dọn cache định kỳ -> chỉ dọn khi không phải thao tác thủ công
 		if ( mtv_id > 0
 //		&& strstr( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) == true
 //		&& is_admin ()
@@ -505,7 +509,20 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* lưu cache -> chỉ lưu khi thành viên chưa đăng nhập
 		*/
+		echo '<!-- aaaaaaaaaaaaa -->' . "\n";
+		echo '<!-- ' . mtv_id . ' -->' . "\n";
+		echo '<!-- ' . $__eb_cache_conf . ' (??????) -->' . "\n";
+		if ( ! file_exists( $__eb_cache_conf ) ) {
+			echo '<!-- file not exist -->' . "\n";
+		}
+		else {
+			echo '<!-- file exist -->' . "\n";
+		}
+		if ( ! function_exists('file_exists') ) {
+			echo '<!-- function not exists -->' . "\n";
+		}
 		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
+			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
 			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
 			
 			
