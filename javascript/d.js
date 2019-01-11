@@ -3038,6 +3038,7 @@ setTimeout(function () {
 
 
 
+
 /*
 var old_scroll_top = 0,
 	set_old_scroll_top = null,
@@ -3090,6 +3091,11 @@ jQuery(document).ready(function() {
 		setInterval(function () {
 			WGR_show_or_hide_to_top();
 		}, 250);
+	}
+	
+	//
+	if ( height_for_lazzy_load == 0 ) {
+		height_for_lazzy_load = jQuery(window).height();
 	}
 });
 

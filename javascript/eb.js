@@ -27,6 +27,7 @@ var bg_load = 'Loading...',
 	// tên miền chính sử dụng code này
 	primary_domain_usage_eb = '',
 	disable_eblazzy_load = false,
+	height_for_lazzy_load = 0,
 	sb_submit_cart_disabled = 0,
 	ebe_arr_cart_product_list = [],
 	ebe_arr_cart_customer_info = [];
@@ -1275,7 +1276,8 @@ var _global_js_eb = {
 			// load trước các ảnh ngoài màn hình, để lát khách kéo xuống có thể xem được luôn
 //			lazzy_show += 600;
 //			lazzy_show += 1500;
-			lazzy_show += jQuery(window).height()/ 2;
+//			lazzy_show += jQuery(window).height()/ 2;
+			lazzy_show += height_for_lazzy_load;
 			
 			//
 			jQuery('.' + eb_lazzy_class).each(function() {
