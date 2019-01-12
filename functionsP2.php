@@ -1031,7 +1031,7 @@ function _eb_create_file (
 	*/
 	
 	//
-	echo '<!-- ' . $file_ . ' -->' . "\n";
+//	echo '<!-- ' . $file_ . ' -->' . "\n";
 	
 	//
 	return true;
@@ -1384,7 +1384,7 @@ function EBE_ftp_create_file ($file_, $content_, $add_line = '', $mod = 0777) {
 	ftp_close($conn_id);
 	
 	//
-	echo '<!-- ' . $file_ . ' (FTP) -->' . "\n";
+//	echo '<!-- ' . $file_ . ' (FTP) -->' . "\n";
 	
 	//
 	return $result;

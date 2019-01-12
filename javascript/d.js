@@ -3056,6 +3056,7 @@ jQuery(window).resize(function() {
 	*/
 	
 	_global_js_eb.auto_margin();
+	height_for_lazzy_load = jQuery(window).height();
 //}).on('load', function(e) {
 	
 	/*

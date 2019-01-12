@@ -159,7 +159,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			if ( file_exists( $__eb_cache_conf ) ) {
 				include_once $__eb_cache_conf;
 			}
-			echo '<!-- __eb_cache_time: ' . $__eb_cache_time . ' -->' . "\n";
+//			echo '<!-- __eb_cache_time: ' . $__eb_cache_time . ' -->' . "\n";
 		}
 	}
 	
@@ -509,6 +509,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* lưu cache -> chỉ lưu khi thành viên chưa đăng nhập
 		*/
+		/*
 		echo '<!-- aaaaaaaaaaaaa -->' . "\n";
 		echo '<!-- ' . mtv_id . ' -->' . "\n";
 		echo '<!-- ' . $__eb_cache_conf . ' (??????) -->' . "\n";
@@ -521,8 +522,9 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		if ( ! function_exists('file_exists') ) {
 			echo '<!-- function not exists -->' . "\n";
 		}
+		*/
 		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
-			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
+//			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
 			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
 			
 			
