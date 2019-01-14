@@ -28,7 +28,7 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		if ( date_time - $lats_update_file_test > 6 * 3600 ) {
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
-			_eb_create_file( $file_cache_test, date_time );
+			_eb_create_file( $file_cache_test, $url_udpate_via_api );
 			
 			//
 			echo _eb_postUrlContent( $url_udpate_via_api );
@@ -66,7 +66,7 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		if ( date_time - $lats_update_file_test > 6 * 3600 ) {
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
-			_eb_create_file( $file_cache_test, date_time );
+			_eb_create_file( $file_cache_test, $url_udpate_via_api );
 			
 			//
 			$url_udpate_via_api .= '&type_update=elementor-pro';
