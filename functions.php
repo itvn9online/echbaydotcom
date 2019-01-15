@@ -591,6 +591,7 @@ function EBE_get_custom_template($n, $plugin_dir) {
         $h = file_get_contents($tmp_child_theme, 1);
 
         $arr_for_add_css[EB_CHILD_THEME_URL . 'css/' . $n . '.css'] = 1;
+        $arr_for_add_css[EB_CHILD_THEME_URL . 'html/' . $n . '.css'] = 1;
 
         $arr_for_show_html_file_load[] = '<!-- chile theme HTML: ' . $n . ' -->';
     }
@@ -600,6 +601,7 @@ function EBE_get_custom_template($n, $plugin_dir) {
 //		echo $f . '<br>' . "\n";
 
         $arr_for_add_css[EB_THEME_THEME . 'css/' . $n . '.css'] = 1;
+        $arr_for_add_css[EB_THEME_THEME . 'html/' . $n . '.css'] = 1;
 
         $arr_for_show_html_file_load[] = '<!-- theme HTML: ' . $n . ' -->';
     }
