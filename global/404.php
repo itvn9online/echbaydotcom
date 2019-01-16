@@ -314,6 +314,24 @@ else {
 //		echo $termFilter . '<br>'; exit();
 		
 		
+		// nếu có url của bản amp
+//		print_r( $_GET );
+		if ( strstr( $current_404_uri, '/amp/' ) == true ) {
+			$amp_404_uri = str_replace( '/amp/', '', $current_404_uri );
+//			echo $amp_404_uri . '<br>' . "\n";
+			
+			//
+			$termFilter .= " OR meta_key = '" . $amp_404_uri . "' ";
+		}
+		else if ( substr( $current_404_uri, -4 ) == '/amp' ) {
+			$amp_404_uri = substr( $current_404_uri, 0, -4 );
+//			echo $amp_404_uri . '<br>' . "\n";
+			
+			//
+			$termFilter .= " OR meta_key = '" . $amp_404_uri . "' ";
+		}
+		
+		
 		// kiểm tra xem URL 404 này đã được EchBay lưu chưa
 		$sql = _eb_q("SELECT meta_value
 		FROM
