@@ -262,6 +262,7 @@ else {
 		
 		//
 		$redirect_301_link = '';
+		$redirect_add_link = '';
 		
 		// lưu log 404 vào CSDL để tiện tra cứu
 		$current_404_uri = $_SERVER['REQUEST_URI'];
@@ -274,6 +275,7 @@ else {
 			$current_404_uri = explode( '?', $current_404_uri );
 			$current_404_uri = $current_404_uri[0];
 //			echo $current_404_uri . '<br>' . "\n";
+			$redirect_add_link = 'gclid=' . $_GET['gclid'];
 		}
 //		exit();
 		
@@ -322,6 +324,7 @@ else {
 			
 			//
 			$termFilter .= " OR meta_key = '" . $amp_404_uri . "' ";
+			$redirect_add_link = 'amp';
 		}
 		else if ( substr( $current_404_uri, -4 ) == '/amp' ) {
 			$amp_404_uri = substr( $current_404_uri, 0, -4 );
@@ -329,6 +332,7 @@ else {
 			
 			//
 			$termFilter .= " OR meta_key = '" . $amp_404_uri . "' ";
+			$redirect_add_link = 'amp';
 		}
 		
 		
@@ -517,7 +521,15 @@ else {
 			*/
 			
 			//
-			wp_redirect( $redirect_301_link, 301 );
+			if ( strstr( $redirect_301_link, '?' ) == true ) {
+				$redirect_add_link = '&' . $redirect_add_link;
+			}
+			else {
+				$redirect_add_link = '?' . $redirect_add_link;
+			}
+			
+			//
+			wp_redirect( $redirect_301_link . $redirect_add_link, 301 );
 			
 			exit();
 			
