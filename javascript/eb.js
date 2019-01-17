@@ -1894,7 +1894,7 @@ var _global_js_eb = {
 		ebe_arr_cart_product_list = [];
 		
 		// nếu đang là xem trang chi tiết
-		if ( pid > 0 ) {
+		if ( pid > 0 && typeof eb_wp_post_type != 'undefined' && eb_wp_post_type == 'post' ) {
 			
 			//
 			var color_name = jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || '',

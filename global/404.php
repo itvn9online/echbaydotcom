@@ -243,10 +243,30 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 			
 			//
 			include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
+//			echo 'bbbb';
+			
+			
+			//
+			/*
+			function theme_slug_filter_wp_title( $title ) {
+				global $__cf_row;
+				
+				echo '<!-- ';
+				print_r( $__cf_row );
+				echo ' -->';
+				
+				// You can do other filtering here, or
+				// just return $title
+				return $__cf_row ['cf_title'];
+			}
+			// Hook into wp_title filter hook
+			add_filter( 'wp_title', 'theme_slug_filter_wp_title' );
+			*/
 		}
 		
 		//
 		$css_m_css[] = 'eb-' . $act;
+
 		
 		
 }

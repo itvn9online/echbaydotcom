@@ -1916,6 +1916,8 @@ function _eb_get_youtube_id ( $url ) {
 // tiêu đề tiêu chuẩn của google < 70 ký tự
 function _eb_tieu_de_chuan_seo( $str ) {
 	global $__cf_row;
+	global $arr_active_for_404_page;
+	global $act;
 	
 	// nếu sử dụng module SEO của EchBay
 	if ( cf_on_off_echbay_seo == 1 ) {
@@ -1931,6 +1933,10 @@ function _eb_tieu_de_chuan_seo( $str ) {
 			}
 		}
 		echo '<!-- title by EchBay -->' . "\n";
+	}
+	// page 404 của WGR
+	else if ( isset( $arr_active_for_404_page[ $act ] ) ) {
+		$str = $__cf_row ['cf_title'];
 	}
 	//
 	else if ( is_404() ) {
