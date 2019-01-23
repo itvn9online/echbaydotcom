@@ -63,6 +63,7 @@
 	box-shadow: 0 0 5px #ccc;
 	padding: 5px;
 	display: none;
+	z-index: 5;
 }
 .admin-products_post-category li:hover .sub-menu { display: block; }
 .admin-products_post-category .sub-menu li { }
