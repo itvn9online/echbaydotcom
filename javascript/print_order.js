@@ -43,7 +43,7 @@
 		if ( order_details_arr_cart_product_list[i].quan > 0 ) {
 			product_price = order_details_arr_cart_product_list[i].price;
 			// hiển thị giá theo size, color nếu có
-			if ( typeof order_details_arr_cart_product_list[i].child_price != 'undefined' && order_details_arr_cart_product_list[i].child_price != '' ) {
+			if ( typeof order_details_arr_cart_product_list[i].child_price != 'undefined' && order_details_arr_cart_product_list[i].child_price != '' && order_details_arr_cart_product_list[i].child_price * 1 > 0 ) {
 				product_price = order_details_arr_cart_product_list[i].child_price;
 			}
 			

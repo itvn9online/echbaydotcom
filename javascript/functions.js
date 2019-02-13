@@ -65,7 +65,17 @@ function WGR_get_hoan_tat_total_price () {
 		
 		//
 		for ( var i = 0; i < arr.length; i++ ) {
-			a += arr[i].quan * arr[i].price;
+			
+			//
+			var product_price = arr[i].price;
+			// hiển thị giá theo size, color nếu có
+			if ( typeof arr[i].child_price != 'undefined' && arr[i].child_price != '' && arr[i].child_price * 1 > 0 ) {
+				product_price = arr[i].child_price;
+			}
+			
+			//
+			a += arr[i].quan * product_price;
+			
 		}
 	} catch (e) {
 		console.log( WGR_show_try_catch_err( e ) );
@@ -114,6 +124,13 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 		}
 		
 		//
+		var product_price = current_hd_object[i].price;
+		// hiển thị giá theo size, color nếu có
+		if ( typeof current_hd_object[i].child_price != 'undefined' && current_hd_object[i].child_price != '' && current_hd_object[i].child_price * 1 > 0 ) {
+			product_price = current_hd_object[i].child_price;
+		}
+		
+		//
 		str2 += '' +
 		'<div class="cf">' +
 			'<div class="lf f25 fullsize-if-mobile">' +
@@ -123,7 +140,7 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 				'<div class="left-menu-space">' +
 					'<h4><a href="' + web_link + '?p=' + current_hd_object[i].id + '" target="_blank" class="bluecolor">' + current_hd_object[i].name + '</a></h4>' +
 					'<div class="l30">' +
-						'<div class="redcolor"><strong class="ebe-currency">' + g_func.money_format( current_hd_object[i].price ) + '</strong></div>' +
+						'<div class="redcolor"><strong class="ebe-currency">' + g_func.money_format( product_price ) + '</strong></div>' +
 						'<div>' + arr_lang_hoan_tat['cart_done_color'] + ': ' + current_hd_object[i].color + '</div>' +
 						'<div>' + arr_lang_hoan_tat['cart_done_size'] + ': ' + current_hd_object[i].size + '</div>' +
 						'<div>' + arr_lang_hoan_tat['cart_done_quan'] + ': ' + current_hd_object[i].quan + '</div>' +
@@ -133,7 +150,7 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 		'</div>';
 		
 		//
-		total += current_hd_object[i].price * current_hd_object[i].quan;
+		total += product_price * current_hd_object[i].quan;
 	}
 	
 	//
@@ -207,7 +224,16 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 	for ( var i = 0; i < arr.length; i++ ) {
 //		if ( typeof arr[i].__eb_hd_customer_info == 'undefined' ) {
 			arr_ids.push( arr[i].id );
-			tong_tien -= ( 0 - arr[i].price );
+			
+			//
+			var product_price = arr[i].price;
+			// hiển thị giá theo size, color nếu có
+			if ( typeof arr[i].child_price != 'undefined' && arr[i].child_price != '' && arr[i].child_price * 1 > 0 ) {
+				product_price = arr[i].child_price;
+			}
+			
+			//
+			tong_tien -= ( 0 - product_price );
 			
 			//
 			if ( typeof ga != 'undefined' ) {
@@ -217,7 +243,7 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 					'category': 'Echbay category',
 					'brand': 'Echbay',
 					'variant': 'red',
-					'price': arr[i].price,
+					'price': product_price,
 					'quantity': arr[i].quan
 				};
 				ga('ec:addProduct', ga_add_product);

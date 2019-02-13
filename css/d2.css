@@ -1159,6 +1159,11 @@ color: #333;
 	border-left: 1px #ccc solid;
 	padding: 6px;
 }
+.ul-default-style ul.wp-block-gallery {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
 /*
 * wp-content
 */

@@ -335,7 +335,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 		//
 		var product_price = arr[i].price;
 		// hiển thị giá theo size, color nếu có
-		if ( typeof arr[i].child_price != 'undefined' && arr[i].child_price != '' ) {
+		if ( typeof arr[i].child_price != 'undefined' && arr[i].child_price != '' && arr[i].child_price * 1 > 0 ) {
 			product_price = arr[i].child_price;
 		}
 		

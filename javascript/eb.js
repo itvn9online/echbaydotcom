@@ -1931,11 +1931,32 @@ var _global_js_eb = {
 		}
 		// nếu đang là xem trong giỏ hàng
 		else {
+			// xóa phần giá riêng trong giỏ hàng
+			jQuery('.gia-rieng-size-color').remove();
+			
+			//
 			jQuery('.each-for-set-cart-value').each(function () {
 				var cart_pid = jQuery(this).attr('data-id') || 0,
 					cart_product_name = jQuery('.get-product-name-for-cart', this).html() || '',
 					cart_product_slug = '',
-					sku = jQuery(this).attr('data-sku') || '';
+					sku = jQuery(this).attr('data-sku') || '',
+					gia_moi = jQuery(this).attr('data-price') || 0,
+					gia_rieng = jQuery('.cart-price-inline .global-details-giamoi', this).html() || '';
+				
+				// xử lý giá riêng
+				if ( gia_rieng != '' ) {
+					gia_rieng = g_func.number_only( gia_rieng );
+				}
+				
+				// nếu giá riêng bằng giá mới thì thôi
+				if ( gia_rieng * 1 == gia_moi * 1 ) {
+					gia_rieng = 0;
+				}
+				
+				// tạo 1 input để lưu giá riêng vào submit -> gửi mail
+				if ( gia_rieng * 1 > 0 ) {
+					jQuery('.show-list-size', this).append('<input type="hidden" name="t_new_price[' + cart_pid + ']" value="' + gia_rieng + '" class="gia-rieng-size-color" />');
+				}
 				
 				// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
 				cart_product_slug = g_func.non_mark_seo( cart_product_name + sku );
@@ -1948,7 +1969,9 @@ var _global_js_eb = {
 					"size" : jQuery('.show-list-size[data-id="' + cart_pid + '"] select').val() || '',
 					"color" : jQuery('.show-list-color[data-id="' + cart_pid + '"] select').val() || '',
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
-					"price" : jQuery(this).attr('data-price') || 0,
+					"price" : gia_moi,
+					// thêm phần giá riêng theo màu hoặc size
+					"child_price" : gia_rieng,
 					"quan" : jQuery('.change-select-quantity', this).val() || 1,
 					"sku" : sku
 				} );
@@ -2095,7 +2118,7 @@ var _global_js_eb = {
 				//
 				if ( str != '' ) {
 					jQuery(this).show().html( '<div class="lf f20">' + ( jQuery(this).attr('data-name') || '' ) + '</div>'
-					+ '<div class="lf f80"><select name="t_size[' + t_post_id + ']">' + str + '</select></div>');
+					+ '<div class="lf f80"><select data-id="' + t_post_id + '" name="t_size[' + t_post_id + ']">' + str + '</select></div>');
 				}
 			}
 		});

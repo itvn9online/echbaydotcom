@@ -13,6 +13,7 @@ isLogin = mtv_id,
 // luôn luôn cho phép tracking để có thể lưu log website qua google
 cf_disable_tracking = "off",
 cf_ga_id = "' . $__cf_row['cf_ga_id'] . '",
+cf_gtag_id = "' . $__cf_row['cf_gtag_id'] . '",
 
 date_time = ' . date_time . ',
 lang_date_time_format = "' . _eb_get_option('date_format') . ' ' . _eb_get_option('time_format') . '",
