@@ -1968,6 +1968,7 @@ var _global_js_eb = {
 					"slug" : cart_product_slug.replace( /\-/g, '' ),
 					"size" : jQuery('.show-list-size[data-id="' + cart_pid + '"] select').val() || '',
 					"color" : jQuery('.show-list-color[data-id="' + cart_pid + '"] select').val() || '',
+					"color_img" : $('.cart-list-avt', this).attr('data-img') || '',
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
 					"price" : gia_moi,
 					// thêm phần giá riêng theo màu hoặc size
