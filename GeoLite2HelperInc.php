@@ -29,7 +29,7 @@ class WGR_GeoLite2Helper {
 	private $cachePath = '';
 	
 	private function db_not_found () {
-		return 'GeoLite2 DB not found! <a href="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz" rel="nofollow" target="_blank">Click here</a> Download and up to folder: <strong>' . GeoLite2Helper_UploadPATH . '</strong>';
+		return 'GeoLite2 DB not found! <a href="https://dev.maxmind.com/geoip/geoip2/geolite2/" rel="nofollow" target="_blank">Click here</a> Download and up to folder: <strong>' . GeoLite2Helper_UploadPATH . '</strong>';
 	}
 	
 	/*
@@ -179,7 +179,7 @@ class WGR_GeoLite2Helper {
 	
 	// lấy nhiều thông tin cùng lúc
 	public function getUserOptionByIp($ip = NULL, $o = NULL) {
-		$a = $this->getDB( $ip ); if ( $a == NULL ) return $this->db_not_found();
+		$a = $this->getDB( $ip ); if ( $a == NULL || ! isset( $a['location'] ) ) return $this->db_not_found();
 //		if ( mtv_id == 1 ) print_r( $a );
 		
 		//
