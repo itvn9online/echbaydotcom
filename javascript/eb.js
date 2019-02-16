@@ -1278,7 +1278,7 @@ var _global_js_eb = {
 //			lazzy_show += 1500;
 //			lazzy_show += jQuery(window).height()/ 2;
 			lazzy_show += height_for_lazzy_load;
-			console.log( height_for_lazzy_load );
+//			console.log( height_for_lazzy_load );
 			
 			//
 			jQuery('.' + eb_lazzy_class).each(function() {
