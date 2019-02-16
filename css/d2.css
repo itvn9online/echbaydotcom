@@ -625,6 +625,8 @@ label,
 .org-bg,
 .orgbg { background-color: #f90; }
 /* color */
+.ablackcolor,
+.ablackcolor a,
 .blackcolor { color: #333 !important }
 .awhitecolor,
 .awhitecolor a,
