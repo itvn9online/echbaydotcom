@@ -96,6 +96,10 @@ _eb_add_compiler_css( $arr_for_add_css );
 /* EchBay custom CSS for replace default CSS by plugin or theme */
 <?php
 
+if ( $__cf_row['cf_replace_content'] != '' ) {
+	$__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
+}
+
 echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 
 ?>
