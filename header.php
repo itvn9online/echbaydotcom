@@ -96,6 +96,7 @@ _eb_add_compiler_css( $arr_for_add_css );
 /* EchBay custom CSS for replace default CSS by plugin or theme */
 <?php
 
+// do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có
 if ( $__cf_row['cf_replace_content'] != '' ) {
 	$__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
 }
