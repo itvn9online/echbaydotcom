@@ -112,13 +112,24 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 
 
 //
-/*
+$last_update = 0;
 if (file_exists ( $__eb_cache_conf )) {
+	if ( file_exists ( $file_last_update ) ) {
+		$last_update = filemtime ( $file_last_update );
+//		$last_update = file_get_contents ( $file_last_update );
+		
+		// tối đa 40 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
+		if ( $last_update > 0 && date_time - $last_update > 2400 ) {
+			unlink ( $__eb_cache_conf );
+			unlink ( $file_last_update );
+		}
+	}
+	
+	//
 	include_once $__eb_cache_conf;
 }
-*/
 // chấp nhận lần đầu truy cập sẽ lỗi
-@include $__eb_cache_conf;
+//@include_once $__eb_cache_conf;
 
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
 /*
@@ -149,11 +160,7 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 	// nếu thời gian update cache nhỏ quá -> bỏ qua
 //	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
-	if ( file_exists ( $file_last_update ) ) {
-		$last_update = filemtime ( $file_last_update );
-//		$last_update = file_get_contents ( $file_last_update );
-		
-		//
+	if ( $last_update > 0 ) {
 		if ( date_time - $last_update < $time_for_update_cache / 2 ) {
 			$__eb_cache_time = 0;
 			if ( file_exists( $__eb_cache_conf ) ) {
@@ -629,10 +636,10 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		// Xóa revision
-		include EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
+		include_once EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
 		
 		// số bài viết tối đa trên web
-		include EB_THEME_PLUGIN_INDEX . 'cronjob/max_post_cleanup.php';
+		include_once EB_THEME_PLUGIN_INDEX . 'cronjob/max_post_cleanup.php';
 		
 		
 		
@@ -744,7 +751,7 @@ if ( date_time - $last_update_web_version + rand( 0, 60 ) > 600 ) {
 //echo _eb_get_full_category_v2 ( 0, 'category', 1 );
 /*
 if ( mtv_id == 1 && is_home() ) {
-	include EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
+	include_once EB_THEME_PLUGIN_INDEX . 'cronjob/revision_cleanup.php';
 }
 */
 
