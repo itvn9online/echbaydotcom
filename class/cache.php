@@ -119,8 +119,8 @@ if (file_exists ( $__eb_cache_conf )) {
 		$last_update = filemtime ( $file_last_update );
 //		$last_update = file_get_contents ( $file_last_update );
 		
-		// tối đa 40 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
-		if ( $last_update > 0 && date_time - $last_update > 2400 ) {
+		// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
+		if ( $last_update > 0 && date_time - $last_update > 2100 ) {
 			unlink ( $__eb_cache_conf );
 			unlink ( $file_last_update );
 		}
