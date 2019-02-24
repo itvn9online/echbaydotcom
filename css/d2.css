@@ -35,8 +35,11 @@ label,
 }
 .hoan-tat-avt,
 .echbay-blog-avt {
+	background: #fff center no-repeat;
+	/*
 	background: #fff center no-repeat url(../images-global/noavatar.png);
-	/* background-size: auto 100%; */
+	background-size: auto 100%;
+	*/
 	background-size: contain;
 }
 .echbay-blog-avt {
