@@ -114,6 +114,7 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 //
 $last_update = 0;
 if (file_exists ( $__eb_cache_conf )) {
+	// nếu có file kiểm tra lần update cuối
 	if ( file_exists ( $file_last_update ) ) {
 		$last_update = filemtime ( $file_last_update );
 //		$last_update = file_get_contents ( $file_last_update );
@@ -123,10 +124,21 @@ if (file_exists ( $__eb_cache_conf )) {
 			unlink ( $__eb_cache_conf );
 			unlink ( $file_last_update );
 		}
+		// nạp conf
+		else {
+//			try {
+				include_once $__eb_cache_conf;
+				/*
+			} catch ( Exception $e ) {
+				echo 'Error include site config';
+			}
+			*/
+		}
 	}
-	
-	//
-	include_once $__eb_cache_conf;
+	// không có thì xóa luôn file conf cũ
+	else {
+		unlink ( $__eb_cache_conf );
+	}
 }
 // chấp nhận lần đầu truy cập sẽ lỗi
 //@include_once $__eb_cache_conf;
