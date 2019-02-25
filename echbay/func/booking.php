@@ -253,44 +253,47 @@ while ( $sql->have_posts() ) {
 	$chitiet = $sql->post;
 //	print_r( $chitiet );
 	
-	//
-	EBE_set_details_order( 'product_id', $chitiet->ID, $hd_id );
-	
-	//
-//	$trv_giaban = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_oldprice', true ) );
-	$trv_giaban = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_oldprice' ) );
-//	$trv_giamoi = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_price', true ) );
-	$trv_giamoi = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_price' ) );
-	$cthd_soluong = $arr_shop_cart [$chitiet->ID];
-	
-	// nếu có giá riêng theo từng size hoặc màu
-	$gia_rieng_theo_size = '';
-	if ( $arr_shop_cart_price [$chitiet->ID] > 0 ) {
-		$gia_rieng_theo_size = 'Giá riêng theo size: <strong>' . number_format( $arr_shop_cart_price [$chitiet->ID] ) . '</strong>đ<br>';
-	}
-	
-	//
-	$total_line = $trv_giamoi * $cthd_soluong;
-	$tong_tien += $total_line;
-	
-	//
-	$trv_tietkiem = $trv_giaban - $trv_giamoi;
-	$trv_khuyenmai = 0;
-	if ( $trv_giamoi > 0 && $trv_giaban > $trv_giamoi ) {
-		$trv_khuyenmai = 100 - intval ( $trv_giamoi * 100 / $trv_giaban );
-	}
-	
-	//
-//	$masanpham = _eb_get_post_meta( $chitiet->ID, '_eb_product_sku', true );
-	$masanpham = _eb_get_post_object( $chitiet->ID, '_eb_product_sku' );
-	if ( $masanpham == '' ) {
-		$masanpham = $chitiet->ID;
-	}
-//	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
-	$trv_color = _eb_get_post_object( $chitiet->ID, '_eb_product_color' );
-	
-	//
-	$product_list .= 'Mã sản phẩm: <strong>' . $masanpham . '</strong><br>
+	// kiểm tra nếu tồn tại số lượng giỏ hàng thì mới tiếp tục
+	if ( isset( $arr_shop_cart [$chitiet->ID] ) && $arr_shop_cart [$chitiet->ID] * 1 > 0 ) {
+		
+		// tạo chi tiết đơn
+		EBE_set_details_order( 'product_id', $chitiet->ID, $hd_id );
+		
+		//
+	//	$trv_giaban = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_oldprice', true ) );
+		$trv_giaban = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_oldprice' ) );
+	//	$trv_giamoi = _eb_float_only( _eb_get_post_meta( $chitiet->ID, '_eb_product_price', true ) );
+		$trv_giamoi = _eb_float_only( _eb_get_post_object( $chitiet->ID, '_eb_product_price' ) );
+		$cthd_soluong = $arr_shop_cart [$chitiet->ID];
+		
+		// nếu có giá riêng theo từng size hoặc màu
+		$gia_rieng_theo_size = '';
+		if ( $arr_shop_cart_price [$chitiet->ID] > 0 ) {
+			$gia_rieng_theo_size = 'Giá riêng theo size: <strong>' . number_format( $arr_shop_cart_price [$chitiet->ID] ) . '</strong>đ<br>';
+		}
+		
+		//
+		$total_line = $trv_giamoi * $cthd_soluong;
+		$tong_tien += $total_line;
+		
+		//
+		$trv_tietkiem = $trv_giaban - $trv_giamoi;
+		$trv_khuyenmai = 0;
+		if ( $trv_giamoi > 0 && $trv_giaban > $trv_giamoi ) {
+			$trv_khuyenmai = 100 - intval ( $trv_giamoi * 100 / $trv_giaban );
+		}
+		
+		//
+	//	$masanpham = _eb_get_post_meta( $chitiet->ID, '_eb_product_sku', true );
+		$masanpham = _eb_get_post_object( $chitiet->ID, '_eb_product_sku' );
+		if ( $masanpham == '' ) {
+			$masanpham = $chitiet->ID;
+		}
+	//	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
+		$trv_color = _eb_get_post_object( $chitiet->ID, '_eb_product_color' );
+		
+		//
+		$product_list .= 'Mã sản phẩm: <strong>' . $masanpham . '</strong><br>
 Tên sản phẩm: <a href="' . web_link . '?p=' . $chitiet->ID . '" target="_blank">' . $chitiet->post_title . '</a><br>
 Size: ' . $arr_shop_cart_size [$chitiet->ID] . '<br>
 Màu sắc: ' . $trv_color . '<br>
@@ -315,6 +318,8 @@ Cộng: ' . number_format ( $total_line ) . 'đ<br>
 		"sku" : "' . $masanpham . '"
 	}';
 	*/
+	
+	}
 }
 //echo $product_list . "\n";
 //exit();
