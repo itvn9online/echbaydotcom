@@ -23,6 +23,7 @@
 	display: -webkit-flex;
 	display: flex;
 }
+/* mobile in footer */
 .style-for-mobile #aabbcc .top1-menu li,
 #aabbcc .top1-menu .sub-menu li {
 	float: none;
@@ -40,6 +41,7 @@
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu li { }
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu a { }
 #aabbcc .top1-menu .sub-menu .sub-menu .sub-menu .sub-menu { }
+/* mobile in footer */
 .style-for-mobile #aabbcc .top1-menu li { margin-top: 20px; }
 #aabbcc .top1-menu .sub-menu li { margin-top: 0; }
 /* ================================== address ================================== */

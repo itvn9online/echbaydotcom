@@ -145,9 +145,15 @@ function WGR_create_sitemap_image_node ( $sql ) {
 			$name = str_replace( '-', ' ', $v->post_title );
 		}
 		
+		//
 		$url = $img;
 		if ( $v->post_parent > 0 ) {
 			$url = _eb_p_link( $v->post_parent );
+			
+			// nếu link có chữ __trashed- -> đang trong thùng rác -> dùng link ảnh
+			if ( strstr( $url, '__trashed-' ) == true || strstr( $url, '?ads=' ) == true ) {
+				$url = $img;
+			}
 		}
 		
 		$str .= WGR_echo_sitemap_image_node(
