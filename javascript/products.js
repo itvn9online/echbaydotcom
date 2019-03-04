@@ -142,14 +142,14 @@ function change_update_new_stt () {
 	
 	
 	//
-//	jQuery('.change-update-new-stt').off('change').change(function () {
-	jQuery('.change-update-new-stt').off('keydown').keydown(function(e) {
+	jQuery('.change-update-new-stt').off('change').change(function () {
+//	jQuery('.change-update-new-stt').off('keydown').keydown(function(e) {
 //		console.log(e.keyCode);
-		if ( e.keyCode == 13 ) {
+//		if ( e.keyCode == 13 ) {
 			var a = jQuery(this).val() || 0,
 				j = jQuery(this).attr('id') || '';
 			a = g_func.number_only(a);
-			if ( a < 0 ) {
+			if ( a * 1 < 0 ) {
 				a = 0;
 			}
 //			console.log( a );
@@ -170,7 +170,7 @@ function change_update_new_stt () {
 					}, 600);
 				}
 			});
-		}
+//		}
 	});
 	
 	
