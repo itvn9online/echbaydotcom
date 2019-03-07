@@ -125,6 +125,9 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	if ($__cf_row ['cf_email_note'] != '') {
 		$mail_to_admin = $__cf_row ['cf_email_note'];
 	}
+	else if ( $mail_to_admin == $__cf_row_default['cf_email'] ) {
+		$mail_to_admin = '';
+	}
 	
 	//
 	$mail_title = 'Dang ky nhan tin tu ' . $user_email;

@@ -386,6 +386,9 @@ $mail_to_admin = $__cf_row ['cf_email'];
 if ($__cf_row ['cf_email_note'] != '') {
 	$mail_to_admin = $__cf_row ['cf_email_note'];
 }
+else if ( $mail_to_admin == $__cf_row_default['cf_email'] ) {
+	$mail_to_admin = '';
+}
 
 
 

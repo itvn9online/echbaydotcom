@@ -2983,6 +2983,18 @@ function _eb_lnk_block_email($em) {
 function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email = '', $add_domain = 1) {
     global $year_curent;
     global $__cf_row;
+	
+	
+	//
+	if ( $to_email == '' && $bcc_email != '' ) {
+		$to_email = $bcc_email;
+		$bcc_email = '';
+	}
+	else {
+		EBE_show_log('Send email to: NULL');
+		
+		return false;
+	}
 
 
     //
