@@ -30,7 +30,8 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
 //			_eb_create_file( $file_cache_test, $url_udpate_via_api );
-			_eb_create_file( $file_cache_test, date_time );
+//			_eb_create_file( $file_cache_test, date_time );
+			echo $url_udpate_via_api . '<br>';
 			
 			//
 			echo _eb_postUrlContent( $url_udpate_via_api );
@@ -69,10 +70,11 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
 //			_eb_create_file( $file_cache_test, $url_udpate_via_api );
-			_eb_create_file( $file_cache_test, date_time );
+//			_eb_create_file( $file_cache_test, date_time );
 			
 			//
 			$url_udpate_via_api .= '&type_update=elementor-pro';
+			echo $url_udpate_via_api . '<br>';
 			
 			//
 			echo _eb_postUrlContent( $url_udpate_via_api );
