@@ -2597,7 +2597,9 @@ function WGR_check_and_begin_load_count_down () {
 	}
 	
 	// nếu có -> hiển thị thời gian
-	jQuery('#' + id_for_show).before('<div class="medium l35 thread-details-countdown-left">' + lang_details_time_discount + '</div>');
+	if ( jQuery('.thread-details-countdown-left').length == 0 ) {
+		jQuery('#' + id_for_show).before('<div class="medium l35 thread-details-countdown-left">' + lang_details_time_discount + '</div>');
+	}
 	
 	// Nếu trả về false -> khả năng cao là hết hạn hiển thị -> hiển thị thông báo hết hạn
 	if ( ___wgr_dem_thoi_gian_san_pham( trv_ngayhethan - date_time ) == false ) {
