@@ -904,10 +904,18 @@ a.eb-btn {
 	content: "|";
 	margin: 0 12px;
 }
+.top-padding-menu,
+.padding-top-menu,
+.top-space-menu,
+.top-menu-space { padding-top: 20px; }
 .right-padding-menu,
 .padding-right-menu,
 .right-space-menu,
 .right-menu-space { padding-right: 25px; }
+.bottom-padding-menu,
+.padding-bottom-menu,
+.bottom-space-menu,
+.bottom-menu-space { padding-bottom: 20px; }
 .left-padding-menu,
 .padding-left-menu,
 .left-space-menu,

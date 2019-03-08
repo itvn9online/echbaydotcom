@@ -11,7 +11,8 @@ if ( mtv_id > 0 ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/user.php';
 	
 	//
-	$group_go_to[] = ' <li><a href="./password" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
+//	$group_go_to[] = ' <li><a href="./password" rel="nofollow">' . $__cf_row ['cf_title'] . '</a></li>';
+	$group_go_to[] = ' <li>' . $__cf_row ['cf_title'] . '</li>';
 	
 	
 	//

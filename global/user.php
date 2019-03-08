@@ -8,7 +8,8 @@ $global_module_name = EBE_get_lang('taikhoan');
 
 
 //
-$group_go_to[] = ' <li><a href="./profile" rel="nofollow">' . $global_module_name . '</a></li>';
+//$group_go_to[] = ' <li><a href="./profile" rel="nofollow">' . $global_module_name . '</a></li>';
+$group_go_to[] = ' <li>' . $global_module_name . '</li>';
 
 
 

@@ -23,12 +23,14 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		if ( file_exists( $file_cache_test ) ) {
 			$lats_update_file_test = file_get_contents( $file_cache_test, 1 );
 		}
+//		echo $lats_update_file_test . '<br>';
 		
 		//
 		if ( date_time - $lats_update_file_test > 6 * 3600 ) {
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
-			_eb_create_file( $file_cache_test, $url_udpate_via_api );
+//			_eb_create_file( $file_cache_test, $url_udpate_via_api );
+			_eb_create_file( $file_cache_test, date_time );
 			
 			//
 			echo _eb_postUrlContent( $url_udpate_via_api );
@@ -60,13 +62,14 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 		}
 		
 		//
-		echo $url_udpate_via_api . '<br>';
+//		echo $url_udpate_via_api . '<br>';
 		
 		//
 		if ( date_time - $lats_update_file_test > 6 * 3600 ) {
 			
 			// tạo file cache để quá trình này không diễn ra liên tục
-			_eb_create_file( $file_cache_test, $url_udpate_via_api );
+//			_eb_create_file( $file_cache_test, $url_udpate_via_api );
+			_eb_create_file( $file_cache_test, date_time );
 			
 			//
 			$url_udpate_via_api .= '&type_update=elementor-pro';
