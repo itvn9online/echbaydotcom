@@ -1756,7 +1756,7 @@ function _eb_create_page( $page_url, $page_name, $page_template = '' ) {
 }
 
 
-function _eb_create_breadcrumb ( $url, $tit, $id = 0, $rel = '' ) {
+function _eb_create_breadcrumb ( $url, $tit, $id = 0, $rel = '', $to_first = false ) {
 	global $breadcrumb_position;
 	global $group_go_to;
 	
@@ -1765,19 +1765,31 @@ function _eb_create_breadcrumb ( $url, $tit, $id = 0, $rel = '' ) {
 		$rel = ' rel="' . $rel . '"';
 	}
 	
-	//
-	$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '"' . $rel . '>' . $tit . '</a></li>';
-	
-	//
-//	echo $breadcrumb_position . "\n";
-	
-	$breadcrumb_position++;
+	// thêm bổ sung vào đầu mảng
+	if ( $to_first == true ) {
+		$p = 2;
+		
+		//
+		$group_go_to = array_merge( array(
+			$url => ' <li><a data-id="' . $id . '" href="' . $url . '"' . $rel . '>' . $tit . '</a></li>'
+		), $group_go_to );
+	}
+	// mặc định là cuối mảng
+	else {
+		$group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '"' . $rel . '>' . $tit . '</a></li>';
+		
+		//
+	//	echo $breadcrumb_position . "\n";
+		
+		$breadcrumb_position++;
+		$p = $breadcrumb_position;
+	}
 	
 	//
 	return '
 	, {
 		"@type": "ListItem",
-		"position": ' . $breadcrumb_position . ',
+		"position": ' . $p . ',
 		"item": {
 			"@id": "' . str_replace( '/', '\/', $url ) . '",
 			"name": "' . str_replace( '"', '&quot;', $tit ) . '"

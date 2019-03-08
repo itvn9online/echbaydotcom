@@ -203,6 +203,7 @@ else if ( $__post->post_type == 'page' ) {
 //
 $cats = array();
 $cats_child = array();
+$cats2_child = array();
 $ant_link = '';
 $ant_ten = '';
 $ant_id = 0;
@@ -212,12 +213,12 @@ $other_option_list = '';
 //
 //if ( isset( $post_categories[0] ) ) {
 if ( ! empty( $post_categories ) ) {
-	print_r( $post_categories );
+//	print_r( $post_categories );
 	
-	// parent
+	// parent -> lấy các nhóm cấp 1 trước
 	foreach($post_categories as $c){
 		$cat = get_term( $c );
-		print_r( $cat );
+//		print_r( $cat );
 //		$cat = get_category( $c );
 //		print_r( $cat );
 		
@@ -229,12 +230,12 @@ if ( ! empty( $post_categories ) ) {
 				
 				//
 				$ant_link = _eb_c_link($cat->term_id);
-//				echo $ant_link . '<br>';
+//				echo $ant_link . '<br>' . "\n";
 				
 				//
 				$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
 			}
-			// child
+			// child -> nhóm cấp 2 để sau
 			else {
 				if ( $bnt_id == 0 ) {
 					$bnt_id = $cat->term_id;
@@ -251,14 +252,51 @@ if ( ! empty( $post_categories ) ) {
 			$cid = $ant_id;
 		}
 	}
+//	print_r( $cats_child );
 	
-	// child
-	foreach($cats_child as $cat){
-		$ant_link = _eb_c_link($cat->term_id);
-//		echo $ant_link . '<br>';
+	// kiểm tra nhóm cấp 2 với cấp 3
+	if ( ! empty( $cats_child ) ) {
+		$check_arr_exits = array();
 		
-		//
-		$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
+		// lắp vào 1 mảng phụ để kiểm tra
+		foreach($cats_child as $cat){
+			$check_arr_exits[] = $cat->term_id;
+		}
+		
+		// kiểm tra nhóm cấp 2 mà thuộc cấp 3 -> cho vào nhóm cấp 3
+		foreach($cats_child as $k => $cat){
+			if ( in_array( $cat->parent, $check_arr_exits ) ) {
+				$cats2_child[] = $cat;
+				$cats_child[$k] = NULL;
+			}
+		}
+//		print_r( $cats_child );
+//		print_r( $cats2_child );
+		
+		// child -> giờ mới lấy nhóm cấp 2
+		foreach($cats_child as $cat){
+			if ( $cat != NULL ) {
+				$ant_link = _eb_c_link($cat->term_id);
+//				echo $ant_link . '<br>' . "\n";
+				
+				//
+				$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
+			}
+		}
+		
+		// -> tiếp tục nhóm cấp 3 nếu có
+		if ( ! empty( $cats2_child ) ) {
+			foreach($cats2_child as $cat){
+				$ant_link = _eb_c_link($cat->term_id);
+//				echo $ant_link . '<br>' . "\n";
+				
+				//
+				$schema_BreadcrumbList[$ant_link] = _eb_create_breadcrumb( $ant_link, $cat->name, $cat->term_id );
+			}
+		}
+		
+		// nhóm cấp 4 thì chịu chết -> cấp 3 là đủ rồi
+		
 	}
 	
 }
@@ -276,6 +314,31 @@ if ( ! empty( $cats ) ) {
 	// tìm nhóm cha (nếu có)
 	$parent_cid = _eb_create_html_breadcrumb( $cats[0] );
 } else if ( $bnt_id > 0 ) {
+	// tìm nhóm cấp 1 nếu chưa có
+//	print_r( $cats_child );
+	if ( $parent_cid == 0 && ! empty( $cats_child ) ) {
+		foreach($cats_child as $cat){
+			if ( $cat != NULL ) {
+//				print_r( $cat );
+				$get_parent_cid = get_term( $cat->parent );
+//				print_r( $get_parent_cid );
+				
+				// tồn tại mảng thì thêm nhóm này vào đầu Breadcrumb
+				if ( ! empty( $get_parent_cid ) ) {
+					$parent_cid = $get_parent_cid->term_id;
+					$ant_link = _eb_c_link($parent_cid);
+//					echo $ant_link . '<br>' . "\n";
+					
+					//
+					$schema_BreadcrumbList = array_merge( array(
+						$ant_link => _eb_create_breadcrumb( $ant_link, $get_parent_cid->name, $parent_cid, '', true )
+					), $schema_BreadcrumbList );
+				}
+			}
+		}
+	}
+	
+	//
 	$ant_id = $bnt_id;
 	$cid = $bnt_id;
 }

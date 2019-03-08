@@ -91,6 +91,11 @@ $str_for_category_top_sidebar = '';
 	$parent_parent_cat = _eb_create_html_breadcrumb( $__category );
 	$parent_cid = $parent_parent_cat;
 //	echo $parent_parent_cat . '<br>' . "\n";
+//	print_r( $group_go_to );
+	
+	// do hàm trên lấy mảng theo hướng xuôi -> nên giờ sẽ lật ngược mảng trước khi in ra -> để cho đúng chiều cần hiển thị
+	$group_go_to = array_reverse( $group_go_to );
+//	print_r( $group_go_to );
 	
 	// -> tạo menu từ nhóm cha hiện tại
 	$current_category_menu = _eb_echbay_category_menu( $parent_parent_cat, $__category->taxonomy );
