@@ -35,7 +35,7 @@ $eb_all_themes_support[$eb_all_themes_name]["footer"][] = "awatch-footer1.php";
 //$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "doitac-footer1.php";
 //$eb_all_themes_support[$eb_all_themes_name]["footer"][] = "echbaytwo-footer3.php";
 //
-$eb_all_themes_support[$eb_all_themes_name]["home"][] = "awatch-home1.php";
+//$eb_all_themes_support[$eb_all_themes_name]["home"][] = "awatch-home1.php";
 $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "awatch-threaddetails.html";
