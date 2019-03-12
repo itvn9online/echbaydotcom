@@ -301,11 +301,13 @@ $eb_arr_list_color_meta_box = array(
 );
 
 $eb_arr_dieukien_meta_box = array(
-	'_eb_product_dieukien' => WGR_admin_lang('_eb_product_dieukien')
+//	'_eb_product_dieukien' => WGR_admin_lang('_eb_product_dieukien')
+	'_eb_product_dieukien' => EBE_get_lang('_eb_product_dieukien')
 );
 
 $eb_arr_noibat_meta_box = array(
-	'_eb_product_noibat' => WGR_admin_lang('_eb_product_noibat')
+//	'_eb_product_noibat' => WGR_admin_lang('_eb_product_noibat')
+	'_eb_product_noibat' => EBE_get_lang('_eb_product_noibat')
 );
 
 $eb_arr_blog_2content_meta_box = array(

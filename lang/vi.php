@@ -510,6 +510,11 @@ $___eb_lang[eb_key_for_site_lang . 'post_custom_text9'] = 'Post custom text 9';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text10'] = 'Post custom text 10';
 
 
+// for admin
+$___eb_lang[eb_key_for_site_lang . '_eb_product_noibat'] = 'Điểm nổi bật';
+$___eb_lang[eb_key_for_site_lang . '_eb_product_dieukien'] = 'Điều kiện';
+
+
 // URL của phần chính sách, quy định trong phần đặt hàng
 $___eb_lang[eb_key_for_site_lang . 'url_chinhsach'] = '#';
 $___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham khảo <a href="{tmp.url_chinhsach}" target="_blank">chính sách, quy định chung</a> của chúng tôi.';

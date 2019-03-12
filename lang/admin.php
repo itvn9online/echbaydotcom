@@ -55,8 +55,8 @@ function WGR_admin_lang ( $k ) {
 		'_eb_product_leech_source' => 'URL đồng bộ',
 		'_eb_product_video_url' => 'URL Youtube video',
 		'_eb_blog_2content' => 'Nội dung phụ',
-		'_eb_product_noibat' => 'Điểm nổi bật',
-		'_eb_product_dieukien' => 'Điều kiện',
+//		'_eb_product_noibat' => 'Điểm nổi bật',
+//		'_eb_product_dieukien' => 'Điều kiện',
 		'_eb_product_list_color' => 'Danh sách màu sắc',
 		'_eb_product_gallery' => 'Thư viện ảnh',
 		
