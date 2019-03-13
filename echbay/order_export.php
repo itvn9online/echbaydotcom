@@ -133,6 +133,7 @@ a:hover { text-decoration: underline; }
 		<td>STT</td>
 		<td>ID</td>
 		<td>Mã hóa đơn</td>
+		<td>Ngày gửi</td>
 		<td>Trạng thái</td>
 		<td>Sản phẩm</td>
 		<td>SL</td>
@@ -200,7 +201,14 @@ foreach ( $a as $v ) {
 var arr_hd_trangthai = <?php echo json_encode( $arr_hd_trangthai ); ?>;
 <?php
 
+$lang_date_format = _eb_get_option('date_format');
+//echo $lang_date_format . 'aaaaaaaaaaaaaaaaaaaa';
+
 foreach ( $sql as $k => $v ) {
+	$v->ngay_gui = date( $lang_date_format, $v->order_time );
+//	$v->ngay_gui = 'aaaaa';
+	
+	//
 	echo 'WGR_order_export_run( ' . json_encode( $v ) . ', ' . $k . ' );' . "\n";
 }
 

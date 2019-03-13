@@ -103,6 +103,7 @@ function WGR_order_export_run ( arr, i ) {
 		var prod = jQuery.parseJSON( unescape( arr.order_products ) ),
 			cus = jQuery.parseJSON( unescape( arr.order_customer ) );
 		if ( i == 0 ) {
+			console.log( arr );
 			console.log( prod );
 			console.log( cus );
 		}
@@ -113,6 +114,7 @@ function WGR_order_export_run ( arr, i ) {
 			'<td>' + ( i + 1 ) + '</td>' +
 			'<td>' + arr.order_id + '</td>' +
 			'<td>' + arr.order_sku + '</td>' +
+			'<td>' + arr.ngay_gui + '</td>' +
 			'<td>' + ( typeof arr_status[ arr.order_status ] != 'undefined' ? arr_status[ arr.order_status ] : 'Unknown' ) + '</td>' +
 			
 //			'<td>' + WGR_order_export_products( prod, cus ) + '</td>' +
