@@ -1053,7 +1053,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 				var a = jQuery(this).attr('data-id') || 0;
 	
 				if (a * 1 > 0) {
-					jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" class="fa fa-edit"></i>');
+					jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" class="fa fa-edit click-goto-edit"></i>');
 				}
 			});
 			
