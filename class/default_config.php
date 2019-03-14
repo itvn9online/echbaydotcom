@@ -297,6 +297,9 @@ $__cf_row_default = array(
 	'cf_list_sidebar_new_style' => 'off',
 	'cf_list_avt_hover' => 'off',
 	
+	// đảo ngược nội dung và phần danh sách cho mục category
+	'cf_column_reverse_cats' => 'off',
+	
 	// hệ thống comment qua fb
 	'cf_show_fb_cmt_posts' => 1,
 	'cf_show_fb_cmt_post' => 1,

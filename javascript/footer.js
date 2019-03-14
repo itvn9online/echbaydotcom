@@ -1046,14 +1046,14 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 		setTimeout(function () {
 			
 			// chỉnh sửa logo
-			jQuery('.web-logo').before('<div class="each-setup-goto-edit"><a href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" target="_blank" rel="nofollow" class="click-goto-edit"><i class="fa fa-edit"></i></a></div>');
+			jQuery('.web-logo').before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" class="fa fa-edit click-goto-edit"></i></div>');
 			
 			// chỉnh sửa menu
 			jQuery('.each-to-edit-menu').each(function() {
 				var a = jQuery(this).attr('data-id') || 0;
 	
 				if (a * 1 > 0) {
-					jQuery(this).html('<a href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" target="_blank" rel="nofollow"><i class="fa fa-edit"></i></a>');
+					jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" class="fa fa-edit"></i>');
 				}
 			});
 			
@@ -1081,7 +1081,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 					}
 					
 					// hiển thị nút sửa và size khung ảnh
-					jQuery(this).append('<div class="each-to-edit-ads"><a href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" target="_blank" rel="nofollow">' + w.toString() + 'x' + h.toString() + ' <i class="fa fa-edit"></i></a></div>');
+					jQuery(this).append('<div class="each-to-edit-ads">' + w.toString() + 'x' + h.toString() + ' <i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" class="fa fa-edit click-goto-edit"></i></div>');
 				}
 			});
 			
@@ -1105,7 +1105,16 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 				}
 			}
 			
-			$('.thread-module-name, .blogs-module-name').addClass('each-setup-goto-edit').append('<a href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" target="_blank" rel="nofollow" class="click-goto-edit"><i class="fa fa-edit"></i></a>');
+			jQuery('.thread-module-name, .blogs-module-name').addClass('each-setup-goto-edit').append('<i data-href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" class="fa fa-edit click-goto-edit"></i>');
+			
+			//
+			jQuery('.click-goto-edit').click(function () {
+				a = jQuery(this).attr('data-href') || '';
+				
+				if ( a != '' ) {
+					window.open(a, '_blank');
+				}
+			});
 			
 		}, 3000);
     }
