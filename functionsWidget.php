@@ -691,7 +691,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			$arr_select_data['compare'] = '=';
 			$arr_select_data['type'] = 'NUMERIC';
 			
-			// hiển thị trạng thái ads ra để chekc cho dễ
+			// hiển thị trạng thái ads ra để check cho dễ
 			global $arr_eb_ads_status;
 			
 			echo '<!-- ADS status: ' . $ads_eb_status . ' - ' . $arr_eb_ads_status[ $ads_eb_status ] . ' -->';
@@ -866,7 +866,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //		print_r( $sql );
 		
 		// lấy và in ra nội dung tìm được
-		echo '<div class="img-max-width each-to-fix-ptags">';
+		echo '<div class="img-max-width each-to-fix-ptags echbay-blog-content_only">';
 		
 		// in thẳng
 		if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
