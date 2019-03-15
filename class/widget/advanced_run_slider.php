@@ -35,6 +35,8 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 			'thumbnailHeight' => '',
 			'thumbnailSlider' => '',
 			'visible' => '',
+			'visible_mobile' => '',
+			'scrollNum' => '',
 			'showRandom' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -54,7 +56,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		) );
 		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('swipemobile'), $swipemobile, 'Cho phép chuyển ảnh trên mobile bẳng touch' );
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('buttonListNext'), $buttonListNext, 'Hiển thị nút bấm chuyển ảnh' );
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('buttonListNext'), $buttonListNext, 'Hiển thị nút bấm chuyển ảnh (nút nhỏ hình tròn ở giữa slider)' );
 		
 		_eb_widget_echo_widget_input_title( $this->get_field_name('size'), $size, 'Tỷ lệ giữa chiều cao và chiều rộng, thiết lập dưới dạng: height/width (thay height và width bằng các con số cụ thể)', 'Height/Width or auto or full' );
 		echo '<p>- <strong>height/width</strong>: thiết lập tỷ lệ cố định<br>
@@ -102,6 +104,14 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		
 		_eb_widget_echo_widget_input_title( $this->get_field_name('visible'), $visible, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider', '1', array(
+			'type' => 'number'
+		) );
+		_eb_widget_echo_widget_input_title( $this->get_field_name('visible_mobile'), $visible_mobile, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider trên bản mobile (chiều rộng thiết bị nhỏ hơn 768px)', '', array(
+			'type' => 'number'
+		) );
+		
+		
+		_eb_widget_echo_widget_input_title( $this->get_field_name('scrollNum'), $scrollNum, 'Số lượng ảnh hiển thị sau mỗi lượt chuyển ảnh', '', array(
 			'type' => 'number'
 		) );
 		
@@ -152,6 +162,8 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		$thumbnailHeight = isset( $instance ['thumbnailHeight'] ) ? $instance ['thumbnailHeight'] : '';
 		$thumbnailSlider = isset( $instance ['thumbnailSlider'] ) ? $instance ['thumbnailSlider'] : 'off';
 		$visible = isset( $instance ['visible'] ) ? $instance ['visible'] : '';
+		$visible_mobile = isset( $instance ['visible_mobile'] ) ? $instance ['visible_mobile'] : '';
+		$scrollNum = isset( $instance ['scrollNum'] ) ? $instance ['scrollNum'] : '';
 		$showRandom = isset( $instance ['showRandom'] ) ? $instance ['showRandom'] : '';
 		
 		//
@@ -200,6 +212,8 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		if ( $thumbnailHeight != '' ) $code .= ',thumbnailHeight:"' . $thumbnailHeight . '"';
 		
 		if ( $visible != '' ) $code .= ',visible:"' . $visible . '"';
+		if ( $visible_mobile != '' ) $code .= ',visible_mobile:"' . $visible_mobile . '"';
+		if ( $scrollNum != '' ) $code .= ',scrollNum:"' . $scrollNum . '"';
 		
 		
 		

@@ -265,6 +265,12 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
 	// Số LI hiển thị một lúc
 	set_default_conf( 'visible', 1 );
+	set_default_conf( 'visible_mobile', conf['visible'] );
+	// chỉnh lại số LI hiển thị trên mobile
+	if ( jQuery(window).width() < 768 ) {
+		conf['visible'] = conf['visible_mobile'];
+	}
+	set_default_conf( 'scrollNum', conf['visible'] );
 	
 	// Bấm chuyển ảnh trên slider
 	set_default_conf( 'sliderArrow', false );
@@ -598,15 +604,46 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			
 			var i = jQuery(this).attr('data-i') || 0,
 				video_id = 'video_' + jd.replace( /\.|\#\-/g, '_' ) + i;
-			if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
-				i = 0;
+			if ( conf['scrollNum'] != conf['visible'] ) {
+				/*
+				console.log( 'i * scrollNum' );
+				console.log( i );
+				console.log( conf['scrollNum'] );
+				console.log( i * conf['scrollNum'] );
+				console.log( i * conf['scrollNum'] + conf['visible'] * 1 );
+				console.log( 'END i * scrollNum' );
+				*/
+				if ( i > 0 && i * conf['scrollNum'] + conf['visible'] * 1 > jQuery(jd + ' li').length ) {
+					i = 0;
+				}
+			}
+			else {
+				if ( i * conf['visible'] > jQuery(jd + ' li').length ) {
+					i = 0;
+				}
 			}
 			
 			//
-			var w = jQuery(jd).width();
+			var w = jQuery(jd).width(),
+				scroll_width = 0 - i * 100;
+			
+			if ( conf['scrollNum'] != conf['visible'] ) {
+				if ( conf['scrollNum'] < conf['visible'] ) {
+					scroll_width = conf['scrollNum']/ conf['visible'] * 100;
+					scroll_width = 0 - i * scroll_width;
+//					scroll_width = scroll_width.toString() + 'px';
+				}
+			}
+			/*
+			else {
+				scroll_width = scroll_width.toString() + '%';
+			}
+			*/
+//			console.log( scroll_width );
 			
 			jQuery(jd + ' ul').css({
-				left: ( 0 - i * 100 ) + '%'
+				left: scroll_width.toString() + '%'
+//				left: scroll_width
 //				left: ( 0 - i * w ) + 'px'
 //				left: ( 0 - i * 100/ conf['visible'] ) + '%'
 			});
