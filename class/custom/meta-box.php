@@ -426,8 +426,8 @@ function EchBayMetaBox () {
 	// Các textarea khác
 	add_meta_box( 'eb-product-gallery', 'Thư viện ảnh', 'EchBayGalleryOutput', 'post' );
 	add_meta_box( 'eb-product-list-color', 'Danh sách màu sắc', 'EchBayListColorOutput', 'post' );
-	add_meta_box( 'eb-product-dieukien', 'Điều kiện', 'EchBayDieukienOutput', 'post' );
-	add_meta_box( 'eb-product-noibat', 'Điểm nổi bật', 'EchBayNoibatOutput', 'post' );
+	add_meta_box( 'eb-product-dieukien', EBE_get_lang('_eb_product_dieukien'), 'EchBayDieukienOutput', 'post' );
+	add_meta_box( 'eb-product-noibat', EBE_get_lang('_eb_product_noibat'), 'EchBayNoibatOutput', 'post' );
 	
 	// thẻ META cho sản phẩm
 	if ( cf_on_off_echbay_seo == 1 ) {
