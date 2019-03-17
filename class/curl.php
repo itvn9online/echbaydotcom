@@ -8,6 +8,7 @@ class ___xe_url {
 	var $compression;
 	var $cookie_file;
 	var $proxy;
+	var $run_loat = false;
 	
 	
 	function loat($proxy = '', $cookies = FALSE, $cookie = 'cookies.txt', $compression = 'gzip') {
@@ -42,6 +43,11 @@ class ___xe_url {
 	
 	
 	function get($url, $agent = '', $options = array(), $show_header = 0) {
+		if ( $run_loat == false ) {
+			$this->loat();
+		}
+		
+		//
 		$process = curl_init ( $url );
 		curl_setopt ( $process, CURLOPT_HTTPHEADER, $this->headers );
 		curl_setopt ( $process, CURLOPT_HEADER, $show_header );
@@ -67,6 +73,11 @@ class ___xe_url {
 	
 	
 	function post($url, $data, $show_header = 1) {
+		if ( $run_loat == false ) {
+			$this->loat();
+		}
+		
+		//
 		$process = curl_init ( $url );
 		curl_setopt ( $process, CURLOPT_HTTPHEADER, $this->headers );
 		curl_setopt ( $process, CURLOPT_HEADER, $show_header );
@@ -122,7 +133,7 @@ class ___xe_url {
 
 
 $post_get_cc = new ___xe_url ();
-$post_get_cc->loat();
+//$post_get_cc->loat();
 
 
 /*

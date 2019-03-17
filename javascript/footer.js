@@ -1046,14 +1046,14 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 		setTimeout(function () {
 			
 			// chỉnh sửa logo
-			jQuery('.web-logo').before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" class="fa fa-edit click-goto-edit"></i></div>');
+			jQuery('.web-logo').before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" title="Chỉnh sửa logo" class="fa fa-edit click-goto-edit"></i></div>');
 			
 			// chỉnh sửa menu
 			jQuery('.each-to-edit-menu').each(function() {
 				var a = jQuery(this).attr('data-id') || 0;
 	
 				if (a * 1 > 0) {
-					jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" class="fa fa-edit click-goto-edit"></i>');
+					jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" title="Chỉnh sửa menu" class="fa fa-edit click-goto-edit"></i>');
 				}
 			});
 			
@@ -1081,7 +1081,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 					}
 					
 					// hiển thị nút sửa và size khung ảnh
-					jQuery(this).append('<div class="each-to-edit-ads">' + w.toString() + 'x' + h.toString() + ' <i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" class="fa fa-edit click-goto-edit"></i></div>');
+					jQuery(this).append('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa Quảng cáo. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
 				}
 			});
 			

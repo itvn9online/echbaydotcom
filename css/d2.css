@@ -650,6 +650,7 @@ label,
 .small { font-size: 11px; }
 .small2,
 .small12 { font-size: 12px; }
+.medium14 { font-size: 14px; }
 .medium { font-size: 15px; }
 .medium16 { font-size: 16px; }
 .medium18 { font-size: 18px; }
@@ -2640,15 +2641,16 @@ iframe[name="google_conversion_frame"] {
 	width: auto !important;
 }
 */
+.each-to-edit-ads,
 .each-setup-goto-edit,
 .each-to-edit-menu,
 .each-setup-goto-edit { position: relative; }
-.each-setup-goto-edit i,
+.each-to-edit-ads i,
 .each-to-edit-menu i,
 .each-setup-goto-edit i {
 	position: absolute;
 	right: 0;
-	top: 1px;
+	top: 0;
 	cursor: pointer;
 	font-size: 10pt !important;
 	padding: 0 !important;
@@ -2661,4 +2663,8 @@ iframe[name="google_conversion_frame"] {
 	color: #9C27B0 !important;
 	display: inline-block !important;
 	z-index: 5;
+}
+.each-to-edit-ads i {
+	right: 5px;
+	top: -16px;
 }
