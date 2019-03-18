@@ -59,6 +59,9 @@ if ( ! empty($arr_new_theme['threaddetails']) && isset($arr_new_theme['threaddet
 if ( ! empty($arr_new_theme['threadnode']) && isset($arr_new_theme['threadnode'][0]) ) {
 	_eb_set_config( 'cf_threadnode_include_file', $arr_new_theme['threadnode'][0] );
 }
+if ( ! empty($arr_new_theme['catsmain']) && isset($arr_new_theme['catsmain'][0]) ) {
+	_eb_set_config( 'cf_catsmain_include_file', $arr_new_theme['catsmain'][0] );
+}
 if ( ! empty($arr_new_theme['threadsearchnode']) && isset($arr_new_theme['threadsearchnode'][0]) ) {
 	_eb_set_config( 'cf_threadsearchnode_include_file', $arr_new_theme['threadsearchnode'][0] );
 }

@@ -12,7 +12,7 @@ $eb_all_themes_support[$eb_all_themes_name]["name"] = $eb_all_themes_name;
 $eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/xwatchv3.jpg";
 $eb_all_themes_support[$eb_all_themes_name]["author"] = "";
 $eb_all_themes_support[$eb_all_themes_name]["demo"] = "";
-$eb_all_themes_support[$eb_all_themes_name]["price"] = 4500000;
+$eb_all_themes_support[$eb_all_themes_name]["price"] = 22000000;
 //
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "xwatchv3-top1.php";
 $eb_all_themes_support[$eb_all_themes_name]["top"][] = "top_widget.php";
@@ -41,3 +41,5 @@ $eb_all_themes_support[$eb_all_themes_name]["home"][] = "home_widget.php";
 $eb_all_themes_support[$eb_all_themes_name]["threaddetails"][] = "xwatchv3-threaddetails.html";
 //
 $eb_all_themes_support[$eb_all_themes_name]["threadnode"][] = "xwatchv3-threadnode.html";
+
+$eb_all_themes_support[$eb_all_themes_name]["catsmain"][] = "xwatchv3-catsmain.html";
