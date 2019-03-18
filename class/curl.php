@@ -43,7 +43,7 @@ class ___xe_url {
 	
 	
 	function get($url, $agent = '', $options = array(), $show_header = 0) {
-		if ( $run_loat == false ) {
+		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
 		
@@ -73,7 +73,7 @@ class ___xe_url {
 	
 	
 	function post($url, $data, $show_header = 1) {
-		if ( $run_loat == false ) {
+		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
 		
