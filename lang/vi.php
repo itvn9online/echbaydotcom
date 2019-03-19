@@ -509,6 +509,16 @@ $___eb_lang[eb_key_for_site_lang . 'post_custom_text8'] = 'Post custom text 8';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text9'] = 'Post custom text 9';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text10'] = 'Post custom text 10';
 
+$eb_note_first_lang[eb_key_for_site_lang . 'blog_custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết Tin tức</strong>. Cách sử dụng: <strong>{tmp.lang_}</strong>blog_custom_text';
+$___eb_lang[eb_key_for_site_lang . 'blog_views'] = 'Lượt xem:';
+$___eb_lang[eb_key_for_site_lang . 'blog_other'] = 'Bài xem nhiều';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text'] = 'Blog custom text';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text1'] = 'Blog custom text 1';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text2'] = 'Blog custom text 2';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text3'] = 'Blog custom text 3';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text4'] = 'Blog custom text 4';
+$___eb_lang[eb_key_for_site_lang . 'blog_custom_text5'] = 'Blog custom text 5';
+
 
 // for admin
 $___eb_lang[eb_key_for_site_lang . '_eb_product_noibat'] = 'Điểm nổi bật';

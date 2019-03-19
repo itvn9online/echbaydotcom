@@ -4,7 +4,7 @@
 			<div class="col-main-padding col-blog-padding">
 				<div class="thread-details-relative">{tmp.admin_edit}</div>
 				<h1 class="blog-details-title">{tmp.trv_h1_tieude}</h1>
-				<div class="l25 echbay-tintuc-ngaygui">{tmp.bl_ngaygui} <span> - Lượt xem: {tmp.trv_luotxem}</span></div>
+				<div class="l25 echbay-tintuc-ngaygui">{tmp.bl_ngaygui} <span> - {tmp.lang_blog_views} {tmp.trv_luotxem}</span></div>
 				<div>{tmp.trv_goithieu}</div>
 				<div class="thread-content-bmask{tmp.thread_content_mask}">
 					<div data-max-width="{tmp.cf_img_details_maxwidth}" class="img-max-width ul-default-style echbay-tintuc-noidung">{tmp.trv_noidung}</div>
@@ -17,9 +17,11 @@
 				{tmp.html_for_fb_comment}<br>
 				<br>
 				<div data-other-post="{tmp.cf_num_details_blog_list}" class="hide-if-zero-other">
-					<div class="echbay-blog-module">Bài xem nhiều</div>
-					<hr class="hr-line-before">
-					<br>
+					<div class="blog-other-module">
+						<div class="echbay-blog-module">{tmp.lang_blog_other}</div>
+						<hr class="hr-line-before">
+						<br>
+					</div>
 					<ul class="echbay-blog cf echbay-details-blog {tmp.cf_blog_num_line} {tmp.custom_blog_node_flex_css}">
 						{tmp.blog_list_medium}
 					</ul>

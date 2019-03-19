@@ -1015,7 +1015,16 @@ $arr_main_content = array(
 	'tmp.lang_post_custom_text7' => EBE_get_lang('post_custom_text7'),
 	'tmp.lang_post_custom_text8' => EBE_get_lang('post_custom_text8'),
 	'tmp.lang_post_custom_text9' => EBE_get_lang('post_custom_text9'),
-	'tmp.lang_post_custom_text10' => EBE_get_lang('post_custom_text10')
+	'tmp.lang_post_custom_text10' => EBE_get_lang('post_custom_text10'),
+	
+	'tmp.lang_blog_views' => EBE_get_lang('blog_views'),
+	'tmp.lang_blog_other' => EBE_get_lang('blog_other'),
+	'tmp.lang_blog_custom_text' => EBE_get_lang('blog_custom_text'),
+	'tmp.lang_blog_custom_text1' => EBE_get_lang('blog_custom_text1'),
+	'tmp.lang_blog_custom_text2' => EBE_get_lang('blog_custom_text2'),
+	'tmp.lang_blog_custom_text3' => EBE_get_lang('blog_custom_text3'),
+	'tmp.lang_blog_custom_text4' => EBE_get_lang('blog_custom_text4'),
+	'tmp.lang_blog_custom_text5' => EBE_get_lang('blog_custom_text5')
 );
 
 //
