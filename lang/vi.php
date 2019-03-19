@@ -509,7 +509,7 @@ $___eb_lang[eb_key_for_site_lang . 'post_custom_text8'] = 'Post custom text 8';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text9'] = 'Post custom text 9';
 $___eb_lang[eb_key_for_site_lang . 'post_custom_text10'] = 'Post custom text 10';
 
-$eb_note_first_lang[eb_key_for_site_lang . 'blog_custom_text'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết Tin tức</strong>. Cách sử dụng: <strong>{tmp.lang_}</strong>blog_custom_text';
+$eb_note_first_lang[eb_key_for_site_lang . 'blog_views'] = 'Phần bản dịch được dựng sẵn để tùy biến cho trang <strong>Chi tiết Tin tức</strong>. Cách sử dụng: <strong>{tmp.lang_}</strong>blog_custom_text';
 $___eb_lang[eb_key_for_site_lang . 'blog_views'] = 'Lượt xem:';
 $___eb_lang[eb_key_for_site_lang . 'blog_other'] = 'Bài xem nhiều';
 $___eb_lang[eb_key_for_site_lang . 'blog_custom_text'] = 'Blog custom text';
