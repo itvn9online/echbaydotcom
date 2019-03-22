@@ -349,6 +349,7 @@ $strAjaxLink .= '&trang=' . $trang;
 			<?php
 			
 			$arr_button_export = array(
+				'csv' => 'for CSV',
 				'google' => 'for Google',
 				'facebook' => 'for Facebook',
 				'echbaydotcom' => 'from Echbaydotcom',

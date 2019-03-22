@@ -47,10 +47,6 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 
 
 
-header("Content-type: text/xml");
-
-
-
 
 // tạo URL cho phần cache
 $rssCacheFilter = 'rss';
@@ -139,7 +135,10 @@ if ( $by_cat_id > 0 ) {
 }
 
 //
-header('Content-disposition: inline; filename="' . $header_name . '.xml"');
+if ( $export_type != 'csv' ) {
+	header("Content-type: text/xml");
+	header('Content-disposition: inline; filename="' . $header_name . '.xml"');
+}
 
 
 //
@@ -151,6 +150,14 @@ if ( $export_type == 'facebook'
 //	print_r( $sql );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_facebook.php';
+}
+else if ( $export_type == 'csv' ) {
+//	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+	
+	$sql = WGR_export_product_to_xml( $arr_for_slect_data );
+//	print_r( $sql );
+	
+	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_csv.php';
 }
 else if ( $export_type == 'woo' ) {
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data, 'product' );
