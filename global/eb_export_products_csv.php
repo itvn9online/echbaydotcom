@@ -8,6 +8,17 @@ $export_tilte = 'Products Export';
 include EB_THEME_PLUGIN_INDEX . 'echbay/export_top.php';
 
 
+//
+$before_price = '';
+$after_price = '';
+if ( $__cf_row['cf_current_price_before'] == 1 ) {
+	$before_price = $__cf_row['cf_current_sd_price'] . ' ';
+}
+else {
+	$after_price = ' ' . $__cf_row['cf_current_sd_price'];
+}
+
+
 
 ?>
 <table id="headerTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="small">
@@ -17,6 +28,8 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_top.php';
 		<td>Post name</td>
 		<td>URL</td>
 		<td>Images</td>
+		<td>Price</td>
+		<td>Sale Price</td>
 		<td>Post date</td>
 		<td>Post date gmt</td>
 		<td>Comment status</td>
@@ -44,6 +57,12 @@ foreach ( $sql as $v ) {
 	}
 	
 	
+	//
+	$price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_oldprice', 0 ) );
+	$new_price = _eb_float_only( _eb_get_post_object( $v->ID, '_eb_product_price', 0 ) );
+	
+	
+	//
 	echo '
 <tr>
 	<td>' . $v->ID . '</td>
@@ -51,6 +70,8 @@ foreach ( $sql as $v ) {
 	<td>' . $v->post_name . '</td>
 	<td>' . $p_link . '</td>
 	<td>' . $trv_img . '</td>
+	<td>' . $before_price . $price . $after_price . '</td>
+	<td>' . $before_price . $new_price . $after_price . '</td>
 	<td>' . $v->post_date . '</td>
 	<td>' . $v->post_date_gmt . '</td>
 	<td>' . $v->comment_status . '</td>
