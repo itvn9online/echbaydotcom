@@ -12,6 +12,13 @@
 echo '<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table">';
 
 //
+echo '
+<tr>
+	<td class="t">PHP Version</td>
+	<td class="i">' . phpversion() . '</td>
+</tr>';
+
+//
 foreach ( $_SERVER as $k => $v ) {
 	if ($k == 'HTTP_COOKIE') {
 		$v = '<strong>F12</strong>';
@@ -19,10 +26,10 @@ foreach ( $_SERVER as $k => $v ) {
 	
 	//
 	echo '
-	<tr>
-		<td class="t">' . $k . '</td>
-		<td class="i">' . $v . '</td>
-	</tr>';
+<tr>
+	<td class="t">' . $k . '</td>
+	<td class="i">' . $v . '</td>
+</tr>';
 }
 
 
@@ -38,10 +45,10 @@ $other = array(
 
 foreach ( $other as $k => $v ) {
 	echo '
-	<tr>
-		<td class="t">' . str_replace( ' ', '_', strtoupper( $k ) ) . '</td>
-		<td class="i">' . $v . '</td>
-	</tr>';
+<tr>
+	<td class="t">' . str_replace( ' ', '_', strtoupper( $k ) ) . '</td>
+	<td class="i">' . $v . '</td>
+</tr>';
 }
 
 
