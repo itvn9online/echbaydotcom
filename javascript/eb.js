@@ -603,7 +603,7 @@ var _global_js_eb = {
 			jQuery('iframe', this).each(function() {
 				var a = jQuery(this).attr('src') || '',
 					wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
-//				console.log(a);
+				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
 				
 				if ( wit > max_width ) {
 					wit = max_width - 1;
@@ -891,18 +891,26 @@ var _global_js_eb = {
 						});
 //						}).removeAttr('height');
 					});
-				}
-			});
-			
-			jQuery('.img-max-width iframe').each(function() {
-				var a = jQuery(this).attr('src') || '';
-				
-				// chỉ xử lý với video youtube
-				if ( a.split('youtube.com/').length > 1 ) {
-					var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
-					jQuery(this).attr({
-						'width' : wit,
-						'height' : Math.ceil( wit * youtube_video_default_size )
+					
+					//
+					jQuery('iframe', this).each(function() {
+						var a = jQuery(this).attr('src') || '';
+						if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
+						
+						// chỉ xử lý với video youtube
+						if ( a.split('youtube.com/').length > 1 ) {
+							var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
+							if ( wit > max_width ) {
+								wit = max_width;
+							}
+							wit -= 1;
+							
+							//
+							jQuery(this).attr({
+								'width' : wit,
+								'height' : Math.ceil( wit * youtube_video_default_size )
+							});
+						}
 					});
 				}
 			});
