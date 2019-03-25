@@ -43,9 +43,11 @@ class ___xe_url {
 	
 	
 	function get($url, $agent = '', $options = array(), $show_header = 0) {
+		/*
 		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
+		*/
 		
 		//
 		$process = curl_init ( $url );
@@ -73,9 +75,11 @@ class ___xe_url {
 	
 	
 	function post($url, $data, $show_header = 1) {
+		/*
 		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
+		*/
 		
 		//
 		$process = curl_init ( $url );
