@@ -170,6 +170,7 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 
 //
 if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
+//if ( 1 == 2 ) {
 	// nếu thời gian update cache nhỏ quá -> bỏ qua
 //	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
 	if ( $last_update > 0 ) {
@@ -224,7 +225,9 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		// không cho tạo cache liên tục
-		_eb_create_file ( $file_last_update, date_time );
+		if ( mtv_id == 0 || ! file_exists( $file_last_update ) ) {
+			_eb_create_file ( $file_last_update, date_time );
+		}
 		
 		
 		

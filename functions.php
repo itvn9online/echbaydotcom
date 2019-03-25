@@ -2412,6 +2412,8 @@ function _eb_get_config($real_time = false) {
     }
 	*/
 //	exit();
+//	return false;
+	
     //
 	$option_conf_name = _eb_option_prefix . 'cf_';
 
@@ -2420,8 +2422,8 @@ function _eb_get_config($real_time = false) {
 		`" . $wpdb->options . "`
 	WHERE
 		option_name LIKE '{$option_conf_name}%'");
-//	print_r( $row ); exit();
-//	return false;
+//	print_r( $row );
+//	exit();
     //
 	if (count($row) == 0) {
         _eb_get_config_v3();

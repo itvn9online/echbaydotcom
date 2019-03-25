@@ -19,7 +19,6 @@ include EB_THEME_CORE . 'func.php';
 
 
 
-
 //
 //$connect_mysqli = mysqli_connect( $dbhost, $d[1], $d[2], $d[0] ) or die ( 'c1' );
 //mysqli_query($connect_mysqli, "SET NAMES 'UTF8'");
@@ -274,7 +273,6 @@ include EB_THEME_CORE . 'cache.php';
 
 
 
-
 // chế độ kiểm thử
 if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	define( 'eb_code_tester', true );
@@ -285,7 +283,6 @@ if ( $__cf_row['cf_tester_mode'] == 1 ) {
 // chế độ riêng của trang rao vặt
 define( 'cf_set_raovat_version', $__cf_row['cf_set_raovat_version'] );
 define( 'cf_remove_raovat_meta', $__cf_row['cf_remove_raovat_meta'] );
-
 
 
 
@@ -392,7 +389,6 @@ define( 'cf_on_off_echbay_seo', $__cf_row['cf_on_off_echbay_seo'] );
 //
 $___eb_post__not_in = '';
 $___eb_ads__not_in = '';
-
 
 
 

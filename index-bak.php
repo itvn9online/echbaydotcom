@@ -226,7 +226,7 @@ $arr_to_add_menu = array(
 
 
 // hệ thống ngôn ngữ mặc định -> các ngôn ngữ khác người dùng sẽ thay đổi trong cài đặt
-include EB_THEME_CORE . 'lang.php';
+//include EB_THEME_CORE . 'lang.php';
 
 // hệ thống function riêng
 include EB_THEME_PLUGIN_INDEX . 'functions.php';

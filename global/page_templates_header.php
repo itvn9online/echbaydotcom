@@ -2,7 +2,7 @@
 
 
 
-echo '<!-- custom page template -->' . "\n";
+//echo '<!-- custom page template -->' . "\n";
 
 
 

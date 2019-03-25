@@ -4,7 +4,7 @@
 
 class ___xe_url {
 	var $headers;
-	var $user_agent;
+	var $user_agent = NULL;
 	var $compression;
 	var $cookie_file;
 	var $proxy;
@@ -17,7 +17,14 @@ class ___xe_url {
 		$this->headers [] = 'Connection: Keep-Alive';
 		$this->headers [] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
 		
-		$this->user_agent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; Media Center PC 4.0)';
+		if ($this->user_agent == NULL) {
+			if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+				$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
+			}
+			else {
+				$this->user_agent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; Media Center PC 4.0)';
+			}
+		}
 		
 		$this->compression = $compression;
 		
@@ -43,11 +50,15 @@ class ___xe_url {
 	
 	
 	function get($url, $agent = '', $options = array(), $show_header = 0) {
-		/*
+		// nạp agent nếu có yêu cầu
+		if ( $agent != '' ) {
+			$this->user_agent = $agent;
+		}
+		
+		// xây dựng header
 		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
-		*/
 		
 		//
 		$process = curl_init ( $url );
@@ -75,11 +86,9 @@ class ___xe_url {
 	
 	
 	function post($url, $data, $show_header = 1) {
-		/*
 		if ( $this->run_loat == false ) {
 			$this->loat();
 		}
-		*/
 		
 		//
 		$process = curl_init ( $url );
