@@ -2389,6 +2389,7 @@ function _eb_get_config($real_time = false) {
     /*
      * đồng bộ phiên bản code cũ với code mới -> 1 thời gian sẽ bỏ chức năng này đi
      */
+	 /*
     if (get_option(_eb_option_prefix . 'cf_web_version') == false) {
 //		echo 1;
 
@@ -2409,6 +2410,7 @@ function _eb_get_config($real_time = false) {
 		WHERE
 			post_id = " . eb_config_id_postmeta, 0);
     }
+	*/
 //	exit();
     //
 	$option_conf_name = _eb_option_prefix . 'cf_';
@@ -2418,8 +2420,8 @@ function _eb_get_config($real_time = false) {
 		`" . $wpdb->options . "`
 	WHERE
 		option_name LIKE '{$option_conf_name}%'");
-//	print_r( $row );
-//	exit();
+//	print_r( $row ); exit();
+//	return false;
     //
 	if (count($row) == 0) {
         _eb_get_config_v3();

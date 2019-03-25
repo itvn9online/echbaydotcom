@@ -2,5 +2,5 @@
 
 
 
-
+echo date('r'); exit();
 

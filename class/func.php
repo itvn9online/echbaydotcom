@@ -606,14 +606,10 @@ class EchBayCommerce {
 	
 	
 	function postUrlContent($url, $data = '', $head = 0) {
-		global $post_get_cc;
-		
-		return $post_get_cc->post ( $url, $data, $head );
+		return _eb_postUrlContent ( $url, $data, $head );
 	}
 	function getUrlContent($url, $agent = '', $options = array(), $head = 0) {
-		global $post_get_cc;
-		
-		return $post_get_cc->get ( $url, $agent, $options, $head );
+		return _eb_getUrlContent ( $url, $agent, $options, $head );
 	}
 	
 	

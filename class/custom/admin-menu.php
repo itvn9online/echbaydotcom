@@ -285,6 +285,7 @@ function echbay_admin_styles() {
 			echo '<script type="text/javascript" src="' . WGR_path_to_lnk( $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
 //		}
 	}
+//	echo 'aaaaaaaa'; exit();
 	
 	//
 //	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( $web_ad_link . eb_default_vaficon ) ) . '
