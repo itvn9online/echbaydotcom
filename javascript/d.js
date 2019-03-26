@@ -4100,12 +4100,12 @@ function WGR_set_quick_view_height () {
 		jQuery('body').addClass('body-no-scroll');
 		jQuery('#oi_ebe_quick_view').show();
 		
-		// using DIV -> remove
-		/*
-		if ( jQuery('div#ui_ebe_quick_view').length > 0 ) {
-			jQuery('#ui_ebe_quick_view').html('Đang tải...');
+		//
+//		if ( jQuery('div#ui_ebe_quick_view').length > 0 ) {
+//			$('#oi_ebe_quick_view .quick-view-padding').html('<div id="ui_ebe_quick_view">Đang tải...</div>');
+		if ( jQuery('iframe#ui_ebe_quick_view').length > 0 ) {
+			$('#oi_ebe_quick_view .quick-view-padding').html('<iframe id="ui_ebe_quick_view" name="ui_ebe_quick_view" src="about:blank" width="100%" height="600" frameborder="0">AJAX form</iframe>');
 		}
-		*/
 		
 		//
 		window.history.pushState("", '', h);
