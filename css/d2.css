@@ -587,6 +587,7 @@ label,
 */
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.text-justify { text-align: justify; }
 .tborder { border-top: 1px #ccc solid; }
 .bborder { border-bottom: 1px #ccc solid; }
 .lborder { border-left: 1px #ccc solid; }
@@ -2659,7 +2660,7 @@ iframe[name="google_conversion_frame"] {
 	line-height: 15px !important;
 	text-align: center !important;
 	border-radius: 3px !important;
-	background: inherit !important;
+	background: rgba(255,255,255,.7) !important;
 	color: #9C27B0 !important;
 	display: inline-block !important;
 	z-index: 5;
@@ -2668,3 +2669,4 @@ iframe[name="google_conversion_frame"] {
 	right: 5px;
 	top: -16px;
 }
+.quick-edit-content_only .each-to-edit-ads i { top: 0; }

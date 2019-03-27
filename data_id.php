@@ -68,6 +68,7 @@ $add_data_id = array(
     'cf_product_details_mobile_size' => '\'' . $__cf_row['cf_product_details_mobile_size'] . '\'',
     'cf_product_mobile2_size' => '\'' . $__cf_row['cf_product_mobile2_size'] . '\'',
     'cf_post_index_content' => '\'' . $__cf_row['cf_post_index_content'] . '\'',
+    'cf_blog_index_content' => '\'' . $__cf_row['cf_blog_index_content'] . '\'',
 //		'tid' => $tid,
 //		'url_for_cat_js' => '\'' . $url_for_cat_js . '\'' ,
     'act' => '\'' . $act . '\''

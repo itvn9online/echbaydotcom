@@ -1062,14 +1062,15 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 				'data-type' : 'ads'
 			});
 			
-			// hỗ trợ chỉnh sửa banner quảng cáo
-			jQuery('.echbay-blog li, .global-ul-load-ads li').each(function() {
+			// hỗ trợ chỉnh sửa bài viết từ trang khách
+			jQuery('.echbay-blog li, .global-ul-load-ads li, .quick-edit-content_only').each(function() {
 				var a = jQuery(this).attr('data-id') || 0,
 					t = jQuery(this).attr('data-type') || '',
 					w = 0,
 					h = 0;
 	
-				if (a * 1 > 0 && t == 'ads') {
+//				if (a * 1 > 0 && t == 'ads') {
+				if (a * 1 > 0) {
 					//
 					w = jQuery('.ti-le-global', this).width() || 0;
 					if ( w * 1 > 0 ) {
@@ -1081,7 +1082,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 					}
 					
 					// hiển thị nút sửa và size khung ảnh
-					jQuery(this).append('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa Quảng cáo. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
+					jQuery(this).append('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
 				}
 			});
 			

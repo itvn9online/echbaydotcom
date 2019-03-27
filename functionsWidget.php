@@ -859,14 +859,15 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		// bắt buộc là sắp xếp theo menu_order DESC
 		$arr_select_data['orderby'] = 'menu_order';
 		$arr_select_data['order'] = 'DESC';
-//		print_r( $arr_select_data );
+//		print_r( $arr_select_data ); exit();
 		
 		// chỉ lấy 1 bài duy nhất
 		$sql = _eb_load_post_obj( 1, $arr_select_data );
 //		print_r( $sql );
 		
 		// lấy và in ra nội dung tìm được
-		echo '<div class="img-max-width each-to-fix-ptags echbay-blog-content_only">';
+		echo '<div class="img-max-width each-to-fix-ptags-xoa echbay-blog-content_only">';
+			echo '<div data-id="' . $sql->post->ID . '" data-type="' . $sql->post->post_type . '" class="quick-edit-content_only"></div>';
 		
 		// in thẳng
 		if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
@@ -875,14 +876,18 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 				echo $sql->post->post_excerpt;
 			}
 			else {
-				echo $sql->post->post_content;
+				// v2
+				$content = apply_filters('the_content', $sql->post->post_content);
+				echo str_replace(']]>', ']]&gt;', $content);
+				
+				// v1
+//				echo $sql->post->post_content;
 			}
 		}
 		
-		// sử dụng hàm content của wp -> nặng hơn -> ko thích dùng
+		// sử dụng hàm content của wp -> nặng hơn -> đầy đủ chức năng hơn
 		/*
 		while ( $sql->have_posts() ) {
-			
 			$sql->the_post();
 			the_content();
 		}
