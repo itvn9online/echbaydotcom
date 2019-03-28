@@ -1425,6 +1425,12 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	cursor: pointer;
 }
 #ui_hd_quanhuyen li:hover { color: #f00; }
+.menu-item-settings .wgr-button-menu { margin-top: 3px; }
+.menu-item-settings .wgr-button-menu button {
+	margin-right: 2px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

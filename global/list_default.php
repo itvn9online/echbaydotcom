@@ -291,6 +291,12 @@ if ( $main_content == false ) {
 //			$html_v2_file = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_cats_column_style'] );
 			$custom_cats_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row['cf_cats_column_style'] );
 			
+			//
+			if ( $__cf_row['cf_column_reverse_cats'] == 1 ) {
+				// lật ngược nội dung trong danh mục
+				$__cf_row['cf_default_css'] .= '.global-cats-reverse-content{display: -webkit-flex;display: flex;flex-direction: column-reverse}';
+			}
+			
 			
 			
 			

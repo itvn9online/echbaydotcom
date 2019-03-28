@@ -175,6 +175,7 @@ $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blogs
 $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blog_column_style'], $cf_blog_width_sidebar, 'blog_details_noidung_menu', 'blog_details_menu_noidung' );
 
 // thêm css lật ngược nội dung nếu có yêu cầu
+/*
 if ( isset( $_POST['cf_column_reverse_cats'] ) && $_POST['cf_column_reverse_cats'] == 1 ) {
 	$_POST['cf_default_themes_css'] .= '.global-cats-reverse-content{
 	display: -webkit-flex;
@@ -182,6 +183,7 @@ if ( isset( $_POST['cf_column_reverse_cats'] ) && $_POST['cf_column_reverse_cats
 	flex-direction: column-reverse;
 }';
 }
+*/
 
 
 // rút gọn css lại
