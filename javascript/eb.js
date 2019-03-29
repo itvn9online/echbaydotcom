@@ -2604,7 +2604,8 @@ var _global_js_eb = {
 		console.log( action_obj );
 		
 		//
-		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
+//		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
+		if ( g_func.number_only( new_cart_id ) * 1 <= 0 ) {
 			a_lert( lang_cart_post_null );
 			return false;
 		}
