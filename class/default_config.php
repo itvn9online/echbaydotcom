@@ -402,6 +402,7 @@ $__cf_row_default = array(
 	'cf_post_width_sidebar' => 0,
 	'cf_blogs_width_sidebar' => 0,
 	'cf_blog_width_sidebar' => 0,
+	'cf_page_width_sidebar' => 0,
 	
 	
 	// cấu trúc bảng tin ở trang chủ

@@ -158,6 +158,30 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80"><i class="fa fa-map-marker"></i> %cf_diachi%</div>
+				<div class="lf f20 text-center">
+					<button data-link="#" data-text="<i class='fa fa-map-marker'></i> %cf_diachi%" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-envelope"></i> %cf_email% <em>(mailto)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="mailto:%cf_email%" data-text="<i class='fa fa-envelope'></i> %cf_email%" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-phone"></i> %cf_dienthoai% <em>(tel)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="tel:%cf_dienthoai%" data-text="<i class='fa fa-phone'></i> %cf_dienthoai%" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
+				<div class="lf f80"><i class="fa fa-phone"></i> %cf_hotline% <em>(tel)</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="tel:%cf_hotline%" data-text="<i class='fa fa-phone'></i> %cf_hotline%" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80"><i class="fa fa-list"></i> Tất cả danh mục <em class="small">(lấy toàn bộ chuyên mục đang có trên hệ thống)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="/auto.get_all_category/" data-text="Toàn bộ danh mục" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>

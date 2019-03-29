@@ -1747,16 +1747,16 @@ function _eb_echbay_menu($slug, $menu = array(), $in_cache = 1, $tag_menu_name =
         // các mẫu danh mục khác nhau
         if (strpos($a, '/auto.get_all_category/bars/') !== false) {
             $a = '
-				<div class="all-category-hover ' . $menu_slug_class . '-hover">
-					<div class="all-category-bars cur ' . $menu_slug_class . '-bars"><i class="fa fa-bars"></i> Danh mục</div>
-					<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
-				</div>';
+<div class="all-category-hover ' . $menu_slug_class . '-hover">
+	<div class="all-category-bars cur ' . $menu_slug_class . '-bars"><i class="fa fa-bars"></i> Danh mục</div>
+	<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
+</div>';
         } else if (strpos($a, '/auto.get_all_category/caret/') !== false) {
             $a = '
-				<div class="all-category-hover ' . $menu_slug_class . '-hover">
-					<div class="all-category-bars cur ' . $menu_slug_class . '-bars"><i class="fa fa-bars"></i> Danh mục <i class="fa fa-caret-down"></i></div>
-					<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
-				</div>';
+<div class="all-category-hover ' . $menu_slug_class . '-hover">
+	<div class="all-category-bars cur ' . $menu_slug_class . '-bars"><i class="fa fa-bars"></i> Danh mục <i class="fa fa-caret-down"></i></div>
+	<div class="all-category-cats ' . $menu_slug_class . '-cats">' . $all_cats . '</div>
+</div>';
         }
         // thêm nút trang chủ
         else if (strpos($a, '/auto.get_all_category/home/') !== false) {

@@ -148,6 +148,7 @@ $cf_cats_width_sidebar = (int) $_POST['cf_cats_width_sidebar'];
 $cf_post_width_sidebar = (int) $_POST['cf_post_width_sidebar'];
 $cf_blogs_width_sidebar = (int) $_POST['cf_blogs_width_sidebar'];
 $cf_blog_width_sidebar = (int) $_POST['cf_blog_width_sidebar'];
+$cf_page_width_sidebar = (int) $_POST['cf_page_width_sidebar'];
 
 // nếu có chiều rộng chung -> set lại các chiều có kích thước là 0
 if ( $cf_global_width_sidebar > 0 ) {
@@ -156,6 +157,7 @@ if ( $cf_global_width_sidebar > 0 ) {
 	$cf_post_width_sidebar = ( $cf_post_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_post_width_sidebar;
 	$cf_blogs_width_sidebar = ( $cf_blogs_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blogs_width_sidebar;
 	$cf_blog_width_sidebar = ( $cf_blog_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_blog_width_sidebar;
+	$cf_page_width_sidebar = ( $cf_page_width_sidebar == 0 ) ? $cf_global_width_sidebar : $cf_page_width_sidebar;
 }
 //$_POST['cf_default_themes_css'] = $_POST['cf_css_theme_body'];
 
@@ -173,6 +175,9 @@ $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blogs
 
 //
 $_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_blog_column_style'], $cf_blog_width_sidebar, 'blog_details_noidung_menu', 'blog_details_menu_noidung' );
+
+//
+$_POST['cf_default_themes_css'] .= WGR_config_tao_css_chia_cot( $_POST['cf_page_column_style'], $cf_page_width_sidebar, 'page_noidung_menu', 'page_menu_noidung' );
 
 // thêm css lật ngược nội dung nếu có yêu cầu
 /*
