@@ -582,7 +582,7 @@ function eb_run_post_column_content($column, $post_id) {
 		
 		//
 		$a = _eb_get_post_img ( $post_id );
-		echo '<div data-img="' . $a . '" class="admin-list-post-avt each-to-bgimg">&nbsp;</div>';
+		echo '<div data-img="' . $a . '" data-id="' . $post_id . '" title="Nhấp đúp để sửa nhanh ảnh đại diện" class="admin-list-post-avt each-to-bgimg cur">&nbsp;</div>';
 	}
 	// trạng thái
 	else if ($column == 'ads_status') {

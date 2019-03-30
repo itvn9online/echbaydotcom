@@ -3866,10 +3866,13 @@ setTimeout(function () {
 
 // chuyển các URL video thành dạng list video
 (function () {
-	jQuery('.widget_echbay_gg_map .url-to-google-map').each(function() {
+//	jQuery('.widget_echbay_gg_map .url-to-google-map').each(function() {
+	jQuery('.url-to-google-map').each(function() {
 		var a = jQuery(this).html() || '',
 			str = '',
-			wit = 4/ 5;
+			wit = 4/ 5,
+			w = $(this).attr('data-width') || '',
+			h = $(this).attr('data-height') || '';
 		
 		if ( a != '' ) {
 			a = a.split("\n")[0];
@@ -3878,7 +3881,14 @@ setTimeout(function () {
 			if ( a != '' ) {
 				jQuery(this).show();
 				
-				str += '<div class="widget_echbay_gg_map-node"><iframe src="' + a + '" width="100%" height="' + ( jQuery(this).width() * wit ) + 'px" frameborder="0" style="border:0" allowfullscreen=""></iframe></div>';
+				if ( w == '' ) {
+					w = '100%';
+				}
+				if ( h == '' ) {
+					h = jQuery(this).width() * wit;
+				}
+				
+				str += '<div class="widget_echbay_gg_map-node"><iframe src="' + a + '" width="' + w + '" height="' + h + 'px" frameborder="0" style="border:0" allowfullscreen=""></iframe></div>';
 				
 				jQuery(this).html( str );
 			}

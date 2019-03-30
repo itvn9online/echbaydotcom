@@ -37,6 +37,7 @@ include EB_THEME_CORE . 'widget/youtube.php';
 include EB_THEME_CORE . 'widget/adsense.php';
 include EB_THEME_CORE . 'widget/facebook_likebox.php';
 include EB_THEME_CORE . 'widget/advanced_run_slider.php';
+include EB_THEME_CORE . 'widget/google_map.php';
 
 
 
@@ -981,70 +982,6 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 	return $animate_id;
 	
 }
-
-
-
-
-/*
-* Widget bản đồ google
-*/
-class ___echbay_widget_google_map extends WP_Widget {
-	function __construct() {
-		parent::__construct ( 'echbay_gg_map', 'EchBay GG Map', array (
-				'description' => 'Tạo danh sách Google map cho giao diện của EchBay.com' 
-		) );
-	}
-	
-	function form($instance) {
-		$default = array (
-				'title' => 'EchBay GG Map',
-				'url_video' => '',
-		);
-		$instance = wp_parse_args ( ( array ) $instance, $default );
-		foreach ( $instance as $k => $v ) {
-			$$k = esc_attr ( $v );
-		}
-		/*
-		$title = esc_attr ( $instance ['title'] );
-		$url_video = esc_attr ( $instance ['url_video'] );
-		*/
-		
-		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
-		
-		echo '<p>URL map: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" value="' . $url_video . '" /></p>';
-	}
-	
-	function update($new_instance, $old_instance) {
-		$instance = _eb_widget_parse_args ( $new_instance, $old_instance );
-		return $instance;
-	}
-	
-	function widget($args, $instance) {
-//		global $func;
-		
-		extract ( $args );
-		
-		$title = apply_filters ( 'widget_title', $instance ['title'] );
-		$url_video = isset( $instance ['url_video'] ) ? $instance ['url_video'] : '';
-		
-		//
-		_eb_echo_widget_name( $this->name, $before_widget );
-		
-		//
-		_eb_echo_widget_title(
-			$title,
-			'echbay-widget-ggmap-title',
-			$before_title
-		);
-		
-		//
-		echo '<div class="url-to-google-map d-none">' . $url_video . '</div>';
-		
-		//
-		echo $after_widget;
-	}
-}
-
 
 
 

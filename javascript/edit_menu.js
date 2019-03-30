@@ -15,14 +15,21 @@ function WGR_event_add_img_edit_menu ( jd, tai, add_lnk ) {
 		lnk = prompt('Liên kết/ Mã font:', '');
 		
 		//
-		if ( lnk == '' ) {
+		if ( lnk == '' || lnk == null ) {
 			return false;
 		}
 	}
 	
 	// add
 	if ( tai == 'icon' ) {
-		str = '<i class="fa fa-' + lnk + '"></i>';
+		if ( lnk.split('fa-').length == 1 ) {
+			lnk = 'fa-' + lnk;
+		}
+		if ( lnk.split('fa fa-').length == 1 ) {
+			lnk = 'fa fa-' + lnk;
+		}
+		
+		str = '<i class="' + lnk.replace( 'fa-fa-', 'fa-' ) + '"></i>';
 	}
 	else if ( tai == 'img' ) {
 		str = '<img src="' + lnk + '" />';

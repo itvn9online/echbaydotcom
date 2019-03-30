@@ -479,7 +479,11 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
     }
 
     // mở gallery tự viết
-    jQuery('#_eb_category_avt, #_eb_category_favicon, #_eb_product_avatar').addClass('click-open-new-gallery');
+    jQuery('#_eb_category_avt, #_eb_category_favicon, #_eb_product_avatar, #cf_favicon, #cf_logo, #cf_og_image').each(function() {
+        var show_only = jQuery(this).attr('data-show') || '';
+		
+		$(this).after('<button type="button" data-show="' + show_only + '" class="button click-open-new-gallery">Add image</button>');
+	});
 
     //
     jQuery('.click-open-new-gallery').click(function () {
@@ -805,6 +809,33 @@ jQuery('.admin-add-youtube-video').each(function () {
         jQuery(this).html('<iframe width="' + w + '" height="' + h + '" src="https://www.youtube.com/embed/' + a + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
     }
 });
+
+
+
+// chỉnh sửa nhanh ảnh đại diện
+$('.admin-list-post-avt').dblclick(function () {
+	var a = $(this).attr('data-img') || '',
+		jd = $(this).attr('data-id') || '',
+		lnk = prompt('URL ảnh:', a);
+	
+	//
+	if ( jd == '' || jd * 1 <= 0 ) {
+		return false;
+	}
+	
+	if ( lnk == '' || lnk == null || lnk == a ) {
+		return false;
+	}
+	
+	//
+	ajaxl( 'quick-update-avt&new_avt=' + encodeURIComponent( lnk ), 'div-for-ajax-load', 1, function () {
+		$('.admin-list-post-avt[data-id="' + jd + '"]').css({
+			'background-image' : 'url(\'' + lnk + '\')'
+		});
+	});
+});
+
+
 
 // TEST
 /*
