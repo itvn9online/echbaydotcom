@@ -7,8 +7,8 @@
 */
 class ___echbay_widget_google_map extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_gg_map', 'EchBay GG Map', array (
-				'description' => 'Tạo danh sách Google map cho giao diện của EchBay.com' 
+		parent::__construct ( 'echbay_gg_map', 'EchBay iframe (google map)', array (
+				'description' => 'Nhúng iframe vào website (thường dùng cho việc nhúng google map)' 
 		) );
 	}
 	
