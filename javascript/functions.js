@@ -371,7 +371,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	var data = jQuery('form#backup-order-to-google-sheet').serialize();
 	jQuery.ajax({
 		type: 'GET',
-		url: 'https://script.google.com/macros/s/AKfycbwCl6tt7SsVUjq9SZFcDAvaVLXI63I2uzN4rslrrLe1KvtkRIw/exec',
+		url: cf_google_sheet_backup,
 		dataType: 'json',
 		crossDomain: true,
 		data: data,
