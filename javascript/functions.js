@@ -305,7 +305,9 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	}
 	
 	//
-	if ( g_func.getc('wgr_backup_order_to_google') != null ) {
+	var check_order_backup = g_func.getc('wgr_backup_order_to_google'),
+		same_same_order_id = 'id' + current_hd_id;
+	if ( check_order_backup != null && check_order_backup == same_same_order_id ) {
 		console.log('order has been backup');
 		return false;
 	}
@@ -388,7 +390,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				console.log('Backup order to google sheet');
 				
 				// lưu cookie để không gửi liên tục 1 đơn hàng
-				g_func.setc('wgr_backup_order_to_google', 'id' + current_hd_id, 24 * 3600);
+				g_func.setc('wgr_backup_order_to_google', same_same_order_id, 24 * 3600);
 			}
 		}
 	});
