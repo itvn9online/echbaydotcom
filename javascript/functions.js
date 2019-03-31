@@ -305,6 +305,12 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	}
 	
 	//
+	if ( g_func.getc('wgr_backup_order_to_google') != null ) {
+		console.log('order has been backup');
+		return false;
+	}
+	
+	//
 	current_hd_object = ___eb_add_conver_string_cart_to_arr_cart( arr );
 	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
 	
@@ -380,6 +386,9 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				console.log('ERROR backup order to google sheet');
 			} else {
 				console.log('Backup order to google sheet');
+				
+				// lưu cookie để không gửi liên tục 1 đơn hàng
+				g_func.setc('wgr_backup_order_to_google', 'id' + current_hd_id, 24 * 3600);
 			}
 		}
 	});
