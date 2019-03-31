@@ -333,6 +333,14 @@ EBE_set_details_order( 'product_list', $product_list, $hd_id );
 
 
 
+//
+$current_domain = str_replace( '/', '-', web_link );
+$current_domain = str_replace( ':', '-', $current_domain );
+
+$backup_order_to_echbay = 'https://www.echbay.com/actions/backup_order&domain=' . $_SERVER['HTTP_HOST'] . '&current_domain=' . $current_domain . '&data=';
+
+
+
 
 $arr = array(
 	'tv_email' => $t_email,

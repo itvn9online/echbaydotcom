@@ -910,18 +910,34 @@ a.eb-btn {
 .padding-top-menu,
 .top-space-menu,
 .top-menu-space { padding-top: 20px; }
+.top-padding-menu.top-padding-menu,
+.padding-top-menu.padding-top-menu,
+.top-space-menu.top-space-menu,
+.top-menu-space.top-menu-space { padding-top: 40px; }
 .right-padding-menu,
 .padding-right-menu,
 .right-space-menu,
 .right-menu-space { padding-right: 25px; }
+.right-padding-menu.right-padding-menu,
+.padding-right-menu.padding-right-menu,
+.right-space-menu.right-space-menu,
+.right-menu-space.right-menu-space { padding-right: 40px; }
 .bottom-padding-menu,
 .padding-bottom-menu,
 .bottom-space-menu,
 .bottom-menu-space { padding-bottom: 20px; }
+.bottom-padding-menu.bottom-padding-menu,
+.padding-bottom-menu.padding-bottom-menu,
+.bottom-space-menu.bottom-space-menu,
+.bottom-menu-space.bottom-menu-space { padding-bottom: 40px; }
 .left-padding-menu,
 .padding-left-menu,
 .left-space-menu,
 .left-menu-space { padding-left: 25px; }
+.left-padding-menu.left-padding-menu,
+.padding-left-menu.padding-left-menu,
+.left-space-menu.left-space-menu,
+.left-menu-space.left-menu-space { padding-left: 40px; }
 .table-list {
 	background: #fff;
 	border-top: 1px #ccc solid;
