@@ -91,6 +91,7 @@ if ( $hd_id > 0 ) {
 		setTimeout(function () {
 			WGR_show_hoan_tat_product_for_gg ( current_hd_object, current_tv_object );
 			___eb_add_convertsion_gg_fb ( ' . $hd_id . ', current_hd_object );
+			WGR_backup_order_to_google_sheet( current_hd_object, current_tv_object );
 		}, 800);
 		</script>';
 	}
@@ -170,6 +171,9 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 $main_content .= '<script type="text/javascript">
 var current_hd_id = "' . $hd_id . '",
 	current_hd_code = "' . $hd_mahoadon . '",
+	current_hd_date = "' . date( _eb_get_option('date_format'), $sql->order_time ) . '",
+	current_hd_status = ' . $sql->order_status . ',
+	arr_hd_trangthai = ' .json_encode( $arr_hd_trangthai ) . ',
 	current_tv_object = "' . $current_tv_object . '",
 	current_hd_object = "' . $current_hd_object . '",
 	arr_lang_hoan_tat = {
@@ -194,7 +198,6 @@ var current_hd_id = "' . $hd_id . '",
 		"nl" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_nl') ) . '",
 		"pp" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_pp') ) . '"
 	};
-WGR_backup_order_to_google_sheet( current_hd_object, current_tv_object );
 </script>';
 
 

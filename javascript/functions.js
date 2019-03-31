@@ -329,29 +329,31 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 			'</form>' +
 		'</div>');
 	}
+	console.log( arr_hd_trangthai );
 	
 	//
-	jQuery('form#backup-order-to-google-sheet input[name="id"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="ma-hoa-don"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="ngay-gui"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="san-pham"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="sl"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="msac"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="kthuoc"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="cnang"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="cong"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="giam"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="cuoc"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="tong"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="khach-hang"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="dien-thoai"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="dia-chi"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="quan-huyen"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="tinh-thanh-pho"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="nguon"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="phuong-tien"]').val();
-	jQuery('form#backup-order-to-google-sheet input[name="chien-dich"]').val();
+	var i = 0;
+	jQuery('form#backup-order-to-google-sheet input[name="id"]').val( 'ID' + current_hd_id );
+	jQuery('form#backup-order-to-google-sheet input[name="ma-hoa-don"]').val( 'SKU' + current_hd_code );
+	jQuery('form#backup-order-to-google-sheet input[name="ngay-gui"]').val( current_hd_date );
+	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val( typeof arr_hd_trangthai[ current_hd_status ] != 'undefined' ? arr_hd_trangthai[ current_hd_status ] : 'Unknown' );
+	jQuery('form#backup-order-to-google-sheet input[name="san-pham"]').val( current_hd_object[i].name );
+	jQuery('form#backup-order-to-google-sheet input[name="sl"]').val( current_hd_object[i].quan );
+	jQuery('form#backup-order-to-google-sheet input[name="msac"]').val( current_hd_object[i].color );
+	jQuery('form#backup-order-to-google-sheet input[name="kthuoc"]').val( current_hd_object[i].size );
+//	jQuery('form#backup-order-to-google-sheet input[name="cnang"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="cong"]').val( current_hd_object[i].price );
+//	jQuery('form#backup-order-to-google-sheet input[name="giam"]').val();
+//	jQuery('form#backup-order-to-google-sheet input[name="cuoc"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="tong"]').val( current_hd_object[i].quan * current_hd_object[i].price );
+	jQuery('form#backup-order-to-google-sheet input[name="khach-hang"]').val( 'N:' + current_tv_object['hd_ten'] );
+	jQuery('form#backup-order-to-google-sheet input[name="dien-thoai"]').val( 'P:' + current_tv_object['hd_dienthoai'] );
+	jQuery('form#backup-order-to-google-sheet input[name="dia-chi"]').val( 'A:' + current_tv_object['hd_diachi'] );
+//	jQuery('form#backup-order-to-google-sheet input[name="quan-huyen"]').val();
+//	jQuery('form#backup-order-to-google-sheet input[name="tinh-thanh-pho"]').val();
+//	jQuery('form#backup-order-to-google-sheet input[name="nguon"]').val();
+//	jQuery('form#backup-order-to-google-sheet input[name="phuong-tien"]').val();
+//	jQuery('form#backup-order-to-google-sheet input[name="chien-dich"]').val();
 	
 	//
 	var data = jQuery('form#backup-order-to-google-sheet').serialize();
