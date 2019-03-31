@@ -200,6 +200,7 @@ jQuery('.click-change-css-table').click(function () {
 // tạo bảng dùng để lấy tên cột cho vào google sheet
 jQuery('.click-create-col-for-excel').click(function () {
 	if ( jQuery('#col_for_google_sheet td').length == 0 ) {
+		// đoạn tạo TD này thì copy cho vào file google sheet
 		jQuery('#headerTable tr:first td').each(function () {
 			jQuery('#col_for_google_sheet tr').append('<td>' + g_func.non_mark_seo( jQuery(this).html() ) + '</td>');
 		});
