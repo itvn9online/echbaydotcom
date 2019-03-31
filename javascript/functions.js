@@ -303,7 +303,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	// tạo form
 	if ( $('#backup-order-to-google-sheet').length == 0 ) {
 		$('body').append('' +
-		'<div>' +
+		'<div class="d-none">' +
 			'<form id="backup-order-to-google-sheet" method="GET">' +
 				'<input type="text" name="id" value="" />' +
 				'<input type="text" name="ma-hoa-don" value="" />' +
@@ -365,9 +365,9 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 		data: data,
 		success: function(data) {
 			if (data == 'false') {
-				console.log('Thêm không thành công, bạn cũng có thể sử dụng để hiển thị Popup hoặc điều hướng');
+				console.log('ERROR backup order to google sheet');
 			} else {
-				console.log('Đã thêm dữ liệu vào Form');
+				console.log('Backup order to google sheet');
 			}
 		}
 	});
