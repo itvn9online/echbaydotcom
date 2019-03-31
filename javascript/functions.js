@@ -293,6 +293,14 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 		setTimeout(function () {
 			WGR_backup_order_to_google_sheet( arr, arr2 );
 		}, 1000);
+		
+		//
+		return false;
+	}
+	
+	//
+	if ( typeof cf_google_sheet_backup == 'undefined' || cf_google_sheet_backup == '' ) {
+		console.log('cf_google_sheet_backup is NULL');
 		return false;
 	}
 	
