@@ -176,6 +176,7 @@ var current_hd_id = "' . $hd_id . '",
 	arr_hd_trangthai = ' .json_encode( $arr_hd_trangthai ) . ',
 	current_tv_object = "' . $current_tv_object . '",
 	current_hd_object = "' . $current_hd_object . '",
+	cf_google_sheet_backup = "' . $__cf_row['cf_google_sheet_backup'] . '",
 	arr_lang_hoan_tat = {
 		"cart_done_madon" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_done_madon') ) . '",
 		"cart_done_khachhang" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_done_khachhang') ) . '",

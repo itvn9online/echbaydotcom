@@ -179,6 +179,7 @@ $__cf_row_default = array(
 	'cf_old_domain' => '',
 	'cf_replace_content' => '',
 	'cf_replace_content_full' => '',
+	'cf_google_sheet_backup' => '',
 	
 	// cài đặt cho bản AMP
 	'cf_blog_amp' => 1,
