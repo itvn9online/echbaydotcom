@@ -114,6 +114,9 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 
 // không nạp cache trong một số trường hợp
 if ( strstr( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) == false ) {
+	include EB_THEME_CORE . 'cache2.php';
+}
+else {
 	if (file_exists ( $__eb_cache_conf )) {
 		include_once $__eb_cache_conf;
 	}
@@ -121,9 +124,6 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) == false ) {
 		die('config not select in ajax');
 		$__cf_row = $__cf_row_default;
 	}
-}
-else {
-	include EB_THEME_CORE . 'cache2.php';
 }
 
 
