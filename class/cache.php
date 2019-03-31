@@ -112,18 +112,20 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 
 
 
-// không nạp cache trong một số trường hợp
+// chỉ nạp mới cache trong một số trường hợp
 if ( strstr( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) == false ) {
-	include EB_THEME_CORE . 'cache2.php';
+	include_once EB_THEME_CORE . 'cache2.php';
+}
+// còn lại sẽ sử dụng cache cũ
+else if (file_exists ( $__eb_cache_conf )) {
+	include_once $__eb_cache_conf;
 }
 else {
-	if (file_exists ( $__eb_cache_conf )) {
-		include_once $__eb_cache_conf;
-	}
-	else {
-		die('config not select in ajax');
-		$__cf_row = $__cf_row_default;
-	}
+	// tạm thời cứ dừng ở đây đã
+	die('config not select in ajax');
+	
+	// nạp config mặc định
+	$__cf_row = $__cf_row_default;
 }
 
 
