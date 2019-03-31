@@ -202,7 +202,11 @@ jQuery('.click-create-col-for-excel').click(function () {
 	if ( jQuery('#col_for_google_sheet td').length == 0 ) {
 		// đoạn tạo TD này thì copy cho vào file google sheet
 		jQuery('#headerTable tr:first td').each(function () {
-			jQuery('#col_for_google_sheet tr').append('<td>' + g_func.non_mark_seo( jQuery(this).html() ) + '</td>');
+			var a = g_func.non_mark_seo( jQuery(this).html() );
+			jQuery('#col_for_google_sheet tr').append('<td>' + a + '</td>');
+			if ( a == 'san-pham' ) {
+				jQuery('#col_for_google_sheet tr').append('<td>url</td>');
+			}
 		});
 		jQuery('#col_for_google_sheet tr').append('<td>domain</td>');
 		
