@@ -204,6 +204,7 @@ jQuery('.click-create-col-for-excel').click(function () {
 		jQuery('#headerTable tr:first td').each(function () {
 			jQuery('#col_for_google_sheet tr').append('<td>' + g_func.non_mark_seo( jQuery(this).html() ) + '</td>');
 		});
+		jQuery('#col_for_google_sheet tr').append('<td>domain</td>');
 		
 		// xóa td đầu tiên -> không dùng stt
 		jQuery('#col_for_google_sheet td:first').remove();
