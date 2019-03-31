@@ -166,11 +166,11 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	'</div>';
 	
 	//
-	if ( $('#show-product-for-google').length > 0 ) {
-		$('#show-product-for-google').html( str );
+	if ( jQuery('#show-product-for-google').length > 0 ) {
+		jQuery('#show-product-for-google').html( str );
 	}
-	else if ( $('.col-booking-done-padding').length > 0 ) {
-		$('.col-booking-done-padding').append( str );
+	else if ( jQuery('.col-booking-done-padding').length > 0 ) {
+		jQuery('.col-booking-done-padding').append( str );
 	}
 }
 
@@ -284,6 +284,91 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 		console.log( ga_set_action );
 	}
 	
+}
+
+
+// backup dữ liệu hóa đơn tới google sheet
+function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
+	if ( typeof jQuery != 'function' ) {
+		setTimeout(function () {
+			WGR_backup_order_to_google_sheet( arr, arr2 );
+		}, 1000);
+		return false;
+	}
+	
+	//
+	current_hd_object = ___eb_add_conver_string_cart_to_arr_cart( arr );
+	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
+	
+	// tạo form
+	if ( $('#backup-order-to-google-sheet').length == 0 ) {
+		$('body').append('' +
+		'<div>' +
+			'<form id="backup-order-to-google-sheet" method="GET">' +
+				'<input type="text" name="id" value="" />' +
+				'<input type="text" name="ma-hoa-don" value="" />' +
+				'<input type="text" name="ngay-gui" value="" />' +
+				'<input type="text" name="trang-thai" value="" />' +
+				'<input type="text" name="san-pham" value="" />' +
+				'<input type="text" name="sl" value="" />' +
+				'<input type="text" name="msac" value="" />' +
+				'<input type="text" name="kthuoc" value="" />' +
+				'<input type="text" name="cnang" value="" />' +
+				'<input type="text" name="cong" value="" />' +
+				'<input type="text" name="giam" value="" />' +
+				'<input type="text" name="cuoc" value="" />' +
+				'<input type="text" name="tong" value="" />' +
+				'<input type="text" name="khach-hang" value="" />' +
+				'<input type="text" name="dien-thoai" value="" />' +
+				'<input type="text" name="dia-chi" value="" />' +
+				'<input type="text" name="quan-huyen" value="" />' +
+				'<input type="text" name="tinh-thanh-pho" value="" />' +
+				'<input type="text" name="nguon" value="" />' +
+				'<input type="text" name="phuong-tien" value="" />' +
+				'<input type="text" name="chien-dich" value="" />' +
+			'</form>' +
+		'</div>');
+	}
+	
+	//
+	jQuery('form#backup-order-to-google-sheet input[name="id"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="ma-hoa-don"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="ngay-gui"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="san-pham"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="sl"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="msac"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="kthuoc"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="cnang"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="cong"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="giam"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="cuoc"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="tong"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="khach-hang"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="dien-thoai"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="dia-chi"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="quan-huyen"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="tinh-thanh-pho"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="nguon"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="phuong-tien"]').val();
+	jQuery('form#backup-order-to-google-sheet input[name="chien-dich"]').val();
+	
+	//
+	var data = jQuery('form#backup-order-to-google-sheet').serialize();
+	jQuery.ajax({
+		type: 'GET',
+		url: 'https://script.google.com/macros/s/AKfycbwCl6tt7SsVUjq9SZFcDAvaVLXI63I2uzN4rslrrLe1KvtkRIw/exec',
+		dataType: 'json',
+		crossDomain: true,
+		data: data,
+		success: function(data) {
+			if (data == 'false') {
+				console.log('Thêm không thành công, bạn cũng có thể sử dụng để hiển thị Popup hoặc điều hướng');
+			} else {
+				console.log('Đã thêm dữ liệu vào Form');
+			}
+		}
+	});
 }
 
 

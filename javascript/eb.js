@@ -1906,7 +1906,7 @@ var _global_js_eb = {
 			
 			//
 			var color_name = jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || '',
-				color_img = jQuery('.oi_product_color li.selected').attr('data-img') || jQuery('.oi_product_color li:first').attr('data-img') || '',
+				color_img = jQuery('.oi_product_color li.selected').attr('data-img') || jQuery('.oi_product_color li:first').attr('data-img') || jQuery('meta[property="og:image"]').attr('content') || '',
 				sku = jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || '';
 			/*
 			if ( color_img != '' ) {

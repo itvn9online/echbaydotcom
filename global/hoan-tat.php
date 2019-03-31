@@ -5,6 +5,8 @@
 /*
 * Link tham khảo:
 * https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce
+* Gửi dữ liệu tới google sheet
+* https://tuandc.com/lap-trinh/huong-dan-tao-from-gui-du-lieu-tu-website-len-google-sheet-khong-dung-google-forms.html
 */
 
 
@@ -192,6 +194,7 @@ var current_hd_id = "' . $hd_id . '",
 		"nl" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_nl') ) . '",
 		"pp" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_payment_pp') ) . '"
 	};
+WGR_backup_order_to_google_sheet( current_hd_object, current_tv_object );
 </script>';
 
 

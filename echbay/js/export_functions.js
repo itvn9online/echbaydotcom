@@ -197,4 +197,28 @@ jQuery('.click-change-css-table').click(function () {
 	jQuery('#headerTable').toggleClass('set-border');
 });
 
+// tạo bảng dùng để lấy tên cột cho vào google sheet
+jQuery('.click-create-col-for-excel').click(function () {
+	if ( jQuery('#col_for_google_sheet td').length == 0 ) {
+		jQuery('#headerTable tr:first td').each(function () {
+			jQuery('#col_for_google_sheet tr').append('<td>' + g_func.non_mark_seo( jQuery(this).html() ) + '</td>');
+		});
+		
+		// xóa td đầu tiên -> không dùng stt
+		jQuery('#col_for_google_sheet td:first').remove();
+		
+		// tạo form cho khung hoàn tất
+		var str = '',
+			str2 = '';
+		jQuery('#col_for_google_sheet td').each(function() {
+			str += '\'<input type="text" name="' + jQuery(this).html() + '" value="" />\' +' + "\n";
+			str2 += 'jQuery(\'form#backup-order-to-google-sheet input[name="' + jQuery(this).html() + '"]\').val();' + "\n";
+		});
+		
+		// các đoạn mã này sau đó copy cho vào function WGR_backup_order_to_google_sheet
+		console.log( str );
+		console.log( str2 );
+	}
+});
+
 
