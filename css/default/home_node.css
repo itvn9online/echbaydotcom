@@ -85,6 +85,7 @@
 	color: #fff;
 	font-size: 16px;
 }
+.hide-cat .thread-home-c2,
 .hide-child-cat .thread-home-c2 h2,
 .home-count-cat { display: none; }
 .hide-child-cat .thread-home-c2 h2:first-child { display: inherit; }

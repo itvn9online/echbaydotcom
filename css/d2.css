@@ -565,7 +565,7 @@ label,
 	z-index: 1;
 	display: block;
 }
-.widget_random_home_post .global-ul-load-ads div {
+.widget_random_home_post .global-ul-load-ads div.banner-ads-media {
 	background: #fff center no-repeat;
 	background-size: auto 100%;
 }
