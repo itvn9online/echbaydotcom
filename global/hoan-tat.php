@@ -171,7 +171,7 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 $main_content .= '<script type="text/javascript">
 var current_hd_id = "' . $hd_id . '",
 	current_hd_code = "' . $hd_mahoadon . '",
-	current_hd_date = "' . date( _eb_get_option('date_format'), $sql->order_time ) . '",
+	current_hd_date = "' . date( _eb_get_option('date_format') . ' H:i', $sql->order_time ) . '",
 	current_hd_status = ' . $sql->order_status . ',
 	arr_hd_trangthai = ' .json_encode( $arr_hd_trangthai ) . ',
 	current_tv_object = "' . $current_tv_object . '",
