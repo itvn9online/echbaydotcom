@@ -354,7 +354,8 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	jQuery('form#backup-order-to-google-sheet input[name="id"]').val( 'ID' + current_hd_id );
 	jQuery('form#backup-order-to-google-sheet input[name="ma-hoa-don"]').val( 'SKU' + current_hd_code );
 	jQuery('form#backup-order-to-google-sheet input[name="ngay-gui"]').val( current_hd_date );
-	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val( typeof arr_hd_trangthai[ current_hd_status ] != 'undefined' ? arr_hd_trangthai[ current_hd_status ] : 'Unknown' );
+//	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val( typeof arr_hd_trangthai[ current_hd_status ] != 'undefined' ? arr_hd_trangthai[ current_hd_status ] : 'Unknown' );
+	jQuery('form#backup-order-to-google-sheet input[name="trang-thai"]').val( '-' );
 	jQuery('form#backup-order-to-google-sheet input[name="san-pham"]').val( current_hd_object[i].name );
 	jQuery('form#backup-order-to-google-sheet input[name="url"]').val( web_link + '?p=' + current_hd_object[i].id );
 	jQuery('form#backup-order-to-google-sheet input[name="sl"]').val( current_hd_object[i].quan );
