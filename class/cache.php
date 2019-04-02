@@ -116,16 +116,21 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 if ( strstr( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) == false ) {
 	include_once EB_THEME_CORE . 'cache2.php';
 }
-// còn lại sẽ sử dụng cache cũ
+// còn lại sẽ sử dụng cache cũ (nếu có)
 else if (file_exists ( $__eb_cache_conf )) {
 	include_once $__eb_cache_conf;
 }
 else {
-	// tạm thời cứ dừng ở đây đã
+	// v3 -> nạp lại cache -> nếu có lỗi sẽ lỗi 1 lần rồi thôi
+	include_once EB_THEME_CORE . 'cache2.php';
+	
+	/*
+	// v2 -> tạm thời cứ dừng ở đây đã
 	die('config not select in ajax');
 	
-	// nạp config mặc định
+	// v1 -> nạp config mặc định
 	$__cf_row = $__cf_row_default;
+	*/
 }
 
 

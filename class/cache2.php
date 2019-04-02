@@ -58,7 +58,7 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 //echo $time_for_update_cache . '<br>';
 
 
-//
+// nếu thành viên đang đăng nhập hoặc thời gian cache đã hết -> nạp cache theo thời gian thực
 if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 //if ( 1 == 2 ) {
 	// nếu thời gian update cache nhỏ quá -> bỏ qua
@@ -74,7 +74,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 	}
 	
 	
-	//
+	// kiểm tra lại lần nữa cho chắc ăn
 	if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
@@ -110,13 +110,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			$_GET['time_auto_cleanup_cache'] = 6 * 3600;
 			
 			include_once EB_THEME_PLUGIN_INDEX . 'cronjob/cleanup_cache.php';
-		}
-		
-		
-		
-		// không cho tạo cache liên tục
-		if ( mtv_id == 0 || ! file_exists( $file_last_update ) ) {
-			_eb_create_file ( $file_last_update, date_time );
 		}
 		
 		
@@ -435,11 +428,14 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			echo '<!-- function not exists -->' . "\n";
 		}
 		*/
-		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
+		// không cho tạo cache liên tục
+		// chỉ tạo khi khách truy cập hoặc không có file
+		if ( mtv_id == 0 || ! file_exists( $file_last_update ) || ! file_exists( $__eb_cache_conf ) ) {
+			// tạo file cache
+			_eb_create_file ( $file_last_update, date_time );
+			
 //			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
 			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
-			
-			
 			
 			//
 			_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
