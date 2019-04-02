@@ -38,6 +38,7 @@ include EB_THEME_CORE . 'widget/adsense.php';
 include EB_THEME_CORE . 'widget/facebook_likebox.php';
 include EB_THEME_CORE . 'widget/advanced_run_slider.php';
 include EB_THEME_CORE . 'widget/google_map.php';
+include EB_THEME_CORE . 'widget/popup.php';
 
 
 
@@ -93,6 +94,8 @@ function ___add_echbay_widget() {
 	register_widget ( '___echbay_widget_advanced_run_slider' );
 	
 //	register_widget ( '___echbay_widget_search_advanced' );
+	
+	register_widget ( '___echbay_widget_open_popup' );
 	
 }
 

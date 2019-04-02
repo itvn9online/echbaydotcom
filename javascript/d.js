@@ -1765,6 +1765,73 @@ function ___eb_add_space_for_breadcrumb ( con ) {
 var press_esc_to_quickvideo_close = false,
 	current_ls_url = window.location.href;
 
+function WGR_active_popup ( op ) {
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(op);
+	
+	// kiểm tra và tạo các giá trị mặc định
+	if ( typeof op['id_event'] == 'undefined' || op['id_event'] == '' ) {
+		console.log('id_event not found!');
+		return false;
+	}
+	if ( op['id_event'].substr( 0, 1 ) != '#' && op['id_event'].substr( 0, 1 ) != '.' ) {
+		op['id_event'] = '#' + op['id_event'];
+	}
+	
+	if ( typeof op['cookie_name'] == 'undefined' || op['cookie_name'] == '' ) {
+		op['cookie_name'] = 'WGR_popup_ckname_' + op['id_event'].replace(/\#|\./g, '_');
+	}
+	if ( typeof op['cookie_time'] != 'number' || op['cookie_time'] * 1 < 0 ) {
+		op['cookie_time'] = 0;
+	}
+	if ( typeof op['cookie_time2'] != 'number' || op['cookie_time2'] * 1 < 0 ) {
+		op['cookie_time2'] = 0;
+	}
+	// nếu không có thời gian xác định cho cookie -> hủy bỏ luôn
+	if ( op['cookie_time'] == 0 && op['cookie_time2'] == 0 ) {
+		console.log('time not set!');
+		return false;
+	}
+	
+	if ( typeof op['time_start'] != 'number' || op['time_start'] * 1 < 0 ) {
+		op['time_start'] = 5;
+	}
+	if ( typeof op['time_end'] != 'number' || op['time_end'] * 1 < 0 ) {
+		op['time_end'] = 30;
+	}
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(op);
+	
+	//
+	var a = g_func.getc( op['cookie_name'] );
+    if (a != null) {
+		console.log('Popup hide by WGR_active_popup');
+		return false;
+	}
+	
+	// bật popup lên
+	if ( op['time_start'] > 0 ) {
+		setTimeout(function () {
+			jQuery( op['id_event'] ).fadeIn();
+		}, op['time_start'] * 1000);
+	}
+	else {
+		jQuery( op['id_event'] ).fadeIn();
+	}
+	
+	// tắt popup
+	if ( op['time_end'] > 0 ) {
+		setTimeout(function () {
+			jQuery( op['id_event'] ).fadeOut();
+		}, ( op['time_start'] + op['time_end'] ) * 1000);
+	}
+	
+	//
+	g_func.setc( op['cookie_name'], 1, op['cookie_time'] * 60, op['cookie_time2'] );
+}
+
+function WGR_close_popup () {
+	close_img_quick_video_details();
+}
+
 function close_img_quick_video_details () {
 	// ẩn video
 	jQuery('.quick-video').hide().height('auto');
@@ -3871,8 +3938,8 @@ setTimeout(function () {
 		var a = jQuery(this).html() || '',
 			str = '',
 			wit = 4/ 5,
-			w = $(this).attr('data-width') || '',
-			h = $(this).attr('data-height') || '';
+			w = jQuery(this).attr('data-width') || '',
+			h = jQuery(this).attr('data-height') || '';
 		
 		if ( a != '' ) {
 			a = a.split("\n")[0];
@@ -4121,9 +4188,9 @@ function WGR_set_quick_view_height () {
 		
 		//
 //		if ( jQuery('div#ui_ebe_quick_view').length > 0 ) {
-//			$('#oi_ebe_quick_view .quick-view-padding').html('<div id="ui_ebe_quick_view">Đang tải...</div>');
+//			jQuery('#oi_ebe_quick_view .quick-view-padding').html('<div id="ui_ebe_quick_view">Đang tải...</div>');
 		if ( jQuery('iframe#ui_ebe_quick_view').length > 0 ) {
-			$('#oi_ebe_quick_view .quick-view-padding').html('<iframe id="ui_ebe_quick_view" name="ui_ebe_quick_view" src="about:blank" width="100%" height="600" frameborder="0">AJAX form</iframe>');
+			jQuery('#oi_ebe_quick_view .quick-view-padding').html('<iframe id="ui_ebe_quick_view" name="ui_ebe_quick_view" src="about:blank" width="100%" height="600" frameborder="0">AJAX form</iframe>');
 		}
 		
 		//
@@ -4189,7 +4256,7 @@ function WGR_set_quick_view_height () {
 
 //
 if (press_esc_to_quickvideo_close == false) {
-	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('close');
+	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('create event close by ESC');
 	
 	//
 	press_esc_to_quickvideo_close = true;

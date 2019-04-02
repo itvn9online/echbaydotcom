@@ -628,22 +628,22 @@ var _global_js_eb = {
 				'max-width' : max_width + 'px'
 			})
 			.each(function() {
-				var a = $(this).attr('data-no-reponsive') || '';
+				var a = jQuery(this).attr('data-no-reponsive') || '';
 				
 				//
 				if ( a == '' ) {
-					$(this).before( '<div class="reponsive-for-table reponsive-for-table' + i + '"></div>' );
+					jQuery(this).before( '<div class="reponsive-for-table reponsive-for-table' + i + '"></div>' );
 					
-					$(this).clone().appendTo('.reponsive-for-table' + i);
+					jQuery(this).clone().appendTo('.reponsive-for-table' + i);
 					
-					$(this).remove();
+					jQuery(this).remove();
 					
 					i++;
 				}
 			});
 			
 			//
-			$('.reponsive-for-table table').attr({
+			jQuery('.reponsive-for-table table').attr({
 				'data-no-reponsive': 1
 			});
 			
@@ -1976,7 +1976,7 @@ var _global_js_eb = {
 					"slug" : cart_product_slug.replace( /\-/g, '' ),
 					"size" : jQuery('.show-list-size[data-id="' + cart_pid + '"] select').val() || '',
 					"color" : jQuery('.show-list-color[data-id="' + cart_pid + '"] select').val() || '',
-					"color_img" : $('.cart-list-avt', this).attr('data-img') || '',
+					"color_img" : jQuery('.cart-list-avt', this).attr('data-img') || '',
 					"old_price" : jQuery(this).attr('data-old-price') || 0,
 					"price" : gia_moi,
 					// thêm phần giá riêng theo màu hoặc size
