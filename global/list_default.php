@@ -230,25 +230,31 @@ if ( $main_content == false ) {
 			if ( $cats_description == '' ) {
 //				$cats_description = $__category->description;
 				// mặc định thì EchBay không hỗ trợ HTML -> thêm BR vào description
-				$cats_description = nl2br( $__category->description );
+//				$cats_description = nl2br( $__category->description );
+				$cats_description = $__category->description;
 			}
+			/*
 			else {
 				$cats_description = '<div class="each-to-fix-ptags">' . $cats_description . '</div>';
 			}
+			*/
 		}
 		// các ứng dụng seo khác -> ưu tiên sử dụng description mặc định
 		else if ( $__category->description != '' ) {
 			// Với plugin khác như Yoast SEO, description được hỗ trợ HTML sẵn -> dùng luôn thôi
-			$cats_description = '<div class="each-to-fix-ptags">' . $__category->description . '</div>';
+//			$cats_description = '<div class="each-to-fix-ptags">' . $__category->description . '</div>';
 //			$cats_description = nl2br( $__category->description );
+			$cats_description = $__category->description;
 		}
 		// còn lại, thử kiểm tra xem trước có dùng plugin seo của EchBay không
 		else {
 			$cats_description = _eb_get_cat_object( $__category->term_id, '_eb_category_content' );
 			
 			// cập nhật description -> có thể trước đó khách chuyển từ plugin SEO mặc định sang Yoast SEO
+			/*
 			if ( $cats_description != '' ) {
 			}
+			*/
 		}
 		
 		
