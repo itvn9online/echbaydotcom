@@ -89,3 +89,9 @@
 .hide-child-cat .thread-home-c2 h2,
 .home-count-cat { display: none; }
 .hide-child-cat .thread-home-c2 h2:first-child { display: inherit; }
+.nth-child-even .home-module_content:nth-child(even),
+.nth-child-odd .home-module_content:nth-child(odd) {
+	padding: 25px 0;
+	margin: 0;
+	background: #f2f2f2;
+}

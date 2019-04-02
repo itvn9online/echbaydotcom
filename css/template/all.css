@@ -165,9 +165,9 @@
 #aabbcc .aabbcc div:nth-child(1) { }
 #aabbcc .aabbcc div:nth-child(2) { }
 #aabbcc .aabbcc div:nth-child(3) { }
-/* elementer ở vị trí lẻ */
-#aabbcc .aabbcc div:nth-child(even) { }
 /* elementer ở vị trí chẵn */
+#aabbcc .aabbcc div:nth-child(even) { }
+/* elementer ở vị trí lẻ */
 #aabbcc .aabbcc div:nth-child(odd) { }
 /* ================================== nth-child ================================== */
 #aabbcc .phone-call-inline a { display: inline-block; }
