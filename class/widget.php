@@ -354,20 +354,22 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	//
 	echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
-	- <strong>bgtrans</strong>: nền trong suốt cho ảnh đại diện.<br>
-	- <strong>bgcover</strong>: background-size: cover.<br>
-	- <strong>bgcontain</strong>: background-size: contain.<br>
-	- <strong>noborder</strong>: bỏ viền của ảnh đại diện.<br>
-	- <strong>noborder-widget-title</strong>: Ẩn border của widget.<br>
-	- <strong>hideavt</strong>: ẩn ảnh đại diện.<br>
+	- <strong>bgtrans</strong>: <em>echbay-blog-avt</em> background-color: transparent.<br>
+	- <strong>bgcover</strong>: <em>echbay-blog-avt</em> background-size: cover (tự fixed 2 chiều).<br>
+	- <strong>bgcontain</strong>: <em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).<br>
+	- <strong>bgradius</strong>: <em>echbay-blog-avt</em> border-radius: 50%.<br>
+	- <strong>noborder</strong>: <em>echbay-blog-avt</em> border: 0 none.<br>
+	- <strong>noborder-widget-title</strong>: <em>echbay-widget-title</em> border: 0 none.<br>
+	- <strong>hideavt</strong>: <em>echbay-blog-avt</em> opacity: .001.<br>
 	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
 	- <strong>oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
 	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
 	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
 	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
 	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
-	- <strong>height-auto-title</strong>: chuyển style của <em>echbay-blog-title</em> sang thành height:atuo<br>
-	- <strong>height-auto-gioithieu</strong>: chuyển style của <em>echbay-blog-gioithieu</em> sang thành height:auto<br>
+	- <strong>height-auto-title</strong>: đặt style <em>echbay-blog-title</em> height: auto<br>
+	- <strong>height-auto-gioithieu</strong>: đặt style <em>echbay-blog-gioithieu</em> height: auto<br>
+	- <strong>overflow-hidden</strong>: đặt <em>style widget-run-slider</em> overflow: hidden<br>
 	- <strong>show-view-more</strong>: hiển thị nút xem thêm (nếu có)<br>
 	- <strong>mcb</strong>: gán màu cơ bản cho tiêu đề của danh mục widget</p>';
 	
