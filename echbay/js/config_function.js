@@ -55,7 +55,8 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		donvi = '',
 		// class định hình độ dài của input text
 		with_class = '',
-		name_input = '';
+		name_input = '',
+		str_placeholder = '';
 	
 	//
 	if ( typeof a != 'object' ) {
@@ -120,6 +121,12 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			donvi = ops['donvi'][x];
 		}
 		
+		//
+		str_placeholder = '';
+		if ( typeof ops['placeholder'] != 'undefined' && typeof ops['placeholder'][x] != 'undefined' ) {
+			str_placeholder = ops['placeholder'][x];
+		}
+		
 		// tạo input
 		str_input = '';
 		if ( typeof arr[x] == 'object' ) {
@@ -136,7 +143,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			str_input = '<select name="' + name_input + '" data-donvi="' + donvi + '" class="' + op['input_css'] + '">' + str_input + '</select>';
 		}
 		else if ( arr_input_type[x] == 'number' ) {
-			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" class="s ' + op['input_css'] + '" />';
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" placeholder="' + str_placeholder + '" class="s ' + op['input_css'] + '" />';
 		}
 		else if ( arr_input_type[x] == 'color' ) {
 			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" placeholder="#notset" class="ebe-color-picker ' + op['input_css'] + '" />';
@@ -162,7 +169,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			}
 			
 			//
-			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" placeholder="' + str_placeholder + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
 		}
 		
 		// ghi chú

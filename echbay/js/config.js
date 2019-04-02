@@ -337,6 +337,13 @@ function create_deault_css () {
 	} );
 	
 	//
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'oi_big_banner',
+//		'mobile' : '',
+		'pc' : '.oi_big_banner'
+	} );
+	
+	//
 	console.log( arr_cf_css_body );
 //	console.log( JSON.stringify( arr_cf_css_body ) );
 //	console.log( escape( JSON.stringify( arr_cf_css_body ) ) );
@@ -673,6 +680,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_details'] == 'undefined' ) {
 			data['cf_css_details'] = {};
 		}
+		if ( typeof data['cf_css_big_banner'] == 'undefined' ) {
+			data['cf_css_big_banner'] = {};
+		}
 //		console.log(data);
 		
 		
@@ -729,6 +739,9 @@ if ( current_module_config != 'config_theme' ) {
 				'after_html' : 'custom_css_for_logo',
 				'input_name' : 'mobile_logo'
 			}, {
+				'placeholder' : {
+					'background_image' : $('#cf_logo').val() || ''
+				},
 				'maxlength' : {
 					'background_image' : 255
 				}
@@ -759,6 +772,9 @@ if ( current_module_config != 'config_theme' ) {
 				'after_html' : 'custom_css_for_logo',
 				'input_name' : 'footer_logo'
 			}, {
+				'placeholder' : {
+					'background_image' : $('#cf_logo').val() || ''
+				},
 				'maxlength' : {
 					'background_image' : 255
 				}
@@ -814,6 +830,9 @@ if ( current_module_config != 'config_theme' ) {
 				'after_html' : 'custom_css_for_body',
 				'input_name' : 'w90'
 			}, {
+				'placeholder' : {
+					'max_width' : 1366
+				},
 				/*
 				'maxlength' : {
 					'max_width' : 5
@@ -856,6 +875,9 @@ if ( current_module_config != 'config_theme' ) {
 				'after_html' : 'custom_css_for_body',
 				'input_name' : 'w99'
 			}, {
+				'placeholder' : {
+					'width' : 999
+				},
 				/*
 				'maxlength' : {
 					'width' : 5,
@@ -933,6 +955,10 @@ if ( current_module_config != 'config_theme' ) {
 //				'after_html' : 'custom_css_for_body',
 				'input_name' : 'body'
 			}, {
+				'placeholder' : {
+					'font_size' : 13,
+					'font_family' : 'Helvetica, Arial, Tahoma, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
+				},
 				/*
 				'maxlength' : {
 					'width' : 5,
@@ -965,8 +991,36 @@ if ( current_module_config != 'config_theme' ) {
 //				'after_html' : 'custom_css_for_details',
 				'input_name' : 'details'
 			}, {
+				'placeholder' : {
+					'background_color' : '#333333'
+				},
 				'maxlength' : {
 					'background_color' : 7
+				}
+			}
+		);
+		
+		
+		
+		// big banner max-width
+		load_config_for_custom_logo(
+			{
+				'max_width' : ''
+			}, {
+				'max_width' : 'Chiều rộng tối đa Big banner'
+			}, {
+				'max_width' : 'Do thiết kế chiều rộng website càng lớn thì chi phí càng cao, nên mặc định nó sẽ được giới hạn lại, bạn muốn tăng nó lên hãy thay đổi tại đây.'
+			}, {
+				'max_width' : 'number'
+			},
+			data['cf_css_big_banner'],
+			{
+//				'input_css' : 'each-to-css-for-details',
+				'after_html' : 'custom_css_for_big_banner',
+				'input_name' : 'oi_big_banner'
+			}, {
+				'placeholder' : {
+					'max_width' : 1600
 				}
 			}
 		);
