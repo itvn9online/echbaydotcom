@@ -2460,7 +2460,7 @@ function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
 			}
 		}
 		
-		// gán dữ liệu để tra về
+		// gán dữ liệu để trả về
 		$arr = array();
 		
 		foreach ( $sql as $v ) {
