@@ -4,7 +4,7 @@
 if ( ! isset( $_GET['time_auto_cleanup_cache'] ) ) {
 	$_GET['time_auto_cleanup_cache'] = 120;
 }
-
+//print_r( $_GET ); exit();
 
 
 $strCacheFilter = 'cleanup_cache';
@@ -35,6 +35,7 @@ else {
 		_eb_alert('Giãn cách mỗi lần xóa tối thiểu là ' . $_GET['time_auto_cleanup_cache'] . ' giây!');
 	}
 }
+//exit();
 
 
 
