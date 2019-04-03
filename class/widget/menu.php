@@ -106,8 +106,8 @@ class ___echbay_widget_get_menu extends WP_Widget {
 //		if ( $title != '' ) {
 			_eb_echo_widget_title(
 				$title,
-				'echbay-widget-blogs-title',
-				$before_title
+				'echbay-widget-blogs-title'
+//				$before_title
 			);
 //		}
 		

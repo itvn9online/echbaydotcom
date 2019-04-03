@@ -1503,9 +1503,17 @@ function ___eb_details_product_quan () {
 	
 	//
 	var a = jQuery('#oi_mua_max').attr('data-min') || '',
-		b = jQuery('#oi_mua_max').attr('data-max') || '';
+		b = jQuery('#oi_mua_max').attr('data-max') || '',
+		c = 0;
 	if ( a != '' && b != '' ) {
-		jQuery('#oi_mua_max').width( ( a * 100 / b ) + '%' );
+		c = a * 100 / b;
+		if ( c > 100 ) {
+			c = 100;
+		}
+		else if ( c < 0 ) {
+			c = 0;
+		}
+		jQuery('#oi_mua_max').width( c + '%' );
 		jQuery('#oi_con_phieu').html( b - a );
 	}
 	
