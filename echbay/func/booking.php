@@ -8,6 +8,13 @@
 $_POST = EBE_stripPostServerClient ();
 //print_r( $_POST );
 
+// kiểm tra dữ liệu đầu vào xem có chuẩn không, nếu có thì chỉ trong vòng 30 phút trở lại
+/*
+if ( ! isset($_POST['__wgr_nonce']) || $_POST['__wgr_nonce'] * 1 +  1800 < date_time ) {
+	_eb_alert( 'Data submit ERROR!' );
+}
+*/
+
 
 
 //

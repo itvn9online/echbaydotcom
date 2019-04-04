@@ -2310,6 +2310,7 @@ var _global_js_eb = {
 		}
 		
 		//
+//		_global_js_eb.wgr_nonce( 'frm_cart' );
 		_global_js_eb.add_primari_iframe();
 		
 		//
