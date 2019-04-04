@@ -3169,15 +3169,39 @@ var _global_js_eb = {
 		return true;
 	},
 	
-	
-	check_quick_register : function ( f ) {
+	// thêm mã xác nhận mỗi khi submit form
+	wgr_nonce : function ( form_name ) {
+		if ( jQuery('form[name="' + form_name + '"] input[name="__wgr_nonce"]').length > 0 ) {
+			return false;
+		}
+		
+		if ( typeof date_time != 'number' ) {
+			return false;
+		}
+		
+		jQuery('form[name="' + form_name + '"]').append('<input type="hidden" name="__wgr_nonce" value="' + date_time + '" />');
+		
+		return true;
+	},
+	check_register : function ( f ) {
+		_global_js_eb.wgr_nonce( form_name );
+		
+		return _global_js_eb.add_primari_iframe();
+	},
+	check_quick_register : function ( form_name ) {
 		// form mặc địch, thủ công nhưng cũng có tí chuẩn
-		if ( f == 'frm_dk_nhantin' ) {
-			f = document.frm_dk_nhantin;
+		if ( form_name == 'frm_dk_nhantin' ) {
+			var f = document.frm_dk_nhantin;
 			
-			if ( f.t_hoten.value != '' ) f.t_hoten.value = g_func.strip_tags( f.t_hoten.value );
-			if ( f.t_dienthoai.value != '' ) f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
-			if ( f.t_email.value != '' ) f.t_email.value = g_func.strip_tags( f.t_email.value );
+			if ( f.t_hoten.value != '' ) {
+				f.t_hoten.value = g_func.strip_tags( f.t_hoten.value );
+			}
+			if ( f.t_dienthoai.value != '' ) {
+				f.t_dienthoai.value = g_func.strip_tags( f.t_dienthoai.value );
+			}
+			if ( f.t_email.value != '' ) {
+				f.t_email.value = g_func.strip_tags( f.t_email.value );
+			}
 		}
 		// với các form tên khác -> sử dụng form động luôn
 		else {
@@ -3187,6 +3211,8 @@ var _global_js_eb = {
 				}
 			});
 		}
+		
+		_global_js_eb.wgr_nonce( form_name );
 		
 		return _global_js_eb.add_primari_iframe();
 		/*

@@ -3,6 +3,11 @@
 
 
 //print_r($_POST);
+if ( ! isset($_POST['__wgr_nonce']) ) {
+	_eb_alert( 'Register submit data ERROR!' );
+}
+
+
 if ( ! isset($_POST['t_email']) || ! isset($_POST['t_matkhau']) ) {
 	_eb_alert( EBE_get_lang('reg_no_email') );
 }
@@ -135,11 +140,11 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	
 	// Gửi email thông báo
 	$message = EBE_html_template( WGR_get_html_template_lang( 'quick_register_mail', 'qregister', EB_THEME_PLUGIN_INDEX . 'html/mail/' ), array(
-			'tmp.web_link' => web_link,
-			'tmp.web_name' => $web_name,
-			'tmp.t_ten' => $t_ten == '' ? $user_email : $t_ten,
-			'tmp.t_dienthoai' => $t_dienthoai,
-			'tmp.user_email' => $user_email
+		'tmp.web_link' => web_link,
+		'tmp.web_name' => $web_name,
+		'tmp.t_ten' => $t_ten == '' ? $user_email : $t_ten,
+		'tmp.t_dienthoai' => $t_dienthoai,
+		'tmp.user_email' => $user_email
 	) );
 //	echo $message . '<br>'; exit();
 	
