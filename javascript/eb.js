@@ -3172,15 +3172,15 @@ var _global_js_eb = {
 	
 	// thêm mã xác nhận mỗi khi submit form
 	wgr_nonce : function ( form_name ) {
-		if ( jQuery('form[name="' + form_name + '"] input[name="__wgr_nonce"]').length > 0 ) {
-			return false;
+		if ( jQuery('form[name="' + form_name + '"] input[name="__wgr_request_from"]').length == 0 ) {
+			jQuery('form[name="' + form_name + '"]').append('<input type="hidden" name="__wgr_request_from" value="' + window.location.href + '" />');
 		}
 		
-		if ( typeof date_time != 'number' ) {
-			return false;
+		if ( jQuery('form[name="' + form_name + '"] input[name="__wgr_nonce"]').length == 0 ) {
+			if ( typeof date_time == 'number' ) {
+				jQuery('form[name="' + form_name + '"]').append('<input type="hidden" name="__wgr_nonce" value="' + date_time + '" />');
+			}
 		}
-		
-		jQuery('form[name="' + form_name + '"]').append('<input type="hidden" name="__wgr_nonce" value="' + date_time + '" />');
 		
 		return true;
 	},
