@@ -330,8 +330,8 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				'<input type="text" name="sl" value="" />' +
 				'<input type="text" name="msac" value="" />' +
 				'<input type="text" name="kthuoc" value="" />' +
-				'<input type="text" name="cnang" value="" />' +
 				'<input type="text" name="sku" value="" />' +
+				'<input type="text" name="cnang" value="" />' +
 				'<input type="text" name="cong" value="" />' +
 				'<input type="text" name="giam" value="" />' +
 				'<input type="text" name="cuoc" value="" />' +
@@ -361,6 +361,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	jQuery('form#backup-order-to-google-sheet input[name="sl"]').val( current_hd_object[i].quan );
 	jQuery('form#backup-order-to-google-sheet input[name="msac"]').val( current_hd_object[i].color );
 	jQuery('form#backup-order-to-google-sheet input[name="kthuoc"]').val( current_hd_object[i].size );
+	jQuery('form#backup-order-to-google-sheet input[name="sku"]').val( current_hd_object[i].sku );
 //	jQuery('form#backup-order-to-google-sheet input[name="cnang"]').val();
 	jQuery('form#backup-order-to-google-sheet input[name="cong"]').val( current_hd_object[i].price );
 //	jQuery('form#backup-order-to-google-sheet input[name="giam"]').val();
