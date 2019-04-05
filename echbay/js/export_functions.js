@@ -33,6 +33,7 @@ function WGR_order_export___products ( arr, arr2 ) {
 		'<td class="text-center">' + arr.quan + '</td>' +
 		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.color ) + '</td>' +
 		'<td class="text-center remove-size-color-tag">' + WGR_order_export_null( arr.size ) + '</td>' +
+		'<td class="text-center">' + WGR_order_export_null( arr.sku ) + '</td>' +
 		'<td>' + WGR_order_export_exist( arr, 'weight' ) + '</td>' +
 		'<td class="text-center">' + tong + '</td>' +
 		'<td class="text-center">' + WGR_order_export_null( arr2['hd_chietkhau'] ) + '</td>' +
@@ -58,7 +59,7 @@ function WGR_order_export__products ( arr, arr2 ) {
 	//
 	for ( var i = 0; i < arr.length; i++ ) {
 		if ( i > 0 ) {
-			str += '<tr><td colspan="4">&nbsp;</td>' + WGR_order_export___products( arr[i], arr2 ) + '</tr>';
+			str += '<tr><td colspan="5">&nbsp;</td>' + WGR_order_export___products( arr[i], arr2 ) + '</tr>';
 		}
 	}
 	

@@ -331,6 +331,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				'<input type="text" name="msac" value="" />' +
 				'<input type="text" name="kthuoc" value="" />' +
 				'<input type="text" name="cnang" value="" />' +
+				'<input type="text" name="sku" value="" />' +
 				'<input type="text" name="cong" value="" />' +
 				'<input type="text" name="giam" value="" />' +
 				'<input type="text" name="cuoc" value="" />' +

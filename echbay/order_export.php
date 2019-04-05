@@ -60,6 +60,7 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_top.php';
 		<td>SL</td>
 		<td>M.sắc</td>
 		<td>K.Thước</td>
+		<td>SKU</td>
 		<td>C.Nặng</td>
 		<!--
 		<td>Sản phẩm (S.Lượng/ Màu sắc/ Kích thước)</td>

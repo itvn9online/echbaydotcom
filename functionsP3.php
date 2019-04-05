@@ -395,7 +395,7 @@ function WGR_remove_post_by_type ( $post_type = 'revision', $ID = 0, $strFilter 
 							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 		
 		// tiếp theo là term_relationships
-	//	echo $wpdb->term_relationships . '<br>' . "\n"; exit();
+//		echo $wpdb->term_relationships . '<br>' . "\n"; exit();
 		_eb_q( "DELETE FROM
 			`" . $wpdb->term_relationships . "`
 		WHERE
