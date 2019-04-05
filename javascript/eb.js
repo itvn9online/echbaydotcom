@@ -1947,7 +1947,7 @@ var _global_js_eb = {
 				var cart_pid = jQuery(this).attr('data-id') || 0,
 					cart_product_name = jQuery('.get-product-name-for-cart', this).html() || '',
 					cart_product_slug = '',
-					sku = jQuery(this).attr('data-sku') || '',
+					sku = jQuery('.show-list-color[data-id="' + cart_pid + '"] select').find(':selected').attr('data-sku') || jQuery(this).attr('data-sku') || '',
 					gia_moi = jQuery(this).attr('data-price') || 0,
 					gia_rieng = jQuery('.cart-price-inline .global-details-giamoi', this).html() || '';
 				
@@ -2159,6 +2159,7 @@ var _global_js_eb = {
 						var color_name = jQuery(this).attr('alt') || jQuery(this).attr('title') || jQuery(this).attr('data-color') || '',
 							color_quan = jQuery(this).attr('data-quan') || '',
 							color_price = jQuery(this).attr('data-price') || '',
+							color_sku = jQuery(this).attr('data-sku') || '',
 							data_price = '';
 						
 						// Để trống -> coi như còn hàng
@@ -2174,7 +2175,7 @@ var _global_js_eb = {
 							}
 							
 							//
-							str += '<option' + data_price + ' value="' + color_name + '">' + color_name + '</option>';
+							str += '<option' + data_price + ' data-sku="' + color_sku + '" value="' + color_name + '">' + color_name + '</option>';
 						}
 					}
 				}
