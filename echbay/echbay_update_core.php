@@ -142,6 +142,9 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	if ( ! file_exists( $file_test ) ) {
 		return false;
 	}
+	else {
+		echo '<strong class="redcolor">OK! update via PHP function...<br>' . "\n";
+	}
 	
 	
 	
