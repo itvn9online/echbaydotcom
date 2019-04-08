@@ -202,6 +202,7 @@ var g_func = {
 	
 	delck: function (name) {
 		g_func.setc(name, "", -1);
+		g_func.setc(name, "", -1, 0, true);
 	},
 	
 	text_only: function(str) {
