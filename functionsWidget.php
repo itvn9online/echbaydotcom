@@ -25,6 +25,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'post_cloumn' => '',
 		'hide_title' => 0,
 		'hide_description' => 0,
+		'show_post_content' => 0,
 		'hide_info' => 0,
 		// khi thuộc tính này kích hoạt -> ảnh sẽ được đặt làm slider
 		'run_slider' => 0,
@@ -807,6 +808,10 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		if ( isset( $instance ['hide_info'] ) && $instance ['hide_info'] == 'on' ) {
 			$html_node = str_replace( '{tmp.ngaycapnhat}', '', $html_node );
 			$html_node = str_replace( '{tmp.ant_ten}', '', $html_node );
+		}
+		
+		if ( isset( $instance ['show_post_content'] ) && $instance ['show_post_content'] == 'on' ) {
+			$html_node = str_replace( '{tmp.trv_gioithieu}', '{tmp.trv_gioithieu}{tmp.post_content}', $html_node );
 		}
 	}
 	

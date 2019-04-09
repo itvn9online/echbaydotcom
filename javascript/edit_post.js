@@ -8,6 +8,13 @@ var eb_global_product_size = '',
 	admin_global_size_color = [];
 
 
+function WGR_post_edit_change_url_avt ( a ) {
+	jQuery('tr[data-row="_eb_product_avatar"]').after( '\
+	<tr data-row="_eb_show_product_avatar">\
+		<td class="t">&nbsp;</td>\
+		<td class="i"><img src="' + a + '" height="110" /></td>\
+	</tr>' );
+}
 
 function WGR_check_and_load_submit_v5 ( i ) {
 	// chờ load tầm 25 lần, tương đương với 5s
@@ -1042,16 +1049,33 @@ function WGR_run_for_admin_edit_post () {
 		if ( a != '' && b > 0 ) {
 			
 			// xử lý hình ảnh lỗi cho xwatch cũ
-			a = a.replace( '/home/pictures/', '/Home/Pictures/' );
-			jQuery('#_eb_product_avatar').val( a );
+//			a = a.replace( '/home/pictures/', '/Home/Pictures/' );
+//			jQuery('#_eb_product_avatar').val( a );
 			
 			//
-			jQuery('tr[data-row="_eb_product_avatar"]').after( '\
-			<tr data-row="_eb_show_product_avatar">\
-				<td class="t">&nbsp;</td>\
-				<td class="i"><img src="' + a + '" height="110" /></td>\
-			</tr>' );
+			WGR_post_edit_change_url_avt( a );
 		}
+		
+		jQuery('#_eb_product_avatar').change(function () {
+			var a = jQuery(this).val() || '';
+			
+			// không có ảnh thì xóa
+			if ( a == '' ) {
+				if ( jQuery('tr[data-row="_eb_show_product_avatar"]').length > 0 ) {
+					jQuery('tr[data-row="_eb_show_product_avatar"]').remove();
+				}
+			}
+			// có thì add thêm vào
+			else {
+				if ( jQuery('tr[data-row="_eb_show_product_avatar"]').length > 0 ) {
+					jQuery('tr[data-row="_eb_show_product_avatar"] img').attr({
+						'src': a
+					});
+				} else {
+					WGR_post_edit_change_url_avt( a );
+				}
+			}
+		});
 		
 		
 		// xử lý hình ảnh lỗi cho xwatch cũ

@@ -311,6 +311,8 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'hide_info' ], $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
 	
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'show_post_content' ], $show_post_content, 'Hiển thị nội dung của bài viết.' );
+	
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'run_slider' ], $run_slider, 'Chạy slider.' );
 	
