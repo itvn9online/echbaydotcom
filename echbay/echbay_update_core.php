@@ -143,7 +143,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 		return false;
 	}
 	else {
-		echo '<strong class="redcolor">OK! update via PHP function...<br>' . "\n";
+		echo '<strong class="redcolor">OK! update via PHP function...</strong><br>' . "\n";
 	}
 	
 	
@@ -268,11 +268,17 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 	
 	
 	// update thông qua hàm cơ bản của php --------> ƯU TIÊN
-	if ( EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core, $dir_to_update ) == false ) {
+	if ( EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core, $dir_to_update ) == true ) {
+		// nếu update thành công thì thôi
+		return true;
+	}
+	// nếu không -> sẽ update qua FTP
+	else {
 		
 		// update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
 		$ftp_server = EBE_check_ftp_account();
-	//	if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
+		
+//		if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
 		if ( $ftp_server == false ) {
 			
 			// update thông qua hàm cơ bản của php
@@ -281,6 +287,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 			// đến đây mà không up được thì bỏ qua luôn
 			return false;
 		}
+		
 	}
 	
 	
