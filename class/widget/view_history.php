@@ -51,6 +51,11 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		
 		
 		echo '<p>Custom CSS: <input type="text" class="widefat" name="' . $this->get_field_name('custom_style') . '" value="' . $custom_style . '"/> * Tạo class CSS để custom riêng:<br>
+		- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
+		- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
+		- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
+		- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
+		- <strong>title-line50</strong>: gạch ngang trên tiêu đề chính with: 50%<br>
 		- <strong>home-hot2-title</strong>: Style mới cho phần widget tilte.<br>
 		- <strong>noborder-widget-title</strong>: Ẩn border của widget.<br>
 		- <strong>hide-widget-title</strong>: Ẩn tiêu đề của widget.</p>';
