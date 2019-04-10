@@ -201,8 +201,11 @@ var g_func = {
 	},
 	
 	delck: function (name) {
-		g_func.setc(name, "", -1);
-		g_func.setc(name, "", -1, 0, true);
+		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		
+		// v1 -> lỗi
+//		g_func.setc(name, "", -1);
+//		g_func.setc(name, "", -1, 0, true);
 	},
 	
 	text_only: function(str) {

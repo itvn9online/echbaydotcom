@@ -13,7 +13,7 @@ $__cf_row ['cf_description'] = $__cf_row ['cf_title'];
 
 //
 $cart_list_id = _eb_getCucki( 'eb_cookie_cart_list_id' );
-//echo $cart_list_id . '<br>' . "\n";
+echo '<!-- ' . $cart_list_id . ' -->' . "\n";
 $new_id = 0;
 if ( isset($_GET['id']) && ( $new_id = (int)$_GET['id'] ) > 0 ) {
 //	echo $new_id;
