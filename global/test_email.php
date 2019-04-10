@@ -2,10 +2,9 @@
 
 
 //
-/*
-$eb_user_info = wp_get_current_user();
-print_r( $eb_user_info );
-*/
+//$eb_user_info = wp_get_current_user();
+//print_r( $eb_user_info );
+//print_r( $_GET );
 
 //
 if ( mtv_id == 0 ) {
@@ -49,7 +48,7 @@ if ( _eb_send_email( $email, 'Test email via EchBay e-commerce plugin', $mesage 
 	echo 'Send to ' . $email;
 }
 else {
-	echo 'ERROR';
+	echo 'ERROR! ' . $email;
 }
 
 

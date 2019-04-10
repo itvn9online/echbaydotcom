@@ -2990,11 +2990,16 @@ function _eb_send_email($to_email, $title, $message, $headers = '', $bcc_email =
 	
 	
 	//
+//	echo $to_email . '<br>' . "\n";
+//	echo $bcc_email . '<br>' . "\n";
+	
+	//
 	if ( $to_email == '' && $bcc_email != '' ) {
 		$to_email = $bcc_email;
 		$bcc_email = '';
 	}
-	else {
+	
+	if ( $to_email == '' ) {
 		EBE_show_log('Send email to: NULL');
 		
 		return false;
