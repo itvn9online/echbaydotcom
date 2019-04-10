@@ -372,7 +372,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
 	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
 	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
-	- <strong>title-line50</strong>: gạch ngang trên tiêu đề chính with: 50%<br>
+	- <strong>title-line50</strong>: kết hợp với title-line with: 50%<br>
 	- <strong>height-auto-title</strong>: đặt style <em>echbay-blog-title</em> height: auto<br>
 	- <strong>height-auto-gioithieu</strong>: đặt style <em>echbay-blog-gioithieu</em> height: auto<br>
 	- <strong>overflow-hidden</strong>: đặt <em>style widget-run-slider</em> overflow: hidden<br>
