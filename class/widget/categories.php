@@ -668,7 +668,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					if ( $hien_thi_img == '' ) {
 						$hien_thi_img = EB_URL_TUONG_DOI . 'images-global/noavatar.png';
 					}
-					$hien_thi_img = '<img src="' . $hien_thi_img . '" />';
+					$hien_thi_img = '<div class="category-img"><img src="' . $hien_thi_img . '" /></div>';
 				}
 				
 				//
