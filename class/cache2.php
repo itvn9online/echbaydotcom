@@ -338,10 +338,12 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 //			$arr_meta[] = '<meta property="fb:admins" content="' .$__cf_row ['cf_facebook_admin_id']. '" />';
 		}
 		
+		/* https://developers.facebook.com/tools/debug/og/object/
 		if ( $__cf_row ['cf_facebook_page'] != '' ) {
 			$arr_meta[] = '<meta property="article:publisher" content="' . $__cf_row ['cf_facebook_page'] . '" />';
 			$arr_meta[] = '<meta property="article:author" content="' . $__cf_row ['cf_facebook_page'] . '" />';
 		}
+		*/
 		
 		// seo local
 		if ( $__cf_row ['cf_region'] != '' ) {
