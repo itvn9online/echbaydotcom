@@ -2,6 +2,7 @@
 
 
 //
+$error_admin_log_cache = '';
 $last_update = 0;
 if (file_exists ( $__eb_cache_conf )) {
 	
@@ -30,6 +31,7 @@ if (file_exists ( $__eb_cache_conf )) {
 		if ( $last_update > 0 && date_time - $last_update > 2100 ) {
 			unlink ( $__eb_cache_conf );
 			unlink ( $file_last_update );
+			$error_admin_log_cache = 'Auto reset cache after 2100s';
 		}
 		// nạp conf
 		else {
@@ -50,6 +52,7 @@ if (file_exists ( $__eb_cache_conf )) {
 						sleep( rand( 2, 10 ) );
 						unlink ( $__eb_cache_conf );
 						unlink ( $file_last_update );
+						$error_admin_log_cache = 'Cache syntax ERROR by exec';
 						
 						//
 //						echo eb_web_protocol . ':' . $func->full_url();
@@ -64,7 +67,7 @@ if (file_exists ( $__eb_cache_conf )) {
 					// kiểm tra ký tự cuối cùng của file
 					$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
 					// nếu là dấu ; -> ok
-					if ( substr( $return_check_syntax, -1 ) == '' ) {
+					if ( substr( $return_check_syntax, -1 ) == ';' ) {
 						include_once $__eb_cache_conf;
 					}
 					else {
@@ -72,6 +75,7 @@ if (file_exists ( $__eb_cache_conf )) {
 						sleep( rand( 2, 10 ) );
 						unlink ( $__eb_cache_conf );
 						unlink ( $file_last_update );
+						$error_admin_log_cache = 'Cache syntax ERROR by substr';
 					}
 				}
 			}
@@ -502,6 +506,11 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			
 			//
 			_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
+			
+			// thông báo log cho admin
+			if ( $error_admin_log_cache != '' ) {
+				_eb_log_admin( $error_admin_log_cache );
+			}
 		}
 		
 		
