@@ -2,98 +2,99 @@
 
 
 function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = false ) {
+	
+	//
+	if ( ! file_exists ( $__eb_cache_conf )) {
+		return '';
+	}
+	
+	// nếu có file kiểm tra lần update cuối
+	if ( ! file_exists ( $file_last_update ) ) {
+		unlink ( $__eb_cache_conf );
+		return '';
+	}
+	
+	//
 	$error_admin_log_cache = '';
 	
 	//
-	if (file_exists ( $__eb_cache_conf )) {
-		
-		// nếu có file kiểm tra lần update cuối
-		if ( file_exists ( $file_last_update ) ) {
-			
-			//
-			/*
-			if ( function_exists('php_check_syntax') ) {
-				echo 'php_check_syntax<br>';
-			}
-			*/
-			
-			/*
-			if ( file_exists($__eb_cache_conf) && is_readable($__eb_cache_conf) ) {
-				include_once $__eb_cache_conf;
-			} else {
-				throw new Exception('Include file does not exists or is not readable.');
-			}
-			*/
-			
-			$last_update = filemtime ( $file_last_update );
-	//		$last_update = file_get_contents ( $file_last_update );
-			
-			// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
-			if ( $auto_clean == true && $last_update > 0 && date_time - $last_update > 2100 ) {
-				unlink ( $__eb_cache_conf );
-				unlink ( $file_last_update );
-				$error_admin_log_cache = 'Auto reset cache after 2100s';
-			}
-			// nạp conf
-			else {
-				// cứ 120s, kiểm tra lỗi code 1 lần
-				if ( $last_update > 0 && date_time - $last_update > 120 ) {
-					// kiểm tra lỗi cấu trúc file nếu có
-					$return_check_syntax = 0;
-					if ( function_exists('exec') ) {
-						exec("php -l {$__eb_cache_conf}", $output, $return_check_syntax);
-	//					echo $return_check_syntax . '<br>';
-						
-						// khác 0 -> có lỗi
-						if ( $return_check_syntax != 0 ) {
-							//
-	//						echo 'ERROR code!'; exit();
-							
-							// xóa file cache đi để thử lại
-							sleep( rand( 2, 10 ) );
-							unlink ( $__eb_cache_conf );
-							unlink ( $file_last_update );
-							$error_admin_log_cache = 'Cache syntax ERROR by exec';
-							
-							//
-	//						echo eb_web_protocol . ':' . _eb_full_url();
-	//						wp_redirect( eb_web_protocol . ':' . _eb_full_url(), 302 ); exit();
-						}
-						// không lỗi thì dùng bình thường
-						/*
-						else {
-							include_once $__eb_cache_conf;
-						}
-						*/
-					}
-					else {
-						// kiểm tra ký tự cuối cùng của file
-						$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
-						// nếu là dấu ; -> ok
-						if ( substr( $return_check_syntax, -1 ) != ';' ) {
-							// xóa file cache đi để thử lại
-							sleep( rand( 2, 10 ) );
-							unlink ( $__eb_cache_conf );
-							unlink ( $file_last_update );
-							$error_admin_log_cache = 'Cache syntax ERROR by substr';
-						}
-					}
+	/*
+	if ( function_exists('php_check_syntax') ) {
+		echo 'php_check_syntax<br>';
+	}
+	*/
+	
+	/*
+	if ( file_exists($__eb_cache_conf) && is_readable($__eb_cache_conf) ) {
+		include_once $__eb_cache_conf;
+	} else {
+		throw new Exception('Include file does not exists or is not readable.');
+	}
+	*/
+	
+	$last_update = filemtime ( $file_last_update );
+//	$last_update = file_get_contents ( $file_last_update );
+	
+	// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
+	if ( $auto_clean == true && $last_update > 0 && date_time - $last_update > 2100 ) {
+		unlink ( $__eb_cache_conf );
+		unlink ( $file_last_update );
+		$error_admin_log_cache = 'Auto reset cache after 2100s';
+	}
+	// nạp conf
+	else {
+		// cứ 120s, kiểm tra lỗi code 1 lần
+		if ( $last_update > 0 && date_time - $last_update > 120 ) {
+			// kiểm tra lỗi cấu trúc file nếu có
+			$return_check_syntax = 0;
+			if ( function_exists('exec') ) {
+				exec("php -l {$__eb_cache_conf}", $output, $return_check_syntax);
+//				echo $return_check_syntax . '<br>';
+				
+				// khác 0 -> có lỗi
+				if ( $return_check_syntax != 0 ) {
+					//
+//					echo 'ERROR code!'; exit();
+					
+					// xóa file cache đi để thử lại
+					sleep( rand( 2, 10 ) );
+					unlink ( $__eb_cache_conf );
+					unlink ( $file_last_update );
+					$error_admin_log_cache = 'Cache syntax ERROR by exec';
+					
+					//
+//					echo eb_web_protocol . ':' . _eb_full_url();
+//					wp_redirect( eb_web_protocol . ':' . _eb_full_url(), 302 ); exit();
 				}
-//				else {
-	//				try {
-//						include_once $__eb_cache_conf;
-						/*
-					} catch ( Exception $e ) {
-						echo 'Error include site config';
-					}
-					*/
-//				}
+				// không lỗi thì dùng bình thường
+				/*
+				else {
+					include_once $__eb_cache_conf;
+				}
+				*/
+			}
+			else {
+				// kiểm tra ký tự cuối cùng của file
+				$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
+				// nếu là dấu ; -> ok
+				if ( substr( $return_check_syntax, -1 ) != ';' ) {
+					// xóa file cache đi để thử lại
+					sleep( rand( 2, 10 ) );
+					unlink ( $__eb_cache_conf );
+					unlink ( $file_last_update );
+					$error_admin_log_cache = 'Cache syntax ERROR by substr';
+				}
 			}
 		}
-		// không có thì xóa luôn file conf cũ
-		else {
-			unlink ( $__eb_cache_conf );
-		}
+//		else {
+//			try {
+//				include_once $__eb_cache_conf;
+				/*
+			} catch ( Exception $e ) {
+				echo 'Error include site config';
+			}
+			*/
+//		}
 	}
 	
 	//
