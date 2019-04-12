@@ -1,99 +1,18 @@
 <?php
 
 
+
+// tách riêng phần cache config ra -> phần này chỉ có thay đổi khi người dùng update
+include_once EB_THEME_CORE . 'cache_config.php';
+include_once EB_THEME_CORE . 'cache_lang.php';
+
+
+
 //
-$error_admin_log_cache = '';
+$error_admin_log_cache = WGR_check_syntax( $__eb_cache_conf, $file_last_update, true );
 $last_update = 0;
-if (file_exists ( $__eb_cache_conf )) {
-	
-	// nếu có file kiểm tra lần update cuối
-	if ( file_exists ( $file_last_update ) ) {
-		
-		//
-		/*
-		if ( function_exists('php_check_syntax') ) {
-			echo 'php_check_syntax<br>';
-		}
-		*/
-		
-		/*
-		if ( file_exists($__eb_cache_conf) && is_readable($__eb_cache_conf) ) {
-			include_once $__eb_cache_conf;
-		} else {
-			throw new Exception('Include file does not exists or is not readable.');
-		}
-		*/
-		
-		$last_update = filemtime ( $file_last_update );
-//		$last_update = file_get_contents ( $file_last_update );
-		
-		// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
-		if ( $last_update > 0 && date_time - $last_update > 2100 ) {
-			unlink ( $__eb_cache_conf );
-			unlink ( $file_last_update );
-			$error_admin_log_cache = 'Auto reset cache after 2100s';
-		}
-		// nạp conf
-		else {
-			// cứ 120s, kiểm tra lỗi code 1 lần
-			if ( $last_update > 0 && date_time - $last_update > 120 ) {
-				// kiểm tra lỗi cấu trúc file nếu có
-				$return_check_syntax = 0;
-				if ( function_exists('exec') ) {
-					exec("php -l {$__eb_cache_conf}", $output, $return_check_syntax);
-//					echo $return_check_syntax . '<br>';
-					
-					// khác 0 -> có lỗi
-					if ( $return_check_syntax != 0 ) {
-						//
-//						echo 'ERROR code!'; exit();
-						
-						// xóa file cache đi để thử lại
-						sleep( rand( 2, 10 ) );
-						unlink ( $__eb_cache_conf );
-						unlink ( $file_last_update );
-						$error_admin_log_cache = 'Cache syntax ERROR by exec';
-						
-						//
-//						echo eb_web_protocol . ':' . $func->full_url();
-//						wp_redirect( eb_web_protocol . ':' . $func->full_url(), 302 ); exit();
-					}
-					// không lỗi thì dùng bình thường
-					else {
-						include_once $__eb_cache_conf;
-					}
-				}
-				else {
-					// kiểm tra ký tự cuối cùng của file
-					$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
-					// nếu là dấu ; -> ok
-					if ( substr( $return_check_syntax, -1 ) == ';' ) {
-						include_once $__eb_cache_conf;
-					}
-					else {
-						// xóa file cache đi để thử lại
-						sleep( rand( 2, 10 ) );
-						unlink ( $__eb_cache_conf );
-						unlink ( $file_last_update );
-						$error_admin_log_cache = 'Cache syntax ERROR by substr';
-					}
-				}
-			}
-			else {
-//				try {
-					include_once $__eb_cache_conf;
-					/*
-				} catch ( Exception $e ) {
-					echo 'Error include site config';
-				}
-				*/
-			}
-		}
-	}
-	// không có thì xóa luôn file conf cũ
-	else {
-		unlink ( $__eb_cache_conf );
-	}
+if ( $error_admin_log_cache == '' ) {
+	include_once $__eb_cache_conf;
 }
 // chấp nhận lần đầu truy cập sẽ lỗi
 //@include_once $__eb_cache_conf;
@@ -243,7 +162,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		// tham số để lưu cache
-		$__eb_cache_content = '$__eb_cache_time=' . date_time . ';';
+		$arr_new_config = array();
+		$__eb_cache_content = '$__eb_cache_time=' . date_time . ';' . "\n";
 		
 		
 		
@@ -251,19 +171,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* Một số thông số khác
 		*/
-		
-		
-		
-		
-		
-		/*
-		* lấy các dữ liệu được tạo riêng cho config -> $post_id = -1;
-		*/
-		// reset lại cache
-		$__cf_row = $__cf_row_default;
-		
-		//
-		_eb_get_config();
 		
 		
 		//
@@ -276,18 +183,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		}
 		
 		//
-//		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";$web_link="' . str_replace( '"', '\"', $web_link ) . '";';
-		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";';
-			
-		
-		// chỉnh lại số điện thoại sang dạng html -> do safari lỗi hiển thị
-		if ( $__cf_row['cf_call_dienthoai'] == '' && $__cf_row['cf_dienthoai'] != '' ) {
-			$__cf_row['cf_call_dienthoai'] = '<a href="tel:' . $__cf_row['cf_dienthoai'] . '" rel="nofollow">' . $__cf_row['cf_dienthoai'] . '</a>';
-		}
-		
-		if ( $__cf_row['cf_call_hotline'] == '' && $__cf_row['cf_hotline'] != '' ) {
-			$__cf_row['cf_call_hotline'] = '<a href="tel:' . $__cf_row['cf_hotline'] . '" rel="nofollow">' . $__cf_row['cf_hotline'] . '</a>';
-		}
+//		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";$web_link="' . str_replace( '"', '\"', $web_link ) . '";' . "\n";
+		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";' . "\n";
 		
 		
 		//
@@ -299,11 +196,11 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		&& $__cf_row ["cf_reset_cache"] <= 0 ) {
 			// cho cache 120s mặc định
 			if ( $__cf_row['cf_ngay'] < date_time - 3 * 3600 ) {
-				$__cf_row ["cf_reset_cache"] = 120;
+				$arr_new_config ["cf_reset_cache"] = 120;
 			}
 			// hoặc tối thiểu 10s để còn test cache
 			else {
-				$__cf_row ["cf_reset_cache"] = 10;
+				$arr_new_config ["cf_reset_cache"] = 10;
 			}
 		}
 //		print_r( $__cf_row );
@@ -322,24 +219,24 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 //		$cf_blog_public = 1;
 		if ( isset( $sql[0]->option_value ) ) {
 //			$cf_blog_public = $sql[0]->option_value;
-			$__cf_row ["cf_blog_public"] = $sql[0]->option_value;
+			$arr_new_config ["cf_blog_public"] = $sql[0]->option_value;
 		}
 		*/
-//		$__cf_row ["cf_blog_public"] = get_option( 'blog_public' );
-		$__cf_row ["cf_blog_public"] = _eb_get_option( 'blog_public' );
+//		$arr_new_config ["cf_blog_public"] = get_option( 'blog_public' );
+		$arr_new_config ["cf_blog_public"] = _eb_get_option( 'blog_public' );
 		
 		// định dạng ngày giờ
-//		$__cf_row ["cf_date_format"] = get_option( 'date_format' );
-		$__cf_row ["cf_date_format"] = _eb_get_option( 'date_format' );
-//		$__cf_row ["cf_time_format"] = get_option( 'time_format' );
-		$__cf_row ["cf_time_format"] = _eb_get_option( 'time_format' );
-		
-		// tên thư mục chứa theme theo tiêu chuẩn của echbay
-		$__cf_row ["cf_theme_dir"] = basename( dirname( dirname( EB_THEME_HTML ) ) );
+//		$arr_new_config ["cf_date_format"] = get_option( 'date_format' );
+		$arr_new_config ["cf_date_format"] = _eb_get_option( 'date_format' );
+//		$arr_new_config ["cf_time_format"] = get_option( 'time_format' );
+		$arr_new_config ["cf_time_format"] = _eb_get_option( 'time_format' );
 		
 		// -> tạo chuỗi để lưu cache
-		foreach ( $__cf_row as $k => $v ) {
-			$__eb_cache_content .= '$__cf_row[\'' . $k . '\']="' . str_replace ( '"', '\"', str_replace ( '$', '\$', $v ) ) . '";';
+		foreach ( $arr_new_config as $k => $v ) {
+			$__eb_cache_content .= '$__cf_row[\'' . $k . '\']="' . str_replace ( '"', '\"', str_replace ( '$', '\$', $v ) ) . '";' . "\n";
+			
+			//
+			$__cf_row [ $k ] = $v;
 		}
 		
 		
@@ -357,121 +254,12 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		
-		/*
-		* Danh sách bản dịch
-		*/
-		$___eb_lang = $___eb_default_lang;
-		EBE_get_lang_list();
-//		print_r( $___eb_lang );
-		
-		// -> tạo chuỗi để lưu cache
-		foreach ( $___eb_lang as $k => $v ) {
-			$__eb_cache_content .= '$___eb_lang[\'' . $k . '\']="' . str_replace ( '"', '\"', str_replace ( '$', '\$', $v ) ) . '";';
-		}
-		
-		
-		
-		
-		
-		/*
-		* Tối ưu thẻ META với mạng xã hội
-		*/
-		$arr_meta = array();
-		
-		// social
-		if ( $__cf_row ['cf_google_plus'] != '' ) {
-			$arr_meta[] = '<meta itemprop="author" content="' .$__cf_row ['cf_google_plus']. '?rel=author" />';
-			$arr_meta[] = '<link rel="author" href="' .$__cf_row ['cf_google_plus']. '" />';
-			$arr_meta[] = '<link rel="publisher" href="' .$__cf_row ['cf_google_plus']. '" />';
-		}
-		
-		// https://developers.facebook.com/docs/plugins/comments/#settings
-		if ( $__cf_row ['cf_facebook_id'] != '' ) {
-			$arr_meta[] = '<meta property="fb:app_id" content="' . $__cf_row ['cf_facebook_id'] . '" />';
-		}
-		else if ( $__cf_row ['cf_facebook_admin_id'] != '' ) {
-			// v2 -> fb có ghi chú, chỉ sử dụng 1 trong 2 (fb:app_id hoặc fb:admins)
-			$fb_admins = explode( ',', $__cf_row ['cf_facebook_admin_id'] );
-			foreach ( $fb_admins as $v ) {
-				$v = trim( $v );
-				if ( $v != '' ) {
-					$arr_meta[] = '<meta property="fb:admins" content="' . $v . '" />';
-				}
-			}
-			
-			// v1
-//			$arr_meta[] = '<meta property="fb:admins" content="' .$__cf_row ['cf_facebook_admin_id']. '" />';
-		}
-		
-		/* https://developers.facebook.com/tools/debug/og/object/
-		if ( $__cf_row ['cf_facebook_page'] != '' ) {
-			$arr_meta[] = '<meta property="article:publisher" content="' . $__cf_row ['cf_facebook_page'] . '" />';
-			$arr_meta[] = '<meta property="article:author" content="' . $__cf_row ['cf_facebook_page'] . '" />';
-		}
-		*/
-		
-		// seo local
-		if ( $__cf_row ['cf_region'] != '' ) {
-			$arr_meta[] = '<meta name="geo.region" content="' . $__cf_row ['cf_region'] . '" />';
-		}
-		
-		if ( $__cf_row ['cf_placename'] != '' ) {
-			$arr_meta[] = '<meta name="geo.placename" content="' . $__cf_row ['cf_placename'] . '" />';
-		}
-		
-		if ( $__cf_row ['cf_position'] != '' ) {
-			$arr_meta[] = '<meta name="geo.position" content="' . $__cf_row ['cf_position'] . '" />';
-			$arr_meta[] = '<meta name="ICBM" content="' . $__cf_row ['cf_position'] . '" />';
-		}
-		
-		//
-//		print_r( $arr_meta );
-		$dynamic_meta = '';
-		/*
-		foreach ( $arr_meta as $v ) {
-			$dynamic_meta .= $v . "\n";
-		}
-		*/
-		$dynamic_meta .= implode( "\n", $arr_meta );
-		
-		// save
-		$__eb_cache_content .= '$dynamic_meta="' . str_replace( '"', '\"', $dynamic_meta ) . '";';
-		
-		
-		
-		
-		/*
-		* ID và tài khoản MXH
-		*/
-		$add_data_id = array (
-//			'web_name' => '\'' . $__cf_row ['web_name'] . '\'',
-//			'service_name' => '\'' . $service_name . '\'',
-			
-			'eb_disable_auto_get_thumb' => (int) $__cf_row ['cf_disable_auto_get_thumb'],
-			
-			'cf_facebook_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_facebook_page'] ) . '\'',
-			'__global_facebook_id' => '\'' . $__cf_row ['cf_facebook_id'] . '\'',
-			'cf_instagram_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_instagram_page'] ) . '\'',
-			'cf_google_plus' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_google_plus'] ) . '\'',
-			'cf_youtube_chanel' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_youtube_chanel'] ) . '\'',
-			'cf_twitter_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_twitter_page'] ) . '\'' 
-		);
-		$cache_data_id = '';
-		foreach ( $add_data_id as $k => $v ) {
-			$cache_data_id .= ',' . $k . '=' . $v;
-		}
-		$cache_data_id = substr ( $cache_data_id, 1 );
-		$__eb_cache_content .= '$cache_data_id="' . $cache_data_id . '";';
-		
-		
-		
-		
 		
 		// danh sách menu đã được đăng ký
 		$menu_locations = get_nav_menu_locations();
 //		print_r($menu_locations);
 		foreach ( $menu_locations as $k => $v ) {
-			$__eb_cache_content .= '$menu_cache_locations[\'' . $k . '\']="' . $v . '";';
+			$__eb_cache_content .= '$menu_cache_locations[\'' . $k . '\']="' . $v . '";' . "\n";
 		}
 		
 		
@@ -498,11 +286,12 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		// không cho tạo cache liên tục
 		// chỉ tạo khi khách truy cập hoặc không có file
 		if ( mtv_id == 0 || ! file_exists( $file_last_update ) || ! file_exists( $__eb_cache_conf ) ) {
-			// tạo file cache
-			_eb_create_file ( $file_last_update, date_time );
 			
 //			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
 			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
+			
+			// tạo file cache
+			_eb_create_file ( $file_last_update, date_time );
 			
 			//
 			_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
@@ -511,6 +300,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			if ( $error_admin_log_cache != '' ) {
 				_eb_log_admin( $error_admin_log_cache );
 			}
+			
 		}
 		
 		
@@ -617,79 +407,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		
-	}
-}
-
-
-
-
-
-// chuyển đơn vị tiền tệ từ sau ra trước
-$custom_css_for_price = '';
-if ( $__cf_row['cf_current_price_before'] == 1 ) {
-	
-	//
-	$custom_css_for_price .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
-	
-	
-	// đổi đơn vị tiền tệ
-	if ( $__cf_row['cf_current_price'] != '' ) {
-		$custom_css_for_price .= '.ebe-currency:before{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
-	}
-}
-// đổi đơn vị tiền tệ
-else if ( $__cf_row['cf_current_price'] != '' ) {
-	$custom_css_for_price .= '.ebe-currency:after{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
-}
-$__cf_row['cf_default_css'] .= $custom_css_for_price;
-
-
-
-// tạo mặt nạ cho nội dung
-/*
-if ( $__cf_row['cf_set_mask_for_details'] == 1 ) {
-	$__cf_row['cf_default_css'] .= '.thread-content-mask{right:0;bottom:0;display:block}';
-}
-*/
-
-
-
-// chỉnh lại CSS cho phần thread-home-c2
-if ( $__cf_row['cf_home_sub_cat_tag'] != '' ) {
-	//
-//	$__cf_row['cf_default_css'] .= '.thread-home-c2 a{color:' . $__cf_row['cf_default_color'] . '}.thread-home-c2 ' . $__cf_row['cf_home_sub_cat_tag'] . ':first-child{background-color:' . $__cf_row['cf_default_bg'] . '}.thread-home-c2 a:first-child {background:none !important}';
-	
-	//
-	$__cf_row['cf_default_css'] = str_replace( '.thread-home-c2 a:first-child', '.thread-home-c2 ' . $__cf_row['cf_home_sub_cat_tag'] . ':first-child', $__cf_row['cf_default_css'] );
-}
-
-
-
-
-// thiết lập chiều rộng cho các module riêng lẻ
-if ( $__cf_row['cf_blog_class_style'] != '' ) {
-	if ( $__cf_row['cf_top_class_style'] == '' ) {
-		$__cf_row['cf_top_class_style'] = $__cf_row['cf_blog_class_style'];
-	}
-	
-	if ( $__cf_row['cf_footer_class_style'] == '' ) {
-		$__cf_row['cf_footer_class_style'] = $__cf_row['cf_blog_class_style'];
-	}
-	
-	if ( $__cf_row['cf_cats_class_style'] == '' ) {
-		$__cf_row['cf_cats_class_style'] = $__cf_row['cf_blog_class_style'];
-	}
-	
-	if ( $__cf_row['cf_post_class_style'] == '' ) {
-		$__cf_row['cf_post_class_style'] = $__cf_row['cf_blog_class_style'];
-	}
-	
-	if ( $__cf_row['cf_blogs_class_style'] == '' ) {
-		$__cf_row['cf_blogs_class_style'] = $__cf_row['cf_blog_class_style'];
-	}
-	
-	if ( $__cf_row['cf_blogd_class_style'] == '' ) {
-		$__cf_row['cf_blogd_class_style'] = $__cf_row['cf_blog_class_style'];
 	}
 }
 
