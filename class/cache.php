@@ -60,7 +60,7 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 					sleep( rand( 2, 10 ) );
 					unlink ( $__eb_cache_conf );
 					unlink ( $file_last_update );
-					$error_admin_log_cache = 'Cache syntax ERROR by exec';
+					$error_admin_log_cache = 'Cache syntax ERROR by exec ' . basename( $__eb_cache_conf );
 					
 					//
 //					echo eb_web_protocol . ':' . _eb_full_url();
@@ -82,7 +82,7 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 					sleep( rand( 2, 10 ) );
 					unlink ( $__eb_cache_conf );
 					unlink ( $file_last_update );
-					$error_admin_log_cache = 'Cache syntax ERROR by substr';
+					$error_admin_log_cache = 'Cache syntax ERROR by substr ' . basename( $__eb_cache_conf );
 				}
 			}
 		}
