@@ -17,7 +17,7 @@ foreach ( $a as $v ) {
 	echo '
 <tr>
 	<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '">' . WGR_get_user_email( $v->tv_id ) . '</a></td>
-	<td>' . date( $date_format . ' (' . $time_format . ')', $v->l_ngay ) . '</td>
+	<td title="' . $v->l_ngay . '" class="number-to-time">-</td>
 	<td>' . $v->l_ip . '</td>
 	<td class="content-to-short">' . $v->l_noidung . '</td>
 </tr>';

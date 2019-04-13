@@ -37,8 +37,8 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 	
 	// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
 	if ( $auto_clean == true && $last_update > 0 && date_time - $last_update > 2100 ) {
-		unlink ( $__eb_cache_conf );
 		unlink ( $file_last_update );
+		unlink ( $__eb_cache_conf );
 		$error_admin_log_cache = 'Auto reset cache after 2100s';
 	}
 	// nạp conf
@@ -57,9 +57,9 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 //					echo 'ERROR code!'; exit();
 					
 					// xóa file cache đi để thử lại
-					sleep( rand( 2, 10 ) );
-					unlink ( $__eb_cache_conf );
 					unlink ( $file_last_update );
+					unlink ( $__eb_cache_conf );
+//					sleep( rand( 2, 10 ) );
 					$error_admin_log_cache = 'Cache syntax ERROR by exec ' . basename( $__eb_cache_conf );
 					
 					//
@@ -79,9 +79,9 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 				// nếu là dấu ; -> ok
 				if ( substr( $return_check_syntax, -1 ) != ';' ) {
 					// xóa file cache đi để thử lại
-					sleep( rand( 2, 10 ) );
-					unlink ( $__eb_cache_conf );
 					unlink ( $file_last_update );
+					unlink ( $__eb_cache_conf );
+//					sleep( rand( 2, 10 ) );
 					$error_admin_log_cache = 'Cache syntax ERROR by substr ' . basename( $__eb_cache_conf );
 				}
 			}

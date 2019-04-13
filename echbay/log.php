@@ -50,6 +50,10 @@ include_once $include_tab;
 
 
 //
+_time_date();
+
+
+//
 $('.content-to-short').each(function() {
 	var len = 110,
 		a = $(this).html() || '',
