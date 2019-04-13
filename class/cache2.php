@@ -161,8 +161,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		
 		//
-//		if ( mtv_id == 0 || ! file_exists( $file_last_update ) ) {
-		if ( ! file_exists( $file_last_update ) ) {
+		if ( mtv_id == 0 || ! file_exists( $file_last_update ) ) {
+//		if ( ! file_exists( $file_last_update ) ) {
 			// tạo file cache
 			_eb_create_file ( $file_last_update, date_time );
 		}
@@ -293,8 +293,8 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		*/
 		// không cho tạo cache liên tục
 		// chỉ tạo khi khách truy cập hoặc không có file
-//		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
-		if ( ! file_exists( $__eb_cache_conf ) ) {
+		if ( mtv_id == 0 || ! file_exists( $__eb_cache_conf ) ) {
+//		if ( ! file_exists( $__eb_cache_conf ) ) {
 			
 //			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
 			_eb_create_file ( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
