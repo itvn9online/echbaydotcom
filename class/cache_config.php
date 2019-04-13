@@ -13,10 +13,63 @@ WGR_check_syntax( $__eb_cache_only_conf, $__eb_txt_only_conf );
 // chỉ tạo khi không có file cache config, hoặc người dùng đang đăng nhập thì lấy config theo thời gian thực
 if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 	
+	/*
+	* Tự tạo các thư mục phục vụ cho cache nếu chưa có
+	*/
+	
+	// Kiểm tra và tạo thư mục cache nếu chưa có
+	if( ! is_dir( EB_THEME_CACHE ) ) {
+//		echo EB_THEME_CACHE . '<br>' . "\n";
+		
+		// tự động tạo thư mục uploads nếu chưa có
+		$dir_wp_uploads = dirname(EB_THEME_CACHE);
+//		echo $dir_wp_uploads . '<br>' . "\n";
+		if( !is_dir( $dir_wp_uploads ) ) {
+			mkdir( $dir_wp_uploads, 0777 ) or die("ERROR create uploads directory: " . $dir_wp_uploads);
+			// server window ko cần chmod
+			chmod( $dir_wp_uploads, 0777 ) or die('chmod ERROR');
+		}
+		
+		mkdir( EB_THEME_CACHE, 0777 ) or die("ERROR create cache directory");
+		// server window ko cần chmod
+		chmod( EB_THEME_CACHE, 0777 ) or die('chmod ERROR');
+	}
+	
+	
 	// tạo file này càng sớm càng tốt -> để hạn chế nhiều người cùng tạo file 1 lúc
 	if ( ! file_exists( $__eb_txt_only_conf ) ) {
 		_eb_create_file ( $__eb_txt_only_conf, 1 );
 	}
+	
+	
+	// các thư mục con của cache
+	$arr_create_dir_cache = array(
+		// lưu cache của các file css, js
+		'static',
+		'all',
+		// thư mục mà các file trong này, chỉ bị reset khi hết hạn
+		'noclean',
+		// mail khi người dùng đặt hàng thành công sẽ gửi ở trang hoàn tất
+		'booking_mail',
+		'booking_mail_cache',
+		'admin_invoice_product',
+		'tv_mail',
+		'post_meta',
+		'post_img',
+		'details'
+	);
+	foreach ( $arr_create_dir_cache as $v ) {
+		$v = EB_THEME_CACHE . $v;
+//		echo $v . '<br>';
+		
+		//
+		if ( ! is_dir( $v ) ) {
+			mkdir($v, 0777) or die('mkdir error');
+			// server window ko cần chmod
+			chmod($v, 0777) or die('chmod ERROR');
+		}
+	}
+	
 	
 	
 	/*

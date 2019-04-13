@@ -103,6 +103,32 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 
 
 
+
+function convert_arr_cache_to_parameter($arr) {
+	$str = '';
+	foreach ( $arr as $k => $v ) {
+		$_get_type = gettype ( $v );
+		if ($_get_type == 'array') {
+			$_content = '';
+			foreach ( $v as $k2 => $v2 ) {
+				$_content .= ',"' . $k2 . '"=>"' . str_replace( '"', '\"', $v2 ) . '"';
+			}
+			$str .= '$' . $k . '=array(' . substr ( $_content, 1 ) . ');';
+		} else if ($_get_type == 'integer' || $_get_type == 'double') {
+			$str .= '$' . $k . '=' . $v . ';';
+		} else {
+			$v = str_replace ( '$', '\$', $v );
+			$v = str_replace ( '"', '\"', $v );
+			$str .= '$' . $k . '="' . $v . '";';
+		}
+		$str .= "\n";
+	}
+	
+	return $str;
+}
+
+
+
 /*
 * Các tham số mặc định, khai báo trước khi cche được gọi
 */

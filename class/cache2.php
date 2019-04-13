@@ -14,6 +14,9 @@ $last_update = 0;
 if ( $error_admin_log_cache == '' ) {
 	include_once $__eb_cache_conf;
 }
+else {
+	_eb_log_admin( $error_admin_log_cache );
+}
 // chấp nhận lần đầu truy cập sẽ lỗi
 //@include_once $__eb_cache_conf;
 
@@ -66,28 +69,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 	// kiểm tra lại lần nữa cho chắc ăn
 	if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
-		// Kiểm tra và tạo thư mục cache nếu chưa có
-		if( ! is_dir( EB_THEME_CACHE ) ) {
-//			echo EB_THEME_CACHE . '<br>' . "\n";
-			
-			// tự động tạo thư mục uploads nếu chưa có
-			$dir_wp_uploads = dirname(EB_THEME_CACHE);
-//			echo $dir_wp_uploads . '<br>' . "\n";
-			if( !is_dir( $dir_wp_uploads ) ) {
-				mkdir( $dir_wp_uploads, 0777 ) or die("ERROR create uploads directory: " . $dir_wp_uploads);
-				// server window ko cần chmod
-				chmod( $dir_wp_uploads, 0777 ) or die('chmod ERROR');
-			}
-			
-			mkdir( EB_THEME_CACHE, 0777 ) or die("ERROR create cache directory");
-			// server window ko cần chmod
-			chmod( EB_THEME_CACHE, 0777 ) or die('chmod ERROR');
-		}
-		
-		
-		
-		
-		
 		// dọn cache định kỳ -> chỉ dọn khi không phải thao tác thủ công
 		if ( mtv_id > 0
 //		&& strstr( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) == true
@@ -96,67 +77,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			$_GET['time_auto_cleanup_cache'] = 6 * 3600;
 			
 			include_once EB_THEME_PLUGIN_INDEX . 'cronjob/cleanup_cache.php';
-		}
-		
-		
-		
-		
-		/*
-		* Tự tạo các thư mục phục vụ cho cache nếu chưa có
-		*/
-		
-		// các thư mục con của cache
-		$arr_create_dir_cache = array(
-			// lưu cache của các file css, js
-			'static',
-			'all',
-			// thư mục mà các file trong này, chỉ bị reset khi hết hạn
-			'noclean',
-			// mail khi người dùng đặt hàng thành công sẽ gửi ở trang hoàn tất
-			'booking_mail',
-			'booking_mail_cache',
-			'admin_invoice_product',
-			'tv_mail',
-			'post_meta',
-			'post_img',
-			'details'
-		);
-		foreach ( $arr_create_dir_cache as $v ) {
-			$v = EB_THEME_CACHE . $v;
-//			echo $v . '<br>';
-			
-			//
-			if ( ! is_dir( $v ) ) {
-				mkdir($v, 0777) or die('mkdir error');
-				// server window ko cần chmod
-				chmod($v, 0777) or die('chmod ERROR');
-			}
-		}
-		
-		
-		
-		
-		function convert_arr_cache_to_parameter($arr) {
-			$str = '';
-			foreach ( $arr as $k => $v ) {
-				$_get_type = gettype ( $v );
-				if ($_get_type == 'array') {
-					$_content = '';
-					foreach ( $v as $k2 => $v2 ) {
-						$_content .= ',"' . $k2 . '"=>"' . str_replace( '"', '\"', $v2 ) . '"';
-					}
-					$str .= '$' . $k . '=array(' . substr ( $_content, 1 ) . ');';
-				} else if ($_get_type == 'integer' || $_get_type == 'double') {
-					$str .= '$' . $k . '=' . $v . ';';
-				} else {
-					$v = str_replace ( '$', '\$', $v );
-					$v = str_replace ( '"', '\"', $v );
-					$str .= '$' . $k . '="' . $v . '";';
-				}
-				$str .= "\n";
-			}
-			
-			return $str;
 		}
 		
 		
@@ -179,7 +99,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		/*
 		* Một số thông số khác
 		*/
-		
 		
 		//
 		if ( $__cf_row['cf_web_name'] == '' ) {
@@ -301,11 +220,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 			
 			//
 			_eb_log_user ( 'Update common_cache: ' . $_SERVER ['REQUEST_URI'] );
-			
-			// thông báo log cho admin
-			if ( $error_admin_log_cache != '' ) {
-				_eb_log_admin( $error_admin_log_cache );
-			}
 			
 		}
 		
