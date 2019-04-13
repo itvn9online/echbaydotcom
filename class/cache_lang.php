@@ -11,7 +11,13 @@ WGR_check_syntax( $__eb_cache_only_lang, $__eb_txt_only_lang );
 
 
 // chỉ tạo khi không có file cache config, hoặc người dùng đang đăng nhập thì lấy config theo thời gian thực
-if ( mtv_id > 0 || ! file_exists ( $__eb_cache_only_lang ) ) {
+if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_lang ) ) {
+	
+	// tạo file này càng sớm càng tốt -> để hạn chế nhiều người cùng tạo file 1 lúc
+	if ( ! file_exists( $__eb_txt_only_lang ) ) {
+		_eb_create_file ( $__eb_txt_only_lang, 1 );
+	}
+	
 	
 	/*
 	* Danh sách bản dịch
@@ -29,10 +35,9 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_cache_only_lang ) ) {
 	
 	
 	//
-	if ( mtv_id == 0 || ! file_exists( $__eb_cache_only_lang ) || ! file_exists( $__eb_txt_only_lang ) ) {
+	if ( ! file_exists( $__eb_cache_only_lang ) ) {
 //		echo '<!-- ' . $__eb_cache_only_lang . ' (!!!!!) -->' . "\n";
 		_eb_create_file ( $__eb_cache_only_lang, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
-		_eb_create_file ( $__eb_txt_only_lang, date_time );
 		
 		//
 		_eb_log_user ( 'Update cache_lang: ' . $_SERVER ['REQUEST_URI'] );
