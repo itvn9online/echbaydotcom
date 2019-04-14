@@ -1431,6 +1431,7 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	margin-top: 3px;
 	margin-bottom: 3px;
 }
+.notice.elementor-message { display: none; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }

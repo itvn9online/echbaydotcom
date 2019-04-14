@@ -17,6 +17,7 @@ if ($check_Cleanup_cache == false) {
 	// còn xóa định kỳ thì thôi
 	else {
 		_eb_remove_ebcache_content ();
+		_eb_log_user ( 'Cleanup cache (auto after ' . $_GET['time_auto_cleanup_cache'] . 's): ' . $_SERVER ['REQUEST_URI'] );
 	}
 	
 	// ép lưu cache

@@ -3946,8 +3946,24 @@ setTimeout(function () {
 		var a = jQuery(this).html() || '',
 			str = '',
 			wit = 4/ 5,
+			scrolling = jQuery(this).attr('data-scrolling') || '',
+			localtion = jQuery(this).attr('data-localtion') || '',
 			w = jQuery(this).attr('data-width') || '',
-			h = jQuery(this).attr('data-height') || '';
+			h = jQuery(this).attr('data-height') || '',
+			other_attr = '';
+		console.log( localtion );
+		
+		if ( localtion != '' ) {
+			localtion = g_func.non_mark( localtion );
+			console.log( localtion );
+			
+			// danh sách địa chỉ
+			other_attr += ' aria-label="' + localtion.replace( /\"/g, '&quot;' ) + '"';
+			
+			// thay thế url
+			a = 'https://maps.google.com/maps?q=' + encodeURIComponent( localtion) + '&t=m&z=10&output=embed&iwloc=near'.replace( /\&/g, '&amp;' );
+			console.log( a );
+		}
 		
 		if ( a != '' ) {
 			a = a.split("\n")[0];
@@ -3962,8 +3978,11 @@ setTimeout(function () {
 				if ( h == '' ) {
 					h = jQuery(this).width() * wit;
 				}
+				if ( scrolling == 'on' ) {
+					other_attr += ' scrolling="no"';
+				}
 				
-				str += '<div class="widget_echbay_gg_map-node"><iframe src="' + a + '" width="' + w + '" height="' + h + 'px" frameborder="0" style="border:0" allowfullscreen=""></iframe></div>';
+				str += '<div class="widget_echbay_gg_map-node"><iframe src="' + a + '" width="' + w + '" height="' + h + 'px" frameborder="0" marginheight="0" marginwidth="0"' + other_attr + ' style="border:0" allowfullscreen=""></iframe></div>';
 				
 				jQuery(this).html( str );
 			}
