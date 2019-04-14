@@ -86,10 +86,10 @@ if ( $user_id > 0 ) {
 die('<script type="text/javascript">
 
 if ( top != self ) {
-	parent.document.frm_dangnhap.reset();
+	parent.document.frm_quenpass.reset();
 }
 else {
-	window.opener.document.frm_dangnhap.reset();
+	window.opener.document.frm_quenpass.reset();
 }
 
 alert("' . $m . '");

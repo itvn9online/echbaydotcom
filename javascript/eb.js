@@ -2315,7 +2315,7 @@ var _global_js_eb = {
 		}
 		
 		//
-//		_global_js_eb.wgr_nonce( 'frm_cart' );
+		_global_js_eb.wgr_nonce( 'frm_cart' );
 		_global_js_eb.add_primari_iframe();
 		
 		//
@@ -3190,7 +3190,11 @@ var _global_js_eb = {
 		return true;
 	},
 	check_register : function ( f ) {
-		_global_js_eb.wgr_nonce( form_name );
+		if ( typeof f == 'undefined' ) {
+			f = 'frm_dangky';
+		}
+		
+		_global_js_eb.wgr_nonce( f );
 		
 		return _global_js_eb.add_primari_iframe();
 	},
