@@ -19,6 +19,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 				'url_video' => '',
 				'width' => '',
 				'height' => '',
+				'zoom' => 14,
 				'scrolling' => 1,
 				'css' => ''
 		);
@@ -33,7 +34,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 		
 		echo '<p>Title: <input type="text" class="widefat" name="' . $this->get_field_name ( 'title' ) . '" value="' . $title . '" /></p>';
 		
-		echo '<p class="fix-textarea-height"><strong>Địa chỉ</strong>: <textarea class="widefat" name="' . $this->get_field_name ( 'localtion' ) . '">' . $localtion . '</textarea> Chỉ dùng cho google map. Khi bạn có nhiều địa chỉ khác nhau, hãy liệt kê các địa chỉ này ra đây! Mỗi địa chỉ trên một dòng.</p>';
+		echo '<p class="fix-textarea-height">Địa chỉ (map): <textarea class="widefat" name="' . $this->get_field_name ( 'localtion' ) . '">' . $localtion . '</textarea> <span class="small">Chỉ dùng cho google map. Khi bạn có nhiều địa chỉ khác nhau, hãy liệt kê các địa chỉ này ra đây! Mỗi địa chỉ trên một dòng.</span></p>';
 		
 		echo '<p>URL map hoặc iframe: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" value="' . $url_video . '" /></p>';
 		
@@ -41,7 +42,9 @@ class ___echbay_widget_google_map extends WP_Widget {
 		
 		echo '<p>Chiều cao: <input type="number" class="tiny-text" name="' . $this->get_field_name ( 'height' ) . '" value="' . $height . '" /></p>';
 		
-		_eb_widget_echo_widget_input_checkbox( $this->get_field_name ( 'scrolling' ), $scrolling, 'Ngăn chặn cuộn' );
+		echo '<p>Zoom map: <input type="number" class="tiny-text" name="' . $this->get_field_name ( 'zoom' ) . '" value="' . $zoom . '" /></p>';
+		
+		_eb_widget_echo_widget_input_checkbox( $this->get_field_name ( 'scrolling' ), $scrolling, 'Ngăn chặn cuộn! Giúp thao tác cuộn chuột trên website không bị gián đoạn.' );
 		
 		echo '<p>Custom css: <input type="text" class="widefat" name="' . $this->get_field_name ( 'css' ) . '" value="' . $css . '" /></p>';
 		
@@ -63,7 +66,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 		$url_video = isset( $instance ['url_video'] ) ? $instance ['url_video'] : '';
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		$height = isset( $instance ['height'] ) ? $instance ['height'] : '';
-		$css = isset( $instance ['css'] ) ? $instance ['css'] : '';
+		$zoom = isset( $instance ['zoom'] ) ? $instance ['zoom'] : '';
 		$css = isset( $instance ['css'] ) ? $instance ['css'] : '';
 		$scrolling = 'on';
 		if ( ! isset( $instance ['scrolling'] ) || $instance ['scrolling'] != 'on' ) {
@@ -95,7 +98,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 		}
 		
 		//
-		echo '<div data-width="' . $width . '" data-height="' . $height . '" data-localtion="' . $aria_label . '" data-scrolling="' . $scrolling . '" class="url-to-google-map d-none ' . $css . '">' . $url_video . '</div>';
+		echo '<div data-width="' . $width . '" data-height="' . $height . '" data-localtion="' . $aria_label . '" data-scrolling="' . $scrolling . '" data-zoom="' . $zoom . '" class="url-to-google-map d-none ' . $css . '">' . $url_video . '</div>';
 		
 		//
 		echo $after_widget;

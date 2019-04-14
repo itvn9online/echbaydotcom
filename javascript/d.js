@@ -3948,21 +3948,28 @@ setTimeout(function () {
 			wit = 4/ 5,
 			scrolling = jQuery(this).attr('data-scrolling') || '',
 			localtion = jQuery(this).attr('data-localtion') || '',
+			zoom = jQuery(this).attr('data-zoom') || 10,
 			w = jQuery(this).attr('data-width') || '',
 			h = jQuery(this).attr('data-height') || '',
 			other_attr = '';
-		console.log( localtion );
+//		console.log( localtion );
 		
+		// tự tạo localtion theo địa chỉ
 		if ( localtion != '' ) {
 			localtion = g_func.non_mark( localtion );
-			console.log( localtion );
+//			console.log( localtion );
 			
 			// danh sách địa chỉ
 			other_attr += ' aria-label="' + localtion.replace( /\"/g, '&quot;' ) + '"';
 			
+			//
+			if ( zoom == '' ) {
+				zoom = 14;
+			}
+			
 			// thay thế url
-			a = 'https://maps.google.com/maps?q=' + encodeURIComponent( localtion) + '&t=m&z=10&output=embed&iwloc=near'.replace( /\&/g, '&amp;' );
-			console.log( a );
+			a = 'https://maps.google.com/maps?q=' + encodeURIComponent( localtion) + '&t=m&z=' + zoom.toString() + '&output=embed&iwloc=near'.replace( /\&/g, '&amp;' );
+//			console.log( a );
 		}
 		
 		if ( a != '' ) {
@@ -3977,6 +3984,9 @@ setTimeout(function () {
 				}
 				if ( h == '' ) {
 					h = jQuery(this).width() * wit;
+					if ( h > 450 ) {
+						h = 450;
+					}
 				}
 				if ( scrolling == 'on' ) {
 					other_attr += ' scrolling="no"';
