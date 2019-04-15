@@ -152,7 +152,9 @@ if ( $export_type == 'facebook'
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_facebook.php';
 }
 else if ( $export_type == 'csv' ) {
-//	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+//	if ( isset( $_GET['post_status'] ) ) {
+		$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+//	}
 	
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data );
 //	print_r( $sql );
