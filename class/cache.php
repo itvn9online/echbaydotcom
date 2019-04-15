@@ -46,38 +46,41 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 		// cứ 120s, kiểm tra lỗi code 1 lần
 		if ( $last_update > 0 && date_time - $last_update > 120 ) {
 			// kiểm tra lỗi cấu trúc file nếu có
-			$return_check_syntax = 0;
-			if ( function_exists('exec') ) {
-				exec("php -l {$__eb_cache_conf}", $output, $return_check_syntax);
-//				echo $return_check_syntax . '<br>';
-				
-				// khác 0 -> có lỗi
-				if ( $return_check_syntax != 0 ) {
-					//
-//					echo 'ERROR code!'; exit();
+			// kiểm tra ký tự cuối cùng của file
+			$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
+			
+			// nếu không phải dấu ; -> lỗi
+			if ( substr( $return_check_syntax, -1 ) != ';' ) {
+				// thử kiểm tra lại bằng exec
+				$return_check_syntax = 0;
+				if ( function_exists('exec') ) {
+					exec("php -l {$__eb_cache_conf}", $output, $return_check_syntax);
+//					echo $return_check_syntax . '<br>';
 					
-					// xóa file cache đi để thử lại
-					unlink ( $file_last_update );
-					unlink ( $__eb_cache_conf );
-//					sleep( rand( 2, 10 ) );
-					$error_admin_log_cache = 'Cache syntax ERROR by exec ' . basename( $__eb_cache_conf );
-					
-					//
-//					echo eb_web_protocol . ':' . _eb_full_url();
-//					wp_redirect( eb_web_protocol . ':' . _eb_full_url(), 302 ); exit();
+					// khác 0 -> có lỗi
+					if ( $return_check_syntax != 0 ) {
+						//
+//						echo 'ERROR code!'; exit();
+						
+						// xóa file cache đi để thử lại
+						unlink ( $file_last_update );
+						unlink ( $__eb_cache_conf );
+//						sleep( rand( 2, 10 ) );
+						$error_admin_log_cache = 'Cache syntax ERROR by exec ' . basename( $__eb_cache_conf );
+						
+						//
+//						echo eb_web_protocol . ':' . _eb_full_url();
+//						wp_redirect( eb_web_protocol . ':' . _eb_full_url(), 302 ); exit();
+					}
+					// không lỗi thì dùng bình thường
+					/*
+					else {
+						include_once $__eb_cache_conf;
+					}
+					*/
 				}
-				// không lỗi thì dùng bình thường
-				/*
+				// không thì cứ xóa thẳng tay
 				else {
-					include_once $__eb_cache_conf;
-				}
-				*/
-			}
-			else {
-				// kiểm tra ký tự cuối cùng của file
-				$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
-				// nếu là dấu ; -> ok
-				if ( substr( $return_check_syntax, -1 ) != ';' ) {
 					// xóa file cache đi để thử lại
 					unlink ( $file_last_update );
 					unlink ( $__eb_cache_conf );
