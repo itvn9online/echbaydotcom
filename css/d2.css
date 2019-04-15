@@ -276,7 +276,7 @@ label,
 }
 .blogs_node_chi_chu .echbay-blog-marginleft:before {
 	content: "\f111";
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	font-size: 9px;
 	margin-right: 8px;
 	position: absolute;
@@ -290,7 +290,7 @@ label,
 }
 .blogs_node_chi_chu .echbay-blog-title:before {
 	content: "\f111";
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	font-size: 9px;
 	position: absolute;
 	left: 0;
@@ -352,7 +352,7 @@ label,
 	display: inline-block;
 	margin-right: 5px;
 	content: "\f007";
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 }
 */
 .oi_member_func a,
@@ -1104,7 +1104,7 @@ span.hd_status9 { background: #F00; }
 	font-weight: normal;
 	color: #090;
 	margin-left: 5px;
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 }
 .search-select-option li:hover,
 .search-select-option li:hover a {
@@ -1492,7 +1492,7 @@ button.btn-addto-cart {
 /* thêm icon open youtube */
 .youtube-quick-view li .echbay-blog-avt { text-align: center; }
 .youtube-quick-view li .echbay-blog-avt:before {
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	content: "\f16a";
 	font-size: 30px;
 	margin: 0 auto;
@@ -1613,7 +1613,7 @@ button.btn-addto-cart {
 	position: absolute;
 	right: 10px;
 	top: 0;
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	font-size: 14px;
 }
 .widget-category-selectbox .children { display: none !important; }

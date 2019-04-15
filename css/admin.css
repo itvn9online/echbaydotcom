@@ -958,12 +958,12 @@ tr[data-row="_eb_show_product_avatar"] img { height: 110px; }
 /* #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before, */
 #menu-posts-ads .dashicons-admin-post:before,
 #menu-posts-blog .dashicons-admin-post:before {
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	/*
-	font-family: FontAwesome;
 	text-shadow: 0 0 10px #fff;
 	color: #FF9800 !important;
-	*/
 	font-family: "Font Awesome 5 Free" !important;
+	*/
 	text-shadow: 0 0 30px #fff;
 	color: #fff !important;
 }

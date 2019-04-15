@@ -33,5 +33,5 @@
 .thread-details-phonemua a:first-child { display: block; }
 .thread-details-phonemua a:before {
 	content: "\f095";
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 }

@@ -27,7 +27,7 @@
 #echbaytwo-footer2 .bottom-node a:before,
 #echbaytwo-footer2 .bottom-contact a:before {
 	content: "\f0da";
-	font-family: FontAwesome;
+	font-family: FontAwesome, "Font Awesome 5 Free";
 	color: #f90;
 	display: inline-block;
 	margin-right: 5px;
