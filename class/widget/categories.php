@@ -476,7 +476,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
 		if ( $cat_ids > 0 ) {
 				// lấy lại taxonomy
-				$cat_type = WGR_get_taxonomy_name( $cat_ids );
+				$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
 				if ( $cat_type == '' ) {
 					echo 'taxonomy for #' . $cat_ids . ' not found!';
 					return false;

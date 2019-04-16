@@ -113,9 +113,13 @@ function WGR_widget_home_hot ( $instance ) {
 	$str_home_hot = '';
 	$home_hot_lnk = '';
 	$home_hot_more = '';
+//	echo $cat_ids . '<br>';
+//	echo 'aaaaaaaaaaaaaaaaa<br>';
 	
 	// nếu có phân nhóm -> lấy theo phân nhóm
 	if ( $cat_ids > 0 ) {
+		$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
+//		echo $cat_type . '<br>';
 		
 		// các sản phẩm trong nhóm con
 		/*
@@ -423,7 +427,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	$sortby = isset( $instance ['sortby'] ) ? $instance ['sortby'] : '';
 	
 	$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
-//	$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
+	$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : EB_BLOG_POST_LINK;
 	$get_childs = isset( $instance ['get_childs'] ) ? $instance ['get_childs'] : 'off';
 	
 	$get_full_content = isset( $instance ['get_full_content'] ) ? $instance ['get_full_content'] : 'off';
@@ -555,7 +559,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		//
 		echo '<!-- auto get same cat -->';
 	}
-	
+//	echo 'aaaaaaaaaaaaa<br>';
 	
 	
 	//
@@ -567,7 +571,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	if ( $cat_ids > 0 ) {
 		
 		// lấy lại taxonomy dựa theo ID cho nó chuẩn xác
-		$cat_type = WGR_get_taxonomy_name( $cat_ids );
+		$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
 		if ( $cat_type == '' ) {
 			echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
 		}

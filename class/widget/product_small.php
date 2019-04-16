@@ -96,7 +96,7 @@ class ___echbay_widget_random_product extends WP_Widget {
 		if ( $cat_ids > 0 ) {
 			
 			// lấy lại taxonomy dựa theo ID cho nó chuẩn xác
-			$cat_type = WGR_get_taxonomy_name( $cat_ids );
+			$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
 			if ( $cat_type == '' ) {
 				echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
 			}

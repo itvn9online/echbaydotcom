@@ -3842,7 +3842,7 @@ function WGR_get_post_type_name($id) {
 }
 
 // Dùng để lấy thông tin các term chưa được xác định
-function WGR_get_taxonomy_name($id) {
+function WGR_get_taxonomy_name($id, $df = '' ) {
     global $wpdb;
 
     //
@@ -3854,11 +3854,11 @@ function WGR_get_taxonomy_name($id) {
 		OR term_taxonomy_id = " . $id . "
 	LIMIT 0, 1");
 //	print_r( $sql );
-    if (!empty($sql)) {
+    if ( ! empty($sql) ) {
         return $sql[0]->taxonomy;
     }
 
-    return '';
+    return $df;
 }
 
 function WGR_get_all_term($id) {

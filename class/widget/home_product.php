@@ -109,13 +109,29 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		// nếu có phân nhóm -> lấy theo phân nhóm
 		if ( $cat_ids > 0 ) {
-			$args['cat'] = $cat_ids;
+			$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
+			
+			//
+			if ( $cat_type == 'category' ) {
+				$args['cat'] = $cat_ids;
+			}
+			else {
+				$args['tax_query'] = array(
+					array(
+						'taxonomy' => $cat_type,
+						'field' => 'term_id',
+						'operator' => 'IN',
+						'terms' => array( $cat_ids )
+//						'terms' => $terms_categories,
+					)
+				);
+			}
 			
 			// lấy thông tin phân nhóm luôn
 //			$categories = get_categories($cat_ids);
 //			$categories = get_the_category_by_ID($cat_ids);
-//			$categories = get_term($cat_ids, 'category');
-			$categories = get_term_by('id', $cat_ids, 'category');
+//			$categories = get_term($cat_ids, $cat_type);
+			$categories = get_term_by('id', $cat_ids, $cat_type);
 //			print_r( $categories );
 //			echo 'aaaaaaaaaaa<br>';
 			if ( $categories == false ) {
