@@ -860,14 +860,14 @@ var _global_js_eb = {
 				&& eb_wp_post_type == 'post'
 				&& typeof cf_post_rm_img_width != 'undefined'
 				&& WGR_check_option_on( cf_post_rm_img_width ) ) {
-					jQuery('img', this).removeAttr('width');
+					jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
 					jQuery('.wp-caption', this).width('auto');
 				}
 				else if ( pid > 0
 				&& eb_wp_post_type == 'blog'
 				&& typeof cf_blog_rm_img_width != 'undefined'
 				&& WGR_check_option_on( cf_blog_rm_img_width ) ) {
-					jQuery('img', this).removeAttr('width');
+					jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
 					jQuery('.wp-caption', this).width('auto');
 				}
 				else {
