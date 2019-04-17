@@ -283,6 +283,9 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 		
 		//
 		_eb_log_user ( 'Update cache_config: ' . $_SERVER ['REQUEST_URI'] );
+		
+		// kiểm tra lại sau khi tạo file
+		WGR_check_syntax( $__eb_cache_only_conf, $__eb_txt_only_conf, false, true );
 	}
 	
 }

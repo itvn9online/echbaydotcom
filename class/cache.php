@@ -1,7 +1,7 @@
 <?php
 
 
-function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = false ) {
+function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = false, $re_check = false ) {
 	
 	//
 	if ( ! file_exists ( $__eb_cache_conf )) {
@@ -32,7 +32,14 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 	}
 	*/
 	
-	$last_update = filemtime ( $file_last_update );
+	//
+	$min_time = 120;
+	if ( $re_check == true ) {
+		$last_update = date_time - $min_time * 2;
+	}
+	else {
+		$last_update = filemtime ( $file_last_update );
+	}
 //	$last_update = file_get_contents ( $file_last_update );
 	
 	// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
@@ -44,13 +51,13 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 	// nạp conf
 	else {
 		// cứ 120s, kiểm tra lỗi code 1 lần
-		if ( $last_update > 0 && date_time - $last_update > 120 ) {
+		if ( $last_update > 0 && date_time - $last_update > $min_time ) {
 			// kiểm tra lỗi cấu trúc file nếu có
 			// kiểm tra ký tự cuối cùng của file
 			$return_check_syntax = trim( file_get_contents( $__eb_cache_conf, 1 ) );
 			
 			// nếu không phải dấu ; -> lỗi
-			if ( substr( $return_check_syntax, -1 ) != ';' ) {
+			if ( substr( $return_check_syntax, -1 ) != ';' || $re_check == true ) {
 				// thử kiểm tra lại bằng exec
 				$return_check_syntax = 0;
 				if ( function_exists('exec') ) {
@@ -79,8 +86,8 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 					}
 					*/
 				}
-				// không thì cứ xóa thẳng tay
-				else {
+				// không thì cứ xóa thẳng tay (nếu ko phải là recheck)
+				else if ( $re_check == false ) {
 					// xóa file cache đi để thử lại
 					unlink ( $file_last_update );
 					unlink ( $__eb_cache_conf );

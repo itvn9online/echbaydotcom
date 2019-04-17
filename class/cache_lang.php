@@ -41,6 +41,9 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_lang ) ) {
 		
 		//
 		_eb_log_user ( 'Update cache_lang: ' . $_SERVER ['REQUEST_URI'] );
+		
+		// kiểm tra lại sau khi tạo file
+		WGR_check_syntax( $__eb_cache_only_lang, $__eb_txt_only_lang, false, true );
 	}
 	
 }
