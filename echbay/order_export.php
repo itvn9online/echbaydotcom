@@ -16,7 +16,7 @@ _eb_log_admin( 'Export order in ' . _eb_full_url() );
 
 
 
-$threadInPage = 1000;
+$threadInPage = isset($_GET['limit']) ? (int)$_GET['limit'] : 2000;
 $strFilter = "";
 $strLinkPager = '';
 $offset = 0;
