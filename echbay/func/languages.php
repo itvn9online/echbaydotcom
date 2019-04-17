@@ -23,7 +23,7 @@ EBE_set_lang( $key, $text );
 
 
 //
-//$text = WGR_stripslashes ( trim( $text ) );
+$text = WGR_stripslashes ( trim( $text ) );
 $text = str_replace( '\\\"', '\"', $text );
 
 
@@ -34,7 +34,10 @@ $__eb_txt_only_lang = EB_THEME_CACHE . '___lang.txt';
 file_put_contents( $__eb_cache_only_lang, '$___eb_lang[\'' . $key . '\']="' . str_replace ( '"', '\"', str_replace ( '$', '\$', $text ) ) . '";' . "\n", FILE_APPEND ) or die('ERROR: append main cache file');
 
 // kiểm tra lại sau khi tạo file
-WGR_check_syntax( $__eb_cache_only_lang, $__eb_txt_only_lang, false, true );
+$error_admin_log_cache = WGR_check_syntax( $__eb_cache_only_lang, $__eb_txt_only_lang, false, true );
+if ( $error_admin_log_cache != '' ) {
+	_eb_log_admin( $error_admin_log_cache );
+}
 
 
 

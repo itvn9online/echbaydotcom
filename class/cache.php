@@ -34,6 +34,7 @@ function WGR_check_syntax ( $__eb_cache_conf, $file_last_update, $auto_clean = f
 	
 	//
 	$min_time = 120;
+	// thêm lệnh re-check, vì nhiều khi lỗi không chỉ nằm ở dấu ;
 	if ( $re_check == true ) {
 		$last_update = date_time - $min_time * 2;
 	}
