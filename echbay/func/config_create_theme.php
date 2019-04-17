@@ -77,7 +77,7 @@ function WGR_create_themes_default_format (
 * Big banner (primary banner):
 <div><?php echo WGR_get_bigbanner(); ?></div>
 *
-* Get search form:
+* Get search form: top-search-hide
 <div><?php echo EBE_get_html_search(); ?></div>
 *
 * GET cart URL:

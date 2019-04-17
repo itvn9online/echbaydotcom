@@ -125,6 +125,10 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		str_placeholder = '';
 		if ( typeof ops['placeholder'] != 'undefined' && typeof ops['placeholder'][x] != 'undefined' ) {
 			str_placeholder = ops['placeholder'][x];
+//			console.log( str_placeholder );
+			if ( str_placeholder != '' ) {
+				str_placeholder = str_placeholder.toString().replace(/\"/g, '&quot;');
+			}
 		}
 		
 		// tạo input
@@ -169,7 +173,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			}
 			
 			//
-			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x] + '" data-donvi="' + donvi + '" placeholder="' + str_placeholder + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
+			str_input = '<input type="' + arr_input_type[x] + '" name="' + name_input + '" value="' + a[x].toString().replace(/\"/g, '&quot;') + '" data-donvi="' + donvi + '" placeholder="' + str_placeholder + '" class="' + with_class + ' ' + op['input_css'] + '" maxlength="' + maxlength + '" />';
 		}
 		
 		// ghi chú

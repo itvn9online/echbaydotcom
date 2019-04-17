@@ -146,6 +146,43 @@
 #aabbcc button { }
 #aabbcc button i { }
 #aabbcc button span { }
+/* ================================== search (hide version) ================================== */
+#aabbcc .top-search-module { position: relative; }
+#aabbcc .top-search-hide { }
+#aabbcc .top-search-hide i {
+	display: inline-block;
+	cursor: pointer;
+}
+#aabbcc .div-search-margin {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	z-index: 9;
+}
+#aabbcc .top-search-module.active .div-search-margin { display: block; }
+#aabbcc .div-search {
+	width: 350px;
+	text-align: left;
+	border-radius: 5px;
+	box-shadow: 0 0 20px #999;
+}
+#aabbcc input[type="search"] {
+	padding-left: 5%;
+	width: 85%;
+	height: 30px;
+	border-radius: 5px;
+}
+#aabbcc button {
+	width: 15%;
+	border-radius: 0 5px 5px 0;
+}
+#aabbcc button i { }
+#aabbcc button span { }
 /* ================================== oi_member_func ================================== */
 #aabbcc .oi_member_func { }
 #aabbcc .oi_member_func a { }
