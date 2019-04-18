@@ -87,6 +87,9 @@ $__cf_row_default = array(
 	// mã ngoài cho phần admin
 	'cf_js_admin' => '',
 	
+	// google font
+	'cf_google_font' => '',
+	
 	// mã dành cho chơi GA
 	'cf_js_gadsense' => '',
 	'cf_js_gadsense_full' => '',

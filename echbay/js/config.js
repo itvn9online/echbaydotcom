@@ -754,18 +754,23 @@ if ( current_module_config != 'config_theme' ) {
 			{
 				'background_image' : '',
 				'background_position' : arr_bg_background_position,
-				'background_size' : arr_bg_background_size
+				'background_size' : arr_bg_background_size,
+				'height' : ''
 			},
 			{
 				'background_image' : 'Logo (footer)',
 				'background_position' : 'Vị trí (footer)',
-				'background_size' : 'Kích thước (footer)'
+				'background_size' : 'Kích thước (footer)',
+				'height' : 'Chiều cao logo (footer)'
 			}, {
 				'background_image' : 'Sử dụng khi bạn muốn có từ 2 Logo trở lên, chỗ nào muốn sử dụng logo thứ 2 này thì nhập class CSS <strong>web2-logo</strong> bao ngoài để phủ định class web-logo mặc định.',
 				'background_position' : 'Sử dụng khi bạn muốn logo dưới footer ở một vị trí khác so với top',
-				'background_size' : 'Sử dụng khi bạn muốn logo dưới footer có kích thước khác so với top'
+				'background_size' : 'Sử dụng khi bạn muốn logo dưới footer có kích thước khác so với top',
+				'height' : 'Sử dụng khi bạn muốn logo dưới footer có Chiều cao khác so với top'
 			},
-			{},
+			{
+				'height' : 'number'
+			},
 			data['cf_css_footer_logo'],
 			{
 //				'input_css' : 'each-to-css-for-logo',
@@ -777,6 +782,9 @@ if ( current_module_config != 'config_theme' ) {
 				},
 				'maxlength' : {
 					'background_image' : 255
+				},
+				'donvi' : {
+					'height' : 'px'
 				}
 			}
 		);

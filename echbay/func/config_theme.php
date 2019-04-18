@@ -232,11 +232,6 @@ foreach( $_POST as $k => $v ) {
 //
 //_eb_log_admin( 'Update config theme' );
 _eb_log_ga_event( 'Update config theme' );
-
-
-
-
-//
 include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 

@@ -15,6 +15,11 @@ echo WGR_show_header_favicon();
 ?>
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//www.google.com" />
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
 <link rel="dns-prefetch" href="//connect.facebook.net" />
 <!-- META for design by EchBay - http://echbay.com/ -->
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">

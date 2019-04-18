@@ -3601,6 +3601,11 @@ jQuery('a[href="#"]').attr({
 (function ( u ) {
 //	console.log(u);
 	
+	if ( act == '' ) {
+		jQuery('.eb-set-menu-selected a[href="./"], .eb-set-menu-selected a[href="' + web_link + '"]').addClass('current-url-select');
+		return false;
+	}
+	
 	// tạo class select với thẻ A trùng link đang xem
 	jQuery('.eb-set-menu-selected a[href="' + u + '"], .eb-set-menu-selected a[href="' + u.split( web_link )[1] + '"]').addClass('current-url-select');
 //	console.log(jQuery('a.current-url-select').length);
@@ -3624,6 +3629,7 @@ jQuery('a[href="#"]').attr({
 	
 	// add class vào thẻ LI có chứa thẻ A đang được select
 	jQuery('.eb-set-menu-selected a.current-url-select').parent('li').addClass('selected');
+	jQuery('.eb-set-menu-selected li.selected').parent('li').addClass('selected');
 	
 })( window.location.href.split('#')[0] );
 

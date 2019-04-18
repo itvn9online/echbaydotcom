@@ -400,6 +400,12 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'content_only' ], $content_only, '<strong>Chỉ lấy nội dung bài viết</strong>! với lựa chọn này, nội dung bài viết có số order lớn nhất sẽ được lấy ra và hiển thị. Thường dùng khi cần nhúng một nội dung bài viết vào một nội dung khác.' );
 	
+	//
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'off_img_max_width' ], $off_img_max_width, '<strong>Tắt chế độ fix img width</strong>' );
+	
+	//
+	_eb_widget_echo_widget_input_checkbox( $field_name[ 'show_content_excerpt' ], $show_content_excerpt, '<strong>Hiển thị luôn content</strong> không qua chế độ the_content của wp' );
+	
 	
 	
 	//

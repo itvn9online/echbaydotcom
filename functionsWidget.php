@@ -13,6 +13,8 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'description' => '',
 		'get_full_content' => 0,
 		'content_only' => 0,
+		'off_img_max_width' => 0,
+		'show_content_excerpt' => 0,
 		'sortby' => 'menu_order',
 		'num_line' => '',
 		'html_template' => 'home_hot.html',
@@ -433,6 +435,8 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	$get_full_content = isset( $instance ['get_full_content'] ) ? $instance ['get_full_content'] : 'off';
 //	echo $get_full_content . '<br>' . "\n";
 	$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
+	$off_img_max_width = isset( $instance ['off_img_max_width'] ) ? $instance ['off_img_max_width'] : 'off';
+	$show_content_excerpt = isset( $instance ['show_content_excerpt'] ) ? $instance ['show_content_excerpt'] : 'off';
 	
 	$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 	$max_width = isset( $instance ['max_width'] ) ? $instance ['max_width'] : '';
@@ -874,8 +878,16 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		$sql = _eb_load_post_obj( 1, $arr_select_data );
 //		print_r( $sql );
 		
+		//
+		if ( $off_img_max_width == 'on' ) {
+			$off_img_max_width = '';
+		}
+		else {
+			$off_img_max_width = 'img-max-width';
+		}
+		
 		// lấy và in ra nội dung tìm được
-		echo '<div class="img-max-width each-to-fix-ptags-xoa echbay-blog-content_only">';
+		echo '<div class="' . $off_img_max_width . ' each-to-fix-ptags-xoa echbay-blog-content_only">';
 			echo '<div data-id="' . $sql->post->ID . '" data-type="' . $sql->post->post_type . '" class="quick-edit-content_only"></div>';
 		
 		// in thẳng
@@ -884,13 +896,14 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			if ( $sql->post->post_content == '' ) {
 				echo $sql->post->post_excerpt;
 			}
+			// hiển thị trực tiếp phần content
+			else if ( $show_content_excerpt == 'on' ) {
+				echo $sql->post->post_content;
+			}
+			// sử dụng hàm the_content để định hình
 			else {
-				// v2
 				$content = apply_filters('the_content', $sql->post->post_content);
 				echo str_replace(']]>', ']]&gt;', $content);
-				
-				// v1
-//				echo $sql->post->post_content;
 			}
 		}
 		
