@@ -188,6 +188,7 @@ function ___eb_search_advanced_get_parameter(a) {
 }
 
 // tạo URL bao gồm các tham số tìm kiếm và chuyển đi
+var timeout_search_advanced_auto_submit = null;
 function ___eb_search_advanced_go_to_url(op) {
     /* option mẫu
      op = {
@@ -273,8 +274,11 @@ function ___eb_search_advanced_go_to_url(op) {
     }
 
     //
-    if (WGR_check_option_on(cf_search_advanced_auto_submit)) {
-        window.location = new_url;
+    if ( WGR_check_option_on(cf_search_advanced_auto_submit) ) {
+		clearTimeout(timeout_search_advanced_auto_submit);
+		timeout_search_advanced_auto_submit = setTimeout(function () {
+	        window.location = new_url;
+		}, 2000);
     } else {
         jQuery('.click-to-search-advanced').attr({
             href: new_url
@@ -370,7 +374,12 @@ function ___eb_set_url_for_search_price_in_button(clat) {
         //		}).attr({
     });
     //	}
-
+	
+	//
+	if ( seach_advanced_by_price != '' ) {
+        jQuery('.echbay-product-price-between a[data-price="' + seach_advanced_by_price + '"]').addClass('selected');
+	}
+	
     //
     //	jQuery(clat + ' a:first').before( '<li><a href="' + eb_this_current_url + '">Tất cả khoảng giá</a></li>' );
 
@@ -496,8 +505,7 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
         }
         // nếu là category -> chuyển URL luôn
         else if (this_tax == 'category') {
-            if (WGR_check_option_on(cf_tester_mode))
-                console.log('search advanced not run if taxonomy == category');
+            if (WGR_check_option_on(cf_tester_mode)) console.log('search advanced not run if taxonomy == category');
             return true;
         }
 
@@ -518,6 +526,7 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
 
         //
         ___eb_search_advanced_go_to_url({
+            'price_in': seach_advanced_by_price,
             'post_options': filter_options,
             'category': filter_category
         });
@@ -872,8 +881,7 @@ function add_fb_messages_for_page() {
         if (__global_facebook_id != '') {
 
             //
-            if (WGR_check_option_on(cf_tester_mode))
-                console.log('FB app ID: ' + __global_facebook_id);
+            if (WGR_check_option_on(cf_tester_mode)) console.log('FB app ID: ' + __global_facebook_id);
 
             // căn lại chiều rộng cho fb plugin
             jQuery('.fb-like, .fb-comments').each(function() {

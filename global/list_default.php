@@ -143,6 +143,9 @@ $str_for_category_top_sidebar = '';
 	//
 	$seach_advanced_by_cats = isset ( $_GET ['filter_cats'] ) ? trim ( strtolower( $_GET ['filter_cats'] ) ) : '';
 	
+	//
+	$seach_advanced_by_price = isset ( $_GET ['price_in'] ) ? trim ( strtolower( $_GET ['price_in'] ) ) : '';
+	
 	
 	
 //
