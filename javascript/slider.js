@@ -410,7 +410,10 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			
 			//
 			if ( img != '' ) {
-				img = get_thumbnail( img );
+				// nếu chiều dài và rộng của thumbnail giống nhau -> lấy theo thumb
+				if ( conf['thumbnailWidth'] * 1 == conf['thumbnailHeight'] * 1 ) {
+					img = get_thumbnail( img );
+				}
 				
 				str_btn += '<li data-i="' +i+ '" data-src="' + img + '"><div style="background-image: url(\'' + img + '\');">&nbsp;</div></li>';
 				
