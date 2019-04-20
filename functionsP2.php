@@ -3525,10 +3525,7 @@ function EBE_check_list_post_null ( $str = '' ) {
 		
 		$__cf_row ["cf_blog_public"] = 0;
 		
-		$str = '
-		<li class="no-set-width-this-li" style="width:100% !important;padding:0;margin:0;">
-			<div class="text-center big bold" style="padding:90px 20px;">Chưa có dữ liệu</div>
-		</li>';
+		$str = '<li class="no-set-width-this-li"><div>Chưa có dữ liệu</div></li>';
 	}
 	
 	return $str;

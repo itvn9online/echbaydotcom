@@ -1278,6 +1278,8 @@ var _global_js_eb = {
 		//
 		if (typeof lazzy_show == 'number' && lazzy_show > 0) {
 //			console.log(lazzy_show);
+//			console.log(disable_eblazzy_load);
+//			console.log(jQuery('.' + eb_lazzy_class).length);
 			
 			// Nếu ko đủ class để làm việc -> thoát luôn
 			if ( disable_eblazzy_load == true || jQuery('.' + eb_lazzy_class).length <= 0 ) {

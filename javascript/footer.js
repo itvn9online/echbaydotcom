@@ -113,13 +113,13 @@ else if (act == '404') {
             console.log('Run widget slider ' + c + ' with size: ' + s);
             setTimeout(function() {
                 jEBE_slider(c, {
-                    //					size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
+//					size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
                     size: s,
 
                     visible: jQuery(c + ' ul').attr('data-visible') || 1,
-                    //					buttonListNext: false,
+//					buttonListNext: false,
                     autoplay: true
-                    //				}, function () {
+//				}, function () {
                 });
             }, 2000);
 
@@ -260,24 +260,59 @@ function ___eb_search_advanced_go_to_url(op) {
 
         new_url += '&filter=' + op.post_options;
     }
-    if (WGR_check_option_on(cf_tester_mode))
-        console.log(new_url);
+    if (WGR_check_option_on(cf_tester_mode)) console.log(new_url);
 
     //
     //	return false;
 
     //
     if (new_url == '') {
-        if (WGR_check_option_on(cf_tester_mode))
-            console.log('new_url not found in URL search advanced');
+        if (WGR_check_option_on(cf_tester_mode)) console.log('new_url not found in URL search advanced');
         return false;
     }
 
     //
     if ( WGR_check_option_on(cf_search_advanced_auto_submit) ) {
+		//
+		jQuery('#category_main').html('<li class="no-set-width-this-li"><div class="waiting-load">&nbsp;</div></li>');
+		
+		//
 		clearTimeout(timeout_search_advanced_auto_submit);
 		timeout_search_advanced_auto_submit = setTimeout(function () {
-	        window.location = new_url;
+			// ajax
+			if ( dog('category_main') != null ) {
+				window.history.pushState("", '', new_url);
+				
+				//
+				if ( new_url.split('?').length == 1 ) {
+					new_url += '?';
+				}
+				else {
+					new_url += '&';
+				}
+				new_url += 'echo_now=1';
+				
+				//
+				ajaxl( new_url, 'category_main', 9, function () {
+					disable_eblazzy_load = false;
+					_global_js_eb.auto_margin();
+					_global_js_eb.ebBgLazzyLoad();
+//					_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
+					
+					// nạp trang mới cho option vừa search
+					jQuery('.new-part-page a').each(function() {
+						var a = jQuery(this).attr('href') || '';
+						jQuery(this).attr({
+							'href': a.split('#')[0].split('&echo_now=')[0]
+						});
+					});
+					jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
+				});
+			}
+			// no ajax
+			else {
+		        window.location = new_url;
+			}
 		}, 2000);
     } else {
         jQuery('.click-to-search-advanced').attr({

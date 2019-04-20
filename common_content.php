@@ -44,7 +44,7 @@ $arr_global_main = array(
 
 // riêng với trang chủ -> nếu có set chiều rộng -> bỏ phần chiệu rọng bên trong các module con đi
 if ( $act == '' && $__cf_row['cf_home_class_style'] != '' ) {
-//		$arr_global_main['tmp.custom_blog_css'] = $__cf_row['cf_home_class_style'];
+//	$arr_global_main['tmp.custom_blog_css'] = $__cf_row['cf_home_class_style'];
 	$arr_global_main['tmp.custom_blog_css'] = '';
 }
 /*

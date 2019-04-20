@@ -2708,3 +2708,15 @@ iframe[name="google_conversion_frame"] {
 	top: -16px;
 }
 .quick-edit-content_only .each-to-edit-ads i { top: 0; }
+.no-set-width-this-li {
+	width: 100% !important;
+	padding: 0;
+	margin: 0;
+}
+.no-set-width-this-li div {
+	padding: 90px 20px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 23px;
+}
+.no-set-width-this-li div.waiting-load { background: url(../images-global/load_2.gif) center no-repeat; }

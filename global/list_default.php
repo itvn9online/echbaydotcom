@@ -459,6 +459,25 @@ if ( $main_content == false ) {
 		
 		
 		//
+		if ( isset( $_GET['echo_now'] ) ) {
+			$main_content = EBE_check_list_post_null( $list_post );
+			
+			//
+			$arr_global_main = array(
+				'tmp.post_zero' => EBE_get_lang('post_zero')
+			);
+			
+			//
+			foreach ( $arr_global_main as $k => $v ) {
+				$main_content = str_replace ( '{' . $k . '}', $v, $main_content );
+			}
+			
+			//
+			echo $main_content; echo '<div class="new-part-page d-none">' . $str_page . '</div>'; exit();
+		}
+		
+		
+		//
 		$arr_main_content['tmp.list_post'] = EBE_check_list_post_null( $list_post );
 		
 		$arr_main_content['tmp.link_for_fb_comment'] = $link_for_fb_comment;
