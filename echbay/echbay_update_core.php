@@ -746,6 +746,8 @@ function EBE_get_text_version ( $str ) {
 //					sleep(15);
 //					sleep(5);
 					
+					//
+					include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 				}
 				
 				// tắt chế độ bảo trì

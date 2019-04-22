@@ -1565,6 +1565,7 @@ var big_banner_timeout1 = null;
 			speedNext : cf_slider_big_play < 60 ? cf_slider_big_play * 1000: cf_slider_big_play,
 			
 			sliderArrow: WGR_check_option_on ( cf_arrow_big_banner ) ? true : false,
+			version: cf_rand_slider,
 			
 //			thumbnail : '.banner-ads-media',
 			size : jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''

@@ -297,6 +297,7 @@ $__cf_row_default = array(
 	
 	//
 	'cf_on_primary_slider' => 1,
+	'cf_rand_slider' => 'rand',
 	
 	// đổi style cho sidebar trang danh mục sản phẩm
 	'cf_list_sidebar_new_style' => 'off',

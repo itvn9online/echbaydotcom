@@ -389,6 +389,25 @@ foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
 }
 
 
+
+//
+$str_cf_rand_slider = '<option value="' . $__cf_row_default['cf_rand_slider'] . '">Ngẫu nhiên</option>';
+for ( $i = 1; $i < 10; $i++ ) {
+	$v = $i;
+	if ( $i == 1 ) {
+		$v = 'Mặc định';
+	}
+	
+	$sl = '';
+	if ( $__cf_row['cf_rand_slider'] == $i ) {
+		$sl = ' selected="selected"';
+	}
+	
+	$str_cf_rand_slider .= '<option value="' . $i . '"' . $sl . '>' . $v . '</option>';
+}
+
+
+
 //
 $arr_cf_product_thumbnail_table_size = $arr_cf_product_thumbnail_size;
 //print_r($arr_cf_product_thumbnail_table_size);
@@ -565,6 +584,9 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.cf_ads_thumbnail_size' => '<select name="cf_ads_thumbnail_size">' . $str_cf_ads_thumbnail_size . '</select>',
 	'tmp.cf_ads_thumbnail_table_size' => '<select name="cf_ads_thumbnail_table_size">' . $str_cf_ads_thumbnail_table_size . '</select>',
 	'tmp.cf_ads_thumbnail_mobile_size' => '<select name="cf_ads_thumbnail_mobile_size">' . $str_cf_ads_thumbnail_mobile_size . '</select>',
+	
+	//
+	'tmp.cf_rand_slider' => '<select name="cf_rand_slider">' . $str_cf_rand_slider . '</select>',
 	
 	
 //	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',

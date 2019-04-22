@@ -45,6 +45,7 @@ $add_data_id = array(
     'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
     'cf_disable_tracking' => '\'' . $__cf_row['cf_disable_tracking'] . '\'',
     'cf_on_primary_slider' => '\'' . $__cf_row['cf_on_primary_slider'] . '\'',
+    'cf_rand_slider' => '\'' . $__cf_row['cf_rand_slider'] . '\'',
     'cf_add_to_cart_iframe' => '\'' . $__cf_row['cf_add_to_cart_iframe'] . '\'',
     'cf_show_img_color' => '\'' . $__cf_row['cf_show_img_color'] . '\'',
     // tự động submit trong phần tìm kiếm nâng cao

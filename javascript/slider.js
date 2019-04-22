@@ -283,6 +283,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	set_default_conf( 'sliderArrowWidthRight', 'auto' );
 	
 	set_default_conf( 'showRandom', false );
+	set_default_conf( 'version', '1.0.0' );
 	
 	// conf['sliderArrow']
 	if ( cf_tester_mode == 1 ) {
@@ -552,6 +553,16 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
 	// tạo css cho slider
 	jQuery(jd).addClass('jEBE_slider-position');
+	// tạo các phiên bản chuyển động khác
+	if ( conf['version'] != '1.0.0' ) {
+		// lấy 1 phiên bản ngẫu nhiên (code hỗ trợ đến đâu thì tăng max tới đó)
+		if ( conf['version'] == 'rand' ) {
+			conf['version'] = g_func.getRandomInt( 1, 9 );
+		}
+		
+		//
+		jQuery(jd).addClass( 'jEBE_slider-position' + conf['version'].toString() );
+	}
 	
 	/*
 	jQuery(jd).css({
