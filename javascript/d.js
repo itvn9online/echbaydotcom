@@ -3689,7 +3689,9 @@ function WGR_get_js_category_to_menu ( arr ) {
 	var str = '<!-- JS for category menu -->';
 	
 	for ( var i = 0; i < arr.length; i++ ) {
-		str += '<li class="echbay-category-order"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		if ( typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
+			str += '<li class="echbay-category-order"><a href="' + arr[i].lnk + '">' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
+		}
 	}
 	
 	return str;
