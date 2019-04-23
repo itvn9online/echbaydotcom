@@ -3643,6 +3643,7 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 		return '';
 	}
 	// sắp xếp mảng từ to đến bé
+//	console.log( arr );
 	arr.sort( function ( a, b ) {
 		return parseFloat(b.order) - parseFloat(a.order);
 	} );
@@ -3654,22 +3655,25 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 		avt = '',
 		icon = '';
 	
-	str += '<ul class="sub-menu cf">';
 	for ( var i = 0; i < arr.length; i++ ) {
-		// tạo style ảnh nền cho menu
-		avt = '';
-		if ( arr[i].avt != '' ) {
-			avt = 'background-image:url(\'' + arr[i].avt + '\')';
+		if ( typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
+			// tạo style ảnh nền cho menu
+			avt = '';
+			if ( arr[i].avt != '' ) {
+				avt = 'background-image:url(\'' + arr[i].avt + '\')';
+			}
+			icon = '';
+			if ( arr[i].icon != '' ) {
+				icon = 'background-image:url(\'' + arr[i].icon + '\')';
+			}
+			
+			//
+			str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '" class="js-mega-menu"><span class="d-none avt_mega_menu avt_mega_menu' + arr[i].id + '" style="' + avt + '">&nbsp;</span> <span class="d-none icon_mega_menu icon_mega_menu' + arr[i].id + '" style="' + icon + '">&nbsp;</span> ' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 		}
-		icon = '';
-		if ( arr[i].icon != '' ) {
-			icon = 'background-image:url(\'' + arr[i].icon + '\')';
-		}
-		
-		//
-		str += '<li style="order:' + arr[i].order + ';"><a href="' + arr[i].lnk + '" class="js-mega-menu"><span class="d-none avt_mega_menu avt_mega_menu' + arr[i].id + '" style="' + avt + '">&nbsp;</span> <span class="d-none icon_mega_menu icon_mega_menu' + arr[i].id + '" style="' + icon + '">&nbsp;</span> ' + arr[i].ten + '</a>' + WGR_get_js_sub_category_to_menu( arr[i].arr ) + '</li>';
 	}
-	str += '</ul>';
+	if ( str != '' ) {
+		str = '<ul class="sub-menu cf">' + str + '</ul>';
+	}
 	
 	//
 	return str;
@@ -3680,6 +3684,7 @@ function WGR_get_js_category_to_menu ( arr ) {
 		return '';
 	}
 	// sắp xếp mảng từ to đến bé
+//	console.log( arr );
 	arr.sort( function ( a, b ) {
 		return parseFloat(b.order) - parseFloat(a.order);
 	} );

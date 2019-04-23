@@ -2890,10 +2890,10 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 		}
 		
 		//
-		$cat_order = 0;
-		if ( $this_id == 0 ) {
+//		$cat_order = 0;
+//		if ( $this_id == 0 ) {
 			$cat_order = _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) );
-		}
+//		}
 		
 		//
 		$str .= ',{id:' . $v->term_id . ',ten:"' . _eb_str_block_fix_content ( $v->name ) . '",slug:"' . $v->slug . '",lnk:"' . str_replace( '/', '\/', $c_link ) . '",order:' . $cat_order . ',hidden:' . _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) . ',avt:"' . _eb_get_cat_object( $v->term_id, '_eb_category_avt' ) . '",icon:"' . _eb_get_cat_object( $v->term_id, '_eb_category_favicon' ) . '",arr:[' . _eb_get_full_category_v2 ( $v->term_id, $taxx, $get_full_link ) . ']}';
