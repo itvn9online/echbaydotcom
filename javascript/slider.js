@@ -557,7 +557,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	if ( conf['version'] != '1.0.0' ) {
 		// lấy 1 phiên bản ngẫu nhiên (code hỗ trợ đến đâu thì tăng max tới đó)
 		if ( conf['version'] == 'rand' ) {
-			conf['version'] = g_func.getRandomInt( 1, 9 );
+			conf['version'] = g_func.getRandomInt( 1, 11 );
 		}
 		
 		//

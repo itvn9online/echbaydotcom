@@ -7,7 +7,6 @@
  */
 // for home
 if (act == '') {
-//if ( typeof ___eb_global_home_runing == 'function' ) {
     ___eb_global_home_runing();
 }
 // end home

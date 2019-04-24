@@ -5,7 +5,8 @@
 				<!-- Hay dùng nút ringtone nên nút call để ngoài cũng cho đỡ xung đột -->
 				<li class="phone-numbers-inline thread-details-phonemua">{tmp.cf_call_hotline}</li>
 				<!-- Các nút mua sẽ ưu tiên để giữa -->
-				<li class="click-jquery-quickcart-or-cart thread-details-mobilecart">{tmp.details_mobilemua_mua}</li>
+				<li class="click-jquery-quickcart-or-cart thread-details-mobilecart show-if-javascript">{tmp.details_mobilemua_mua}</li>
+				<li class="thread-details-mobilecart hide-if-javascript"><a href="./cart?id={tmp.pid}">{tmp.details_mobilemua_mua}</a></li>
 				<li class="click-jquery-add-to-cart thread-details-tocart d-none">{tmp.details_mobilemua_mua}</li>
 				<li class="click-jquery-show-quick-cart thread-details-quickcart d-none">{tmp.details_mobilemua_mua}</li>
 				<!-- Nút đầu trang mặc định là ẩn -->

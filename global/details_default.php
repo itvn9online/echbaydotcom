@@ -961,7 +961,7 @@ $arr_main_content = array(
 	'tmp.str_for_details_top_sidebar' => $str_for_details_top_sidebar,
 	
 	// phom mua ngay
-	'tmp.clone-show-quick-cart' => $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '',
+	'tmp.clone-show-quick-cart' => $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '<div class="clone-show-mobile-quick-cart"></div>',
 	
 	// mặt nạ cho nội dung
 	'tmp.thread_content_mask' => $__cf_row['cf_set_mask_for_details'] == 1 ? ' active-content-mask' : '',
@@ -1289,6 +1289,7 @@ if ( $post->post_type == 'post' ) {
 	$arr_for_add_js[] = 'details.js';
 }
 */
+//$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
 
 
 
@@ -1332,6 +1333,8 @@ if ( $bai_san_pham == true && $__cf_row['cf_details_mobilemua'] != 'none' ) {
 		),
 		*/
 		array(
+			'tmp.id' => $pid,
+			'tmp.pid' => $pid,
 			'tmp.details_mobilemua_mua' => EBE_get_lang('details_mobilemua_mua'),
 			'tmp.details_mobilemua_top' => EBE_get_lang('details_mobilemua_top')
 		)

@@ -577,6 +577,7 @@ else if ( $switch_taxonomy == EB_BLOG_POST_LINK
 	$arr_for_add_js[] = 'blog.js';
 }
 */
+//$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js';
 
 
 
