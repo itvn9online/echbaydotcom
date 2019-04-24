@@ -392,7 +392,7 @@ foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
 
 //
 $str_cf_rand_slider = '<option value="' . $__cf_row_default['cf_rand_slider'] . '">Ngẫu nhiên</option>';
-for ( $i = 1; $i < 10; $i++ ) {
+for ( $i = 1; $i < 12; $i++ ) {
 	$v = $i;
 	if ( $i == 1 ) {
 		$v = 'Mặc định';
