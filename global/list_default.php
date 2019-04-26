@@ -331,6 +331,8 @@ if ( $main_content == false ) {
 				$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/col-sidebar-content.css' ] = 1;
 			}
 			
+			//
+			$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js';
 		}
 		// blog
 		else if ( $switch_taxonomy == EB_BLOG_POST_LINK
@@ -450,6 +452,9 @@ if ( $main_content == false ) {
 				
 				'tmp.blog_content_sidebar' => _eb_echbay_get_sidebar( 'blog_content_sidebar' ),
 			);
+			
+			//
+			$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_blogs.js';
 			
 		}
 		// error
@@ -577,7 +582,7 @@ else if ( $switch_taxonomy == EB_BLOG_POST_LINK
 	$arr_for_add_js[] = 'blog.js';
 }
 */
-$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js';
+//$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js';
 
 
 
