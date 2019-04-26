@@ -1289,7 +1289,7 @@ if ( $post->post_type == 'post' ) {
 	$arr_for_add_js[] = 'details.js';
 }
 */
-//$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
+$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
 
 
 

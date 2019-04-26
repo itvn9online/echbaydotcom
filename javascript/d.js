@@ -21,30 +21,6 @@ if ( typeof eb_site_group == 'undefined' ) {
 
 
 
-
-//
-var product_selected_url = '',
-	eb_this_current_url = jQuery('link[rel="canonical"]:first').attr('href') || window.location.href.split('?')[0].split('&')[0].split('#')[0],
-	size_rieng_cua_tung_mau = '',
-	// nếu size đã được load rồi thì thôi không load lại
-	size_has_been_load = false,
-	price_by_color = 0,
-	price_for_quick_cart = 0,
-	global_window_width = jQuery(window).width();
-//console.log(eb_this_current_url);
-if ( eb_this_current_url == web_link ) {
-	eb_this_current_url = window.location.href.split('#')[0];
-}
-
-
-
-//
-if ( act != '' && jQuery('body.home').length > 0 ) {
-	act = '';
-}
-
-
-
 // chỉnh lại ảnh của big banner sang ảnh to với bản pc
 if ( global_window_width > 768 ) {
 	jQuery('.oi_big_banner .ti-le-global').each(function() {

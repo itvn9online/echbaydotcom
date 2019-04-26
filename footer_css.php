@@ -121,6 +121,19 @@ foreach ($arr_for_add_outsource_js as $v) {
 
 
 
+//
+$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d.js';
+
+// nạp js từ child theme (nếu có)
+//if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
+if ( using_child_wgr_theme == 1 ) {
+	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'javascript/display.js';
+}
+// mặc định là nạp từ theme
+else {
+	$arr_for_add_js[] = EB_THEME_THEME . 'javascript/display.js';
+}
+
 // thêm JS đồng bộ URL từ code EchBay cũ sang code WebGiaRe (nếu có)
 /* -> chuyển sang sử dụng phiên bản php
   if ( $__cf_row['cf_echbay_migrate_version'] == 1 ) {
@@ -134,6 +147,10 @@ if (using_child_wgr_theme == 1) {
 } else {
     $arr_for_add_js[] = EB_THEME_URL . 'ui/d.js';
 }
+
+// bổ sung js chân trang
+$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/footer.js';
+
 //print_r( $arr_for_add_js );
 //
 EBE_add_js_compiler_in_cache($arr_for_add_js, 'async', 1);

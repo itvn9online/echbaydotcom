@@ -1266,27 +1266,14 @@ $arr_for_add_js = array(
 	EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/d_functions.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js',
-	EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
+	EB_THEME_PLUGIN_INDEX . 'javascript/d_functions.js'
+//	EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js',
+//	EB_THEME_PLUGIN_INDEX . 'javascript/d_category.js',
+//	EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
 //	EB_THEME_THEME . 'javascript/display.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
 );
 //print_r( $arr_for_add_js );
-
-// nạp js từ child theme (nếu có)
-//if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {
-if ( using_child_wgr_theme == 1 ) {
-	$arr_for_add_js[] = EB_CHILD_THEME_URL . 'javascript/display.js';
-}
-// mặc định là nạp từ theme
-else {
-	$arr_for_add_js[] = EB_THEME_THEME . 'javascript/display.js';
-}
-
-// bổ sung js chân trang
-$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/footer.js';
 
 
 // thêm các JS khác dưới dạng URL
