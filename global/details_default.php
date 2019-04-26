@@ -86,6 +86,12 @@ if ( $__post->post_type == 'post' || $__post->post_type == 'product' ) {
 	else {
 		$trv_giaban = 0;
 	}
+	
+	//
+	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
+}
+else {
+	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_blog.js';
 }
 $trv_luotxem = 0;
 $trv_luotthich = 0;
@@ -1289,7 +1295,7 @@ if ( $post->post_type == 'post' ) {
 	$arr_for_add_js[] = 'details.js';
 }
 */
-$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
+//$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d_post.js';
 
 
 

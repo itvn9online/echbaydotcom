@@ -1089,3 +1089,109 @@ function ___eb_global_home_runing ( r ) {
 }
 
 
+
+// tạo mục lục cho trang chi tiết sản phẩm, chi tiết blog
+function WGR_list_of_content ( b, a ) {
+	
+	//
+	if ( b == '' ) {
+		return false;
+	}
+	
+	//
+	if ( typeof a == 'undefined' || a == '' ) {
+		a = '.thread-content-bmask';
+	}
+	else if ( a.substr(0, 1) != '.' && a.substr(0, 1) != '#' ) {
+		a = '.' + a;
+	}
+	
+	//
+	var str = '';
+	
+	jQuery(b + ' ' + b).each(function() {
+		var jd = jQuery(this).attr('id') || '',
+			a = jQuery(this).html();
+		
+		if ( jd == '' ) {
+			jd = '_' + Math.random().toString(32).replace(/\./g, '_');
+			
+			jQuery(this).attr({
+				id: jd
+			});
+		}
+		
+		str += '<li data-id="' + jd + '">' + g_func.strip_tags( a ) + '</li>';
+	});
+	
+	//
+	if ( str == '' ) {
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Post index not found!');
+		return false;
+	}
+	str = '<div class="thread-details-index"><strong>Nội dung chính:</strong><ul>' + str + '</ul></div>';
+	
+	// cho đến thẻ H2 đầu tiên
+	if ( jQuery(b + ' p').length > 0 ) {
+		jQuery(b + ' p:first').after( str );
+	}
+	else if ( jQuery(b + ' .ul-default-style div').length > 0 ) {
+		jQuery(b + ' .ul-default-style:first div:first').after( str );
+	}
+	else {
+		jQuery(b).before( str );
+//		jQuery(b + ' h2:first').before( str );
+	}
+	
+	//
+	jQuery('.thread-details-index li').click(function () {
+		var a = jQuery(this).attr('data-id') || '';
+		
+		if ( a != '' ) {
+//			window.scroll( 0, jQuery('#' + a).offset().top - 90 );
+			jQuery('body,html').animate({
+				scrollTop: jQuery('#' + a).offset().top - 90
+			}, 800);
+		}
+	});
+	
+}
+
+
+//
+function WGR_for_post_details ( function_for_post, function_for_blog ) {
+	
+	//
+	if ( typeof switch_taxonomy == 'undefined' ) {
+		console.log('switch_taxonomy not found');
+		return false;
+	}
+	
+	// post
+	if ( switch_taxonomy == 'post' ) {
+		/*
+		if ( typeof function_for_post == 'function' ) {
+			___eb_details_post_run( function_for_post );
+		}
+		else {
+			*/
+			___eb_details_post_run();
+			WGR_list_of_content( cf_post_index_content );
+//		}
+	}
+	// blog, page...
+	else {
+		/*
+		if ( typeof function_for_blog == 'function' ) {
+			___eb_global_blog_details_runing( function_for_blog );
+		}
+		else {
+			*/
+			___eb_global_blog_details_runing();
+			WGR_list_of_content( cf_blog_index_content );
+//		}
+	}
+	
+}
+
+
