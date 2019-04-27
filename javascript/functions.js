@@ -103,7 +103,7 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	//
 	str += '<br><h3 class="l35 text-center">' + arr_lang_hoan_tat['customer_info'] + '</h3>' +
 	'<div class="hoantat-cus-padding l20 gray2bg">' +
-		'<div>' + arr_lang_hoan_tat['cart_done_madon'] + ': <strong>' + current_tv_object['hd_thanhtoan'] + '</strong></div>' +
+		'<div>' + arr_lang_hoan_tat['cart_done_madon'] + ': <strong>' + current_hd_code + '</strong></div>' +
 		'<div>' + arr_lang_hoan_tat['cart_done_khachhang'] + ': <strong>' + current_tv_object['hd_ten'] + '</strong></div>' +
 		'<div>' + arr_lang_hoan_tat['cart_done_dienthoai'] + ': <strong>' + current_tv_object['hd_dienthoai'] + '</strong></div>' +
 		'<div>' + arr_lang_hoan_tat['cart_done_diachi'] + ': <strong>' + current_tv_object['hd_diachi'] + '</strong></div>' +
