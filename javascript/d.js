@@ -1469,6 +1469,7 @@ var current_pid_quicview = pid,
 		
 		//
 		if ( dog('oi_ebe_quick_view') == null ) {
+			console.log('oi_ebe_quick_view not found!');
 			return false;
 		}
 		
@@ -1476,10 +1477,10 @@ var current_pid_quicview = pid,
 		jQuery('body').addClass('body-no-scroll');
 		jQuery('#oi_ebe_quick_view').show();
 		
-		//
-//		if ( jQuery('div#ui_ebe_quick_view').length > 0 ) {
+		// nếu chưa có khung load dữ liệu thì add thêm vào
+//		if ( jQuery('div#ui_ebe_quick_view').length ==  0 ) {
 //			jQuery('#oi_ebe_quick_view .quick-view-padding').html('<div id="ui_ebe_quick_view">Đang tải...</div>');
-		if ( jQuery('iframe#ui_ebe_quick_view').length > 0 ) {
+		if ( jQuery('iframe#ui_ebe_quick_view').length == 0 ) {
 			jQuery('#oi_ebe_quick_view .quick-view-padding').html('<iframe id="ui_ebe_quick_view" name="ui_ebe_quick_view" src="about:blank" width="100%" height="600" frameborder="0">AJAX form</iframe>');
 		}
 		
