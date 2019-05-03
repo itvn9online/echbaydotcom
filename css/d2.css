@@ -192,10 +192,12 @@ label,
 	width: 50%;
 	transform: translate(-50%, 0);
 }
+.show-view-more .widget-products-more,
 .show-view-more .widget-blog-more {
 	display: block;
 	text-align: center;
 }
+.show-view-more .widget-products-more a,
 .show-view-more .widget-blog-more a {
 	display: inline-block;
 	background: #c00;

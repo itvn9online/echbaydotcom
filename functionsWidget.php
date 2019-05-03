@@ -1120,6 +1120,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	- <strong>r99</strong>: remove class w90, w99<br>
 	- <strong>nth-child-even</strong>: Đổi nền vị trí chẵn<br>
 	- <strong>nth-child-odd</strong>: Đổi nền vị trí lẻ<br>
+	- <strong>show-view-more</strong>: hiển thị nút xem thêm (nếu có)<br>
 	- <strong>hide-cat</strong>: Ẩn tên danh mục (nếu có)<br>
 	- <strong>hide-child-cat</strong>: Ẩn các nhóm cấp 2, 3... (nếu có).</p>';
 	

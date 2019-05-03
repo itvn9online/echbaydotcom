@@ -233,7 +233,8 @@ var g_func = {
 				return 0;
 			}
 			
-			return str;
+//			return str;
+			return str * 1;
 		}
 		else {
 			str = str.toString().replace(/[^0-9\-\+]/g, '');
@@ -242,7 +243,8 @@ var g_func = {
 				return 0;
 			}
 			
-			return parseInt( str, 10 );
+//			return parseInt( str, 10 );
+			return str * 1;
 		}
 	},
 	only_number: function(str) {

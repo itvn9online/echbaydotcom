@@ -86,8 +86,10 @@
 	font-size: 16px;
 }
 .hide-cat .thread-home-c2,
+.hide-child-cat .thread-home-c2 a,
 .hide-child-cat .thread-home-c2 h2,
 .home-count-cat { display: none; }
+.hide-child-cat .thread-home-c2 a:first-child { display: inline-block; }
 .hide-child-cat .thread-home-c2 h2:first-child { display: inherit; }
 .nth-child-even .home-module_content:nth-child(even),
 .nth-child-odd .home-module_content:nth-child(odd) {
