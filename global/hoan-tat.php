@@ -95,7 +95,16 @@ if ( $hd_id > 0 ) {
 		}, 800);
 		</script>';
 	}
+	/*
 }
+else {
+//	$sql = new stdClass();
+	$sql = array();
+	$sql = (object) $sql;
+	$sql->order_time = 0;
+	$sql->order_status = 0;
+}
+*/
 
 
 
@@ -202,5 +211,8 @@ var current_hd_id = "' . $hd_id . '",
 </script>';
 
 
-
+}
+else {
+	$main_content = '<h4 class="text-center" style="padding:90px 0;">Oh! your order not found!</h4>';
+}
 
