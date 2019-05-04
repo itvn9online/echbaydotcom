@@ -268,7 +268,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<blockquote>';
+	echo '<blockquote class="small">';
 	
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'get_post_type' ], $get_post_type, 'Xác định lại post_type của bài viết hiện tại. * <em>Áp dụng cho trường hợp bài viết định lấy cùng kiểu dữ liệu với bài đang xem</em>.' );
 	
@@ -358,7 +358,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
+	echo '<p class="small"><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
 	- <strong>bgtrans</strong>: <em>echbay-blog-avt</em> background-color: transparent.<br>
 	- <strong>bgcover</strong>: <em>echbay-blog-avt</em> background-size: cover (tự fixed 2 chiều).<br>
 	- <strong>bgcontain</strong>: <em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).<br>
@@ -399,17 +399,17 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	//
 	_eb_widget_echo_widget_input_checkbox( $field_name[ 'content_only' ], $content_only, '<strong>Chỉ lấy nội dung bài viết</strong>! với lựa chọn này, nội dung bài viết có số order lớn nhất sẽ được lấy ra và hiển thị. Thường dùng khi cần nhúng một nội dung bài viết vào một nội dung khác.' );
-	
-	//
-	echo '<blockquote>';
-	
-	//
-	_eb_widget_echo_widget_input_checkbox( $field_name[ 'off_img_max_width' ], $off_img_max_width, '<strong>Tắt chế độ fix img width</strong>' );
-	
-	//
-	_eb_widget_echo_widget_input_checkbox( $field_name[ 'show_content_excerpt' ], $show_content_excerpt, '<strong>Hiển thị luôn content</strong> không qua chế độ the_content của wp' );
-	
-	echo '</blockquote>';
+		
+		echo '<blockquote class="small">';
+		
+		_eb_widget_echo_widget_input_checkbox( $field_name[ 'off_img_max_width' ], $off_img_max_width, '<strong>Tắt chế độ fix img width</strong>' );
+		
+		_eb_widget_echo_widget_input_checkbox( $field_name[ 'show_content_excerpt' ], $show_content_excerpt, '<strong>Hiển thị luôn content</strong> không qua chế độ the_content của wp' );
+			echo '<blockquote>';
+			_eb_widget_echo_widget_input_checkbox( $field_name[ 'js_ptags' ], $js_ptags, '<strong>Thêm p tag bằng javascript</strong> hạn chế dùng the_content sẽ đỡ xung đột hơn, tuy nhiên! hàm tự viết không phải lúc nào cũng chuẩn như hàng nguyên bản' );
+			echo '</blockquote>';
+		
+		echo '</blockquote>';
 	
 	
 	

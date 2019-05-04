@@ -14,6 +14,7 @@ function WGR_widget_arr_default_home_hot ( $new_arr = array() ) {
 		'get_full_content' => 0,
 		'content_only' => 0,
 		'off_img_max_width' => 0,
+		'js_ptags' => 0,
 		'show_content_excerpt' => 0,
 		'sortby' => 'menu_order',
 		'num_line' => '',
@@ -436,6 +437,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //	echo $get_full_content . '<br>' . "\n";
 	$content_only = isset( $instance ['content_only'] ) ? $instance ['content_only'] : 'off';
 	$off_img_max_width = isset( $instance ['off_img_max_width'] ) ? $instance ['off_img_max_width'] : 'off';
+	$js_ptags = isset( $instance ['js_ptags'] ) ? $instance ['js_ptags'] : 'off';
 	$show_content_excerpt = isset( $instance ['show_content_excerpt'] ) ? $instance ['show_content_excerpt'] : 'off';
 	
 	$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
@@ -879,15 +881,18 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 //		print_r( $sql );
 		
 		//
-		if ( $off_img_max_width == 'on' ) {
-			$off_img_max_width = '';
+		$cl = '';
+		// nếu có lệnh bỏ img maxwidth
+		if ( $off_img_max_width != 'on' ) {
+			$cl .= ' img-max-width';
 		}
-		else {
-			$off_img_max_width = 'img-max-width';
+		// thêm lệnh tự tạo ptag
+		if ( $js_ptags == 'on' && $show_content_excerpt == 'on' ) {
+			$cl .= ' each-to-fix-ptags';
 		}
 		
 		// lấy và in ra nội dung tìm được
-		echo '<div class="' . $off_img_max_width . ' each-to-fix-ptags-xoa echbay-blog-content_only">';
+		echo '<div class="echbay-blog-content_only' . $cl . '">';
 			echo '<div data-id="' . $sql->post->ID . '" data-type="' . $sql->post->post_type . '" class="quick-edit-content_only"></div>';
 		
 		// in thẳng
