@@ -368,7 +368,7 @@ function ___eb_details_excerpt_html ( a_before, a_after ) {
 	cf_details_excerpt = 'off';
 	
 	//
-	var a = jQuery('.thread-details-comment').html() || '',
+	var a = jQuery('.thread-details-comment .blog-details-excerpt').html() || jQuery('.thread-details-comment').html() || '',
 		str = '';
 	
 	// Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
