@@ -410,7 +410,15 @@ function add_fb_messages_for_page() {
 
 // load các module mạng xã hội
 (function() {
-
+	
+	// căn lại chiều rộng cho fb plugin
+	jQuery('.fb-like, .fb-comments').each(function() {
+		jQuery(this).attr({
+			'data-width': Math.ceil(jQuery(this).width() || 250)
+		});
+	});
+	
+	
     jQuery(document).ready(function() {
         window.___gcfg = {
             lang: 'vi'
@@ -452,13 +460,13 @@ function add_fb_messages_for_page() {
 
             //
             if (WGR_check_option_on(cf_tester_mode)) console.log('FB app ID: ' + __global_facebook_id);
-
-            // căn lại chiều rộng cho fb plugin
-            jQuery('.fb-like, .fb-comments').each(function() {
-                jQuery(this).attr({
-                    'data-width': Math.ceil(jQuery(this).width() || 250)
-                });
-            });
+			
+			// căn lại chiều rộng cho fb plugin
+			jQuery('.fb-like, .fb-comments').each(function() {
+				jQuery(this).attr({
+					'data-width': Math.ceil(jQuery(this).width() || 250)
+				});
+			});
 
 
             //
@@ -473,7 +481,7 @@ function add_fb_messages_for_page() {
                 }
                 return 'en_US';
             })();
-            //			console.log( fb_lang );
+//			console.log( fb_lang );
 
             //
             (function(d, s, id) {
