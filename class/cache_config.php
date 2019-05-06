@@ -2,6 +2,31 @@
 
 
 
+function WGR_custom_css_for_price () {
+	global $__cf_row;
+	
+	$custom_css_for_price = '';
+	if ( $__cf_row['cf_current_price_before'] == 1 ) {
+		
+		//
+		$custom_css_for_price .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
+		
+		
+		// đổi đơn vị tiền tệ
+		if ( $__cf_row['cf_current_price'] != '' ) {
+			$custom_css_for_price .= '.ebe-currency:before{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
+		}
+	}
+	// đổi đơn vị tiền tệ
+	else if ( $__cf_row['cf_current_price'] != '' ) {
+		$custom_css_for_price .= '.ebe-currency:after{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
+	}
+	
+	return $custom_css_for_price;
+}
+
+
+
 /*
 * Do quá trình cache file config dễ bị lỗi file -> gây lỗi syntax -> nên phần config này sẽ update khi người dùng cập nhật web
 */
@@ -104,23 +129,7 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 	
 	
 	// chuyển đơn vị tiền tệ từ sau ra trước
-	$custom_css_for_price = '';
-	if ( $__cf_row['cf_current_price_before'] == 1 ) {
-		
-		//
-		$custom_css_for_price .= '.ebe-currency:after{display:none}.ebe-currency:before{display:inline-block}';
-		
-		
-		// đổi đơn vị tiền tệ
-		if ( $__cf_row['cf_current_price'] != '' ) {
-			$custom_css_for_price .= '.ebe-currency:before{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
-		}
-	}
-	// đổi đơn vị tiền tệ
-	else if ( $__cf_row['cf_current_price'] != '' ) {
-		$custom_css_for_price .= '.ebe-currency:after{content:"' . str_replace( '/', '\\', $__cf_row['cf_current_price'] ) . '"}';
-	}
-	$__cf_row['cf_default_css'] .= $custom_css_for_price;
+	$__cf_row['cf_default_css'] .= WGR_custom_css_for_price();
 	
 	
 	
