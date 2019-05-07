@@ -256,7 +256,8 @@ var g_func = {
 	money_format: function(str) {
 		// loại bỏ số 0 ở đầu chuỗi số
 		str = str.toString().replace(/\,/g, '').split('.');
-		str[0] = parseInt( str[0], 10 );
+//		str[0] = parseInt( str[0], 10 );
+		str[0] = str[0] * 1;
 		
 		// chuyển sang định dạng tiền tệ
 		return g_func.formatCurrency(str.join('.'), ',', 2);
@@ -267,77 +268,81 @@ var g_func = {
 	formatCurrency: function(num, dot, num_thap_phan) {
 		if (typeof num == 'undefined' || num == '') {
 			return 0;
-		} else {
-			if (typeof dot == 'undefined' || dot == '') {
-				dot = ',';
-			}
-//			console.log( dot );
-			
-			num = num.toString().replace(/\s/g, '');
-			var str = num,
-//				re = /^\d+$/,
-				so_am = '',
-				so_thap_phan = '';
-			if (num.substr(0, 1) == '-') {
-				so_am = '-';
-			}
-			
-			/*
-			for (var i = 0, t = ''; i < num.length; i++) {
-				t = num.substr(i, 1);
-				if (re.test(t) == true) {
-					str += t;
-				}
-			}
-			*/
-			// Nếu không phải tách số theo dấu chấm -> tìm cả số thập phân
-			if ( dot != '.' ) {
-//				console.log( str );
-				str = g_func.float_only(str);
-//				if ( str != 0 ) {
-//					console.log( str );
-					so_thap_phan = str.toString().split('.');
-					if ( so_thap_phan.length > 1 ) {
-						str = so_thap_phan[0];
-						if ( typeof num_thap_phan == 'number' ) {
-							so_thap_phan = '.' + so_thap_phan[1].toString().substr( 0, num_thap_phan );
-						}
-						else {
-							so_thap_phan = '.' + so_thap_phan[1];
-						}
-					}
-					else {
-						so_thap_phan = '';
-					}
-//				}
-			}
-			// Tách theo dấu chấm thì bỏ qua
-			else {
-				str = g_func.number_only(str);
-			}
-			
-			var len = str.length;
-			if (len > 3) {
-				var new_str = str;
-				str = '';
-				for (i = 0; i < new_str.length; i++) {
-					len -= 3;
-					if (len > 0) {
-						str = dot + new_str.substr(len, 3) + str;
-					} else {
-						str = new_str.substr(0, len + 3) + str;
-						break;
-					}
-				}
-			}
-			num = so_am + str + so_thap_phan;
 		}
 		
 		//
-		return num;
+		if (typeof dot == 'undefined' || dot == '') {
+			dot = ',';
+		}
+//		console.log( dot );
+		
+		num = num.toString().replace(/\s/g, '');
+		var str = num,
+//			re = /^\d+$/,
+			so_am = '',
+			so_thap_phan = '';
+		if (num.substr(0, 1) == '-') {
+			so_am = '-';
+		}
+		
+		/*
+		for (var i = 0, t = ''; i < num.length; i++) {
+			t = num.substr(i, 1);
+			if (re.test(t) == true) {
+				str += t;
+			}
+		}
+		*/
+		// Nếu không phải tách số theo dấu chấm -> tìm cả số thập phân
+		if ( dot != '.' ) {
+//			console.log( str );
+			str = g_func.float_only(str);
+//			if ( str != 0 ) {
+//				console.log( str );
+				so_thap_phan = str.toString().split('.');
+				if ( so_thap_phan.length > 1 ) {
+					str = so_thap_phan[0];
+					if ( typeof num_thap_phan == 'number' ) {
+						so_thap_phan = '.' + so_thap_phan[1].toString().substr( 0, num_thap_phan );
+					}
+					else {
+						so_thap_phan = '.' + so_thap_phan[1];
+					}
+				}
+				else {
+					so_thap_phan = '';
+				}
+//			}
+//			console.log( str );
+		}
+		// Tách theo dấu chấm thì bỏ qua
+		else {
+//			console.log( str );
+			str = g_func.number_only(str);
+		}
+		
+		var len = str.toString().length;
+//		var len = str.length;
+//		console.log( len );
+		if (len > 3) {
+			var new_str = str.toString();
+			str = '';
+			for (var i = 0; i < new_str.length; i++) {
+				len -= 3;
+//				console.log( len );
+				if (len > 0) {
+					str = dot + new_str.substr(len, 3) + str;
+				} else {
+					str = new_str.substr(0, len + 3) + str;
+					break;
+				}
+			}
+		}
+		return so_am + str + so_thap_phan;
+		
+		//
+//		return num;
 	},
-	
-	
 	
 	wh: function() {},
 	opopup: function(o) {
@@ -1175,7 +1180,8 @@ var _global_js_eb = {
 				})(),
 				usertime: (function() {
 					var t = new Date().getTime();
-					t = parseInt(t / 1000, 10);
+//					t = parseInt(t / 1000, 10);
+					t = t / 1000 * 1;
 					return t;
 				})(),
 				window: jQuery(window).width() + 'x' + jQuery(window).height(),
@@ -1228,7 +1234,8 @@ var _global_js_eb = {
 					staff_id = staff_id.toLowerCase().split('ctv');
 					if (staff_id.length > 1) {
 						staff_id = staff_id[1].split('eb')[0];
-						staff_id = parseInt(staff_id, 10);
+//						staff_id = parseInt(staff_id, 10);
+						staff_id = staff_id * 1;
 						if (isNaN(staff_id) || staff_id <= 0) {
 							staff_id = '';
 						}
@@ -1542,7 +1549,8 @@ var _global_js_eb = {
 			})(navigator.userLanguage || navigator.language || ''),
 			hd_usertime: (function() {
 				var t = new Date().getTime();
-				t = parseInt(t / 1000, 10);
+//				t = parseInt(t / 1000, 10);
+				t = t / 1000 * 1;
 				return t;
 			})(),
 			hd_window: jQuery(window).width() + 'x' + jQuery(window).height(),
@@ -2039,6 +2047,10 @@ var _global_js_eb = {
 			var a = jQuery(this).val() || '',
 				jd = 'oi_check_discount_code';
 			
+			//
+			arr_discount_code_return = {};
+			
+			//
 			if ( a == '' ) {
 				return false;
 			}
@@ -2049,11 +2061,26 @@ var _global_js_eb = {
 			
 			//
 			if ( dog( jd ) == null ) {
-				jQuery( cl ).after( '<div id="' + jd + '" class="small text-center"></div>' );
+				jQuery( cl ).after( '<div id="' + jd + '" class="small text-center l15"></div>' );
 			}
 			
 			//
-			ajaxl('check_discount_code&code=' + a, jd, 1 );
+			jQuery.ajax({
+//				type: 'POST',
+				type: 'GET',
+				url: ajaxl_url( 'check_discount_code&code=' + a + '&no_echo=1' ),
+				data: ''
+			}).done(function(msg) {
+				if ( typeof msg == 'object' ) {
+					console.log( msg );
+					arr_discount_code_return = msg;
+					WGR_check_discount_code_return( jd );
+				}
+				else {
+					jQuery('#' + jd).html('<span class="orgcolor">Lỗi cú pháp! vui lòng báo cho kỹ thuật viên. Xin cảm ơn</span>');
+				}
+			});
+//			ajaxl('check_discount_code&code=' + a, jd, 1 );
 //			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
 //			});
 			/*

@@ -317,8 +317,8 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
 	
 	// tạo form
-	if ( $('#backup-order-to-google-sheet').length == 0 ) {
-		$('body').append('' +
+	if ( jQuery('#backup-order-to-google-sheet').length == 0 ) {
+		jQuery('body').append('' +
 		'<div class="d-none">' +
 			'<form id="backup-order-to-google-sheet" method="GET">' +
 				'<input type="text" name="id" value="" />' +
@@ -597,6 +597,9 @@ function _time_date() {
 }
 
 
+function ajaxl_url ( url ) {
+	return web_link + 'eb-ajaxservice?set_module=' + url;
+}
 
 function ajaxl( url, id, bg, callBack, ajax_option ) {
 	if ( typeof url == 'undefined' || url == '' ) {
@@ -621,7 +624,7 @@ function ajaxl( url, id, bg, callBack, ajax_option ) {
 	// URL phải theo 1 chuẩn nhất định
 //	if ( url.split( web_link ).length == 1 ) {
 	if ( url.split( '//' ).length == 1 ) {
-		url = web_link + 'eb-ajaxservice?set_module=' + url;
+		url = ajaxl_url( url );
 	}
 	if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(url);
 	
@@ -673,5 +676,61 @@ function a_lert(m) {
 	*/
 }
 
-
+var arr_discount_code_return = {};
+function WGR_check_discount_code_return ( jd ) {
+	// có mã giảm giá thì mới tiếp tục
+	if ( co_ma_giam_gia != 1 ) {
+		return false;
+	}
+	
+	// kiểm tra xem có dữ liệu của phần giảm giá không
+	if ( jQuery.isEmptyObject( arr_discount_code_return ) == true ) {
+//		jQuery('#' + jd).html('<span class="redcolor">Không xác định được dữ liệu giảm giá!</span>');
+		return false;
+	}
+	
+	//
+	msg = arr_discount_code_return;
+	
+	// hiển thị lỗi nếu có
+	if ( typeof msg['error'] != 'undefined' ) {
+		jQuery('#' + jd).html('<span class="redcolor">' + msg['error'] + '</span>');
+	}
+	else {
+		// chuẩn hóa dữ liệu
+		msg['coupon_max'] = msg['coupon_max'] * 1;
+		msg['coupon_min'] = msg['coupon_min'] * 1;
+		msg['coupon_toida'] = g_func.number_only( msg['coupon_toida'] );
+		msg['coupon_toithieu'] = g_func.number_only( msg['coupon_toithieu'] );
+		var m = msg['category_description'],
+			cl = 'greencolor';
+		
+		// kiểm tra xem đã dùng hết hay chưa
+		if ( msg['coupon_max'] > 0 && msg['coupon_min'] >= msg['coupon_max'] ) {
+			m = 'Số lượng mã giảm giá đã hết!';
+			cl = 'orgcolor';
+		}
+		else {
+			// trong trang chi tiết sản phẩm
+			if ( pid > 0 ) {
+				var gia_tri_don_hang = jQuery('#oi_change_soluong select').val() || 0;
+				gia_tri_don_hang = gia_tri_don_hang * product_js['gm'];
+				
+				// kiểm tra điều kiện khuyến mại
+				if ( msg['coupon_toithieu'] > 0 && gia_tri_don_hang < msg['coupon_toithieu'] ) {
+					m = 'Mã giảm giá áp dụng cho đơn hàng có giá trị tối thiểu là <span class="ebe-currency">' + g_func.money_format( msg['coupon_toithieu'] ) + '</span>';
+					cl = 'orgcolor';
+				}
+				else {
+				}
+			}
+			// giỏ hàng
+			else {
+			}
+		}
+		
+		//
+		jQuery('#' + jd).html('<span class="' + cl + '">' + m + '</span>');
+	}
+}
 

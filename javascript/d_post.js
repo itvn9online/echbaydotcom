@@ -68,6 +68,7 @@ function ___eb_details_cart_quan () {
 		WGR_zero_price_quick_cart( a, product_js.gm );
 		
 		_global_js_eb.cart_create_arr_poruduct();
+		WGR_check_discount_code_return( 'oi_check_discount_code' );
 	});
 	jQuery('#oi_change_soluong select').change();
 	

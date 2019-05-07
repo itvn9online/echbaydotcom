@@ -269,12 +269,12 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 		
 		'eb_disable_auto_get_thumb' => (int) $__cf_row ['cf_disable_auto_get_thumb'],
 		
-		'cf_facebook_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_facebook_page'] ) . '\'',
+		'cf_facebook_page' => '\'' . $__cf_row ['cf_facebook_page'] . '\'',
 		'__global_facebook_id' => '\'' . $__cf_row ['cf_facebook_id'] . '\'',
-		'cf_instagram_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_instagram_page'] ) . '\'',
-		'cf_google_plus' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_google_plus'] ) . '\'',
-		'cf_youtube_chanel' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_youtube_chanel'] ) . '\'',
-		'cf_twitter_page' => '\'' . str_replace( '/', '\/', $__cf_row ['cf_twitter_page'] ) . '\'' 
+		'cf_instagram_page' => '\'' . $__cf_row ['cf_instagram_page'] . '\'',
+		'cf_google_plus' => '\'' . $__cf_row ['cf_google_plus'] . '\'',
+		'cf_youtube_chanel' => '\'' . $__cf_row ['cf_youtube_chanel'] . '\'',
+		'cf_twitter_page' => '\'' . $__cf_row ['cf_twitter_page'] . '\'' 
 	);
 	$cache_data_id = '';
 	foreach ( $add_data_id as $k => $v ) {

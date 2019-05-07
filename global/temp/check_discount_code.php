@@ -1,20 +1,26 @@
 <?php
 
 
+function WGR_check_discount_code_error( $er ) {
+	die( '{"error":"' . $er . '"}' );
+}
+
 
 //
 //print_r( $_GET );
+header('Content-Type: application/json');
 
 
 
+//
 if ( ! isset( $_GET['code'] ) ) {
-	die( EBE_get_lang('dc_is_null') );
+	WGR_check_discount_code_error( EBE_get_lang('dc_is_null') );
 }
 $code = trim( $_GET['code'] );
 
 //
 if ( $code == '' || strlen( $code ) < 3 ) {
-	die( EBE_get_lang('dc_too_short') );
+	WGR_check_discount_code_error( EBE_get_lang('dc_too_short') );
 }
 
 
@@ -31,7 +37,7 @@ $arr_discount_code = get_categories( array(
 
 //
 if ( empty( $arr_discount_code ) ) {
-	die( EBE_get_lang('dc_not_found') );
+	WGR_check_discount_code_error( EBE_get_lang('dc_not_found') );
 }
 
 
@@ -47,9 +53,27 @@ foreach ( $arr_discount_code as $v ) {
 	if ( $check_discount_ex != ''
 	// độ dài ngày hết hạn chuẩn
 	&& strlen( $check_discount_ex ) == 10
-	&& str_replace( '/', '', $check_discount_ex ) >= $ngay_hom_nay ) {
+	&& str_replace( '/', '', $check_discount_ex ) * 1 >= $ngay_hom_nay ) {
 		
-		echo $v->category_description;
+//		echo $v->category_description;
+//		echo json_encode($v);
+		
+		$arr = array(
+			'cat_name' => $v->cat_name,
+			'category_description' => EBE_get_lang('dc_ok') . ' ' . $v->category_description,
+			'coupon_giagiam' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_giagiam' ),
+			'coupon_phantramgiam' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_phantramgiam' ),
+			'coupon_ngayhethan' => $check_discount_ex,
+			'coupon_toithieu' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_toithieu' ),
+			'coupon_toida' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_toida' ),
+			'coupon_product' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_product' ),
+			'coupon__product' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon__product' ),
+			'coupon_category' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_category' ),
+			'coupon__category' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon__category' ),
+			'coupon_min' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_min', 0 ),
+			'coupon_max' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_max', 0 )
+		);
+		echo json_encode($arr);
 		
 		$khong_tim_thay_ma = false;
 		
@@ -61,8 +85,11 @@ foreach ( $arr_discount_code as $v ) {
 
 //
 if ( $khong_tim_thay_ma == true ) {
-	die( EBE_get_lang('dc_expires') );
+	$er = EBE_get_lang('dc_expires');
 }
 
+
+
+exit();
 
 

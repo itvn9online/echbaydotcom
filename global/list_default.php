@@ -115,6 +115,12 @@ $str_for_category_top_sidebar = '';
 	_eb_fix_url( $url_og_url );
 	
 	//
+//	echo substr( $url_og_url, -1 ) . '<br>' . "\n";
+	if ( substr( $url_og_url, -1 ) != '/' ) {
+		$url_og_url .= '/';
+	}
+	
+	//
 	if ( $__category->taxonomy == 'category' ) {
 		$link_for_fb_comment = web_link . '?cat=' . $__category->term_id;
 	} else {
@@ -124,7 +130,6 @@ $str_for_category_top_sidebar = '';
 //	the_shortlink();
 	
 	$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
-	$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';
 	
 	$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__category->name, $__category->term_id );
 	
@@ -150,6 +155,8 @@ $str_for_category_top_sidebar = '';
 	
 //
 $current_page = max( 1, get_query_var('paged') );
+//echo $current_page . '<br>' . "\n";
+//echo $wp_query->max_num_pages . '<br>' . "\n";
 /*
 $strCacheFilter = 'list' . $__category->term_id . '-' . $current_page . '-' . $current_order . '-' . str_replace( ',', '', $tim_nang_cao );
 //echo $strCacheFilter;
@@ -172,6 +179,19 @@ if ( $main_content == false ) {
 //			echo $current_page;
 			if ( $current_page > 1 ) {
 				$__cf_row ['cf_title'] .= ' (Trang ' . $current_page . ')';
+				
+				//
+				if ( $current_page == 2 ) {
+					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . '" />';
+				}
+				else {
+					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . 'page/' . ( $current_page - 1 ) . '/" />';
+				}
+			}
+			
+			//
+			if ( $current_page < $wp_query->max_num_pages ) {
+				$dynamic_meta .= '<link rel="next" href="' . $url_og_url . 'page/' . ( $current_page + 1 ) . '/" />';
 			}
 			
 			//
@@ -188,6 +208,7 @@ if ( $main_content == false ) {
 		}
 		
 		
+	$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';
 		
 		
 		

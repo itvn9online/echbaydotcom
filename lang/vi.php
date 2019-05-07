@@ -455,6 +455,7 @@ $___eb_lang[eb_key_for_site_lang . 'dc_is_null'] = 'Không xác định được
 $___eb_lang[eb_key_for_site_lang . 'dc_too_short'] = 'Mã giảm giá quá ngắn, tối thiểu phải có 3 ký tự!';
 $___eb_lang[eb_key_for_site_lang . 'dc_not_found'] = 'Không tìm thấy Mã giảm giá hợp lệ!';
 $___eb_lang[eb_key_for_site_lang . 'dc_expires'] = 'Mã giảm giá đã hết hạn hoặc không còn sử dụng!';
+$___eb_lang[eb_key_for_site_lang . 'dc_ok'] = 'Mã giảm giá hợp lệ!';
 
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
