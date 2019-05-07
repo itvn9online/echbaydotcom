@@ -130,6 +130,7 @@ $str_for_category_top_sidebar = '';
 //	the_shortlink();
 	
 	$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
+	$dynamic_amp_meta = array();
 	
 	$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__category->name, $__category->term_id );
 	
@@ -183,15 +184,18 @@ if ( $main_content == false ) {
 				//
 				if ( $current_page == 2 ) {
 					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . '" />';
+					$dynamic_amp_meta[] = '<link rel="prev" href="' . $url_og_url . '?amp" />';
 				}
 				else {
 					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . 'page/' . ( $current_page - 1 ) . '/" />';
+					$dynamic_amp_meta[] = '<link rel="prev" href="' . $url_og_url . 'page/' . ( $current_page - 1 ) . '/?amp" />';
 				}
 			}
 			
 			//
 			if ( $current_page < $wp_query->max_num_pages ) {
 				$dynamic_meta .= '<link rel="next" href="' . $url_og_url . 'page/' . ( $current_page + 1 ) . '/" />';
+				$dynamic_amp_meta[] = '<link rel="next" href="' . $url_og_url . 'page/' . ( $current_page + 1 ) . '/?amp" />';
 			}
 			
 			//
@@ -208,8 +212,9 @@ if ( $main_content == false ) {
 		}
 		
 		
-	$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';
-		
+		//
+		$dynamic_meta .= '<link rel="shortlink" href="' . $link_for_fb_comment . '" />';
+//		$dynamic_amp_meta[] = '<link rel="shortlink" href="' . $link_for_fb_comment . '?amp" />';
 		
 		
 		

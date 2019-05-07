@@ -24,6 +24,13 @@ echo '<meta name="theme-color" content="' . $__cf_row['cf_default_bg'] . '">
 
 ?>
 <link rel="canonical" href="<?php echo $url_og_url; ?>" />
+<?php
+
+if ( isset( $dynamic_amp_meta ) ) {
+	echo implode( '', $dynamic_amp_meta );
+}
+
+?>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
 <script src="https://cdn.ampproject.org/v0.js" async></script>
 <?php
