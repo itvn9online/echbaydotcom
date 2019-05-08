@@ -129,9 +129,6 @@ $str_for_category_top_sidebar = '';
 //	$link_for_fb_comment = wp_get_shortlink();
 //	the_shortlink();
 	
-	$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
-	$dynamic_amp_meta = array();
-	
 	$schema_BreadcrumbList[$url_og_url] = _eb_create_breadcrumb( $url_og_url, $__category->name, $__category->term_id );
 	
 	
@@ -165,7 +162,9 @@ $main_content = _eb_get_static_html ( $strCacheFilter );
 if ( $main_content == false ) {
 	*/
 	
+	
 	//
+	$dynamic_amp_meta = array();
 	$list_post = '';
 	
 	//
@@ -182,17 +181,24 @@ if ( $main_content == false ) {
 				$__cf_row ['cf_title'] .= ' (Trang ' . $current_page . ')';
 				
 				//
+				$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . 'page/' . $current_page . '/" />';
+				
+				// với trang 2 -> cách hiển thị trang 1 sẽ khác một chút
 				if ( $current_page == 2 ) {
 					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . '" />';
 					$dynamic_amp_meta[] = '<link rel="prev" href="' . $url_og_url . '?amp" />';
 				}
+				// còn lại sẽ hiển thị bình thường
 				else {
 					$dynamic_meta .= '<link rel="prev" href="' . $url_og_url . 'page/' . ( $current_page - 1 ) . '/" />';
 					$dynamic_amp_meta[] = '<link rel="prev" href="' . $url_og_url . 'page/' . ( $current_page - 1 ) . '/?amp" />';
 				}
 			}
+			else {
+				$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
+			}
 			
-			//
+			// kiểm tra trang tiếp theo
 			if ( $current_page < $wp_query->max_num_pages ) {
 				$dynamic_meta .= '<link rel="next" href="' . $url_og_url . 'page/' . ( $current_page + 1 ) . '/" />';
 				$dynamic_amp_meta[] = '<link rel="next" href="' . $url_og_url . 'page/' . ( $current_page + 1 ) . '/?amp" />';
@@ -209,6 +215,9 @@ if ( $main_content == false ) {
 			) );
 			
 	//		echo $part_page;
+		}
+		else {
+			$dynamic_meta .= '<link rel="canonical" href="' . $url_og_url . '" />';
 		}
 		
 		
