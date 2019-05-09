@@ -674,7 +674,7 @@ if (cf_hide_supper_admin_menu == 1) {
 //		console.log( jQuery('#menu-dashboard ul a .update-plugins .update-count').length );
 
         // Hiển thị menu update trên top
-        jQuery('#wp-admin-bar-root-default').append('<li class="menupop"><a href="update-core.php" class="ab-item orgcolor bold wgr-eb-show-menu-update"><i class="fa fa-download"></i> ' + (jQuery('#menu-dashboard ul a[href="update-core.php"]').html() || 'Update core') + '</a></li>');
+        jQuery('#wp-admin-bar-root-default').append('<li class="menupop"><a href="update-core.php" class="ab-item orgcolor bold reddot wgr-eb-show-menu-update"><i class="fa fa-download"></i> ' + (jQuery('#menu-dashboard ul a[href="update-core.php"]').html() || 'Update core') + '</a></li>');
 
         // Hiển thị menu chỗ mục update
         jQuery('#menu-dashboard ul').show();
@@ -690,7 +690,7 @@ if (cf_hide_supper_admin_menu == 1) {
     if (parseInt(wgr_plugin_current_version.replace(/\./g, ''), 10) < parseInt(wgr_plugin_github_version.replace(/\./g, ''), 10)) {
         console.log('UPDATE NEW PLUGIN VERSION');
 
-        jQuery('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&click_to_update_core=1&connect_to=github" class="orgcolor no-set-cookies">Update WGR Plugin</a></li>');
+        jQuery('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&click_to_update_core=1&connect_to=github" class="orgcolor reddot no-set-cookies">Update WGR Plugin</a></li>');
     }
 
 
@@ -700,7 +700,7 @@ if (cf_hide_supper_admin_menu == 1) {
     if (wgr_theme_current_version != '' && parseInt(wgr_theme_current_version.replace(/\./g, ''), 10) < parseInt(wgr_theme_github_version.replace(/\./g, ''), 10)) {
         console.log('UPDATE NEW THEME VERSION');
 
-        jQuery('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&click_to_update_core=1&connect_to=theme" class="orgcolor">Update WGR Theme</a></li>');
+        jQuery('#toplevel_page_eb-order ul').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&click_to_update_core=1&connect_to=theme" class="orgcolor reddot no-set-cookies">Update WGR Theme</a></li>');
     }
 
 

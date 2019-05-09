@@ -1432,6 +1432,19 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	margin-bottom: 3px;
 }
 .notice.elementor-message { display: none; }
+.reddot { position: relative; }
+.reddot:after {
+	content: "";
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border-radius: 50%;
+	background: #f00;
+	position: absolute;
+	top: 50%;
+	right: -2px;
+	transform: translate(0, -90%);
+}
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
