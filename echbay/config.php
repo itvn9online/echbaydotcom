@@ -764,9 +764,35 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 
 
 
+// lựa chọn giao diện nút mua ngay trên
+$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/', '.{html}' );
+//print_r( $arr );
+$arr_for_get_template = array(
+	'none' => '[ Không hiển thị ]'
+);
+foreach ( $arr as $k => $v ) {
+	$v = basename( $v, '.html' );
+	$arr_for_get_template[$v] = $v;
+}
+//print_r( $arr_for_get_template );
+
+//
+$arr_for_get_template['details_buttonmua'] = 'Tự tạo trong theme cha';
+
+//
+$arr_for_set_template['cf_details_buttonmua'] = __eb_create_select_checked_config(
+	$arr_for_get_template,
+	$__cf_row['cf_details_buttonmua'],
+	'cf_details_buttonmua'
+);
+
+
+
+
+
 // lựa chọn giao diện nút mua ngay trên mobile
 //$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/details/*' );
-$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/', '.{html}' );
+$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/mobilemua/', '.{html}' );
 //print_r( $arr );
 $arr_for_get_template = array(
 	'none' => '[ Không hiển thị ]'

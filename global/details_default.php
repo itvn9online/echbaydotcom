@@ -817,16 +817,18 @@ if ( $__post->post_type == 'post' ) {
 	
 	
 	//
-	$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color' );
-	
-	/*
-	$post_buy_size_color = EBE_html_template( $post_buy_size_color, array(
-		'tmp.post-buy-button' => WGR_get_html_template_lang( 'post_buy' )
-	) );
-	*/
-	
-	//
-	$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom' ) . '</div>';
+	if ( $__cf_row['cf_details_buttonmua'] != 'none' ) {
+		$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color', '', EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/' );
+		
+		/*
+		$post_buy_size_color = EBE_html_template( $post_buy_size_color, array(
+			'tmp.post-buy-button' => WGR_get_html_template_lang( 'post_buy' )
+		) );
+		*/
+		
+		//
+		$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom', '', EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/' ) . '</div>';
+	}
 	
 }
 // với blog -> sử dụng giao diện khác post
@@ -1330,7 +1332,7 @@ if ( $bai_san_pham == true && $__cf_row['cf_details_mobilemua'] != 'none' ) {
 	
 	// v3
 	$main_content .= EBE_html_template(
-		EBE_get_custom_template( $__cf_row['cf_details_mobilemua'], 'details' ),
+		EBE_get_custom_template( $__cf_row['cf_details_mobilemua'], 'details/mobilemua' ),
 		/*
 		EBE_get_page_template(
 			$__cf_row['cf_details_mobilemua'],
