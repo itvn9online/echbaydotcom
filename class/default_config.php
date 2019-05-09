@@ -339,7 +339,7 @@ $__cf_row_default = array(
 	'cf_required_address_cart' => 'off',
 	
 	// giao diện nút mua top
-	'cf_details_buttonmua' => 'post_size_color',
+	'cf_details_buttonmua' => 'mua',
 	// giao diện nút mua ngay trên mobile
 	'cf_details_mobilemua' => 'mobilemua1',
 	
