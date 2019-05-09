@@ -16,6 +16,10 @@
 	width: 93%;
 	margin: 0;
 }
+.style-for-mobile .detail-muangay-topleft .details-mua-ngay {
+	margin: 0 auto;
+	width: 100%;
+}
 .detail-muangay-topright {
 	float: left;
 	width: 100%;
