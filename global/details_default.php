@@ -818,7 +818,12 @@ if ( $__post->post_type == 'post' ) {
 	
 	//
 	if ( $__cf_row['cf_details_buttonmua'] != 'none' ) {
-		$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color', '', EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/' );
+//		$post_buy_size_color = WGR_get_html_template_lang( 'post_size_color', '', EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/' );
+		$post_buy_size_color = EBE_html_template(
+			EBE_get_custom_template( $__cf_row['cf_details_buttonmua'], 'details/pcmua' ),
+			array(
+			)
+		);
 		
 		/*
 		$post_buy_size_color = EBE_html_template( $post_buy_size_color, array(
@@ -827,7 +832,7 @@ if ( $__post->post_type == 'post' ) {
 		*/
 		
 		//
-		$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom', '', EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/' ) . '</div>';
+		$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom', '', EB_THEME_PLUGIN_INDEX . 'html/details/' ) . '</div>';
 	}
 	
 }
