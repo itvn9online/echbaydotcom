@@ -818,6 +818,10 @@ if ( $__post->post_type == 'post' ) {
 	
 	//
 	if ( $__cf_row['cf_details_buttonmua'] != 'none' ) {
+		// menu nút mua ở botton trước, để nó laod css dùng chung
+		$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom', '', EB_THEME_PLUGIN_INDEX . 'html/details/' ) . '</div>';
+		
+		
 		// nếu người dùng không tự tạo html
 		if ( EBE_get_lang('post_size_color') == 'post_size_color' ) {
 			// lấy module tạo size, color
@@ -836,9 +840,6 @@ if ( $__post->post_type == 'post' ) {
 			'tmp.post-buy-button' => WGR_get_html_template_lang( 'post_buy' )
 		) );
 		*/
-		
-		//
-		$post_buy_bottom = '<div class="detail-muangay-padding detail-muangay-bottom-padding">' . WGR_get_html_template_lang( 'post_buy_bottom', '', EB_THEME_PLUGIN_INDEX . 'html/details/' ) . '</div>';
 	}
 	
 }

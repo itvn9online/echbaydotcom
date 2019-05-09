@@ -19,14 +19,17 @@
 .detail-muangay-topright {
 	float: left;
 	width: 100%;
-}
-.detail-muangay-topright .details-tu-van {
-	max-width: none;
-	background: none;
-	color: #000 !important;
 	border: 1px #999 solid;
 	padding: 10px 0;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
-	height: auto;
 }
-.detail-muangay-topright .details-tu-van span { padding-top: 2px; }
+.detail-muangay-topphone a {
+	display: inline-block;
+	color: #000;
+}
+.detail-muangay-topphone a:after {
+	content: "-";
+	display: inline-block;
+	margin: 0 5px;
+}
+.detail-muangay-topphone a:last-child:after { display: none; }
