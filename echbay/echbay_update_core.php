@@ -16,6 +16,10 @@ if ( isset( $_GET['remove_update_running_file'] ) ) {
 
 
 
+include_once ECHBAY_PRI_CODE . 'echbay_compiler_core.php';
+
+
+
 // chuyển từ vesion cũ sang version mới
 if ( ! file_exists( EB_THEME_URL . 'i.php' ) ) {
 //	$arr = glob ( EB_THEME_URL . 'theme/*' );
@@ -194,9 +198,14 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	
 	//
 	foreach ( $arr_file as $v ) {
+		
+		// kiểm tra và conpiler các file js, css
+		WGR_compiler_update_echbay_css_js( $v );
+		
+		//
 		$v2 = str_replace( $dir_source, $dir_to, $v );
 		
-		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
+		echo 'f: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 		
 		// upload file
 		copy( $v, $v2 );
@@ -405,6 +414,10 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 	//
 //	print_r( $list_file_for_update_eb_core );
 	foreach ( $list_file_for_update_eb_core as $v ) {
+		
+		// kiểm tra và conpiler các file js, css
+		WGR_compiler_update_echbay_css_js( $v );
+		
 //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 		
 		$v2 = str_replace( $dir_source_update, $dir_to_update, $v );
@@ -412,7 +425,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 		
 //		$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
 		
-		echo '<strong>from</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
+		echo 'f: ' . str_replace( EB_THEME_CONTENT, '', $v . ' - <strong>to</strong>: ' . $v2 ) . '<br>' . "\n";
 //		echo $file_test . ' - file cache<br>' . "\n";
 		
 		// upload file FTP_BINARY or FTP_ASCII -> nên sử dụng FTP_BINARY
