@@ -1216,6 +1216,7 @@ function ___eb_details_post_run ( r ) {
 //	console.log(arr_detect_browser);
 //	alert(arr_detect_browser);
 	if ( jQuery('.clone-show-mobile-quick-cart').length > 0 && arr_detect_browser == 'fb' ) {
+		console.log('Show quick cart for Facebook browser');
 		jQuery('.clone-show-mobile-quick-cart').addClass('clone-show-quick-cart');
 	}
 	
