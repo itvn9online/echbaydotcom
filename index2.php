@@ -346,7 +346,7 @@ else {
 }
 
 // nếu chưa có cặp thẻ LI -> bổ sung cặp này vào -> tạo dữ liệu theo thẻ thống nhất
-$__eb_thread_template = WGR_add_li_to_thread_node( $__eb_thread_template );
+$__eb_thread_template = WGR_remove_js_multi_comment( WGR_add_li_to_thread_node( $__eb_thread_template ), '<!--', '-->' );
 
 //
 define( '__eb_thread_template', $__eb_thread_template );
