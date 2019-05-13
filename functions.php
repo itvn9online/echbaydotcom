@@ -1298,9 +1298,9 @@ function WGR_remove_js_comment($a, $chim = false) {
         $v = trim($v);
 
         if ($v == '' || substr($v, 0, 2) == '//') {
-            
         } else {
-            if ($chim == true || strstr($v, '//') == true) {
+			// thêm dấu xuống dòng với 1 số trường hợp
+            if ($chim == true || strstr($v, '//') == true || substr($v, -1) == '\\') {
                 $v .= "\n";
             }
             $str .= $v;

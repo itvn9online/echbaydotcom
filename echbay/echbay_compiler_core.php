@@ -2,6 +2,8 @@
 
 
 function WGR_update_core_remove_html_comment ( $a ) {
+	$a = WGR_remove_js_multi_comment( $a, '<!--', '-->' );
+	
     $a = explode("\n", $a);
 
     $str = '';
@@ -10,10 +12,17 @@ function WGR_update_core_remove_html_comment ( $a ) {
 
         if ( $v != '' ) {
 			// loại bỏ các comment html đơn giản
+			/*
 			if ( substr( $v, 0, 4 ) == '<!--' && substr( $v, -3 ) == '-->' ) {
 			}
 			else {
 	            $str .= $v . "\n";
+			}
+			*/
+			
+			$str .= $v;
+			if ( strstr( $v, '//' ) == true ) {
+	            $str .= "\n";
 			}
         }
     }
@@ -54,7 +63,8 @@ function WGR_compiler_update_echbay_css_js ( $v ) {
 	
 	// các file đạt yêu cầu
 	if ( $ext == 'js' ) {
-		file_put_contents( $v, WGR_remove_js_comment( file_get_contents( $v, 1 ) ) );
+//		file_put_contents( $v, WGR_remove_js_comment( file_get_contents( $v, 1 ) ) );
+		file_put_contents( $v, _eb_str_text_fix_js_content( WGR_remove_js_comment( file_get_contents( $v, 1 ) ) ) );
 //		file_put_contents( $v, WGR_remove_js_multi_comment( WGR_remove_js_comment( file_get_contents( $v, 1 ) ) ) );
 	}
 	else if ( $ext == 'css' ) {

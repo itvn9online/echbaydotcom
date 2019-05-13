@@ -398,7 +398,7 @@ function _eb_checkDevice_v1 () {
 
 
 // Chuyển ký tự UTF-8 -> ra bảng mã mới
-function _eb_str_block_fix_content ($str) {
+function _eb_str_text_fix_js_content ($str) {
 	if ($str == '') {
 		return '';
 	}
@@ -542,7 +542,29 @@ function _eb_str_block_fix_content ($str) {
 		'Ỳ' => '\u1ef2',
 		'Ỷ' => '\u1ef6',
 		'Ỹ' => '\u1ef8',
-		'Ỵ' => '\u1ef4',
+		'Ỵ' => '\u1ef4'
+	);
+	
+	//
+	foreach ($arr as $k => $v) {
+		if ($v != '') {
+			$str = str_replace($k, $v, $str);
+		}
+	}
+	return $str;
+}
+
+function _eb_str_block_fix_content ($str) {
+	if ($str == '') {
+		return '';
+	}
+	
+//	$str = iconv('UTF-16', 'UTF-8', $str);
+//	$str = mb_convert_encoding($str, 'UTF-8', 'UTF-16');
+//	$str = mysqli_escape_string($str);
+//	$str = htmlentities($str, ENT_COMPAT, 'UTF-16');
+	// https://www.google.com/search?q=site:charbase.com+%E1%BB%9D#q=site:charbase.com+%E1%BA%A3
+	$arr = array(
 		// Loại bỏ dòng trắng
 //			';if (' => ';if(',
 //			'{if (' => '{if(',
@@ -575,7 +597,7 @@ function _eb_str_block_fix_content ($str) {
 	);
 	
 	//
-	$str = str_replace('\\', '\\\\', $str);
+	$str = _eb_str_text_fix_js_content( str_replace('\\', '\\\\', $str) );
 	
 	//
 	foreach ($arr as $k => $v) {
