@@ -49,8 +49,10 @@ function WGR_update_core_remove_php_comment ( $a ) {
 }
 
 function WGR_compiler_update_echbay_css_js ( $v ) {
-
+	// xác định các file sẽ compiler cho nhẹ code
 	$ext = pathinfo($v, PATHINFO_EXTENSION);
+	
+	// các file đạt yêu cầu
 	if ( $ext == 'js' ) {
 		file_put_contents( $v, WGR_remove_js_comment( file_get_contents( $v, 1 ) ) );
 //		file_put_contents( $v, WGR_remove_js_multi_comment( WGR_remove_js_comment( file_get_contents( $v, 1 ) ) ) );
