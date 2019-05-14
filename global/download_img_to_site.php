@@ -42,6 +42,8 @@ EBE_create_dir( $save_to, 1, 0777 );
 
 // file download
 $file_name = $_GET['file_name'];
+$file_name = explode( '?', $file_name );
+$file_name = $file_name[0];
 $save_to .= $file_name;
 //echo $save_to . '<br>' . "\n";
 if ( ! file_exists( $save_to ) ) {
