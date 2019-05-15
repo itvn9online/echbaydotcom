@@ -71,6 +71,15 @@ jQuery('.click-connect-to-echbay-update-eb-core').attr({
 	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1'
 }).click(function () {
+	
+	//
+//	alert( document.domain );
+	if ( document.domain == 'localhost' ) {
+		a_lert('Quá trình update chưa được hỗ trợ trên localhost!');
+		return false;
+	}
+	
+	//
 	jQuery(this)
 	.hide()
 	/*
@@ -91,6 +100,15 @@ jQuery('.click-connect-to-github-update-eb-core').attr({
 	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=github'
 }).click(function () {
+	
+	//
+//	alert( document.domain );
+	if ( document.domain == 'localhost' ) {
+		a_lert('Quá trình update chưa được hỗ trợ trên localhost!');
+		return false;
+	}
+	
+	//
 	jQuery(this)
 	.hide()
 	/*
@@ -111,6 +129,15 @@ jQuery('.click-connect-to-echbay-update-eb-theme').attr({
 	target : 'target_eb_iframe',
 	href : window.location.href.split('&confirm_eb_process=')[0] + '&confirm_eb_process=1&connect_to=theme'
 }).click(function () {
+	
+	//
+//	alert( document.domain );
+	if ( document.domain == 'localhost' ) {
+		a_lert('Quá trình update chưa được hỗ trợ trên localhost!');
+		return false;
+	}
+	
+	//
 	jQuery(this)
 	.hide()
 	/*

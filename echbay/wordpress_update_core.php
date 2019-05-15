@@ -103,18 +103,4 @@ else {
 
 
 ?>
-<script type="text/javascript">
-jQuery('.click-connect-to-echbay-update-wp-core').attr({
-	href : window.location.href.split('&confirm_wp_process=')[0] + '&confirm_wp_process=1'
-});
-
-jQuery('.click-connect-to-echbay-update-el-core').attr({
-	href : window.location.href.split('&confirm_el_process=')[0] + '&confirm_el_process=1'
-});
-
-//
-if ( window.location.href.split('&confirm_wp_process=').length > 1 ) {
-	_global_js_eb.change_url_tab( 'confirm_wp_process' );
-//	window.history.pushState("", '', window.location.href.split('&confirm_wp_process=')[0]);
-}
-</script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/wordpress_update_core.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/wordpress_update_core.js' ); ?>"></script>

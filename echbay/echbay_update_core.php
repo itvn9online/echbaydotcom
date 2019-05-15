@@ -200,9 +200,9 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	foreach ( $arr_file as $v ) {
 		
 		// kiểm tra và conpiler các file js, css
-		if ( $localhost != 1 ) {
+//		if ( $localhost != 1 ) {
 			WGR_compiler_update_echbay_css_js( $v );
-		}
+//		}
 		
 		//
 		$v2 = str_replace( $dir_source, $dir_to, $v );
@@ -418,9 +418,9 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 	foreach ( $list_file_for_update_eb_core as $v ) {
 		
 		// kiểm tra và conpiler các file js, css
-		if ( $localhost != 1 ) {
+//		if ( $localhost != 1 ) {
 			WGR_compiler_update_echbay_css_js( $v );
-		}
+//		}
 		
 //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 		
@@ -508,12 +508,13 @@ function EBE_get_text_version ( $str ) {
 		
 		
 		// không cập nhật trên localhost
-		if ( strstr( $_SERVER['HTTP_HOST'], 'localhost' ) == true ) {
+		if ( $localhost == 1 ) {
+//		if ( strstr( $_SERVER['HTTP_HOST'], 'localhost' ) == true ) {
 //			echo $_SERVER['HTTP_HOST']; exit();
 //			echo $_SERVER['REQUEST_URI']; exit();
 			
 			// nếu thư mục là webgiare thì bỏ qua chế độ cập nhật
-			if ( strstr( $_SERVER['REQUEST_URI'], '/wordpress.org/' ) == true ) {
+			if ( strstr( $_SERVER['REQUEST_URI'], '/wordpress.org' ) == true ) {
 				echo '<h1>Chế độ cập nhật đã bị vô hiệu hóa bởi coder!</h1>';
 				exit();
 			}
@@ -899,4 +900,4 @@ else {
 <div class="content-waiting-update-complete">
 	<div class="bg-waiting-update-complete whitecolor medium18 l25 bold">Tiến trình cập nhật đang chạy, vui lòng không đóng cửa sổ này!</div>
 </div>
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/echbay_update_core.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/echbay_update_core.js' ); ?>"></script> 
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/echbay_update_core.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/echbay_update_core.js' ); ?>"></script>
