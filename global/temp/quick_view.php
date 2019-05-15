@@ -82,7 +82,11 @@ include EB_THEME_PLUGIN_INDEX . 'header.php';
 
 
 //
-echo '<div class="css-for-quickview">';
+$css_for_quicview = 'css-for-quickview';
+//if ( isset( $_GET['set_iframe'] ) && $_GET['set_iframe'] == 'iframe' ) {
+//	$css_for_quicview = 'css-for-reliframe';
+//}
+echo '<div class="' . $css_for_quicview . '">';
 
 echo $main_content;
 

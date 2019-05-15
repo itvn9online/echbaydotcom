@@ -1038,13 +1038,15 @@ function WGR_set_a_target_top () {
 
 function close_ebe_quick_view () {
 	jQuery('#oi_ebe_quick_view').hide();
-	jQuery('body').removeClass('body-no-scroll');
+	jQuery('body').removeClass('body-no-scroll').removeClass('open-fake-in-iframe');
 	
 	window.history.pushState("", '', current_ls_url);
 	
 	pid = current_pid_quicview;
 	
 	document.title = cache_for_quick_view_title;
+	
+	_global_js_eb.auto_margin();
 }
 
 function WGR_set_quick_view_height () {
