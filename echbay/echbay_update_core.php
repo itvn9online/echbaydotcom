@@ -200,7 +200,9 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	foreach ( $arr_file as $v ) {
 		
 		// kiểm tra và conpiler các file js, css
-		WGR_compiler_update_echbay_css_js( $v );
+		if ( $localhost != 1 ) {
+			WGR_compiler_update_echbay_css_js( $v );
+		}
 		
 		//
 		$v2 = str_replace( $dir_source, $dir_to, $v );
@@ -416,7 +418,9 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 	foreach ( $list_file_for_update_eb_core as $v ) {
 		
 		// kiểm tra và conpiler các file js, css
-		WGR_compiler_update_echbay_css_js( $v );
+		if ( $localhost != 1 ) {
+			WGR_compiler_update_echbay_css_js( $v );
+		}
 		
 //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 		
