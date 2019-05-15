@@ -1440,10 +1440,9 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	display: inline-block;
 	border-radius: 50%;
 	background: #f00;
-	position: absolute;
-	top: 50%;
-	right: -2px;
-	transform: translate(0, -90%);
+	position: relative;
+	transform: translate(0, -50%);
+	margin-left: 2px;
 }
 
 @media screen and (max-width:775px) {
