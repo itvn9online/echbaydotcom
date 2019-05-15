@@ -1491,9 +1491,9 @@ var current_pid_quicview = pid,
 						});
 					}
 				}
-				else {
-					jQuery(this).addClass('wgr-rel-iframe');
-				}
+//				else {
+//					jQuery(this).addClass('wgr-rel-iframe');
+//				}
 			}
         }
     });
@@ -1525,11 +1525,17 @@ var current_pid_quicview = pid,
 		return false;
 	}
 	
+	// giả lập mở trong iframe
+	jQuery('.wgr-fake-iframe').addClass('thread-list-wgr-quickview').attr({
+		'data-rel': 'iframe'
+	});
+	
 	//
 	jQuery('.thread-list-wgr-quickview').click(function () {
 		
 		var a = jQuery(this).attr('data-id') || '',
-			h = jQuery(this).attr('href') || '';
+			h = jQuery(this).attr('href') || '',
+			r = jQuery(this).attr('data-rel') || '';
 		
 		//
 		a = g_func.number_only( a );
@@ -1547,6 +1553,14 @@ var current_pid_quicview = pid,
 		
 		//
 		jQuery('body').addClass('body-no-scroll');
+		
+		// nếu có lệnh mở dạng iframe -> tải luôn trong đó
+		if ( r == 'iframe' ) {
+			jQuery('body').addClass('open-fake-in-iframe');
+		}
+		else {
+			jQuery('body').removeClass('open-fake-in-iframe');
+		}
 		jQuery('#oi_ebe_quick_view').show();
 		
 		// nếu chưa có khung load dữ liệu thì add thêm vào
@@ -1612,7 +1626,8 @@ var current_pid_quicview = pid,
 		//
 		return false;
 		
-	}).removeClass('wgr-rel-iframe');
+//	}).removeClass('wgr-rel-iframe');
+	});
 })();
 
 

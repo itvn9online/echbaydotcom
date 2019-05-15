@@ -2362,6 +2362,7 @@ iframe[name="google_conversion_frame"] {
 	bottom: 0;
 }
 */
+.open-fake-in-iframe .ebe-quick-view { }
 /* post index */
 .thread-details-index {
 	background: #f5f5f6;
