@@ -1526,17 +1526,17 @@ var current_pid_quicview = pid,
 	}
 	
 	//
-	$('.thread-list li').each(function() {
-		var a = $(this).attr('data-id') || '';
-		$('.wgr-fake-iframe', this).attr({
-			'data-id': a
-		});
-	});
+//	$('.thread-list li').each(function() {
+//		var a = $(this).attr('data-id') || '';
+//		$('.wgr-fake-iframe', this).attr({
+//			'data-id': a
+//		});
+//	});
 	
 	// giả lập mở trong iframe
-	jQuery('.wgr-fake-iframe').addClass('thread-list-wgr-quickview').attr({
-		'data-rel': 'iframe'
-	});
+//	jQuery('.wgr-fake-iframe').addClass('thread-list-wgr-quickview').attr({
+//		'data-rel': 'iframe'
+//	});
 	
 	//
 	jQuery('.thread-list-wgr-quickview').click(function () {
@@ -1561,11 +1561,18 @@ var current_pid_quicview = pid,
 		
 		// nếu có lệnh mở dạng iframe -> tải luôn trong đó
 		if ( r == 'iframe' ) {
+			var scron = $('#webgiare__top').height() || 0;
+			if ( scron > 90 ) {
+				scron -= 90;
+			}
+			console.log( scron );
+			window.scroll( 0, scron );
+			
+			//
 			jQuery('body').addClass('open-fake-in-iframe').removeClass('body-no-scroll');
 //			$('#oi_ebe_quick_view').css({
 //				'margin-top': $('#webgiare__top').height() + 'px'
 //			});
-			window.scroll( 0, 0 );
 		}
 		else {
 			jQuery('body').removeClass('open-fake-in-iframe').addClass('body-no-scroll');
