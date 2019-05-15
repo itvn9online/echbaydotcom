@@ -998,16 +998,6 @@ var threadDetailsTimeend = null;
 
 
 
-
-
-
-// với các link # -> tắt chức năng click
-jQuery('a[href="#"]').attr({
-	href : 'javascript:;'
-//}).click(function () {
-//	return false;
-});
-
 // tạo hiệu ứng select với url trùng với link hiện tại
 (function ( u ) {
 //	console.log(u);
@@ -1419,14 +1409,95 @@ setTimeout(function () {
 }, 3000);
 
 
-	// ID của pid -> để tạo giỏ hàng cho chuẩn
+// ID của pid -> để tạo giỏ hàng cho chuẩn
 var current_pid_quicview = pid,
 	set_new_height_for_quick_view = true,
 	time_for_new_height_quick_view = 800,
 	// lưu title hiện tại của trang
 	cache_for_quick_view_title = document.title,
 	// lưu lại ID hiện tại của quick view
-	cache_for_quick_view_id = 0;
+	cache_for_quick_view_id = 0,
+	cache_for_quick_view_url = '';
+
+
+
+// nhảy đến 1 ID đã được xác định (tương tự như thẻ A name)
+(function() {
+	var nol = 0,
+		dm = document.domain;
+	if ( WGR_check_option_on(cf_auto_nofollow) ) {
+		nol = 1;
+	}
+	
+	// với các link # -> tắt chức năng click
+//	jQuery('a[href="#"]').attr({
+//		href : 'javascript:;'
+//	}).click(function () {
+//		return false;
+//	});
+	
+	//
+    jQuery('a').each(function() {
+        var a = jQuery(this).attr('href') || '';
+//		console.log(a);
+
+        if (a != '') {
+//			console.log(a.substr(0, 1));
+			
+            // Chế độ nhảy đến link
+            if (a.substr(0, 1) == '#') {
+//				console.log(a);
+                a = a.split('#')[1];
+
+                if (a != '') {
+                    jQuery(this).on('click', function() {
+                        var goto = 0;
+                        if (jQuery('#' + a).length > 0) {
+                            goto = jQuery('#' + a).offset().top;
+                        } else if (jQuery('a[name="' + a + '"]').length > 0) {
+                            goto = jQuery('a[name="' + a + '"]').offset().top;
+                        } else if (jQuery('.' + a).length > 0) {
+                            goto = jQuery('.' + a).offset().top;
+                        }
+
+                        if (goto > 90) {
+                            //							window.scroll( 0, goto - 110 );
+                            jQuery('body,html').animate({
+                                scrollTop: goto - 110
+                            }, 800);
+
+                            window.location.hash = a;
+
+                            return false;
+                        }
+                    });
+                }
+				else {
+					jQuery(this).attr({
+						href : 'javascript:;'
+					});
+				}
+            }
+			else if ( a == '/' || a == './' || a == web_link ) {
+				jQuery(this).addClass('wgr-rel-home');
+			}
+			else {
+				// tự thêm nofollow vào các liên kết ngoài
+				if ( a.split('//').length > 1 && a.split('//')[1].split('/')[0] != dm ) {
+					if ( nol == 1 ) {
+						jQuery(this).attr({
+							target: '_blank',
+							rel: 'nofollow'
+						});
+					}
+				}
+				else {
+					jQuery(this).addClass('wgr-rel-iframe');
+				}
+			}
+        }
+    });
+})();
 
 
 //
@@ -1456,6 +1527,7 @@ var current_pid_quicview = pid,
 	
 	//
 	jQuery('.thread-list-wgr-quickview').click(function () {
+		
 		var a = jQuery(this).attr('data-id') || '',
 			h = jQuery(this).attr('href') || '';
 		
@@ -1540,7 +1612,7 @@ var current_pid_quicview = pid,
 		//
 		return false;
 		
-	});
+	}).removeClass('wgr-rel-iframe');
 })();
 
 

@@ -164,67 +164,16 @@ ___eb_thread_list_li();
 })();
 
 
-
-// nhảy đến 1 ID đã được xác định (tương tự như thẻ A name)
-(function() {
-    jQuery('a').each(function() {
-        var a = jQuery(this).attr('href') || '';
-        //		console.log(a);
-
-        if (a != '') {
-            // Chế độ nhảy đến link
-            if (a.substr(0, 1) == '#') {
-                //				console.log(a);
-                a = a.split('#')[1];
-
-                if (a != '') {
-                    jQuery(this).on('click', function() {
-                        var goto = 0;
-                        if (jQuery('#' + a).length > 0) {
-                            goto = jQuery('#' + a).offset().top;
-                        } else if (jQuery('a[name="' + a + '"]').length > 0) {
-                            goto = jQuery('a[name="' + a + '"]').offset().top;
-                        } else if (jQuery('.' + a).length > 0) {
-                            goto = jQuery('.' + a).offset().top;
-                        }
-
-                        if (goto > 90) {
-                            //							window.scroll( 0, goto - 110 );
-                            jQuery('body,html').animate({
-                                scrollTop: goto - 110
-                            }, 800);
-
-                            window.location.hash = a;
-
-                            return false;
-                        }
-                    });
-                }
-            } else if (WGR_check_option_on(cf_auto_nofollow) && a.split('//').length > 1) {
-                a = a.split('//')[1].split('/')[0];
-
-                if (a != document.domain) {
-                    jQuery(this).attr({
-                        target: '_blank',
-                        rel: 'nofollow'
-                    });
-                }
-            }
-        }
-    });
-
-
-    /*
-     jQuery('.ebe-currency-format').each(function() {
-     var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
-     
-     if ( a != '' && a != '0' ) {
-     jQuery(this).html( g_func.money_format( a ) );
-     }
-     });
-     */
-    _global_js_eb.ebe_currency_format();
-})();
+/*
+ jQuery('.ebe-currency-format').each(function() {
+ var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
+ 
+ if ( a != '' && a != '0' ) {
+ jQuery(this).html( g_func.money_format( a ) );
+ }
+ });
+ */
+_global_js_eb.ebe_currency_format();
 
 
 

@@ -84,7 +84,8 @@ foreach ($add_data_id as $k => $v) {
 
 
 //
-echo 'var ' . substr( substr( json_encode( $cache_data_id . ',' . implode( ',', $data_id ) ), 1 ), 0, -1 ) . ';';
+//echo 'var ' . substr( substr( json_encode( $cache_data_id . ',' . implode( ',', $data_id ) ), 1 ), 0, -1 ) . ';';
+echo 'var ' . _eb_str_text_fix_js_content( $cache_data_id . ',' . implode( ',', $data_id ) ) . ';';
 //echo 'var ' . $cache_data_id . 'aaaaaaaaaaaaaaaa' . implode( ',', $add_data_id ) . ';';
 //$data_id = 'var ' . $cache_data_id . $data_id . ',site_group=[' . $site_group . '],brand_group=[' . $brand_group . '],city_group=[],arr_blog_group=[' . $js_blg_id . '];';
 

@@ -2567,8 +2567,8 @@ function _eb_log_user($m) {
 //	return false;
     // v2
     return _eb_set_log(array(
-        'l_noidung' => $m
-            ), 4);
+		'l_noidung' => $m
+	), 4);
 
     // v1
     $m .= ' (at ' . date('r', date_time) . ')';
