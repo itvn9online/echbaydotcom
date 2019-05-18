@@ -524,10 +524,10 @@ if ( $main_content == false ) {
 		
 		//
 		if ( $switch_taxonomy == 'category' && $__cf_row['cf_show_fb_cmt_posts'] == 1 ) {
-			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>';
+			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-numposts="{tmp.fb_num_comments}" data-mobile=true></div>';
 		}
 		else if ( $switch_taxonomy == EB_BLOG_POST_LINK && $__cf_row['cf_show_fb_cmt_blogs'] == 1 ) {
-			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-width="100%" data-numposts="{tmp.fb_num_comments}" data-colorscheme="light"></div>';
+			$arr_main_content['tmp.html_for_fb_comment'] = '<div class="fb-comments" data-href="' . $link_for_fb_comment . '" data-numposts="{tmp.fb_num_comments}" data-mobile=true></div>';
 		}
 		else {
 			$arr_main_content['tmp.html_for_fb_comment'] = '';

@@ -2876,3 +2876,5 @@ iframe[name="google_conversion_frame"] {
 .jEBE_slider-position4 li.selected .banner-ads-media,
 .jEBE_slider-position3 li.selected .banner-ads-media,
 .jEBE_slider-position2 li.selected .banner-ads-media { background-size: 100% auto; }
+/* chỉnh lại chiều rộng cho hộp bình luận fb */
+.fb_iframe_widget_fluid_desktop iframe { width: 100% !important; }

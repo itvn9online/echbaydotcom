@@ -362,11 +362,13 @@ function add_fb_messages_for_page() {
 	
 	// căn lại chiều rộng cho fb plugin
 	// https://developers.facebook.com/docs/plugins/comments/
+	/*
 	jQuery('.fb-like, .fb-comments').each(function() {
 		jQuery(this).attr({
 			'data-width': Math.ceil(jQuery(this).width() || 320)
 		});
 	});
+	*/
 	
 	
     jQuery(document).ready(function() {
@@ -412,11 +414,13 @@ function add_fb_messages_for_page() {
             if (WGR_check_option_on(cf_tester_mode)) console.log('FB app ID: ' + __global_facebook_id);
 			
 			// căn lại chiều rộng cho fb plugin
+			/*
 			jQuery('.fb-like, .fb-comments').each(function() {
 				jQuery(this).attr({
 					'data-width': Math.ceil(jQuery(this).width() || 320)
 				});
 			});
+			*/
 
 
             //
