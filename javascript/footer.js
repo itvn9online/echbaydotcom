@@ -361,9 +361,10 @@ function add_fb_messages_for_page() {
 (function() {
 	
 	// căn lại chiều rộng cho fb plugin
+	// https://developers.facebook.com/docs/plugins/comments/
 	jQuery('.fb-like, .fb-comments').each(function() {
 		jQuery(this).attr({
-			'data-width': Math.ceil(jQuery(this).width() || 250)
+			'data-width': Math.ceil(jQuery(this).width() || 320)
 		});
 	});
 	
@@ -397,7 +398,7 @@ function add_fb_messages_for_page() {
         if (jQuery('.g-comments').length > 0) {
             po = document.createElement('script');
             po.type = 'text/javascript';
-            //		po.async = true;
+//			po.async = true;
             po.src = 'https://apis.google.com/js/plusone.js';
             s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(po, s);
@@ -413,7 +414,7 @@ function add_fb_messages_for_page() {
 			// căn lại chiều rộng cho fb plugin
 			jQuery('.fb-like, .fb-comments').each(function() {
 				jQuery(this).attr({
-					'data-width': Math.ceil(jQuery(this).width() || 250)
+					'data-width': Math.ceil(jQuery(this).width() || 320)
 				});
 			});
 
@@ -435,12 +436,17 @@ function add_fb_messages_for_page() {
             //
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.2&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
-                fjs.parentNode.insertBefore(js, fjs);
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement(s);
+				js.id = id;
+				js.async = true;
+				js.defer = true;
+				js.crossorigin = "anonymous";
+//				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.2&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
+				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.3&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
+				fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
 
