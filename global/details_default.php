@@ -1010,6 +1010,7 @@ $arr_main_content = array(
 	'tmp.lang_btn_muangay' => EBE_get_lang('muangay'),
 	'tmp.add_to_cart' => EBE_get_lang('add_to_cart'),
 	'tmp.lang_details_tu_van' => EBE_get_lang('details_tu_van'),
+	'tmp.lang_details2_tu_van' => EBE_get_lang('details2_tu_van'),
 	'tmp.lang_details_share' => EBE_get_lang('details_share'),
 	
 	'tmp.lang_btn_comment' => EBE_get_lang('post_comment'),
