@@ -735,7 +735,7 @@ $arr_eb_add_full_js, $async = '',
 //				$v = str_replace( ABSPATH, '', $v );
                 $v = str_replace('\\', '/', strstr($v, $content_dir));
 
-                echo '<script type="text/javascript" src="' . $v . '?ver=' . $ver . '"></script>' . "\n";
+                echo '<script type="text/javascript" src="' . $v . '?ver=' . $ver . '" defer></script>' . "\n";
             }
         }
         return true;
@@ -764,8 +764,9 @@ $arr_eb_add_full_js, $async = '',
 //	echo EB_THEME_CONTENT . "\n";
 //	print_r( $file_name );
 	
-	//
-    echo '<script type="text/javascript" src="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-scripts.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" async></script>' . "\n";
+	// Nếu script của bạn là một module nào đó, chạy độc lập và không phụ thuộc vào bất kỳ script nào khác thì dùng thuộc tính async
+	// Nếu script của bạn phụ thuộc vào một script khác hoặc được một script khác sử dụng lại (phụ thuộc vào) thì nên sử dụng thuộc tính defer
+    echo '<script type="text/javascript" src="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-scripts.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" defer></script>' . "\n";
 	
 	//
 	return true;

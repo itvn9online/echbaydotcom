@@ -27,12 +27,17 @@ $load = explode( ',', $load );
 
 $dir2 = '';
 
+$by_dir = 'javascript/';
+if ( isset( $_GET['dir'] ) ) {
+	$by_dir = $_GET['dir'];
+}
+
 foreach ( $load as $v ) {
 //	echo $v . "\n";
 	
 	// nếu có trong thư mục mặc định của js echbaydotcom
-	if ( file_exists( $dir . 'javascript/' . $v ) ) {
-		echo file_get_contents( $dir . 'javascript/' . $v, 1 );
+	if ( file_exists( $dir . $by_dir . $v ) ) {
+		echo file_get_contents( $dir . $by_dir . $v, 1 );
 	}
 	else {
 		// nếu chưa có dir2 -> tìm dir2
