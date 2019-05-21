@@ -724,10 +724,12 @@ $arr_eb_add_full_js, $async = '',
     if ($__cf_row['cf_js_optimize'] != 1) {
         $content_dir = basename(WP_CONTENT_DIR);
 //		echo $content_dir . "\n";
-
+		
+		$ver = web_version;
+		
         foreach ($arr_eb_add_full_js as $v) {
             if (file_exists($v)) {
-                $ver = filemtime($v);
+//				$ver = filemtime($v);
 
 //				echo ABSPATH . "\n";
 //				$v = str_replace( ABSPATH, '', $v );
@@ -738,6 +740,37 @@ $arr_eb_add_full_js, $async = '',
         }
         return true;
     }
+	
+	
+	
+	
+	// chức năng load nội dung file trực tiếp giống wordpress
+	$file_name = array();
+    foreach ($arr_eb_add_full_js as $v) {
+        if ( file_exists($v) ) {
+//			echo $v . "\n";
+			
+			// nếu trong thư mục mặc định -> lấy tên file là đủ
+			if ( strstr( $v, 'echbaydotcom/javascript' ) == true ) {
+				$file_name[] = basename($v);
+			}
+			else {
+				$file_name[] = urlencode( strstr($v, EB_DIR_CONTENT) );
+			}
+		}
+	}
+//	echo WP_CONTENT_DIR . "\n";
+//	echo EB_DIR_CONTENT . "\n";
+//	echo EB_THEME_CONTENT . "\n";
+//	print_r( $file_name );
+	
+	//
+    echo '<script type="text/javascript" src="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-scripts.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" async></script>' . "\n";
+	
+	//
+	return true;
+	
+	
 
 
 
@@ -1370,13 +1403,14 @@ function WGR_remove_js_multi_comment($a, $begin = '/*', $end = '*/') {
 // add css thẳng vào HTML
 function _eb_add_compiler_css($arr) {
     global $__cf_row;
-
-
+	
+	
+	
 //	print_r( $arr );
     /*
       if ( $__cf_row['cf_css_optimize'] == 1 ) {
-      _eb_add_compiler_css_v2( $arr, 0 );
-      return true;
+		  _eb_add_compiler_v2_css( $arr, 0 );
+		  return true;
       }
      */
 
@@ -1385,11 +1419,35 @@ function _eb_add_compiler_css($arr) {
     /*
       // nếu là dạng tester -> chỉ có 1 kiểu add thôi
       if ( eb_code_tester == true ) {
-      _eb_add_compiler_css_v2( $arr );
+		  _eb_add_compiler_v2_css( $arr );
       }
       // sử dụng thật thì có 2 kiểu add: inline và add link
       else {
      */
+//		print_r( $new_arr1 );
+//		print_r( $new_arr2 );
+    // nếu là dạng tester -> chỉ có 1 kiểu add thôi -> nhúng link CSS
+//		if ( eb_code_tester == true ) {
+    // Nếu không có lệnh opimize CSS -> nhúng thẳng link vào
+    if ($__cf_row['cf_css_optimize'] != 1) {
+		// v1
+        _eb_add_compiler_v2_css($arr);
+		return true;
+		
+		// v2
+        echo '<!-- CSS node 0 -->' . "\n";
+        _eb_add_compiler_v2_css($new_arr1);
+
+        echo '<!-- CSS node 1 -->' . "\n";
+        _eb_add_compiler_v2_css($new_arr2);
+    }
+    // sử dụng thật thì có 2 kiểu add: inline và add link
+    else {
+		
+		
+		
+		
+		// v1
     $new_arr1 = array();
     $new_arr2 = array();
 
@@ -1401,42 +1459,69 @@ function _eb_add_compiler_css($arr) {
             $new_arr1[$k] = 1;
         }
     }
-//		print_r( $new_arr1 );
-//		print_r( $new_arr2 );
-    // nếu là dạng tester -> chỉ có 1 kiểu add thôi -> nhúng link CSS
-//		if ( eb_code_tester == true ) {
-    // Nếu không có lệnh opimize CSS -> nhúng thẳng link vào
-    if ($__cf_row['cf_css_optimize'] != 1) {
-        echo '<!-- CSS node 0 -->' . "\n";
-        _eb_add_compiler_css_v2($new_arr1);
-
-        echo '<!-- CSS node 1 -->' . "\n";
-        _eb_add_compiler_css_v2($new_arr2);
-    }
-    // sử dụng thật thì có 2 kiểu add: inline và add link
-    else {
+//	print_r( $arr );
+	$arr = array_merge( $new_arr1, $new_arr2 );
+//	print_r( $arr );
+//		echo count( $arr ) . "\n";
+		
+		
+		
+		// chức năng load nội dung file trực tiếp giống wordpress
+		$file_name = array();
+		$file2_name = array();
+		foreach ($arr as $k => $v) {
+			if ( file_exists($k) ) {
+//				echo $v . "\n";
+				
+				// nếu trong thư mục mặc định -> lấy tên file là đủ
+				if ( strstr( $k, 'echbaydotcom/css' ) == true || strstr( $k, 'echbaydotcom/themes/css' ) == true ) {
+					$file_name[] = basename($k);
+				}
+				else {
+					$file_name[] = urlencode( strstr($k, '/' . EB_DIR_CONTENT) );
+				}
+			}
+			else {
+				$file2_name[] = $k;
+			}
+		}
+//		echo WP_CONTENT_DIR . "\n";
+//		echo EB_DIR_CONTENT . "\n";
+//		echo EB_THEME_CONTENT . "\n";
+//		print_r( $file_name );
+//		echo count( $file_name ) . "\n";
+//		print_r( $file2_name );
+//		echo count( $file2_name ) . "\n";
+		
+		//
+		echo '<link rel="stylesheet" href="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-styles.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" type="text/css" media="all" />' . "\n";
+		
+		//
+		return true;
+	
+	
         // cho vào 1 file để giảm request
-//			_eb_add_compiler_css_v2( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
+//			_eb_add_compiler_v2_css( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
         // nhúng nội dung file css
         if ($__cf_row['cf_css_inline'] == 1) {
-            _eb_add_compiler_css_v2($new_arr1);
+            _eb_add_compiler_v2_css($new_arr1);
         }
         // hoặc add link (tùy chọn ngâm cứu)
         else {
-            _eb_add_compiler_css_v2($new_arr1, 0);
+            _eb_add_compiler_v2_css($new_arr1, 0);
         }
 
         // nhúng link CSS (file 2)
         if ($__cf_row['cf_css2_inline'] == 1) {
-            _eb_add_compiler_css_v2($new_arr2);
+            _eb_add_compiler_v2_css($new_arr2);
         } else {
-            _eb_add_compiler_css_v2($new_arr2, 0);
+            _eb_add_compiler_v2_css($new_arr2, 0);
         }
     }
 //	}
 }
 
-function _eb_add_compiler_css_v2($arr, $css_inline = 1) {
+function _eb_add_compiler_v2_css($arr, $css_inline = 1) {
     global $__cf_row;
 
     // nhúng link trực tiếp
@@ -1444,25 +1529,28 @@ function _eb_add_compiler_css_v2($arr, $css_inline = 1) {
     if ($__cf_row['cf_css_optimize'] != 1) {
         $content_dir = basename(WP_CONTENT_DIR);
 //		echo $content_dir . "\n";
-
+		
+		$ver = web_version;
+		
         foreach ($arr as $v => $k) {
             // chỉ add file có trong host
             if (file_exists($v)) {
-                $ver = filemtime($v);
+//				$ver = filemtime($v);
 
 //				echo ABSPATH . "\n";
 //				$v = str_replace( ABSPATH, '', $v );
                 $v = str_replace('\\', '/', strstr($v, $content_dir));
 
-                echo '<link rel="stylesheet" href="' . $v . '?v=' . $ver . '" type="text/css" media="all" />' . "\n";
+                echo '<link rel="stylesheet" href="' . $v . '?ver=' . $ver . '" type="text/css" media="all" />' . "\n";
             }
         }
 
         //
         return true;
     }
-
-
+	
+	
+	
     /*
       echo '<!-- ';
       print_r( $arr );

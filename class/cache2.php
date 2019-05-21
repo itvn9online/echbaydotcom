@@ -334,6 +334,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
 // cập nhật web version định kỳ
+/*
 $auto_update_web_version = EB_THEME_CACHE . 'web_version_auto.txt';
 
 //
@@ -348,7 +349,7 @@ if ( date_time - $last_update_web_version + rand( 0, 60 ) > 600 ) {
 	
 	_eb_create_file( $auto_update_web_version, date( 'r', date_time ) . ' - ' . date( 'r', $last_update_web_version ) );
 }
-
+*/
 
 
 

@@ -32,6 +32,11 @@ if ( file_exists( $file_last_update ) ) {
 
 
 //
+_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ) );
+
+
+
+//
 echo '<strong>Remove</strong> config cache<br>' . "\n";
 
 

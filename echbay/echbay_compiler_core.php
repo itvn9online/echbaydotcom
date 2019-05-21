@@ -104,24 +104,35 @@ function WGR_compiler_update_echbay_css_js ( $v ) {
 	
 	// các file đạt yêu cầu
 	if ( $ext == 'css' ) {
-		file_put_contents( $v, trim( WGR_remove_css_multi_comment( file_get_contents( $v, 1 ) ) ) );
+//		file_put_contents( $v, trim( WGR_remove_css_multi_comment( file_get_contents( $v, 1 ) ) ) );
+		$c = trim( WGR_remove_css_multi_comment( file_get_contents( $v, 1 ) ) );
 	}
 	else if ( $ext == 'js' ) {
-		file_put_contents( $v, WGR_update_core_remove_js_comment( file_get_contents( $v, 1 ) ) );
+//		file_put_contents( $v, WGR_update_core_remove_js_comment( file_get_contents( $v, 1 ) ) );
+		$c = WGR_update_core_remove_js_comment( file_get_contents( $v, 1 ) );
 	}
 	else if ( $ext == 'php' ) {
 		// với file template thì không remove multi comment -> nó là định danh cho file
 		if ( strstr( $v, '/templates/' ) == true ) {
-			file_put_contents( $v, WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) );
+//			file_put_contents( $v, WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) );
+			$c = WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) );
 		}
 		// còn lại thì remove hết
 		else {
-			file_put_contents( $v, WGR_update_core_remove_php_multi_comment( WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) ) );
+//			file_put_contents( $v, WGR_update_core_remove_php_multi_comment( WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) ) );
+			$c = WGR_update_core_remove_php_multi_comment( WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) );
 		}
 	}
 	else if ( $ext == 'html' || $ext == 'htm' ) {
-		file_put_contents( $v, WGR_update_core_remove_html_comment( file_get_contents( $v, 1 ) ) );
+//		file_put_contents( $v, WGR_update_core_remove_html_comment( file_get_contents( $v, 1 ) ) );
+		$c =  WGR_update_core_remove_html_comment( file_get_contents( $v, 1 ) );
 	}
+	else {
+		return true;
+	}
+	
+	//
+	file_put_contents ( $v, $c );
 	
 }
 

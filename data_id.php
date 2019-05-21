@@ -70,6 +70,11 @@ $add_data_id = array(
     'cf_product_mobile2_size' => '\'' . $__cf_row['cf_product_mobile2_size'] . '\'',
     'cf_post_index_content' => '\'' . $__cf_row['cf_post_index_content'] . '\'',
     'cf_blog_index_content' => '\'' . $__cf_row['cf_blog_index_content'] . '\'',
+	
+	// load phần html cho bản mobile bằng ajax
+//	'cf_search_nav_mobile' => '\'' . $__cf_row['cf_search_nav_mobile'] . '\'',
+//	'cf_details_mobilemua' => '\'' . $__cf_row['cf_details_mobilemua'] . '\'',
+	
 //	'tid' => $tid,
 //	'url_for_cat_js' => '\'' . $url_for_cat_js . '\'' ,
     'act' => '\'' . $act . '\''
