@@ -849,6 +849,11 @@ function func_leech_data_lay_chi_tiet ( push_url ) {
 				//
 				arr[x].get = jQuery.trim( arr[x].get );
 				
+				// tạo các giá trị mặc định nếu chưa có
+				if ( arr[x].get == '' && x == 'tit_tags' ) {
+					arr[x].get = 'h1';
+				}
+				
 				//
 				if ( arr[x].get != '' ) {
 					

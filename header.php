@@ -65,8 +65,10 @@ if ( $__cf_row['cf_search_nav_mobile'] != 'none' ) {
 		array(
 			'tmp.str_nav_mobile_top' => $str_nav_mobile_top,
 			
-			'tmp.cart_dienthoai' => EBE_get_lang('cart_dienthoai'),
-			'tmp.cart_hotline' => EBE_get_lang('cart_hotline'),
+//			'tmp.cart_dienthoai' => EBE_get_lang('cart_dienthoai'),
+//			'tmp.cart_hotline' => EBE_get_lang('cart_hotline'),
+			'tmp.nav_mobile_dienthoai' => EBE_get_lang('nav_mobile_dienthoai'),
+			'tmp.nav_mobile_hotline' => EBE_get_lang('nav_mobile_hotline'),
 			
 			'tmp.cf_logo' => $__cf_row['cf_logo'],
 			'tmp.cf_dienthoai' => $__cf_row['cf_dienthoai'],
