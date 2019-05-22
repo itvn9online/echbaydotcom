@@ -237,48 +237,7 @@ function ___eb_search_advanced_go_to_url(op) {
 
     //
     if ( WGR_check_option_on(cf_search_advanced_auto_submit) ) {
-		//
-		jQuery('#category_main').html('<li class="no-set-width-this-li"><div class="waiting-load">&nbsp;</div></li>');
-		
-		//
-		// ajax
-		if ( dog('category_main') != null ) {
-			window.history.pushState("", '', new_url);
-			
-			//
-			clearTimeout(timeout_search_advanced_auto_submit);
-			timeout_search_advanced_auto_submit = setTimeout(function () {
-				if ( new_url.split('?').length == 1 ) {
-					new_url += '?';
-				}
-				else {
-					new_url += '&';
-				}
-				new_url += 'echo_now=1';
-				
-				//
-				ajaxl( new_url, 'category_main', 9, function () {
-					disable_eblazzy_load = false;
-					_global_js_eb.auto_margin();
-					_global_js_eb.ebBgLazzyLoad();
-//					_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
-					_global_js_eb.ebe_currency_format();
-					
-					// nạp trang mới cho option vừa search
-					jQuery('.new-part-page a').each(function() {
-						var a = jQuery(this).attr('href') || '';
-						jQuery(this).attr({
-							'href': a.split('#')[0].split('&echo_now=')[0]
-						});
-					});
-					jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
-				});
-			}, 2000);
-		}
-		// no ajax
-		else {
-			window.location = new_url;
-		}
+		WGR_load_category_with_ajax( new_url );
     } else {
         jQuery('.click-to-search-advanced').attr({
             href: new_url
@@ -288,6 +247,69 @@ function ___eb_search_advanced_go_to_url(op) {
     }
 }
 
+
+function WGR_load_category_with_ajax ( new_url ) {
+	if ( typeof new_url == 'undefined' || new_url == '' ) {
+		console.log('new_url not found!');
+		return false;
+	}
+	
+	//
+	jQuery('#category_main').html('<li class="no-set-width-this-li"><div class="waiting-load">&nbsp;</div></li>');
+	
+	// no ajax
+	if ( dog('category_main') == null ) {
+		window.location = new_url;
+	}
+	
+	// ajax
+	window.history.pushState("", '', new_url);
+	
+	//
+	clearTimeout(timeout_search_advanced_auto_submit);
+	timeout_search_advanced_auto_submit = setTimeout(function () {
+		if ( new_url.split('?').length == 1 ) {
+			new_url += '?';
+		}
+		else {
+			new_url += '&';
+		}
+		new_url += 'echo_now=1';
+		
+		//
+		ajaxl( new_url, 'category_main', 9, function () {
+			disable_eblazzy_load = false;
+			_global_js_eb.auto_margin();
+			_global_js_eb.ebBgLazzyLoad();
+//					_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
+			_global_js_eb.ebe_currency_format();
+			
+			// nạp trang mới cho option vừa search
+			jQuery('.new-part-page a').each(function() {
+				var a = jQuery(this).attr('href') || '';
+				jQuery(this).attr({
+					'href': a.split('#')[0].split('&echo_now=')[0]
+				});
+			});
+			jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
+			WGR_open_new_part_with_ajax();
+		});
+	}, 2000);
+	
+}
+
+function WGR_open_new_part_with_ajax () {
+	if ( dog('category_main') == null ) {
+		console.log('category_main not found!');
+		return false;
+	}
+	
+	//
+	jQuery('.public-part-page a').off('click').click(function () {
+		WGR_load_category_with_ajax( jQuery(this).attr('href') || '' );
+	});
+}
+WGR_open_new_part_with_ajax();
 
 
 // tự động đánh dấu các thuộc tính đang được chọn
