@@ -1,4 +1,5 @@
 body.body-no-scroll { overflow: hidden; }
+body.body-onload { opacity: .5; }
 label,
 .cur { cursor: pointer; }
 /* global blogs */

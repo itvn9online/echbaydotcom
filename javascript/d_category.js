@@ -237,7 +237,7 @@ function ___eb_search_advanced_go_to_url(op) {
 
     //
     if ( WGR_check_option_on(cf_search_advanced_auto_submit) ) {
-		WGR_load_category_with_ajax( new_url );
+		WGR_load_category_with_ajax( new_url, 2000 );
     } else {
         jQuery('.click-to-search-advanced').attr({
             href: new_url
@@ -248,7 +248,7 @@ function ___eb_search_advanced_go_to_url(op) {
 }
 
 
-function WGR_load_category_with_ajax ( new_url ) {
+function WGR_load_category_with_ajax ( new_url, time_load ) {
 	if ( typeof new_url == 'undefined' || new_url == '' ) {
 		console.log('new_url not found!');
 		return false;
@@ -260,10 +260,19 @@ function WGR_load_category_with_ajax ( new_url ) {
 	// no ajax
 	if ( dog('category_main') == null ) {
 		window.location = new_url;
+		return true;
 	}
 	
 	// ajax
 	window.history.pushState("", '', new_url);
+	
+	//
+	if ( typeof time_load != 'number' ) {
+		time_load = 100;
+	}
+	
+	//
+	jQuery('body').addClass('body-onload');
 	
 	//
 	clearTimeout(timeout_search_advanced_auto_submit);
@@ -275,27 +284,27 @@ function WGR_load_category_with_ajax ( new_url ) {
 			new_url += '&';
 		}
 		new_url += 'echo_now=1';
+		console.log( new_url );
 		
 		//
 		ajaxl( new_url, 'category_main', 9, function () {
 			disable_eblazzy_load = false;
 			_global_js_eb.auto_margin();
 			_global_js_eb.ebBgLazzyLoad();
-//					_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
+//			_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
 			_global_js_eb.ebe_currency_format();
 			
 			// nạp trang mới cho option vừa search
-			jQuery('.new-part-page a').each(function() {
-				var a = jQuery(this).attr('href') || '';
-				jQuery(this).attr({
-					'href': a.split('#')[0].split('&echo_now=')[0]
-				});
-			});
 			jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
+			
+			// tạo hiệu ứng nạp trang qua ajax
 			WGR_open_new_part_with_ajax();
+			
+			jQuery('body').removeClass('body-onload');
 		});
-	}, 2000);
+	}, time_load);
 	
+	return false;
 }
 
 function WGR_open_new_part_with_ajax () {
@@ -305,9 +314,19 @@ function WGR_open_new_part_with_ajax () {
 	}
 	
 	//
-	jQuery('.public-part-page a').off('click').click(function () {
-		WGR_load_category_with_ajax( jQuery(this).attr('href') || '' );
+	jQuery('.public-part-page a').each(function() {
+		var a = jQuery(this).attr('href') || '';
+		console.log( a );
+		console.log( a.split('#')[0].split('&echo_now=')[0] );
+		jQuery(this).attr({
+			'href': a.split('#')[0].split('&echo_now=')[0]
+		});
+	}).off('click').click(function () {
+		return WGR_load_category_with_ajax( jQuery(this).attr('href') || '' );
 	});
+	
+	//
+	return false;
 }
 WGR_open_new_part_with_ajax();
 
