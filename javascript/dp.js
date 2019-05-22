@@ -1,6 +1,7 @@
 
 
 /*
+* d post
 * Các function dùng chung cho phần chi tiết bài viết sẽ được cho vào đây
 * Sau đó các file js riêng của từng theme sẽ kế thừa và sử dụng các chức năng bằng cách gọi function
 */

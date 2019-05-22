@@ -1,4 +1,5 @@
 /*
+* d category
 * Các function dùng chung cho phần danh sách bài viết sẽ được cho vào đây
 * Sau đó các file js riêng của từng theme sẽ kế thừa và sử dụng các chức năng bằng cách gọi function
 */
@@ -319,7 +320,7 @@ function WGR_open_new_part_with_ajax () {
 //		console.log( a );
 //		console.log( a.split('#')[0].split('&echo_now=')[0] );
 		jQuery(this).attr({
-			'href': a.split('#')[0].split('&echo_now=')[0]
+			'href': a.split('#')[0].split('&echo_now=')[0].split('?echo_now=')[0]
 		});
 	}).off('click').click(function () {
 		return WGR_load_category_with_ajax( jQuery(this).attr('href') || '' );
