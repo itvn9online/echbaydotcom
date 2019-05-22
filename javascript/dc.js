@@ -289,19 +289,22 @@ function WGR_load_category_with_ajax ( new_url, time_load ) {
 		
 		//
 		ajaxl( new_url, 'category_main', 9, function () {
+			// về đầu trang
+			window.scroll( 0, jQuery('#webgiare__top').height() || jQuery('#container').offset().top || jQuery('#category_main').offset().top );
+			
+			// sau đó load các hiệu ứng
 			disable_eblazzy_load = false;
 			_global_js_eb.auto_margin();
 			_global_js_eb.ebBgLazzyLoad();
 //			_global_js_eb.ebBgLazzyLoad( window.scrollY || jQuery(window).scrollTop() );
 			_global_js_eb.ebe_currency_format();
+			jQuery('body').removeClass('body-onload');
 			
 			// nạp trang mới cho option vừa search
 			jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
 			
 			// tạo hiệu ứng nạp trang qua ajax
 			WGR_open_new_part_with_ajax();
-			
-			jQuery('body').removeClass('body-onload');
 		});
 	}, time_load);
 	
