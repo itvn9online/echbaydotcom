@@ -316,8 +316,8 @@ function WGR_open_new_part_with_ajax () {
 	//
 	jQuery('.public-part-page a').each(function() {
 		var a = jQuery(this).attr('href') || '';
-		console.log( a );
-		console.log( a.split('#')[0].split('&echo_now=')[0] );
+//		console.log( a );
+//		console.log( a.split('#')[0].split('&echo_now=')[0] );
 		jQuery(this).attr({
 			'href': a.split('#')[0].split('&echo_now=')[0]
 		});
