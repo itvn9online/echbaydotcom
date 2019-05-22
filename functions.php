@@ -766,7 +766,9 @@ $arr_eb_add_full_js, $async = '',
 	
 	// Nếu script của bạn là một module nào đó, chạy độc lập và không phụ thuộc vào bất kỳ script nào khác thì dùng thuộc tính async
 	// Nếu script của bạn phụ thuộc vào một script khác hoặc được một script khác sử dụng lại (phụ thuộc vào) thì nên sử dụng thuộc tính defer
-    echo '<script type="text/javascript" src="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-scripts.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" defer></script>' . "\n";
+	if ( ! empty( $file_name ) ) {
+	    echo '<script type="text/javascript" src="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-scripts.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" defer></script>' . "\n";
+	}
 	
 	//
 	return true;
@@ -1495,7 +1497,9 @@ function _eb_add_compiler_css($arr) {
 //		echo count( $file2_name ) . "\n";
 		
 		//
-		echo '<link rel="stylesheet" href="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-styles.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" type="text/css" media="all" />' . "\n";
+		if ( ! empty( $file_name ) ) {
+			echo '<link rel="stylesheet" href="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-styles.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" type="text/css" media="all" />' . "\n";
+		}
 		
 		//
 		return true;
