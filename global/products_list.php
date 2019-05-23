@@ -47,6 +47,7 @@ if ( $products_list != '' ) {
 //	$main_content = EBE_html_template( EBE_get_page_template( 'home_hot' ), array(
 	$main_content = WGR_show_home_hot( array(
 //		'tmp.custom_blog_css' => $__cf_row['cf_blog_class_style'],
+		'tmp.custom_blog_css' => trim( $__cf_row['cf_blog_class_style'] . ' ' . EBE_get_lang('css_products_list') ),
 //		'tmp.max_width' => '',
 //		'tmp.num_post_line' => '',
 		'tmp.home_hot_title' => EBE_get_lang($act),

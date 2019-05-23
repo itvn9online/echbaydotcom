@@ -174,6 +174,7 @@ $___eb_lang[eb_key_for_site_lang . 'favorite'] = 'Sản phẩm yêu thích';
 //
 $___eb_lang[eb_key_for_site_lang . 'limit_products_list'] = 36;
 $eb_type_lang[eb_key_for_site_lang . 'limit_products_list'] = 'number';
+$___eb_lang[eb_key_for_site_lang . 'css_products_list'] = 'title-center title-line title-line50 title-upper';
 
 
 // default status
