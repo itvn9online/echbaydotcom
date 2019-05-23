@@ -1477,14 +1477,20 @@ function _eb_add_compiler_css($arr) {
 //				echo $v . "\n";
 				
 				// nếu trong thư mục mặc định -> lấy tên file là đủ
+				/*
 				if ( strstr( $k, 'echbaydotcom/css' ) == true
 				|| strstr( $k, 'echbaydotcom/html/details' ) == true
 				|| strstr( $k, 'echbaydotcom/html/search' ) == true
 				|| strstr( $k, 'echbaydotcom/themes/css' ) == true ) {
 					$file_name[] = basename($k);
 				}
+				*/
+				if ( strstr( $k, 'echbaydotcom/' ) == true ) {
+					$file_name[] = urlencode( strstr( strstr( $k, 'echbaydotcom/' ), '/' ) );
+				}
 				else {
-					$file_name[] = urlencode( strstr($k, '/' . EB_DIR_CONTENT) );
+//					$file_name[] = urlencode( strstr( $k, '/' . EB_DIR_CONTENT ) );
+					$file_name[] = urlencode( strstr( $k, 'themes/' ) );
 				}
 			}
 			else {
