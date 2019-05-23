@@ -58,6 +58,10 @@ if ( isset( $_GET['echo_now'] ) ) {
 
 
 
+
+
+
+
 //
 $str_for_category_top_sidebar = '';
 	

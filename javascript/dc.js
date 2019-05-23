@@ -249,11 +249,17 @@ function ___eb_search_advanced_go_to_url(op) {
 }
 
 
+var cache_echo_url_load = '';
 function WGR_load_category_with_ajax ( new_url, time_load ) {
 	if ( typeof new_url == 'undefined' || new_url == '' ) {
 		console.log('new_url not found!');
 		return false;
 	}
+	else if ( new_url == cache_echo_url_load ) {
+		console.log('new_url in load!');
+		return false;
+	}
+	cache_echo_url_load = new_url;
 	
 	//
 	jQuery('#category_main').html('<li class="no-set-width-this-li"><div class="waiting-load">&nbsp;</div></li>');
