@@ -1477,7 +1477,10 @@ function _eb_add_compiler_css($arr) {
 //				echo $v . "\n";
 				
 				// nếu trong thư mục mặc định -> lấy tên file là đủ
-				if ( strstr( $k, 'echbaydotcom/css' ) == true || strstr( $k, 'echbaydotcom/themes/css' ) == true ) {
+				if ( strstr( $k, 'echbaydotcom/css' ) == true
+				|| strstr( $k, 'echbaydotcom/html/details' ) == true
+				|| strstr( $k, 'echbaydotcom/html/search' ) == true
+				|| strstr( $k, 'echbaydotcom/themes/css' ) == true ) {
 					$file_name[] = basename($k);
 				}
 				else {

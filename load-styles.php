@@ -41,6 +41,21 @@ foreach ( $load as $v ) {
 	else if ( file_exists( $dir . 'css/template/' . $v ) ) {
 		$out .= file_get_contents( $dir . 'css/template/' . $v, 1 );
 	}
+	// details
+	else if ( file_exists( $dir . 'html/details/' . $v ) ) {
+		$out .= file_get_contents( $dir . 'html/details/' . $v, 1 );
+	}
+	else if ( file_exists( $dir . 'html/details/mobilemua/' . $v ) ) {
+		$out .= file_get_contents( $dir . 'html/details/mobilemua/' . $v, 1 );
+	}
+	else if ( file_exists( $dir . 'html/details/pcmua/' . $v ) ) {
+		$out .= file_get_contents( $dir . 'html/details/pcmua/' . $v, 1 );
+	}
+	// search
+	else if ( file_exists( $dir . 'html/search/' . $v ) ) {
+		$out .= file_get_contents( $dir . 'html/search/' . $v, 1 );
+	}
+	// theme
 	else if ( file_exists( $dir . 'themes/css/' . $v ) ) {
 		$out .= file_get_contents( $dir . 'themes/css/' . $v, 1 );
 	}
