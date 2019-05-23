@@ -725,11 +725,11 @@ $arr_eb_add_full_js, $async = '',
         $content_dir = basename(WP_CONTENT_DIR);
 //		echo $content_dir . "\n";
 		
-		$ver = web_version;
+//		$ver = web_version;
 		
         foreach ($arr_eb_add_full_js as $v) {
             if (file_exists($v)) {
-//				$ver = filemtime($v);
+				$ver = filemtime($v);
 
 //				echo ABSPATH . "\n";
 //				$v = str_replace( ABSPATH, '', $v );
@@ -1535,12 +1535,12 @@ function _eb_add_compiler_v2_css($arr, $css_inline = 1) {
         $content_dir = basename(WP_CONTENT_DIR);
 //		echo $content_dir . "\n";
 		
-		$ver = web_version;
+//		$ver = web_version;
 		
         foreach ($arr as $v => $k) {
             // chỉ add file có trong host
             if (file_exists($v)) {
-//				$ver = filemtime($v);
+				$ver = filemtime($v);
 
 //				echo ABSPATH . "\n";
 //				$v = str_replace( ABSPATH, '', $v );

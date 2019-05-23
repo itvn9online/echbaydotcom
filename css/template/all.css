@@ -1,49 +1,49 @@
 /* ================================== menu ================================== */
-#aabbcc .top1-menu { }
-#aabbcc .top1-menu ul { }
-#aabbcc .top1-menu li { float: left; }
-#aabbcc .top1-menu a {
+#aabbcc .sample-menu { }
+#aabbcc .sample-menu ul { }
+#aabbcc .sample-menu li { float: left; }
+#aabbcc .sample-menu a {
 	display: block;
 	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 16px;
 }
-#aabbcc .top1-menu a:hover {
+#aabbcc .sample-menu a:hover {
 	background: rgba(0, 0, 0, .2);
 	text-decoration: underline;
 }
-#aabbcc .top1-menu .sub-menu {
+#aabbcc .sample-menu .sub-menu {
 	display: none;
 	position: absolute;
 	min-width: 220px;
 	z-index: 9;
 }
-#aabbcc .top1-menu li:hover .sub-menu {
+#aabbcc .sample-menu li:hover .sub-menu {
 	display: block;
 	display: -webkit-flex;
 	display: flex;
 }
 /* mobile in footer */
-.style-for-mobile #aabbcc .top1-menu li,
-#aabbcc .top1-menu .sub-menu li {
+.style-for-mobile #aabbcc .sample-menu li,
+#aabbcc .sample-menu .sub-menu li {
 	float: none;
 	width: auto;
 }
-#aabbcc .top1-menu .sub-menu a {
+#aabbcc .sample-menu .sub-menu a {
 	font-weight: normal;
 	text-transform: none;
 	font-size: 14px;
 }
-#aabbcc .top1-menu .sub-menu .sub-menu { display: none !important; }
-#aabbcc .top1-menu .sub-menu .sub-menu li { }
-#aabbcc .top1-menu .sub-menu .sub-menu a { }
-#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu { }
-#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu li { }
-#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu a { }
-#aabbcc .top1-menu .sub-menu .sub-menu .sub-menu .sub-menu { }
+#aabbcc .sample-menu .sub-menu .sub-menu { display: none !important; }
+#aabbcc .sample-menu .sub-menu .sub-menu li { }
+#aabbcc .sample-menu .sub-menu .sub-menu a { }
+#aabbcc .sample-menu .sub-menu .sub-menu .sub-menu { }
+#aabbcc .sample-menu .sub-menu .sub-menu .sub-menu li { }
+#aabbcc .sample-menu .sub-menu .sub-menu .sub-menu a { }
+#aabbcc .sample-menu .sub-menu .sub-menu .sub-menu .sub-menu { }
 /* mobile in footer */
-.style-for-mobile #aabbcc .top1-menu li { margin-top: 20px; }
-#aabbcc .top1-menu .sub-menu li { margin-top: 0; }
+.style-for-mobile #aabbcc .sample-menu li { margin-top: 20px; }
+#aabbcc .sample-menu .sub-menu li { margin-top: 0; }
 /* ================================== address ================================== */
 #aabbcc .footer-address { }
 #aabbcc .footer-address-company { }

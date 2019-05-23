@@ -673,18 +673,40 @@ label,
 .a-orgcolor a,
 .aorgcolor,
 .aorgcolor a { color: #F90 !important; }
+.size11,
+.s11,
 .small { font-size: 11px; }
+.size12,
+.s12,
 .small2,
 .small12 { font-size: 12px; }
+.size14,
+.s14,
 .medium14 { font-size: 14px; }
+.size15,
+.s15,
 .medium { font-size: 15px; }
+.size16,
+.s16,
 .medium16 { font-size: 16px; }
+.size18,
+.s18,
 .medium18 { font-size: 18px; }
+.size20,
+.s20 { font-size: 20px; }
+.size23,
+.s23,
 .big { font-size: 23px; }
+.size30,
+.s30,
 .big2,
 .big30 { font-size: 30px; }
+.size35,
+.s35,
 .big3,
 .big35 { font-size: 35px; }
+.size50,
+.s50,
 .big4,
 .big50,
 .big-big { font-size: 50px; }
