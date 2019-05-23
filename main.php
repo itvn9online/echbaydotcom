@@ -76,7 +76,7 @@ $set_time_for_main_cache = $set_time_for_main_cache - rand( 0, $set_time_for_mai
 
 
 //
-function ___eb_cache_getUrl () {
+function ___eb_cache_getUrl ( $cache_dir = 'all' ) {
 	if ( isset($_SERVER['REQUEST_URI']) ) {
 		$url = $_SERVER['REQUEST_URI'];
 	} else {
@@ -87,20 +87,23 @@ function ___eb_cache_getUrl () {
 		$url = '-';
 	} else {
 		$url = explode( '?gclid=', $url );
+		$url = explode( '&gclid', $url[0] );
 		$url = explode( '?utm_', $url[0] );
+		$url = explode( '&utm_', $url[0] );
 		$url = explode( '?fb_comment_id=', $url[0] );
+		$url = explode( '&fb_comment_id', $url[0] );
 		$url = $url[0];
 		
 		//
 		if ( strlen ( $url ) > 200 ) {
 			$url = md5( $url );
 		} else {
-			$url = preg_replace( "/\/|\?|\&|\,/", "-", $url );
+			$url = preg_replace( "/\/|\?|\&|\,|\=/", "-", $url );
 		}
 	}
 	
 	//
-    $url = EB_THEME_CACHE . 'all/' . $url . '.txt';
+    $url = EB_THEME_CACHE . $cache_dir . '/' . $url . '.txt';
 	
 	//
 	return $url;

@@ -72,6 +72,7 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 		// lưu cache của các file css, js
 		'static',
 		'all',
+		'echo_now',
 		// thư mục mà các file trong này, chỉ bị reset khi hết hạn
 		'noclean',
 		// mail khi người dùng đặt hàng thành công sẽ gửi ở trang hoàn tất

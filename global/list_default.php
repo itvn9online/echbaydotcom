@@ -3,6 +3,61 @@
 
 
 
+// nếu có lệnh in ngay -> thử kiểm tra nội dung trong cache
+if ( isset( $_GET['echo_now'] ) ) {
+	/*
+	if ( function_exists('___eb_cache_getUrl') ) {
+		echo 'OK<br>';
+	}
+	*/
+	
+	//
+	$echo_now_file_name = ___eb_cache_getUrl('echo_now');
+//	echo dirname( $echo_now_file_name ) . '<br>'; exit();
+//	echo $echo_now_file_name . '<br>'; exit();
+	
+//	echo _eb_non_mark_seo('Bình Lọc Bể Bơi Tafuma TS Van Đỉnh') . '<br>';
+	
+	// nếu có file -> kiểm tra thời gian tạo file
+	if ( file_exists( $echo_now_file_name ) ) {
+		$echo_now_time_file = filemtime ( $echo_now_file_name );
+//		echo date_time . '<br>';
+//		echo date( 'r', date_time ) . '<br>';
+//		$so_sanh = date_time - $echo_now_time_file;
+//		echo $so_sanh . '<br>';
+		
+		// nếu còn hạn cche -> in ra luôn
+		if ( date_time - $echo_now_time_file < 600 ) {
+			echo file_get_contents( $echo_now_file_name, 1 ); exit();
+		}
+		/*
+		else {
+			echo $echo_now_time_file . '<br>';
+			echo date( 'r', $echo_now_time_file ) . '<br>';
+		}
+		*/
+	}
+	// chưa có thì tạo file
+	else {
+		/*
+		$echo_now_dir_name = dirname( $echo_now_file_name );
+		if ( ! is_dir( $echo_now_dir_name ) ) {
+			mkdir($echo_now_dir_name, 0777) or die('mkdir ERROR (echo now)');
+			// server window ko cần chmod
+			chmod($echo_now_dir_name, 0777) or die('chmod ERROR (echo now)');
+		}
+		*/
+		
+		// -> tạo file và trả về tên file
+		$filew = fopen( $echo_now_file_name, 'x+' );
+		// nhớ set 777 cho file
+		chmod($echo_now_file_name, 0777);
+		fclose($filew);
+	}
+}
+
+
+
 //
 $str_for_category_top_sidebar = '';
 	
@@ -498,7 +553,8 @@ if ( $main_content == false ) {
 		}
 		
 		
-		//
+		
+		// nếu có lệnh in luôn thì in ra -> load theo kiểu ajax
 		if ( isset( $_GET['echo_now'] ) ) {
 			$main_content = EBE_check_list_post_null( $list_post );
 			
@@ -511,10 +567,16 @@ if ( $main_content == false ) {
 			foreach ( $arr_global_main as $k => $v ) {
 				$main_content = str_replace ( '{' . $k . '}', $v, $main_content );
 			}
+			$main_content .= '<div class="new-part-page d-none">' . $str_page . '</div>';
 			
 			//
-			echo $main_content; echo '<div class="new-part-page d-none">' . $str_page . '</div>'; exit();
+			echo $main_content;
+			
+			file_put_contents( $echo_now_file_name, $main_content . '<!-- cache in ' . basename( $echo_now_file_name ) . ' -->' ) or die('ERROR: create cache file (echo now) ' );
+			
+			exit();
 		}
+		
 		
 		
 		//
