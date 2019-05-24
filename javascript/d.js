@@ -1501,7 +1501,7 @@ var current_pid_quicview = pid,
 
 
 //
-(function () {
+function WGR_thread_list_quickview () {
 	if ( cf_post_class_style == '' && cf_blog_class_style != '' ) {
 		cf_post_class_style = cf_blog_class_style;
 	}
@@ -1539,7 +1539,7 @@ var current_pid_quicview = pid,
 //	});
 	
 	//
-	jQuery('.thread-list-wgr-quickview').click(function () {
+	jQuery('.thread-list-wgr-quickview').off('click').click(function () {
 		
 		var a = jQuery(this).attr('data-id') || '',
 			h = jQuery(this).attr('href') || '',
@@ -1645,8 +1645,8 @@ var current_pid_quicview = pid,
 		
 //	}).removeClass('wgr-rel-iframe');
 	});
-})();
-
+}
+WGR_thread_list_quickview();
 
 
 //

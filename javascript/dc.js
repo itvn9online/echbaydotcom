@@ -309,6 +309,9 @@ function WGR_load_category_with_ajax ( new_url, time_load ) {
 			// nạp trang mới cho option vừa search
 			jQuery('.public-part-page').html( jQuery('.new-part-page').html() || '' );
 			
+			// hiệu ứng mở link trong tab mới nếu có
+			WGR_thread_list_quickview();
+			
 			// tạo hiệu ứng nạp trang qua ajax
 			WGR_open_new_part_with_ajax();
 		});
