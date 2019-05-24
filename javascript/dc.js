@@ -312,6 +312,9 @@ function WGR_load_category_with_ajax ( new_url, time_load ) {
 			// hiệu ứng mở link trong tab mới nếu có
 			WGR_thread_list_quickview();
 			
+			// nạp lại url mới
+			current_ls_url = window.location.href;
+			
 			// tạo hiệu ứng nạp trang qua ajax
 			WGR_open_new_part_with_ajax();
 		});
