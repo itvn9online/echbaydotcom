@@ -307,8 +307,15 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			if ( file_exists( $fcheck )
 			|| file_exists( $check_child_theme )
 			|| file_exists( EB_THEME_URL . 'ui/' . $fname ) ) {
-//				$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
-				$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
+				// trang chủ thì mặc định là không nhúng file -> sử dụng elementor hoặc widget
+				if ( $position == 'home' ) {
+					$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
+				}
+				// còn lại thì include file như bình thường
+				else {
+//					$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
+					$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
+				}
 				
 				$end_i = $j;
 			}
