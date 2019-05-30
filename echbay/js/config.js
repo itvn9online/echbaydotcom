@@ -380,7 +380,8 @@ function create_phone_click_to_call () {
 			a[i] = $.trim( a[i] );
 			
 			if ( a[i] != '' ) {
-				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
+//				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
+				str += '<a href="tel:' + $.trim( a[i].toString().replace(/[^0-9\+]/g, '') ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
 			}
 		}
 	}
@@ -396,7 +397,8 @@ function create_phone_click_to_call () {
 			a[i] = $.trim( a[i] );
 			
 			if ( a[i] != '' ) {
-				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
+//				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
+				str += '<a href="tel:' + $.trim( a[i].toString().replace(/[^0-9\+]/g, '') ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
 			}
 		}
 	}
