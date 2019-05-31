@@ -436,7 +436,8 @@ function dog(o, s) {
 
 
 function WGR_check_option_on ( a ) {
-	if ( a == 1 || a == "1" ) {
+//	if ( a == 1 || a == "1" ) {
+	if ( a.toString() == "1" ) {
 		return true;
 	}
 	return false;
