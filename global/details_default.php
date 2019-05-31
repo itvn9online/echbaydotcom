@@ -1286,6 +1286,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_details_content_slider=' . $__cf_row['cf_details_content_slider'] . ',
 	cf_details_show_list_next=' . $__cf_row['cf_details_show_list_next'] . ',
 	cf_details_show_list_thumb=' . $__cf_row['cf_details_show_list_thumb'] . ',
+	cf_swipe_details_banner=' . $__cf_row['cf_swipe_details_banner'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ',
 	co_ma_giam_gia=' . $co_ma_giam_gia . ';
 </script>';
