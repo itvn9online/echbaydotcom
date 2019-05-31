@@ -47,7 +47,6 @@ $add_data_id = array(
     'cf_on_primary_slider' => '\'' . $__cf_row['cf_on_primary_slider'] . '\'',
     'cf_rand_slider' => '\'' . $__cf_row['cf_rand_slider'] . '\'',
     'cf_add_to_cart_iframe' => '\'' . $__cf_row['cf_add_to_cart_iframe'] . '\'',
-    'cf_show_img_color' => '\'' . $__cf_row['cf_show_img_color'] . '\'',
     // tự động submit trong phần tìm kiếm nâng cao
     'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',
     // chiều rộng khung
@@ -59,12 +58,6 @@ $add_data_id = array(
     'cf_swipe_big_banner' => '\'' . $__cf_row['cf_swipe_big_banner'] . '\'',
     'cf_arrow_big_banner' => '\'' . $__cf_row['cf_arrow_big_banner'] . '\'',
     'cf_slider_big_play' => $__cf_row['cf_slider_big_play'],
-    // chế độ chuyển slider cho trang chi tiết
-    'cf_details_right_thumbnail' => ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] == 1 ) ? 1 : 0,
-    'cf_details_content_slider' => '\'' . $__cf_row['cf_details_content_slider'] . '\'',
-    'cf_details_show_list_next' => '\'' . $__cf_row['cf_details_show_list_next'] . '\'',
-    'cf_details_show_list_thumb' => '\'' . $__cf_row['cf_details_show_list_thumb'] . '\'',
-    'cf_on_details_slider' => '\'' . $__cf_row['cf_on_details_slider'] . '\'',
     // tỷ lệ khung ảnh trên mobile
     'cf_product_details_mobile_size' => '\'' . $__cf_row['cf_product_details_mobile_size'] . '\'',
     'cf_product_mobile2_size' => '\'' . $__cf_row['cf_product_mobile2_size'] . '\'',

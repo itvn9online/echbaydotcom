@@ -1279,6 +1279,13 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_product_details_viewmore=' . $__cf_row['cf_product_details_viewmore'] . ',
 	cf_slider_details_play=' . $__cf_row['cf_slider_details_play'] . ',
 	cf_img_details_maxwidth=' . $__cf_row['cf_img_details_maxwidth'] . ',
+    // chế độ chuyển slider cho trang chi tiết
+	cf_show_img_color=' . $__cf_row['cf_show_img_color'] . ',
+	cf_on_details_slider=' . $__cf_row['cf_on_details_slider'] . ',
+	cf_details_right_thumbnail=' . ( ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] == 1 ) ? 1 : 0 ) . ',
+	cf_details_content_slider=' . $__cf_row['cf_details_content_slider'] . ',
+	cf_details_show_list_next=' . $__cf_row['cf_details_show_list_next'] . ',
+	cf_details_show_list_thumb=' . $__cf_row['cf_details_show_list_thumb'] . ',
 	trv_ngayhethan=' . $trv_ngayhethan . ',
 	co_ma_giam_gia=' . $co_ma_giam_gia . ';
 </script>';
