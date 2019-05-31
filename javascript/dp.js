@@ -271,7 +271,8 @@ function ___eb_details_slider_v2 () {
 			
 			// tự động chạy slider theo thời gian mà người dùng chỉ định
 			autoplay : cf_slider_details_play > 0 ? true : false,
-			swipemobile : true,
+//			swipemobile : true,
+			swipemobile: WGR_check_option_on ( cf_swipe_details_banner ) ? true : false,
 			// nếu số giây tự chuyển slider nhỏ quá -> chuyển sang tính theo giây
 			speedNext : cf_slider_details_play < 60 ? cf_slider_details_play * 1000: cf_slider_details_play,
 			

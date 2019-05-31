@@ -87,6 +87,8 @@ $_POST['cf_blog_rm_img_width'] = WGR_default_config('cf_blog_rm_img_width');
 
 $_POST['cf_blogs_content_bottom'] = WGR_default_config('cf_blogs_content_bottom');
 
+$_POST['cf_swipe_details_banner'] = WGR_default_config('cf_swipe_details_banner');
+
 
 //
 $_POST['posts_per_page'] = (int)$_POST['posts_per_page'];

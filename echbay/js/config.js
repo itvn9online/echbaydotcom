@@ -1079,6 +1079,8 @@ else {
 	show_note_for_checkbox_config( 'cf_show_fb_cmt_blogs' );
 	show_note_for_checkbox_config( 'cf_show_fb_cmt_blog' );
 	show_note_for_checkbox_config( 'cf_show_cmt_blog' );
+	
+	show_note_for_checkbox_config( 'cf_swipe_details_banner' );
 }
 
 
