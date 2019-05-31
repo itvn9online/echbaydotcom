@@ -1282,7 +1282,8 @@ var switch_taxonomy="' . $__post->post_type . '",
     // chế độ chuyển slider cho trang chi tiết
 	cf_show_img_color="' . $__cf_row['cf_show_img_color'] . '",
 	cf_on_details_slider="' . $__cf_row['cf_on_details_slider'] . '",
-	cf_details_right_thumbnail="' . $__cf_row['cf_details_right_thumbnail'] . '",
+	// do thumbnail left với right chung 1 lệnh -> nên đặt chung luôn
+	cf_details_right_thumbnail="' . ( ( $__cf_row['cf_details_right_thumbnail'] == 1 || $__cf_row['cf_details_left_thumbnail'] == 1 ) ? 1 : 0 ) . '",
 	cf_details_content_slider="' . $__cf_row['cf_details_content_slider'] . '",
 	cf_details_show_list_next="' . $__cf_row['cf_details_show_list_next'] . '",
 	cf_details_show_list_thumb="' . $__cf_row['cf_details_show_list_thumb'] . '",
