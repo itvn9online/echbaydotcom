@@ -47,10 +47,12 @@ $ga_ecom_update = 0;
 
 
 //
-$import_ecommerce_ga = "
-if ( typeof ga != 'undefined' ) {
-	ga('require', 'ec');
-}";
+if ( ! isset( $_COOKIE['wgr_check_tracking_social' . $hd_id] ) ) {
+	$import_ecommerce_ga = "
+	if ( typeof ga != 'undefined' ) {
+		ga('require', 'ec');
+	}";
+}
 
 
 
@@ -88,11 +90,26 @@ if ( $hd_id > 0 ) {
 //		$fb_purchase_order = '
 		$__cf_row ['cf_js_allpage'] .= '
 		<script type="text/javascript">
+function WGR_hoan_tat_load_tracking ( i ) {
+	if ( typeof i != "number" ) {
+		i = 50;
+	}
+	else if ( i < 0 ) {
+		console.log("Max load WGR javascript!");
+		return false;
+	}
+	
+	if ( typeof WGR_show_hoan_tat_product_for_gg != "function" ) {
 		setTimeout(function () {
-			WGR_show_hoan_tat_product_for_gg ( current_hd_object, current_tv_object );
-			___eb_add_convertsion_gg_fb ( ' . $hd_id . ', current_hd_object );
-			WGR_backup_order_to_google_sheet( current_hd_object, current_tv_object );
-		}, 800);
+			WGR_hoan_tat_load_tracking( i - 1 );
+		}, 200);
+		return false;
+	}
+	
+	//
+	WGR_hoan_tat_send_tracking( ' . $hd_id . ', current_hd_object, current_tv_object );
+}
+WGR_hoan_tat_load_tracking();
 		</script>';
 	}
 	/*

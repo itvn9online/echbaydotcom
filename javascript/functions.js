@@ -174,6 +174,33 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	}
 }
 
+function WGR_hoan_tat_send_tracking ( hd_id, current_hd_object, current_tv_object ) {
+    if (g_func.getc('wgr_check_tracking_social' + hd_id ) != null) {
+		console.log('Order has been tracking!');
+		return false;
+	}
+	g_func.setc('wgr_check_tracking_social' + hd_id, 'wgr', 0, 7);
+	
+	//
+	WGR_show_hoan_tat_product_for_gg ( current_hd_object, current_tv_object );
+	___eb_add_convertsion_gg_fb ( hd_id, current_hd_object );
+	WGR_backup_order_to_google_sheet( current_hd_object, current_tv_object );
+	
+	//
+	_global_js_eb.ga_event_track( 'Booking done', 'Dat hang thanh cong', '', {
+//		'category' : '',
+//		'label' : '',
+		'action' : 'purchase'
+	});
+	
+	//
+//	setTimeout(function () {
+		if ( typeof current_hd_id != 'undefined' && current_hd_id != '' ) {
+			ajaxl('hoan-tat-mail&id=' + current_hd_id, 'oi_hoan_tat_mail', 1);
+		}
+//	}, 3000);
+}
+
 function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 	
 	//
@@ -392,7 +419,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				console.log('Backup order to google sheet');
 				
 				// lưu cookie để không gửi liên tục 1 đơn hàng
-				g_func.setc('wgr_backup_order_to_google', same_same_order_id, 24 * 3600);
+				g_func.setc('wgr_backup_order_to_google', same_same_order_id, 0, 7);
 			}
 		}
 	});
