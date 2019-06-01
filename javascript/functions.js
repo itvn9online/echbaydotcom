@@ -82,7 +82,7 @@ function WGR_get_hoan_tat_total_price () {
 	}
 	
 	//
-	console.log( a );
+	console.log( 'hoan-tat price: ' + a );
 	return a;
 }
 
