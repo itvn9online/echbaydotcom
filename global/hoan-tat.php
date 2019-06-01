@@ -99,7 +99,7 @@ function WGR_hoan_tat_load_tracking ( i ) {
 		return false;
 	}
 	
-	if ( typeof WGR_show_hoan_tat_product_for_gg != "function" ) {
+	if ( typeof WGR_hoan_tat_send_tracking != "function" ) {
 		setTimeout(function () {
 			WGR_hoan_tat_load_tracking( i - 1 );
 		}, 200);
