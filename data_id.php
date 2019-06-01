@@ -41,6 +41,7 @@ $add_data_id = array(
 //	'cf_ga_id' => '\'' . $__cf_row['cf_ga_id'] . '\'',
     'cf_gtag_id' => '\'' . $__cf_row['cf_gtag_id'] . '\'',
 //	'cf_tester_mode' => $__cf_row['cf_tester_mode'],
+    'cf_facebook_tracking' => '\'' . $__cf_row['cf_facebook_tracking'] . '\'',
     'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
     'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
     'cf_disable_tracking' => '\'' . $__cf_row['cf_disable_tracking'] . '\'',

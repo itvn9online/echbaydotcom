@@ -335,7 +335,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	
 	//
 //	var check_order_backup = g_func.getc('wgr_backup_order_to_google'),
-	var same_same_order_id = 'id' + current_hd_id;
+//		same_same_order_id = 'id' + current_hd_id;
 //	if ( check_order_backup != null && check_order_backup == same_same_order_id ) {
 //		console.log('order has been backup');
 //		return false;

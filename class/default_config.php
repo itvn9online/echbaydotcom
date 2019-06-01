@@ -169,6 +169,7 @@ $__cf_row_default = array(
 	'cf_blog_public' => 1,
 	'cf_tester_mode' => 'off',
 	'cf_debug_mode' => 1,
+	'cf_facebook_tracking' => 1,
 //	'cf_js_optimize' => 1,
 	'cf_js_optimize' => 'off',
 	'cf_css_optimize' => 1,

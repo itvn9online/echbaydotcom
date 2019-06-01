@@ -63,6 +63,8 @@ else if ( $_POST['cf_sys_email'] != '' && $_POST['cf_sys_email'] != 'wpmail' ) {
 //
 $_POST['cf_tester_mode'] = WGR_default_config('cf_tester_mode');
 
+$_POST['cf_facebook_tracking'] = WGR_default_config('cf_facebook_tracking');
+
 $_POST['cf_debug_mode'] = WGR_default_config('cf_debug_mode');
 
 $_POST['cf_js_optimize'] = WGR_default_config('cf_js_optimize');

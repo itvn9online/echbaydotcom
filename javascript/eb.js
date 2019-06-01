@@ -3038,6 +3038,11 @@ var _global_js_eb = {
 		//
 //		console.log('aaaaaaaaa');
 		
+		if ( WGR_check_option_on ( cf_facebook_tracking ) == false ) {
+			console.log('fb_track has been disable!');
+			return false;
+		}
+		
 		// Không chạy trong iframe
 		if ( top != self ) {
 			console.log('fb_track not run in iframe');
