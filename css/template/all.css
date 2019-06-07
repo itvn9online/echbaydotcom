@@ -17,6 +17,7 @@
 	position: absolute;
 	min-width: 220px;
 	z-index: 9;
+	background: #fff;
 }
 #aabbcc .sample-menu li:hover .sub-menu {
 	display: block;
