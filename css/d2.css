@@ -74,6 +74,7 @@ label,
 	height: auto;
 	overflow: hidden;
 }
+.style-for-mobile .thread-list100 .echbay-blog-infos { display: none; }
 /* widget custom style */
 .bgtrans .echbay-blog-avt { background-color: transparent; }
 .bgcover .echbay-blog-avt { background-size: cover; }
