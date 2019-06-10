@@ -75,10 +75,11 @@
 }
 .style-for-mobile .menu-mobile-search i {
 	position: absolute;
-	right: 30px;
+	right: 25px;
 	color: #000;
 	font-size: 25px;
 	cursor: pointer;
+	top: 14px;
 }
 .style-for-mobile .menu-mobile-search input[type=text] {
 	width: 98%;
