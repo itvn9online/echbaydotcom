@@ -1271,10 +1271,11 @@ setTimeout(function () {
 			if ( a != '' ) {
 				jQuery(this).show();
 				
+				// tính toán kích thước
 				if ( w == '' ) {
 					w = '100%';
 				}
-				if ( h == '' ) {
+				if ( h == '' || global_window_width < 755 ) {
 					h = jQuery(this).width() * wit;
 					if ( h > 450 ) {
 						h = 450;
