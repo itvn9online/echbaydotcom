@@ -555,6 +555,8 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_alow_post_tag_index' );
 	
 	show_note_for_checkbox_config( 'cf_on_off_echbay_seo' );
+	show_note_for_checkbox_config( 'cf_excerpt_sync_content' );
+	show_note_for_checkbox_config( 'cf_excerpt_sync_yoast' );
 	show_note_for_checkbox_config( 'cf_on_off_echbay_logo' );
 	
 	show_note_for_checkbox_config( 'cf_on_off_amp_logo' );
