@@ -419,6 +419,33 @@ var g_func = {
 	},
 	rand: function (min, max) {
 		return g_func.getRandomInt( min, max );
+	},
+	short_string: function ( str, len, more ) {
+		str = jQuery.trim( str );
+		
+		if (len > 0 && str.length > len) {
+			var a = str.split(" ");
+//			console.log(a);
+			str = '';
+			
+			for ( var i = 0; i < a.length; i++ ) {
+				if ( a[i] != '' ) {
+					str += a[i] + ' ';
+					
+					if ( str.length > len ) {
+						break
+					}
+				}
+			}
+//			console.log(str.length);
+			str = jQuery.trim( str );
+			
+			if ( typeof more == 'undefined' || more == true || more == 1 ) {
+				str += '...';
+			}
+		}
+		
+		return str;
 	}
 };
 

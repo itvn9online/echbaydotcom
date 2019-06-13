@@ -855,26 +855,7 @@ class EchBayCommerce {
 	}
 	
 	function short_string( $str, $len, $more = 1 ) {
-		$str = trim ( $str );
-		
-		if ($len > 0 && strlen ( $str ) > $len) {
-			$str = substr ( $str, 0, $len );
-			if (! substr_count ( $str, " " )) {
-				if ($more == 1) {
-					$str .= "...";
-				}
-				return $str;
-			}
-			while ( strlen ( $str ) && ($str [strlen ( $str ) - 1] != " ") ) {
-				$str = substr ( $str, 0, - 1 );
-			}
-			$str = substr ( $str, 0, - 1 );
-			if ($more == 1) {
-				$str .= "...";
-			}
-		}
-		
-		return $str;
+		return _eb_short_string( $str, $len, $more );
 	}
 	
 	function del_line ( $str, $re = "", $pe = "/\r\n|\n\r|\n|\t/i" ) {
@@ -882,29 +863,7 @@ class EchBayCommerce {
 	}
 	
 	function lay_email_tu_cache ( $id ) {
-		if ( $id <= 0 ) {
-			return 'NULL';
-		}
-		$strCacheFilter = 'tv_mail/' . $id;
-		
-		$tv_email = $this->get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
-		
-		if ($tv_email == false) {
-			$user = get_user_by( 'id', $id );
-//			print_r($user);
-			
-			//
-			if ( ! empty( $user ) ) {
-				$tv_email = $user->user_email;
-			} else {
-				$tv_email = $id;
-			}
-			
-			//
-			$this->get_static_html ( $strCacheFilter, $tv_email, '', 60 );
-		}
-		
-		return $tv_email;
+		return _eb_lay_email_tu_cache( $id );
 	}
 	
 	function categories_list_list_v3 ( $taxx = 'category' ) {

@@ -1166,6 +1166,21 @@ function WGR_widget_show_option_by_post_type ( select_id ) {
 }
 
 
+function WGR_get_contect_editer_id () {
+	var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
+	
+	// tên đầy đủ của text editter
+//	content_id += 'wysiwyg';
+	
+	//
+	if ( dog( content_id ) == null ) {
+		alert('Text editer #' +content_id+ ' not found');
+		return null;
+	}
+	
+	// ID cho jQuery
+	return '#' + content_id;
+}
 
 // chức năng đồng bộ nội dung website theo chuẩn chung của EchBay
 function click_remove_style_of_content () {
@@ -1188,19 +1203,10 @@ function click_remove_style_of_content () {
 		dog('click_remove_content_style').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
+		var content_id = WGR_get_contect_editer_id();
+		if ( content_id == null ) {
 			return false;
 		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
 		
 		//
 		if ( confirm('Confirm remove all style in this content!') == false ) {
@@ -1836,6 +1842,19 @@ function EBE_set_default_img_avt () {
 
 
 //
+function EBE_set_default_excerpt_for_seo () {
+	var content_id = WGR_get_contect_editer_id();
+	if ( content_id == null ) {
+		return '';
+	}
+	var content_post = jQuery( content_id ).contents().find( 'body' ).html() || '';
+//	console.log('content_post: ' + content_post);
+//	console.log('content_strip_post: ' + g_func.strip_tags( content_post) );
+//	console.log('content_short_post: ' + g_func.short_string( g_func.strip_tags( content_post), cf_content_for_excerpt_null * 1 ) );
+	
+	return g_func.short_string( g_func.strip_tags( content_post), cf_content_for_excerpt_null * 1 );
+}
+
 function EBE_set_default_title_for_seo () {
 	if ( dog('postexcerpt-hide').checked == false ) {
 		jQuery('#postexcerpt-hide').click();
@@ -1844,67 +1863,74 @@ function EBE_set_default_title_for_seo () {
 		}
 	}
 	
-	//
-	var str_title = jQuery.trim( jQuery('#title').val() || '' ),
-		tit = '',
-		str_excerpt = jQuery.trim( jQuery('#excerpt').val() || '' ),
-		des = '',
-		des_default = '%%excerpt%%';
+	// lấy title của bài viết
+	var tit_post = jQuery.trim( jQuery('#title').val() || '' ),
+		// title của yoast
+		tit_yoast = '',
+		// tóm tắt của bài viết
+		des_post = jQuery.trim( jQuery('#excerpt').val() || '' ),
+		// des của yoast
+		des_yoast = '',
+		des_default_yoast = '%%excerpt%%';
 	
-	//
-	if ( str_excerpt == des_default ) {
-		str_excerpt = '';
+	// nếu tóm tắt đang sử dụng cấu trúc của yoast -> bỏ
+	if ( des_post == des_default_yoast ) {
+		des_post = '';
 		jQuery('#excerpt').val( '' );
 	}
 	
 	/*
 	* Yoast SEO default value
 	*/
+	var yoast_tit_id = '';
 	if ( jQuery('#yoast_wpseo_title').length > 0 ) {
-		tit = jQuery.trim( jQuery('#yoast_wpseo_title').val() || '' );
-		
-		if ( tit == '' || tit == str_title ) {
-			jQuery('#yoast_wpseo_title').val( '%%title%%' );
-		}
+		yoast_tit_id = '#yoast_wpseo_title';
 	}
 	else if ( jQuery('#snippet-editor-title').length > 0 ) {
-		tit = jQuery('#snippet-editor-title').val() || '';
+		yoast_tit_id = '#snippet-editor-title';
+	}
+	if ( yoast_des_id != '' ) {
+		tit_yoast = jQuery.trim( jQuery( yoast_des_id ).val() || '' );
 		
-		if ( tit == '' || tit == str_title ) {
-			jQuery('#snippet-editor-title').val( '%%title%%' );
+		// nếu chưa có yoast title -> khai báo mặc định theo post title
+		if ( tit_yoast == '' || tit_yoast == tit_post ) {
+			jQuery( yoast_des_id ).val( '%%title%%' );
 		}
 	}
 	
+	//
+	var yoast_des_id = '';
 	if ( jQuery('#yoast_wpseo_metadesc').length > 0 ) {
-		des = jQuery.trim( jQuery('#yoast_wpseo_metadesc').val() || '' );
+		yoast_des_id = '#yoast_wpseo_metadesc';
+	}
+	else if ( jQuery('#snippet-editor-meta-description').length > 0 ) {
+		yoast_des_id = '#snippet-editor-meta-description';
+	}
+	if ( yoast_des_id != '' ) {
+		des_yoast = jQuery.trim( jQuery( yoast_des_id ).val() || '' );
 		
 		// nếu không có tóm tắt mặc định mà có tóm tắt của yoast -> chuyển sang mặc định
-		if ( str_excerpt == '' && des != '' && des != des_default ) {
-			jQuery('#excerpt').val( des );
-			des = '';
+		if ( des_post == '' && des_yoast != '' && des_yoast != des_default_yoast ) {
+			jQuery('#excerpt').val( des_yoast );
+			des_yoast = '';
 		}
 		
 		// gán lại dữ liệu
-		if ( des == '' || des == str_excerpt ) {
-			jQuery('#yoast_wpseo_metadesc').val( des_default );
+		if ( des_yoast == '' || des_yoast == des_post ) {
+			jQuery( yoast_des_id ).val( des_default_yoast );
 		}
+		console.log('des_yoast: ' + des_yoast);
 	}
-	else if ( jQuery('#snippet-editor-meta-description').length > 0 ) {
-		des = jQuery('#snippet-editor-meta-description').val() || '';
-		
-//		if ( des == '' && str_excerpt != '' ) {
-//			jQuery('#snippet-editor-meta-description').val( str_excerpt );
-//		}
-		if ( des == '' || des == str_excerpt ) {
-			jQuery('#snippet-editor-meta-description').val( des_default );
-		}
-	}
-	console.log(str_excerpt);
-	console.log(des);
+	console.log('des_post: ' + des_post);
 	
-	//
-	if ( str_excerpt == '' && des != '' && des != des_default ) {
-		jQuery('#excerpt').val( des );
+	// tạo tóm tắt mặc định nếu chưa có
+	if ( des_post == '' ) {
+		if ( WGR_check_option_on( cf_excerpt_sync_yoast ) && des_yoast != '' && des_yoast != des_default_yoast ) {
+			jQuery('#excerpt').val( des_yoast );
+		}
+		else if ( WGR_check_option_on( cf_excerpt_sync_content ) ) {
+			jQuery('#excerpt').val( EBE_set_default_excerpt_for_seo() );
+		}
 	}
 	
 	// chuyển đổi các slug sang dạng không dấu, tạo URL thân thiện

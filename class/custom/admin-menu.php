@@ -434,6 +434,10 @@ function echbay_admin_footer_styles() {
 	//
 	echo '<script type="text/javascript">var cf_chu_de_chinh = "' . _eb_str_block_fix_content( str_replace( '"', '\"', $__cf_row['cf_chu_de_chinh'] ) ) . '",
 	
+	cf_content_for_excerpt_null = "' . $__cf_row['cf_content_for_excerpt_null'] . '",
+	cf_excerpt_sync_content = "' . $__cf_row['cf_excerpt_sync_content'] . '",
+	cf_excerpt_sync_yoast = "' . $__cf_row['cf_excerpt_sync_yoast'] . '",
+	
 	wgr_plugin_current_version = "' . $current_version . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
 	
