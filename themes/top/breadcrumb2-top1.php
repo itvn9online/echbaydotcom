@@ -5,7 +5,7 @@ Description: Breadcrumb cho website, thiết kế bo gọn theo kích thước c
 ?>
 
 <div id="breadcrumb2-top1">
-	<div class="<?php echo $__cf_row['cf_top_class_style']; ?>">
+	<div class="<?php echo $__cf_row['cf_blog_class_style']; ?>">
 		<div class="thread-details-tohome">
 			<ul class="cf">
 				<li><a href="./"><i class="fa fa-home"></i> <?php echo EBE_get_lang('home'); ?></a></li>
