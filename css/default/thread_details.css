@@ -78,15 +78,8 @@
 	padding: 10px;
 	border-radius: 15px;
 }
-.thread-details-giacu {
-	font-size: 14px;
-	line-height: 20px;
-	color: #999;
-}
-.thread-details-giamoi {
-	font-size: 25px;
-	color: #f40;
-}
+.thread-details-giacu { }
+.thread-details-giamoi { }
 .thread-details-giamgia {
 	position: absolute;
 	right: 10px;
