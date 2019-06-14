@@ -87,7 +87,7 @@ function WGR_create_themes_default_format (
 <div><?php echo EBE_get_html_profile(); ?></div>
 *
 * GET top menu (auto):
-* Class hay dung kem voi top menu: fix-top-menu, auto-fixed-menu-height
+* Class hay dung kem voi top menu: fix-top-menu, auto-fixed-menu-height with [data-max-height=""] [data-tag=""]
 <div><?php echo EBE_echbay_top_menu(); ?></div>
 *
 * GET footer menu (auto): -> class for sub-menu: sub-footer-menu
