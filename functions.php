@@ -227,6 +227,10 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
             $post->trv_masanpham = _eb_get_post_object($post->ID, '_eb_product_sku', $post->ID);
 
             $post->trv_mua = (int) _eb_get_post_object($post->ID, '_eb_product_buyer', 0);
+            $post->trv_luotmua = $post->trv_mua;
+			
+            $post->trv_xem = (int) _eb_get_post_object($post->ID, '_eb_product_views', 0);
+            $post->trv_luotxem = $post->trv_xem;
 
             //
             $post->trv_giaban = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_oldprice'));
