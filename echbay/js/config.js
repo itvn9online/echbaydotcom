@@ -314,6 +314,11 @@ function create_deault_css () {
 //		'mobile' : '',
 		'pc' : '.fcb'
 	} );
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'fcb2',
+//		'mobile' : '',
+		'pc' : '.fcb2'
+	} );
 	
 	// w90
 	str += create_css_for_custom_in_js( '', '', {
@@ -673,6 +678,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_fcb'] == 'undefined' ) {
 			data['cf_css_fcb'] = {};
 		}
+		if ( typeof data['cf_css_fcb2'] == 'undefined' ) {
+			data['cf_css_fcb2'] = {};
+		}
 		if ( typeof data['cf_css_w90'] == 'undefined' ) {
 			data['cf_css_w90'] = {};
 		}
@@ -797,6 +805,21 @@ if ( current_module_config != 'config_theme' ) {
 		
 		
 		// fcb
+		load_config_for_custom_logo(
+			{
+				'font_family' : ''
+			}, {
+				'font_family' : 'Font cơ bản 2 (font-family)'
+			}, {
+				'font_family' : 'Ý nghĩa tương tự <strong>fcb</strong>, sử dụng class CSS: <strong>fcb2</strong> mục đích hỗ trợ thêm fonts nếu bạn có nhu cầu.'
+			}, {
+			},
+			data['cf_css_fcb2'],
+			{
+				'after_html' : 'custom_css_for_body',
+				'input_name' : 'fcb2'
+			}
+		);
 		load_config_for_custom_logo(
 			{
 				'font_family' : ''
