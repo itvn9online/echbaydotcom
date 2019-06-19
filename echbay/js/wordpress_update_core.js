@@ -23,4 +23,7 @@ if ( window.location.href.split('&confirm_wp_process=').length > 1 ) {
 	_global_js_eb.change_url_tab( 'confirm_wp_process' );
 //	window.history.pushState("", '', window.location.href.split('&confirm_wp_process=')[0]);
 }
+else if ( window.location.href.split('&confirm_el_process=').length > 1 ) {
+	_global_js_eb.change_url_tab( 'confirm_el_process' );
+}
 

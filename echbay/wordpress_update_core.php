@@ -34,7 +34,11 @@ $url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&doma
 			echo $url_udpate_via_api . '<br>';
 			
 			//
-			echo _eb_postUrlContent( $url_udpate_via_api );
+			$m_for_request = trim( _eb_postUrlContent( $url_udpate_via_api ) );
+			if ( substr( $m_for_request, 0, 6 ) == 'ERROR:' ) {
+				echo '<script>a_lert("' . str_replace( '"', '&quot;', $m_for_request ) . '");</script>';
+			}
+			echo $m_for_request;
 			
 		}
 		else {
