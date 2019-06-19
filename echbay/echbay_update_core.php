@@ -769,6 +769,8 @@ function EBE_get_text_version ( $str ) {
 					
 					// cập nhật lại dữ liệu bảng
 					EBE_tao_bang_hoa_don_cho_echbay_wp();
+					echo '<strong>Update</strong> WGR table database<br>' . "\n";
+					
 				}
 				
 				// tắt chế độ bảo trì
