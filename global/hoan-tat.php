@@ -85,8 +85,9 @@ if ( $hd_id > 0 ) {
 		$current_hd_object = $sql->order_products;
 		$current_tv_object = $sql->order_customer;
 		$order_total_price = 0;
+		// tạm thời để lệnh kiểm tra đã, sau 1 tháng thì bỏ đi
 //		if ( isset( $sql->order_total_price ) ) {
-//			$order_total_price = $sql->order_total_price;
+			$order_total_price = $sql->order_total_price;
 //		}
 		
 		

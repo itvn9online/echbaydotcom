@@ -289,7 +289,16 @@ else {
 		</tr>
 		<tr>
 			<td class="t">Giá trị đơn hàng</td>
-			<td class="i"><?php echo $post->order_total_price; ?></td>
+			<td class="i"><?php
+			// tạm thời để lệnh kiểm tra đã, sau 1 thời gian thì bỏ đi
+			if ( isset( $post->order_total_price ) ) {
+				echo $post->order_total_price;
+			}
+			// nếu chưa có -> có thể bảng hóa đơn đang thiếu -> bổ sung lại
+			else {
+				EBE_tao_bang_hoa_don_cho_echbay_wp();
+			}
+			?></td>
 		</tr>
 	</table>
 	<br>
