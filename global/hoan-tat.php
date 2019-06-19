@@ -197,6 +197,7 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 
 
 
+
 // thêm mã JS vào luôn trong phần PHP, để HTML làm bản dịch
 $main_content .= '<script type="text/javascript">
 var current_hd_id = "' . $hd_id . '",

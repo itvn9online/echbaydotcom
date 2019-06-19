@@ -1944,6 +1944,8 @@ var _global_js_eb = {
 		// reset lại mảng
 		ebe_arr_cart_product_list = [];
 		
+		var cart_total_price = 0;
+		
 		// nếu đang là xem trang chi tiết
 		if ( pid > 0 && typeof eb_wp_post_type != 'undefined' && eb_wp_post_type == 'post' ) {
 			
@@ -1958,7 +1960,8 @@ var _global_js_eb = {
 			*/
 			
 			// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
-			var cart_product_slug = g_func.non_mark_seo( product_js.tieude + sku );
+			var cart_product_slug = g_func.non_mark_seo( product_js.tieude + sku ),
+				cart_quan = jQuery('#oi_change_soluong select').val() || 1;
 			
 			//
 			ebe_arr_cart_product_list.push( {
@@ -1973,12 +1976,13 @@ var _global_js_eb = {
 				"price" : product_js.gm,
 				// thêm phần giá riêng theo màu hoặc size
 				"child_price" : price_for_quick_cart,
-				"quan" : jQuery('#oi_change_soluong select').val() || 1,
+				"quan" : cart_quan,
 				"sku" : sku
 			} );
 			
 			//
 			jQuery('.eb-global-frm-cart input[name^=t_new_price]').val( price_for_quick_cart );
+			cart_total_price = price_for_quick_cart * cart_quan;
 		}
 		// nếu đang là xem trong giỏ hàng
 		else {
@@ -1992,7 +1996,8 @@ var _global_js_eb = {
 					cart_product_slug = '',
 					sku = jQuery('.show-list-color[data-id="' + cart_pid + '"] select').find(':selected').attr('data-sku') || jQuery(this).attr('data-sku') || '',
 					gia_moi = jQuery(this).attr('data-price') || 0,
-					gia_rieng = jQuery('.cart-price-inline .global-details-giamoi', this).html() || '';
+					gia_rieng = jQuery('.cart-price-inline .global-details-giamoi', this).html() || '',
+					cart_quan = jQuery('.change-select-quantity', this).val() || 1;
 				
 				// xử lý giá riêng
 				if ( gia_rieng != '' ) {
@@ -2024,9 +2029,13 @@ var _global_js_eb = {
 					"price" : gia_moi,
 					// thêm phần giá riêng theo màu hoặc size
 					"child_price" : gia_rieng,
-					"quan" : jQuery('.change-select-quantity', this).val() || 1,
+					"quan" : cart_quan,
 					"sku" : sku
 				} );
+				
+				//
+				cart_total_price += ( gia_moi * 1 ) * ( cart_quan * 1 );
+//				cart_total_price += ( gia_rieng * 1 ) * ( cart_quan * 1 );
 			});
 		}
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( ebe_arr_cart_product_list );
@@ -2037,6 +2046,12 @@ var _global_js_eb = {
 			jQuery('#cart_user_agent').append('<textarea name="hd_products_info" id="hd_products_info"></textarea>');
 		}
 		jQuery('#hd_products_info').val( escape ( JSON.stringify( ebe_arr_cart_product_list ) ) );
+		
+		//
+		if ( jQuery('#hd_total_price').length == 0 ) {
+			jQuery('#cart_user_agent').append('<textarea name="t_total_price" id="hd_total_price"></textarea>');
+		}
+		jQuery('#hd_total_price').val( cart_total_price );
 		
 	},
 	

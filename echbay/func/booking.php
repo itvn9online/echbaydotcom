@@ -213,6 +213,7 @@ $hd_mahoadon = date ( 'mdhis', $date_time ) . 'E' . $tv_id;
 $arr = array(
 	'order_sku' => $hd_mahoadon,
 	'order_products' => $product_js_list,
+//	'order_total_price' => trim( $_POST ['t_total_price'] ),
 	'order_customer' => trim( $_POST ['hd_customer_info'] ),
 //	'order_agent' => trim( $_POST ['hd_customer_info'] ),
 	'order_ip' => $client_ip,

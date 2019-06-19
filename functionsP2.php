@@ -3419,6 +3419,7 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp () {
 		)
 	) );
 	
+	
 	EBE_create_in_con_voi_table( 'eb_details_in_con_voi', 'dorder_id', array(
 		'dorder_id' => array(
 			'type' => 'bigint(20)',
