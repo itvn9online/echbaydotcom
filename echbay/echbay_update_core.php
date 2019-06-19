@@ -766,6 +766,9 @@ function EBE_get_text_version ( $str ) {
 					
 					//
 					include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
+					
+					// cập nhật lại dữ liệu bảng
+					EBE_tao_bang_hoa_don_cho_echbay_wp();
 				}
 				
 				// tắt chế độ bảo trì

@@ -285,15 +285,11 @@ else {
 		</tr>
 		<tr>
 			<td class="t">Cập nhật cuối</td>
-			<td class="i"><?php
-			if ( isset( $post->order_update_time ) ) {
-				echo date( 'd-m-Y H:i', $post->order_update_time );
-			}
-			// nếu chưa có -> có thể bảng hóa đơn đang thiếu -> bổ sung lại
-			else {
-				EBE_tao_bang_hoa_don_cho_echbay_wp();
-			}
-			?></td>
+			<td class="i"><?php echo date( 'd-m-Y H:i', $post->order_update_time ); ?></td>
+		</tr>
+		<tr>
+			<td class="t">Giá trị đơn hàng</td>
+			<td class="i"><?php echo $post->order_total_price; ?></td>
 		</tr>
 	</table>
 	<br>
