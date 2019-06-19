@@ -3362,7 +3362,7 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp () {
 			'extra' => '',
 		),
 		'order_total_price' => array(
-			'type' => 'bigint(20)',
+			'type' => 'varchar(55)',
 			'null' => 'no',
 			'key' => '',
 			'default' => '',
