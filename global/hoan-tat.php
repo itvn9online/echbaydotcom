@@ -85,9 +85,9 @@ if ( $hd_id > 0 ) {
 		$current_hd_object = $sql->order_products;
 		$current_tv_object = $sql->order_customer;
 		$order_total_price = 0;
-		if ( isset( $sql->order_total_price ) ) {
-			$order_total_price = $sql->order_total_price;
-		}
+//		if ( isset( $sql->order_total_price ) ) {
+//			$order_total_price = $sql->order_total_price;
+//		}
 		
 		
 		//
