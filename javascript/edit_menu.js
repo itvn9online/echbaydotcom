@@ -91,13 +91,14 @@ function WGR_main_edit_menu () {
 	// khi người dùng bấm thêm vào menu
 	jQuery('.click-to-add-custom-link').click(function () {
 		var lnk = jQuery(this).attr('data-link') || '#',
-				nem = jQuery(this).attr('data-text') || 'Home',
-				rel = jQuery(this).attr('data-rel') || '',
-				tar = jQuery(this).attr('data-target') || '';
+			nem = jQuery(this).attr('data-text') || 'Home',
+			rel = jQuery(this).attr('data-rel') || '',
+			tar = jQuery(this).attr('data-target') || '';
+		nem = nem.replace( /\&lt\;/g, '<' ).replace( /\&gt\;/g, '>' );
 		jQuery('#custom-menu-item-url').val(lnk);
 		jQuery('#custom-menu-item-name').val(nem);
 		jQuery('#submit-customlinkdiv').click();
-//			jQuery('#menu-to-edit li:last').click();
+//		jQuery('#menu-to-edit li:last').click();
 
 		// nếu có class CSS riêng
 		var a = jQuery(this).attr('data-css') || '';
