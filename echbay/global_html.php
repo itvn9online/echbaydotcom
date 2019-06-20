@@ -214,13 +214,13 @@
 			<li class="cf">
 				<div class="lf f80">Đã thông báo với BCT (xanh)</div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="&lt;img src='<?php echo basename( WP_CONTENT_DIR ); ?>/echbaydotcom/images-global/dathongbao.png' width='200' height='76'&gt;" data-css="dathongbao-voi-bct" data-target="_blank" data-rel="nofollow" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="&lt;img src='<?php echo basename( WP_CONTENT_DIR ); ?>/echbaydotcom/images-global/dathongbao.png' width='200' height='76'&gt;" data-css="dathongbao-voi-bct img-max-width" data-target="_blank" data-rel="nofollow" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
 				<div class="lf f80">Đã đăng ký với BCT (đỏ)</div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="&lt;img src='<?php echo basename( WP_CONTENT_DIR ); ?>/echbaydotcom/images-global/dadangky.png' width='200' height='75'&gt;" data-css="dadangky-voi-bct" data-target="_blank" data-rel="nofollow" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+					<button data-link="#" data-text="&lt;img src='<?php echo basename( WP_CONTENT_DIR ); ?>/echbaydotcom/images-global/dadangky.png' width='200' height='75'&gt;" data-css="dadangky-voi-bct img-max-width" data-target="_blank" data-rel="nofollow" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
 				</div>
 			</li>
 		</ul>
