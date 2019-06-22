@@ -289,7 +289,14 @@ else {
 		</tr>
 		<tr>
 			<td class="t">Giá trị đơn hàng</td>
-			<td class="i"><?php echo $post->order_total_price; ?></td>
+			<td class="i"><?php
+			if ( isset( $post->order_total_price ) ) {
+				echo $post->order_total_price;
+			}
+			else {
+				EBE_tao_bang_hoa_don_cho_echbay_wp();
+			}
+			?></td>
 		</tr>
 	</table>
 	<br>
