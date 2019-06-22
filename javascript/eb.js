@@ -2049,7 +2049,7 @@ var _global_js_eb = {
 		
 		//
 		if ( jQuery('#hd_total_price').length == 0 ) {
-			jQuery('#cart_user_agent').append('<textarea name="t_total_price" id="hd_total_price"></textarea>');
+			jQuery('#cart_user_agent').append('<input type="text" name="t_total_price" id="hd_total_price" value="1" />');
 		}
 		jQuery('#hd_total_price').val( cart_total_price );
 		
