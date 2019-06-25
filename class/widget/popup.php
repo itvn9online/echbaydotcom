@@ -23,6 +23,7 @@ class ___echbay_widget_open_popup extends WP_Widget {
 			'time_end' => 30,
 			'cookie_name' => '',
 			'cookie_time' => 0,
+			'cookie_time1' => 0,
 			'cookie_time2' => 1
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -54,11 +55,15 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>Thời gian bật lại: <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time' ) . '" value="' . $cookie_time . '" /> Tính theo phút! nhập số phút mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 120, nghĩa là 2 giờ sau sẽ tự động mở lại popup.</p>';
+		echo '<p>Thời gian bật lại (Tính theo phút): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time' ) . '" value="' . $cookie_time . '" /> Nhập số phút mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 120, nghĩa là 2 giờ sau sẽ tự động mở lại popup.</p>';
 		
 		
 		//
-		echo '<p>Thời gian bật lại: <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time2' ) . '" value="' . $cookie_time2 . '" /> Tính theo ngày! nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
+		echo '<p>Thời gian bật lại (Tính theo giờ): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time1' ) . '" value="' . $cookie_time1 . '" /> Nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
+		
+		
+		//
+		echo '<p>Thời gian bật lại (Tính theo ngày): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time2' ) . '" value="' . $cookie_time2 . '" /> Nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
 		
 		
 		//
@@ -96,6 +101,10 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		if ( $cookie_time == '' ) {
 			$cookie_time = 0;
 		}
+		$cookie_time1 = isset( $instance ['cookie_time1'] ) ? $instance ['cookie_time1'] : '';
+		if ( $cookie_time1 == '' ) {
+			$cookie_time1 = 0;
+		}
 		$cookie_time2 = isset( $instance ['cookie_time2'] ) ? $instance ['cookie_time2'] : '';
 		if ( $cookie_time2 == '' ) {
 			$cookie_time2 = 0;
@@ -117,6 +126,7 @@ jQuery(window).on("load", function () {
 		time_end: ' . $time_end . ',
 		cookie_name: "' . $cookie_name . '",
 		cookie_time: ' . $cookie_time . ',
+		cookie_time1: ' . $cookie_time1 . ',
 		cookie_time2: ' . $cookie_time2 . '
 	});
 });

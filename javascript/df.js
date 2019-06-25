@@ -328,11 +328,14 @@ function WGR_active_popup ( op ) {
 	if ( typeof op['cookie_time'] != 'number' || op['cookie_time'] * 1 < 0 ) {
 		op['cookie_time'] = 0;
 	}
+	if ( typeof op['cookie_time1'] != 'number' || op['cookie_time1'] * 1 < 0 ) {
+		op['cookie_time1'] = 0;
+	}
 	if ( typeof op['cookie_time2'] != 'number' || op['cookie_time2'] * 1 < 0 ) {
 		op['cookie_time2'] = 0;
 	}
 	// nếu không có thời gian xác định cho cookie -> hủy bỏ luôn
-	if ( op['cookie_time'] == 0 && op['cookie_time2'] == 0 ) {
+	if ( op['cookie_time'] == 0 && op['cookie_time1'] == 0 && op['cookie_time2'] == 0 ) {
 		console.log('time not set!');
 		return false;
 	}
@@ -374,7 +377,7 @@ function WGR_active_popup ( op ) {
 	}
 	
 	//
-	g_func.setc( op['cookie_name'], 1, op['cookie_time'] * 60, op['cookie_time2'] );
+	g_func.setc( op['cookie_name'], 1, ( op['cookie_time'] * 60 ) + ( op['cookie_time1'] * 60 * 60 ), op['cookie_time2'] );
 }
 
 function WGR_close_popup () {
