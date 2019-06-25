@@ -1002,8 +1002,7 @@ if ( current_module_config != 'config_theme' ) {
 				},
 				*/
 				'donvi' : {
-					'width' : 'px',
-					'max_width' : 'px'
+					'font_size' : 'px'
 				}
 			}
 		);
