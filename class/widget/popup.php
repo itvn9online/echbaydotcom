@@ -43,11 +43,11 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>Thời gian bắt đầu: <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_start' ) . '" value="' . $time_start . '" /> Nhập số giây bạn muốn popup được bật lên sau khi khách vào website. Nhập 0 nếu bạn muốn bật càng sớm càng tốt.</p>';
+		echo '<p>Thời gian bắt đầu (Tính theo giây): <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_start' ) . '" value="' . $time_start . '" /> Nhập số giây bạn muốn popup được bật lên sau khi khách vào website. Nhập 0 nếu bạn muốn bật càng sớm càng tốt.</p>';
 		
 		
 		//
-		echo '<p>Thời gian kết thúc: <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_end' ) . '" value="' . $time_end . '" /> Là thời gian popup sẽ tự động tắt sau khi được bật. Nhập 0 nếu bạn không muốn popup tự tắt.</p>';
+		echo '<p>Thời gian kết thúc (Tính theo giây): <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_end' ) . '" value="' . $time_end . '" /> Là thời gian popup sẽ tự động tắt sau khi được bật. Nhập 0 nếu bạn không muốn popup tự tắt.</p>';
 		
 		
 		//
