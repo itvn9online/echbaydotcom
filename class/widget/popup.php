@@ -18,6 +18,7 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		$default = array (
 			'title' => 'EchBay popup',
 			'id_event' => '',
+			'close_icon' => '',
 			'time_start' => 5,
 			'time_end' => 30,
 			'cookie_name' => '',
@@ -33,7 +34,11 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>ID/ Class: <input type="text" class="widefat" name="' . $this->get_field_name ( 'id_event' ) . '" value="' . $id_event . '" /> ID hoặc CLlass CSS dùng để điều khiển popup. Vui lòng nhập đầy đủ dấu # hoặc . nếu có.</p>';
+		echo '<p>ID/ Class: <input type="text" class="widefat" name="' . $this->get_field_name ( 'id_event' ) . '" value="' . $id_event . '" /> ID hoặc Class CSS dùng để điều khiển popup. Vui lòng nhập đầy đủ dấu # hoặc . nếu có.</p>';
+		
+		
+		//
+		echo '<p>Close icon: <input type="text" class="widefat" name="' . $this->get_field_name ( 'close_icon' ) . '" value="' . $close_icon . '" /> nếu có trường này, một nút bấm close popup sẽ được thêm vào.</p>';
 		
 		
 		//
@@ -77,6 +82,7 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		$title = apply_filters ( 'widget_title', $instance ['title'] );
 		
 		$id_event = isset( $instance ['id_event'] ) ? $instance ['id_event'] : '';
+		$close_icon = isset( $instance ['close_icon'] ) ? $instance ['close_icon'] : '';
 		$time_start = isset( $instance ['time_start'] ) ? $instance ['time_start'] : 0;
 		$time_end = isset( $instance ['time_end'] ) ? $instance ['time_end'] : 0;
 		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : '';
@@ -94,6 +100,7 @@ jQuery(window).on("load", function () {
 //jQuery(document).ready(function() {
 	WGR_active_popup({
 		id_event: "' . $id_event . '",
+		close_icon: "' . $close_icon . '",
 		time_start: ' . $time_start . ',
 		time_end: ' . $time_end . ',
 		cookie_name: "' . $cookie_name . '",

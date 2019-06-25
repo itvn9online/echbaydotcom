@@ -369,6 +369,10 @@ function WGR_active_popup ( op ) {
 		}, ( op['time_start'] + op['time_end'] ) * 1000);
 	}
 	
+	if ( typeof op['close_icon'] != 'undefined' && op['close_icon'] != '' ) {
+		jQuery( op['id_event'] ).prepend('<div class="wgr-popup-close"><i class="fa ' + op['id_event'] + '"></i></div>');
+	}
+	
 	//
 	g_func.setc( op['cookie_name'], 1, op['cookie_time'] * 60, op['cookie_time2'] );
 }
