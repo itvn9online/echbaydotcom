@@ -2902,3 +2902,16 @@ iframe[name="google_conversion_frame"] {
 .jEBE_slider-position2 li.selected .banner-ads-media { background-size: 100% auto; }
 /* chỉnh lại chiều rộng cho hộp bình luận fb */
 .fb_iframe_widget_fluid_desktop iframe { width: 100% !important; }
+.wgr-popup-close { position: relative; }
+.wgr-popup-close i {
+	position: absolute;
+	right: -12px;
+	top: -12px;
+	background: #333;
+	color: #fff;
+	line-height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	box-shadow: 0 0 5px #fff;
+	cursor: pointer;
+}
