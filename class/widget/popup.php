@@ -83,11 +83,23 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		$id_event = isset( $instance ['id_event'] ) ? $instance ['id_event'] : '';
 		$close_icon = isset( $instance ['close_icon'] ) ? $instance ['close_icon'] : '';
-		$time_start = isset( $instance ['time_start'] ) ? $instance ['time_start'] : 0;
-		$time_end = isset( $instance ['time_end'] ) ? $instance ['time_end'] : 0;
+		$time_start = isset( $instance ['time_start'] ) ? $instance ['time_start'] : '';
+		if ( $time_start == '' ) {
+			$time_start = 0;
+		}
+		$time_end = isset( $instance ['time_end'] ) ? $instance ['time_end'] : '';
+		if ( $time_end == '' ) {
+			$time_end = 0;
+		}
 		$cookie_name = isset( $instance ['cookie_name'] ) ? $instance ['cookie_name'] : '';
 		$cookie_time = isset( $instance ['cookie_time'] ) ? $instance ['cookie_time'] : '';
+		if ( $cookie_time == '' ) {
+			$cookie_time = 0;
+		}
 		$cookie_time2 = isset( $instance ['cookie_time2'] ) ? $instance ['cookie_time2'] : '';
+		if ( $cookie_time2 == '' ) {
+			$cookie_time2 = 0;
+		}
 		
 		
 		
