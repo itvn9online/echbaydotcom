@@ -225,7 +225,7 @@ function WGR_fixed_tab_height_in_line ( jd, for_tag, max_height ) {
 	// nếu vẫn chưa được -> màn hình có thể còn nhỏ hơn nữa -> tiếp tục thu font-size
 	if ( jQuery( jd ).height() > min_tab_height ) {
 		var j = 17;
-		for ( var i = 0; i < 5; i++ ) {
+		for ( var i = 0; i < 7; i++ ) {
 			jQuery( jd + ' ' + tag ).css({
 				'font-size' : j+ 'px'
 			});
