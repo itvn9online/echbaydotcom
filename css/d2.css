@@ -2223,10 +2223,14 @@ iframe[name="google_conversion_frame"] {
 	color: #fff;
 }
 .style-for-mobile .thread-details-tab li {
+	text-align: center;
+	padding: 0 10px;
+	/*
 	float: none;
 	text-align: center;
 	padding: 0;
 	margin: 0 0 1px 0;
+	*/
 }
 .eball-category-icon,
 .eball-category-count { display: none; }

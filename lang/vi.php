@@ -614,8 +614,10 @@ function EBE_get_lang_list() {
 
 
 // Nếu không phải tiếng Việt -> add mặc định tiếng anh
+//echo $__cf_row['cf_content_language'];
 if ( $__cf_row['cf_content_language'] != 'vi' ) {
 	include EB_THEME_PLUGIN_INDEX . 'lang/en.php';
+//	echo 'aaaaaaaaaaaa';
 }
 // phần ngôn ngữ cho admin
 include EB_THEME_PLUGIN_INDEX . 'lang/admin.php';
