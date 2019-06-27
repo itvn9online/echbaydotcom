@@ -1440,25 +1440,35 @@ var current_pid_quicview = pid,
 
                 if (a != '') {
                     jQuery(this).on('click', function() {
-                        var goto = 0;
-                        if (jQuery('#' + a).length > 0) {
-                            goto = jQuery('#' + a).offset().top;
-                        } else if (jQuery('a[name="' + a + '"]').length > 0) {
-                            goto = jQuery('a[name="' + a + '"]').offset().top;
-                        } else if (jQuery('.' + a).length > 0) {
-                            goto = jQuery('.' + a).offset().top;
-                        }
-
-                        if (goto > 90) {
-                            //							window.scroll( 0, goto - 110 );
-                            jQuery('body,html').animate({
-                                scrollTop: goto - 110
-                            }, 800);
-
-                            window.location.hash = a;
-
-                            return false;
-                        }
+						if ( a == 'top' ) {
+							jQuery('body,html').animate({
+								scrollTop: 0
+							}, 800);
+							
+							window.history.pushState("", '', window.location.href.split('#')[0]);
+						}
+						else {
+							var goto = 0;
+							
+							if (jQuery('#' + a).length > 0) {
+								goto = jQuery('#' + a).offset().top;
+							} else if (jQuery('a[name="' + a + '"]').length > 0) {
+								goto = jQuery('a[name="' + a + '"]').offset().top;
+							} else if (jQuery('.' + a).length > 0) {
+								goto = jQuery('.' + a).offset().top;
+							}
+	
+							if (goto > 90) {
+//								window.scroll( 0, goto - 110 );
+								jQuery('body,html').animate({
+									scrollTop: goto - 110
+								}, 800);
+	
+								window.location.hash = a;
+	
+								return false;
+							}
+						}
                     });
                 }
 				else {
