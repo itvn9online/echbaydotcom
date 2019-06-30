@@ -321,8 +321,9 @@ function WGR_active_popup ( op ) {
 	if ( op['id_event'].substr( 0, 1 ) != '#' && op['id_event'].substr( 0, 1 ) != '.' ) {
 		op['id_event'] = '#' + op['id_event'];
 	}
-	if ( $( op['id_event'] ).length == 1 ) {
-		console.log(op['id_event'] = ' not found!');
+	if ( jQuery( op['id_event'] ).length == 0 ) {
+		console.log(op['id_event'] + ' not found!');
+		return false;
 	}
 	
 	if ( typeof op['cookie_name'] == 'undefined' || op['cookie_name'] == '' ) {
@@ -386,7 +387,7 @@ function WGR_active_popup ( op ) {
 	}
 	
 	//
-	g_func.setc( op['cookie_name'], 1, rtime );
+	g_func.setc( op['cookie_name'], rtime, rtime );
 }
 
 function WGR_close_popup () {
