@@ -23,8 +23,8 @@ class ___echbay_widget_open_popup extends WP_Widget {
 			'time_end' => 30,
 			'cookie_name' => '',
 			'cookie_time' => 0,
-			'cookie_time1' => 0,
-			'cookie_time2' => 1
+			'cookie_time1' => 6,
+			'cookie_time2' => 0
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
