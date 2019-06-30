@@ -321,6 +321,9 @@ function WGR_active_popup ( op ) {
 	if ( op['id_event'].substr( 0, 1 ) != '#' && op['id_event'].substr( 0, 1 ) != '.' ) {
 		op['id_event'] = '#' + op['id_event'];
 	}
+	if ( $( op['id_event'] ).length == 1 ) {
+		console.log(op['id_event'] = ' not found!');
+	}
 	
 	if ( typeof op['cookie_name'] == 'undefined' || op['cookie_name'] == '' ) {
 		op['cookie_name'] = 'WGR_popup_ckname_' + op['id_event'].replace(/\#|\./g, '_');
