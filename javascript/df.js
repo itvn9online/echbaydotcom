@@ -366,6 +366,7 @@ function WGR_active_popup ( op ) {
 	
 	// bật popup lên
 	if ( op['time_start'] > 0 ) {
+		console.log('Popup show after ' + op['time_start'] + 's');
 		setTimeout(function () {
 			jQuery( op['id_event'] ).fadeIn();
 			_global_js_eb.auto_margin();
@@ -377,9 +378,11 @@ function WGR_active_popup ( op ) {
 	
 	// tắt popup
 	if ( op['time_end'] > 0 ) {
+		op['time_end'] = op['time_start'] * 1 + op['time_end'];
+		console.log('Popup show after ' + op['time_end'] + 's');
 		setTimeout(function () {
 			jQuery( op['id_event'] ).fadeOut();
-		}, ( op['time_start'] + op['time_end'] ) * 1000);
+		}, op['time_end'] * 1000);
 	}
 	
 	if ( typeof op['close_icon'] != 'undefined' && op['close_icon'] != '' ) {
