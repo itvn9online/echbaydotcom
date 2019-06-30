@@ -325,6 +325,8 @@ function WGR_active_popup ( op ) {
 	if ( typeof op['cookie_name'] == 'undefined' || op['cookie_name'] == '' ) {
 		op['cookie_name'] = 'WGR_popup_ckname_' + op['id_event'].replace(/\#|\./g, '_');
 	}
+	
+	//
 	if ( typeof op['cookie_time'] != 'number' || op['cookie_time'] * 1 < 0 ) {
 		op['cookie_time'] = 0;
 	}
@@ -334,8 +336,11 @@ function WGR_active_popup ( op ) {
 	if ( typeof op['cookie_time2'] != 'number' || op['cookie_time2'] * 1 < 0 ) {
 		op['cookie_time2'] = 0;
 	}
+	var rtime = ( op['cookie_time'] * 60 ) + ( op['cookie_time1'] * 60 * 60 ) + ( op['cookie_time2'] * 24 * 3600 );
+	
 	// nếu không có thời gian xác định cho cookie -> hủy bỏ luôn
-	if ( op['cookie_time'] == 0 && op['cookie_time1'] == 0 && op['cookie_time2'] == 0 ) {
+//	if ( op['cookie_time'] == 0 && op['cookie_time1'] == 0 && op['cookie_time2'] == 0 ) {
+	if ( rtime == 0 ) {
 		console.log('time not set!');
 		return false;
 	}
@@ -378,7 +383,7 @@ function WGR_active_popup ( op ) {
 	}
 	
 	//
-	g_func.setc( op['cookie_name'], 1, ( op['cookie_time'] * 60 ) + ( op['cookie_time1'] * 60 * 60 ), op['cookie_time2'] );
+	g_func.setc( op['cookie_name'], 1, rtime );
 }
 
 function WGR_close_popup () {
