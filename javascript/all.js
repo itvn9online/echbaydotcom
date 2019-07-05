@@ -1167,19 +1167,23 @@ function WGR_widget_show_option_by_post_type ( select_id ) {
 
 
 function WGR_get_contect_editer_id () {
-	var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
+	var content_id = jQuery(this).attr('data-editer') || 'content';
 	
 	// tên đầy đủ của text editter
 //	content_id += 'wysiwyg';
 	
 	//
-	if ( dog( content_id ) == null ) {
-		alert('Text editer #' +content_id+ ' not found');
-		return null;
+	if ( dog( content_id ) != null ) {
+		return '#' + content_id;
+	}
+	else if ( dog( 'content_ifr' ) != null ) {
+		return '#content_ifr';
 	}
 	
-	// ID cho jQuery
-	return '#' + content_id;
+	alert('Text editer #' +content_id+ ' not found');
+	console.log('Text editer #' +content_id+ ' not found');
+	
+	return '';
 }
 
 // chức năng đồng bộ nội dung website theo chuẩn chung của EchBay
@@ -1324,19 +1328,7 @@ function click_remove_style_of_img_content () {
 		});
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		if ( confirm('Confirm remove image style in this content!') == false ) {
@@ -1374,19 +1366,7 @@ function click_convert_table_tags_of_content () {
 		dog('click_convert_table_tags').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		if ( confirm('Confirm convert all TABLE tags to DIV tags in this content!') == false ) {
@@ -1481,19 +1461,7 @@ function click_remove_custom_tags_of_content () {
 		dog('click_remove_custom_tags').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		var remove_tag = prompt('Enter tag for remove', '');
@@ -1535,19 +1503,7 @@ function click_remove_table_tags_of_content () {
 		dog('click_remove_table_tags').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		if ( confirm('Confirm remove all TABLE tags in this content!') == false ) {
@@ -1612,19 +1568,7 @@ function click_fixed_a_tags_redirect_of_content () {
 		dog('click_fixed_a_tags_redirect').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		if ( confirm('Confirm fixed A tags redirect in this content!') == false ) {
@@ -1671,7 +1615,7 @@ function run_download_img_other_domain_of_content ( content_id ) {
 	
 	//
 	if ( typeof content_id == 'undefined' || content_id == '' ) {
-		content_id = '#content_ifr';
+		content_id = WGR_get_contect_editer_id();
 	}
 	
 	//
@@ -1764,7 +1708,7 @@ function finish_download_img_other_domain_of_content ( img, content_id ) {
 	
 	//
 	if ( typeof content_id == 'undefined' || content_id == '' ) {
-		content_id = '#content_ifr';
+		content_id = WGR_get_contect_editer_id();
 	}
 	
 	jQuery( content_id ).contents().find( 'img.' + class_for_download_img_to_site ).attr({
@@ -1792,19 +1736,7 @@ function click_download_img_other_domain_of_content () {
 		dog('click_download_img_other_domain').checked = false;
 		
 		//
-		var content_id = jQuery(this).attr('data-editer') || 'content_ifr';
-		
-		// tên đầy đủ của text editter
-//		content_id += 'wysiwyg';
-		
-		//
-		if ( dog( content_id ) == null ) {
-			alert('Text editer #' +content_id+ ' not found');
-			return false;
-		}
-		
-		// ID cho jQuery
-		content_id = '#' + content_id;
+		var content_id = WGR_get_contect_editer_id();
 		
 		//
 		if ( confirm('Confirm download all IMG to this site!') == false ) {
@@ -1823,7 +1755,7 @@ function click_download_img_other_domain_of_content () {
 function EBE_set_default_img_avt () {
 	if ( dog('_eb_product_avatar') != null && dog('_eb_product_avatar').value == '' ) {
 		// lấy trong nội dung trước
-		var a = jQuery('#content_ifr' ).contents().find( 'img:first' ).attr('src') || '';
+		var a = jQuery( WGR_get_contect_editer_id() ).contents().find( 'img:first' ).attr('src') || '';
 //		console.log(a);
 		
 		// nếu không có -> lấy trong gallery
