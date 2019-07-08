@@ -256,10 +256,11 @@ $___eb_lang[eb_key_for_site_lang . 'billing_custom_style'] = '/* Thêm custom CS
 $eb_note_first_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'lh_lienhe'] = 'Liên hệ với chúng tôi';
 $___eb_lang[eb_key_for_site_lang . 'lh_luuy'] = 'Để liên hệ với chúng tôi, bạn có thể gửi email tới <a href="mailto:{tmp.cf_email}" rel="nofollow">{tmp.cf_email}</a>, sử dụng phom liên hệ phía dưới hoặc liên hệ trực tiếp theo địa chỉ và số điện thoại chúng tôi cung cấp.';
-$___eb_lang[eb_key_for_site_lang . 'lh_hoten'] = $___eb_lang[eb_key_for_site_lang . 'cart_hoten'];
-$___eb_lang[eb_key_for_site_lang . 'lh_diachi'] = $___eb_lang[eb_key_for_site_lang . 'cart_diachi'];
-$___eb_lang[eb_key_for_site_lang . 'lh_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
-$___eb_lang[eb_key_for_site_lang . 'lh_noidung'] = 'Nội dung';
+$___eb_lang[eb_key_for_site_lang . 'lh_hoten'] = 'Họ và tên <span class="redcolor">*</span>';
+$___eb_lang[eb_key_for_site_lang . 'lh_email'] = 'Email <span class="redcolor">*</span>';
+$___eb_lang[eb_key_for_site_lang . 'lh_diachi'] = 'Địa chỉ';
+$___eb_lang[eb_key_for_site_lang . 'lh_dienthoai'] = 'Điện thoại';
+$___eb_lang[eb_key_for_site_lang . 'lh_noidung'] = 'Nội dung <span class="redcolor">*</span>';
 $___eb_lang[eb_key_for_site_lang . 'lh_submit'] = 'Gửi liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'lh_note'] = 'là các trường bắt buộc phải điền.<br>Vui lòng cung đầy đủ thông tin để quá trình trao đổi được diễn ra thuận lợi hơn.';
 $___eb_lang[eb_key_for_site_lang . 'lh_done'] = 'Cảm ơn bạn! thông tin của bạn đã được gửi đi, chúng tôi sẽ phản hồi sớm nhất có thể.';

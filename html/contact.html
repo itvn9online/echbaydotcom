@@ -10,33 +10,33 @@
 						<form name="frm_contact" method="post" action="process/?set_module=contact" target="target_eb_iframe" onsubmit="return _global_js_eb.check_contact_frm();">
 							<ul class="cart-ultable">
 								<li class="cf frm-global-contact-name">
-									<div class="lf f25">{tmp.lh_hoten} <span class="redcolor">*</span></div>
+									<div class="lf f25">{tmp.lh_hoten}</div>
 									<div class="lf f75">
-										<input type="text" name="t_ten" id="t_ten" value="" aria-required="true" required />
+										<input type="text" name="t_ten" id="t_ten" value=""{tmp.lh_required_hoten} />
 									</div>
 								</li>
 								<li class="cf frm-global-contact-email">
-									<div class="lf f25">Email <span class="redcolor">*</span></div>
+									<div class="lf f25">{tmp.lh_email}</div>
 									<div class="lf f75">
-										<input type="text" name="t_email" id="t_email" value="" aria-required="true" required />
+										<input type="text" name="t_email" id="t_email" value=""{tmp.lh_required_email} />
 									</div>
 								</li>
 								<li class="cf frm-global-contact-address">
 									<div class="lf f25">{tmp.lh_diachi}</div>
 									<div class="lf f75">
-										<input type="text" name="t_diachi" id="t_diachi" value="" />
+										<input type="text" name="t_diachi" id="t_diachi" value=""{tmp.lh_required_diachi} />
 									</div>
 								</li>
 								<li class="cf frm-global-contact-phone">
-									<div class="lf f25">{tmp.lh_dienthoai} <span class="redcolor">*</span></div>
+									<div class="lf f25">{tmp.lh_dienthoai}</div>
 									<div class="lf f75">
-										<input type="text" name="t_dienthoai" id="t_dienthoai" value="" />
+										<input type="text" name="t_dienthoai" id="t_dienthoai" value=""{tmp.lh_required_dienthoai} />
 									</div>
 								</li>
 								<li class="cf frm-global-contact-content">
-									<div class="lf f25">{tmp.lh_noidung} <span class="redcolor">*</span></div>
+									<div class="lf f25">{tmp.lh_noidung}</div>
 									<div class="lf f75">
-										<textarea name="t_noidung" id="t_noidung" aria-required="true" required></textarea>
+										<textarea name="t_noidung" id="t_noidung"{tmp.lh_required_noidung}></textarea>
 									</div>
 								</li>
 								<li class="cf">

@@ -30,6 +30,24 @@ if ( ! isset( $main_content ) ) {
 	$main_content = '';
 }
 
+
+//
+function WGR_conatct_required_field ( $s ) {
+	if ( strstr( $s, '*' ) == true ) {
+		return ' aria-required="true" required';
+	}
+	return '';
+}
+
+
+//
+$lh_hoten = EBE_get_lang('lh_hoten');
+$lh_email = EBE_get_lang('lh_email');
+$lh_diachi = EBE_get_lang('lh_diachi');
+$lh_dienthoai = EBE_get_lang('lh_dienthoai');
+$lh_noidung = EBE_get_lang('lh_noidung');
+
+
 //
 //$main_content = EBE_html_template( EBE_get_page_template( $act ), array(
 $main_content = EBE_html_template( $custom_lang_html, array(
@@ -40,10 +58,22 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	// lang
 	'tmp.lh_lienhe' => EBE_get_lang('lh_lienhe'),
 	'tmp.lh_luuy' => EBE_get_lang('lh_luuy'),
-	'tmp.lh_hoten' => EBE_get_lang('lh_hoten'),
-	'tmp.lh_diachi' => EBE_get_lang('lh_diachi'),
-	'tmp.lh_dienthoai' => EBE_get_lang('lh_dienthoai'),
-	'tmp.lh_noidung' => EBE_get_lang('lh_noidung'),
+	
+	'tmp.lh_hoten' => $lh_hoten,
+	'tmp.lh_required_hoten' => WGR_conatct_required_field( $lh_hoten ),
+	
+	'tmp.lh_email' => $lh_email,
+	'tmp.lh_required_email' => WGR_conatct_required_field( $lh_email ),
+	
+	'tmp.lh_diachi' => $lh_diachi,
+	'tmp.lh_required_diachi' => WGR_conatct_required_field( $lh_diachi ),
+	
+	'tmp.lh_dienthoai' => $lh_dienthoai,
+	'tmp.lh_required_dienthoai' => WGR_conatct_required_field( $lh_dienthoai ),
+	
+	'tmp.lh_noidung' => $lh_noidung,
+	'tmp.lh_required_noidung' => WGR_conatct_required_field( $lh_noidung ),
+	
 	'tmp.lh_submit' => EBE_get_lang('lh_submit'),
 	'tmp.lh_note' => EBE_get_lang('lh_note'),
 	'tmp.cart_hotline' => EBE_get_lang('cart_hotline'),
