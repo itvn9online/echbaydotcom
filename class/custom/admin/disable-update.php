@@ -63,6 +63,7 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/update-core.php' ) == false ) {
 	wp_clear_scheduled_hook( 'wp_maybe_auto_update' );
 	*/
 	
+	
 }
 
 
