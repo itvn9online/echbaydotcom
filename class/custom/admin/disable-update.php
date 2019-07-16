@@ -17,6 +17,13 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/update-core.php' ) == false ) {
 	*
 	* @author	sLa NGjI's @ slangji.wordpress.com
 	*/
+	
+	// v2
+	add_filter( 'auto_update_plugin', '__return_true' );
+	add_filter( 'auto_update_theme', '__return_true' );
+	
+	// v1
+	/*
 	add_filter( 'auto_update_translation', '__return_false' );
 	add_filter( 'automatic_updater_disabled', '__return_true' );
 	add_filter( 'allow_minor_auto_core_updates', '__return_false' );
@@ -54,6 +61,7 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/update-core.php' ) == false ) {
 	remove_action( 'admin_init', 'wp_maybe_auto_update' );
 	remove_action( 'admin_init', 'wp_auto_update_core' );
 	wp_clear_scheduled_hook( 'wp_maybe_auto_update' );
+	*/
 	
 }
 
