@@ -264,15 +264,19 @@ if ( isset( $_GET['optimize_table'] ) ) {
 	}
 }
 else if ( isset( $_GET['reset_attachment'] ) ) {
+	
 	/*
 	$wpdb->query( 'DELETE FROM `wp_posts` WHERE `post_type` = "attachment"' );
 	$wpdb->query( 'DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attached_file"' );
 	$wpdb->query( 'DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata"' );
 	*/
+	
 	echo 'Lệnh này khá nguy hiểm, nên cần vào trực tiếp database rồi chạy lệnh này:<br>
-DELETE FROM `wp_posts` WHERE `post_type` = "attachment";<br>
+<pre><code>DELETE FROM `wp_posts` WHERE `post_type` = "attachment";<br>
 DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attached_file";<br>
-DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";';
+DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";</code></pre>
+<br>';
+
 }
 
 
