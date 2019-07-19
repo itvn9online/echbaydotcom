@@ -1308,8 +1308,10 @@ var _global_js_eb = {
 	
 	ebBgLazzyLoad: function(lazzy_show) {
 		var eb_lazzy_class = 'eb-lazzy-effect',
+			eb_lazzy_iframe = 'eb-add-iframe',
 			a = 0,
-			wh = jQuery(window).width();
+			wh = jQuery(window).width(),
+			c = '';
 		
 		//
 		if (typeof lazzy_show == 'number' && lazzy_show > 0) {
@@ -1418,8 +1420,31 @@ var _global_js_eb = {
 				}
 				*/
 			});
+			
+			
+			//
+			jQuery('.' + eb_lazzy_iframe).each(function() {
+				a = jQuery(this).offset().top || 0;
+//				a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
+				
+				if ( a < lazzy_show ) {
+					c = jQuery(this).attr('data-iframe') || '';
+//					console.log(c);
+					if ( c != '' ) {
+//						console.log(c);
+						c = unescape( c );
+//						console.log(c);
+						jQuery(this).html( c );
+						
+						//
+						jQuery(this).removeClass(eb_lazzy_iframe);
+					}
+				}
+			});
+			
 		} else {
 			jQuery('.each-to-bgimg').addClass(eb_lazzy_class);
+			jQuery('.url-to-google-map').addClass(eb_lazzy_iframe);
 			/*
 			jQuery('.each-to-bgimg').addClass(eb_lazzy_class).css({
 				opacity: .2

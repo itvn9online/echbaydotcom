@@ -1287,7 +1287,9 @@ setTimeout(function () {
 				
 				str += '<div class="widget_echbay_gg_map-node"><iframe src="' + a + '" width="' + w + '" height="' + h + 'px" frameborder="0" marginheight="0" marginwidth="0"' + other_attr + ' style="border:0" allowfullscreen=""></iframe></div>';
 				
-				jQuery(this).html( str );
+				jQuery(this).attr({
+					'data-iframe': escape( str )
+				});
 			}
 		}
 	});
