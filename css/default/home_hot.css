@@ -12,10 +12,11 @@
 	font-size: 18px;
 	/*
 	text-align: center;
+	padding: 0 0 5px 40px;
 	*/
 	font-weight: bold;
 	margin-bottom: 19px;
-	padding: 0 0 5px 40px;
+	padding-left: 40px;
 }
 .home-hot-title:before {
 	width: 50%;
@@ -30,6 +31,13 @@
 	*/
 	height: 1px;
 	border-bottom: 2px #f00 solid;
+	display: none;
+}
+.home-hot-title div {
+	display: inline-block;
+	border-bottom: 2px #f00 solid;
+	margin-bottom: -2px;
+	padding-bottom: 5px;
 }
 .home-hot-title,
 .home-hot-title a { color: #333; }
