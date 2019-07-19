@@ -249,7 +249,7 @@ function create_deault_css () {
 	// button, menu, default bg
 	a = f.cf_default_bg.value;
 	str += '.default-bg, .thread-home-c2 a:first-child, #oi_scroll_top { background-color: ' + a + '; }';
-	str += '.div-search, .thread-home-c2, .echbay-widget-title:before, .default-border-color { border-color: ' + a + '; }';
+	str += '.div-search, .thread-home-c2, .echbay-widget-title:before, .echbay-widget-title div, .default-border-color { border-color: ' + a + '; }';
 //	str += '.thread-home-c2 { border-bottom-color: ' + a + '; }';
 	
 	// button, menu 2

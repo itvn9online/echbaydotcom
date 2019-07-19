@@ -1433,9 +1433,14 @@ button.btn-addto-cart {
 	position: relative;
 	border-bottom: 2px #ccc solid;
 	line-height: 20px;
-	padding: 5px 0;
 	font-size: 18px;
 	margin-bottom: 10px;
+}
+.echbay-widget-title div {
+	display: inline-block;
+	border-bottom: 2px #f00 solid;
+	margin-bottom: -2px;
+	padding: 5px 0;
 }
 .echbay-widget-title,
 .echbay-widget-title a { color: #333; }
@@ -1447,6 +1452,7 @@ button.btn-addto-cart {
 	border-bottom: 2px #F60 solid;
 	width: 33%;
 	min-width: 50px;
+	display: none;
 }
 /* */
 .widget-category-selectbox {
