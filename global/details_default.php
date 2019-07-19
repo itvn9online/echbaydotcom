@@ -1017,6 +1017,7 @@ $arr_main_content = array(
 	'tmp.lang_btn_content' => EBE_get_lang('post_content'),
 	'tmp.lang_btn_other' => EBE_get_lang('post_other'),
 	'tmp.post_css_other' => EBE_get_lang('post_css_other'),
+	'tmp.post_column_other' => EBE_get_lang('post_column_other'),
 	'tmp.lang_chitiet_sanpham' => EBE_get_lang('chitietsp'),
 	'tmp.lang_sanpham_tuongtu' => EBE_get_lang('tuongtu'),
 	

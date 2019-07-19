@@ -113,6 +113,7 @@ $___eb_lang[eb_key_for_site_lang . 'post_comment'] = 'Bình luận';
 $___eb_lang[eb_key_for_site_lang . 'post_content'] = 'Thông tin sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'post_other'] = 'Sản phẩm khác';
 $___eb_lang[eb_key_for_site_lang . 'post_css_other'] = 'title-center title-line title-line50 title-bold';
+$___eb_lang[eb_key_for_site_lang . 'post_column_other'] = 'thread-list33-example';
 $___eb_lang[eb_key_for_site_lang . 'post_sku'] = 'Mã sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'post_stock'] = 'Tình trạng';
 $___eb_lang[eb_key_for_site_lang . 'post_instock'] = 'Sẵn hàng';
