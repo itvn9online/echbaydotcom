@@ -606,12 +606,12 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 //				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_on_off_auto_update_wp'] != 1 ) {
-//					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false);";
-					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false); define( 'WP_HTTP_BLOCK_EXTERNAL', true ); define( 'AUTOMATIC_UPDATER_DISABLED', true );";
+					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false);";
+//					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', false); define( 'WP_HTTP_BLOCK_EXTERNAL', true ); define( 'AUTOMATIC_UPDATER_DISABLED', true );";
 				}
 				else {
-//					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', true);";
-					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', true); define( 'WP_HTTP_BLOCK_EXTERNAL', false ); define( 'AUTOMATIC_UPDATER_DISABLED', false );";
+					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', true);";
+//					$content_of_new_wp_config[$k] = "define('WP_AUTO_UPDATE_CORE', true); define( 'WP_HTTP_BLOCK_EXTERNAL', false ); define( 'AUTOMATIC_UPDATER_DISABLED', false );";
 				}
 				
 				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
