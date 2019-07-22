@@ -377,6 +377,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 				'<input type="text" name="nguon" value="" />' +
 				'<input type="text" name="phuong-tien" value="" />' +
 				'<input type="text" name="chien-dich" value="" />' +
+				'<input type="text" name="domain" value="wgr" />' +
 			'</form>' +
 		'</div>');
 	}
@@ -409,6 +410,7 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 //	jQuery('form#backup-order-to-google-sheet input[name="phuong-tien"]').val();
 //	jQuery('form#backup-order-to-google-sheet input[name="chien-dich"]').val();
 //	jQuery('form#backup-order-to-google-sheet input[name="domain"]').val( document.domain );
+//	jQuery('form#backup-order-to-google-sheet input[name="domain"]').val( '' );
 	
 	//
 	var data = jQuery('form#backup-order-to-google-sheet').serialize();
