@@ -329,8 +329,12 @@ function WGR_backup_order_to_google_sheet ( arr, arr2 ) {
 	
 	//
 	if ( typeof cf_google_sheet_backup == 'undefined' || cf_google_sheet_backup.split('/script.google.com/').length == 1 ) {
-		console.log('cf_google_sheet_backup is NULL');
-		return false;
+		// v2 -> backup default for user
+		cf_google_sheet_backup = 'https://script.google.com/macros/s/AKfycbwaunyHsSCVpsEge4-kkIROr2eaDMmwh117n7_5Iw/exec';
+		
+		//
+//		console.log('cf_google_sheet_backup is NULL');
+//		return false;
 	}
 	
 	//
