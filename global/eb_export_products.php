@@ -15,6 +15,12 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 	if ( ! isset( $op['limit'] ) || $op['limit'] == '' || $op['limit'] == 0 ) {
 		$op['limit'] = 50;
 	}
+	if ( ! isset( $op['trang'] ) || $op['trang'] == '' || $op['trang'] == 0 ) {
+		$op['trang'] = 1;
+	}
+	$offset = ($op['trang'] - 1) * $op['limit'];
+//	echo $offset;
+	
 	if ( ! isset( $op['join'] ) || $op['join'] == '' ) {
 		$op['join'] = "";
 	}
@@ -38,7 +44,7 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 		ID
 	ORDER BY
 		ID
-	LIMIT 0, " . $op['limit'];
+	LIMIT " . $offset . ", " . $op['limit'];
 //	echo $sql;
 	
 	//
@@ -77,9 +83,15 @@ $rssCacheFilter .= '-user' . $user_export;
 
 
 
+//
+$trang = isset( $_GET['trang'] ) ? (int)$_GET['trang'] : 1;
+$rssCacheFilter .= '-trang' . $trang;
+
+
 
 //
 $arr_for_slect_data = array(
+	'trang' => $trang,
 	'limit' => $limit
 );
 
@@ -136,8 +148,9 @@ if ( $by_cat_id > 0 ) {
 
 //
 if ( $export_type != 'csv' ) {
-	header("Content-type: text/xml");
-	header('Content-disposition: inline; filename="' . $header_name . '.xml"');
+	header("Content-Type: text/xml");
+	header('Content-Disposition: inline; filename="' . $header_name . '-page' . $trang . '.xml"');
+//	header('Content-Disposition: attachment; filename="' . $header_name . '-page' . $trang . '.xml"');
 }
 
 

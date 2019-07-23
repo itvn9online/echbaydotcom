@@ -359,7 +359,7 @@ $strAjaxLink .= '&trang=' . $trang;
 			$export_token = _eb_mdnam( $_SERVER['HTTP_HOST'] );
 			
 			foreach ( $arr_button_export as $k => $v ) {
-				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&user_export=' . mtv_id . '&limit=2000" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
+				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&user_export=' . mtv_id . '&trang=' . $trang . '&limit=' . $threadInPage . '" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
 			}
 			
 			?>
