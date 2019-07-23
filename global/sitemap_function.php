@@ -416,6 +416,9 @@ function sitemapCreateStrCacheFilter ( $a ) {
 	if ( isset( $_GET['trang'] ) ) {
 		$a .= trim( $_GET['trang'] );
 	}
+	
+	header('Content-Disposition: inline; filename="' . $a . '.xml"');
+	
 	return $a;
 }
 
