@@ -22,7 +22,7 @@ if ( ! isset( $_GET['sitemap_post_type'] ) ) {
 /*
 * Danh sách post (sản phẩm)
 */
-$strCacheFilter = basename( __FILE__, '.php' );
+$strCacheFilter = sitemapCreateStrCacheFilter( 'sitemap-' . $_GET['sitemap_post_type'] . '-images' );
 if ( $time_for_relload_sitemap > 0 ) {
 	$get_list_sitemap = _eb_get_static_html ( $strCacheFilter, '', '', $time_for_relload_sitemap );
 }
@@ -43,12 +43,90 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	
 	// v2
 	$sql = WGR_get_sitemap_post( $_GET['sitemap_post_type'] );
-	foreach ( $sql as $v ) {
+	
+	// ảnh ở mục ads thì cho về hết trang chủ
+	if ( $_GET['sitemap_post_type'] == 'ads' ) {
+		$str = '';
+		foreach ( $sql as $v ) {
+			// lấy danh sách ảnh của post này
+			$strsql = WGR_get_sitemap_post( 'attachment', array(
+				'post_parent' => $v->ID
+			) );
+			
+			foreach ( $strsql as $v2 ) {
+				$img = $v2->guid;
+				
+				$name = $v2->post_excerpt;
+				if ( $name == '' && $v2->post_title != '' ) {
+					$name = str_replace( '-', ' ', $v2->post_title );
+				}
+				
+				//
+				$str .= '
+<image:image>
+	<image:loc>' . $img . '</image:loc>
+	<image:title><![CDATA[' . $name . ']]></image:title>
+</image:image>';
+				
+			}
+		}
+		
+		//
+		if ( $str != '' ) {
+			$get_list_sitemap .= '
+<url>
+	<loc>' . web_link . '</loc>
+	' . $str . '
+</url>';
+			
+		}
+	}
+	// còn lại thì của mục nào, cho về mục đó
+	else {
+		foreach ( $sql as $v ) {
+			// lấy danh sách ảnh của post này
+			$strsql = WGR_get_sitemap_post( 'attachment', array(
+				'post_parent' => $v->ID
+			) );
+			
+			$str = '';
+			foreach ( $strsql as $v2 ) {
+				$img = $v2->guid;
+				
+				$name = $v2->post_excerpt;
+				if ( $name == '' && $v2->post_title != '' ) {
+					$name = str_replace( '-', ' ', $v2->post_title );
+				}
+				
+				//
+				$str .= '
+<image:image>
+	<image:loc>' . $img . '</image:loc>
+	<image:title><![CDATA[' . $name . ']]></image:title>
+</image:image>';
+				
+			}
+			
+			
+			//
+			if ( $str != '' ) {
+				$get_list_sitemap .= '
+<url>
+	<loc>' . _eb_p_link( $v->ID ) . '</loc>
+	' . $str . '
+</url>';
+				
+			}
+		}
+		
+		
+		/*
 		$get_list_sitemap .= WGR_echo_sitemap_image_node(
 			_eb_p_link( $v->ID ),
 			_eb_get_post_img( $v->ID ),
 			$v->post_title
 		);
+		*/
 	}
 	
 	/*

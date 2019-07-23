@@ -28,29 +28,60 @@ function WGR_echo_sitemap_node ( $loc, $lastmod ) {
 </sitemap>';
 }
 
-function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $file_2name = 'sitemap-images' ) {
+function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $file_2name = 'sitemap-post-images', $op = array() ) {
 	global $limit_post_get;
 	global $sitemap_current_time;
 	
-	$count_post_post = WGR_get_sitemap_total_post( $type );
-//	echo $count_post_post . '<br>' . "\n";
-	
+	//
 	$str = '';
-	if ( $count_post_post > $limit_post_get ) {
-		$j = 0;
-		for ( $i = 2; $i < 100; $i++ ) {
-			$j += $limit_post_get;
-			
-			if ( $j < $count_post_post ) {
-				// cho phần bài viết
-				$str .= WGR_echo_sitemap_node( web_link . $file_name . '?trang=' . $i, $sitemap_current_time );
+	
+	// không lấy mục ads
+	if ( $type != 'ads' ) {
+		$count_post_post = WGR_get_sitemap_total_post( $type, $op );
+//		echo $count_post_post . '<br>' . "\n";
+		
+		if ( $count_post_post > $limit_post_get ) {
+			$j = 0;
+			for ( $i = 2; $i < 100; $i++ ) {
+				$j += $limit_post_get;
 				
-				// cho phần ảnh
-//				$str .= WGR_echo_sitemap_node( web_link . $file_2name . '?trang=' . $i, $sitemap_current_time );
+				if ( $j < $count_post_post ) {
+					// cho phần bài viết
+					$str .= WGR_echo_sitemap_node( web_link . $file_name . '?trang=' . $i, $sitemap_current_time );
+					
+					// cho phần ảnh
+//					$str .= WGR_echo_sitemap_node( web_link . $file_2name . '?trang=' . $i, $sitemap_current_time );
+				}
 			}
 		}
 	}
 	
+	// file name 2 là dành cho phần image -> lấy image của post type tương ứng
+	if ( $file_2name != '' ) {
+//		echo $file_2name . "\n";
+		$count_post_post = WGR_get_sitemap_total_post( 'attachment', array(
+			'in_post_parent' => $type
+		) );
+//		echo $count_post_post . "\n";
+		
+		//
+//		if ( $count_post_post > $limit_post_get ) {
+			$j = 0;
+			for ( $i = 1; $i < 100; $i++ ) {
+				if ( $j < $count_post_post ) {
+					if ( $i > 1 ) {
+						$str .= WGR_echo_sitemap_node( web_link . $file_2name . '?trang=' . $i, $sitemap_current_time );
+					}
+					else {
+						$str .= WGR_echo_sitemap_node( web_link . $file_2name, $sitemap_current_time );
+					}
+				}
+				$j += $limit_post_get;
+			}
+//		}
+	}
+	
+	//
 	return $str;
 }
 
@@ -146,13 +177,15 @@ function WGR_create_sitemap_image_node ( $sql ) {
 		}
 		
 		//
-		$url = $img;
+//		$url = $img;
+		$url = web_link;
 		if ( $v->post_parent > 0 ) {
 			$url = _eb_p_link( $v->post_parent );
 			
 			// nếu link có chữ __trashed- -> đang trong thùng rác -> dùng link ảnh
 			if ( strstr( $url, '__trashed-' ) == true || strstr( $url, '?ads=' ) == true ) {
-				$url = $img;
+//				$url = $img;
+				$url = web_link;
 			}
 		}
 		
@@ -217,7 +250,8 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 	//
 	$strFilter = "";
 	if ( ! empty( $op ) ) {
-		if ( isset( $op['post_parent'] ) && $op['post_parent'] > 0 ) {
+//		if ( isset( $op['post_parent'] ) && $op['post_parent'] > 0 ) {
+		if ( isset( $op['post_parent'] ) ) {
 			$strFilter .= " AND post_parent = " . $op['post_parent'] . " ";
 		}
 	}
@@ -258,21 +292,64 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 	return $sql;
 }
 
-function WGR_get_sitemap_total_post ( $type = 'post' ) {
+function WGR_get_sitemap_total_post ( $type = 'post', $op = array() ) {
 	global $wpdb;
 //	echo wp_posts;
 	
+	//
 	$status = 'publish';
 	if ( $type == 'attachment' ) {
 		$status = 'inherit';
 	}
 	
+	// mặc định chỉ lấy các bài viết đang bật
+	$strFilter = " post_type = '" . $type . "' AND post_status = '" . $status . "' ";
+	
+	// với mục ads -> lấy hết các post còn lại
+	/*
+	if ( $type == 'ads' ) {
+		$strFilter = " (
+			post_type = '" . $type . "'
+			OR post_type = 'post'
+			OR post_type = 'blog'
+			OR post_type = 'page'
+		)
+		AND (
+			post_status = 'publish'
+			OR post_status = 'pending'
+			OR post_status = 'draft'
+		) ";
+	}
+	*/
+	
+	if ( ! empty( $op ) ) {
+//		if ( isset( $op['post_parent'] ) && $op['post_parent'] > 0 ) {
+		if ( isset( $op['post_parent'] ) ) {
+			$strFilter .= " AND post_parent = " . $op['post_parent'] . " ";
+		}
+		else if ( isset( $op['in_post_parent'] ) ) {
+			return WGR_get_sitemap_total_post ( $op['in_post_parent'] );
+			
+//			$strFilter .= " AND post_parent > 0 ";
+			/*
+			$strFilter .= " AND post_parent IN (
+											select
+												ID
+											from
+												`" . wp_posts . "`
+											where
+												post_type = '" . $op['in_post_parent'] . "'
+												) ";
+												*/
+		}
+	}
+//	echo $strFilter . "\n";
+	
 	return _eb_c("SELECT COUNT(ID) as a
 	FROM
 		`" . wp_posts . "`
 	WHERE
-		post_type = '" . $type . "'
-		AND post_status = '" . $status . "'");
+		" . $strFilter );
 }
 
 
@@ -331,6 +408,15 @@ function WGR_sitemap_fixed_old_content ( $a, $b ) {
 		$b = WGR_replace_for_all_content( $a, $b );
 	}
 	return $b;
+}
+
+
+function sitemapCreateStrCacheFilter ( $a ) {
+//	$a = basename( $a, '.php' );
+	if ( isset( $_GET['trang'] ) ) {
+		$a .= trim( $_GET['trang'] );
+	}
+	return $a;
 }
 
 

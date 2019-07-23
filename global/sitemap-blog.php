@@ -11,7 +11,7 @@ include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 /*
 * Danh sách post (sản phẩm)
 */
-$strCacheFilter = basename( __FILE__, '.php' );
+$strCacheFilter = sitemapCreateStrCacheFilter( basename( __FILE__, '.php' ) );
 if ( $time_for_relload_sitemap > 0 ) {
 	$get_list_sitemap = _eb_get_static_html ( $strCacheFilter, '', '', $time_for_relload_sitemap );
 }
@@ -90,7 +90,6 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 WGR_echo_sitemap_css();
 
 echo WGR_echo_sitemap_urlset() . $get_list_sitemap . '
-' . $get_list_sitemap . '
 </urlset>';
 
 

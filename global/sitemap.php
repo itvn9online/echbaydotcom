@@ -70,12 +70,25 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		$get_list_sitemap .= WGR_sitemap_part_page( 'page', 'sitemap-page', 'sitemap-page-images' );
 	}
 	
-	if ( WGR_get_sitemap_total_post( 'attachment' ) > 0 ) {
+	// phần ảnh ở trang chủ (không có parent)
+	if ( WGR_get_sitemap_total_post( 'attachment', array(
+		'post_parent' => 0
+	) ) > 0 ) {
 		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-images', $sitemap_current_time );
 //		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
 		
 		// phân trang cho sitemap (lấy từ trang 2 trở đi)
-		$get_list_sitemap .= WGR_sitemap_part_page( 'attachment', 'sitemap-images', 'sitemap-images-images' );
+		$get_list_sitemap .= WGR_sitemap_part_page( 'attachment', 'sitemap-images', '', array(
+			'post_parent' => 0
+		) );
+	}
+	
+	if ( WGR_get_sitemap_total_post( 'ads' ) > 0 ) {
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-page-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page( 'ads', 'sitemap-ads', 'sitemap-other-images' );
 	}
 	
 	

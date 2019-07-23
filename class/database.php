@@ -435,6 +435,7 @@ $arr_active_for_404_page = array(
 	// for page
 	"sitemap-page" => 1,
 	"sitemap-page-images" => 1,
+	"sitemap-other-images" => 1,
 	
 	"temp" => 1,
 	

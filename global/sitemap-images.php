@@ -2,6 +2,8 @@
 
 
 
+// lấy tất cả các ảnh không có parent cho về trang chủ
+
 
 
 // thư viện dùng chung
@@ -14,7 +16,7 @@ include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 /*
 * Danh sách post (sản phẩm)
 */
-$strCacheFilter = basename( __FILE__, '.php' );
+$strCacheFilter = sitemapCreateStrCacheFilter( basename( __FILE__, '.php' ) );
 if ( $time_for_relload_sitemap > 0 ) {
 	$get_list_sitemap = _eb_get_static_html ( $strCacheFilter, '', '', $time_for_relload_sitemap );
 }
@@ -34,7 +36,37 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	*/
 	
 	// v3
-	$get_list_sitemap .= WGR_create_sitemap_image_node( WGR_get_sitemap_post( 'attachment' ) );
+	$sql = WGR_get_sitemap_post( 'attachment', array(
+		'post_parent' => 0
+	) );
+//	print_r( $sql );
+	
+	foreach ( $sql as $v ) {
+		$img = $v->guid;
+		
+		$name = $v->post_excerpt;
+		if ( $name == '' && $v->post_title != '' ) {
+			$name = str_replace( '-', ' ', $v->post_title );
+		}
+		
+		//
+		$get_list_sitemap .= '
+<image:image>
+	<image:loc>' . $img . '</image:loc>
+	<image:title><![CDATA[' . $name . ']]></image:title>
+</image:image>';
+		
+	}
+	
+	// lấy tất cả các ảnh không có parent cho về trang chủ
+	$get_list_sitemap = '
+<url>
+	<loc>' . web_link . '</loc>
+	' . $get_list_sitemap . '
+</url>';
+	
+	
+//	$get_list_sitemap .= WGR_create_sitemap_image_node( $sql );
 	/*
 	$sql = WGR_get_sitemap_post( 'attachment' );
 //	print_r( $sql );
