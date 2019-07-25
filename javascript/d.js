@@ -1079,10 +1079,20 @@ setTimeout(function () {
 				if ( a == null ) {
 					a = {};
 				}
+				else {
+					try {
+						a = jQuery.parseJSON( unescape( a ) );
+					} catch ( e ) {
+						a = {};
+						console.log( WGR_show_try_catch_err( e ) );
+					}
+				}
 				a['_' + pid] = {
 					'size': jQuery('.oi_product_size li.selected').attr('data-name') || jQuery('.oi_product_size li:first').attr('data-name') || '',
-					'color': jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || ''
+					'color': jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || '',
+					'quan': jQuery('#oi_change_soluong select').val() || 1
 				};
+//				console.log( a );
 				g_func.setc( 'eb_cookie_cart_lists', escape( JSON.stringify( a ) ), 6 * 3600 );
 			}
 		}

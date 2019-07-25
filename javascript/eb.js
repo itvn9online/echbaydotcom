@@ -2235,7 +2235,7 @@ var _global_js_eb = {
 						}
 						
 						sl = '';
-						if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && arr_user_select_size_color['_' + t_post_id].size == a[i].name ) {
+						if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && typeof arr_user_select_size_color['_' + t_post_id].size != 'undefined' && arr_user_select_size_color['_' + t_post_id].size == a[i].name ) {
 							sl = ' selected';
 						}
 						
@@ -2328,7 +2328,7 @@ var _global_js_eb = {
 							}
 							
 							sl = '';
-							if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && arr_user_select_size_color['_' + t_post_id].color == color_name ) {
+							if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && typeof arr_user_select_size_color['_' + t_post_id].color != 'undefined' && arr_user_select_size_color['_' + t_post_id].color == color_name ) {
 								sl = ' selected';
 								
 								jQuery('.show-list-size[data-id="' + t_post_id + '"]').attr({
@@ -2348,6 +2348,12 @@ var _global_js_eb = {
 				jQuery(this).show().html( '<div class="lf f20">' + ( jQuery(this).attr('data-name') || '' ) + '</div>'
 				+ '<div class="lf f80"><select data-id="' + t_post_id + '" name="t_color[' + t_post_id + ']">' + str + '</select></div>');
 			}
+			
+			// chọn luôn số lượng cho người dùng
+			if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && typeof arr_user_select_size_color['_' + t_post_id].quan != 'undefined' && arr_user_select_size_color['_' + t_post_id].quan > 1 ) {
+				jQuery('.change-select-quantity[data-name="' + t_post_id + '"]').val( arr_user_select_size_color['_' + t_post_id].quan );
+			}
+			
 		});
 		
 		//
