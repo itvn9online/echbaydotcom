@@ -1073,6 +1073,17 @@ setTimeout(function () {
 				if ( typeof product_js.gm == 'number' && product_js.gm > 0 ) {
 					product_price = product_js.gm;
 				}
+				
+				// lưu thông tin color, size để show trong giỏ hàng
+				var a = g_func.getc( 'eb_cookie_cart_lists' );
+				if ( a == null ) {
+					a = {};
+				}
+				a['_' + pid] = {
+					'size': jQuery('.oi_product_size li.selected').attr('data-name') || jQuery('.oi_product_size li:first').attr('data-name') || '',
+					'color': jQuery('.oi_product_color li.selected').attr('title') || jQuery('.oi_product_color li:first').attr('title') || ''
+				};
+				g_func.setc( 'eb_cookie_cart_lists', escape( JSON.stringify( a ) ), 6 * 3600 );
 			}
 		}
 		
@@ -1527,9 +1538,9 @@ function WGR_thread_list_quickview () {
 	}
 	
 	//
-//	$('.thread-list li').each(function() {
-//		var a = $(this).attr('data-id') || '';
-//		$('.wgr-fake-iframe', this).attr({
+//	jQuery('.thread-list li').each(function() {
+//		var a = jQuery(this).attr('data-id') || '';
+//		jQuery('.wgr-fake-iframe', this).attr({
 //			'data-id': a
 //		});
 //	});
@@ -1562,7 +1573,7 @@ function WGR_thread_list_quickview () {
 		
 		// nếu có lệnh mở dạng iframe -> tải luôn trong đó
 		if ( r == 'iframe' ) {
-			var scron = $('#webgiare__top').height() || 0;
+			var scron = jQuery('#webgiare__top').height() || 0;
 			if ( scron > 90 ) {
 				scron -= 90;
 			}
@@ -1571,8 +1582,8 @@ function WGR_thread_list_quickview () {
 			
 			//
 			jQuery('body').addClass('open-fake-in-iframe').removeClass('body-no-scroll');
-//			$('#oi_ebe_quick_view').css({
-//				'margin-top': $('#webgiare__top').height() + 'px'
+//			jQuery('#oi_ebe_quick_view').css({
+//				'margin-top': jQuery('#webgiare__top').height() + 'px'
 //			});
 		}
 		else {

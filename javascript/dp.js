@@ -747,6 +747,10 @@ function ___eb_details_product_color () {
 	
 	//
 	jQuery('.oi_product_color li').off('click').click(function () {
+		// ẩn câu thông báo mỗi lần ấn
+		jQuery('#WGR_html_alert').hide();
+		
+		//
 		jQuery('.oi_product_color li').removeClass('selected');
 //		jQuery(this).addClass('selected');
 		
@@ -1043,6 +1047,10 @@ function ___eb_details_product_size () {
 	jQuery('.oi_product_size ul').html(str).after('<div class="show-products-size-text l19 small"></div>');
 	
 	jQuery('.oi_product_size li').off('click').click(function() {
+		// ẩn câu thông báo mỗi lần ấn
+		jQuery('#WGR_html_alert').hide();
+		
+		//
 		var size_node = jQuery(this).attr('data-size-node') || '';
 		
 		if ( size_node == '' ) {

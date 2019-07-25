@@ -2159,27 +2159,40 @@ var _global_js_eb = {
 	},
 	
 	// load size và color trong giỏ hàng
-	cart_size_color : function () {
+	cart_user_select_size_color : function () {
+		
+		// select màu với size theo lựa chọn trước đó
+		var a = g_func.getc( 'eb_cookie_cart_lists' );
+		if ( a != null ) {
+//			console.log(a);
+			a = jQuery.parseJSON( unescape( a ) );
+//			console.log(a);
+			return a;
+		}
+		return {};
+		
+	},
+	cart_size_in_color : function ( arr_user_select_size_color ) {
+		if ( typeof arr_user_select_size_color != 'object' ) {
+			arr_user_select_size_color = _global_js_eb.cart_user_select_size_color();
+		}
 		
 		// Size cho phần giỏ hàng
 		jQuery('.show-list-size').each(function() {
-			var a = jQuery(this).html() || '',
+			// ưu tiên lấy zie của color trước
+//			var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || jQuery(this).html() || '',
+//			var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || '',
+			var a = jQuery(this).attr('data-color-size') || '',
 				t_post_id = jQuery(this).attr('data-id') || '';
+			
+			// nếu không có -> mới lấy zie của sản phẩm
+			if ( a == '' ) {
+				a = jQuery(this).attr('data-size') || '';
+			}
+			
+			//
 			if ( a != '' ) {
-//				console.log(a);
-				if ( a.substr(0, 1) == ',' ) {
-					a = a.substr(1);
-				}
-				if ( a.substr(0, 1) != '[' ) {
-					a = "[" + a + "]";
-				}
-//				console.log(a);
-				try {
-					a = eval( a );
-				} catch ( e ) {
-					a = [];
-					console.log( WGR_show_try_catch_err( e ) );
-				}
+				a = jQuery.parseJSON( unescape( a ) );
 //				console.log(a);
 //				console.log(a.length);
 				
@@ -2221,8 +2234,13 @@ var _global_js_eb = {
 							data_price = ' data-price="' + a[i].price + '"';
 						}
 						
+						sl = '';
+						if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && arr_user_select_size_color['_' + t_post_id].size == a[i].name ) {
+							sl = ' selected';
+						}
+						
 						//
-						str += '<option' + data_price + ' value="' + a[i].name + '">' + a[i].name + '</option>';
+						str += '<option' + data_price + ' value="' + a[i].name + '"' + sl + '>' + a[i].name + '</option>';
 					}
 				}
 				
@@ -2235,9 +2253,41 @@ var _global_js_eb = {
 		});
 		
 		//
-		jQuery('.show-list-size select').change(function () {
+		jQuery('.show-list-size select').off('change').change(function () {
 			_global_js_eb.cart_create_arr_poruduct();
 			_global_js_eb.cart_calculator();
+		});
+		
+	},
+	cart_size_color : function () {
+		
+		// select màu với size theo lựa chọn trước đó
+		var arr_user_select_size_color = _global_js_eb.cart_user_select_size_color();
+			sl = '';
+		
+		// Size cho phần giỏ hàng -> tạo dữ liệu mặc định để tí html không bị mất
+		jQuery('.show-list-size').each(function() {
+			var a = jQuery(this).html() || '';
+			if ( a != '' ) {
+//				console.log(a);
+				if ( a.substr(0, 1) == ',' ) {
+					a = a.substr(1);
+				}
+				if ( a.substr(0, 1) != '[' ) {
+					a = "[" + a + "]";
+				}
+//				console.log(a);
+				try {
+					a = eval( a );
+				} catch ( e ) {
+					a = [];
+					console.log( WGR_show_try_catch_err( e ) );
+				}
+				
+				jQuery(this).attr({
+					'data-size': escape( JSON.stringify( a ) )
+				});
+			}
 		});
 		
 		
@@ -2262,6 +2312,7 @@ var _global_js_eb = {
 							color_quan = jQuery(this).attr('data-quan') || '',
 							color_price = jQuery(this).attr('data-price') || '',
 							color_sku = jQuery(this).attr('data-sku') || '',
+							color_size = jQuery(this).attr('data-size') || '',
 							data_price = '';
 						
 						// Để trống -> coi như còn hàng
@@ -2276,8 +2327,17 @@ var _global_js_eb = {
 								data_price = ' data-price="' + color_price + '"';
 							}
 							
+							sl = '';
+							if ( typeof arr_user_select_size_color['_' + t_post_id] != 'undefined' && arr_user_select_size_color['_' + t_post_id].color == color_name ) {
+								sl = ' selected';
+								
+								jQuery('.show-list-size[data-id="' + t_post_id + '"]').attr({
+									'data-color-size': color_size
+								});
+							}
+							
 							//
-							str += '<option' + data_price + ' data-sku="' + color_sku + '" value="' + color_name + '">' + color_name + '</option>';
+							str += '<option' + data_price + ' data-sku="' + color_sku + '" data-size="' + color_size + '" value="' + color_name + '"' + sl + '>' + color_name + '</option>';
 						}
 					}
 				}
@@ -2286,15 +2346,32 @@ var _global_js_eb = {
 			//
 			if ( str != '' ) {
 				jQuery(this).show().html( '<div class="lf f20">' + ( jQuery(this).attr('data-name') || '' ) + '</div>'
-				+ '<div class="lf f80"><select name="t_color[' + t_post_id + ']">' + str + '</select></div>');
+				+ '<div class="lf f80"><select data-id="' + t_post_id + '" name="t_color[' + t_post_id + ']">' + str + '</select></div>');
 			}
 		});
 		
 		//
 		jQuery('.show-list-color select').change(function () {
+			var a = jQuery(this).attr('data-id') || '';
+			if ( a != '' ) {
+				var color_size = jQuery('.show-list-color[data-id="' + a + '"] select').find(':selected').attr('data-size') || '';
+//				console.log(color_size);
+				
+				jQuery('.show-list-size[data-id="' + a + '"]').attr({
+					'data-color-size': color_size
+				});
+				
+				// nạp lại size mới
+				_global_js_eb.cart_size_in_color();
+			}
+			
+			//
 			_global_js_eb.cart_create_arr_poruduct();
 			_global_js_eb.cart_calculator();
 		});
+		
+		// nạp size sau color để còn lấy giá với size riêng của color
+		_global_js_eb.cart_size_in_color();
 		
 		//
 		_global_js_eb.cart_create_arr_poruduct();
@@ -2922,6 +2999,7 @@ var _global_js_eb = {
 		
 		// xóa cookie giỏ hàng
 		g_func.delck( 'eb_cookie_cart_list_id' );
+		g_func.delck( 'eb_cookie_cart_lists' );
 		
 		//
 		if ( typeof my_hd_id == 'undefined' || typeof my_hd_mahoadon == 'undefined' ) {
