@@ -1320,7 +1320,11 @@ var _global_js_eb = {
 //			console.log(jQuery('.' + eb_lazzy_class).length);
 			
 			// Nếu ko đủ class để làm việc -> thoát luôn
-			if ( disable_eblazzy_load == true || jQuery('.' + eb_lazzy_class).length <= 0 ) {
+			if ( disable_eblazzy_load == true ) {
+				disable_eblazzy_load = true;
+				return false;
+			}
+			else if ( jQuery('.' + eb_lazzy_class).length == 0 && jQuery('.' + eb_lazzy_iframe).length == 0 ) {
 				disable_eblazzy_load = true;
 				return false;
 			}
@@ -1426,6 +1430,8 @@ var _global_js_eb = {
 			jQuery('.' + eb_lazzy_iframe).each(function() {
 				a = jQuery(this).offset().top || 0;
 //				a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
+//				console.log( 'a: ' + a );
+//				console.log( 'lazzy_show: ' + lazzy_show );
 				
 				if ( a < lazzy_show ) {
 					c = jQuery(this).attr('data-iframe') || '';

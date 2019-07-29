@@ -1290,7 +1290,7 @@ setTimeout(function () {
 			a = g_func.trim( a );
 			
 			if ( a != '' ) {
-				jQuery(this).show();
+				jQuery(this).show().html('');
 				
 				// tính toán kích thước
 				if ( w == '' ) {
