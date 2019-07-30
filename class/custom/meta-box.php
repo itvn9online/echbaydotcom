@@ -620,11 +620,11 @@ if ( cf_on_off_echbay_seo == 1 ) {
 	$arr_category_custom_fields['_eb_category_title'] = WGR_admin_lang('_eb_product_title');
 	$arr_category_custom_fields['_eb_category_keywords'] = WGR_admin_lang('_eb_product_keywords');
 	$arr_category_custom_fields['_eb_category_description'] = WGR_admin_lang('_eb_product_description');
-	$arr_category_custom_fields['_eb_category_google_product'] = WGR_admin_lang('_eb_category_google_product');
 	$arr_category_custom_fields['_eb_category_noindex'] = WGR_admin_lang('_eb_product_noindex');
 }
 
 // thuộc tính này luôn tồn tại cho category
+$arr_category_custom_fields['_eb_category_google_product'] = WGR_admin_lang('_eb_category_google_product');
 $arr_category_custom_fields['_eb_category_hidden'] = WGR_admin_lang('_eb_category_hidden');
 $arr_category_custom_fields['_eb_category_old_url'] = WGR_admin_lang('_eb_product_old_url');
 $arr_category_custom_fields['_eb_category_leech_url'] = WGR_admin_lang('_eb_product_leech_source');
