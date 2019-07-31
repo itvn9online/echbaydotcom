@@ -1153,6 +1153,7 @@ function EBE_register_scripts() {
 	// add dưới dạng file tổng
 //	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery.js', false, '3.3.1');
 	
+	/*
 	// add file lẻ
 	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js');
 //	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js');
@@ -1164,6 +1165,7 @@ function EBE_register_scripts() {
 	wp_enqueue_script('jquery');
 //	wp_enqueue_script('jquery-core');
 	wp_enqueue_script('jquery-migrate');
+	*/
 	
 	
 	

@@ -82,7 +82,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 			a = {};
 		}
 	}
-//	console.log(arr);
+	console.log(arr);
 //	console.log(a);
 //	console.log('---------------');
 //	console.log(arr_name);

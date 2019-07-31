@@ -701,8 +701,14 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_details'] == 'undefined' ) {
 			data['cf_css_details'] = {};
 		}
-		if ( typeof data['cf_css_big_banner'] == 'undefined' ) {
-			data['cf_css_big_banner'] = {};
+		if ( typeof data['cf_css_oi_big_banner'] == 'undefined' ) {
+			// sửa lỗi tên ar từ bản trước
+			if ( typeof data['cf_css_big_banner'] != 'undefined' ) {
+				data['cf_css_oi_big_banner'] = data['cf_css_big_banner'];
+			}
+			else {
+				data['cf_css_oi_big_banner'] = {};
+			}
 		}
 //		console.log(data);
 		

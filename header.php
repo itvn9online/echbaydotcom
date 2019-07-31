@@ -91,6 +91,8 @@ echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 <?php include EB_THEME_PLUGIN_INDEX . 'data_id.php'; ?>
 var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 </script>
+<script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js"></script>
+<script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js"></script>
 <!-- HEAD by EchBay -->
 <?php echo $__cf_row['cf_js_head']; ?>
 <!-- // Global site format by EchBay -->
