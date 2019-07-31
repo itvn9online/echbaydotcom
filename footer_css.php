@@ -16,7 +16,11 @@ if ($__cf_row['cf_fontawesome_v5'] == 1) {
 //echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 //
 //echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+    echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css" media="all" />' . "\n";
     echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+}
+else {
+    echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css" media="all" />' . "\n";
 }
 
 

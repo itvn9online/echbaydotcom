@@ -1174,6 +1174,7 @@ function EBE_register_scripts() {
 	
 	
 	//
+	/*
 	global $__cf_row;
 	
 	// load Font Awesome v5
@@ -1187,6 +1188,7 @@ function EBE_register_scripts() {
 	else {
 		// không có thì dùng của WGR -> lười update hơn
 		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
+		*/
 		
 		// ưu tiên sử dụng của elementor -> họ update liên tục
 		/*
@@ -1196,11 +1198,13 @@ function EBE_register_scripts() {
 		*/
 		
 		//
+		/*
 		wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
 	}
 	
 	//
 	wp_enqueue_style('font-awesome');
+	*/
 	
 	
 	//
