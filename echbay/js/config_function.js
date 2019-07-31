@@ -118,7 +118,7 @@ function load_config_for_custom_logo ( arr, arr_name, arr_alt, arr_input_type, a
 		}
 		
 		// xong mới tạo tên cho input
-		name_input = op['input_name'] + '_custom_css_in_js_' + x;
+		name_input = op['input_name'] + '__custom_css_in_js__' + x;
 		
 		//
 		if ( typeof arr_input_type[x] == 'undefined' ) {
@@ -242,7 +242,7 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 			
 			if ( a != '' && n != '' ) {
 //				n = n.replace('custom_css_in_js_', '');
-				n = n.split('_custom_css_in_js_')[1];
+				n = n.split('__custom_css_in_js__')[1];
 				
 				if ( n.split('background_image').length > 1 ) {
 					// bỏ URL đi nếu có

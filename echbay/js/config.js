@@ -294,12 +294,12 @@ function create_deault_css () {
 	// các mã màu được sinh ra sau khi bộ JS kia chạy
 	/*
 	try {
-		a = f.mobile_logo_custom_css_in_js_background_image.value;
+		a = f.mobile_logo__custom_css_in_js__background_image.value;
 		if ( a != '' ) {
 			str += '.style-for-mobile .web-logo, .style-for-mobile .web-mobile-logo{background-image: url(' + a + ') !important;}';
 		}
 		
-		a = f.footer_logo_custom_css_in_js_background_image.value;
+		a = f.footer_logo__custom_css_in_js__background_image.value;
 		if ( a != '' ) {
 			str += '.web2-logo .web-logo{background-image: url(' + a + ') !important;}';
 		}
@@ -357,7 +357,7 @@ function create_deault_css () {
 	
 	// các mã màu được sinh ra sau khi bộ JS kia chạy
 	try {
-		a = f.details_custom_css_in_js_background_color.value;
+		a = f.details__custom_css_in_js__background_color.value;
 		if ( a != '' && a.substr( 0, 1 ) == '#' && ( a.length == 4 || a.length == 7 ) ) {
 			str += '.thread-details-tab,.thread-list-filter{border-bottom-color:' + a + '}.thread-list-filter div{background-color:' + a + '}';
 		}
@@ -1048,7 +1048,7 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'max_width' : 'number'
 			},
-			data['cf_css_big_banner'],
+			data['cf_css_oi_big_banner'],
 			{
 //				'input_css' : 'each-to-css-for-details',
 				'after_html' : 'custom_css_for_big_banner',
@@ -1056,6 +1056,9 @@ if ( current_module_config != 'config_theme' ) {
 			}, {
 				'placeholder' : {
 					'max_width' : 1600
+				},
+				'donvi' : {
+					'max_width' : 'px'
 				}
 			}
 		);
