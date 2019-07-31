@@ -1167,23 +1167,122 @@ function WGR_widget_show_option_by_post_type ( select_id ) {
 
 
 function WGR_get_contect_editer_id () {
-	var content_id = jQuery(this).attr('data-editer') || 'content';
+//	var content_id = jQuery(this).attr('data-editer') || 'content';
+	var content_id = 'content',
+		a = '';
 	
 	// tên đầy đủ của text editter
 //	content_id += 'wysiwyg';
 	
 	//
-	if ( dog( content_id ) != null ) {
-		return '#' + content_id;
+	if ( jQuery( 'iframe#' + content_id ).length > 0 ) {
+		a = '#' + content_id;
+	}
+	else if ( jQuery( 'iframe#content_ifr' ).length > 0 ) {
+		a = '#content_ifr';
+	}
+	else if ( dog( content_id ) != null ) {
+		a = '#' + content_id;
 	}
 	else if ( dog( 'content_ifr' ) != null ) {
-		return '#content_ifr';
+		a = '#content_ifr';
+	}
+	else {
+		alert('Text editer #' +content_id+ ' not found');
+		console.log('Text editer #' +content_id+ ' not found');
+	}
+	console.log(a);
+	
+	return a;
+}
+
+// chức năng đồng bộ nội dung website theo chuẩn chung của EchBay
+function click_replace_content () {
+	
+	//
+	if ( jQuery('#click_replace_content').length == 0 ) {
+		console.log('click_replace_content not found');
+		return false;
 	}
 	
-	alert('Text editer #' +content_id+ ' not found');
-	console.log('Text editer #' +content_id+ ' not found');
-	
-	return '';
+	//
+	jQuery('#click_replace_content').click(function () {
+		
+		// hủy check ngay và luôn
+		/*
+		jQuery(this).prop({
+			checked : false
+		});
+		*/
+		dog('click_replace_content').checked = false;
+		
+		//
+		var content_id = WGR_get_contect_editer_id();
+		if ( content_id == null ) {
+			return false;
+		}
+		console.log( content_id );
+		
+		//
+		if ( confirm('Confirm replace data for this content!') == false ) {
+			return false;
+		}
+		
+		//
+		var a = jQuery( content_id ).contents().find( 'body' ).html() || '',
+			type = 'html';
+		/*
+		if ( a == '' ) {
+			a = jQuery( content_id ).contents().html() || '';
+		}
+		*/
+		if ( a == '' ) {
+			a = jQuery( content_id ).val() || '';
+			if ( a != '' ) {
+				type = 'val';
+			}
+		}
+		
+		if ( a != '' ) {
+			var b = jQuery.trim( decodeURIComponent( cf_replace_content ) );
+			console.log( b );
+			
+			if ( b != '' ) {
+				b = b.split("\n");
+				
+				for ( var i = 0; i < b.length; i++ ) {
+					b[i] = jQuery.trim( b[i] );
+					
+					if ( b[i] != '' ) {
+						var c = b[i].split( "|" );
+						
+						if ( b.length == 2 ) {
+							var old = c[0].replace(/^\++|\++$/g, ""),
+								niu = c[1].replace(/^\++|\++$/g, "");
+							console.log( old );
+							console.log( niu );
+							for ( var j = 0; j < 50; j++ ) {
+								a = a.replace( old, niu );
+							}
+						}
+					}
+				}
+//				console.log( a );
+				
+				//
+				if ( type == 'html' ) {
+					jQuery( content_id ).contents().find( 'body' ).html( a );
+				}
+				else if ( type == 'val' ) {
+					jQuery( content_id ).val( a );
+				}
+			}
+		}
+		else {
+			console.log('content not found!');
+		}
+		
+	});
 }
 
 // chức năng đồng bộ nội dung website theo chuẩn chung của EchBay

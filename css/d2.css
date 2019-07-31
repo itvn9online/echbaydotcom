@@ -578,6 +578,26 @@ label,
 .big4,
 .big50,
 .big-big { font-size: 50px; }
+.size55,
+.s55,
+.big5,
+.big55 { font-size: 55px; }
+.size60,
+.s60,
+.big6,
+.big60 { font-size: 60px; }
+.size70,
+.s70,
+.big7,
+.big70 { font-size: 70px; }
+.size80,
+.s80,
+.big8,
+.big80 { font-size: 80px; }
+.size90,
+.s90,
+.big9,
+.big90 { font-size: 90px; }
 .upper { text-transform: uppercase; }
 .show-if-javascript,
 .home-count-subcat,

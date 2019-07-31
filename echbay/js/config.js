@@ -319,6 +319,11 @@ function create_deault_css () {
 //		'mobile' : '',
 		'pc' : '.fcb2'
 	} );
+	str += create_css_for_custom_in_js( '', '', {
+		'for' : 'mcb2',
+//		'mobile' : '',
+		'pc' : '.mcb2'
+	} );
 	
 	// w90
 	str += create_css_for_custom_in_js( '', '', {
@@ -678,6 +683,9 @@ if ( current_module_config != 'config_theme' ) {
 		if ( typeof data['cf_css_fcb'] == 'undefined' ) {
 			data['cf_css_fcb'] = {};
 		}
+		if ( typeof data['cf_css_mcb2'] == 'undefined' ) {
+			data['cf_css_mcb2'] = {};
+		}
 		if ( typeof data['cf_css_fcb2'] == 'undefined' ) {
 			data['cf_css_fcb2'] = {};
 		}
@@ -798,6 +806,31 @@ if ( current_module_config != 'config_theme' ) {
 				},
 				'donvi' : {
 					'height' : 'px'
+				}
+			}
+		);
+		
+		
+		//
+		load_config_for_custom_logo(
+			{
+				'color' : ''
+			}, {
+				'color' : 'Màu cơ bản 2'
+			}, {
+				'color' : 'Hỗ trợ dùng màu sắc riêng cho từng mục hoặc ô text đơn lẻ, , sử dụng class CSS: <strong>mcb2</strong>.'
+			}, {
+			},
+			data['cf_css_mcb2'],
+			{
+				'after_html' : 'custom_css_for_body',
+				'input_name' : 'mcb2'
+			}, {
+				'placeholder' : {
+					'color' : '#000000'
+				},
+				'maxlength' : {
+					'color' : 7
 				}
 			}
 		);

@@ -438,6 +438,8 @@ function echbay_admin_footer_styles() {
 	cf_excerpt_sync_content = "' . $__cf_row['cf_excerpt_sync_content'] . '",
 	cf_excerpt_sync_yoast = "' . $__cf_row['cf_excerpt_sync_yoast'] . '",
 	
+	cf_replace_content = "' . urlencode( $__cf_row['cf_replace_content'] ) . '",
+	
 	wgr_plugin_current_version = "' . $current_version . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
 	

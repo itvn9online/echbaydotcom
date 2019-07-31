@@ -1102,7 +1102,12 @@ function WGR_run_for_admin_edit_post () {
 		
 		
 		
-		jQuery('#postdivrich').after('<div class="ebe-fixed-content-style">\
+		jQuery('#postdivrich').after('\
+		<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_replace_content" />\
+			<label for="click_replace_content">Thay thế nội dung trong bài viết theo <a href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=cache&support_tab=cf_replace_content_full" target="_blank">cấu hình website</a> (nếu có).</label>\
+		</div>\
+		<div class="ebe-fixed-content-style">\
 			<input type="checkbox" id="click_remove_content_style" />\
 			<label for="click_remove_content_style">Loại bỏ toàn bộ các style tĩnh để chuẩn hóa style cho bài viết theo một thiết kế chung.</label>\
 		</div>\
@@ -1130,6 +1135,9 @@ function WGR_run_for_admin_edit_post () {
 		
 		//
 //		console.log('aaaaaaaaaaaaaaaaa');
+		
+		//
+		click_replace_content();
 		
 		// tạo chức năng format nội dung, đưa hết về 1 định dạng chuẩn
 		click_remove_style_of_content();
