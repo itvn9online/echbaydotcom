@@ -55,10 +55,12 @@ $__cf_row_default = array(
 	'cf_email' => 'lienhe@echbay.com',
 	'cf_email_note' => '',
 	
+	'cf_phone_country_code' => '+84',
 	'cf_dienthoai' => '',
 	'cf_call_dienthoai' => '',
 	'cf_hotline' => '',
 	'cf_call_hotline' => '',
+	'cf_structured_data_phone' => '',
 	
 	'cf_diachi' => '',
 	'cf_p_diachi' => '',

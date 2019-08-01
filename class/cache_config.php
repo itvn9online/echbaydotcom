@@ -119,6 +119,31 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 		$__cf_row['cf_call_hotline'] = '<a href="tel:' . $__cf_row['cf_hotline'] . '" rel="nofollow">' . $__cf_row['cf_hotline'] . '</a>';
 	}
 	
+	if ( $__cf_row['cf_structured_data_phone'] == '' ) {
+		$cf_structured_data_phone = $__cf_row['cf_hotline'];
+		if ( $__cf_row['cf_hotline'] == '' ) {
+			$cf_structured_data_phone = $__cf_row['cf_dienthoai'];
+		}
+		
+		if ( $__cf_row['cf_structured_data_phone'] != '' ) {
+			$cf_structured_data_phone = explode( "\n", $cf_structured_data_phone );
+			$cf_structured_data_phone = trim( $cf_structured_data_phone[0] );
+			
+			$cf_structured_data_phone = explode( '-', $cf_structured_data_phone );
+			$cf_structured_data_phone = trim( $cf_structured_data_phone[0] );
+			
+			$cf_structured_data_phone = explode( '/', $cf_structured_data_phone );
+			$cf_structured_data_phone = trim( $cf_structured_data_phone[0] );
+			
+			if ( strlen( $cf_structured_data_phone ) > 9 && substr( $cf_structured_data_phone, 0, 1 ) == '0' ) {
+				$cf_structured_data_phone = substr( $cf_structured_data_phone, 1 );
+			}
+			
+			//
+			$__cf_row['cf_structured_data_phone'] = $__cf_row['cf_phone_country_code'] . $cf_structured_data_phone;
+		}
+	}
+	
 	
 	
 	

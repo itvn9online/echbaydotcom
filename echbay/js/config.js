@@ -399,7 +399,8 @@ function create_phone_click_to_call () {
 	
 	// hotline
 	var a = $.trim( f.cf_hotline.value ),
-		str = '';
+		str = '',
+		str2 = '';
 	if ( a != '' ) {
 		a = a.split("\n");
 		
@@ -407,12 +408,28 @@ function create_phone_click_to_call () {
 			a[i] = $.trim( a[i] );
 			
 			if ( a[i] != '' ) {
+				if ( str2 == '' ) {
+					str2 = jQuery.trim( a[i].split("\n")[0] );
+					str2 = jQuery.trim( str2.split("/")[0] );
+					str2 = jQuery.trim( str2.split("-")[0] );
+					if ( str2.length > 9 && str2.substr( 0, 1 ) * 1 == 0 ) {
+						str2 = str2.substr( 1 );
+					}
+					if ( $('#cf_phone_country_code').val() == '' ) {
+						str2 = $('#cf_phone_country_code').attr('placeholder') + str2;
+					}
+					else {
+						str2 = $('#cf_phone_country_code').val() + str2;
+					}
+				}
+				
 //				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
 				str += '<a href="tel:' + $.trim( a[i].toString().replace(/[^0-9\+]/g, '') ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
 			}
 		}
 	}
 	f.cf_call_hotline.value = $.trim( str );
+	f.cf_phone_country_code.value = $.trim( str2 );
 	
 }
 

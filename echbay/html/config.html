@@ -430,6 +430,10 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="i"><input type="email" name="cf_email" value="{tmp.cf_email}" class="m" /></td>
 			</tr>
 			<tr>
+				<td class="t" valign="top">Mã điện thoại quốc gia</td>
+				<td class="i"><input type="text" name="cf_phone_country_code" id="cf_phone_country_code" value="{tmp.cf_phone_country_code}" placeholder="{aaa.cf_phone_country_code}" class="s" /></td>
+			</tr>
+			<tr>
 				<td class="t" valign="top">Điện thoại</td>
 				<td class="i"><textarea name="cf_dienthoai" id="cf_dienthoai">{tmp.cf_dienthoai}</textarea>
 					<textarea name="cf_call_dienthoai" id="cf_call_dienthoai" class="d-none">{tmp.cf_call_dienthoai}</textarea>
@@ -439,6 +443,7 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t" valign="top">Hotline</td>
 				<td class="i"><textarea name="cf_hotline" id="cf_hotline">{tmp.cf_hotline}</textarea>
 					<textarea name="cf_call_hotline" id="cf_call_hotline" class="d-none">{tmp.cf_call_hotline}</textarea>
+					<input type="hidden" name="cf_structured_data_phone" value="{tmp.cf_structured_data_phone}" />
 					<p class="description">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</p></td>
 				<!--
 				<td class="i"><input type="text" name="cf_hotline" id="cf_hotline" value="{tmp.cf_hotline}" class="m" maxlength="15" /></td>

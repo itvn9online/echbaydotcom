@@ -264,7 +264,7 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
 		$json_social_sameAs .= ',"' .$__cf_row ['cf_google_plus']. '"';
 	}
 	
-	
+	//
 	$dynamic_meta .= _eb_del_line( '
 <script type="application/ld+json">
 {
@@ -275,8 +275,8 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
     "name": "' ._eb_str_block_fix_content ( $web_name ). '",
 	"contactPoint": {
 		"@type": "ContactPoint",
-		"telephone": "' . _eb_del_line( $__cf_row['cf_hotline'], ' - ' ) . '",
-		"contactType": "Hotline"
+		"telephone": "' . $__cf_row['cf_structured_data_phone'] . '",
+		"contactType": "customer support"
 	}
 }
 </script>' );
