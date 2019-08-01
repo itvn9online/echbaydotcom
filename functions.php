@@ -714,9 +714,10 @@ function _eb_add_full_js($arr = array(), $type_add = 'import') {
 }
 
 function EBE_add_js_compiler_in_cache(
-$arr_eb_add_full_js, $async = '',
- // có tối ưu nội dung file hay không
-        $optimize = 0
+	$arr_eb_add_full_js,
+	$async = '',
+	// có tối ưu nội dung file hay không
+	$optimize = 0
 ) {
 
     global $__cf_row;

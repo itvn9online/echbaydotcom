@@ -4,23 +4,29 @@
 // font awesome version 4
 //echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
 // font awesome version 5 -> đồng bộ v4 và v5
-if ($__cf_row['cf_fontawesome_v5'] == 1) {
 
-//echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
-    /*
-      echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" async></script>' . "\n";
-     */
 
-//
-//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-//
-//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-    echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css" media="all" />' . "\n";
-    echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-}
-else {
-    echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css" media="all" />' . "\n";
+
+// do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
+if ( mtv_id == 0 ) {
+	if ($__cf_row['cf_fontawesome_v5'] == 1) {
+	
+	//echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
+		/*
+		  echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" defer></script>' . "\n";
+		 */
+	
+	//
+	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+	//
+	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+		echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css" media="all" />' . "\n";
+		echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
+	}
+	else {
+		echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css" media="all" />' . "\n";
+	}
 }
 
 
@@ -101,10 +107,10 @@ if (!file_exists(EB_THEME_CACHE . $cat_js_file_name) || date_time - filemtime(EB
 }
 
 
-echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date('ymd-Hi', date_time) . '" async></script>';
+echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date('ymd-Hi', date_time) . '" defer></script>';
 
 /*
-  echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" async></script>';
+  echo '<script type="text/javascript" src="' . web_link . 'eb-load-quick-search" defer></script>';
  */
 /*
   echo '<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.js"></script>';
@@ -157,13 +163,13 @@ $arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/footer.js';
 
 //print_r( $arr_for_add_js );
 //
-EBE_add_js_compiler_in_cache($arr_for_add_js, 'async', 1);
+EBE_add_js_compiler_in_cache($arr_for_add_js, 'defer', 1);
 
 
 
 // JS ngoài
 foreach ($arr_for_add_outsource_async_js as $v) {
-    echo '<script type="text/javascript" src="' . $v . '" async></script>' . "\n";
+    echo '<script type="text/javascript" src="' . $v . '" defer></script>' . "\n";
 }
 
 
