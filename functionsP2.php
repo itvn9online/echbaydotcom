@@ -1595,7 +1595,7 @@ function _eb_remove_ebcache_content( $dir = EB_THEME_CACHE, $remove_dir = 0, $re
 			_eb_remove_ebcache_content ( $v, $remove_dir, $remove_noclean );
 		}
 		else if ( is_file( $v ) ) {
-			unlink( $v );
+			@unlink( $v );
 		}
 	}
 	
