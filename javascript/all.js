@@ -2127,6 +2127,49 @@ function WGR_show_widget_name_by_title () {
 			}
 		});
 	}, 800);
+	
+	//
+	$('.eb-get-widget-title').off('change').change(function () {
+		WGR_show_widget_name_by_title();
+	});
+	
+	//
+	if ( isLogin == 1 ) {
+		$('.widget').each(function() {
+			if ( $('.disable-click-edit-widget', this).length > 0 ) {
+				var tit = '';
+				$("input", this).each(function() {
+					var a = $(this).attr('name') || '';
+					
+					if ( a != '' && a.split('[custom_style]').length > 1 ) {
+						a = $(this).val() || '';
+						
+						if ( a != '' ) {
+//							console.log(a);
+							tit = a;
+						}
+					}
+				});
+				
+				if ( tit != '' ) {
+					$('.in-widget-title', this).removeClass('in-widget-title').addClass('small bluecolor').html(' * ' + tit);
+				}
+			}
+		});
+	}
+	else {
+		$('.widget').each(function() {
+//			console.log( $('.disable-click-edit-widget', this).length );
+			
+			if ( $('.disable-click-edit-widget', this).length > 0 ) {
+				$('.in-widget-title', this).removeClass('in-widget-title').addClass('small redcolor').html(' * Dành riêng cho kỹ thuật, không tự ý sửa!');
+				
+				$('.widget-title, .widget-title-action', this).off('click').click(function () {
+					return false;
+				});
+			}
+		});
+	}
 }
 
 

@@ -33,6 +33,8 @@ class ___echbay_widget_menu_close_tag extends WP_Widget {
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'div', '', '' );
 		
+		echo '<div class="disable-click-edit-widget"></div>';
+		
 	}
 	
 	function update($new_instance, $old_instance) {

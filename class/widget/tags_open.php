@@ -21,7 +21,8 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 			'width' => '',
 			'custom_style' => '',
 			'full_mobile' => '',
-			'hide_mobile' => ''
+			'hide_mobile' => '',
+			'for_supper_admin' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
 		foreach ( $instance as $k => $v ) {
@@ -41,6 +42,9 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'div', '', '' );
+		
+		
+		echo '<div class="disable-click-edit-widget"></div>';
 		
 	}
 	
