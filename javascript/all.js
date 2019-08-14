@@ -2133,20 +2133,22 @@ function WGR_show_widget_name_by_title () {
 		WGR_show_widget_name_by_title();
 	});
 	
-	//
+	// nếu là supper admin (code) -> hiển thị option của tag cho dễ nhìn
 	if ( isLogin == 1 ) {
 		$('.widget').each(function() {
 			if ( $('.disable-click-edit-widget', this).length > 0 ) {
 				var tit = '';
-				$("input", this).each(function() {
+				$('input, select', this).each(function() {
 					var a = $(this).attr('name') || '';
 					
-					if ( a != '' && a.split('[custom_style]').length > 1 ) {
-						a = $(this).val() || '';
-						
-						if ( a != '' ) {
-//							console.log(a);
-							tit = a;
+					if ( a != '' ) {
+						if ( a.split('[custom_style]').length > 1 || a.split('[width]').length > 1 ) {
+							a = $(this).val() || '';
+							
+							if ( a != '' ) {
+//								console.log(a);
+								tit = a;
+							}
 						}
 					}
 				});
@@ -2157,6 +2159,7 @@ function WGR_show_widget_name_by_title () {
 			}
 		});
 	}
+	// những người khác thì tắt luôn đi
 	else {
 		$('.widget').each(function() {
 //			console.log( $('.disable-click-edit-widget', this).length );
@@ -2166,6 +2169,12 @@ function WGR_show_widget_name_by_title () {
 				
 				$('.widget-title, .widget-title-action', this).off('click').click(function () {
 					return false;
+				});
+				
+				$('.widget-title-action', this).hide();
+				
+				$('h3', this).css({
+					padding: '2px'
 				});
 			}
 		});

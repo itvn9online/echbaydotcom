@@ -24,6 +24,7 @@ include EB_THEME_CORE . 'widget/price.php';
 include EB_THEME_CORE . 'widget/menu.php';
 include EB_THEME_CORE . 'widget/logo.php';
 include EB_THEME_CORE . 'widget/copyright.php';
+include EB_THEME_CORE . 'widget/tags.php';
 include EB_THEME_CORE . 'widget/tags_open.php';
 include EB_THEME_CORE . 'widget/tags_close.php';
 include EB_THEME_CORE . 'widget/social.php';
@@ -76,6 +77,7 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_set_copyright' );
 	
+	register_widget ( '___echbay_widget_menu_tag' );
 	register_widget ( '___echbay_widget_menu_open_tag' );
 	register_widget ( '___echbay_widget_menu_close_tag' );
 	

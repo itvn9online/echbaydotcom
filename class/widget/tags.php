@@ -5,10 +5,10 @@
 /*
 * Widget blog ngẫu nhiên
 */
-class ___echbay_widget_menu_open_tag extends WP_Widget {
+class ___echbay_widget_menu_tag extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_menu_open_tag', 'zEchBay Open Tag', array (
-				'description' => 'Mở một thẻ để tạo khối HTML' 
+		parent::__construct ( 'echbay_menu_tag', 'zEchBay Tag', array (
+				'description' => 'Mở một thẻ HEADING, DIV, P... riêng' 
 		) );
 	}
 	
@@ -16,8 +16,8 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		global $arr_to_add_menu;
 		
 		$default = array (
-			'title' => 'EchBay Open Tag',
-			'tag' => 'div',
+			'title' => 'EchBay Tag',
+			'tag' => 'h2',
 			'width' => '',
 			'custom_style' => '',
 			'full_mobile' => '',
@@ -40,10 +40,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		
 		
 		//
-		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'div', '', '' );
-		
-		
-		echo '<div class="disable-click-edit-widget"></div>';
+		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'tag' ), $tag, 'h2', '', '' );
 		
 	}
 	
@@ -62,7 +59,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		$tag = isset( $instance ['tag'] ) ? $instance ['tag'] : '';
 		$tag = str_replace( '<', '', $tag );
 		$tag = str_replace( '>', '', $tag );
-		if ( $tag == '' ) $tag = 'div';
+		if ( $tag == '' ) $tag = 'h2';
 		
 		$width = isset( $instance ['width'] ) ? $instance ['width'] : '';
 		if ( $width != '' ) $width .= ' lf';
@@ -82,7 +79,7 @@ class ___echbay_widget_menu_open_tag extends WP_Widget {
 		echo '<!-- ' . $this->name . ' (' . $title . ') -->';
 		
 		//
-		echo '<' . $tag . ' class="' . str_replace( '  ', ' ', trim( 'cf ' . $width . ' ' . $custom_style ) ) . '">';
+		echo '<' . $tag . ' class="' . str_replace( '  ', ' ', trim( 'cf ' . $width . ' ' . $custom_style ) ) . '">' . $title . '</' . $tag . '>';
 		
 		//
 //		echo $after_widget;
