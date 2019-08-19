@@ -113,7 +113,10 @@ a {
 	float: none;
 	margin: 0 auto;
 }
-.w99 { width: 999px; }
+.w99 {
+	width: 999px;
+	max-width: 999px;
+}
 .w90 {
 	width: 90%;
 	max-width: 1366px;

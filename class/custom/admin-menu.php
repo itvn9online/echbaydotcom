@@ -12,6 +12,7 @@ $web_ad_link = explode( '/', web_link );
 $web_ad_link[0] = eb_web_protocol . ':';
 $web_ad_link[2] = $_SERVER['HTTP_HOST'];
 $web_ad_link = implode( '/', $web_ad_link );
+//echo $web_ad_link; exit();
 
 
 

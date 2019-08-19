@@ -1,7 +1,7 @@
 <?php
 //
 if (!isset( $_GET['id'] ) ) {
-die('Product ID not found!');
+	die('Product ID not found!');
 }
 
 //
@@ -14,7 +14,7 @@ $act = 'single';
 
 //
 $sql = _eb_load_post_obj( 1, array(
-'p' => $quick_view_id
+	'p' => $quick_view_id
 ) );
 //print_r( $sql );
 //$GLOBALS['wp_query'] = $sql;
@@ -46,12 +46,12 @@ $posts = $sql->posts;
 // reset lại mảng css -> chỉ nạp cho trang chi tiết thôi
 $view_type = '';
 if ( isset($_GET['view_type']) ) {
-$view_type = $_GET['view_type'];
+	$view_type = $_GET['view_type'];
 }
 
 // nếu không phải xem qua quick view -> reset lại đống css cho đỡ phải load lại
 if ( $view_type != 'iframe' ) {
-$arr_for_add_css = array();
+	$arr_for_add_css = array();
 }
 
 //
@@ -101,9 +101,9 @@ echo '</div>';
 if ( $view_type == 'iframe' ) {
 ?>
 <style>
-    .height-for-mobile,
-    .menu-for-mobile,
-    .not-using-navcart { display: none !important; }
+.height-for-mobile,
+ .menu-for-mobile,
+ .not-using-navcart { display: none !important; }
 </style>
 <script type="text/javascript">
 // ép chuyển về trang chính nếu không phải xem trogn iframe
@@ -127,6 +127,7 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 } // end if
 
 } // end while
+
 
 
 

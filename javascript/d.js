@@ -1570,10 +1570,13 @@ function WGR_thread_list_quickview () {
 		//
 		a = g_func.number_only( a );
 		
-		if ( a == 0 || h == '' ) {
+		// hỗ trợ mở cả blog
+		if ( h == '' ) {
 			return false;
 		}
-		pid = a;
+		if ( a > 0 ) {
+			pid = a;
+		}
 		
 		//
 		if ( dog('oi_ebe_quick_view') == null ) {
@@ -1614,7 +1617,7 @@ function WGR_thread_list_quickview () {
 		document.title = jQuery(this).attr('title') || cache_for_quick_view_title;
 		
 		// nếu ID mới này giống với ID cũ -> không load lại
-		if ( a == cache_for_quick_view_id ) {
+		if ( a > 0 && a == cache_for_quick_view_id ) {
 			set_new_height_for_quick_view = true;
 			
 			//
@@ -1629,7 +1632,6 @@ function WGR_thread_list_quickview () {
 			
 			return false;
 		}
-		
 		// lưu lại phiên của cache
 		cache_for_quick_view_id = a;
 		
@@ -1644,7 +1646,28 @@ function WGR_thread_list_quickview () {
 		
 		// sử dụng iframe
 		dog('ui_ebe_quick_view').src = 'about:blank';
-		dog('ui_ebe_quick_view').src = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&view_type=iframe&set_device=' + device + '&set_iframe=' + r;
+		
+		var uri = '';
+		// có ID- > load sản phẩm
+		if ( a > 0 ) {
+			uri = web_link + 'eb-ajaxservice?set_module=quick_view&id=' + a + '&';
+		}
+		// không có -> load chính cái url được gửi tới
+		else if ( h.split('//').length == 1 || h.split( document.domain ).length > 1 ) {
+			uri = h;
+			if ( uri.split('?').length > 1 ) {
+				uri += '&';
+			}
+			else {
+				uri += '?';
+			}
+		}
+		else {
+			console.log('URL not support in popup!');
+			return false;
+		}
+		uri +=  'view_type=iframe&set_device=' + device + '&set_iframe=' + r;
+		dog('ui_ebe_quick_view').src = uri;
 		
 		// chỉnh chiều cao cho iframe
 		set_new_height_for_quick_view = true;
