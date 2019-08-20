@@ -2958,3 +2958,10 @@ iframe[name="google_conversion_frame"] {
 	box-shadow: 0 0 5px #fff;
 	cursor: pointer;
 }
+.ui_ebe_quick_view,
+.quick-view-margin {
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}

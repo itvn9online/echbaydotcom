@@ -1076,20 +1076,33 @@ function WGR_set_quick_view_height () {
 	if ( set_new_height_for_quick_view == false ) {
 		return false;
 	}
+	
+	$('.quick-view-margin').css({
+		'margin-top': '25px'
+	});
+	
 	setTimeout(function () {
 		WGR_set_quick_view_height();
 	}, time_for_new_height_quick_view);
 	
 	//
 	var h = jQuery( '#ui_ebe_quick_view' ).contents().find( 'body' ).height() || 0;
-//	console.log(h);
+	console.log(h);
 	if ( h == 0 ) {
 		h = 600;
 	}
-	else {
+	else if ( h > $(window).height() ) {
 		h -= -200;
 	}
-//	console.log(h);
+	else {
+		var new_margin = $(window).height() - h;
+		console.log(new_margin);
+		
+		$('.quick-view-margin').css({
+			'margin-top': Math.ceil( new_margin/ 3 ) + 'px'
+		});
+	}
+	console.log(h);
 	jQuery('#ui_ebe_quick_view').height( h ).scrollTop(0);
 	
 	//
