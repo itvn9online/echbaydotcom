@@ -999,40 +999,46 @@ var threadDetailsTimeend = null;
 
 
 // tạo hiệu ứng select với url trùng với link hiện tại
-(function ( u ) {
-//	console.log(u);
-	
-	if ( act == '' ) {
-		jQuery('.eb-set-menu-selected a[href="./"], .eb-set-menu-selected a[href="' + web_link + '"]').addClass('current-url-select');
-		return false;
-	}
-	
-	// tạo class select với thẻ A trùng link đang xem
-	jQuery('.eb-set-menu-selected a[href="' + u + '"], .eb-set-menu-selected a[href="' + u.split( web_link )[1] + '"]').addClass('current-url-select');
-//	console.log(jQuery('a.current-url-select').length);
-	
-	// nếu URL này không được tìm thấy -> thử theo canonical URL
-	/*
-	if ( jQuery('a.current-url-select').length == 0 ) {
-		jQuery('a[href="' + eb_this_current_url + '"]').addClass('current-url-select');
-	}
-	*/
-	
-	// -> tạo select cho LI chứa nó
-	/*
-	jQuery('li').each(function() {
-//		console.log( jQuery('a.current-url-select', this).length );
-		if ( jQuery('a.current-url-select', this).length > 0 ) {
-			jQuery(this).addClass('selected');
+//try {
+	(function ( u ) {
+	//	console.log(u);
+		
+		if ( act == '' ) {
+			jQuery('.eb-set-menu-selected a[href="./"], .eb-set-menu-selected a[href="' + web_link + '"]').addClass('current-url-select');
+			return false;
 		}
-	});
-	*/
-	
-	// add class vào thẻ LI có chứa thẻ A đang được select
-	jQuery('.eb-set-menu-selected a.current-url-select').parent('li').addClass('selected');
-	jQuery('.eb-set-menu-selected li.selected').parent('li').addClass('selected');
-	
-})( window.location.href.split('#')[0] );
+		
+		// tạo class select với thẻ A trùng link đang xem
+		jQuery('.eb-set-menu-selected a[href="' + u + '"], .eb-set-menu-selected a[href="' + u.split( web_link )[1] + '"]').addClass('current-url-select');
+	//	console.log(jQuery('a.current-url-select').length);
+		
+		// nếu URL này không được tìm thấy -> thử theo canonical URL
+		/*
+		if ( jQuery('a.current-url-select').length == 0 ) {
+			jQuery('a[href="' + eb_this_current_url + '"]').addClass('current-url-select');
+		}
+		*/
+		
+		// -> tạo select cho LI chứa nó
+		/*
+		jQuery('li').each(function() {
+	//		console.log( jQuery('a.current-url-select', this).length );
+			if ( jQuery('a.current-url-select', this).length > 0 ) {
+				jQuery(this).addClass('selected');
+			}
+		});
+		*/
+		
+		// add class vào thẻ LI có chứa thẻ A đang được select
+		jQuery('.eb-set-menu-selected a.current-url-select').parent('li').addClass('selected');
+		jQuery('.eb-set-menu-selected li.selected').parent('li').addClass('selected');
+		
+	})( window.location.href.split('#')[0] );
+	/*
+} catch ( e ) {
+	console.log( WGR_show_try_catch_err( e ) );
+}
+*/
 
 
 
