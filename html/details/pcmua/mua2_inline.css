@@ -1,0 +1,38 @@
+.detail-muangay-topleft,
+.detail-muangay-topcenter {
+	float: left;
+	width: 50%;
+}
+.detail-muangay-topleft .details-mua-ngay,
+.detail-muangay-topcenter .details-mua-ngay {
+	height: 40px;
+	font-size: 16px;
+	text-transform: none;
+	border-radius: 3px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
+}
+.detail-muangay-topleft { text-align: left; }
+.detail-muangay-topleft .details-mua-ngay {
+	width: 93%;
+	margin: 0;
+}
+.style-for-mobile .detail-muangay-topleft .details-mua-ngay {
+	margin: 0 auto;
+	width: 100%;
+}
+.detail-muangay-topright {
+	float: left;
+	width: 100%;
+}
+.detail-muangay-topright .details-tu-van {
+	max-width: none;
+	background: none;
+	color: #000 !important;
+	border: 1px #999 solid;
+	padding: 10px 0;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
+	height: auto;
+}
+.detail-muangay-topright .details-tu-van span { padding-top: 2px; }
+.style-for-mobile .mua2_inline .detail-muangay-left div { margin-right: 3px; }
+.style-for-mobile .mua2_inline .detail-muangay-center div { margin-left: 3px; }
