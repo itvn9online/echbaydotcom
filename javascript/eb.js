@@ -1739,8 +1739,35 @@ var _global_js_eb = {
 		return seo + '-' + name + id + '.html';
 	},
 	
-	youtube_id : function ( a ) {
+	youtube_id : function ( a, start_end ) {
 		if ( a.split('youtube.com').length > 1 || a.split('youtu.be').length > 1 ) {
+			// lấy thời gian bắt đầu, kết thúc nếu có
+			var s = '',
+				e = '';
+			if ( typeof start_end != 'undefined' ) {
+				start_end = a.replace( /\?/g, '&' );
+//				console.log( start_end );
+				
+				//
+				s = start_end.split('&start=');
+				if ( s.length > 1 ) {
+					s = '&start=' + s[1].split('&')[0];
+				}
+				else {
+					s = '';
+				}
+				
+				//
+				e = start_end.split('&end=');
+				if ( e.length > 1 ) {
+					e = '&end=' + e[1].split('&')[0];
+				}
+				else {
+					e = '';
+				}
+			}
+			
+			//
 			var youtube_parser = function (url){
 				var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
 				
@@ -1749,7 +1776,7 @@ var _global_js_eb = {
 				return ( match && match[7].length == 11 ) ? match[7] : false;
 			};
 			
-			return youtube_parser( a );
+			return youtube_parser( a ) + s + e;
 		}
 		
 		//

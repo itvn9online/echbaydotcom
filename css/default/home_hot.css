@@ -69,3 +69,7 @@
 	left: 0;
 	height: 28px;
 }
+.title-center .home-hot-title div {
+	border-bottom: 0 none;
+	margin-bottom: 0;
+}

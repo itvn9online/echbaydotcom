@@ -108,7 +108,8 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 
 
         //
-        $youtube_id = _eb_get_youtube_id(_eb_get_post_meta($post->ID, '_eb_ads_video_url'));
+        $youtube_uri = _eb_get_post_meta($post->ID, '_eb_ads_video_url');
+        $youtube_id = _eb_get_youtube_id($youtube_uri);
 //		$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
         $youtube_url = 'about:blank';
         $youtube_avt = '';
@@ -119,6 +120,7 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
         }
         $post->youtube_id = $youtube_id;
         $post->youtube_url = $youtube_url;
+        $post->youtube_uri = $youtube_uri;
         $post->youtube_avt = $youtube_avt;
     }
     // các loại post khác
@@ -3814,6 +3816,7 @@ $type = 0,
         //
         $youtube_avt = '';
         $youtube_url = _eb_get_post_meta($post->ID, '_eb_ads_video_url');
+        $post->youtube_uri = $youtube_url;
         $youtube_id = '';
         if (strstr($youtube_url, '.mp4') == false) {
             $youtube_id = _eb_get_youtube_id($youtube_url);

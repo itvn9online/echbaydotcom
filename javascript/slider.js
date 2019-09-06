@@ -720,8 +720,19 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			
 			//
 			if ( vd.split('youtube.com').length > 1 ) {
-				vd = _global_js_eb.youtube_id( vd );
+				vd = jQuery('div.banner-ads-media', this).attr('data-ytb-uri') || '';
+				vd = _global_js_eb.youtube_id( vd, 1 );
+//				console.log( vd );
 				if ( vd != '' ) {
+					if ( vd.split('&').length > 1 ) {
+						vd = vd.replace( '&', '?' );
+						vd += '&';
+					}
+					else {
+						vd += '?';
+					}
+//					console.log( vd );
+					
 					// xóa thẻ a
 					jQuery('a', this).hide();
 					
@@ -752,7 +763,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 					jQuery('div.banner-ads-media', this)
 					.addClass('banner-video-media')
 					.addClass('banner-youtube-video')
-					.html('<iframe id="' + video_id + '" width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + '?rel=0&autoplay=1&mute=1&html5=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+					.html('<iframe id="' + video_id + '" width="' + Math.ceil( w_video ) + '" height="' + Math.ceil( h_video ) + '" src="https://www.youtube.com/embed/' + vd + 'rel=0&autoplay=1&mute=1&html5=1&controls=0&loop=1&enablejsapi=1&origin=' + decodeURIComponent( web_link ) + '&widgetid=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 				}
 			}
 			else if ( vd.split('.mp4').length > 1

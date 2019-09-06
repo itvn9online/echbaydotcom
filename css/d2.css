@@ -1474,6 +1474,10 @@ button.btn-addto-cart {
 	min-width: 50px;
 	display: none;
 }
+.title-center .echbay-widget-title div {
+	border-bottom: 0 none;
+	margin-bottom: 0;
+}
 /* */
 .widget-category-selectbox {
 	position: relative;
