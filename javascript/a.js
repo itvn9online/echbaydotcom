@@ -172,9 +172,13 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
     else if (admin_act == 'post-new') {
         // thêm STT mới nhất để bài viết này luôn được lên đầu khi thêm mới
         if (order_max_post_new > 0) {
-            jQuery('#menu_order').val(order_max_post_new - -1);
+            jQuery('#menu_order').val(order_max_post_new * 1 * 1);
             console.log('Add menu order to maximun');
         }
+		
+		// ẩn bớt các công cụ chưa dùng để cho nó tiện
+		$('#postbox-container-2').hide();
+		console.log('hide postbox-container-2 in post new');
     }
     // danh sách post, page, custom post type
     else if (admin_act == 'list') {
