@@ -254,17 +254,24 @@ $eb_arr_placeholder_custom_meta_box['_eb_category_leech_url'] = $eb_arr_placehol
 /*
 * Nhiều form cần dùng đoạn này
 */
-$eb_meta_custom_meta_box = array(
-	'_eb_product_title' => WGR_admin_lang('_eb_product_title'),
-	'_eb_product_keywords' => WGR_admin_lang('_eb_product_keywords'),
-	'_eb_product_description' => WGR_admin_lang('_eb_product_description'),
-	'_eb_product_noindex' => WGR_admin_lang('_eb_product_noindex'),
-	
-	//
-	'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar'),
-	'_eb_product_css' => WGR_admin_lang('_eb_product_css')
-//	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source')
-);
+if ( cf_on_off_echbay_seo == 1 ) {
+	$eb_meta_custom_meta_box = array(
+		'_eb_product_title' => WGR_admin_lang('_eb_product_title'),
+		'_eb_product_keywords' => WGR_admin_lang('_eb_product_keywords'),
+		'_eb_product_description' => WGR_admin_lang('_eb_product_description'),
+		'_eb_product_noindex' => WGR_admin_lang('_eb_product_noindex'),
+		
+		//
+		'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar'),
+		'_eb_product_css' => WGR_admin_lang('_eb_product_css')
+	//	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source')
+	);
+}
+else {
+	$eb_meta_custom_meta_box = array(
+		'_eb_product_css' => WGR_admin_lang('_eb_product_css')
+	);
+}
 
 
 
@@ -430,14 +437,14 @@ function EchBayMetaBox () {
 	add_meta_box( 'eb-product-noibat', EBE_get_lang('_eb_product_noibat'), 'EchBayNoibatOutput', 'post' );
 	
 	// thẻ META cho sản phẩm
-	if ( cf_on_off_echbay_seo == 1 ) {
+//	if ( cf_on_off_echbay_seo == 1 ) {
 		add_meta_box( 'eb-product-meta', 'Tùy chỉnh nội dung thẻ META', 'EchBayMetaOutput', 'post' );
 		
 		add_meta_box( 'eb-blog-meta', 'Tùy chỉnh nội dung thẻ META', 'EchBayMetaOutput', EB_BLOG_POST_TYPE );
 		
 		// thẻ META cho page
 		add_meta_box( 'eb-page-meta', 'Tùy chỉnh nội dung thẻ META', 'EchBayMetaOutput', 'page' );
-	}
+//	}
 	
 	add_meta_box( 'eb-product-bosung', 'Thông tin bổ sung', 'EchBayPhuOutput', 'post' );
 	
