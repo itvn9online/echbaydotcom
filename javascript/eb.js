@@ -2019,7 +2019,7 @@ var _global_js_eb = {
 			
 			// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
 			var cart_product_slug = g_func.non_mark_seo( product_js.tieude + sku ),
-				cart_quan = jQuery('#oi_change_soluong select').val() || 1;
+				cart_quan = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 1;
 			
 			//
 			ebe_arr_cart_product_list.push( {

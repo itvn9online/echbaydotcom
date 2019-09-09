@@ -42,21 +42,26 @@ function WGR_zero_price_quick_cart ( quan, price ) {
 // số lượng để khách hàng mua hàng nhanh
 function ___eb_details_cart_quan () {
 	
-	//
-	var str = '<option value="1">[ Chọn số lượng ]</option>',
-		sl = '';
-	for (var i = 1; i < 11; i++) {
-		sl = '';
-		if ( i == 1 ) {
-			sl = ' selected="selected"';
+	// using select
+	if ( 1 == 1 ) {
+		dog('oi_change_soluong', '<input type="number" name="t_soluong[' + pid + ']" value="1" />');
+	}
+	else {
+		var str = '<option value="1">[ Chọn số lượng ]</option>',
+			sl = '';
+		for (var i = 1; i < 11; i++) {
+			sl = '';
+			if ( i == 1 ) {
+				sl = ' selected="selected"';
+			}
+			
+			str += '<option value="' + i + '"' + sl + '>' + i + '</option>';
 		}
 		
-		str += '<option value="' + i + '"' + sl + '>' + i + '</option>';
+		dog('oi_change_soluong', '<select name="t_soluong[' + pid + ']">' + str + '</select>');
 	}
 	
-	dog('oi_change_soluong', '<select name="t_soluong[' + pid + ']">' + str + '</select>');
-	
-	jQuery('#oi_change_soluong select').change(function () {
+	jQuery('#oi_change_soluong input, #oi_change_soluong select').change(function () {
 		var a = jQuery(this).val() || 0;
 		
 		/* TEST
@@ -71,7 +76,7 @@ function ___eb_details_cart_quan () {
 		_global_js_eb.cart_create_arr_poruduct();
 		WGR_check_discount_code_return( 'oi_check_discount_code' );
 	});
-	jQuery('#oi_change_soluong select').change();
+	jQuery('#oi_change_soluong input, #oi_change_soluong select').change();
 	
 }
 
@@ -800,7 +805,7 @@ function ___eb_details_product_color () {
 			jQuery('.eb-global-frm-cart input[name^=t_color]').val( color_name );
 			
 			//
-			var select_quan = jQuery('#oi_change_soluong select').val() || 0,
+			var select_quan = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 0,
 				show_price = 0;
 			
 			// hiển thị giá riêng của từng mầu nếu có
@@ -1088,7 +1093,7 @@ function ___eb_details_product_size () {
 //			document.frm_cart.t_size.value = jQuery(this).attr('data-id') || '';
 			
 			//
-			var select_quan = jQuery('#oi_change_soluong select').val() || 0,
+			var select_quan = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 0,
 				show_price = 0;
 			
 			// nếu có giá theo size -> lấy giá theo size

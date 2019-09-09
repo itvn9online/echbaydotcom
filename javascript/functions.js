@@ -749,7 +749,7 @@ function WGR_check_discount_code_return ( jd ) {
 		else {
 			// trong trang chi tiết sản phẩm
 			if ( pid > 0 ) {
-				var gia_tri_don_hang = jQuery('#oi_change_soluong select').val() || 0;
+				var gia_tri_don_hang = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 0;
 				gia_tri_don_hang = gia_tri_don_hang * product_js['gm'];
 				
 				// kiểm tra điều kiện khuyến mại

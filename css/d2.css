@@ -1403,6 +1403,14 @@ button.btn-addto-cart {
 .style-for-mobile .eb-quickcart-table input[type="text"],
 .style-for-mobile .eb-quickcart-table textarea { font-size: 16px; }
 .style-for-mobile .eb-quickcart-table textarea { height: 90px; }
+#oi_change_soluong number {
+	border: 1px #ccc solid;
+	border-radius: 3px;
+	width: 92%;
+	max-width: 110px;
+	outline: none;
+	padding: 8px 3px 8px 8px;
+}
 /* thêm icon open youtube */
 .youtube-quick-view li .echbay-blog-avt { text-align: center; }
 .youtube-quick-view li .echbay-blog-avt:before {
