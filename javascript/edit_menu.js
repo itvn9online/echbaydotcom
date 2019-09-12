@@ -57,7 +57,22 @@ function WGR_event_add_img_edit_menu ( jd, tai, add_lnk ) {
 	
 	//
 	if ( a != '' ) {
-		str = a + ' ' + str;
+		var cursorPos = $('#' + jd).attr('data-cursor-pos') || -1;
+		cursorPos *= 1;
+		
+		// thêm vào cuối
+		if ( cursorPos < 0 ) {
+			str = a + ' ' + str;
+		}
+		// thêm vào đầu
+		else if ( cursorPos == 0 ) {
+			str += ' ' + a;
+		}
+		// thêm vào giữa
+		else {
+			str = a.substr(0, cursorPos) + ' ' + str + ' ' + a.substr(cursorPos);
+			str = str.replace(/\s\s/g, ' ');
+		}
 	}
 	jQuery('#' + jd).val( str );
 }
@@ -77,6 +92,24 @@ function WGR_add_img_edit_menu () {
 				<button type="button" onclick="WGR_event_add_img_edit_menu(\'' + a + '\', \'icon\')" class="button wgr-button-add-icon">Add icon (font awesome)</button>\
 			</div>\
 			<div class="wgr-button-menu"><a href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="nofollow">List Font Awesome v4</a></div>');
+			
+			
+			// xác định vị trí add dữ liệu theo phát bấm chuột của người dùng
+			jQuery('.edit-menu-item-title').each(function() {
+				var a = $(this).attr('data-wgr-click') || '';
+				
+				if ( a == '' ) {
+					$(this).click(function () {
+						var cursorPos = $(this).prop('selectionStart');
+						
+						$(this).attr({
+							'data-cursor-pos': cursorPos
+						});
+					}).attr({
+						'data-wgr-click': 'done'
+					});
+				}
+			});
 		}
 	});
 }
@@ -193,6 +226,7 @@ function WGR_main_edit_menu () {
 	}, 2000);
 	
 }
+
 
 
 

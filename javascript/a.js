@@ -369,6 +369,19 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
                 jQuery('#_eb_category_coupon_max').removeClass('m').addClass('s');
             }
         }
+		
+		//
+		if ( $('#taxonomy_image').length > 0 ) {
+			$('#_eb_category_favicon').val( $('#taxonomy_image').val() || '' );
+			
+			$('#taxonomy_image').change(function () {
+				$('#_eb_category_favicon').val( $('#taxonomy_image').val() || '' );
+			});
+			
+			$('.edit-tag-actions .button-primary').click(function () {
+				$('#taxonomy_image').change();
+			});
+		}
     }
     // thêm tài khoản thành viên
     else if (admin_act == 'user-new') {

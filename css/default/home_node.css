@@ -97,3 +97,8 @@
 	margin: 0;
 	background: #f2f2f2;
 }
+.title-bold .thread-home-c2 h2,
+.title-bold .thread-home-c2 h2 a,
+.title-bold .thread-home-c2 h2 a:first-child,
+.title-bold .thread-home-c2 { font-weight: bold; }
+.title-upper .thread-home-c2 { text-transform: uppercase; }
