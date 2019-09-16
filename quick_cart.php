@@ -18,6 +18,7 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 					<input type="text" name="t_size[]" value="" />
 					<input type="text" name="t_color[]" value="" />
 					<input type="text" name="t_new_price[]" value="0" />
+					<input type="text" name="t_discount_value" value="" />
 				</div>
 				<div class="eb-quickcart-table">
 					<div class="eb-quickcart-node cf show-if-color-exist product-color d-none">

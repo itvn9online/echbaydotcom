@@ -1631,6 +1631,7 @@ var _global_js_eb = {
 			arr.hd_diachi = f.t_diachi.value;
 			arr.hd_ghichu = f.t_ghichu.value;
 			arr.hd_discount_code = f.t_discount_code.value;
+			arr.hd_chietkhau = f.t_discount_value.value;
 		}
 		// cart
 		else {
@@ -1643,7 +1644,13 @@ var _global_js_eb = {
 				arr.hd_email = f.t_email.value;
 				arr.hd_diachi = f.t_diachi.value;
 				arr.hd_ghichu = f.t_ghichu.value;
-				if ( typeof t_discount_code != 'undefined' ) arr.hd_discount_code = f.t_discount_code.value;
+				if ( typeof f.t_discount_code != 'undefined' ) {
+					arr.hd_discount_code = f.t_discount_code.value;
+					
+					if ( typeof f.t_discount_value != 'undefined' ) {
+						arr.hd_chietkhau = f.t_discount_value.value;
+					}
+				}
 				arr.hd_thanhtoan = f.t_thanhtoan.value;
 			}
 			catch ( e ) {
@@ -1656,7 +1663,13 @@ var _global_js_eb = {
 					arr.hd_email = jQuery('#t_email').val() || '';
 					arr.hd_diachi = jQuery('#t_diachi').val() || '';
 					arr.hd_ghichu = jQuery('#t_ghichu').val() || '';
-					if ( typeof t_discount_code != 'undefined' ) arr.hd_discount_code = f.t_discount_code.value;
+					if ( typeof f.t_discount_code != 'undefined' ) {
+						arr.hd_discount_code = f.t_discount_code.value;
+						
+						if ( typeof f.t_discount_value != 'undefined' ) {
+							arr.hd_chietkhau = f.t_discount_value.value;
+						}
+					}
 					arr.hd_thanhtoan = jQuery('input[name="t_thanhtoan"]:checked').val() || 'tructiep';
 				}
 				catch ( e ) {

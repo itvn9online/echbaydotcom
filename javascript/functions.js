@@ -727,7 +727,7 @@ function WGR_check_discount_code_return ( jd ) {
 	}
 	
 	//
-	msg = arr_discount_code_return;
+	var msg = arr_discount_code_return;
 	
 	// hiển thị lỗi nếu có
 	if ( typeof msg['error'] != 'undefined' ) {
@@ -748,21 +748,35 @@ function WGR_check_discount_code_return ( jd ) {
 			cl = 'orgcolor';
 		}
 		else {
+			var gia_tri_don_hang = 0;
+			
 			// trong trang chi tiết sản phẩm
 			if ( pid > 0 ) {
-				var gia_tri_don_hang = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 0;
+				gia_tri_don_hang = jQuery('#oi_change_soluong input').val() || jQuery('#oi_change_soluong select').val() || 0;
 				gia_tri_don_hang = gia_tri_don_hang * product_js['gm'];
-				
-				// kiểm tra điều kiện khuyến mại
-				if ( msg['coupon_toithieu'] > 0 && gia_tri_don_hang < msg['coupon_toithieu'] ) {
-					m = 'Mã giảm giá áp dụng cho đơn hàng có giá trị tối thiểu là <span class="ebe-currency">' + g_func.money_format( msg['coupon_toithieu'] ) + '</span>';
-					cl = 'orgcolor';
-				}
-				else {
-				}
 			}
 			// giỏ hàng
 			else {
+				gia_tri_don_hang = jQuery('.cart-table-total .global-details-giamoi').html() || '0';
+				gia_tri_don_hang = gia_tri_don_hang.replace( /\,|\s/g, '' );
+				gia_tri_don_hang *= 1;
+			}
+			
+			// kiểm tra điều kiện khuyến mại
+			if ( msg['coupon_toithieu'] > 0 && gia_tri_don_hang > 0 && gia_tri_don_hang < msg['coupon_toithieu'] ) {
+				m = 'Mã giảm giá áp dụng cho đơn hàng có giá trị tối thiểu là <span class="ebe-currency">' + g_func.money_format( msg['coupon_toithieu'] ) + '</span>';
+				cl = 'orgcolor';
+			}
+			else if ( gia_tri_don_hang > 0 ) {
+				// ưu tiên giảm theo giá tiền
+				var f = document.frm_cart;
+				if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'] * 1 > 0 ) {
+					f.t_discount_value.value = msg['coupon_giagiam'];
+				}
+				//
+				else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {
+					f.t_discount_value.value = msg['coupon_giagiam'] + '%';
+				}
 			}
 		}
 		
