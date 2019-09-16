@@ -716,12 +716,13 @@ var arr_discount_code_return = {};
 function WGR_check_discount_code_return ( jd ) {
 	// có mã giảm giá thì mới tiếp tục
 	if ( co_ma_giam_gia != 1 ) {
+		console.log('%c Không tìm thấy Mã giảm giá nào!', 'color: red;');
 		return false;
 	}
 	
 	// kiểm tra xem có dữ liệu của phần giảm giá không
 	if ( jQuery.isEmptyObject( arr_discount_code_return ) == true ) {
-//		jQuery('#' + jd).html('<span class="redcolor">Không xác định được dữ liệu giảm giá!</span>');
+		jQuery('#' + jd).html('<span class="redcolor">Không xác định được dữ liệu giảm giá!</span>');
 		return false;
 	}
 	

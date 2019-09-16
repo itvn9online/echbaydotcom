@@ -529,9 +529,6 @@ function WGR_hide_html_alert_auto_order_submit () {
 		
 		//
 		jQuery('#oi_ghi_chu_cua_khach').html( cus['hd_ghichu'] );
-		if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
-			jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
-		}
 		
 		// Hiển thị ghi chú của admin nếu có
 		if ( typeof cus['hd_admin_ghichu'] != 'undefined' ) {
@@ -541,6 +538,40 @@ function WGR_hide_html_alert_auto_order_submit () {
 		// một số tính năng khác
 		if ( typeof cus['hd_chietkhau'] != 'undefined' && cus['hd_chietkhau'] != '' ) {
 			jQuery('#hd_chietkhau').val( cus['hd_chietkhau'] );
+		}
+		// nếu có mã giảm giá -> hiển thị mã này
+		if ( typeof cus['hd_discount_code'] != 'undefined' && cus['hd_discount_code'] != '' ) {
+			jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
+			
+			// nếu chiết khấu chưa có mà có mã giảm giá -> tìm và nhập lại
+			if ( jQuery('#hd_chietkhau').val() == '' ) {
+				jQuery.ajax({
+//					type: 'POST',
+					type: 'GET',
+					url: ajaxl_url( 'check_discount_code&code=' + cus['hd_discount_code'] + '&no_echo=1' ),
+					data: ''
+				}).done(function(msg) {
+					if ( typeof msg == 'object' ) {
+						console.log( msg );
+						
+						// nếu có lỗi -> nhập luôn là 0 để sau nó đỡ check lại
+						if ( typeof msg['error'] != 'undefined' ) {
+							jQuery('#hd_chietkhau').val( 0 ).change();
+						}
+						// ưu tiên giảm theo giá tiền
+						else if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'] * 1 > 0 ) {
+							jQuery('#hd_chietkhau').val( msg['coupon_giagiam'] ).change();
+						}
+						//
+						else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {
+							jQuery('#hd_chietkhau').val( msg['coupon_phantramgiam'] + '%' ).change();
+						}
+					}
+					else {
+						console.log( '%c Lỗi cú pháp! vui lòng báo cho kỹ thuật viên. Xin cảm ơn', 'color: red;' );
+					}
+				});
+			}
 		}
 		if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
 			jQuery('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
