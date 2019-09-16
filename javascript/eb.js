@@ -2164,7 +2164,11 @@ var _global_js_eb = {
 			arr_discount_code_return = {};
 			
 			//
+			$('input[name="t_discount_value"]').val('');
+			
+			//
 			if ( a == '' ) {
+				$('#' + jd).hide();
 				return false;
 			}
 			else if ( a.length < 3 ) {
@@ -2176,6 +2180,7 @@ var _global_js_eb = {
 			if ( dog( jd ) == null ) {
 				jQuery( cl ).after( '<div id="' + jd + '" class="small text-center l15"></div>' );
 			}
+			jQuery('#' + jd).show();
 			
 			//
 			jQuery.ajax({

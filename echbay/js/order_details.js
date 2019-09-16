@@ -559,8 +559,8 @@ function WGR_hide_html_alert_auto_order_submit () {
 							jQuery('#hd_chietkhau').val( 0 ).change();
 						}
 						// ưu tiên giảm theo giá tiền
-						else if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'] * 1 > 0 ) {
-							jQuery('#hd_chietkhau').val( msg['coupon_giagiam'] ).change();
+						else if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'].replace(/\,/g, '') * 1 > 0 ) {
+							jQuery('#hd_chietkhau').val( msg['coupon_giagiam'].replace(/\,/g, '') ).change();
 						}
 						//
 						else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {

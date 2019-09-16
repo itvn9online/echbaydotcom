@@ -714,6 +714,10 @@ function a_lert(m) {
 
 var arr_discount_code_return = {};
 function WGR_check_discount_code_return ( jd ) {
+//	var f = document.frm_cart;
+//	f.t_discount_value.value = '';
+	$('input[name="t_discount_value"]').val('');
+	
 	// có mã giảm giá thì mới tiếp tục
 	if ( co_ma_giam_gia != 1 ) {
 		console.log('%c Không tìm thấy Mã giảm giá nào!', 'color: red;');
@@ -728,6 +732,7 @@ function WGR_check_discount_code_return ( jd ) {
 	
 	//
 	var msg = arr_discount_code_return;
+//	console.log( msg );
 	
 	// hiển thị lỗi nếu có
 	if ( typeof msg['error'] != 'undefined' ) {
@@ -761,6 +766,7 @@ function WGR_check_discount_code_return ( jd ) {
 				gia_tri_don_hang = gia_tri_don_hang.replace( /\,|\s/g, '' );
 				gia_tri_don_hang *= 1;
 			}
+//			console.log( gia_tri_don_hang );
 			
 			// kiểm tra điều kiện khuyến mại
 			if ( msg['coupon_toithieu'] > 0 && gia_tri_don_hang > 0 && gia_tri_don_hang < msg['coupon_toithieu'] ) {
@@ -769,13 +775,30 @@ function WGR_check_discount_code_return ( jd ) {
 			}
 			else if ( gia_tri_don_hang > 0 ) {
 				// ưu tiên giảm theo giá tiền
-				var f = document.frm_cart;
-				if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'] * 1 > 0 ) {
-					f.t_discount_value.value = msg['coupon_giagiam'];
+				if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'].replace(/\,/g, '') * 1 > 0 ) {
+//					f.t_discount_value.value = msg['coupon_giagiam'];
+					$('input[name="t_discount_value"]').val( msg['coupon_giagiam'].replace(/\,/g, '') );
 				}
 				//
 				else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {
-					f.t_discount_value.value = msg['coupon_giagiam'] + '%';
+//					console.log( msg['coupon_phantramgiam'] );
+//					f.t_discount_value.value = msg['coupon_phantramgiam'] + '%';
+					$('input[name="t_discount_value"]').val( msg['coupon_phantramgiam'] + '%' );
+				}
+				
+				//
+				var gia_tri_giam_gia = $('input[name="t_discount_value"]').val() || '';
+//				console.log( gia_tri_giam_gia );
+				if ( gia_tri_giam_gia != '' ) {
+					if ( gia_tri_giam_gia.split('%').length > 1 ) {
+						gia_tri_giam_gia = gia_tri_giam_gia.split( '%' )[0].replace(/\s|\,/g, '');
+						gia_tri_don_hang = gia_tri_don_hang/ 100 * gia_tri_giam_gia;
+					}
+					else {
+						gia_tri_don_hang -= gia_tri_giam_gia * 1;
+					}
+					console.log('New order price: ' + g_func.money_format( gia_tri_don_hang ));
+//					jQuery('.cart-table-total .global-details-giamoi').html( g_func.money_format( gia_tri_don_hang ) );
 				}
 			}
 		}
