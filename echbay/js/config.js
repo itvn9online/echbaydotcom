@@ -415,12 +415,14 @@ function create_phone_click_to_call () {
 					if ( str2.length > 9 && str2.substr( 0, 1 ) * 1 == 0 ) {
 						str2 = str2.substr( 1 );
 					}
+					/*
 					if ( $('#cf_phone_country_code').val() == '' ) {
 						str2 = $('#cf_phone_country_code').attr('placeholder') + str2;
 					}
 					else {
 						str2 = $('#cf_phone_country_code').val() + str2;
 					}
+					*/
 				}
 				
 //				str += '<a href="tel:' + g_func.number_only( a[i], '/[^0-9\+]/g' ) + '" rel="nofollow">' + a[i] + '</a>' + "\n";
@@ -429,7 +431,7 @@ function create_phone_click_to_call () {
 		}
 	}
 	f.cf_call_hotline.value = $.trim( str );
-	f.cf_phone_country_code.value = $.trim( str2 );
+//	f.cf_phone_country_code.value = $.trim( str2 );
 	
 }
 
