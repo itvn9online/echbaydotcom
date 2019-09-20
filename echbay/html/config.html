@@ -431,7 +431,12 @@ div.gallery-add-to-og_image { display: block; }
 			</tr>
 			<tr>
 				<td class="t" valign="top">Mã điện thoại quốc gia</td>
-				<td class="i"><input type="text" name="cf_phone_country_code" id="cf_phone_country_code" value="{tmp.cf_phone_country_code}" placeholder="{aaa.cf_phone_country_code}" class="s" /></td>
+				<td class="i"><input type="text" name="cf_phone_country_code" id="cf_phone_country_code" value="{tmp.cf_phone_country_code}" placeholder="{aaa.cf_phone_country_code}" class="s" maxlength="5" /></td>
+			</tr>
+			<tr>
+				<td class="t" valign="top">Điện thoại kèm mã quốc gia</td>
+				<td class="i"><input type="hidden" name="cf_structured_data_phone" id="cf_structured_data_phone" value="{tmp.cf_structured_data_phone}" placeholder="+84987654321" class="n" />
+					<p class="description">Là số điện thoại bao gồm cả mã quốc gia trong đó, dùng cho trường hợp ở nước ngoài gọi về. Mục đích chủ yếu để Google và Facebook phân dịnh vùng miền cho website của bạn. Ví dụ: +84987654321.</p></td>
 			</tr>
 			<tr>
 				<td class="t" valign="top">Điện thoại</td>
@@ -443,7 +448,6 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t" valign="top">Hotline</td>
 				<td class="i"><textarea name="cf_hotline" id="cf_hotline">{tmp.cf_hotline}</textarea>
 					<textarea name="cf_call_hotline" id="cf_call_hotline" class="d-none">{tmp.cf_call_hotline}</textarea>
-					<input type="hidden" name="cf_structured_data_phone" value="{tmp.cf_structured_data_phone}" />
 					<p class="description">Có thể nhập nhiều số điện thoại, mỗi số cách nhau bởi một dấu xuống dòng.</p></td>
 				<!--
 				<td class="i"><input type="text" name="cf_hotline" id="cf_hotline" value="{tmp.cf_hotline}" class="m" maxlength="15" /></td>
