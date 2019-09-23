@@ -574,6 +574,11 @@ function EchBayThongTinSave ( $post_id ) {
 	EchBayThongTinRunSave( $eb_arr_phu_meta_box, $post_id );
 	
 	EchBayThongTinRunSave( $eb_arr_blog_2content_meta_box, $post_id );
+	
+	// xóa cache
+	_eb_remove_static_html( 'prod_link' . $post_id );
+	// sau đó nạp lại url
+	_eb_p_link( $post_id );
 }
 add_filter( 'save_post', 'EchBayThongTinSave' );
 
