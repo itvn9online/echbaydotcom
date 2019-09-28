@@ -92,20 +92,26 @@ echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 </script>
 <?php
+
 // do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
-if ( mtv_id == 0 ) {
+//if ( mtv_id == 0 ) {
+	// một số plugin nó load js qua hàm jquery luôn, nên cái này không bỏ được
+if ( 1 == 2 ) {
 ?>
 <script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js"></script>
 <script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js" defer></script>
 <?php
 }
+
 ?>
 <!-- HEAD by EchBay -->
 <?php echo $__cf_row['cf_js_head']; ?>
 <!-- // Global site format by EchBay -->
 <?php
 
+//echo 'aaaaaaaaaaaaaaaaaaaa';
 wp_head();
+//echo 'bbbbbbbbbbbbbbbbbbbb';
 
 
 

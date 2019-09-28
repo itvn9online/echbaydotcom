@@ -8,7 +8,8 @@
 
 
 // do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
-if ( mtv_id == 0 ) {
+//if ( mtv_id == 0 ) {
+if ( 1 == 2 ) {
 	if ($__cf_row['cf_fontawesome_v5'] == 1) {
 	
 	//echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
