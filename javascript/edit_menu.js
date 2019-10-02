@@ -2,7 +2,20 @@
 
 
 // thêm nút để add img, icon vào menu
+var add_media_for_menu = '';
+
+function WGR_add_img_to_menu ( img ) {
+	if ( img.split('wp-content/uploads/').length > 1 ) {
+		img = img.split('wp-content/uploads/')[1];
+	}
+	
+	WGR_event_add_img_edit_menu( add_media_for_menu, 'img', img.replace( web_link, '' ) );
+}
+
 function WGR_event_add_img_edit_menu ( jd, tai, add_lnk ) {
+	add_media_for_menu = jd;
+//	console.log( add_media_for_menu );
+	
 	var a = jQuery('#' + jd).val() || '',
 		str = '',
 		lnk = '';
@@ -12,7 +25,32 @@ function WGR_event_add_img_edit_menu ( jd, tai, add_lnk ) {
 		lnk = add_lnk;
 	}
 	else {
-		lnk = prompt('Liên kết/ Mã font:', '');
+		// v2 -> mở media
+		if ( tai == 'img' ) {
+			jQuery('#oi_admin_popup').show();
+			
+			if (gallery_has_been_load == false) {
+				gallery_has_been_load = true;
+				
+				ajaxl('gallery', 'oi_admin_popup', 9, function () {
+					// chỉ hiển thị option theo chỉ định
+					jQuery('#oi_admin_popup .eb-newgallery-option .gallery-add-to-menu-edit').show();
+					
+					gallery_has_been_load = false;
+				});
+			}
+		}
+		// v1
+		else {
+			lnk = prompt('Liên kết/ Mã font:', '');
+			
+			// kiểm tra nếu ở phần add icon mà người dùng add link -> chuyển sang dạng img luôn
+			if ( lnk != null ) {
+				if ( lnk.split('//').length > 1 ) {
+					tai = 'img';
+				}
+			}
+		}
 		
 		//
 		if ( lnk == '' || lnk == null ) {

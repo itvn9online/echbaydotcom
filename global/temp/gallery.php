@@ -50,6 +50,7 @@ function WGR_gallery_by_post_edit ( $sql ) {
 			
 			<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'_eb_category_avt\', 1);" class="gallery-add-to-category_avt small">Đặt làm Ảnh đại diện (Banner)</div>
 			<div onClick="EBA_add_img_logo(\'' . $a_full[0] . '\', \'_eb_category_favicon\');" class="gallery-add-to-category_favicon small">Đặt làm Ảnh thu gọn (Favicon)</div>
+			<div onClick="WGR_add_img_to_menu(\'' . $a_full[0] . '\');" class="gallery-add-to-menu-edit small">Thêm vào menu</div>
 		</div>
 		<div class="eb-newgallery-bg" style="background-image:url(\'' . $a_thumb[0] . '\');">&nbsp;</div>
 	</div>
