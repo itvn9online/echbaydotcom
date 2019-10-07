@@ -6,7 +6,7 @@ var add_media_for_menu = '';
 
 function WGR_add_img_to_menu ( img ) {
 	if ( img.split('wp-content/uploads/').length > 1 ) {
-		img = img.split('wp-content/uploads/')[1];
+		img = 'wp-content/uploads/' + img.split('wp-content/uploads/')[1];
 	}
 	
 	WGR_event_add_img_edit_menu( add_media_for_menu, 'img', img.replace( web_link, '' ) );
