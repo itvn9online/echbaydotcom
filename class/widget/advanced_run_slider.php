@@ -51,9 +51,16 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		//
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('autoplay'), $autoplay, 'Tự động chạy' );
-		_eb_widget_echo_widget_input_title( $this->get_field_name('speedNext'), $speedNext, 'Giãn cách chuyển slider nếu tính năng tự động chạy được bật', 'Nhập số giây (số hoặc số thập phân)', '', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('speedNext'),
+			$speedNext,
+			'Giãn cách chuyển slider nếu tính năng tự động chạy được bật',
+			'Nhập số giây (số hoặc số thập phân)',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('swipemobile'), $swipemobile, 'Cho phép chuyển ảnh trên mobile bẳng touch' );
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('buttonListNext'), $buttonListNext, 'Hiển thị nút bấm chuyển ảnh (nút nhỏ hình tròn ở giữa slider)' );
@@ -74,9 +81,16 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowRight'), $sliderArrowRight, 'Icon cho nút bấm bên phải', 'fa-angle-right' );
 		echo '<p>Các icon trên web sử dụng Font Awesome tại đây: <a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank" rel="nofollow">https://fontawesome.com/icons?d=gallery&m=free</a></p>';
 		
-		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowSize'), $sliderArrowSize, 'Kích thước cho nút bấm (font-size), tính theo pixel (px)', '30', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('sliderArrowSize'),
+			$sliderArrowSize,
+			'Kích thước cho nút bấm (font-size), tính theo pixel (px)',
+			'30',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		
 		
 		
@@ -86,34 +100,76 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 		
 		
-		_eb_widget_echo_widget_input_title( $this->get_field_name('speed'), $speed, 'Tốc độ chuyển slider', 'Nhập số giây', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('speed'),
+			$speed,
+			'Tốc độ chuyển slider',
+			'Nhập số giây',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		
 		
 		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnail'), $thumbnail, 'Tạo ảnh nhỏ (thumbnail)' );
-		_eb_widget_echo_widget_input_title( $this->get_field_name('thumbnailWidth'), $thumbnailWidth, 'Chiều rộng của bộ ảnh nhỏ', '90', array(
-			'type' => 'number'
-		) );
-		_eb_widget_echo_widget_input_title( $this->get_field_name('thumbnailHeight'), $thumbnailHeight, 'Chiều cao của bộ ảnh nhỏ', '90', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('thumbnailWidth'),
+			$thumbnailWidth,
+			'Chiều rộng của bộ ảnh nhỏ',
+			'90',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('thumbnailHeight'),
+			$thumbnailHeight,
+			'Chiều cao của bộ ảnh nhỏ',
+			'90',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('thumbnailSlider'), $thumbnailSlider, 'Tạo slider cho thumbnail' );
 		
 		
 		
-		_eb_widget_echo_widget_input_title( $this->get_field_name('visible'), $visible, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider', '1', array(
-			'type' => 'number'
-		) );
-		_eb_widget_echo_widget_input_title( $this->get_field_name('visible_mobile'), $visible_mobile, 'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider trên bản mobile (chiều rộng thiết bị nhỏ hơn 768px)', '', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('visible'),
+			$visible,
+			'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider',
+			'1',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('visible_mobile'),
+			$visible_mobile,
+			'Số lượng thẻ LI muốn hiển thị trên mỗi loạt slider trên bản mobile (chiều rộng thiết bị nhỏ hơn 768px)',
+			'',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		
 		
-		_eb_widget_echo_widget_input_title( $this->get_field_name('scrollNum'), $scrollNum, 'Số lượng ảnh hiển thị sau mỗi lượt chuyển ảnh', '', array(
-			'type' => 'number'
-		) );
+		_eb_widget_echo_widget_input_title(
+			$this->get_field_name('scrollNum'),
+			$scrollNum,
+			'Số lượng ảnh hiển thị sau mỗi lượt chuyển ảnh',
+			'',
+			'',
+			array(
+				'type' => 'number'
+			)
+		);
 		
 		
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('showRandom'), $showRandom, 'Kích hoạt ngẫu nhiên 1 ảnh bất kỳ trong slider' );
@@ -235,12 +291,30 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		}
 		*/
 		
+//		print_r($this);
+		
 		//
 		echo '<script>
-jQuery(window).on("load", function () {
-//jQuery(document).ready(function() {
+function WGR_advanced_run_slider_' . $this->number . ' ( i ) {
+	if ( typeof i != "number" ) {
+		i = 50;
+	}
+	
+	if ( i < 0 ) {
+		return false;
+	}
+	
+	if ( typeof jQuery != "function" || typeof jEBE_timeout_slider != "function" ) {
+		setTimeout(function () {
+			WGR_advanced_run_slider_' . $this->number . '( i - 1 );
+		}, 100);
+		
+		return false;
+	}
+	
 	jEBE_timeout_slider( "' . $id_class . '", {' . $code . '} );
-});
+}
+WGR_advanced_run_slider_' . $this->number . '();
 		</script>';
 	}
 }

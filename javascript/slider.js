@@ -70,7 +70,7 @@ function jEBE_timeout_slider ( jd, conf, timeo, callBack ) {
 	
 	// hẹn giờ mặc định để tạo slider
 	if ( typeof timeo != 'number' ) {
-		timeo = 3000;
+		timeo = 1000;
 	}
 	
 	
@@ -118,19 +118,19 @@ function jEBE_timeout_slider ( jd, conf, timeo, callBack ) {
 		}
 		
 		// chỉnh lại chiều cao cho LI
-		if ( timeo > 1000 ) {
+		if ( timeo > 200 ) {
 			setTimeout(function () {
 				jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
 //			}, timeo/ 3 * 2 );
-			}, 1000 );
+			}, 200 );
 		}
 		
 		//
-		if ( timeo > 2000 ) {
+		if ( timeo > 500 ) {
 			setTimeout(function () {
 				jQuery( jd ).height( jQuery( jd + ' li:first' ).height() );
 //			}, timeo/ 3 * 2 );
-			}, 2000 );
+			}, 500 );
 		}
 	}
 	
