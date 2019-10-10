@@ -107,6 +107,7 @@ class ___echbay_widget_home_list_blog extends WP_Widget {
 				$default_array['hide_description'] = isset( $instance ['hide_description'] ) ? $instance ['hide_description'] : 'off';
 				$default_array['hide_info'] = isset( $instance ['hide_info'] ) ? $instance ['hide_info'] : 'off';
 				$default_array['run_slider'] = isset( $instance ['run_slider'] ) ? $instance ['run_slider'] : 'off';
+				$default_array['show_post_content'] = 'off';
 				
 				// off hết đống này đi
 				$default_array['content_only'] = 'off';

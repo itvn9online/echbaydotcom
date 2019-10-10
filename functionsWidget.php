@@ -821,6 +821,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		}
 		
 		if ( isset( $instance ['show_post_content'] ) && $instance ['show_post_content'] == 'on' ) {
+//			print_r( $instance ); echo 'aaaaaaaaaaa';
 			$html_node = str_replace( '{tmp.trv_gioithieu}', '{tmp.trv_gioithieu}{tmp.post_content}', $html_node );
 		}
 	}
