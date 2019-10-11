@@ -710,6 +710,7 @@ function echbay_theme_setup() {
 		'home_sidebar' => 'Sidebar cho trang chủ (home)',
 		'home_content_top_sidebar' => 'Sidebar cho phần top nội dung của trang chủ (home)',
 		'home_content_sidebar' => 'Sidebar cho phần footer nội dung của trang chủ (home)',
+		'home_content_bottom_sidebar' => 'Sidebar cho phần bottom nội dung của trang chủ (home)',
 		
 		'category_sidebar' => 'Sidebar cho trang danh sách sản phẩm (category)',
 		'category_top_content_sidebar' => 'Sidebar cho phần top của trang danh sách sản phẩm (category)',
