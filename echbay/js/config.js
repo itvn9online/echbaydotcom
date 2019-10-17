@@ -180,6 +180,22 @@ function create_deault_css () {
 	$('#cf_default_amp_bg').val( $('#cf_default_bg').val() || '' );
 	
 	
+	// thiết lập màu mặc định cho toàn bộ hệ thống
+	var root_color = [];
+	root_color.push('--default-bg: ' + f.cf_default_bg.value);
+	root_color.push('--main-bg: ' + f.cf_default_bg.value);
+	root_color.push('--default2-bg: ' + f.cf_default_2bg.value);
+	root_color.push('--sub-bg: ' + f.cf_default_2bg.value);
+	root_color.push('--main-color: ' + f.cf_default_color.value);
+	root_color.push('--default-color: ' + f.cf_default_color.value);
+	if ( f.mcb2__custom_css_in_js__color.value != '' ) {
+		root_color.push('--default2-color: ' + f.mcb2__custom_css_in_js__color.value);
+		root_color.push('--sub-color: ' + f.mcb2__custom_css_in_js__color.value);
+	}
+	str += ':root {' + root_color.join(';') + '}';
+	// cách sử dụng trong CSS: background: var(--default-bg); || color: var(--default-color);
+	
+	
 	// chiều cao của big_banner -> chỉ áp dụng cho bản PC
 	a = f.cf_top_banner_size.value;
 	

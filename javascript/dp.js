@@ -186,6 +186,15 @@ function ___eb_details_slider_v2 () {
 //	console.log( slider_len );
 //	console.log( html_for_get );
 	
+	
+	// tạo lại hiệu ứng cho phần gallery của (nếu có)
+	$('#content_img_product .gallery dl.gallery-item .gallery-icon a').click(function () {
+		return false;
+	});
+	// https://www.jqueryscript.net/lightbox/Responsive-Touch-enabled-jQuery-Image-Lightbox-Plugin.html
+//	var gallery = $('#content_img_product .gallery dl.gallery-item .gallery-icon a').simpleLightbox();
+	
+	
 	// -> nếu vẫn không có -> hủy slider
 	if ( slider_len <= 1 ) {
 		jQuery('.hide-if-slider-null').hide();
