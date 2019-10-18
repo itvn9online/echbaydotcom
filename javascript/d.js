@@ -551,8 +551,13 @@ jQuery('a.phone-to-cell').each(function() {
 jQuery('a').each(function() {
 	var a = jQuery(this).attr('href') || '';
 	
-	if ( a != '' && a .split('tel:').length > 1 ) {
-		$(this).addClass('gg-phone-conversion');
+	if ( a != '' ) {
+		if ( a.split('tel:').length > 1 ) {
+			$(this).addClass('gg-phone-conversion');
+		}
+		else if ( a.split('mailto:').length > 1 ) {
+			$(this).addClass('gg-mailto-conversion');
+		}
 	}
 });
 
@@ -572,6 +577,28 @@ jQuery('a.gg-phone-conversion').click(function () {
 	
 	// khi người dùng nhấp gọi điện
 	_global_js_eb.fb_track( 'Call' );
+	
+	
+	//
+//	return false;
+});
+
+jQuery('a.gg-mailto-conversion').click(function () {
+	var a = jQuery(this).attr('href') || '';
+	
+	// nếu có chức năng kiểm tra lượt bấm gọi của gg -> nạp vào
+	_global_js_eb.gg_track( a );
+	
+	_global_js_eb.ga_event_track( 'Click to mailto', a, '', {
+//		'category' : '',
+//		'label' : '',
+//		'action' : 'click_to_call'
+		'action' : a
+	});
+	
+	
+	// khi người dùng nhấp gọi điện
+	_global_js_eb.fb_track( 'Mailto' );
 	
 	
 	//
