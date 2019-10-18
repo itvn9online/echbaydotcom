@@ -240,6 +240,13 @@
 	background: linear-gradient( top, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 }
 .FontAwesome { font-family: FontAwesome, "Font Awesome 5 Free"; }
+/* Using root color */
+.using-root-color {
+	background: var(--default-bg);
+	background: var(--default2-bg);
+	color: var(--default-color);
+	color: var(--default2-color);
+}
 /* */
 #aabbcc input::placeholder {
 }

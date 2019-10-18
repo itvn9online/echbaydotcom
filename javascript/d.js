@@ -548,6 +548,14 @@ jQuery('a.phone-to-cell').each(function() {
 }).removeClass('phone-to-cell').addClass('gg-phone-conversion');
 
 // track for phone or add to cart
+jQuery('a').each(function() {
+	var a = jQuery(this).attr('href') || '';
+	
+	if ( a != '' && a .split('tel:').length > 1 ) {
+		$(this).addClass('gg-phone-conversion');
+	}
+});
+
 jQuery('a.gg-phone-conversion').click(function () {
 	var a = jQuery(this).attr('href') || '';
 	
