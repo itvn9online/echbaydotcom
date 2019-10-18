@@ -565,7 +565,8 @@ jQuery('a.gg-phone-conversion').click(function () {
 	_global_js_eb.ga_event_track( 'Click to phone', a, '', {
 //		'category' : '',
 //		'label' : '',
-		'action' : 'click_to_call'
+//		'action' : 'click_to_call'
+		'action' : a
 	});
 	
 	

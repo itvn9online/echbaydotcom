@@ -3175,7 +3175,7 @@ var _global_js_eb = {
 				ops['action'] = eventAction;
 			}
 			if ( typeof ops['category'] == 'undefined' ) {
-				ops['category'] = eventCategory;
+				ops['category'] = eventCategory + ' (EBv2)';
 			}
 			if ( typeof ops['label'] == 'undefined' ) {
 				ops['label'] = eventLabel;

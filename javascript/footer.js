@@ -225,8 +225,8 @@ function WGR_click_add_product_to_favorite() {
 
             //
             _global_js_eb.ga_event_track('', '', '', {
-                //				'category' : '',
-                //				'label' : '',
+//				'category' : '',
+//				'label' : '',
                 'action': 'add_to_wishlist'
             });
         }
