@@ -342,7 +342,7 @@ $strAjaxLink .= '&trang=' . $trang;
 ?>
 
 <div class="class-for-<?php echo $by_post_type; ?>">
-	<div class="quick-show2-if-post">
+	<div class="quick-show2-if-post-xoa">
 		<div class="orgcolor">* Bạn có thể chọn và lọc sản phẩm theo danh mục ở trên, sau đó bấm chọn nút Export sản phẩm ở bên để có danh sách sản phẩm phù hợp giúp cho việc chạy quảng cáo hiệu quả hơn.</div>
 		<br>
 		<div class="text-right cf div-inline-block">
@@ -359,7 +359,7 @@ $strAjaxLink .= '&trang=' . $trang;
 			$export_token = _eb_mdnam( $_SERVER['HTTP_HOST'] );
 			
 			foreach ( $arr_button_export as $k => $v ) {
-				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&user_export=' . mtv_id . '&trang=' . $trang . '&limit=' . $threadInPage . '" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
+				echo '<div><a href="' . web_link . 'eb_export_products?export_type=' . $k . '&token=' . $export_token . '&by_cat_id=' . $by_cat_id . '&cats_type=' . $cats_type . '&by_post_type=' . $by_post_type . '&user_export=' . mtv_id . '&trang=' . $trang . '&limit=' . $threadInPage . '" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
 			}
 			
 			?>

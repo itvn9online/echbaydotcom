@@ -98,16 +98,21 @@ $arr_for_slect_data = array(
 
 //
 $header_name = 'products';
+$by_post_type = isset( $_GET['by_post_type'] ) ? trim( $_GET['by_post_type'] ) : 'post';
+
+//
+$cats_type = isset( $_GET['cats_type'] ) ? trim( $_GET['cats_type'] ) : 'category';
+//$rssCacheFilter .= '-cat_type' . $cats_type;
+
+if ( $cats_type == 'blogs' ) {
+	$by_post_type = 'blog';
+}
 
 
 // lọc theo cat id
 $by_cat_id = isset( $_GET['by_cat_id'] ) ? (int) $_GET['by_cat_id'] : 0;
 if ( $by_cat_id > 0 ) {
 	$rssCacheFilter .= '-cat' . $by_cat_id;
-	
-	//
-	$cats_type = isset( $_GET['cats_type'] ) ? trim( $_GET['cats_type'] ) : 'category';
-//	$rssCacheFilter .= '-cat_type' . $cats_type;
 	
 	
 	//
@@ -125,7 +130,7 @@ if ( $by_cat_id > 0 ) {
 	);
 	
 	$arrs_cats = get_categories( $arrs_cats );
-//	print_r( $arrs_cats );
+//	print_r( $arrs_cats ); exit();
 	
 	$by_child_cat_id = '';
 	if ( ! empty( $arrs_cats ) ) {
@@ -159,7 +164,7 @@ if ( $export_type == 'facebook'
 || $export_type == 'google' ) {
 	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 	
-	$sql = WGR_export_product_to_xml( $arr_for_slect_data );
+	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 //	print_r( $sql );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_facebook.php';
@@ -169,18 +174,20 @@ else if ( $export_type == 'csv' ) {
 		$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 //	}
 	
-	$sql = WGR_export_product_to_xml( $arr_for_slect_data );
+	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 //	print_r( $sql );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_csv.php';
 }
 else if ( $export_type == 'woo' ) {
-	$sql = WGR_export_product_to_xml( $arr_for_slect_data, 'product' );
+	$by_post_type = 'product';
+	
+	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_woo.php';
 }
 else {
-	$sql = WGR_export_product_to_xml( $arr_for_slect_data );
+	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_default.php';
 }
