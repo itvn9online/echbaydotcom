@@ -601,7 +601,16 @@ if ( $main_content == false ) {
 		
 		//
 		$arr_main_content['tmp.str_page'] = $str_page;
-		$arr_main_content['tmp.home_cf_title'] = $__cf_row['cf_set_link_for_h1'] == 1 ? '<a href="' . $url_og_url . '" rel="nofollow">' . $__category->name . '</a>' : $__category->name;
+		if ( $__cf_row['cf_set_link_for_h1'] == 1 ) {
+			$h1_rel_nofollow = ' rel="nofollow"';
+			if ( $__cf_row['cf_set_nofollow_for_h1'] != 1 ) {
+				$h1_rel_nofollow = '';
+			}
+			$arr_main_content['tmp.home_cf_title'] = '<a href="' . $url_og_url . '"' . $h1_rel_nofollow . '>' . $__category->name . '</a>';
+		}
+		else {
+			$arr_main_content['tmp.home_cf_title'] = $__category->name;
+		}
 		
 		// mặt nạ cho nội dung
 		$arr_main_content['tmp.thread_content_mask'] = $__cf_row['cf_set_mask_for_details'] == 1 ? ' active-content-mask' : '';

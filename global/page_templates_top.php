@@ -10,7 +10,11 @@ $is_page_templates = true;
 
 // thiết lập tiêu đề theo mẫu chung
 if ( $__cf_row['cf_set_link_for_h1'] == 1 ) {
-	$trv_h1_tieude = '<a href="' . _eb_p_link( $post->ID ) . '" rel="nofollow">' . $post->post_title . '</a>';
+	$h1_rel_nofollow = ' rel="nofollow"';
+	if ( $__cf_row['cf_set_nofollow_for_h1'] != 1 ) {
+		$h1_rel_nofollow = '';
+	}
+	$trv_h1_tieude = '<a href="' . _eb_p_link( $post->ID ) . '"' . $h1_rel_nofollow . '>' . $post->post_title . '</a>';
 }
 else {
 	$trv_h1_tieude = $post->post_title;

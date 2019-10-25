@@ -236,6 +236,7 @@ $__cf_row_default = array(
 	
 	// nhúng URL vào các thẻ H1 ở trang chi tiết sản phẩm, bài viết, danh mục...
 	'cf_set_link_for_h1' => 1,
+	'cf_set_nofollow_for_h1' => 1,
 	
 	// Tạo mặt nạ bảo vệ copy nội dung theo cách thông thường
 	'cf_set_mask_for_details' => 'off',
