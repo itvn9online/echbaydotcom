@@ -2,13 +2,13 @@
 
 
 //
-//$eb_user_info = wp_get_current_user();
-//print_r( $eb_user_info );
-//print_r( $_GET );
+$eb_user_info = wp_get_current_user();
+print_r( $eb_user_info );
+print_r( $_GET );
 
 //
 if ( mtv_id == 0 ) {
-	die('For user only! Please login to check this function...');
+	die(_eb_full_url() . '<br>For user only! Please login to check this function...');
 }
 
 
