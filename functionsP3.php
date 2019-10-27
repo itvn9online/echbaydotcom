@@ -869,3 +869,123 @@ function WGR_path_to_lnk ( $v ) {
 	return str_replace( ABSPATH, web_link, str_replace( $a, web_link, $v ) );
 }
 
+
+// bóc tách dữ liệu trong phần đơn hàng để xử lý
+function WGR_decode_for_products_cart ( $a ) {
+	if ( $a == '' ) {
+		return NULL;
+	}
+	
+//	echo $a . '<br>' . "\n\n";
+	
+//	$a = json_decode( $a, JSON_UNESCAPED_SLASHES );
+//	print_r( $a );
+	
+//	$a = stripcslashes($a);
+//	echo $a . '<br>' . "\n\n";
+//	$a = html_entity_decode($a, ENT_QUOTES, 'UTF-8');
+//	echo $a . '<br>' . "\n\n";
+	
+	// cái urldecode nó lỗi tiếng Việt nên phải xử lý kiểu này
+	$arr = array(
+		'%28' => '(',
+		'%29' => ')',
+		'%3C' => '<',
+		'%3E' => '>',
+		'%20' => ' ',
+		'%5B' => '[',
+		'%5D' => ']',
+		'%7B' => '{',
+		'%7D' => '}',
+		'%2C' => ',',
+		'%22' => '"',
+		'%3A' => ':'
+	);
+	foreach ( $arr as $k => $v ) {
+		$a = str_replace( $k, $v, $a );
+	}
+	
+//	$a = urldecode( $a );
+//	echo $a . '<br>' . "\n\n";
+//	echo urldecode($a);
+	
+	// cắt bỏ phần name đi, vì nó hay bị lỗi chữ tiếng Việt
+	$a = explode( '"name":"', $a );
+//	print_r( $a );
+	foreach ( $a as $k => $v ) {
+		if ( $k > 0 ) {
+			$v = strstr( $v, '"slug":"' );
+			$a[$k] = $v;
+		}
+	}
+//	print_r( $a );
+	$a = implode( '', $a );
+//	echo $a . '<br>' . "\n\n";
+	
+	try {
+		$a = json_decode( $a );
+		foreach ( $a as $k => $v ) {
+			if ( isset( $v->color ) && $v->color != '' ) {
+				$v->color = html_entity_decode( preg_replace("/%u([0-9a-f]{3,4})/i", "&#x\\1;", $v->color), ENT_QUOTES, 'UTF-8' );
+			}
+		}
+	} catch (Exception $e) {
+		$a = NULL;
+	}
+	
+	return $a;
+}
+
+function WGR_decode_for_discount_cart ( $a ) {
+	if ( $a == '' ) {
+		return NULL;
+	}
+	$re = NULL;
+	
+//	echo $str . '<br>' . "\n\n";
+	
+//	echo html_entity_decode($a) . '<br>' . "\n\n";
+	$a = html_entity_decode($a, ENT_QUOTES, 'UTF-8');
+//	echo $a . '<br>' . "\n\n";
+	$a = urldecode( $a );
+//	echo $a . '<br>' . "\n\n";
+	
+	// bóc tách lấy phần discount
+	$a = explode( '","hd_discount_code":"', $a );
+//	print_r( $a );
+	if ( count( $a ) > 1 ) {
+		$a = explode( '"', $a[1] );
+		
+		//
+		$a = $a[0];
+		if ( $a != '' ) {
+			$arr_discount_code = get_categories( array(
+				'name' => $a,
+				'orderby' => 'id',
+				'hide_empty' => 0,
+				'taxonomy' => 'discount_code'
+			) );
+//			print_r( $arr_discount_code );
+			
+			//
+			if ( ! empty( $arr_discount_code ) ) {
+//				echo $arr_discount_code[0]->term_id . '<br>' . "\n";
+				
+				$arr_discount_code[0]->coupon_giagiam = _eb_get_cat_object( $arr_discount_code[0]->term_id, '_eb_category_coupon_giagiam' );
+				$arr_discount_code[0]->coupon_phantramgiam = _eb_get_cat_object( $arr_discount_code[0]->term_id, '_eb_category_coupon_phantramgiam' );
+				
+//				print_r( $arr_discount_code );
+				
+				$re = $arr_discount_code;
+			}
+		}
+		
+//		return $a;
+	}
+	
+	return $re;
+}
+
+
+
+

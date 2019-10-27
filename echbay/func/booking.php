@@ -224,6 +224,36 @@ $arr = array(
 //print_r( $arr ); exit();
 
 
+// xác định size, màu sắc để email cho khách
+$decode_order_product = WGR_decode_for_products_cart( $product_js_list );
+//print_r( $decode_order_product );
+
+// xác định mã giảm giá nếu có
+$decode_order_discount = WGR_decode_for_discount_cart( $arr['order_customer'] );
+
+$discount_code = '';
+$discount_price = 0;
+if ( $decode_order_discount != NULL ) {
+	$decode_order_discount = $decode_order_discount[0];
+	
+	$discount_code = $decode_order_discount->name;
+	if ( $decode_order_discount->coupon_giagiam > 0 ) {
+		$discount_price = $decode_order_discount->coupon_giagiam;
+	}
+	else if ( $decode_order_discount->coupon_phantramgiam > 0 ) {
+		$discount_price = $decode_order_discount->coupon_phantramgiam . '%';
+	}
+}
+/*
+if ( mtv_id == 1 ) {
+	echo $discount_price;
+	print_r( $decode_order_discount );
+	exit();
+}
+*/
+
+
+
 $hd_id = EBE_set_order( $arr );
 if ( $hd_id == 0 ) {
 //	EBE_tao_bang_hoa_don_cho_echbay_wp();
@@ -297,13 +327,33 @@ while ( $sql->have_posts() ) {
 		if ( $masanpham == '' ) {
 			$masanpham = $chitiet->ID;
 		}
-	//	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
-		$trv_color = _eb_get_post_object( $chitiet->ID, '_eb_product_color' );
+		
+		//
+		$trv_color = '';
+		$trv_size = $arr_shop_cart_size [$chitiet->ID];
+		if ( $decode_order_product != NULL ) {
+			foreach ( $decode_order_product as $v ) {
+				if ( $v->id == $chitiet->ID ) {
+					$trv_color = $v->color;
+					
+					//
+					if ( $trv_size == '' ) {
+						$trv_size = $v->size;
+					}
+					
+					break;
+				}
+			}
+		}
+		else {
+		//	$trv_color = _eb_get_post_meta( $chitiet->ID, '_eb_product_color', true );
+			$trv_color = _eb_get_post_object( $chitiet->ID, '_eb_product_color' );
+		}
 		
 		//
 		$product_list .= 'Mã sản phẩm: <strong>' . $masanpham . '</strong><br>
 Tên sản phẩm: <a href="' . web_link . '?p=' . $chitiet->ID . '" target="_blank">' . $chitiet->post_title . '</a><br>
-Size: ' . $arr_shop_cart_size [$chitiet->ID] . '<br>
+Size: ' . $trv_size . '<br>
 Màu sắc: ' . $trv_color . '<br>
 Giá cũ: ' . number_format ( $trv_giaban ) . 'đ<br>
 Giá mới: <strong>' . number_format ( $trv_giamoi ) . '</strong>đ<br>
@@ -369,6 +419,17 @@ foreach ( $arr as $k => $v ) {
 
 
 
+//
+if ( strstr( $discount_price, '%' ) == true ) {
+//	if ( mtv_id == 1 ) {
+	$discount_price = str_replace( '%', '', $discount_price );
+//	echo $discount_price . '<br>' . "\n";
+	$discount_price = $tong_tien/ 100 * $discount_price;
+//	echo $discount_price . '<br>' . "\n";
+//	exit();
+//	}
+}
+
 
 
 // Gửi email thông báo
@@ -380,6 +441,9 @@ $message = EBE_html_template( WGR_get_html_template_lang( 'booking_mail', 'booki
 		'tmp.date_oder' => date ( 'd-m-Y', $date_time ),
 		'tmp.hd_id' => $hd_id,
 		'tmp.hd_mahoadon' => $hd_mahoadon,
+		
+		'tmp.discount_code' => $discount_code,
+		'tmp.discount_price' => number_format( $discount_price ),
 		
 		'tmp.t_diachi' => $t_diachi,
 		'tmp.t_ghichu' => $t_ghichu,

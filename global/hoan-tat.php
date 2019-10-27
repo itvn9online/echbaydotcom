@@ -202,6 +202,27 @@ $main_content = EBE_html_template( WGR_get_html_template_lang( 'booking_done', '
 
 
 
+// xác định mã giảm giá nếu có
+$decode_order_discount = WGR_decode_for_discount_cart( $current_tv_object );
+//print_r( $decode_order_discount );
+
+$discount_code = '';
+$discount_price = 0;
+if ( $decode_order_discount != NULL ) {
+	$decode_order_discount = $decode_order_discount[0];
+	
+	$discount_code = $decode_order_discount->name;
+	if ( $decode_order_discount->coupon_giagiam > 0 ) {
+		$discount_price = $decode_order_discount->coupon_giagiam;
+	}
+	else if ( $decode_order_discount->coupon_phantramgiam > 0 ) {
+		$discount_price = $decode_order_discount->coupon_phantramgiam . '%';
+	}
+}
+
+
+
+
 // thêm mã JS vào luôn trong phần PHP, để HTML làm bản dịch
 $main_content .= '<script type="text/javascript">
 var current_hd_id = "' . $hd_id . '",
@@ -212,6 +233,7 @@ var current_hd_id = "' . $hd_id . '",
 	arr_hd_trangthai = ' .json_encode( $arr_hd_trangthai ) . ',
 	current_tv_object = "' . $current_tv_object . '",
 	current_hd_object = "' . $current_hd_object . '",
+	discount_price = "' . $discount_price . '",
 	cf_google_sheet_backup = "' . $__cf_row['cf_google_sheet_backup'] . '",
 	arr_lang_hoan_tat = {
 		"cart_done_madon" : "' . _eb_str_block_fix_content( EBE_get_lang('cart_done_madon') ) . '",

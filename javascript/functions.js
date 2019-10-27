@@ -284,6 +284,24 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 //		}
 	}
 	
+	//
+	if ( typeof discount_price != 'undefined' && discount_price != '' ) {
+		if ( discount_price.split('%').length > 1 ) {
+			discount_price = discount_price.replace( '%', '' ) * 1;
+			
+			if ( discount_price > 0 ) {
+				tong_tien = tong_tien - ( tong_tien/ 100 * discount_price );
+			}
+		}
+		else {
+			discount_price *= 1;
+			
+			if ( discount_price > 0 ) {
+				tong_tien -= discount_price;
+			}
+		}
+	}
+	
 	// fb track -> by products
 	_global_js_eb.fb_track( "Purchase", {
 		content_ids: arr_ids,
