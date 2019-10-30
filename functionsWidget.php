@@ -975,12 +975,15 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		
 		// thiết lập rel cho link
 		$blog_link_option = '';
+		$widget_title_option = '';
 		if ( $rel_xfn != '' ) {
 			$blog_link_option .= ' rel="' . $rel_xfn . '"';
+			$widget_title_option .= ' rel="' . $rel_xfn . '"';
 		}
 		// mở link trong tab mới
 		if ( $open_target == 'on' ) {
 			$blog_link_option .= ' target="_blank"';
+			$widget_title_option .= ' target="_blank"';
 		}
 		// thêm class để mở dưới dạng video youtube
 		if ( $open_youtube == 'on' ) {
@@ -1011,6 +1014,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		
 		// thay thế link
 		$show_content = str_replace( '{tmp.blog_link_option}', $blog_link_option, $show_content );
+		$show_content = str_replace( '{tmp.widget_title_option}', $widget_title_option, $show_content );
 		
 		// hiển thị nội dung
 		echo $show_content;
