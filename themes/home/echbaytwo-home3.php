@@ -113,7 +113,7 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 					
 					
 					// Lấy theo mẫu của widget #home_product
-					echo WGR_show_home_node( array(
+					$show_content = WGR_show_home_node( array(
 						'tmp.cat_id' => $k,
 						'tmp.cat_link' => $cat_link,
 						'tmp.cat_name' => $home_detauls_categories->name,
@@ -144,6 +144,10 @@ if ( $__cf_row['cf_num_home_list'] > 0 ) {
 						'tmp.max_width' => '',
 					) );
 					*/
+					
+					//
+					$show_content = str_replace( '{tmp.widget_title_option}', '', $show_content );
+					echo $show_content;
 					
 				}
 				else {

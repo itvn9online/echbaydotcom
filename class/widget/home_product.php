@@ -224,7 +224,7 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		echo '<div class="' . $custom_style . '">';
 		
 		//
-		echo WGR_show_home_node( array(
+		$show_content = WGR_show_home_node( array(
 			'tmp.cat_id' => $cat_ids,
 			'tmp.cat_link' => $cat_link != '' ? $cat_link : 'javascript:;',
 			'tmp.cat_name' => $cat_name,
@@ -257,6 +257,24 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 			'tmp.max_width' => $max_width,
 		) );
 		*/
+		
+		//
+		$rel_xfn = isset( $instance ['rel_xfn'] ) ? $instance ['rel_xfn'] : '';
+		$open_target = isset( $instance ['open_target'] ) ? $instance ['open_target'] : 'off';
+		$widget_title_option = '';
+		if ( $rel_xfn != '' ) {
+			$widget_title_option .= ' rel="' . $rel_xfn . '"';
+		}
+		// mở link trong tab mới
+		if ( $open_target == 'on' ) {
+			$widget_title_option .= ' target="_blank"';
+		}
+		
+		// thay thế link
+		$show_content = str_replace( '{tmp.widget_title_option}', $widget_title_option, $show_content );
+		
+		// hiển thị nội dung
+		echo $show_content;
 		
 		//
 		echo '</div>';
