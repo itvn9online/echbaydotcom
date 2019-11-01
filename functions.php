@@ -218,6 +218,7 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
                     $__cf_row['cf_default_css'] .= '.thread-list li[data-id="' . $post->ID . '"]:hover .thread-list-avt{background-image:url("' . $img_hover . '") !important}';
                 }
             }
+			
 
 
             // tags
@@ -235,16 +236,16 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
             $post->trv_luotxem = $post->trv_xem;
 
             //
-            $post->trv_giaban = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_oldprice'));
+            $post->giaban = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_oldprice'));
 
-            $post->trv_giamoi = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_price'));
+            $post->giamoi = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_price'));
 
-            if ($post->trv_giaban <= $post->trv_giamoi) {
-                $post->trv_giaban = 0;
+            if ($post->giaban <= $post->giamoi) {
+                $post->giaban = 0;
             }
 
-            $post->trv_num_giacu = $post->trv_giaban;
-            $post->trv_num_giamoi = $post->trv_giamoi;
+            $post->trv_num_giacu = $post->giaban;
+            $post->trv_num_giamoi = $post->giamoi;
 
             //
             $post->trv_color_count = 1;
@@ -252,19 +253,55 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
             $post->trv_trangthai = 1;
 //			$post->trv_ngayhethan = date_time;
             $post->trv_ngayhethan = '';
+			
+			
+			
+			// chức năng cập nhật lại giá khi hết hạn
+			if ( $__cf_row['cf_update_price_if_hethan'] == 1 ) {
+				$_eb_product_ngayhethan = _eb_get_post_object( $post->ID, '_eb_product_ngayhethan' );
+//				echo $_eb_product_ngayhethan . '<br>';
+				$_eb_product_giohethan = _eb_get_post_object( $post->ID, '_eb_product_giohethan' );
+				if ( $_eb_product_ngayhethan != '' ) {
+					if ( $_eb_product_giohethan == '' ) {
+						$_eb_product_giohethan = '23:59';
+					}
+					
+					// kiểm tra định dạng này tháng
+					$check_dinh_dang_ngay = explode( '/', $_eb_product_ngayhethan );
+					
+					// định dạng chuẩn là: YYYY/MM/DD
+					if ( count( $check_dinh_dang_ngay ) == 3 && strlen( $check_dinh_dang_ngay[0] ) == 4 ) {
+						$trv_ngayhethan = $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan;
+//						echo $trv_ngayhethan;
+						$trv_ngayhethan = strtotime( $trv_ngayhethan );
+//						echo $trv_ngayhethan . '<br>';
+						
+						// nếu sản phẩm hết hạn
+						if ( $trv_ngayhethan > 0 && $trv_ngayhethan < date_time ) {
+							if ( $post->giaban > 0 && $post->giaban > $post->giamoi && $post->giamoi > 0 ) {
+								// cập nhật lại giá phẩm
+//								echo '<!-- reset price -->';
+								WGR_update_meta_post( $post->ID, '_eb_product_oldprice', 0 );
+								WGR_update_meta_post( $post->ID, '_eb_product_price', $post->giaban );
+							}
+							$trv_ngayhethan = 0;
+						}
+					}
+				}
+			}
 
 
 
             //
             $post->pt = 0;
-            if ($post->trv_giaban > $post->trv_giamoi) {
-                $post->pt = 100 - _eb_float_only($post->trv_giamoi * 100 / $post->trv_giaban, 1);
+            if ($post->giaban > $post->giamoi) {
+                $post->pt = 100 - _eb_float_only($post->giamoi * 100 / $post->giaban, 1);
             }
 
             //
-            $post->trv_giaban = EBE_add_ebe_currency_class($post->trv_giaban, 1, '&nbsp;');
+            $post->trv_giaban = EBE_add_ebe_currency_class($post->giaban, 1, '&nbsp;');
 
-            $post->trv_giamoi = EBE_add_ebe_currency_class($post->trv_giamoi);
+            $post->trv_giamoi = EBE_add_ebe_currency_class($post->giamoi);
 
             $post->product_status = _eb_get_post_object($post->ID, '_eb_product_status', $post->post_status);
         }
