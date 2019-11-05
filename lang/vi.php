@@ -199,10 +199,10 @@ $___eb_lang[eb_key_for_site_lang . 'ads_status15'] = $___eb_lang[eb_key_for_site
 //
 $eb_note_first_lang[eb_key_for_site_lang . 'product_status0'] = 'Phân loại Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'product_status0'] = 'Mặc định';
-$___eb_lang[eb_key_for_site_lang . 'product_status1'] = $___eb_lang[eb_key_for_site_lang . 'products_hot'];
-$___eb_lang[eb_key_for_site_lang . 'product_status2'] = $___eb_lang[eb_key_for_site_lang . 'products_new'];
-$___eb_lang[eb_key_for_site_lang . 'product_status3'] = $___eb_lang[eb_key_for_site_lang . 'products_selling'];
-$___eb_lang[eb_key_for_site_lang . 'product_status4'] = $___eb_lang[eb_key_for_site_lang . 'products_sales_off'];
+$___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'HOT';
+$___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'NEW';
+$___eb_lang[eb_key_for_site_lang . 'product_status3'] = 'Best sales';
+$___eb_lang[eb_key_for_site_lang . 'product_status4'] = 'Sale';
 $___eb_lang[eb_key_for_site_lang . 'product_status5'] = 'Sản phẩm KHÁC';
 $___eb_lang[eb_key_for_site_lang . 'product_status6'] = $___eb_lang[eb_key_for_site_lang . 'golden_time'];
 $___eb_lang[eb_key_for_site_lang . 'product_status7'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];

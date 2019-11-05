@@ -128,10 +128,10 @@ $___eb_lang[eb_key_for_site_lang . 'ads_status15'] = $___eb_lang[eb_key_for_site
 //
 $eb_note_first_lang[eb_key_for_site_lang . 'product_status0'] = 'Phân loại Sản phẩm';
 $___eb_lang[eb_key_for_site_lang . 'product_status0'] = 'Default';
-$___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'HOT Products';
-$___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'NEW Products';
-$___eb_lang[eb_key_for_site_lang . 'product_status3'] = 'Best sales Products';
-$___eb_lang[eb_key_for_site_lang . 'product_status4'] = 'Sản phẩm GIẢM GIÁ';
+$___eb_lang[eb_key_for_site_lang . 'product_status1'] = 'HOT';
+$___eb_lang[eb_key_for_site_lang . 'product_status2'] = 'NEW';
+$___eb_lang[eb_key_for_site_lang . 'product_status3'] = 'Best sales';
+$___eb_lang[eb_key_for_site_lang . 'product_status4'] = 'Sale';
 $___eb_lang[eb_key_for_site_lang . 'product_status5'] = 'Orther Products';
 $___eb_lang[eb_key_for_site_lang . 'product_status6'] = $___eb_lang[eb_key_for_site_lang . 'golden_time'];
 $___eb_lang[eb_key_for_site_lang . 'product_status7'] = $___eb_lang[eb_key_for_site_lang . 'ads_status11'];
