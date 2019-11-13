@@ -1073,64 +1073,6 @@ color: #333;
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.ul-default-style ul {
-	padding-left: 40px;
-	margin: 1em 0;
-	list-style: disc;
-}
-.ul-default-style h1,
-.ul-default-style h2,
-.ul-default-style h3,
-.ul-default-style h4,
-.ul-default-style h5,
-.ul-default-style h6 {
-	/* margin: 0.83em 0; */
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
-/* chỉnh line-height cho các thẻ H về mặc định của chrome */
-.ul-default-style h1 {
-	-webkit-margin-before: 0.67em;
-	-webkit-margin-after: 0.67em;
-	line-height: 28px;
-}
-.ul-default-style h2 {
-	line-height: 25px;
-	-webkit-margin-before: 0.83em;
-	-webkit-margin-after: 0.83em;
-}
-.ul-default-style h3 {
-	line-height: 20px;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-}
-.ul-default-style h4 {
-	line-height: 18px;
-	-webkit-margin-before: 1.33em;
-	-webkit-margin-after: 1.33em;
-}
-.ul-default-style h5 {
-	-webkit-margin-before: 1.67em;
-	-webkit-margin-after: 1.67em;
-}
-.ul-default-style h6 {
-	-webkit-margin-before: 2.33em;
-	-webkit-margin-after: 2.33em;
-}
-.ul-default-style table {
-	border-top: 1px #ccc solid;
-	border-right: 1px #ccc solid;
-}
-.ul-default-style td {
-	border-bottom: 1px #ccc solid;
-	border-left: 1px #ccc solid;
-	padding: 6px;
-}
-.ul-default-style ul.wp-block-gallery {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
 /*
 * wp-content
 */
@@ -2976,4 +2918,63 @@ iframe[name="google_conversion_frame"] {
 	-o-transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
+}
+/* reset lại css khi sử dụng module CSS mặc định của trình duyệt, lấy chrome làm chuẩn */
+.ul-default-style ul {
+	padding-left: 40px;
+	margin: 1em 0;
+	list-style: disc;
+}
+.ul-default-style h1,
+.ul-default-style h2,
+.ul-default-style h3,
+.ul-default-style h4,
+.ul-default-style h5,
+.ul-default-style h6 {
+	/* margin: 0.83em 0; */
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+/* chỉnh line-height cho các thẻ H về mặc định của chrome */
+.ul-default-style h1 {
+	-webkit-margin-before: 0.67em;
+	-webkit-margin-after: 0.67em;
+	line-height: 28px;
+}
+.ul-default-style h2 {
+	line-height: 25px;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+}
+.ul-default-style h3 {
+	line-height: 20px;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+.ul-default-style h4 {
+	line-height: 18px;
+	-webkit-margin-before: 1.33em;
+	-webkit-margin-after: 1.33em;
+}
+.ul-default-style h5 {
+	-webkit-margin-before: 1.67em;
+	-webkit-margin-after: 1.67em;
+}
+.ul-default-style h6 {
+	-webkit-margin-before: 2.33em;
+	-webkit-margin-after: 2.33em;
+}
+.ul-default-style table {
+	border-top: 1px #ccc solid;
+	border-right: 1px #ccc solid;
+}
+.ul-default-style td {
+	border-bottom: 1px #ccc solid;
+	border-left: 1px #ccc solid;
+	padding: 6px;
+}
+.ul-default-style ul.wp-block-gallery {
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
