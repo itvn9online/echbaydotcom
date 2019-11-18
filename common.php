@@ -36,7 +36,7 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 			//echo $pcol;
 //			header( $pcol . ' 403 Forbidden' );
 			
-			echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
+			echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1 );
 			
 			exit();
 		}

@@ -277,12 +277,17 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 	&& $_POST['cf_dns_prefetch'] != '' ) {
 //	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
 	
-	$arr = explode( "\n", trim( $_POST['cf_dns_prefetch'] ) );
+	$arr = explode( "\n", trim( strtolower( $_POST['cf_dns_prefetch'] ) ) );
 	$new_a = array();
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
 		if ( $v != '' ) {
-			$new_a[] = WGR_config_doman_only( $v );
+			// nếu trùng với domain hiện tại thì bỏ qua luôn
+			if ( $v == $_SERVER['HTTP_HOST'] || $v == 'www.' . $_SERVER['HTTP_HOST'] ) {
+			}
+			else {
+				$new_a[] = WGR_config_doman_only( $v );
+			}
 		}
 	}
 	
@@ -306,7 +311,12 @@ if ( isset( $_POST['cf_old_domain'] )
 	foreach ( $arr as $v ) {
 		$v = trim( $v );
 		if ( $v != '' ) {
-			$new_a[] = WGR_config_doman_only( $v );
+			// nếu trùng với domain hiện tại thì bỏ qua luôn
+			if ( $v == $_SERVER['HTTP_HOST'] || $v == 'www.' . $_SERVER['HTTP_HOST'] ) {
+			}
+			else {
+				$new_a[] = WGR_config_doman_only( $v );
+			}
 		}
 	}
 	

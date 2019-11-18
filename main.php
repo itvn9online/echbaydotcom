@@ -480,7 +480,7 @@ if ( $enable_echbay_super_cache == 1 ) {
 			if ( trim( $v ) == $_SERVER['HTTP_HOST'] ) {
 				EBE_set_header(403);
 				
-				echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/403.html', 1 );
+				echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1 );
 				
 				exit();
 			}
