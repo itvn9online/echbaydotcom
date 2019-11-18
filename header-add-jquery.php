@@ -21,17 +21,6 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 <base href="<?php echo web_link; ?>" />
 <?php
 
-// thêm 1 số dns-prefetch cần thiết
-/*
-if ( $__cf_row['cf_ga_id'] != '' ) {
-	echo '<link rel="dns-prefetch" href="//www.google-analytics.com" />';
-}
-
-if ( $__cf_row['cf_facebook_id'] != '' ) {
-	echo '<link rel="dns-prefetch" href="//connect.facebook.net" />';
-}
-*/
-
 
 
 // thêm NAV menu cho bản mobile

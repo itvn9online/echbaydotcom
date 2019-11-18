@@ -6,7 +6,25 @@
 <meta name="COPYRIGHT" content="Copyright (c) 2011 by EchBay.com - lienhe@echbay.com" />
 <!-- // META for design by EchBay -->
 <!-- EchBay SEO plugin - http://echbay.com/ -->
-<meta http-equiv="x-dns-prefetch-control" content="on">
+<?php
+
+// thêm 1 số dns-prefetch cần thiết
+if ( $__cf_row['cf_ga_id'] != '' ) {
+	$echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//www.google-analytics.com" />';
+}
+
+if ( $__cf_row['cf_facebook_id'] != '' ) {
+	$echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//connect.facebook.net" />';
+}
+
+
+if ( ! empty( $echo_dns_prefetch ) ) {
+	echo '<meta http-equiv="x-dns-prefetch-control" content="on">';
+	echo implode("\n", $echo_dns_prefetch);
+}
+
+
+/*
 <link rel="dns-prefetch" href="//<?php echo str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ); ?>" />
 <link rel="dns-prefetch" href="//www.<?php echo str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ); ?>" />
 <link rel="dns-prefetch" href="//www.google-analytics.com" />
@@ -16,7 +34,7 @@
 <link rel="dns-prefetch" href="//www.google.com" />
 <link rel="dns-prefetch" href="//ajax.googleapis.com" />
 <link rel="dns-prefetch" href="//connect.facebook.net" />
-<?php
+*/
 
 
 // chế độ index website

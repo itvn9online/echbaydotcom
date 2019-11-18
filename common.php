@@ -23,6 +23,8 @@ if ( is_home() ) {
 
 
 // nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
+$echo_dns_prefetch = array();
+
 if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 	$arr_dns_prefetch = explode( "\n", trim( $__cf_row['cf_dns_prefetch'] ) );
 //	if ( mtv_id == 1 ) print_r( $arr_dns_prefetch );
@@ -42,7 +44,7 @@ if ( $__cf_row['cf_dns_prefetch'] != '' ) {
 		}
 		
 		// không trùng -> tạo link cho DNS prefetch
-		$dynamic_meta .= '<link rel="dns-prefetch" href="//' . $v . '" />';
+		$echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//' . $v . '" />';
 	}
 	
 	//
