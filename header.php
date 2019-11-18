@@ -12,24 +12,8 @@
 echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
 echo WGR_show_header_favicon();
 
-?>
-<meta http-equiv="x-dns-prefetch-control" content="on">
-<link rel="dns-prefetch" href="//www.google-analytics.com" />
-<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="dns-prefetch" href="//fonts.gstatic.com" />
-<link rel="dns-prefetch" href="//www.googletagmanager.com" />
-<link rel="dns-prefetch" href="//www.google.com" />
-<link rel="dns-prefetch" href="//ajax.googleapis.com" />
-<link rel="dns-prefetch" href="//connect.facebook.net" />
-<!-- META for design by EchBay - http://echbay.com/ -->
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="RESOURCE-TYPE" content="DOCUMENT" />
-<meta name="DISTRIBUTION" content="GLOBAL" />
-<meta name="CODE AUTHOR" content="EchBay.Com" />
-<meta name="COPYRIGHT" content="Copyright (c) 2011 by EchBay.com - lienhe@echbay.com" />
-<!-- // META for design by EchBay -->
-<?php
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
+
 ?>
 <!-- Global site format by EchBay -->
 <base href="<?php echo web_link; ?>" />

@@ -1,4 +1,21 @@
+<!-- META for design by EchBay - http://echbay.com/ -->
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="RESOURCE-TYPE" content="DOCUMENT" />
+<meta name="DISTRIBUTION" content="GLOBAL" />
+<meta name="CODE AUTHOR" content="EchBay.Com" />
+<meta name="COPYRIGHT" content="Copyright (c) 2011 by EchBay.com - lienhe@echbay.com" />
+<!-- // META for design by EchBay -->
 <!-- EchBay SEO plugin - http://echbay.com/ -->
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//<?php echo str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ); ?>" />
+<link rel="dns-prefetch" href="//www.<?php echo str_replace( 'www.', '', $_SERVER['HTTP_HOST'] ); ?>" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//www.google.com" />
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+<link rel="dns-prefetch" href="//connect.facebook.net" />
 <?php
 
 
