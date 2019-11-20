@@ -1245,22 +1245,24 @@ function click_replace_content () {
 		
 		if ( a != '' ) {
 			var b = jQuery.trim( decodeURIComponent( cf_replace_content ) );
-			console.log( b );
+//			console.log( b );
 			
 			if ( b != '' ) {
 				b = b.split("\n");
+//				console.log( b );
 				
 				for ( var i = 0; i < b.length; i++ ) {
 					b[i] = jQuery.trim( b[i] );
+//					console.log( b[i] );
 					
 					if ( b[i] != '' ) {
 						var c = b[i].split( "|" );
+//						console.log( c );
 						
-						if ( b.length == 2 ) {
+						if ( c.length == 2 ) {
 							var old = c[0].replace(/^\++|\++$/g, ""),
 								niu = c[1].replace(/^\++|\++$/g, "");
-							console.log( old );
-							console.log( niu );
+							console.log( old + ' ----------------> ' + niu );
 							for ( var j = 0; j < 50; j++ ) {
 								a = a.replace( old, niu );
 							}
