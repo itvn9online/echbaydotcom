@@ -26,8 +26,8 @@ $strLinkPager .= '&by_post_type=' . $by_post_type;
 $strAjaxLink .= '&by_post_type=' . $by_post_type;
 
 
-// theo trạng thái post
-$by_post_status = isset( $_GET['by_post_status'] ) ? $_GET['by_post_status'] : '';
+// theo trạng thái post -> mặc định chỉ lấy publish
+$by_post_status = isset( $_GET['by_post_status'] ) ? $_GET['by_post_status'] : 'publish';
 $link_for_post_filter = '';
 
 if ( $by_post_status != '' ) {
@@ -162,19 +162,25 @@ $arrs_by_post_status = array(
 );
 
 echo '<ul class="cf admin-products_post-category">
-	<li><span>Trạng thái sản phẩm: </span></li>
-	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '" class="bold">Tất cả</a></li>';
+	<li><span>Trạng thái sản phẩm: </span></li>';
 
 foreach ( $arrs_by_post_status as $k => $v ) {
 	$sl = '';
-	if ( $k == $by_post_status ) {
+	
+	if ( $by_post_status == '' && $k == 0 ) {
+		$sl = 'bold redcolor';
+	}
+	else if ( $k == $by_post_status ) {
 		$sl = 'bold redcolor';
 	}
 	
 	//
 	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_post_status=' . $k . '" class="' . $sl . '">' . $v . '</a></li>';
 }
-echo '</ul>';
+
+echo '
+	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '">Tất cả</a></li>
+	</ul>';
 
 
 
@@ -224,7 +230,7 @@ foreach ( $arrs_cats as $v ) {
 			}
 			
 			//
-			echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_cat_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
+			echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '&by_cat_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
 		}
 		
 		echo '</ul>';
@@ -283,7 +289,7 @@ if ( $by_post_type == 'post' || $by_post_type == 'ads' ) {
 				}
 				
 				//
-				echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_option_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
+				echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . $link_for_post_filter . '&by_option_id=' . $v2->term_id . '" class="' . $sl . '">' . $v2->name . ' (' . $v2->count . ')</a>';
 			}
 			
 			echo '</ul>';

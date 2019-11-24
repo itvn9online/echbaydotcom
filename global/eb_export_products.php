@@ -197,6 +197,7 @@ else if ( $export_type == 'woo' ) {
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_woo.php';
 }
 else {
+//	print_r($arr_for_slect_data);
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 	
 	include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_default.php';
