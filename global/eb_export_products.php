@@ -159,10 +159,20 @@ if ( $export_type != 'csv' ) {
 }
 
 
+// lấy theo 1 status nhất định
+if ( isset($_GET['by_post_status']) ) {
+	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = '" . $_GET['by_post_status'] . "' ";
+}
+// mặc định thì chỉ lấy bài viết publish
+else {
+	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+}
+
+
 //
 if ( $export_type == 'facebook'
 || $export_type == 'google' ) {
-	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+//	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 	
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
 //	print_r( $sql );
@@ -171,7 +181,7 @@ if ( $export_type == 'facebook'
 }
 else if ( $export_type == 'csv' ) {
 //	if ( isset( $_GET['post_status'] ) ) {
-		$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
+//		$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 //	}
 	
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
