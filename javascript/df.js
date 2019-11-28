@@ -1129,25 +1129,25 @@ function ___eb_global_home_runing ( r ) {
 
 
 // tạo mục lục cho trang chi tiết sản phẩm, chi tiết blog
-function WGR_list_of_content ( b, a ) {
+function WGR_list_of_content ( for_tag, for_class ) {
 	
 	//
-	if ( b == '' ) {
+	if ( for_tag == '' ) {
 		return false;
 	}
 	
 	//
-	if ( typeof a == 'undefined' || a == '' ) {
-		a = '.thread-content-bmask';
+	if ( typeof for_class == 'undefined' || for_class == '' ) {
+		for_class = '.thread-content-bmask';
 	}
-	else if ( a.substr(0, 1) != '.' && a.substr(0, 1) != '#' ) {
-		a = '.' + a;
+	else if ( for_class.substr(0, 1) != '.' && for_class.substr(0, 1) != '#' ) {
+		for_class = '.' + for_class;
 	}
 	
 	//
 	var str = '';
 	
-	jQuery(b + ' ' + b).each(function() {
+	jQuery(for_class + ' ' + for_tag).each(function() {
 		var jd = jQuery(this).attr('id') || '',
 			a = jQuery(this).html();
 		
@@ -1164,20 +1164,20 @@ function WGR_list_of_content ( b, a ) {
 	
 	//
 	if ( str == '' ) {
-		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Post index not found!');
+		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('Post index ' + for_class + ' ' + for_tag + ' not found!');
 		return false;
 	}
 	str = '<div class="thread-details-index"><strong>Nội dung chính:</strong><ul>' + str + '</ul></div>';
 	
 	// cho đến thẻ H2 đầu tiên
-	if ( jQuery(b + ' p').length > 0 ) {
-		jQuery(b + ' p:first').after( str );
+	if ( jQuery(for_class + ' p').length > 0 ) {
+		jQuery(for_class + ' p:first').after( str );
 	}
-	else if ( jQuery(b + ' .ul-default-style div').length > 0 ) {
-		jQuery(b + ' .ul-default-style:first div:first').after( str );
+	else if ( jQuery(for_class + ' .ul-default-style div').length > 0 ) {
+		jQuery(for_class + ' .ul-default-style:first div:first').after( str );
 	}
 	else {
-		jQuery(b).before( str );
+		jQuery(for_class).before( str );
 //		jQuery(b + ' h2:first').before( str );
 	}
 	

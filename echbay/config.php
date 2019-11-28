@@ -831,7 +831,7 @@ foreach ( $arr as $k => $v ) {
 //print_r( $arr_for_get_template );
 
 //
-$arr_for_get_template['custom_mobile_menu'] = 'Tự tạo trong theme cha';
+$arr_for_get_template['custom_mobile_menu'] = 'Tự tạo trong theme';
 
 //
 $arr_for_set_template['cf_search_nav_mobile'] = __eb_create_select_checked_config(
