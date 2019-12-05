@@ -248,10 +248,18 @@ function WGR_sync_old_url_in_content ( $a, $c ) {
 	//
 	$a = explode( ',', $a );
 	foreach ( $a as $v ) {
-//		$v = trim( $v );
-//		if ( $v != '' ) {
+		$v = trim( $v );
+		if ( $v != '' ) {
+			// nếu tên miền hiện tại là tên miền cũ -> redirect luôn
+			if ( $v == $_SERVER['HTTP_HOST'] ) {
+//				echo _eb_get_option('home') . $_SERVER['REQUEST_URI'];
+				wp_redirect( _eb_get_option('home') . $_SERVER['REQUEST_URI'], 301 );
+				exit();
+			}
+			
+			//
 			$c = str_replace( '/' . $v . '/', '/' . $_SERVER['HTTP_HOST'] . '/', $c );
-//		}
+		}
 	}
 	
 	return $c;
