@@ -168,6 +168,10 @@ else {
 	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 }
 
+if ( isset($_GET['by_post_id']) ) {
+	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.ID = '" . $_GET['by_post_id'] . "' ";
+}
+
 
 //
 if ( $export_type == 'facebook'

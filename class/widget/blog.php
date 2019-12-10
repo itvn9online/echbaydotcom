@@ -92,9 +92,13 @@ class ___echbay_widget_random_blog extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
+//		echo '<div class="widget_random_blog">';
+		
 		WGR_show_widget_blog ( $args, $instance, array(
 			'this_name' => $this->name
 		) );
+		
+//		echo '</div>';
 	}
 }
 

@@ -123,7 +123,7 @@ class ___echbay_widget_home_list_blog extends WP_Widget {
 				
 				//
 				echo '<div class="widget_random_blog">';
-				echo '<div class="' . trim( $custom_style ) . '">';
+				echo '<div class="margin-random-blog ' . trim( $custom_style ) . '">';
 				
 				WGR_show_widget_blog( $args, $default_array, array (
 					'this_name' => $this->name

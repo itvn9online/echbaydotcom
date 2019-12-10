@@ -273,6 +273,7 @@ else if ( isset( $_GET['reset_attachment'] ) ) {
 	
 	echo 'Lệnh này khá nguy hiểm, nên cần vào trực tiếp database rồi chạy lệnh này:<br>
 <pre><code>DELETE FROM `wp_posts` WHERE `post_type` = "attachment";<br>
+DELETE FROM `wp_postmeta` WHERE `meta_key` = "_thumbnail_id";<br>
 DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attached_file";<br>
 DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";</code></pre>
 <br>';
