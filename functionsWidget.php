@@ -879,48 +879,53 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		
 		// chỉ lấy 1 bài duy nhất
 		$sql = _eb_load_post_obj( 1, $arr_select_data );
-//		print_r( $sql );
 		
-		//
-		$cl = '';
-		// nếu có lệnh bỏ img maxwidth
-		if ( $off_img_max_width != 'on' ) {
-			$cl .= ' img-max-width';
-		}
-		// thêm lệnh tự tạo ptag
-		if ( $js_ptags == 'on' && $show_content_excerpt == 'on' ) {
-			$cl .= ' each-to-fix-ptags';
-		}
-		
-		// lấy và in ra nội dung tìm được
-		echo '<div class="echbay-blog-content_only' . $cl . '">';
-			echo '<div data-id="' . $sql->post->ID . '" data-type="' . $sql->post->post_type . '" class="quick-edit-content_only"></div>';
-		
-		// in thẳng
-		if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
-			echo '<!-- ' . _eb_p_link( $sql->post->ID ) . ' -->';
-			if ( $sql->post->post_content == '' ) {
-				echo $sql->post->post_excerpt;
+		if ( isset( $sql->post ) ) {
+			$cl = '';
+			// nếu có lệnh bỏ img maxwidth
+			if ( $off_img_max_width != 'on' ) {
+				$cl .= ' img-max-width';
 			}
-			// hiển thị trực tiếp phần content
-			else if ( $show_content_excerpt == 'on' ) {
-				echo $sql->post->post_content;
+			// thêm lệnh tự tạo ptag
+			if ( $js_ptags == 'on' && $show_content_excerpt == 'on' ) {
+				$cl .= ' each-to-fix-ptags';
 			}
-			// sử dụng hàm the_content để định hình
-			else {
-				$content = apply_filters('the_content', $sql->post->post_content);
-				echo str_replace(']]>', ']]&gt;', $content);
+			
+			// lấy và in ra nội dung tìm được
+			echo '<div class="echbay-blog-content_only' . $cl . '">';
+				echo '<div data-id="' . $sql->post->ID . '" data-type="' . $sql->post->post_type . '" class="quick-edit-content_only"></div>';
+			
+			// in thẳng
+			if ( isset( $sql->post ) && isset( $sql->post->post_content ) ) {
+				echo '<!-- ' . _eb_p_link( $sql->post->ID ) . ' -->';
+				if ( $sql->post->post_content == '' ) {
+					echo $sql->post->post_excerpt;
+				}
+				// hiển thị trực tiếp phần content
+				else if ( $show_content_excerpt == 'on' ) {
+					echo $sql->post->post_content;
+				}
+				// sử dụng hàm the_content để định hình
+				else {
+					$content = apply_filters('the_content', $sql->post->post_content);
+					echo str_replace(']]>', ']]&gt;', $content);
+				}
 			}
+			
+			// sử dụng hàm content của wp -> nặng hơn -> đầy đủ chức năng hơn
+			/*
+			while ( $sql->have_posts() ) {
+				$sql->the_post();
+				the_content();
+			}
+			*/
+			echo '</div>';
 		}
-		
-		// sử dụng hàm content của wp -> nặng hơn -> đầy đủ chức năng hơn
-		/*
-		while ( $sql->have_posts() ) {
-			$sql->the_post();
-			the_content();
+		else {
+			echo '<!-- ';
+			print_r( $sql );
+			echo ' -->';
 		}
-		*/
-		echo '</div>';
 		
 	}
 	// mặc định
