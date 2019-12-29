@@ -283,8 +283,12 @@ function ___eb_cache_display ( $cache_time = 60 ) {
 	
 	//
 	$time_file = filemtime ( $filename );
+//	echo '<!-- ';
+//	echo date_time - $time_file . '<br>' . "\n";
+//	echo $cache_time . '<br>' . "\n";
+//	echo ' -->';
 	// 100 is the cache time here!!!
-	if ( date_time - $cache_time > $time_file ) {
+	if ( date_time - $time_file > $cache_time ) {
 		return $filename;
 	}
 	
