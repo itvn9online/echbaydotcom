@@ -1710,6 +1710,42 @@ function click_fixed_a_tags_redirect_of_content () {
 
 
 
+// xóa URL dạng redirect
+function click_remove_a_tags_of_content () {
+	
+	//
+	if ( jQuery('#click_remove_a_tags').length == 0 ) {
+		console.log('click_remove_a_tags not found');
+		return false;
+	}
+	
+	//
+	jQuery('#click_remove_a_tags').click(function () {
+		
+		// hủy check ngay và luôn
+		dog('click_remove_a_tags').checked = false;
+		
+		//
+		var content_id = WGR_get_contect_editer_id();
+		
+		//
+		if ( confirm('Confirm remove A tags in this content!') == false ) {
+			return false;
+		}
+		
+		
+		//
+		console.log('Remove URL:');
+		jQuery( content_id ).contents().find( 'a' ).each(function() {
+			jQuery(this).before( jQuery(this).html() );
+			jQuery(this).remove();
+		});
+		
+	});
+}
+
+
+
 // download IMG
 var class_for_download_img_to_site = 'class_for_download_img_to_site';
 function run_download_img_other_domain_of_content ( content_id ) {

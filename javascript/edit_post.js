@@ -1128,6 +1128,10 @@ function WGR_run_for_admin_edit_post () {
 			<label for="click_fixed_a_tags_redirect">Xử lý các URL thuộc dạng redirect về non-redirect (thường áp dụng cho web chết, bị lưu trữ trên web.archive.org).</label>\
 		</div>\
 		<div class="ebe-fixed-content-style">\
+			<input type="checkbox" id="click_remove_a_tags" />\
+			<label for="click_remove_a_tags">Xóa toàn bộ các thẻ A có trong bài viết (dùng khi copy nội dung từ website khác về mà web đó không phải của mình).</label>\
+		</div>\
+		<div class="ebe-fixed-content-style">\
 			<input type="checkbox" id="click_download_img_other_domain" />\
 			<label for="click_download_img_other_domain">Download ảnh từ host khác về host hiện tại (giúp cho ảnh được xử lý với tốc độ tối ưu hơn).</label>\
 		</div>');
@@ -1151,6 +1155,7 @@ function WGR_run_for_admin_edit_post () {
 		
 		// xóa URL dạng redirect
 		click_fixed_a_tags_redirect_of_content();
+		click_remove_a_tags_of_content();
 		
 		// download IMG về
 		click_download_img_other_domain_of_content();
