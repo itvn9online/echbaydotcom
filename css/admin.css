@@ -1483,6 +1483,7 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	padding: 15px;
 	border-top: 1px #ccc solid;
 }
+.widget-liquid-right .open .widget-title h3 { color: #f00; }
 .sidebar-eb_z1_recycle_bin {
 	position: fixed;
 	bottom: 5px;

@@ -38,6 +38,9 @@ function WGR_for_edit_widgets () {
 		}
 		
 		if ( a != '' ) {
+//			$('.widget-liquid-right .widget-title h3, .widget-liquid-right .widget-title-action').removeClass('redcolor');
+//			$(this).addClass('redcolor');
+			
 			$('.widget-liquid-right .widget-content, .widget-liquid-right .widget-inside').css({
 				'z-index': '99999'
 			});
@@ -45,8 +48,8 @@ function WGR_for_edit_widgets () {
 			$('#' + a + ' .widget-content, #' + a + ' .widget-inside').css({
 				'z-index': '999999'
 			});
+//			console.log(a);
 		}
-//		console.log(a);
 	});
 }
 
