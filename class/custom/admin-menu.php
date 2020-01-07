@@ -278,7 +278,8 @@ function echbay_admin_styles() {
 		EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 		EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
 		EB_THEME_PLUGIN_INDEX . 'javascript/edit_menu.js',
-		EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
+		EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js',
+		EB_THEME_PLUGIN_INDEX . 'javascript/edit_widgets.js'
 	);
 	foreach ( $a as $v ) {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;

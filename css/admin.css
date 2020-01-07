@@ -449,7 +449,11 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	height: 30px;
 }
 */
-.eb-widget-fixed { display: none; }
+/*
+.widget-liquid-right .eb-widget-fixed { display: none; }
+.widget-liquid-right .widget-content { display: none; }
+*/
+.widget-liquid-right .widget-inside { display: none; }
 .ebe-color-picker {
 	padding: 0;
 	margin: 0;
@@ -1450,7 +1454,11 @@ form[name="frm_invoice_details"] input[type="text"] { }
 }
 
 @media screen and (min-width:775px) {
-.open .eb-widget-fixed {
+/*
+.widget-liquid-right .open .eb-widget-fixed {
+.widget-liquid-right .open .widget-content {
+	*/
+.widget-liquid-right .open .widget-inside {
 	display: block;
 	position: fixed;
 	left: 0;
@@ -1460,9 +1468,20 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	max-width: 450px;
 	background: #fff;
 	z-index: 99999;
-	padding: 10px 20px;
+	padding: 10px 20px 90px 20px;
 	overflow: auto;
 	box-shadow: 0 0 20px #999;
+}
+.widget-liquid-right .open .widget-control-actions {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background: #fff;
+	right: 0;
+	width: 50%;
+	max-width: 450px;
+	padding: 15px;
+	border-top: 1px #ccc solid;
 }
 .sidebar-eb_z1_recycle_bin {
 	position: fixed;
