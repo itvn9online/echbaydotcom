@@ -2,9 +2,9 @@
 #menu-appearance .hide-if-no-customize,
 #menu-appearance .wp-submenu li:last-child,
 #menu-plugins,
-#menu-tools,
 #menu-settings,
 /*
 #menu-pages,
+#menu-tools,
 */
 .show-administrator-only { display: none; }
