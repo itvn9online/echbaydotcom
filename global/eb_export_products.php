@@ -160,7 +160,7 @@ if ( $export_type != 'csv' ) {
 
 
 // lấy theo 1 status nhất định
-if ( isset($_GET['by_post_status']) ) {
+if ( isset($_GET['by_post_status']) && $_GET['by_post_status'] != '' && $_GET['by_post_status'] != 'all' ) {
 	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = '" . $_GET['by_post_status'] . "' ";
 }
 // mặc định thì chỉ lấy bài viết publish

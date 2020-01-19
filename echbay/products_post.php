@@ -30,16 +30,16 @@ $strAjaxLink .= '&by_post_type=' . $by_post_type;
 $by_post_status = isset( $_GET['by_post_status'] ) ? $_GET['by_post_status'] : 'publish';
 $link_for_post_filter = '';
 
-if ( $by_post_status != '' ) {
+// lấy các post_status phổ biến
+if ( $by_post_status == '' || $by_post_status == 'all' ) {
+	$strFilter .= " AND ( `" . wp_posts . "`.post_status = 'publish' OR `" . wp_posts . "`.post_status = 'pending' OR `" . wp_posts . "`.post_status = 'draft' ) ";
+}
+else {
 	$strFilter .= " AND `" . wp_posts . "`.post_status = '" . $by_post_status . "' ";
 	$strLinkPager .= '&by_post_status=' . $by_post_status;
 	$strAjaxLink .= '&by_post_status=' . $by_post_status;
 	$link_for_post_filter = '&by_post_status=' . $by_post_status;
 	$strExportLink .= '&by_post_status=' . $by_post_status;
-}
-// mặc định thì lấy các post_status phổ biến
-else {
-	$strFilter .= " AND ( `" . wp_posts . "`.post_status = 'publish' OR `" . wp_posts . "`.post_status = 'pending' OR `" . wp_posts . "`.post_status = 'draft' ) ";
 }
 
 
@@ -179,7 +179,7 @@ foreach ( $arrs_by_post_status as $k => $v ) {
 }
 
 echo '
-	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '">Tất cả</a></li>
+	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_post_status=all">Tất cả</a></li>
 	</ul>';
 
 
