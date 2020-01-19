@@ -158,11 +158,11 @@ $arrs_by_post_status = array(
 	'pending' => __('Pending Review'),
 	'draft' => __('Draft'),
 	'private' => __('Privately Published'),
-	'future' => __('Scheduled')
+	'future' => __('Scheduled'),
+	'all' => 'Tất cả'
 );
 
-echo '<ul class="cf admin-products_post-category">
-	<li><span>Trạng thái sản phẩm: </span></li>';
+echo '<ul class="cf admin-products_post-category"><li><span>Trạng thái sản phẩm: </span></li>';
 
 foreach ( $arrs_by_post_status as $k => $v ) {
 	$sl = '';
@@ -178,9 +178,7 @@ foreach ( $arrs_by_post_status as $k => $v ) {
 	echo '<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_post_status=' . $k . '" class="' . $sl . '">' . $v . '</a></li>';
 }
 
-echo '
-	<li><a href="' . admin_link . 'admin.php?page=eb-products&by_post_type=' . $by_post_type . '&by_post_status=all">Tất cả</a></li>
-	</ul>';
+echo '</ul>';
 
 
 
