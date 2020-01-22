@@ -162,6 +162,90 @@ if (using_child_wgr_theme == 1) {
 // bổ sung js chân trang
 $arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/footer.js';
 
+
+
+// làm chức năng hiển thị những ai đã mua hàng để khách có thể xem
+//$__cf_row['cf_show_order_fomo'] = 11;
+if ($__cf_row['cf_show_order_fomo'] > 0) {
+	$sql = _eb_load_order( $__cf_row['cf_show_order_fomo'], array(
+		'filter_by' => " AND order_status != 4 AND order_status != 13 "
+	) );
+//	print_r( $sql );
+	
+	$arr_fomo_order = array();
+	
+	foreach ( $sql as $v ) {
+//		$v->order_products = json_decode( $v->order_products );
+//		$v->order_customer = json_decode( $v->order_customer );
+//		print_r( $v );
+		
+		//
+		$fomo_id = '';
+		$fomo_product = '';
+		$fomo_img = '';
+		$fomo_name = '';
+		$fomo_phone = '';
+		
+		$new_fomo = explode('%7B%22id%22%3A', $v->order_products);
+		if ( count( $new_fomo ) > 0 ) {
+			$new_fomo = explode('%2C%22', $new_fomo[1]);
+			$fomo_id = $new_fomo[0];
+			$fomo_id = trim( str_replace('%22', '', $fomo_id) );
+		}
+		
+		$new_fomo = explode('%2C%22name%22%3A%22', $v->order_products);
+		if ( count( $new_fomo ) > 0 ) {
+			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
+			$fomo_product = $new_fomo[0];
+		}
+		
+		$new_fomo = explode('%2C%22color_img%22%3A%22', $v->order_products);
+		if ( count( $new_fomo ) > 0 ) {
+			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
+			$fomo_img = $new_fomo[0];
+		}
+		
+		$new_fomo = explode('%7B%22hd_ten%22%3A%22', $v->order_customer);
+		if ( count( $new_fomo ) > 0 ) {
+			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
+			$fomo_name = $new_fomo[0];
+		}
+		
+		$new_fomo = explode('%22%2C%22hd_dienthoai%22%3A%22', $v->order_customer);
+		if ( count( $new_fomo ) > 0 ) {
+			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
+			$fomo_phone = $new_fomo[0];
+			$fomo_phone = trim( str_replace('%20', '', $fomo_phone) );
+			$fomo_phone = substr( $fomo_phone, strlen( $fomo_phone ) - 4 );
+		}
+		
+		//
+//		echo $fomo_id . '<br>' . "\n";
+//		echo $fomo_product . '<br>' . "\n";
+//		echo $fomo_name . '<br>' . "\n";
+//		echo $fomo_phone . '<br>' . "\n";
+//		echo '------------------<br>' . "\n";
+		
+		//
+		$arr_fomo_order[] = array(
+			'fomo_id' => $fomo_id,
+			'fomo_product' => $fomo_product,
+			'fomo_img' => $fomo_img,
+			'fomo_time' => $v->order_time,
+			'fomo_name' => $fomo_name,
+			'fomo_phone' => $fomo_phone
+		);
+	}
+//	print_r( $arr_fomo_order );
+	echo '<script>arr_fomo_order=' . json_encode( $arr_fomo_order ) . ';</script>';
+	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js';
+	
+//	exit();
+}
+
+
+
+
 //print_r( $arr_for_add_js );
 //
 EBE_add_js_compiler_in_cache($arr_for_add_js, 'defer', 1);
@@ -172,7 +256,6 @@ EBE_add_js_compiler_in_cache($arr_for_add_js, 'defer', 1);
 foreach ($arr_for_add_outsource_async_js as $v) {
     echo '<script type="text/javascript" src="' . $v . '" defer></script>' . "\n";
 }
-
 
 
 

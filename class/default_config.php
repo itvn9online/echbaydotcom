@@ -418,6 +418,9 @@ $__cf_row_default = array(
 	'cf_blog_width_sidebar' => 0,
 	'cf_page_width_sidebar' => 0,
 	
+	// chức năng hiển thị đơn đã mua
+	'cf_show_order_fomo' => 11,
+	
 	
 	// cấu trúc bảng tin ở trang chủ
 	'cf_home_column_style' => '',
