@@ -2988,6 +2988,7 @@ iframe[name="google_conversion_frame"] {
 	background: #fff;
 	box-shadow: 0 0 5px #ccc;
 	opacity: 0.001;
+	z-index: 99;
 }
 .fomo-avt {
 	background: center no-repeat;
