@@ -2982,13 +2982,21 @@ iframe[name="google_conversion_frame"] {
 .fomo-order {
 	position: fixed;
 	bottom: 15px;
-	left: 15px;
+	left: -400px;
 	width: 90%;
 	max-width: 350px;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.9);
 	box-shadow: 0 0 5px #ccc;
 	opacity: 0.001;
 	z-index: 99;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+}
+.fomo-order.active {
+	opacity: 1;
+	left: 15px;
 }
 .fomo-avt {
 	background: center no-repeat;
@@ -2998,4 +3006,24 @@ iframe[name="google_conversion_frame"] {
 .fomo-time {
 	color: #666;
 	font-style: italic;
+}
+.fomo-order i.fa-remove {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	background: #fff;
+	box-shadow: 0 0 5px #ccc;
+	height: 20px;
+	line-height: 20px;
+	width: 20px;
+	text-align: center;
+	border-radius: 50%;
+	z-index: 1;
+}
+.fomo-order a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }

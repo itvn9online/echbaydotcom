@@ -187,32 +187,32 @@ if ($__cf_row['cf_show_order_fomo'] > 0) {
 		$fomo_phone = '';
 		
 		$new_fomo = explode('%7B%22id%22%3A', $v->order_products);
-		if ( count( $new_fomo ) > 0 ) {
+		if ( count( $new_fomo ) > 1 ) {
 			$new_fomo = explode('%2C%22', $new_fomo[1]);
 			$fomo_id = $new_fomo[0];
 			$fomo_id = trim( str_replace('%22', '', $fomo_id) );
 		}
 		
 		$new_fomo = explode('%2C%22name%22%3A%22', $v->order_products);
-		if ( count( $new_fomo ) > 0 ) {
+		if ( count( $new_fomo ) > 1 ) {
 			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
 			$fomo_product = $new_fomo[0];
 		}
 		
 		$new_fomo = explode('%2C%22color_img%22%3A%22', $v->order_products);
-		if ( count( $new_fomo ) > 0 ) {
+		if ( count( $new_fomo ) > 1 ) {
 			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
 			$fomo_img = $new_fomo[0];
 		}
 		
 		$new_fomo = explode('%7B%22hd_ten%22%3A%22', $v->order_customer);
-		if ( count( $new_fomo ) > 0 ) {
+		if ( count( $new_fomo ) > 1 ) {
 			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
 			$fomo_name = $new_fomo[0];
 		}
 		
 		$new_fomo = explode('%22%2C%22hd_dienthoai%22%3A%22', $v->order_customer);
-		if ( count( $new_fomo ) > 0 ) {
+		if ( count( $new_fomo ) > 1 ) {
 			$new_fomo = explode('%22%2C%22', $new_fomo[1]);
 			$fomo_phone = $new_fomo[0];
 			$fomo_phone = trim( str_replace('%20', '', $fomo_phone) );
