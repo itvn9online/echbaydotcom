@@ -35,7 +35,7 @@
 		//
 		setTimeout(function () {
 			$('.fomo-order').removeClass('active');
-		}, 8000);
+		}, 30 * 1000);
 	}, 6000);
 	
 })();
