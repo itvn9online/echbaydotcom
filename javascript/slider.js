@@ -117,6 +117,11 @@ function jEBE_timeout_slider ( jd, conf, timeo, callBack ) {
 			});
 		}
 		
+		if ( typeof conf['size'] != 'undefined' && conf['size'].split('x').length > 1 ) {
+			var conf_size = conf['size'].split('x');
+			conf['size'] = conf_size[1] + '/' + conf_size[0];
+		}
+		
 		// chỉnh lại chiều cao cho LI
 		if ( timeo > 200 ) {
 			setTimeout(function () {
