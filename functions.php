@@ -233,7 +233,12 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
             $post->trv_luotmua = $post->trv_mua;
 			
             $post->trv_xem = (int) _eb_get_post_object($post->ID, '_eb_product_views', 0);
-            $post->trv_luotxem = $post->trv_xem;
+            $post->trv_luotxem = number_format($post->trv_xem);
+			
+			//
+			if ( $post->trv_mua > 0 && $post->trv_xem < $post->trv_mua ) {
+				WGR_update_meta_post( $post->ID, '_eb_product_views', $post->trv_mua * 12 );
+			}
 
             //
             $post->giaban = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_oldprice'));
