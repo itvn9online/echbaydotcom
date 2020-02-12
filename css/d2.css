@@ -2726,7 +2726,10 @@ iframe[name="google_conversion_frame"] {
 .each-to-edit-ads,
 .each-setup-goto-edit,
 .each-to-edit-menu,
-.each-setup-goto-edit { position: relative; }
+.each-setup-goto-edit {
+	position: relative;
+	z-index: 999;
+}
 .each-to-edit-ads i,
 .each-to-edit-menu i,
 .each-setup-goto-edit i {
