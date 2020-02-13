@@ -156,7 +156,15 @@ function WGR_add_img_edit_menu () {
 
 
 function WGR_main_edit_menu () {
-
+	
+	// thêm khoảng trống cho chỗ tìm kiếm menu nâng cao
+	if ( $(window).width() > 1100 ) {
+		$('#wpbody').addClass('pading-for-edit-menu');
+		// hiển thị tool dưới dạng fixed cho dễ làm việc
+		jQuery('body').addClass('fixed-tool-admin-menu');
+	}
+	
+	//
 	jQuery('#side-sortables ul.outer-border').after(jQuery('#content-for-quick-add-menu').html() || '');
 
 	// khi người dùng bấm thêm vào menu
@@ -203,12 +211,14 @@ function WGR_main_edit_menu () {
 		if (dog('show_all_list_post_page_menu') == null) {
 
 			// nút đóng
-			jQuery('#wgr_search_product_in_menu').before('<div><i class="fa fa-close cur click-close-tool-admin-menu d-none"></i></div>');
+//			jQuery('#wgr_search_product_in_menu').before('<div><i class="fa fa-close cur click-close-tool-admin-menu d-none"></i></div>');
 
 			// hiệu ứng cho nút đóng
+			/*
 			jQuery('.click-close-tool-admin-menu').off('click').click(function () {
 				jQuery('body').removeClass('fixed-tool-admin-menu');
 			});
+			*/
 
 
 			// nội dung tìm kiếm
@@ -230,7 +240,7 @@ function WGR_main_edit_menu () {
 		}
 
 		// hiển thị tool dưới dạng fixed cho dễ làm việc
-		jQuery('body').addClass('fixed-tool-admin-menu');
+//		jQuery('body').addClass('fixed-tool-admin-menu');
 
 	});
 

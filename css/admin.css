@@ -1382,19 +1382,25 @@ form[name="frm_invoice_details"] input[type="number"].s,
 form[name="frm_invoice_details"] input[type="number"].ss { padding-right: 1px; }
 form[name="frm_invoice_details"] input[type="text"] { }
 /* fixed tool for admin menu */
+#wpbody.pading-for-edit-menu { padding-right: 25%; }
+/*
+.fixed-tool-admin-menu .quick-add-menu-to-admin-menu { max-width: 150px; }
+*/
 .fixed-tool-admin-menu .quick-add-menu-to-admin-menu {
 	position: fixed;
-	left: 0;
+	left: auto;
 	bottom: 0;
 	z-index: 9999;
 	background: #fff;
 	box-shadow: 0 0 10px #ccc;
-	width: 33%;
-	max-width: 150px;
-	top: 30%;
+	width: 20%;
+	top: 40px;
 	padding: 15px;
+	right: 0;
 }
+/*
 .fixed-tool-admin-menu .quick-add-menu-to-admin-menu:hover { max-width: 350px; }
+*/
 .fixed-tool-admin-menu .click-close-tool-admin-menu {
 	display: inline-block;
 	position: absolute;
