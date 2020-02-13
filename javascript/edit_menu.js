@@ -160,6 +160,7 @@ function WGR_main_edit_menu () {
 	// thêm khoảng trống cho chỗ tìm kiếm menu nâng cao
 	if ( $(window).width() > 1100 ) {
 		$('#wpbody').addClass('pading-for-edit-menu');
+		
 		// hiển thị tool dưới dạng fixed cho dễ làm việc
 		jQuery('body').addClass('fixed-tool-admin-menu');
 	}
@@ -209,7 +210,7 @@ function WGR_main_edit_menu () {
 	// nạp danh sách sản phẩm, tin tức... khi người dùng nhấn vào ô tìm kiếm
 	jQuery('#wgr_search_product_in_menu').click(function () {
 		if (dog('show_all_list_post_page_menu') == null) {
-
+			
 			// nút đóng
 //			jQuery('#wgr_search_product_in_menu').before('<div><i class="fa fa-close cur click-close-tool-admin-menu d-none"></i></div>');
 
@@ -242,6 +243,10 @@ function WGR_main_edit_menu () {
 		// hiển thị tool dưới dạng fixed cho dễ làm việc
 //		jQuery('body').addClass('fixed-tool-admin-menu');
 
+		// chỉnh chiều cao cho phần hiển thị menu
+		if ( $(window).width() > 1100 ) {
+			$('#show_all_list_post_page_menu').height( $(window).height() - $('#show_all_list_post_page_menu').offset().top - 25 );
+		}
 	});
 
 
