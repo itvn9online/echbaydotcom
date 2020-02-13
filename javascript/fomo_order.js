@@ -12,8 +12,9 @@
 	
 	var phut = date_time - a.fomo_time;
 	if ( phut < 3600 ) {
-		phut = Math.ceil( phut/ 60 ) - 1;
-		phut += ' phút trước';
+//		phut = Math.ceil( phut/ 60 ) - 1;
+//		phut += ' phút trước';
+		phut = 'Vài phút trước';
 	}
 //	else if ( phut < 24 * 3600 ) {
 //		phut = '1 ngày trước';
