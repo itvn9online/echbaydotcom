@@ -2984,7 +2984,7 @@ iframe[name="google_conversion_frame"] {
 /* */
 .fomo-order {
 	position: fixed;
-	bottom: 15px;
+	bottom: 5px;
 	left: -400px;
 	width: 90%;
 	max-width: 350px;
