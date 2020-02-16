@@ -3009,6 +3009,7 @@ iframe[name="google_conversion_frame"] {
 .fomo-time {
 	color: #666;
 	font-style: italic;
+	display: none;
 }
 .fomo-order i.fa-remove {
 	position: absolute;
