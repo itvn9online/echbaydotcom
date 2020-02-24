@@ -850,6 +850,10 @@ a.eb-btn {
 .padding-top-menu40,
 .top-space-menu40,
 .top-menu-space40 { padding-top: 40px; }
+.right-padding-menu10,
+.padding-right-menu10,
+.right-space-menu10,
+.right-menu-space10 { padding-right: 10px; }
 .right-padding-menu,
 .padding-right-menu,
 .right-space-menu,
@@ -866,6 +870,10 @@ a.eb-btn {
 .padding-bottom-menu40,
 .bottom-space-menu40,
 .bottom-menu-space40 { padding-bottom: 40px; }
+.left-padding-menu10,
+.padding-left-menu10,
+.left-space-menu10,
+.left-menu-space10 { padding-left: 10px; }
 .left-padding-menu,
 .padding-left-menu,
 .left-space-menu,
