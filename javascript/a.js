@@ -177,8 +177,8 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
         }
 		
 		// ẩn bớt các công cụ chưa dùng để cho nó tiện
-		$('#postbox-container-2').hide();
-		console.log('hide postbox-container-2 in post new');
+//		$('#postbox-container-2').hide();
+//		console.log('hide postbox-container-2 in post new');
     }
     // danh sách post, page, custom post type
     else if (admin_act == 'list') {
