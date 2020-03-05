@@ -190,9 +190,6 @@ function create_deault_css () {
 	root_color.push('--default-color: ' + f.cf_default_color.value);
 	if ( $('#mcb2__custom_css_in_js__color').length > 0 ) {
 		root_color.push('--default2-color: ' + f.mcb2__custom_css_in_js__color.value);
-	}
-	if ( f.mcb2__custom_css_in_js__color.value != '' ) {
-		root_color.push('--default2-color: ' + f.mcb2__custom_css_in_js__color.value);
 		root_color.push('--sub-color: ' + f.mcb2__custom_css_in_js__color.value);
 	}
 	str += ':root {' + root_color.join(';') + '}';
