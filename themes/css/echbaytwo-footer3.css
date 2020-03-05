@@ -1,5 +1,6 @@
 #echbaytwo-footer3 .footer-site-info {
 	background-color: #161618;
+	background-color: var(--default2-bg);
 	padding: 12px 0;
 }
 #echbaytwo-footer3 .footer-site-info,
