@@ -186,6 +186,7 @@ function create_deault_css () {
 	root_color.push('--main-bg: ' + f.cf_default_bg.value);
 	root_color.push('--default2-bg: ' + f.cf_default_2bg.value);
 	root_color.push('--sub-bg: ' + f.cf_default_2bg.value);
+	root_color.push('--div-bg: ' + f.cf_default_div_bg.value);
 	root_color.push('--main-color: ' + f.cf_default_color.value);
 	root_color.push('--default-color: ' + f.cf_default_color.value);
 	if ( $('#mcb2__custom_css_in_js__color').length > 0 ) {
