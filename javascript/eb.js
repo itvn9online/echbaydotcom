@@ -2010,12 +2010,12 @@ var _global_js_eb = {
 	
 	
 	
-	cart_create_arr_poruduct : function () {
+	cart_create_arr_poruduct : function ( cart_total_price ) {
 		
 		// reset lại mảng
 		ebe_arr_cart_product_list = [];
 		
-		var cart_total_price = 0;
+//		var cart_total_price = 0;
 		
 		// nếu đang là xem trang chi tiết
 		if ( pid > 0 && typeof eb_wp_post_type != 'undefined' && eb_wp_post_type == 'post' ) {
@@ -2053,7 +2053,7 @@ var _global_js_eb = {
 			
 			//
 			jQuery('.eb-global-frm-cart input[name^=t_new_price]').val( price_for_quick_cart );
-			cart_total_price = price_for_quick_cart * cart_quan;
+//			cart_total_price = price_for_quick_cart * cart_quan;
 		}
 		// nếu đang là xem trong giỏ hàng
 		else {
@@ -2105,7 +2105,7 @@ var _global_js_eb = {
 				} );
 				
 				//
-				cart_total_price += ( gia_moi * 1 ) * ( cart_quan * 1 );
+//				cart_total_price += ( gia_moi * 1 ) * ( cart_quan * 1 );
 //				cart_total_price += ( gia_rieng * 1 ) * ( cart_quan * 1 );
 			});
 		}
@@ -2120,9 +2120,11 @@ var _global_js_eb = {
 		
 		//
 		if ( jQuery('#hd_total_price').length == 0 ) {
-			jQuery('#cart_user_agent').append('<input type="text" name="t_total_price" id="hd_total_price" value="1" />');
+			jQuery('#cart_user_agent').append('<input type="text" name="t_total_price" id="hd_total_price" value="0" />');
 		}
-		jQuery('#hd_total_price').val( cart_total_price );
+		if ( typeof cart_total_price != 'undefined' ) {
+			jQuery('#hd_total_price').val( cart_total_price );
+		}
 		
 	},
 	

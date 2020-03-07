@@ -1309,6 +1309,7 @@ color: #333;
 }
 .eb-quickcart-table input[type="email"],
 .eb-quickcart-table input[type="text"],
+.eb-quickcart-table input[type="number"],
 .eb-quickcart-table textarea {
 	background: #f2f2f2 right center no-repeat;
 	background-size: 9px;

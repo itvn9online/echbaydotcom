@@ -22,7 +22,7 @@ function WGR_zero_price_quick_cart ( quan, price ) {
 	if ( typeof price == 'undefined' || price == '' || price == 0 || price == '0' ) {
 		jQuery('#oi_change_tongtien').hide();
 		jQuery('#oi_details_zero_price').show();
-		return false;
+		return 0;
 	}
 //	if ( typeof quan != 'number' || quan == '' ) {
 	if ( typeof quan == 'undefined' || quan == '' ) {
@@ -33,9 +33,11 @@ function WGR_zero_price_quick_cart ( quan, price ) {
 	}
 	
 	//
-	jQuery('#oi_change_tongtien').show().html( g_func.money_format( quan * price ) );
+	var total_price = quan * price;
+	jQuery('#oi_change_tongtien').show().html( g_func.money_format( total_price ) );
 	jQuery('#oi_details_zero_price').hide();
-	return true;
+	
+	return total_price;
 }
 
 
@@ -71,9 +73,9 @@ function ___eb_details_cart_quan () {
 		console.log( a * product_js.gm );
 		console.log( g_func.money_format( a * product_js.gm ) );
 		*/
-		WGR_zero_price_quick_cart( a, product_js.gm );
+		var total_new_price = WGR_zero_price_quick_cart( a, product_js.gm );
 		
-		_global_js_eb.cart_create_arr_poruduct();
+		_global_js_eb.cart_create_arr_poruduct( total_new_price );
 		WGR_check_discount_code_return( 'oi_check_discount_code' );
 	});
 	jQuery('#oi_change_soluong input, #oi_change_soluong select').change();
@@ -830,13 +832,13 @@ function ___eb_details_product_color () {
 				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_default');
 			}
 //			console.log('COLOR');
-			WGR_zero_price_quick_cart( select_quan, show_price );
+			var total_new_price = WGR_zero_price_quick_cart( select_quan, show_price );
 			
 			// hiển thị lại giá của chi tiết sản phẩm
 			WGR_show_price_for_size_color( show_price );
 			
 			//
-			_global_js_eb.cart_create_arr_poruduct();
+			_global_js_eb.cart_create_arr_poruduct( total_new_price );
 		}
 		else {
 			console.log('frm_cart not found');
@@ -1124,13 +1126,13 @@ function ___eb_details_product_size () {
 				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('price_default');
 			}
 //			console.log('SIZE');
-			WGR_zero_price_quick_cart( select_quan, show_price );
+			var total_new_price = WGR_zero_price_quick_cart( select_quan, show_price );
 			
 			// hiển thị lại giá của chi tiết sản phẩm
 			WGR_show_price_for_size_color ( show_price );
 			
 			//
-			_global_js_eb.cart_create_arr_poruduct();
+			_global_js_eb.cart_create_arr_poruduct( total_new_price );
 		}
 		else {
 			console.log('frm_cart not found');
