@@ -58,8 +58,10 @@ function WGR_get_hoan_tat_user_email () {
 // dành cho các chức năng tracking cần lấy giá đơn hàng trước
 function WGR_get_hoan_tat_total_price () {
 	if ( typeof order_total_price != 'undefined' && order_total_price * 1 > 0 ) {
-		console.log( 'order_total_price: ' + order_total_price );
-		return order_total_price * 1;
+		order_total_price *= 1;
+		console.log( 'order_total_price:' );
+		console.log( order_total_price );
+		return order_total_price;
 	}
 	
 	//
