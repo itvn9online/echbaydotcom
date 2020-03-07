@@ -502,11 +502,15 @@ function ___eb_click_open_video_popup () {
 			}
 			
 			//
+			var ytb_ifr = 'https://www.youtube.com/embed/' +a+ '?feature=oembed&autoplay=1&start&end&wmode=opaque&loop=0&controls=1&mute=0&rel=0&modestbranding=0';
+//			var ytb_ifr = 'https://www.youtube.com/embed/' +a+ '?autoplay=1';
+			
+			//
 			str += '' +
 			'<div class="quick-video-node">' +
 				'<div class="quick-video-width" style="width:' + wit + 'px">' +
 					'<div class="quick-video-title bold">' +tit+ '</div>' +
-					'<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +a+ '?autoplay=1" frameborder="0" allowfullscreen></iframe>' +
+					'<iframe width="' + wit + '" height="' +hai+ '" src="' + ytb_ifr + '" frameborder="0" allowfullscreen></iframe>' +
 				'</div>' +
 			'</div>';
 			

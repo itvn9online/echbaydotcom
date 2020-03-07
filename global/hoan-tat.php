@@ -85,13 +85,15 @@ if ( $hd_id > 0 ) {
 		$current_hd_object = $sql->order_products;
 		$current_tv_object = $sql->order_customer;
 		// tạm thời để lệnh kiểm tra đã, sau 1 tháng thì bỏ đi
-		if ( isset( $sql->order_total_price ) ) {
+//		if ( isset( $sql->order_total_price ) ) {
 			$order_total_price = $sql->order_total_price;
+			/*
 		}
 		else {
 			EBE_tao_bang_hoa_don_cho_echbay_wp();
 			$order_total_price = 0;
 		}
+		*/
 		
 		
 		//
@@ -118,6 +120,7 @@ function WGR_hoan_tat_load_tracking ( i ) {
 	WGR_hoan_tat_send_tracking( ' . $hd_id . ', current_hd_object, current_tv_object );
 }
 WGR_hoan_tat_load_tracking();
+WGR_get_hoan_tat_total_price();
 		</script>';
 	}
 	/*
