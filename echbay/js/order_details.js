@@ -119,6 +119,7 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 	
 	// sau đó mới tính theo phần chiết khấu
 	WGR_admin_tinh_tong_hoa_don( tong );
+	jQuery('#hd_total_price').val( tong );
 	
 }
 

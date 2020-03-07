@@ -14,6 +14,7 @@ $order_products = stripslashes( trim( $_POST['order_products'] ) );
 $order_customer = stripslashes( trim( $_POST['order_customer'] ) );
 $order_status = (int)$_POST['t_trangthai'];
 $order_old_type = (int)$_POST['order_old_type'];
+$order_total_price = trim( $_POST ['t_total_price'] );
 
 
 
@@ -60,6 +61,7 @@ if ( $order_old_type > 0 ) {
 		'order_id' => $order_id,
 		'order_sku' => $hd_mahoadon,
 		'order_products' => trim( $_POST ['order_products'] ),
+		'order_total_price' => $order_total_price,
 		'order_customer' => trim( $_POST ['order_customer'] ),
 		'order_ip' => $order_ip,
 		'order_time' => $order_time,
@@ -107,6 +109,7 @@ if ( $order_old_type > 0 ) {
 $sql = "UPDATE eb_in_con_voi
 	SET
 		order_products = '" . $order_products . "',
+		order_total_price = '" . $order_total_price . "',
 		order_customer = '" . $order_customer . "',
 		order_update_time = " . date_time . ",
 		order_status = " . $order_status . "

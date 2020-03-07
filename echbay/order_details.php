@@ -116,6 +116,7 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 		<textarea name="order_products" id="order_products" style="width:99%;height:110px;"><?php echo $post->order_products; ?></textarea>
 		<textarea name="order_customer" id="order_customer" style="width:99%;height:110px;"><?php echo $post->order_customer; ?></textarea>
 		<input type="number" name="t_trangthai" value="<?php echo $post->order_status; ?>">
+		<input type="text" name="t_total_price" id="hd_total_price" value="<?php echo $post->order_total_price; ?>" />
 	</div>
 	<div class="medium18 redcolor l30">Thông tin khách hàng</div>
 	<table cellpadding="6" cellspacing="0" width="100%" border="0" class="eb-public-table">

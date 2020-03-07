@@ -118,9 +118,9 @@ function WGR_hoan_tat_load_tracking ( i ) {
 	
 	//
 	WGR_hoan_tat_send_tracking( ' . $hd_id . ', current_hd_object, current_tv_object );
+	WGR_get_hoan_tat_total_price();
 }
 WGR_hoan_tat_load_tracking();
-WGR_get_hoan_tat_total_price();
 		</script>';
 	}
 	/*
