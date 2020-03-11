@@ -982,7 +982,8 @@ function __eb_widget_load_cat_select ( $option, $tax = '', $get_child = false ) 
 			array (
 				'category' => 'Danh mục sản phẩm',
 				EB_BLOG_POST_LINK => 'Danh mục tin tức',
-				'post_options' => 'Thuộc tính sản phẩm',
+				'post_tag' => 'Thẻ (sản phẩm)',
+				'post_options' => 'Thuộc tính sản phẩm'
 			),
 			$cat_type_name,
 			$cat_type
