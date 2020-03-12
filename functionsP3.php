@@ -930,11 +930,22 @@ function WGR_decode_for_products_cart ( $a ) {
 	$a = implode( '', $a );
 //	echo $a . '<br>' . "\n\n";
 	
+	// chỉnh lại cái tên màu, do trước đó nó bị decode, nên trong php không hiển thị được
 	try {
 		$a = json_decode( $a );
 		foreach ( $a as $k => $v ) {
 			if ( isset( $v->color ) && $v->color != '' ) {
-				$v->color = html_entity_decode( preg_replace("/%u([0-9a-f]{3,4})/i", "&#x\\1;", $v->color), ENT_QUOTES, 'UTF-8' );
+//				$v->color = urldecode($v->color);
+				$v->color = preg_replace("/%u([0-9a-f]{3,4})/i", "&#x\\1;", $v->color);
+				$v->color = html_entity_decode($v->color, ENT_QUOTES, 'UTF-8');
+				
+				//
+				$arr = _eb_arr_escape_fix_content();
+				foreach ($arr as $k2 => $v2) {
+					if ($v2 != '') {
+						$v->color = str_replace($v2, $k2, $v->color);
+					}
+				}
 			}
 		}
 	} catch (Exception $e) {

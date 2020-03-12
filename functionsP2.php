@@ -398,17 +398,149 @@ function _eb_checkDevice_v1 () {
 
 
 // Chuyển ký tự UTF-8 -> ra bảng mã mới
-function _eb_str_text_fix_js_content ($str) {
-	if ($str == '') {
-		return '';
-	}
-	
-//	$str = iconv('UTF-16', 'UTF-8', $str);
-//	$str = mb_convert_encoding($str, 'UTF-8', 'UTF-16');
-//	$str = mysqli_escape_string($str);
-//	$str = htmlentities($str, ENT_COMPAT, 'UTF-16');
+// bảng mã dịch ngược lại mã escape
+function _eb_arr_escape_fix_content () {
+	return array(
+		'á' => '%E1',
+		'à' => '%E0',
+		'ả' => '%u1EA3',
+		'ã' => '%E3',
+		'ạ' => '%u1EA1',
+		'ă' => '%u0103',
+		'ắ' => '%u1EAF',
+		'ặ' => '%u1EB7',
+		'ằ' => '%u1EB1',
+		'ẳ' => '%u1EB3',
+		'ẵ' => '%u1EB5',
+		'â' => '%E2',
+		'ấ' => '%u1EA5',
+		'ầ' => '%u1EA7',
+		'ẩ' => '%u1EA9',
+		'ẫ' => '%u1EAB',
+		'ậ' => '%u1EAD',
+		'Á' => '%C1',
+		'À' => '%C0',
+		'Ả' => '%u1EA2',
+		'Ã' => '%C3',
+		'Ạ' => '%u1EA0',
+		'Ă' => '%u0102',
+		'Ắ' => '%u1EAE',
+		'Ặ' => '%u1EB6',
+		'Ằ' => '%u1EB0',
+		'Ẳ' => '%u1EB2',
+		'Ẵ' => '%u1EB4',
+		'Â' => '%C2',
+		'Ấ' => '%u1EA4',
+		'Ầ' => '%u1EA6',
+		'Ẩ' => '%u1EA8',
+		'Ẫ' => '%u1EAA',
+		'Ậ' => '%u1EAC',
+		'đ' => '%u0111',
+		'Đ' => '%u0110',
+		'é' => '%E9',
+		'è' => '%E8',
+		'ẻ' => '%u1EBB',
+		'ẽ' => '%u1EBD',
+		'ẹ' => '%u1EB9',
+		'ê' => '%EA',
+		'ế' => '%u1EBF',
+		'ề' => '%u1EC1',
+		'ể' => '%u1EC3',
+		'ễ' => '%u1EC5',
+		'ệ' => '%u1EC7',
+		'É' => '%C9',
+		'È' => '%C8',
+		'Ẻ' => '%u1EBA',
+		'Ẽ' => '%u1EBC',
+		'Ẹ' => '%u1EB8',
+		'Ê' => '%CA',
+		'Ế' => '%u1EBE',
+		'Ề' => '%u1EC0',
+		'Ể' => '%u1EC2',
+		'Ễ' => '%u1EC4',
+		'Ệ' => '%u1EC6',
+		'í' => '%ED',
+		'ì' => '%EC',
+		'ỉ' => '%u1EC9',
+		'ĩ' => '%u0129',
+		'ị' => '%u1ECB',
+		'Í' => '%CD',
+		'Ì' => '%CC',
+		'Ỉ' => '%u1EC8',
+		'Ĩ' => '%u0128',
+		'Ị' => '%u1ECA',
+		'ó' => '%F3',
+		'ò' => '%F2',
+		'ỏ' => '%u1ECF',
+		'õ' => '%F5',
+		'ọ' => '%u1ECD',
+		'ô' => '%F4',
+		'ố' => '%u1ED1',
+		'ồ' => '%u1ED3',
+		'ổ' => '%u1ED5',
+		'ỗ' => '%u1ED7',
+		'ộ' => '%u1ED9',
+		'ơ' => '%u01A1',
+		'ớ' => '%u1EDB',
+		'ờ' => '%u1EDD',
+		'ở' => '%u1EDF',
+		'ỡ' => '%u1EE1',
+		'ợ' => '%u1EE3',
+		'Ó' => '%D3',
+		'Ò' => '%D2',
+		'Ỏ' => '%u1ECE',
+		'Õ' => '%D5',
+		'Ọ' => '%u1ECC',
+		'Ô' => '%D4',
+		'Ố' => '%u1ED0',
+		'Ồ' => '%u1ED2',
+		'Ổ' => '%u1ED4',
+		'Ỗ' => '%u1ED6',
+		'Ộ' => '%u1ED8',
+		'Ơ' => '%u01A0',
+		'Ớ' => '%u1EDA',
+		'Ờ' => '%u1EDC',
+		'Ở' => '%u1EDE',
+		'Ỡ' => '%u1EE0',
+		'Ợ' => '%u1EE2',
+		'ú' => '%FA',
+		'ù' => '%F9',
+		'ủ' => '%u1EE7',
+		'ũ' => '%u0169',
+		'ụ' => '%u1EE5',
+		'ư' => '%u01B0',
+		'ứ' => '%u1EE9',
+		'ừ' => '%u1EEB',
+		'ử' => '%u1EED',
+		'ữ' => '%u1EEF',
+		'ự' => '%u1EF1',
+		'Ú' => '%DA',
+		'Ù' => '%D9',
+		'Ủ' => '%u1EE6',
+		'Ũ' => '%u0168',
+		'Ụ' => '%u1EE4',
+		'Ư' => '%u01AF',
+		'Ứ' => '%u1EE8',
+		'Ừ' => '%u1EEA',
+		'Ử' => '%u1EEC',
+		'Ữ' => '%u1EEE',
+		'Ự' => '%u1EF0',
+		'ý' => '%FD',
+		'ỳ' => '%u1EF3',
+		'ỷ' => '%u1EF7',
+		'ỹ' => '%u1EF9',
+		'ỵ' => '%u1EF5',
+		'Ý' => '%DD',
+		'Ỳ' => '%u1EF2',
+		'Ỷ' => '%u1EF6',
+		'Ỹ' => '%u1EF8',
+		'Ỵ' => '%u1EF4'
+	);
+}
+
+function _eb_arr_block_fix_content () {
 	// https://www.google.com/search?q=site:charbase.com+%E1%BB%9D#q=site:charbase.com+%E1%BA%A3
-	$arr = array(
+	return array(
 		'á' => '\u00e1',
 		'à' => '\u00e0',
 		'ả' => '\u1ea3',
@@ -544,6 +676,18 @@ function _eb_str_text_fix_js_content ($str) {
 		'Ỹ' => '\u1ef8',
 		'Ỵ' => '\u1ef4'
 	);
+}
+
+function _eb_str_text_fix_js_content ($str) {
+	if ($str == '') {
+		return '';
+	}
+	
+//	$str = iconv('UTF-16', 'UTF-8', $str);
+//	$str = mb_convert_encoding($str, 'UTF-8', 'UTF-16');
+//	$str = mysqli_escape_string($str);
+//	$str = htmlentities($str, ENT_COMPAT, 'UTF-16');
+	$arr = _eb_arr_block_fix_content();
 	
 	//
 	foreach ($arr as $k => $v) {
