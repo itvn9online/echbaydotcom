@@ -461,26 +461,29 @@ function ___eb_click_open_video_popup () {
 				wit_hai = 0;
 			
 			// xem đang là màn ngang hay dọc
+			/*
 			if ( hai > wit ) {
 				wit_hai = wit;
 				wit = hai;
 				hai = wit_hai;
 			}
+			*/
 //			console.log( wit );
 //			console.log( hai );
 			
 			// chiều cao video -> không để hết màn hình là đẹp
-			hai = Math.ceil( hai/ 100 * 90 );
-//			console.log( hai );
+//			hai = Math.ceil( hai/ 100 * 90 );
 			
 			//
-			wit = Math.ceil( hai/ youtube_video_default_size );
-//			console.log( wit );
+//			wit = Math.ceil( hai/ youtube_video_default_size );
 			
 			if ( wit > 1024 ) {
 				wit = 1024;
-				hai = Math.ceil( wit * youtube_video_default_size );
 			}
+			console.log( 'ytb width: ' + wit );
+			
+			hai = Math.ceil( wit * youtube_video_default_size );
+			console.log( 'ytb height: ' + hai );
 			
 			/*
 			if ( hai > 600 ) {
@@ -537,6 +540,7 @@ function ___eb_click_open_video_popup () {
 				//
 				if ( a2 != '' ) {
 					a2 = _global_js_eb.youtube_id( a2 );
+//					console.log( a2 );
 					
 					//
 					if ( a2 != a ) {
@@ -553,8 +557,8 @@ function ___eb_click_open_video_popup () {
 				str += '' +
 				'<div class="quick-video-node">' +
 					'<div class="quick-video-width" style="width:' + wit + 'px">' +
-						'<div class="quick-video-title bold">' +arr_list_video[x]+ '</div>' +
-						'<iframe width="' + wit + '" height="' +hai+ '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>' +
+						'<div class="quick-video-title bold">' + arr_list_video[x] + '</div>' +
+						'<iframe width="' + wit + '" height="' + hai + '" src="//www.youtube.com/embed/' +x+ '" frameborder="0" allowfullscreen></iframe>' +
 					'</div>' +
 				'</div>';
 				
