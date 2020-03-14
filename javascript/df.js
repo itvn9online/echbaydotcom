@@ -369,6 +369,11 @@ function WGR_active_popup ( op ) {
 		console.log('Popup show after ' + op['time_start'] + 's');
 		setTimeout(function () {
 			jQuery( op['id_event'] ).fadeIn();
+			
+			// lưu cookie phiên hiển thị popup này, để sau đỡ hiển thị lại
+			g_func.setc( op['cookie_name'], rtime, rtime );
+			
+			//
 			_global_js_eb.auto_margin();
 		}, op['time_start'] * 1000);
 	}
@@ -388,9 +393,6 @@ function WGR_active_popup ( op ) {
 	if ( typeof op['close_icon'] != 'undefined' && op['close_icon'] != '' ) {
 		jQuery( op['id_event'] ).prepend('<div class="wgr-popup-close" onclick="jQuery(\'' + op['id_event'] + '\').fadeOut();"><i class="fa ' + op['close_icon'] + '"></i></div>');
 	}
-	
-	//
-	g_func.setc( op['cookie_name'], rtime, rtime );
 }
 
 function WGR_close_popup () {
