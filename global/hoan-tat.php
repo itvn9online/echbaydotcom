@@ -230,7 +230,7 @@ if ( $decode_order_discount != NULL ) {
 $main_content .= '<script type="text/javascript">
 var current_hd_id = "' . $hd_id . '",
 	current_hd_code = "' . $hd_mahoadon . '",
-	order_total_price = "' . $order_total_price . '",
+	order_total_price = "' . $order_total_price . '" * 1,
 	current_hd_date = "' . date( _eb_get_option('date_format') . ' H:i', $sql->order_time ) . '",
 	current_hd_status = ' . $sql->order_status . ',
 	arr_hd_trangthai = ' .json_encode( $arr_hd_trangthai ) . ',
