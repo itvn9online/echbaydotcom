@@ -706,11 +706,16 @@ function ___eb_details_product_color () {
 					in_sctock = '',
 					bg = '',
 					cl = '';
+//				console.log(color_quan);
 				
 				// Để trống -> coi như còn hàng
 				if ( color_quan == '' ) {
 					color_quan = 1;
 				}
+				else {
+					color_quan *= 1;
+				}
+//				console.log(color_quan);
 				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log('color_quan: ' + color_quan);
 				
 				// còn hàng thì mới hiển thị

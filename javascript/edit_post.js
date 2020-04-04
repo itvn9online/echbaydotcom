@@ -1332,6 +1332,31 @@ function WGR_run_for_admin_edit_post () {
 					}
 					WGR_show_list_size_in_color();
 					
+				}).each(function () {
+					var b = jQuery(this).attr('alt') || '',
+						color_color = jQuery(this).attr('data-color') || '',
+						color_sku = jQuery(this).attr('data-sku') || '',
+						color_name = jQuery(this).attr('title') || '';
+					
+					if ( b == '' ) {
+						if ( color_color != '' ) {
+							b = color_color;
+						}
+						else if ( color_sku != '' ) {
+							b = color_sku;
+						}
+						else if ( color_name != '' ) {
+							b = color_name;
+						}
+						else {
+							b = 'No ALT';
+						}
+						console.log('No ALT: ' + b);
+						
+						$(this).attr({
+							'alt' : b
+						});
+					}
 				});
 			}
 		}
