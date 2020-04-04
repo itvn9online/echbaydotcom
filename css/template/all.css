@@ -172,18 +172,18 @@
 	border-radius: 5px;
 	box-shadow: 0 0 20px #999;
 }
-#aabbcc input[type="search"] {
+#aabbcc .div-search input[type="search"] {
 	padding-left: 5%;
 	width: 85%;
 	height: 30px;
 	border-radius: 5px;
 }
-#aabbcc button {
+#aabbcc .div-search button {
 	width: 15%;
 	border-radius: 0 5px 5px 0;
 }
-#aabbcc button i { }
-#aabbcc button span { }
+#aabbcc .div-search button i { }
+#aabbcc .div-search button span { }
 /* ================================== oi_member_func ================================== */
 #aabbcc .oi_member_func { }
 #aabbcc .oi_member_func a { }
