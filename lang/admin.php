@@ -69,8 +69,11 @@ function WGR_admin_lang ( $k ) {
 //		'_eb_product_sku' => 'Mã sản phẩm',
 		'_eb_product_sku' => 'SKU',
 		'_eb_product_leech_sku' => 'SKU (leech data)',
+		
 		'_eb_product_oldprice' => EBE_get_lang('post_giacu') . ' (nếu có)',
 		'_eb_product_price' => EBE_get_lang('post_giamoi'),
+		'_eb_product_baseprice' => 'Giá sau khuyến mại (nếu có)',
+		
 		'_eb_product_buyer' => EBE_get_lang('post_luotmua'),
 		'_eb_product_quantity' => EBE_get_lang('post_soluong'),
 		'_eb_product_ngayhethan' => 'Ngày hết hạn',

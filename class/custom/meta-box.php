@@ -239,6 +239,8 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiên bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
 	
+	'_eb_product_baseprice' => 'Khi bạn bật chức năng <strong><a href="' . admin_link . 'admin.php?page=eb-config_theme&tab=theme-details&support_tab=cf_update_price_if_hethan" target="_blank">Cập nhật lại giá sau khi hết hạn</a></strong>, sản phẩm sẽ được chuyển về giá này sau khi chương trình khuyến mại kết thúc.',
+	
 //	'_eb_product_size' => '',
 	'_eb_product_giohethan' => 'Thiết lập giờ hết hạn cụ thể cho phần Ngày hết hạn ở trên. Nếu để trống trường này, giờ hết hạn sẽ là cuối ngày hôm đó (23:59)',
 	'_eb_product_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Bài viết này',
@@ -287,8 +289,11 @@ $eb_arr_custom_meta_box = array(
 	'_eb_product_searchkey' => WGR_admin_lang('_eb_product_searchkey'),
 	'_eb_product_sku' => WGR_admin_lang('_eb_product_sku'),
 	'_eb_product_leech_sku' => WGR_admin_lang('_eb_product_leech_sku'),
+	
 	'_eb_product_oldprice' => WGR_admin_lang('_eb_product_oldprice'),
 	'_eb_product_price' => WGR_admin_lang('_eb_product_price'),
+	'_eb_product_baseprice' => WGR_admin_lang('_eb_product_baseprice'),
+	
 	'_eb_product_buyer' => WGR_admin_lang('_eb_product_buyer'),
 	'_eb_product_quantity' => WGR_admin_lang('_eb_product_quantity'),
 	'_eb_product_ngayhethan' => WGR_admin_lang('_eb_product_ngayhethan'),
@@ -504,8 +509,11 @@ function EchBayThongTinRunSave ( $arr_box, $post_id ) {
 				$val = 1;
 			}
 			else {
-				if ( $k == '_eb_product_oldprice'
-				|| $k == '_eb_product_price' ) {
+				if (
+				$k == '_eb_product_oldprice'
+				|| $k == '_eb_product_price'
+				|| $k == '_eb_product_baseprice'
+				) {
 					$val = _eb_float_only( $val, 2 );
 				}
 				else {

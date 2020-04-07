@@ -283,11 +283,15 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 						
 						// nếu sản phẩm hết hạn
 						if ( $trv_ngayhethan > 0 && $trv_ngayhethan < date_time ) {
-							if ( $post->giaban > 0 && $post->giaban > $post->giamoi && $post->giamoi > 0 ) {
+							$gia_sau_km = _eb_float_only(_eb_get_post_object($post->ID, '_eb_product_baseprice'));
+							
+							if ( $gia_sau_km > 0 && $gia_sau_km > $post->giamoi && $post->giamoi > 0 ) {
 								// cập nhật lại giá phẩm
 //								echo '<!-- reset price -->';
-								WGR_update_meta_post( $post->ID, '_eb_product_oldprice', 0 );
-								WGR_update_meta_post( $post->ID, '_eb_product_price', $post->giaban );
+								
+								// đặt lại giá sau khuyến mại về 0, nếu không web sẽ update liên tục -> lỗi hệ thống ngay
+								WGR_update_meta_post( $post->ID, '_eb_product_baseprice', 0 );
+								WGR_update_meta_post( $post->ID, '_eb_product_price', $gia_sau_km );
 							}
 							$trv_ngayhethan = 0;
 						}
