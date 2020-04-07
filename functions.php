@@ -265,8 +265,8 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 			if ( $__cf_row['cf_update_price_if_hethan'] == 1 ) {
 				$_eb_product_ngayhethan = _eb_get_post_object( $post->ID, '_eb_product_ngayhethan' );
 //				echo $_eb_product_ngayhethan . '<br>';
-				$_eb_product_giohethan = _eb_get_post_object( $post->ID, '_eb_product_giohethan' );
 				if ( $_eb_product_ngayhethan != '' ) {
+					$_eb_product_giohethan = _eb_get_post_object( $post->ID, '_eb_product_giohethan' );
 					if ( $_eb_product_giohethan == '' ) {
 						$_eb_product_giohethan = '23:59';
 					}
@@ -292,6 +292,9 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 								// đặt lại giá sau khuyến mại về 0, nếu không web sẽ update liên tục -> lỗi hệ thống ngay
 								WGR_update_meta_post( $post->ID, '_eb_product_baseprice', 0 );
 								WGR_update_meta_post( $post->ID, '_eb_product_price', $gia_sau_km );
+								
+								WGR_update_meta_post( $post->ID, '_eb_product_ngayhethan', '' );
+								WGR_update_meta_post( $post->ID, '_eb_product_giohethan', '' );
 							}
 							$trv_ngayhethan = 0;
 						}

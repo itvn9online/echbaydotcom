@@ -1172,8 +1172,8 @@ if ( $bai_san_pham == true ) {
 	if ( $__post->post_type == 'post' ) {
 		$_eb_product_ngayhethan = _eb_get_post_object( $pid, '_eb_product_ngayhethan' );
 //		echo $_eb_product_ngayhethan . '<br>';
-		$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
 		if ( $_eb_product_ngayhethan != '' ) {
+			$_eb_product_giohethan = _eb_get_post_object( $pid, '_eb_product_giohethan' );
 			if ( $_eb_product_giohethan == '' ) {
 				$_eb_product_giohethan = '23:59';
 			}
@@ -1197,6 +1197,9 @@ if ( $bai_san_pham == true ) {
 						// đặt lại giá sau khuyến mại về 0, nếu không web sẽ update liên tục -> lỗi hệ thống ngay
 						WGR_update_meta_post( $pid, '_eb_product_baseprice', 0 );
 						WGR_update_meta_post( $pid, '_eb_product_price', $trv_giaban );
+						
+						WGR_update_meta_post( $pid, '_eb_product_ngayhethan', '' );
+						WGR_update_meta_post( $pid, '_eb_product_giohethan', '' );
 					}
 					$trv_ngayhethan = 0;
 				}
