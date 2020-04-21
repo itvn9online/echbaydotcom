@@ -2241,6 +2241,7 @@ iframe[name="google_conversion_frame"] {
 .show-view-more .widget-blog-more a {
 	display: inline-block;
 	background: #c00;
+	background-color: var(--default-bg);
 	color: #fff;
 	padding: 10px;
 	border-radius: 3px;
