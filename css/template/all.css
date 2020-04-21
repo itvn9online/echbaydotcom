@@ -223,21 +223,21 @@
 }
 .leftright {
 	background: -webkit-linear-gradient( left, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: -o-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: -moz-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-}
-.rightleft {
-	background: -webkit-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 	background: -o-linear-gradient( left, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 	background: -moz-linear-gradient( left, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 	background: linear-gradient( left, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 }
+.rightleft {
+	background: -webkit-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: -o-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: -moz-linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: linear-gradient( right, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+}
 .bottomtop {
 	background: -webkit-linear-gradient( bottom, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: -o-linear-gradient( top, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: -moz-linear-gradient( top, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
-	background: linear-gradient( top, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: -o-linear-gradient( bottom, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: -moz-linear-gradient( bottom, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
+	background: linear-gradient( bottom, rgba( 0, 0, 0, .6 ), rgba( 0, 0, 0, .4 ), rgba( 0, 0, 0, .01 ) );
 }
 .FontAwesome { font-family: FontAwesome, "Font Awesome 5 Free"; }
 /* Using root color */
