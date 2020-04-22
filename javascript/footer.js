@@ -411,6 +411,15 @@ function add_fb_messages_for_page() {
             //
             if (WGR_check_option_on(cf_tester_mode)) console.log('FB app ID: ' + __global_facebook_id);
 			
+			//
+             window.fbAsyncInit = function() {
+				 FB.init({
+//					 appId: __global_facebook_id,
+					 xfbml: true,
+					 version: 'v6.0'
+				 });
+             };
+			
 			// căn lại chiều rộng cho fb plugin
 //			jQuery('.fb-like, .fb-comments').each(function() {
 //				jQuery(this).attr({
@@ -464,16 +473,6 @@ function add_fb_messages_for_page() {
 
             //
             /*
-             window.fbAsyncInit = function() {
-             FB.init({
-             appId: __global_facebook_id,
-             xfbml: true,
-             version: 'v2.0'
-             });
-             };
-             
-             
-             //
              (function(d, s, id) {
              var js, fjs = d.getElementsByTagName(s)[0];
              if (d.getElementById(id)) {
