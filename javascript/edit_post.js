@@ -1077,6 +1077,28 @@ function WGR_run_for_admin_edit_post () {
 			}
 		});
 		
+		// gán hình ảnh cho video youtube
+		$('#_eb_ads_url, #_eb_ads_video_url').change(function () {
+			var ytb = $('#_eb_ads_url').val() || '';
+			var img = $('#_eb_product_avatar').val() || '';
+			
+			if ( ytb == ''  ) {
+				ytb = $('#_eb_ads_video_url').val() || '';
+			}
+			
+			if ( img == '' ) {
+				if ( ytb.split('youtube.com/').length > 1 || ytb.split('youtu.be/').length > 1 ) {
+					console.log(ytb);
+					var a = _global_js_eb.youtube_id(ytb);
+					console.log(a);
+					
+					if ( a != '' ) {
+						$('#_eb_product_avatar').val('https://img.youtube.com/vi/' + a + '/0.jpg').change();
+					}
+				}
+			}
+		});
+		
 		
 		// xử lý hình ảnh lỗi cho xwatch cũ
 		/*
