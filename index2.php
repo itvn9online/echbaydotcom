@@ -240,6 +240,14 @@ include EB_THEME_CORE . 'database.php';
 
 
 
+// chỉnh lại CSS cho phần menu của trang danh mục
+if ( $__cf_row['cf_cats_column_style'] != '' && $__cf_row['cf_list_sidebar_new_style'] == 1 ) {
+	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/template/col-sidebar-content.css' ] = 1;
+}
+
+
+
+
 
 
 

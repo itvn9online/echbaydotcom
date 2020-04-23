@@ -1,4 +1,5 @@
 /* Đổi css mặc định của phần tìm theo giá ở trang danh mục */
+.sidebar-main_sidebar .echbay-widget-title,
 .global-cats-reverse-sidebar .echbay-widget-title {
 	background: #f2f2f2;
 	padding: 6px 5px 6px 10px;
@@ -6,23 +7,32 @@
 	margin: 0;
 	border-radius: 5px 5px 0 0;
 }
+.sidebar-main_sidebar .echbay-widget-title:before,
 .global-cats-reverse-sidebar .echbay-widget-title:before { display: none; }
+.sidebar-main_sidebar .echbay-product-price-between,
+.sidebar-main_sidebar .echbay-category-in-js,
 .global-cats-reverse-sidebar .echbay-product-price-between,
 .global-cats-reverse-sidebar .echbay-category-in-js {
 	border: 1px #ccc solid;
 	border-top: 0 none;
 	margin-bottom: 20px;
 }
+.sidebar-main_sidebar .echbay-product-price-between li,
+.sidebar-main_sidebar .echbay-category-in-js li,
 .global-cats-reverse-sidebar .echbay-product-price-between li,
 .global-cats-reverse-sidebar .echbay-category-in-js li {
 	list-style: none;
 	margin: 0;
 	border-top: 1px #f2f2f2 solid;
 }
+.sidebar-main_sidebar .echbay-product-price-between a,
+.sidebar-main_sidebar .echbay-category-in-js a,
 .global-cats-reverse-sidebar .echbay-product-price-between a,
 .global-cats-reverse-sidebar .echbay-category-in-js a {
 	display: block;
 	padding: 8px 10px;
 }
+.sidebar-main_sidebar .widget_random_blog li,
 .global-cats-reverse-sidebar .widget_random_blog li { border-bottom: 1px #f2f2f2 solid; }
+.sidebar-main_sidebar .echbay-widget-title div,
 .global-cats-reverse-sidebar .echbay-widget-title div { border-bottom: 0 none; }
