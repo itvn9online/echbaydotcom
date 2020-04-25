@@ -331,8 +331,10 @@ if ( isset( $_POST['cf_old_domain'] )
 
 
 //
-if ( isset( $_POST['cf_replace_content_full'] )
-	&& $_POST['cf_replace_content_full'] != '' ) {
+if (
+	isset( $_POST['cf_replace_content_full'] )
+	&& $_POST['cf_replace_content_full'] != ''
+) {
 	
 	//
 	$_POST['cf_replace_content_full'] = trim( $_POST['cf_replace_content_full'] );
@@ -357,6 +359,39 @@ if ( isset( $_POST['cf_replace_content_full'] )
 	}
 	else {
 		$_POST['cf_replace_content'] = implode( "\n", $new_a );
+	}
+}
+
+
+//
+if (
+	isset( $_POST['cf_replace_rss_content_full'] )
+	&& $_POST['cf_replace_rss_content_full'] != ''
+) {
+	
+	//
+	$_POST['cf_replace_rss_content_full'] = trim( $_POST['cf_replace_rss_content_full'] );
+	
+	//
+	$arr = explode( "\n", $_POST['cf_replace_rss_content_full'] );
+	$new_a = array();
+	foreach ( $arr as $v ) {
+		$v = trim( $v );
+		
+		// dữ liệu chuẩn phải không trống
+		// không có dấu # ở đầu
+		// có dấu | để chia tách 2 phần dữ liệu
+		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strstr( $v, '|' ) == true ) {
+			$new_a[] = $v;
+		}
+	}
+	
+	//
+	if ( empty( $new_a ) ) {
+		$_POST['cf_replace_rss_content'] = '';
+	}
+	else {
+		$_POST['cf_replace_rss_content'] = implode( "\n", $new_a );
 	}
 }
 

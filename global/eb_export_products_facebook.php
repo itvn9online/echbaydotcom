@@ -264,6 +264,10 @@ $rss_content = '<?xml version="1.0" encoding="UTF-8"?>
 
 
 //
+if ( $__cf_row['cf_replace_rss_content'] != '' ) {
+	$rss_content = WGR_replace_for_all_content( $__cf_row['cf_replace_rss_content'], $rss_content );
+}
+
 echo $rss_content;
 
 

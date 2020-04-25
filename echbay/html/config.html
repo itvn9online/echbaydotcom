@@ -22,6 +22,7 @@ div.gallery-add-to-og_image { display: block; }
 		-->
 		<textarea name="cf_css_body" id="cf_css_body" style="width:90%;">{tmp.cf_css_body}</textarea>
 		<textarea style="width:90%;">{tmp.cf_replace_content}</textarea>
+		<textarea style="width:90%;">{tmp.cf_replace_rss_content}</textarea>
 	</div>
 	<table border="0" cellpadding="0" cellspacing="0" class="eb-public-table eb-support-table fix-textarea-height">
 		<tbody title="Cài đặt chung" id="eb-admin-config-meta-home" class="eb-admin-config-tab eb-admin-hide-config-tab">
@@ -388,6 +389,16 @@ div.gallery-add-to-og_image { display: block; }
 				<td class="t" valign="top">Thay thế dữ liệu (CDN)</td>
 				<td class="i"><textarea name="cf_replace_content_full" id="cf_replace_content_full" placeholder="Ví dụ: Hello word! | Xin chào Việt Nam!">{tmp.cf_replace_content_full}</textarea>
 					<p class="description">Sử dụng khi bạn muốn thay thế một đoạn văn bản nào đó trong toàn bộ nội dung của website sang một đoạn văn bản mới. Thường dùng khi thay URL ảnh, số điện thoại, địa chỉ trong nội dung bài viết... hoặc thiết lập <strong>CDN</strong> cho nội dung website.<br>
+						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
+						Ví dụ:
+					
+					<pre><code class="d-block">Văn bản cần thay thế 1 | Văn bản thay thế 1</code><code class="d-block">Văn bản cần thay thế 2|Văn bản thay thế 2</code></pre>
+					</p></td>
+			</tr>
+			<tr>
+				<td class="t" valign="top">Thay thế dữ liệu (RSS)</td>
+				<td class="i"><textarea name="cf_replace_rss_content_full" id="cf_replace_rss_content_full" placeholder="Ví dụ: Hello word! | Xin chào Việt Nam!">{tmp.cf_replace_rss_content_full}</textarea>
+					<p class="description">Khi cần thay thế dữ liệu trong file RSS.<br>
 						* Có thể nhập nhiều biểu mẫu, mỗi biểu mẫu cách nhau bởi dấu xuống dòng.<br>
 						Ví dụ:
 					
