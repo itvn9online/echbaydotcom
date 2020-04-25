@@ -242,7 +242,10 @@ echo '</ul>';
 
 
 // Thêm phần lọc theo thông số sản phẩm
-if ( $by_post_type == 'post' || $by_post_type == 'ads' ) {
+if (
+	$by_post_type == 'post'
+	|| $by_post_type == 'ads'
+) {
 	$arrs_cats = array(
 		'taxonomy' => 'post_options',
 //		'hide_empty' => 0,
@@ -529,6 +532,7 @@ $strAjaxLink .= '&trang=' . $trang;
 	<?php
 
 if ( $totalThread > 0 ) {
+//	echo $strFilter . ' aaaaaaaaaaaaaaaa<br>' . "\n"; echo $offset . '<br>' . "\n"; echo $threadInPage . '<br>' . "\n";
 
 	//
 	$sql = "SELECT *

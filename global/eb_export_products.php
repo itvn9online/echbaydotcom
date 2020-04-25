@@ -33,18 +33,26 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 //	print_r( $op ); exit();
 	
 	//
+	$new_filter = "`" . wp_posts . "`.post_type = '" . $post_type . "' " . $op['filter'] . $op['filter2'];
+//	echo $new_filter . '<br>' . "\n"; echo $offset . '<br>' . "\n"; echo $op['limit'] . '<br>' . "\n";
+	
+	//
 	$sql = "SELECT *
 	FROM
 		`" . wp_posts . "`
 		" . $op['join'] . "
 	WHERE
-		`" . wp_posts . "`.post_type = '" . $post_type . "'
-		" . $op['filter'] . $op['filter2'] . "
+		" . $new_filter . "
+	ORDER BY
+		`" . wp_posts . "`.menu_order DESC
+	LIMIT " . $offset . ", " . $op['limit'];
+	/*
 	GROUP BY
 		ID
 	ORDER BY
 		ID
 	LIMIT " . $offset . ", " . $op['limit'];
+	*/
 //	echo $sql;
 	
 	//
@@ -174,8 +182,10 @@ if ( isset($_GET['by_post_id']) ) {
 
 
 //
-if ( $export_type == 'facebook'
-|| $export_type == 'google' ) {
+if (
+	$export_type == 'facebook'
+	|| $export_type == 'google'
+) {
 //	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 	
 	$sql = WGR_export_product_to_xml( $arr_for_slect_data, $by_post_type );
