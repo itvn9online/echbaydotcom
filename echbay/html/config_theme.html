@@ -108,10 +108,25 @@
 					%</td>
 			</tr>
 			<tr>
+				<td colspan="2" class="t">Fomo order</td>
+			</tr>
+			<tr>
 				<td class="t"><label for="cf_show_order_fomo">Hiển thị đơn hàng đã đặt</label></td>
 				<td class="i"><input type="text" name="cf_show_order_fomo" id="cf_show_order_fomo" value="{tmp.cf_show_order_fomo}" class="s" maxlength="2" />
-					%
+					đơn
 					<p class="description">* Chức năng này sẽ lấy một số đơn hàng mới nhất trong hệ thống để hiển thị ra cho khách xem. Thông tin hiển thị ra là thông tin cơ bản và được ẩn bớt để bảo mật dữ liệu. Nhập 0 để tắt tính năng này đi.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_delay_order_fomo">Thời gian kích hoạt</label></td>
+				<td class="i"><input type="text" name="cf_delay_order_fomo" id="cf_delay_order_fomo" value="{tmp.cf_delay_order_fomo}" class="s" maxlength="2" />
+					giây
+					<p class="description">* Là quãng thời gian nghỉ ban đầu khi website đang tải, nhằm hạn chế quá tải cho các thành phần chính của website.</p></td>
+			</tr>
+			<tr>
+				<td class="t"><label for="cf_time_order_fomo">Thời gian hiển thị</label></td>
+				<td class="i"><input type="text" name="cf_time_order_fomo" id="cf_time_order_fomo" value="{tmp.cf_time_order_fomo}" class="s" maxlength="4" />
+					giây
+					<p class="description">* Sau khi được kích hoạt hiển thị, đây là thời gian mà nó sẽ hiển thị và tự động ẩn đi nếu người dùng không chủ động bấm tắt.</p></td>
 			</tr>
 		</tbody>
 		<tbody title="Trang chủ (Home)" id="eb-admin-config-theme-home" class="eb-admin-config_theme-tab eb-admin-hide-config-tab">

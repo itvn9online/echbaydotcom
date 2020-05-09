@@ -237,7 +237,9 @@ if ($__cf_row['cf_show_order_fomo'] > 0) {
 		);
 	}
 //	print_r( $arr_fomo_order );
-	echo '<script>arr_fomo_order=' . json_encode( $arr_fomo_order ) . ';</script>';
+	echo '<script>arr_fomo_order=' . json_encode( $arr_fomo_order ) . ',
+		cf_delay_order_fomo="' . $__cf_row['cf_delay_order_fomo'] . '",
+		cf_time_order_fomo="' . $__cf_row['cf_time_order_fomo'] . '";</script>';
 	$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js';
 	
 //	exit();

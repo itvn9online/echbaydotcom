@@ -422,6 +422,8 @@ $__cf_row_default = array(
 	
 	// chức năng hiển thị đơn đã mua
 	'cf_show_order_fomo' => 11,
+	'cf_delay_order_fomo' => 6,
+	'cf_time_order_fomo' => 30,
 	
 	
 	// cấu trúc bảng tin ở trang chủ

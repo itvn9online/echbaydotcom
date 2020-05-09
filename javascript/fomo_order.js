@@ -4,11 +4,24 @@
 	if ( typeof arr_fomo_order == 'undefined' || arr_fomo_order.length == 0 ) {
 		return false;
 	}
+	cf_delay_order_fomo *= 1;
+	cf_delay_order_fomo = Math.ceil(cf_delay_order_fomo);
+	if ( cf_delay_order_fomo < 1 ) {
+		console.log('cf_delay_order_fomo zero!');
+		return false;
+	}
+	
+	cf_time_order_fomo *= 1;
+	cf_time_order_fomo = Math.ceil(cf_time_order_fomo);
+	if ( cf_time_order_fomo < 1 ) {
+		console.log('cf_time_order_fomo zero!');
+		return false;
+	}
 	
 	//
 	var i = g_func.rand( 0, arr_fomo_order.length - 1 );
 	var a = arr_fomo_order[i];
-	console.log(a);
+//	console.log(a);
 	
 	var phut = date_time - a.fomo_time;
 	if ( phut < 3600 ) {
@@ -36,8 +49,8 @@
 		//
 		setTimeout(function () {
 			$('.fomo-order').removeClass('active');
-		}, 30 * 1000);
-	}, 6000);
+		}, cf_time_order_fomo * 1000);
+	}, cf_delay_order_fomo * 1000);
 	
 })();
 
