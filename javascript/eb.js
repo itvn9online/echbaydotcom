@@ -774,15 +774,16 @@ var _global_js_eb = {
 			jQuery('.img-max-width .wp-caption').width('auto');
 			
 			
+			//
+//			console.log('TEST max_width');
+			
+			
 			// trên mobile -> giới hạn kích thước media
 			jQuery('.img-max-width').each(function() {
 				// lấy theo kích thước tối đa của khung này luôn
-//				var max_width = jQuery(this).attr('data-max-width') || 250;
-//				if ( max_width == '' || max_width < 90 ) {
-					max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
-//				}
+				var max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
 				max_width = Math.ceil( max_width ) - 1;
-//				console.log('ccccccccccc: ' + max_width);
+				console.log('max_width: ' + max_width);
 				
 				// xử lý với hình ảnh
 				jQuery('img', this).each(function() {
@@ -890,17 +891,25 @@ var _global_js_eb = {
 				
 				// xử lý riêng với chiều rộng
 				// loại bỏ bo chiều rộng của ảnh đi, nếu config có set như thế
-				if ( pid > 0
-				&& eb_wp_post_type == 'post'
-				&& typeof cf_post_rm_img_width != 'undefined'
-				&& WGR_check_option_on( cf_post_rm_img_width ) ) {
+				if (
+					pid > 0
+					&& eb_wp_post_type == 'post'
+					&& typeof cf_post_rm_img_width != 'undefined'
+					&& WGR_check_option_on( cf_post_rm_img_width )
+				) {
+					console.log('User config cf_post_rm_img_width ON');
+					
 					jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
 					jQuery('.wp-caption', this).width('auto');
 				}
-				else if ( pid > 0
-				&& eb_wp_post_type == 'blog'
-				&& typeof cf_blog_rm_img_width != 'undefined'
-				&& WGR_check_option_on( cf_blog_rm_img_width ) ) {
+				else if (
+					pid > 0
+					&& eb_wp_post_type == 'blog'
+					&& typeof cf_blog_rm_img_width != 'undefined'
+					&& WGR_check_option_on( cf_blog_rm_img_width )
+				) {
+					console.log('User config cf_blog_rm_img_width ON');
+					
 					jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
 					jQuery('.wp-caption', this).width('auto');
 				}
@@ -929,28 +938,29 @@ var _global_js_eb = {
 						});
 //						}).removeAttr('height');
 					});
-					
-					//
-					jQuery('iframe', this).each(function() {
-						var a = jQuery(this).attr('src') || '';
-						if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
-						
-						// chỉ xử lý với video youtube
-						if ( a.split('youtube.com/').length > 1 ) {
-							var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
-							if ( wit > max_width ) {
-								wit = max_width;
-							}
-							wit -= 1;
-							
-							//
-							jQuery(this).attr({
-								'width' : wit,
-								'height' : Math.ceil( wit * youtube_video_default_size )
-							});
-						}
-					});
 				}
+				
+				//
+				jQuery('iframe', this).each(function() {
+					var a = jQuery(this).attr('src') || '';
+					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
+					
+					// chỉ xử lý với video youtube
+					if ( a.split('youtube.com/').length > 1 ) {
+						var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
+						if ( wit > max_width ) {
+							wit = max_width;
+						}
+						wit -= 1;
+						console.log('wit: ' + wit);
+						
+						//
+						jQuery(this).attr({
+							'width' : wit,
+							'height' : Math.ceil( wit * youtube_video_default_size )
+						});
+					}
+				});
 			});
 		}
 		
