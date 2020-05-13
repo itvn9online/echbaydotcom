@@ -1921,7 +1921,10 @@ function EBE_set_default_excerpt_for_seo () {
 //	console.log('content_strip_post: ' + g_func.strip_tags( content_post) );
 //	console.log('content_short_post: ' + g_func.short_string( g_func.strip_tags( content_post), cf_content_for_excerpt_null * 1 ) );
 	
-	return g_func.short_string( g_func.strip_tags( content_post), cf_content_for_excerpt_null * 1 );
+	var ex = g_func.short_string( g_func.strip_tags( content_post), cf_content_for_excerpt_null * 1 );
+	console.log(ex);
+	
+	return ex;
 }
 
 function EBE_set_default_title_for_seo () {
@@ -1998,7 +2001,12 @@ function EBE_set_default_title_for_seo () {
 			jQuery('#excerpt').val( des_yoast );
 		}
 		else if ( WGR_check_option_on( cf_excerpt_sync_content ) ) {
-			jQuery('#excerpt').val( EBE_set_default_excerpt_for_seo() );
+			des_post = EBE_set_default_excerpt_for_seo();
+			
+			// không lấy tóm tắt nếu nó có URL ở đó
+			if ( des_post != '' && des_post .split('//').length == 1 ) {
+				jQuery('#excerpt').val( des_post );
+			}
 		}
 	}
 	
