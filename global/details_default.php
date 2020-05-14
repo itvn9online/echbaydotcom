@@ -359,28 +359,40 @@ if ( $__cf_row['cf_post_big_banner'] != 1 ) {
 }
 // Chỉ lấy banner riêng khi chế độ global không được kích hoạt
 else if ( $__cf_row['cf_global_big_banner'] != 1 ) {
-	// Mặc định chỉ lấy cho phần post
-	if ( $cid > 0 ) {
-		if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
-			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
-				'tax_query' => array(
-					array (
-						'taxonomy' => EB_BLOG_POST_LINK,
-						'field' => 'term_id',
-						'terms' => $cid,
-						'operator' => 'IN'
+	// đây là page -> chưa làm
+	if ( $__post->post_type == 'page' ) {
+	}
+	// Mặc định chỉ lấy cho phần post/ blog
+	else {
+		if ( $cid > 0 ) {
+			if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
+				$arr_get_big_banner = array(
+					'tax_query' => array(
+						array (
+							'taxonomy' => EB_BLOG_POST_LINK,
+							'field' => 'term_id',
+							'terms' => $cid,
+							'operator' => 'IN'
+						)
 					)
-				)
-			) );
+				);
+			}
+			else {
+				$arr_get_big_banner = array(
+					'category__in' => array( $cid )
+				);
+			}
 		}
 		else {
-			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
-				'category__in' => array( $cid )
-//				'category__in' => ''
-			) );
+			$arr_get_big_banner = array(
+				'category__in' => ''
+			);
 		}
+		
+		//
+		$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), $arr_get_big_banner );
+//		echo $str_big_banner;
 	}
-	// còn đây là page -> chưa làm
 }
 
 
