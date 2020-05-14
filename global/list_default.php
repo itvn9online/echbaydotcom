@@ -93,8 +93,10 @@ $str_for_category_top_sidebar = '';
 		echo ' -->';
 		*/
 		
-		if ( $switch_taxonomy == 'post_options'
-		|| $switch_taxonomy == EB_BLOG_POST_LINK ) {
+		if (
+			$switch_taxonomy == 'post_options'
+			|| $switch_taxonomy == EB_BLOG_POST_LINK
+		) {
 			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
 				'tax_query' => array(
 					array (
@@ -105,7 +107,6 @@ $str_for_category_top_sidebar = '';
 					)
 				)
 			) );
-//			echo $str_big_banner;
 		}
 		// lấy theo taxonomy mặc định
 		else if ( $switch_taxonomy == 'category' ) {
@@ -113,6 +114,7 @@ $str_for_category_top_sidebar = '';
 				'category__in' => array( $cid )
 			) );
 		}
+//		echo $str_big_banner;
 	}
 	
 	

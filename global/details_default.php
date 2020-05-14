@@ -353,16 +353,31 @@ if ( ! empty( $cats ) ) {
 
 
 
-// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
+// Nếu chế độ tải banner cho trang chi tiết bị tắt thì thôi
 if ( $__cf_row['cf_post_big_banner'] != 1 ) {
-	$str_big_banner = '<!-- Big banner current set not load in post details -->';
+	$str_big_banner = '<!-- Big banner disable by cf_post_big_banner in Theme Config - Post -->';
 }
+// Chỉ lấy banner riêng khi chế độ global không được kích hoạt
 else if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 	// Mặc định chỉ lấy cho phần post
 	if ( $cid > 0 ) {
-		$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
-			'category__in' => '',
-		) );
+		if ( $__post->post_type == EB_BLOG_POST_TYPE ) {
+			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
+				'tax_query' => array(
+					array (
+						'taxonomy' => EB_BLOG_POST_LINK,
+						'field' => 'term_id',
+						'terms' => $cid,
+						'operator' => 'IN'
+					)
+				)
+			) );
+		}
+		else {
+			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
+				'category__in' => '',
+			) );
+		}
 	}
 	// còn đây là page -> chưa làm
 }
