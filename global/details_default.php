@@ -375,7 +375,8 @@ else if ( $__cf_row['cf_global_big_banner'] != 1 ) {
 		}
 		else {
 			$str_big_banner = EBE_get_big_banner( EBE_get_lang('bigbanner_num'), array(
-				'category__in' => '',
+				'category__in' => array( $cid )
+//				'category__in' => ''
 			) );
 		}
 	}
