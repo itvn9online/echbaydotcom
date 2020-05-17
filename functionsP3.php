@@ -992,6 +992,7 @@ function WGR_decode_for_discount_cart ( $a ) {
 				
 				$arr_discount_code[0]->coupon_giagiam = _eb_get_cat_object( $arr_discount_code[0]->term_id, '_eb_category_coupon_giagiam' );
 				$arr_discount_code[0]->coupon_phantramgiam = _eb_get_cat_object( $arr_discount_code[0]->term_id, '_eb_category_coupon_phantramgiam' );
+				$arr_discount_code[0]->coupon_donggia = _eb_get_cat_object( $arr_discount_code[0]->term_id, '_eb_category_coupon_donggia' );
 				
 //				print_r( $arr_discount_code );
 				

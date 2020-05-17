@@ -63,6 +63,7 @@ foreach ( $arr_discount_code as $v ) {
 			'category_description' => EBE_get_lang('dc_ok') . ' ' . $v->category_description,
 			'coupon_giagiam' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_giagiam' ),
 			'coupon_phantramgiam' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_phantramgiam' ),
+			'coupon_donggia' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_donggia' ),
 			'coupon_ngayhethan' => $check_discount_ex,
 			'coupon_toithieu' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_toithieu' ),
 			'coupon_toida' => _eb_get_cat_object( $v->term_id, '_eb_category_coupon_toida' ),

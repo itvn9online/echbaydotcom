@@ -667,7 +667,10 @@ $eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_giagiam'] = 'Nh�
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_phantramgiam'] = 'Giảm giá theo phần trăm';
 $eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'number';
-$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'Nhập số phần trăm mà bạn muốn giảm cho mỗi đơn hàng (tham số này sẽ phủ định tham số [Giảm giá sản phẩm cố định] ở trên nếu chúng được thiết lập cùng nhau)';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_phantramgiam'] = 'Nhập số phần trăm mà bạn muốn giảm cho mỗi đơn hàng (tham số này sẽ phủ định tham số [<strong>Giảm giá sản phẩm cố định</strong>] ở trên nếu chúng được thiết lập cùng nhau)';
+
+$arr_category_coupon_custom_fields['_eb_category_coupon_donggia'] = 'Giảm giá sản phẩm đồng giá';
+$eb_arr_placeholder_coupon_custom_meta_box['_eb_category_coupon_donggia'] = 'Các sản phẩm khi sử dụng mã này sẽ được đưa về mức giá cố định (đồng giá)';
 
 $arr_category_coupon_custom_fields['_eb_category_coupon_ngayhethan'] = 'Ngày hết hạn mã ưu đãi <span class="redcolor">*</span>';
 //$eb_arr_type_coupon_custom_meta_box['_eb_category_coupon_ngayhethan'] = '';

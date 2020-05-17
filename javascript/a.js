@@ -354,6 +354,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
             if (pagenow == 'edit-discount_code') {
                 jQuery('#_eb_category_coupon_giagiam').removeClass('m').addClass('n');
                 jQuery('#_eb_category_coupon_phantramgiam').removeClass('m').addClass('s');
+                jQuery('#_eb_category_coupon_donggia').removeClass('m').addClass('n');
 
                 jQuery('#_eb_category_coupon_ngayhethan').removeClass('m').addClass('n');
 
@@ -601,7 +602,7 @@ jQuery(document).keydown(function (e) {
                 _global_js_eb.select_date('#_eb_category_coupon_ngayhethan');
 
                 // chuyển định dạng số cho phần giá
-                jQuery('#_eb_category_coupon_giagiam, #_eb_category_coupon_toithieu, #_eb_category_coupon_toida').change(function () {
+                jQuery('#_eb_category_coupon_giagiam, #_eb_category_coupon_donggia, #_eb_category_coupon_toithieu, #_eb_category_coupon_toida').change(function () {
                     var a = jQuery(this).val() || 0;
 
 //				a = g_func.number_only( a );
