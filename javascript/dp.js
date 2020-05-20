@@ -239,7 +239,9 @@ function ___eb_details_slider_v2 () {
 //		console.log( sr );
 		
 		//
-		sr = ___eb_set_img_to_thumbnail( sr, srcset );
+		if ( WGR_check_option_on( cf_on_details_slider ) ) {
+			sr = ___eb_set_img_to_thumbnail( sr, srcset );
+		}
 		if ( WGR_check_option_on ( cf_tester_mode ) ) console.log( sr );
 		
 		//
