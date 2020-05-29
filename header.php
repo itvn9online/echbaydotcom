@@ -6,10 +6,10 @@
 <link rel="profile" href="http://gmgp.org/xfn/11" />
 <?php
 
-if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
+if ( is_singular() && pings_open( get_queried_object() ) ) { ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
-endif;
+}
 
 echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
 echo WGR_show_header_favicon();

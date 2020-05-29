@@ -48,11 +48,11 @@ global $pagenow;
 //echo $pagenow;exit;
  
 //only hide on detail not yet on the overview page.
-    if( ($pagenow == 'edit-tags.php' || isset($_GET['action']) )) :    ?>    <script type="text/javascript">
+    if( ($pagenow == 'edit-tags.php' || isset($_GET['action']) )) {    ?>    <script type="text/javascript">
     jQuery(function($) {
         $('#description, textarea#tag-description').closest('.form-field').hide();
     });
-    </script><?php endif;
+    </script><?php }
 }
 
 

@@ -6,7 +6,7 @@
 
 $check_load_logo_doitac = _eb_number_only( EBE_get_lang('doitac_num') );
 
-if ( $check_load_logo_doitac > 0 ) :
+if ( $check_load_logo_doitac > 0 ) {
 
 //
 $num_load_logo_doitac = EBE_get_lang('doitac_title');
@@ -26,4 +26,4 @@ $num_load_logo_doitac = '<div class="text-center title-btn-chantrang home-hot-ti
 </div>
 <?
 
-endif;
+}

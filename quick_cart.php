@@ -2,7 +2,7 @@
 <?php
 
 // chỉ hiển thị quick cart ở rong trang sản phẩm và trang phải không được đặt là tin tức
-if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'] != 1 ) :
+if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'] != 1 ) {
 
 ?>
 <div id="click_show_cpa">
@@ -112,7 +112,7 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 <?php
 
 // end if for quikc cart
-endif;
+}
 
 ?>
 <!-- quick view -->
