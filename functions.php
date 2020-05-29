@@ -3040,7 +3040,9 @@ function _eb_un_money_format($str) {
 
 function _eb_non_mark_seo_v2 ( $str ) {
 	// Chuyển đổi toàn bộ chuỗi sang chữ thường
-	$str = mb_convert_case( trim($str), MB_CASE_LOWER, "UTF-8" );
+	if ( function_exists('mb_convert_case') ) {
+		$str = mb_convert_case( trim($str), MB_CASE_LOWER, "UTF-8" );
+	}
 	
 	//Tạo mảng chứa key và chuỗi regex cần so sánh
 	$unicode = array(
