@@ -24,6 +24,6 @@ $num_load_logo_doitac = '<div class="text-center title-btn-chantrang home-hot-ti
         <div data-num="<?php echo $check_load_logo_doitac; ?>" class="banner-chan-trang"><?php echo _eb_load_ads( 5, $check_load_logo_doitac, EBE_get_lang('doitac_size') ); ?></div>
     </div>
 </div>
-<?
+<?php
 
 }
