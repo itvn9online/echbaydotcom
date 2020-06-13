@@ -3004,11 +3004,26 @@ function _eb_number_only($str = '', $re = '/[^0-9]+/') {
     if ($str == '') {
         return 0;
     }
-    return preg_replace($re, '', trim($str));
+//	echo $str . ' str number<br>';
+    $a = preg_replace($re, '', $str);
+//	echo $a . ' a number<br>';
+	if ( $a == '' ) {
+		$a = 0;
+	}
+	else if ( substr( $str, 0, 1 ) == '-' ) {
+		$a = 0 - $a;
+	}
+	else {
+		$a *= 1;
+	}
+	return $a;
 }
 
 function _eb_float_only($str = '', $lam_tron = 0) {
-    $a = _eb_number_only($str, '/[^0-9|\.]+/');
+	$str = trim( $str );
+//	echo $str . ' str float<br>';
+	$a = _eb_number_only($str, '/[^0-9|\.]+/');
+//	echo $a . ' a float<br>';
 
     // làm tròn hết sang số nguyên
     if ($lam_tron == 1) {

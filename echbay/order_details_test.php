@@ -5,23 +5,38 @@ echo '<!--' . "\n";
 
 $print_sql = $sql;
 
-echo 'print_sql' . "\n";
+echo 'print_sql:' . "\n";
 print_r( $print_sql );
 
 
 // xác định size, màu sắc để email cho khách
 $decode_order_product = WGR_decode_for_products_cart( $print_sql->order_products );
-echo 'order_products' . "\n";
+echo 'order_products:' . "\n";
 print_r( $print_sql->order_products );
 print_r( $decode_order_product );
 
 // xác định mã giảm giá nếu có
 $decode_order_discount = WGR_decode_for_discount_cart( $print_sql->order_customer );
-echo 'order_customer' . "\n";
+echo 'order_customer:' . "\n";
 print_r( $print_sql->order_customer );
 print_r( $decode_order_discount );
 
 
+/*
+$coupon_sql = _eb_q("SELECT *
+FROM
+	`" . wp_posts . "`
+WHERE
+	ID = 988098
+	AND post_status = 'publish'
+	AND post_type = 'post'");
+print_r($coupon_sql);
+if ( count( $coupon_sql ) > 0 ) {
+	$coupon_post = $coupon_sql[0];
+	print_r($coupon_post);
+	$coupon_product_name = $coupon_post->post_title;
+}
+*/
 
 
 /*

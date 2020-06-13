@@ -347,7 +347,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 		//
 		jQuery('.order-title-sanpham').after('\
 		<tr>\
-			<td>' + arr[i].id + '</td>\
+			<td data-quan="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="each-for-set-cart-value">' + arr[i].id + '</td>\
 			<td><a href="' + web_link + '?p=' + arr[i].id + '" target="_blank">' + arr[i].name + ' <i class="fa fa-eye"></i></a>' + str_edit_size_color + '</td>\
 			<td><span class="ebe-currency">' + g_func.money_format( product_price ) + '</span></td>\
 			<td><input type="number" value="' + arr[i].quan + '" data-price="' + product_price + '" data-id="' + arr[i].id + '" class="change-update-cart-quantity ss" size="5" maxlength="10" /></td>\
@@ -545,7 +545,7 @@ function WGR_hide_html_alert_auto_order_submit () {
 			jQuery('#oi_ma_giam_gia').html( cus['hd_discount_code'] );
 			
 			// nếu chiết khấu chưa có mà có mã giảm giá -> tìm và nhập lại
-			if ( jQuery('#hd_chietkhau').val() == '' ) {
+//			if ( jQuery('#hd_chietkhau').val() == '' ) {
 				jQuery.ajax({
 //					type: 'POST',
 					type: 'GET',
@@ -557,22 +557,70 @@ function WGR_hide_html_alert_auto_order_submit () {
 						
 						// nếu có lỗi -> nhập luôn là 0 để sau nó đỡ check lại
 						if ( typeof msg['error'] != 'undefined' ) {
-							jQuery('#hd_chietkhau').val( 0 ).change();
+//							jQuery('#hd_chietkhau').val( 0 ).change();
+							jQuery('#hd_chietkhau').val( 0 );
 						}
-						// ưu tiên giảm theo giá tiền
-						else if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'].replace(/\,/g, '') * 1 > 0 ) {
-							jQuery('#hd_chietkhau').val( msg['coupon_giagiam'].replace(/\,/g, '') ).change();
+						else if ( typeof msg['code'] != 'undefined' && msg['code'] * 1 < 0 ) {
+							jQuery('#hd_chietkhau').val( 0 );
+							
+							jQuery('#oi_ma_giam_gia').append(' <span class="redcolor">' + msg['msg'] + '</span>');
 						}
-						//
-						else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {
-							jQuery('#hd_chietkhau').val( msg['coupon_phantramgiam'] + '%' ).change();
+						else {
+							var m2 = '';
+							
+							// giảm theo sản phẩm cụ thể
+							if ( typeof msg['coupon_product_name'] != 'undefined' && msg['coupon_product_name'] != '' ) {
+								m2 += ' Mã giảm giá áp dụng cho sản phẩm: <a href="' + msg['coupon_product_link'] + '" target="_blank">' + msg['coupon_product_name'] + '</a>';
+								
+								var so_tien_duoc_giam = 0;
+								jQuery('.each-for-set-cart-value').each(function () {
+									var cart_pid = jQuery(this).attr('data-id') || 0,
+										gia_moi = jQuery(this).attr('data-price') || 0,
+										cart_quan = jQuery(this).attr('data-quan') || 0;
+									
+									if ( cart_pid > 0 && cart_pid * 1 == msg['coupon_product'] * 1 ) {
+										so_tien_duoc_giam = gia_moi * cart_quan;
+									}
+								});
+								jQuery('#hd_chietkhau').val( so_tien_duoc_giam );
+							}
+							if ( typeof msg['coupon__product_name'] != 'undefined' && msg['coupon__product_name'] != '' ) {
+								m2 += ' <span class="redcolor">Mã giảm giá KHÔNG áp dụng cho sản phẩm</span>: <a href="' + msg['coupon__product_link'] + '" target="_blank">' + msg['coupon__product_name'] + '</a>';
+							}
+							
+							if ( typeof msg['coupon_category_name'] != 'undefined' && msg['coupon_category_name'] != '' ) {
+								m2 += ' Mã giảm giá áp dụng cho chuyên mục: <a href="' + msg['coupon_category_link'] + '" target="_blank">' + msg['coupon_category_name'] + '</a>';
+							}
+							if ( typeof msg['coupon__category_name'] != 'undefined' && msg['coupon__category_name'] != '' ) {
+								m2 += ' <span class="redcolor">Mã giảm giá KHÔNG áp dụng cho chuyên mục</span>: <a href="' + msg['coupon__category_link'] + '" target="_blank">' + msg['coupon__category_name'] + '</a>';
+							}
+							if ( m2 != '' ) {
+								$('#oi_ma_giam_gia').append(' - Lưu ý: <span class="small greencolor">' + m2 + '</span>');
+							}
+							
+							//
+							var current_discount = jQuery('#hd_chietkhau').val() || '';
+							
+							if ( current_discount != '' && current_discount * 1 <= 0 ) {
+								console.log( '%c Mã giảm giá đã bị hủy', 'color: red;' );
+							}
+							// ưu tiên giảm theo giá tiền
+							else if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'].replace(/\,/g, '') * 1 > 0 ) {
+//								jQuery('#hd_chietkhau').val( msg['coupon_giagiam'].replace(/\,/g, '') ).change();
+								jQuery('#hd_chietkhau').val( msg['coupon_giagiam'].replace(/\,/g, '') );
+							}
+							//
+							else if ( typeof msg['coupon_phantramgiam'] != 'undefined' && msg['coupon_phantramgiam'] != '' && msg['coupon_phantramgiam'] * 1 > 0 ) {
+//								jQuery('#hd_chietkhau').val( msg['coupon_phantramgiam'] + '%' ).change();
+								jQuery('#hd_chietkhau').val( msg['coupon_phantramgiam'] + '%' );
+							}
 						}
 					}
 					else {
 						console.log( '%c Lỗi cú pháp! vui lòng báo cho kỹ thuật viên. Xin cảm ơn', 'color: red;' );
 					}
 				});
-			}
+//			}
 		}
 		if ( typeof cus['hd_phivanchuyen'] != 'undefined' && cus['hd_phivanchuyen'] != '' ) {
 			jQuery('#hd_phivanchuyen').val( cus['hd_phivanchuyen'] );
@@ -786,7 +834,7 @@ setTimeout(function () {
 					for ( var i = 0; i < arr_list_orther_order.length; i++ ) {
 						try {
 							var custom_info = jQuery.parseJSON( unescape( arr_list_orther_order[i].order_customer ) );
-							console.log( custom_info );
+//							console.log( custom_info );
 							
 							//
 							if ( custom_info.hd_ten == '' ) {

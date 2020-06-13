@@ -143,7 +143,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 			'tmp.c_link' => $c_link,
 			'tmp.trv_img' => $trv_img,
 			'tmp.p_link' => $p_link,
-			'tmp.post->post_title' => $post->post_title,
+			'tmp.post_title' => $post->post_title,
 			'tmp.product_color_name' => $product_color_name,
 			'tmp.cart_mausac' => str_replace( '"', '&quot;', EBE_get_lang('cart_mausac') ),
 			'tmp.product_list_color' => $product_list_color,

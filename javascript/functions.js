@@ -764,6 +764,9 @@ function WGR_check_discount_code_return ( jd ) {
 	if ( typeof msg['error'] != 'undefined' ) {
 		jQuery('#' + jd).html('<span class="redcolor">' + msg['error'] + '</span>');
 	}
+	else if ( typeof msg['code'] != 'undefined' && msg['code'] * 1 < 0 ) {
+		jQuery('#' + jd).html('<span class="redcolor">' + msg['msg'] + '</span>');
+	}
 	else {
 		// chuẩn hóa dữ liệu
 		msg['coupon_max'] = msg['coupon_max'] * 1;
@@ -771,6 +774,7 @@ function WGR_check_discount_code_return ( jd ) {
 		msg['coupon_toida'] = g_func.number_only( msg['coupon_toida'] );
 		msg['coupon_toithieu'] = g_func.number_only( msg['coupon_toithieu'] );
 		var m = msg['category_description'],
+			m2 = '',
 			cl = 'greencolor';
 		
 		// kiểm tra xem đã dùng hết hay chưa
@@ -779,7 +783,8 @@ function WGR_check_discount_code_return ( jd ) {
 			cl = 'orgcolor';
 		}
 		else {
-			var gia_tri_don_hang = 0;
+			var gia_tri_don_hang = 0,
+				so_tien_duoc_giam = 0;
 			
 			// trong trang chi tiết sản phẩm
 			if ( pid > 0 ) {
@@ -788,18 +793,91 @@ function WGR_check_discount_code_return ( jd ) {
 			}
 			// giỏ hàng
 			else {
+				/*
 				gia_tri_don_hang = jQuery('.cart-table-total .global-details-giamoi').html() || '0';
 				gia_tri_don_hang = gia_tri_don_hang.replace( /\,|\s/g, '' );
 				gia_tri_don_hang *= 1;
+				*/
+				
+				//
+				jQuery('.each-for-set-cart-value').each(function () {
+					var cart_pid = jQuery(this).attr('data-id') || 0,
+						gia_moi = jQuery(this).attr('data-price') || 0,
+						cart_quan = jQuery('.change-select-quantity', this).val() || 1;
+					
+					gia_tri_don_hang += gia_moi * cart_quan;
+				});
 			}
+			so_tien_duoc_giam = gia_tri_don_hang;
 //			console.log( gia_tri_don_hang );
+			
+			
+			// thêm dấu . cho thông điệp trả về
+			if ( m.substr( m.length - 1 ) != '.' ) {
+				m += '.';
+			}
+			
+			// giảm theo sản phẩm cụ thể
+			if ( typeof msg['coupon_product_name'] != 'undefined' && msg['coupon_product_name'] != '' ) {
+				m2 += ' Mã giảm giá áp dụng cho sản phẩm: <a href="' + msg['coupon_product_link'] + '" target="_blank">' + msg['coupon_product_name'] + '</a>';
+				
+				// xác định lại giá trị đơn hàng
+				so_tien_duoc_giam = 0;
+				if ( pid > 0 ) {
+					// nếu đúng ID rồi thì chiến thôi
+					if ( pid == msg['coupon_product'] * 1 ) {
+						so_tien_duoc_giam = gia_tri_don_hang;
+					}
+				}
+				else {
+					jQuery('.each-for-set-cart-value').each(function () {
+						var cart_pid = jQuery(this).attr('data-id') || 0,
+							gia_moi = jQuery(this).attr('data-price') || 0,
+							cart_quan = jQuery('.change-select-quantity', this).val() || 1;
+						
+						if ( cart_pid > 0 && cart_pid * 1 == msg['coupon_product'] * 1 ) {
+							so_tien_duoc_giam = gia_moi * cart_quan;
+						}
+					});
+				}
+			}
+			if ( typeof msg['coupon__product_name'] != 'undefined' && msg['coupon__product_name'] != '' ) {
+				m2 += ' <span class="redcolor">Mã giảm giá KHÔNG áp dụng cho sản phẩm</span>: <a href="' + msg['coupon__product_link'] + '" target="_blank">' + msg['coupon__product_name'] + '</a>';
+				// xác định lại giá trị đơn hàng
+				if ( pid > 0 ) {
+					// nếu đúng ID thì loại bỏ ra
+					if ( pid == msg['coupon__product'] * 1 ) {
+						so_tien_duoc_giam = 0;
+					}
+				}
+				else {
+					so_tien_duoc_giam = 0;
+					jQuery('.each-for-set-cart-value').each(function () {
+						var cart_pid = jQuery(this).attr('data-id') || 0,
+							gia_moi = jQuery(this).attr('data-price') || 0,
+							cart_quan = jQuery('.change-select-quantity', this).val() || 1;
+						
+						if ( cart_pid > 0 && cart_pid * 1 != msg['coupon__product'] * 1 ) {
+							so_tien_duoc_giam += gia_moi * cart_quan;
+						}
+					});
+				}
+			}
+			
+			if ( typeof msg['coupon_category_name'] != 'undefined' && msg['coupon_category_name'] != '' ) {
+				m2 += ' Mã giảm giá áp dụng cho chuyên mục: <a href="' + msg['coupon_category_link'] + '" target="_blank">' + msg['coupon_category_name'] + '</a>';
+			}
+			if ( typeof msg['coupon__category_name'] != 'undefined' && msg['coupon__category_name'] != '' ) {
+				m2 += ' <span class="redcolor">Mã giảm giá KHÔNG áp dụng cho chuyên mục</span>: <a href="' + msg['coupon__category_link'] + '" target="_blank">' + msg['coupon__category_name'] + '</a>';
+			}
+			
 			
 			// kiểm tra điều kiện khuyến mại
 			if ( msg['coupon_toithieu'] > 0 && gia_tri_don_hang > 0 && gia_tri_don_hang < msg['coupon_toithieu'] ) {
-				m = 'Mã giảm giá áp dụng cho đơn hàng có giá trị tối thiểu là <span class="ebe-currency">' + g_func.money_format( msg['coupon_toithieu'] ) + '</span>';
+				m = '<span class="orgcolor">Mã giảm giá áp dụng cho đơn hàng có giá trị tối thiểu là <span class="ebe-currency">' + g_func.money_format( msg['coupon_toithieu'] ) + '</span></span>';
 				cl = 'orgcolor';
 			}
-			else if ( gia_tri_don_hang > 0 ) {
+			else if ( so_tien_duoc_giam > 0 ) {
 				// ưu tiên giảm theo giá tiền
 				if ( typeof msg['coupon_giagiam'] != 'undefined' && msg['coupon_giagiam'] != '' && msg['coupon_giagiam'].replace(/\,/g, '') * 1 > 0 ) {
 //					f.t_discount_value.value = msg['coupon_giagiam'];
@@ -818,19 +896,22 @@ function WGR_check_discount_code_return ( jd ) {
 				if ( gia_tri_giam_gia != '' ) {
 					if ( gia_tri_giam_gia.split('%').length > 1 ) {
 						gia_tri_giam_gia = gia_tri_giam_gia.split( '%' )[0].replace(/\s|\,/g, '');
-						gia_tri_don_hang = gia_tri_don_hang/ 100 * gia_tri_giam_gia;
+						so_tien_duoc_giam = so_tien_duoc_giam/ 100 * gia_tri_giam_gia;
 					}
 					else {
-						gia_tri_don_hang -= gia_tri_giam_gia * 1;
+						so_tien_duoc_giam = gia_tri_giam_gia * 1;
 					}
-					console.log('New order price: ' + g_func.money_format( gia_tri_don_hang ));
-//					jQuery('.cart-table-total .global-details-giamoi').html( g_func.money_format( gia_tri_don_hang ) );
+					console.log('New order price: ' + gia_tri_don_hang + ' - ' + so_tien_duoc_giam + ' = ' + g_func.money_format( gia_tri_don_hang - so_tien_duoc_giam ));
+//					jQuery('.cart-table-total .global-details-giamoi').html( g_func.money_format( so_tien_duoc_giam ) );
 				}
+			}
+			else {
+				m = '<span class="redcolor">Mã giảm giá không hợp lệ hoặc không áp dụng cho sản phẩm, danh mục đang có trong giỏ hàng.</span>';
 			}
 		}
 		
 		//
-		jQuery('#' + jd).html('<span class="' + cl + '">' + m + '</span>');
+		jQuery('#' + jd).html('<span class="' + cl + '">' + m + m2 + '</span>');
 	}
 }
 
