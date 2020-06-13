@@ -796,6 +796,7 @@ a.eb-btn {
 	text-align: justify;
 }
 .thread-content-bmask a,
+.thread-content-bmask a img,
 .thread-content-bmask iframe {
 	position: relative;
 	z-index: 2;
