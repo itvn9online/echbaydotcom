@@ -82,8 +82,17 @@ else {
 if ( $act == 'ebsearch' ) {
 	$posts_per_page = _eb_get_option('posts_per_page');
 	
+	$arr_post__in = array();
+	$a_post__in = explode( ',', substr( $strFilter, 1 ) );
+	foreach ( $a_post__in as $v ) {
+		if ( ! in_array( $v, $arr_post__in ) ) {
+			$arr_post__in[] = $v;
+		}
+	}
+//	print_r($arr_post__in);
+	
 	$list_post = _eb_load_post( $posts_per_page, array(
-		'post__in' => explode( ',', substr( $strFilter, 1 ) )
+		'post__in' => $arr_post__in
 	) );
 }
 // chức năng tìm kiếm của wordpress

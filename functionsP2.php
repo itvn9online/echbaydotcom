@@ -231,15 +231,24 @@ function _eb_load_post (
 	echo ' -->';
 	*/
 	
+	// ignore_sticky_posts -> wp mặc định nó lấy các bài viết được ghim -> bỏ qua nó để lấy cho chuẩn
+	if ( isset( $_eb_query['post__in'] ) && ! isset($_eb_query['ignore_sticky_posts']) ) {
+		$_eb_query['ignore_sticky_posts'] = 1;
+	}
+	
 	//
 	$sql = _eb_load_post_obj( $posts_per_page, $_eb_query );
 	
-	//
+	// TEST
+	/*
+	global $act;
+	if ( $act == 'ebsearch' ) {
 //	if ( $_eb_query['post_type'] == 'blog' ) {
-//		print_r( $sql );
+		print_r( $sql );
 //		print_r( $_eb_query );
-//		exit();
-//	}
+		exit();
+	}
+	*/
 	
 	//
 	if ( ! isset( $other_options['pot_tai'] ) ) {
