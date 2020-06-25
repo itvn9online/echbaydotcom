@@ -56,6 +56,11 @@ class ___echbay_widget_product_view_history extends WP_Widget {
 		- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
 		- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
 		- <strong>title-line50</strong>: kết hợp với title-line with: 50%<br>
+		- <strong>title-line-bg</strong>: + <strong>title-line</strong> + default-bg<br>
+		- <strong>title-top-line</strong>: + <strong>title-line</strong> + top<br>
+		- <strong>title-bottom-line</strong>: + <strong>title-line</strong> + bottom<br>
+		- <strong>title-line20</strong>: + <strong>title-line</strong> + width 20%, max-width 90px<br>
+		- <strong>title-line38</strong>: + <strong>title-line</strong> + width 38%, max-width 250px<br>
 		- <strong>home-hot2-title</strong>: Style mới cho phần widget tilte.<br>
 		- <strong>noborder-widget-title</strong>: Ẩn border của widget.<br>
 		- <strong>hide-widget-title</strong>: Ẩn tiêu đề của widget.</p>';

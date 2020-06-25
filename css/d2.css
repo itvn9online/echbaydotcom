@@ -2227,11 +2227,54 @@ iframe[name="google_conversion_frame"] {
 .title-line .home-hot-title:after { width: 100%; }
 .title-line .details-other-title div,
 .title-line .home-hot-title div { position: relative; }
+.title-line-bg .echbay-widget-title:after,
+.title-line-bg .details-other-title:after,
+.title-line-bg .home-hot-title:after { border-bottom-color: var(--default-bg); }
+.title-top-line .echbay-widget-title:after,
+.title-top-line .details-other-title:after,
+.title-top-line .home-hot-title:after,
+.title-bottom-line .echbay-widget-title:after,
+.title-bottom-line .details-other-title:after,
+.title-bottom-line .home-hot-title:after,
+.title-line50 .echbay-widget-title:after,
 .title-line50 .details-other-title:after,
 .title-line50 .home-hot-title:after {
 	left: 50%;
 	width: 50%;
 	transform: translate(-50%, 0);
+}
+.title-top-line .echbay-widget-title,
+.title-top-line .details-other-title,
+.title-top-line .home-hot-title,
+.title-bottom-line .echbay-widget-title,
+.title-bottom-line .details-other-title,
+.title-bottom-line .home-hot-title {
+	padding: 20px 0;
+	margin: 20px 0;
+}
+.title-top-line .echbay-widget-title:after,
+.title-top-line .details-other-title:after,
+.title-top-line .home-hot-title:after,
+.title-bottom-line .echbay-widget-title:after,
+.title-bottom-line .details-other-title:after,
+.title-bottom-line .home-hot-title:after { border-bottom-width: 3px; }
+.title-top-line .echbay-widget-title:after,
+.title-top-line .details-other-title:after,
+.title-top-line .home-hot-title:after { top: 0; }
+.title-bottom-line .echbay-widget-title:after,
+.title-bottom-line .details-other-title:after,
+.title-bottom-line .home-hot-title:after { bottom: 0; }
+.title-line20 .echbay-widget-title:after,
+.title-line20 .details-other-title:after,
+.title-line20 .home-hot-title:after {
+	width: 20%;
+	max-width: 90px;
+}
+.title-line38 .echbay-widget-title:after,
+.title-line38 .details-other-title:after,
+.title-line38 .home-hot-title:after {
+	width: 38%;
+	max-width: 250px;
 }
 .show-view-more .widget-products-more,
 .show-view-more .widget-blog-more {
