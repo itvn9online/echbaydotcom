@@ -12,7 +12,7 @@ function WGR_post_edit_change_url_avt ( a ) {
 	jQuery('tr[data-row="_eb_product_avatar"]').after( '\
 	<tr data-row="_eb_show_product_avatar">\
 		<td class="t">&nbsp;</td>\
-		<td class="i"><img src="' + a + '" height="110" /></td>\
+		<td class="i"><div class="show_product_avatar" style="background-image:url(\'' + a + '\')">&nbsp;</div></td>\
 	</tr>' );
 }
 
@@ -1068,9 +1068,14 @@ function WGR_run_for_admin_edit_post () {
 			// có thì add thêm vào
 			else {
 				if ( jQuery('tr[data-row="_eb_show_product_avatar"]').length > 0 ) {
+					jQuery('tr[data-row="_eb_show_product_avatar"] .show_product_avatar').css({
+						'background-image': 'url(\'' + a + '\')'
+					});
+					/*
 					jQuery('tr[data-row="_eb_show_product_avatar"] img').attr({
 						'src': a
 					});
+					*/
 				} else {
 					WGR_post_edit_change_url_avt( a );
 				}

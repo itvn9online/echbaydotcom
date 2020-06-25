@@ -953,7 +953,11 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 	border-right: 2px #f00 solid;
 	padding-right: 15px;
 }
-tr[data-row="_eb_show_product_avatar"] img { height: 110px; }
+tr[data-row="_eb_show_product_avatar"] .show_product_avatar {
+	height: 110px;
+	background: center no-repeat;
+	background-size: contain;
+}
 /*
 * Chỉnh lại icon cho menu của EchBay
 * https://developer.wordpress.org/resource/dashicons/
