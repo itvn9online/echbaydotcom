@@ -102,7 +102,7 @@ foreach ( $sort_post_options as $k=> $v ) {
 		
 		//
 		$other_option_list .= '
-<tr>
+<tr class="post-option-list">
 	<td><div>' . $parent_name->name . '</div></td>
 	<td><div><a href="' . _eb_c_link( $v->term_id, $v->taxonomy ) . '" target="_blank">' . $v->name . '</a></div></td>
 </tr>';
