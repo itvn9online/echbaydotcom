@@ -91,6 +91,10 @@ if ( $pid > 0 && $__post->post_type == 'post' && $__cf_row['cf_set_news_version'
 							<input type="text" name="t_discount_code" value="" placeholder="<?php echo EBE_get_lang('cart_discount_code'); ?>" class="auto-check-discount-code" />
 						</div>
 					</div>
+					<div class="eb-quickcart-node eb-quickcart-shipping_fee d-none cf">
+						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_shipping_fee'); ?></div>
+						<div class="eb-quickcart-right"><?php echo EBE_get_lang('cart_shipping_content'); ?></div>
+					</div>
 					<?php
 					if ( EBE_get_lang('url_chinhsach') != '#' ) {
 					?>

@@ -95,6 +95,8 @@ $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'] = 'Phone';
 $___eb_lang[eb_key_for_site_lang . 'cart_pla_dienthoai'] = $___eb_lang[eb_key_for_site_lang . 'cart_dienthoai'];
 $___eb_lang[eb_key_for_site_lang . 'cart_hotline'] = 'Cell phone';
 $___eb_lang[eb_key_for_site_lang . 'cart_discount_code'] = 'Discount code';
+$___eb_lang[eb_key_for_site_lang . 'cart_shipping_fee'] = 'Shipping fee';
+$___eb_lang[eb_key_for_site_lang . 'cart_shipping_content'] = '';
 
 // giờ vàng
 $___eb_lang[eb_key_for_site_lang . 'golden_time'] = 'Golden time';

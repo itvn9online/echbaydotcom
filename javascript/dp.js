@@ -1277,6 +1277,10 @@ function ___eb_details_post_run ( r ) {
 	// hiển thị hộp nhập mã giảm giá nếu có
 	_global_js_eb.cart_discount_code( co_ma_giam_gia, '.eb-quickcart-coupon' );
 	
+	if ( cart_shipping_content != '' ) {
+		$('.eb-quickcart-shipping_fee').show();
+	}
+	
 	// color
 	___eb_details_product_color();
 	

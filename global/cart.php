@@ -242,7 +242,9 @@ if ( trim( $custom_lang_html ) == $act ) {
 
 //
 $main_content = EBE_html_template( $custom_lang_html, array(
-	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ',co_ma_giam_gia=' . WGR_check_discount_code_exist() . ';',
+	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ',
+		co_ma_giam_gia=' . WGR_check_discount_code_exist() . ',
+		cart_shipping_content=\'' . str_replace( "'", "\'", EBE_get_lang('cart_shipping_content') ) . '\';',
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),
@@ -258,6 +260,9 @@ $main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.cart_vidu' => EBE_get_lang('cart_vidu'),
 	'tmp.cart_discount_code' => EBE_get_lang('cart_discount_code'),
 	'tmp.cart_gui' => EBE_get_lang('cart_gui'),
+	
+	'tmp.cart_shipping_fee' => EBE_get_lang('cart_shipping_fee'),
+	'tmp.cart_shipping_content' => EBE_get_lang('cart_shipping_content'),
 	
 	'tmp.cart_soluong' => EBE_get_lang('cart_soluong'),
 	'tmp.cart_str_list' => EBE_get_lang('cart_str_list'),
