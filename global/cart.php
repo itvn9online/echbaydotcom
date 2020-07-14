@@ -244,7 +244,7 @@ if ( trim( $custom_lang_html ) == $act ) {
 $main_content = EBE_html_template( $custom_lang_html, array(
 	'tmp.js' => 'var new_cart_auto_add_id=' . $new_id . ',
 		co_ma_giam_gia=' . WGR_check_discount_code_exist() . ',
-		cart_shipping_content=\'' . str_replace( "'", "\'", EBE_get_lang('cart_shipping_content') ) . '\';',
+		cart_shipping_content="' . _eb_str_block_fix_content( EBE_get_lang('cart_shipping_content') ) . '";',
 	
 	'tmp.cart_list' => $cart_list,
 	'tmp.cart_total' => EBE_add_ebe_currency_class ( $cart_total ),

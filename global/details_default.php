@@ -1337,6 +1337,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	cf_details_show_list_thumb="' . $__cf_row['cf_details_show_list_thumb'] . '",
 	cf_swipe_details_banner="' . $__cf_row['cf_swipe_details_banner'] . '",
 	trv_ngayhethan=' . $trv_ngayhethan . ',
+	cart_shipping_content="' . _eb_str_block_fix_content( EBE_get_lang('cart_shipping_content') ) . '",
 	co_ma_giam_gia=' . $co_ma_giam_gia . ';
 </script>';
 //	arr_product_color=[' . substr( $arr_product_color, 1 ) . '],
