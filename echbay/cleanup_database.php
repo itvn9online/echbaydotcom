@@ -263,7 +263,7 @@ if ( isset( $_GET['optimize_table'] ) ) {
 		echo $str_for_optimize_table . '<br><br>' . "\n";
 	}
 }
-else if ( isset( $_GET['reset_attachment'] ) ) {
+//else if ( isset( $_GET['reset_attachment'] ) ) {
 	
 	/*
 	$wpdb->query( 'DELETE FROM `wp_posts` WHERE `post_type` = "attachment"' );
@@ -271,6 +271,7 @@ else if ( isset( $_GET['reset_attachment'] ) ) {
 	$wpdb->query( 'DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata"' );
 	*/
 	
+/*
 	echo 'Lệnh này khá nguy hiểm, nên cần vào trực tiếp database rồi chạy lệnh này:<br>
 <pre><code>DELETE FROM `wp_posts` WHERE `post_type` = "attachment";<br>
 DELETE FROM `wp_postmeta` WHERE `meta_key` = "_thumbnail_id";<br>
@@ -279,6 +280,7 @@ DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";</code></
 <br>';
 
 }
+*/
 else if ( isset( $_GET['reset_post'] ) && trim( $_GET['reset_post'] ) != '' ) {
 	$_GET['reset_post'] = trim( $_GET['reset_post'] );
 	
@@ -306,7 +308,7 @@ DELETE FROM `wp_posts` WHERE `post_type` = "' . $_GET['reset_post'] . '";</code>
 	<h2><a href="<?php echo $url_for_home_clean_up; ?>&filter_post_meta=echbay_post_meta"><i class="fa fa-magic"></i> Dọn dẹp các post_meta sinh ra bởi EchBay</a></h2>
 	<div>+ Các meta_key bắt đầu bằng <strong>_eb_</strong> hoặc <strong>__eb_</strong>.</div>
 	<br>
-	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_attachment=1"><i class="fa fa-magic"></i> Dọn dẹp attachment</a></h2>
+	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_post=attachment&reset_attachment=1"><i class="fa fa-magic"></i> Dọn dẹp attachment</a></h2>
 	<div>+ Dùng khi nhân bản website mà không muốn giữ lại phần media.</div>
 	<br>
 	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_post=ads"><i class="fa fa-magic"></i> Dọn dẹp ADS</a></h2>
