@@ -147,12 +147,20 @@ foreach ( $sql as $v ) {
 //	print_r( $arr_meta );
 	
 	// nếu không tồn tại ảnh đại diện hoặc không có -> lấy
-	if ( ! isset( $arr_meta['_eb_product_avatar'] ) || $arr_meta['_eb_product_avatar'] == '' ) {
+	$avt_key = '_eb_product_avatar';
+//	if ( $v->post_type == 'ads' ) {
+//		$avt_key = '';
+//	}
+//	if ( ! isset( $arr_meta['_eb_product_avatar'] ) || $arr_meta['_eb_product_avatar'] == '' ) {
 		$arr_meta['_eb_product_avatar'] = _eb_get_post_img($v->ID, 'medium_large');
-	}
+//	}
 	
 	foreach ( $arr_meta as $k2 => $v2 ) {
-		if ( strstr( $k2, '_eb_product_' ) == true ) {
+		if (
+			strstr( $k2, '_eb_product_' ) == true
+			|| strstr( $k2, '_eb_ads_' ) == true
+			|| strstr( $k2, '_eb_blog_' ) == true
+		) {
 			echo '
 			<wp:postmeta>
 				<wp:meta_key>' . $k2 . '</wp:meta_key>
