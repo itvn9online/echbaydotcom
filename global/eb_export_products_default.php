@@ -113,6 +113,30 @@ foreach ( $sql as $v ) {
 	}
 	
 	
+	//
+	$arr_post_options = wp_get_object_terms( $v->ID, 'blogs' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'blogs' );
+//		print_r( $cat );
+		
+		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $v->ID, 'blog_tag' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'blog_tag' );
+//		print_r( $cat );
+		
+		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
 	
 	// nạp lại các post meta của post này
 	_eb_get_post_object( $v->ID, '_eb_product_price' );

@@ -693,6 +693,8 @@ function WGR_show_header_favicon ( $icon = '' ) {
 
 
 function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
+//	return true;
+	
 	global $wpdb;
 	global $client_ip;
 	
@@ -714,6 +716,7 @@ function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
 	
 	
 	//
+	/*
 	$a = get_post_taxonomies( $postid );
 //	print_r($a);
 	foreach ( $a as $v ) {
@@ -725,6 +728,66 @@ function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
 				$str .= '<category domain="' . $v . '" nicename="' . $v2->slug . '"><![CDATA[' . $v2->name . ']]></category>' . "\n";
 			}
 		}
+	}
+	*/
+	
+	
+	//
+	$post_categories = wp_get_post_categories( $postid );
+//	print_r( $post_categories );
+	foreach($post_categories as $c){
+		$cat = get_term( $c );
+//		print_r( $cat );
+		
+		$str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $postid, 'post_tag' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'post_tag' );
+//		print_r( $cat );
+		
+		$str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $postid, 'post_options' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'post_options' );
+//		print_r( $cat );
+		
+		$str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $postid, 'blogs' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'blogs' );
+//		print_r( $cat );
+		
+		$str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $postid, 'blog_tag' );
+//	print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'blog_tag' );
+//		print_r( $cat );
+		
+		$str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
 	}
 	
 	
