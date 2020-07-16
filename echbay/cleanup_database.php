@@ -279,6 +279,15 @@ DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";</code></
 <br>';
 
 }
+else if ( isset( $_GET['reset_post'] ) && trim( $_GET['reset_post'] ) != '' ) {
+	$_GET['reset_post'] = trim( $_GET['reset_post'] );
+	
+	echo 'Lệnh này khá nguy hiểm, nên cần vào trực tiếp database rồi chạy lệnh này:<br>
+<pre><code>DELETE FROM `wp_postmeta` WHERE `post_id` IN (select ID from `wp_posts` where `post_type` = "' . $_GET['reset_post'] . '");<br>
+DELETE FROM `wp_posts` WHERE `post_type` = "' . $_GET['reset_post'] . '";</code></pre>
+<br>';
+	
+}
 
 
 
@@ -299,6 +308,15 @@ DELETE FROM `wp_postmeta` WHERE `meta_key` = "_wp_attachment_metadata";</code></
 	<br>
 	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_attachment=1"><i class="fa fa-magic"></i> Dọn dẹp attachment</a></h2>
 	<div>+ Dùng khi nhân bản website mà không muốn giữ lại phần media.</div>
+	<br>
+	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_post=ads"><i class="fa fa-magic"></i> Dọn dẹp ADS</a></h2>
+	<div>+ Dùng khi nhân bản website mà không muốn giữ lại phần Banner Quảng Cáo.</div>
+	<br>
+	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_post=blog"><i class="fa fa-magic"></i> Dọn dẹp Blog</a></h2>
+	<div>+ Dùng khi nhân bản website mà không muốn giữ lại phần Tin tức.</div>
+	<br>
+	<h2><a href="<?php echo $url_for_home_clean_up; ?>&reset_post=post"><i class="fa fa-magic"></i> Dọn dẹp Bài viết/ Sản phẩm</a></h2>
+	<div>+ Dùng khi nhân bản website mà không muốn giữ lại phần Bài viết/ Sản phẩm (với các định dạng khác thì làm tương tự).</div>
 </div>
 <br>
 <hr>
