@@ -2818,12 +2818,15 @@ var _global_js_eb = {
 		
 		// facebook tracking add to cart
 		var track_arr = {
+//			'content_name' : '',
+//			'content_category' : '',
 			'content_ids' : [ new_cart_id ]
+//			'content_type' : 'product'
 		};
 		
 		if ( typeof action_obj.price != 'undefined' && action_obj.price > 0 ) {
 			track_arr.value = action_obj.price;
-			track_arr.currency = 'VND';
+			track_arr.currency = cf_current_sd_price;
 		}
 		
 		//
@@ -2995,12 +2998,15 @@ var _global_js_eb = {
 		
 		// facebook tracking add to cart
 		var track_arr = {
+//			'content_name' : '',
+//			'content_category' : '',
 			'content_ids' : [ new_cart_id ]
+//			'content_type' : 'product'
 		};
 		
 		if ( typeof action_obj.price != 'undefined' && action_obj.price > 0 ) {
 			track_arr.value = action_obj.price;
-			track_arr.currency = 'VND';
+			track_arr.currency = cf_current_sd_price;
 		}
 		
 		//
