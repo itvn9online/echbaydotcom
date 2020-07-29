@@ -1086,6 +1086,19 @@ WGR_check_load_js_category();
 var add_to_cart_running = false;
 setTimeout(function () {
 	jQuery('.click-jquery-add-to-cart').click(function() {
+		// nếu trong chi tiết sản phẩm -> sẽ kiểm tra sản phẩm có đang bị đánh dấu hết hàng không
+		if ( typeof pid != 'undefined' && pid > 0 ) {
+			if ( product_post_status != 'publish' ) {
+				a_lert('Xin lỗi quý khách! Sản phẩm hiện đang ngừng bán');
+				return false;
+			}
+			else if ( product_trv_trangthai * 1 === 7 ) {
+				a_lert('Xin lỗi quý khách! Sản phẩm hiện đang hết hàng');
+				return false;
+			}
+		}
+		
+		//
 //		if ( pid == 0 ) {
 		if ( add_to_cart_running == true ) {
 			console.log('add to cart running');

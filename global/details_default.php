@@ -468,6 +468,7 @@ if ( $bai_san_pham == true ) {
 		
 		//
 		$trv_trangthai = _eb_get_post_object( $pid, '_eb_product_status', 0 );
+		$trv_trangthai *= 1;
 		
 		//
 		$trv_rating_value = _eb_get_post_object( $pid, '_eb_product_rating_value', 0 );
@@ -534,7 +535,7 @@ if ( $bai_san_pham == true ) {
 	}
 	
 	//
-	if ( $trv_trangthai == 7 || ( $trv_mua > 0 && $trv_mua >= $trv_max_mua ) ) {
+	if ( $trv_trangthai === 7 || ( $trv_mua > 0 && $trv_mua >= $trv_max_mua ) ) {
 		$schema_availability = 'http://schema.org/SoldOut';
 		
 		$str_tinh_trang = '<span class="redcolor">' . EBE_get_lang('post_outstock') . '</span>';
@@ -944,6 +945,13 @@ else {
 }
 
 
+//
+$str_show_quick_cart = '';
+if ( $trv_trangthai !== 7 && $__post->post_status === 'publish' ) {
+	$str_show_quick_cart = $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '<div class="clone-show-mobile-quick-cart"></div>';
+}
+
+
 // tạo mảng để khởi tạo nội dung
 $arr_main_content = array(
 	'tmp.trv_id' => $pid,
@@ -1022,7 +1030,7 @@ $arr_main_content = array(
 	'tmp.str_for_details_top_sidebar' => $str_for_details_top_sidebar,
 	
 	// phom mua ngay
-	'tmp.clone-show-quick-cart' => $__cf_row['cf_details_show_quick_cart'] == 1 ? '<div class="clone-show-quick-cart"></div>' : '<div class="clone-show-mobile-quick-cart"></div>',
+	'tmp.clone-show-quick-cart' => $str_show_quick_cart,
 	
 	// mặt nạ cho nội dung
 	'tmp.thread_content_mask' => $__cf_row['cf_set_mask_for_details'] == 1 ? ' active-content-mask' : '',
@@ -1300,11 +1308,13 @@ if ( $bai_san_pham == true ) {
 $_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
 
 
+
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
 $main_content .= '<script type="text/javascript">
 var switch_taxonomy="' . $__post->post_type . '",
 //	pid=' . $pid . ',
 	product_post_status="' . $__post->post_status . '",
+	product_trv_trangthai="' . $trv_trangthai . '",
 	eb_site_comment_open=' . $eb_site_comment_open . ',
 	con_hay_het=' . $con_hay_het . ',
 	post_canonical_url="' . $url_og_url . '",
