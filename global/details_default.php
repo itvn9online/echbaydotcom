@@ -1304,6 +1304,7 @@ $_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
 $main_content .= '<script type="text/javascript">
 var switch_taxonomy="' . $__post->post_type . '",
 //	pid=' . $pid . ',
+	product_post_status="' . $__post->post_status . '",
 	eb_site_comment_open=' . $eb_site_comment_open . ',
 	con_hay_het=' . $con_hay_het . ',
 	post_canonical_url="' . $url_og_url . '",
