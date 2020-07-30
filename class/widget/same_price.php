@@ -98,6 +98,7 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$num_line = isset( $instance ['num_line'] ) ? $instance ['num_line'] : '';
 //		echo $num_line;
+//		echo $post_number;
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-price-title', $before_title );
@@ -116,8 +117,9 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			'key' => '_eb_product_price',
 			// value should be array of (lower, higher) with BETWEEN
 			'value' => array( $trv_giamoi - $percent_price, $trv_giamoi + $percent_price ),
-			'compare' => 'BETWEEN',
-			'type' => 'NUMERIC'
+			'type' => 'NUMERIC',
+//			'type' => 'numeric',
+			'compare' => 'BETWEEN'
 		);
 //		print_r( $price_in );
 		
@@ -126,7 +128,8 @@ class ___echbay_widget_same_same_price extends WP_Widget {
 			$post_number,
 			array(
 				'post__not_in' => array( $pid ),
-				'meta_query' => array( $price_in )
+				'meta_query' => array( $price_in ),
+				'ignore_sticky_posts' => 1
 			),
 			__eb_thread_template,
 			// lấy hết, bỏ qua bộ lọc post__not_in
