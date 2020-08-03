@@ -22,8 +22,10 @@ if (isset ( $_GET ['t'], $_GET ['block'], $_GET ['u'], $_GET ['code'] )) {
 	
 	
 	// kiểm tra dữ liệu đầu vào
-	if ( date_time - $t < 3600 && _eb_mdnam ( $t ) == $block
-	&& $u != '' && strpos( $u, '@' ) && _eb_mdnam ( $u ) == $code) {
+	if (
+		date_time - $t < 3600 && _eb_mdnam ( $t ) == $block
+		&& $u != '' && strpos( $u, '@' ) && _eb_mdnam ( $u ) == $code
+	) {
 		
 		//
 		$user_id = email_exists( $u );
@@ -46,6 +48,9 @@ if (isset ( $_GET ['t'], $_GET ['block'], $_GET ['u'], $_GET ['code'] )) {
 			
 			// cập nhật thời gian reset pass để chặn không cho reset liên tục
 			update_user_meta( $user_id, 'eb_reset_pass', $t );
+			
+			// xóa lệnh chặn gửi reset pass
+			delete_user_meta( $user_id, 'eb_active_reset_pass' );
 			
 			//
 			$main_content = 'Mật khẩu đã được thay đổi';
