@@ -2180,7 +2180,7 @@ function WGR_show_widget_name_by_title () {
 	});
 	
 	// nếu là supper admin (code) -> hiển thị option của tag cho dễ nhìn
-	if ( isLogin == 1 ) {
+	if ( typeof isLogin != 'undefined' && isLogin == 1 ) {
 		$('.widget').each(function() {
 			if ( $('.disable-click-edit-widget', this).length > 0 ) {
 				var tit = '';
