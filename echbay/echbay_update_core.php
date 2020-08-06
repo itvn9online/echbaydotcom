@@ -797,7 +797,7 @@ function EBE_get_text_version ( $str ) {
 		
 		// Kiểm tra phiên bản trên github
 		$strCacheFilter = 'github_version';
-		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 300 );
+		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
 		$url_check_version = 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION';
 		if ( $version_in_github == false ) {
 			$version_in_github = _eb_getUrlContent( $url_check_version );
