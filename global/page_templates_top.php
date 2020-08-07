@@ -35,4 +35,16 @@ if ( $_eb_product_css != '' ) {
 
 
 
+//
 ob_start();
+
+
+
+//
+$private_post_link_stylesheet = _eb_get_post_object( $post->ID, '_eb_product_link_stylesheet' );
+if ( $private_post_link_stylesheet != '' ) {
+	echo '<link rel="stylesheet" href="' . $private_post_link_stylesheet . '" type="text/css" />';
+}
+
+
+

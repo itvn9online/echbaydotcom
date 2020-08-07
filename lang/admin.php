@@ -47,6 +47,7 @@ function WGR_admin_lang ( $k ) {
 		//
 		'_eb_product_avatar' => 'Ảnh đại diện',
 		'_eb_product_css' => 'Tùy chỉnh CSS',
+		'_eb_product_link_stylesheet' => 'Tùy chỉnh stylesheet',
 //		'_eb_product_leech_source' => 'URL đồng bộ',
 		
 		//

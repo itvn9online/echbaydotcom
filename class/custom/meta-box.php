@@ -212,7 +212,8 @@ if ( mtv_id == 1 ) {
 
 // Hiển thị câu ghi chú đối với meta box
 $eb_arr_placeholder_custom_meta_box = array(
-	'_eb_product_css' => 'Bạn có thể thêm một class class CSS vào đây, class này sẽ xuất hiện trong thẻ BODY, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
+	'_eb_product_css' => 'Bạn có thể thêm một class CSS vào đây, class này sẽ xuất hiện trong thẻ BODY, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
+	'_eb_product_link_stylesheet' => 'Bạn có thể thêm một liên kết stylesheet vào đây, stylesheet này sẽ xuất hiện trong đầu content, dùng để tùy chỉnh CSS cho các post, page... cụ thể',
 	'_eb_product_avatar' => 'Ảnh đại diện dự phòng, dùng để làm <a href="' . admin_link . 'admin.php?page=eb-config_theme&tab=theme-list&support_tab=cf_list_avt_hover" target="_blank">hiệu ứng chuyển ảnh đại diện khi di chuột</a> hoặc  chuyển dữ liệu và làm demo sẽ tiện',
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_supper_shop' => 'Nhập vào URL mà bạn muốn chuyển tới khi người dùng bấm vào nút [Mua ngay] trong trang chi tiết sản phẩm (Mặc định sẽ thêm vào giỏ hoặc mở popup mua ngay).',
@@ -265,13 +266,15 @@ if ( cf_on_off_echbay_seo == 1 ) {
 		
 		//
 		'_eb_product_avatar' => WGR_admin_lang('_eb_product_avatar'),
-		'_eb_product_css' => WGR_admin_lang('_eb_product_css')
+		'_eb_product_css' => WGR_admin_lang('_eb_product_css'),
+		'_eb_product_link_stylesheet' => WGR_admin_lang('_eb_product_link_stylesheet')
 	//	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source')
 	);
 }
 else {
 	$eb_meta_custom_meta_box = array(
-		'_eb_product_css' => WGR_admin_lang('_eb_product_css')
+		'_eb_product_css' => WGR_admin_lang('_eb_product_css'),
+		'_eb_product_link_stylesheet' => WGR_admin_lang('_eb_product_link_stylesheet')
 	);
 }
 
