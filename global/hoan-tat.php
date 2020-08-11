@@ -216,7 +216,7 @@ if ( $decode_order_discount != NULL ) {
 	
 	//
 	$discount_code = $decode_order_discount->name;
-	$discount_price = 0;
+//	$discount_price = 0;
 	if ( isset( $decode_order_discount->coupon_giagiam ) ) {
 		$discount_price = _eb_float_only( $decode_order_discount->coupon_giagiam );
 	}

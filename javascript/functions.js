@@ -210,6 +210,12 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 			'<div class="lf f75 fullsize-if-mobile">' +
 				'<div class="left-menu-space"><strong class="ebe-currency orgcolor">' + g_func.money_format( hoan_tat_discount ) + '</strong> - Số tiền giảm giá (nếu có) hiện là số tạm tính, chúng tôi sẽ kiểm tra và xác nhận lại tính hợp lệ rồi mới thông báo chính thức tới khách hàng sau.</div>' +
 			'</div>' +
+		'</div>' +
+		'<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
+			'<div class="lf f25 fullsize-if-mobile text-right">Giá sau khuyến mại</div>' +
+			'<div class="lf f75 fullsize-if-mobile">' +
+				'<div class="left-menu-space"><strong class="ebe-currency medium18 greencolor">' + g_func.money_format( total - hoan_tat_discount ) + '</strong></div>' +
+			'</div>' +
 		'</div>';
 	}
 	

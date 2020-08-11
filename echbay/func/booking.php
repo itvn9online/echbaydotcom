@@ -238,7 +238,7 @@ if ( $decode_order_discount != NULL ) {
 	
 	//
 	$discount_code = $decode_order_discount->name;
-	$discount_price = 0;
+//	$discount_price = 0;
 	if ( isset( $decode_order_discount->coupon_giagiam ) ) {
 		$discount_price = _eb_float_only( $decode_order_discount->coupon_giagiam );
 	}
@@ -449,6 +449,7 @@ $message = EBE_html_template( WGR_get_html_template_lang( 'booking_mail', 'booki
 		
 		'tmp.discount_code' => $discount_code,
 		'tmp.discount_price' => number_format( $discount_price ),
+		'tmp.after_discount' => number_format( $tong_tien - $discount_price ),
 		
 		'tmp.t_diachi' => $t_diachi,
 		'tmp.t_ghichu' => $t_ghichu,
