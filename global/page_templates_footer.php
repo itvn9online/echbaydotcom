@@ -81,5 +81,13 @@ if ( isset( $__cf_row['cf_custom_page_width_main'] ) ) {
 
 
 
+//
+$private_post_link_javascript = _eb_get_post_object( $post->ID, '_eb_product_link_javascript' );
+if ( $private_post_link_javascript != '' ) {
+	echo '<script type="text/javascript" src="' . $private_post_link_javascript . '" async>';
+}
+
+
+
 // show content
 include_once EB_THEME_URL . 'index.php';
