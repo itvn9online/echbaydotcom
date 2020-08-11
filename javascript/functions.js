@@ -94,6 +94,34 @@ function WGR_get_hoan_tat_total_price () {
 	return a;
 }
 
+function WGR_format_discount_price ( t ) {
+	if ( typeof discount_price != 'undefined' && discount_price != '' ) {
+		if ( discount_price.toString().split('%').length > 1 ) {
+			discount_price = discount_price.replace( '%', '' ) * 1;
+			
+			if ( discount_price > 0 ) {
+//				t = t - ( t/ 100 * discount_price );
+				t = t/ 100 * discount_price;
+			}
+		}
+		else {
+//			discount_price = g_func.float_only(discount_price);
+			discount_price *= 1;
+//			console.log(discount_price);
+			
+			if ( discount_price > 0 ) {
+//				t -= discount_price;
+				t = discount_price;
+			}
+		}
+		console.log('Calculate discount price: ' + t);
+		
+		return t;
+	}
+	
+	return 0;
+}
+
 function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	current_hd_object = ___eb_add_conver_string_cart_to_arr_cart( arr );
 	current_tv_object = ___eb_add_conver_string_cart_to_arr_cart( arr2 );
@@ -168,10 +196,22 @@ function WGR_show_hoan_tat_product_for_gg ( arr, arr2 ) {
 	'</div>' +
 	'<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
 		'<div class="lf f25 fullsize-if-mobile text-right">' + arr_lang_hoan_tat['cart_done_tong'] + '</div>' +
-		'<div class="lf f25 fullsize-if-mobile">' +
+		'<div class="lf f75 fullsize-if-mobile">' +
 			'<div class="left-menu-space"><strong class="ebe-currency medium18 redcolor">' + g_func.money_format( total ) + '</strong></div>' +
 		'</div>' +
 	'</div>';
+	
+	//
+	var hoan_tat_discount = WGR_format_discount_price( total );
+//	console.log(hoan_tat_discount);
+	if ( hoan_tat_discount > 0 ) {
+		str += '<div class="hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">' +
+			'<div class="lf f25 fullsize-if-mobile text-right">Giảm giá</div>' +
+			'<div class="lf f75 fullsize-if-mobile">' +
+				'<div class="left-menu-space"><strong class="ebe-currency orgcolor">' + g_func.money_format( hoan_tat_discount ) + '</strong> - Số tiền giảm giá (nếu có) hiện là số tạm tính, chúng tôi sẽ kiểm tra và xác nhận lại tính hợp lệ rồi mới thông báo chính thức tới khách hàng sau.</div>' +
+			'</div>' +
+		'</div>';
+	}
 	
 	//
 	if ( jQuery('#show-product-for-google').length > 0 ) {
@@ -293,24 +333,10 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 	}
 	
 	//
-	if ( typeof discount_price != 'undefined' && discount_price != '' ) {
-		if ( discount_price.split('%').length > 1 ) {
-			discount_price = discount_price.replace( '%', '' ) * 1;
-			
-			if ( discount_price > 0 ) {
-				tong_tien = tong_tien - ( tong_tien/ 100 * discount_price );
-			}
-		}
-		else {
-//			discount_price = g_func.float_only(discount_price);
-			discount_price *= 1;
-//			console.log(discount_price);
-			
-			if ( discount_price > 0 ) {
-				tong_tien -= discount_price;
-			}
-		}
-		console.log('Calculate discount price: ' + tong_tien);
+	var hoan_tat_discount = WGR_format_discount_price( tong_tien );
+//	console.log(hoan_tat_discount);
+	if ( hoan_tat_discount > 0 ) {
+		tong_tien -= hoan_tat_discount;
 	}
 	
 	// fb track -> by products
