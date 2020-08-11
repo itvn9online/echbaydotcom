@@ -236,9 +236,14 @@ $discount_price = 0;
 if ( $decode_order_discount != NULL ) {
 	$decode_order_discount = $decode_order_discount[0];
 	
+	//
 	$discount_code = $decode_order_discount->name;
-	if ( $decode_order_discount->coupon_giagiam > 0 ) {
-		$discount_price = $decode_order_discount->coupon_giagiam;
+	$discount_price = 0;
+	if ( isset( $decode_order_discount->coupon_giagiam ) ) {
+		$discount_price = _eb_float_only( $decode_order_discount->coupon_giagiam );
+	}
+	
+	if ( $discount_price > 0 ) {
 	}
 	else if ( $decode_order_discount->coupon_phantramgiam > 0 ) {
 		$discount_price = $decode_order_discount->coupon_phantramgiam . '%';

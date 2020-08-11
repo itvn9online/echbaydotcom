@@ -302,12 +302,15 @@ function ___eb_add_convertsion_gg_fb ( hd_id, arr, max_for ) {
 			}
 		}
 		else {
+//			discount_price = g_func.float_only(discount_price);
 			discount_price *= 1;
+//			console.log(discount_price);
 			
 			if ( discount_price > 0 ) {
 				tong_tien -= discount_price;
 			}
 		}
+		console.log('Calculate discount price: ' + tong_tien);
 	}
 	
 	// fb track -> by products
