@@ -1483,8 +1483,6 @@ function _eb_add_compiler_css($arr) {
       // sử dụng thật thì có 2 kiểu add: inline và add link
       else {
      */
-//		print_r( $new_arr1 );
-//		print_r( $new_arr2 );
     // nếu là dạng tester -> chỉ có 1 kiểu add thôi -> nhúng link CSS
 //		if ( eb_code_tester == true ) {
     // Nếu không có lệnh opimize CSS -> nhúng thẳng link vào
@@ -1502,25 +1500,33 @@ function _eb_add_compiler_css($arr) {
     }
     // sử dụng thật thì có 2 kiểu add: inline và add link
     else {
-		
-		
-		
-		
-		// v1
-    $new_arr1 = array();
-    $new_arr2 = array();
-
-    //
-    foreach ($arr as $k => $v) {
-        if ($v == 1) {
-            $new_arr2[$k] = 1;
-        } else {
-            $new_arr1[$k] = 1;
-        }
-    }
-//	print_r( $arr );
-	$arr = array_merge( $new_arr1, $new_arr2 );
-//	print_r( $arr );
+			
+			
+			
+			
+			// v1
+		$new_arr1 = array();
+		$new_arr2 = array();
+	
+		//
+		foreach ($arr as $k => $v) {
+			if ($v == 1) {
+				if ($__cf_row['cf_css2_inline'] == 1) {
+					$new_arr2[$k] = 1;
+					$arr[$k] = '';
+				}
+			} else {
+				if ($__cf_row['cf_css_inline'] == 1) {
+					$new_arr1[$k] = 1;
+					$arr[$k] = '';
+				}
+			}
+		}
+//		print_r( $arr );
+//		print_r( $new_arr1 );
+//		print_r( $new_arr2 );
+//		$arr = array_merge( $new_arr1, $new_arr2 );
+//		print_r( $arr );
 //		echo count( $arr ) . "\n";
 		
 		
@@ -1529,7 +1535,7 @@ function _eb_add_compiler_css($arr) {
 		$file_name = array();
 		$file2_name = array();
 		foreach ($arr as $k => $v) {
-			if ( file_exists($k) ) {
+			if ( $v != '' && file_exists($k) ) {
 //				echo $v . "\n";
 				
 				// nếu trong thư mục mặc định -> lấy tên file là đủ
@@ -1561,10 +1567,15 @@ function _eb_add_compiler_css($arr) {
 //		print_r( $file2_name );
 //		echo count( $file2_name ) . "\n";
 		
-		//
+		// nhúng phần CSS inline trực tiếp vào website
+		_eb_add_compiler_v2_css($new_arr1);
+		
 		if ( ! empty( $file_name ) ) {
 			echo '<link rel="stylesheet" href="' . strstr( EB_THEME_PLUGIN_INDEX, EB_DIR_CONTENT ) . 'load-styles.php?load=' . implode( ',', $file_name ) . '&ver=' . web_version . '" type="text/css" media="all" />' . "\n";
 		}
+		
+		// nhúng phần CSS inline trực tiếp vào website
+		_eb_add_compiler_v2_css($new_arr2);
 		
 		//
 		return true;
@@ -1592,6 +1603,10 @@ function _eb_add_compiler_css($arr) {
 }
 
 function _eb_add_compiler_v2_css($arr, $css_inline = 1) {
+	if ( empty( $arr ) ) {
+		return false;
+	}
+	
     global $__cf_row;
 
     // nhúng link trực tiếp
@@ -1697,8 +1712,8 @@ function _eb_add_compiler_v2_css($arr, $css_inline = 1) {
             }
 
             //
-            $cache_content = WGR_remove_css_multi_comment($cache_content);
-            $cache_content = EBE_replace_link_in_cache_css($cache_content);
+//			$cache_content = WGR_remove_css_multi_comment($cache_content);
+			$cache_content = EBE_replace_link_in_cache_css($cache_content);
 
             //
             _eb_create_file($file_save, create_cache_infor_by($full_file_name) . $cache_content );
@@ -1758,8 +1773,8 @@ function _eb_add_compiler_v2_css($arr, $css_inline = 1) {
                 }
 
                 //
-                $cache_content = WGR_remove_css_multi_comment($cache_content);
-                $cache_content = EBE_replace_link_in_css($cache_content);
+//				$cache_content = WGR_remove_css_multi_comment($cache_content);
+				$cache_content = EBE_replace_link_in_css($cache_content);
 
                 //
                 _eb_create_file( $file_save, $cache_content );

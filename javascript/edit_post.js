@@ -1098,7 +1098,8 @@ function WGR_run_for_admin_edit_post () {
 					console.log(a);
 					
 					if ( a != '' ) {
-						$('#_eb_product_avatar').val('https://img.youtube.com/vi/' + a + '/0.jpg').change();
+//						$('#_eb_product_avatar').val('https://img.youtube.com/vi/' + a + '/0.jpg').change();
+						$('#_eb_product_avatar').val('http://i3.ytimg.com/vi/' + a + '/hqdefault.jpg').change();
 					}
 				}
 			}

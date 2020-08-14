@@ -236,7 +236,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_ads_name' => 'Khi chế độ này được thiết lập, dù quảng cáo có chiếu xạ tới bài viết hay phân nhóm nào đó thì tên và tóm tắt của quảng cáo vẫn được giữ nguyên.',
 	'_eb_ads_for_post' => 'Nhập vào ID của Sản phẩm hoặc bài Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
 	'_eb_ads_for_category' => 'Nhập vào ID của Danh mục Sản phẩm hoặc Danh mục Blog mà bạn muốn quảng cáo này trỏ tới, khi đó, các dữ liệu như: Ảnh đại diện, tiêu đề, URL sẽ được lấy từ Danh mục Sản phẩm/ Blog thay vì lấy từ quảng cáo.',
-	'_eb_ads_video_url' => 'Bạn có thể nhập vào URL video trên Youtube (Ví dụ: <strong>https://youtu.be/{ID}</strong>) hoặc URL video MP4, các định dạng khác hiện chưa được hỗ trợ. Ảnh đại diện theo video: https://img.youtube.com/vi/<strong>{ID}</strong>/0.jpg',
+	'_eb_ads_video_url' => 'Bạn có thể nhập vào URL video trên Youtube (Ví dụ: <strong>https://youtu.be/{ID}</strong>) hoặc URL video MP4, các định dạng khác hiện chưa được hỗ trợ. Ảnh đại diện theo video: http://i3.ytimg.com/vi/<strong>{ID}</strong>/hqdefault.jpg hoặc http://i3.ytimg.com/vi/<strong>{ID}</strong>/maxresdefault.jpg hoặc https://img.youtube.com/vi/<strong>{ID}</strong>/0.jpg',
 	
 	'_eb_product_ngayhethan' => 'Nếu thời gian hết hạn được thiết lập, sản phẩm sẽ hiển thị chữ cháy hàng khi hết hạn.',
 	'_eb_product_leech_sku' => 'Chức năng dùng để kiểm soát các tin đã tồn tại từ phiên bản cũ hơn (thường sử dụng khi chuyển đổi code khác sang wordpress).',
