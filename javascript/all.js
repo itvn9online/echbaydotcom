@@ -16,6 +16,9 @@ if ( typeof $ == 'undefined' ) {
 }
 
 
+var widget_open_close_tag_confirm = false;
+
+
 
 // lưu URL cuối cùng mà người dùng đã xem, để lần sau truy cập luôn vào URL này cho tiện
 // -> ưu tiên chạy đầu tiên luôn
@@ -2214,6 +2217,10 @@ function WGR_show_widget_name_by_title () {
 				$('.in-widget-title', this).removeClass('in-widget-title').addClass('small redcolor').html(' * Dành riêng cho kỹ thuật, không tự ý sửa!');
 				
 				$('.widget-title, .widget-title-action', this).off('click').click(function () {
+					if ( widget_open_close_tag_confirm === true || confirm('Xác nhận lại bạn là Kỹ thuật và nắm rõ việc chỉnh sửa sửa này') ) {
+						widget_open_close_tag_confirm = true;
+						return true;
+					}
 					return false;
 				});
 				
