@@ -364,6 +364,12 @@ function add_fb_messages_for_page() {
 // load các module mạng xã hội
 (function() {
 	
+	//
+	if ( WGR_check_option_on ( cf_tester_mode ) ) {
+		console.log('%c Social disable by cf_tester_mode', 'color: red;');
+		return false;
+	}
+	
 	// căn lại chiều rộng cho fb plugin
 	// https://developers.facebook.com/docs/plugins/comments/
 //	jQuery('.fb-like, .fb-comments').each(function() {

@@ -142,7 +142,7 @@ else {
 
 
 // google analytics
-if ( $__cf_row['cf_ga_id'] != '' ) {
+if ( $__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off' ) {
 	// gtag
 	if ( $__cf_row['cf_gtag_id'] == 1 ) {
 ?>

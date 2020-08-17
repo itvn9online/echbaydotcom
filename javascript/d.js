@@ -239,7 +239,8 @@ var press_esc_to_quickvideo_close = false,
 // fix menu khi cuộn chuột
 var fix_right_top_menu = 0,
 	fix_menu_top_or_bottom = 'bottom',
-	id_for_fix_main_content = '#main',
+//	id_for_fix_main_content = '#main',
+	id_for_fix_main_content = '#container',
 	id_for_fix_menu_content = '#main_right',
 	// Kết thúc fix menu
 	end_right_top_menu = 0,
