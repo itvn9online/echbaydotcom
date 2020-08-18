@@ -5,8 +5,8 @@
 
 // cache
 $strCacheFilter = 'home-ajax';
-$home_ajax_content = _eb_get_static_html ( $strCacheFilter );
-if ($home_ajax_content == false) {
+$main_content = _eb_get_static_html ( $strCacheFilter );
+if ($main_content == false) {
 	$str_sidebar = _eb_echbay_sidebar( 'home_sidebar' );
 	$home_content_bottom_sidebar = _eb_echbay_get_sidebar( 'home_content_bottom_sidebar' );
 	
@@ -54,7 +54,7 @@ if ($home_ajax_content == false) {
 	/*
 	* Gắn widget vào trước
 	*/
-	$home_ajax_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
+	$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
 		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
 		'tmp.str_sidebar' => $str_sidebar,
 		'tmp.home_with_cat' => $home_with_cat
@@ -67,14 +67,14 @@ if ($home_ajax_content == false) {
 	/*
 	* Những cái khác gắn sau -> nếu có code riêng thì sẽ không bị ảnh hưởng
 	*/
-	$arr_home_ajax_content = array(
+	$arr_main_content = array(
 		'tmp.cf_home_class_style' => $__cf_row ['cf_home_class_style'],
 		'tmp.home_cf_title' => $__cf_row ['cf_title'],
 		'tmp.custom_home_flex_css' => $custom_home_flex_css,
 	);
 	
 	// tìm và tạo sidebar luôn
-	// $arr_home_ajax_content['tmp.str_sidebar'] = _eb_echbay_sidebar( $id_for_get_sidebar );
+	// $arr_main_content['tmp.str_sidebar'] = _eb_echbay_sidebar( $id_for_get_sidebar );
 	
 	
 	// lấy HTML riêng của từng site
@@ -83,22 +83,23 @@ if ($home_ajax_content == false) {
 		
 		// -> chạy vòng lặp, ghi đè lên mảng cũ
 		foreach ( $arr_main_new_content as $k => $v ) {
-			$arr_home_ajax_content[$k] = $v;
+			$arr_main_content[$k] = $v;
 		}
 	}
 	
 	
 	//
-	$home_ajax_content = EBE_arr_tmp( $arr_home_ajax_content, $home_ajax_content, '' );
+	$main_content = EBE_arr_tmp( $arr_main_content, $main_content, '' );
+	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
 	
 	
 	// lưu cache
-	_eb_get_static_html ( $strCacheFilter, $home_ajax_content );
+	_eb_get_static_html ( $strCacheFilter, $main_content );
 }
 
 
-echo $home_ajax_content;
+echo $main_content;
 
 
 

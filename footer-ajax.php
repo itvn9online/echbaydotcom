@@ -3,8 +3,8 @@
 
 //
 $strCacheFilter = 'footer-ajax';
-$footer_ajax_content = _eb_get_static_html ( $strCacheFilter );
-if ($footer_ajax_content == false) {
+$main_content = _eb_get_static_html ( $strCacheFilter );
+if ($main_content == false) {
 	//
 	ob_start();
 	
@@ -31,7 +31,8 @@ if ($footer_ajax_content == false) {
 	
 	
 	//
-	$footer_ajax_content = ob_get_contents();
+	$main_content = ob_get_contents();
+	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 	
 	//ob_clean();
 	//ob_end_flush();
@@ -40,9 +41,9 @@ if ($footer_ajax_content == false) {
 	
 	
 	// lưu cache
-	_eb_get_static_html ( $strCacheFilter, $footer_ajax_content );
+	_eb_get_static_html ( $strCacheFilter, $main_content );
 }
-echo $footer_ajax_content;
+echo $main_content;
 
 ?>
 </div>
