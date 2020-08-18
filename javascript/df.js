@@ -877,6 +877,7 @@ function WGR_lazyload_footer_content () {
 			disable_eblazzy_load = false;
 			WGR_reload_lazy_function();
 			_global_js_eb.ebe_currency_format();
+			___eb_click_open_video_popup();
 			jQuery('#home-lazyload').addClass('remove-min-height');
 		});
 	}
