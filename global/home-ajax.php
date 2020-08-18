@@ -7,6 +7,7 @@
 $strCacheFilter = 'home-ajax';
 $home_ajax_content = _eb_get_static_html ( $strCacheFilter );
 if ($home_ajax_content == false) {
+	$str_sidebar = _eb_echbay_sidebar( 'home_sidebar' );
 	$home_content_bottom_sidebar = _eb_echbay_get_sidebar( 'home_content_bottom_sidebar' );
 	
 	
@@ -48,13 +49,14 @@ if ($home_ajax_content == false) {
 	
 	//
 	$html_v2_file = 'home-ajax';
-	$custom_home_flex_css = EBE_get_html_file_addon( 'home-ajax', $__cf_row['cf_home_column_style'] );
+	$custom_home_flex_css = EBE_get_html_file_addon( 'home', $__cf_row['cf_home_column_style'] );
 	
 	/*
 	* Gắn widget vào trước
 	*/
 	$home_ajax_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
 		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
+		'tmp.str_sidebar' => $str_sidebar,
 		'tmp.home_with_cat' => $home_with_cat
 	) );
 	
