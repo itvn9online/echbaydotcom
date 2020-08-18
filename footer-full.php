@@ -20,7 +20,6 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 ?>
 </div>
 <!-- quick view video -->
-
 <div class="quick-video">
 	<div class="quick-video-close big cf">
 		<div class="lf f40 show-if-mobile"><i title="Close" class="fa fa-remove cur d-block"></i></div>
