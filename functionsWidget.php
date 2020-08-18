@@ -194,6 +194,7 @@ function WGR_widget_home_hot ( $instance ) {
 		$args['compare'] = '=';
 		$args['type'] = 'NUMERIC';
 	}
+	$args['ignore_sticky_posts'] = 1;
 	
 	//
 	$html_content = __eb_thread_template;
@@ -930,6 +931,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 	}
 	// mặc định
 	else {
+		$arr_select_data['ignore_sticky_posts'] = 1;
 		
 		// load riêng 1 kiểu đối với ads
 		/*
