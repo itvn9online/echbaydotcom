@@ -876,6 +876,7 @@ function WGR_lazyload_footer_content () {
 		ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
 			disable_eblazzy_load = false;
 			WGR_reload_lazy_function();
+			_global_js_eb.ebe_currency_format();
 			jQuery('#home-lazyload').addClass('remove-min-height');
 		});
 	}
