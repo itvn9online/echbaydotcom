@@ -1500,29 +1500,27 @@ function _eb_add_compiler_css($arr) {
     }
     // sử dụng thật thì có 2 kiểu add: inline và add link
     else {
-			
-			
-			
-			
-			// v1
+		
+		// v1
 		$new_arr1 = array();
 		$new_arr2 = array();
 	
 		//
+//		print_r( $arr );
 		foreach ($arr as $k => $v) {
-			if ($v == 1) {
+//			echo $v . "\n";
+			if ($v * 1 === 1) {
 				if ($__cf_row['cf_css2_inline'] == 1) {
 					$new_arr2[$k] = 1;
-					$arr[$k] = '';
+					$arr[$k] = 9;
 				}
 			} else {
 				if ($__cf_row['cf_css_inline'] == 1) {
 					$new_arr1[$k] = 1;
-					$arr[$k] = '';
+					$arr[$k] = 9;
 				}
 			}
 		}
-//		print_r( $arr );
 //		print_r( $new_arr1 );
 //		print_r( $new_arr2 );
 //		$arr = array_merge( $new_arr1, $new_arr2 );
@@ -1534,9 +1532,15 @@ function _eb_add_compiler_css($arr) {
 		// chức năng load nội dung file trực tiếp giống wordpress
 		$file_name = array();
 		$file2_name = array();
+//		print_r( $arr );
 		foreach ($arr as $k => $v) {
-			if ( $v != '' && file_exists($k) ) {
-//				echo $v . "\n";
+			/*
+			if ( file_exists($k) ) {
+				echo $k . ' -> ' . $v . "\n";
+			}
+			*/
+			if ( $v * 1 < 9 && file_exists($k) ) {
+//				echo $k . ' -> ' . $v . "\n";
 				
 				// nếu trong thư mục mặc định -> lấy tên file là đủ
 				/*

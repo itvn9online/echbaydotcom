@@ -43,6 +43,58 @@ if ($main_content == false) {
 	
 	//
 	$home_content_top_sidebar = _eb_echbay_get_sidebar( 'home_content_top_sidebar' );
+	$home_content_bottom_sidebar = _eb_echbay_get_sidebar( 'home_content_bottom_sidebar' );
+	
+	
+	
+	// load default nếu không có dữ liệu
+//	$home_content_sidebar = _eb_echbay_sidebar( 'home_content_sidebar' );
+	
+	// trả về null nếu không có dữ liệu
+	if ( $__cf_row['cf_using_home_default'] == 1 ) {
+		$home_with_cat = '';
+		
+		
+		
+		//
+		ob_start();
+	
+		
+		// Kiểm tra và load các file home tương ứng
+		$arr_includes_home_file = WGR_load_module_name_css( 'home' );
+		
+		if ( count( $arr_includes_home_file ) == 0 ) {
+			include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
+		}
+//		print_r( $arr_includes_home_file );
+		
+		foreach ( $arr_includes_home_file as $v ) {
+			include $v;
+		}
+		
+		
+		//
+		$home_with_cat = ob_get_contents();
+		
+		//ob_clean();
+		//ob_end_flush();
+		ob_end_clean();
+		
+		
+	}
+	else {
+		$home_with_cat = _eb_echbay_get_sidebar( 'home_content_sidebar' );
+	}
+	
+	//
+//	echo $home_with_cat;
+	
+	// nếu không có home -> load mặc định theo thiết kế dựng sẵn
+	/*
+	if ( $home_with_cat == '' ) {
+		include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
+	}
+	*/
 	
 	
 	
@@ -58,7 +110,10 @@ if ($main_content == false) {
 	* Gắn widget vào trước
 	*/
 	$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
-		'tmp.home_content_top_sidebar' => $home_content_top_sidebar
+		'tmp.home_content_top_sidebar' => $home_content_top_sidebar,
+		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
+		'tmp.home_with_cat' => $home_with_cat
+//		'tmp.home_content_sidebar' => $home_content_sidebar,
 	) );
 	
 	

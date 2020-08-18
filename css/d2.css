@@ -3085,3 +3085,10 @@ iframe[name="google_conversion_frame"] {
 	right: 0;
 	bottom: 0;
 }
+#footer-lazyload { min-height: 168px; }
+#home-lazyload { min-height: 688px; }
+#footer-lazyload.remove-min-height,
+#home-lazyload.remove-min-height {
+	min-height: auto;
+	min-height: unset;
+}

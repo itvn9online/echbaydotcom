@@ -379,7 +379,6 @@ $group_go_to = implode( ' ', $group_go_to );
 
 // Mảng list các file dùng để tạo top, footer
 $arr_includes_top_file = array();
-$arr_includes_footer_file = array();
 
 // Nạp CSS mặc định cho top và footer
 if ( $__cf_row['cf_using_top_default'] == 1 ) {
@@ -395,18 +394,8 @@ if ( $__cf_row['cf_using_top_default'] == 1 ) {
 //	print_r( $arr_includes_top_file );
 }
 
-if ( $__cf_row['cf_using_footer_default'] == 1 ) {
-//	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/footer_default.css' ] = 1;
-	
-	// Kiểm tra và load các file footer tương ứng
-	$arr_includes_footer_file = WGR_load_module_name_css( 'footer' );
-	
-	//
-	if ( count( $arr_includes_footer_file ) == 0 ) {
-		include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
-	}
-//	print_r( $arr_includes_footer_file );
-}
+//
+include EB_THEME_PLUGIN_INDEX . 'common_footer.php';
 
 // xong sẽ nạp CSS tổng của theme (trang nào cũng có mặt)
 if ( $__cf_row[ 'cf_current_theme_using' ] != '' ) {

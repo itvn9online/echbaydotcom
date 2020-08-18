@@ -625,9 +625,10 @@ jQuery('#oi_scroll_top, .oi_scroll_top').click(function() {
 jQuery('.elementor-image').addClass('img-max-width');
 
 //_global_js_eb.ebBgLazzyLoadOffset();
-_global_js_eb.ebBgLazzyLoad();
-_global_js_eb.set_mobile_size();
-_global_js_eb.auto_margin();
+WGR_reload_lazy_function();
+//_global_js_eb.ebBgLazzyLoad();
+//_global_js_eb.set_mobile_size();
+//_global_js_eb.auto_margin();
 setTimeout(function () {
 	_global_js_eb.set_mobile_size();
 	_global_js_eb.auto_margin();
@@ -695,6 +696,13 @@ jQuery(document).ready(function() {
 	if ( height_for_lazzy_load == 0 ) {
 		height_for_lazzy_load = jQuery(window).height();
 	}
+	
+	// nạp footer
+	/*
+	setTimeout(function () {
+		WGR_lazyload_footer_content();
+	}, 3000);
+	*/
 });
 
 

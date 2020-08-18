@@ -815,7 +815,6 @@ function ___wgr_set_product_id_cookie ( cookie_name, add_id, limit_history, limi
 
 
 
-
 function WGR_show_or_hide_to_top () {
 	var new_scroll_top = window.scrollY || jQuery(window).scrollTop();
 	
@@ -826,6 +825,9 @@ function WGR_show_or_hide_to_top () {
 		*/
 	if (new_scroll_top > 120) {
 		jQuery('body').addClass('ebfixed-top-menu');
+		
+		//
+		WGR_lazyload_footer_content();
 		
 		//
 		if (new_scroll_top > 500) {
@@ -860,6 +862,39 @@ function WGR_show_or_hide_to_top () {
 	}
 	*/
 }
+
+var lazyload_footer_content = false;
+function WGR_lazyload_footer_content () {
+	if ( lazyload_footer_content === true ) {
+		return false;
+	}
+	lazyload_footer_content = true;
+	
+	//
+	if ( act == '' ) {
+//		console.log('Load home content');
+		ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
+			disable_eblazzy_load = false;
+			WGR_reload_lazy_function();
+			jQuery('#home-lazyload').addClass('remove-min-height');
+		});
+	}
+	
+	//
+//	console.log('Load footer content');
+	ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
+		disable_eblazzy_load = false;
+		WGR_reload_lazy_function();
+		jQuery('#footer-lazyload').addClass('remove-min-height');
+	});
+}
+
+function WGR_reload_lazy_function () {
+	_global_js_eb.ebBgLazzyLoad();
+	_global_js_eb.set_mobile_size();
+	_global_js_eb.auto_margin();
+}
+
 function ___eb_thread_details_timeend () {
 	threadDetailsTimeend = setInterval(function () {
 		if ( jQuery('.thread-details-timeend').length == 0 ) {
