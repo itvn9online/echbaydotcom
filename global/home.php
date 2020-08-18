@@ -46,6 +46,41 @@ if ($main_content == false) {
 	
 	
 	
+	// nạp CSS -> vẫn phải chạy chức năng này để nó còn nạp CSS cho trang chủ
+	if ( $__cf_row['cf_using_home_default'] == 1 ) {
+//		$home_with_cat = '';
+		
+		
+		
+		//
+		ob_start();
+	
+		
+		// Kiểm tra và load các file home tương ứng
+		$arr_includes_home_file = WGR_load_module_name_css( 'home' );
+		
+		if ( count( $arr_includes_home_file ) == 0 ) {
+			include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
+		}
+//		print_r( $arr_includes_home_file );
+		
+		foreach ( $arr_includes_home_file as $v ) {
+			include $v;
+		}
+		
+		
+		//
+//		$home_with_cat = ob_get_contents();
+		
+		//ob_clean();
+		//ob_end_flush();
+		ob_end_clean();
+		
+		
+	}
+	
+	
+	
 	// lấy template theo từng trang
 //	echo EB_THEME_PLUGIN_INDEX . 'html/<br>';
 	
@@ -71,7 +106,7 @@ if ($main_content == false) {
 	$arr_main_content = array(
 		'tmp.cf_home_class_style' => $__cf_row ['cf_home_class_style'],
 		'tmp.home_cf_title' => $__cf_row ['cf_title'],
-		'tmp.custom_home_flex_css' => $custom_home_flex_css,
+		'tmp.custom_home_flex_css' => $custom_home_flex_css
 	);
 	
 	// tìm và tạo sidebar luôn

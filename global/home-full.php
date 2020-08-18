@@ -113,7 +113,7 @@ if ($main_content == false) {
 		'tmp.home_content_top_sidebar' => $home_content_top_sidebar,
 		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
 		'tmp.home_with_cat' => $home_with_cat
-//		'tmp.home_content_sidebar' => $home_content_sidebar,
+//		'tmp.home_content_sidebar' => $home_content_sidebar
 	) );
 	
 	
@@ -126,7 +126,7 @@ if ($main_content == false) {
 	$arr_main_content = array(
 		'tmp.cf_home_class_style' => $__cf_row ['cf_home_class_style'],
 		'tmp.home_cf_title' => $__cf_row ['cf_title'],
-		'tmp.custom_home_flex_css' => $custom_home_flex_css,
+		'tmp.custom_home_flex_css' => $custom_home_flex_css
 	);
 	
 	// tìm và tạo sidebar luôn

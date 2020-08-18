@@ -27,7 +27,7 @@ if ($main_content == false) {
 		if ( count( $arr_includes_home_file ) == 0 ) {
 			include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
 		}
-	//		print_r( $arr_includes_home_file );
+//		print_r( $arr_includes_home_file );
 		
 		foreach ( $arr_includes_home_file as $v ) {
 			include $v;
