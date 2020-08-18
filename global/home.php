@@ -43,12 +43,16 @@ if ($main_content == false) {
 	
 	//
 	$home_content_top_sidebar = _eb_echbay_get_sidebar( 'home_content_top_sidebar' );
+	$home_content_bottom_sidebar = _eb_echbay_get_sidebar( 'home_content_bottom_sidebar' );
 	
 	
 	
-	// nạp CSS -> vẫn phải chạy chức năng này để nó còn nạp CSS cho trang chủ
+	// load default nếu không có dữ liệu
+//	$home_content_sidebar = _eb_echbay_sidebar( 'home_content_sidebar' );
+	
+	// trả về null nếu không có dữ liệu
 	if ( $__cf_row['cf_using_home_default'] == 1 ) {
-//		$home_with_cat = '';
+		$home_with_cat = '';
 		
 		
 		
@@ -70,7 +74,7 @@ if ($main_content == false) {
 		
 		
 		//
-//		$home_with_cat = ob_get_contents();
+		$home_with_cat = ob_get_contents();
 		
 		//ob_clean();
 		//ob_end_flush();
@@ -78,6 +82,19 @@ if ($main_content == false) {
 		
 		
 	}
+	else {
+		$home_with_cat = _eb_echbay_get_sidebar( 'home_content_sidebar' );
+	}
+	
+	//
+//	echo $home_with_cat;
+	
+	// nếu không có home -> load mặc định theo thiết kế dựng sẵn
+	/*
+	if ( $home_with_cat == '' ) {
+		include EB_THEME_PLUGIN_INDEX . 'global/home_default.php';
+	}
+	*/
 	
 	
 	
@@ -93,6 +110,9 @@ if ($main_content == false) {
 	* Gắn widget vào trước
 	*/
 	$main_content = EBE_html_template( EBE_get_page_template( $html_v2_file ), array(
+//		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
+//		'tmp.home_with_cat' => $home_with_cat,
+//		'tmp.home_content_sidebar' => $home_content_sidebar,
 		'tmp.home_content_top_sidebar' => $home_content_top_sidebar
 	) );
 	
