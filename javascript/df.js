@@ -876,8 +876,6 @@ function WGR_lazyload_footer_content () {
 		ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
 			disable_eblazzy_load = false;
 			WGR_reload_lazy_function();
-			_global_js_eb.ebe_currency_format();
-			___eb_click_open_video_popup();
 			jQuery('#home-lazyload').addClass('remove-min-height');
 		});
 	}
@@ -887,12 +885,14 @@ function WGR_lazyload_footer_content () {
 	ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
 		disable_eblazzy_load = false;
 		WGR_reload_lazy_function();
-		WGR_check_load_js_category();
 		jQuery('#footer-lazyload').addClass('remove-min-height');
 	});
 }
 
 function WGR_reload_lazy_function () {
+	_global_js_eb.ebe_currency_format();
+	___eb_click_open_video_popup();
+	WGR_check_load_js_category();
 	_global_js_eb.ebBgLazzyLoad();
 	_global_js_eb.set_mobile_size();
 	_global_js_eb.auto_margin();
