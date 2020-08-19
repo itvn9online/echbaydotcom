@@ -891,11 +891,97 @@ function WGR_lazyload_footer_content () {
 
 function WGR_reload_lazy_function () {
 	_global_js_eb.ebe_currency_format();
-	___eb_click_open_video_popup();
 	WGR_check_load_js_category();
+	
 	_global_js_eb.ebBgLazzyLoad();
 	_global_js_eb.set_mobile_size();
 	_global_js_eb.auto_margin();
+	
+	WGR_create_quick_link_edit_post();
+	___eb_click_open_video_popup();
+}
+
+function WGR_create_quick_link_edit_post () {
+    if (isQuanly != 1 || top != self) {
+		return false;
+	}
+	
+	//
+	setTimeout(function () {
+		
+		// chỉnh sửa logo
+		jQuery('.web-logo').before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" title="Chỉnh sửa logo" class="fa fa-edit click-goto-edit"></i></div>');
+		
+		// chỉnh sửa menu
+		jQuery('.each-to-edit-menu').each(function() {
+			var a = jQuery(this).attr('data-id') || 0;
+
+			if (a * 1 > 0) {
+				jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" title="Chỉnh sửa menu" class="fa fa-edit click-goto-edit"></i>');
+			}
+		});
+		
+		// ép phần quảng cáo về định dạng q.cáo -> do khi q.cáo liên kết tới post khác thì định dạng này sẽ bị thay đổi -> cần reset lại
+		jQuery('.global-ul-load-ads li').attr({
+			'data-type' : 'ads'
+		});
+		
+		// hỗ trợ chỉnh sửa bài viết từ trang khách
+		jQuery('.echbay-blog li, .global-ul-load-ads li, .quick-edit-content_only').each(function() {
+			var a = jQuery(this).attr('data-id') || 0,
+				t = jQuery(this).attr('data-type') || '',
+				w = 0,
+				h = 0;
+
+//				if (a * 1 > 0 && t == 'ads') {
+			if (a * 1 > 0) {
+				//
+				w = jQuery('.ti-le-global', this).width() || 0;
+				if ( w * 1 > 0 ) {
+					w = Math.ceil( w );
+				}
+				h = jQuery('.ti-le-global', this).height() || 0;
+				if ( h * 1 > 0 ) {
+					h = Math.ceil( h );
+				}
+				
+				// hiển thị nút sửa và size khung ảnh
+				jQuery(this).append('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
+			}
+		});
+		
+		// chỉnh sửa taxonomy
+		var edit_taxonomy = 'category',
+			edit_taxonomy_title = 'Chỉnh sửa Chuyên mục Sản phẩm';
+			edit_taxonomy_type = 'post';
+		if ( typeof switch_taxonomy != 'undefined' ) {
+			edit_taxonomy = switch_taxonomy;
+			
+			//
+			if ( switch_taxonomy == 'blogs' ) {
+				edit_taxonomy_title = 'Chỉnh sửa Danh mục Tin tức';
+				edit_taxonomy_type = 'blog';
+			}
+			else if ( switch_taxonomy == 'post_options' ) {
+				edit_taxonomy_title = 'Chỉnh sửa Thông số Sản phẩm';
+			}
+			else if ( switch_taxonomy == 'post_tag' ) {
+				edit_taxonomy_title = 'Chỉnh sửa Thẻ Sản phẩm';
+			}
+		}
+		
+		jQuery('.thread-module-name, .blogs-module-name').addClass('each-setup-goto-edit').append('<i data-href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type='+ edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" class="fa fa-edit click-goto-edit"></i>');
+		
+		//
+		jQuery('.click-goto-edit').click(function () {
+			a = jQuery(this).attr('data-href') || '';
+			
+			if ( a != '' ) {
+				window.open(a, '_blank');
+			}
+		});
+		
+	}, 3000);
 }
 
 function ___eb_thread_details_timeend () {
