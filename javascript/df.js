@@ -887,6 +887,7 @@ function WGR_lazyload_footer_content () {
 	ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
 		disable_eblazzy_load = false;
 		WGR_reload_lazy_function();
+		WGR_check_load_js_category();
 		jQuery('#footer-lazyload').addClass('remove-min-height');
 	});
 }
