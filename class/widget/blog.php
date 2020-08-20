@@ -64,7 +64,7 @@ class ___echbay_widget_random_blog extends WP_Widget {
 			'cat_ids_name' => $this->get_field_name ( 'cat_ids' ),
 			'cat_ids' => $cat_ids,
 			'cat_type_name' => $this->get_field_name ( 'cat_type' ),
-			'cat_type' => $cat_type,
+			'cat_type' => $cat_type
 		) );
 		
 		

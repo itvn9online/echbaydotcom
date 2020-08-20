@@ -130,6 +130,11 @@
 .aabbcc .widget-blog-more { }
 .aabbcc .widget-blog-more a { }
 .aabbcc .widget-blog-more a span { }
+/* ================================== căn giữa thẻ DIV theo chiều dọc ================================== */
+.aabbcc .echbay-blog-right {
+	display: inline-flex;
+	align-items: center;
+}
 
 /* ==================================  ================================== */
 
@@ -207,7 +212,7 @@
 #aabbcc .aabbcc div:nth-child(even) { }
 /* elementer ở vị trí lẻ */
 #aabbcc .aabbcc div:nth-child(odd) { }
-/* ================================== nth-child ================================== */
+/* ================================== phone-call-inline ================================== */
 #aabbcc .phone-call-inline a { display: inline-block; }
 #aabbcc .phone-call-inline a:after {
 	content: "/";

@@ -285,7 +285,7 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 		'cat_ids_name' => $field_name['cat_ids'],
 		'cat_ids' => $cat_ids,
 		'cat_type_name' => $field_name['cat_type'],
-		'cat_type' => $cat_type,
+		'cat_type' => $cat_type
 	), '', true );
 	
 	

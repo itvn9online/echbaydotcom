@@ -66,6 +66,10 @@ echo $global_dymanic_meta;
 
 // trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
 if ( cf_on_off_echbay_seo == 1 ) {
+	
+	
+	ob_start();
+
 
 
 //
@@ -133,6 +137,21 @@ $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_descri
 <meta name="twitter:description" content="<?php echo $__cf_row ['cf_description']; ?>" />
 <meta name="twitter:title" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <?php
+	
+	
+	//
+	$header_seo_content = ob_get_contents();
+	
+	//ob_clean();
+	//ob_end_flush();
+	ob_end_clean();
+	
+	
+	if ( $__cf_row['cf_replace_content'] != '' ) {
+		$header_seo_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $header_seo_content );
+	}
+	echo $header_seo_content;
+	
 }
 else {
 ?>

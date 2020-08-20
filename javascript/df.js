@@ -889,6 +889,13 @@ function WGR_lazyload_footer_content () {
 	});
 }
 
+// thêm class css cho font awesome 5
+function WGR_update_font_awesome5 () {
+	if ( WGR_check_option_on( cf_fontawesome_v5 ) ) {
+		$('.fa').addClass('fab');
+	}
+}
+
 function WGR_reload_lazy_function () {
 	_global_js_eb.ebe_currency_format();
 	WGR_check_load_js_category();
@@ -899,6 +906,8 @@ function WGR_reload_lazy_function () {
 	
 	WGR_create_quick_link_edit_post();
 	___eb_click_open_video_popup();
+	
+//	WGR_update_font_awesome5();
 }
 
 function WGR_create_quick_link_edit_post () {

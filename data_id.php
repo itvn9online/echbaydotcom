@@ -45,6 +45,7 @@ $add_data_id = array(
     'cf_tester_mode' => '\'' . $__cf_row['cf_tester_mode'] . '\'',
     'cf_auto_nofollow' => '\'' . $__cf_row['cf_auto_nofollow'] . '\'',
     'cf_disable_tracking' => '\'' . $__cf_row['cf_disable_tracking'] . '\'',
+    'cf_fontawesome_v5' => '\'' . $__cf_row['cf_fontawesome_v5'] . '\'',
     'cf_on_primary_slider' => '\'' . $__cf_row['cf_on_primary_slider'] . '\'',
     'cf_rand_slider' => '\'' . $__cf_row['cf_rand_slider'] . '\'',
     'cf_add_to_cart_iframe' => '\'' . $__cf_row['cf_add_to_cart_iframe'] . '\'',
