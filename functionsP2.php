@@ -9,7 +9,7 @@ function EBE_get_big_banner ( $limit = 5, $option = array (), $op = array() ) {
 //	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html );
 	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_mobile_img});"', $html );
 	
-	print_r($option);
+//	print_r($option);
 	
 	//
 	if ( ! isset( $op['set_size'] ) || $op['set_size'] == '' ) {
@@ -20,10 +20,13 @@ function EBE_get_big_banner ( $limit = 5, $option = array (), $op = array() ) {
 	if ( ! isset( $op['class_big_banner'] ) || $op['class_big_banner'] == '' ) {
 		$op['class_big_banner'] = 'oi_big_banner';
 	}
+	if ( ! isset( $op['by_status'] ) || $op['by_status'] === '' ) {
+		$op['by_status'] = 1;
+	}
 	
 	//
 	$a = _eb_load_ads(
-		1,
+		$op['by_status'],
 		(int) $limit,
 		$op['set_size'],
 		$option,

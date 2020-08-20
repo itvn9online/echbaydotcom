@@ -47,6 +47,9 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		
 		
 		//
+		echo '<p class="bold">Thiết lập big banner riêng theo post_options:</p>';
+		
+		//
 		__eb_widget_load_cat_select ( array(
 //			'cat_ids_name' => $this->get_field_name ( 'cat_ids' ),
 			'cat_ids_name' => $arr_field_name['cat_ids'],
@@ -56,7 +59,7 @@ class ___echbay_widget_banner_big extends WP_Widget {
 			'cat_type' => 'post_options'
 		), 'post_options', false );
 		
-		echo '<p>* Khi muốn lấy banner trong một <strong>post_options</strong> cụ thể nào đó, thì có thể chọn tại đây. Câu lệnh chỉ lấy các banner có trạng thái là: <strong>1</strong></p>';
+		echo '<p>* Khi muốn lấy banner trong một <strong>post_options</strong> cụ thể nào đó, thì có thể chọn tại đây. Câu lệnh chỉ lấy các banner có trạng thái là: <strong>0</strong></p>';
 		
 		
 		//
@@ -132,6 +135,9 @@ class ___echbay_widget_banner_big extends WP_Widget {
 					)
 				)
 			), array(
+				// với những banner này -> chỉ lấy trạng thái là 0
+				'by_status' => 0,
+				// nạp riêng class để gọi tới chức năng tạo slider -> tránh xung đột
 				'class_big_banner' => 'oi_big_banner' . $cat_ids . ' each_big_banner',
 				'set_size' => $custom_size
 			) );

@@ -54,14 +54,33 @@ jQuery('.eb-set-menu-selected .sub-menu').addClass('cf');
 var big_banner_timeout1 = null;
 
 (function () {
-	
-	var big_banner_len = jQuery('.oi_big_banner li').length;
+	// tạo mảng để nạp nhiều big banner trên 1 trang được
+	var arr_multi_big_banner = [];
 	
 	//
-	if ( big_banner_len == 0 ) {
+	var big_banner_len = jQuery('.oi_big_banner li').length;
+	if ( big_banner_len > 0 ) {
+		arr_multi_big_banner.push('.oi_big_bannerZero');
+		jQuery('.oi_big_banner').addClass('oi_big_bannerZero');
+	}
+	else {
 		jQuery('.hide-if-banner-null').hide();
+	}
+	
+	// chạy vòng lặp, gọi các big banner khác
+	jQuery('.each_big_banner').each(function() {
+		var a = $(this).attr('class') || '';
+		if ( a != '' ) {
+			arr_multi_big_banner.push('.' + a.split(' ')[0]);
+		}
+	}).addClass('oi_big_banner');
+	
+	//
+	if ( arr_multi_big_banner.length == 0 ) {
 		return false;
 	}
+	console.log(arr_multi_big_banner);
+	console.log(arr_multi_big_banner.join(','));
 	
 	// chuyển big banner đến vị trí mới (chỉ làm khi số lượng big banner là 1)
 	if ( big_banner_len > 0 && jQuery('.oi_big_banner').length == 1 && jQuery('.clone-big-banner-to-here').length > 0 ) {
@@ -80,7 +99,8 @@ var big_banner_timeout1 = null;
 	
 	// tải slider theo code mới
 	if ( WGR_check_option_on( cf_on_primary_slider ) ) {
-		jEBE_slider( '.oi_big_banner', {
+//		jEBE_slider( arr_multi_big_banner.join(','), {
+		jEBE_multi_slider( arr_multi_big_banner.join(','), {
 			autoplay : cf_slider_big_play > 0 ? true : false,
 //			swipemobile : true,
 			swipemobile: WGR_check_option_on ( cf_swipe_big_banner ) ? true : false,
