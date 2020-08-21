@@ -203,7 +203,7 @@ var g_func = {
 	},
 	
 	delck: function (name) {
-		g_func.setc(name, "", 0 - ( 24 * 3600 ));
+		g_func.setc(name, "", 0 - ( 24 * 3600 * 7 ));
 		
 //		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 		
