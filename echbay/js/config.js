@@ -502,7 +502,6 @@ function config_test_send_mail() {
 
 //
 //func_preview_cf_logo();
-//fix_textarea_height();
 
 
 

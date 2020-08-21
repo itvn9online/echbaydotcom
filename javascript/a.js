@@ -483,7 +483,8 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 
 
     //
-    fix_textarea_height();
+	fix_textarea_height();
+//	fix_all_textarea_height();
 
 
 

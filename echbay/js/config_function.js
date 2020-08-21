@@ -327,7 +327,8 @@ function WGR_add_filed_for_config_update () {
 //	var str = [];
 	
 	// các filed ẩn -> mặc định sẽ lấy tất cả các text area luôn
-	$('.config-update-filed-change-only textarea, .load-config-hidden-filed input').each(function() {
+//	$('.config-update-filed-change-only textarea, .load-config-hidden-filed input').each(function() {
+	$('.load-config-hidden-filed textarea, .load-config-hidden-filed input').each(function() {
 		var a = $(this).attr('name') || '';
 		
 		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
@@ -352,13 +353,28 @@ function WGR_add_filed_for_config_update () {
 		
 		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
 			arr_list_filed_config_update[a] = 1;
-			console.log(arr_list_filed_config_update);
-			document.frm_config.list_filed_for_config_update.value = JSON.stringify( arr_list_filed_config_update );
+			
+			WGR_add_json_to_filed_config_update();
+		}
+	});
+	
+	// với textarea thì viết riêng ra, do hàm change đang dùng để resize textarea
+	$( '.config-update-filed-change-only textarea' ).focus(function () {
+		var a = $(this).attr('name') || '';
+		
+		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
+			arr_list_filed_config_update[a] = 1;
+			
+			WGR_add_json_to_filed_config_update();
 		}
 	});
 	
 	//
 //	console.log(str);
+	WGR_add_json_to_filed_config_update();
+}
+
+function WGR_add_json_to_filed_config_update () {
 	console.log(arr_list_filed_config_update);
 	document.frm_config.list_filed_for_config_update.value = JSON.stringify( arr_list_filed_config_update );
 }

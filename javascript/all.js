@@ -800,8 +800,14 @@ function click_edit_img_in_content() {
 
 
 
-function fix_textarea_height() {
+function fix_all_textarea_height() {
 	jQuery('.fix-textarea-height textarea, textarea.fix-textarea-height').each(function() {
+		$(this).change();
+	});
+}
+
+function fix_textarea_height() {
+	jQuery('.fix-textarea-height textarea, textarea.fix-textarea-height').off('change').change(function() {
 		var a = jQuery(this).attr('data-resize') || '',
 			min_height = jQuery(this).attr('data-min-height') || 60,
 			add_height = jQuery(this).attr('data-add-height') || 20;
@@ -824,9 +830,9 @@ function fix_textarea_height() {
 			console.log('Fix textarea height #' + ( jQuery(this).attr('name') || jQuery(this).attr('id') || 'NULL' ) );
 		}
 	}).off('click').click(function() {
-		fix_textarea_height()
-	}).off('change').change(function() {
-		fix_textarea_height()
+		$(this).change();
+	}).each(function() {
+		$(this).change();
 	});
 }
 

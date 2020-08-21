@@ -2182,11 +2182,6 @@ if ( g_func.getc( 'leech_data_auto_next' ) == 1 ) {
 
 
 
-//
-//fix_textarea_height();
-
-
-
 // lưu cookies cho phiên làm việc -> lưu và làm dưới dạng mảng cho thống nhất
 var arr_cookie_lamviec = null;
 
