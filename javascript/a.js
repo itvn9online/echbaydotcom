@@ -647,11 +647,11 @@ jQuery('.click-show-no-customize').click(function (e) {
         current_cookie_show_hide_admin_menu = null;
 
         console.log("Please re-load for disable function hide-menu");
-        setTimeout(function () {
-            if (confirm('Re-load for disable function hide-menu?') == true) {
-                window.location = window.location.href;
-            }
-        }, 200);
+		setTimeout(function () {
+//			if (confirm('Re-load for disable function hide-menu?') == true) {
+				window.location = window.location.href;
+//			}
+		}, 600);
     }
 });
 
@@ -695,7 +695,7 @@ if (cf_hide_supper_admin_menu == 1) {
         jQuery('#wp-admin-bar-root-default').append('<li class="menupop"><a href="update-core.php" class="ab-item orgcolor bold reddot wgr-eb-show-menu-update"><i class="fa fa-download"></i> ' + (jQuery('#menu-dashboard ul a[href="update-core.php"]').html() || 'Update core') + '</a></li>');
 
         // Hiển thị menu chỗ mục update
-        jQuery('#menu-dashboard ul').show();
+        jQuery('#menu-dashboard ul, #menu-plugins').show();
 
         // xóa thẻ span trong menu update
         jQuery('.wgr-eb-show-menu-update span').remove();

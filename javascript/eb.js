@@ -128,7 +128,9 @@ var g_func = {
 		}
 		
 		//
-		if ( typeof seconds == 'number' && seconds > 0 ) {
+//		if ( typeof seconds == 'number' && seconds > 0 ) {
+//		if ( typeof seconds == 'number' && seconds != 0 ) {
+		if ( typeof seconds == 'number' ) {
 			// chuyển sang dạng timestamp
 			seconds = seconds * 1000;
 			
@@ -201,7 +203,9 @@ var g_func = {
 	},
 	
 	delck: function (name) {
-		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		g_func.setc(name, "", 0 - ( 24 * 3600 ));
+		
+//		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 		
 		// v1 -> lỗi
 //		g_func.setc(name, "", -1);
