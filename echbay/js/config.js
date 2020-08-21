@@ -512,7 +512,7 @@ function config_test_send_mail() {
 * Bật tắt chế độ lưu trữ dữ liệu qua JSON
 */
 function click_on_off_eb_cf_json ( key, val ) {
-	console.log(key);
+//	console.log(key);
 	
 	var str = '';
 	
@@ -526,7 +526,7 @@ function click_on_off_eb_cf_json ( key, val ) {
 }
 
 function show_note_for_checkbox_config ( key ) {
-	console.log(key);
+//	console.log(key);
 	
 	$('#' + key).click(function () {
 		if ( dog(key).checked == true ) {
@@ -627,6 +627,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_search_advanced_auto_submit' );
 	show_note_for_checkbox_config( 'cf_search_by_echbay' );
 	show_note_for_checkbox_config( 'cf_global_big_banner' );
+	show_note_for_checkbox_config( 'cf_btn_big_banner' );
 	show_note_for_checkbox_config( 'cf_arrow_big_banner' );
 	show_note_for_checkbox_config( 'cf_swipe_big_banner' );
 	show_note_for_checkbox_config( 'cf_auto_get_ads_size' );
@@ -1356,6 +1357,7 @@ var add_class_bg_for_tr_support = false;
 	
 	
 	// bổ sung các thẻ label nếu chưa có -> do code trước đó cái có cái không
+	console.log('%c Auto create label for support!', 'color: green;');
 	$('.eb-support-table tr').each(function() {
 		// nếu không có label
 		if ( $('label', this).length == 0 ) {
@@ -1386,7 +1388,7 @@ var add_class_bg_for_tr_support = false;
 			//
 			if ( get_input != '' ) {
 				var a = $('td:first', this).html() || '';
-				console.log('Auto create label for: ' + a);
+//				console.log('Auto create label for: ' + a);
 				
 				//
 				if ( a != '' ) {
@@ -1588,5 +1590,9 @@ if ( current_module_config != 'config_theme' ) {
 	// Tạo danh sách các file CSS mẫu -> bấm add là được
 //	$('#list_template_css').html('aaaaaaa');
 }
+
+
+//
+WGR_add_filed_for_config_update();
 
 

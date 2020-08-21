@@ -148,6 +148,7 @@ $_POST['cf_search_by_echbay'] = WGR_default_config('cf_search_by_echbay');
 
 $_POST['cf_global_big_banner'] = WGR_default_config('cf_global_big_banner');
 
+$_POST['cf_btn_big_banner'] = WGR_default_config('cf_btn_big_banner');
 $_POST['cf_arrow_big_banner'] = WGR_default_config('cf_arrow_big_banner');
 
 $_POST['cf_swipe_big_banner'] = WGR_default_config('cf_swipe_big_banner');

@@ -309,3 +309,56 @@ function create_css_for_custom_in_js ( clat, jd, cs ) {
 }
 
 
+// phần config khi bấm update sẽ chạy rất lâu do phải update rất nhiều thứ, làm cái này để nó chỉ update những cái đã được thay đổi
+var arr_list_filed_config_update = {},
+	load_add_filed_for_config = false;
+function WGR_add_filed_for_config_update () {
+	if ( load_add_filed_for_config === true ) {
+		return false;
+	}
+	load_add_filed_for_config = true;
+	
+	//
+	if ( $('#list_filed_for_config_update').length == 0 ) {
+		console.log('list_filed_for_config_update not found!');
+		return false;
+	}
+	
+//	var str = [];
+	
+	// các filed ẩn
+	$('.load-config-hidden-filed textarea, .load-config-hidden-filed input[type="text"]').each(function() {
+		var a = $(this).attr('name') || '';
+		
+		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
+//			str.push(a);
+			arr_list_filed_config_update[a] = 1;
+		}
+	});
+	
+	//
+	var arr_list_input = [
+		'.config-update-filed-change-only input[type="number"]',
+		'.config-update-filed-change-only input[type="email"]',
+		'.config-update-filed-change-only input[type="text"]',
+		'.config-update-filed-change-only input[type="checkbox"]',
+		'.config-update-filed-change-only input[type="radio"]',
+		'.config-update-filed-change-only select',
+		'.config-update-filed-change-only textarea'
+	];
+	
+	$( arr_list_input.join(',') ).change(function () {
+		var a = $(this).attr('name') || '';
+		
+		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
+			arr_list_filed_config_update[a] = 1;
+			console.log(arr_list_filed_config_update);
+			document.frm_config.list_filed_for_config_update.value = JSON.stringify( arr_list_filed_config_update );
+		}
+	});
+	
+	//
+//	console.log(str);
+	console.log(arr_list_filed_config_update);
+	document.frm_config.list_filed_for_config_update.value = JSON.stringify( arr_list_filed_config_update );
+}

@@ -8,8 +8,8 @@ div.gallery-add-to-og_image { display: block; }
 <p class="show-if-module-config l19">Đây là phần cài đặt dành riêng cho website sử dụng giao diện được thiết kế bởi Ếch Bay, các cài đặt đã tồn tại trong mã nguồn sẽ được <a href="options-general.php" target="_blank">cài đặt tại đây</a>.</p>
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
-<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config" target="target_eb_iframe" onsubmit="return check_update_config();">
-	<div class="d-none">
+<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config" target="target_eb_iframe" onsubmit="return check_update_config();" class="config-update-filed-change-only">
+	<div class="d-none load-config-hidden-filed">
 		<textarea name="list_filed_for_config_update" id="list_filed_for_config_update" style="width:90%;"></textarea>
 		<textarea name="cf_js_allpage" id="cf_js_allpage" style="width:90%;">{tmp.cf_js_allpage}</textarea>
 		<textarea name="cf_js_hoan_tat" id="cf_js_hoan_tat" style="width:90%;">{tmp.cf_js_hoan_tat}</textarea>
@@ -299,9 +299,15 @@ div.gallery-add-to-og_image { display: block; }
 			</tr>
 			<tr>
 				<td class="t">Nút chuyển ảnh trên slider chính</td>
+				<td class="i"><input type="checkbox" name="cf_btn_big_banner" id="cf_btn_big_banner" value="{tmp.cf_btn_big_banner}" />
+					<label for="cf_btn_big_banner" data-on="Đang TẮT bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
+					<p class="description l19">Mặc định, sẽ có các nút hình trong nhỏ trên slider chính, để người dùng có thể chuyển ảnh từ nút này, nếu muốn tắt nó đi, hãy bỏ chọn và lưu lại.</p></td>
+			</tr>
+			<tr>
+				<td class="t">Mũi tên chuyển ảnh trên slider chính</td>
 				<td class="i"><input type="checkbox" name="cf_arrow_big_banner" id="cf_arrow_big_banner" value="{tmp.cf_arrow_big_banner}" />
 					<label for="cf_arrow_big_banner" data-on="Đang TẮT bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Mặc định, sẽ có một nút mũi tên nhỏ được đặt trên slider chính, để người dùng có thể chuyển ảnh từ nút này, nếu muốn tắt nó đi, hãy bỏ chọn và lưu lại.</p></td>
+					<p class="description l19">Mặc định, sẽ có một 2 mũi tên nhỏ được đặt 2 bên trên slider chính, để người dùng có thể chuyển ảnh từ những mũi tên này, nếu muốn tắt nó đi, hãy bỏ chọn và lưu lại.</p></td>
 			</tr>
 			<tr>
 				<td class="t">Vuốt màn hình để chuyển ảnh</td>

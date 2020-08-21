@@ -295,6 +295,7 @@ $__cf_row_default = array(
 	'cf_blog_index_content' => '',
 	
 	// nút chuyển ảnh trên slider
+	'cf_btn_big_banner' => 1,
 	'cf_arrow_big_banner' => 1,
 	// bật tắt chế độ swipe trên mobile cho banner chính
 	'cf_swipe_big_banner' => 'off',

@@ -58,6 +58,7 @@ $add_data_id = array(
     'cf_current_sd_price' => '\'' . $__cf_row['cf_current_sd_price'] . '\'',
     // nút chuyển ảnh trên slider
     'cf_swipe_big_banner' => '\'' . $__cf_row['cf_swipe_big_banner'] . '\'',
+    'cf_btn_big_banner' => '\'' . $__cf_row['cf_btn_big_banner'] . '\'',
     'cf_arrow_big_banner' => '\'' . $__cf_row['cf_arrow_big_banner'] . '\'',
     'cf_slider_big_play' => $__cf_row['cf_slider_big_play'],
     // tỷ lệ khung ảnh trên mobile
