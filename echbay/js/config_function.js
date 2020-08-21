@@ -320,7 +320,7 @@ function WGR_add_filed_for_config_update () {
 	
 	//
 	if ( $('#list_filed_for_config_update').length == 0 ) {
-		console.log('list_filed_for_config_update not found!');
+		console.log('%c list_filed_for_config_update not found!', 'color: red;');
 		return false;
 	}
 	

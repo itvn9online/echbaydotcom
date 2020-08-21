@@ -12,8 +12,10 @@
 	<span class="redcolor">* Một số tính năng chỉ hỗ trợ các giao diện sử dụng trang thiết kế mặc định, các giao diện có thiết kế riêng sẽ không khả dụng.</span></p>
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
-<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();">
-	<div class="d-none">{tmp.str_list_all_include_file}
+<form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config_theme" target="target_eb_iframe" onsubmit="return check_update_config_theme();" class="config-update-filed-change-only">
+	<div class="d-none load-config-hidden-filed">
+		<textarea name="list_filed_for_config_update" id="list_filed_for_config_update" style="width:90%;"></textarea>
+		{tmp.str_list_all_include_file}
 		<textarea name="cf_default_themes_css" id="cf_default_themes_css" style="width:90%;"></textarea>
 		<textarea name="cf_css_theme_body" id="cf_css_theme_body" style="width:90%;">{tmp.cf_css_theme_body}</textarea>
 	</div>

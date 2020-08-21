@@ -966,4 +966,8 @@ setTimeout(function () {
 }, 2000);
 
 
+//
+WGR_add_filed_for_config_update();
+
+
 
