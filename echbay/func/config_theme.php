@@ -220,11 +220,11 @@ foreach( $_POST as $k => $v ) {
 //			$arr_for_update_eb_config[ $k ] = $v;
 		}
 		else {
-			echo 'Update __cf_row_default only<br>' . "\n";
+			echo '<div style="color:red;">Update __cf_row_default only</div>' . "\n";
 		}
 	}
 	else {
-		echo 'Update cf_ only (' . $k . ')<br>' . "\n";
+		echo '<div style="color:orange;">Update cf_ only (' . $k . ')</div>' . "\n";
 	}
 }
 

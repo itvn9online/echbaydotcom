@@ -8,6 +8,16 @@
 
 
 
+// lấy danh sách các filed được thay đổi
+$list_filed_for_config_update = $_POST['list_filed_for_config_update'];
+//echo $list_filed_for_config_update;
+$list_filed_for_config_update = json_decode( str_replace( '\\', '', $list_filed_for_config_update ) );
+$list_filed_for_config_update = (array) $list_filed_for_config_update;
+//print_r($list_filed_for_config_update);
+//exit();
+
+
+
 //
 //_eb_alert( $wpdb->postmeta );
 //_eb_alert( $wpdb->options );
@@ -533,25 +543,30 @@ foreach( $_POST as $k => $v ) {
 	// hải có chữ cf_ ở đầu tiền
 //	if ( substr( $k, 0, 3 ) == 'cf_' ) {
 	if ( substr( $k, 0, 3 ) == 'cf_' ) {
-		if ( isset( $__cf_row_default[ $k ] ) ) {
-//			echo 'insert<br>';
-//			echo $v . '<br>';
-			
-			//
-			_eb_set_config( $k, $v );
-			
-//			$arr_for_update_eb_config[ $k ] = addslashes( WGR_stripslashes ( $v ) );
-			
-			//
-//			$v = sanitize_text_field( $v );
-//			$arr_for_update_eb_config[ $k ] = $v;
+		if ( isset( $list_filed_for_config_update[ $k ] ) ) {
+			if ( isset( $__cf_row_default[ $k ] ) ) {
+//				echo 'insert<br>';
+//				echo $v . '<br>';
+				
+				//
+				_eb_set_config( $k, $v );
+				
+//				$arr_for_update_eb_config[ $k ] = addslashes( WGR_stripslashes ( $v ) );
+				
+				//
+//				$v = sanitize_text_field( $v );
+//				$arr_for_update_eb_config[ $k ] = $v;
+			}
+			else {
+				echo '<div style="color:red;">Update __cf_row_default only (<em>' . $k . '</em>)</div>' . "\n";
+			}
 		}
 		else {
-			echo 'Update __cf_row_default only (<em>' . $k . '</em>)<br>' . "\n";
+			echo '<div style="color:blue;">Update list_filed_for_config_update only (<em>' . $k . '</em>)</div>' . "\n";
 		}
 	}
 	else {
-		echo 'Update <strong>cf_</strong> only (<em>' . $k . '</em>)<br>' . "\n";
+		echo '<div style="color:orange;">Update <strong>cf_</strong> only (<em>' . $k . '</em>)</div>' . "\n";
 	}
 }
 
