@@ -326,8 +326,8 @@ function WGR_add_filed_for_config_update () {
 	
 //	var str = [];
 	
-	// các filed ẩn
-	$('.load-config-hidden-filed textarea, .load-config-hidden-filed input[type="text"]').each(function() {
+	// các filed ẩn -> mặc định sẽ lấy tất cả các text area luôn
+	$('.config-update-filed-change-only textarea, .load-config-hidden-filed input').each(function() {
 		var a = $(this).attr('name') || '';
 		
 		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
@@ -340,11 +340,11 @@ function WGR_add_filed_for_config_update () {
 	var arr_list_input = [
 		'.config-update-filed-change-only input[type="number"]',
 		'.config-update-filed-change-only input[type="email"]',
-		'.config-update-filed-change-only input[type="text"]',
 		'.config-update-filed-change-only input[type="checkbox"]',
 		'.config-update-filed-change-only input[type="radio"]',
 		'.config-update-filed-change-only select',
-		'.config-update-filed-change-only textarea'
+//		'.config-update-filed-change-only textarea',
+		'.config-update-filed-change-only input[type="text"]'
 	];
 	
 	$( arr_list_input.join(',') ).change(function () {
