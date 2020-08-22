@@ -481,6 +481,8 @@ label,
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .text-justify { text-align: justify; }
+.font-style-italic,
+.text-italic { font-style: italic; }
 .tborder { border-top: 1px #ccc solid; }
 .bborder { border-bottom: 1px #ccc solid; }
 .lborder { border-left: 1px #ccc solid; }
