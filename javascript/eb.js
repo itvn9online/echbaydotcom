@@ -1430,7 +1430,7 @@ var _global_js_eb = {
 					}
 					
 					//
-					jQuery(this).removeClass(eb_lazzy_class);
+					jQuery(this).removeClass(eb_lazzy_class).addClass('lazyload-img-done');
 				}
 				/*
 				else {
@@ -1457,7 +1457,7 @@ var _global_js_eb = {
 						jQuery(this).html( c );
 						
 						//
-						jQuery(this).removeClass(eb_lazzy_iframe);
+						jQuery(this).removeClass(eb_lazzy_iframe).addClass('lazyload-iframe-done');
 					}
 				}
 			});
