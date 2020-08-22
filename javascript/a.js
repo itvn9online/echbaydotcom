@@ -499,9 +499,10 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 
     // mở gallery tự viết
     jQuery('#_eb_category_avt, #_eb_category_favicon, #_eb_product_avatar, #cf_favicon, #cf_logo, #cf_og_image').each(function() {
-        var show_only = jQuery(this).attr('data-show') || '';
+        var show_only = jQuery(this).attr('data-show') || '',
+			update_for = jQuery(this).attr('id') || '';
 		
-		jQuery(this).after('<button type="button" data-show="' + show_only + '" class="button click-open-new-gallery">Add image</button>');
+		jQuery(this).after('<button type="button" data-show="' + show_only + '" data-update="' + update_for + '" class="button click-open-new-gallery">Add image</button>');
 	});
 
     //

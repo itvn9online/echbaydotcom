@@ -369,6 +369,17 @@ function WGR_add_filed_for_config_update () {
 		}
 	});
 	
+	// với các input được update thông các chức năng khác như chèn ảnh
+	$( '.click-open-new-gallery' ).each(function () {
+		var a = $(this).attr('data-update') || '';
+		
+		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
+			arr_list_filed_config_update[a] = 1;
+			
+			WGR_add_json_to_filed_config_update();
+		}
+	});
+	
 	//
 //	console.log(str);
 	WGR_add_json_to_filed_config_update();
