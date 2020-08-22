@@ -2119,9 +2119,14 @@ iframe[name="google_conversion_frame"] {
 .fa-icons:hover { border-color: #f00; }
 /* widget custom style */
 .bgtrans .echbay-blog-avt { background-color: transparent; }
-.bgcover .echbay-blog-avt { background-size: cover; }
+.bgcover .echbay-blog-avt {
+	background-size: cover;
+	background-size: 100%;
+}
 .bgcontain .echbay-blog-avt { background-size: contain; }
 .bgradius .echbay-blog-avt { border-radius: 50%; }
+.bgwidth .echbay-blog-avt { background-size: 100% auto; }
+.bghight .echbay-blog-avt { background-size: auto 100%; }
 .hideavt .echbay-blog-avt { opacity: .001; }
 .overflow-hidden .widget-run-slider { overflow: hidden; }
 /*

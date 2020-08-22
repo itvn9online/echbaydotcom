@@ -364,8 +364,10 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	//
 	echo '<p class="small"><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
 	- <strong>bgtrans</strong>: <em>echbay-blog-avt</em> background-color: transparent.<br>
-	- <strong>bgcover</strong>: <em>echbay-blog-avt</em> background-size: cover (tự fixed 2 chiều).<br>
+	- <strong>bgcover</strong>: <em>echbay-blog-avt</em> background-size: 100% (cố định 2 chiều).<br>
 	- <strong>bgcontain</strong>: <em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).<br>
+	- <strong>bgwidth</strong>: <em>echbay-blog-avt</em> background-size: 100% auto (width 100% hight auto).<br>
+	- <strong>bghight</strong>: <em>echbay-blog-avt</em> background-size: auto 100% (width auto hight 100%).<br>
 	- <strong>bgradius</strong>: <em>echbay-blog-avt</em> border-radius: 50%.<br>
 	- <strong>noborder</strong>: <em>echbay-blog-avt</em> border: 0 none.<br>
 	- <strong>noborder-widget-title</strong>: <em>echbay-widget-title</em> border: 0 none.<br>
