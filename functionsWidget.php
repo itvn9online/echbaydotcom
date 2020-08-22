@@ -622,15 +622,21 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 			
 			
 			// danh sách nhóm cấp 2
-			if ( $post_type != 'ads' && $get_childs == 'on' ) {
-				$arr_sub_cat = array(
-					'parent' => $cat_ids,
-					'taxonomy' => $cat_type,
-				);
-				$sub_cat = get_categories($arr_sub_cat);
-//				print_r( $sub_cat );
+			$arr_sub_cat = array(
+				'parent' => $cat_ids,
+				'taxonomy' => $cat_type,
+			);
+			$sub_cat = get_categories($arr_sub_cat);
+//			print_r( $sub_cat );
+			
+			if ( ! empty( $sub_cat ) ) {
+				// lấy các các bài viết trong nhóm con (nếu có)
+				foreach ( $sub_cat as $sub_v ) {
+					$terms_categories[] = $sub_v->term_id;
+				}
 				
-				if ( ! empty( $sub_cat ) ) {
+				//
+				if ( $post_type != 'ads' && $get_childs == 'on' ) {
 					foreach ( $sub_cat as $sub_v ) {
 						$str_sub_cat .= ' <a href="' . _eb_c_link( $sub_v->term_id, $cat_type ) . '">' . $sub_v->name . ' <span class="blog-count-subcat">(' . $sub_v->count . ')</span></a>';
 					}
