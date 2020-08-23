@@ -22,11 +22,22 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 	
 	
 	//
-//	$home_with_cat = ob_get_contents();
+	$footer_ajax_content = ob_get_contents();
 	
 	//ob_clean();
 	//ob_end_flush();
 	ob_end_clean();
+}
+else {
+	$footer_ajax_content = '<!-- cf_using_footer_default != 1 -->';
+}
+
+// cache cho phần footer-ajax -> sau trong file footer-ajax chỉ việc hiển thị ra là được
+$strFooterAjaxCacheFilter = 'footer-ajax';
+$check_footer_ajax_content = _eb_get_static_html ( $strFooterAjaxCacheFilter );
+if ($check_footer_ajax_content == false) {
+	// lưu cache
+	_eb_get_static_html ( $strFooterAjaxCacheFilter, $footer_ajax_content );
 }
 
 ?>

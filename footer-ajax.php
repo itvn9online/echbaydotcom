@@ -5,43 +5,10 @@
 $strCacheFilter = 'footer-ajax';
 $main_content = _eb_get_static_html ( $strCacheFilter );
 if ($main_content == false) {
-	//
-	ob_start();
-	
-	
-	//
-	include EB_THEME_PLUGIN_INDEX . 'common_footer.php';
-	
-	
-	// footer menu dưới dạng widget
-//	$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 );
-	
-	// nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
-//	if ( $eb_footer_widget == '' ) {
-	if ( $__cf_row['cf_using_footer_default'] == 1 ) {
-//		echo $eb_footer_widget;
-		
-//		include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
-		
-		//
-		foreach ( $arr_includes_footer_file as $v ) {
-			include $v;
-		}
-	}
-	
-	
-	//
-	$main_content = ob_get_contents();
+	$main_content = '<h2>ERROR! get footer ajax content...</h2>';
+}
+else {
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
-	
-	//ob_clean();
-	//ob_end_flush();
-	ob_end_clean();
-	
-	
-	
-	// lưu cache
-	_eb_get_static_html ( $strCacheFilter, $main_content );
 }
 echo $main_content;
 
