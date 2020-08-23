@@ -871,7 +871,7 @@ function WGR_lazyload_footer_content () {
 	lazyload_footer_content = true;
 	
 	//
-	if ( act == '' ) {
+	if ( act == '' && $('#home-lazyload').length > 0 ) {
 //		console.log('Load home content');
 		ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
 			disable_eblazzy_load = false;
