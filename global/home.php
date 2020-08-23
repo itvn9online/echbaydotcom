@@ -167,6 +167,7 @@ if ($home_ajax_content == false) {
 	// lưu cache
 	_eb_get_static_html ( $strHomeAjaxCacheFilter, $home_ajax_content );
 }
+
 	
 	
 	
