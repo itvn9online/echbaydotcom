@@ -1158,13 +1158,13 @@ function WGR_check_load_js_category ( i ) {
 	// sub catgory
 //	if ( eb_site_group.length > 0 && jQuery('.wgr-load-js-sub-category').length > 0 ) {
 	if ( jQuery('.wgr-load-js-sub-category').length > 0 ) {
-		jQuery('.wgr-load-js-sub-category').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_site_group ) );
+		jQuery('.wgr-load-js-sub-category').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_site_group ) ).removeClass('wgr-load-js-sub-category');
 	}
 	
 	// sub blog group
 //	if ( eb_blog_group.length > 0 && jQuery('.wgr-load-js-sub-blogs').length > 0 ) {
 	if ( jQuery('.wgr-load-js-sub-blogs').length > 0 ) {
-		jQuery('.wgr-load-js-sub-blogs').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) );
+		jQuery('.wgr-load-js-sub-blogs').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) ).removeClass('wgr-load-js-sub-blogs');
 	}
 	
 }
