@@ -2,6 +2,7 @@
 	<?php
 
 //
+/*
 $strCacheFilter = 'footer-ajax';
 $main_content = _eb_get_static_html ( $strCacheFilter );
 if ($main_content == false) {
@@ -10,6 +11,17 @@ if ($main_content == false) {
 else {
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 }
+*/
+$strCacheFilter = EB_THEME_CACHE . 'footer-ajax.txt';
+if ( file_exists( $strCacheFilter ) ) {
+	$main_content = file_get_contents( $strCacheFilter );
+	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
+}
+else {
+	$main_content = '<h2>ERROR! get footer ajax content...</h2>';
+}
+
+//
 echo $main_content;
 
 ?>
