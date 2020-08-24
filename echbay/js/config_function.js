@@ -343,6 +343,7 @@ function WGR_add_filed_for_config_update () {
 		'.config-update-filed-change-only input[type="email"]',
 		'.config-update-filed-change-only input[type="checkbox"]',
 		'.config-update-filed-change-only input[type="radio"]',
+		'.config-update-filed-change-only input[type="color"]',
 		'.config-update-filed-change-only select',
 //		'.config-update-filed-change-only textarea',
 		'.config-update-filed-change-only input[type="text"]'
@@ -361,6 +362,17 @@ function WGR_add_filed_for_config_update () {
 	// với textarea thì viết riêng ra, do hàm change đang dùng để resize textarea
 	$( '.config-update-filed-change-only textarea' ).focus(function () {
 		var a = $(this).attr('name') || '';
+		
+		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
+			arr_list_filed_config_update[a] = 1;
+			
+			WGR_add_json_to_filed_config_update();
+		}
+	});
+	
+	// với textarea thì viết riêng ra, do hàm change đang dùng để resize textarea
+	$( '.click-to-set-site-color, .click-to-reset-site-color' ).focus(function () {
+		var a = $(this).attr('data-set') || '';
 		
 		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
 			arr_list_filed_config_update[a] = 1;
