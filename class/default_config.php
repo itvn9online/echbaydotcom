@@ -202,7 +202,9 @@ $__cf_row_default = array(
 	'cf_on_off_xmlrpc' => 'off',
 	
 	// bật tắt cron -> chức năng tiêu tốn nhiều tài nguyên server
-	'cf_on_off_wpcron' => 'off',
+//	'cf_on_off_wpcron' => 'off',
+	// các tính năng auto-update dùng cái này nên không tắt được
+	'cf_on_off_wpcron' => 1,
 	
 	// bật tắt RSS
 	'cf_on_off_feed' => 1,
