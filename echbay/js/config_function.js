@@ -370,7 +370,7 @@ function WGR_add_filed_for_config_update () {
 		}
 	});
 	
-	// với textarea thì viết riêng ra, do hàm change đang dùng để resize textarea
+	// nạp dữ liệu từ phần chỉnh sửa màu sắc
 	$( '.click-to-set-site-color, .click-to-reset-site-color' ).focus(function () {
 		var a = $(this).attr('data-set') || '';
 		
