@@ -48,3 +48,14 @@ if ( $private_post_link_stylesheet != '' ) {
 
 
 
+
+//
+if ( ! isset( $admin_edit ) ) {
+	$admin_edit = '';
+	if ( current_user_can('delete_posts') ) {
+		$admin_edit = '<a title="Edit" href="' . admin_link . 'post.php?post=' . $post->ID . '&action=edit" class="fa fa-edit breadcrumb-clone-edit-post"></a>';
+	}
+}
+echo '<div class="thread-details-relative">' . $admin_edit . '</div>';
+
+
