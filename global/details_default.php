@@ -834,11 +834,11 @@ if ( $__post->post_type == 'post' ) {
 	//
 	$product_gallery = _eb_get_post_object( $pid, '_eb_product_gallery' );
 	$product_gallery = str_replace( ' src=', ' data-src=', $product_gallery );
-	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_gallery );
+	$product_gallery = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.webp" data-src=', $product_gallery );
 	
 	$product_list_color = _eb_get_post_object( $pid, '_eb_product_list_color' );
 	$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
-	$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
+	$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.webp" data-src=', $product_list_color );
 	
 	//
 	include EB_THEME_PLUGIN_INDEX . 'global/details_post.php';

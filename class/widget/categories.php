@@ -666,7 +666,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 					// https://vi.wordpress.org/plugins/categories-images/
 					$hien_thi_img = _eb_get_cat_object( $v->term_id, '_eb_category_avt', _eb_get_option( 'z_taxonomy_image' . $v->term_id ) );
 					if ( $hien_thi_img == '' ) {
-						$hien_thi_img = EB_URL_TUONG_DOI . 'images-global/noavatar.png';
+						$hien_thi_img = EB_URL_TUONG_DOI . 'images-global/noavatar.webp';
 					}
 					$hien_thi_img = '<div class="category-img"><img src="' . $hien_thi_img . '" /></div>';
 				}

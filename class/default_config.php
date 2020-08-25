@@ -33,7 +33,7 @@ $__cf_row_default = array(
 	'cf_sys_email' => 'wpmail',
 //	'cf_using_wpmail' => '',
 	
-	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.png',
+	'cf_logo' => EB_URL_TUONG_DOI . 'images-global/echbay-wp-logo.webp',
 	// tạo H1 cho phần logo
 	'cf_h1_logo' => 'off',
 	'cf_auto_nofollow' => 1,

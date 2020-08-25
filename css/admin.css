@@ -526,7 +526,7 @@ body.order_open_in_popup #open_list_bao_xau { left: 1%; }
 .border-file-design {
 	border: 1px #ccc solid;
 	padding: 50px 0;
-	background: #fafafa url(../images-global/wix-bg-design.png);
+	background: #fafafa url(../images-global/wix-bg-design.webp);
 }
 .preview-file-design {
 	height: 21px;
@@ -1224,7 +1224,7 @@ tr[data-row="_eb_show_product_avatar"] .show_product_avatar {
 }
 .bill-detail-status button:hover span { background: none; }
 .bill-detail-status button.selected span {
-	background: transparent url(../images-global/tick.png) bottom right no-repeat;
+	background: transparent url(../images-global/tick.webp) bottom right no-repeat;
 	background-size: 22px auto;
 	/*
 	font-weight: bold;
@@ -1361,7 +1361,7 @@ body.body-no-scroll #oi_order_iframe {
 	display: none;
 }
 .bg-waiting-update-complete {
-	background: url(../images-global/load_2.gif) bottom center no-repeat;
+	background: url(../images-global/load_2.webp) bottom center no-repeat;
 	position: absolute;
 	top: 33%;
 	left: 0;
