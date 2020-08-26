@@ -344,6 +344,7 @@ $str_cf_page_column_style = __eb_create_select_checked_config(
 
 //
 $arr_cf_product_thumbnail_size = array(
+	'ebwebp' => 'Tối ưu cho mobile (khuyên dùng)',
 	'medium' => 'Thu gọn (medium)',
 	'medium_large' => 'Trung bình (medium_large)',
 	'large' => 'Lớn (large)',
@@ -424,10 +425,9 @@ foreach ( $arr_cf_product_thumbnail_table_size as $k => $v ) {
 
 //
 $arr_cf_product_thumbnail_mobile_size = array(
-	'thumbnail' => 'Bản cắt gọn (thumbnail)',
-//	'ebwebp' => 'Tối ưu cho web (khuyên dùng)',
-//	'ebmobile' => 'Tối ưu cho mobile',
-	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
+//	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
+	'ebmobile' => 'Tối ưu cho mobile',
+	'thumbnail' => 'Bản cắt gọn (thumbnail)'
 //	'medium' => 'Thu gọn (medium)',
 //	'full' => 'Đầy đủ (bản gốc)',
 ) + $arr_cf_product_thumbnail_size;
