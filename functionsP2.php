@@ -2379,7 +2379,7 @@ function _eb_get_post_img (
 				return EBE_resize_mobile_table_img( $cache_thumbnail_id[ $id ], $_size );
 			}
 			// không thì lấy size medium
-			else {
+			else if ( $_size == 'ebwebp' || $_size == 'ebmobile' ) {
 				$_size = 'medium';
 //				$_size = 'thumbnail';
 			}

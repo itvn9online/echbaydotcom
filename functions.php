@@ -3514,21 +3514,22 @@ function _eb_load_ads_v2($type = 0, $posts_per_page = 20, $_eb_query = array(), 
 }
 
 function _eb_load_ads(
-// Trạng thái của banner quảng cáo
-$type = 0,
- // số lượng bản ghi cần lấy
-        $posts_per_page = 20,
- // kích thước muốn hiển thị, nếu là auto -> tự lấy theo size ảnh
-        $data_size = 1,
- // query phủ định
-        $_eb_query = array(),
- // offset như mysql thông thương
-        $offset = 0,
- // định dạng HTML cần xuất ra
-// default: EBE_get_page_template( 'ads_node' )
-// get title: EBE_get_page_template( 'ads_node_title' )
-// get title and excerpt EBE_get_page_template( 'ads_node_excerpt' )
-        $html = '', $other_options = array()
+	// Trạng thái của banner quảng cáo
+	$type = 0,
+	// số lượng bản ghi cần lấy
+	$posts_per_page = 20,
+	// kích thước muốn hiển thị, nếu là auto -> tự lấy theo size ảnh
+	$data_size = 1,
+	// query phủ định
+	$_eb_query = array(),
+	// offset như mysql thông thương
+	$offset = 0,
+	// định dạng HTML cần xuất ra
+	// default: EBE_get_page_template( 'ads_node' )
+	// get title: EBE_get_page_template( 'ads_node_title' )
+	// get title and excerpt EBE_get_page_template( 'ads_node_excerpt' )
+	$html = '',
+	$other_options = array()
 ) {
     global $__cf_row;
     global $arr_eb_ads_status;
@@ -3849,10 +3850,13 @@ $type = 0,
 
 
         //
-//			$___eb_ads__not_in .= ',' . $post->ID;
+//		$___eb_ads__not_in .= ',' . $post->ID;
         //
-//			$p_link = _eb_get_ads_object( $post->ID, '_eb_ads_url', 'javascript:;' );
-//			echo $p_link . '<br>';
+//		$p_link = _eb_get_ads_object( $post->ID, '_eb_ads_url', 'javascript:;' );
+//		echo $p_link . '<br>';
+		
+//		echo $__cf_row['cf_ads_thumbnail_size'] . '<br>' . "\n";
+		
         // nếu q.cáo này không có ảnh
         $trv_img = '';
         if ($anh_dai_dien_goc == '') {
@@ -3870,9 +3874,10 @@ $type = 0,
         } else {
             $trv_img = $anh_dai_dien_goc;
         }
+//		echo $trv_img . '<br>' . "\n";
         $ftype = explode('.', $trv_img);
-//			$ftype = $ftype[ count( $ftype ) - 1 ];
-//			echo '<!-- ' . $ftype . ' -->' . "\n";
+//		$ftype = $ftype[ count( $ftype ) - 1 ];
+//		echo '<!-- ' . $ftype . ' -->' . "\n";
         // lấy ảnh từ bài viết
         $trv_table_img = '';
         $trv_mobile_img = '';
