@@ -2446,6 +2446,7 @@ function _eb_get_post_img (
 function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 440 ) {
 	// lấy ảnh full
 	$attachment_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
+	$attachment_file = explode( '?', $attachment_file[0] );
 	$attachment_file = $attachment_file[0];
 	$source_file = $attachment_file;
 //	return $source_file;
@@ -2549,6 +2550,7 @@ function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 440 
 function EBE_resize_mobile_table_img ( $attachment_id, $_size, $new_size = 160 ) {
 	// lấy ảnh full
 	$source_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
+	$source_file = explode( '?', $source_file[0] );
 	$source_file = $source_file[0];
 //	return $source_file;
 	
