@@ -2021,18 +2021,24 @@ function EBE_set_default_title_for_seo () {
 	
 	// chuyển đổi các slug sang dạng không dấu, tạo URL thân thiện
 	var new_post_name = jQuery('#post_name').val() || '';
+	// với bài quảng cáo -> chỉnh trực tiếp slug theo tên luôn
+	if (typeof pagenow != 'undefined' && pagenow == 'ads') {
+		new_post_name = jQuery('#titlewrap #title').val() || '';
+	}
 	if ( new_post_name != '' ) {
 		new_post_name = g_func.non_mark_seo( new_post_name );
 		console.log( new_post_name );
-		jQuery('#post_name').val( new_post_name );
+		jQuery('#post_name').val( new_post_name ).change();
 	}
 	
 	
 	
 	// tạo key tìm kiếm dạng tiêu chuẩn riêng của EchBay
-	if ( typeof pagenow != 'undefined' && pagenow == 'post'
-	&& typeof typenow != 'undefined' && typenow == 'post'
-	&& jQuery('#_eb_product_searchkey').length > 0 ) {
+	if (
+		typeof pagenow != 'undefined' && pagenow == 'post'
+		&& typeof typenow != 'undefined' && typenow == 'post'
+		&& jQuery('#_eb_product_searchkey').length > 0
+	) {
 		var new_post_title = jQuery('#title').val() || jQuery('#post-title-0').val() || document.post.post_title.value || '';
 		if ( new_post_title != '' ) {
 			new_post_title = g_func.non_mark_seo( new_post_title );
