@@ -529,6 +529,15 @@ foreach ( $arr_file_for_lang as $v ) {
 
 
 
+//
+if ( class_exists('Imagick') ) {
+	$config_check_Imagick_exist = '<span class="greencolor">Great! Imagick exist in your server.</span>';
+}
+else {
+	$config_check_Imagick_exist = '<span class="orgcolor">Oh! Your server not install Imagick.</span>';
+}
+
+
 
 
 
@@ -561,6 +570,7 @@ $main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
 	'tmp.current_homeurl' => $current_homeurl,
 	'tmp.current_siteurl' => $current_siteurl,
 	
+	'tmp.config_check_Imagick_exist' => $config_check_Imagick_exist,
 	
 	// blog
 	'tmp.cf_blog_class_style' => $str_cf_blog_class_style,
