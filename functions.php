@@ -3882,20 +3882,20 @@ $type = 0,
             $trv_table_img = $trv_img;
             $trv_mobile_img = $trv_img;
         } else if ($ads_id > 0) {
-//				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
-//				if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
+//			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_product_thumbnail_size'] ) {
+//			if ( $__cf_row['cf_product_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size'] ) {
             if ($__cf_row['cf_ads_thumbnail_table_size'] == $__cf_row['cf_ads_thumbnail_size']) {
                 $trv_table_img = $trv_img;
             } else {
-//					$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
+//				$trv_table_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_table_size'] );
                 $trv_table_img = _eb_get_post_img($ads_id, $__cf_row['cf_ads_thumbnail_table_size']);
             }
 
-//				if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
+//			if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size'] ) {
             if ($__cf_row['cf_ads_thumbnail_mobile_size'] == $__cf_row['cf_ads_thumbnail_table_size']) {
                 $trv_mobile_img = $trv_table_img;
             } else {
-//					$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
+//				$trv_mobile_img = _eb_get_post_img( $ads_id, $__cf_row['cf_product_thumbnail_mobile_size'] );
                 $trv_mobile_img = _eb_get_post_img($ads_id, $__cf_row['cf_ads_thumbnail_mobile_size']);
             }
         }
