@@ -158,6 +158,8 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 
             if ($__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_table_size']) {
                 $post->trv_mobile_img = $post->trv_table_img;
+			} else if ($__cf_row['cf_product_thumbnail_mobile_size'] == $__cf_row['cf_product_thumbnail_size']) {
+                $post->trv_mobile_img = $post->trv_img;
             } else {
                 $post->trv_mobile_img = _eb_get_post_img($ads_id, $__cf_row['cf_product_thumbnail_mobile_size']);
             }
