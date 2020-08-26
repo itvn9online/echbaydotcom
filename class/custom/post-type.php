@@ -142,7 +142,7 @@ function ech_bay_custom_post_type() {
 //		'publicly_queryable' => false,
 		'show_in_nav_menus' => false,
 		// không cần rewwrite URL cho mục này
-		'rewrite' => false,
+		'rewrite' => false
 	) );
 	
 	// điều chỉnh các tham số riêng trước khi gửi đi
@@ -178,7 +178,7 @@ function ech_bay_custom_post_type() {
 //		'comments',
 		'revisions',
 		'page-attributes',
-		'post-formats',
+		'post-formats'
 //	), 71 );
 	), 8 );
  

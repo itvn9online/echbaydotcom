@@ -1033,8 +1033,8 @@ function WGR_create_quick_link_edit_post () {
 		});
 		
 		//
-		if ( $('.breadcrumb-clone-edit-post').length > 0 && $('.thread-details-tohome ul').length > 0 && $('.thread-details-tohome .breadcrumb-clone-edit-done').length == 0 ) {
-			$('.thread-details-tohome ul').append('<li><a href="' + $('.breadcrumb-clone-edit-post:first').attr('href') + '">Edit <i class="fa fa-edit breadcrumb-clone-edit-done"></i></a></li>');
+		if ( $('.breadcrumb-clone-edit-post').length > 0 && $('.btn-clone-edit-post').length == 0 ) {
+			$('body').append('<a href="' + $('.breadcrumb-clone-edit-post:first').attr('href') + '" class="hide-if-mobile btn-clone-edit-post"><i class="fa fa-edit"></i></a>');
 			$('.breadcrumb-clone-edit-post').removeClass('breadcrumb-clone-edit-post');
 		}
 		
