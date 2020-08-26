@@ -2443,7 +2443,7 @@ function _eb_get_post_img (
 	return $a;
 }
 
-function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 410 ) {
+function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 440 ) {
 	// lấy ảnh full
 	$attachment_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
 	$attachment_file = $attachment_file[0];
@@ -2468,24 +2468,51 @@ function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 410 
 		// tạo file trung gian cho nhẹ bớt
 		$tmp_file = ABSPATH . strstr( $source_file, EB_DIR_CONTENT . '/' ) . '-tmp-' . $_size . '.' . $file_type;
 		if ( ! file_exists( $tmp_file ) ) {
-			$image = new WGR_SimpleImage ();
-			$image->load( $source_file );
-			
 			$a = getimagesize( $source_file );
 			$width = $a[0];
 			$height = $a[1];
 			
-			// chỉ resize nếu size nó đủ lớn
-			if ( $width > $new_size * 1.2 ) {
-				$image->resizeToWidth( $new_size );
-				$image->save($tmp_file);
+			// ưu tiên sử dụng Imagick
+			if ( class_exists('Imagick') ) {
+				$image = new Imagick();
+				$image->readImage($source_file);
+				
+				// copy và resize theo chiều rộng
+				if ( $width > $new_size * 1.2 ) {
+					$image->resizeImage($new_size, 0, Imagick::FILTER_CATROM, 1);
+					$image->writeImages($tmp_file, true);
+					$image->destroy();
+				}
+				// theo chiều cao
+				else if ( $height > $new_size * 1.2 ) {
+					$image->resizeImage(0, $new_size, Imagick::FILTER_CATROM, 1);
+					$image->writeImages($tmp_file, true);
+					$image->destroy();
+				}
+				else {
+					copy( $source_file, $tmp_file );
+				}
+				
+				// test
+//				copy( $tmp_file, $tmp_file . '-Imagick-.' . $file_type );
 			}
-			else if ( $height > $new_size * 1.2 ) {
-				$image->resizeToHeight( $new_size );
-				$image->save($tmp_file);
-			}
+			// rồi mới đến sử dụng hàm mặc định của php
 			else {
-				copy( $source_file, $tmp_file );
+				$image = new WGR_SimpleImage ();
+				$image->load( $source_file );
+				
+				// chỉ resize nếu size nó đủ lớn
+				if ( $width > $new_size * 1.2 ) {
+					$image->resizeToWidth( $new_size );
+					$image->save($tmp_file);
+				}
+				else if ( $height > $new_size * 1.2 ) {
+					$image->resizeToHeight( $new_size );
+					$image->save($tmp_file);
+				}
+				else {
+					copy( $source_file, $tmp_file );
+				}
 			}
 			chmod ( $tmp_file, 0766 );
 		}
