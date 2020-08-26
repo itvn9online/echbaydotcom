@@ -2370,16 +2370,18 @@ function _eb_get_post_img (
 			}
 			
 			// size riêng cho bản EchBay mobile
-			if ( $_size == 'ebmobile' ) {
-				// nếu server có hỗ trợ Imagick
-				if ( class_exists('Imagick') ) {
-					return EBE_resize_mobile_table_img( $cache_thumbnail_id[ $id ], $_size );
-				}
-				// không thì lấy size medium
-				else {
-					$_size = 'medium';
-//					$_size = 'thumbnail';
-				}
+			if ( $_size == 'ebmobile' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
+//			if ( $_size == 'ebwebp' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
+				return EBE_resize_mobile_table_webp( $cache_thumbnail_id[ $id ], $_size );
+			}
+			// nếu server có hỗ trợ Imagick
+			else if ( $_size == 'ebmobile' && class_exists('Imagick') ) {
+				return EBE_resize_mobile_table_img( $cache_thumbnail_id[ $id ], $_size );
+			}
+			// không thì lấy size medium
+			else {
+				$_size = 'medium';
+//				$_size = 'thumbnail';
 			}
 			
 			//
@@ -2439,6 +2441,82 @@ function _eb_get_post_img (
 	
 	//
 	return $a;
+}
+
+function EBE_resize_mobile_table_webp ( $attachment_id, $_size, $new_size = 410 ) {
+	// lấy ảnh full
+	$attachment_file = wp_get_attachment_image_src ( $attachment_id, 'full' );
+	$attachment_file = $attachment_file[0];
+	$source_file = $attachment_file;
+//	return $source_file;
+	
+	$new_file = $source_file . '_' . $_size . '.webp';
+	
+	// xem file này có tồn tại không -> không thì tạo
+	$check_file = ABSPATH . strstr( $new_file, EB_DIR_CONTENT . '/' );
+	if ( ! file_exists( $check_file ) ) {
+		// Kiểm tra file nguồn
+		$source_file = ABSPATH . strstr( $source_file, EB_DIR_CONTENT . '/' );
+		if ( ! file_exists( $source_file ) ) {
+			return 'source not found!';
+		}
+		
+		// -> ảnh cho bản mobile
+		$file_type = explode( '.', $source_file );
+		$file_type = strtolower($file_type[ count($file_type) - 1 ]);
+		
+		// tạo file trung gian cho nhẹ bớt
+		$tmp_file = ABSPATH . strstr( $source_file, EB_DIR_CONTENT . '/' ) . '-tmp-' . $_size . '.' . $file_type;
+		if ( ! file_exists( $tmp_file ) ) {
+			$image = new WGR_SimpleImage ();
+			$image->load( $source_file );
+			
+			$a = getimagesize( $source_file );
+			$width = $a[0];
+			$height = $a[1];
+			
+			// chỉ resize nếu size nó đủ lớn
+			if ( $width > $new_size * 1.2 ) {
+				$image->resizeToWidth( $new_size );
+				$image->save($tmp_file);
+			}
+			else if ( $height > $new_size * 1.2 ) {
+				$image->resizeToHeight( $new_size );
+				$image->save($tmp_file);
+			}
+			else {
+				copy( $source_file, $tmp_file );
+			}
+			chmod ( $tmp_file, 0766 );
+		}
+		
+		// bắt đầu chuyển đổi sang webp
+		if ( $file_type == 'png' ) {
+			$img = imagecreatefrompng($tmp_file);
+		}
+		else if ( $file_type == 'jpg' || $file_type == 'jpeg' ) {
+			$img = imagecreatefromjpeg($tmp_file);
+		}
+		else if ( $file_type == 'gif' ) {
+			$img = imagecreatefromgif($tmp_file);
+		}
+		else {
+			unlink( $tmp_file );
+			return $attachment_file;
+		}
+		// xóa file tạm
+		unlink( $tmp_file );
+		
+		//
+		imagepalettetotruecolor($img);
+		imagealphablending($img, true);
+		imagesavealpha($img, true);
+		imagewebp($img, $check_file, 100);
+		imagedestroy($img);
+		chmod ( $check_file, 0766 );
+	}
+	
+	return $new_file;
 }
 
 function EBE_resize_mobile_table_img ( $attachment_id, $_size, $new_size = 160 ) {

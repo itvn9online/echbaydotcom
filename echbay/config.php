@@ -425,6 +425,8 @@ foreach ( $arr_cf_product_thumbnail_table_size as $k => $v ) {
 //
 $arr_cf_product_thumbnail_mobile_size = array(
 	'thumbnail' => 'Bản cắt gọn (thumbnail)',
+//	'ebwebp' => 'Tối ưu cho web (khuyên dùng)',
+//	'ebmobile' => 'Tối ưu cho mobile',
 	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
 //	'medium' => 'Thu gọn (medium)',
 //	'full' => 'Đầy đủ (bản gốc)',
