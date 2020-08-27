@@ -42,7 +42,7 @@ if ($check_footer_ajax_content == false) {
 
 // nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
 $footer_lazyload = 'footer-lazyload';
-if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] == 1 ) {
+if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
 	$footer_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
 	echo str_replace( '{tmp.footer_content}', $footer_ajax_content, $footer_content );
 	

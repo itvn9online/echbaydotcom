@@ -170,7 +170,7 @@ if ($home_ajax_content == false) {
 
 // nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
 $home_lazyload = 'home-lazyload';
-if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] == 1 ) {
+if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
 	$main_content = str_replace( '{tmp.user_login_home_content}', $home_ajax_content, $main_content );
 	
 	// xóa ID load content = ajax đi
