@@ -225,6 +225,7 @@ $__cf_row_default = array(
 	'cf_on_off_echbay_seo' => 1,
 	'cf_excerpt_sync_content' => 1,
 	'cf_excerpt_sync_yoast' => 1,
+	'cf_lazy_load_home_footer' => 1,
 	
 	// logo thiết kế bởi echbay
 	'cf_on_off_echbay_logo' => 1,

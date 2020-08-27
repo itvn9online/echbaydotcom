@@ -110,6 +110,7 @@ $_POST['cf_alow_post_tag_index'] = WGR_default_config('cf_alow_post_tag_index');
 $_POST['cf_on_off_echbay_seo'] = WGR_default_config('cf_on_off_echbay_seo');
 $_POST['cf_excerpt_sync_content'] = WGR_default_config('cf_excerpt_sync_content');
 $_POST['cf_excerpt_sync_yoast'] = WGR_default_config('cf_excerpt_sync_yoast');
+$_POST['cf_lazy_load_home_footer'] = WGR_default_config('cf_lazy_load_home_footer');
 
 $_POST['cf_on_off_echbay_logo'] = WGR_default_config('cf_on_off_echbay_logo');
 
