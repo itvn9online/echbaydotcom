@@ -176,6 +176,9 @@ if ( mtv_id > 0 ) {
 	// xóa ID load content = ajax đi
 	$home_lazyload = 'home-no-lazyload';
 }
+else {
+	$main_content = str_replace( '{tmp.user_login_home_content}', '', $main_content );
+}
 $main_content = str_replace( '{tmp.home_lazyload}', $home_lazyload, $main_content );
 
 	
