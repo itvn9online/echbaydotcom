@@ -168,6 +168,16 @@ if ($home_ajax_content == false) {
 	_eb_get_static_html ( $strHomeAjaxCacheFilter, $home_ajax_content );
 }
 
+// nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
+$home_lazyload = 'home-lazyload';
+if ( mtv_id > 0 ) {
+	$main_content = str_replace( '{tmp.user_login_home_content}', $home_ajax_content, $main_content );
+	
+	// xóa ID load content = ajax đi
+	$home_lazyload = 'home-no-lazyload';
+}
+$main_content = str_replace( '{tmp.home_lazyload}', $home_lazyload, $main_content );
+
 	
 	
 	

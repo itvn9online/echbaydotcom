@@ -40,8 +40,18 @@ if ($check_footer_ajax_content == false) {
 	_eb_get_static_html ( $strFooterAjaxCacheFilter, $footer_ajax_content );
 }
 
+// nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
+$footer_lazyload = 'footer-lazyload';
+if ( mtv_id > 0 ) {
+	$footer_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
+	echo str_replace( '{tmp.footer_content}', $footer_ajax_content, $footer_content );
+	
+	// xóa ID load content = ajax đi
+	$footer_lazyload = 'footer-no-lazyload';
+}
+
 ?>
-<div id="footer-lazyload"></div>
+<div id="<?php echo $footer_lazyload; ?>"></div>
 <div id="oi_scroll_top" class="fa fa-chevron-up default-bg"></div>
 <div id="fb-root"></div>
 <div id="oi_popup"></div>

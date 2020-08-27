@@ -16,7 +16,7 @@ else {
 */
 $strCacheFilter = EB_THEME_CACHE . 'home-ajax.txt';
 if ( file_exists( $strCacheFilter ) ) {
-	$main_content = file_get_contents( $strCacheFilter );
+	$main_content = file_get_contents( $strCacheFilter, 1 );
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 }
 else {

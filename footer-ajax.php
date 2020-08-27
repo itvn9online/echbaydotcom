@@ -1,5 +1,4 @@
-<div id="webgiare__footer">
-	<?php
+<?php
 
 //
 /*
@@ -14,7 +13,7 @@ else {
 */
 $strCacheFilter = EB_THEME_CACHE . 'footer-ajax.txt';
 if ( file_exists( $strCacheFilter ) ) {
-	$main_content = file_get_contents( $strCacheFilter );
+	$main_content = file_get_contents( $strCacheFilter, 1 );
 	include EB_THEME_PLUGIN_INDEX . 'common_content.php';
 }
 else {
@@ -22,21 +21,8 @@ else {
 }
 
 //
-echo $main_content;
-
-?>
-</div>
-<!-- quick view video -->
-<div class="quick-video">
-	<div class="quick-video-close big cf">
-		<div class="lf f40 show-if-mobile"><i title="Close" class="fa fa-remove cur d-block"></i></div>
-		<div class="text-right rf f20 hide-if-mobile"><i title="Close" class="fa fa-remove cur d-block"></i></div>
-	</div>
-	<div class="quick-video-padding">
-		<div id="quick-video-content"></div>
-	</div>
-</div>
-<?php
+$tmp = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
+echo str_replace( '{tmp.footer_content}', $main_content, $main_content );
 
 
 

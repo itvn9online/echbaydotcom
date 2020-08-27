@@ -881,12 +881,14 @@ function WGR_lazyload_footer_content () {
 	}
 	
 	//
-//	console.log('Load footer content');
-	ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
-		disable_eblazzy_load = false;
-		WGR_reload_lazy_function();
-		jQuery('#footer-lazyload').addClass('remove-min-height');
-	});
+	if ( $('#footer-lazyload').length > 0 ) {
+//		console.log('Load footer content');
+		ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
+			disable_eblazzy_load = false;
+			WGR_reload_lazy_function();
+			jQuery('#footer-lazyload').addClass('remove-min-height');
+		});
+	}
 }
 
 // thêm class css cho font awesome 5
