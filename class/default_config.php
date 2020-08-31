@@ -166,8 +166,8 @@ $__cf_row_default = array(
 	// kích thước mặc định của ảnh đại diện (ads)
 	'cf_ads_thumbnail_size' => 'full',
 	'cf_ads_thumbnail_table_size' => 'medium_large',
-//	'cf_ads_thumbnail_mobile_size' => 'medium',
-	'cf_ads_thumbnail_mobile_size' => 'ebwebp',
+	'cf_ads_thumbnail_mobile_size' => 'medium',
+//	'cf_ads_thumbnail_mobile_size' => 'ebwebp',
 	
 	'cf_region' => '',
 	'cf_placename' => 'Ha Noi',
