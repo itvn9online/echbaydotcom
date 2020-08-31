@@ -148,16 +148,20 @@ $__cf_row_default = array(
 	'cf_blogs_per_page' => 0,
 	'cf_blogs_content_bottom' => 'off',
 	
+	
 	// kích thước mặc định của ảnh đại diện (post/ blog)
 	// lấy ảnh đại diện kích thước medium ( chỉnh trong wp-admin/options-media.php )
-//	'cf_product_thumbnail_size' => 'medium',
+	'cf_product_thumbnail_size' => 'medium',
 //	'cf_product_thumbnail_size' => 'ebmobile',
-	'cf_product_thumbnail_size' => 'ebwebp',
-//	'cf_product_thumbnail_table_size' => 'medium',
+//	'cf_product_thumbnail_size' => 'ebwebp',
+	
+	'cf_product_thumbnail_table_size' => 'medium',
 //	'cf_product_thumbnail_table_size' => 'ebmobile',
-	'cf_product_thumbnail_table_size' => 'ebwebp',
-//	'cf_product_thumbnail_mobile_size' => 'ebmobile',
-	'cf_product_thumbnail_mobile_size' => 'ebwebp',
+//	'cf_product_thumbnail_table_size' => 'ebwebp',
+	
+	'cf_product_thumbnail_mobile_size' => 'ebmobile',
+//	'cf_product_thumbnail_mobile_size' => 'ebwebp',
+	
 	
 	// kích thước mặc định của ảnh đại diện (ads)
 	'cf_ads_thumbnail_size' => 'full',
