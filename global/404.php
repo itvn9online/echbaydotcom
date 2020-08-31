@@ -221,13 +221,15 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 //		echo 'aaaa';
 		
 		// cấu hình riêng cho 1 số file
-		if ( $act == 'favorite'
-		|| $act == 'golden_time'
-		|| $act == 'products_hot'
-		|| $act == 'products_new'
-		|| $act == 'products_selling'
-		|| $act == 'products_sales_off'
-		|| $act == 'products_all' ) {
+		if (
+			$act == 'favorite'
+			|| $act == 'golden_time'
+			|| $act == 'products_hot'
+			|| $act == 'products_new'
+			|| $act == 'products_selling'
+			|| $act == 'products_sales_off'
+			|| $act == 'products_all'
+		) {
 			include EB_THEME_PLUGIN_INDEX . 'global/products_list.php';
 		}
 		else {
@@ -242,8 +244,9 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 			
 			
 			//
+//			echo 'bbbb<br>' . "\n";
+//			echo $act . '<br>' . "\n";
 			include EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
-//			echo 'bbbb';
 			
 			
 			//
