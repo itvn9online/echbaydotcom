@@ -3,6 +3,8 @@
 
 //
 $eb_user_info = wp_get_current_user();
+echo 'aaaaaaaaaaaa<br>' . "\n";
+print_r( $current_user );
 print_r( $eb_user_info );
 print_r( $_GET );
 
