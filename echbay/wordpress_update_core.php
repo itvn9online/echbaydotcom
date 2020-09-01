@@ -1,11 +1,11 @@
 <hr>
-<div class="l19">* Trong trường hợp website của bạn đang sử dụng hosting cung cấp bởi <a href="https://www.echbay.com/cart" target="_blank" rel="next">EchBay.com</a>, bạn có thể sử dụng chức năng cập nhật mã nguồn cho WordPress tại đây. Chức năng cập nhật được tối ưu theo hệ thống server nên sẽ ổn định hơn so với cập nhật qua module sẵn có của WordPress. Ngoài ra, bạn sẽ được sử dụng miễn phí phiên bản Elemetor Pro</div>
+<div class="l19">* Trong trường hợp website của bạn đang sử dụng hosting cung cấp bởi <a href="https://echbay.com/cart" target="_blank" rel="next">EchBay.com</a>, bạn có thể sử dụng chức năng cập nhật mã nguồn cho WordPress tại đây. Chức năng cập nhật được tối ưu theo hệ thống server nên sẽ ổn định hơn so với cập nhật qua module sẵn có của WordPress. Ngoài ra, bạn sẽ được sử dụng miễn phí phiên bản Elemetor Pro</div>
 <br>
 <?php
 
 
 //
-$url_udpate_via_api = 'https://www.echbay.com/actions/wordpress_core_update&domain=' . $_SERVER['HTTP_HOST'];
+$url_udpate_via_api = 'https://echbay.com/actions/wordpress_core_update&domain=' . $_SERVER['HTTP_HOST'];
 
 
 //

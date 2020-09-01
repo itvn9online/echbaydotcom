@@ -32,7 +32,7 @@ if ( $path != NULL ) {
 	?>
 <div class="medium18">Xin chúc mừng! Bạn đang sử dụng Phiên bản <i class="fa-pro upper small"></i></div>
 <div>(<em>lần cập nhật cuối: <?php echo $last_update; ?></em>)</div>
-<p>* Mặc định, khi bạn sử dụng Hosting của <a href="https://www.echbay.com/cart" target="_blank" rel="nofollow">EchBay.com</a> bạn sẽ được cung cấp các tính năng nâng cao, hỗ trợ việc quản trị website tốt hơn.</p>
+<p>* Mặc định, khi bạn sử dụng Hosting của <a href="https://echbay.com/cart" target="_blank" rel="nofollow">EchBay.com</a> bạn sẽ được cung cấp các tính năng nâng cao, hỗ trợ việc quản trị website tốt hơn.</p>
 <?php
 	
 	//
@@ -41,7 +41,7 @@ if ( $path != NULL ) {
 }
 else {
 	?>
-<div class="medium18">Phiên bản <i class="fa-pro upper small"></i> là phiên bản cấp phát riêng cho khách hàng sử dụng dịch vụ Hosting cung cấp bởi <a href="https://www.echbay.com/" target="_blank" rel="nofollow">EchBay.com</a></div>
+<div class="medium18">Phiên bản <i class="fa-pro upper small"></i> là phiên bản cấp phát riêng cho khách hàng sử dụng dịch vụ Hosting cung cấp bởi <a href="https://echbay.com/" target="_blank" rel="nofollow">EchBay.com</a></div>
 <?php
 }
 

@@ -507,7 +507,7 @@ function add_fb_messages_for_page() {
 
 // Thêm link bản quyền cho theme
 jQuery('.powered-by-echbay a').attr({
-    href: 'https://www.echbay.com/'
+    href: 'https://echbay.com/'
 });
 
 // kiểm tra phiên bản HTML mới hay cũ

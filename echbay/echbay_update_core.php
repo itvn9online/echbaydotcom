@@ -569,7 +569,7 @@ function EBE_get_text_version ( $str ) {
 				}
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
 				else {
-					$url_for_download_ebdotcom = 'https://www.echbay.com/daoloat/echbaydotcom.zip';
+					$url_for_download_ebdotcom = 'https://echbay.com/daoloat/echbaydotcom.zip';
 					
 					// thiết lập chế độ download từ server dự phòng
 					$url2_for_download_ebdotcom = 'http://api.echbay.com/daoloat/echbaydotcom.zip';
