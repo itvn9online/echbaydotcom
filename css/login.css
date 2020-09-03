@@ -1,10 +1,10 @@
 @charset "utf-8";
 body.login {
-	background: #677EB0 url(../images-global/HD-Eagle-Wallpapers.webp) top center fixed no-repeat;
+	background: #677EB0 url(../images-global/HD-Eagle-Wallpapers.jpg) top center fixed no-repeat;
 	background-size: 100% auto;
 }
 #login h1 a {
-	background: url(../images-global/echbay-wp-logo.webp) no-repeat !important;
+	background: url(../images-global/echbay-wp-logo.png) no-repeat !important;
 	margin: 0 auto 10px auto;
 	width: 260px;
 	height: 50px;

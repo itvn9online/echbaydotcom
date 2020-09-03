@@ -128,7 +128,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 		//
 		$product_list_color = _eb_get_post_object( $post->ID, '_eb_product_list_color' );
 		$product_list_color = str_replace( ' src=', ' data-src=', $product_list_color );
-		$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.webp" data-src=', $product_list_color );
+		$product_list_color = str_replace( ' data-src=', ' src="' . EB_URL_OF_PLUGIN . 'images-global/_blank.png" data-src=', $product_list_color );
 		
 		//
 		$product_color_name = _eb_get_post_object( $post->ID, '_eb_product_color' );
