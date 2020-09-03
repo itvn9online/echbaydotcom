@@ -1641,7 +1641,9 @@ function WGR_run_for_admin_edit_post () {
 		// tạo các quick menu cho phần edit post
 		var str = '';
 		jQuery('#normal-sortables .postbox, #advanced-sortables .postbox, #side-sortables .postbox').each(function() {
-			var a = jQuery('h2 span', this).html() || '',
+			var a = jQuery('.postbox-header h2:first', this).html()
+					|| jQuery('h2 span', this).html()
+					|| '',
 				jd = jQuery(this).attr('id') || '',
 				cl = jQuery(this).attr('class') || '';
 //			console.log(a);
