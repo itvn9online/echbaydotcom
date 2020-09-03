@@ -2369,6 +2369,11 @@ function _eb_get_post_img (
 				$cache_thumbnail_id[ $id ] = get_post_thumbnail_id( $id );
 			}
 			
+			// do safari chưa hỗ trợ webp nên đành tạm dừng lại đã
+			if ( $_size == 'ebwebp' ) {
+				$_size = 'ebmobile';
+			}
+			
 			// size riêng cho bản EchBay mobile
 //			if ( $_size == 'ebmobile' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
 			if ( $_size == 'ebwebp' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
