@@ -311,52 +311,7 @@ function add_fb_messages_for_page() {
 
 
 // tạo href cho facebook
-(function() {
-
-    var f = function(lnk, clat) {
-            if (lnk != '') {
-                jQuery('.' + clat + ' div').attr({
-                    'data-href': lnk
-                }).each(function() {
-                    var w = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
-                    if (w == 0) {
-                        w = 180;
-                    } else {
-                        w = Math.ceil(w) - 1;
-                    }
-
-                    jQuery(this).attr({
-                        //						'data-href': lnk,
-                        'data-width': w
-                    });
-                });
-            }
-        },
-        al = function(lnk, clat) {
-            if (lnk != '') {
-                jQuery('.' + clat).attr({
-                    href: lnk
-                    /*
-                     }).each(function() {
-                     jQuery(this).attr({
-                     href: lnk
-                     });
-                     */
-                });
-            }
-        };
-
-    // data-href
-    f(cf_facebook_page, 'each-to-facebook');
-    f(cf_google_plus, 'each-to-gooplus');
-    // href
-    al(cf_facebook_page, 'ahref-to-facebook');
-    al(cf_instagram_page, 'ahref-to-instagram');
-    al(cf_google_plus, 'ahref-to-gooplus');
-    al(cf_youtube_chanel, 'each-to-youtube-chanel');
-    al(cf_twitter_page, 'each-to-twitter-page');
-
-})();
+WGR_create_href_for_facebook();
 
 
 
