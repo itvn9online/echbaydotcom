@@ -58,7 +58,10 @@ class ___echbay_widget_youtube_video extends WP_Widget {
 		);
 		
 		//
-		echo '<div class="img-max-width vhidden">' . $url_video . '</div>';
+		echo '<div class="vhidden-xoa">
+			<div class="echbay-widget-youtube-remove bold">Youtube video:</div>
+			<div class="img-max-width">' . $url_video . '</div>
+		</div>';
 		
 		//
 		echo '</div>';

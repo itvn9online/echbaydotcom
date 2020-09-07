@@ -1299,13 +1299,14 @@ setTimeout(function () {
 		var a = jQuery(this).html() || '';
 		
 		if ( a != '' ) {
-			jQuery(this).removeClass('vhidden');
+			jQuery('.echbay-widget-youtube-padding .vhidden').removeClass('vhidden');
+			jQuery('.echbay-widget-youtube-remove').hide().remove();
 			
 			//
-		var str = '',
-			wit = jQuery(this).width(),
-			hai = Math.ceil( wit * youtube_video_default_size );
-			wit = Math.ceil( wit );
+			var str = '',
+				wit = jQuery(this).width(),
+				hai = Math.ceil( wit * youtube_video_default_size ),
+				wit = Math.ceil( wit );
 			
 			//
 //			console.log(wit);
