@@ -2082,6 +2082,13 @@ function _eb_echbay_category_menu ( $id, $tax = 'category' ) {
 	return $str;
 }
 
+function _eb_get_youtube_img ( $id, $size = 'hqdefault' ) {
+	/*
+	* size: maxresdefault
+	*/
+	return 'http://i3.ytimg.com/vi/' . $id . '/' . $size . '.jpg';
+}
+
 function _eb_get_youtube_id ( $url ) {
 	if ( $url == '' ) {
 		return '';

@@ -58,9 +58,27 @@ class ___echbay_widget_youtube_video extends WP_Widget {
 		);
 		
 		//
+		$url_img_video = '';
+		$arr_url_video = explode("\n", $url_video);
+		foreach ( $arr_url_video as $v ) {
+			$v = trim( $v );
+			
+			if ( $v != '' ) {
+				$v = _eb_get_youtube_id( $v );
+				
+				if ( $v != '' ) {
+					$url_img_video .= '<div><img src="' . _eb_get_youtube_img($v) . '" /></div>';
+				}
+			}
+		}
+		if ( $url_img_video == '' ) {
+			$url_img_video = 'Widget EchBay Youtube video';
+		}
+		
+		//
 		echo '<div class="vhidden-xoa">
-			<div class="echbay-widget-youtube-remove bold">Youtube video:</div>
-			<div class="img-max-width">' . $url_video . '</div>
+			<div class="echbay-widget-youtube-remove">' . $url_img_video . '</div>
+			<div class="img-max-width vhidden">' . $url_video . '</div>
 		</div>';
 		
 		//
