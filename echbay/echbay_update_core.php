@@ -15,6 +15,8 @@ if ( isset( $_GET['remove_update_running_file'] ) ) {
 }
 
 
+global $localhost;
+
 
 include_once ECHBAY_PRI_CODE . 'echbay_compiler_core.php';
 
@@ -245,7 +247,9 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 		// kiểm tra lại
 //		if ( ! is_dir( $dir_source_update ) ) {
 			echo 'dir not found: ' . $dir_source_update . '<br>' . "\n";
-			echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa!</em>';
+			echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa! Nếu chưa có thì cần cài đặt bổ sung:<br>
+			Với PHP 7.1++: <strong>sudo yum -y install php-pecl-zip php-zip</strong><br>
+			Với các bản PHP 7.0 trở xuống: <strong>yes "" | pecl install zip</strong></em>';
 			return false;
 //		}
 		
@@ -653,7 +657,11 @@ function EBE_get_text_version ( $str ) {
 				
 				//
 				if ( $unzipfile == true ) {
-					echo '<div>Unzip to: <strong>' . EB_THEME_CACHE . '</strong></div>'; 
+					echo '<div>Unzip to: <strong>' . EB_THEME_CACHE . $dir_name_for_unzip_to . '</strong></div>'; 
+					
+					if ( ! is_dir( EB_THEME_CACHE . $dir_name_for_unzip_to ) ) {
+						echo '<h3 class="redcolor">Unzip faild...</strong></h3>'; 
+					}
 					
 					// xóa file của github luôn và ngay
 //					$f_gitattributes = EB_THEME_CACHE . 'echbaydotcom-master/.gitattributes';
