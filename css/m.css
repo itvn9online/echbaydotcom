@@ -105,6 +105,10 @@ body.style-for-mobile {
 	width: 250%;
 	max-width: 900px;
 }
+.style-for-mobile .home-video-scroll .thread-list16 li {
+	width: 16.666% !important;
+	width: calc(100%/6) !important;
+}
 .style-for-mobile .cart-table-free div { margin: 5px 0 !important; }
 /*
 .style-for-mobile .cart-ultable li div.f25,
