@@ -426,8 +426,8 @@ else if ( ! empty( $check_post_exist ) ) {
 		$m = '<span class=redcolor>EXIST</span>';
 		
 		//
-		$p_link = _eb_p_link( $import_id );
-//		$p_link = web_link . '?p=' . $import_id;
+//		$p_link = _eb_p_link( $import_id );
+		$p_link = web_link . '?p=' . $import_id;
 		
 		//
 		if ( $p_link == '' ) {
@@ -607,8 +607,9 @@ foreach ( $arr_meta_box as $k => $v ) {
 
 
 //
-$p_link = _eb_p_link( $import_id );
-//$p_link = web_link . '?p=' . $import_id;
+//$p_link = _eb_p_link( $import_id );
+// dùng short ID cho nó chuẩn hơn
+$p_link = web_link . '?p=' . $import_id;
 
 //
 if ( $p_link == '' ) {
