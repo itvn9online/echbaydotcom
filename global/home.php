@@ -152,14 +152,18 @@ if ($main_content == false) {
 	
 	
 	
-	
+
+//
+$home_str_sidebar = $id_for_get_sidebar == '' ? '' : _eb_echbay_sidebar( $id_for_get_sidebar );
+
+
 // cache cho phần home-ajax -> sau trong file home-ajax chỉ việc hiển thị ra là được
 $strHomeAjaxCacheFilter = 'home-ajax';
 $home_ajax_content = _eb_get_static_html ( $strHomeAjaxCacheFilter );
 if ($home_ajax_content == false) {
 	$home_ajax_content = EBE_html_template( EBE_get_page_template( $strHomeAjaxCacheFilter ), array(
 		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
-		'tmp.str_sidebar' => $id_for_get_sidebar == '' ? '' : _eb_echbay_sidebar( $id_for_get_sidebar ),
+		'tmp.str_sidebar' => $home_str_sidebar,
 		'tmp.home_with_cat' => $home_with_cat
 	) );
 	$home_ajax_content = EBE_arr_tmp( $arr_main_content, $home_ajax_content, '' );
@@ -171,6 +175,21 @@ if ($home_ajax_content == false) {
 // nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
 $home_lazyload = 'home-lazyload';
 if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
+	$home_ajax_content = EBE_html_template( EBE_get_page_template( $strHomeAjaxCacheFilter ), array(
+		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
+		'tmp.str_sidebar' => $home_str_sidebar,
+		'tmp.home_with_cat' => $home_with_cat
+	) );
+	$home_ajax_content = EBE_arr_tmp( $arr_main_content, $home_ajax_content, '' );
+	
+	/*
+	$strHomeAjaxCacheFilter = EB_THEME_CACHE . 'home-ajax.txt';
+	if ( file_exists( $strHomeAjaxCacheFilter ) ) {
+		$home_ajax_content = file_get_contents( $strHomeAjaxCacheFilter, 1 );
+	}
+	*/
+	
+	//
 	$main_content = str_replace( '{tmp.user_login_home_content}', $home_ajax_content, $main_content );
 	
 	// xóa ID load content = ajax đi
