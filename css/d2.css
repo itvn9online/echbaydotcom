@@ -2135,6 +2135,7 @@ iframe[name="google_conversion_frame"] {
 .nomargin .echbay-blog { }
 */
 .nomargin .echbay-blog,
+.nomargin .echbay-blog li,
 .nomargin .echbay-blog-padding { margin: 0; }
 /*
 .nomargin .echbay-blog-padding { }
