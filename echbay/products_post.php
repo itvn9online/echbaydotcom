@@ -361,6 +361,7 @@ $strAjaxLink .= '&trang=' . $trang;
 				'csv' => 'for CSV',
 				'google' => 'for Google',
 				'facebook' => 'for Facebook',
+				'ia_facebook' => 'for IA Facebook',
 				'echbaydotcom' => 'from Echbaydotcom',
 				'woo' => 'from Woocommerce'
 			);

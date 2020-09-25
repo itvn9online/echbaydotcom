@@ -188,7 +188,7 @@ else if ( $bai_san_pham == true ) {
 	}
 	
 	if ( $__cf_row['cf_on_off_amp_product'] == 1 ) {
-		$global_dymanic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" />';
+		$global_dymanic_meta .= '<link rel="amphtml" href="' . $url_og_url . '?amp" /><link rel="amphtmldevelopment" href="' . $url_og_url . '?amp#development=1" />';
 	}
 	
 	// load sidebar -> nếu có
