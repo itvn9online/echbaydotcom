@@ -1844,7 +1844,7 @@ function run_download_img_other_domain_of_content ( content_id ) {
 		});
 		
 		//
-		alert('All done!');
+		WGR_html_alert('All done!');
 	}
 	
 }
