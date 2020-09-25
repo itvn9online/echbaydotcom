@@ -28,7 +28,7 @@ function WGR_echo_sitemap_node ( $loc, $lastmod ) {
 </sitemap>';
 }
 
-function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $file_2name = 'sitemap-post-images', $op = array() ) {
+function WGR_sitemap_part_page ( $count_post, $type = 'post', $file_name = 'sitemap-post', $file_2name = 'sitemap-post-images', $op = array() ) {
 	global $limit_post_get;
 	global $sitemap_current_time;
 	
@@ -37,8 +37,10 @@ function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $f
 	
 	// không lấy mục ads
 	if ( $type != 'ads' ) {
-		$count_post_post = WGR_get_sitemap_total_post( $type, $op );
-//		echo $count_post_post . '<br>' . "\n";
+//		$count_post_post = WGR_get_sitemap_total_post( $type, $op );
+//		echo $type . ' --> ' . $count_post_post . '<br>' . "\n";
+		$count_post_post = $count_post;
+//		echo $type . ' --> ' . $count_post . '<br>' . "\n";
 		
 		if ( $count_post_post > $limit_post_get ) {
 			$j = 0;
@@ -56,13 +58,16 @@ function WGR_sitemap_part_page ( $type = 'post', $file_name = 'sitemap-post', $f
 		}
 	}
 	
+	// tạm thời ko lấy phần sitemap ảnh ở đây
+	return $str;
+	
 	// file name 2 là dành cho phần image -> lấy image của post type tương ứng
 	if ( $file_2name != '' ) {
 //		echo $file_2name . "\n";
 		$count_post_post = WGR_get_sitemap_total_post( 'attachment', array(
 			'in_post_parent' => $type
 		) );
-//		echo $count_post_post . "\n";
+//		echo $type . ' -> ' . $count_post_post . "\n";
 		
 		//
 //		if ( $count_post_post > $limit_post_get ) {
@@ -249,10 +254,15 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 	
 	//
 	$strFilter = "";
+	$strByPostType = " AND post_type = '" . $type . "' ";
 	if ( ! empty( $op ) ) {
 //		if ( isset( $op['post_parent'] ) && $op['post_parent'] > 0 ) {
 		if ( isset( $op['post_parent'] ) ) {
 			$strFilter .= " AND post_parent = " . $op['post_parent'] . " ";
+		}
+		else if ( isset( $op['co_post_parent'] ) ) {
+			$strFilter .= " AND post_parent > 0 GROUP BY post_parent ";
+			$strByPostType = "";
 		}
 	}
 	
@@ -281,9 +291,8 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 	FROM
 		`" . wp_posts . "`
 	WHERE
-		post_type = '" . $type . "'
-		AND post_status = '" . $status . "'
-		" . $strFilter . "
+		post_status = '" . $status . "'
+		" . $strByPostType . $strFilter . "
 	ORDER BY
 		ID DESC
 	LIMIT " . $offset . ", " . $threadInPage);
@@ -303,7 +312,8 @@ function WGR_get_sitemap_total_post ( $type = 'post', $op = array() ) {
 	}
 	
 	// mặc định chỉ lấy các bài viết đang bật
-	$strFilter = " post_type = '" . $type . "' AND post_status = '" . $status . "' ";
+	$strFilter = "";
+	$strByPostType = " AND post_type = '" . $type . "' ";
 	
 	// với mục ads -> lấy hết các post còn lại
 	/*
@@ -327,6 +337,10 @@ function WGR_get_sitemap_total_post ( $type = 'post', $op = array() ) {
 		if ( isset( $op['post_parent'] ) ) {
 			$strFilter .= " AND post_parent = " . $op['post_parent'] . " ";
 		}
+		else if ( isset( $op['co_post_parent'] ) ) {
+			$strFilter .= " AND post_parent > 0 GROUP BY post_parent ";
+			$strByPostType = "";
+		}
 		else if ( isset( $op['in_post_parent'] ) ) {
 			return WGR_get_sitemap_total_post ( $op['in_post_parent'] );
 			
@@ -345,11 +359,16 @@ function WGR_get_sitemap_total_post ( $type = 'post', $op = array() ) {
 	}
 //	echo $strFilter . "\n";
 	
-	return _eb_c("SELECT COUNT(ID) as a
+	$strFilter = "SELECT COUNT(ID) as a
 	FROM
 		`" . wp_posts . "`
 	WHERE
-		" . $strFilter );
+		post_status = '" . $status . "'
+		" . $strByPostType . $strFilter;
+//	echo $strFilter . '<br>' . "\n";
+//	echo '--------------------------------------<br>' . "\n";
+	
+	return _eb_c( $strFilter );
 }
 
 
@@ -430,7 +449,7 @@ $sitemap_date_format = 'c';
 $sitemap_current_time = date( $sitemap_date_format, date_time );
 
 // giới hạn số bài viết cho mỗi sitemap map
-$limit_post_get = 1000;
+$limit_post_get = 100;
 //$limit_post_get = 10;
 
 // giới hạn tạo sitemap cho hình ảnh -> google nó limit 1000 ảnh nên chỉ lấy thế thôi

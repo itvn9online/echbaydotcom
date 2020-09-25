@@ -424,6 +424,7 @@ $arr_active_for_404_page = array(
 	// sitemap cho post
 	"sitemap-post" => 1,
 	"sitemap-post-images" => 1,
+	"sitemap-all-images" => 1,
 	// cho blogs
 //	"sitemap-blogs" => 1,
 	// cho blog
