@@ -129,6 +129,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		) );
 	}
 	
+	/*
 	$count_post = WGR_get_sitemap_total_post( 'ads' );
 //	echo 'ads -> ' . $count_post . '<br>' . "\n";
 	if ( $count_post > 0 ) {
@@ -139,6 +140,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		// phân trang cho sitemap (lấy từ trang 2 trở đi)
 		$get_list_sitemap .= WGR_sitemap_part_page( $count_post, 'ads', 'sitemap-ads', 'sitemap-other-images' );
 	}
+	*/
 	
 	
 	
