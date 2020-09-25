@@ -4,15 +4,22 @@
 			<div class="col-main-padding col-blog-padding">
 				<div class="blog-details-content">
 					<div class="thread-details-relative">{tmp.admin_edit}</div>
-					<h1 class="blog-details-title">{tmp.trv_h1_tieude}</h1>
-					<div class="l25 echbay-tintuc-ngaygui">{tmp.bl_ngaygui} <span> - {tmp.lang_blog_views} {tmp.trv_luotxem}</span></div>
-					<div>{tmp.trv_goithieu}</div>
-					<div class="thread-content-bmask{tmp.thread_content_mask}">
-						<div data-max-width="{tmp.cf_img_details_maxwidth}" class="img-max-width ul-default-style echbay-tintuc-noidung">{tmp.trv_noidung}</div>
-						<div class="thread-content-mask">&nbsp;</div>
-					</div>
-					<div class="share-blog-in-bottom">{tmp.each-to-share-social}</div>
-					<br>
+					<main>
+						<article>
+							<header>
+								<h1 class="blog-details-title">{tmp.trv_h1_tieude}</h1>
+								<div class="l25 echbay-tintuc-ngaygui">{tmp.bl_ngaygui} <span> - {tmp.lang_blog_views} {tmp.trv_luotxem}</span></div>
+								<div>{tmp.trv_goithieu}</div>
+							</header>
+							<div class="thread-content-bmask{tmp.thread_content_mask}">
+								<div data-max-width="{tmp.cf_img_details_maxwidth}" class="img-max-width ul-default-style echbay-tintuc-noidung">{tmp.trv_noidung}</div>
+								<div class="thread-content-mask">&nbsp;</div>
+							</div>
+							<div class="share-blog-in-bottom">{tmp.each-to-share-social}</div>
+							<br>
+							<footer class="blog-footer"> </footer>
+						</article>
+					</main>
 					<div class="thread-details-tags d-none echbay-tintuc-tags"><i class="fa fa-tag"></i> {tmp.str_tags}</div>
 					<br>
 				</div>
