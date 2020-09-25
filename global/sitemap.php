@@ -94,7 +94,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	FROM
 		`" . wp_posts . "`
 	WHERE
-		post_type = 'attachment'
+		( post_type = 'attachment' OR post_type = 'ebarchive' )
 		AND post_status = 'inherit'
 		AND post_parent > 0
 		AND post_parent NOT IN ( select ID from `" . wp_posts . "` where post_type = 'ads' )

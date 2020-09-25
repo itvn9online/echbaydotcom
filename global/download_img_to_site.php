@@ -56,15 +56,21 @@ if ( ! file_exists( $save_to ) ) {
 	$file_basename = basename( $save_to );
 	$file_type = wp_check_filetype( $file_basename, null );
 	$attachment_title = sanitize_file_name( pathinfo( $file_basename, PATHINFO_FILENAME ) );
+	$post_date_gmt = date( 'Y-m-d H:i:s', date_time );
+	
+	$post_excerpt = '';
+	if ( isset( $_GET['img_title'] ) ) {
+		$post_excerpt = trim($_GET['img_title']);
+	}
 	
 	$arr_set_attachment = array(
 //		'ID' => 994351
 //		'post_author' => 245
-//		'post_date' => 2020-09-25 18:40:16
-//		'post_date_gmt' => 2020-09-25 11:40:16
+		'post_date' => $post_date_gmt,
+		'post_date_gmt' => $post_date_gmt,
 		'post_content' => '',
 		'post_title' => $attachment_title,
-//		'post_excerpt' => 
+		'post_excerpt' => $post_excerpt,
 		'post_status' => 'inherit',
 		'comment_status' => 'closed',
 		'ping_status' => 'closed',
@@ -72,14 +78,16 @@ if ( ! file_exists( $save_to ) ) {
 //		'post_name' => 1n9a3734-2
 //		'to_ping' => 
 //		'pinged' => 
-//		'post_modified' => 2020-09-25 18:40:16
-//		'post_modified_gmt' => 2020-09-25 11:40:16
+		'post_modified' => $post_date_gmt,
+		'post_modified_gmt' => $post_date_gmt,
 //		'post_content_filtered' => 
 		'post_parent' => $post_ID,
 		'guid' => str_replace( ABSPATH, web_link, $save_to ),
 		'menu_order' => 0,
-		'post_type' => 'attachment',
-		'post_mime_type' => $file_type,
+//		'post_type' => 'attachment',
+//		'post_type' => 'ebattachment',
+		'post_type' => 'ebarchive',
+		'post_mime_type' => $file_type['type'],
 		'comment_count' => 0
 	);
 	
