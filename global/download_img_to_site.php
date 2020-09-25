@@ -53,7 +53,26 @@ if ( ! file_exists( $save_to ) ) {
 	if( copy( $file_source, $save_to ) ) {
 		chmod($save_to, 0777) or die('ERROR chmod file: ' . $save_to);
 	} else {
-		die('ERROR copy file');
+		// xử lý lỗi copy ảnh qua SSL
+		// https://www.youtube.com/watch?v=5vjbOqdxtEM
+		$re_copy_file = 0;
+		if ( function_exists('stream_context_set_default') ) {
+			stream_context_set_default([
+				'ssl' => array(
+					'verify_peer' => false,
+					'verify_peer_name' => false
+				)
+			]);
+			
+			$re_copy_file = 1;
+		}
+		
+		if( $re_copy_file === 1 && copy( $file_source, $save_to ) ) {
+			chmod($save_to, 0777) or die('ERROR chmod file: ' . $save_to);
+		}
+		else {
+			die('ERROR copy file');
+		}
 	}
 }
 else if ( ! isset( $_GET['show_url_img'] ) ) {
