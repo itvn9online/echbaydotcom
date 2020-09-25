@@ -1789,7 +1789,7 @@ function run_download_img_other_domain_of_content ( content_id ) {
 			if ( current_domain != b ) {
 				console.log(b);
 				
-				download_url = web_link + 'download_img_to_site/?img=' + encodeURIComponent( a ) + '&for_id_content=' + encodeURIComponent( content_id );
+				download_url = web_link + 'download_img_to_site/?img=' + encodeURIComponent( a ) + '&for_id_content=' + encodeURIComponent( content_id ) + '&post_ID=' + ( $('#post_ID').val() || '' );
 				
 				// tìm vào tạo tên file mới
 				var file_name = decodeURIComponent(a).split('://');
