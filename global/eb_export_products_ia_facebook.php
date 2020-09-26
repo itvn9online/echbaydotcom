@@ -74,14 +74,11 @@ $rss_content .= ' <item>
 
 
 // tổng hợp lại
-$rss_content = '<rss version="2.0"
-xmlns:content="http://purl.org/rss/1.0/modules/content/">
+$rss_content = '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-<title>News Publisher</title>
-<link>
-http://www.example.com/
-</link>
-<description> Read our awesome news, every day. </description>
+<title>' . $__cf_row['cf_web_name'] . ' RSS</title>
+<link>' . web_link . '</link>
+<description>' . $__cf_row['cf_description'] . '</description>
 <language>' . $__cf_row['cf_content_language'] . '</language>
 <lastBuildDate>' . date('Y-m-d', date_time) . 'T' . date('H:m:i', date_time) . 'Z</lastBuildDate>
 ' . $rss_content . '
