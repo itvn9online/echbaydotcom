@@ -46,7 +46,8 @@ function WGR_export_product_to_xml ( $op = array(), $post_type = 'post' ) {
 	GROUP BY
 		`" . wp_posts . "`.ID DESC
 	ORDER BY
-		`" . wp_posts . "`.menu_order DESC
+		`" . wp_posts . "`.menu_order DESC,
+		`" . wp_posts . "`.ID DESC
 	LIMIT " . $offset . ", " . $op['limit'];
 	/*
 	GROUP BY

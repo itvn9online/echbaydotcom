@@ -56,6 +56,8 @@ function WGR_admin_lang ( $k ) {
 		'_eb_product_old_url' => 'URL cũ (nếu có)',
 		'_eb_product_leech_source' => 'URL đồng bộ',
 		'_eb_product_video_url' => 'URL Youtube video',
+		'_eb_product_source_author' => 'Tác giả bài viết',
+		
 		'_eb_blog_2content' => 'Nội dung phụ',
 //		'_eb_product_noibat' => 'Điểm nổi bật',
 //		'_eb_product_dieukien' => 'Điều kiện',

@@ -265,3 +265,14 @@
 }
 #aabbcc :-moz-placeholder {
 }
+/* */
+.thread-details-tags { margin-bottom: 20px; }
+.thread-details-tags i,
+.thread-details-tags a { display: inline-block; }
+.thread-details-tags a {
+	background-color: #f5f5f5;
+	color: #656565;
+	padding: 8px 14px;
+	border-radius: 2px;
+	margin: 0 5px 7px 0;
+}

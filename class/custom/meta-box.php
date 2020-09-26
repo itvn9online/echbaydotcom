@@ -219,6 +219,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_product_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 	'_eb_product_supper_shop' => 'Nhập vào URL mà bạn muốn chuyển tới khi người dùng bấm vào nút [Mua ngay] trong trang chi tiết sản phẩm (Mặc định sẽ thêm vào giỏ hoặc mở popup mua ngay).',
 	'_eb_product_video_url' => 'Một số giao diện hỗ trợ video youtube (nếu có)',
+	'_eb_product_source_author' => 'Khi copy bài từ website khác về, nên để cả tên tác giả (nếu có) để thể hiện sự tôn trọng nhất định tới công sức viết bài của họ cũng như chính bạn trong tương lai.',
 	
 	'_eb_category_avt' => 'Ảnh đại diện của phân nhóm, kích thước khuyến nghị là 500x400 pixel. Ảnh này sẽ xuất hiện khi chia sẻ nhóm lên các mạng xã hội như: Facebook, Twiter...',
 	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
@@ -337,7 +338,8 @@ $eb_arr_phu_meta_box = array(
 	'_eb_product_supper_shop' => WGR_admin_lang('_eb_product_supper_shop'),
 	'_eb_product_leech_source' => WGR_admin_lang('_eb_product_leech_source'),
 	'_eb_product_old_url' => WGR_admin_lang('_eb_product_old_url'),
-	'_eb_product_video_url' => WGR_admin_lang('_eb_product_video_url')
+	'_eb_product_video_url' => WGR_admin_lang('_eb_product_video_url'),
+	'_eb_product_source_author' => WGR_admin_lang('_eb_product_source_author')
 );
 
 

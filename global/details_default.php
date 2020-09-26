@@ -1195,7 +1195,8 @@ if ( comments_open() || get_comments_number() ) {
 $trv_ngayhethan = 0;
 $_eb_product_ngayhethan = '';
 $_eb_product_giohethan = '';
-$_eb_product_leech_source = '';
+//$_eb_product_leech_source = '';
+$_eb_product_leech_source = _eb_get_post_object( $pid, '_eb_product_leech_source' );
 $_eb_product_supper_shop = '';
 
 // nếu website có mã giảm giá -> kích hoạt chức năng nhập mã giảm giá
@@ -1243,10 +1244,9 @@ if ( $bai_san_pham == true ) {
 		}
 		
 		//
-		$_eb_product_leech_source = _eb_get_post_object( $pid, '_eb_product_leech_source' );
-		if ( $_eb_product_leech_source != '' ) {
-			$_eb_product_leech_source = str_replace( '/', '\/', $_eb_product_leech_source );
-		}
+//		if ( $_eb_product_leech_source != '' ) {
+//			$_eb_product_leech_source = str_replace( '/', '\/', $_eb_product_leech_source );
+//		}
 		
 		//
 		$_eb_product_supper_shop = _eb_get_post_object( $pid, '_eb_product_supper_shop' );
@@ -1306,6 +1306,7 @@ if ( $bai_san_pham == true ) {
 
 //
 $_eb_product_video_url = _eb_get_post_object( $pid, '_eb_product_video_url' );
+$_eb_product_source_author = _eb_get_post_object( $pid, '_eb_product_source_author' );
 
 
 
@@ -1326,7 +1327,7 @@ var switch_taxonomy="' . $__post->post_type . '",
 	_eb_product_video_url="' . $_eb_product_video_url . '",
 	_eb_product_ngayhethan="' . $_eb_product_ngayhethan . '",
 	_eb_product_giohethan="' . $_eb_product_giohethan . '",
-	_eb_product_leech_source="' . $_eb_product_leech_source . '",
+	_eb_product_leech_source="' . str_replace( '/', '\/', $_eb_product_leech_source ) . '",
 	_eb_product_supper_shop="' . $_eb_product_supper_shop . '",
 	cf_details_excerpt="' . $__cf_row['cf_details_excerpt'] . '",
 	cf_details_bold_excerpt="' . $__cf_row['cf_details_bold_excerpt'] . '",
@@ -1399,6 +1400,8 @@ if ( current_user_can('delete_posts') ) {
 	$admin_edit = '<a title="Edit" href="' . admin_link . 'post.php?post=' . $pid . '&action=edit" class="fa fa-edit breadcrumb-clone-edit-post"></a>';
 }
 $main_content = str_replace ( '{tmp.admin_edit}', $admin_edit, $main_content );
+$main_content = str_replace ( '{tmp._eb_product_source_author}', $_eb_product_source_author, $main_content );
+$main_content = str_replace ( '{tmp._eb_product_leech_source}', $_eb_product_leech_source, $main_content );
 
 
 

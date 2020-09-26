@@ -33,6 +33,11 @@ foreach ( $sql as $v ) {
 	
 	$pubDate = explode( ' ', $v->post_date );
 	
+	$_eb_product_source_author = _eb_get_post_object( $v->ID, '_eb_product_source_author' );
+	if ( $_eb_product_source_author == '' ) {
+		$_eb_product_source_author = get_the_author_meta('display_name', $v->post_author);
+	}
+	
 	
 	//
 $rss_content .= ' <item>
@@ -40,7 +45,7 @@ $rss_content .= ' <item>
 <link>' . $p_link . '</link>
 <guid>' . $v->ID . '</guid>
 <pubDate>' . $pubDate[0] . 'T' . $pubDate[1] . 'Z</pubDate>
-<author><![CDATA[' . get_the_author_meta('display_name', $v->post_author) . ']]></author>
+<author><![CDATA[' . $_eb_product_source_author . ']]></author>
 <description><![CDATA[' . $v->post_excerpt . ']]></description>
 <content:encoded><![CDATA[<!doctype html>
 <html lang="' . $__cf_row['cf_content_language'] . '" prefix="op: http://media.facebook.com/op#">
