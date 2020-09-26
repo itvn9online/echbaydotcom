@@ -189,6 +189,7 @@ function echbay_admin_styles() {
 			`" . wp_posts . "`
 		WHERE
 			post_type = '" . $order_by_post_type . "'
+			AND post_status = 'publish'
 			AND menu_order > 0
 		ORDER BY
 			menu_order DESC
