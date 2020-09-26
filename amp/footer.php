@@ -13,22 +13,7 @@
 <br>
 <?php
 if ( $__cf_row['cf_ga_id'] != '' ) {
-?>
-<amp-analytics type="googleanalytics"> 
-	<script type="application/json">
-{
-	"vars": {
-		"account": "<?php echo $__cf_row['cf_ga_id']; ?>"
-	},
-	"triggers": {
-		"trackPageview": {
-			"on": "visible",
-			"request": "pageview"
-		}
-	}
-}
-</script> 
-</amp-analytics>
-<?php
+//include EB_THEME_PLUGIN_INDEX . 'amp/amp-analytics-v1.php';
+include EB_THEME_PLUGIN_INDEX . 'amp/amp-analytics.php';
 }
 

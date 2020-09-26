@@ -44,6 +44,9 @@ if ( $__cf_row['cf_ga_id'] != '' ) {
 if ( isset( $other_amp_cdn['youtube'] ) ) {
 	$other_amp_cdn['youtube'] = '<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>';
 }
+if ( isset( $other_amp_cdn['amp-iframe'] ) ) {
+	$other_amp_cdn['amp-iframe'] = '<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>';
+}
 
 foreach ( $other_amp_cdn as $v ) {
 	echo $v . "\n";

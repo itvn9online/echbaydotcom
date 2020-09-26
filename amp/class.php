@@ -14,6 +14,14 @@ class EchAMPFunction {
 			'type',
 			'border',
 			'align',
+			'loading',
+			
+			// iframe
+			'frameborder',
+			'scrolling',
+			'allowfullscreen',
+			
+			//
 			'longdesc'
 		);
 		
@@ -166,6 +174,31 @@ class EchAMPFunction {
 					
 					// tải cdn cho youtube
 					$other_amp_cdn['youtube'] = '';
+				}
+				else if ( $new_tag == 'amp-iframe' ) {
+//					echo $v2 . "\n";
+					
+					$iframe_src = explode( 'src="', $v2 );
+					$iframe_src = $iframe_src[1];
+					$iframe_src = explode( '"', $iframe_src );
+					$iframe_src = $iframe_src[0];
+//					echo $iframe_src . "\n";
+					
+					$iframe_width = explode( 'width="', $v2 );
+					$iframe_width = $iframe_width[1];
+					$iframe_width = explode( '"', $iframe_width );
+					$iframe_width = $iframe_width[0];
+//					echo $iframe_width . "\n";
+					
+					$iframe_height = explode( 'height="', $v2 );
+					$iframe_height = $iframe_height[1];
+					$iframe_height = explode( '"', $iframe_height );
+					$iframe_height = $iframe_height[0];
+//					echo $iframe_height . "\n";
+					
+					$v2 = 'width="' . $iframe_width . '" height="' . $iframe_height . '" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0" src="' . $iframe_src . '"';
+					
+					$other_amp_cdn['amp-iframe'] = '';
 				}
 				// với hình ảnh, nếu thiếu layout thì bổ sung
 				else if ( $new_tag == 'amp-img' ) {

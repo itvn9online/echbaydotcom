@@ -2,7 +2,8 @@
 
 
 // sử lý nội dung
-$trv_noidung = $__post->post_content;
+//$trv_noidung = $__post->post_content;
+$trv_noidung = apply_filters('the_content', $__post->post_content);
 
 
 
