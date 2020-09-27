@@ -61,8 +61,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	// lấy tất cả các ảnh không có parent cho về trang chủ
 	$get_list_sitemap = '
 <url>
-	<loc>' . web_link . '</loc>
-	' . $get_list_sitemap . '
+<loc>' . web_link . '</loc>' . $get_list_sitemap . '
 </url>';
 	
 	

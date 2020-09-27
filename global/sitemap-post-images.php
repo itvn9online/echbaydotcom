@@ -75,8 +75,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		if ( $str != '' ) {
 			$get_list_sitemap .= '
 <url>
-	<loc>' . web_link . '</loc>
-	' . $str . '
+<loc>' . web_link . '</loc>' . $str . '
 </url>';
 			
 		}
@@ -112,8 +111,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			if ( $str != '' ) {
 				$get_list_sitemap .= '
 <url>
-	<loc>' . _eb_p_link( $v->ID ) . '</loc>
-	' . $str . '
+<loc>' . _eb_p_link( $v->ID ) . '</loc>' . $str . '
 </url>';
 				
 			}

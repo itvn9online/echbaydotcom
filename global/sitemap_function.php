@@ -132,10 +132,41 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 				
 				//
 				$str_list_img .= '
-	<image:image>
-		<image:loc>' . $img . '</image:loc>
-		<image:title><![CDATA[' . $name . ']]></image:title>
-	</image:image>';
+<image:image>
+	<image:loc>' . $img . '</image:loc>
+	<image:title><![CDATA[' . $name . ']]></image:title>
+</image:image>';
+			}
+			
+			
+			//
+			$sql = WGR_get_sitemap_post( 'ebarchive', array(
+				'post_parent' => $op['get_images']
+			) );
+//			print_r( $sql );
+			
+			//
+			foreach ( $sql as $v ) {
+				$img = $v->guid;
+				
+				$name = $v->post_excerpt;
+				if ( $name == '' && $v->post_title != '' ) {
+					$name = str_replace( '-', ' ', $v->post_title );
+				}
+				
+				/*
+				$url = $img;
+				if ( $v->post_parent > 0 ) {
+					$url = _eb_p_link( $v->post_parent );
+				}
+				*/
+				
+				//
+				$str_list_img .= '
+<image:image>
+	<image:loc>' . $img . '</image:loc>
+	<image:title><![CDATA[' . $name . ']]></image:title>
+</image:image>';
 			}
 		}
 	}
@@ -146,11 +177,10 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 	//
 	return '
 <url>
-	<loc>' . $loc . '</loc>
-	<lastmod>' . $lastmod . '</lastmod>
-	<changefreq>' . $op['changefreq'] . '</changefreq>
-	<priority>' . $priority . '</priority>
-	' . $str_list_img . '
+<loc>' . $loc . '</loc>
+<lastmod>' . $lastmod . '</lastmod>
+<changefreq>' . $op['changefreq'] . '</changefreq>
+<priority>' . $priority . '</priority>' . $str_list_img . '
 </url>';
 	
 }
@@ -248,7 +278,7 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 //	echo wp_posts;
 	
 	$status = 'publish';
-	if ( $type == 'attachment' ) {
+	if ( $type == 'attachment' || $type == 'ebarchive' ) {
 		$status = 'inherit';
 	}
 	
@@ -307,7 +337,7 @@ function WGR_get_sitemap_total_post ( $type = 'post', $op = array() ) {
 	
 	//
 	$status = 'publish';
-	if ( $type == 'attachment' ) {
+	if ( $type == 'attachment' || $type == 'ebarchive' ) {
 		$status = 'inherit';
 	}
 	
