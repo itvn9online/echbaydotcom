@@ -594,7 +594,21 @@ function EchBayThongTinSave ( $post_id ) {
 	// xóa cache
 	_eb_remove_static_html( 'prod_link' . $post_id );
 	// sau đó nạp lại url
-	_eb_p_link( $post_id );
+	$check_p_link = _eb_p_link( $post_id );
+	
+	// xóa cache toàn trang cho phần bài viết
+	$check_p_link = explode( '//', $check_p_link );
+	if ( isset( $check_p_link[1] ) ) {
+		$check_p_link = $check_p_link[1];
+		$check_p_link = explode( '/', $check_p_link );
+		$check_p_link[0] = '';
+		$check_p_link = implode( '-', $check_p_link );
+		$check_p_link = preg_replace( "/\/|\?|\&|\,|\=/", '-', $check_p_link );
+		
+		//
+//		$check_p_link = EB_THEME_CACHE . 'all/' . $check_p_link . '.txt';
+		_eb_remove_static_html( 'all/' . $check_p_link );
+	}
 }
 add_filter( 'save_post', 'EchBayThongTinSave' );
 
