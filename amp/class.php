@@ -114,7 +114,7 @@ class EchAMPFunction {
 		
 		$arr = array(
 			'img' => 'amp-img',
-			'iframe' => 'amp-iframe',
+			'iframe' => 'amp-iframe'
 		);
 		
 		foreach ( $arr as $k => $v ) {

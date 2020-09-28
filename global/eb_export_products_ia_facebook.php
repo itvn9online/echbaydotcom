@@ -7,13 +7,155 @@
 https://developers.facebook.com/docs/instant-articles/publishing/setup-rss-feed#sample-feed*/
 
 
+function FB_IA_change_tag ( $str ) {
+	$arr = array(
+		'img' => 'figure-img'
+	);
+	
+	foreach ( $arr as $k => $v ) {
+		$str = FB_IA_change_tag2 ( $str, $k, $v );
+	}
+	
+	//
+	return $str;
+}
+
+function FB_IA_change_tag2 ( $str, $tag, $new_tag, $end_tag = '>' ) {
+		
+		//
+		$c = explode( '<' . $tag . ' ', $str );
+//		print_r( $c );
+		
+		$new_str = '';
+		foreach ( $c as $k => $v ) {
+			
+			// bỏ qua mảng số 0
+			if ( $k > 0 ) {
+				$v2 = explode( '>', $v );
+				$v2 = $v2[0];
+	//			echo $v2. "\n";
+	//			echo substr( $v2, -1 ) . "\n";
+	//			echo substr( $v2, 0, -1 ) . "\n";
+				
+				// xóa đoạn
+				$v = str_replace( $v2, '', $v );
+				$v = substr( $v, 1 );
+				
+				//
+				if ( substr( $v2, -1 ) == '/' ) {
+					$v2 = substr( $v2, 0, -1 );
+				}
+				$v2 = trim($v2);
+				
+				// với hình ảnh, nếu thiếu layout thì bổ sung
+				if ( $new_tag == 'figure-img' ) {
+//					$new_tag = 'figure';
+					
+					$img_src = explode( 'src="', $v2 );
+					$img_src = $img_src[1];
+					$img_src = explode( '"', $img_src );
+					$img_src = $img_src[0];
+//					echo $img_src . "\n";
+					
+					//
+					$v2 = '><img src="' . $img_src . '"/';
+				}
+				
+				// tổng hợp nội dung lại
+				$v = '<' . $new_tag . ' ' . $v2 . '></' . $new_tag . '>' . $v;
+			}
+			
+			//
+			$new_str .= $v;
+		}
+		$new_str = str_replace( '<figure-img ', '<figure', $new_str );
+		$new_str = str_replace( '</figure-img>', '</figure>', $new_str );
+		
+		return $new_str;
+}
+
+function FB_IA_remove_attr ( $str ) {
+	
+	//
+	$arr = array(
+		'id',
+		'class',
+		'style',
+		'dir',
+		'type',
+		'border',
+		'align',
+		'loading',
+		
+		// iframe
+		'frameborder',
+		'scrolling',
+		'allowfullscreen',
+		
+		//
+		'longdesc'
+	);
+	
+	// xóa từng attr đã được chỉ định
+	foreach ( $arr as $v ) {
+		$str = FB_IA_remove_attr2 ( $str, ' ' . $v . '="', '"' );
+		$str = FB_IA_remove_attr2 ( $str, " " . $v . "='", "'" );
+	}
+	
+	
+	
+	
+	// xóa các thẻ không còn được hỗ trợ
+	/*
+	$arr = array(
+		'style',
+		'font'
+	);
+	
+	//
+	foreach ( $arr as $v ) {
+		$str = $this->remove_tag ( $str, $v );
+	}
+	*/
+	
+	
+	
+	//
+	return $str;
+}
+
+function FB_IA_remove_attr2 ( $str, $attr, $end_attr = '"' ) {
+	
+	// cắt mảng theo attr nhập vào
+	$c = explode( $attr, $str );
+//		print_r( $c );
+	
+	$new_str = '';
+	foreach ( $c as $k => $v ) {
+		// chạy vòng lặp -> bỏ qua mảng đầu tiên
+		if ( $k > 0 ) {
+			// dữ liệu mới bắt đầu từ đoạn kết thúc trước đó
+			$v = strstr( $v, $end_attr );
+			
+			// cắt bỏ đoạn thừa
+			$v = substr( $v, strlen( $end_attr ) );
+		}
+		
+		//
+		$new_str .= $v;
+	}
+	
+	// done
+	return $new_str;
+}
+
 
 
 //
 //$rssCacheFilter = 'rss-' . $export_type;
 $rss_content = _eb_get_static_html ( $rssCacheFilter, '', '', 300 );
 //$rss_content = false;
-if ($rss_content == false || isset($_GET['wgr_real_time'])) {
+if ($rss_content == false || isset($_GET['wgr_real_time']) || eb_code_tester == true) {
 	
 	
 	
@@ -32,6 +174,7 @@ foreach ( $sql as $v ) {
 	$content = apply_filters('the_content', $v->post_content);
 	
 	$pubDate = explode( ' ', $v->post_date );
+	$pubModified = explode( ' ', $v->post_modified );
 	
 	$_eb_product_source_author = _eb_get_post_object( $v->ID, '_eb_product_source_author' );
 	if ( $_eb_product_source_author == '' ) {
@@ -40,14 +183,40 @@ foreach ( $sql as $v ) {
 	
 	
 	//
-$rss_content .= ' <item>
-<title><![CDATA[' . $v->post_title . ']]></title>
-<link>' . $p_link . '</link>
-<guid>' . $v->ID . '</guid>
-<pubDate>' . $pubDate[0] . 'T' . $pubDate[1] . 'Z</pubDate>
-<author><![CDATA[' . $_eb_product_source_author . ']]></author>
-<description><![CDATA[' . $v->post_excerpt . ']]></description>
-<content:encoded><![CDATA[<!doctype html>
+	$content = FB_IA_remove_attr( $content );
+	$content = FB_IA_change_tag( $content );
+	
+	
+	// IA HTML content
+	$IA_HTML_content = '<html>
+  <head>
+    <link rel="canonical" href="' . $p_link . '"/>
+    <meta charset="utf-8"/>
+    <meta property="op:generator" content="facebook-instant-articles-sdk-php"/>
+    <meta property="op:generator:version" content="1.10.0"/>
+    <meta property="op:generator:application" content="facebook-instant-articles-wp"/>
+    <meta property="op:generator:application:version" content="4.2.1"/>
+    <meta property="op:generator:transformer" content="facebook-instant-articles-sdk-php"/>
+    <meta property="op:generator:transformer:version" content="1.10.0"/>
+    <meta property="op:markup_version" content="v1.0"/>
+    <meta property="fb:article_style" content="default"/>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>' . $v->post_title . '</h1>
+        <time class="op-published" datetime="' . $pubDate[0] . 'T' . $pubDate[1] . '+07:00">' . date( 'F jS, H:ia', strtotime( $v->post_date ) ) . '</time>
+        <time class="op-modified" datetime="' . $pubModified[0] . 'T' . $pubModified[1] . '+07:00">' . date( 'F jS, H:ia', strtotime( $v->post_modified ) ) . '</time>
+        <address><a>' . $_eb_product_source_author . '</a></address>
+      </header>
+	' . $content . '
+    </article>
+  </body>
+</html>';
+	
+	// v1
+	/*
+	$IA_HTML_content = '<!doctype html>
 <html lang="' . $__cf_row['cf_content_language'] . '" prefix="op: http://media.facebook.com/op#">
 <head>
 <meta charset="utf-8">
@@ -65,7 +234,19 @@ $rss_content .= ' <item>
 </footer>
 </article>
 </body>
-</html>]]></content:encoded>
+</html>';
+	*/
+	
+	
+	//
+$rss_content .= ' <item>
+<title><![CDATA[' . $v->post_title . ']]></title>
+<link>' . $p_link . '</link>
+<guid>' . $v->ID . '</guid>
+<pubDate>' . $pubDate[0] . 'T' . $pubDate[1] . 'Z</pubDate>
+<author><![CDATA[' . $_eb_product_source_author . ']]></author>
+<description><![CDATA[' . $v->post_excerpt . ']]></description>
+<content:encoded><![CDATA[' . $IA_HTML_content . ']]></content:encoded>
 </item>';
 
 }
