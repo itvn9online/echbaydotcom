@@ -249,6 +249,10 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 //		$arr_meta[] = '<meta property="fb:admins" content="' .$__cf_row ['cf_facebook_admin_id']. '" />';
 	}
 	
+	if ( $__cf_row ['cf_facebook_page_id'] != '' ) {
+		$arr_meta[] = '<meta property="fb:pages" content="' . $__cf_row ['cf_facebook_page_id'] . '" />';
+	}
+	
 	/* https://developers.facebook.com/tools/debug/og/object/
 	if ( $__cf_row ['cf_facebook_page'] != '' ) {
 		$arr_meta[] = '<meta property="article:publisher" content="' . $__cf_row ['cf_facebook_page'] . '" />';

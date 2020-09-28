@@ -68,6 +68,7 @@ $__cf_row_default = array(
 	'cf_bank' => '',
 	
 	'cf_facebook_page' => '',
+	'cf_facebook_page_id' => '',
 	'cf_facebook_id' => '',
 	'cf_facebook_admin_id' => '',
 	'cf_instagram_page' => '',

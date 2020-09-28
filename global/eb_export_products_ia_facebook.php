@@ -200,6 +200,7 @@ foreach ( $sql as $v ) {
     <meta property="op:generator:transformer:version" content="1.10.0"/>
     <meta property="op:markup_version" content="v1.0"/>
     <meta property="fb:article_style" content="default"/>
+	<meta property="fb:pages" content="' . $__cf_row ['cf_facebook_page_id'] . '"/>
   </head>
   <body>
     <article>
