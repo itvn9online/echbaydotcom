@@ -12,7 +12,7 @@ if ( ! isset( $_GET['file_name'] ) ) {
 }
 
 //
-$file_source = $_GET['img'];
+$file_source = urldecode( $_GET['img'] );
 
 
 // thư mục download
@@ -60,7 +60,7 @@ if ( ! file_exists( $save_to ) ) {
 	
 	$post_excerpt = '';
 	if ( isset( $_GET['img_title'] ) ) {
-		$post_excerpt = trim($_GET['img_title']);
+		$post_excerpt = urldecode( trim($_GET['img_title']) );
 	}
 	
 	$arr_set_attachment = array(
@@ -116,16 +116,47 @@ if ( ! file_exists( $save_to ) ) {
 			$re_copy_file = 1;
 		}
 		
-		if( $re_copy_file === 1 && copy( $file_source, $save_to ) ) {
-			chmod($save_to, 0777) or die('ERROR chmod file: ' . $save_to);
-			
-			if ( $post_ID > 0 ) {
-//				$arr_set_attachment['post_mime_type'] = wp_check_filetype( $save_to, null );
-				_eb_sd( $arr_set_attachment, wp_posts );
+		if( $re_copy_file === 1 ) {
+			if( copy( $file_source, $save_to ) ) {
+				chmod($save_to, 0777) or die('ERROR chmod file: ' . $save_to);
+				
+				if ( $post_ID > 0 ) {
+//					$arr_set_attachment['post_mime_type'] = wp_check_filetype( $save_to, null );
+					_eb_sd( $arr_set_attachment, wp_posts );
+				}
+			}
+			else {
+				// https://stackoverflow.com/questions/4545790/file-get-contents-returns-403-forbidden
+				// https://www.php.net/manual/en/function.copy.php
+				if ( function_exists('stream_context_create') ) {
+					$re_copy_file = stream_context_create([
+						'http' => array(
+							'method' => 'GET',
+							'protocol_version' => 1.1,
+							'follow_location' => 1,
+							'header' => 'User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+						)
+					]);
+					
+					if( copy( $file_source, $save_to, $re_copy_file ) ) {
+						chmod($save_to, 0777) or die('ERROR chmod file: ' . $save_to);
+						
+						if ( $post_ID > 0 ) {
+//							$arr_set_attachment['post_mime_type'] = wp_check_filetype( $save_to, null );
+							_eb_sd( $arr_set_attachment, wp_posts );
+						}
+					}
+					else {
+						die('ERROR copy file');
+					}
+				}
+				else {
+					die('stream_context_create not found!');
+				}
 			}
 		}
 		else {
-			die('ERROR copy file');
+			die('stream_context_set_default not found!');
 		}
 	}
 }
