@@ -4,7 +4,11 @@
 
 /*
 * Đây là ví dụ về nguồn cấp RSS 2.0 được tối ưu hóa cho Bài viết tức thời:
-https://developers.facebook.com/docs/instant-articles/publishing/setup-rss-feed#sample-feed*/
+https://developers.facebook.com/docs/instant-articles/publishing/setup-rss-feed#sample-feed
+
+Hoặc cài thêm Plugin IA Facebook rồi xem theo link sau:
+http://www.yoursite.com/feed/instant-articles
+*/
 
 
 function FB_IA_change_tag ( $str ) {
@@ -186,9 +190,24 @@ foreach ( $sql as $v ) {
 	$content = FB_IA_remove_attr( $content );
 	$content = FB_IA_change_tag( $content );
 	
+	//
+	$op_kicker = '';
+	$post_categories = wp_get_post_categories( $v->ID );
+//	print_r( $post_categories );
+	if ( ! empty( $post_categories ) ) {
+		$cat = get_term( $post_categories[0] );
+//		print_r( $cat );
+		
+//		if ( ! empty( $cat ) ) {
+		if ( isset( $cat->name ) ) {
+			$op_kicker = '<h3 class="op-kicker">' . $cat->name . '</h3>';
+		}
+	}
+	
 	
 	// IA HTML content
-	$IA_HTML_content = '<html>
+	$IA_HTML_content = '<!doctype html>
+<html>
   <head>
     <link rel="canonical" href="' . $p_link . '"/>
     <meta charset="utf-8"/>
@@ -200,7 +219,6 @@ foreach ( $sql as $v ) {
     <meta property="op:generator:transformer:version" content="1.10.0"/>
     <meta property="op:markup_version" content="v1.0"/>
     <meta property="fb:article_style" content="default"/>
-	<meta property="fb:pages" content="' . $__cf_row ['cf_facebook_page_id'] . '"/>
   </head>
   <body>
     <article>
@@ -209,6 +227,7 @@ foreach ( $sql as $v ) {
         <time class="op-published" datetime="' . $pubDate[0] . 'T' . $pubDate[1] . '+07:00">' . date( 'F jS, H:ia', strtotime( $v->post_date ) ) . '</time>
         <time class="op-modified" datetime="' . $pubModified[0] . 'T' . $pubModified[1] . '+07:00">' . date( 'F jS, H:ia', strtotime( $v->post_modified ) ) . '</time>
         <address><a>' . $_eb_product_source_author . '</a></address>
+		' . $op_kicker . '
       </header>
 	' . $content . '
     </article>
@@ -240,14 +259,15 @@ foreach ( $sql as $v ) {
 	
 	
 	//
-$rss_content .= ' <item>
-<title><![CDATA[' . $v->post_title . ']]></title>
+$rss_content .= '<item>
+<title>' . $v->post_title . '</title>
 <link>' . $p_link . '</link>
-<guid>' . $v->ID . '</guid>
-<pubDate>' . $pubDate[0] . 'T' . $pubDate[1] . 'Z</pubDate>
-<author><![CDATA[' . $_eb_product_source_author . ']]></author>
-<description><![CDATA[' . $v->post_excerpt . ']]></description>
 <content:encoded><![CDATA[' . $IA_HTML_content . ']]></content:encoded>
+<guid isPermaLink="false">' . $p_link . '</guid>
+<description><![CDATA[' . $v->post_excerpt . ']]></description>
+<pubDate>' . $pubDate[0] . 'T' . $pubDate[1] . '+07:00</pubDate>
+<modDate>' . $pubModified[0] . 'T' . $pubModified[1] . '+07:00</modDate>
+<author>' . $_eb_product_source_author . '</author>
 </item>';
 
 }
@@ -256,14 +276,14 @@ $rss_content .= ' <item>
 
 
 // tổng hợp lại
-$rss_content = '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+$rss_content = '<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
 <title>' . $__cf_row['cf_web_name'] . ' RSS</title>
 <link>' . web_link . '</link>
 <description>' . $__cf_row['cf_description'] . '</description>
-<language>' . $__cf_row['cf_content_language'] . '</language>
-<lastBuildDate>' . date('Y-m-d', date_time) . 'T' . date('H:m:i', date_time) . 'Z</lastBuildDate>
 ' . $rss_content . '
+<lastBuildDate>' . date('Y-m-d', date_time) . 'T' . date('H:m:i', date_time) . '+07:00</lastBuildDate>
 </channel>
 </rss>';
 	
