@@ -154,15 +154,15 @@ foreach ( $sql as $v ) {
 	$arr_post_options = wp_get_object_terms( $v->ID, 'post_options' );
 //	if ( mtv_id == 1 ) {
 //		print_r($arr_post_options);
-		foreach ( $arr_post_options as $v ) {
-			if ( $v->parent > 0 ) {
+		foreach ( $arr_post_options as $c ) {
+			if ( $c->parent > 0 ) {
 //				$brand_product_category = 0;
-				$brand_product_category = _eb_get_cat_object( $v->parent, '_eb_category_status', 0 );
+				$brand_product_category = _eb_get_cat_object( $c->parent, '_eb_category_status', 0 );
 //				echo $brand_product_category . '<br>' ."\n";
 				
 				// trạng thái của thương hiệu
 				if ( $brand_product_category == 9 ) {
-					$product_rss_brand = $v->name;
+					$product_rss_brand = $c->name;
 					break;
 				}
 			}
