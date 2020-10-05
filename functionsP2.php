@@ -2712,6 +2712,10 @@ $arr_object_term_meta = array();
 function _eb_get_cat_object ( $id, $key, $default_value = '' ) {
 	global $arr_object_term_meta;
 	
+	if ( $id <= 0 ) {
+		return $default_value;
+	}
+	
 	/*
 	echo '============================<br>' . "\n";
 	print_r( $id );
@@ -2867,6 +2871,10 @@ function _eb_get_ads_object ( $id, $key, $default_value = '' ) {
 $arr_object_post_meta = array();
 
 function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_post_obj_data, $meta_convert = '_eb_product_' ) {
+	
+	if ( $id <= 0 ) {
+		return $default_value;
+	}
 	
 	//
 	/*

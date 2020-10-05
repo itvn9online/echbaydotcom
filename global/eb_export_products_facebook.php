@@ -148,6 +148,28 @@ foreach ( $sql as $v ) {
 		}
 //	}
 	
+	
+	// xác định thương hiệu nếu có
+	$product_rss_brand = $rss_brand;
+	$arr_post_options = wp_get_object_terms( $v->ID, 'post_options' );
+//	if ( mtv_id == 1 ) {
+//		print_r($arr_post_options);
+		foreach ( $arr_post_options as $v ) {
+			if ( $v->parent > 0 ) {
+//				$brand_product_category = 0;
+				$brand_product_category = _eb_get_cat_object( $v->parent, '_eb_category_status', 0 );
+//				echo $brand_product_category . '<br>' ."\n";
+				
+				// trạng thái của thương hiệu
+				if ( $brand_product_category == 9 ) {
+					$product_rss_brand = $v->name;
+					break;
+				}
+			}
+		}
+//	}
+	
+	
 	//
 	$google_product_category = '';
 	$cat_gender = '';
@@ -229,7 +251,7 @@ $rss_content .= '<item>
 <g:title><![CDATA[' . $v->post_title . ']]></g:title>
 <g:price>' . $before_price . $price . $after_price . '</g:price>' . $add_on_data . '
 <g:gender><![CDATA[' . $arr_sex_lang_xml[$post_gender] . ']]></g:gender>
-<g:brand>' . $rss_brand . '</g:brand>
+<g:brand>' . $product_rss_brand . '</g:brand>
 </item>';
 
 }

@@ -362,6 +362,7 @@ $arr_eb_category_status = array(
 	6 => 'Định dạng cho kích cỡ',
 	7 => 'Định dạng cho màu sắc',
 	8 => 'Định dạng cho khoảng giá',
+	9 => 'Định dạng cho Thương hiệu'
 );
 
 
