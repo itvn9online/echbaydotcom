@@ -287,9 +287,9 @@ var khong_chay_function_o_theme_nua = 0;
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if ( isLogin > 0 && logout_url != '' ) {
-	jQuery('.oi_member_func').html( '<a href="' + web_link + 'profile" class="bold"><i class="fa fa-user"></i> ' + lang_taikhoan + '</a> <a onclick="return confirm(\'' + lang_xacnhan_thoat + '\');" href="' +logout_url+ '">' + lang_thoat + '</a>' );
+	jQuery('.oi_member_func').html( '<a href="' + web_link + 'profile" class="bold"><i class="fa fa-user"></i> <span>' + lang_taikhoan + '</span></a> <a onclick="return confirm(\'' + lang_xacnhan_thoat + '\');" href="' +logout_url+ '"><span>' + lang_thoat + '</span></a>' );
 } else {
-	jQuery('.oi_member_func').html( '<a href="javascript:;" onclick="g_func.opopup(\'login\');"><i class="fa fa-user"></i> ' + lang_dangnhap + '</a> <a onclick="g_func.opopup(\'register\');" href="javascript:;">' + lang_dangky + '</a>' );
+	jQuery('.oi_member_func').html( '<a href="javascript:;" onclick="g_func.opopup(\'login\');"><i class="fa fa-user"></i> <span>' + lang_dangnhap + '</span></a> <a onclick="g_func.opopup(\'register\');" href="javascript:;"><span>' + lang_dangky + '</span></a>' );
 }
 //jQuery('.oi_member_func').addClass('fa fa-user');
 

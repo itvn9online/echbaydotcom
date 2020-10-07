@@ -248,7 +248,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 //		if ( ! is_dir( $dir_source_update ) ) {
 			echo 'dir not found: ' . $dir_source_update . '<br>' . "\n";
 			echo '* <em>Kiểm tra module zip.so đã có trong thư mục <strong>/usr/lib64/php/modules/</strong> chưa! Nếu chưa có thì cần cài đặt bổ sung:<br>
-			Với PHP 7.1++: <strong>sudo yum -y install php-pecl-zip php-zip</strong><br>
+			Với PHP 7.1++: <strong>sudo yum -y install php-pecl-zip php-zip ; service php-fpm restart</strong><br>
 			Với các bản PHP 7.0 trở xuống: <strong>yes "" | pecl install zip</strong></em>';
 			return false;
 //		}
