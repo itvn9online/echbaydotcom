@@ -48,8 +48,12 @@ else {
 	define( 'using_child_wgr_theme', 0 );
 }
 
-
-
+if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
+	include EB_THEME_URL . 'private_setting.php';
+}
+else {
+	include EB_THEME_PLUGIN_INDEX . 'private_setting.php';
+}
 
 
 // danh sách toàn bộ các theme được hỗ trợ
