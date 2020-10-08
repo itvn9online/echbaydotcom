@@ -337,7 +337,7 @@ function _eb_checkPostServerClient() {
 	// kiểm tra get_magic_quotes_gpc đang bật hay tắt
 	// Magic_quotes_gpc là 1 giá trị tùy chọn bật chế độ tự động thêm ký tự escape vào trước các ký tự đặc biệt như: nháy đơn ('), nháy kép ("), dấu backslash (\) khi nó đc POST hoặc GET từ client lên
 	$magic_quotes = 0;
-	if ( get_magic_quotes_gpc () ) {
+	if ( function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc () ) {
 		$magic_quotes = 1;
 	}
 //	echo $magic_quotes . '<br>' . "\n";
@@ -3493,7 +3493,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 	
 	// xử lý an toàn cho chuỗi trước khi update
 	$value = WGR_stripslashes ( trim( $value ) );
-	if ( ! get_magic_quotes_gpc () ) {
+	if ( ! function_exists('get_magic_quotes_gpc') || ! get_magic_quotes_gpc () ) {
 		$value = addslashes ( $value );
 	}
 	
