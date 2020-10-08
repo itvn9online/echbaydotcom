@@ -9,6 +9,7 @@ function WGR_admin_lang ( $k ) {
 //		'_eb_category_old_url' => 'URL cũ (nếu có)',
 //		'_eb_category_leech_url' => 'URL đồng bộ',
 		'_eb_category_primary' => 'Đặt làm nhóm chính',
+		'_eb_category_in_list' => 'Hiển thị trong danh mục',
 		
 		//
 //		'_eb_category_title' => 'Title',

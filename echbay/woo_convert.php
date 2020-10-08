@@ -79,6 +79,8 @@ else if ( $mt == 'woo' ) {
 	WGR_woo_convert( '_sku', '_eb_product_sku' );
 	WGR_woo_convert( '_regular_price', '_eb_product_oldprice' );
 	WGR_woo_convert( '_sale_price', '_eb_product_price' );
+	WGR_woo_convert( '_price', '_eb_product_price' );
+	WGR_woo_convert( '_wc_booking_qty', '_eb_product_quantity' );
 }
 // for yoast seo
 else if ( $mt == 'yoast' ) {

@@ -195,6 +195,7 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_category_order' => 'number',
 	'_eb_category_leech_url' => 'hidden',
 	'_eb_category_primary' => 'checkbox',
+	'_eb_category_in_list' => 'checkbox',
 	'_eb_category_content' => 'textarea',
 	'_eb_category_noindex' => 'checkbox',
 	'_eb_category_hidden' => 'checkbox',
@@ -230,6 +231,7 @@ $eb_arr_placeholder_custom_meta_box = array(
 	'_eb_category_old_url' => 'Khi người dùng truy cập vào URL này, hệ thống sẽ redirect 301 về URL mới',
 //	'_eb_category_primary' => 'Sử dụng khi bạn muốn các post_option sử dụng chung với category. Nếu là nhóm chính, sẽ có nhiều quyền ưu tiên hơn, VD: tạo sản phẩm liên quan...',
 	'_eb_category_primary' => 'Trong các module lấy sản phẩm, tạo menu... nếu có sự xuất hiện của nhóm chính thì sản phẩm trong nhóm đó sẽ được ưu tiên hơn.',
+	'_eb_category_in_list' => 'Nhóm được đánh dấu sẽ được lấy thông tin để hiển thị trong phần danh sách sản phẩm theo {tmp.slug}',
 	'_eb_category_noindex' => 'Ngăn chặn các công cụ tìm kiếm đánh chỉ mục Danh mục này.',
 	'_eb_category_hidden' => 'Trong một số trường hợp, bạn tạm thời không muốn nhóm này xuất hiện thì sử dụng chức năng này để ẩn nó đi.',
 	
@@ -671,6 +673,7 @@ $arr_category_custom_fields['_eb_category_hidden'] = WGR_admin_lang('_eb_categor
 $arr_category_custom_fields['_eb_category_old_url'] = WGR_admin_lang('_eb_product_old_url');
 $arr_category_custom_fields['_eb_category_leech_url'] = WGR_admin_lang('_eb_product_leech_source');
 $arr_category_custom_fields['_eb_category_primary'] = WGR_admin_lang('_eb_category_primary');
+$arr_category_custom_fields['_eb_category_in_list'] = WGR_admin_lang('_eb_category_in_list');
 
 
 

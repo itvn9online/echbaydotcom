@@ -230,9 +230,13 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 
             // các thuộc tính chỉ ở sản phẩm mới có
             $post->trv_masanpham = _eb_get_post_object($post->ID, '_eb_product_sku', $post->ID);
-
+			
             $post->trv_mua = (int) _eb_get_post_object($post->ID, '_eb_product_buyer', 0);
             $post->trv_luotmua = $post->trv_mua;
+			
+            $post->trv_soluong = (int) _eb_get_post_object($post->ID, '_eb_product_quantity', 0);
+			
+            $post->trv_soluongconlai = $post->trv_soluong - $post->trv_mua;
 			
             $post->trv_xem = (int) _eb_get_post_object($post->ID, '_eb_product_views', 0);
             $post->trv_luotxem = number_format($post->trv_xem);
@@ -394,6 +398,12 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
       $post->trv_img = 'speed';
       $post->trv_mobile_img = 'ebp' . $post->ID;
      */
+	
+	global $arr_object_post_meta;
+	if ( array_key_exists ( 'id' . $post->ID, $arr_object_post_meta ) ) {
+//		print_r( $arr_object_post_meta['id' . $post->ID] );
+		$html = EBE_arr_tmp($arr_object_post_meta['id' . $post->ID], $html);
+	}
 
     //
     return EBE_arr_tmp($post, $html);
