@@ -374,9 +374,17 @@ function ___eb_set_url_for_search_price_in_button(clat) {
 
     // chỉ tìm ở trang danh sách sản phẩm
     if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
-        if (WGR_check_option_on(cf_tester_mode))
+        if (WGR_check_option_on(cf_tester_mode)) {
             console.log('search price is active, but run only category page -> STOP.');
+		}
     }
+    else if (switch_taxonomy == 'category' || switch_taxonomy == 'post_options') {
+	}
+	else {
+        if (WGR_check_option_on(cf_tester_mode)) {
+            console.log('search price is active, but run only category page -> STOP.');
+		}
+	}
 
     //
     if (typeof clat == 'undefined' || clat == '') {
@@ -468,11 +476,25 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
      */
 
     // chỉ tìm ở trang danh sách sản phẩm
+	/*
     if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
         if (WGR_check_option_on(cf_tester_mode))
             console.log('search advanced is active, but run only category page -> STOP.');
         return false;
     }
+	*/
+    if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
+        if (WGR_check_option_on(cf_tester_mode)) {
+            console.log('search price is active, but run only category page -> STOP.');
+		}
+    }
+    else if (switch_taxonomy == 'category' || switch_taxonomy == 'post_options') {
+	}
+	else {
+        if (WGR_check_option_on(cf_tester_mode)) {
+            console.log('search price is active, but run only category page -> STOP.');
+		}
+	}
 
     //
     if (typeof clat == 'undefined' || clat == '') {

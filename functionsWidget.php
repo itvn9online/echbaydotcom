@@ -809,7 +809,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		}
 		
 		//
-		$html_node = WGR_add_li_to_thread_node( EBE_get_page_template( $html_node ) );
+		$html_node = EBE_get_page_template( $html_node );
 		
 		// chỉnh lại kích thước nếu có
 		if ( $custom_size != '' ) {
@@ -1181,6 +1181,211 @@ function WGR_add_css_js_for_elementor_editer () {
 	*/
 	echo '<script>var url_for_add_elementor="' . str_replace( ABSPATH, web_link, EB_THEME_PLUGIN_INDEX ) . '";</script>
 	<script src="' . str_replace( ABSPATH, web_link, $f ) . '?v=' . filemtime( $f ) . '"></script>';
+}
+
+
+
+// category function
+function EBE_widget_categories_get_child( $term_id, $cat_type, $show_count, $widget_id ) {
+	$arrs_child_cats = get_categories( array(
+		'taxonomy' => $cat_type,
+		/*
+		'orderby' => 'meta_value_num',
+		'meta_query' => array(
+			'key' => '_eb_category_order',
+			'type' => 'NUMERIC'
+		),
+		*/
+		'orderby' => 'slug',
+//		'order'   => 'ASC',
+		'parent' => $term_id
+	) );
+//	print_r($arrs_child_cats);
+	
+//	if ( count( $arrs_child_cats ) > 0 ) {
+	if ( ! empty( $arrs_child_cats ) ) {
+		
+		echo '<ul class="sub-menu">';
+		
+		//
+		$arrs_child_cats = WGR_order_and_hidden_taxonomy( $arrs_child_cats );
+		
+		foreach ( $arrs_child_cats as $v2 ) {
+//			if ( _eb_get_cat_object( $v2->term_id, '_eb_category_hidden', 0 ) != 1 ) {
+				$hien_thi_sl = '';
+				if ( $show_count == 'on' ) {
+					$hien_thi_sl = ' (' . $v->count . ')';
+				}
+				
+				echo '<li class="cat-item cat-item-' . $v2->term_id . '"><a data-taxonomy="' . $cat_type . '" data-id="' . $v2->term_id . '" data-parent="' . $term_id . '" data-node-id="' . $widget_id . '" title="' . $v2->name . '" href="' . _eb_c_link( $v2->term_id ) . '" >' . $v2->name . '</a></li>';
+//			}
+		}
+		
+		echo '</ul>';
+	}
+}
+
+
+function EBE_widget_get_parent_cat ( $id, $cat_type = 'category' ) {
+	if ( $id > 0 ) {
+//		$a = get_term_by( 'id', $id, $cat_type );
+		$a = get_term( $id, $cat_type );
+//		print_r( $a );
+		
+		// nếu không có nhóm cha -> nhóm này nhất rồi
+		if ( ! empty( $a ) ) {
+			if ( $a->parent == 0 ) {
+				return $a;
+			} else {
+				return EBE_widget_get_parent_cat ( $a->parent, $cat_type );
+			}
+		}
+	}
+	
+	return array();
+}
+
+
+// tạo câu lệnh select thủ công để kiểm tra post có tồn tại không
+function WGR_custom_check_post_in_multi_taxonomy_v1 ( $cat1, $cat2 ) {
+	global $wpdb;
+	
+	//
+//	$strFilter = " AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
+//	$strFilter = " AND `" . $wpdb->term_relationships . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
+	$strFilter = " AND `" . wp_posts . "`.ID IN ( select object_id from `" . $wpdb->term_relationships . "` " . $cat1 . ',' . $cat2 . ") ";
+	
+	//
+	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
+//	$joinFilter .= " LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
+	$joinFilter = "";
+	
+	//
+	$sql = "SELECT ID
+	FROM
+		`" . wp_posts . "`
+		" . $joinFilter . "
+	WHERE
+		`" . wp_posts . "`.post_type = 'post'
+		AND `" . wp_posts . "`.post_status = 'publish'
+		" . $strFilter . "
+	ORDER BY
+		`" . wp_posts . "`.ID DESC
+	LIMIT 0, 1";
+	echo $sql . '<br>' . "\n";
+	$sql = _eb_q( $sql );
+	print_r( $sql );
+	
+	//
+	if ( empty( $sql ) ) {
+		return 0;
+	}
+	echo _eb_p_link( $sql[0]->ID ) . '<br>' . "\n";
+	
+	//
+	return 1;
+}
+
+function WGR_custom_check_post_in_multi_taxonomy_v2 ( $cat1, $cat2 ) {
+	global $wpdb;
+	
+	//
+//	$strFilter = " AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
+//	$strFilter = " AND `" . $wpdb->term_relationships . "`.term_id IN (" . $cat1 . ',' . $cat2 . ") ";
+	$strFilter = " AND ID IN ( select object_id from `" . $wpdb->term_relationships . "` where term_taxonomy_id in (" . $cat1 . ',' . $cat2 . ") ) ";
+	
+	//
+//	$joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id) ";
+//	$joinFilter .= " LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
+	$joinFilter = "";
+	
+	//
+	$sql = "SELECT ID
+	FROM
+		`" . wp_posts . "`
+		" . $joinFilter . "
+	WHERE
+		post_type = 'post'
+		AND post_status = 'publish'
+		" . $strFilter . "
+	ORDER BY
+		ID DESC
+	LIMIT 0, 1";
+	echo $sql . '<br>' . "\n";
+	$sql = _eb_q( $sql );
+	print_r( $sql );
+	
+	//
+	if ( empty( $sql ) ) {
+		return 0;
+	}
+	echo _eb_p_link( $sql[0]->ID ) . '<br>' . "\n";
+	
+	//
+	return 1;
+}
+
+function WGR_custom_check_post_in_multi_taxonomy ( $cat1, $cat2 ) {
+	global $wpdb;
+	
+	// lấy và chạy vòng lặp để so dữ liệu
+	$sql = "SELECT object_id
+	FROM
+		`" . $wpdb->term_relationships . "`
+	WHERE
+		term_taxonomy_id = " . $cat1 . " OR term_taxonomy_id = " . $cat2 . "
+	ORDER BY
+		object_id DESC
+	LIMIT 0, 500";
+//	echo $sql . '<br>' . "\n";
+	$sql = _eb_q( $sql );
+//	print_r( $sql );
+	
+	$num = 0;
+	foreach ( $sql as $v ) {
+		// dùng chính object_id để order -> chạy vòng lặp sẽ phát hiện ra sản phẩm trùng nhau luôn
+		if ( $v->object_id == $num ) {
+//			echo _eb_p_link( $v->object_id ) . '<br>' . "\n";
+			return 1;
+		}
+		$num = $v->object_id;
+	}
+	
+	//
+	return 0;
+	
+}
+
+function WGR_check_post_in_multi_taxonomy ( $a ) {
+
+	print_r( $a );
+	
+	$sql_check = _eb_load_post_obj( 1, $a );
+	print_r( $sql_check );
+	echo count( $sql_check->posts ) . '<br>' . "\n";
+	
+	return count( $sql_check->posts );
+//	wp_reset_postdata();
+	
+}
+
+
+function WGR_widget_categories_get_by_option ( $v, $op ) {
+	$hien_thi_sl = '';
+	if ( $op['show_count'] == 'on' ) {
+		$hien_thi_sl = ' (' . $v->count . ')';
+	}
+	
+	//
+//	echo '<li class="cat-item cat-item-' . $v->term_id . '" style="order:' . _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) ) . ';">' . $op['dynamic_tag_begin'] . '<a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $op['cat_ids'] . '" data-node-id="' . $op['widget_id'] . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $op['dynamic_tag_end'];
+	echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $op['dynamic_tag_begin'] . '<a data-taxonomy="' . $v->taxonomy . '" data-id="' . $v->term_id . '" data-parent="' . $op['cat_ids'] . '" data-node-id="' . $op['widget_id'] . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $op['dynamic_tag_end'];
+	
+	//
+	if ( $op['get_child'] == true ) {
+		EBE_widget_categories_get_child( $v->term_id, $op['cat_type'], $op['show_count'], $op['widget_id'] );
+	}
+	
+	echo '</li>';
 }
 
 

@@ -4,10 +4,10 @@
 /*
 * Widget danh mục sản phẩm hiện tại đang xem
 */
-class ___echbay_widget_list_current_category extends WP_Widget {
+class ___echbay_category_search_advanced extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_category', 'EchBay categories', array (
-			'description' => 'Tạo danh sách danh mục sản phẩm hiện tại đang xem.' 
+		parent::__construct ( 'echbay_category_search_advanced', 'Category search advanced', array (
+				'description' => 'Chức năng tìm kiếm nâng cao theo danh mục sản phẩm, thuộc tính sản phẩm hoặc blog tin tức' 
 		) );
 	}
 	
@@ -16,7 +16,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		
 		//
 		$default = array (
-			'title' => 'EchBay category',
+			'title' => 'Tìm kiếm nâng cao',
 			'show_count' => '',
 			'cat_ids' => 0,
 			'cat_status' => 0,
@@ -27,8 +27,7 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 			'get_parent' => '',
 			'show_for_search_advanced' => '',
 			'show_image' => '',
-			'show_content' => '',
-			'dynamic_tag' => 'h2',
+			'dynamic_tag' => 'div',
 			'custom_style' => ''
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $default );
@@ -148,12 +147,6 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_image' ], 'Hiển thị ảnh đại diện của nhóm' );
 		
 		
-		$input_name = $this->get_field_name ( 'show_content' );
-//		echo $instance[ 'show_content' ];
-		
-		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'show_content' ], 'Hiển thị nội dung của nhóm chính (trong trường hợp có chọn nhóm cụ thể)' );
-		
-		
 		//
 		echo '<p>HTML tag cho tiêu đề: ';
 		
@@ -225,7 +218,6 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 //		$show_for_search_advanced = ( $show_for_search_advanced == 'on' ) ? true : false;
 		
 		$show_image = isset( $instance ['show_image'] ) ? $instance ['show_image'] : 'off';
-		$show_content = isset( $instance ['show_content'] ) ? $instance ['show_content'] : 'off';
 		
 		$dynamic_tag = isset( $instance ['dynamic_tag'] ) ? $instance ['dynamic_tag'] : '';
 		$dynamic_tag_begin = '';
@@ -294,12 +286,14 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 		}
 //		print_r( $cats_info );
 //		echo $cat_type . '<br>' . "\n";
+//		echo eb_code_tester . '<br>' . "\n";
+//		echo $show_for_search_advanced . '<br>' . "\n";
 		
 		
 		// lấy danh sách nhóm chính
 		$arrs_cats = get_categories( array(
 			'taxonomy' => $cat_type,
-//			'hide_empty' => 0,
+//			'hide_empty' => eb_code_tester == true ? 0 : 1,
 			'hide_empty' => $show_for_search_advanced == 'off' ? 0 : 1,
 			/*
 			'orderby' => 'meta_value_num',
@@ -361,58 +355,8 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 //			$before_title
 		);
 		
-		// content
-		if ( $show_content != 'off' && $cat_ids > 0 ) {
-//			echo $cat_ids;
-			
-			// nếu dùng plugin seo của echbay
-			if ( cf_on_off_echbay_seo == 1 ) {
-				// lấy content bởi echbay
-				$cats_description = _eb_get_cat_object( $cat_ids, '_eb_category_content' );
-				
-				// nếu không có content -> lấy description mặc định
-				if ( $cats_description == '' ) {
-					// mặc định thì EchBay không hỗ trợ HTML -> thêm BR vào description
-					$cats_description = category_description( $cat_ids );
-				}
-				/*
-				else {
-					$cats_description = '<div class="each-to-fix-ptags">' . $cats_description . '</div>';
-				}
-				*/
-			}
-			// còn lại, thử kiểm tra xem trước có dùng plugin seo của EchBay không
-			else {
-				$cats_description = category_description( $cat_ids );
-				
-				if ( $cats_description == '' ) {
-					$cats_description = _eb_get_cat_object( $cat_ids, '_eb_category_content' );
-				}
-				/*
-				else {
-					$cats_description = nl2br( $cats_description );
-				}
-				*/
-			}
-			
-			//
-			if ( $cats_description != '' ) {
-				global $__cf_row;
-				
-				//
-				echo '
-				<div>
-					<div class="thread-content-bmask' . ( $__cf_row['cf_set_mask_for_details'] == 1 ? ' active-content-mask' : '' ) . '">
-						<div data-tag="p" class="global-cats-description ul-default-style each-to-fix-ptags img-max-width">' . $cats_description . '</div>
-						<div class="thread-content-mask">&nbsp;</div>
-					</div>
-					<div class="text-right viewmore-cats-description d-none"><a href="javascript:;" class="click-viewmore-cats-description">Xem thêm</a></div>
-				</div>';
-			}
-		}
-		
 		//
-		echo '<ul class="echbay-category-in-js cf">';
+		echo '<ul class="category-search-advanced cf">';
 //		echo '<ul>';
 		
 		
@@ -469,7 +413,6 @@ class ___echbay_widget_list_current_category extends WP_Widget {
 				}
 				
 				//
-//				echo '<li class="cat-item cat-item-' . $v->term_id . '" style="order:' . _eb_number_only( _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 ) ) . ';">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '" >' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				
 				//
