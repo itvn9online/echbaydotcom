@@ -14,11 +14,11 @@ $__cf_row_default = array(
 	// tls, ssl
 	'cf_smtp_encryption' => '',
 	
-	'cf_title' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',
-	'cf_meta_title' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',
+	'cf_title' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
+	'cf_meta_title' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
 	'cf_keywords' => 'wordpress e-commerce plugin, echbay.com, thiet ke web chuyen nghiep',
 	'cf_news_keywords' => 'wordpress e-commerce plugin, echbay.com, thiet ke web chuyen nghiep',
-	'cf_description' => 'Một website sử dụng plugin thương mại điện tử của EchBay.com',
+	'cf_description' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
 	'cf_abstract' => '',
 	
 	'cf_google_product_category' => '',

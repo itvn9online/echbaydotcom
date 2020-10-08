@@ -6,6 +6,8 @@
 
 // chức năng cho hoặc không cho truy cập vào 1 file nào đó
 function WGR_deny_or_accept_vist_php_file ( $progress_file, $deny_or_accept, $warning_content ) {
+	global $arr_private_info_setting;
+	
 	if ( file_exists( $progress_file ) ) {
 		$progress_content = file_get_contents( $progress_file, 1 );
 		$progress_content = explode( "\n", trim( $progress_content ) );
@@ -17,7 +19,7 @@ function WGR_deny_or_accept_vist_php_file ( $progress_file, $deny_or_accept, $wa
 		if ( $deny_or_accept != 1 ) {
 			// kiểm tra có lệnh die chưa -> như này là chưa add -> add thêm thôi
 			if ( $progress_content[0] == '<?php' || $progress_content[0] == '<?' ) {
-				$progress_content[0] = '<?php die("' . $warning_content . ' method has been disable by EchBay.com");';
+				$progress_content[0] = '<?php die("' . $warning_content . ' method has been disable by ' . $arr_private_info_setting['site_upper'] . '");';
 				
 				_eb_create_file( $progress_file, implode( "\n", $progress_content ) );
 			}

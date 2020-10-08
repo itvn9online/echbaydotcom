@@ -126,7 +126,7 @@ $main_content = $eb_amp->del_line ( $main_content );
 
 
 //
-$main_content .= '<!-- Phiên bản AMP cho website, viết bởi EchBay.com -->';
+$main_content .= '<!-- Phiên bản AMP cho website, viết bởi ' . $arr_private_info_setting['site_upper'] . ' -->';
 
 
 

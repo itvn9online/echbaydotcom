@@ -2,9 +2,9 @@
 
 
 $arr_private_info_setting = array(
-	'child_theme_default' => 'hostingviet-child',
-	'site_upper' => 'HostingViet.vn',
-	'site_url' => 'https://hostingviet.vn/',
+	'child_theme_default' => 'echbay-child',
+	'site_upper' => 'EchBay.com',
+	'site_url' => 'https://echbay.com/',
 	'author' => 'ẾchBay.com'
 );
 

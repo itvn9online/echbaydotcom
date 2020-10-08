@@ -3,7 +3,7 @@
 <meta name="RESOURCE-TYPE" content="DOCUMENT" />
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE AUTHOR" content="EchBay.Com" />
-<meta name="COPYRIGHT" content="Copyright (c) 2011 by EchBay.com - lienhe@echbay.com" />
+<meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - lienhe@echbay.com" />
 <!-- // META for design by EchBay -->
 <!-- EchBay SEO plugin - http://echbay.com/ -->
 <?php
@@ -126,7 +126,7 @@ $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_descri
 <meta name="description" content="<?php echo $__cf_row ['cf_description']; ?>" />
 <meta name="abstract" content="<?php echo $__cf_row ['cf_abstract'] != '' ? str_replace( '"', '&quot;', $__cf_row ['cf_abstract'] ) : $__cf_row ['cf_description']; ?>" />
 <meta name="RATING" content="GENERAL" />
-<meta name="GENERATOR" content="EchBay.com eCommerce Software" />
+<meta name="GENERATOR" content="<?php echo $arr_private_info_setting['site_upper']; ?> eCommerce Software" />
 <meta itemprop="name" content="<?php echo $__cf_row ['cf_title']; ?>" />
 <meta itemprop="description" content="<?php echo $__cf_row ['cf_description']; ?>" />
 <meta property="og:title" content="<?php echo $__cf_row ['cf_title']; ?>" />

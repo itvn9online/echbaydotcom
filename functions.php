@@ -406,12 +406,10 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 		$html = EBE_arr_tmp($arr_object_post_meta['id' . $post->ID], $html);
 	}
 	
-	// nếu có function xử lý thêm dữ liệu từ theme con -> gọi nó
-	/*
-	if ( function_exists('WGR_html_thread_list_in_child_theme') ) {
-		$html = WGR_html_thread_list_in_child_theme( $post->ID, $html );
+	// nếu có function xử lý thêm dữ liệu từ theme con -> gọi nó -> chủ yếu để ghi đè các trường dữ liệu thiếu -> đỡ xấu website
+	if ( function_exists('WGR_cleanup_tmp_in_child_theme') ) {
+		$html = WGR_cleanup_tmp_in_child_theme($html);
 	}
-	*/
 
     //
     return EBE_arr_tmp($post, $html);

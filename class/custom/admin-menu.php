@@ -57,6 +57,8 @@ function register_mysettings() {
 
 // tạo menu admin
 function echbay_create_admin_menu() {
+	global $arr_private_info_setting;
+	
 	// hiển thị menu dựa theo quyền
 	// từ quyền tác giả là được vào xem đơn
 	if ( current_user_can('publish_posts') ) {
@@ -74,7 +76,7 @@ function echbay_create_admin_menu() {
 	/*
 	* EchBay menu -> mọi người đều có thể nhìn thấy menu này
 	*/
-	add_menu_page('Danh sách đơn hàng', 'EchBay.com', 'read', $parent_slug, 'func_include_eb_private_code', NULL, 6);
+	add_menu_page('Danh sách đơn hàng', $arr_private_info_setting['site_upper'], 'read', $parent_slug, 'func_include_eb_private_code', NULL, 6);
 	
 	
 	/*
