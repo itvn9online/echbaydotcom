@@ -94,7 +94,7 @@ $html_search_nav_mobile = '';
 //
 //$str_fpr_license_echbay = '';
 //if ( $__cf_row['cf_on_off_echbay_logo'] == 1 ) {
-	$str_fpr_license_echbay = '<span class="powered-by-echbay">' . EBE_get_lang('poweredby') . ' <a href="#" title="Cung cấp bởi ẾchBay.com - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">EchBay.com</a></span>';
+	$str_fpr_license_echbay = '<span class="powered-by-echbay">' . EBE_get_lang('poweredby') . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting['author'] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting['site_upper'] . '</a></span>';
 //}
 
 
