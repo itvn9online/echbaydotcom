@@ -684,7 +684,7 @@ if (cf_hide_supper_admin_menu == 1) {
 //	console.log(a);
 
     //
-    jQuery('#wp-admin-bar-root-default').append('<li id="' + id_echbay_menu + '-top" class="menupop"><a href="javascript://" class="ab-item"><i class="fa fa-leaf"></i> EchBay.com</a></li>');
+    jQuery('#wp-admin-bar-root-default').append('<li id="' + id_echbay_menu + '-top" class="menupop"><a href="javascript://" class="ab-item"><i class="fa fa-leaf"></i> ' + private_info_setting_site_upper + '</a></li>');
 
     jQuery('#' + id_echbay_menu + '-top').append('<div class="ab-sub-wrapper"><ul id="' + id_echbay_menu + '-submenu" class="ab-submenu"></ul></div>');
 

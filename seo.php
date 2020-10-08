@@ -1,11 +1,11 @@
-<!-- META for design by EchBay - http://echbay.com/ -->
+<!-- META for design by EchBay - <?php echo $arr_private_info_setting['site_url']; ?> -->
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="RESOURCE-TYPE" content="DOCUMENT" />
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE AUTHOR" content="EchBay.Com" />
 <meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - lienhe@echbay.com" />
 <!-- // META for design by EchBay -->
-<!-- EchBay SEO plugin - http://echbay.com/ -->
+<!-- EchBay SEO plugin - <?php echo $arr_private_info_setting['site_url']; ?> -->
 <?php
 
 // thêm 1 số dns-prefetch cần thiết

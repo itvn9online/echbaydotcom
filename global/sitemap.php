@@ -165,7 +165,7 @@ WGR_echo_sitemap_css();
 echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ' . $get_list_sitemap . '
 </sitemapindex>
-<!-- Sitemap content created by EchBay.com -->';
+<!-- Sitemap content created by ' . $arr_private_info_setting['site_upper'] . ' -->';
 
 
 

@@ -1,7 +1,7 @@
 <hr>
 <p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
 <p>Lịch sử chi tiết các cập nhật sẽ được liệt kê tại đây: <a href="https://github.com/itvn9online/echbaydotcom/commits/master" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom/commits/master</a></p>
-<!-- <h1>Cập nhật bộ plugin tổng của EchBay.com (webgiare.org)</h1> -->
+<!-- <h1>Cập nhật bộ plugin tổng của <?php echo $arr_private_info_setting['site_upper']; ?> (webgiare.org)</h1> -->
 <div id="get_list_wgr_process_update">
 	<?php
 
@@ -573,7 +573,7 @@ function EBE_get_text_version ( $str ) {
 				}
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
 				else {
-					$url_for_download_ebdotcom = 'https://echbay.com/daoloat/echbaydotcom.zip';
+					$url_for_download_ebdotcom = $arr_private_info_setting['site_url'] . 'daoloat/echbaydotcom.zip';
 					
 					// thiết lập chế độ download từ server dự phòng
 					$url2_for_download_ebdotcom = 'http://api.echbay.com/daoloat/echbaydotcom.zip';

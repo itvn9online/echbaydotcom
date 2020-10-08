@@ -369,7 +369,7 @@ function wpse_enqueue_datepicker() {
 
 //
 function echbay_admin_footer_styles() {
-	
+	global $arr_private_info_setting;
 	global $web_ad_link;
 	global $__cf_row;
 	
@@ -445,6 +445,8 @@ function echbay_admin_footer_styles() {
 	
 	cf_replace_content = "' . urlencode( $__cf_row['cf_replace_content'] ) . '",
 	
+	private_info_setting_site_upper = "' . $arr_private_info_setting['site_upper'] . '",
+	
 	wgr_plugin_current_version = "' . $current_version . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
 	
@@ -509,7 +511,9 @@ add_filter('admin_footer', 'echbay_admin_footer_styles');
 
 // Thay footer trong wp bằng link của echbay
 function eb_change_footer_admin () {
-	echo 'Designed by <a href="http://echbay.com" target="_blank" rel="nofollow">EchBay.com</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur graycolor click-show-eb-target">Show process</span> - <span class="cur graycolor click-show-no-customize">Show no-customize</span>.';
+	global $arr_private_info_setting;
+	
+	echo 'Designed by <a href="' . $arr_private_info_setting['site_url'] . '" target="_blank" rel="nofollow">' . $arr_private_info_setting['site_upper'] . '</a> using <a href="https://wordpress.org/" target="_blank" rel="nofollow">WordPress</a> CMS.</span> - <span class="cur graycolor click-show-eb-target">Show process</span> - <span class="cur graycolor click-show-no-customize">Show no-customize</span>.';
 }
 add_filter('admin_footer_text', 'eb_change_footer_admin');
 

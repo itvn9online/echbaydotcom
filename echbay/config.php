@@ -5,6 +5,7 @@
 //
 global $wpdb;
 global $__cf_row_default;
+global $arr_private_info_setting;
 
 
 
@@ -864,6 +865,10 @@ if ( $include_page == 'config_theme' ) {
 
 // -> HTML
 $main_content = EBE_arr_tmp( $arr_for_set_template, $main_content );
+$main_content = EBE_arr_tmp( array(
+	'private_info_setting_site_upper' => $arr_private_info_setting['site_upper'],
+	'private_info_setting_author' => $arr_private_info_setting['author']
+), $main_content );
 
 
 

@@ -1,4 +1,4 @@
-* Sơ lược về cách phân quyền trong hệ thống plugin của EchBay.com như sau:<br>
+* Sơ lược về cách phân quyền trong hệ thống plugin của <?php echo $arr_private_info_setting['site_upper']; ?> như sau:<br>
 <ol>
 	<li><strong>Đơn hàng</strong>: các tài khoản có quyền Quản lý, Biên tập viên, Tác giả (<em>Super Admin, Administrator, Editor, Author</em>).</li>
 	<li><strong>Cấu hình website</strong>: các tài khoản có quyền Quản lý (<em>Super Admin, Administrator</em>).</li>

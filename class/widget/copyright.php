@@ -13,8 +13,10 @@ class ___echbay_widget_set_copyright extends WP_Widget {
 	}
 	
 	function form($instance) {
+		global $arr_private_info_setting;
+		
 		$default = array (
-			'title' => 'EchBay.com',
+			'title' => $arr_private_info_setting['site_upper'],
 			'width' => '',
 			'custom_style' => '',
 			'full_mobile' => '',

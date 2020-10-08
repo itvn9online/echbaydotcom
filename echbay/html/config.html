@@ -5,7 +5,7 @@ div.gallery-add-to-og_image { display: block; }
 </style>
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">{tmp.config_module_name}</a></div>
-<p class="show-if-module-config l19">Đây là phần cài đặt dành riêng cho website sử dụng giao diện được thiết kế bởi Ếch Bay, các cài đặt đã tồn tại trong mã nguồn sẽ được <a href="options-general.php" target="_blank">cài đặt tại đây</a>.</p>
+<p class="show-if-module-config l19">Đây là phần cài đặt dành riêng cho website sử dụng giao diện được thiết kế bởi {tmp.private_info_setting_author}, các cài đặt đã tồn tại trong mã nguồn sẽ được <a href="options-general.php" target="_blank">cài đặt tại đây</a>.</p>
 <ul id="list-tab-eb-admin-config" class="eb-admin-config cf">
 </ul>
 <form name="frm_config" method="post" action="{tmp.web_link}process/?set_module=config" target="target_eb_iframe" onsubmit="return check_update_config();" class="config-update-filed-change-only">
@@ -898,10 +898,10 @@ div.gallery-add-to-og_image { display: block; }
 				<td colspan="2"><hr></td>
 			</tr>
 			<tr>
-				<td class="t">Cung cấp bởi Ếch Bay</td>
+				<td class="t">Cung cấp bởi {tmp.private_info_setting_author}</td>
 				<td class="i"><input type="checkbox" name="cf_on_off_echbay_logo" id="cf_on_off_echbay_logo" value="{tmp.cf_on_off_echbay_logo}" />
 					<label for="cf_on_off_echbay_logo" data-on="Đang TẮT! bấm vào đây sau đó lưu lại để bật." data-off="Đang BẬT (<em>Khuyên dùng</em>)! bấm vào đây sau đó lưu lại để tắt."></label>
-					<p class="description l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi EchBay.com</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</p></td>
+					<p class="description l19">Chúng tôi đánh giá cao việc bạn giữ nguyên dòng chữ <strong>Cung cấp bởi {tmp.private_info_setting_site_upper}</strong> ở phía cuối trang web, bởi điều đó thể hiện sự tôn trọng quyền tác giả của bạn dành cho chúng tôi. Tuy nhiên, nếu điều này gây phiền toái cho bạn, hãy tích vào đây để ẩn nó đi.</p></td>
 			</tr>
 			<tr>
 				<td colspan="2"><hr></td>

@@ -462,7 +462,8 @@ WGR_create_href_for_facebook();
 
 // Thêm link bản quyền cho theme
 jQuery('.powered-by-echbay a').attr({
-    href: 'https://echbay.com/'
+//	href: 'https://echbay.com/'
+	href: private_info_setting_site_url
 });
 
 // kiểm tra phiên bản HTML mới hay cũ

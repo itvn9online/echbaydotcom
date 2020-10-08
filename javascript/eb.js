@@ -3145,7 +3145,7 @@ var _global_js_eb = {
 		|| url == '' ) {
 			return false;
 		}
-		console.log('Google tracking (' + url + ') by EchBay.com');
+		console.log('Google tracking (' + url + ') by ' + private_info_setting_site_upper);
 		
 		//
 		if ( typeof goog_report_conversion == 'function' ) {
@@ -3229,12 +3229,12 @@ var _global_js_eb = {
 			
 			//
 			gtag('event', ops['action'], para);
-			console.log('Google analytics (gtag) event tracking (' + eventAction + ') by EchBay.com');
+			console.log('Google analytics (gtag) event tracking (' + eventAction + ') by ' + private_info_setting_site_upper);
 		}
 		// rồi đến ga
 		else if ( typeof ga == 'function' ) {
 			ga( 'send', 'event', eventCategory + ' (EB)', eventAction, eventLabel );
-			console.log('Google analytics event tracking (' + eventAction + ') by EchBay.com');
+			console.log('Google analytics event tracking (' + eventAction + ') by ' + private_info_setting_site_upper);
 		}
 		else {
 //		if ( typeof ga != 'function' ) {
@@ -3361,7 +3361,7 @@ var _global_js_eb = {
 		fbq('track', track_name, track_arr);
 		
 		//
-		console.log('Facebook pixel tracking (' + track_name + ') by EchBay.com');
+		console.log('Facebook pixel tracking (' + track_name + ') by ' + private_info_setting_site_upper);
 		console.log(track_arr);
 		
 		//

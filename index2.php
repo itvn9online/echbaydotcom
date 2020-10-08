@@ -48,11 +48,11 @@ else {
 	define( 'using_child_wgr_theme', 0 );
 }
 
+// include dữ liệu bản quyền
+include EB_THEME_PLUGIN_INDEX . 'private_setting.php';
+// từ theme cha (nếu có)
 if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
 	include EB_THEME_URL . 'private_setting.php';
-}
-else {
-	include EB_THEME_PLUGIN_INDEX . 'private_setting.php';
 }
 //print_r($arr_private_info_setting);
 
@@ -532,7 +532,7 @@ if ( mtv_id == 0 ) {
 	// Thay doi duong dan logo admin
 	function EBE_wpc_url_login(){
 		// duong dan vao website cua ban
-		return '//echbay.com/?utm_source=ebe_wp_theme&utm_campaign=wp_login&utm_term=copyright';
+		return '' . $arr_private_info_setting['site_url'] . '?utm_source=ebe_wp_theme&utm_campaign=wp_login&utm_term=copyright';
 	}
 	add_filter('login_headerurl', 'EBE_wpc_url_login');
 	

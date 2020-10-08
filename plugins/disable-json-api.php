@@ -93,7 +93,7 @@ if ( strstr( $_SERVER['REQUEST_URI'], '/wp-json' ) == true ) {
 		header("Content-type: text/plain");
 		
 		// chặn nội dung
-		die('{"message":"JSON disable by EchBay.com"}');
+		die('{"message":"JSON disable by ' . $arr_private_info_setting['site_upper'] . '"}');
 	
 	}
 }
