@@ -2815,6 +2815,10 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 	});
 }
 
+function WGR_widget_add_custom_style_to_field ( field_name ) {
+	console.log(field_name);
+}
+
 
 // thêm custom menu cho code của echbay
 var WGR_done_add_class_for_custom_link_menu = false,

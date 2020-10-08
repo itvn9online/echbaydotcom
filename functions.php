@@ -551,8 +551,10 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
 
     // kiểm tra trong child theme
     $tmp_child_theme = '';
+    $tmp_child_ui_theme = '';
     if (using_child_wgr_theme == 1) {
         $tmp_child_theme = EB_CHILD_THEME_URL . 'html/' . $page_name . '.html';
+        $tmp_child_ui_theme = EB_CHILD_THEME_URL . 'ui/' . $page_name . '.html';
 //		echo $tmp_child_theme . '<br>' . "\n";
     }
 
@@ -569,6 +571,23 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
 
         // dùng chung thì gán CSS dùng chung luôn (nếu có)
         $css = EB_CHILD_THEME_URL . 'css/' . $page_name . '.css';
+//		echo $css;
+//		if ( file_exists( $css ) ) {
+//			$arr_for_add_theme_css[ $css ] = 1;
+        $arr_for_add_css[$css] = 1;
+
+//			$arr_for_show_html_file_load[] = '<!-- child theme CSS: ' . $page_name . ' -->';
+//		}
+	}
+    else if ($tmp_child_ui_theme != '' && file_exists($tmp_child_ui_theme)) {
+        $f = $tmp_child_ui_theme;
+
+        $arr_for_show_html_file_load[] = '<!-- child theme ui HTML: ' . $page_name . ' -->';
+
+        $html = file_get_contents($f, 1);
+
+        // dùng chung thì gán CSS dùng chung luôn (nếu có)
+        $css = EB_CHILD_THEME_URL . 'ui/' . $page_name . '.css';
 //		echo $css;
 //		if ( file_exists( $css ) ) {
 //			$arr_for_add_theme_css[ $css ] = 1;

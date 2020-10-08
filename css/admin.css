@@ -1513,3 +1513,9 @@ form[name="frm_invoice_details"] input[type="text"] { }
 }
 body.widgets-php #wpadminbar,
 body.widgets-php #adminmenuwrap { z-index: 99; }
+.php-error #adminmenuback,
+.php-error #adminmenuwrap {
+	margin-top: 2em;
+	margin-top: 0;
+	border-top: 2px #f00 solid;
+}
