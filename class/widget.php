@@ -364,33 +364,77 @@ function _eb_product_form_for_widget ( $instance, $field_name = array() ) {
 	
 	
 	//
-	echo '<p class="small"><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
-	- <strong>bgtrans</strong>: <em>echbay-blog-avt</em> background-color: transparent.<br>
-	- <strong>bgcover</strong>: <em>echbay-blog-avt</em> background-size: 100% (cố định 2 chiều).<br>
-	- <strong>bgcontain</strong>: <em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).<br>
-	- <strong>bgwidth</strong>: <em>echbay-blog-avt</em> background-size: 100% auto (width 100% hight auto).<br>
-	- <strong>bghight</strong>: <em>echbay-blog-avt</em> background-size: auto 100% (width auto hight 100%).<br>
-	- <strong>bgradius</strong>: <em>echbay-blog-avt</em> border-radius: 50%.<br>
-	- <strong>noborder</strong>: <em>echbay-blog-avt</em> border: 0 none.<br>
-	- <strong>noborder-widget-title</strong>: <em>echbay-widget-title</em> border: 0 none.<br>
-	- <strong>hideavt</strong>: <em>echbay-blog-avt</em> opacity: .001.<br>
-	- <strong>nomargin</strong>: không tạo giãn cách giữa các LI.<br>
-	- <strong>oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
-	- <strong>title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
-	- <strong>title-bold</strong>: in đậm tiêu đề chính.<br>
-	- <strong>title-upper</strong>: viết HOA tiêu đề chính.<br>
-	- <strong>title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
-	- <strong>title-line50</strong>: + <strong>title-line</strong> + with: 50%<br>
-	- <strong>title-line-bg</strong>: + <strong>title-line</strong> + default-bg<br>
-	- <strong>title-top-line</strong>: + <strong>title-line</strong> + top<br>
-	- <strong>title-bottom-line</strong>: + <strong>title-line</strong> + bottom<br>
-	- <strong>title-line20</strong>: + <strong>title-line</strong> + width 20%, max-width 90px<br>
-	- <strong>title-line38</strong>: + <strong>title-line</strong> + width 38%, max-width 250px<br>
-	- <strong>height-auto-title</strong>: đặt style <em>echbay-blog-title</em> height: auto<br>
-	- <strong>height-auto-gioithieu</strong>: đặt style <em>echbay-blog-gioithieu</em> height: auto<br>
-	- <strong>overflow-hidden</strong>: đặt <em>style widget-run-slider</em> overflow: hidden<br>
-	- <strong>show-view-more</strong>: hiển thị nút xem thêm (nếu có)<br>
-	- <strong>mcb</strong>: gán màu cơ bản cho tiêu đề của danh mục widget</p>';
+	$arr_click_add_style = array(
+		'bgtrans' => '<em>echbay-blog-avt</em> background-color: transparent.',
+		'bgcover' => '<em>echbay-blog-avt</em> background-size: 100% (cố định 2 chiều).',
+		'bgcontain' => '<em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).',
+		'bgwidth' => '<em>echbay-blog-avt</em> background-size: 100% auto (width 100% hight auto).',
+		'bghight' => '<em>echbay-blog-avt</em> background-size: auto 100% (width auto hight 100%).',
+		'bgradius' => '<em>echbay-blog-avt</em> border-radius: 50%.',
+		'noborder' => '<em>echbay-blog-avt</em> border: 0 none.',
+		'noborder-widget-title' => '<em>echbay-widget-title</em> border: 0 none.',
+		'hideavt' => '<em>echbay-blog-avt</em> opacity: .001.',
+		'nomargin' => 'không tạo giãn cách giữa các LI.',
+		'oneline-in-mobile' => 'Ép buộc về một dòng trên phiên bản mobile.',
+		'title-center' => 'căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.',
+		'title-bold' => 'in đậm tiêu đề chính.',
+		'title-upper' => 'viết HOA tiêu đề chính.',
+		'title-line' => 'thêm gạch ngang trên tiêu đề chính.',
+		'title-line50' => '+ <strong>title-line</strong> + with: 50%',
+		'title-line-bg' => '+ <strong>title-line</strong> + default-bg',
+		'title-top-line' => '+ <strong>title-line</strong> + top',
+		'title-bottom-line' => '+ <strong>title-line</strong> + bottom',
+		'title-line20' => '+ <strong>title-line</strong> + width 20%, max-width 90px',
+		'title-line38' => '+ <strong>title-line</strong> + width 38%, max-width 250px',
+		'height-auto-title' => 'đặt style <em>echbay-blog-title</em> height: auto',
+		'height-auto-gioithieu' => 'đặt style <em>echbay-blog-gioithieu</em> height: auto',
+		'overflow-hidden' => 'đặt <em>style widget-run-slider</em> overflow: hidden',
+		'show-view-more' => 'hiển thị nút xem thêm (nếu có)',
+		'mcb' => 'gán màu cơ bản cho tiêu đề của danh mục widget'
+	);
+	$str_click_add_style = '';
+//	$i_class = 0;
+	$id_click_add_style = str_replace( '[', '_', str_replace( ']', '_', $field_name['custom_style'] ) );
+	foreach ( $arr_click_add_style as $k_class => $v_class ) {
+		$str_click_add_style .= '<span class="d-block"><strong data-value="' . $k_class . '" data-add="' . $field_name['custom_style'] . '" class="cur click_add_widget_class"><i class="fa fa-minus-square"></i> ' . $k_class . '</strong>: ' . $v_class . '</span>';
+//		$i_class = 1;
+	}
+	
+	echo '<p class="small"><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Nhấp đúp để thêm class CSS tùy chỉnh sẵn:<br>
+	' . $str_click_add_style . '</p>';
+	/*
+	- <strong data-class="bgtrans">bgtrans</strong>: <em>echbay-blog-avt</em> background-color: transparent.<br>
+	- <strong data-class="bgcover">bgcover</strong>: <em>echbay-blog-avt</em> background-size: 100% (cố định 2 chiều).<br>
+	- <strong data-class="bgcontain">bgcontain</strong>: <em>echbay-blog-avt</em> background-size: contain (tự fixed 1 chiều).<br>
+	- <strong data-class="bgwidth">bgwidth</strong>: <em>echbay-blog-avt</em> background-size: 100% auto (width 100% hight auto).<br>
+	- <strong data-class="bghight">bghight</strong>: <em>echbay-blog-avt</em> background-size: auto 100% (width auto hight 100%).<br>
+	- <strong data-class="bgradius">bgradius</strong>: <em>echbay-blog-avt</em> border-radius: 50%.<br>
+	- <strong data-class="noborder">noborder</strong>: <em>echbay-blog-avt</em> border: 0 none.<br>
+	- <strong data-class="noborder-widget-title">noborder-widget-title</strong>: <em>echbay-widget-title</em> border: 0 none.<br>
+	- <strong data-class="hideavt">hideavt</strong>: <em>echbay-blog-avt</em> opacity: .001.<br>
+	- <strong data-class="nomargin">nomargin</strong>: không tạo giãn cách giữa các LI.<br>
+	- <strong data-class="oneline-in-mobile">oneline-in-mobile</strong>: Ép buộc về một dòng trên phiên bản mobile.<br>
+	- <strong data-class="title-center">title-center</strong>: căn chữ ra giữa đồng thời tạo style mới cho tiêu đề chính.<br>
+	- <strong data-class="title-bold">title-bold</strong>: in đậm tiêu đề chính.<br>
+	- <strong data-class="title-upper">title-upper</strong>: viết HOA tiêu đề chính.<br>
+	- <strong data-class="title-line">title-line</strong>: thêm gạch ngang trên tiêu đề chính.<br>
+	- <strong data-class="title-line50">title-line50</strong>: + <strong>title-line</strong> + with: 50%<br>
+	- <strong data-class="title-line-bg">title-line-bg</strong>: + <strong>title-line</strong> + default-bg<br>
+	- <strong data-class="title-top-line">title-top-line</strong>: + <strong>title-line</strong> + top<br>
+	- <strong data-class="title-bottom-line">title-bottom-line</strong>: + <strong>title-line</strong> + bottom<br>
+	- <strong data-class="title-line20">title-line20</strong>: + <strong>title-line</strong> + width 20%, max-width 90px<br>
+	- <strong data-class="title-line38">title-line38</strong>: + <strong>title-line</strong> + width 38%, max-width 250px<br>
+	- <strong data-class="height-auto-title">height-auto-title</strong>: đặt style <em>echbay-blog-title</em> height: auto<br>
+	- <strong data-class="height-auto-gioithieu">height-auto-gioithieu</strong>: đặt style <em>echbay-blog-gioithieu</em> height: auto<br>
+	- <strong data-class="overflow-hidden">overflow-hidden</strong>: đặt <em>style widget-run-slider</em> overflow: hidden<br>
+	- <strong data-class="show-view-more">show-view-more</strong>: hiển thị nút xem thêm (nếu có)<br>
+	- <strong data-class="mcb">mcb</strong>: gán màu cơ bản cho tiêu đề của danh mục widget
+	*/
+	
+	//
+	echo '<script type="text/javascript">
+	WGR_widget_add_custom_style_to_field("' . $field_name['custom_style'] . '");
+	</script>';
 	
 	
 	//

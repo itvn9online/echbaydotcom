@@ -1139,13 +1139,38 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	
 	
 	//
+	$arr_click_add_style = array(
+		'r99' => 'remove class w90, w99',
+		'nth-child-even' => 'Đổi nền vị trí chẵn',
+		'nth-child-odd' => 'Đổi nền vị trí lẻ',
+		'show-view-more' => 'hiển thị nút xem thêm (nếu có)',
+		'hide-cat' => 'Ẩn tên danh mục (nếu có)',
+		'hide-child-cat' => 'Ẩn các nhóm cấp 2, 3... (nếu có)'
+	);
+	$str_click_add_style = '';
+//	$i_class = 0;
+	$id_click_add_style = str_replace( '[', '_', str_replace( ']', '_', $this_value['custom_style'] ) );
+	foreach ( $arr_click_add_style as $k_class => $v_class ) {
+		$str_click_add_style .= '<span class="d-block"><strong data-value="' . $k_class . '" data-add="' . $this_value['custom_style'] . '" class="cur click_add_widget_class"><i class="fa fa-minus-square"></i> ' . $k_class . '</strong>: ' . $v_class . '</span>';
+//		$i_class = 1;
+	}
+	
+	//
 	echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $this_value['custom_style'] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
+	' . $str_click_add_style . '</p>';
+	/*
 	- <strong>r99</strong>: remove class w90, w99<br>
 	- <strong>nth-child-even</strong>: Đổi nền vị trí chẵn<br>
 	- <strong>nth-child-odd</strong>: Đổi nền vị trí lẻ<br>
 	- <strong>show-view-more</strong>: hiển thị nút xem thêm (nếu có)<br>
 	- <strong>hide-cat</strong>: Ẩn tên danh mục (nếu có)<br>
-	- <strong>hide-child-cat</strong>: Ẩn các nhóm cấp 2, 3... (nếu có).</p>';
+	- <strong>hide-child-cat</strong>: Ẩn các nhóm cấp 2, 3... (nếu có).
+	*/
+	
+	//
+	echo '<script type="text/javascript">
+	WGR_widget_add_custom_style_to_field("' . $this_value['custom_style'] . '");
+	</script>';
 	
 }
 

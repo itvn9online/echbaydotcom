@@ -2816,7 +2816,49 @@ function WGR_widget_change_taxonomy_if_change_category ( animate_id ) {
 }
 
 function WGR_widget_add_custom_style_to_field ( field_name ) {
-	console.log(field_name);
+//	console.log(field_name);
+	
+	$('.click_add_widget_class[data-add="' + field_name + '"]').off('click').click(function () {
+		var a = $(this).attr('data-value') || '',
+//			cl = $('i.fa', this).attr('class') || '',
+			cl = 0;
+		
+		if ( a != '' ) {
+			var b = $('input[name="' + field_name + '"]').val() || '';
+			
+			var c = '';
+			if ( b == '' ) {
+				c = a;
+				cl = 1;
+			}
+			else {
+				// tạo khoảng trắng 2 đầu để còn kiểm tra dữ liệu đã add rồi hay chưa
+				b = ' ' + $.trim( b ) + ' ';
+				
+				// xóa
+				if ( b.split(' ' + a + ' ').length > 1 ) {
+					c = b.replace(' ' + a + ' ', '');
+				}
+				// thêm
+				else {
+					c = a + b;
+					cl = 1;
+				}
+			}
+			$('input[name="' + field_name + '"]').val( $.trim( c ) ).change();
+			
+			// tạo hiệu ứng thay đổi để người dùng dễ nhìn
+//			if ( cl.split('fa-minus-square').length > 1 ) {
+			if ( cl === 1 ) {
+				$('i.fa', this).removeClass('fa-minus-square').addClass('fa-check-square');
+			}
+			else {
+				$('i.fa', this).addClass('fa-minus-square').removeClass('fa-check-square');
+			}
+		}
+		
+		return false;
+	});
 }
 
 

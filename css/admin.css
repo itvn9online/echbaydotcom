@@ -1458,6 +1458,8 @@ form[name="frm_invoice_details"] input[type="text"] { }
 	transform: translate(0, -50%);
 	margin-left: 2px;
 }
+.click_add_widget_class .fa-check-square { color: green; }
+.click_add_widget_class .fa-minus-square { color: gray; }
 
 @media screen and (max-width:775px) {
 .eb-hide-description .column-description div.eb-fixed-content-height { display: none; }
