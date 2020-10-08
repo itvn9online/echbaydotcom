@@ -3,6 +3,8 @@
 <br>
 <?php
 
+global $arr_private_info_setting;
+
 
 //
 include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';

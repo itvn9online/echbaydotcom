@@ -1,3 +1,8 @@
+<?php
+
+global $arr_private_info_setting;
+
+?>
 <br>
 <div style="padding-right:10%;text-align:justify;">
 	<div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Về tác giả</a></div>

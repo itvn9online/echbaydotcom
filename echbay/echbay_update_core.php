@@ -1,3 +1,8 @@
+<?php
+
+global $arr_private_info_setting;
+
+?>
 <hr>
 <p>Mọi hướng dẫn cũng như các bản cập nhật mới nhất sẽ được giới thiệu tại liên kết này: <a href="https://github.com/itvn9online/echbaydotcom" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom</a></p>
 <p>Lịch sử chi tiết các cập nhật sẽ được liệt kê tại đây: <a href="https://github.com/itvn9online/echbaydotcom/commits/master" target="_blank" rel="nofollow">https://github.com/itvn9online/echbaydotcom/commits/master</a></p>
@@ -568,7 +573,8 @@ function EBE_get_text_version ( $str ) {
 				}
 				// cập nhật theme
 				else if ( $connect_to_server == 'theme' ) {
-					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaytwo/archive/master.zip';
+//					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaytwo/archive/master.zip';
+					$url_for_download_ebdotcom = $arr_private_info_setting['url_update_parent_theme'];
 					$dir_name_for_unzip_to = 'echbaytwo-master';
 				}
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
