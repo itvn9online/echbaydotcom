@@ -399,11 +399,19 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
       $post->trv_mobile_img = 'ebp' . $post->ID;
      */
 	
+	// tiếp tục tìm và xử lý dữ liệu trong các trường tùy biến nếu có
 	global $arr_object_post_meta;
 	if ( array_key_exists ( 'id' . $post->ID, $arr_object_post_meta ) ) {
 //		print_r( $arr_object_post_meta['id' . $post->ID] );
 		$html = EBE_arr_tmp($arr_object_post_meta['id' . $post->ID], $html);
 	}
+	
+	// nếu có function xử lý thêm dữ liệu từ theme con -> gọi nó
+	/*
+	if ( function_exists('WGR_html_thread_list_in_child_theme') ) {
+		$html = WGR_html_thread_list_in_child_theme( $post->ID, $html );
+	}
+	*/
 
     //
     return EBE_arr_tmp($post, $html);

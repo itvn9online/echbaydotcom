@@ -2916,9 +2916,13 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 		$arr = array();
 		
 		// v3 -> chỉ dành cho post -> ưu tiên lấy trong bảng posts trước
-		if ( cf_set_raovat_version == 1
-//		&& strstr( $key, '_eb_' ) == true
-		&& $meta_convert != '_eb_category_' ) {
+		if (
+			cf_set_raovat_version == 1
+//			&& strstr( $key, '_eb_' ) == true
+			&& $meta_convert != '_eb_category_'
+		) {
+//			echo 'aaaaaaaaaaaaaaaa<br>';
+			
 			$sql = _eb_q("SELECT *
 			FROM
 				`" . wp_posts . "`
@@ -2984,27 +2988,30 @@ function _eb_get_post_object ( $id, $key, $default_value = '', $meta_key = eb_po
 //			print_r( $sql ); exit();
 			
 			// trả về dữ liệu tìm được
-			return $arr[ $key ];
+//			return $arr[ $key ];
 		}
 		
 		
 		
 		
-		// v2
-		if ( empty( $arr ) ) {
+		// v2 -> tiếp tục lấy các trường dữ liệu trong meta để sử dụng
+//		if ( empty( $arr ) ) {
 			$sql = _eb_q ("SELECT meta_key, meta_value
 			FROM
 				`" . wp_postmeta . "`
 			WHERE
 				post_id = " . $id);
-//			print_r($sql); exit();
+//			print_r($sql);
+//			exit();
 			
 //			if ( count($sql) > 0 ) {
 				foreach ( $sql as $v ) {
-					$arr[ $v->meta_key ] = $v->meta_value;
+//					if ( ! isset( $arr[ $v->meta_key ] ) || $arr[ $v->meta_key ] == '' ) {
+						$arr[ $v->meta_key ] = $v->meta_value;
+//					}
 				}
 //			}
-		}
+//		}
 		
 		
 		

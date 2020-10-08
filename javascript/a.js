@@ -345,6 +345,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
     }
     // chỉnh sửa category
     else if (admin_act == 'cat_details') {
+        WGR_check_if_value_this_is_one('_eb_category_in_list');
         WGR_check_if_value_this_is_one('_eb_category_primary');
         WGR_check_if_value_this_is_one('_eb_category_noindex');
         WGR_check_if_value_this_is_one('_eb_category_hidden');
