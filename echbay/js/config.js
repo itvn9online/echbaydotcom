@@ -1619,7 +1619,7 @@ function WGR_create_custom_user_html_tenplate () {
 		}
 		
 		if ( str != '' ) {
-			$('#admin_config_custom_user_html_template').html( str )
+			$('#admin_config_custom_user_html_template').html( str );
 			$('.show-fi-exist-truong-tuy-bien').show();
 		}
 	}
