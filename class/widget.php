@@ -532,7 +532,7 @@ function _eb_widget_list_html_file_by_dir ( $dir = EB_THEME_HTML ) {
 	}
 //	echo $dir;
 //	$arr = glob ( $dir . '/*' );
-	$arr = EBE_get_file_in_folder ( $dir . '/' );
+	$arr = EBE_get_file_in_folder ( $dir . '/', 'html' );
 //	print_r( $arr );
 	
 	//
@@ -723,6 +723,15 @@ function _eb_widget_list_html_file_plugin_theme ( $select_name, $select_val, $ht
 	// lấy trong child theme
 	if ( using_child_wgr_theme == 1 ) {
 		$arr_in_child_theme = _eb_widget_list_html_file_by_dir( EB_CHILD_THEME_URL . 'html/' );
+		
+		foreach ( $arr_in_child_theme as $k => $v ) {
+			if ( ! isset( $arr[$k] ) ) {
+				$arr[$k] = $v . ' (child theme)';
+			}
+		}
+		
+		//
+		$arr_in_child_theme = _eb_widget_list_html_file_by_dir( EB_CHILD_THEME_URL . 'ui/' );
 		
 		foreach ( $arr_in_child_theme as $k => $v ) {
 			if ( ! isset( $arr[$k] ) ) {

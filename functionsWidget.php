@@ -810,6 +810,7 @@ function WGR_show_widget_blog ( $args, $instance, $options = array() ) {
 		
 		//
 		$html_node = EBE_get_page_template( $html_node );
+		$html_node = WGR_add_li_to_thread_node( $html_node );
 		
 		// chỉnh lại kích thước nếu có
 		if ( $custom_size != '' ) {

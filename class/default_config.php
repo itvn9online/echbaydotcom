@@ -200,6 +200,9 @@ $__cf_row_default = array(
 	'cf_replace_rss_content_full' => '',
 	'cf_google_sheet_backup' => '',
 	
+	// tạo trường tùy biến cho website dễ nhìn hơn trong phần quản trị bài viết
+	'cf_truong_tuy_bien' => '',
+	
 	// cài đặt cho bản AMP
 	'cf_blog_amp' => 1,
 	'cf_blog_details_amp' => 1,

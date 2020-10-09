@@ -1521,3 +1521,10 @@ body.widgets-php #adminmenuwrap { z-index: 99; }
 	margin-top: 0;
 	border-top: 2px #f00 solid;
 }
+.the-list-th-left,
+.the-list-td-left { width: 20% !important; }
+.the-list-td-left { padding: 12px 0 0 15px; }
+.the-list-th-center,
+.the-list-td-center { width: 30% !important; }
+.the-list-th-right,
+.the-list-td-right { width: 50% !important; }

@@ -1692,6 +1692,73 @@ function WGR_run_for_admin_edit_post () {
 	});
 	
 	
+	
+	// chỉnh lại giao diện trường tùy biến sang dạng dễ sử dụng hơn
+	WGR_show_name_for_truong_tuy_bien();
+	
+}
+
+var arr_ten_truong_tuy_bien = {};
+function WGR_show_name_for_truong_tuy_bien () {
+	
+	if ( $('#metakeyselect').length == 0 ) {
+		return false;
+	}
+	
+	//
+//	console.log(arr_cf_truong_tuy_bien);
+	var str = '';
+	for ( var i = 0; i < arr_cf_truong_tuy_bien.length; i++ ) {
+		arr_cf_truong_tuy_bien[i] = $.trim( arr_cf_truong_tuy_bien[i] );
+		if ( arr_cf_truong_tuy_bien[i] != '' ) {
+			var a = g_func.non_mark_seo( arr_cf_truong_tuy_bien[i] );
+			a = a.replace(/\-/g, '_');
+//			console.log(a);
+			
+			//
+			arr_ten_truong_tuy_bien[a] = arr_cf_truong_tuy_bien[i];
+			
+			//
+			if ( $('#metakeyselect option[value="' + a + '"]').length > 0 ) {
+				$('#metakeyselect option[value="' + a + '"]').html( arr_cf_truong_tuy_bien[i] );
+			}
+			else {
+				str += '<option value="' + a + '">' + arr_cf_truong_tuy_bien[i] + '</option>';
+			}
+		}
+	}
+	if ( str != '' ) {
+		$('#metakeyselect').append( str );
+	}
+	
+	// hiển thị tên các trường tùy biến đã dược thiết lập cho dễ nhìn
+	var colspan_th = 0;
+	$('#the-list tr').each(function() {
+		var this_id = $(this).attr('id') || '';
+		
+		if ( this_id != '' && $('input[id="' + this_id + '-key"]').length > 0 ) {
+			var td_key = $('input[id="' + this_id + '-key"]').val() || '';
+			if ( td_key != '' && typeof arr_ten_truong_tuy_bien[td_key] != 'undefined' ) {
+				$('tr#' + this_id + ' td.left').before('<td class="the-list-td-left bold">' + arr_ten_truong_tuy_bien[td_key] + '</td>');
+			}
+			else {
+				$('tr#' + this_id + ' td.left').before('<td class="the-list-td-left bold">&nbsp;</td>');
+			}
+			colspan_th = 1;
+		}
+	});
+	console.log('colspan_th: ' + colspan_th);
+	if ( colspan_th == 1 ) {
+//		console.log( $('#list-table tr:first').html() );
+//		console.log( $('#list-table th[class="left"]').html() );
+//		$('#list-table tr').html('<th class="the-list-th-center">Key</th>' + $('#list-table tr').html() );
+		$('#list-table tr th.left').after('<th class="the-list-th-center">Key</th>').addClass('the-list-th-left');
+		$('#list-table tr th:last').addClass('the-list-th-right');
+		
+		$('#the-list td.left').addClass('the-list-td-center');
+		$('#the-list tr td:last').addClass('the-list-td-right');
+	}
+	
 }
 
 

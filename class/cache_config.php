@@ -209,6 +209,39 @@ if ( mtv_id > 0 || ! file_exists ( $__eb_txt_only_conf ) ) {
 	
 	
 	
+	//
+	if (
+		isset( $__cf_row['cf_truong_tuy_bien'] )
+		&& $__cf_row['cf_truong_tuy_bien'] != ''
+	) {
+		
+		//
+//		$__cf_row['cf_truong_tuy_bien'] = trim( $__cf_row['cf_truong_tuy_bien'] );
+		
+		//
+		$arr = explode( "\n", $__cf_row['cf_truong_tuy_bien'] );
+		$new_a = array();
+		foreach ( $arr as $v ) {
+			$v = trim( $v );
+			
+			// dữ liệu chuẩn phải không trống
+			// không có dấu # ở đầu
+			if ( $v != '' && substr( $v, 0, 1 ) != '#' ) {
+				$v = _eb_non_mark_seo( $v );
+				if ( $v != '' ) {
+					$new_a[] = '{tmp.' . str_replace( '-', '_', $v ) . '}|';
+				}
+			}
+		}
+		
+		//
+		if ( ! empty( $new_a ) ) {
+			$__cf_row['cf_replace_content'] = trim( $__cf_row['cf_replace_content'] ) . "\n" . implode( "\n", $new_a );
+		}
+	}
+	
+	
+	
 	// -> tạo chuỗi để lưu cache
 	$__eb_cache_content = '';
 	foreach ( $__cf_row as $k => $v ) {

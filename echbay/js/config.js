@@ -1596,3 +1596,38 @@ if ( current_module_config != 'config_theme' ) {
 WGR_add_filed_for_config_update();
 
 
+
+// tạo HTML template sẵn cho phần trường tùy biến
+function WGR_create_custom_user_html_tenplate () {
+	var a = $('#cf_truong_tuy_bien').val() || '';
+	a = $.trim( a );
+	
+	if ( a != '' ) {
+		a = a.split("\n");
+//		console.log(a);
+		
+		//
+		var str = '';
+		for ( var i = 0; i < a.length; i++ ) {
+			a[i] = $.trim( a[i] );
+			
+			if ( a[i] != '' ) {
+//				console.log(a[i]);
+				a[i] = g_func.non_mark_seo( a[i] );
+				str += '<code class="d-block">{tmp.' + a[i].replace(/\-/g, '_') + '}</code>';
+			}
+		}
+		
+		if ( str != '' ) {
+			$('#admin_config_custom_user_html_template').html( str )
+			$('.show-fi-exist-truong-tuy-bien').show();
+		}
+	}
+}
+WGR_create_custom_user_html_tenplate();
+
+$('#cf_truong_tuy_bien').change(function () {
+	WGR_create_custom_user_html_tenplate();
+});
+
+

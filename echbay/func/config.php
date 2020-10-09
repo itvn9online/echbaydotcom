@@ -376,6 +376,42 @@ if (
 
 
 //
+/*
+if (
+	isset( $_POST['cf_truong_tuy_bien'] )
+	&& $_POST['cf_truong_tuy_bien'] != ''
+) {
+	
+	//
+	$_POST['cf_truong_tuy_bien'] = trim( $_POST['cf_truong_tuy_bien'] );
+	
+	//
+	$arr = explode( "\n", $_POST['cf_truong_tuy_bien'] );
+	$new_a = array();
+	foreach ( $arr as $v ) {
+		$v = trim( $v );
+		
+		// dữ liệu chuẩn phải không trống
+		// không có dấu # ở đầu
+		// có dấu | để chia tách 2 phần dữ liệu
+		if ( $v != '' && substr( $v, 0, 1 ) != '#' ) {
+			$v = _eb_non_mark_seo( $v );
+			if ( $v != '' ) {
+				$new_a[] = '{tmp.' . str_replace( '-', '_', $v ) . '}|';
+			}
+		}
+	}
+	
+	//
+	$_POST['cf_replace_content'] = trim( $_POST['cf_replace_content'] ) . "\n";
+	if ( ! empty( $new_a ) ) {
+		$_POST['cf_replace_content'] .= implode( "\n", $new_a );
+	}
+}
+*/
+
+
+//
 if (
 	isset( $_POST['cf_replace_rss_content_full'] )
 	&& $_POST['cf_replace_rss_content_full'] != ''
