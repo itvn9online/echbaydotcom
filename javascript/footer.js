@@ -62,7 +62,7 @@ else if (act == 'cart') {
 	    _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-global-cart-coupon');
 	}
 	
-	if ( cart_shipping_content != '' ) {
+	if ( typeof cart_shipping_content != 'undefined' && cart_shipping_content != '' ) {
 		$('.eb-global-cart-shipping_fee').show();
 	}
 }
