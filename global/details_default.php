@@ -1406,8 +1406,8 @@ $main_content = str_replace ( '{tmp._eb_product_leech_source}', $_eb_product_lee
 
 // thêm các dữ liệu từ meta post
 if ( array_key_exists ( 'id' . $pid, $arr_object_post_meta ) ) {
-//	print_r( $arr_object_post_meta['id' . $post->ID] );
-	$html = EBE_arr_tmp($arr_object_post_meta['id' . $pid], $main_content);
+//	print_r( $arr_object_post_meta['id' . $pid] );
+	$main_content = EBE_arr_tmp($arr_object_post_meta['id' . $pid], $main_content);
 }
 
 
