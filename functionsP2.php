@@ -3500,7 +3500,7 @@ function _eb_update_option ( $name, $value, $load = 'yes' ) {
 	
 	// xử lý an toàn cho chuỗi trước khi update
 	$value = WGR_stripslashes ( trim( $value ) );
-	if ( ! function_exists('get_magic_quotes_gpc') || ! get_magic_quotes_gpc () ) {
+	if ( function_exists('get_magic_quotes_gpc') && ! get_magic_quotes_gpc () ) {
 		$value = addslashes ( $value );
 	}
 	
