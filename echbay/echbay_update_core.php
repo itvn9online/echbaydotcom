@@ -888,7 +888,8 @@ if ( file_exists( EB_THEME_URL . 'VERSION' ) ) {
 }
 
 // hỗ trợ cập nhật theme khi sử dụng giao diện có thư mục tên như này
-$enable_theme_dir_update = 'echbaytwo';
+//$enable_theme_dir_update = 'echbaytwo';
+$enable_theme_dir_update = $arr_private_info_setting['parent_theme_default'];
 
 
 
@@ -900,7 +901,7 @@ $enable_theme_dir_update = 'echbaytwo';
 <?php
 
 // hiển thị nút update theme
-if ( $current_theme_dir_update == $enable_theme_dir_update ) {
+if ( $current_theme_dir_update == $enable_theme_dir_update && $arr_private_info_setting['url_update_parent_theme'] != '' ) {
 ?>
 <p>Giao diện bạn đang sử dụng là <strong><?php echo $__cf_row['cf_current_theme_using']; ?></strong>, thư mục nền của website là <strong><?php echo $current_theme_dir_update . $current_theme_version_update; ?></strong>. Nền này đang được hỗ trợ cập nhật miễn phí từ hệ thống, nếu bạn muốn cập nhật hoặc cài đặt lại, vui lòng bấm nút bên dưới để thực hiện:</p>
 <h2 class="text-center"><a href="#" class="click-connect-to-echbay-update-eb-theme">[ Bấm vào đây để cập nhật lại giao diện nền cho website! ]</a></h2>
