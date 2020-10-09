@@ -58,7 +58,9 @@ else if (act == 'cart') {
     _global_js_eb.cart_func();
 
     // hiển thị hộp nhập mã giảm giá nếu có
-    _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-global-cart-coupon');
+	if ( typeof co_ma_giam_gia != 'undefined' ) {
+	    _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-global-cart-coupon');
+	}
 	
 	if ( cart_shipping_content != '' ) {
 		$('.eb-global-cart-shipping_fee').show();

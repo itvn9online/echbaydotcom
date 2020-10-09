@@ -531,8 +531,9 @@ if ( mtv_id == 0 ) {
 	
 	// Thay doi duong dan logo admin
 	function EBE_wpc_url_login(){
+		global $arr_private_info_setting;
 		// duong dan vao website cua ban
-		return '' . $arr_private_info_setting['site_url'] . '?utm_source=ebe_wp_theme&utm_campaign=wp_login&utm_term=copyright';
+		return $arr_private_info_setting['site_url'] . '?utm_source=ebe_wp_theme&utm_campaign=wp_login&utm_term=copyright';
 	}
 	add_filter('login_headerurl', 'EBE_wpc_url_login');
 	
@@ -546,6 +547,7 @@ if ( mtv_id == 0 ) {
 		* Chỉnh lại URL của database nếu vẫn là URL demo
 		*/
 		global $wpdb;
+		global $arr_private_info_setting;
 		
 		//
 		if ( function_exists('_eb_q') ) {
@@ -595,6 +597,15 @@ setTimeout(function () {
 	document.getElementsByTagName("a")[0].setAttribute("target", "_blank");
 }, 1200);
 </script>';
+		
+		//
+		if ( isset( $arr_private_info_setting['author_logo'] ) && $arr_private_info_setting['author_logo'] != '' ) {
+			echo '<style>
+#login h1 a {
+	background-image: url(' . $arr_private_info_setting['author_logo'] . ') !important;
+}
+</style>';
+		}
 		
 	}
 	add_filter('login_head', 'EBE_login_css');
