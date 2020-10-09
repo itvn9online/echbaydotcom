@@ -373,7 +373,8 @@ function ___eb_auto_click_for_search_advanced(clat, a) {
 function ___eb_set_url_for_search_price_in_button(clat) {
 
     // chỉ tìm ở trang danh sách sản phẩm
-    if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
+//	if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
+	if (typeof switch_taxonomy == 'undefined') {
         if (WGR_check_option_on(cf_tester_mode)) {
             console.log('search price is active, but run only category page -> STOP.');
 		}
@@ -483,7 +484,7 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
         return false;
     }
 	*/
-    if (typeof switch_taxonomy == 'undefined' || switch_taxonomy != 'category') {
+	if (typeof switch_taxonomy == 'undefined') {
         if (WGR_check_option_on(cf_tester_mode)) {
             console.log('search price is active, but run only category page -> STOP.');
 		}
