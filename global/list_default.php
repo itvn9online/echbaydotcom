@@ -575,6 +575,9 @@ if ( $main_content == false ) {
 				$main_content = str_replace ( '{' . $k . '}', $v, $main_content );
 			}
 			$main_content .= '<div class="new-part-page d-none">' . $str_page . '</div>';
+			if ( $__cf_row['cf_replace_content'] != '' ) {
+				$main_content = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $main_content );
+			}
 			
 			//
 			echo $main_content;
