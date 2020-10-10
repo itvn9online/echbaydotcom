@@ -815,7 +815,7 @@ function WGR_save_post_xml ( $postid, $save_table = 'eb_backup_post_xml' ) {
 //	echo $str;
 	
 	//
-	if ( function_exists('get_magic_quotes_gpc') && ! get_magic_quotes_gpc () ) {
+	if ( ! function_exists('get_magic_quotes_gpc') || ! get_magic_quotes_gpc () ) {
 		$str = addslashes ( $str );
 	}
 	
