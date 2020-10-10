@@ -681,6 +681,10 @@ function WGR_widget_search_advanced () {
 	___eb_set_base_url_for_search_advanced();
 	
 	//
+	if ( cid > 0 ) {
+		jQuery(clat + ' a[data-id="' + cid + '"]').addClass('selected');
+	}
+	
 	jQuery(clat + ' a').each(function() {
         var tax = jQuery(this).attr('data-taxonomy') || '';
 
@@ -701,8 +705,8 @@ function WGR_widget_search_advanced () {
 				filter_options = '',
 				node_id = jQuery(this).attr('data-node-id') || '',
 				this_class = jQuery(this).attr('class') || '';
-	//		console.log(this_class);
-	//		console.log(this_class.split('selected').length);
+//			console.log(this_class);
+//			console.log(this_class.split('selected').length);
 			
 			//
 			if ( this_class.split('selected').length > 1 ) {
@@ -723,8 +727,8 @@ function WGR_widget_search_advanced () {
 					filter_options += ',' + j;
 				}
 			});
-	//		console.log( filter_category );
-	//		console.log( filter_options );
+//			console.log( filter_category );
+//			console.log( filter_options );
 			
 			//
 			___eb_search_advanced_go_to_url({

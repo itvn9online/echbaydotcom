@@ -81,7 +81,7 @@ class ___echbay_categorys_search_advanced extends WP_Widget {
 		
 		echo '</p>';
 		
-		echo '<p class="redcolor small">* Chỉ chọn các nhóm có nhóm con bên trong thì chức năng mới hoạt động</p>';
+		echo '<p class="redcolor small">* Chỉ chọn các nhóm có nhóm con bên trong thì chức năng mới hoạt động. Nếu widget mới được thêm vào, vui lòng bấm [Saved] để bắt đầu quá trình cầu hình mặc định.</p>';
 		
 		echo '<div class="div-widget-home_list">';
 		
@@ -104,11 +104,22 @@ class ___echbay_categorys_search_advanced extends WP_Widget {
 			
 			//
 			foreach ( $categories as $v ) {
-				echo '<li data-taxonomy="' . $k0 . '">';
+				$arrs_child_cats = get_categories( array(
+					'hide_empty' => 0,
+					'taxonomy' => $k0,
+//					'orderby' => 'slug',
+//					'order'   => 'ASC',
+					'parent' => $v->term_id
+				) );
+//				print_r($arrs_child_cats);
 				
-				echo '<label for="' . $id_for . $v->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v->term_id . '" data-id="' . $v->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <strong>' . $v->name . ' (' . $v->count . ')</strong></label>';
-				
-				echo '</li>';
+				if ( ! empty( $arrs_child_cats ) ) {
+					echo '<li data-taxonomy="' . $k0 . '">';
+					
+					echo '<label for="' . $id_for . $v->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v->term_id . '" data-id="' . $v->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <strong>' . $v->name . ' (' . count($arrs_child_cats) . ')</strong></label>';
+					
+					echo '</li>';
+				}
 			}
 		}
 		
@@ -412,14 +423,23 @@ WGR_category_for_categorys_search_advanced("' . $id_for . '", "' . $this->get_fi
 		
 		//
 //		if ( $cats_info != NULL && $title == '' ) {
+		/*
 		if ( $title == '' && ! empty ( $cats_info ) ) {
 			$title = $cats_info->name;
 		}
+		*/
 		
 		
 		
 		//
 		echo '<div class="' . trim( $list_tyle . ' ' . $custom_style ) . '">';
+		
+		// title -> vf sử dụng multi category nên in luôn tên nhóm cha làm widget title
+		_eb_echo_widget_title(
+			$cats_info->name,
+			'echbay-widget-category-title'
+//			$before_title
+		);
 		
 		//
 		echo '<ul class="category-search-advanced cf">';
@@ -481,7 +501,7 @@ WGR_category_for_categorys_search_advanced("' . $id_for . '", "' . $this->get_fi
 				}
 				
 				//
-				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" data-href="' . _eb_c_link( $v->term_id ) . '" href="javascript:;">' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
+				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '">' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				
 				//
 				/*

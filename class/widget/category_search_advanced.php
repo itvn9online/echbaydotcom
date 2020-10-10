@@ -431,7 +431,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 				}
 				
 				//
-				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" data-href="' . _eb_c_link( $v->term_id ) . '" href="javascript:;">' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
+				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" href="' . _eb_c_link( $v->term_id ) . '">' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				
 				//
 //				if ( $get_child != 'off' ) {
