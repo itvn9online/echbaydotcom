@@ -3122,3 +3122,34 @@ iframe[name="google_conversion_frame"] {
 	transform: translate(0, -50%);
 	left: 0;
 }
+.widget-search-advanced .category-search-advanced {
+}
+.widget-search-advanced .category-search-advanced a {
+	color: #000;
+	font-size: 15px;
+	display: block;
+	padding: 5px 0;
+}
+.widget-search-advanced .category-search-advanced a:before {
+	font: normal normal normal 14px/1 FontAwesome;
+	content: "\f096";
+	display: inline-block;
+	margin-right: 5px;
+	min-width: 20px;
+	font-size: 15px;
+}
+.widget-search-advanced .category-search-advanced a.selected:before {
+	content: "\f046";
+}
+.widget-search-advanced .widget-category-padding .echbay-widget-title {
+	border: 0 none;
+}
+.widget-search-advanced .widget-category-padding .echbay-widget-title div {
+	border: 0 none;
+	color: #000;
+	font-size: 15px;
+	font-weight: bold;
+}
+.widget-search-advanced .widget-category-padding {
+	padding-bottom: 20px;
+}

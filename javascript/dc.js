@@ -661,3 +661,75 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
 ___eb_set_url_for_search_advanced_button();
 
 
+
+function WGR_widget_search_advanced () {
+	var clat = '.widget-search-advanced .category-search-advanced';
+	if ( cid > 0 ) {
+		// nếu không có class này thì hủy chức năng luôn
+		if (jQuery(clat).length == 0) {
+			if (WGR_check_option_on(cf_tester_mode)) {
+				console.log('search price is active, but element ' + clat + ' not found -> STOP.');
+			}
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
+	
+	//
+	___eb_set_base_url_for_search_advanced();
+	
+	//
+	jQuery(clat + ' a').each(function() {
+		jQuery(this).attr({
+			'data-href': jQuery(this).attr('data-href') || jQuery(this).attr('href') || 'javascript:;',
+			'href': 'javascript:;'
+		});
+	}).off('click').click(function () {
+		var cha = jQuery(this).attr('data-parent') || 0,
+			con = jQuery(this).attr('data-id') || 0,
+			filter_category = '',
+			filter_options = '',
+			node_id = jQuery(this).attr('data-node-id') || '',
+			this_tax = jQuery(this).attr('data-taxonomy') || '',
+			this_class = jQuery(this).attr('class') || '';
+//		console.log(this_class);
+//		console.log(this_class.split('selected').length);
+		
+		//
+		if ( this_class.split('selected').length > 1 ) {
+			jQuery(this).removeClass('selected');
+		}
+		else {
+			jQuery(this).addClass('selected');
+		}
+		
+		//
+		jQuery(clat + ' a.selected').each(function() {
+			var tax = jQuery(this).attr('data-taxonomy') || '',
+				j = jQuery(this).attr('data-id') || 0;
+			
+			if (tax == 'category') {
+				filter_category += ',' + j;
+			} else if (tax == 'post_options') {
+				filter_options += ',' + j;
+			}
+		});
+		console.log( filter_category );
+		console.log( filter_options );
+		
+		//
+		___eb_search_advanced_go_to_url({
+			'price_in': seach_advanced_by_price,
+			'post_options': filter_options,
+			'category': filter_category
+		});
+		
+		//
+		return false;
+	});
+}
+WGR_widget_search_advanced();
+
+
