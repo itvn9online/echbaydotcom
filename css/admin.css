@@ -1528,3 +1528,21 @@ body.widgets-php #adminmenuwrap { z-index: 99; }
 .the-list-td-center { width: 30% !important; }
 .the-list-th-right,
 .the-list-td-right { width: 50% !important; }
+.the-list-td-center { position: relative; }
+.the-list-td-center:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 40px;
+	cursor: pointer;
+}
+.the-list-td-center.hide-this-before:before { display: none; }
+.the-list-td-center input[type="text"] {
+	background-color: #ccc;
+	color: #999;
+}
+.the-list-td-center.hide-this-before input[type="text"] {
+	background-color: #fff;
+	color: #000;
+}
