@@ -1525,9 +1525,9 @@ body.widgets-php #adminmenuwrap { z-index: 99; }
 .the-list-td-left { width: 20% !important; }
 .the-list-td-left { padding: 12px 0 0 15px; }
 .the-list-th-center,
-.the-list-td-center { width: 30% !important; }
+.the-list-td-center { width: 20% !important; }
 .the-list-th-right,
-.the-list-td-right { width: 50% !important; }
+.the-list-td-right { width: 60% !important; }
 .the-list-td-center { position: relative; }
 .the-list-td-center:before {
 	content: "";
