@@ -1759,7 +1759,7 @@ function WGR_show_name_for_truong_tuy_bien () {
 		$('#the-list td.the-list-td-center').dblclick(function () {
 			$(this).addClass('hide-this-before');
 		}).attr({
-			title: "Hạn chế sửa Key ở khu vực này, hãy xóa đi và thêm mới nếu cần thiết"
+			title: "Nhấp đúp chuột để mở chức năng sửa KEY (chỉ sửa nếu thực sự cần thiết)"
 		});
 		$('#the-list tr td:last').addClass('the-list-td-right');
 	}
