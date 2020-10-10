@@ -1626,7 +1626,7 @@ function WGR_create_custom_user_html_tenplate () {
 }
 WGR_create_custom_user_html_tenplate();
 
-$('#cf_truong_tuy_bien').change(function () {
+$('#cf_truong_tuy_bien').blur(function () {
 	WGR_create_custom_user_html_tenplate();
 });
 
