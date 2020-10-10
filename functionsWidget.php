@@ -1049,6 +1049,8 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	WGR_add_css_js_for_elementor_editer();
 	
 	//
+//	print_r( $instance );
+//	print_r( $default );
 	$instance = wp_parse_args ( ( array ) $instance, $default );
 	foreach ( $instance as $k => $v ) {
 		$$k = esc_attr ( $v );
@@ -1057,7 +1059,7 @@ function WGR_phom_for_home_list_and_blog ( $instance, $default, $this_value, $ta
 	
 	
 	echo '<p>Mặc định sẽ hiển thị toàn bộ danh sách sản phẩm theo nhóm cấp 1. Nếu muốn chủ động hiển thị nhóm theo ý muốn, hãy chọn ở dưới:</p>';
-
+	
 	$categories = get_categories( array(
 		'hide_empty' => 0,
 		'taxonomy' => $taxonomy,

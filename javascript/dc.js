@@ -682,52 +682,60 @@ function WGR_widget_search_advanced () {
 	
 	//
 	jQuery(clat + ' a').each(function() {
-		jQuery(this).attr({
-			'data-href': jQuery(this).attr('data-href') || jQuery(this).attr('href') || 'javascript:;',
-			'href': 'javascript:;'
-		});
+        var tax = jQuery(this).attr('data-taxonomy') || '';
+
+        //
+        if (tax != 'category') {
+			jQuery(this).attr({
+				'data-href': jQuery(this).attr('data-href') || jQuery(this).attr('href') || 'javascript:;',
+				'href': 'javascript:;'
+			});
+		}
 	}).off('click').click(function () {
-		var cha = jQuery(this).attr('data-parent') || 0,
-			con = jQuery(this).attr('data-id') || 0,
-			filter_category = '',
-			filter_options = '',
-			node_id = jQuery(this).attr('data-node-id') || '',
-			this_tax = jQuery(this).attr('data-taxonomy') || '',
-			this_class = jQuery(this).attr('class') || '';
-//		console.log(this_class);
-//		console.log(this_class.split('selected').length);
+		var this_tax = jQuery(this).attr('data-taxonomy') || '';
 		
-		//
-		if ( this_class.split('selected').length > 1 ) {
-			jQuery(this).removeClass('selected');
-		}
-		else {
-			jQuery(this).addClass('selected');
-		}
-		
-		//
-		jQuery(clat + ' a.selected').each(function() {
-			var tax = jQuery(this).attr('data-taxonomy') || '',
-				j = jQuery(this).attr('data-id') || 0;
+		if ( this_tax != 'category' ) {
+			var cha = jQuery(this).attr('data-parent') || 0,
+				con = jQuery(this).attr('data-id') || 0,
+				filter_category = '',
+				filter_options = '',
+				node_id = jQuery(this).attr('data-node-id') || '',
+				this_class = jQuery(this).attr('class') || '';
+	//		console.log(this_class);
+	//		console.log(this_class.split('selected').length);
 			
-			if (tax == 'category') {
-				filter_category += ',' + j;
-			} else if (tax == 'post_options') {
-				filter_options += ',' + j;
+			//
+			if ( this_class.split('selected').length > 1 ) {
+				jQuery(this).removeClass('selected');
 			}
-		});
-		console.log( filter_category );
-		console.log( filter_options );
-		
-		//
-		___eb_search_advanced_go_to_url({
-			'price_in': seach_advanced_by_price,
-			'post_options': filter_options,
-			'category': filter_category
-		});
-		
-		//
-		return false;
+			else {
+				jQuery(this).addClass('selected');
+			}
+			
+			//
+			jQuery(clat + ' a.selected').each(function() {
+				var tax = jQuery(this).attr('data-taxonomy') || '',
+					j = jQuery(this).attr('data-id') || 0;
+				
+				if (tax == 'category') {
+					filter_category += ',' + j;
+				} else if (tax == 'post_options') {
+					filter_options += ',' + j;
+				}
+			});
+	//		console.log( filter_category );
+	//		console.log( filter_options );
+			
+			//
+			___eb_search_advanced_go_to_url({
+				'price_in': seach_advanced_by_price,
+				'post_options': filter_options,
+				'category': filter_category
+			});
+			
+			//
+			return false;
+		}
 	});
 }
 WGR_widget_search_advanced();

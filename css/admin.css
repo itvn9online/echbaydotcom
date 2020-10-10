@@ -1546,3 +1546,4 @@ body.widgets-php #adminmenuwrap { z-index: 99; }
 	background-color: #fff;
 	color: #000;
 }
+.ul-widget-categorys_search_advanced li { display: none; }

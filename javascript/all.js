@@ -2756,6 +2756,25 @@ function WGR_press_for_search_post_page () {
 }
 
 
+// hiển thị các nhóm theo taxonomy mà người dùng đang chọn
+function WGR_category_for_categorys_search_advanced ( for_id, for_name ) {
+	var a = jQuery('#' + for_id + ' select[name="' + for_name + '"]').val() || '';
+	if ( a != '' ) {
+		jQuery('#' + for_id + ' li[data-taxonomy="' + a + '"]').show();
+	}
+	
+	//
+	jQuery('#' + for_id + ' select[name="' + for_name + '"]').off('change').change(function () {
+		var a = jQuery(this).val() || '';
+//		console.log(a);
+		
+		//
+		if ( a != '' ) {
+			jQuery('#' + for_id + ' li').hide();
+			jQuery('#' + for_id + ' li[data-taxonomy="' + a + '"]').show();
+		}
+	});
+}
 
 // lấy danh sách các nhóm sẽ được hiển thị trong widget home list
 function WGR_category_for_home_list ( for_id, set_check ) {

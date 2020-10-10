@@ -42,6 +42,7 @@ include EB_THEME_CORE . 'widget/advanced_run_slider.php';
 include EB_THEME_CORE . 'widget/google_map.php';
 include EB_THEME_CORE . 'widget/popup.php';
 include EB_THEME_CORE . 'widget/category_search_advanced.php';
+include EB_THEME_CORE . 'widget/categorys_search_advanced.php';
 
 
 
@@ -102,6 +103,7 @@ function ___add_echbay_widget() {
 	
 	register_widget ( '___echbay_widget_open_popup' );
 	register_widget ( '___echbay_category_search_advanced' );
+	register_widget ( '___echbay_categorys_search_advanced' );
 	
 }
 

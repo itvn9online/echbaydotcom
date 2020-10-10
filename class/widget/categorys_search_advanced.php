@@ -4,10 +4,10 @@
 /*
 * Widget danh mục sản phẩm hiện tại đang xem
 */
-class ___echbay_category_search_advanced extends WP_Widget {
+class ___echbay_categorys_search_advanced extends WP_Widget {
 	function __construct() {
-		parent::__construct ( 'echbay_category_search_advanced', 'Category search advanced', array (
-				'description' => 'Chức năng tìm kiếm nâng cao theo danh mục sản phẩm, thuộc tính sản phẩm hoặc blog tin tức * chỉ hoạt động trong sidebar: search product options' 
+		parent::__construct ( 'echbay_categorys_search_advanced', 'CategoryS search advanced', array (
+				'description' => 'Chức năng tìm kiếm nâng cao theo danh mục sản phẩm, thuộc tính sản phẩm hoặc blog tin tức (thiết lập nhiều nhóm 1 lúc) * chỉ hoạt động trong sidebar: search product options' 
 		) );
 	}
 	
@@ -18,7 +18,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		$default = array (
 			'title' => 'Tìm kiếm nâng cao',
 			'show_count' => '',
-			'cat_ids' => 0,
+			'cat_ids' => '',
 //			'cat_status' => 0,
 //			'cat_primary' => 0,
 			'cat_type' => 'category',
@@ -44,10 +44,18 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		_eb_widget_echo_widget_input_title( $this->get_field_name ( 'title' ), $title );
 		
 		
-		//
-		echo '<p class="redcolor small">* Chỉ chọn các nhóm có nhóm con bên trong thì chức năng mới hoạt động</p>';
+		
+		$arr_category_post_options = array(
+			'category' => 'Danh mục sản phẩm',
+			'post_options' => 'Thuộc tính sản phẩm',
+			EB_BLOG_POST_LINK => 'Danh mục tin tức',
+			'post_tag' => 'Thẻ (sản phẩm)'
+		);
+		
+		
 		
 		//
+		/*
 		$animate_id = __eb_widget_load_cat_select ( array(
 			'cat_ids_name' => $this->get_field_name ( 'cat_ids' ),
 			'cat_ids' => $cat_ids,
@@ -55,39 +63,65 @@ class ___echbay_category_search_advanced extends WP_Widget {
 			'cat_type' => $cat_type,
 			'cat_input_type' => 'select'
 		) );
-		
+		*/
 		
 		//
-		/*
-		echo '<p>Kiểu dữ liệu: ';
+		$id_for = '_label_for_widget_home_list_' . rand( 0, 1000000 );
+		
+		echo '<div id="' . $id_for . '">';
+		
+		//
+		echo '<p><strong>Phân loại danh mục</strong>: ';
 		
 		__eb_widget_load_select(
-			array (
-				'category' => 'Danh mục sản phẩm',
-				EB_BLOG_POST_LINK => 'Danh mục tin tức',
-				'post_options' => 'Thuộc tính sản phẩm',
-			),
+			$arr_category_post_options,
 			$this->get_field_name ( 'cat_type' ),
 			$cat_type
 		);
 		
 		echo '</p>';
-		*/
 		
-		/*
-		// v2 -> tự động thay đổi taxonomy khi chọn nhóm
-		echo '<p style="display:none;">Kiểu dữ liệu: <input type="text" class="widefat ' . $animate_id . '" name="' . $this->get_field_name ( 'cat_type' ) . '" value="' . $cat_type . '"/></p>';
+		echo '<p class="redcolor small">* Chỉ chọn các nhóm có nhóm con bên trong thì chức năng mới hoạt động</p>';
+		
+		echo '<div class="div-widget-home_list">';
+		
+		
+		echo '<p class="d-none"><input type="text" class="widefat" data-name="' . $id_for . '" name="' . $this->get_field_name ( 'cat_ids' ) . '" value="' . $cat_ids . '" /></p>';
+		
 		
 		//
-		echo '<script type="text/javascript">
-		jQuery("#' . $animate_id . '").off("change").change(function () {
-			var a = jQuery("#' . $animate_id . ' option:selected").attr("data-taxonomy") || "";
-			if ( a == "" ) a = "category";
-			console.log("Auto set taxonomy #" + a);
-			jQuery(".' . $animate_id . '").val( a );
-		});
-		</script>';
-		*/
+		echo '<ul class="ul-widget-categorys_search_advanced">';
+		
+		foreach ( $arr_category_post_options as $k0 => $v0 ) {
+//			echo '<li><strong>' . $v0 . '</strong></li>';
+			
+			$categories = get_categories( array(
+				'hide_empty' => 0,
+				'taxonomy' => $k0,
+				'parent' => 0
+			) );
+//			print_r( $categories );
+			
+			//
+			foreach ( $categories as $v ) {
+				echo '<li data-taxonomy="' . $k0 . '">';
+				
+				echo '<label for="' . $id_for . $v->term_id . '" class="category-for-home_list"><input type="checkbox" id="' . $id_for . $v->term_id . '" data-id="' . $v->term_id . '" data-class="' . $id_for . '" class="click-get-category-id-home_list" /> <strong>' . $v->name . ' (' . $v->count . ')</strong></label>';
+				
+				echo '</li>';
+			}
+		}
+		
+		echo '</ul>';
+		
+		echo '</div>';
+		
+		echo '</div>';
+		
+		echo '<script>
+WGR_category_for_home_list("' . $id_for . '", 1);
+WGR_category_for_categorys_search_advanced("' . $id_for . '", "' . $this->get_field_name ( 'cat_type' ) . '");
+</script>';
 		
 		
 		//
@@ -202,7 +236,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 //		echo $show_count;
 //		$show_count = ( $show_count == 'on' ) ? true : false;
 		
-		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : 0;
+		$cat_ids = isset( $instance ['cat_ids'] ) ? $instance ['cat_ids'] : '';
 		$cat_type = isset( $instance ['cat_type'] ) ? $instance ['cat_type'] : 'category';
 //		$cat_status = isset( $instance ['cat_status'] ) ? $instance ['cat_status'] : 0;
 		
@@ -266,6 +300,32 @@ class ___echbay_category_search_advanced extends WP_Widget {
 			*/
 //			echo $cat_ids;
 //		}
+		
+		
+		//
+		if ( $cat_ids == '' ) {
+			echo '#cat_ids not found!';
+			return false;
+		}
+		$arr_cat_ids = explode(',', $cat_ids);
+//		print_r( $arr_cat_ids );
+		
+		//
+		_eb_echo_widget_name( $this->name, $before_widget );
+		
+		// title
+		_eb_echo_widget_title(
+			$title,
+			'echbay-widget-category-title'
+//			$before_title
+		);
+		
+		
+		// for cat_ids
+		foreach ( $arr_cat_ids as $cat_ids ) {
+//			echo $cat_ids . '<br>';
+//			echo $cat_type . '<br>';
+		
 		
 		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
 		if ( $cat_ids > 0 ) {
@@ -359,17 +419,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		
 		
 		//
-		_eb_echo_widget_name( $this->name, $before_widget );
-		
-		//
 		echo '<div class="' . trim( $list_tyle . ' ' . $custom_style ) . '">';
-		
-		// title
-		_eb_echo_widget_title(
-			$title,
-			'echbay-widget-category-title'
-//			$before_title
-		);
 		
 		//
 		echo '<ul class="category-search-advanced cf">';
@@ -434,9 +484,11 @@ class ___echbay_category_search_advanced extends WP_Widget {
 				echo '<li class="cat-item cat-item-' . $v->term_id . '">' . $dynamic_tag_begin . '<a data-taxonomy="' . $cat_type . '" data-id="' . $v->term_id . '" data-parent="' . $cat_ids . '" data-node-id="' . $this->id . '" title="' . $v->name . '" data-href="' . _eb_c_link( $v->term_id ) . '" href="javascript:;">' . $hien_thi_img . $v->name . $hien_thi_sl . '</a>' . $dynamic_tag_end;
 				
 				//
-//				if ( $get_child != 'off' ) {
-//					EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
-//				}
+				/*
+				if ( $get_child != 'off' ) {
+					EBE_widget_categories_get_child( $v->term_id, $cat_type, $show_count, $this->id );
+				}
+				*/
 				
 				echo '</li>';
 //			}
@@ -445,6 +497,10 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		//
 		echo '</ul>';
 		echo '</div>';
+		
+		
+		
+		} // end for cat_ids
 		
 		//
 		echo $after_widget;
