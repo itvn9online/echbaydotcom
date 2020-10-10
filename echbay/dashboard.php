@@ -175,7 +175,43 @@ if ( date_time - $last_update_file_test > 3600 ) {
 	// tạo file ở root
 	_eb_create_file( $file_test, date_time, '', 0 );
 	
+	
+	
+	
+	// kiểm tra quyền đọc thư mục host khác từ host hiện tại
+	/*
+	$check___FILE__ = __FILE__;
+	$arr_check___FILE__ = array();
+//	$arr_check___FILE__[] = $check___FILE__;
+//	echo $check___FILE__ . '<br>';
+	for ( $i = 0 ; $i < 10; $i++ ) {
+		$check___FILE__ = dirname( $check___FILE__ );
+		
+		if ( $check___FILE__ == '/' || $check___FILE__ == '' ) {
+			break;
+		}
+		else {
+//			echo $check___FILE__ . '<br>';
+			$arr_check___FILE__[] = $check___FILE__;
+		}
+	}
+	echo implode( '<br>', $arr_check___FILE__ );
+	*/
+	
+	/*
+	$check_read_home_arr = glob ( '/home/*' );
+//	print_r( $check_read_home_arr );
+	echo implode( '<br>', $check_read_home_arr );
+	*/
+	
+	/*
+	$check_read_home_arr = glob ( '/home/logs/*' );
+//	print_r( $check_read_home_arr );
+	echo implode( '<br>', $check_read_home_arr );
+	*/
 }
+
+
 
 //
 if ( file_exists( $file_test ) ) {
