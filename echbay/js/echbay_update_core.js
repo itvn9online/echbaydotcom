@@ -49,7 +49,7 @@ function update_wgr_plugin_theme_done ( h, done_or_error ) {
 		window.open( window.location.href.split('&confirm_eb_process=')[0].split('&remove_update_running_file=')[0] + '&remove_update_running_file=1', 'target_eb_iframe' );
 		
 		console.log('Remove update running file');
-	}, 30 * 1000);
+	}, 10 * 1000);
 }
 
 function update_wgr_plugin_theme_begin ( i ) {
