@@ -2,8 +2,8 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="RESOURCE-TYPE" content="DOCUMENT" />
 <meta name="DISTRIBUTION" content="GLOBAL" />
-<meta name="CODE AUTHOR" content="EchBay.Com" />
-<meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - lienhe@echbay.com" />
+<meta name="CODE AUTHOR" content="<?php echo $arr_private_info_setting['site_upper']; ?>" />
+<meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - <?php echo $arr_private_info_setting['author_email']; ?>" />
 <!-- // META for design by EchBay -->
 <!-- EchBay SEO plugin - <?php echo $arr_private_info_setting['site_url']; ?> -->
 <?php

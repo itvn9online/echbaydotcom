@@ -16,8 +16,8 @@ $__cf_row_default = array(
 	
 	'cf_title' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
 	'cf_meta_title' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
-	'cf_keywords' => 'wordpress e-commerce plugin, echbay.com, thiet ke web chuyen nghiep',
-	'cf_news_keywords' => 'wordpress e-commerce plugin, echbay.com, thiet ke web chuyen nghiep',
+	'cf_keywords' => 'wordpress e-commerce plugin, ' . $arr_private_info_setting['site_upper'] . ', thiet ke web chuyen nghiep',
+	'cf_news_keywords' => 'wordpress e-commerce plugin, ' . $arr_private_info_setting['site_upper'] . ', thiet ke web chuyen nghiep',
 	'cf_description' => 'Một website sử dụng plugin thương mại điện tử của ' . $arr_private_info_setting['site_upper'],
 	'cf_abstract' => '',
 	
@@ -52,7 +52,7 @@ $__cf_row_default = array(
 	'cf_ten_cty' => 'Thiết kế web giá rẻ',
 //	'web_name' => '',
 	
-	'cf_email' => 'lienhe@echbay.com',
+	'cf_email' => $arr_private_info_setting['author_email'],
 	'cf_email_note' => '',
 	
 	'cf_phone_country_code' => '+84',

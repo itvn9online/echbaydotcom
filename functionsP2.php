@@ -1797,6 +1797,7 @@ function _eb_create_account_auto ( $arr = array() ) {
 	if ( count( $arr ) == 0 ) {
 		return 0;
 	}
+	global $arr_private_info_setting;
 	
 	
 	//
@@ -1830,7 +1831,7 @@ function _eb_create_account_auto ( $arr = array() ) {
 	
 	
 	// chưa có -> tạo mới ->  mật khẩu mặc định ;))
-	return wp_create_user( $user_name, 'echbay.com', $user_email );
+	return wp_create_user( $user_name, $arr_private_info_setting['site_upper'], $user_email );
 }
 
 /*
