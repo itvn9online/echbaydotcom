@@ -550,6 +550,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 // tạo link để admin chỉnh sửa khi cần
 WGR_create_quick_link_edit_post();
+WGR_open_local_link_in_iframe();
 
 
 

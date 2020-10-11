@@ -1474,3 +1474,159 @@ function WGR_create_href_for_facebook () {
 }
 
 
+
+//
+var root_url_for_open_ia = window.location.href,
+	root_url_for_open_count = 10,
+	wgr_id_obj_document_title = {
+		'root': document.title
+	};
+console.log(root_url_for_open_ia);
+
+function WGR_ia_create_iframe_title ( title_id, title ) {
+	document.title = title;
+	
+	wgr_id_obj_document_title[title_id] = title;
+}
+
+function WGR_ia_set_iframe_title ( title_id ) {
+	if ( typeof wgr_id_obj_document_title[title_id] != 'undefined' ) {
+		document.title = wgr_id_obj_document_title[title_id];
+	}
+	$(window).resize();
+}
+
+function WGR_create_local_link_in_iframe ( by_id, by_link ) {
+	if ( top != self ) {
+		console.log('Call to parent function');
+		
+		//
+		try {
+			return top.WGR_create_local_link_in_iframe ( by_id, by_link );
+		} catch (e) {
+			console.log( WGR_show_try_catch_err( e ) );
+		}
+	}
+	else {
+		console.log('WGR_open_local_link_in_iframe: ' + by_link);
+		
+		// Nếu mở đúng URL gốc -> load lại cả trang luôn
+		if ( root_url_for_open_ia == by_link ) {
+			if ( root_url_for_open_count < 0 ) {
+				console.log('Reset root link: ' + root_url_for_open_ia);
+				return true;
+			}
+			else {
+				root_url_for_open_count--;
+			}
+		}
+		
+		// nếu ID dài quá thì cũng bỏ qua, lưu ID ngắn thôi
+		if ( by_id.length > 150 ) {
+			console.log(by_id + ' length: ' + by_id.length);
+			return true;
+		}
+		
+		// nếu số lượng IA nhiều quá -> cũng tải lại web
+		if ( $('.wgr-id-loader').length > 20 ) {
+			console.log('.wgr-id-loader length: ' + $('.wgr-id-loader').length);
+			return true;
+		}
+		
+		// nếu iframe đã được tạo thì hiển thị nó ra thôi
+		if ( $('#' + by_id).length > 0 ) {
+			console.log('#' + by_id + ' exist');
+			
+			window.history.pushState("", '', by_link);
+			$('body').addClass('wgria-no-scroll');
+			$('.wgr-id-loader').removeClass('selected');
+			$('#' + by_id).addClass('selected');
+			WGR_ia_set_iframe_title( by_link );
+			
+			return false;
+		}
+		
+		// nếu là link gốc -> chỉ cần hiển thị main chính là được
+		if ( root_url_for_open_ia == by_link ) {
+			console.log('Open root link: ' + root_url_for_open_ia);
+			
+			window.history.pushState("", '', by_link);
+			$('body').removeClass('wgria-no-scroll');
+			$('.wgr-id-loader').removeClass('selected');
+			WGR_ia_set_iframe_title( 'root' );
+			
+			return false;
+		}
+		// còn lại sẽ tạo mới
+		else if ( window.location.href != by_link ) {
+			window.history.pushState("", '', by_link);
+			
+			$('body').addClass('wgria-no-scroll');
+			
+			$('.wgr-id-loader').removeClass('selected');
+			$('body').append('<div id="' + by_id + '" class="wgr-id-loader selected"><iframe name="' + by_id + '" src="' + by_link + '" width="100%" height="' + $(window).height() + '">WGR.IA Loader</iframe></div>');
+			
+			return false;
+		}
+	}
+	return true;
+}
+
+function WGR_open_local_link_in_iframe () {
+	console.log('WGR_open_local_link_in_iframe: ' + Math.random());
+	
+	try {
+		var a = document.getElementsByTagName('a');
+//		console.log(a.length);
+		for ( var i = 0; i < a.length ; i++ ) {
+			if ( typeof a[i].href != 'undefined' && a[i].href != '' && a[i].href.split(web_link).length > 1 ) {
+				// không tác động tới các link riêng của wp
+				if ( a[i].href.split(web_link + 'wp-').length > 1 ) {
+					a[i].setAttribute('data-local', 'localWPlink');
+				}
+				else {
+//					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a[i].href);
+					a[i].setAttribute('data-local', 'localink');
+					a[i].setAttribute('data-href', a[i].href);
+				}
+			}
+		}
+		
+		//
+		if ( top != self ) {
+			top.WGR_ia_create_iframe_title( root_url_for_open_ia, document.title );
+			$(window).resize();
+		}
+		
+		//
+		$('.thread-list a[data-local="localink"], .thread-list-wgr-quickview').removeAttr('data-local');
+		
+		//
+//		$('#webgiare__top a[data-local="localink"]').click(function() {
+		$('a[data-local="localink"]').click(function() {
+			var by_link = $(this).attr('data-href') || $(this).attr('href') || '',
+				a = $(this).attr('href') || '',
+				tar = $(this).attr('target') || '';
+			
+			// nếu không có lệnh mở trong cửa sổ mới
+			if ( tar == '' || tar == '_top' ) {
+//				console.log(a);
+				var a = g_func.non_mark_seo(a);
+				if ( a == '' ) {
+					a = 'home';
+				}
+				console.log('WGR.IA: ' + a);
+//				console.log(a.length);
+				
+				return WGR_create_local_link_in_iframe ( a, by_link );
+			}
+			else {
+				console.log('WGR.IA target: ' + tar);
+			}
+		});
+	} catch (e) {
+		console.log( WGR_show_try_catch_err( e ) );
+	}
+}
+
+

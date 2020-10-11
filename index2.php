@@ -48,13 +48,11 @@ else {
 	define( 'using_child_wgr_theme', 0 );
 }
 
-// include dữ liệu bản quyền
+
+
+// include cách hiển thị dữ liệu bản quyền
 include EB_THEME_PLUGIN_INDEX . 'private_setting.php';
-// từ theme cha (nếu có)
-if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
-	include EB_THEME_URL . 'private_setting.php';
-}
-//print_r($arr_private_info_setting);
+
 
 
 // danh sách toàn bộ các theme được hỗ trợ

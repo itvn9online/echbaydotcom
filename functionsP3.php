@@ -210,10 +210,12 @@ function WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl ) {
 	}
 	
 	// riêng đối với domain demo của webgiare
-	if ( strstr( $current_homeurl, 'webgiare.org/demo' ) == true
-//	|| strstr( $current_homeurl, 'www.webgiare.org/demo' ) == true
-//	|| strstr( $current_siteurl, 'www.webgiare.org/demo' ) == true
-	|| strstr( $current_siteurl, 'webgiare.org/demo' ) == true ) {
+	if (
+		strstr( $current_homeurl, 'webgiare.org/demo' ) == true
+//		|| strstr( $current_homeurl, 'www.webgiare.org/demo' ) == true
+//		|| strstr( $current_siteurl, 'www.webgiare.org/demo' ) == true
+		|| strstr( $current_siteurl, 'webgiare.org/demo' ) == true
+	) {
 		_eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
 		_eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER['HTTP_HOST'] );
 		

@@ -920,3 +920,24 @@ jQuery('#menu-posts-blog ul.wp-submenu li.wp-first-item').after('<li><a href="ad
 _global_js_eb.ebe_currency_format();
 
 
+function WGR_set_a_target_top () {
+	jQuery('a').each(function() {
+		var a = jQuery(this).attr('target') || '';
+		if ( a == '' ) {
+			jQuery(this).attr({
+				target: '_top'
+			});
+		}
+	});
+}
+setTimeout(function () {
+	WGR_set_a_target_top();
+	setTimeout(function () {
+		WGR_set_a_target_top();
+		setTimeout(function () {
+			WGR_set_a_target_top();
+		}, 2000);
+	}, 1000);
+}, 200);
+
+
