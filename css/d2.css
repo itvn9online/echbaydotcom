@@ -3147,7 +3147,7 @@ iframe[name="google_conversion_frame"] {
 	font-weight: bold;
 }
 .widget-search-advanced .widget-category-padding { padding-bottom: 20px; }
-.wgr-id-loader {
+.wgr-ia-loader {
 	position: fixed;
 	top: 0;
 	left: 110%;
@@ -3156,11 +3156,11 @@ iframe[name="google_conversion_frame"] {
 	z-index: 9999999999;
 	background: #f2f2f2;
 }
-.wgr-id-loader.selected {
+.wgr-ia-loader.selected {
 	left: 0;
 	right: 0;
 }
-.wgr-id-loader iframe {
+.wgr-ia-loader iframe {
 	border: 0 none;
 	padding: 0;
 	margin: 0;

@@ -1478,10 +1478,15 @@ function WGR_create_href_for_facebook () {
 //
 var root_url_for_open_ia = window.location.href,
 	root_url_for_open_count = 10,
+	WGR_IA_for_load_via_iframe = 1,
 	wgr_id_obj_document_title = {
 		'root': document.title
 	};
 //console.log(root_url_for_open_ia);
+
+setTimeout(function () {
+	WGR_IA_for_load_via_iframe = 0;
+}, 120 * 1000);
 
 function WGR_ia_create_iframe_title ( title_id, title ) {
 	document.title = title;
@@ -1531,8 +1536,8 @@ function WGR_create_local_link_in_iframe ( by_id, by_link ) {
 		if ( cf_wgr_ia > 50 ) {
 			cf_wgr_ia = 50;
 		}
-		if ( $('.wgr-id-loader').length > cf_wgr_ia ) {
-//			console.log('.wgr-id-loader length: ' + $('.wgr-id-loader').length);
+		if ( WGR_IA_for_load_via_iframe === 0 || $('.wgr-ia-loader').length > cf_wgr_ia ) {
+//			console.log('.wgr-ia-loader length: ' + $('.wgr-ia-loader').length);
 			return true;
 		}
 		
@@ -1542,7 +1547,7 @@ function WGR_create_local_link_in_iframe ( by_id, by_link ) {
 			
 			window.history.pushState("", '', by_link);
 			$('body').addClass('wgria-no-scroll');
-			$('.wgr-id-loader').removeClass('selected');
+			$('.wgr-ia-loader').removeClass('selected');
 			$('#' + by_id).addClass('selected');
 			WGR_ia_set_iframe_title( by_link );
 			
@@ -1555,7 +1560,7 @@ function WGR_create_local_link_in_iframe ( by_id, by_link ) {
 			
 			window.history.pushState("", '', by_link);
 			$('body').removeClass('wgria-no-scroll');
-			$('.wgr-id-loader').removeClass('selected');
+			$('.wgr-ia-loader').removeClass('selected');
 			WGR_ia_set_iframe_title( 'root' );
 			
 			return false;
@@ -1566,8 +1571,8 @@ function WGR_create_local_link_in_iframe ( by_id, by_link ) {
 			
 			$('body').addClass('wgria-no-scroll');
 			
-			$('.wgr-id-loader').removeClass('selected');
-			$('body').append('<div id="' + by_id + '" class="wgr-id-loader selected"><iframe name="' + by_id + '" src="' + by_link + '" width="100%" height="' + $(window).height() + '">WGR.IA Loader</iframe></div>');
+			$('.wgr-ia-loader').removeClass('selected');
+			$('body').append('<div id="' + by_id + '" class="wgr-ia-loader selected"><iframe name="' + by_id + '" src="' + by_link + '" width="100%" height="' + $(window).height() + '">WGR.IA Loader</iframe></div>');
 			
 			return false;
 		}

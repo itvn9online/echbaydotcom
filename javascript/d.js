@@ -686,7 +686,7 @@ jQuery(window).resize(function() {
 	
 //	_global_js_eb.auto_margin();
 	
-	$('.wgr-id-loader iframe').height( height_for_lazzy_load );
+	$('.wgr-ia-loader iframe').height( height_for_lazzy_load );
 	
 	
 	/*
