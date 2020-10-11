@@ -1528,6 +1528,9 @@ function WGR_create_local_link_in_iframe ( by_id, by_link ) {
 		}
 		
 		// nếu số lượng IA nhiều quá -> cũng tải lại web
+		if ( cf_wgr_ia > 50 ) {
+			cf_wgr_ia = 50;
+		}
 		if ( $('.wgr-id-loader').length > cf_wgr_ia ) {
 //			console.log('.wgr-id-loader length: ' + $('.wgr-id-loader').length);
 			return true;
