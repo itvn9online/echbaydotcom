@@ -399,6 +399,7 @@ WGR_category_for_categorys_search_advanced("' . $id_for . '", "' . $this->get_fi
 //		if ( mtv_id == 1 ) {
 //		print_r($arrs_cats);
 		
+		/*
 		if ( $show_for_search_advanced != 'off' && $cid > 0 && ! empty( $arrs_cats ) ) {
 //			$get_taxonomy_name = get_term_by( 'id', $cid, $eb_wp_taxonomy );
 //			$get_taxonomy_name = get_term( $cid, $eb_wp_taxonomy );
@@ -416,6 +417,7 @@ WGR_category_for_categorys_search_advanced("' . $id_for . '", "' . $this->get_fi
 				}
 			}
 		}
+		*/
 		
 //		}
 		

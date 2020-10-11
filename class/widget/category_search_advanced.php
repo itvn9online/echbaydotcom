@@ -24,7 +24,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 			'cat_type' => 'category',
 			'list_tyle' => '',
 //			'get_child' => '',
-//			'get_parent' => '',
+			'get_parent' => '',
 			'show_for_search_advanced' => '',
 			'show_image' => '',
 			'dynamic_tag' => 'div',
@@ -134,10 +134,10 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		
 		
 		//
-//		$input_name = $this->get_field_name ( 'get_parent' );
+		$input_name = $this->get_field_name ( 'get_parent' );
 //		echo $instance[ 'get_child' ];
 		
-//		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_parent' ], 'Tự tìm các nhóm cùng cha (thường dùng cho phần chi tiết sản phẩm, chi tiết bài viết)' );
+		_eb_widget_echo_widget_input_checkbox( $input_name, $instance[ 'get_parent' ], 'Tự tìm các nhóm cùng cha (thường dùng khi cần thay đổi các nhóm con tự động theo nhóm cha đang xem)' );
 		
 		
 		$input_name = $this->get_field_name ( 'show_for_search_advanced' );
@@ -216,7 +216,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 //		$get_child = isset( $instance ['get_child'] ) ? $instance ['get_child'] : 'off';
 //		$get_child = ( $get_child == 'on' ) ? true : false;
 		
-//		$get_parent = isset( $instance ['get_parent'] ) ? $instance ['get_parent'] : 'off';
+		$get_parent = isset( $instance ['get_parent'] ) ? $instance ['get_parent'] : 'off';
 //		$get_parent = ( $get_parent == 'on' ) ? true : false;
 		
 		$show_for_search_advanced = isset( $instance ['show_for_search_advanced'] ) ? $instance ['show_for_search_advanced'] : 'off';
@@ -241,8 +241,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		// tự động lấy danh mục cùng nhóm
 		// nếu không có nhóm được chỉ định
 		// thuộc tính tự động tìm nhóm được thiết lập
-		/*
-		if ( $cat_ids == 0 && $get_parent != 'off' ) {
+		if ( $cat_ids == 0 && $get_parent != 'off' && $cat_type == 'category' ) {
 //			global $cid;
 			global $parent_cid;
 //			global $pid;
@@ -265,40 +264,40 @@ class ___echbay_category_search_advanced extends WP_Widget {
 			}
 			*/
 //			echo $cat_ids;
-//		}
+		}
 		
 		// tìm nhóm cha -> để các nhóm sau sẽ lấy theo nhóm này
 		if ( $cat_ids > 0 ) {
-				// lấy lại taxonomy
-				/*
-				$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
-				if ( $cat_type == '' ) {
-					echo 'taxonomy for #' . $cat_ids . ' not found!';
-					return false;
-				}
+			// lấy lại taxonomy
+			/*
+			$cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
+			if ( $cat_type == '' ) {
+				echo 'taxonomy for #' . $cat_ids . ' not found!';
+				return false;
+			}
+			*/
+			
+			// nếu có lệnh tìm nhóm cha -> tìm theo nhóm cha
+			/*
+			if ( $get_parent != 'off' ) {
+				$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
+			}
+			// còn không thì lấy theo nhóm đã được chỉ định
+			else {
 				*/
-				
-				// nếu có lệnh tìm nhóm cha -> tìm theo nhóm cha
-				/*
-				if ( $get_parent != 'off' ) {
-					$cats_info = EBE_widget_get_parent_cat( $cat_ids, $cat_type );
-				}
-				// còn không thì lấy theo nhóm đã được chỉ định
-				else {
-					*/
-					$cats_info = get_term( $cat_ids, $cat_type );
-//				}
-				
-				//
-				/*
-				if ( ! empty ( $cats_info ) ) {
-					$cat_type = $cats_info->taxonomy;
-				}
-				*/
-				if ( empty ( $cats_info ) ) {
-					echo 'taxonomy for #' . $cat_ids . ' not found!';
-					return false;
-				}
+				$cats_info = get_term( $cat_ids, $cat_type );
+//			}
+			
+			//
+			/*
+			if ( ! empty ( $cats_info ) ) {
+				$cat_type = $cats_info->taxonomy;
+			}
+			*/
+			if ( empty ( $cats_info ) ) {
+				echo 'taxonomy for #' . $cat_ids . ' not found!';
+				return false;
+			}
 		}
 //		print_r( $cats_info );
 //		echo $cat_type . '<br>' . "\n";
@@ -324,10 +323,17 @@ class ___echbay_category_search_advanced extends WP_Widget {
 		) );
 		$arrs_cats = WGR_order_and_hidden_taxonomy( $arrs_cats );
 		
+		//
+		if ( $get_parent != 'off' && empty ( $arrs_cats ) ) {
+			echo '<!-- ' . $this->name . ' (' . basename( __FILE__ ) . ') sub-category for #' . $cat_ids . ' not found! -->';
+			return false;
+		}
+		
 		// nếu có lệnh kiểm tra sản phẩm tồn tại -> kiểm tra theo CID
 //		if ( mtv_id == 1 ) {
 //		print_r($arrs_cats);
 		
+		/*
 		if ( $show_for_search_advanced != 'off' && $cid > 0 && ! empty( $arrs_cats ) ) {
 //			$get_taxonomy_name = get_term_by( 'id', $cid, $eb_wp_taxonomy );
 //			$get_taxonomy_name = get_term( $cid, $eb_wp_taxonomy );
@@ -345,6 +351,7 @@ class ___echbay_category_search_advanced extends WP_Widget {
 				}
 			}
 		}
+		*/
 		
 //		}
 		
