@@ -22,6 +22,15 @@ $arrs_private_info_setting = array(
 		'site_upper' => 'EchBay.com',
 		'site_url' => 'https://echbay.com/',
 		'author' => 'ẾchBay.com'
+	),
+	'hostingviet' => array(
+		'author' => 'HostingViet',
+		'parent_theme_default' => 'hostingviet',
+//		'url_update_parent_theme' => '',
+		'child_theme_default' => 'hostingviet-child',
+		'site_upper' => 'HostingViet.vn',
+		'site_url' => 'https://hostingviet.vn/',
+		'author' => 'HostingViet'
 	)
 );
 $arr_private_info_setting = $arrs_private_info_setting['echbaydotcom'];
@@ -34,17 +43,26 @@ if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
 	
 	// có thì ghi đè dữ liệu lên thôi
 	if ( isset( $arrs_private_info_setting[ $private_info_setting ] ) ) {
+		// lấy logo
+		if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
+			include EB_THEME_URL . 'private_setting.php';
+			$arr_private_info_setting['author_logo'] = $uri_for_author_logo . '/logo.png';
+			/*
+			if ( defined('WP_SITEURL') ) {
+				$uri_for_author_logo = str_replace( ABSPATH, WP_SITEURL . '/', dirname( __FILE__ ) );
+			}
+			else {
+				$uri_for_author_logo = str_replace( ABSPATH, '', dirname( __FILE__ ) );
+			}
+			*/
+		}
+		
+		// các dữ liệu khác sẽ ghi đè từ theme
 		foreach ( $arrs_private_info_setting[ $private_info_setting ] as $k => $v ) {
 			$arr_private_info_setting[$k] = $v;
 		}
 	}
 }
-/*
-if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
-	include EB_THEME_URL . 'private_setting.php';
-}
-*/
 //print_r($arr_private_info_setting);
-
 
 
