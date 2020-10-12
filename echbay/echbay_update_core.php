@@ -482,12 +482,14 @@ function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 //	print_r( $arr );
 	foreach ( $arr as $v ) {
 		rmdir( $v );
-		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
+//		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
+		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
 	}
 	
 	// xóa thư mục gốc
 	rmdir( $dir );
-	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
+//	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
+	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
 	
 	// test
 //	exit();
