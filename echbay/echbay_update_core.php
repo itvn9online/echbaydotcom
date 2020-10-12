@@ -482,14 +482,14 @@ function EBE_remove_dir_after_update ( $dir, $arr, $dir_to = '' ) {
 //	print_r( $arr );
 	foreach ( $arr as $v ) {
 		rmdir( $v );
-//		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
-		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
+		echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $v ) . '<br>' . "\n";
+//		echo '<strong>remove dir</strong>: ' . $v . '<br>' . "\n";
 	}
 	
 	// xóa thư mục gốc
 	rmdir( $dir );
-//	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
-	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
+	echo '<strong>remove dir</strong>: ' . str_replace( EB_THEME_CONTENT, '', $dir ) . '<br>' . "\n";
+//	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
 	
 	// test
 //	exit();
@@ -508,6 +508,33 @@ function EBE_get_text_version ( $str ) {
 		return trim( $str[0] );
 	}
 	return 'null';
+}
+
+function WGR_remove_github_file ( $f_gitattributes ) {
+	if ( file_exists( $f_gitattributes ) ) {
+		if ( unlink( $f_gitattributes ) ) {
+			echo '<strong>remove file</strong>: ';
+		}
+		else {
+			echo '<strong>NOT remove file</strong>: ';
+		}
+//		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '<br>' . "\n";
+	}
+	/*
+	else {
+		$f_gitattributes = EB_THEME_CACHE . 'echbaytwo-master/.gitattributes';
+		if ( file_exists( $f_gitattributes ) ) {
+			if ( unlink( $f_gitattributes ) ) {
+				echo '<strong>remove file</strong>: ';
+			}
+			else {
+				echo '<strong>NOT remove file</strong>: ';
+			}
+			echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+		}
+	}
+	*/
 }
 
 
@@ -670,33 +697,6 @@ function EBE_get_text_version ( $str ) {
 					if ( ! is_dir( EB_THEME_CACHE . $dir_name_for_unzip_to ) ) {
 						echo '<h3 class="redcolor">Unzip faild...</strong></h3>'; 
 					}
-
-function WGR_remove_github_file ( $f_gitattributes ) {
-	if ( file_exists( $f_gitattributes ) ) {
-		if ( unlink( $f_gitattributes ) ) {
-			echo '<strong>remove file</strong>: ';
-		}
-		else {
-			echo '<strong>NOT remove file</strong>: ';
-		}
-//		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
-		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '<br>' . "\n";
-	}
-	/*
-	else {
-		$f_gitattributes = EB_THEME_CACHE . 'echbaytwo-master/.gitattributes';
-		if ( file_exists( $f_gitattributes ) ) {
-			if ( unlink( $f_gitattributes ) ) {
-				echo '<strong>remove file</strong>: ';
-			}
-			else {
-				echo '<strong>NOT remove file</strong>: ';
-			}
-			echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
-		}
-	}
-	*/
-}
 					
 					// xóa file của github luôn và ngay
 //					WGR_remove_github_file( EB_THEME_CACHE . 'echbaydotcom-master/.gitattributes' );
