@@ -2125,6 +2125,7 @@ function _eb_get_youtube_id ( $url ) {
 function _eb_tieu_de_chuan_seo( $str ) {
 	global $__cf_row;
 	global $arr_active_for_404_page;
+	global $arr_private_info_setting;
 	global $act;
 	
 	// nếu sử dụng module SEO của EchBay

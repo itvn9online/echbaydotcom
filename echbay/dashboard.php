@@ -12,6 +12,7 @@
 
 //
 global $wpdb;
+global $arr_private_info_setting;
 //	global $func;
 
 //
@@ -314,12 +315,12 @@ if ( $__cf_row['cf_on_off_wpcron'] == 1 ) {
 // nếu EchBay SEO không được bật -> sẽ kiểm tra các Plugin khác
 if ( cf_on_off_echbay_seo != 1 ) {
 	$str_eb_warning .= '
-	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <a href="' . admin_link . 'admin.php?page=eb-config&tab=seo&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>EchBay SEO plugin</strong></a> đang bị tắt. Một website thì không thể thiếu SEO, hãy đảm bảo bạn đã có plugin SEO khác để thay thế. Ví dụ: <a href="https://vi.wordpress.org/plugins/wordpress-seo/" target="_blank" rel="nofollow">Yoast SEO</a>, <a href="https://vi.wordpress.org/plugins/all-in-one-seo-pack/" target="_blank" rel="nofollow">All in one seo</a>...</div>';
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <a href="' . admin_link . 'admin.php?page=eb-config&tab=seo&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>' . $arr_private_info_setting['author'] . ' SEO plugin</strong></a> đang bị tắt. Một website thì không thể thiếu SEO, hãy đảm bảo bạn đã có plugin SEO khác để thay thế. Ví dụ: <a href="https://vi.wordpress.org/plugins/wordpress-seo/" target="_blank" rel="nofollow">Yoast SEO</a>, <a href="https://vi.wordpress.org/plugins/all-in-one-seo-pack/" target="_blank" rel="nofollow">All in one seo</a>...</div>';
 }
 // nếu đang bật, mà tồn tại plugin SEO khác -> khuyến nghị tắt
 else if ( defined( 'WPSEO_FILE' ) ) {
 	$str_eb_warning .= '
-	<div class="redcolor"><i class="fa fa-warning"></i> CẢNH BÁO: trên mỗi website, chỉ nên sử dụng một plugin SEO duy nhất, không nên chạy đồng thời cả <strong>Yoast SEO</strong> với <a href="' . admin_link . 'admin.php?page=eb-config&tab=seo&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>EchBay SEO plugin</strong></a>, vui lòng tắt một cái đi để web ổn định hơn.</div>';
+	<div class="redcolor"><i class="fa fa-warning"></i> CẢNH BÁO: trên mỗi website, chỉ nên sử dụng một plugin SEO duy nhất, không nên chạy đồng thời cả <strong>Yoast SEO</strong> với <a href="' . admin_link . 'admin.php?page=eb-config&tab=seo&support_tab=cf_on_off_echbay_seo" target="_blank"><strong>' . $arr_private_info_setting['author'] . ' SEO plugin</strong></a>, vui lòng tắt một cái đi để web ổn định hơn.</div>';
 }
 
 

@@ -5,7 +5,7 @@
 <meta name="CODE AUTHOR" content="<?php echo $arr_private_info_setting['site_upper']; ?>" />
 <meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - <?php echo $arr_private_info_setting['author_email']; ?>" />
 <!-- // META for design by <?php echo $arr_private_info_setting['author']; ?> -->
-<!-- EchBay SEO plugin - <?php echo $arr_private_info_setting['site_url']; ?> -->
+<!-- <?php echo $arr_private_info_setting['author']; ?> SEO plugin - <?php echo $arr_private_info_setting['site_url']; ?> -->
 <?php
 
 // thêm 1 số dns-prefetch cần thiết
@@ -155,7 +155,7 @@ $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_descri
 }
 else {
 ?>
-<!-- // EchBay SEO plugin disable by customer -->
+<!-- // <?php echo $arr_private_info_setting['author']; ?> SEO plugin disable by customer -->
 <?php
 }
 
@@ -178,4 +178,4 @@ if ( $__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off' ) {
 }
 
 ?>
-<!-- // EchBay SEO plugin -->
+<!-- // <?php echo $arr_private_info_setting['author']; ?> SEO plugin -->
