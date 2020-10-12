@@ -670,33 +670,38 @@ function EBE_get_text_version ( $str ) {
 					if ( ! is_dir( EB_THEME_CACHE . $dir_name_for_unzip_to ) ) {
 						echo '<h3 class="redcolor">Unzip faild...</strong></h3>'; 
 					}
+
+function WGR_remove_github_file ( $f_gitattributes ) {
+	if ( file_exists( $f_gitattributes ) ) {
+		if ( unlink( $f_gitattributes ) ) {
+			echo '<strong>remove file</strong>: ';
+		}
+		else {
+			echo '<strong>NOT remove file</strong>: ';
+		}
+//		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+		echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '<br>' . "\n";
+	}
+	/*
+	else {
+		$f_gitattributes = EB_THEME_CACHE . 'echbaytwo-master/.gitattributes';
+		if ( file_exists( $f_gitattributes ) ) {
+			if ( unlink( $f_gitattributes ) ) {
+				echo '<strong>remove file</strong>: ';
+			}
+			else {
+				echo '<strong>NOT remove file</strong>: ';
+			}
+			echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
+		}
+	}
+	*/
+}
 					
 					// xóa file của github luôn và ngay
-//					$f_gitattributes = EB_THEME_CACHE . 'echbaydotcom-master/.gitattributes';
-					$f_gitattributes = EB_THEME_CACHE . $dir_name_for_unzip_to . '/.gitattributes';
-					if ( file_exists( $f_gitattributes ) ) {
-						if ( unlink( $f_gitattributes ) ) {
-							echo '<strong>remove file</strong>: ';
-						}
-						else {
-							echo '<strong>NOT remove file</strong>: ';
-						}
-						echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
-					}
-					/*
-					else {
-						$f_gitattributes = EB_THEME_CACHE . 'echbaytwo-master/.gitattributes';
-						if ( file_exists( $f_gitattributes ) ) {
-							if ( unlink( $f_gitattributes ) ) {
-								echo '<strong>remove file</strong>: ';
-							}
-							else {
-								echo '<strong>NOT remove file</strong>: ';
-							}
-							echo str_replace( EB_THEME_CONTENT, '', $f_gitattributes ) . '.gitattributes<br>' . "\n";
-						}
-					}
-					*/
+//					WGR_remove_github_file( EB_THEME_CACHE . 'echbaydotcom-master/.gitattributes' );
+					WGR_remove_github_file( EB_THEME_CACHE . $dir_name_for_unzip_to . '/.gitattributes' );
+					WGR_remove_github_file( EB_THEME_CACHE . $dir_name_for_unzip_to . '/.gitignore' );
 					
 					// v1
 					/*
