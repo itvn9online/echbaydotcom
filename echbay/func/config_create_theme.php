@@ -380,7 +380,8 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 	
 }
 
-$dir_for_save_all_themes = EB_THEME_PLUGIN_INDEX . 'themes/all/';
+//$dir_for_save_all_themes = EB_THEME_PLUGIN_INDEX . 'themes/all/';
+$dir_for_save_all_themes = EB_THEME_URL . 'themes/all/';
 
 $file_bo_giao_dien = $dir_for_save_all_themes . $create_theme_name . '.php';
 

@@ -7,7 +7,8 @@
 
 $create_theme_key = trim( $_POST['create_theme_key'] );
 
-$file_for_active = EB_THEME_PLUGIN_INDEX . 'themes/all/' . $create_theme_key . '.php';
+//$file_for_active = EB_THEME_PLUGIN_INDEX . 'themes/all/' . $create_theme_key . '.php';
+$file_for_active = EB_THEME_URL . 'themes/all/' . $create_theme_key . '.php';
 if ( ! file_exists( $file_for_active ) ) {
 	_eb_alert('Không tồn tại giao diện tương ứng');
 }

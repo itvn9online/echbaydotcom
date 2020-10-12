@@ -131,6 +131,7 @@ function ___eb_cache_getUrl ( $cache_dir = 'all' ) {
 
 
 
+
 // rút gọn HTML
 function WGR_rut_gon_HTML_truoc_khi_tao_cache ( $data, $filename = '' ) {
 	
