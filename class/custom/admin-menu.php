@@ -126,7 +126,9 @@ function echbay_create_admin_menu() {
 	/*
 	* Bản nâng cao thì chỉ cần admin nhìn thôi, người khác không quan trọng
 	*/
-	add_submenu_page( $parent_slug, 'Phiên bản cao cấp, hỗ trợ nhiều tính năng hơn', 'Phiên bản ', 'manage_options', 'eb-licenses', 'func_include_eb_private_code' );
+	if ( $arr_private_info_setting['parent_theme_default'] == 'echbaytwo' ) {
+		add_submenu_page( $parent_slug, 'Phiên bản cao cấp, hỗ trợ nhiều tính năng hơn', 'Phiên bản ', 'manage_options', 'eb-licenses', 'func_include_eb_private_code' );
+	}
 	
 	
 	//

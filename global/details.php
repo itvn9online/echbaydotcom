@@ -16,7 +16,7 @@ $__post = $post;
 
 // nếu đây là một page, và page này có URL thuốc nhóm ưu tiên -> không hiển thị page theo kiểu thông thường
 if ( $__post->post_type == 'page' && isset( $arr_active_for_404_page[ $__post->post_name ] ) ) {
-	echo '<!-- Custom page by EchBay: ' . $__post->post_name . ' -->' . "\n";
+	echo '<!-- Custom page by ' . $arr_private_info_setting['author'] . ': ' . $__post->post_name . ' -->' . "\n";
 	
 	$act = $__post->post_name;
 

@@ -2140,7 +2140,7 @@ function _eb_tieu_de_chuan_seo( $str ) {
 				$str = _eb_short_string( $str, 70 );
 			}
 		}
-		echo '<!-- title by EchBay -->' . "\n";
+		echo '<!-- title by ' . $arr_private_info_setting['author'] . ' -->' . "\n";
 	}
 	// page 404 của WGR
 	else if ( isset( $arr_active_for_404_page[ $act ] ) ) {

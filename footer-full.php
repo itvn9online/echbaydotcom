@@ -68,7 +68,7 @@ wp_footer();
 
 ?>
 </div>
-<!-- FOOTER by EchBay -->
+<!-- FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 
 
@@ -95,5 +95,5 @@ if ( eb_code_tester == true ) {
 
 
 ?>
-<!-- // FOOTER by EchBay -->
+<!-- // FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
 </body></html>

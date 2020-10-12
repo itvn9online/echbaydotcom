@@ -24,10 +24,16 @@ $arrs_private_info_setting = array(
 		'author' => 'ẾchBay.com'
 	),
 	'hostingviet' => array(
-		'author' => 'HostingViet',
 		'parent_theme_default' => 'hostingviet',
 //		'url_update_parent_theme' => '',
+		
 		'child_theme_default' => 'hostingviet-child',
+		
+		'theme_site_upper' => 'HostingViet.vn',
+		'theme_site_url' => 'https://hostingviet.vn/',
+		'theme_author' => 'HostingViet',
+		
+		'author_email' => 'hotro@hostingviet.vn',
 		'site_upper' => 'HostingViet.vn',
 		'site_url' => 'https://hostingviet.vn/',
 		'author' => 'HostingViet'

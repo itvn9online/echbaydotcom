@@ -17,7 +17,7 @@ echo WGR_show_header_favicon();
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 ?>
-<!-- Global site format by EchBay -->
+<!-- Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
 <base href="<?php echo web_link; ?>" />
 <?php
 
@@ -87,9 +87,9 @@ if ( 1 == 2 ) {
 */
 
 ?>
-<!-- HEAD by EchBay -->
+<!-- HEAD by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php echo $__cf_row['cf_js_head']; ?>
-<!-- // Global site format by EchBay -->
+<!-- // Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 
 //echo 'aaaaaaaaaaaaaaaaaaaa';
