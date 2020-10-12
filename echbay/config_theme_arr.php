@@ -550,6 +550,8 @@ $arr_for_set_template['dir_for_save_include_theme'] = EB_THEME_URL;
 
 
 // list toàn bộ các themes đã đươc liệt kê
+$eb_all_themes_support = array();
+
 /*
 //$arr_list_all_themes = glob ( EB_THEME_PLUGIN_INDEX . 'themes/all/*.{php}', GLOB_BRACE );
 $arr_list_all_themes = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'themes/all/', '.{php}' );
