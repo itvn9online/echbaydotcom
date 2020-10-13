@@ -97,7 +97,7 @@ $url_udpate_via_api = $arr_private_info_setting['site_url'] . 'actions/wordpress
 		}
 	}
 	// hiển thị link cập nhật
-	else {
+	else if ( $arr_private_info_setting['parent_theme_default'] == 'echbaytwo' ) {
 		echo '<h2 class="l20"><center><a href="#" class="click-connect-to-echbay-update-wp-core">[ Bấm vào đây để cập nhật lại core cho WordPress! ]</a></center></h2>';
 		echo '<h4 class="l20 d-none"><center><a href="#" class="click-connect-to-echbay-update-el-core">[ Bấm vào đây để cập nhật lại core cho Elementor Pro! ]</a></center></h4>';
 	}
