@@ -819,7 +819,10 @@ function WGR_remove_github_file ( $f_gitattributes ) {
 		// Kiểm tra phiên bản trên github
 		$strCacheFilter = 'github_version';
 		$version_in_github = _eb_get_static_html ( $strCacheFilter, '', '', 24 * 3600 );
+		$url_check_version = $arr_private_info_setting['url_check_WGR_version'];
+		/*
 		$url_check_version = 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION';
+		*/
 		if ( $version_in_github == false ) {
 			$version_in_github = _eb_getUrlContent( $url_check_version );
 //			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
@@ -846,10 +849,12 @@ function WGR_remove_github_file ( $f_gitattributes ) {
 //		echo '<br>';
 		
 		// Link cập nhật core từ echbay.com
-		echo '<br><h2><center><a href="#" class="click-connect-to-echbay-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho EchBay! ]</a></center></h2>';
+		if ( $arr_private_info_setting['parent_theme_default'] == 'echbaytwo' ) {
+			echo '<br><h2><center><a href="#" class="click-connect-to-echbay-update-eb-core">[ Bấm vào đây để cập nhật lại mã nguồn cho echbaydotcom! ]</a></center></h2>';
+		}
 		
 		// Link cập nhật core từ github
-		echo '<p><center><a href="#" class="click-connect-to-github-update-eb-core orgcolor">[ Cập nhật mã nguồn cho EchBay theo thời gian thực! Server quốc tế (GitHub) ]</a></center></p>';
+		echo '<p><center><a href="#" class="click-connect-to-github-update-eb-core orgcolor">[ Cập nhật mã nguồn cho echbaydotcom theo thời gian thực! Server quốc tế (GitHub) ]</a></center></p>';
 		
 		//
 		echo '<p class="bluecolor"><em>' . $url_check_version . '</em></p>';

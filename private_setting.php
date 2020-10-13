@@ -11,7 +11,8 @@ $arrs_private_info_setting = array(
 		
 		'child_theme_default' => 'echbaytwo-child',
 		
-//		'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
+		'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
+		'url_check_EB_theme_version' => 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION',
 		
 //		'theme_author_email' => 'lienhe@echbay.com',
 		'theme_site_upper' => 'WebGiaRe.org',
@@ -28,6 +29,9 @@ $arrs_private_info_setting = array(
 //		'url_update_parent_theme' => '',
 		
 		'child_theme_default' => 'hostingviet-child',
+		
+//		'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
+//		'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION',
 		
 		'theme_site_upper' => 'HostingViet.vn',
 		'theme_site_url' => 'https://hostingviet.vn/',
@@ -52,7 +56,9 @@ if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
 		// lấy logo
 		if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
 			include EB_THEME_URL . 'private_setting.php';
-			$arr_private_info_setting['author_logo'] = $uri_for_author_logo . '/logo.png';
+			if ( isset( $uri_for_author_logo ) ) {
+				$arr_private_info_setting['author_logo'] = $uri_for_author_logo . '/logo.png';
+			}
 			/*
 			if ( defined('WP_SITEURL') ) {
 				$uri_for_author_logo = str_replace( ABSPATH, WP_SITEURL . '/', dirname( __FILE__ ) );
@@ -67,6 +73,8 @@ if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
 		foreach ( $arrs_private_info_setting[ $private_info_setting ] as $k => $v ) {
 			$arr_private_info_setting[$k] = $v;
 		}
+		$arr_private_info_setting['url_check_WGR_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
+		$arr_private_info_setting['url_check_EB_theme_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
 	}
 }
 //print_r($arr_private_info_setting);

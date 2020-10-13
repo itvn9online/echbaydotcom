@@ -2,11 +2,13 @@
 
 global $arr_private_info_setting;
 
+if ( $arr_private_info_setting['parent_theme_default'] == 'echbaytwo' ) {
 ?>
 <hr>
 <div class="l19">* Trong trường hợp website của bạn đang sử dụng hosting cung cấp bởi <a href="<?php echo $arr_private_info_setting['site_url']; ?>cart" target="_blank" rel="next"><?php echo $arr_private_info_setting['site_upper']; ?></a>, bạn có thể sử dụng chức năng cập nhật mã nguồn cho WordPress tại đây. Chức năng cập nhật được tối ưu theo hệ thống server nên sẽ ổn định hơn so với cập nhật qua module sẵn có của WordPress. Ngoài ra, bạn sẽ được sử dụng miễn phí phiên bản Elemetor Pro</div>
 <br>
 <?php
+}
 
 
 
