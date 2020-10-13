@@ -3159,6 +3159,12 @@ iframe[name="google_conversion_frame"] {
 .wgr-ia-loader.selected {
 	left: 0;
 	right: 0;
+	/*
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	*/
 }
 .wgr-ia-loader iframe {
 	border: 0 none;
