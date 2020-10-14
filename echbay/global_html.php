@@ -78,6 +78,12 @@
 				</div>
 			</li>
 			<li class="cf">
+				<div class="lf f80"><i class="fa fa-circle-o-notch"></i> JS Dynamic taxonomy <em class="small">(Tạo menu taxonomy tự động tức bằng Javascript. Code sẽ nhận diện taxonomy và ID taxonomy cần lấy dựa theo cấu trúc trong title: taxonomy{category|blog|post_option}|id{0|1|2})</em></div>
+				<div class="lf f20 text-center">
+					<button data-link="#" data-text="..." data-title="category|0" data-css="wgr-load-js-sub-taxonomy" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>
+				</div>
+			</li>
+			<li class="cf">
 				<div class="lf f80"><i class="fa fa-support"></i> <?php echo EBE_get_lang('lienhe'); ?> <em>(/contact)</em></div>
 				<div class="lf f20 text-center">
 					<button data-link="./contact" data-text="<?php echo EBE_get_lang('lienhe'); ?>" type="button" class="cur click-to-add-custom-link"><i class="fa fa-plus"></i></button>

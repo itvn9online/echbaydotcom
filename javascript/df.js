@@ -1107,7 +1107,7 @@ function ___eb_thread_details_timeend () {
 
 
 // load danh sách nhóm dưới dạng JS
-function WGR_get_js_sub_category_to_menu ( arr ) {
+function WGR_get_js_sub_category_to_menu ( arr, by_id ) {
 	if ( arr.length == 0 ) {
 		return '';
 	}
@@ -1118,14 +1118,25 @@ function WGR_get_js_sub_category_to_menu ( arr ) {
 	} );
 //	console.log( arr );
 	
+	if ( typeof by_id == 'undefined' ) {
+		by_id = 0;
+	}
+	
 	//
 //	var str = '<!-- JS for sub-category menu -->';
 	var str = '',
 		avt = '',
-		icon = '';
+		icon = '',
+		check_id = 0;
 	
 	for ( var i = 0; i < arr.length; i++ ) {
-		if ( typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
+		check_id = 1;
+		if ( by_id > 0 && arr[i].id != by_id ) {
+			check_id = 0;
+		}
+		
+		//
+		if ( check_id == 1 && typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
 			// tạo style ảnh nền cho menu
 			avt = '';
 			if ( arr[i].avt != '' ) {
@@ -1217,6 +1228,41 @@ function WGR_check_load_js_category ( i ) {
 //	if ( eb_blog_group.length > 0 && jQuery('.wgr-load-js-sub-blogs').length > 0 ) {
 	if ( jQuery('.wgr-load-js-sub-blogs').length > 0 ) {
 		jQuery('.wgr-load-js-sub-blogs').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) ).removeClass('wgr-load-js-sub-blogs');
+	}
+	
+	// sub taxonomy group -> tự xác định taxonomy theo title được truyền vào
+	if ( jQuery('.wgr-load-js-sub-taxonomy').length > 0 ) {
+		jQuery('.wgr-load-js-sub-taxonomy a').each(function() {
+			var a = $(this).attr('title') || '';
+			console.log(a);
+			
+			if ( a != '' ) {
+				a = a.split('|');
+				
+				if ( a.length == 2 ) {
+					a[1] = a[1] * 1;
+					
+					// truyền cả ID cần lấy vào nếu có thì function sẽ lọc đúng id đó luôn
+					if ( a[0] == 'category' ) {
+						$(this).append( WGR_get_js_sub_category_to_menu( eb_site_group, a[1] ) );
+					}
+					else if ( a[0] == 'blogs' ) {
+						$(this).append( WGR_get_js_sub_category_to_menu( eb_blog_group, a[1] ) );
+					}
+					else if ( a[0] == 'post_option' ) {
+						$(this).append( WGR_get_js_sub_category_to_menu( eb_post_options_group, a[1] ) );
+					}
+					else {
+						console.log('Title taxonomy: (category/blogs/post_option)|taxonomy_id');
+					}
+				}
+				else {
+					console.log('Title: (category/blogs/post_option)|taxonomy_id');
+				}
+			}
+		});
+		jQuery('.wgr-load-js-sub-taxonomy').removeClass('wgr-load-js-sub-taxonomy');
+//		jQuery('.wgr-load-js-sub-taxonomy').addClass('echbay-category-order').append( WGR_get_js_sub_category_to_menu( eb_blog_group ) ).removeClass('wgr-load-js-sub-taxonomy');
 	}
 	
 }

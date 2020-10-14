@@ -3185,6 +3185,10 @@ function _eb_get_full_category_v2($this_id = 0, $taxx = 'category', $get_full_li
 //	$op['hide_empty'] = 0;
 	$op['parent'] = $this_id;
 	
+	if ( ! isset( $op['hide_empty'] ) ) {
+		$op['hide_empty'] = eb_code_tester == true ? 0 : 1;
+	}
+	
 	//
 	$arr = get_categories( $op );
 //	print_r($arr);

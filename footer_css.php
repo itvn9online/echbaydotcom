@@ -106,7 +106,7 @@ $using_js_file_name = 'cat-' . $using_js_file_name . '.js';
 
 //
 if (!file_exists(EB_THEME_CACHE . $cat_js_file_name) || date_time - filemtime(EB_THEME_CACHE . $cat_js_file_name) > 1800) {
-    _eb_create_file(EB_THEME_CACHE . $cat_js_file_name, 'var eb_site_group=[' . _eb_get_full_category_v2(0, 'category', 1) . '],eb_blog_group=[' . _eb_get_full_category_v2(0, EB_BLOG_POST_LINK, 1) . '];');
+    _eb_create_file(EB_THEME_CACHE . $cat_js_file_name, 'var eb_site_group=[' . _eb_get_full_category_v2(0, 'category', 1) . '],eb_post_options_group=[' . _eb_get_full_category_v2(0, 'post_options', 1) . '],eb_blog_group=[' . _eb_get_full_category_v2(0, EB_BLOG_POST_LINK, 1) . '];');
 
     //
     if (!file_exists(EB_THEME_CACHE . $using_js_file_name)) {

@@ -412,16 +412,69 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 	}
 	
 	// hiển thị danh mục trên phần danh sách sản phẩm
+//	echo $__cf_row['cf_category_in_list'] . '<br>';
 	if ( $__cf_row['cf_category_in_list'] === 1 ) {
 		$replace_post_categories = array();
 		$post_categories = array();
+		
+		//
 		if ($post->post_type == 'post') {
-			$post_categories = wp_get_post_categories( $post->ID );
+//			$post_categories = wp_get_post_categories( $post->ID );
+			$post_categories = get_the_terms( $post->ID, 'category' );
+			$post_categories2 = array();
+			$post_categories2 = get_the_terms( $post->ID, 'post_options' );
+			
+			//
+			if ( $post_categories != false && $post_categories2 != false ) {
+				$post_categories = array_merge( get_the_terms( $post->ID, 'category' ), get_the_terms( $post->ID, 'post_options' ) );
+			}
+			else if ( $post_categories == false && $post_categories2 != false ) {
+				$post_categories = $post_categories2;
+			}
+		}
+		else if ($post->post_type == EB_BLOG_POST_TYPE) {
+			$post_categories = get_the_terms( $post->ID, EB_BLOG_POST_LINK );
+		}
+		else if ($post->post_type == 'product') {
+			$post_categories = get_the_terms( $post->ID, 'product_cat' );
+		}
+		if ( $post_categories == false ) {
+			$post_categories = array();
+		}
+		
+		if ( ! empty( $post_categories ) ) {
+			global $arr_replace_cat_in_ids_list;
+			
+			//
+//			print_r($post_categories);
+			foreach ( $arr_replace_cat_in_ids_list as $v ) {
+				foreach ( $post_categories as $v2 ) {
+					if ( $v->term_id == $v2->term_id ) {
+						// nếu là nhóm cha -> gán luôn -> vì key lấy theo nhóm cha
+						if ( $v->parent == 0 ) {
+							$replace_post_categories[ $v->slug ] = $v->name;
+						}
+						// còn nhóm con thì đi tìm key của nhóm cha
+						else {
+							foreach ( $arr_replace_cat_in_ids_list as $v_child ) {
+								if ( $v->parent == $v_child->term_id ) {
+									$replace_post_categories[ $v_child->slug ] = $v->name;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/*
+		if ($post->post_type == 'post') {
+//			$post_categories = wp_get_post_categories( $post->ID );
+			$post_categories = get_the_terms( $post->ID, 'category' );
 			
 			if ( ! empty( $post_categories ) ) {
 				global $arr_replace_cat_in_ids_list;
 				
-//				print_r($post_categories);
+				print_r($post_categories);
 				foreach ( $arr_replace_cat_in_ids_list as $v ) {
 					if ( in_array( $v->term_id, $post_categories ) ) {
 						$replace_post_categories[ $v->slug ] = $v->name;
@@ -430,26 +483,9 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 			}
 		}
 		else {
-			if ($post->post_type == EB_BLOG_POST_TYPE) {
-				$post_categories = get_the_terms( $post->ID, EB_BLOG_POST_LINK );
-			}
-			else if ($post->post_type == 'product') {
-				$post_categories = get_the_terms( $post->ID, 'product_cat' );
-			}
-			
-			if ( ! empty( $post_categories ) ) {
-				global $arr_replace_cat_in_ids_list;
-				
-//				print_r($post_categories);
-				foreach ( $arr_replace_cat_in_ids_list as $v ) {
-					foreach ( $post_categories as $v2 ) {
-						if ( $v->term_id == $v2->term_id ) {
-							$replace_post_categories[ $v->slug ] = $v->name;
-						}
-					}
-				}
-			}
 		}
+		*/
+//		print_r($replace_post_categories);
 		$html = EBE_arr_tmp($replace_post_categories, $html);
 	}
 

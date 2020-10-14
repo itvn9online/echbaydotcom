@@ -274,6 +274,7 @@ include EB_THEME_CORE . 'cache.php';
 
 
 // chế độ kiểm thử
+//define( 'cf_tester_mode', true );
 if ( $__cf_row['cf_tester_mode'] == 1 ) {
 	define( 'eb_code_tester', true );
 } else {

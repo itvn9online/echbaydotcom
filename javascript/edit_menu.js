@@ -12,6 +12,12 @@ function WGR_add_img_to_menu ( img ) {
 	WGR_event_add_img_edit_menu( add_media_for_menu, 'img', img.replace( web_link, '' ) );
 }
 
+function WGR_auto_check_dispay_option_edit_menu ( a ) {
+	if ( dog(a).checked == false ) {
+		dog(a).checked = true;
+	}
+}
+
 function WGR_event_add_img_edit_menu ( jd, tai, add_lnk ) {
 	add_media_for_menu = jd;
 //	console.log( add_media_for_menu );
@@ -171,7 +177,8 @@ function WGR_main_edit_menu () {
 	// khi người dùng bấm thêm vào menu
 	jQuery('.click-to-add-custom-link').click(function () {
 		var lnk = jQuery(this).attr('data-link') || '#',
-			nem = jQuery(this).attr('data-text') || 'Home',
+			nem = jQuery(this).attr('data-text') || '*',
+			tit = jQuery(this).attr('data-title') || '*',
 			rel = jQuery(this).attr('data-rel') || '',
 			tar = jQuery(this).attr('data-target') || '';
 		nem = nem.replace( /\&lt\;/g, '<' ).replace( /\&gt\;/g, '>' );
@@ -183,21 +190,31 @@ function WGR_main_edit_menu () {
 		// nếu có class CSS riêng
 		var a = jQuery(this).attr('data-css') || '';
 		if (a != '') {
-//				console.log( a );
+//			console.log( a );
+			WGR_auto_check_dispay_option_edit_menu('css-classes-hide');
 			WGR_done_add_class_for_custom_link_menu = false;
 			WGR_add_class_for_custom_link_menu(lnk, nem, a);
 		}
 
 		// rel nofollow
 		if (rel != '') {
+			WGR_auto_check_dispay_option_edit_menu('xfn-hide');
 			WGR_done_add_rel_for_custom_link_menu = false;
 			WGR_add_rel_for_custom_link_menu(lnk, nem, rel);
 		}
 
 		// nếu là mở trong tab mới
 		if (tar != '') {
+			WGR_auto_check_dispay_option_edit_menu('link-target-hide');
 			WGR_done_add_target_for_custom_link_menu = false;
 			WGR_add_target_for_custom_link_menu(lnk, nem, tar);
+		}
+
+		// nếu có title -> gắn title
+		if (tit != '') {
+			WGR_auto_check_dispay_option_edit_menu('title-attribute-hide');
+			WGR_done_add_title_for_custom_link_menu = false;
+			WGR_add_title_for_custom_link_menu(lnk, nem, tit);
 		}
 	});
 
