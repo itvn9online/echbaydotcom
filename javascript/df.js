@@ -1274,13 +1274,13 @@ function WGR_check_load_js_category ( i ) {
 					
 					// truyền cả ID cần lấy vào nếu có thì function sẽ lọc đúng id đó luôn
 					if ( a[0] == 'category' ) {
-						$(this).append( WGR_get_js_sub_category_to_menu( eb_site_group, a[1] ) );
+						$(this).after( WGR_get_js_sub_category_to_menu( eb_site_group, a[1] ) );
 					}
 					else if ( a[0] == 'blogs' ) {
-						$(this).append( WGR_get_js_sub_category_to_menu( eb_blog_group, a[1] ) );
+						$(this).after( WGR_get_js_sub_category_to_menu( eb_blog_group, a[1] ) );
 					}
 					else if ( a[0] == 'post_options' ) {
-						$(this).append( WGR_get_js_sub_category_to_menu( eb_post_options_group, a[1] ) );
+						$(this).after( WGR_get_js_sub_category_to_menu( eb_post_options_group, a[1] ) );
 					}
 					else {
 						console.log('Title taxonomy: (category/blogs/post_options)|taxonomy_id');
