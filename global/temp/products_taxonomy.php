@@ -76,6 +76,19 @@ if ( $term_id > 0 && $type != '' ) {
 		
 		echo '<br>set category primary: ' . $new_value;
 	}
+	// cho phép hiển thị ở danh mục
+	else if ( isset( $_GET['current_in_category'] ) ) {
+		$new_value = 0;
+		if ( $_GET['current_in_category'] == 0 ) {
+			$new_value = 1;
+		}
+		
+		//
+//		WGR_update_meta_post( $term_id, '_eb_category_primary', $new_value );
+		update_term_meta( $term_id, '_eb_category_in_list', $new_value );
+		
+		echo '<br>set category show in list: ' . $new_value;
+	}
 	// cho phép bot lập chỉ mục
 	else if ( isset( $_GET['current_index'] ) ) {
 		$new_value = 0;

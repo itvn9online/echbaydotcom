@@ -171,6 +171,7 @@ function WGR_get_and_oders_taxonomy_category (
 		//
 		$strLinkAjaxl = '&term_id=' . $v->term_id . '&by_taxonomy=' . $v->taxonomy;
 		$_eb_category_primary = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
+		$_eb_category_in_list = _eb_get_cat_object( $v->term_id, '_eb_category_in_list', 0 );
 		$_eb_category_noindex = _eb_get_cat_object( $v->term_id, '_eb_category_noindex', 0 );
 		$_eb_category_hidden = _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 );
 		
@@ -247,6 +248,8 @@ function WGR_get_and_oders_taxonomy_category (
 					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+					
+					<div><i title="Show in category" data-val="' . $_eb_category_in_list . '" data-ajax="' . $strLinkAjaxl . '&t=show_in_category&current_in_category=' . $_eb_category_in_list . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
 					
