@@ -1118,9 +1118,12 @@ function WGR_get_js_sub_category_to_menu ( arr, by_id ) {
 	} );
 //	console.log( arr );
 	
+	/*
 	if ( typeof by_id == 'undefined' ) {
 		by_id = 0;
 	}
+	console.log('by_id: ' + by_id);
+	*/
 	
 	//
 //	var str = '<!-- JS for sub-category menu -->';
@@ -1129,14 +1132,41 @@ function WGR_get_js_sub_category_to_menu ( arr, by_id ) {
 		icon = '',
 		check_id = 0;
 	
-	for ( var i = 0; i < arr.length; i++ ) {
-		check_id = 1;
-		if ( by_id > 0 && arr[i].id != by_id ) {
-			check_id = 0;
+	// lấy theo ID cụ thể
+	if ( typeof by_id != 'undefined' && by_id> 0 ) {
+		for ( var i = 0; i < arr.length; i++ ) {
+			if ( arr[i].id == by_id ) {
+				check_id = 1;
+				break;
+			}
 		}
+		if ( check_id == 1 ) {
+			return WGR_get_js_sub_category_to_menu( arr[i].arr );
+		}
+		else {
+			return '';
+		}
+	}
+	
+	// lấy tất cả
+	for ( var i = 0; i < arr.length; i++ ) {
+		/*
+		if (by_id > 0) console.log('arr[i].id: ' + arr[i].id);
+		if ( by_id > 0 ) {
+			check_id = 0;
+			if ( arr[i].id == by_id ) {
+				check_id = 1;
+			}
+		}
+		else {
+			check_id = 1;
+		}
+		if (by_id > 0) console.log('check_id: ' + check_id);
+		*/
 		
 		//
-		if ( check_id == 1 && typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
+//		if ( check_id == 1 && typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
+		if ( typeof arr[i].hidden == 'undefined' || arr[i].hidden * 1 != 1 ) {
 			// tạo style ảnh nền cho menu
 			avt = '';
 			if ( arr[i].avt != '' ) {
@@ -1249,15 +1279,15 @@ function WGR_check_load_js_category ( i ) {
 					else if ( a[0] == 'blogs' ) {
 						$(this).append( WGR_get_js_sub_category_to_menu( eb_blog_group, a[1] ) );
 					}
-					else if ( a[0] == 'post_option' ) {
+					else if ( a[0] == 'post_options' ) {
 						$(this).append( WGR_get_js_sub_category_to_menu( eb_post_options_group, a[1] ) );
 					}
 					else {
-						console.log('Title taxonomy: (category/blogs/post_option)|taxonomy_id');
+						console.log('Title taxonomy: (category/blogs/post_options)|taxonomy_id');
 					}
 				}
 				else {
-					console.log('Title: (category/blogs/post_option)|taxonomy_id');
+					console.log('Title: (category/blogs/post_options)|taxonomy_id');
 				}
 			}
 		});
