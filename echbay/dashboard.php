@@ -60,6 +60,14 @@ if ( $__cf_row['cf_reset_cache'] == 1 ) {
 }
 
 
+//
+if ( $__cf_row['cf_category_in_list'] == 1 ) {
+	$str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: Bạn đang sử dụng tính năng hiển thị danh mục sản phẩm trên phần danh sách sản phẩm, tính năng này làm cho web chạy chậm lại, nếu không thực sự cần thiết thì bạn nên rà soát lại và lược bỏ bớt đi. Tính năng sẽ được tắt sau khi toàn bộ danh mục tắt chức năng này.</div>
+	</div>';
+}
+
+
 // Nên tắt WP_AUTO_UPDATE_CORE = true
 /*
 if ( ! defined('WP_AUTO_UPDATE_CORE') || WP_AUTO_UPDATE_CORE != false ) {

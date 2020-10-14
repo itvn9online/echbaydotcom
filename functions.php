@@ -410,6 +410,48 @@ function EBE_select_thread_list_all($post, $html = __eb_thread_template, $pot_ta
 	if ( function_exists('WGR_cleanup_tmp_in_child_theme') ) {
 		$html = WGR_cleanup_tmp_in_child_theme($html);
 	}
+	
+	// hiển thị danh mục trên phần danh sách sản phẩm
+	if ( $__cf_row['cf_category_in_list'] === 1 ) {
+		$replace_post_categories = array();
+		$post_categories = array();
+		if ($post->post_type == 'post') {
+			$post_categories = wp_get_post_categories( $post->ID );
+			
+			if ( ! empty( $post_categories ) ) {
+				global $arr_replace_cat_in_ids_list;
+				
+//				print_r($post_categories);
+				foreach ( $arr_replace_cat_in_ids_list as $v ) {
+					if ( in_array( $v->term_id, $post_categories ) ) {
+						$replace_post_categories[ $v->slug ] = $v->name;
+					}
+				}
+			}
+		}
+		else {
+			if ($post->post_type == EB_BLOG_POST_TYPE) {
+				$post_categories = get_the_terms( $post->ID, EB_BLOG_POST_LINK );
+			}
+			else if ($post->post_type == 'product') {
+				$post_categories = get_the_terms( $post->ID, 'product_cat' );
+			}
+			
+			if ( ! empty( $post_categories ) ) {
+				global $arr_replace_cat_in_ids_list;
+				
+//				print_r($post_categories);
+				foreach ( $arr_replace_cat_in_ids_list as $v ) {
+					foreach ( $post_categories as $v2 ) {
+						if ( $v->term_id == $v2->term_id ) {
+							$replace_post_categories[ $v->slug ] = $v->name;
+						}
+					}
+				}
+			}
+		}
+		$html = EBE_arr_tmp($replace_post_categories, $html);
+	}
 
     //
     return EBE_arr_tmp($post, $html);
