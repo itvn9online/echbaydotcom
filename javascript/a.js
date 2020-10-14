@@ -718,7 +718,11 @@ if (cf_hide_supper_admin_menu == 1) {
 
     // kiểm tra phiên bản theme -> theme thì chỉ có sử dụng child-theme thì mới có version
 //	if ( wgr_theme_current_version != '' && wgr_theme_current_version != wgr_theme_github_version ) {
-    if (wgr_theme_current_version != '' && parseInt(wgr_theme_current_version.replace(/\./g, ''), 10) < parseInt(wgr_theme_github_version.replace(/\./g, ''), 10)) {
+    if (
+		wgr_theme_current_version != ''
+		&& private_info_setting_parent_theme_default == 'echbaytwo'
+		&& parseInt(wgr_theme_current_version.replace(/\./g, ''), 10) < parseInt(wgr_theme_github_version.replace(/\./g, ''), 10)
+	) {
         console.log('UPDATE NEW THEME VERSION');
 
         jQuery('#toplevel_page_eb-order ul, ul#wp-admin-bar-root-default').append('<li><a href="' + admin_link + 'admin.php?page=eb-about&click_to_update_core=1&connect_to=theme" class="orgcolor reddot no-set-cookies">Update WGR Theme</a></li>');

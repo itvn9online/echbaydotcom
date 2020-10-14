@@ -454,6 +454,7 @@ function echbay_admin_footer_styles() {
 	cf_replace_content = "' . urlencode( $__cf_row['cf_replace_content'] ) . '",
 	
 	private_info_setting_site_upper = "' . $arr_private_info_setting['site_upper'] . '",
+	private_info_setting_parent_theme_default = "' . $arr_private_info_setting['parent_theme_default'] . '",
 	
 	wgr_plugin_current_version = "' . $current_version . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
