@@ -249,7 +249,7 @@ function WGR_get_and_oders_taxonomy_category (
 					
 					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Show in category" data-val="' . $_eb_category_in_list . '" data-ajax="' . $strLinkAjaxl . '&t=show_in_category&current_in_category=' . $_eb_category_in_list . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+					<div><i title="Show in category" data-val="' . $_eb_category_in_list . '" data-ajax="' . $strLinkAjaxl . '&t=show_in_category&current_in_category=' . $_eb_category_in_list . '" class="fa fa-code-fork fa-icons cur click-order-thread"></i></div>
 					
 					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
 					
