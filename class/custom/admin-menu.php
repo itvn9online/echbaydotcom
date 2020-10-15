@@ -93,6 +93,10 @@ function echbay_create_admin_menu() {
 //	add_submenu_page( $parent_slug, 'Danh sách banner quảng cáo', 'Quảng cáo', 'manage_options', 'eb-ads', 'func_include_eb_private_code' );
 	
 	
+	// Danh sách thành viên trên website -> một dạng dữ liệu khác để tiện quản lý -> Super Admin, Administrator, Editor
+	add_submenu_page( $parent_slug, 'Danh sách Thành viên/ Khách hàng', 'Thành viên', 'publish_pages', 'eb-members', 'func_include_eb_private_code' );
+	
+	
 	// menu chỉnh sửa sản phẩm nhanh -> Super Admin, Administrator, Editor
 	add_submenu_page( $parent_slug, 'Công cụ hỗ trợ chỉnh sửa nhanh dữ liệu', 'Chỉnh sửa nhanh', 'publish_pages', 'eb-products', 'func_include_eb_private_code' );
 	

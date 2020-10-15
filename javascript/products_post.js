@@ -7,52 +7,7 @@ change_update_new_stt();
 
 
 // thay đổi số lượng bài viết sẽ hiển thị
-(function () {
-	var arr = [
-		3,
-		10,
-		20,
-		30,
-		50,
-		100,
-		200,
-		500,
-		800
-	];
-	
-	var str = '',
-		sl = '';
-	
-	for ( var i = 0; i < arr.length; i++ ) {
-		sl = '';
-		if ( arr[i] == threadInPage ) {
-			sl = ' selected="selected"';
-		}
-		
-		//
-		str += '<option value="' +arr[i]+ '"' + sl + '>' +arr[i]+ '</option>';
-	}
-	
-	jQuery('#change_set_thread_show_in_page').html( '<option value="">---</option>' + str ).off('change').change(function () {
-		var a = jQuery(this).val() || '';
-		if ( a == '' ) {
-			a = 68;
-		}
-		
-		//
-		g_func.setc('quick_edit_per_page', a, 0, 30);
-		
-		//
-		jQuery('body').css({
-			opacity: .2
-		});
-		
-		//
-		setTimeout(function () {
-			window.location = strLinkPager;
-		}, 600);
-	});
-})();
+WGR_change_set_thread_show_in_page();
 
 
 
