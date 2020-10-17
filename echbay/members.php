@@ -21,11 +21,21 @@ $trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
 $strLinkAjaxl = '';
 $strAjaxLink = '';
 
+//
+$key_gmail = '@gmail.com';
+$key_yahoo = '@yahoo.com';
+$key_yahoo_vn = '@yahoo.com.vn';
+$key_hotmail = '@hotmail.com';
+$tbl_users = $table_prefix . 'users';
+
 
 // tổng số đơn hàng
 $totalThread = _eb_c( "SELECT COUNT(ID) AS c
 	FROM
-		`" . $table_prefix . "users`" );
+		`" . $tbl_users . "`
+    WHERE
+        `" . $tbl_users . "`.ID > 0
+        AND ( `" . $tbl_users . "`.user_email LIKE '%{$key_gmail}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo_vn}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_hotmail}' )" );
 //echo $strFilter . '<br>' . "\n";
 //echo $totalThread . '<br>' . "\n";
 

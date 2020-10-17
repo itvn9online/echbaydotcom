@@ -3,7 +3,7 @@
 
 
 /*
-* xem thêm quyền hạn của các loại tài khoản: https://codex.wordpress.org/Roles_and_Capabilities
+* xem thêm quyền hạn của các loại tài khoản: https://wordpress.org/support/article/roles-and-capabilities/
 */
 
 

@@ -39,9 +39,15 @@ function WGR_export_members_to_xml( $op = array() ) {
     global $wpdb;
     global $table_prefix;
 
+    //
+    $export_type = isset( $_GET[ 'members_export' ] ) ? $_GET[ 'members_export' ] : '';
+
     // cấu hình mặc định
     if ( !isset( $op[ 'limit' ] ) || $op[ 'limit' ] == '' || $op[ 'limit' ] == 0 ) {
         $op[ 'limit' ] = 50;
+    }
+    if ( $op[ 'limit' ] > 5000 ) {
+        $op[ 'limit' ] = 5000;
     }
     if ( !isset( $op[ 'trang' ] ) || $op[ 'trang' ] == '' || $op[ 'trang' ] == 0 ) {
         $op[ 'trang' ] = 1;
@@ -51,19 +57,54 @@ function WGR_export_members_to_xml( $op = array() ) {
     //	print_r( $op ); exit();
 
     //
-    $sql = "SELECT *
-	FROM
-		`" . $table_prefix . "users`
-	ORDER BY
-		`" . $table_prefix . "users`.ID DESC
-	LIMIT " . $offset . ", " . $op[ 'limit' ];
-    /*
-    GROUP BY
-    	ID
-    ORDER BY
-    	ID
-    LIMIT " . $offset . ", " . $op['limit'];
-    */
+    //set_time_limit( 0 );
+
+
+    // Lấy theo  phone
+    if ( $export_type == 'phone' ) {
+        $tbl_usermeta = $table_prefix . 'usermeta';
+
+        //
+        $sql = "SELECT *
+        FROM
+            `" . $tbl_usermeta . "`
+        WHERE
+            `" . $tbl_usermeta . "`.user_id > 0
+            AND `" . $tbl_usermeta . "`.meta_key = 'phone'
+            AND `" . $tbl_usermeta . "`.meta_value != ''
+        ORDER BY
+            `" . $tbl_usermeta . "`.user_id DESC
+        LIMIT " . $offset . ", " . $op[ 'limit' ];
+    }
+    // Lấy theo  email
+    // mặc định thì phải đủ cả 2 yêu cầu
+    else {
+        $tbl_users = $table_prefix . 'users';
+
+        //
+        $key_gmail = '@gmail.com';
+        $key_yahoo = '@yahoo.com';
+        $key_yahoo_vn = '@yahoo.com.vn';
+        $key_hotmail = '@hotmail.com';
+
+        //
+        $sql = "SELECT *
+        FROM
+            `" . $tbl_users . "`
+        WHERE
+            `" . $tbl_users . "`.ID > 0
+            AND ( `" . $tbl_users . "`.user_email LIKE '%{$key_gmail}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo_vn}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_hotmail}' )
+        ORDER BY
+            `" . $tbl_users . "`.ID DESC
+        LIMIT " . $offset . ", " . $op[ 'limit' ];
+        /*
+        GROUP BY
+        	ID
+        ORDER BY
+        	ID
+        LIMIT " . $offset . ", " . $op['limit'];
+        */
+    }
     //	echo $sql;
 
     //
@@ -104,34 +145,57 @@ if ( $__cf_row[ 'cf_current_price_before' ] == 1 ) {
     <?php
 
     $sql = WGR_export_members_to_xml( $arr_for_slect_data );
+//    print_r( $sql );
+    if ( $export_type == 'phone' ) {
+        foreach ( $sql as $v ) {
+            //        print_r( $v );
 
-    foreach ( $sql as $v ) {
-        //        print_r( $v );
+            $user_address = get_user_meta( $v->user_id, 'address' );
+            //        print_r( $user_address );
+            if ( !empty( $user_address ) ) {
+                $user_address = $user_address[ 0 ];
+            } else {
+                $user_address = '&nbsp';
+            }
 
-        $user_phone = get_user_meta( $v->ID, 'phone' );
-//        print_r( $user_phone );
-        if ( !empty( $user_phone ) ) {
-            $user_phone = $user_phone[ 0 ];
-        } else {
-            $user_phone = '&nbsp';
+            //
+            echo '
+<tr>
+	<td>' . $v->user_id . '</td>
+	<td>&nbsp</td>
+	<td>' . $v->meta_value . '</td>
+	<td>' . $user_address . '</td>
+</tr>';
         }
+    } else {
+        foreach ( $sql as $v ) {
+            //        print_r( $v );
 
-        $user_address = get_user_meta( $v->ID, 'address' );
-//        print_r( $user_address );
-        if ( !empty( $user_address ) ) {
-            $user_address = $user_address[ 0 ];
-        } else {
-            $user_address = '&nbsp';
-        }
+            $user_phone = get_user_meta( $v->ID, 'phone' );
+            //        print_r( $user_phone );
+            if ( !empty( $user_phone ) ) {
+                $user_phone = $user_phone[ 0 ];
+            } else {
+                $user_phone = '&nbsp';
+            }
 
-        //
-        echo '
+            $user_address = get_user_meta( $v->ID, 'address' );
+            //        print_r( $user_address );
+            if ( !empty( $user_address ) ) {
+                $user_address = $user_address[ 0 ];
+            } else {
+                $user_address = '&nbsp';
+            }
+
+            //
+            echo '
 <tr>
 	<td>' . $v->ID . '</td>
 	<td>' . $v->user_email . '</td>
 	<td>' . $user_phone . '</td>
 	<td>' . $user_address . '</td>
 </tr>';
+        }
     }
 
     ?>
