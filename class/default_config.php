@@ -222,6 +222,9 @@ $__cf_row_default = array(
 	
 	// bật tắt RSS
 	'cf_on_off_feed' => 1,
+    
+    // lấy chi tiết danh mục khi xem danh sách sản phẩm
+	'cf_category_in_list' => 0,
 	
 	// xóa URL cha của phân nhóm, custom taxonomy
 	'cf_remove_category_base' => 'off',
