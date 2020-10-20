@@ -462,9 +462,12 @@ function echbay_admin_footer_styles() {
 	
 	wgr_plugin_current_version = "' . $current_version . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
+    
+	ELEMENTOR_cPRO_VERSION = "' . ( defined('ELEMENTOR_cPRO_VERSION') ? ELEMENTOR_cPRO_VERSION : 0 ) . '",
 	
 	wgr_theme_current_version = "' . $current_theme_version . '",
 	wgr_theme_github_version = "' . $current_theme_github_version . '";</script>';
+    
 	
 	//
 	/*
