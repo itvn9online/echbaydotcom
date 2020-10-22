@@ -1561,6 +1561,7 @@ var current_pid_quicview = pid,
 						else {
 							var goto = 0;
 							
+                            // chuyển tới 1 ID, class hoặc input nào đó
 							if (jQuery('#' + a).length > 0) {
 								goto = jQuery('#' + a).offset().top;
 							} else if (jQuery('a[name="' + a + '"]').length > 0) {
@@ -1568,6 +1569,11 @@ var current_pid_quicview = pid,
 							} else if (jQuery('.' + a).length > 0) {
 								goto = jQuery('.' + a).offset().top;
 							}
+                            // mở popup đăng nhập/ đăng ký
+                            else if (a == 'login' || a == 'register') {
+                                g_func.opopup(a);
+                                return false;
+                            }
 	
 							if (goto > 90) {
 //								window.scroll( 0, goto - 110 );
