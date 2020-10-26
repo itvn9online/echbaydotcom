@@ -390,7 +390,7 @@ $__cf_row_default = array(
 	'cf_max_post_cleanup' => 10000,
 	
 	// chức năng mở liên kết trong iframe để tăng tốc xem những trang đã được xem trước đó
-	'cf_wgr_ia' => 20,
+	'cf_wgr_ia' => 0,
 	
 	
 	/*
