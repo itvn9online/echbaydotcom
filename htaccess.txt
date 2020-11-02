@@ -1,5 +1,15 @@
 # doi ten file nay thanh .htaccess roi su dung
 
+
+
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+	
+	RewriteEngine On
+    
+
 # Redirect to new domain
 #RewriteCond %{HTTP_HOST} ^old-domain\.com$ [NC]
 #RewriteRule ^(.*)$ http://new-domain\.vn/%{REQUEST_URI} [R=301,L]
@@ -14,6 +24,26 @@
 RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
 #RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,L]
+	
+	# for primary domain -> comment if using wordpress in sub-directory
+	RewriteBase /
+	
+	# for sub directory -> remove comment if using wordpress in sub-directory
+#	RewriteBase /sub-dir
+
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	# for primary domain -> comment if using wordpress in sub-directory
+	RewriteRule . /index.php [L]
+	
+	# for sub directory -> remove comment if using wordpress in sub-directory
+#	RewriteRule . /sub-dir/index.php [L]
+	
+</IfModule>
+
+# END WordPress
 
 
 <ifModule mod_gzip.c>
@@ -81,30 +111,3 @@ RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,L]
 		Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
 	</FilesMatch>
 </IfModule>
-
-
-
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
-	
-	RewriteEngine On
-	
-	# for primary domain -> comment if using wordpress in sub-directory
-	RewriteBase /
-	
-	# for sub directory -> remove comment if using wordpress in sub-directory
-#	RewriteBase /sub-dir
-
-	RewriteRule ^index\.php$ - [L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	
-	# for primary domain -> comment if using wordpress in sub-directory
-	RewriteRule . /index.php [L]
-	
-	# for sub directory -> remove comment if using wordpress in sub-directory
-#	RewriteRule . /sub-dir/index.php [L]
-	
-</IfModule>
-
-# END WordPress
