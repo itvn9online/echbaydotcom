@@ -119,7 +119,9 @@ function WGR_admin_quick_edit_products ( connect_to, url_request, parameter, fun
 		opacity: 0.2
 	});
 	
-	ajaxl( connect_to + url_request + parameter, 'rAdminME', 9, function () {
+	var uri = connect_to + url_request + parameter
+	//console.log(uri);
+	ajaxl( uri, 'rAdminME', 9, function () {
 		jQuery('#rAdminME').css({
 			opacity: 1
 		});
@@ -171,6 +173,10 @@ function change_update_new_stt () {
 				}
 			});
 //		}
+		/*
+	}).blur(function () {
+		$(this).select();
+		*/
 	});
 	
 	

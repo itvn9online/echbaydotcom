@@ -296,8 +296,10 @@ function WGR_add_li_to_thread_node( $str ) {
 
 
 // sắp xếp lại mảng của taxonomy sau khi select, ẩn các nhóm đang bị khóa
-function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0 ) {
-
+function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0, $no_cache = 0 ) {
+	/*
+	* no_cache: khi muốn lấy dữ liệu trực tiếp từ CSDL thì đặt lệnh này
+	*/
     //
     //	print_r( $arr );
 
@@ -308,7 +310,7 @@ function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0 ) {
     // sắp xếp lại thứ tự của cat
     if ( $order_only == 1 ) {
         foreach ( $arr as $v ) {
-            $stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+            $stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0, $no_cache );
 
             $a[ $v->term_id ] = $stt;
 
@@ -320,8 +322,8 @@ function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0 ) {
     else {
         foreach ( $arr as $v ) {
             // không lấy các nhóm đã bị khóa
-            if ( isset( $v->term_id ) && _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 ) != 1 ) {
-                $stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+            if ( isset( $v->term_id ) && _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0, $no_cache ) != 1 ) {
+                $stt = _eb_get_cat_object( $v->term_id, '_eb_category_order', 0, $no_cache );
 
                 $a[ $v->term_id ] = $stt;
 

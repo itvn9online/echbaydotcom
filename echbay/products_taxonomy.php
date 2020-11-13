@@ -1,21 +1,19 @@
 <?php
 
 
-
 //
 echo '<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/css/products_taxonomy.css?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'css/products_taxonomy.css' ) . '" type="text/css" media="all" />' . "\n";
-
 
 
 //
 $get_site_select_taxonomy = _eb_categories_list_v3( 't_ant', $by_taxonomy );
 
 
-
-
 ?>
 <style>
-#edit_parent_for_category { display: none; }
+#edit_parent_for_category {
+	display: none;
+}
 .edit-parent-padding {
 	background: #fff;
 	border: 1px #ccc solid;
@@ -92,12 +90,11 @@ $get_site_select_taxonomy = _eb_categories_list_v3( 't_ant', $by_taxonomy );
 <?php
 
 
-
-
+//print_r($arr_object_post_meta);
 
 
 // Lấy toàn bộ danh sách category rồi hiển thị thành menu
-function WGR_get_and_oders_taxonomy_category (
+function WGR_get_and_oders_taxonomy_category(
 	// taxonomy mặc định
 	$cat_type = 'category',
 	// nhóm cha mặc định -> mặc định lấy nhóm cấp 1
@@ -105,113 +102,122 @@ function WGR_get_and_oders_taxonomy_category (
 	// có lấy nhóm con hay không -> mặc định là có
 	$get_child = 1
 ) {
-	
+
 	//
 	$arrs_cats = array(
 		'taxonomy' => $cat_type,
 		'hide_empty' => 0,
 		'parent' => $cat_ids,
 	);
-	
+
 	//
 	$arrs_cats = get_categories( $arrs_cats );
-//	print_r($arrs_cats);
-//	exit();
-	
+	//print_r($arrs_cats);
+	//	exit();
+
 	//
-//	if ( count($arrs_cats) == 0 ) {
-	if ( empty($arrs_cats) ) {
+	//	if ( count($arrs_cats) == 0 ) {
+	if ( empty( $arrs_cats ) ) {
 		return '';
 	}
-	
-	
+
+
 	// Thử kiểm tra xem trong này có nhóm nào được set là nhóm chính không
 	$post_primary_categories = array();
-	
+
 	// Nếu đang là lấy nhóm cấp 1
 	if ( $cat_ids == 0 ) {
 		foreach ( $arrs_cats as $v ) {
-			$post_primary_categories[ $v->term_id ] = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
+			$post_primary_categories[ $v->term_id ] = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0, true );
 		}
-//		print_r( $post_primary_categories );
+		//print_r( $post_primary_categories );
 	}
 
-	
+
 	// sắp xếp mảng theo chủ đích của người dùng
-	$oders = WGR_order_and_hidden_taxonomy( $arrs_cats, 1 );
+	$oders = WGR_order_and_hidden_taxonomy( $arrs_cats, 1, true );
+	//print_r( $oders );
+
+	//
+	foreach ( $oders as $v ) {
+		$sql = _eb_q( "SELECT meta_key, meta_value
+		FROM
+			`" . wp_termmeta . "`
+		WHERE
+			term_id = " . $v->term_id );
+		//print_r( $sql );
+	}
+	//echo '<br>';
 	/*
 	$oders = array();
 	$options = array();
 	
 	//
 	foreach ( $arrs_cats as $v ) {
-		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0 );
+		$oders[ $v->term_id ] = (int) _eb_get_cat_object( $v->term_id, '_eb_category_order', 0, true );
 		$options[$v->term_id] = $v;
 	}
 	arsort( $oders );	
 	*/
-	
-	
+
+
 	//
 	$str = '';
-//	foreach ( $arrs_cats as $v ) {
+	//	foreach ( $arrs_cats as $v ) {
 	foreach ( $oders as $k => $v ) {
-//		$v = $options[$k];
+		//		$v = $options[$k];
 		$cat_stt = $v->stt;
-		
+
 		//
 		$str_child = '';
 		if ( $get_child == 1 ) {
-			$str_child = WGR_get_and_oders_taxonomy_category (
+			$str_child = WGR_get_and_oders_taxonomy_category(
 				$v->taxonomy,
 				$v->term_id
 			);
 		}
-		
+
 		//
 		$strLinkAjaxl = '&term_id=' . $v->term_id . '&by_taxonomy=' . $v->taxonomy;
-		$_eb_category_primary = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0 );
-		$_eb_category_in_list = _eb_get_cat_object( $v->term_id, '_eb_category_in_list', 0 );
-		$_eb_category_noindex = _eb_get_cat_object( $v->term_id, '_eb_category_noindex', 0 );
-		$_eb_category_hidden = _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0 );
-		
+		$_eb_category_primary = _eb_get_cat_object( $v->term_id, '_eb_category_primary', 0, true );
+		$_eb_category_in_list = _eb_get_cat_object( $v->term_id, '_eb_category_in_list', 0, true );
+		$_eb_category_noindex = _eb_get_cat_object( $v->term_id, '_eb_category_noindex', 0, true );
+		$_eb_category_hidden = _eb_get_cat_object( $v->term_id, '_eb_category_hidden', 0, true );
+
 		// tính điểm SEO nếu đang dùng công cụ SEO của EchBay
 		$seo_color = '';
-//		echo cf_on_off_echbay_seo;
+		//		echo cf_on_off_echbay_seo;
 		if ( cf_on_off_echbay_seo == 1 ) {
 			$seo_score = 0;
 			$seo_class_score = '';
-			
+
 			// check title
-			$a = strlen( _eb_get_cat_object( $v->term_id, '_eb_category_title', $v->name ) );
+			$a = strlen( _eb_get_cat_object( $v->term_id, '_eb_category_title', $v->name, true ) );
 			if ( $a > 10 && $a < 70 ) {
 				$seo_score++;
 				$seo_class_score .= '1';
-			}
-			else {
+			} else {
 				$seo_class_score .= '0';
 			}
-			
+
 			// check description
-			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_description', $v->description ) ) );
+			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_description', $v->description, true ) ) );
 			if ( $a > 160 && $a < 300 ) {
 				$seo_score++;
 				$seo_class_score .= '1';
-			}
-			else {
+			} else {
 				$seo_class_score .= '0';
 			}
-			
+
 			// check content
-			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_content', '' ) ) );
+			$a = strlen( strip_tags( _eb_get_cat_object( $v->term_id, '_eb_category_content', '', true ) ) );
 			if ( $a > 500 ) {
 				$seo_score++;
 				$seo_class_score .= '1';
-			}
-			else {
+			} else {
 				$seo_class_score .= '0';
 			}
-			
+
 			// mặc định thì báo đỏ
 			$seo_color = 'redcolor';
 			//
@@ -228,13 +234,13 @@ function WGR_get_and_oders_taxonomy_category (
 			}
 			$seo_color = '<i data-id="' . $v->term_id . '" class="fa fa-dot-circle fa-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
 		}
-		
+
 		//
 		$c_link = _eb_c_link( $v->term_id );
-		
+
 		//
-//		echo str_replace( web_link, '', $c_link ) . '<br>';
-		
+		//		echo str_replace( web_link, '', $c_link ) . '<br>';
+
 		$str .= '
 		<div class="cf">
 			<div class="lf">
@@ -263,17 +269,13 @@ function WGR_get_and_oders_taxonomy_category (
 			<div class="lf"> &nbsp; &nbsp; <a href="' . admin_link . 'term.php?taxonomy=' . $v->taxonomy . '&tag_ID=' . $v->term_id . '&post_type=' . ( $v->taxonomy == EB_BLOG_POST_LINK ? EB_BLOG_POST_TYPE : 'post' ) . '" target="_blank">' . $v->name . ' (' . $v->count . ') <i class="fa fa-edit"></i></a> - <a href="' . $c_link . '" target="_blank" class="small blackcolor">' . str_replace( web_link, '', $c_link ) . ' <i class="fa fa-eye"></i></a></div>
 		</div>' . $str_child;
 	}
-	
+
 	return '<blockquote>' . $str . '</blockquote>';
 }
 
 
-
 //
 echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $by_taxonomy ) . '</div>';
-
-
-
 
 
 ?>
@@ -292,21 +294,3 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 
 
 echo '<script type="text/javascript" src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/javascript/products_taxonomy.js?v=' . filemtime( EB_THEME_PLUGIN_INDEX . 'javascript/products_taxonomy.js' ) . '"></script>' . "\n";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -61,7 +61,7 @@ if ( $term_id > 0 && $type != '' ) {
 //		WGR_update_meta_post( $term_id, '_eb_category_order', $new_stt );
 		update_term_meta( $term_id, '_eb_category_order', $new_stt );
 		
-		echo '<br>set category order: ' . $new_stt;
+		echo '<div class="rf">set category order: ' . $new_stt . '</div>';
 	}
 	// đặt làm phân nhóm chính
 	else if ( isset( $_GET['current_primary'] ) ) {
@@ -74,7 +74,7 @@ if ( $term_id > 0 && $type != '' ) {
 //		WGR_update_meta_post( $term_id, '_eb_category_primary', $new_value );
 		update_term_meta( $term_id, '_eb_category_primary', $new_value );
 		
-		echo '<br>set category primary: ' . $new_value;
+		echo '<div class="rf">set category primary: ' . $new_value . '</div>';
 	}
 	// cho phép hiển thị ở danh mục
 	else if ( isset( $_GET['current_in_category'] ) ) {
@@ -87,7 +87,7 @@ if ( $term_id > 0 && $type != '' ) {
 //		WGR_update_meta_post( $term_id, '_eb_category_primary', $new_value );
 		update_term_meta( $term_id, '_eb_category_in_list', $new_value );
 		
-		echo '<br>set category show in list: ' . $new_value;
+		echo '<div class="rf">set category show in list: ' . $new_value . '</div>';
 	}
 	// cho phép bot lập chỉ mục
 	else if ( isset( $_GET['current_index'] ) ) {
@@ -99,7 +99,7 @@ if ( $term_id > 0 && $type != '' ) {
 		//
 		update_term_meta( $term_id, '_eb_category_noindex', $new_value );
 		
-		echo '<br>set category index: ' . $new_value;
+		echo '<div class="rf">set category index: ' . $new_value . '</div>';
 	}
 	// ẩn hoặc hiện nhóm
 	else if ( isset( $_GET['current_hidden'] ) ) {
@@ -111,7 +111,7 @@ if ( $term_id > 0 && $type != '' ) {
 		//
 		update_term_meta( $term_id, '_eb_category_hidden', $new_value );
 		
-		echo '<br>set category hidden: ' . $new_value;
+		echo '<div class="rf">set category hidden: ' . $new_value . '</div>';
 	}
 	// đổi nhóm cha
 	else if ( isset( $_GET['current_parent'], $_GET['new_parent'] ) ) {
@@ -120,11 +120,11 @@ if ( $term_id > 0 && $type != '' ) {
 				'parent' => (int) $_GET['new_parent']
 			));
 			
-			echo '<br>set category parent: ' . $_GET['new_parent'];
+			echo '<div class="rf">set category parent: ' . $_GET['new_parent'] . '</div>';
 		}
 	}
 	else {
-		echo '<br>method not found';
+		echo '<div class="rf">method not found</div>';
 	}
 	
 	// xóa cache đi để nó nhận dữ liệu ngay khi update
