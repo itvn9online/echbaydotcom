@@ -448,6 +448,8 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
     if ( $post_type == 'for_other_post_type' ) {
         $get_post_type = 'on';
     }
+    //echo $post_type . '<br>' . "\n";
+    //echo $get_post_type . '<br>' . "\n";
 
     $html_node = isset( $instance[ 'html_node' ] ) ? $instance[ 'html_node' ] : '';
     $html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );
@@ -568,10 +570,14 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
 
 
     // lấy theo nhóm tin đã được chỉ định
+    //echo $cat_ids . '<br>' . "\n";
     if ( $cat_ids > 0 ) {
+        //echo $cat_type . '<br>' . "\n";
+        //echo $pid . '<br>' . "\n";
 
         // lấy lại taxonomy dựa theo ID cho nó chuẩn xác
         $cat_type = WGR_get_taxonomy_name( $cat_ids, $cat_type );
+        //echo $cat_type . '<br>' . "\n";
         if ( $cat_type == '' ) {
             echo '<!-- taxonomy for #' . $cat_ids . ' not found! -->';
         }
@@ -585,10 +591,9 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
             if ( $get_post_type == 'on' && $same_cat == 'on' && $cat_type != EB_BLOG_POST_LINK && $post_type == EB_BLOG_POST_TYPE ) {
                 $post_type = 'post';
             }
-            //			echo $post_type . '<br>' . "\n";
 
             //
-            //			print_r( $re_post_categories );
+            //print_r( $re_post_categories );
             if ( !empty( $re_post_categories ) ) {
                 foreach ( $re_post_categories as $v ) {
                     $terms_categories[] = $v->term_id;
@@ -596,6 +601,27 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
             } else {
                 $terms_categories[] = $cat_ids;
             }
+
+            //
+            if ( $post_type == 'for_other_post_type' && $get_post_type == 'on' ) {
+                //echo 'for_other_post_type aaaaaaa';
+                $arr_select_data = array();
+                $arr_select_data[ 'tax_query' ] = array(
+                    array(
+                        'taxonomy' => $cat_type,
+                        'field' => 'term_id',
+                        //					'terms' => array( $cat_ids ),
+                        'terms' => $terms_categories,
+                        'operator' => 'IN'
+                    )
+                );
+                //print_r( $arr_select_data );
+                $sql = _eb_load_post_obj( 1, $arr_select_data );
+                //print_r( $sql );
+            }
+            //echo $post_type . '<br>' . "\n";
+
+            //
             if ( $cat_link == '' ) {
                 $cat_link = _eb_c_link( $cat_ids, $cat_type );
             }
@@ -662,6 +688,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
         }
     }
     //	print_r( $terms_categories );
+    //echo $post_type . '<br>' . "\n";
 
     // https://codex.wordpress.org/Template_Tags/get_posts#Random_posts
     $___order = 'DESC';

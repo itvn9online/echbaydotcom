@@ -406,8 +406,9 @@ function EBE_select_thread_list_all( $post, $html = __eb_thread_template, $pot_t
     }
 
     // hiển thị danh mục trên phần danh sách sản phẩm
-    //	echo $__cf_row['cf_category_in_list'] . '<br>';
+    //echo $__cf_row['cf_category_in_list'] . '<br>';
     if ( $__cf_row[ 'cf_category_in_list' ] === 1 ) {
+        //echo 'aaaaaaaaa';
         $replace_post_categories = array();
         $post_categories = array();
 
@@ -435,9 +436,10 @@ function EBE_select_thread_list_all( $post, $html = __eb_thread_template, $pot_t
 
         if ( !empty( $post_categories ) ) {
             global $arr_replace_cat_in_ids_list;
+            //print_r($arr_replace_cat_in_ids_list);
 
             //
-            //			print_r($post_categories);
+            //print_r($post_categories);
             foreach ( $arr_replace_cat_in_ids_list as $v ) {
                 foreach ( $post_categories as $v2 ) {
                     if ( $v->term_id == $v2->term_id ) {
@@ -476,7 +478,7 @@ function EBE_select_thread_list_all( $post, $html = __eb_thread_template, $pot_t
 		else {
 		}
 		*/
-        //		print_r($replace_post_categories);
+        //print_r($replace_post_categories);
         $html = EBE_arr_tmp( $replace_post_categories, $html );
     }
 

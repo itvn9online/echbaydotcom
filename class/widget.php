@@ -242,9 +242,10 @@ function _eb_product_form_for_widget( $instance, $field_name = array() ) {
     echo '<p><strong>Định dạng bài viết</strong>: ';
 
     //
+    $list_post_type = get_post_types();
+	print_r( $list_post_type );
     /*
     $list_taxonomy = get_taxonomies();
-	print_r( $list_taxonomy );
     */
 
     __eb_widget_load_select(
