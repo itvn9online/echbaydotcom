@@ -26,12 +26,12 @@ $arrs_private_info_setting = array(
 	),
 	'hostingviet' => array(
 		'parent_theme_default' => 'hostingviet',
-//		'url_update_parent_theme' => '',
+		'url_update_parent_theme' => 'https://git.hostingviet.vn/itvn9online/hostingviet/-/archive/master/hostingviet-master.zip',
 		
 		'child_theme_default' => 'hostingviet-child',
 		
 //		'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
-//		'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION',
+		'url_check_EB_theme_version' => 'https://git.hostingviet.vn/itvn9online/hostingviet/-/raw/master/VERSION',
 		
 		'theme_site_upper' => 'HostingViet.vn',
 		'theme_site_url' => 'https://hostingviet.vn/',
