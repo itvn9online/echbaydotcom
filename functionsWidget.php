@@ -444,6 +444,10 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
     $post_type = isset( $instance[ 'post_type' ] ) ? $instance[ 'post_type' ] : '';
     $same_cat = isset( $instance[ 'same_cat' ] ) ? $instance[ 'same_cat' ] : 'off';
     $get_post_type = isset( $instance[ 'get_post_type' ] ) ? $instance[ 'get_post_type' ] : 'off';
+    // xác định lại post type cho trường hợp đặc biệt
+    if ( $post_type == 'for_other_post_type' ) {
+        $get_post_type = 'on';
+    }
 
     $html_node = isset( $instance[ 'html_node' ] ) ? $instance[ 'html_node' ] : '';
     $html_node = _eb_widget_create_html_template( $html_node, 'blogs_node' );

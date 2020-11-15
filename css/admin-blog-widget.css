@@ -2,17 +2,22 @@
 .eb-widget-fixed .ebe-post-status,
 .eb-widget-fixed .ebe-ads-status,
 */
-.eb-widget-fixed .ebe-widget-post-show,
-.eb-widget-fixed .ebe-widget-ads-show { display: none; }
+.eb-widget-fixed .ebe-widget-other-show, .eb-widget-fixed .ebe-widget-post-show, .eb-widget-fixed .ebe-widget-ads-show {
+    display: none;
+}
 /*
 .eb-widget-fixed[data-type="post"] .ebe-post-status,
 .eb-widget-fixed[data-type="ads"] .ebe-ads-status,
 */
-.eb-widget-fixed[data-type="post"] .ebe-widget-post-show,
-.eb-widget-fixed[data-type="ads"] .ebe-widget-ads-show { display: block !important; }
+.eb-widget-fixed[data-type="for_other_post_type"] .ebe-widget-other-show, .eb-widget-fixed[data-type="post"] .ebe-widget-post-show, .eb-widget-fixed[data-type="ads"] .ebe-widget-ads-show {
+    display: block !important;
+}
 /* .eb-widget-fixed[data-type="blog"] { } */
 /* ẩn phần danh mục ở khu vực chọn widget của sản phẩm */
-.eb-widget-fixed .eb-get-widget-category option { display: none; }
+.eb-widget-fixed .eb-get-widget-category option {
+    display: none;
+}
+.eb-widget-fixed[data-type="for_other_post_type"] option,
 .eb-widget-fixed[data-type="post"] option[data-taxonomy="category"],
 .eb-widget-fixed[data-type="post"] option[data-taxonomy="post_options"],
 .eb-widget-fixed[data-type="post"] option[data-taxonomy="post_tag"],
@@ -20,4 +25,13 @@
 .eb-widget-fixed[data-type="ads"] option[data-taxonomy="post_options"],
 .eb-widget-fixed[data-type="blog"] option[data-taxonomy="blogs"],
 .eb-widget-fixed[data-type="blog"] option[data-taxonomy="blog_tag"],
-.eb-get-widget-category option[value="0"] { display: block; }
+.eb-get-widget-category option[value="0"] {
+    display: block;
+}
+.eb-widget-fixed[data-type="for_other_post_type"] option[data-taxonomy="category"],
+.eb-widget-fixed[data-type="for_other_post_type"] option[data-taxonomy="post_options"],
+.eb-widget-fixed[data-type="for_other_post_type"] option[data-taxonomy="post_tag"],
+.eb-widget-fixed[data-type="for_other_post_type"] option[data-taxonomy="blogs"],
+.eb-widget-fixed[data-type="for_other_post_type"] option[data-taxonomy="blog_tag"] {
+    display: none !important;
+}
