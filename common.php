@@ -90,7 +90,7 @@ if ( ! empty( $arr_replace_cat_in_list ) ) {
 	//
 	$__cf_row['cf_replace_content'] = trim( $__cf_row['cf_replace_content'] ) . "\n" . implode( "\n", $arr_replace_cat_in_list );
 	$__cf_row['cf_category_in_list'] = 1;
-//	print_r($arr_replace_cat_in_ids_list);
+	//print_r($arr_replace_cat_in_ids_list);
 }
 //echo $__cf_row['cf_category_in_list'];
 

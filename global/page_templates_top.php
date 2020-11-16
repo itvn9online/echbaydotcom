@@ -1,6 +1,9 @@
 <?php
 
 
+// định nghĩa chức năng dò tìm thuộc tính từ post option cho phần node sản phẩm
+define( 'eb_find_category_in_list', true );
+
 
 
 // khai báo biến này để khẳng định đây là page templates -> lưu cache được
