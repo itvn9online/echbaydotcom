@@ -344,6 +344,11 @@ function func_download_img_content_to_my_host() {
     var file_name = decodeURIComponent(img).split('/');
     file_name = file_name[file_name.length - 1];
 
+    //
+    jQuery('#leech_data_fix_content img.download-img-to-here:first').attr({
+        'source-src': img
+    });
+    
     // tạo url file download luôn
     jQuery('#leech_data_fix_content img.download-img-to-here:first').attr({
         'download-src': web_link + 'ebarchive/' + year_curent + '/' + month_curent + '/' + file_name
@@ -661,6 +666,7 @@ function leech_data_content(url, id, callBack) {
 
         // xóa các thẻ chắc chắn không sử dụng đi luôn và ngay
         jQuery('#' + id + ' eb-style, #' + id + ' style').remove();
+        jQuery('#' + id + ' img').removeAttr('srcset');
 
         //
         //		setTimeout(function () {
