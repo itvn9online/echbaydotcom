@@ -918,6 +918,21 @@ function WGR_create_quick_link_edit_post() {
                 'data-add-edit': 1
             });
         });
+        
+        // sửa địa chỉ
+        jQuery('.footer-address .footer-address-company').each(function () {
+            var edit_exist = jQuery(this).attr('data-add-edit') || '';
+
+            //
+            if (edit_exist == '') {
+                jQuery(this).before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=contact&support_tab=cf_diachi" title="Chỉnh sửa địa chỉ" class="fa fa-edit click-goto-edit"></i></div>');
+            }
+
+            //
+            jQuery(this).attr({
+                'data-add-edit': 1
+            });
+        });
 
         // chỉnh sửa menu
         jQuery('.each-to-edit-menu').each(function () {
