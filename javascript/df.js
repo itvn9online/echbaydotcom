@@ -854,7 +854,7 @@ function WGR_lazyload_footer_content() {
 
     //
     if (act == '' && $('#home-lazyload').length > 0) {
-        //		console.log('Load home content');
+        //console.log('Load home content');
         ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
             disable_eblazzy_load = false;
             WGR_reload_lazy_function();
@@ -864,7 +864,7 @@ function WGR_lazyload_footer_content() {
 
     //
     if ($('#footer-lazyload').length > 0) {
-        //		console.log('Load footer content');
+        //console.log('Load footer content');
         ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
             disable_eblazzy_load = false;
             WGR_reload_lazy_function();
@@ -918,7 +918,7 @@ function WGR_create_quick_link_edit_post() {
                 'data-add-edit': 1
             });
         });
-        
+
         // sửa địa chỉ
         jQuery('.footer-address .footer-address-company').each(function () {
             var edit_exist = jQuery(this).attr('data-add-edit') || '';

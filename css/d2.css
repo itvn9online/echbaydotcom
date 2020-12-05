@@ -3221,6 +3221,7 @@ iframe[name="google_conversion_frame"] {
 	right: 0;
 	bottom: 0;
 }
+/*
 #footer-lazyload, #home-lazyload {
 	min-height: 688px;
 }
@@ -3228,6 +3229,7 @@ iframe[name="google_conversion_frame"] {
 	min-height: auto;
 	min-height: unset;
 }
+*/
 .btn-clone-edit-post {
 	background: #333;
 	cursor: pointer;
