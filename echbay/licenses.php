@@ -36,7 +36,7 @@ if ( $path != NULL ) {
 <div>(<em>lần cập nhật cuối: <?php echo $last_update; ?></em>)</div>
 <p>* Mặc định, khi bạn sử dụng Hosting của <a href="<?php echo $arr_private_info_setting['site_url']; ?>cart" target="_blank" rel="nofollow"><?php echo $arr_private_info_setting['site_upper']; ?></a> bạn sẽ được cung cấp các tính năng nâng cao, hỗ trợ việc quản trị và bảo mật website tốt hơn. Một số tính năng trong phiên bản <strong>PRO</strong>:</p>
 <ol>
-    <li>Tự động sao lưu dữ liệu đơn hàng lên Google Excel</li>
+    <li>Tự động sao lưu dữ liệu đơn hàng lên <a href="<?php echo admin_link; ?>admin.php?page=eb-config&tab=cache&support_tab=cf_google_sheet_backup" target="_blank">Google Excel</a></li>
     <li>Tự động sao lưu toàn bộ dữ liệu sang server khác vào lúc 4 giờ sáng hàng ngày</li>
     <li>Tự động xác định vị trí tương đối (cấp độ quận/ huyện) của khách hàng bằng IP, sử dụng khi khách hàng nhập liệu để đặt hàng.</li>
     <li>Tự động cập nhật toàn bộ plugin, theme và các phần mềm liên quan lên phiên bản mới nhất theo định kỳ hàng tuần.</li>
