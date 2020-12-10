@@ -11,7 +11,6 @@ $quick_view_id = (int) $_GET['id'];
 $act = 'single';
 
 
-
 //
 $sql = _eb_load_post_obj( 1, array(
 	'p' => $quick_view_id
@@ -32,7 +31,8 @@ $sql = _eb_load_post_obj( 1, array(
  */
 
 //
-while ( $sql->have_posts() ) {
+//while ( $sql->have_posts() ) {
+$sql->have_posts();
 $sql->the_post();
 
 //
@@ -126,7 +126,7 @@ include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
 include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 } // end if
 
-} // end while
+//} // end while
 
 
 
