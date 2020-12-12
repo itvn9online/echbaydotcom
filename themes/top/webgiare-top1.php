@@ -5,8 +5,8 @@
 			<div class="lf f70 cf hide-if-mobile">
 				<div class="lf f60">
 					<ul class="cf top-contact-info text-center">
-						<li><i class="fa fa-envelope-o"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>"><?php echo $__cf_row['cf_email']; ?></a></li>
-						<li><i class="fa fa-phone"></i> <?php echo $__cf_row['cf_call_hotline']; ?></li>
+						<li><i class="fas fa-envelope"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>"><?php echo $__cf_row['cf_email']; ?></a></li>
+						<li><i class="fas fa-phone-alt"></i> <?php echo $__cf_row['cf_call_hotline']; ?></li>
 					</ul>
 				</div>
 				<div class="lf f40">

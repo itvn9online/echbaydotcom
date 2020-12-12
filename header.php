@@ -6,12 +6,13 @@
 <link rel="profile" href="http://gmgp.org/xfn/11" />
 <?php
 
-if ( is_singular() && pings_open( get_queried_object() ) ) { ?>
+if ( is_singular() && pings_open( get_queried_object() ) ) {
+    ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 }
 
-echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
+echo _eb_tieu_de_chuan_seo( $__cf_row[ 'cf_title' ] );
 echo WGR_show_header_favicon();
 
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
@@ -22,17 +23,14 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 <?php
 
 
-
 // thêm NAV menu cho bản mobile
-if ( $__cf_row['cf_search_nav_mobile'] == 'none' ) {
-	$__cf_row['cf_default_css'] .= 'body.style-for-mobile{margin-top:0}';
+if ( $__cf_row[ 'cf_search_nav_mobile' ] == 'none' ) {
+    $__cf_row[ 'cf_default_css' ] .= 'body.style-for-mobile{margin-top:0}';
 }
 // chuyển sang nạp thông qua ajax xem có nhanh web hơn không
 else {
-	include EB_THEME_PLUGIN_INDEX . 'mobile/nav.php';
+    include EB_THEME_PLUGIN_INDEX . 'mobile/nav.php';
 }
-
-
 
 
 // một số css liên quan tới việc hiển thị màn hình đầu tiên, giúp tăng điểm trên google page speed
@@ -51,15 +49,11 @@ _eb_add_compiler_css( $arr_for_add_css );
 ?>
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
-<?php
-
-// do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có
-if ( $__cf_row['cf_replace_content'] != '' ) {
-	$__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
+<?php /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
+    if ( $__cf_row['cf_replace_content'] != '' ) {
+$__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
 }
-
 echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
-
 ?>
 </style>
 <script type="text/javascript">
@@ -76,8 +70,8 @@ var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 
 // do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
 //if ( mtv_id == 0 ) {
-	// một số plugin nó load js qua hàm jquery luôn, nên cái này không bỏ được
-	/*
+// một số plugin nó load js qua hàm jquery luôn, nên cái này không bỏ được
+/*
 if ( 1 == 2 ) {
 ?>
 <script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js"></script>
@@ -87,15 +81,14 @@ if ( 1 == 2 ) {
 */
 
 ?>
-<!-- HEAD by <?php echo $arr_private_info_setting['author']; ?> -->
-<?php echo $__cf_row['cf_js_head']; ?>
+<!-- HEAD by <?php echo $arr_private_info_setting['author']; ?> --> 
+<?php echo $__cf_row['cf_js_head']; ?> 
 <!-- // Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 
 //echo 'aaaaaaaaaaaaaaaaaaaa';
 wp_head();
 //echo 'bbbbbbbbbbbbbbbbbbbb';
-
 
 
 //

@@ -114,4 +114,11 @@ if ( eb_code_tester == true ) {
 
 ?>
 <!-- // FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
+<!-- Our project just needs Font Awesome Solid + Brands -->
+<!--
+<script src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/javascript/fontawesome.js"></script> 
+-->
+<script defer src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/fontawesome-free-5.15.1-web/js/brands.js"></script> 
+<script defer src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/fontawesome-free-5.15.1-web/js/solid.js"></script> 
+<script defer src="<?php echo web_link . EB_DIR_CONTENT; ?>/echbaydotcom/outsource/fontawesome-free-5.15.1-web/js/fontawesome.js"></script>
 </body></html>

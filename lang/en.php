@@ -246,9 +246,9 @@ $eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu
 // footer address
 $eb_note_first_lang[eb_key_for_site_lang . 'fd_diachi'] = 'Thông tin liên hệ ở chân trang';
 $___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
-$___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fa fa-phone"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="far fa-phone"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
-$___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fa fa-envelope-o"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="far fa-envelope-o"></i>';
 
 // footer address -> cho phép mọi người có thể tùy chỉnh HTML của khung địa chỉ
 //$___eb_lang[eb_key_for_site_lang . 'footer_address'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );
@@ -351,15 +351,6 @@ $___eb_lang[eb_key_for_site_lang . 'tag_blog_excerpt'] = 'h2';
 //
 $___eb_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'off';
 $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
-
-// icon cho khối mạng xã hội
-$eb_note_first_lang[eb_key_for_site_lang . 'social_facebook'] = 'Icons cho phần mạng xã hội (sử dụng font awesome)';
-$___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';
-$___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fa fa-instagram';
-$___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fa fa-twitter';
-$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fa fa-youtube';
-$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fa fa-google-plus';
-$___eb_lang[eb_key_for_site_lang . 'social_pinterest'] = 'fa fa-pinterest';
 
 
 // tự chỉnh câu chữ trong nút mua của bản mobile

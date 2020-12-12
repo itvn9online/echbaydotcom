@@ -1397,7 +1397,7 @@ if ( $admin_edit != '' ) {
 $admin_edit = '';
 //if ( current_user_can('editor') || current_user_can('administrator') ) {
 if ( current_user_can('delete_posts') ) {
-	$admin_edit = '<a title="Edit" href="' . admin_link . 'post.php?post=' . $pid . '&action=edit" class="fa fa-edit breadcrumb-clone-edit-post"></a>';
+	$admin_edit = '<a title="Edit" href="' . admin_link . 'post.php?post=' . $pid . '&action=edit" class="breadcrumb-clone-edit-post"><i class="fa fa-edit"></i></a>';
 }
 $main_content = str_replace ( '{tmp.admin_edit}', $admin_edit, $main_content );
 $main_content = str_replace ( '{tmp._eb_product_source_author}', $_eb_product_source_author, $main_content );

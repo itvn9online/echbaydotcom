@@ -445,11 +445,11 @@ $eb_ex_from_github[eb_key_for_site_lang . 'schema_blog_type'] = 'https://develop
 
 // icon cho khối mạng xã hội
 $eb_note_first_lang[eb_key_for_site_lang . 'social_facebook'] = 'Icons cho phần mạng xã hội (sử dụng font awesome)';
-$___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fa fa-facebook';
+$___eb_lang[eb_key_for_site_lang . 'social_facebook'] = 'fab fa-facebook-f';
 $___eb_lang[eb_key_for_site_lang . 'social_instagram'] = 'fa fa-instagram';
-$___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fa fa-twitter';
-$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fa fa-youtube';
-$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fa fa-google-plus';
+$___eb_lang[eb_key_for_site_lang . 'social_twitter'] = 'fab fa-twitter';
+$___eb_lang[eb_key_for_site_lang . 'social_youtube'] = 'fab fa-youtube';
+$___eb_lang[eb_key_for_site_lang . 'social_google_plus'] = 'fab fa-google-plus-g';
 $___eb_lang[eb_key_for_site_lang . 'social_pinterest'] = 'fa fa-pinterest';
 
 

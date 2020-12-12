@@ -506,18 +506,18 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
     var url = encodeURIComponent(post_canonical_url),
         des = encodeURIComponent(jQuery('meta[name="description"]').attr('content') || ''),
         arr = {
-            'facebook': 'https://facebook.com/sharer/sharer.php?u=' + url,
+            'facebook-f': 'https://facebook.com/sharer/sharer.php?u=' + url,
             'google': 'https://plus.google.com/share?url=' + url,
             'twitter': 'https://twitter.com/share?url=' + url + '&amp;text=' + des,
-            'linkedin': 'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + url,
-            'pinterest': 'https://pinterest.com/pin/create/bookmarklet/?&amp;url=' + url + '&amp;description=' + des
+            'linkedin-in': 'https://www.linkedin.com/shareArticle?mini=true&amp;url=' + url,
+            'pinterest-p': 'https://pinterest.com/pin/create/bookmarklet/?&amp;url=' + url + '&amp;description=' + des
         },
         str = '',
         utm_content = _date('Y-m-d', date_time);
 
     //
     for (var x in arr) {
-        str += '<div class="jssocials-share jssocials-share-' + x + '"><a rel="nofollow" target="_blank" href="' + arr[x] + encodeURIComponent('?utm_source=' + x + '&utm_medium=share_button&utm_campaign=share' + isLogin + '&utm_content=' + utm_content) + '" class="jssocials-share-link"><i class="fa fa-' + x + ' jssocials-share-logo"></i></a></div>';
+        str += '<div class="jssocials-share jssocials-share-' + x + '"><a rel="nofollow" target="_blank" href="' + arr[x] + encodeURIComponent('?utm_source=' + x + '&utm_medium=share_button&utm_campaign=share' + isLogin + '&utm_content=' + utm_content) + '" class="jssocials-share-link"><i class="fab fa-' + x + ' jssocials-share-logo"></i></a></div>';
     }
 
     //

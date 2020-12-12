@@ -1129,7 +1129,7 @@ function EBE_register_scripts() {
 	// không có thì dùng của WGR -> lười update hơn
 	//		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
 	//		$url = '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-	$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
+	//$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
 
 	// ưu tiên sử dụng của elementor -> họ update liên tục
 	/*
@@ -1139,11 +1139,11 @@ function EBE_register_scripts() {
 	*/
 
 	//
-	wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
+	//wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
 	//	}
 
 	//
-	wp_enqueue_style( 'font-awesome' );
+	//wp_enqueue_style( 'font-awesome' );
 
 
 	//
