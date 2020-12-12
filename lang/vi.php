@@ -320,7 +320,7 @@ $eb_note_first_lang[eb_key_for_site_lang . 'fd_diachi'] = 'Thông tin liên hệ
 $___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fas fa-phone-alt"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
-$___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fa fa-envelope-o"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fas fa-envelope"></i>';
 
 // footer address -> cho phép mọi người có thể tùy chỉnh HTML của khung địa chỉ
 //$___eb_lang[eb_key_for_site_lang . 'footer_address'] = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer_address.html' );

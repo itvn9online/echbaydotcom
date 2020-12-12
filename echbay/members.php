@@ -67,7 +67,7 @@ $strAjaxLink .= '&trang=' . $trang;
 
     $arr_button_export = array(
         'all' => '<i class="fa fa-download"></i> Download Email and Phone',
-        'email' => '<i class="fa fa-envelope-o"></i> Download Email',
+        'email' => '<i class="fas fa-envelope"></i> Download Email',
         'phone' => '<i class="fa fa-phone"></i> Download Phone'
     );
 

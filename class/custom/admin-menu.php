@@ -249,8 +249,8 @@ function echbay_admin_styles() {
 	$a = array(
 //		EB_THEME_PLUGIN_INDEX . 'outsource/fa-4.7.0/i.css',
 //		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/v4-shims.min.css',
+		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
+		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/v4-shims.min.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d2.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css',
@@ -489,6 +489,13 @@ function echbay_admin_footer_styles() {
 //	print_r( $a );
 //	echo 'aaaaaaaaaaaaaaaaaaaaaa/' . EB_DIR_CONTENT . "\n";
 	
+    // fontawesome-free
+    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/brands.min.js';
+    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/solid.min.js';
+    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js';
+    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/v4-shims.min.js';
+    //print_r($a);
+    
 	//
 	foreach ( $a as $v ) {
 //		$k = EB_THEME_PLUGIN_INDEX . $v;

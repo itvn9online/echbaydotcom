@@ -1113,7 +1113,7 @@ function EBE_register_scripts() {
 
 
 	//
-	global $__cf_row;
+	//global $__cf_row;
 
 	// load Font Awesome v5
 	/*

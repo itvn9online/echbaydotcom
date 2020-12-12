@@ -1029,18 +1029,24 @@ tr[data-row="_eb_show_product_avatar"] .show_product_avatar {
 * Chỉnh lại icon cho menu của EchBay
 * https://developer.wordpress.org/resource/dashicons/
 */
-#toplevel_page_eb-order .dashicons-admin-generic:before, #menu-posts-ads .dashicons-admin-post:before, #menu-posts-blog .dashicons-admin-post:before {
+#toplevel_page_eb-order .dashicons-admin-generic:before, /* #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before, */ #menu-posts-ads .dashicons-admin-post:before, #menu-posts-blog .dashicons-admin-post:before {
+    font-family: FontAwesome, "Font Awesome 5 Free";
+    /*
+	text-shadow: 0 0 10px #fff;
+	color: #FF9800 !important;
+	font-family: "Font Awesome 5 Free" !important;
+	*/
     text-shadow: 0 0 30px #fff;
     color: #fff !important;
 }
 #toplevel_page_eb-order .dashicons-admin-generic:before {
-    content: "\f328";
+    content: "\f06c";
 }
 #menu-posts-ads .dashicons-admin-post:before {
-    content: "\f495";
+    content: "\f03e";
 }
 #menu-posts-blog .dashicons-admin-post:before {
-    content: "\f115";
+    content: "\f1ea";
 }
 #toplevel_page_echbay-plugins-menu .dashicons-admin-generic:before { /* content: "\f176"; */ content: "\f325";
 }

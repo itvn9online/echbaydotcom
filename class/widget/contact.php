@@ -85,7 +85,7 @@ class ___echbay_widget_set_contact_menu extends WP_Widget {
 		<ul class="footer-contact-content">
 			<li><strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i> ' . nl2br( $__cf_row['cf_diachi'] ) . '</li>
 			<li><strong>Điện thoại:</strong> <i class="fa fa-phone"></i> ' . $__cf_row['cf_call_hotline'] . ' - <span class="phone-numbers-inline">' . $__cf_row['cf_call_dienthoai'] . '</span></li>
-			<li><strong>Email:</strong> <i class="fa fa-envelope-o"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
+			<li><strong>Email:</strong> <i class="fas fa-envelope"></i> <a href="mailto:' . $__cf_row['cf_email'] . '" rel="nofollow" target="_blank">' . $__cf_row['cf_email'] . '</a></li>
 		</ul>';
 		*/
 		

@@ -13,30 +13,15 @@
 // do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
 //if ( mtv_id == 0 ) {
 //if ( 1 == 2 ) {
-	if ($__cf_row['cf_fontawesome_v5'] == 1) {
-	
-	//echo '<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">' . "\n";
-		/*
-		  echo '<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" defer></script>' . "\n";
-		 */
-	
-	//
-	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fontawesome-free-5.0.6/css/fontawesome.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.0.13/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
-	//
-	//echo '<link rel="stylesheet" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css?v=' . web_version . '" type="text/css" media="all" />' . "\n";
         /*
+	if ($__cf_row['cf_fontawesome_v5'] == 1) {
 		echo '<link rel="stylesheet" id="font-awesome-v5" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css" media="all" crossorigin="anonymous" />' . "\n";
 		echo '<link rel="stylesheet" id="font-awesome-v4-v5" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/v4-shims.min.css?v=' . web_version . '" type="text/css" media="all" crossorigin="anonymous" />' . "\n";
-        */
 	}
 	else {
-//		https://vihoth.com/wp-content/echbaydotcom/outsource/fa-4.7.0/fontawesome-webfont.woff2?v=4.7.0
-//		echo '<link rel="preload" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">' . "\n";
-        /*
 		echo '<link rel="stylesheet" id="font-awesome-v4" href="' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css" media="all" crossorigin="anonymous" />' . "\n";
-        */
 	}
+        */
 //}
 /*
 echo '<script defer src="https://use.fontawesome.com/7a0fa4540f.js"></script>';
