@@ -464,7 +464,7 @@ $strAjaxLink .= '&trang=' . $trang;
             <input type="hidden" name="by_post_type" value="<?php echo $by_post_type; ?>">
             <div class="products-post-search">
                 <input type="search" name="q" value="<?php echo $by_search_key; ?>" placeholder="Tìm kiếm theo tên sản phẩm" aria-required="true" required />
-                <button type="submit" class="cur"><i class="fa fa-search"></i></button>
+                <button type="submit" class="cur"><i class="fas fa-search"></i></button>
             </div>
         </form>
         <br>

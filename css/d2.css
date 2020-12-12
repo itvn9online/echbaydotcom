@@ -3201,7 +3201,7 @@ iframe[name="google_conversion_frame"] {
     font-style: italic;
     display: none;
 }
-.fomo-order i.fa-remove {
+.fomo-order svg, .fomo-order i.fa-remove {
     position: absolute;
     right: -10px;
     top: -10px;
@@ -3322,4 +3322,11 @@ iframe[name="google_conversion_frame"] {
     height: auto !important;
     border-radius: 0 5px 5px 0 !important;
     transform: translate(0, -50%);
+    height: 40px !important;
+    background: rgba(0, 0, 0, .6) !important;
+}
+.thread-module-name .click-goto-edit svg {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

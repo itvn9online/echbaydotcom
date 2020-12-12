@@ -318,7 +318,7 @@ function eb_func_add_nut_product_size ( str, i ) {
 	<div class="eb-admin-product-size">\
 		<ul class="cf">\
 			' + str + '\
-			<li data-parent="' + i + '" data-add="1" title="Thêm size mới"><i class="fa fa-plus"></i></li>\
+			<li data-parent="' + i + '" data-add="1" title="Thêm size mới"><i class="fas fa-plus"></i></li>\
 		</ul>\
 	</div>';
 }
@@ -455,7 +455,7 @@ function eb_func_show_product_size () {
 	//
 //	console.log(eb_inner_html_product_size);
 	$('#' + eb_inner_html_product_size).html( str_size + '<div class="small">Chức năng dùng để tạo danh sách Kích thước, dung tích... cho sản phẩm và mức giá riêng (nếu có).</div>' );
-//	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fa fa-plus"></i> <i class="fa fa-plus"></i></li>');
+//	$('#' + eb_inner_html_product_size + ' ul:last li:last').after('<li data-add="group" title="Thêm nhóm size mới (một số theme mới hỗ trợ tính năng này)"><i class="fas fa-plus"></i> <i class="fas fa-plus"></i></li>');
 	
 	// chuyển từ object sang string
 	/*

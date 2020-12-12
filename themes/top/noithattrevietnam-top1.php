@@ -12,7 +12,7 @@
 					</div>
 				</div>
 				<div class="cf">
-					<div class="nttvn-hotline rf"><i class="fa fa-phone"></i> HOTLINE:<br>
+					<div class="nttvn-hotline rf"><i class="fas fa-phone-alt"></i> HOTLINE:<br>
 						<?php echo $__cf_row['cf_call_hotline']; ?></div>
 				</div>
 			</div>

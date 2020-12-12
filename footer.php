@@ -54,14 +54,14 @@ if ( mtv_id > 0 || $__cf_row[ 'cf_lazy_load_home_footer' ] != 1 ) {
 <!-- quick view video -->
 <div class="quick-video">
     <div class="quick-video-close big cf">
-        <div class="lf f40 show-if-mobile"><i title="Close" class="fa fa-remove cur d-block"></i></div>
-        <div class="text-right rf f20 hide-if-mobile"><i title="Close" class="fa fa-remove cur d-block"></i></div>
+        <div class="lf f40 show-if-mobile"><i title="Close" class="fas fa-times cur d-block"></i></div>
+        <div class="text-right rf f20 hide-if-mobile"><i title="Close" class="fas fa-times cur d-block"></i></div>
     </div>
     <div class="quick-video-padding">
         <div id="quick-video-content"></div>
     </div>
 </div>
-<div id="oi_scroll_top" class="fa fa-chevron-up default-bg"></div>
+<div id="oi_scroll_top" class="default-bg"><i class="fas fa-chevron-up"></i></div>
 <div id="fb-root"></div>
 <div id="oi_popup"></div>
 <!-- mobile menu -->

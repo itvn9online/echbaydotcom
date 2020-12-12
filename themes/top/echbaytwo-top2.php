@@ -10,7 +10,7 @@ Tags: dep qua
 		<div class="lf f75 hide-if-mobile cf">
 			<div class="lf f62"><?php echo EBE_get_html_search(); ?></div>
 			<div class="lf f38 text-right">
-				<div class="nav-mobile-hotline aorgcolor"><i class="fa fa-phone"></i> <?php echo $__cf_row['cf_call_hotline']; ?></div>
+				<div class="nav-mobile-hotline aorgcolor"><i class="fas fa-phone-alt"></i> <?php echo $__cf_row['cf_call_hotline']; ?></div>
 			</div>
 		</div>
 	</div>

@@ -8,7 +8,7 @@
 					<div class="l19 footer-contact">
 						<div class="upper bold"><?php echo $__cf_row['cf_ten_cty']; ?></div>
 						<div><i class="fa fa-map-marker"></i> Địa chỉ: <?php echo nl2br( $__cf_row['cf_diachi'] ); ?></div>
-						<div><i class="fa fa-phone"></i> Điện thoại: <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
+						<div><i class="fas fa-phone-alt"></i> Điện thoại: <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></div>
 						<div><i class="fa fa-mobile"></i> Hotline: <a href="tel:<?php echo $__cf_row['cf_hotline']; ?>" rel="nofollow"><?php echo $__cf_row['cf_hotline']; ?></a></div>
 						<div><i class="fa fa-envelope"></i> Email: <a href="mailto:<?php echo $__cf_row['cf_email']; ?>"><?php echo $__cf_row['cf_email']; ?></a></div>
 					</div>

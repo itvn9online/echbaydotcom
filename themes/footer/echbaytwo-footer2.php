@@ -5,7 +5,7 @@
 				<div class="lf f25 fullsize-if-mobile">
 					<div class="footer-title upper"><?php echo $__cf_row['cf_ten_cty']; ?></div>
 					<div class="l19"><i class="fa fa-location-arrow orgcolor"></i> <?php echo nl2br( $__cf_row['cf_diachi'] ); ?><br>
-						<i class="fa fa-phone orgcolor"></i> <?php echo $__cf_row['cf_call_hotline']; ?> - <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span><br>
+						<i class="fas fa-phone-alt orgcolor"></i> <?php echo $__cf_row['cf_call_hotline']; ?> - <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span><br>
 						<i class="fa fa-envelope-o orgcolor"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="nofollow" target="_blank"><?php echo $__cf_row['cf_email']; ?></a><br>
 					</div>
 					<br>

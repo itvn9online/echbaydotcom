@@ -179,7 +179,7 @@ if ( $cart_list_id != '' && substr( $cart_list_id, 0, 1 ) == ',' ) {
 			
 			<div><a href="' . $c_link . '" class="upper blackcolor">' . $c_name . '</a></div>
 			
-			<div class="cart-table-remove"><i onClick="_global_js_eb.cart_remove_item(' . $post->ID . ', \'' . $animate_id . '\');" class="fa fa-remove cur"></i></div>
+			<div class="cart-table-remove"><i onClick="_global_js_eb.cart_remove_item(' . $post->ID . ', \'' . $animate_id . '\');" class="fas fa-times cur"></i></div>
 			
 			<input type="hidden" name="t_muangay[]" value="' . $post->ID . '" />
 		</div>

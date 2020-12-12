@@ -1012,7 +1012,7 @@ function WGR_create_quick_link_edit_post() {
 
             //
             if (edit_exist == '') {
-                jQuery(this).addClass('each-setup-goto-edit').append('<i data-href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type=' + edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" class="fa fa-edit click-goto-edit"></i>');
+                jQuery(this).addClass('each-setup-goto-edit').append('<span data-href="' + web_link + 'wp-admin/term.php?taxonomy=' + edit_taxonomy + '&tag_ID=' + cid + '&post_type=' + edit_taxonomy_type + '" title="' + edit_taxonomy_title + '" class="click-goto-edit"><i class="fa fa-edit"></i></span>');
             }
 
             //

@@ -7,7 +7,7 @@
 					<div class="top-login text-right"><?php echo EBE_get_html_profile(); ?></div>
 					<br>
 					<div class="cf">
-						<div class="lf f40 text-center top-phone"><i class="fa fa-phone"></i> <?php echo $__cf_row["cf_call_hotline"]; ?></div>
+						<div class="lf f40 text-center top-phone"><i class="fas fa-phone-alt"></i> <?php echo $__cf_row["cf_call_hotline"]; ?></div>
 						<div class="lf f60"><?php echo EBE_get_html_search(); ?></div>
 					</div>
 				</div>

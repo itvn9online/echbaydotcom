@@ -67,8 +67,8 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin' ) {
 		<form role="search" method="get" action="' . web_link . $echbay_search . '">
 			<input type="search" placeholder="' . EBE_get_lang( 'searchp' ) . '" value="' . $current_search_key . '" name="' . $echbay_search_name . '" autocomplete="' . EBE_get_lang( 'search_autocomplete' ) . '" aria-required="true" required>
 			<input type="hidden" name="post_type" value="post" />
-			<button type="submit" class="default-bg"><i class="fa fa-search"></i><span class="d-none">' . EBE_get_lang( 'search' ) . '</span></button>
-			<span data-active="' . $class_for_search . '" class="span-search-icon cur"><i class="fa fa-search"></i></span>
+			<button type="submit" class="default-bg"><i class="fas fa-search"></i><span class="d-none">' . EBE_get_lang( 'search' ) . '</span></button>
+			<span data-active="' . $class_for_search . '" class="span-search-icon cur"><i class="fas fa-search"></i></span>
 		</form>
 	</div>
 	<div id="oiSearchAjax"></div>

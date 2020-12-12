@@ -192,7 +192,7 @@ $str_hom_nay = date( 'md', date_time );
 			<td class="order-list-info">
 				<div><a href="user-edit.php?user_id=' . $o->tv_id . '" target="_blank"><i class="fa fa-envelope-o"></i> ' . _eb_lay_email_tu_cache( $o->tv_id ) . '</a></div>
 				<div><i class="fa fa-phone"></i> <span class="eb-to-phone"></span></div>
-				<div><i class="fa fa-home"></i> <span class="eb-to-adress small"></span></div>
+				<div><i class="fas fa-home"></i> <span class="eb-to-adress small"></span></div>
 			</td>
 			<td class="eb-to-phone show-if-order-fullsize">.</td>
 			<td class="show-if-order-fullsize"><div class="eb-to-adress">.</div></td>

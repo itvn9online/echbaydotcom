@@ -516,7 +516,7 @@ function ___eb_set_url_for_search_advanced_button(clat, inner_clat, go_to_url) {
         if (typeof inner_clat == 'undefined' || inner_clat == '') {
             inner_clat = '.widget-search-advanced';
         }
-        jQuery(inner_clat).append('<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none whitecolor"><i class="fa fa-search"></i> <span>Lọc sản phẩm</span></a></div>');
+        jQuery(inner_clat).append('<div class="global-button-for-seach-advanced"><a href="javascript:;" class="click-to-search-advanced search-advanced-btn d-none whitecolor"><i class="fas fa-search"></i> <span>Lọc sản phẩm</span></a></div>');
     }
 
     //

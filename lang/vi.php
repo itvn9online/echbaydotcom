@@ -43,7 +43,7 @@ $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_sit
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Liên hệ';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Mua ngay';
 $___eb_lang[eb_key_for_site_lang . 'add_to_cart'] = 'Cho vào giỏ hàng';
-$___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
+$___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Tư vấn miễn phí</span> <i class="fas fa-phone-alt"></i> {tmp.cf_hotline}';
 $___eb_lang[eb_key_for_site_lang . 'details2_tu_van'] = 'Tư vấn miễn phí';
 $___eb_lang[eb_key_for_site_lang . 'details_share'] = 'Chia sẻ';
 
@@ -234,9 +234,9 @@ $___eb_lang[eb_key_for_site_lang . 'poweredby'] = 'Cung cấp bởi';
 
 // echbay two footer sologan
 $eb_note_first_lang[eb_key_for_site_lang . 'ebslogan1'] = 'Mẫu slogan mặc định';
-$___eb_lang[eb_key_for_site_lang . 'ebslogan1'] = '<i class="fa fa-refresh"></i> Đổi hàng<br />trong 7 ngày';
+$___eb_lang[eb_key_for_site_lang . 'ebslogan1'] = '<i class="fas fa-sync-alt"></i> Đổi hàng<br />trong 7 ngày';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan2'] = '<i class="fa fa-truck"></i> Giao hàng Miễn phí<br />Toàn Quốc';
-$___eb_lang[eb_key_for_site_lang . 'ebslogan3'] = '<i class="fa fa-dollar"></i> Thanh toán<br />khi nhận hàng';
+$___eb_lang[eb_key_for_site_lang . 'ebslogan3'] = '<i class="fas fa-hand-holding-usd"></i> Thanh toán<br />khi nhận hàng';
 $___eb_lang[eb_key_for_site_lang . 'ebslogan4'] = '<i class="fa fa-check-square"></i> Bảo hành VIP<br />12 tháng';
 
 // quick cart
@@ -318,7 +318,7 @@ $eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu
 // footer address
 $eb_note_first_lang[eb_key_for_site_lang . 'fd_diachi'] = 'Thông tin liên hệ ở chân trang';
 $___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
-$___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fa fa-phone"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fas fa-phone-alt"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
 $___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fa fa-envelope-o"></i>';
 

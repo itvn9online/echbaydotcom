@@ -23,7 +23,7 @@ $___eb_lang[eb_key_for_site_lang . 'shopping_cart'] = $___eb_lang[eb_key_for_sit
 $___eb_lang[eb_key_for_site_lang . 'lienhe'] = 'Contact';
 $___eb_lang[eb_key_for_site_lang . 'muangay'] = 'Buy now';
 $___eb_lang[eb_key_for_site_lang . 'add_to_cart'] = 'Add to cart';
-$___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Free support</span> <i class="fa fa-phone"></i> {tmp.cf_hotline}';
+$___eb_lang[eb_key_for_site_lang . 'details_tu_van'] = '<span class="bold medium18">Free support</span> <i class="fas fa-phone-alt"></i> {tmp.cf_hotline}';
 $___eb_lang[eb_key_for_site_lang . 'details_share'] = 'Share';
 
 //
