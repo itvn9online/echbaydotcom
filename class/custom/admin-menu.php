@@ -301,9 +301,19 @@ function echbay_admin_styles() {
 	
 	//
 //	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . EBE_admin_get_realtime_for_file( $web_ad_link . eb_default_vaficon ) ) . '
+    
+    //
+    /*
 	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . $vdate_time ) . '
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
+*/
+    
+    //
+	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . $vdate_time ) . '
+<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.css" />
+<script src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.js"></script>
 <script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
 	
 	
