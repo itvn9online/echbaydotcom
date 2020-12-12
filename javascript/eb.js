@@ -1277,7 +1277,7 @@ var _global_js_eb = {
 
             // Nếu ko đủ class để làm việc -> thoát luôn
             if (disable_eblazzy_load == true) {
-                disable_eblazzy_load = true;
+                //disable_eblazzy_load = true;
                 return false;
             } else if (jQuery('.' + eb_lazzy_class).length == 0 && jQuery('.' + eb_lazzy_iframe).length == 0) {
                 disable_eblazzy_load = true;

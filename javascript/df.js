@@ -856,7 +856,6 @@ function WGR_lazyload_footer_content() {
     if (act == '' && $('#home-lazyload').length > 0) {
         //console.log('Load home content');
         ajaxl('eb-home-lazy', 'home-lazyload', 9, function () {
-            disable_eblazzy_load = false;
             WGR_reload_lazy_function();
             jQuery('#home-lazyload').addClass('remove-min-height');
         });
@@ -866,7 +865,6 @@ function WGR_lazyload_footer_content() {
     if ($('#footer-lazyload').length > 0) {
         //console.log('Load footer content');
         ajaxl('eb-footer-lazy', 'footer-lazyload', 9, function () {
-            disable_eblazzy_load = false;
             WGR_reload_lazy_function();
             jQuery('#footer-lazyload').addClass('remove-min-height');
         });
@@ -881,6 +879,7 @@ function WGR_update_font_awesome5() {
 }
 
 function WGR_reload_lazy_function() {
+    disable_eblazzy_load = false;
     _global_js_eb.ebe_currency_format();
     WGR_check_load_js_category();
 
