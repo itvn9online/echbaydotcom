@@ -247,10 +247,11 @@ function echbay_admin_styles() {
 	) ), 'link' );
 	*/
 	$a = array(
-//		EB_THEME_PLUGIN_INDEX . 'outsource/fa-4.7.0/i.css',
-//		EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
-		EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/v4-shims.min.css',
+        // trong admin có gắn thêm bản font-fontawesome-5.JS -> chỉ load bản font-fontawesome-4.CSS thì nó mới không xung đột
+		EB_THEME_PLUGIN_INDEX . 'outsource/fa-4.7.0/i.css',
+		//EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
+		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
+		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/v4-shims.min.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d2.css',
 		EB_THEME_PLUGIN_INDEX . 'css/admin.css',

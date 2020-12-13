@@ -176,15 +176,15 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-phone"></i> %cf_dienthoai% <em>(tel)</em></div>
+				<div class="lf f80"><i class="fas fa-phone-alt"></i> %cf_dienthoai% <em>(tel)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="tel:%cf_dienthoai%" data-text="<i class='fa fa-phone'></i> %cf_dienthoai%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
+					<button data-link="tel:%cf_dienthoai%" data-text="<i class='fas fa-phone-alt'></i> %cf_dienthoai%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-phone"></i> %cf_hotline% <em>(tel)</em></div>
+				<div class="lf f80"><i class="fas fa-phone-alt"></i> %cf_hotline% <em>(tel)</em></div>
 				<div class="lf f20 text-center">
-					<button data-link="tel:%cf_hotline%" data-text="<i class='fa fa-phone'></i> %cf_hotline%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
+					<button data-link="tel:%cf_hotline%" data-text="<i class='fas fa-phone-alt'></i> %cf_hotline%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">
