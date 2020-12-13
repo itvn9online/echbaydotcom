@@ -1,23 +1,26 @@
 <div class="not-using-navcart">
-	<div class="show-if-mobile">
-		<div class="thread-details-mobilemua text-center upper">
-			<ul class="cf">
-				<!-- Hay dùng nút ringtone nên nút call để ngoài cũng cho đỡ xung đột -->
-				<li class="phone-numbers-inline thread-details-phonemua">{tmp.cf_call_hotline}</li>
-				<!-- Các nút mua sẽ ưu tiên để giữa -->
-				<li class="click-jquery-quickcart-or-cart thread-details-mobilecart show-if-javascript">{tmp.details_mobilemua_mua}</li>
-				<li class="thread-details-mobilecart hide-if-javascript"><a href="./cart?id={tmp.pid}">{tmp.details_mobilemua_mua}</a></li>
-				<li class="click-jquery-add-to-cart thread-details-tocart d-none">{tmp.details_mobilemua_mua}</li>
-				<li class="click-jquery-show-quick-cart thread-details-quickcart d-none">{tmp.details_mobilemua_mua}</li>
-				<!-- Nút đầu trang mặc định là ẩn -->
-				<li class="oi_scroll_top d-none">{tmp.details_mobilemua_top}</li>
-			</ul>
-		</div>
-	</div>
+    <div class="show-if-mobile">
+        <div class="thread-details-mobilemua text-center upper">
+            <ul class="cf">
+                <!-- Hay dùng nút ringtone nên nút call để ngoài cũng cho đỡ xung đột -->
+                <li class="phone-numbers-inline thread-details-phonemua">{tmp.cf_call_hotline}</li>
+                <!-- Các nút mua sẽ ưu tiên để giữa -->
+                <li class="click-jquery-quickcart-or-cart thread-details-mobilecart show-if-javascript">{tmp.details_mobilemua_mua}</li>
+                <li class="thread-details-mobilecart hide-if-javascript"><a href="./cart?id={tmp.pid}">{tmp.details_mobilemua_mua}</a></li>
+                <li class="click-jquery-add-to-cart thread-details-tocart d-none">{tmp.details_mobilemua_mua}</li>
+                <li class="click-jquery-show-quick-cart thread-details-quickcart d-none">{tmp.details_mobilemua_mua}</li>
+                <!-- Nút đầu trang mặc định là ẩn -->
+                <li class="oi_scroll_top d-none">{tmp.details_mobilemua_top}</li>
+            </ul>
+        </div>
+    </div>
 </div>
-<div class="d-none">
-	<!-- Nút mua mặc định, sẽ redirect sang giỏ hàng để mua -->
-	<div class="click-jquery-add-to-cart">To cart</div>
-	<!-- Nút mua sẽ hiển thị hoặc chuyển đến form mua hàng nhanh -->
-	<div class="click-jquery-show-quick-cart">Show quick cart</div>
+<div class="d-none"> 
+    <!-- Nút mua mặc định, sẽ redirect sang giỏ hàng để mua -->
+    <div class="click-jquery-add-to-cart">To cart</div>
+    <!-- Nút mua sẽ hiển thị hoặc chuyển đến form mua hàng nhanh -->
+    <div class="click-jquery-show-quick-cart">Show quick cart</div>
 </div>
+<script>
+jQuery('.thread-details-mobilemua .thread-details-phonemua a').prepend('<i class="fa fa-mobile"></i>');
+</script>

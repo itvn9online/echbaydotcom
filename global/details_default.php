@@ -1266,7 +1266,7 @@ if ( $bai_san_pham == true ) {
 		*/
 		
 		// v2 -> thêm vào dưới dạng LINK để còn remove được trên mobile
-		$__cf_row['cf_js_head'] .= '<link rel="stylesheet" id="thumb-col" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col.css" type="text/css" media="all" />';
+		$__cf_row['cf_js_head'] .= '<link rel="stylesheet" id="thumb-col" href="' . EB_DIR_CONTENT . '/echbaydotcom/css/template/thumb-col.css?v=1" type="text/css" media="all" />';
 
 	}
 	// chuyển thumb về bên trái

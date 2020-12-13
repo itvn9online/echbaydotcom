@@ -1,37 +1,51 @@
 .thread-details-mobilemua {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba( 255, 255, 255, .9 );
-	border-top: 2px #f2f2f2 solid;
-	line-height: 19px;
-	z-index: 99;
-	font-size: 11px;
-	height: 46px;
-	overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, .9);
+    border-top: 2px #f2f2f2 solid;
+    line-height: 19px;
+    z-index: 99;
+    font-size: 11px;
+    height: 46px;
+    overflow: hidden;
 }
 .thread-details-mobilemua ul {
-	max-width: 999px;
-	margin: 0 auto;
+    max-width: 999px;
+    margin: 0 auto;
 }
 .thread-details-mobilemua li {
-	float: left;
-	width: 25%;
-	cursor: pointer;
+    float: left;
+    width: 25%;
+    cursor: pointer;
 }
-.thread-details-mobilemua i,
-.thread-details-phonemua a:before {
-	display: block;
-	line-height: 25px;
-	font-size: 25px;
+/*
+.thread-details-phonemua a:before,
+*/
+.thread-details-mobilemua svg, .thread-details-mobilemua i {
+    display: block;
+    line-height: 25px;
+    font-size: 25px;
+}
+.thread-details-mobilemua svg {
+    line-height: 19px;
+    font-size: 19px;
+    margin: 2px auto;
 }
 /* .thread-details-mobilemua span { display: none; } */
-.thread-details-mobilemua,
-.thread-details-mobilemua a { color: #333; }
-.thread-details-phonemua a { display: none; }
-.thread-details-phonemua a:first-child { display: block; }
+.thread-details-mobilemua, .thread-details-mobilemua a {
+    color: #333;
+}
+.thread-details-phonemua a {
+    display: none;
+}
+.thread-details-phonemua a:first-child {
+    display: block;
+}
+/*
 .thread-details-phonemua a:before {
 	content: "\f095";
 	font-family: FontAwesome, "Font Awesome 5 Free";
 }
+*/
