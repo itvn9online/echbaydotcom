@@ -1,7 +1,7 @@
 <?php
 
 
-$dir = dirname( __FILE__ );
+$dir = __DIR__;
 
 
 

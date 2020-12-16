@@ -250,6 +250,9 @@ $__cf_row_default = array(
 	
 	// tự động cập nhật mã nguồn wordpress
 	'cf_on_off_auto_update_wp' => 'off',
+    
+    // sử dụng ebsuppercache
+	'cf_enable_ebsuppercache' => 1,
 	
 	// tự tìm và lấy link thumbnail bằng javascript
 	'cf_disable_auto_get_thumb' => 'off',

@@ -126,6 +126,8 @@ $_POST['cf_on_off_amp_blog'] = WGR_default_config('cf_on_off_amp_blog');
 
 $_POST['cf_on_off_auto_update_wp'] = WGR_default_config('cf_on_off_auto_update_wp');
 
+$_POST['cf_enable_ebsuppercache'] = WGR_default_config('cf_enable_ebsuppercache');
+
 $_POST['cf_set_link_for_h1'] = WGR_default_config('cf_set_link_for_h1');
 $_POST['cf_set_nofollow_for_h1'] = WGR_default_config('cf_set_nofollow_for_h1');
 
@@ -673,7 +675,7 @@ function add_default_value_to_wp_config ( $arr, $key, $default_value = 'false' )
 }
 
 // lấy nội dung cũ
-$content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php' ) );
+$content_of_wp_config = trim( file_get_contents( ABSPATH . 'wp-config.php', 1 ) );
 //echo nl2br( $content_of_wp_config ) . '<br>' . "\n";
 
 // chỉ thay đổi khi file config theo chuẩn mặc định
@@ -787,6 +789,38 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 
 
 
+// lấy nội dung file index cũ
+if ( $_POST['cf_enable_ebsuppercache'] != 1 ) {
+    echo 'recommend enabled ebsuppercache!<br>' . "\n";
+}
+else {
+    $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
+
+    // nếu chưa có file cache thì thêm vào thôi
+    if (strstr($content_of_wp_index, 'echbaydotcom/ebcache.php') == false) {
+        //echo __DIR__ . '<br>' . "\n";
+
+        //
+        $content_of_wp_index = explode("\n", $content_of_wp_index);
+        if ( trim( $content_of_wp_index[0] ) == '<?php' ) {
+            $content_of_wp_index[0] .= ' ' . "\n" . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
+            //print_r($content_of_wp_index);
+            //die('sdg sgds');
+
+            //
+            _eb_create_file( ABSPATH . 'index.php', implode("\n", $content_of_wp_index) );
+            echo 'add ebsuppercache to index.php (1)<br>' . "\n";
+        }
+        else {
+            echo 'add ebsuppercache to index.php (2)<br>' . "\n";
+        }
+    }
+    else {
+        //echo ABSPATH . 'index.php' . '<br>' . "\n";
+        echo 'index.php has been add ebsuppercache!<br>' . "\n";
+    }
+    //echo nl2br($content_of_wp_index);
+}
 
 
 //
@@ -798,6 +832,12 @@ include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
 
 //
 _eb_alert('Cập nhật cấu hình website thành công');
+
+
+
+
+
+
 
 
 

@@ -269,6 +269,17 @@ if ( webgiare_dot_org_install == true ) {
 
 
 // chặn file xmlrpc.php, không cho thực thi trên file này
+if ( $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
+    $str_eb_warning .= '
+	<div class="greencolor"><i class="fa fa-lightbulb-o"></i> XIN CHÚC MỪNG: chức năng <strong>ebsuppercache</strong> đang được bật, điều này có thể giúp tăng tốc website của bạn lên rất nhiều lần do hạn chế được nhiều request tới database và kết nối thẳng tới file HTML tĩnh được tạo tự động 120 giây mỗi lần.</div>';
+}
+else {
+    $str_eb_warning .= '
+	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Chia sẻ dữ liệu qua XML-RPC</strong> đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết XML-RPC là gì thì hãy tắt nó đi <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_xmlrpc" target="_blank">tại đây</a>.</div>';
+}
+
+
+// chặn file xmlrpc.php, không cho thực thi trên file này
 WGR_deny_or_accept_vist_php_file( ABSPATH . 'xmlrpc.php', $__cf_row[ 'cf_on_off_xmlrpc' ], 'XML-RPC' );
 if ( $__cf_row[ 'cf_on_off_xmlrpc' ] == 1 ) {
     $str_eb_warning .= '

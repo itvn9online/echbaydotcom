@@ -61,10 +61,10 @@ if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
 			}
 			/*
 			if ( defined('WP_SITEURL') ) {
-				$uri_for_author_logo = str_replace( ABSPATH, WP_SITEURL . '/', dirname( __FILE__ ) );
+				$uri_for_author_logo = str_replace( ABSPATH, WP_SITEURL . '/', __DIR__ );
 			}
 			else {
-				$uri_for_author_logo = str_replace( ABSPATH, '', dirname( __FILE__ ) );
+				$uri_for_author_logo = str_replace( ABSPATH, '', __DIR__ );
 			}
 			*/
 		}

@@ -893,3 +893,6 @@ setTimeout(function () {
         }, 2000);
     }, 1000);
 }, 200);
+
+//
+g_func.setc('wgr_ebsuppercache_timeout', 1, 1800);

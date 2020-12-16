@@ -1,6 +1,6 @@
 <?php
 
-//echo mtv_id . ' - ' . __FILE__ . '<br>' . "\n";
+//echo mtv_id . ' - ' . __DIR__ . '<br>' . "\n";
 
 //
 $eb_user_info = wp_get_current_user();

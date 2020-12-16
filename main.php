@@ -1,5 +1,8 @@
 <?php
 
+//
+include_once EB_THEME_PLUGIN_INDEX . 'main_function.php';
+
 //echo date('r' ); exit();
 
 
@@ -71,56 +74,6 @@ $set_time_for_main_cache = $set_time_for_main_cache - rand( 0, $set_time_for_mai
 //echo $act . '<br>' . "\n";
 //print_r($post);
 
-
-
-
-
-//
-function ___eb_cache_getUrl ( $cache_dir = 'all' ) {
-	if ( isset($_SERVER['REQUEST_URI']) ) {
-		$url = $_SERVER['REQUEST_URI'];
-	} else {
-		$url = $_SERVER['SCRIPT_NAME'];
-		$url .= ( !empty($_SERVER['QUERY_STRING']) ) ? '?' . $_SERVER[ 'QUERY_STRING' ] : '';
-	}
-	if ( $url == '/' || $url == '' ) {
-		$url = '-';
-	} else {
-		$arr_cat_social_parameter = array(
-			'fbclid=',
-			'gclid=',
-			'fb_comment_id=',
-			'utm_'
-		);
-		foreach ( $arr_cat_social_parameter as $v ) {
-			$url = explode( '?' . $v, $url );
-			$url = explode( '&' . $v, $url[0] );
-			$url = $url[0];
-		}
-		/*
-		$url = explode( '?gclid=', $url );
-		$url = explode( '&gclid', $url[0] );
-		$url = explode( '?utm_', $url[0] );
-		$url = explode( '&utm_', $url[0] );
-		$url = explode( '?fb_comment_id=', $url[0] );
-		$url = explode( '&fb_comment_id', $url[0] );
-		$url = $url[0];
-		*/
-		
-		//
-		if ( strlen ( $url ) > 200 ) {
-			$url = md5( $url );
-		} else {
-			$url = preg_replace( "/\/|\?|\&|\,|\=/", '-', $url );
-		}
-	}
-	
-	//
-    $url = EB_THEME_CACHE . $cache_dir . '/' . $url . '.txt';
-	
-	//
-	return $url;
-}
 //echo $_SERVER['REQUEST_URI'] . '<br>' . "\n";
 //echo $_SERVER['SCRIPT_NAME'] . '<br>' . "\n";
 //echo $_SERVER['QUERY_STRING'] . '<br>' . "\n";
@@ -313,10 +266,7 @@ function ___eb_cache_display ( $cache_time = 60 ) {
 	}
 	
 	//
-	echo ___eb_cache_mobile_class ( $data );
-	
-	//
-	exit(); die();
+	die( ___eb_cache_mobile_class ( $data ));
 }
 
 
@@ -502,9 +452,7 @@ if ( $enable_echbay_super_cache == 1 ) {
 			if ( trim( $v ) == $_SERVER['HTTP_HOST'] ) {
 				EBE_set_header(403);
 				
-				echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1 );
-				
-				exit();
+				die( file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1 ) );
 			}
 		}
 	}
@@ -593,6 +541,7 @@ If you want to using EchBay Cache, please set WP_CACHE = false or comment WP_CAC
 		echo '<!-- EchBay Cache (ebcache) is disable -->';
 	}
 }
+
 
 
 
