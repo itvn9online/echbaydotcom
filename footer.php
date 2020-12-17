@@ -116,7 +116,7 @@ if ( eb_code_tester == true ) {
 <!-- // FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 // nạp font awesome 5 khi có nhu cầu
-//if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
+if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
 ?>
 <!-- Our project just needs Font Awesome Solid + Brands -->
 <script defer src="<?php echo EB_URL_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/brands.min.js"></script>
@@ -124,6 +124,6 @@ if ( eb_code_tester == true ) {
 <script defer src="<?php echo EB_URL_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js"></script>
 <script defer src="<?php echo EB_URL_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/v4-shims.min.js"></script>
 <?php
-//}
+}
 ?>
 </body></html>

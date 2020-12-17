@@ -248,7 +248,8 @@ input[id="_eb_category_order"] {
 }
 .eb-order-filter-tab li a:before, .bill-detail-status button span:before, .order-list-icon:before {
     display: inline-block;
-    font-family: Font Awesome\ 5 Free;
+    font-family: "Font Awesome 5 Free";
+    font-family: FontAwesome, "Font Awesome 5 Free";
     content: "";
     min-width: 21px;
     font-size: 11px;
@@ -1481,6 +1482,7 @@ body.body-no-scroll #oi_order_iframe {
 /* */
 .search-select-option li.selected:after {
     font-family: "Font Awesome 5 Free";
+    font-family: FontAwesome, "Font Awesome 5 Free";
 }
 /* */
 form[name="frm_invoice_details"] input[type="number"], form[name="frm_invoice_details"] input[type="text"] {

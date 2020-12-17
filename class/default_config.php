@@ -189,7 +189,7 @@ $__cf_row_default = array(
 	'cf_css_inline' => 1,
 //	'cf_css_inline' => 'off',
 	'cf_css2_inline' => 'off',
-	'cf_fontawesome_v5' => 'off',
+	'cf_fontawesome_v5' => 1,
 	'cf_theme_dir' => '',
 	
 	// với 1 số website, chuyển từ URL cũ sang -> dùng chức năng này để đồng bộ nội dung từ cũ sang mới (chủ yếu là các link ảnh)
