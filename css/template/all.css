@@ -2,42 +2,42 @@
 #aabbcc .sample-menu {}
 #aabbcc .sample-menu ul {}
 #aabbcc .sample-menu li {
-    float: left;
+	float: left;
 }
 #aabbcc .sample-menu a {
-    display: block;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 16px;
+	display: block;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 16px;
 }
 #aabbcc .sample-menu a:hover {
-    background: rgba(0, 0, 0, .2);
-    text-decoration: underline;
+	background: rgba(0, 0, 0, .2);
+	text-decoration: underline;
 }
 #aabbcc .sample-menu .sub-menu {
-    display: none;
-    position: absolute;
-    min-width: 220px;
-    z-index: 9;
-    background: #fff;
+	display: none;
+	position: absolute;
+	min-width: 220px;
+	z-index: 9;
+	background: #fff;
 }
 #aabbcc .sample-menu li:hover .sub-menu {
-    display: block;
-    display: -webkit-flex;
-    display: flex;
+	display: block;
+	display: -webkit-flex;
+	display: flex;
 }
 /* mobile in footer */
 .style-for-mobile #aabbcc .sample-menu li, #aabbcc .sample-menu .sub-menu li {
-    float: none;
-    width: auto;
+	float: none;
+	width: auto;
 }
 #aabbcc .sample-menu .sub-menu a {
-    font-weight: normal;
-    text-transform: none;
-    font-size: 14px;
+	font-weight: normal;
+	text-transform: none;
+	font-size: 14px;
 }
 #aabbcc .sample-menu .sub-menu .sub-menu {
-    display: none !important;
+	display: none !important;
 }
 #aabbcc .sample-menu .sub-menu .sub-menu li {}
 #aabbcc .sample-menu .sub-menu .sub-menu a {}
@@ -47,10 +47,10 @@
 #aabbcc .sample-menu .sub-menu .sub-menu .sub-menu .sub-menu {}
 /* mobile in footer */
 .style-for-mobile #aabbcc .sample-menu li {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 #aabbcc .sample-menu .sub-menu li {
-    margin-top: 0;
+	margin-top: 0;
 }
 /* ================================== address ================================== */
 #aabbcc .footer-address {}
@@ -59,10 +59,10 @@
 #aabbcc .footer-address-info strong {}
 #aabbcc .footer-address-info i {}
 #aabbcc .footer-address-info div {
-    margin-top: 6px;
+	margin-top: 6px;
 }
 #aabbcc div.footer-address-phone {
-    margin: 0;
+	margin: 0;
 }
 #aabbcc .footer-address-address {}
 #aabbcc .footer-address-phone {}
@@ -78,57 +78,57 @@
 #aabbcc .footer-social span {}
 #aabbcc .footer-social i {}
 #aabbcc li.footer-social-fb {
-    background-color: #3A589B;
+	background-color: #3A589B;
 }
 #aabbcc li.footer-social-tw {
-    background-color: #25AAE1;
+	background-color: #25AAE1;
 }
 #aabbcc li.footer-social-yt {
-    background-color: #CA3737;
+	background-color: #CA3737;
 }
 #aabbcc li.footer-social-gg {
-    background-color: #DE4B39;
+	background-color: #DE4B39;
 }
 #aabbcc li.footer-social-it {
-    background-color: #ec4938;
+	background-color: #ec4938;
 }
 /* ================================== transition ================================== */
 .abc {
-    -moz-transition: all 0.8s ease;
-    -o-transition: all 0.8s ease;
-    -webkit-transition: all 0.8s ease;
-    transition: all 0.8s ease;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
 }
 /* ================================== quick-register ================================== */
 #aabbcc .hpsbnlbx {
-    position: relative;
-    background: #fff;
-    max-width: 450px;
+	position: relative;
+	background: #fff;
+	max-width: 450px;
 }
 #aabbcc .quick-register-left {}
 #aabbcc .quick-register-hoten {
-    display: none;
+	display: none;
 }
 #aabbcc .quick-register-hoten input[type="text"] {}
 #aabbcc .quick-register-phone {}
 #aabbcc .quick-register-phone input[type="text"] {}
 #aabbcc .quick-register-email {}
 #aabbcc .quick-register-email input[type="email"] {
-    width: 85%;
-    padding-left: 6px;
-    height: 35px;
+	width: 85%;
+	padding-left: 6px;
+	height: 35px;
 }
 #aabbcc .quick-register-submit {}
 #aabbcc .quick-register-submit button {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    bottom: 0;
-    width: 15%;
-    background-color: var(--default-bg);
-    border: 0 none;
-    color: #fff;
-    text-transform: uppercase;
+	position: absolute;
+	top: 0px;
+	right: 0;
+	bottom: 0;
+	width: 15%;
+	background-color: var(--default-bg);
+	border: 0 none;
+	color: #fff;
+	text-transform: uppercase;
 }
 /* ================================== echbay-blog ================================== */
 .aabbcc {}
@@ -155,61 +155,61 @@
 .aabbcc .widget-blog-more a span {}
 /* ================================== căn giữa thẻ DIV theo chiều dọc ================================== */
 .aabbcc .echbay-blog-right {
-    display: inline-flex;
-    align-items: center;
+	display: inline-flex;
+	align-items: center;
 }
 /* ==================================  ================================== */
-/* desktop */
-@media screen and (max-width:768px) {}
-/* mobile */
-@media screen and (min-width:768px) {}
+/* desktop only */
+@media screen and (max-width:748px) {}
+/* mobile only */
+@media screen and (max-width:788px) {}
 /* ================================== search ================================== */
 #aabbcc .div-search-margin {}
 #aabbcc .div-search {}
 #aabbcc input[type="search"] {
-    padding-left: 2%;
+	padding-left: 2%;
 }
 #aabbcc button {}
 #aabbcc button i {}
 #aabbcc button span {}
 /* ================================== search (hide version) ================================== */
 #aabbcc .top-search-module {
-    position: relative;
+	position: relative;
 }
 #aabbcc .top-search-hide {}
 #aabbcc .top-search-hide i {
-    display: inline-block;
-    cursor: pointer;
+	display: inline-block;
+	cursor: pointer;
 }
 #aabbcc .div-search-margin {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
-    -moz-transition: all 0.8s ease;
-    -o-transition: all 0.8s ease;
-    -webkit-transition: all 0.8s ease;
-    transition: all 0.8s ease;
-    z-index: 9;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+	-moz-transition: all 0.8s ease;
+	-o-transition: all 0.8s ease;
+	-webkit-transition: all 0.8s ease;
+	transition: all 0.8s ease;
+	z-index: 9;
 }
 #aabbcc .top-search-module.active .div-search-margin {
-    display: block;
+	display: block;
 }
 #aabbcc .div-search {
-    width: 350px;
-    text-align: left;
-    border-radius: 5px;
-    box-shadow: 0 0 20px #999;
+	width: 350px;
+	text-align: left;
+	border-radius: 5px;
+	box-shadow: 0 0 20px #999;
 }
 #aabbcc .div-search input[type="search"] {
-    padding-left: 5%;
-    width: 85%;
-    height: 30px;
-    border-radius: 5px;
+	padding-left: 5%;
+	width: 85%;
+	height: 30px;
+	border-radius: 5px;
 }
 #aabbcc .div-search button {
-    width: 15%;
-    border-radius: 0 5px 5px 0;
+	width: 15%;
+	border-radius: 0 5px 5px 0;
 }
 #aabbcc .div-search button i {}
 #aabbcc .div-search button span {}
@@ -238,49 +238,49 @@
 #aabbcc .aabbcc div:nth-child(odd) {}
 /* ================================== phone-call-inline ================================== */
 #aabbcc .phone-call-inline a {
-    display: inline-block;
+	display: inline-block;
 }
 #aabbcc .phone-call-inline a:after {
-    content: "/";
-    display: inline-block;
+	content: "/";
+	display: inline-block;
 }
 #aabbcc .phone-call-inline a:last-child:after {
-    display: none;
+	display: none;
 }
 /* ================================== multi background (bg) ================================== */
 .topbottom {
-    background: -webkit-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -o-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -moz-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -webkit-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -o-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -moz-linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
 }
 .leftright {
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -o-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -moz-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -webkit-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -o-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -moz-linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: linear-gradient(left, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
 }
 .rightleft {
-    background: -webkit-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -o-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -moz-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -webkit-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -o-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -moz-linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: linear-gradient(right, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
 }
 .bottomtop {
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -o-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: -moz-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
-    background: linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -o-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: -moz-linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
+	background: linear-gradient(bottom, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4), rgba(0, 0, 0, .01));
 }
 .FontAwesome {
-    font-family: FontAwesome, "Font Awesome 5 Free";
+	font-family: FontAwesome, "Font Awesome 5 Free";
 }
 /* Using root color */
 .using-root-color {
-    background: var(--default-bg);
-    background: var(--default2-bg);
-    color: var(--default-color);
-    color: var(--default2-color);
+	background: var(--default-bg);
+	background: var(--default2-bg);
+	color: var(--default-color);
+	color: var(--default2-color);
 }
 /* */
 #aabbcc input::placeholder {}
@@ -291,15 +291,15 @@
 #aabbcc :-moz-placeholder {}
 /* */
 .thread-details-tags {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .thread-details-tags i, .thread-details-tags a {
-    display: inline-block;
+	display: inline-block;
 }
 .thread-details-tags a {
-    background-color: #f5f5f5;
-    color: #656565;
-    padding: 8px 14px;
-    border-radius: 2px;
-    margin: 0 5px 7px 0;
+	background-color: #f5f5f5;
+	color: #656565;
+	padding: 8px 14px;
+	border-radius: 2px;
+	margin: 0 5px 7px 0;
 }
