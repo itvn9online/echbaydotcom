@@ -79,7 +79,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		_eb_widget_echo_widget_input_checkbox( $this->get_field_name('sliderArrow'), $sliderArrow, 'Nút bấm chuyển ảnh trên slider' );
 		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowLeft'), $sliderArrowLeft, 'Icon cho nút bấm bên trái', 'fa-angle-left' );
 		_eb_widget_echo_widget_input_title( $this->get_field_name('sliderArrowRight'), $sliderArrowRight, 'Icon cho nút bấm bên phải', 'fa-angle-right' );
-		echo '<p>Các icon trên web sử dụng Font Awesome tại đây: <a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank" rel="nofollow">https://fontawesome.com/icons?d=gallery&m=free</a></p>';
+		echo '<p>Các icon trên web sử dụng <a href="//fontawesome.com/icons?d=gallery&s=brands,solid&m=free" target="_blank" rel="nofollow">Font Awesome tại đây</a></p>';
 		
 		_eb_widget_echo_widget_input_title(
 			$this->get_field_name('sliderArrowSize'),
