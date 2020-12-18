@@ -1,11 +1,15 @@
 /* mặc định là ẩn hết các nút quick action */
+/*
 .class-for-post-type .fa-icons {
     display: none;
 }
+*/
 /* hiển thị các nút mà post type nào cũng sẽ dùng */
+/*
 .class-for-post-type .fa-refresh, .class-for-post-type .fa-arrow-circle-up, .class-for-post-type .fa-arrow-circle-down, .class-for-post-type .fa-unlock, .class-for-post-type .fa-lock {
     display: inline-block;
 }
+*/
 /*
 .click-order-thread.fa-comments,
 .click-order-thread.fa-link,
