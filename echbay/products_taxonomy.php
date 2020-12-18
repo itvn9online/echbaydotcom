@@ -232,7 +232,7 @@ function WGR_get_and_oders_taxonomy_category(
 			else if ( $seo_score > 0 ) {
 				$seo_color = 'orgcolor';
 			}
-			$seo_color = '<i data-id="' . $v->term_id . '" class="fa fa-dot-circle fa-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
+			$seo_color = '<i data-id="' . $v->term_id . '" class="fa fa-dot-circle wgr-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
 		}
 
 		//
@@ -247,21 +247,21 @@ function WGR_get_and_oders_taxonomy_category(
 				<div class="div-inline-block">
 					<div><input type="number" value="' . $cat_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $v->term_id . '_eb_category_order" class="s change-update-new-stt" /></div>
 					
-					<div><i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $cat_stt . '" class="fa fa-refresh fa-icons cur click-order-thread"></i></div>
+					<div><i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $cat_stt . '" class="fa fa-refresh wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $cat_stt . '" class="fa fa-arrow-circle-up fa-icons cur click-order-thread"></i></div>
+					<div><i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $cat_stt . '" class="fa fa-arrow-circle-up wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down fa-icons cur click-order-thread"></i></div>
+					<div><i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $cat_stt . '" class="fa fa-arrow-circle-down wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star fa-icons cur click-order-thread"></i></div>
+					<div><i title="Set primary" data-val="' . $_eb_category_primary . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_primary=' . $_eb_category_primary . '" class="fa fa-star wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Show in category" data-val="' . $_eb_category_in_list . '" data-ajax="' . $strLinkAjaxl . '&t=show_in_category&current_in_category=' . $_eb_category_in_list . '" class="fa fa-code-fork fa-icons cur click-order-thread"></i></div>
+					<div><i title="Show in category" data-val="' . $_eb_category_in_list . '" data-ajax="' . $strLinkAjaxl . '&t=show_in_category&current_in_category=' . $_eb_category_in_list . '" class="fa fa-code-fork wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw fa-icons cur click-order-thread"></i></div>
+					<div><i title="Alow for bot" data-val="' . $_eb_category_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_index=' . $_eb_category_noindex . '" class="fa fa-paw wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Hidden or show" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock fa-icons cur click-order-thread"></i></div>
+					<div><i title="Hidden or show" data-val="' . $_eb_category_hidden . '" data-ajax="' . $strLinkAjaxl . '&t=primary&current_hidden=' . $_eb_category_hidden . '" class="fa fa-unlock wgr-icons cur click-order-thread"></i></div>
 					
-					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group fa-icons cur click-change-parent-category"></i></div>
+					<div><i title="Change parent category" data-name="' . str_replace( '"', '&quot;', $v->name ) . '" data-val="' . $v->parent . '" data-ajax="' . $strLinkAjaxl . '&t=change_parent&current_parent=' . $v->parent . '" class="fa fa-group wgr-icons cur click-change-parent-category"></i></div>
 					
 					<div>' . $seo_color . '</div>
 				</div>
@@ -281,7 +281,7 @@ echo '<div class="list-edit-taxonomy">' . WGR_get_and_oders_taxonomy_category( $
 ?>
 <br>
 <br>
-<div><i class="fa fa-dot-circle fa-icons cur orgcolor"></i> Là thang điểm SEO của Danh mục! <strong class="redcolor">Màu đỏ</strong>: 0 điểm, <strong class="orgcolor">màu cam</strong>: 1 điểm, <strong class="bluecolor">màu xanh lục</strong>: 2 điểm, <strong class="greencolor">màu xanh lá</strong>: 3 điểm.<br>
+<div><i class="fa fa-dot-circle wgr-icons cur orgcolor"></i> Là thang điểm SEO của Danh mục! <strong class="redcolor">Màu đỏ</strong>: 0 điểm, <strong class="orgcolor">màu cam</strong>: 1 điểm, <strong class="bluecolor">màu xanh lục</strong>: 2 điểm, <strong class="greencolor">màu xanh lá</strong>: 3 điểm.<br>
 	<blockquote> Điều kiện chấm điểm (dựa theo SEO Quake):
 		<ol>
 			<li>TITLE dài từ 10-70 ký tự.</li>

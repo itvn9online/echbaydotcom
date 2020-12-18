@@ -2235,7 +2235,7 @@ iframe[name="google_conversion_frame"] {
 .eball-category-icon:before {
     content: " ";
 }
-.fa-icons {
+.wgr-icons {
     color: #090;
     width: 16px;
     height: 16px;
@@ -2246,7 +2246,7 @@ iframe[name="google_conversion_frame"] {
     display: inline-block;
     text-align: center;
 }
-.fa-icons:hover {
+.wgr-icons:hover {
     border-color: #f00;
 }
 /* widget custom style */

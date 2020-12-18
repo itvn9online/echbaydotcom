@@ -710,9 +710,7 @@ $strAjaxLink .= '&trang=' . $trang;
                     else if ( $seo_score > 0 ) {
                         $seo_color = 'orgcolor';
                     }
-                    $seo_color = '<i data-id="' . $o->ID . '" class="fa-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '">
-                        <i class="fa fa-dot-circle"></i>
-                    </i>';
+                    $seo_color = '<i data-id="' . $o->ID . '" class="fa fa-dot-circle wgr-icons cur click-open-quick-edit-seo _' . $seo_class_score . ' ' . $seo_color . '"></i>';
 
                     //				echo $seo_color . '<br>';
                 }
@@ -738,41 +736,23 @@ $strAjaxLink .= '&trang=' . $trang;
 	<td><input type="number" value="' . $trv_stt . '" data-ajax="' . $strLinkAjaxl . '&t=up&stt=" id="' . $trv_id . 'menu_order" class="s change-update-new-stt" /></td>
 	<td>
 		<div class="text-center">
-			<i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $trv_stt . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-refresh"></i>
-            </i>
+			<i title="Up to TOP" data-ajax="' . $strLinkAjaxl . '&t=auto&stt=' . $trv_stt . '" class="fa fa-refresh wgr-icons cur click-order-thread"></i>
 			
-			<i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $trv_stt . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-arrow-circle-up"></i>
-            </i>
+			<i title="Up" data-ajax="' . $strLinkAjaxl . '&t=up&stt=' . $trv_stt . '" class="fa fa-arrow-circle-up wgr-icons cur click-order-thread"></i>
 			
-			<i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $trv_stt . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-arrow-circle-down"></i>
-            </i>
+			<i title="Down" data-ajax="' . $strLinkAjaxl . '&t=down&stt=' . $trv_stt . '" class="fa fa-arrow-circle-down wgr-icons cur click-order-thread"></i>
 			
-			<i title="Set sticky" data-val="' . $current_sticky . '" data-ajax="' . $strLinkAjaxl . '&t=sticky&current_sticky=' . $current_sticky . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-star"></i>
-            </i>
+			<i title="Set sticky" data-val="' . $current_sticky . '" data-ajax="' . $strLinkAjaxl . '&t=sticky&current_sticky=' . $current_sticky . '" class="fa fa-star wgr-icons cur click-order-thread"></i>
 			
-			<i title="Toggle comment status" data-val="' . $comment_status . '" data-ajax="' . $strLinkAjaxl . '&t=comment_status&comment_status=' . $comment_status . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-comments"></i>
-            </i>
+			<i title="Toggle comment status" data-val="' . $comment_status . '" data-ajax="' . $strLinkAjaxl . '&t=comment_status&comment_status=' . $comment_status . '" class="fa fa-comments wgr-icons cur click-order-thread"></i>
 			
-			<i title="Toggle ping status" data-val="' . $ping_status . '" data-ajax="' . $strLinkAjaxl . '&t=ping_status&ping_status=' . $ping_status . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-link"></i>
-            </i>
+			<i title="Toggle ping status" data-val="' . $ping_status . '" data-ajax="' . $strLinkAjaxl . '&t=ping_status&ping_status=' . $ping_status . '" class="fa fa-link wgr-icons cur click-order-thread"></i>
 			
-			<i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="fa-icons cur click-order-thread">
-                <i class="fa ' . ( ( $trv_trangthai > 0 ) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i>
-            </i>
+			<i title="Toggle status" data-ajax="' . $strLinkAjaxl . '&t=status&toggle_status=' . $trv_trangthai . '" class="wgr-icons cur click-order-thread fa ' . ( ( $trv_trangthai > 0 ) ? 'fa-unlock' : 'fa-lock blackcolor' ) . '"></i>
 			
-			<i title="Set noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-paw"></i>
-            </i>
+			<i title="Set noindex" data-val="' . $set_noindex . '" data-ajax="' . $strLinkAjaxl . '&t=set_noindex&set_noindex=' . $set_noindex . '" class="fa fa-paw wgr-icons cur click-order-thread"></i>
 			
-			<i title="Hàng chính hãng" data-val="' . $chinh_hang . '" data-ajax="' . $strLinkAjaxl . '&t=chinh_hang&chinh_hang=' . $chinh_hang . '" class="fa-icons cur click-order-thread">
-                <i class="fa fa-diamond"></i>
-            </i>
+			<i title="Hàng chính hãng" data-val="' . $chinh_hang . '" data-ajax="' . $strLinkAjaxl . '&t=chinh_hang&chinh_hang=' . $chinh_hang . '" class="fa fa-diamond wgr-icons cur click-order-thread"></i>
 			
 			' . $seo_color . '
 		</div>
