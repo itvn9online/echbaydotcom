@@ -18,7 +18,7 @@ if ( isset( $_COOKIE[ 'wgr_ebsuppercache_timeout' ] ) || $_SERVER[ 'REQUEST_METH
 
     // thời gian để nạp lại cache cho phần này
     $time_reset_ebsuppercache = time() - filemtime( $ebsuppercache_filename );
-    $time_for_begin_reset_cache = 120;
+    $time_for_begin_reset_cache = 168;
     if ( $time_reset_ebsuppercache < $time_for_begin_reset_cache ) {
         // kiểm tra file cache category có tồn tại không -> file này nạp dạng js nên cũng cần nó tồn tại để đỡ lỗi web
         $cat_js_file_name = ( int )substr( date( 'i', time() ), 0, 1 );
