@@ -619,11 +619,11 @@ function WGR_remove_github_file ( $f_gitattributes ) {
 //				$destination_path = EB_THEME_CACHE . 'w.jpg';
 				
 				// thử download theo cách thông thường
-				if ( copy( $url_for_download_ebdotcom, $destination_path ) ) {
+				if ( WGR_download( $url_for_download_ebdotcom, $destination_path ) ) {
 					chmod( $destination_path, 0777 );
 				}
 				// download từ server dự phòng
-				else if ( $url2_for_download_ebdotcom != '' && copy( $url2_for_download_ebdotcom, $destination_path ) ) {
+				else if ( $url2_for_download_ebdotcom != '' && WGR_download( $url2_for_download_ebdotcom, $destination_path ) ) {
 					chmod( $destination_path, 0777 );
 				}
 				// đổi hàm khác xem ok không

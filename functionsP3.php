@@ -297,9 +297,9 @@ function WGR_add_li_to_thread_node( $str ) {
 
 // sắp xếp lại mảng của taxonomy sau khi select, ẩn các nhóm đang bị khóa
 function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0, $no_cache = 0 ) {
-	/*
-	* no_cache: khi muốn lấy dữ liệu trực tiếp từ CSDL thì đặt lệnh này
-	*/
+    /*
+     * no_cache: khi muốn lấy dữ liệu trực tiếp từ CSDL thì đặt lệnh này
+     */
     //
     //	print_r( $arr );
 
@@ -1052,4 +1052,15 @@ function WGR_decode_for_discount_cart( $a ) {
     }
 
     return $re;
+}
+
+function WGR_download() {
+    if ( function_exists( 'copy' ) ) {
+        if ( copy( $source, $dest ) ) {
+            return true;
+        }
+    }
+    
+    //
+    return false;
 }
