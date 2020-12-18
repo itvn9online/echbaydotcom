@@ -324,7 +324,7 @@ function echbay_admin_styles() {
 	//
 	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == false ) {
 		echo '
-<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.css" />
+<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui-1.11.2.css" />
 <script src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.js"></script>';
 	}
 	
