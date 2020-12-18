@@ -319,9 +319,14 @@ function echbay_admin_styles() {
     
     //
 	echo WGR_show_header_favicon( $web_ad_link . eb_default_vaficon . '?v=' . $vdate_time ) . '
-<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.css" />
-<script src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.js"></script>
 <script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
+	
+	//
+	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == false ) {
+		echo '
+<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.css" />
+<script src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.js"></script>';
+	}
 	
 	
 	
