@@ -341,8 +341,8 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
     }
 
 
-    //
-    if ( $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
+    // kiểm tra và nạp ebsuppercache nếu chưa có -> chỉ áp dụng khi người dùng đang đăng nhập -> thường thì admin mới đăng nhập
+    if ( mtv_id > 0 && $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
         $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
 
         // nếu chưa có file cache thì thêm vào thôi
