@@ -243,7 +243,7 @@ function _eb_product_form_for_widget( $instance, $field_name = array() ) {
 
     //
     $list_post_type = get_post_types();
-	print_r( $list_post_type );
+	//print_r( $list_post_type );
     /*
     $list_taxonomy = get_taxonomies();
     */
