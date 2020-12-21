@@ -1709,6 +1709,10 @@ if (jQuery('dynamic_title_tag').length > 0) {
 }
 
 
+// chuyển các đoạn CSS sử dụng font-awesome sang js -> SVG
+jQuery('.widget-category-selectbox .echbay-widget-title').append('<i class="fas fa-sort-down"></i>');
+
+
 // TEST
 //g_func.opopup('login');
 //g_func.opopup('register');
