@@ -212,7 +212,12 @@ label, .cur {
 	border: 0 none;
 }
 /* */
-.blogs_node_chu_anh .echbay-blog-padding, .blogs_node_chutren_anhduoi .echbay-blog-padding {
+.div-valign-center {
+    display: inline-flex;
+    align-items: center;
+}
+/* */
+.d-flex, .blogs_node_chu_anh .echbay-blog-padding, .blogs_node_chutren_anhduoi .echbay-blog-padding {
 	display: -webkit-flex; /* Safari */
 	display: flex;
 }

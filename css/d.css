@@ -179,7 +179,7 @@ a {
 .dblock, .d-block {
     display: block
 }
-.dinline, .d-inline, .d-iblock {
+.li-align-center li, .div-align-center div, .dinline, .d-inline, .d-iblock {
     display: inline-block
 }
 /* ads banner */
