@@ -1022,13 +1022,15 @@ function WGR_create_quick_link_edit_post() {
         });
 
         //
-        jQuery('.click-goto-edit').off('click').click(function () {
-            a = jQuery(this).attr('data-href') || '';
+        setTimeout(function () {
+            jQuery('.click-goto-edit').off('click').click(function () {
+                a = jQuery(this).attr('data-href') || '';
 
-            if (a != '') {
-                window.open(a, '_blank');
-            }
-        });
+                if (a != '') {
+                    window.open(a, '_blank');
+                }
+            });
+        }, 600);
 
         //
         if ($('.breadcrumb-clone-edit-post').length > 0 && $('.btn-clone-edit-post').length == 0) {
