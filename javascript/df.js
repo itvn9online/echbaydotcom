@@ -1419,6 +1419,7 @@ function WGR_list_of_content(for_tag, for_class) {
     }
     //console.log(pho_tag);
     if (pho_tag.length > 0) {
+        var base_href = window.location.href;
         jQuery(pho_tag.join(',')).each(function () {
             var jd = jQuery(this).attr('id') || '',
                 a = jQuery(this).html();
@@ -1434,7 +1435,7 @@ function WGR_list_of_content(for_tag, for_class) {
             var a_href = g_func.non_mark_seo(a);
             a_href = a_href.replace(/\-/g, '_');
 
-            str += '<li><a data-id="' + jd + '" href="#' + a_href + '" class="eb-index-link eb-index-heading" title="' + a + '">' + a + '</a></li>';
+            str += '<li><a data-id="' + jd + '" href="' + base_href + '#' + a_href + '" class="eb-index-link eb-index-heading" title="' + a + '">' + a + '</a></li>';
         });
     }
 

@@ -1357,20 +1357,27 @@ var current_pid_quicview = pid,
     //	});
 
     //
+    //jQuery('a').addClass('hash-go-to-html');
+    // để tránh xung đột với các plugin tạo menu khác
+    //jQuery('#ez-toc-container a').removeClass('hash-go-to-html');
+    // thêm base vào các URL chuyển hướng -> để lệnh lỗi thì nó sẽ nhảy xuống link đó được luôn
+    var base_href = window.location.href;
     jQuery('a').each(function () {
         var a = jQuery(this).attr('href') || '';
-        //		console.log(a);
+        //console.log(a);
 
         if (a != '') {
-            //			console.log(a.substr(0, 1));
+            //console.log(a.substr(0, 1));
 
             // Chế độ nhảy đến link
             if (a.substr(0, 1) == '#') {
-                //				console.log(a);
+                //console.log(a);
                 a = a.split('#')[1];
 
                 if (a != '') {
-                    jQuery(this).on('click', function () {
+                    jQuery(this).attr({
+                        href: base_href + '#' + a
+                    }).on('click', function () {
                         if (a == 'top') {
                             jQuery('body,html').animate({
                                 scrollTop: 0
@@ -1378,31 +1385,42 @@ var current_pid_quicview = pid,
 
                             window.history.pushState("", '', window.location.href.split('#')[0]);
                         } else {
-                            var goto = 0;
+                            /*
+                            a = g_func.non_mark(a);
+                            console.log(a);
+                            return false;
+                            */
+                            
+                            //
+                            try {
+                                var goto = 0;
 
-                            // chuyển tới 1 ID, class hoặc input nào đó
-                            if (jQuery('#' + a).length > 0) {
-                                goto = jQuery('#' + a).offset().top;
-                            } else if (jQuery('a[name="' + a + '"]').length > 0) {
-                                goto = jQuery('a[name="' + a + '"]').offset().top;
-                            } else if (jQuery('.' + a).length > 0) {
-                                goto = jQuery('.' + a).offset().top;
-                            }
-                            // mở popup đăng nhập/ đăng ký
-                            else if (a == 'login' || a == 'register') {
-                                g_func.opopup(a);
-                                return false;
-                            }
+                                // chuyển tới 1 ID, class hoặc input nào đó
+                                if (jQuery('#' + a).length > 0) {
+                                    goto = jQuery('#' + a).offset().top;
+                                } else if (jQuery('a[name="' + a + '"]').length > 0) {
+                                    goto = jQuery('a[name="' + a + '"]').offset().top;
+                                } else if (jQuery('.' + a).length > 0) {
+                                    goto = jQuery('.' + a).offset().top;
+                                }
+                                // mở popup đăng nhập/ đăng ký
+                                else if (a == 'login' || a == 'register') {
+                                    g_func.opopup(a);
+                                    return false;
+                                }
 
-                            if (goto > 90) {
-                                //								window.scroll( 0, goto - 110 );
-                                jQuery('body,html').animate({
-                                    scrollTop: goto - 110
-                                }, 800);
+                                if (goto > 90) {
+                                    //window.scroll( 0, goto - 110 );
+                                    jQuery('body,html').animate({
+                                        scrollTop: goto - 110
+                                    }, 800);
 
-                                window.location.hash = a;
+                                    window.location.hash = a;
 
-                                return false;
+                                    return false;
+                                }
+                            } catch(e){
+                                console.log(WGR_show_try_catch_err(e));
                             }
                         }
                     });
@@ -1423,9 +1441,9 @@ var current_pid_quicview = pid,
                         });
                     }
                 }
-                //				else {
-                //					jQuery(this).addClass('wgr-rel-iframe');
-                //				}
+                //else {
+                //  jQuery(this).addClass('wgr-rel-iframe');
+                //}
             }
         }
     });
