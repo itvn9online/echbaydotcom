@@ -1405,25 +1405,42 @@ function WGR_list_of_content(for_tag, for_class) {
 
     //
     var str = '';
-
-    jQuery(for_class + ' ' + for_tag).each(function () {
-        var jd = jQuery(this).attr('id') || '',
-            a = jQuery(this).html();
-
-        if (jd == '') {
-            jd = '_' + Math.random().toString(32).replace(/\./g, '_');
-
-            jQuery(this).attr({
-                id: jd
-            });
+    
+    //
+    for_tag = $.trim(for_tag).replace(/\s|\;/g, ',').split(',');
+    //console.log(for_tag);
+    
+    //
+    var pho_tag = [];
+    for (var i = 0; i < for_tag.length; i++) {
+        if (for_tag[i] != '') {
+            pho_tag.push(for_class + ' ' + for_tag[i]);
         }
+    }
+    //console.log(pho_tag);
+    if (pho_tag.length > 0) {
+        jQuery(pho_tag.join(',')).each(function () {
+            var jd = jQuery(this).attr('id') || '',
+                a = jQuery(this).html();
 
-        str += '<li data-id="' + jd + '">' + g_func.strip_tags(a) + '</li>';
-    });
+            if (jd == '') {
+                jd = '_' + Math.random().toString(32).replace(/\./g, '_');
+
+                jQuery(this).attr({
+                    id: jd
+                });
+            }
+            a = g_func.strip_tags(a);
+            var a_href = g_func.non_mark_seo(a);
+            a_href = a_href.replace(/\-/g, '_');
+
+            str += '<li><a data-id="' + jd + '" href="#' + a_href + '" class="eb-index-link eb-index-heading" title="' + a + '">' + a + '</a></li>';
+        });
+    }
 
     //
     if (str == '') {
-        if (WGR_check_option_on(cf_tester_mode)) console.log('Post index ' + for_class + ' ' + for_tag + ' not found!');
+        if (WGR_check_option_on(cf_tester_mode)) console.log('Post index ' + for_class + ' ' + for_tag.join(',') + ' not found!');
         return false;
     }
     str = '<div class="thread-details-index"><strong>Nội dung chính:</strong><ul>' + str + '</ul></div>';
@@ -1435,19 +1452,22 @@ function WGR_list_of_content(for_tag, for_class) {
         jQuery(for_class + ' .ul-default-style:first div:first').after(str);
     } else {
         jQuery(for_class).before(str);
-        //		jQuery(b + ' h2:first').before( str );
+        //jQuery(b + ' h2:first').before( str );
     }
 
     //
-    jQuery('.thread-details-index li').click(function () {
+    jQuery('.thread-details-index li a').click(function () {
         var a = jQuery(this).attr('data-id') || '';
 
         if (a != '') {
-            //			window.scroll( 0, jQuery('#' + a).offset().top - 90 );
+            //window.scroll( 0, jQuery('#' + a).offset().top - 90 );
             jQuery('body,html').animate({
                 scrollTop: jQuery('#' + a).offset().top - 90
             }, 800);
         }
+        
+        //
+        return false;
     });
 
 }
