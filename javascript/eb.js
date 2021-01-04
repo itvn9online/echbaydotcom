@@ -623,20 +623,23 @@ var _global_js_eb = {
 			
 			jQuery('iframe', this).each(function() {
 				var a = jQuery(this).attr('src') || '',
-					wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
-				if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
-				
-				if ( wit > max_width ) {
-					wit = max_width - 1;
-				}
-//				console.log(wit);
-				
-				// chỉ xử lý với video youtube
-				if ( a.split('youtube.com/').length > 1 ) {
-					jQuery(this).attr({
-//						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
-						'data-width' : Math.ceil( wit )
-					});
+					wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560,
+					no_resize = jQuery(this).attr('data-no-resize') || 0;
+				if (no_resize * 1 != 1) {
+					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
+
+					if ( wit > max_width ) {
+						wit = max_width - 1;
+					}
+	//				console.log(wit);
+
+					// chỉ xử lý với video youtube
+					if ( a.split('youtube.com/').length > 1 ) {
+						jQuery(this).attr({
+	//						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
+							'data-width' : Math.ceil( wit )
+						});
+					}
 				}
 			});
 			
