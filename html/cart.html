@@ -1,17 +1,17 @@
 <div class="{tmp.custom_blog_css}">
-	<div class="padding-global-content">
-		<div class="cart-pro-phet">
-			<form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();">
-				<input type="hidden" name="t_discount_value" value="" />
-				<div id="oi_cart" class="d-none">
-					<div class="cart-div-title cf medium gray6color">
-						<div class="lf f60 fullsize-if-mobile">{tmp.cart_str_list}</div>
-						<div class="lf f15 text-center hide-if-mobile">{tmp.cart_price}</div>
-						<div class="lf f10 text-center hide-if-mobile">{tmp.cart_soluong}</div>
-						<div class="lf f15 text-center hide-if-mobile">{tmp.cart_str_total}</div>
-					</div>
-					{tmp.cart_list} 
-					<!--
+    <div class="padding-global-content">
+        <div class="cart-pro-phet">
+            <form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();">
+                <input type="hidden" name="t_discount_value" value="" />
+                <div id="oi_cart" class="d-none">
+                    <div class="cart-div-title cf medium gray6color">
+                        <div class="lf f60 fullsize-if-mobile">{tmp.cart_str_list}</div>
+                        <div class="lf f15 text-center hide-if-mobile">{tmp.cart_price}</div>
+                        <div class="lf f10 text-center hide-if-mobile">{tmp.cart_soluong}</div>
+                        <div class="lf f15 text-center hide-if-mobile">{tmp.cart_str_total}</div>
+                    </div>
+                    {tmp.cart_list} 
+                    <!--
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="cart-table cart-count-tr">
 						<tr class="cart-table-subject">
 							<td>{tmp.cart_str_list}</td>
@@ -21,52 +21,52 @@
 						</tr>
 					</table>
 					-->
-					<div class="cart-table-total center-if-mobile bold"><span class="upper">{tmp.cart_str_totals}</span>: {tmp.cart_total}</div>
-				</div>
-				<div id="cart_null" class="text-center">{tmp.cart_is_null}</div>
-				<div class="hide-if-mobile">
-					<div class="cf"><a href="./" class="cart-table-prev d-block lf">{tmp.cart_continue}</a></div>
-					<br>
-					<br>
-				</div>
-				<div id="oi_send_invoice" class="d-none"> 
-					<!--
+                    <div class="cart-table-total center-if-mobile bold"><span class="upper">{tmp.cart_str_totals}</span>: {tmp.cart_total}</div>
+                </div>
+                <div id="cart_null" class="text-center">{tmp.cart_is_null}</div>
+                <div class="hide-if-mobile">
+                    <div class="cf"><a href="./" class="cart-table-prev d-block lf">{tmp.cart_continue}</a></div>
+                    <br>
+                    <br>
+                </div>
+                <div id="oi_send_invoice" class="d-none"> 
+                    <!--
 					<div class="cart-table-title upper bold medium cf">
 						<div class="lf f62">Thông tin khách hàng</div>
 						<div class="lf f38">Hình thức thanh toán</div>
 					</div>
 					-->
-					<div class="cf">
-						<div class="lf f62 fullsize-if-mobile">
-							<div class="right-menu-space">
-								<div class="cart-table-title upper bold medium">{tmp.cart_customer_info}</div>
-								<div id="cart_user_agent" class="d-none"></div>
-								<ul class="cart-ultable">
-									<li class="cf">
-										<div class="lf f25">{tmp.cart_hoten}</div>
-										<div class="lf f75">
-											<input type="text" name="t_ten" id="t_ten" value="" placeholder="{tmp.cart_hoten}"{tmp.cf_required_name_cart} />
-										</div>
-									</li>
-									<li class="cf">
-										<div class="lf f25">{tmp.cart_dienthoai} <span class="redcolor d-none">*</span></div>
-										<div class="lf f75">
-											<input type="text" name="t_dienthoai" id="t_dienthoai" value="" placeholder="{tmp.cart_pla_dienthoai}"{tmp.cf_required_phone_cart} />
-										</div>
-									</li>
-									<li class="cf eb-global-cart-email">
-										<div class="lf f25">Email</div>
-										<div class="lf f75">
-											<input type="email" name="t_email" id="t_email" value="" placeholder="Email"{tmp.cf_required_email_cart} />
-										</div>
-									</li>
-									<li class="cf">
-										<div class="lf f25">{tmp.cart_diachi}</div>
-										<div class="lf f75">
-											<input type="text" name="t_diachi" id="t_diachi" value="" placeholder="{tmp.cart_diachi2}"{tmp.cf_required_address_cart} />
-										</div>
-									</li>
-									<!--
+                    <div class="cf">
+                        <div class="lf f62 fullsize-if-mobile">
+                            <div class="right-menu-space">
+                                <div class="cart-table-title upper bold medium">{tmp.cart_customer_info}</div>
+                                <div id="cart_user_agent" class="d-none"></div>
+                                <ul class="cart-ultable">
+                                    <li class="cf">
+                                        <div class="lf f25">{tmp.cart_hoten}</div>
+                                        <div class="lf f75">
+                                            <input type="text" name="t_ten" id="t_ten" value="" placeholder="{tmp.cart_hoten}"{tmp.cf_required_name_cart} />
+                                        </div>
+                                    </li>
+                                    <li class="cf">
+                                        <div class="lf f25">{tmp.cart_dienthoai} <span class="redcolor d-none">*</span></div>
+                                        <div class="lf f75">
+                                            <input type="text" name="t_dienthoai" id="t_dienthoai" value="" placeholder="{tmp.cart_pla_dienthoai}"{tmp.cf_required_phone_cart} />
+                                        </div>
+                                    </li>
+                                    <li class="cf eb-global-cart-email">
+                                        <div class="lf f25">Email</div>
+                                        <div class="lf f75">
+                                            <input type="email" name="t_email" id="t_email" value="" placeholder="Email"{tmp.cf_required_email_cart} />
+                                        </div>
+                                    </li>
+                                    <li class="cf">
+                                        <div class="lf f25">{tmp.cart_diachi}</div>
+                                        <div class="lf f75">
+                                            <input type="text" name="t_diachi" id="t_diachi" value="" placeholder="{tmp.cart_diachi2}"{tmp.cf_required_address_cart} />
+                                        </div>
+                                    </li>
+                                    <!--
 									<li class="cf">
 										<div class="lf f25">{tmp.cart_tinhthanh}</div>
 										<div class="lf f75">
@@ -74,84 +74,90 @@
 										</div>
 									</li>
 									-->
-									<li class="cf eb-global-cart-ghichu">
-										<div class="lf f25">{tmp.cart_ghichu}</div>
-										<div class="lf f75">
-											<textarea name="t_ghichu" id="t_ghichu" placeholder="{tmp.cart_vidu}"></textarea>
-										</div>
-									</li>
-									<li class="cf eb-global-cart-coupon d-none">
-										<div class="lf f25">{tmp.cart_discount_code}</div>
-										<div class="lf f75">
-											<input type="text" name="t_discount_code" value="" placeholder="{tmp.cart_discount_code}" class="auto-check-discount-code" />
-										</div>
-									</li>
-									<li class="cf eb-global-cart-shipping_fee d-none">
-										<div class="lf f25">{tmp.cart_shipping_fee}</div>
-										<div class="lf f75">{tmp.cart_shipping_content}</div>
-									</li>
-									{tmp.chinhsach}
-									<li class="cf eb-global-cart-submit">
-										<div class="lf f25 hide-if-mobile">&nbsp;</div>
-										<div class="lf f75 center-if-mobile">
-											<button type="submit" id="sb_submit_cart" class="cart-mua-button upper cur">{tmp.cart_gui}</button>
-										</div>
-									</li>
-								</ul>
-								<br>
-							</div>
-						</div>
-						<div class="lf f38 fullsize-if-mobile">
-							<div class="cart-table-title upper bold medium">{tmp.cart_payment_method}</div>
-							<div class="cart-pay-method">
-								<div class="cart-paymethod-cod">
-									<input id="cart_tt_cod" type="radio" name="t_thanhtoan" value="cod" checked>
-									<label for="cart_tt_cod">{tmp.cart_payment_cod}</label>
-								</div>
-								<div class="cart-paymethod-tt">
-									<input id="cart_tt_tructiep" type="radio" name="t_thanhtoan" value="tructiep">
-									<label for="cart_tt_tructiep">{tmp.cart_payment_tt}</label>
-								</div>
-								<div class="cart-paymethod-ib">
-									<input id="cart_tt_bank" type="radio" name="t_thanhtoan" value="bank">
-									<label for="cart_tt_bank">{tmp.cart_payment_bank}</label>
-								</div>
-								<div class="cart-paymethod-paygate">
-									<div class="show-if-pay-baokim d-none">
-										<input id="cart_tt_bk" type="radio" name="t_thanhtoan" value="bk">
-										<label for="cart_tt_bk">{tmp.cart_payment_bk}</label>
-									</div>
-									<div class="show-if-pay-nganluong d-none">
-										<input id="cart_tt_nl" type="radio" name="t_thanhtoan" value="nl">
-										<label for="cart_tt_nl">{tmp.cart_payment_nl}</label>
-									</div>
-									<div class="show-if-pay-paypal d-none">
-										<input id="cart_tt_pp" type="radio" name="t_thanhtoan" value="pp">
-										<label for="cart_tt_pp">{tmp.cart_payment_pp}</label>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<ul class="cart-table-free cf">
-								<li class="cart-slogan1 lf f50 fullsize-if-mobile">
-									<div>{tmp.lang_ebslogan1}</div>
-								</li>
-								<li class="cart-slogan2 lf f50 fullsize-if-mobile">
-									<div>{tmp.lang_ebslogan2}</div>
-								</li>
-								<li class="cart-slogan3 lf f50 d-none fullsize-if-mobile">
-									<div>{tmp.lang_ebslogan3}</div>
-								</li>
-								<li class="cart-slogan4 lf f50 d-none fullsize-if-mobile">
-									<div>{tmp.lang_ebslogan4}</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                                    <li class="cf eb-global-cart-ghichu">
+                                        <div class="lf f25">{tmp.cart_ghichu}</div>
+                                        <div class="lf f75">
+                                            <textarea name="t_ghichu" id="t_ghichu" placeholder="{tmp.cart_vidu}"></textarea>
+                                        </div>
+                                    </li>
+                                    <li class="cf eb-global-cart-coupon d-none">
+                                        <div class="lf f25">{tmp.cart_discount_code}</div>
+                                        <div class="lf f75">
+                                            <input type="text" name="t_discount_code" value="" placeholder="{tmp.cart_discount_code}" class="auto-check-discount-code" />
+                                        </div>
+                                    </li>
+                                    <li class="cf eb-global-cart-shipping_fee d-none">
+                                        <div class="lf f25">{tmp.cart_shipping_fee}</div>
+                                        <div class="lf f75">{tmp.cart_shipping_content}</div>
+                                    </li>
+                                    {tmp.chinhsach}
+                                    <li class="cf eb-global-cart-submit">
+                                        <div class="lf f25 hide-if-mobile">&nbsp;</div>
+                                        <div class="lf f75 center-if-mobile">
+                                            <button type="submit" id="sb_submit_cart" class="cart-mua-button upper cur">{tmp.cart_gui}</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="lf f38 fullsize-if-mobile">
+                            <div class="cart-table-title upper bold medium">{tmp.cart_payment_method}</div>
+                            <div class="cart-pay-method">
+                                <div class="cart-paymethod-cod">
+                                    <label>
+                                        <input type="radio" name="t_thanhtoan" value="cod" checked>
+                                        {tmp.cart_payment_cod}</label>
+                                </div>
+                                <div class="cart-paymethod-tt">
+                                    <label>
+                                        <input type="radio" name="t_thanhtoan" value="tructiep">
+                                        {tmp.cart_payment_tt}</label>
+                                </div>
+                                <div class="cart-paymethod-ib">
+                                    <label>
+                                        <input type="radio" name="t_thanhtoan" value="bank">
+                                        {tmp.cart_payment_bank}</label>
+                                </div>
+                                <div class="cart-paymethod-paygate">
+                                    <div class="show-if-pay-baokim d-none">
+                                        <label>
+                                            <input type="radio" name="t_thanhtoan" value="bk">
+                                            {tmp.cart_payment_bk}</label>
+                                    </div>
+                                    <div class="show-if-pay-nganluong d-none">
+                                        <label>
+                                            <input type="radio" name="t_thanhtoan" value="nl">
+                                            {tmp.cart_payment_nl}</label>
+                                    </div>
+                                    <div class="show-if-pay-paypal d-none">
+                                        <label>
+                                            <input type="radio" name="t_thanhtoan" value="pp">
+                                            {tmp.cart_payment_pp}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <ul class="cart-table-free cf">
+                                <li class="cart-slogan1 lf f50 fullsize-if-mobile">
+                                    <div>{tmp.lang_ebslogan1}</div>
+                                </li>
+                                <li class="cart-slogan2 lf f50 fullsize-if-mobile">
+                                    <div>{tmp.lang_ebslogan2}</div>
+                                </li>
+                                <li class="cart-slogan3 lf f50 d-none fullsize-if-mobile">
+                                    <div>{tmp.lang_ebslogan3}</div>
+                                </li>
+                                <li class="cart-slogan4 lf f50 d-none fullsize-if-mobile">
+                                    <div>{tmp.lang_ebslogan4}</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 {tmp.js}
