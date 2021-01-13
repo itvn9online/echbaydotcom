@@ -23,7 +23,7 @@
 //
 //define('GeoLite2Helper_PATH', dirname(__FILE__));
 //define('GeoLite2Helper_PATH', WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2');
-define('GeoLite2Helper_PATH', EB_THEME_PLUGIN_INDEX . 'outsource/geolite2');
+define('GeoLite2Helper_PATH', EB_THEME_OUTSOURCE . 'geolite2');
 //echo GeoLite2Helper_PATH . '<br>';
 //
 //if ( is_dir( GeoLite2Helper_PATH ) ) {

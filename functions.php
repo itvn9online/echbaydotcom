@@ -1225,49 +1225,11 @@ function _eb_add_css_js_file( $arr, $file_type = '.css', $include_now = 0, $incl
 			}
 			// css
 			else {
-				/*
-				  foreach ( $f_content as $v ) {
-				  $new_content .= trim( $v );
-				  }
-				 */
-
-				// loại các ký tự không cần thiết, căn chỉnh về 1 dòng
-				//						$new_content = preg_replace( "/\r\n|\n\r|\n|\r|\t/", "", $f_content );
 				$new_content = $f_content;
 
-				// chỉnh lại đường dẫn trong file css
-				/*
-				  $arr_css_new_content = array(
-				  '../images/' => './' . EB_DIR_CONTENT . '/themes/' . basename( get_template_directory() ) . '/images/',
-				  //							'../../../../plugins/' => '../../plugins/',
-
-				  // các css ngoài -> trong outsource -> vd: font awesome
-				  //							'../../../../plugins/' => EB_DIR_CONTENT . '/plugins/',
-				  //							'../outsource/' => EB_DIR_CONTENT . '/plugins/echbaydotcom/outsource/',
-				  '../outsource/' => EB_DIR_CONTENT . '/echbaydotcom/outsource/',
-
-				  '../fonts/' => EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/',
-
-				  // làm đẹp css
-				  //							'}.' => '}' . "\n" . '.',
-
-				  // rút gọn các phần khác
-				  //							', .' => ',' . "\n" . '.',
-				  //							' {' => '{',
-				  //							', ' => ',',
-				  ' { ' => '{',
-
-				  '; }.' => ';}.',
-				  '; }#' => ';}#',
-
-				  ';}.' => '}.',
-				  ';}#' => '}#',
-				  );
-				 */
-
 				// google khuyến khích không nên để inline cho CSS
-				//						$new_content = str_replace( '}', '}' . "\n", $new_content );
-				//						$new_content = str_replace( '}.', '}' . "\n" . '.', $new_content );
+				//$new_content = str_replace( '}', '}' . "\n", $new_content );
+				//$new_content = str_replace( '}.', '}' . "\n" . '.', $new_content );
 				//
 				$split_content = explode( "\n", $new_content );
 				$new_content = '';
@@ -1410,8 +1372,8 @@ function EBE_replace_link_in_cache_css( $c ) {
 		'../images-global/' => '../../../echbaydotcom/images-global/',
 
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => '../../../echbaydotcom/outsource/',
-		'../fonts/' => '../../../echbaydotcom/outsource/fonts/'
+		'../outsource/' => '../../../themes/echbaytwo/outsource/',
+		//'../fonts/' => '../../../themes/echbaytwo/outsource/fonts/'
 	);
 
 	// IMG của child theme
@@ -1437,8 +1399,8 @@ function EBE_replace_link_in_css( $c ) {
 		'../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
 
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/',
-		'../fonts/' => './' . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/'
+		'../outsource/' => './' . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/',
+		//'../fonts/' => './' . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fonts/'
 	);
 
 	// IMG của child theme

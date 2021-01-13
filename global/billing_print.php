@@ -79,9 +79,9 @@ var order_details_arr_cart_product_list = "' . $post->order_products . '",
 <link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d.css?v=' . $bill_static_version . '" type="text/css">
 <link rel="stylesheet" href="' . EB_URL_OF_PLUGIN . 'css/d2.css?v=' . $bill_static_version . '" type="text/css">
 
-<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/3.2.1.min.js"></script>
-<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/migrate-1.4.1.min.js"></script>
-<script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'outsource/javascript/jquery/migrate-3.0.0.min.js"></script>
+<script type="text/javascript" src="' . EB_THEME_OUTSOURCE . 'javascript/jquery/3.2.1.min.js"></script>
+<script type="text/javascript" src="' . EB_THEME_OUTSOURCE . 'javascript/jquery/migrate-1.4.1.min.js"></script>
+<script type="text/javascript" src="' . EB_THEME_OUTSOURCE . 'javascript/jquery/migrate-3.0.0.min.js"></script>
 
 <script type="text/javascript" src="' . EB_URL_OF_PLUGIN . 'javascript/eb.js?v=' . $bill_static_version . '"></script>
 	' ),

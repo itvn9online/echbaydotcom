@@ -130,7 +130,8 @@ if ( ! defined('EB_THEME_PLUGIN_INDEX') ) {
 
 
 //define( 'EB_THEME_OUTSOURCE', EB_THEME_URL . 'outsource/' );
-define( 'EB_THEME_OUTSOURCE', EB_THEME_PLUGIN_INDEX . 'outsource/' );
+//define( 'EB_THEME_OUTSOURCE', EB_THEME_PLUGIN_INDEX . 'outsource/' );
+define( 'EB_THEME_OUTSOURCE', EB_THEME_URL . 'outsource/' );
 //echo 'EB_THEME_OUTSOURCE: ' . EB_THEME_OUTSOURCE . '<br>';
 
 //define( 'EB_THEME_CORE', EB_THEME_URL . 'plugin/class/' );
@@ -160,6 +161,8 @@ define( 'EB_THEME_PHP', EB_THEME_THEME . 'php/' );
 
 // URL tương đối
 define( 'EB_URL_TUONG_DOI', EB_DIR_CONTENT . '/echbaydotcom/' );
+// URL tương đối nhưng nối vào theme
+define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/echbaytwo/' );
 
 // thư mục lưu trữ cache
 if ( !defined( 'EB_THEME_CACHE' ) ) {
@@ -457,6 +460,7 @@ $___eb_template_uri = web_link;
 
 //define( 'EB_URL_OF_THEME', $___eb_template_uri . '/' );
 define( 'EB_URL_OF_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/' . basename( EB_THEME_URL ) . '/' );
+define( 'EB_URL_OF_PARENT_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/echbaytwo/' );
 //echo EB_URL_OF_THEME . '<br>' . "\n";
 //define( 'EB_URL_OF_PLUGIN', esc_url( plugins_url() ) . '/echbaydotcom/' );
 //define( 'EB_URL_OF_PLUGIN', dirname( dirname( $___eb_template_uri ) ) . '/echbaydotcom/' );
@@ -1099,14 +1103,14 @@ function EBE_register_scripts() {
     // add jquery mới
 
     // add dưới dạng file tổng
-    //	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery.js', false, '3.3.1');
+    //	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery.js', false, '3.3.1');
 
     // add file lẻ
-    wp_register_script( 'jquery', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
-    //	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/3.3.1.min.js');
+    wp_register_script( 'jquery', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
+    //	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/3.3.1.min.js');
 
     // migrate
-    wp_register_script( 'jquery-migrate', web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
+    wp_register_script( 'jquery-migrate', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
 
     // gọi jquery
     wp_enqueue_script( 'jquery' );
@@ -1120,7 +1124,7 @@ function EBE_register_scripts() {
     // load Font Awesome v5
     /*
     if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
-    	$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-5.3.0/css/i.css';
+    	$url = web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fa-5.3.0/css/i.css';
     	
     	//
     	wp_register_style( 'font-awesome', $url, array(), '5.3.0' );
@@ -1129,7 +1133,7 @@ function EBE_register_scripts() {
     else {
     	*/
     // không có thì dùng của WGR -> lười update hơn
-    //		$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fa-4.7.0/i.css';
+    //		$url = web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fa-4.7.0/i.css';
     //		$url = '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
     //$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
 

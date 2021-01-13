@@ -2,7 +2,7 @@
 
 //
 $file_jquery_js = '3.3.1.min';
-$dir_optimize_jquery_js = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/';
+$dir_optimize_jquery_js = EB_THEME_OUTSOURCE . 'javascript/';
 
 // các file compiler trước khi xuất ra
 //EBE_add_js_compiler_in_cache( array(
@@ -35,7 +35,7 @@ foreach ( $file_optimize_jquery_js as $v ) {
 //$str_optimize_jquery_js = $dir_optimize_jquery_js . 'jquery.js';
 $str_optimize_jquery_js = 'jquery.js';
 //$str_optimize_jquery_js = EB_THEME_CACHE . 'jquery.js';
-$str_optimize_jquery_js = EB_THEME_PLUGIN_INDEX . 'outsource/javascript/optimize/' . $str_optimize_jquery_js;
+$str_optimize_jquery_js = EB_THEME_OUTSOURCE . 'javascript/optimize/' . $str_optimize_jquery_js;
 //echo $str_optimize_jquery_js . '<br>' . "\n";
 
 // tạo file trên localhost hoặc nếu chưa có

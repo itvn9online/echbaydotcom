@@ -10,17 +10,17 @@
 
 
 $a = array(
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery/3.2.1.min.js',
-	EB_THEME_PLUGIN_INDEX . 'outsource/javascript/jquery/migrate-3.0.0.min.js',
+	EB_THEME_OUTSOURCE . 'javascript/jquery/3.2.1.min.js',
+	EB_THEME_OUTSOURCE . 'javascript/jquery/migrate-3.0.0.min.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
     /*
-    EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/brands.min.js',
-    EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/solid.min.js',
-    EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js',
-    EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/v4-shims.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/brands.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/solid.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/fontawesome.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/v4-shims.min.js',
     */
 	EB_THEME_PLUGIN_INDEX . 'echbay/js/export_functions.js'
 );

@@ -238,8 +238,8 @@ function echbay_admin_styles() {
 	//
 	/*
 	_eb_add_full_css( EBE_admin_set_realtime_for_file ( array(
-//		$web_ad_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/fonts/font-awesome.css',
-		EB_URL_OF_PLUGIN . 'outsource/fonts/font-awesome.css',
+//		$web_ad_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fonts/font-awesome.css',
+		EB_THEME_OUTSOURCE . 'fonts/font-awesome.css',
 		EB_URL_OF_PLUGIN . 'css/d.css',
 		EB_URL_OF_PLUGIN . 'css/d2.css',
 		EB_URL_OF_PLUGIN . 'css/admin.css',
@@ -248,15 +248,15 @@ function echbay_admin_styles() {
 	*/
 	$a = array(
         // trong admin có gắn thêm bản font-fontawesome-5.JS -> chỉ load bản font-fontawesome-4.CSS thì nó mới không xung đột
-		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-4.7.0/i.css',
-		//EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.0.6/css/fontawesome.css',
+		//EB_THEME_OUTSOURCE . 'fa-4.7.0/i.css',
+		//EB_THEME_OUTSOURCE . 'fontawesome-free-5.0.6/css/fontawesome.css',
         // awesome v5
-		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/i.css',
-		//EB_THEME_PLUGIN_INDEX . 'outsource/fa-5.3.0/css/v4-shims.min.css',
-        EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/css/fontawesome.min.css',
-        EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css',
-        EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css',
-        EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/css/v4-shims.min.css',
+		//EB_THEME_OUTSOURCE . 'fa-5.3.0/css/i.css',
+		//EB_THEME_OUTSOURCE . 'fa-5.3.0/css/v4-shims.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/fontawesome.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/brands.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/solid.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/v4-shims.min.css',
         //
 		EB_THEME_PLUGIN_INDEX . 'css/d.css',
 		EB_THEME_PLUGIN_INDEX . 'css/d2.css',
@@ -285,7 +285,7 @@ function echbay_admin_styles() {
 //		EB_URL_OF_THEME . 'javascript/eb.js',
 		EB_URL_OF_PLUGIN . 'javascript/all.js',
 		EB_URL_OF_PLUGIN . 'javascript/edit_post.js',
-//		EB_URL_OF_PLUGIN . 'outsource/javascript/jquery.caret.1.02.min.js',
+//		EB_THEME_OUTSOURCE . 'javascript/jquery.caret.1.02.min.js',
 //		EB_URL_OF_PLUGIN . 'javascript/a.js',
 	) ), 'add' );
 	*/
@@ -324,8 +324,8 @@ function echbay_admin_styles() {
 	//
 	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == false ) {
 		echo '
-<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui-1.11.2.css" />
-<script src="' . web_link . EB_DIR_CONTENT . '/echbaydotcom/outsource/jquery-ui/jquery-ui.min.js"></script>';
+<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/jquery-ui/jquery-ui-1.11.2.css" />
+<script src="' . web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/jquery-ui/jquery-ui.min.js"></script>';
 	}
 	
 	
@@ -513,10 +513,10 @@ function echbay_admin_footer_styles() {
 	
     // fontawesome-free
     /*
-    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/brands.min.js';
-    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/solid.min.js';
-    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js';
-    $a[] = EB_THEME_PLUGIN_INDEX . 'outsource/fontawesome-free-5.15.1-web/js/v4-shims.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/brands.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/solid.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/fontawesome.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/v4-shims.min.js';
     */
     //print_r($a);
     
