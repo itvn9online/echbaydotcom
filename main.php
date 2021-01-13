@@ -406,6 +406,10 @@ if ( $__cf_row['cf_reset_cache'] > 0 ) {
 		else if ( defined('WP_CACHE') && WP_CACHE == true ) {
 			$enable_echbay_super_cache = 2;
 		}
+		// tắt ép cache -> dùng với các custom page mà cần kiểu submit -> tìm kiếm, đặt hàng
+		else if ( defined('WGR_NO_CACHE') && WGR_NO_CACHE == true ) {
+			$enable_echbay_super_cache = 7;
+		}
 		// tắt khi người dùng đang tìm kiếm
 		else if ( isset( $_GET['search_advanced'] ) ) {
 			$enable_echbay_super_cache = 4;
@@ -528,6 +532,9 @@ If you want to using EchBay Cache, please set WP_CACHE = false or comment WP_CAC
 	//
 	else if ( $enable_echbay_super_cache == 4 ) {
 		echo '<!-- EchBay Cache (ebcache) not running in SEARCH method -->';
+	}
+	else if ( $enable_echbay_super_cache == 7 ) {
+		echo '<!-- EchBay Cache (ebcache) not running because WGR_NO_CACHE enable -->';
 	}
 	// chỉ cache với 1 số trang cụ thể thôi
 	else if ( $enable_echbay_super_cache == 9 ) {
