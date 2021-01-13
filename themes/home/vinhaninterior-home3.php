@@ -10,8 +10,9 @@ $html_for_get_du_an = '
 </li>';
 
 // js để xử lý slider
-$arr_for_add_outsource_js[] = 'http://vinhaninterior.com/lib/themes/vinhan/js/jquery.isotope.min.js?ver=1.0';
-$arr_for_add_outsource_async_js[] = 'http://vinhaninterior.com/lib/themes/vinhan/js/custom/custom-isotope-portfolio.js?ver=1.0';
+// đã tải file này về laptop -> nhúng file này vào thay vì nhúng bên host kia
+//$arr_for_add_outsource_js[] = 'http://vinhaninterior.com/lib/themes/vinhan/js/jquery.isotope.min.js?ver=1.0';
+//$arr_for_add_outsource_async_js[] = 'http://vinhaninterior.com/lib/themes/vinhan/js/custom/custom-isotope-portfolio.js?ver=1.0';
 
 ?>
 <script type='text/javascript'>
