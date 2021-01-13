@@ -75,8 +75,11 @@ function _eb_load_post_obj( $posts_per_page, $_eb_query = array() ) {
 	*/
 
 	// https://codex.wordpress.org/Class_Reference/WP_Query
-	return new WP_Query( $arr );
-
+	$results = new WP_Query( $arr );
+	wp_reset_postdata();
+	
+	//
+	return $results;
 }
 
 /*
@@ -248,9 +251,24 @@ function _eb_load_post(
 	if ( isset( $_eb_query[ 'post__in' ] ) && !isset( $_eb_query[ 'ignore_sticky_posts' ] ) ) {
 		$_eb_query[ 'ignore_sticky_posts' ] = 1;
 	}
+	
+	//
+	$show_sql_query = 0;
+	if (isset($other_options['show_sql_query'])) {
+		$show_sql_query = 1;
+		unset($other_options['show_sql_query']);
+	}
 
 	//
 	$sql = _eb_load_post_obj( $posts_per_page, $_eb_query );
+	if ( $show_sql_query == 1 ) {
+		//print_r($_eb_query);
+		echo $sql->request . '<br>' . "\n";
+	}
+	if ( isset($_eb_query['no_found_rows']) && $_eb_query['no_found_rows'] == true && isset($_eb_query['fields']) && $_eb_query['fields'] == 'ids' ) {
+		//print_r($sql);
+		return $sql->post_count;
+	}
 
 	// TEST
 	/*

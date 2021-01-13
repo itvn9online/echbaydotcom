@@ -979,7 +979,7 @@ function WGR_create_quick_link_edit_post() {
                     }
 
                     // hiển thị nút sửa và size khung ảnh
-                    jQuery(this).append('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
+                    jQuery(this).prepend('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
                 }
             }
 
