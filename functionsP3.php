@@ -1,6 +1,5 @@
 <?php
 
-
 // chức năng cho hoặc không cho truy cập vào 1 file nào đó
 function WGR_deny_or_accept_vist_php_file( $progress_file, $deny_or_accept, $warning_content ) {
     global $arr_private_info_setting;
@@ -1054,7 +1053,7 @@ function WGR_decode_for_discount_cart( $a ) {
     return $re;
 }
 
-function WGR_download() {
+function WGR_download($source, $dest) {
     if ( function_exists( 'copy' ) ) {
         if ( copy( $source, $dest ) ) {
             return true;
