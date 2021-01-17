@@ -950,6 +950,21 @@ function WGR_create_quick_link_edit_post() {
                 'data-add-edit': 1
             });
         });
+        
+        // sửa phần icon mạng xã hội
+        jQuery('#webgiare__top .footer-social, #webgiare__footer .footer-social').each(function () {
+            var edit_exist = jQuery(this).attr('data-add-edit') || '';
+
+            //
+            if (edit_exist == '') {
+                jQuery(this).prepend('<i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=social&support_tab=cf_facebook_page" title="Chỉnh sửa social URL" class="fa fa-edit click-goto-edit cur"></i>');
+            }
+
+            //
+            jQuery(this).attr({
+                'data-add-edit': 1
+            });
+        });
 
         // ép phần quảng cáo về định dạng q.cáo -> do khi q.cáo liên kết tới post khác thì định dạng này sẽ bị thay đổi -> cần reset lại
         jQuery('.global-ul-load-ads li').attr({
