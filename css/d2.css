@@ -2268,7 +2268,7 @@ iframe[name="google_conversion_frame"] {
 }
 .bgcover .echbay-blog-avt {
     background-size: cover;
-    background-size: 100%;
+    background-size: 100% 100%;
 }
 .bgcontain .echbay-blog-avt {
     background-size: contain;
