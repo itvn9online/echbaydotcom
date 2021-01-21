@@ -394,18 +394,34 @@ foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
 
 //
 $str_cf_rand_slider = '<option value="' . $__cf_row_default['cf_rand_slider'] . '">Ngẫu nhiên</option>';
-for ( $i = 1; $i < 12; $i++ ) {
-	$v = $i;
-	if ( $i == 1 ) {
+$arr_cf_rand_slider = array(
+    'Mặc định (phải - trái)',
+    'Phải - Trái kèm hiệu ứng ẩn hiện',
+    'Góc dưới cùng bên phải',
+    'Trên xuống dưới',
+    'Góc dưới cùng bên trái',
+    'Trái - Phải kèm hiệu ứng ẩn hiện',
+    'Góc trên cùng bên trái',
+    'Cuộn từ dưới lên trên',
+    'Góc trên cùng bên phải',
+    'Ẩn hiện tại chính giữa',
+    'Phóng to ra ngoài trang'
+);
+foreach ( $arr_cf_rand_slider as $i => $v ) {
+    $j = $i + 1;
+    /*
+	$v = $j;
+	if ( $j == 1 ) {
 		$v = 'Mặc định';
 	}
+    */
 	
 	$sl = '';
-	if ( $__cf_row['cf_rand_slider'] == $i ) {
+	if ( $__cf_row['cf_rand_slider'] == $j ) {
 		$sl = ' selected="selected"';
 	}
 	
-	$str_cf_rand_slider .= '<option value="' . $i . '"' . $sl . '>' . $v . '</option>';
+	$str_cf_rand_slider .= '<option value="' . $j . '"' . $sl . '>' . $v . '</option>';
 }
 
 
