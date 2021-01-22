@@ -57,12 +57,15 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_s
      */
 
     //
+	$echbay_search_type = 'post_type';
 	if ( $echbay_search != '' ) {
         $echbay_search_name = 'q';
+		$echbay_search_type = 'for_post_type';
 	}
     else if ( $__cf_row[ 'cf_search_by_echbay' ] == 1 ) {
         $echbay_search = 'ebsearch/';
         $echbay_search_name = 'q';
+		$echbay_search_type = 'for_post_type';
     }
 	else {
 		$echbay_search_name = 's';
@@ -74,7 +77,7 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_s
 	<div class="div-search">
 		<form role="search" method="get" action="' . web_link . $echbay_search . '">
 			<input type="search" placeholder="' . EBE_get_lang( 'searchp' ) . '" value="' . $current_search_key . '" name="' . $echbay_search_name . '" autocomplete="' . EBE_get_lang( 'search_autocomplete' ) . '" aria-required="true" required>
-			<input type="hidden" name="post_type" value="post" />
+			<input type="hidden" name="' . $echbay_search_type . '" value="post" />
 			<button type="submit" class="default-bg"><i class="fas fa-search"></i><span class="d-none">' . EBE_get_lang( 'search' ) . '</span></button>
 			<span data-active="' . $class_for_search . '" class="span-search-icon cur"><i class="fas fa-search"></i></span>
 		</form>

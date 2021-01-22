@@ -82,6 +82,10 @@ else {
 if ( $act == 'ebsearch' ) {
 	$posts_per_page = _eb_get_option('posts_per_page');
 	
+	// 2021-01-22 -> truyền thẳng array luôn
+	$a_post__in = $arrFilter;
+	
+	/*
 	$arr_post__in = array();
 	$a_post__in = explode( ',', substr( $strFilter, 1 ) );
 	foreach ( $a_post__in as $v ) {
@@ -89,6 +93,7 @@ if ( $act == 'ebsearch' ) {
 			$arr_post__in[] = $v;
 		}
 	}
+	*/
 //	print_r($arr_post__in);
 	
 	$list_post = _eb_load_post( $posts_per_page, array(
