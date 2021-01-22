@@ -906,12 +906,23 @@ var _global_js_eb = {
 
 						// chỉ xử lý với video youtube
 						if (a.split('youtube.com/').length > 1) {
+							//console.log('a: ' + a);
 							var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
+							//console.log('wit: ' + jQuery(this).attr('width'));
+							if ( wit.toString().split('%').length > 1 ) {
+								wit = wit.replace(/\%/, '') * 1;
+								wit = jQuery(this).width() || 560;
+								//console.log('wit%: ' + wit);
+							}
+							else if ( isNaN(wit) ) {
+								wit = jQuery(this).width() || 560;
+							}
+							//console.log('wit1: ' + wit);
 							if (wit > max_width) {
 								wit = max_width;
 							}
 							wit -= 1;
-							console.log('wit: ' + wit);
+							//console.log('wit2: ' + wit);
 
 							//
 							jQuery(this).attr({
