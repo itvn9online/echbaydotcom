@@ -24,9 +24,13 @@ function EBE_get_html_logo( $set_h1 = 0 ) {
     //	return '<div><a data-size="' . $__cf_row['cf_size_logo'] . '" href="./" class="web-logo ti-le-global d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
 }
 
-function EBE_get_html_search( $class_for_search = 'div-search-margin' ) {
+function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_search_name = '' ) {
     global $current_search_key;
     global $__cf_row;
+	
+	if ( $class_for_search == '' ) {
+		$class_for_search = 'div-search-margin';
+	}
 
     // sử dụng google tìm kiếm tùy chỉnh
     if ( $__cf_row[ 'cf_gse' ] != '' ) {
@@ -54,11 +58,13 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin' ) {
 
     //
     $echbay_search = '';
-    $echbay_search_name = 's';
-    if ( $__cf_row[ 'cf_search_by_echbay' ] == 1 ) {
+    if ( $echbay_search_name == '' && $__cf_row[ 'cf_search_by_echbay' ] == 1 ) {
         $echbay_search = 'ebsearch/';
         $echbay_search_name = 'q';
     }
+	else if ( $echbay_search_name == '' ) {
+		$echbay_search_name = 's';
+	}
 
     //
     return '
