@@ -371,7 +371,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	}
 	// tính toán chiều cao từ tỷ lệ của chiều rộng
 	else {
-		hai = wit * eval( conf['size'] )/ conf['visible'] - 1;
+		hai = Math.ceil(wit * eval( conf['size'] )/ conf['visible']) - 1;
 	}
 	
 	set_default_conf( 'lineHeight', hai + 'px' );
@@ -1017,7 +1017,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
 	//
 	if ( conf['sliderArrow'] == true && len > conf['visible'] ) {
-		jQuery(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
+		jQuery(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft div-valign-center"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right div-valign-center"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
 		
 		
 		//
@@ -1058,9 +1058,10 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 		});
 		
 		// tạo css cho nút next
+		//console.log(conf['lineHeight']);
 		jQuery( jd_to_class + ' .jEBE_slider-toLeft, ' + jd_to_class + ' .jEBE_slider-toRight' ).css({
-			'font-size': conf['sliderArrowSize'] + 'px',
-			'line-height' : conf['lineHeight']
+			//'line-height' : conf['lineHeight'],
+			'font-size': conf['sliderArrowSize'] + 'px'
 		}).height( hai );
 		
 		// tạo nút bấm chuyển ảnh ngay trên khung ảnh nếu:
