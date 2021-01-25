@@ -86,7 +86,7 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_s
 </div>';
 }
 
-function EBE_get_html_cart( $icon_only = 0 ) {
+function EBE_get_html_cart( $icon_only = 0, $cart_icon = 'fa fa-shopping-cart' ) {
     $a = EBE_get_lang( 'cart' );
 
     $text = '';
@@ -94,7 +94,7 @@ function EBE_get_html_cart( $icon_only = 0 ) {
         $text = $a;
     }
 
-    return '<div class="btn-to-cart cf"><a title="' . $a . '" href="' . web_link . 'cart" rel="nofollow"><i class="fa fa-shopping-cart"></i> <span>' . $text . '</span> <em class="show_count_cart d-none">0</em></a></div>';
+    return '<div class="btn-to-cart cf"><a title="' . $a . '" href="' . web_link . 'cart" rel="nofollow"><i class="' . $cart_icon . '"></i> <span>' . $text . '</span> <em class="show_count_cart d-none">0</em></a></div>';
 }
 
 function EBE_get_html_profile() {

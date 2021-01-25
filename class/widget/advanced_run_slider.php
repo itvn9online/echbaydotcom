@@ -293,9 +293,11 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget {
 		
 //		print_r($this);
 		
+		$WGR_advanced_run_slider_number = 'WGR_advanced_run_slider_' . str_replace( '-', '_', $this->number);
+		
 		//
 		echo '<script>
-function WGR_advanced_run_slider_' . $this->number . ' ( i ) {
+function ' . $WGR_advanced_run_slider_number . ' ( i ) {
 	if ( typeof i != "number" ) {
 		i = 50;
 	}
@@ -306,7 +308,7 @@ function WGR_advanced_run_slider_' . $this->number . ' ( i ) {
 	
 	if ( typeof jQuery != "function" || typeof jEBE_timeout_slider != "function" ) {
 		setTimeout(function () {
-			WGR_advanced_run_slider_' . $this->number . '( i - 1 );
+			' . $WGR_advanced_run_slider_number . '( i - 1 );
 		}, 100);
 		
 		return false;
@@ -314,7 +316,7 @@ function WGR_advanced_run_slider_' . $this->number . ' ( i ) {
 	
 	jEBE_timeout_slider( "' . $id_class . '", {' . $code . '} );
 }
-WGR_advanced_run_slider_' . $this->number . '();
+' . $WGR_advanced_run_slider_number . '();
 		</script>';
 	}
 }
