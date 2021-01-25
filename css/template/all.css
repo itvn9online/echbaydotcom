@@ -168,9 +168,9 @@
 }
 /* ==================================  ================================== */
 /* desktop only */
-@media screen and (max-width:748px) {}
+@media only screen and (min-width:748px) {}
 /* mobile only */
-@media screen and (max-width:788px) {}
+@media only screen and (max-width:788px) {}
 /* ================================== search ================================== */
 #aabbcc .div-search-margin {}
 #aabbcc .div-search {}
