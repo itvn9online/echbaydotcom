@@ -496,6 +496,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 						if ( a < 0 ) {
 							a = 0;
 						}
+						//console.log('aaaaaaaaaaaaaaaaaaa: ' + a);
 						
 						jQuery('#' + j_id + ' ul').attr({
 							'data-scroll': a
@@ -1041,13 +1042,14 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 			var i = jQuery(jd).attr('data-i') || 0;
 			i -= -1;
 //			i -= 0 - conf['visible'];
-//			console.log(i);
+			//console.log(i);
 //			console.log(jd);
 			
 //			if ( jQuery(jd + ' li[data-i="' + i + '"]').length == 0 ) {
-			if ( i >= jQuery(jd + ' li').length ) {
+			if ( i * conf['visible'] >= jQuery(jd + ' li').length ) {
 				i = 0;
 			}
+			//console.log(jQuery(jd + ' li').length);
 			
 			jQuery(jd + ' li[data-i="' + i + '"]').click();
 			
