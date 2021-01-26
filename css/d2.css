@@ -2277,9 +2277,11 @@ iframe[name="google_conversion_frame"] {
     border-radius: 50%;
 }
 .bgwidth .echbay-blog-avt {
+    background-size: cover;
     background-size: 100% auto;
 }
 .bghight .echbay-blog-avt {
+    background-size: cover;
     background-size: auto 100%;
 }
 .hideavt .echbay-blog-avt {
