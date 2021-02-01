@@ -405,6 +405,9 @@ function WGR_remove_post_by_type( $post_type = 'revision', $ID = 0, $strFilter =
 		WHERE
 			post_type = '" . $post_type . "' " . $strFilter . " ", 0 );
     }
+    
+    //
+    _eb_log_user ( 'Delete post ID #' . $ID . ' --- Post type: ' . $post_type );
 
     return true;
 }
