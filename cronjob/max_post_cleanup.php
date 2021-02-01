@@ -46,7 +46,7 @@ function WGR_save_max_post_to_xml ( $type ) {
 }
 
 
-
+/* ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
 $strCacheFilter = 'max_post_cleanup';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 1800 );
 //$check_Cleanup_cache = false;
@@ -62,6 +62,7 @@ if ( $check_Cleanup_cache == false ) {
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 	
 }
+*/
 //exit();
 
 

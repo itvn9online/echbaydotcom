@@ -1,6 +1,7 @@
 <?php
 
 
+/* ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
 
 $strCacheFilter = 'revision_cleanup';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 6 * 3600 );
@@ -52,5 +53,5 @@ if ( $check_Cleanup_cache == false ) {
 	
 }
 
-
+*/
 
