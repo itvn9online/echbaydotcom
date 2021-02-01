@@ -826,6 +826,9 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     //	exit();
 
     //
+    _eb_log_user ( 'WGR_save_post_xml ID #' . $save_table . ' to table ' . $save_table );
+    
+    //
     return true;
 }
 
