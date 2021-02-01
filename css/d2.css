@@ -2628,9 +2628,11 @@ iframe[name="google_conversion_frame"] {
 .child-thread-details-mobileAvt .jEBE_slider-toLeft {
     width: 40%;
 }
+/*
 .child-thread-details-mobileAvt .jEBE_slider-toRight {
     width: 60%;
 }
+*/
 /*
 .style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toLeft,
 .style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toRight { width: auto; }
