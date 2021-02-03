@@ -1,7 +1,7 @@
 <?php
 
 
-/* ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
+// ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
 
 $strCacheFilter = 'revision_cleanup';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 6 * 3600 );
@@ -33,7 +33,7 @@ if ( $check_Cleanup_cache == false ) {
 			//
 			if ( ! empty( $strsql ) && isset( $strsql[0]->ID ) ) {
 				// xóa
-				WGR_remove_post_by_type( $strsql[0]->post_type, 0, ' and ID < ' . $strsql[0]->ID . ' ' );
+				//WGR_remove_post_by_type( $strsql[0]->post_type, 0, ' and ID < ' . $strsql[0]->ID . ' ' );
 				
 				//
 				_eb_log_user ( 'Revision cleanup (' . $strsql[0]->ID . '): ' . $_SERVER ['REQUEST_URI'] );
@@ -42,7 +42,7 @@ if ( $check_Cleanup_cache == false ) {
 	}
 	// Nếu <= 1 -> xóa hết -> không lưu revision
 	else {
-		WGR_remove_post_by_type();
+		//WGR_remove_post_by_type();
 		
 		//
 		_eb_log_user ( 'Revision cleanup (ALL): ' . $_SERVER ['REQUEST_URI'] );
@@ -53,5 +53,4 @@ if ( $check_Cleanup_cache == false ) {
 	
 }
 
-*/
 
