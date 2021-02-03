@@ -182,6 +182,14 @@ label, .cur {
     position: relative;
     padding-left: 15px;
 }
+.blogs_node_chi_chu .echbay-blog-title i.fa, .blogs_node_chi_chu .echbay-blog-title i.fas, .blogs_node_chi_chu .echbay-blog-title svg {
+    font-size: 9px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+/*
 .blogs_node_chi_chu .echbay-blog-title:before {
     content: "\f111";
     font-family: FontAwesome, "Font Awesome 5 Free";
@@ -189,6 +197,7 @@ label, .cur {
     position: absolute;
     left: 0;
 }
+*/
 .blogs_node_text_only .echbay-blog-padding, .blogs_node_chi_chu .echbay-blog-padding {
     padding: 0;
     display: inline-block;
@@ -1418,16 +1427,23 @@ button.btn-addto-cart {
 .youtube-quick-view li .echbay-blog-avt {
     text-align: center;
 }
-.youtube-quick-view li .echbay-blog-avt:before {
-    font-family: FontAwesome, "Font Awesome 5 Free";
-    content: "\f16a";
+.youtube-quick-view li .echbay-blog-avt i.fa, .youtube-quick-view li .echbay-blog-avt i.fas, .youtube-quick-view li .echbay-blog-avt svg {
     font-size: 30px;
     margin: 0 auto;
     color: #CC181E;
 }
+.youtube-quick-view li:hover .echbay-blog-avt i.fa, .youtube-quick-view li:hover .echbay-blog-avt i.fas, .youtube-quick-view li:hover .echbay-blog-avt svg {
+    color: #fff;
+}
+/*
+.youtube-quick-view li .echbay-blog-avt:before {
+    font-family: FontAwesome, "Font Awesome 5 Free";
+    content: "\f16a";
+}
 .youtube-quick-view li:hover .echbay-blog-avt:before {
     color: #fff;
 }
+*/
 /* widget */
 .echbay-widget-youtube-padding, .widget_echbay_youtube, .widget_echbay_gg_map {
     margin-bottom: 19px;

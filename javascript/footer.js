@@ -564,4 +564,8 @@ if (isLogin > 0) {
 }
 
 
+//
+$('.blogs_node_chi_chu .echbay-blog-title').prepend('<i class="fa fa-circle"></i>');
+$('.youtube-quick-view li .echbay-blog-avt').append('<i class="fa fa-youtube"></i>');
+
 
