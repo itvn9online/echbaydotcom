@@ -347,6 +347,7 @@ $strAjaxLink .= '&trang=' . $trang;
                 'google' => 'for Google',
                 'facebook' => 'for Facebook',
                 'ia_facebook' => 'for IA Facebook',
+                'wgr_xm_backup' => 'XML backup', // các bài viết bị xóa có thể được tìm thấy và khôi phục lại tại đây
                 'echbaydotcom' => 'from Echbaydotcom',
                 'woo' => 'from Woocommerce'
             );

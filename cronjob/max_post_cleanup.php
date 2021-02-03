@@ -46,7 +46,7 @@ function WGR_save_max_post_to_xml ( $type ) {
 }
 
 
-/* ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
+// ---> dữ liệu bị xóa lỗi nhiều quá, chưa xác định được do đâu -> tạm hủy mấy tính năng này
 $strCacheFilter = 'max_post_cleanup';
 $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 1800 );
 //$check_Cleanup_cache = false;
@@ -54,15 +54,17 @@ $check_Cleanup_cache = _eb_get_static_html ( $strCacheFilter, '', '', 1800 );
 if ( $check_Cleanup_cache == false ) {
 	// Nếu có số lượng cụ thể -> xóa theo số lượng này (tối thiểu là 1)
 	if ( $__cf_row['cf_max_post_cleanup'] > 10 ) {
-		WGR_save_max_post_to_xml( 'post' );
-		WGR_save_max_post_to_xml( EB_BLOG_POST_TYPE );
+		//WGR_save_max_post_to_xml( 'post' );
+		//WGR_save_max_post_to_xml( EB_BLOG_POST_TYPE );
+        
+        //
+		_eb_log_user ( 'Max post cleanup (' . $__cf_row['cf_max_post_cleanup'] . '): ' . $_SERVER ['REQUEST_URI'] );
 	}
 	
 	// Lưu thời gian dọn log
 	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
 	
 }
-*/
 //exit();
 
 
