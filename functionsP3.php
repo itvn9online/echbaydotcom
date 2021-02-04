@@ -405,9 +405,9 @@ function WGR_remove_post_by_type( $post_type = 'revision', $ID = 0, $strFilter =
 		WHERE
 			post_type = '" . $post_type . "' " . $strFilter . " ", 0 );
     }
-    
+
     //
-    _eb_log_user ( 'Delete post ID #' . $ID . ' --- Post type: ' . $post_type );
+    _eb_log_user( 'Delete post ID #' . $ID . ' --- Post type: ' . $post_type );
 
     return true;
 }
@@ -720,6 +720,8 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
+    $str .= WGR_get_taxonomy_xml_list( $pid );
+    /*
     $post_categories = wp_get_post_categories( $postid );
     //	print_r( $post_categories );
     foreach ( $post_categories as $c ) {
@@ -728,9 +730,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
+    */
 
 
     //
+    $str .= WGR_get_taxonomy_xml_list( $pid, 'post_tag' );
+    /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_tag' );
     //	print_r( $arr_post_options );
 
@@ -740,9 +745,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
+    */
 
 
     //
+    $str .= WGR_get_taxonomy_xml_list( $pid, 'post_options' );
+    /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_options' );
     //	print_r( $arr_post_options );
 
@@ -752,9 +760,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
+    */
 
 
     //
+    $str .= WGR_get_taxonomy_xml_list( $pid, 'blogs' );
+    /*
     $arr_post_options = wp_get_object_terms( $postid, 'blogs' );
     //	print_r( $arr_post_options );
 
@@ -764,9 +775,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
+    */
 
 
     //
+    $str .= WGR_get_taxonomy_xml_list( $pid, 'blog_tag' );
+    /*
     $arr_post_options = wp_get_object_terms( $postid, 'blog_tag' );
     //	print_r( $arr_post_options );
 
@@ -776,6 +790,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
+    */
 
 
     // Lấy toàn bộ post meta của post
@@ -826,10 +841,36 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     //	exit();
 
     //
-    _eb_log_user ( 'WGR_save_post_xml ID #' . $save_table . ' to table ' . $save_table );
-    
+    _eb_log_user( 'WGR_save_post_xml ID #' . $save_table . ' to table ' . $save_table );
+
     //
     return true;
+}
+
+
+function WGR_get_taxonomy_xml_list( $id, $taxonomy = 'category' ) {
+    $arr_post_options = wp_get_object_terms( $id, $taxonomy );
+    //print_r( $arr_post_options );
+
+    //
+    $str = '';
+    foreach ( $arr_post_options as $c ) {
+        // nếu không tồn tại dữ liệu cần thiết -> lấy mới
+        if ( isset( $c->taxonomy, $c->slug, $c->name ) ) {
+            $cat = $c;
+        } else {
+            $cat = get_term( $c, $taxonomy );
+        }
+        //print_r( $cat );
+
+        if ( isset( $cat->taxonomy, $cat->slug, $cat->name ) ) {
+            $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+        }
+    }
+
+    //
+    //echo $str . "\n";
+    return $str;
 }
 
 
@@ -1059,13 +1100,13 @@ function WGR_decode_for_discount_cart( $a ) {
     return $re;
 }
 
-function WGR_download($source, $dest) {
+function WGR_download( $source, $dest ) {
     if ( function_exists( 'copy' ) ) {
         if ( copy( $source, $dest ) ) {
             return true;
         }
     }
-    
+
     //
     return false;
 }
