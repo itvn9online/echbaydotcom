@@ -3084,6 +3084,18 @@ function _eb_clear_all_log() {
 	for ( $i = 0; $i < 10; $i++ ) {
 		_eb_clear_log( $i );
 	}
+    
+    // ép xóa các log trong 30 ngày qua
+    $limit_day = 30;
+    $limit_day = date_time - ($limit_day * 24 * 3600);
+    
+    // xóa thẳng cánh các log quá cũ
+    _eb_q("DELETE
+    FROM
+        `eb_wgr_log`
+    WHERE
+        l_ngay < " . $limit_day . "
+        AND hd_id = 0", 0);
 }
 
 function _eb_number_only( $str = '', $re = '/[^0-9]+/' ) {

@@ -54,15 +54,24 @@ function WGR_eb_export_products_xm_backup_print($v){
     $v->bpx_content = str_replace( '<to_ping><![CDATA[]]></to_ping>', '', $v->bpx_content );
     
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_title', 'title', $v->bpx_content );
-    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_date_gmt', 'pubDate', $v->bpx_content );
-    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_author', 'dc:creator', $v->bpx_content );
+    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_content', 'content:encoded', $v->bpx_content );
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_excerpt', 'excerpt:encoded', $v->bpx_content );
-    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_name', 'wp:post_name', $v->bpx_content );
-    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_status', 'wp:status', $v->bpx_content );
+    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'comment_status', 'wp:comment_status', $v->bpx_content );
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ping_status', 'wp:ping_status', $v->bpx_content );
+    $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_status', 'wp:status', $v->bpx_content );
     $v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'menu_order', 'wp:menu_order', $v->bpx_content );
+    
+    
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_date_gmt', 'pubDate', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_date', 'wp:post_date', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_date_gmt', 'wp:post_date_gmt', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'ID', 'wp:post_id', $v->bpx_content );
+    //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'post_name', 'wp:post_name', $v->bpx_content );
     //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'aaaaaaaaaaaaa', 'aaaaaaaaaaaa', $v->bpx_content );
     //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'aaaaaaaaaaaaa', 'aaaaaaaaaaaa', $v->bpx_content );
     //$v->bpx_content = WGR_eb_export_products_xm_backup_replace( 'aaaaaaaaaaaaa', 'aaaaaaaaaaaa', $v->bpx_content );
@@ -117,8 +126,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 
 //$limit = isset( $_GET[ 'limit' ] ) ? ( int )$_GET[ 'limit' ] : 100;
+$limit = 999;
 //$limit = 5;
-$limit = 9999;
 $trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
 $offset = ( $trang - 1 ) * $limit;
 

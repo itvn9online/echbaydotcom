@@ -26,7 +26,10 @@ function WGR_recycle_bin_get( $content, $node ) {
     return $content[ 1 ];
 }
 
-function WGR_recycle_bin_print( $v ) {
+function WGR_recycle_bin_print( $v, $by_bpx_id = 0 ) {
+    //print_r( $v );
+    //die( 'df dhd hd' );
+
     //
     $post_type = WGR_recycle_bin_get( $v->bpx_content, 'post_type' );
     // không lấy menu
@@ -40,16 +43,42 @@ function WGR_recycle_bin_print( $v ) {
     if ( $post_status == 'auto-draft' ) {
         return false;
     }
+
+    //
+    $post_id = WGR_recycle_bin_get( $v->bpx_content, 'ID' );
     //echo $v->bpx_content;
 
     //
     $post_title = WGR_recycle_bin_get( $v->bpx_content, 'post_title' );
-    echo $post_type . ' ---> ' . $post_status . ' ---> ' . $post_title . '<br>' . "\n";
+    echo '<div>' . $post_type . ' ---> ' . $post_status . ' ---> <a href="' . admin_link . 'admin.php?page=eb-coder&tab=recycle_bin&by_bpx_id=' . $v->bpx_id . '">' . $post_title . '</a> (<em>' . date( 'r', $v->bpx_time ) . '</em>)</div>' . "\n";
     //echo $v->bpx_content;
     //exit();
 
     //
-    /*
+    if ( $by_bpx_id > 0 ) {
+        // chỉ hiển thị phần nội dung
+        ?>
+<div>
+    <div class="redcolor medium18 l19">Nội dung bài viết:</div>
+    <div class="orgcolor">* Nội dung bài viết đã được lưu trữ, có thể copy phần này để restore lại bài viết trong trường hợp bị xóa nhầm.</div>
+    <textarea onClick="this.select();" readonly style="width: 99%;height: 350px;"><?php echo htmlentities( WGR_recycle_bin_get( $v->bpx_content, 'post_content' ), ENT_QUOTES, 'UTF-8' ); ?></textarea>
+</div>
+<br>
+<?php
+
+// phần nội dung đầy đủ
+?>
+<div>
+    <div class="medium18 l19">Mã XML đầy đủ:</div>
+    <div class="redcolor">* Phần mã này là mã XML dành cho kỹ thuật viên đối chiếu dữ liệu, vui lòng không sử dụng trực tiếp!</div>
+    <textarea readonly style="width: 99%;height: 250px;"><?php echo htmlentities( $v->bpx_content, ENT_QUOTES, 'UTF-8' ); ?></textarea>
+</div>
+<br>
+<?php
+}
+
+//
+/*
     $xml = simplexml_load_string( '<?xml version="1.0" encoding="UTF-8"?>
 ' . $v->bpx_content, "SimpleXMLElement", LIBXML_NOCDATA );
     $json = json_encode( $xml );
@@ -57,8 +86,16 @@ function WGR_recycle_bin_print( $v ) {
     print_r( $array );
     */
 
-    //
-    //exit();
+//
+//exit();
+}
+
+
+//
+$by_bpx_id = isset( $_GET[ 'by_bpx_id' ] ) ? $_GET[ 'by_bpx_id' ] : 0;
+$strFilter = "";
+if ( $by_bpx_id > 0 ) {
+    $strFilter = " AND bpx_id = " . $by_bpx_id;
 }
 
 
@@ -67,12 +104,16 @@ echo '<h3>eb_post_xml</h3>';
 $sql = _eb_q( "SELECT *
 	FROM
 		`eb_post_xml`
+    WHERE
+        1=1 " . $strFilter . "
+    GROUP BY
+        post_id
     ORDER BY
         bpx_id DESC
     LIMIT 0, 1000" );
 //print_r( $sql );
 foreach ( $sql as $v ) {
-    WGR_recycle_bin_print( $v );
+    WGR_recycle_bin_print( $v, $by_bpx_id );
     //break;
 }
 
@@ -81,12 +122,16 @@ echo '<h3>eb_backup_post_xml</h3>';
 $sql = _eb_q( "SELECT *
 	FROM
 		`eb_backup_post_xml`
+    WHERE
+        1=1 " . $strFilter . "
+    GROUP BY
+        post_id
     ORDER BY
         bpx_id DESC
     LIMIT 0, 1000" );
 //print_r( $sql );
 foreach ( $sql as $v ) {
-    WGR_recycle_bin_print( $v );
+    WGR_recycle_bin_print( $v, $by_bpx_id );
     //break;
 }
 
