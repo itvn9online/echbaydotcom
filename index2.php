@@ -8,6 +8,8 @@
  */
 
 
+
+
 //
 //$all_sizes = get_intermediate_image_sizes();
 //print_r( $all_sizes );
@@ -562,6 +564,7 @@ include EB_THEME_CORE . 'custom/taxonomy.php';
 include EB_THEME_CORE . 'custom/post-type.php';
 include EB_THEME_CORE . 'custom/meta-box.php';
 include EB_THEME_CORE . 'custom/user-meta.php';
+include_once EB_THEME_PLUGIN_INDEX . 'shortcode.php';
 
 
 //remove_filter( 'the_content', 'wpautop' );
