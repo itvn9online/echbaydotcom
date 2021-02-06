@@ -83,7 +83,7 @@ if ( $act == 'ebsearch' ) {
 	$posts_per_page = _eb_get_option('posts_per_page');
 	
 	// 2021-01-22 -> truyền thẳng array luôn
-	$a_post__in = $arrFilter;
+	$arr_post__in = $arrFilter;
 	
 	/*
 	$arr_post__in = array();
