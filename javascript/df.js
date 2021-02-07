@@ -950,7 +950,7 @@ function WGR_create_quick_link_edit_post() {
                 'data-add-edit': 1
             });
         });
-        
+
         // sửa phần icon mạng xã hội
         jQuery('#webgiare__top .footer-social, #webgiare__footer .footer-social').each(function () {
             var edit_exist = jQuery(this).attr('data-add-edit') || '';
@@ -1385,7 +1385,7 @@ function WGR_set_quick_view_height() {
 function ___eb_custom_login_done() {
     // thêm cookie để bỏ qua chế độ ebsuppercache
     g_func.setc('wgr_ebsuppercache_timeout', 1, 1800);
-    
+
     // re-load lại trang
     window.location = window.location.href;
 }
@@ -1420,11 +1420,11 @@ function WGR_list_of_content(for_tag, for_class) {
 
     //
     var str = '';
-    
+
     //
     for_tag = $.trim(for_tag).replace(/\s|\;/g, ',').split(',');
     //console.log(for_tag);
-    
+
     //
     var pho_tag = [];
     for (var i = 0; i < for_tag.length; i++) {
@@ -1481,7 +1481,7 @@ function WGR_list_of_content(for_tag, for_class) {
                 scrollTop: jQuery('#' + a).offset().top - 90
             }, 800);
         }
-        
+
         //
         return false;
     });
@@ -1569,6 +1569,17 @@ function WGR_create_href_for_facebook() {
     al(cf_google_plus, 'ahref-to-gooplus');
     al(cf_youtube_chanel, 'each-to-youtube-chanel');
     al(cf_twitter_page, 'each-to-twitter-page');
+
+    // thiết lập link nhắn tin cho page
+    if (cf_facebook_page != '') {
+        var a = cf_facebook_page.split('/');
+        //console.log(a[a.length - 1]);
+        
+        //
+        jQuery('.ahref-to-messenger').attr({
+            href: 'https://m.me/' + a[a.length - 1]
+        });
+    }
 }
 
 
