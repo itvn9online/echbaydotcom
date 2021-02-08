@@ -100,7 +100,6 @@ if ( $by_bpx_id > 0 ) {
 
 
 //
-echo '<h3>eb_post_xml</h3>';
 $sql = _eb_q( "SELECT *
 	FROM
 		`eb_post_xml`
@@ -112,13 +111,13 @@ $sql = _eb_q( "SELECT *
         bpx_id DESC
     LIMIT 0, 1000" );
 //print_r( $sql );
+echo '<h3>eb_post_xml (' . count( $sql ) . ')</h3>';
 foreach ( $sql as $v ) {
     WGR_recycle_bin_print( $v, $by_bpx_id );
     //break;
 }
 
 //
-echo '<h3>eb_backup_post_xml</h3>';
 $sql = _eb_q( "SELECT *
 	FROM
 		`eb_backup_post_xml`
@@ -130,6 +129,7 @@ $sql = _eb_q( "SELECT *
         bpx_id DESC
     LIMIT 0, 1000" );
 //print_r( $sql );
+echo '<h3>eb_backup_post_xml (' . count( $sql ) . ')</h3>';
 foreach ( $sql as $v ) {
     WGR_recycle_bin_print( $v, $by_bpx_id );
     //break;

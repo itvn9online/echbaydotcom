@@ -56,10 +56,10 @@ function WGR_eb_export_products_xm_backup_print( $v ) {
     $arr_post_options = wp_get_object_terms( $v->post_id, 'blog_tag' );
     print_r( $arr_post_options );
     */
-    
+
     //
     //die( 'df dhdfhdfh f' );
-    
+
 
     //
     $post_type = WGR_eb_export_products_xm_backup_get( $v->bpx_content, 'post_type' );
@@ -126,6 +126,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <channel>
 <title>Web giá rẻ</title>
 <link>
+
 http://webgiare.org
 </link>
 <description>Thiết kế web giá rẻ, wordpress giá rẻ</description>
@@ -163,23 +164,9 @@ $trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
 $offset = ( $trang - 1 ) * $limit;
 
 
-//
-$sql = _eb_q( "SELECT *
-	FROM
-		`eb_post_xml`
-    GROUP BY
-        post_id
-    ORDER BY
-        bpx_id DESC
-    LIMIT " . $offset . ", " . $limit );
-//print_r( $sql );
-foreach ( $sql as $v ) {
-    echo WGR_eb_export_products_xm_backup_print( $v );
-    //break;
-}
-
-//
-$sql = _eb_q( "SELECT *
+// lấy dữ liệu từ thùng rác
+if ( isset( $_GET['trash'] ) ) {
+    $sql = _eb_q( "SELECT *
 	FROM
 		`eb_backup_post_xml`
     GROUP BY
@@ -187,10 +174,27 @@ $sql = _eb_q( "SELECT *
     ORDER BY
         bpx_id DESC
     LIMIT " . $offset . ", " . $limit );
-//print_r( $sql );
-foreach ( $sql as $v ) {
-    echo WGR_eb_export_products_xm_backup_print( $v );
-    //break;
+    //print_r( $sql );
+    foreach ( $sql as $v ) {
+        echo WGR_eb_export_products_xm_backup_print( $v );
+        //break;
+    }
+}
+// mặc định chỉ lấy từ phần backup tự động
+else {
+    $sql = _eb_q( "SELECT *
+	FROM
+		`eb_post_xml`
+    GROUP BY
+        post_id
+    ORDER BY
+        bpx_id DESC
+    LIMIT " . $offset . ", " . $limit );
+    //print_r( $sql );
+    foreach ( $sql as $v ) {
+        echo WGR_eb_export_products_xm_backup_print( $v );
+        //break;
+    }
 }
 
 
