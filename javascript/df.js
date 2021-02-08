@@ -1577,7 +1577,7 @@ function WGR_create_href_for_facebook() {
         
         //
         jQuery('.ahref-to-messenger').attr({
-            href: 'https://m.me/' + a[a.length - 1]
+            href: 'https://m.me/' + a[a.length - 1].split('?')[0].split('&')[0]
         });
     }
 }

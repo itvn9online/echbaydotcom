@@ -360,6 +360,7 @@ jQuery('#click_show_mobile_bars').click(function () {
 jQuery('#click_show_search_bars').click(function () {
 	jQuery('#click_show_mobile_bars').click();
 	//	jQuery('body').toggleClass('show-search-mobile');
+    jQuery('#value_add_to_search').focus();
 });
 //jQuery('#click_show_search_bars').click();
 
