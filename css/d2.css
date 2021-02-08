@@ -223,7 +223,14 @@ label, .cur {
 /* */
 .div-valign-center {
     display: inline-flex;
+    display: grid;
     align-items: center;
+}
+.div-valign-center.text-right {
+    justify-items: right;
+}
+.div-valign-center.text-center {
+    justify-items: center;
 }
 /* */
 .d-flex, .blogs_node_chu_anh .echbay-blog-padding, .blogs_node_chutren_anhduoi .echbay-blog-padding {
@@ -2644,11 +2651,9 @@ iframe[name="google_conversion_frame"] {
 .child-thread-details-mobileAvt .jEBE_slider-toLeft {
     width: 40%;
 }
-/*
 .child-thread-details-mobileAvt .jEBE_slider-toRight {
     width: 60%;
 }
-*/
 /*
 .style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toLeft,
 .style-for-mobile .child-thread-details-mobileAvt .jEBE_slider-toRight { width: auto; }

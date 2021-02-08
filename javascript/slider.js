@@ -1017,7 +1017,7 @@ function jEBE_slider ( jd, conf, callBack, slider_reload ) {
 	
 	//
 	if ( conf['sliderArrow'] == true && len > conf['visible'] ) {
-		jQuery(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft div-valign-center"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight text-right div-valign-center"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
+		jQuery(jd).before('<div class="' + jd_class + '"><div class="jEBE_slider-toCenter"><div class="jEBE_slider-toLeft div-valign-center"><i class="fa ' + conf['sliderArrowLeft'] + '"></i></div> <div class="jEBE_slider-toRight div-valign-center text-right"><i class="fa ' + conf['sliderArrowRight'] + '"></i></div></div></div>');
 		
 		
 		//

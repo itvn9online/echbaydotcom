@@ -158,9 +158,20 @@
     display: -webkit-flex; /* Safari */
     display: flex;
 }
+/* căn giữa chữ theo chiều dọc */
 .div-valign-center {
     display: inline-flex;
     align-items: center;
+}
+/* căn giữa theo chiều dọc + căn phải ---> thêm text-right */
+.div-valign-center.text-right {
+    display: grid;
+    justify-items: right;
+}
+/* căn giữa theo chiều dọc + căn giữa ---> thêm text-center */
+.div-valign-center.text-center {
+    display: grid;
+    justify-items: center;
 }
 /* ================================== căn giữa thẻ DIV theo chiều ngang -> bao ngoài bởi thẻ text-center ================================== */
 .li-align-center, .div-align-center {
