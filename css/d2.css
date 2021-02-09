@@ -3387,3 +3387,17 @@ iframe[name="google_conversion_frame"] {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* fixed details right menu */
+.fixed-right-menu #main_right {
+    position: relative;
+}
+.fixed-right-menu .fix-right-menu {
+    position: absolute;
+    left: 0;
+    right: 21px;
+    top: 0;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+}

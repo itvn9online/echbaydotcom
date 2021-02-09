@@ -562,7 +562,7 @@ function ___eb_click_open_video_popup() {
 
             //
             dog('quick-video-content', str);
-            //			dog( 'quick-video-content', str + str + str + str + str + str + str );
+            //dog( 'quick-video-content', str + str + str + str + str + str + str );
 
 
             // chỉnh lại chiều cao dữ liệu một lần nữa
@@ -591,12 +591,12 @@ function ___eb_func_fix_right_menu() {
 
     // chiều cao của main -> lớn hơn right thì mới dùng chức năng này
     privary_main_height = jQuery(id_for_fix_main_content).height() || 0;
-    //	console.log( 'main: ' + privary_main_height );
+    //console.log( 'main: ' + privary_main_height );
 
     // điểm bắt đầu fix menu
     right_main_height = jQuery(id_for_fix_menu_content).offset().top || 0;
     right_main_height += jQuery('.fix-right-menu').height();
-    //	console.log( 'main_right: ' + right_main_height );
+    //console.log( 'main_right: ' + right_main_height );
 
     // xác định có auto scroll hay không
     fix_details_right_menu = false;
@@ -611,21 +611,25 @@ function ___eb_func_fix_right_menu() {
 
     // điểm kết thúc fix menu
     end_right_top_menu = jQuery('#fix_end_right_menu').offset().top - fix_right_window_height;
-    //	console.log( 'end right: ' + end_right_top_menu );
+    //console.log( 'end right: ' + end_right_top_menu );
 
     // fix style cho menu bên này, tránh bị vỡ khung
+    /*
     jQuery('.fix-right-menu').width(jQuery('#fix_right_menu').width()).css({
         left: jQuery('#fix_right_menu').offset().left + 'px'
     });
+    */
 
     //
     jQuery(window).scroll();
 }
 
 function ___eb_fix_left_right_menu() {
+    return ___WGR_fixed_left_right_menu();
 
     //
     if (g_func.mb_v2() == true) {
+        console.log('___eb_fix_left_right_menu disable in mobile');
         return false;
     }
 
@@ -641,16 +645,16 @@ function ___eb_fix_left_right_menu() {
     //
     jQuery(window).resize(function () {
         ___eb_func_fix_right_menu();
-        //	}).on('load', function() {
-        //		___eb_func_fix_right_menu();
+    //}).on('load', function() {
+        //___eb_func_fix_right_menu();
     }).scroll(function () {
-        //		console.log( fix_right_left_menu );
-        //		console.log( fix_right_top_menu );
-        //		console.log( end_right_top_menu );
+        //console.log( fix_right_left_menu );
+        //console.log( 'fix_right_top_menu: ' + fix_right_top_menu );
+        //console.log( 'end_right_top_menu: ' + end_right_top_menu );
 
         //
         var a = window.scrollY || jQuery(window).scrollTop();
-        //		console.log( end_right_top_menu );
+        //console.log( 'end_right_top_menu: ' + end_right_top_menu );
 
         if (fix_details_right_menu == true) {
             if (a > right_main_height) {
@@ -667,6 +671,70 @@ function ___eb_fix_left_right_menu() {
             }
         }
     });
+}
+
+//
+function ___WGR__fixed_left_right_menu(add_padding_top) {
+    var a = window.scrollY || jQuery(window).scrollTop();
+
+    // từ top tới right menu
+    var top_to_right = $('#main_right').offset().top;
+    //console.log(top_to_right);
+
+    // nhỏ hơn thì fixed cứng top 0
+    if (a < top_to_right) {
+        $('.fix-right-menu').css({
+            top: 0
+        });
+    }
+    // lớn hơn thì tính toán tiếp
+    else {
+        // chiều cao phần nội dung
+        var right_hight = $('.fix-right-menu').height();
+        //console.log('right_hight:' + right_hight);
+        // điểm cuối của right menu
+        //var end_right = $('.col-sidebar-content').height() - top_to_right;
+        var end_right = $('#fix_end_right_menu').offset().top - top_to_right - right_hight - add_padding_top;
+        //console.log('end_right:' + end_right);
+
+        // phần top add thêm
+        var add_top = a - top_to_right;
+        if (add_top > end_right) {
+            add_top = end_right;
+        }
+        add_top += add_padding_top;
+
+        //
+        $('.fix-right-menu').css({
+            top: add_top
+        });
+    }
+
+    //
+    setTimeout(function () {
+        ___WGR__fixed_left_right_menu(add_padding_top);
+    }, 200);
+}
+
+//
+function ___WGR_fixed_left_right_menu(add_padding_top) {
+    if (g_func.mb_v2() == true) {
+        console.log('___eb_fix_left_right_menu disable in mobile');
+        return false;
+    }
+
+    /*
+     * add_padding_top: dùng với các giao diện có sử dụng stick menu top -> sẽ có thêm giãn cách để không bị stick menu che
+     */
+    if (typeof add_padding_top != 'number') {
+        add_padding_top = 0;
+    }
+
+    //
+    $('body').addClass('fixed-right-menu');
+
+    //
+    ___WGR__fixed_left_right_menu(add_padding_top);
 }
 
 
