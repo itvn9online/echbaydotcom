@@ -223,13 +223,14 @@ label, .cur {
 /* */
 .div-valign-center {
     display: inline-flex;
-    display: grid;
     align-items: center;
 }
 .div-valign-center.text-right {
+    display: grid;
     justify-items: right;
 }
 .div-valign-center.text-center {
+    display: grid;
     justify-items: center;
 }
 /* */
