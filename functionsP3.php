@@ -720,7 +720,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
-    $str .= WGR_get_taxonomy_xml_list( $pid );
+    $str .= WGR_get_taxonomy_xml_list( $postid );
     /*
     $post_categories = wp_get_post_categories( $postid );
     //	print_r( $post_categories );
@@ -734,7 +734,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
-    $str .= WGR_get_taxonomy_xml_list( $pid, 'post_tag' );
+    $str .= WGR_get_taxonomy_xml_list( $postid, 'post_tag' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_tag' );
     //	print_r( $arr_post_options );
@@ -749,7 +749,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
-    $str .= WGR_get_taxonomy_xml_list( $pid, 'post_options' );
+    $str .= WGR_get_taxonomy_xml_list( $postid, 'post_options' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_options' );
     //	print_r( $arr_post_options );
@@ -764,7 +764,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
-    $str .= WGR_get_taxonomy_xml_list( $pid, 'blogs' );
+    $str .= WGR_get_taxonomy_xml_list( $postid, 'blogs' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'blogs' );
     //	print_r( $arr_post_options );
@@ -779,7 +779,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 
 
     //
-    $str .= WGR_get_taxonomy_xml_list( $pid, 'blog_tag' );
+    $str .= WGR_get_taxonomy_xml_list( $postid, 'blog_tag' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'blog_tag' );
     //	print_r( $arr_post_options );
