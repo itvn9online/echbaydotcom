@@ -2786,6 +2786,9 @@ iframe[name="google_conversion_frame"] {
     margin-bottom: 10px;
     padding: 8px 5px;
 }
+.clone-show-quick-cart .cart-pay-method div {
+    display: none;
+}
 .cart-paymethod-paygate {
     background: none !important;
     padding: 0 !important;
