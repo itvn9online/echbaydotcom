@@ -75,7 +75,7 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 		
 		// nếu không có mã cho phần này
 		if ( $code == '' ) {
-			// thử xem có ID không -> có thì gán luôn
+			// thử xem có ID không -> có thì gán luôn (tạo tự động mã theo dữ liệu người dùng nhập vào)
 			if ( $__cf_row['cf_gadsense_client_amp'] != '' && $__cf_row['cf_gadsense_slot_amp'] != '' ) {
 				$code = '<br>
 <div class="w99">
@@ -93,7 +93,7 @@ class ___echbay_widget_set_adsense_code extends WP_Widget {
 			}
 			// không thì trả về lỗi
 			else {
-				echo '<!-- ' . $this->name . ' (cf_js_gadsense is NULL) -->';
+				echo '<h4>' . $this->name . ' (cf_js_gadsense is NULL)<h4>';
 				return false;
 			}
 		}

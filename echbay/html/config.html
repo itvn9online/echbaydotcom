@@ -679,17 +679,24 @@ div.gallery-add-to-logo, div.gallery-add-to-favicon, div.gallery-add-to-og_image
                     <p class="description">Khi bạn nhúng font google qua đây, chúng tôi sẽ load font google dưới dạng mã lệnh tối ưu tốc độ cho website của bạn.</p></td>
             </tr>
             <tr>
+                <td class="i bold redcolor bborder" colspan="2">Google Adsense</td>
+            </tr>
+            <tr>
                 <td valign="top" class="t">Google Adsense code</td>
                 <td class="i"><textarea name="cf_js_gadsense_full" id="cf_js_gadsense_full" placeholder="Mã Google Adsense! dành cho ai thích nuôi GÀ (có cả widget hỗ trợ)">{tmp.cf_js_gadsense_full}</textarea>
                     <p class="description">Nơi dành để nhúng mã Google Adsense, thường là mã Auto vì chỗ này chỉ nhúng được một mã duy nhất.</p></td>
             </tr>
             <tr>
                 <td class="t">ID Nhà xuất bản</td>
-                <td class="i"><input type="text" name="cf_gadsense_client_amp" value="{tmp.cf_gadsense_client_amp}" placeholder="Chỉ nhập phần số trong mục: data-ad-client" class="m" maxlength="25" /></td>
+                <td class="i"><input type="text" name="cf_gadsense_client_amp" value="{tmp.cf_gadsense_client_amp}" placeholder="Chỉ nhập phần SỐ trong mục: data-ad-client" class="m" maxlength="25" />
+                <p class="description">Bạn cần tạo mã nhúng tự động thì có thể nhúng phần SỐ trong mục <strong>data-ad-client</strong>, hệ thống sẽ tự tạo mã khi bạn gọi đến nó.</p></td>
             </tr>
             <tr>
                 <td class="t">ID Đơn vị quảng cáo</td>
-                <td class="i"><input type="text" name="cf_gadsense_slot_amp" value="{tmp.cf_gadsense_slot_amp}" placeholder="Chỉ nhập phần số trong mục: data-ad-slot" class="m" maxlength="25" /></td>
+                <td class="i"><input type="text" name="cf_gadsense_slot_amp" value="{tmp.cf_gadsense_slot_amp}" placeholder="Chỉ nhập phần SỐ trong mục: data-ad-slot" class="m" maxlength="25" /></td>
+            </tr>
+            <tr>
+                <td class="i bold redcolor bborder" colspan="2">Nhúng script cho phần Admin</td>
             </tr>
             <tr>
                 <td valign="top" class="t">Cuối BODY admin</td>
