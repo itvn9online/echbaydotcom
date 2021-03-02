@@ -197,6 +197,8 @@ $eb_arr_type_custom_meta_box = array(
 	'_eb_category_primary' => 'checkbox',
 	'_eb_category_in_list' => 'checkbox',
 	'_eb_category_content' => 'textarea',
+	'_eb_category_header_outsource' => 'textarea_only',
+	'_eb_category_footer_outsource' => 'textarea_only',
 	'_eb_category_noindex' => 'checkbox',
 	'_eb_category_hidden' => 'checkbox',
 );
@@ -224,7 +226,11 @@ $eb_arr_placeholder_custom_meta_box = array(
 	
 	'_eb_category_avt' => 'Ảnh đại diện của phân nhóm, kích thước khuyến nghị là 500x400 pixel. Ảnh này sẽ xuất hiện khi chia sẻ nhóm lên các mạng xã hội như: Facebook, Twiter...',
 	'_eb_category_favicon' => 'Favicon là một ảnh nhỏ hơn, kích thước khuyến nghị là 64x64 pixel. Ảnh này thường dùng trong các menu nếu CSS của menu có hỗ trợ chức năng.',
-	'_eb_category_custom_css' => 'Là nơi nhập class CSS riêng để tiện cho việc thay đổi CSS theo từng danh mục cha, con...',
+	'_eb_category_custom_css' => 'Là nơi nhập class CSS riêng để tiện cho việc thay đổi CSS theo từng danh mục cha, con... Class này sẽ xuất hiện ở thẻ BODY, sau đó viết CSS ghi đè cho các class CSS là được.',
+    
+	'_eb_category_header_outsource' => 'Nơi nhập các mã nhúng ngoài vào từng Chuyên mục, mã này sẽ được nhúng vào phần HEAD.',
+	'_eb_category_footer_outsource' => 'Nơi nhập các mã nhúng ngoài vào từng Chuyên mục, mã này sẽ được nhúng vào phần FOOTER (trước thẻ đóng BODY).',
+    
 	'_eb_category_title' => 'Với định dạng màu sắc thì nhập mã màu vào (bao gồm cả dấu #)',
 	'_eb_category_google_product' => 'Tạo nhóm sản phẩm theo tiêu chuẩn của Google. <a href="https://support.google.com/merchants/answer/6324436?hl=vi" target="_blank" rel="nofollow">Tìm hiểu thêm...</a> Nên sử dụng nhóm sản phẩm dạng ID (số) theo <a href="https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt" target="_blank" rel="nofollow">danh sách này</a>, và chỉ sử dụng <strong>nhóm cấp 1</strong> thay vì các nhóm con chi tiết.',
 	'_eb_category_order' => 'Số càng lớn thì độ ưu tiên càng cao, nhóm sẽ được ưu tiên xuất hiện trước',
@@ -657,6 +663,8 @@ $arr_category_custom_fields['_eb_category_gender'] = WGR_admin_lang('_eb_product
 $arr_category_custom_fields['_eb_category_status'] = WGR_admin_lang('_eb_category_status');
 $arr_category_custom_fields['_eb_category_order'] = WGR_admin_lang('_eb_category_order');
 $arr_category_custom_fields['_eb_category_content'] = WGR_admin_lang('_eb_category_content');
+$arr_category_custom_fields['_eb_category_header_outsource'] = WGR_admin_lang('_eb_category_header_outsource');
+$arr_category_custom_fields['_eb_category_footer_outsource'] = WGR_admin_lang('_eb_category_footer_outsource');
 
 
 // Để tránh xung đột và thừa thãi -> chỉ kích hoạt cột liên quan đến SEO khi người dùng chọn bật nó, ngoài ra thì bỏ qua
@@ -868,6 +876,9 @@ function WGR_them_cot_du_lieu_cho_from_HTML_taxonomy ( $tag, $arr_category, $arr
 		else if ( $tai == 'checkbox' ) {
 			echo '<label for="' . $k . '"><input type="checkbox" name="' . $k . '" id="' . $k . '" value="' . $val . '" class="" />' . $arr_placeholder[$k] . '</label>';
 		}
+		else if ( $tai == 'textarea_only' ) {
+            echo '<textarea id="' . $k . '" name="' . $k . '" ' . $other_attr . '>' .$val. '</textarea>';
+        }
 		else if ( $tai == 'textarea' ) {
 			// cho chỉnh sửa khi SEO echbay đang bật
 			if ( cf_on_off_echbay_seo == 1 ) {
@@ -922,7 +933,7 @@ function WGR_luu_thong_tin_khi_capnhat_taxonomy ( $term_id, $arr_category, $arr_
 			$val = $_POST[ $k ];
 			
 			// Bỏ qua với textarea
-			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' ) {
+			if ( $loc_html == 'textarea_one' || $loc_html == 'textarea' || $loc_html == 'textarea_only' ) {
 //				$val = 'aaaaaaaaaaaa';
 			}
 			// nếu là checkbox -> set giá trị là 1

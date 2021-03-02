@@ -334,6 +334,10 @@ else {
     */
 }
 
+//
+$__cf_row['cf_js_head'] .= _eb_get_cat_object( $__category->term_id, '_eb_category_header_outsource' );
+$__cf_row['cf_js_allpage'] .= _eb_get_cat_object( $__category->term_id, '_eb_category_footer_outsource' );
+
 // chuyển url youtube trong nội dung thành mã nhúng clip
 if ( $cats_description != '' ) {
     $cats_description = preg_replace( "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i", "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $cats_description );

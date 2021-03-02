@@ -26,6 +26,9 @@ function WGR_admin_lang ( $k ) {
 		'_eb_category_status' => 'Trạng thái/ Định dạng',
 		'_eb_category_order' => 'Số thứ tự',
 		'_eb_category_content' => 'Giới thiệu',
+        
+		'_eb_category_header_outsource' => 'Mã nhúng ngoài (HEAD)',
+		'_eb_category_footer_outsource' => 'Mã nhúng ngoài (FOOTER)',
 		
 		
 		//
