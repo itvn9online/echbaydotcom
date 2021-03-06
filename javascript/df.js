@@ -369,6 +369,7 @@ function WGR_active_popup(op) {
     } else {
         jQuery(op['id_event']).fadeIn();
     }
+    jQuery(op['id_event']).addClass('hide-if-esc');
 
     // tắt popup
     if (op['time_end'] > 0) {
@@ -380,7 +381,7 @@ function WGR_active_popup(op) {
     }
 
     if (typeof op['close_icon'] != 'undefined' && op['close_icon'] != '') {
-        jQuery(op['id_event']).prepend('<div class="wgr-popup-close" onclick="jQuery(\'' + op['id_event'] + '\').fadeOut();"><i class="fa ' + op['close_icon'] + '"></i></div>');
+        jQuery(op['id_event']).prepend('<div class="wgr-popup-close" onclick="jQuery(\'' + op['id_event'] + '\').fadeOut();"><span><i class="fa ' + op['close_icon'] + '"></i></span></div>');
     }
 }
 

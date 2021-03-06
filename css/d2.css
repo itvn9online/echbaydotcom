@@ -3139,7 +3139,8 @@ iframe[name="google_conversion_frame"] {
 .wgr-popup-close {
     position: relative;
 }
-.wgr-popup-close i {
+/* .wgr-popup-close i, .wgr-popup-close svg { */
+.wgr-popup-close span {
     position: absolute;
     right: -12px;
     top: -12px;
@@ -3150,6 +3151,7 @@ iframe[name="google_conversion_frame"] {
     border-radius: 50%;
     box-shadow: 0 0 5px #fff;
     cursor: pointer;
+    display: inline-block;
 }
 .ui_ebe_quick_view, .quick-view-margin {
     -moz-transition: all 0.2s ease;
