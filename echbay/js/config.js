@@ -156,6 +156,17 @@ function check_update_config() {
 			f.cf_p_diachi.value += '<p>' + a[i] + '</p>';
 		}
 	}
+    
+    
+    // kiểm tra nếu là mã nhúng GA mới thì bắt buộc kích hoạt GTag
+    var a = $('input[name="cf_ga_id"]').val() || '';
+    if (a != '' && a.split('-')[0] == 'G' && dog('cf_gtag_id').checked == false) {
+        dog('cf_gtag_id').checked = true;
+        $('#cf_gtag_id').val(1).change();
+        //$('#cf_gtag_id').click();
+		//click_on_off_eb_cf_json( 'cf_gtag_id', $('#cf_gtag_id').val() );
+        console.log('Auto active GTag');
+    }
 	
 	
 	
