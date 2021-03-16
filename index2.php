@@ -1170,6 +1170,7 @@ function EBE_register_scripts() {
 //	echo $__cf_row['cf_remove_category_base'];
 
 include EB_THEME_PLUGIN_INDEX . 'plugins/rewrite-no-term-parents.php';
+include EB_THEME_PLUGIN_INDEX . 'plugins/remove-emoji.php';
 //	include EB_THEME_PLUGIN_INDEX . 'plugins/category-description-editor.php';
 //}
 
