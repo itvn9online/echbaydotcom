@@ -1692,3 +1692,8 @@ body.widgets-php #wpadminbar, body.widgets-php #adminmenuwrap {
     max-height: 666px;
     overflow-y: auto;
 }
+#eb_input_edit_product_color_color {
+    padding: 0;
+    height: 30px;
+    width: 90px;
+}

@@ -460,6 +460,7 @@ function ___eb_details_excerpt_html(a_before, a_after) {
 }
 
 
+
 // tạo số liệu rating ảo
 function ___eb_details_product_rating() {
 
@@ -703,10 +704,16 @@ function ___eb_details_product_color() {
                     }
 
                     //
-                    if (color_color != '' && (color_color.length == 3 || color_color.length == 6)) {
-                        bg = 'background-color:#' + color_color;
-                        cl = 'color-color';
-                    } else {
+                    if (color_color != '') {
+                        if ( color_color.substr(0, 1) == '#' ) {
+                            color_color = color_color.substr(1);
+                        }
+                        if (color_color.length == 3 || color_color.length == 6) {
+                            bg = 'background-color:#' + color_color;
+                            cl = 'color-color';
+                        }
+                    }
+                    if (bg == '') {
                         bg = 'background-image:url(' + ___eb_set_img_to_thumbnail(s) + ')';
                         cl = '';
                     }
@@ -835,7 +842,7 @@ function ___eb_details_product_color() {
     //
     //	console.log('select_default_color: ' + select_default_color);
     if (select_default_color != null) {
-        //		jQuery('.oi_product_color:first li:first').click();
+        //jQuery('.oi_product_color:first li:first').click();
         jQuery('.oi_product_color:first li[data-node="' + select_default_color + '"]').click();
 
         // nếu không có size theo màu và không có size của sản phẩm chính -> hẹn giờ lấy giá của màu đầu tiên (nếu có)
@@ -843,7 +850,7 @@ function ___eb_details_product_color() {
         if (size_rieng_cua_tung_mau == '' && arr_product_size.length == 0) {
             setTimeout(function () {
                 console.log('load price in color');
-                //				jQuery('.oi_product_color:first li:first').click();
+                //jQuery('.oi_product_color:first li:first').click();
                 jQuery('.oi_product_color:first li[data-node="' + select_default_color + '"]').click();
             }, 300);
         }
