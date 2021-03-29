@@ -44,6 +44,8 @@ if ( mtv_id == 1 ) {
 }
 */
 
+//echo __FILE__ . '<br>' . "\n";
+
 
 
 
@@ -877,7 +879,12 @@ if ( $__post->post_type == 'post' ) {
 // cơ bản là các hàm khác với post mặc định
 else {
 	include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
-	include EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php';
+    if ( file_exists(EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php') ) {
+        include EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php';
+    }
+    else {
+        include EB_THEME_PLUGIN_INDEX . 'global/details_blog.php';
+    }
 	
 	//
 	/*
