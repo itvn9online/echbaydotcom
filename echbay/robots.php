@@ -131,7 +131,7 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 	<br>
 	<p class="bold">Nội dung file robots.txt mẫu (file khuyên dùng của coder đưa ra):</p>
 	<div>
-		<textarea style="width:90%;max-width:800px;height:320px;" disabled><?php echo $str_robots_txt; ?></textarea>
+		<textarea onClick="click2Copy(this);" style="width:90%;max-width:800px;height:320px;" readonly><?php echo $str_robots_txt; ?></textarea>
 	</div>
 	<br>
 </div>

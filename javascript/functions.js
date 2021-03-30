@@ -925,3 +925,21 @@ function WGR_check_discount_code_return(jd) {
         jQuery('#' + jd).html('<span class="' + cl + '">' + m + m2 + '</span>');
     }
 }
+
+function click2Copy(element, textShow) {
+	element.focus();
+	element.select();
+	document.execCommand('copy');
+
+	if (typeof textShow != 'undefined' && textShow == true) {
+		try {
+			textShow = element.value;
+			textShow = ' ' + $.trim(textShow);
+		} catch (e) {
+			textShow = ''
+		}
+	} else {
+		textShow = ''
+	}
+	WGR_html_alert('Copied' + textShow);
+}
