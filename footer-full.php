@@ -21,7 +21,7 @@ if ( $__cf_row['cf_using_footer_default'] == 1 ) {
 </div>
 <!-- quick view video -->
 <div class="quick-video">
-	<div class="quick-video-close big cf">
+	<div onClick="close_img_quick_video_details();" class="quick-video-close big cf">
 		<div class="lf f40 show-if-mobile"><i title="Close" class="fas fa-times cur d-block"></i></div>
 		<div class="text-right rf f20 hide-if-mobile"><i title="Close" class="fas fa-times cur d-block"></i></div>
 	</div>

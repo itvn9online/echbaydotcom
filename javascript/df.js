@@ -578,9 +578,11 @@ function ___eb_click_open_video_popup() {
 
 
     //
+    /*
     jQuery('.quick-video-close i.fa-remove').click(function () {
         close_img_quick_video_details();
     });
+    */
 }
 
 //
