@@ -169,6 +169,7 @@ class ___echbay_widget_banner_big extends WP_Widget {
 		
 		//
 		echo '<div class="' . str_replace( '  ', ' ', trim( 'top-footer-css ' . $width ) ) . '">';
+        //echo $before_title . ' bbbbbbbbbbb <br>' . "\n";
 		
 		//
 //		_eb_echo_widget_title( $title, 'echbay-widget-blogs-title', $before_title );

@@ -75,6 +75,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 		
 		//
 		_eb_echo_widget_name( $this->name, $before_widget );
+        //echo $before_title . ' aaaaaaaaaaaaa <br>' . "\n";
 		
 		//
 		_eb_echo_widget_title(

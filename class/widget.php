@@ -825,7 +825,7 @@ function _eb_get_echo_widget_title(
     //	echo '<div class="echbay-widget-title">' . $before_title . $title . $after_title . '</div>';
     return '
 	<div class="echbay-widget-title ' . $clat . '">
-		<' . $dynamic_tag . ' title="' . WGR_widget_title_remove_bbcode( strip_tags( $title ) ) . '" class="echbay-widget-node-title ' . $before_title . '">' . WGR_widget_title_with_bbcode( $title ) . '</' . $dynamic_tag . '>
+		<' . $dynamic_tag . ' title="' . WGR_widget_title_remove_bbcode( strip_tags( $title ) ) . '" class="echbay-widget-node-title">' . WGR_widget_title_with_bbcode( $title ) . '</' . $dynamic_tag . '>
 	</div>';
 }
 
