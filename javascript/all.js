@@ -837,6 +837,32 @@ function fix_textarea_height() {
 }
 
 
+// khi nhúng URL map vào widget, khách hay copy cả iframe -> cắt lấy mỗi phần URL thôi
+function get_url_google_map_only (obj) {
+    console.log('Auto split iframe url only');
+    var a = obj.value || '';
+    
+    if (a == '') {
+        return false;
+    }
+    console.log(a);
+    
+    //
+    a = a.split('src="');
+    if (a.length == 1) {
+        return false;
+    }
+    
+    //
+    a = a[1].split('" ')[0];
+    console.log(a);
+    
+    //
+    obj.value = a;
+    return true;
+}
+
+
 
 
 

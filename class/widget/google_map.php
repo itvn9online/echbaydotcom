@@ -36,7 +36,7 @@ class ___echbay_widget_google_map extends WP_Widget {
 		
 		echo '<p class="fix-textarea-height">Địa chỉ (map): <textarea class="widefat" name="' . $this->get_field_name ( 'localtion' ) . '">' . $localtion . '</textarea> <span class="small">Chỉ dùng cho google map. Khi bạn có nhiều địa chỉ khác nhau, hãy liệt kê các địa chỉ này ra đây! Mỗi địa chỉ trên một dòng.</span></p>';
 		
-		echo '<p>URL map hoặc iframe: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" value="' . $url_video . '" /></p>';
+		echo '<p>URL map hoặc iframe: <input type="text" class="widefat" name="' . $this->get_field_name ( 'url_video' ) . '" onchange="return get_url_google_map_only(this);" value="' . $url_video . '" /></p>';
 		
 		echo '<p>Chiều rộng: <input type="number" class="tiny-text" name="' . $this->get_field_name ( 'width' ) . '" value="' . $width . '" /></p>';
 		
