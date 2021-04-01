@@ -33,11 +33,13 @@ if ( have_posts() ) {
         //print_r( $ads_url_redirect );
         if ( !empty( $ads_url_redirect ) ) {
             $ads_url_redirect = $ads_url_redirect[ 0 ];
+        } else {
+            $ads_url_redirect = '';
         }
         if ( $ads_url_redirect == '' ) {
             $ads_url_redirect = _eb_get_post_object( $post->ID, '_eb_ads_url' );
         }
-        //echo $ads_url_redirect . '<br>' . "\n";
+        //echo $ads_url_redirect . ' asdg sdgs <br>' . "\n";
         //echo web_link . '<br>' . "\n";
         //die( 'gh ssf' );
 
@@ -45,6 +47,7 @@ if ( have_posts() ) {
         if ( $ads_url_redirect != '' ) {
             wp_redirect( $ads_url_redirect );
         } else {
+            //echo 'df dhfh dh';
             //wp_redirect( web_link, 301 );
 
             // sử dụng child theme
