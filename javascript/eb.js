@@ -13,7 +13,8 @@ if (typeof $ == 'undefined') {
 var bg_load = 'Loading...',
     //	ctimeout = null,
     // tỉ lệ tiêu chuẩn của video youtube -> lấy trên youtube
-    youtube_video_default_size = 315 / 560,
+    //youtube_video_default_size = 315 / 560,
+    youtube_video_default_size = 9 / 16,
     //	youtube_video_default_size = 480/ 854,
     // tên miền chính sử dụng code này
     primary_domain_usage_eb = '',
