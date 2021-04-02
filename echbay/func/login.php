@@ -5,6 +5,17 @@
 // https://codex.wordpress.org/Function_Reference/wp_signon
 
 
+
+//print_r( $_POST );
+//print_r( $_GET );
+//exit();
+$_POST = EBE_stripPostServerClient ();
+
+// kiểm tra dữ liệu đầu vào phải đầy đủ
+WGR_check_ebnonce();
+//die('fg dsgs');
+
+
 //
 WGR_auto_update_link_for_demo ( _eb_get_option('home'), _eb_get_option('siteurl') );
 

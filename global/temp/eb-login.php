@@ -9,7 +9,8 @@ if ( $mtv_id > 0 ) {
         <div align="right" class="lf f30"><a onclick="g_func.opopup();" href="javascript:;">Đóng [x]</a></div>
     </div>
     <div class="popup-padding l19">
-        <form name="frm_dangnhap" method="post" action="process/?set_module=login" target="target_eb_iframe" onSubmit="return _global_js_eb.add_primari_iframe();">
+        <form name="frm_dangnhap" method="post" action="process/?set_module=login" target="target_eb_iframe" onSubmit="return _global_js_eb.check_login_frm();">
+            <div id="frm_login_token" class="d-none"></div>
             <div>
                 <label for="t_email"><strong>Email</strong></label>
             </div>

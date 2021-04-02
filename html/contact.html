@@ -8,6 +8,7 @@
 				<div class="lf f62 global-contact-left fullsize-if-mobile">
 					<div class="right-menu-space">
 						<form name="frm_contact" method="post" action="process/?set_module=contact" target="target_eb_iframe" onsubmit="return _global_js_eb.check_contact_frm();">
+                            <div id="frm_contact_token" class="d-none"></div>
 							<ul class="cart-ultable">
 								<li class="cf frm-global-contact-name">
 									<div class="lf f25">{tmp.lh_hoten}</div>
@@ -18,7 +19,7 @@
 								<li class="cf frm-global-contact-email">
 									<div class="lf f25">{tmp.lh_email}</div>
 									<div class="lf f75">
-										<input type="text" name="t_email" id="t_email" value=""{tmp.lh_required_email} />
+										<input type="email" name="t_email" id="t_email" value=""{tmp.lh_required_email} />
 									</div>
 								</li>
 								<li class="cf frm-global-contact-address">

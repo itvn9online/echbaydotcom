@@ -1,7 +1,13 @@
 <?php
 
 
+$_POST = EBE_stripPostServerClient ();
+
+// kiểm tra dữ liệu đầu vào phải đầy đủ
+WGR_check_ebnonce();
+
 //print_r($_POST);
+//die('fgjd dfhfjg ');
 if ( !isset($_POST['t_email']) ) {
 	_eb_alert('Dữ liệu đầu vào không chính xác');
 }

@@ -11,7 +11,8 @@ if ( $mtv_id > 0 ) {
     <div class="popup-padding l19">
         <div>Nhập email đăng nhập của bạn tại đây, sau đó kiểm tra email và làm theo hướng dẫn để lấy lại mật khẩu.</div>
         <br />
-        <form name="frm_quenpass" method="post" action="process/?set_module=fogotpassword" target="target_eb_iframe" onSubmit="return _global_js_eb.add_primari_iframe();">
+        <form name="frm_quenpass" method="post" action="process/?set_module=fogotpassword" target="target_eb_iframe" onSubmit="return _global_js_eb.check_forgot_pasword_frm();">
+            <div id="frm_fpasswd_token" class="d-none"></div>
             <div>
                 <label for="t_email"><strong>Email</strong></label>
             </div>

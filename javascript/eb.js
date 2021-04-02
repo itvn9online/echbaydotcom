@@ -494,11 +494,21 @@ var _global_js_eb = {
 
 
     //
+    sb_token: function (jd) {
+        var str = '';
+        str += '<input type="text" name="_ebnonce" value="' + window.location.href + '" />';
+        
+        $('#' + jd).html(str);
+    },
+    
     check_contact_frm: function () {
         _global_js_eb.add_primari_iframe();
+        
+        // thêm dữ liệu xác minh
+        _global_js_eb.sb_token('frm_contact_token');
 
         //
-        var f = document.frm_contact;
+        //var f = document.frm_contact;
 
         //
         return true;
@@ -508,16 +518,40 @@ var _global_js_eb = {
     //
     check_profile_frm: function () {
         _global_js_eb.add_primari_iframe();
+        
+        // thêm dữ liệu xác minh
+        _global_js_eb.sb_token('frm_profile_token');
 
         //
-        var f = document.frm_canhan;
+        //var f = document.frm_canhan;
 
         //
         return true;
     },
 
+    check_forgot_pasword_frm: function () {
+        _global_js_eb.add_primari_iframe();
+        
+        // thêm dữ liệu xác minh
+        _global_js_eb.sb_token('frm_fpasswd_token');
+        
+        return true;
+    },
+
+    check_login_frm: function () {
+        _global_js_eb.add_primari_iframe();
+        
+        // thêm dữ liệu xác minh
+        _global_js_eb.sb_token('frm_login_token');
+        
+        return true;
+    },
+    
     check_pasword_frm: function () {
         _global_js_eb.add_primari_iframe();
+        
+        // thêm dữ liệu xác minh
+        _global_js_eb.sb_token('frm_passwd_token');
 
         //
         var f = document.frm_canhan;

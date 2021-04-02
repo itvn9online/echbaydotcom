@@ -3,6 +3,10 @@
 
 
 //print_r($_POST);
+$_POST = EBE_stripPostServerClient ();
+
+// kiểm tra dữ liệu đầu vào phải đầy đủ
+WGR_check_ebnonce('__wgr_request_from');
 
 // kiểm tra dữ liệu đầu vào xem có chuẩn không, nếu có thì chỉ trong vòng 30 phút trở lại
 if ( ! isset($_POST['__wgr_nonce']) || $_POST['__wgr_nonce'] * 1 +  1800 < date_time ) {

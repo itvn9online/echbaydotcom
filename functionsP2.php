@@ -398,6 +398,26 @@ function EBE_stripPostServerClient() {
 	return $_POST;
 }
 
+function WGR_check_ebnonce( $key = '_ebnonce' ){
+
+    //
+    //echo $_SERVER['HTTP_REFERER'] . '<br>';
+
+    //
+    if ( !isset($_POST[$key]) ) {
+        _eb_alert( 'nonce?' );
+        return false;
+    }
+    
+    if ($_SERVER['HTTP_REFERER'] != $_POST[$key]) {
+        _eb_alert( 'nonce token?' );
+        return false;
+    }
+    
+    //
+    return true;
+}
+
 
 function _eb_checkDevice() {
 	if ( wp_is_mobile() ) {

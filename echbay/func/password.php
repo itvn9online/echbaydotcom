@@ -8,6 +8,9 @@ exit();
 */
 $_POST = EBE_stripPostServerClient ();
 
+// kiểm tra dữ liệu đầu vào phải đầy đủ
+WGR_check_ebnonce();
+
 
 //
 $t_matkhau = $_POST ['t_matkhau'];

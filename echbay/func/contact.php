@@ -7,6 +7,9 @@
 //exit();
 $_POST = EBE_stripPostServerClient ();
 
+// kiểm tra dữ liệu đầu vào phải đầy đủ
+WGR_check_ebnonce();
+
 
 //
 $t_email = strtolower ( trim ( $_POST ['t_email'] ) );
@@ -32,6 +35,7 @@ if (mtv_id > 0) {
 }
 $user_info = get_userdata( $tv_id );
 //print_r($user_info);
+//die('hj dfgd');
 $user_login = $user_info->user_login;
 
 
@@ -45,6 +49,7 @@ $message = EBE_str_template ( 'html/mail/contact.html', array (
 		'tmp.t_diachi' => $_POST['t_diachi'],
 		'tmp.t_dienthoai' => $_POST['t_dienthoai'],
 		'tmp.t_noidung' => nl2br( $_POST['t_noidung'] ),
+		'tmp._ebnonce' => $_POST['_ebnonce'],
 		
 		// lang
 		'tmp.lh_hoten' => EBE_get_lang('lh_hoten'),
