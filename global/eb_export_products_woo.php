@@ -37,20 +37,23 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 //
 foreach ( $sql as $v ) {
+    //print_r($v);
+    //die('fgh ddgd');
 //	$p_link = web_link . _eb_p_link( $v->ID );
 	$p_link = _eb_p_link( $v->ID );
 	
-	if ( strstr( $row['trv_img'], '//' ) == false ) {
-		$row['trv_img'] = $web_link . $row['trv_img'];
+	$trv_img = _eb_get_post_img( $v->ID );
+	if ( strstr( $trv_img, '//' ) == false ) {
+		$trv_img = web_link . $trv_img;
 	}
 	
 	
-	$category_slug = '';
-	$category_name = '';
+	//$category_slug = '';
+	//$category_name = '';
 	
 	
 	//
-	echo '<item>
+echo '<item>
 	<title><![CDATA[' . $v->post_title . ']]></title>
 	<link>' . $p_link . '</link>
 	<pubDate>' . $v->post_date . '</pubDate>
@@ -70,9 +73,35 @@ foreach ( $sql as $v ) {
 	<wp:menu_order>' . $v->menu_order . '</wp:menu_order>
 	<wp:post_type><![CDATA[' . $v->post_type . ']]></wp:post_type>
 	<wp:post_password><![CDATA[' . $v->post_password . ']]></wp:post_password>
-	<wp:is_sticky>0</wp:is_sticky>
-	<category domain="category" nicename="' . $category_slug . '"><![CDATA[' . $category_name . ']]></category>
-	<wp:postmeta>
+	<wp:is_sticky>0</wp:is_sticky>';
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $v->ID, 'product_cat' );
+	//print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'product_cat' );
+//		print_r( $cat );
+		
+		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+	
+	
+	//
+	$arr_post_options = wp_get_object_terms( $v->ID, 'product_tag' );
+	//print_r( $arr_post_options );
+	
+	foreach($arr_post_options as $c){
+		$cat = get_term( $c, 'product_tag' );
+//		print_r( $cat );
+		
+		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+	}
+    
+    
+        
+echo '<wp:postmeta>
 		<wp:meta_key><![CDATA[_eb_product_status]]></wp:meta_key>
 		<wp:meta_value><![CDATA[0]]></wp:meta_value>
 	</wp:postmeta>
@@ -97,6 +126,9 @@ foreach ( $sql as $v ) {
 		<wp:meta_value><![CDATA[' . _eb_get_post_img( $v->ID ) . ']]></wp:meta_value>
 	</wp:postmeta>
 </item>';
+    
+    
+    //die('gfh f sf');
 }
 
 
