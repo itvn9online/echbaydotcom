@@ -349,8 +349,8 @@ $strAjaxLink .= '&trang=' . $trang;
                 'ia_facebook' => 'for IA Facebook',
                 'wgr_xm_backup' => 'XML backup', // các bài viết bị xóa có thể được tìm thấy và khôi phục lại tại đây
                 'wgr_xm_backup&trash=1' => 'XML trash backup', // các bài viết bị xóa có thể được tìm thấy và khôi phục lại tại đây
-                'echbaydotcom' => 'from Echbaydotcom',
-                'woo' => 'from Woocommerce'
+                'echbaydotcom' => 'from Echbaydotcom', // backup các bài viết từ echbaydotcom sang echbaydotcom
+                'woo' => 'from Woocommerce', // backup các bài viết từ woocommerce sang echbaydotcom
             );
 
             $export_token = _eb_mdnam( $_SERVER[ 'HTTP_HOST' ] );

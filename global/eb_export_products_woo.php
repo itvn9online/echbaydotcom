@@ -1,6 +1,11 @@
 <?php
 
 
+/*
+* Chức năng export bài viết từ woocomerce để import sang echbaydotcom
+*/
+
+
 
 
 echo '<?xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +76,7 @@ echo '<item>
 	<wp:status><![CDATA[' . $v->post_status . ']]></wp:status>
 	<wp:post_parent>' . $v->post_parent . '</wp:post_parent>
 	<wp:menu_order>' . $v->menu_order . '</wp:menu_order>
-	<wp:post_type><![CDATA[' . $v->post_type . ']]></wp:post_type>
+	<wp:post_type><![CDATA[post]]></wp:post_type>
 	<wp:post_password><![CDATA[' . $v->post_password . ']]></wp:post_password>
 	<wp:is_sticky>0</wp:is_sticky>';
 	
@@ -84,7 +89,7 @@ echo '<item>
 		$cat = get_term( $c, 'product_cat' );
 //		print_r( $cat );
 		
-		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+		echo '<category domain="category" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
 	}
 	
 	
@@ -96,7 +101,7 @@ echo '<item>
 		$cat = get_term( $c, 'product_tag' );
 //		print_r( $cat );
 		
-		echo '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
+		echo '<category domain="post_tag" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
 	}
     
     
