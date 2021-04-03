@@ -4,7 +4,7 @@
 $_POST = EBE_stripPostServerClient ();
 
 // kiểm tra dữ liệu đầu vào phải đầy đủ
-WGR_check_ebnonce();
+//WGR_check_ebnonce();
 
 //print_r($_POST);
 //die('fgjd dfhfjg ');
