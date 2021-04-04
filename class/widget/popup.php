@@ -39,7 +39,7 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>Close icon: <input type="text" class="widefat" name="' . $this->get_field_name ( 'close_icon' ) . '" value="' . $close_icon . '" /> nếu có trường này, một nút bấm close popup sẽ được thêm vào.</p>';
+		echo '<p>Close icon: <input type="text" class="widefat" name="' . $this->get_field_name ( 'close_icon' ) . '" value="' . $close_icon . '" /> nếu có trường này, một nút bấm close popup sẽ được thêm vào. Ví dụ: <strong>fa-close</strong></p>';
 		
 		
 		//
