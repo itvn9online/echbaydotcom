@@ -508,27 +508,27 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
 $eb_note_first_lang[eb_key_for_site_lang . 'home_shortcode'] = 'Tạo mã để nhúng shortcode vào website, tránh trường hợp nhúng thẳng file tĩnh xong khách thay đổi hoặc xóa nhầm widget là đứt luôn code. Cách sử dụng: <strong>&lt;?php echo do_shortcode( EBE_get_lang(\'home_shortcode\') ); ?&gt;</strong>';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode'] = '[widget id="random_blog-0"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode1'] = '[widget id="random_blog-1"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode2'] = '[widget id="random_blog-2"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode3'] = '[widget id="random_blog-3"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode4'] = '[widget id="random_blog-4"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode5'] = '[widget id="random_blog-5"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode6'] = '[widget id="random_blog-6"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode7'] = '[widget id="random_blog-7"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode8'] = '[widget id="random_blog-8"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode9'] = '[widget id="random_blog-9"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode10'] = '[widget id="random_blog-10"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode11'] = '[widget id="random_blog-11"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode12'] = '[widget id="random_blog-12"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode13'] = '[widget id="random_blog-13"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode14'] = '[widget id="random_blog-14"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode15'] = '[widget id="random_blog-15"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode16'] = '[widget id="random_blog-16"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode17'] = '[widget id="random_blog-17"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode18'] = '[widget id="random_blog-18"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode19'] = '[widget id="random_blog-19"]';
-$___eb_lang[eb_key_for_site_lang . 'home_shortcode20'] = '[widget id="random_blog-20"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode1'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode2'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode3'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode4'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode5'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode6'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode7'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode8'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode9'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode10'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode11'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode12'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode13'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode14'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode15'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode16'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode17'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode18'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode19'] = '[widget id="tmp_shortcode_____"]';
+$___eb_lang[eb_key_for_site_lang . 'home_shortcode20'] = '[widget id="tmp_shortcode_____"]';
 
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức

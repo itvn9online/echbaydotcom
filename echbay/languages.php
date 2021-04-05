@@ -73,7 +73,7 @@ global $eb_class_css_lang;
 			// phần ngôn ngữ
 			echo '
 			<tr>
-				<td class="table-languages-copy"><input type="text" value="' . str_replace( eb_key_for_site_lang, '', $k ) . '" onclick="click2Copy(this, true);" /></td>
+				<td class="table-languages-copy"><input type="text" value="' . str_replace( eb_key_for_site_lang, '', $k ) . '" onclick="click2Copy(this, true);" readonly /></td>
 				<td class="table-languages-edit">';
 			
 			if ( isset( $eb_type_lang[ $k ] ) ) {
