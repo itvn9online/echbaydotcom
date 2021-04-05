@@ -934,7 +934,7 @@ function click2Copy(element, textShow) {
 	if (typeof textShow != 'undefined' && textShow == true) {
 		try {
 			textShow = element.value;
-			textShow = ' ' + $.trim(textShow);
+			textShow = ' <strong>' + $.trim(textShow) + '</strong>';
 		} catch (e) {
 			textShow = ''
 		}

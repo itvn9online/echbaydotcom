@@ -810,7 +810,10 @@ body.order_open_in_popup #open_list_bao_xau {
     padding: 12px;
     margin-bottom: 30px;
 }
-/* .table-languages-list .table-languages-edit { padding: 0; } */
+.table-languages-list .table-languages-copy {
+    padding: 0;
+    padding-left: 6px;
+}
 .table-languages-list input[type="number"], .table-languages-list input[type="text"], .table-languages-list textarea {
     width: 99%;
     height: 20px;
