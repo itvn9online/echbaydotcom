@@ -27,7 +27,7 @@ if ( $__cf_row['cf_set_news_version'] != 1 ) {
 	$web_og_type = 'product';
 }
 else {
-	*/
+*/
 	$web_og_type = 'article';
 //}
 
@@ -57,6 +57,7 @@ $trv_giaban = 0;
 $trv_giamoi = 0;
 $pt = 0;
 if ( $__post->post_type == 'post' || $__post->post_type == 'product' ) {
+	$web_og_type = EBE_get_lang('schema_product_type');
 	$bai_san_pham = true;
 	
 	//

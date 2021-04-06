@@ -437,6 +437,7 @@ $eb_note_lang[eb_key_for_site_lang . 'search_autocomplete'] = 'on/ off';
 $eb_note_first_lang[eb_key_for_site_lang . 'schema_home_type'] = 'Định nghĩa Type cho phần dữ liệu có cấu trúc';
 $___eb_lang[eb_key_for_site_lang . 'schema_home_type'] = 'Person';
 $___eb_lang[eb_key_for_site_lang . 'schema_post_type'] = 'Product';
+$___eb_lang[eb_key_for_site_lang . 'schema_product_type'] = 'product';
 $eb_ex_from_github[eb_key_for_site_lang . 'schema_post_type'] = 'https://developers.google.com/search/docs/data-types/product';
 $___eb_lang[eb_key_for_site_lang . 'schema_blog_type'] = 'BlogPosting';
 $eb_ex_from_github[eb_key_for_site_lang . 'schema_blog_type'] = 'https://developers.google.com/search/docs/data-types/article';
