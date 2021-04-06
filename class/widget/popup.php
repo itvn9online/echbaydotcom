@@ -35,11 +35,10 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>ID/ Class: <input type="text" class="widefat" name="' . $this->get_field_name ( 'id_event' ) . '" value="' . $id_event . '" /> ID hoặc Class CSS dùng để điều khiển popup. Vui lòng nhập đầy đủ dấu # hoặc . nếu có.</p>';
-		
-		
-		//
-		echo '<p>Close icon: <input type="text" class="widefat" name="' . $this->get_field_name ( 'close_icon' ) . '" value="' . $close_icon . '" /> nếu có trường này, một nút bấm close popup sẽ được thêm vào. Ví dụ: <strong>fa-close</strong></p>';
+		echo '<p>ID/ Class: <input type="text" class="widefat" name="' . $this->get_field_name ( 'id_event' ) . '" value="' . $id_event . '" /> ID hoặc Class CSS dùng để điều khiển popup. Vui lòng nhập đầy đủ dấu # hoặc dấu . nếu có.</p>';
+        
+        
+        echo '<hr />';
 		
 		
 		//
@@ -47,7 +46,22 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>Thời gian kết thúc (Tính theo giây): <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_end' ) . '" value="' . $time_end . '" /> Là thời gian popup sẽ tự động tắt sau khi được bật. Nhập 0 nếu bạn không muốn popup tự tắt.</p>';
+		echo '<p>Thời gian kết thúc (Tính theo giây): <input type="number" class="widefat" name="' . $this->get_field_name ( 'time_end' ) . '" value="' . $time_end . '" /> Là thời gian popup sẽ tự động tắt sau khi được bật. Nhập 0 nếu bạn không muốn popup tự tắt (người dùng sẽ bấm phím <em>ESC</em> hoặc nút close để tắt - cần bổ sung nút close nếu chưa có trong form).</p>';
+		
+		
+		//
+		echo '<p>Thời gian bật lại (Tính theo phút): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time' ) . '" value="' . $cookie_time . '" /> Nhập số phút mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 120, nghĩa là 2 giờ sau sẽ tự động mở lại popup (tương ứng với 2 giờ thì có thể sử dụng luôn dữ liệu giờ ở dưới).</p>';
+		
+		
+		//
+		echo '<p>Thời gian bật lại (Tính theo giờ): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time1' ) . '" value="' . $cookie_time1 . '" /> Nhập số giờ mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 48, nghĩa là 48 giờ sau sẽ tự động mở lại popup (tương ứng với 2 ngày thì có thể sử dụng luôn dữ liệu ngày ở dưới).</p>';
+		
+		
+		//
+		echo '<p>Thời gian bật lại (Tính theo ngày): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time2' ) . '" value="' . $cookie_time2 . '" /> Nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
+        
+        
+        echo '<hr />';
 		
 		
 		//
@@ -55,15 +69,7 @@ class ___echbay_widget_open_popup extends WP_Widget {
 		
 		
 		//
-		echo '<p>Thời gian bật lại (Tính theo phút): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time' ) . '" value="' . $cookie_time . '" /> Nhập số phút mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 120, nghĩa là 2 giờ sau sẽ tự động mở lại popup.</p>';
-		
-		
-		//
-		echo '<p>Thời gian bật lại (Tính theo giờ): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time1' ) . '" value="' . $cookie_time1 . '" /> Nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
-		
-		
-		//
-		echo '<p>Thời gian bật lại (Tính theo ngày): <input type="number" class="widefat" name="' . $this->get_field_name ( 'cookie_time2' ) . '" value="' . $cookie_time2 . '" /> Nhập số ngày mà bạn muốn popup sẽ được tự động bật lại. Ví dụ: 7, nghĩa là 7 ngày sau sẽ tự động mở lại popup.</p>';
+		echo '<p>Close icon: <input type="text" class="widefat" name="' . $this->get_field_name ( 'close_icon' ) . '" value="' . $close_icon . '" /> nếu có trường này, một nút bấm close popup sẽ được thêm vào. Ví dụ: <strong>fa-close</strong> (nút close nên tự thiết kế theo form để chuẩn giao diện)</p>';
 		
 		
 		//
