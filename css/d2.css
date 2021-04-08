@@ -3002,7 +3002,7 @@ iframe[name="google_conversion_frame"] {
     position: relative;
     z-index: 999;
 }
-.each-to-edit-ads svg, .each-to-edit-menu svg, .each-setup-goto-edit svg, .each-to-edit-ads i, .each-to-edit-menu i, .each-setup-goto-edit i {
+/* .each-to-edit-ads i, .each-to-edit-ads svg, */ .each-to-edit-ads span, .each-to-edit-menu svg, .each-setup-goto-edit svg, .each-to-edit-menu i, .each-setup-goto-edit i {
     position: absolute;
     right: 0;
     top: 0;
@@ -3019,11 +3019,13 @@ iframe[name="google_conversion_frame"] {
     display: inline-block !important;
     z-index: 5;
 }
-.each-to-edit-ads i {
+/* .each-to-edit-ads i { */
+.each-to-edit-ads span {
     right: 5px;
     top: -16px;
 }
-.quick-edit-content_only .each-to-edit-ads i {
+/* .quick-edit-content_only .each-to-edit-ads i { */
+.quick-edit-content_only .each-to-edit-ads span {
     top: 0;
 }
 .no-set-width-this-li {

@@ -980,7 +980,7 @@ function WGR_create_quick_link_edit_post() {
 
             //
             if (edit_exist == '') {
-                jQuery(this).before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" title="Chỉnh sửa logo" class="fa fa-edit click-goto-edit"></i></div>');
+                jQuery(this).before('<div class="each-setup-goto-edit"><span data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=advanced&support_tab=cf_logo" title="Chỉnh sửa logo" class="click-goto-edit"><i class="fa fa-edit"></i></span></div>');
             }
 
             //
@@ -995,7 +995,7 @@ function WGR_create_quick_link_edit_post() {
 
             //
             if (edit_exist == '') {
-                jQuery(this).before('<div class="each-setup-goto-edit"><i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=contact&support_tab=cf_diachi" title="Chỉnh sửa địa chỉ" class="fa fa-edit click-goto-edit"></i></div>');
+                jQuery(this).before('<div class="each-setup-goto-edit"><span data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=contact&support_tab=cf_diachi" title="Chỉnh sửa địa chỉ" class="click-goto-edit"><i class="fa fa-edit"></i></span></div>');
             }
 
             //
@@ -1012,7 +1012,7 @@ function WGR_create_quick_link_edit_post() {
             //
             if (edit_exist == '') {
                 if (a * 1 > 0) {
-                    jQuery(this).html('<i data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" title="Chỉnh sửa menu" class="fa fa-edit click-goto-edit"></i>');
+                    jQuery(this).html('<span data-href="' + web_link + 'wp-admin/nav-menus.php?action=edit&menu=' + a + '" title="Chỉnh sửa menu" class="click-goto-edit"><i class="fa fa-edit"></i></span>');
                 }
             }
 
@@ -1028,7 +1028,7 @@ function WGR_create_quick_link_edit_post() {
 
             //
             if (edit_exist == '') {
-                jQuery(this).prepend('<i data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=social&support_tab=cf_facebook_page" title="Chỉnh sửa social URL" class="fa fa-edit click-goto-edit cur"></i>');
+                jQuery(this).prepend('<span data-href="' + web_link + 'wp-admin/admin.php?page=eb-config&tab=social&support_tab=cf_facebook_page" title="Chỉnh sửa social URL" class="click-goto-edit"><i class="fa fa-edit"></i></span>');
             }
 
             //
@@ -1065,7 +1065,7 @@ function WGR_create_quick_link_edit_post() {
                     }
 
                     // hiển thị nút sửa và size khung ảnh
-                    jQuery(this).prepend('<div class="each-to-edit-ads"><i data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit fa fa-edit"></i></div>');
+                    jQuery(this).prepend('<div class="each-to-edit-ads"><span data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit"><i class="fa fa-edit"></i></span></div>');
                 }
             }
 
