@@ -18,7 +18,8 @@ if ( $str_history == '' || strstr( $str_history, '[' . $pid . ']' ) == false ) {
 
 
 // set trạng thái trang là sản phẩm
-$web_og_type = 'product';
+//$web_og_type = 'product';
+$web_og_type = EBE_get_lang('schema_product_type');
 
 //
 //	$check_html_rieng = _eb_get_private_html( 'blog_details.html', 'blog_node.html' );

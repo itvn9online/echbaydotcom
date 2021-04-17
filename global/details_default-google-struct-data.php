@@ -612,17 +612,6 @@ else {
 	$get_img_size = '';
 }
 
-
-//
-$this_post_author = get_the_author();
-if ( $this_post_author == '' ) {
-    $this_post_author = get_the_author_meta( 'first_name', $__post->post_author );
-    if ( $this_post_author == '' ) {
-        $this_post_author = get_the_author_meta( 'nickname', $__post->post_author );
-    }
-}
-//echo $this_post_author . '<br>' . "\n";
-
 //
 //echo $trv_img . '<br>';
 //echo $get_img_size . '<br>';
@@ -658,25 +647,15 @@ if ( $trv_giamoi > 0 ) {
 	"description": "' . $__cf_row ['cf_description'] . '",
 //	"mpn": "' .$pid. '"
 	"url": "' . str_replace( '/', '\/', $url_og_url ) . '",
-    "mpn": "",
+	
 	//
-    "review": {
-        "@type": "Review",
-        "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "' .$rating_value_img. '",
-            "bestRating": "5"
-        },
-        "author": {
-            "@type": "Person",
-            "name": "' . $this_post_author . '"
-        }
-    },
+	/*
 	"aggregateRating": {
 		"@type": "AggregateRating",
 		"ratingValue": "' .$rating_value_img. '",
 		"reviewCount": "' .$trv_rating_count. '"
 	},
+	*/
 	"offers": {
 		"@type": "Offer",
 //		"priceCurrency": "VND",
@@ -707,8 +686,6 @@ if ( $trv_giamoi > 0 ) {
 </script>' ), true ) );
 	
 }
-// v2 -> đang ngâm cứu
-//if ( $bai_san_pham == false || EBE_get_lang('schema_post_type') != 'Product' ) {
 else {
 	
 	//
@@ -720,6 +697,13 @@ else {
 		
 		//
 		$blog_img_logo = web_link . $blog_img_logo;
+	}
+	
+	
+	//
+	$this_post_author = get_the_author();
+	if ( $this_post_author == '' ) {
+		$this_post_author = get_the_author_meta( 'nickname', $__post->post_author );
 	}
 	
 	//
@@ -753,21 +737,8 @@ else {
 	}
 }
 </script>' ), true ) );
-    
-    
-    // v2 -> đang ngâm cứu
-    /*
-    $structured_data_detail = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/structured-data/Article.js', 1 );
-	//$structured_data_detail = _eb_del_line( WGR_remove_js_comment ( WGR_remove_js_multi_comment ( $structured_data_detail ) ) );
-    $structured_data_detail = EBE_html_template( $structured_data_detail, [
-        'tmp.web_link' => web_link,
-        'tmp.structured_data_post_title' => $structured_data_post_title,
-    ] );
-    $structured_data_detail = '<script type="application/ld+json" class="echbaydotcom-schema-graph">' . $structured_data_detail . '</script>';
-	*/
+	
 }
-
-//echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
 
 //
 if ( $structured_data_detail != '' ) {
