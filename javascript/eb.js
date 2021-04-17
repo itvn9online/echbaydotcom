@@ -1031,7 +1031,7 @@ var _global_js_eb = {
                         new_size.split('x').split('*');
                         new_size = new_size[1] + '/' + new_size[0];
                     }
-                    pading_size = 'ty-le-h' + new_size.replace(/\//gi, '_');
+                    pading_size = 'ty-le-h' + new_size.replace(/\/|\./gi, '_');
 
                     //
                     //				a *= new_size;
