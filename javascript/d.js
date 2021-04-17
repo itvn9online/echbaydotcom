@@ -1732,6 +1732,12 @@ if (jQuery('dynamic_title_tag').length > 0) {
 jQuery('.widget-category-selectbox .echbay-widget-title').append('<i class="fas fa-sort-down"></i>');
 
 
-// TEST
-//g_func.opopup('login');
-//g_func.opopup('register');
+// mở trang đăng ký, đăng nhập cho người dùng khi cần hỗ trợ
+(function (hr) {
+    if (hr.split('?register=1')) {
+        g_func.opopup('register');
+    }
+    else if (hr.split('?login=1')) {
+        g_func.opopup('login');
+    }
+})(window.location.href);

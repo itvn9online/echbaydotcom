@@ -57,7 +57,7 @@
 #aabbcc .footer-address-company {}
 #aabbcc .footer-address-info {}
 #aabbcc .footer-address-info strong {}
-#aabbcc .footer-address-info i {}
+#aabbcc .footer-address-info svg, #aabbcc .footer-address-info i {}
 #aabbcc .footer-address-info div {
     margin-top: 6px;
 }
@@ -180,8 +180,10 @@
 /* ==================================  ================================== */
 /* desktop only */
 @media only screen and (min-width:748px) {}
-/* mobile only */
+/* mobile, table only */
 @media only screen and (max-width:788px) {}
+/* mobile only */
+@media only screen and (max-width:395px) {}
 /* ================================== search ================================== */
 #aabbcc .div-search-margin {}
 #aabbcc .div-search {}
