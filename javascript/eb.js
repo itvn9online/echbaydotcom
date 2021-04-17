@@ -992,7 +992,7 @@ var _global_js_eb = {
         jQuery('.ti-le-global').each(function () {
             var a = jQuery(this).width(),
                 // hiển thị size ảnh gợi ý cho admin
-                show_hegiht = 0,
+                show_height = 0,
                 // tỉ lệ kích thước giữa chiều cao và rộng (nếu có), mặc định là 1x1
                 // -> nhập vào là: chiều cao/ chiều rộng
                 new_size = jQuery(this).attr('data-size') || '';
@@ -1024,7 +1024,7 @@ var _global_js_eb = {
                 });
             } else {
                 var pading_size = 'ty-le-h100';
-                show_hegiht = a;
+                show_height = a;
                 // Tính toán chiều cao mới dựa trên chiều rộng
                 if (new_size != '') {
                     if (new_size.split('x').length > 1 || new_size.split('*').length > 1) {
@@ -1038,7 +1038,7 @@ var _global_js_eb = {
                     
                     // v2 -> tính padding theo chiều rộng
                     a = eval(new_size);
-                    show_hegiht *= a;
+                    show_height *= a;
                     
                     // v1 -> tính chiều cao theo chiều rộng
                     //a *= eval(new_size);
@@ -1055,16 +1055,19 @@ var _global_js_eb = {
                     new_arr_ti_le_global[pading_size] = a;
                 }
 
-                //
-                jQuery(this).addClass(pading_size).addClass('ty-le-global').removeClass('ti-le-global').attr({
-                    'data-show-height': show_hegiht
-                });
-                /*
-                jQuery(this).css({
-                    'line-height': a + 'px',
-                    height: a + 'px'
-                });
-                */
+                // 1 số trường hợp vẫn dùng class cũ
+                if ( $(this).hasClass('thread-details-mobileAvt') ) {
+                    jQuery(this).css({
+                        'line-height': show_height + 'px',
+                        height: show_height + 'px'
+                    });
+                }
+                // còn lại sẽ cho class mới
+                else {
+                    jQuery(this).addClass(pading_size).addClass('ty-le-global').removeClass('ti-le-global').attr({
+                        'data-show-height': show_height
+                    });
+                }
             }
         });
         //console.log(arr_ti_le_global);
