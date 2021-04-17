@@ -104,7 +104,7 @@ var big_banner_timeout1 = null;
             sliderArrow: WGR_check_option_on(cf_arrow_big_banner) ? true : false,
             version: cf_rand_slider,
 
-            //			thumbnail : '.banner-ads-media',
+            //thumbnail : '.banner-ads-media',
             size: jQuery('.oi_big_banner li:first .ti-le-global').attr('data-size') || ''
         });
     } else {
@@ -236,7 +236,7 @@ var big_banner_timeout1 = null;
         //		sliderArrowLeft : 'fa-chevron-circle-left',
         //		sliderArrowRight : 'fa-chevron-circle-right',
 
-        //		thumbnail : 'ul li',
+        //thumbnail : 'ul li',
         size: jQuery('.banner-chan-trang li:first .ti-le-global').attr('data-size') || ''
     });
 

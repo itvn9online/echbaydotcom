@@ -22,7 +22,8 @@ var bg_load = 'Loading...',
     height_for_lazzy_load = 0,
     sb_submit_cart_disabled = 0,
     ebe_arr_cart_product_list = [],
-    ebe_arr_cart_customer_info = [];
+    ebe_arr_cart_customer_info = [],
+    arr_ti_le_global = {};
 
 
 //
@@ -987,8 +988,11 @@ var _global_js_eb = {
 
 
         // chỉnh kích cỡ ảnh theo tỉ lệ
+        var new_arr_ti_le_global = {};
         jQuery('.ti-le-global').each(function () {
             var a = jQuery(this).width(),
+                // hiển thị size ảnh gợi ý cho admin
+                show_hegiht = 0,
                 // tỉ lệ kích thước giữa chiều cao và rộng (nếu có), mặc định là 1x1
                 // -> nhập vào là: chiều cao/ chiều rộng
                 new_size = jQuery(this).attr('data-size') || '';
@@ -1019,29 +1023,63 @@ var _global_js_eb = {
                     height: a + 'px'
                 });
             } else {
+                var pading_size = 'ty-le-h100';
+                show_hegiht = a;
                 // Tính toán chiều cao mới dựa trên chiều rộng
                 if (new_size != '') {
                     if (new_size.split('x').length > 1 || new_size.split('*').length > 1) {
                         new_size.split('x').split('*');
                         new_size = new_size[1] + '/' + new_size[0];
                     }
+                    pading_size = 'ty-le-h' + new_size.replace(/\//gi, '_');
 
                     //
                     //				a *= new_size;
-                    a *= eval(new_size);
-                    a += 1;
+                    
+                    // v2 -> tính padding theo chiều rộng
+                    a = eval(new_size);
+                    show_hegiht *= a;
+                    
+                    // v1 -> tính chiều cao theo chiều rộng
+                    //a *= eval(new_size);
+                    //a += 1;
                 }
                 // Mặc định là 1x1 -> chiều cao = chiều rộng
                 //				else {
                 //				}
+                //console.log(pading_size);
+                //console.log(a);
+                
+                if (typeof arr_ti_le_global[pading_size] == 'undefined') {
+                    arr_ti_le_global[pading_size] = a;
+                    new_arr_ti_le_global[pading_size] = a;
+                }
 
                 //
+                jQuery(this).addClass(pading_size).addClass('ty-le-global').removeClass('ti-le-global').attr({
+                    'data-show-height': show_hegiht
+                });
+                /*
                 jQuery(this).css({
                     'line-height': a + 'px',
                     height: a + 'px'
                 });
+                */
             }
         });
+        //console.log(arr_ti_le_global);
+        //console.log(new_arr_ti_le_global);
+        var str_css = '';
+        for ( var x in new_arr_ti_le_global ) {
+            new_arr_ti_le_global[x] *= 100;
+            
+            // quy đổi padding teo % chiều rộng của width
+            str_css += '.' + x + '{padding-top:' + ( new_arr_ti_le_global[x].toFixed(3) * 1 ) + '%}';
+        }
+        if ( str_css != '' ) {
+            console.log('ty-le-global padding CSS: ' + str_css);
+            $('head').append('<style>' + str_css + '</style>');
+        }
         //		console.log( eval('560/315') );
         //		console.log( eval('2/3') );
 

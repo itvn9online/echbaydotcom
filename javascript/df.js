@@ -648,7 +648,7 @@ function ___eb_fix_left_right_menu() {
     //
     jQuery(window).resize(function () {
         ___eb_func_fix_right_menu();
-    //}).on('load', function() {
+        //}).on('load', function() {
         //___eb_func_fix_right_menu();
     }).scroll(function () {
         //console.log( fix_right_left_menu );
@@ -1048,21 +1048,35 @@ function WGR_create_quick_link_edit_post() {
                 edit_exist = jQuery(this).attr('data-add-edit') || '',
                 t = jQuery(this).attr('data-type') || '',
                 w = 0,
-                h = 0;
+                h = 0,
+                pading_top = 0;
 
             //
             if (edit_exist == '') {
                 //				if (a * 1 > 0 && t == 'ads') {
                 if (a * 1 > 0) {
                     //
-                    w = jQuery('.ti-le-global', this).width() || 0;
+                    w = jQuery('.ty-le-global', this).width() || jQuery('.ti-le-global', this).width() || 0;
                     if (w * 1 > 0) {
                         w = Math.ceil(w);
                     }
-                    h = jQuery('.ti-le-global', this).height() || 0;
-                    if (h * 1 > 0) {
-                        h = Math.ceil(h);
+                    
+                    // tìm thêm padding top cho phiên bản mới
+                    /*
+                    pading_top = jQuery('.ty-le-global', this).css('padding-top') || 0;
+                    console.log(pading_top);
+                    if (pading_top * 1 > 0) {
+                        h = Math.ceil(pading_top);
                     }
+                    // không có thì mới tìm theo height
+                    else {
+                    */
+                        //h = jQuery('.ty-le-global', this).height() || jQuery('.ti-le-global', this).height() || 0;
+                        h = jQuery('.ty-le-global', this).attr('data-show-height') || jQuery('.ti-le-global', this).height() || 0;
+                        if (h * 1 > 0) {
+                            h = Math.ceil(h);
+                        }
+                    //}
 
                     // hiển thị nút sửa và size khung ảnh
                     jQuery(this).prepend('<div class="each-to-edit-ads"><span data-href="' + web_link + 'wp-admin/post.php?post=' + a + '&action=edit" title="Chỉnh sửa bài viết. Kích thước banner: ' + w.toString() + 'x' + h.toString() + '" class="click-goto-edit"><i class="fa fa-edit"></i></span></div>');
@@ -1645,7 +1659,7 @@ function WGR_create_href_for_facebook() {
     if (cf_facebook_page != '') {
         var a = cf_facebook_page.split('/');
         //console.log(a[a.length - 1]);
-        
+
         //
         jQuery('.ahref-to-messenger').attr({
             href: 'https://m.me/' + a[a.length - 1].split('?')[0].split('&')[0]

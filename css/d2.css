@@ -2487,6 +2487,12 @@ iframe[name="google_conversion_frame"] {
     line-height: normal;
     height: auto;
 }
+.ty-le-global {
+    position: relative;
+    height: 1px !important;
+    height: 0px !important;
+    line-height: normal !important;
+}
 .echbay-blog-avt.auto-size {
     background: none;
 }
