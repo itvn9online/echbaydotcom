@@ -1435,13 +1435,22 @@ button.btn-addto-cart {
 .youtube-quick-view li .echbay-blog-avt {
     text-align: center;
 }
-.youtube-quick-view li .echbay-blog-avt i.fa, .youtube-quick-view li .echbay-blog-avt i.fas, .youtube-quick-view li .echbay-blog-avt svg {
-    font-size: 30px;
+.youtube-quick-view li .echbay-blog-avt span.fa-fa-youtube {
+    font-size: 20px;
     margin: 0 auto;
-    color: #CC181E;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border-radius: 8px;
 }
-.youtube-quick-view li:hover .echbay-blog-avt i.fa, .youtube-quick-view li:hover .echbay-blog-avt i.fas, .youtube-quick-view li:hover .echbay-blog-avt svg {
-    color: #fff;
+.youtube-quick-view li:hover .echbay-blog-avt span.fa-fa-youtube {
+    background-color: red;
 }
 /*
 .youtube-quick-view li .echbay-blog-avt:before {

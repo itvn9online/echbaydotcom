@@ -564,8 +564,9 @@ if (isLogin > 0) {
 }
 
 
-//
-$('.blogs_node_chi_chu .echbay-blog-title').prepend('<i class="fa fa-circle"></i>');
-$('.youtube-quick-view li .echbay-blog-avt').append('<i class="fa fa-youtube"></i>');
+// thêm các icon cho phiên bản font awesome 5
+$('.blogs_node_chi_chu .echbay-blog-title').prepend('<span class="fa-fa-circle"><i class="fa fa-circle"></i></span>');
+//$('.youtube-quick-view li .echbay-blog-avt').append('<span class="fa-fa-youtube"><i class="fa fa-youtube"></i></span>');
+$('.youtube-quick-view li .echbay-blog-avt').append('<span class="fa-fa-youtube"><i class="fa fa-play"></i></span>');
 
 
