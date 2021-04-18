@@ -1044,6 +1044,10 @@ var _global_js_eb = {
                     //a *= eval(new_size);
                     //a += 1;
                 }
+                // mặc định thì cho = 1 -> 100%
+                else {
+                    a = 1;
+                }
                 // Mặc định là 1x1 -> chiều cao = chiều rộng
                 //				else {
                 //				}
