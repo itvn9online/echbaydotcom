@@ -1110,3 +1110,17 @@ function WGR_download( $source, $dest ) {
     //
     return false;
 }
+
+// hiển thị shortcode thông qua widget shortcode
+function WGR_echo_shortcode( $key ) {
+    $value = EBE_get_lang( $key );
+    
+    // không hiển thị nếu đặt lệnh là ẩn
+    if ( $value == 'hide' || $value == 'null' ) {
+        return false;
+    }
+    
+    // còn lại sẽ gọi đến hàm shortcode đẻ hiển thị ra
+    echo do_shortcode( $value );
+    return true;
+}

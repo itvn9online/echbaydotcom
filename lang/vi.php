@@ -514,7 +514,7 @@ $___eb_lang[eb_key_for_site_lang . 'custom_text9'] = 'Custom text 9';
 
 
 // ngôn ngữ riêng trong trang chi tiết sản phẩm, tin tức
-$eb_note_first_lang[eb_key_for_site_lang . 'home_shortcode'] = 'Tạo mã để nhúng shortcode vào website (chủ yếu dùng cho page template), tránh trường hợp nhúng thẳng file tĩnh xong khách thay đổi hoặc xóa nhầm widget là đứt luôn code. Cách sử dụng: <strong>&lt;?php echo do_shortcode( EBE_get_lang(\'home_shortcode\') ); ?&gt;</strong>';
+$eb_note_first_lang[eb_key_for_site_lang . 'home_shortcode'] = 'Tạo mã để nhúng shortcode vào website (chủ yếu dùng cho page template), tránh trường hợp nhúng thẳng file tĩnh xong khách thay đổi hoặc xóa nhầm widget là đứt luôn code. Cách sử dụng: <strong>&lt;?php echo WGR_echo_shortcode(\'home_shortcode\'); ?&gt;</strong>';
 $___eb_lang[eb_key_for_site_lang . 'home_shortcode'] = '[widget id="tmp_shortcode_____"]';
 $___eb_lang[eb_key_for_site_lang . 'home_shortcode1'] = '[widget id="tmp_shortcode_____"]';
 $___eb_lang[eb_key_for_site_lang . 'home_shortcode2'] = '[widget id="tmp_shortcode_____"]';
