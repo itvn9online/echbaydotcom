@@ -950,6 +950,9 @@ function WGR_update_font_awesome5() {
 }
 
 function WGR_reload_lazy_function() {
+    console.log('Re-load WGR lazy function');
+    
+    //
     disable_eblazzy_load = false;
     _global_js_eb.ebe_currency_format();
     WGR_check_load_js_category();
@@ -964,6 +967,9 @@ function WGR_reload_lazy_function() {
     //	WGR_update_font_awesome5();
 
     WGR_create_href_for_facebook();
+    
+    //
+    WGR_fixed_a_tag();
 }
 
 function WGR_create_quick_link_edit_post() {

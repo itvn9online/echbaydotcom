@@ -1343,7 +1343,7 @@ var current_pid_quicview = pid,
 
 
 // nhảy đến 1 ID đã được xác định (tương tự như thẻ A name)
-(function () {
+function WGR_fixed_a_tag() {
     var nol = 0,
         dm = document.domain;
     if (WGR_check_option_on(cf_auto_nofollow)) {
@@ -1367,8 +1367,9 @@ var current_pid_quicview = pid,
         var a = jQuery(this).attr('href') || '';
         //console.log(a);
 
-        if (a != '') {
+        if (a != '' && jQuery(this).hasClass('WGR-fixed-atag') == false) {
             //console.log(a.substr(0, 1));
+            jQuery(this).addClass('WGR-fixed-atag');
 
             // Chế độ nhảy đến link
             if (a.substr(0, 1) == '#') {
@@ -1448,7 +1449,8 @@ var current_pid_quicview = pid,
             }
         }
     });
-})();
+}
+WGR_fixed_a_tag();
 
 
 //
