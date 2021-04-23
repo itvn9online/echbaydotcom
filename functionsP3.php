@@ -1117,10 +1117,10 @@ function WGR_echo_shortcode( $key ) {
     
     // không hiển thị nếu đặt lệnh là ẩn
     if ( $value == 'hide' || $value == 'null' ) {
-        return false;
+        return '';
     }
     
     // còn lại sẽ gọi đến hàm shortcode đẻ hiển thị ra
     echo do_shortcode( $value );
-    return true;
+    return '';
 }
