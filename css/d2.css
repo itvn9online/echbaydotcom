@@ -2501,6 +2501,7 @@ iframe[name="google_conversion_frame"] {
     height: 1px !important;
     height: 0px !important;
     line-height: normal !important;
+    padding-top: 75%;
 }
 .echbay-blog-avt.auto-size {
     background: none;
