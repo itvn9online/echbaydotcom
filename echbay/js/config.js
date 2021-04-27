@@ -316,7 +316,7 @@ function create_deault_css () {
 	str += create_css_for_custom_in_js( '', '', {
 		'for' : 'footer_logo',
 		'mobile' : null,
-		'pc' : '.web2-logo .web-logo, #webgiare__footer .web-logo'
+		'pc' : '.web2-logo .web-logo, #webgiare__footer .web-logo, #footer-lazyload .web-logo'
 	} );
 	
 	// các mã màu được sinh ra sau khi bộ JS kia chạy

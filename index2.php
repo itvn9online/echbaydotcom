@@ -1094,13 +1094,28 @@ function EBE_deregister_scripts() {
 
 // https://developer.wordpress.org/reference/functions/wp_register_script/
 function EBE_register_scripts() {
+    //die('dfg ffs');
     // xóa jquery mặc định
+    //wp_dequeue_script( 'jquery' );
     wp_deregister_script( 'jquery' );
+    
     //	wp_deregister_script( 'jquery-core' );
+    
+    //wp_dequeue_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery-migrate' );
+    
+    wp_dequeue_script( 'font-awesome-4-shim' );
+    wp_deregister_script( 'font-awesome-4-shim' );
 
     // thay font awesome của elementor bằng của echbay -> cho đỡ bị load lại
+    wp_dequeue_style( 'font-awesome' );
     wp_deregister_style( 'font-awesome' );
+    
+    //wp_deregister_style( 'font-awesome-5-all' );
+    //wp_dequeue_style( 'font-awesome-5-all' );
+    
+    //wp_deregister_style( 'font-awesome-4-shim' );
+    //wp_dequeue_style( 'font-awesome-4-shim' );
 
 
     // add jquery mới
