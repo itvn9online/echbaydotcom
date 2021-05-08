@@ -896,3 +896,24 @@ setTimeout(function () {
 
 //
 g_func.setc('wgr_ebsuppercache_timeout', 1, 1800);
+
+
+//
+(function () {
+    /*
+     * Chức năng dành riêng cho trang widget
+     */
+    if (jQuery('body.widgets-php').length == 0) {
+        return false;
+    }
+    console.log('%c Chức năng chạy riêng trên trang widget', 'color: green;');
+
+    //
+    if (jQuery('#widgets-right').length == 0) {
+        console.log('%c Không xác định được thẻ #widgets-right', 'color: red;');
+        return false;
+    }
+
+    //
+    jQuery('#widgets-right').before('<div class="redcolor"><input type="checkbox" onClick="jQuery(\'#widgets-right\').toggleClass(\'active\');" /> Đánh dấu vào ô này để kích hoạt chức năng chỉnh sửa widget. Việc chỉnh sửa widget yêu cầu nhân viên kỹ thuật có độ am hiểu nhất định để tránh việc làm hỏng giao diện website. Nếu không phải là bạn, vui lòng bỏ qua chức năng này. Xin cảm ơn.<div>');
+})();

@@ -1595,7 +1595,7 @@ form[name="frm_invoice_details"] input[type="text"] {}
 .widget-liquid-right .open .eb-widget-fixed {
 .widget-liquid-right .open .widget-content {
 	*/
-    .widget-liquid-right .open .widget-inside {
+    .widget-liquid-right #widgets-right.active .open .widget-inside {
         display: block;
         position: fixed;
         left: 0;
@@ -1609,7 +1609,7 @@ form[name="frm_invoice_details"] input[type="text"] {}
         overflow: auto;
         box-shadow: 0 0 20px #999;
     }
-    .widget-liquid-right .open .widget-control-actions {
+    .widget-liquid-right #widgets-right.active .open .widget-control-actions {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -1620,22 +1620,22 @@ form[name="frm_invoice_details"] input[type="text"] {}
         padding: 15px;
         border-top: 1px #ccc solid;
     }
-    .widget-liquid-right .open .widget-title h3 {
+    .widget-liquid-right #widgets-right.active .open .widget-title h3 {
         color: #f00;
     }
-    .sidebar-eb_z1_recycle_bin {
+    #widgets-right.active .sidebar-eb_z1_recycle_bin {
         position: fixed;
         bottom: 5px;
         /*
-	left: 30%;
-	*/
+        left: 30%;
+        */
         right: auto;
         max-width: 350px;
         z-index: 9999;
         max-height: 350px;
         overflow: auto;
     }
-    .sidebar-eb_z1_recycle_bin.closed {
+    #widgets-right.active .sidebar-eb_z1_recycle_bin.closed {
         background: rgba(255, 255, 255, .5) !important;
         border-color: #ff8d00;
     }
@@ -1702,3 +1702,23 @@ body.widgets-php #wpadminbar, body.widgets-php #adminmenuwrap {
     width: 90px;
 }
 */
+/* ẩn chức năng sửa dữ liệu trong widget */
+.widget-liquid-right #widgets-right {
+    position: relative;
+}
+.widget-liquid-right #widgets-right:before {
+    content: "";
+    border: 1px #ccc solid;
+    top: 0;
+    right: 0;
+    height: auto;
+    width: 100%;
+    z-index: 9999;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+.widget-liquid-right #widgets-right.active:before {
+    display: none;
+}
