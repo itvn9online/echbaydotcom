@@ -113,7 +113,7 @@ function WGR_admin_quick_edit_products(connect_to, url_request, parameter, func_
 		opacity: 0.2
 	});
 
-	var uri = connect_to + url_request + parameter
+	var uri = connect_to + url_request + parameter;
 	//console.log(uri);
 	ajaxl(uri, 'rAdminME', 9, function () {
 		jQuery('#rAdminME').css({
