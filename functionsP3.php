@@ -1115,8 +1115,8 @@ function WGR_download( $source, $dest ) {
 function WGR_echo_shortcode( $key ) {
     $value = EBE_get_lang( $key );
     
-    // không hiển thị nếu đặt lệnh là ẩn
-    if ( $value == 'hide' || $value == 'null' ) {
+    // không hiển thị nếu đặt lệnh là ẩn hoặc vẫn là dạng tmp
+    if ( $value == 'hide' || $value == 'null' || strstr($value, 'tmp_shortcode_____' ) == true ) {
         return '';
     }
     
