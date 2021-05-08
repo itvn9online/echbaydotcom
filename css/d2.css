@@ -508,6 +508,9 @@ label, .cur {
 .hide-if-gia-zero[data-gia="0"], .hide-if-gia-zero[data-per="0"] .old-price, .hide-if-gia-zero[data-per="0"] .thread-list-per, .hide-if-gia-zero[data-per="0"] .thread-list-hide, .echbay-blog-giamoi[data-gia="0"] {
     display: none;
 }
+.thread-list-per {
+    z-index: 1;
+}
 /* */
 .old-price {
     text-decoration: line-through;
