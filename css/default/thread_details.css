@@ -28,6 +28,8 @@
 .thread-details-slogan {}
 .thread-details-slogan li {
     margin-bottom: 5px;
+    background-color: var(--default-bg);
+    color: white;
 }
 .thread-details-slogan div {
     position: relative;
