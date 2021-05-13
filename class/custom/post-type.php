@@ -181,6 +181,13 @@ function ech_bay_custom_post_type() {
 		'post-formats'
 //	), 71 );
 	), 8 );
+	
+	// cho phần blog dùng chung phần thẻ với sản phẩm -> xuất phát từ yêu cầu của wondertou, muốn các bài viết kinh nghiệm du lịch sẽ xuất hiện khớp với danh mục tour tương ứng
+    /*
+	$args['taxonomies'] = array(
+		'post_tag',
+	);
+    */
  
 	// Tạo post type với slug tên là sanpham và các tham số trong biến $args ở trên
 	register_post_type($custom_post_module, $args);

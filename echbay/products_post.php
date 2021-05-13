@@ -524,14 +524,14 @@ $strAjaxLink .= '&trang=' . $trang;
 
         //
         $sql = "SELECT *
-	FROM
-		`" . wp_posts . "`
-		" . $joinFilter . "
-	WHERE
-		" . $strFilter . "
-	ORDER BY
-		`" . wp_posts . "`.menu_order DESC
-	LIMIT " . $offset . ", " . $threadInPage;
+        FROM
+            `" . wp_posts . "`
+            " . $joinFilter . "
+        WHERE
+            " . $strFilter . "
+        ORDER BY
+            `" . wp_posts . "`.menu_order DESC
+        LIMIT " . $offset . ", " . $threadInPage;
         //	echo $sql; 
         $sql = _eb_q( $sql );
         //	print_r( $sql ); exit();

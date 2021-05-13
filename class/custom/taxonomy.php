@@ -41,7 +41,7 @@ function dang_ky_taxonomy() {
 	*/
 	$taxonomy_post_type = EB_BLOG_POST_TYPE;
 	
-	// register_taxonomy blogs
+	// register taxonomy blogs
 	$labels = array(
 		'name' => 'Danh mục tin',
 		'singular_name' => 'Danh mục tin',
@@ -67,13 +67,13 @@ function dang_ky_taxonomy() {
 		'show_tagcloud' => true
 	);
 	
-	// Hàm register_taxonomy để khởi tạo taxonomy
+	// Hàm register taxonomy để khởi tạo taxonomy
 	register_taxonomy(EB_BLOG_POST_LINK, $taxonomy_post_type, $args);
 	WGR_custom_term_slug_edit_success( EB_BLOG_POST_LINK );
 	
 	
 	
-	// register_taxonomy blog_tag
+	// register taxonomy blog_tag
 	$labels = array(
 		'name' => 'Danh sách từ khóa',
 //		'singular' => 'Từ khóa',
@@ -110,7 +110,7 @@ function dang_ky_taxonomy() {
 	
 	
 	/*
-	* Sản phẩm/ Bài viết register_taxonomy post_options
+	* Sản phẩm/ Bài viết register taxonomy post_options
 	*/
 	$taxonomy_post_type = 'post';
 	
@@ -150,7 +150,7 @@ function dang_ky_taxonomy() {
 	WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_options' );
 	
 	
-	// register_taxonomy discount_code
+	// register taxonomy discount_code
 	$labels = array(
 		'name' => 'Mã giảm giá',
 		'singular_name' => 'Mã giảm giá',
