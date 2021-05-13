@@ -61,6 +61,8 @@ $_POST['cf_show_img_color'] = WGR_default_config('cf_show_img_color');
 
 $_POST['cf_details_show_quick_cart'] = WGR_default_config('cf_details_show_quick_cart');
 
+$_POST['cf_details_bottom_quick_cart'] = WGR_default_config('cf_details_bottom_quick_cart');
+
 $_POST['cf_details_show_share_button'] = WGR_default_config('cf_details_show_share_button');
 
 $_POST['cf_add_to_cart_iframe'] = WGR_default_config('cf_add_to_cart_iframe');

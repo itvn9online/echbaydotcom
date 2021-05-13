@@ -356,7 +356,12 @@ $__cf_row_default = array(
 	// Ẩn/ Hiện nút nhỏ nhỏ màu đỏ trên silder
 	'cf_details_show_list_next' => 'off',
 	'cf_details_show_list_thumb' => 1,
+    
+    // hiển thị form mua hàng nhanh
 	'cf_details_show_quick_cart' => 1,
+    // chuyển form mua hàng nhanh xuống dưới chân trang -> trên facebook
+	'cf_details_bottom_quick_cart' => 'off',
+    
 	'cf_details_show_share_button' => 1,
 	'cf_details_short_quick_cart' => 'off',
 	'cf_donot_remove_quick_cart' => 'off',

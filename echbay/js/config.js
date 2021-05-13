@@ -1170,6 +1170,7 @@ else {
 	show_note_for_checkbox_config( 'cf_disable_auto_get_thumb' );
 	show_note_for_checkbox_config( 'cf_show_img_color' );
 	show_note_for_checkbox_config( 'cf_details_show_quick_cart' );
+	show_note_for_checkbox_config( 'cf_details_bottom_quick_cart' );
 	show_note_for_checkbox_config( 'cf_details_short_quick_cart' );
 	show_note_for_checkbox_config( 'cf_donot_remove_quick_cart' );
 	show_note_for_checkbox_config( 'cf_required_phone_cart' );

@@ -183,11 +183,11 @@ function ___eb_details_slider_v2() {
 
 
     // tạo lại hiệu ứng cho phần gallery của (nếu có)
-    $('#content_img_product .gallery dl.gallery-item .gallery-icon a').click(function () {
+    jQuery('#content_img_product .gallery dl.gallery-item .gallery-icon a').click(function () {
         return false;
     });
     // https://www.jqueryscript.net/lightbox/Responsive-Touch-enabled-jQuery-Image-Lightbox-Plugin.html
-    //	var gallery = $('#content_img_product .gallery dl.gallery-item .gallery-icon a').simpleLightbox();
+    //	var gallery = jQuery('#content_img_product .gallery dl.gallery-item .gallery-icon a').simpleLightbox();
 
 
     // -> nếu vẫn không có -> hủy slider
@@ -1220,6 +1220,14 @@ function ___eb_details_post_run(r) {
         console.log('Show quick cart for Facebook browser');
         jQuery('.clone-show-mobile-quick-cart').addClass('clone-show-quick-cart');
     }
+    
+    // nếu có lệnh chuyển quick cart xuống cuối trang
+    if (WGR_check_option_on(cf_details_bottom_quick_cart)) {
+        // xóa class này ở những mục khác
+        jQuery('.clone-show-quick-cart').remove();
+        // sau đó thêm mới ở dưới cùng bài viết
+        jQuery('.thread-details-contenttab').after('<div class="clone-show-quick-cart"></div>');
+    }
 
     // -> một số theme nào cần hiển thị thì tạo kiểm tra class và đưa lên
     if (jQuery('.clone-show-quick-cart').length > 0) {
@@ -1246,7 +1254,7 @@ function ___eb_details_post_run(r) {
     _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-quickcart-coupon');
 
     if (cart_shipping_content != '') {
-        $('.eb-quickcart-shipping_fee').show();
+        jQuery('.eb-quickcart-shipping_fee').show();
     }
 
     // color
