@@ -106,20 +106,20 @@ function EBE_admin_set_realtime_for_file( $arr ) {
 function WGR_check_and_load_tmp_theme( $load_config_temp, $dir_all_theme ) {
     global $arr_for_show_html_file_load;
     global $arr_for_add_css;
-    //	global $arr_for_add_theme_css;
+    //global $arr_for_add_theme_css;
 
     //
     $tmp_child_theme = '';
     if ( using_child_wgr_theme == 1 ) {
         $tmp_child_theme = EB_CHILD_THEME_URL . 'ui/' . $load_config_temp;
-        //		echo $tmp_child_theme . '<br>' . "\n";
+        //echo $tmp_child_theme . '<br>' . "\n";
     }
 
     $tmp_theme = EB_THEME_URL . 'ui/' . $load_config_temp;
-    //	echo $tmp_theme . '<br>' . "\n";
+    //echo $tmp_theme . '<br>' . "\n";
 
     $tmp_plugin = EB_THEME_PLUGIN_INDEX . 'themes/' . $dir_all_theme . '/' . $load_config_temp;
-    //	echo $tmp_plugin . '<br>' . "\n";
+    //echo $tmp_plugin . '<br>' . "\n";
 
 
     // ưu tiên hàng của child theme trước
@@ -129,7 +129,7 @@ function WGR_check_and_load_tmp_theme( $load_config_temp, $dir_all_theme ) {
         $main_content = file_get_contents( $tmp_child_theme, 1 );
 
         $arr_for_add_css[ EBE_get_css_for_theme_design( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
-        //		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
+        //$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp, EB_CHILD_THEME_URL ) ] = 1;
     }
     // sau đó đến theme
     else if ( file_exists( $tmp_theme ) ) {
@@ -138,7 +138,7 @@ function WGR_check_and_load_tmp_theme( $load_config_temp, $dir_all_theme ) {
         $main_content = file_get_contents( $tmp_theme, 1 );
 
         $arr_for_add_css[ EBE_get_css_for_theme_design( $load_config_temp ) ] = 1;
-        //		$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp ) ] = 1;
+        //$arr_for_add_theme_css[ EBE_get_css_for_theme_design ( $load_config_temp ) ] = 1;
     }
     // rồi đến plugin
     else if ( file_exists( $tmp_plugin ) ) {
@@ -147,7 +147,7 @@ function WGR_check_and_load_tmp_theme( $load_config_temp, $dir_all_theme ) {
         $main_content = file_get_contents( $tmp_plugin, 1 );
 
         $arr_for_add_css[ EBE_get_css_for_config_design( $load_config_temp, '.html' ) ] = 1;
-        //		$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
+        //$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
     } else {
         return 'File ' . $load_config_temp . ' not exist';
     }
@@ -190,7 +190,7 @@ function WGR_parameter_not_found( $f ) {
 
 // host không phải là bản demo -> cập nhật lại url mới luôn và ngay
 function WGR_auto_update_link_for_demo( $current_homeurl, $current_siteurl ) {
-    //	if ( $_SERVER['HTTP_HOST'] == 'demo.webgiare.org' ) {
+    //if ( $_SERVER['HTTP_HOST'] == 'demo.webgiare.org' ) {
     if ( $_SERVER[ 'HTTP_HOST' ] == 'webgiare.org' || $_SERVER[ 'HTTP_HOST' ] == 'themes.webgiare.org' ) {
         return false;
     }
@@ -198,8 +198,8 @@ function WGR_auto_update_link_for_demo( $current_homeurl, $current_siteurl ) {
     // riêng đối với domain demo của webgiare
     if (
         strstr( $current_homeurl, 'webgiare.org/demo' ) == true
-        //		|| strstr( $current_homeurl, 'www.webgiare.org/demo' ) == true
-        //		|| strstr( $current_siteurl, 'www.webgiare.org/demo' ) == true
+        //|| strstr( $current_homeurl, 'www.webgiare.org/demo' ) == true
+        //|| strstr( $current_siteurl, 'www.webgiare.org/demo' ) == true
         ||
         strstr( $current_siteurl, 'webgiare.org/demo' ) == true
     ) {
@@ -241,7 +241,7 @@ function WGR_sync_old_url_in_content( $a, $c ) {
         if ( $v != '' ) {
             // nếu tên miền hiện tại là tên miền cũ -> redirect luôn
             if ( $v == $_SERVER[ 'HTTP_HOST' ] ) {
-                //				echo _eb_get_option('home') . $_SERVER['REQUEST_URI'];
+                //echo _eb_get_option('home') . $_SERVER['REQUEST_URI'];
                 wp_redirect( _eb_get_option( 'home' ) . $_SERVER[ 'REQUEST_URI' ], 301 );
                 exit();
             }
@@ -255,25 +255,29 @@ function WGR_sync_old_url_in_content( $a, $c ) {
 }
 
 function WGR_replace_for_all_content( $list_replace, $content_replace ) {
-    //	global $__cf_row;
-    //	$list_replace = $__cf_row['cf_replace_content'];
+    //echo $content_replace . '<br>' . "\n";
+    //print_r( $list_replace );
+    //global $__cf_row;
+    //$list_replace = $__cf_row['cf_replace_content'];
 
     //
-    //	if ( mtv_id == 1 ) echo $list_replace . '<br>' . "\n";
+    //if ( mtv_id == 1 ) echo $list_replace . '<br>' . "\n";
 
-    //	$list_replace = explode( "\n", trim( $list_replace ) );
-    $list_replace = explode( "\n", $list_replace );
+    //$list_replace = explode( "\n", trim( $list_replace ) );
+    $list_replace = explode( "\n", trim( $list_replace ) );
+    //print_r( $list_replace );
 
     //
-    //	if ( mtv_id == 1 ) print_r( $list_replace );
+    //if ( mtv_id == 1 ) print_r( $list_replace );
 
     foreach ( $list_replace as $v ) {
-        //		$v = trim( $v );
-        //		if ( $v != '' ) {
-        $v = explode( '|', $v );
-        //			if ( mtv_id == 1 ) print_r( $v );
-        $content_replace = str_replace( trim( $v[ 0 ] ), trim( $v[ 1 ] ), $content_replace );
-        //		}
+        $v = trim( $v );
+        if ( $v != '' ) {
+            $v = explode( '|', $v );
+            //print_r( $v );
+            //if ( mtv_id == 1 ) print_r( $v );
+            $content_replace = str_replace( trim( $v[ 0 ] ), trim( $v[ 1 ] ), $content_replace );
+        }
     }
 
     return $content_replace;
@@ -300,7 +304,7 @@ function WGR_order_and_hidden_taxonomy( $arr, $order_only = 0, $no_cache = 0 ) {
      * no_cache: khi muốn lấy dữ liệu trực tiếp từ CSDL thì đặt lệnh này
      */
     //
-    //	print_r( $arr );
+    //print_r( $arr );
 
     //
     $a = array();
@@ -358,7 +362,7 @@ List file: ' . substr( $s, 1 ) . '
 
 function WGR_default_config( $k ) {
     if ( !isset( $_POST[ $k ] ) || ( int )$_POST[ $k ] != 1 ) {
-        //		return 0;
+        //return 0;
         return 'off';
     }
     return 1;
@@ -388,7 +392,7 @@ function WGR_remove_post_by_type( $post_type = 'revision', $ID = 0, $strFilter =
 							post_type = '" . $post_type . "' " . $strFilter . " )", 0 );
 
         // tiếp theo là term_relationships
-        //		echo $wpdb->term_relationships . '<br>' . "\n"; exit();
+        //echo $wpdb->term_relationships . '<br>' . "\n"; exit();
         _eb_q( "DELETE FROM
 			`" . $wpdb->term_relationships . "`
 		WHERE
@@ -445,27 +449,27 @@ function WGR_update_meta_post( $id, $k, $v ) {
         if ( empty( $sql ) ) {
             return false;
         }
-        //		echo '<!-- SELECT new posts structure -->' . "\n";
-        //		echo '<!-- ' . $k . ' -->' . "\n";
+        //echo '<!-- SELECT new posts structure -->' . "\n";
+        //echo '<!-- ' . $k . ' -->' . "\n";
 
         //
         $sql = ( array )$sql[ 0 ];
-        //		print_r( $sql );
-        //		echo $k . '<br>' . "\n";
-        //		echo $sql[ $k ] . '<br>' . "\n";
+        //print_r( $sql );
+        //echo $k . '<br>' . "\n";
+        //echo $sql[ $k ] . '<br>' . "\n";
 
         // nếu vẫn chưa có -> thêm cột luôn
         if ( !array_key_exists( $k, $sql ) ) {
-            //			$add_type = 'LONGTEXT';
+            //$add_type = 'LONGTEXT';
             $add_type = 'TEXT';
 
             //
-            //			$add_after = 'ID';
+            //$add_after = 'ID';
             $add_after = 'post_type';
 
             //
             $strsql = 'ALTER TABLE `' . wp_posts . '` ADD `' . $k . '` ' . $add_type . ' NOT NULL AFTER `' . $add_after . '`';
-            //			echo $strsql . '<br>' . "\n";
+            //echo $strsql . '<br>' . "\n";
 
             // chạy lệnh thêm cột
             _eb_q( $strsql, 0 );
@@ -480,7 +484,7 @@ function WGR_update_meta_post( $id, $k, $v ) {
         // gán cấu trúc bảng để lần sau không bị select lại
         $arr_posts_structure = $sql;
     }
-    //	print_r( $arr_posts_structure );
+    //print_r( $arr_posts_structure );
 
     // update dữ liệu vào bảng posts
     _eb_q( "UPDATE `" . wp_posts . "`
@@ -498,7 +502,7 @@ function WGR_update_meta_post( $id, $k, $v ) {
 			AND meta_key = '" . $k . "'", 0 );
 
         //
-        //		delete_post_meta( $id, $k );
+        //delete_post_meta( $id, $k );
     }
 
     //
@@ -512,9 +516,9 @@ function WGR_insert_post( $arr, $_alert = '', $wp_error = true, $using_default =
     // phiên bản mặc định
     if ( cf_set_raovat_version != 1 || $using_default == 1 ) {
         $post_id = wp_insert_post( $arr, $wp_error );
-        //		echo $post_id . '<br>';
+        //echo $post_id . '<br>';
         if ( is_wp_error( $post_id ) ) {
-            //			print_r( $post_id ) . '<br>';
+            //print_r( $post_id ) . '<br>';
 
             $errors = $post_id->get_error_messages();
             $m = '';
@@ -539,7 +543,7 @@ function WGR_insert_post( $arr, $_alert = '', $wp_error = true, $using_default =
 
     // phiên bản nâng cao -> update post meta riêng
     $arr_meta_box = array();
-    //	if ( array_key_exists( 'meta_input', $arr ) ) {
+    //if ( array_key_exists( 'meta_input', $arr ) ) {
     if ( isset( $arr[ 'meta_input' ] ) ) {
         $arr_meta_box = $arr[ 'meta_input' ];
 
@@ -555,11 +559,11 @@ function WGR_insert_post( $arr, $_alert = '', $wp_error = true, $using_default =
     }
 
     // sau đó mới cập nhật meta
-    //	if ( array_key_exists( 'ID', $arr ) ) {
+    //if ( array_key_exists( 'ID', $arr ) ) {
     if ( isset( $arr[ 'ID' ] ) ) {
         WGR_after_update_post( $arr[ 'ID' ], $arr_meta_box );
     }
-    //	else if ( array_key_exists( 'import_id', $arr ) ) {
+    //else if ( array_key_exists( 'import_id', $arr ) ) {
     else if ( isset( $arr[ 'import_id' ] ) ) {
         WGR_after_update_post( $arr[ 'import_id' ], $arr_meta_box );
     }
@@ -575,9 +579,9 @@ function WGR_update_post( $arr, $_alert = '', $wp_error = true, $using_default =
     // phiên bản mặc định
     if ( cf_set_raovat_version != 1 || $using_default == 1 ) {
         $post_id = wp_update_post( $arr, $wp_error );
-        //		echo $post_id . '<br>';
+        //echo $post_id . '<br>';
         if ( is_wp_error( $post_id ) ) {
-            //			print_r( $post_id ) . '<br>';
+            //print_r( $post_id ) . '<br>';
 
             $errors = $post_id->get_error_messages();
             $m = '';
@@ -602,7 +606,7 @@ function WGR_update_post( $arr, $_alert = '', $wp_error = true, $using_default =
 
     // phiên bản nâng cao -> update post meta riêng
     $arr_meta_box = array();
-    //	if ( array_key_exists( 'meta_input', $arr ) ) {
+    //if ( array_key_exists( 'meta_input', $arr ) ) {
     if ( isset( $arr[ 'meta_input' ] ) ) {
         $arr_meta_box = $arr[ 'meta_input' ];
 
@@ -618,11 +622,11 @@ function WGR_update_post( $arr, $_alert = '', $wp_error = true, $using_default =
     }
 
     // sau đó mới cập nhật meta
-    //	if ( array_key_exists( 'ID', $arr ) ) {
+    //if ( array_key_exists( 'ID', $arr ) ) {
     if ( isset( $arr[ 'ID' ] ) ) {
         WGR_after_update_post( $arr[ 'ID' ], $arr_meta_box );
     }
-    //	else if ( array_key_exists( 'import_id', $arr ) ) {
+    //else if ( array_key_exists( 'import_id', $arr ) ) {
     else if ( isset( $arr[ 'import_id' ] ) ) {
         WGR_after_update_post( $arr[ 'import_id' ], $arr_meta_box );
     }
@@ -680,7 +684,7 @@ function WGR_show_header_favicon( $icon = '' ) {
 
 
 function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
-    //	return true;
+    //return true;
 
     global $wpdb;
     global $client_ip;
@@ -694,7 +698,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 		`" . wp_posts . "`
 	WHERE
 		ID = " . $postid );
-    //	print_r( $sql );
+    //print_r( $sql );
     if ( !empty( $sql ) ) {
         foreach ( $sql[ 0 ] as $k => $v ) {
             $str .= '<' . $k . '><![CDATA[' . $v . ']]></' . $k . '>' . "\n";
@@ -705,10 +709,10 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     //
     /*
 	$a = get_post_taxonomies( $postid );
-//	print_r($a);
+//print_r($a);
 	foreach ( $a as $v ) {
 		$post_taxonomy = get_the_terms( $postid, $v );
-//		print_r($post_taxonomy);
+//print_r($post_taxonomy);
 		
 		if ( ! empty( $post_taxonomy ) ) {
 			foreach ( $post_taxonomy as $v2 ) {
@@ -723,10 +727,10 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     $str .= WGR_get_taxonomy_xml_list( $postid );
     /*
     $post_categories = wp_get_post_categories( $postid );
-    //	print_r( $post_categories );
+    //print_r( $post_categories );
     foreach ( $post_categories as $c ) {
         $cat = get_term( $c );
-        //		print_r( $cat );
+        //print_r( $cat );
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
@@ -737,11 +741,11 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     $str .= WGR_get_taxonomy_xml_list( $postid, 'post_tag' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_tag' );
-    //	print_r( $arr_post_options );
+    //print_r( $arr_post_options );
 
     foreach ( $arr_post_options as $c ) {
         $cat = get_term( $c, 'post_tag' );
-        //		print_r( $cat );
+        //print_r( $cat );
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
@@ -752,11 +756,11 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     $str .= WGR_get_taxonomy_xml_list( $postid, 'post_options' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'post_options' );
-    //	print_r( $arr_post_options );
+    //print_r( $arr_post_options );
 
     foreach ( $arr_post_options as $c ) {
         $cat = get_term( $c, 'post_options' );
-        //		print_r( $cat );
+        //print_r( $cat );
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
@@ -767,11 +771,11 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     $str .= WGR_get_taxonomy_xml_list( $postid, 'blogs' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'blogs' );
-    //	print_r( $arr_post_options );
+    //print_r( $arr_post_options );
 
     foreach ( $arr_post_options as $c ) {
         $cat = get_term( $c, 'blogs' );
-        //		print_r( $cat );
+        //print_r( $cat );
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
@@ -782,11 +786,11 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     $str .= WGR_get_taxonomy_xml_list( $postid, 'blog_tag' );
     /*
     $arr_post_options = wp_get_object_terms( $postid, 'blog_tag' );
-    //	print_r( $arr_post_options );
+    //print_r( $arr_post_options );
 
     foreach ( $arr_post_options as $c ) {
         $cat = get_term( $c, 'blog_tag' );
-        //		print_r( $cat );
+        //print_r( $cat );
 
         $str .= '<category domain="' . $cat->taxonomy . '" nicename="' . $cat->slug . '"><![CDATA[' . $cat->name . ']]></category>';
     }
@@ -799,7 +803,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 		`" . $wpdb->postmeta . "`
 	WHERE
 		post_id = " . $postid );
-    //	print_r( $sql );
+    //print_r( $sql );
     if ( !empty( $sql ) ) {
         foreach ( $sql as $v ) {
             $str .= trim( '
@@ -812,12 +816,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     }
 
     //
-    //	echo $str;
+    //echo $str;
 
     //
-    //	if ( ! function_exists('get_magic_quotes_gpc') || ! get_magic_quotes_gpc () ) {
+    //if ( ! function_exists('get_magic_quotes_gpc') || ! get_magic_quotes_gpc () ) {
     $str = addslashes( $str );
-    //	}
+    //}
 
     //
     _eb_q( "DELETE
@@ -838,7 +842,7 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
     ), $save_table );
 
     //
-    //	exit();
+    //exit();
 
     //
     _eb_log_user( 'WGR_save_post_xml ID #' . $save_table . ' to table ' . $save_table );
@@ -884,8 +888,8 @@ function WGR_register_sidebar( $k, $v ) {
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
 
-        //		'before_title' => '<div-for-replace class="' . $k . '-title">',
-        //		'after_title' => '</div-for-replace>'
+        //'before_title' => '<div-for-replace class="' . $k . '-title">',
+        //'after_title' => '</div-for-replace>'
         'before_title' => $k . '-title',
     ) );
 }
@@ -928,7 +932,7 @@ function WGR_check_discount_code_exist() {
                 $co_ma_giam_gia = 1;
                 break;
             }
-            //			echo $check_discount_ex . '<br>' . "\n";
+            //echo $check_discount_ex . '<br>' . "\n";
         }
     }
 
@@ -955,7 +959,7 @@ function WGR_check_token( $check_with = '' ) {
 // chuyển đường dẫn file sang link web
 function WGR_path_to_lnk( $v ) {
     // test
-    //	return $v;
+    //return $v;
 
     // v2
     $v = explode( EB_DIR_CONTENT, $v );
@@ -965,7 +969,7 @@ function WGR_path_to_lnk( $v ) {
     // v1
     // for window
     $a = substr( ABSPATH, 0, -1 ) . '\\';
-    //	echo $a . "\n";
+    //echo $a . "\n";
 
     //
     return str_replace( ABSPATH, web_link, str_replace( $a, web_link, $v ) );
@@ -978,15 +982,15 @@ function WGR_decode_for_products_cart( $a ) {
         return NULL;
     }
 
-    //	echo $a . '<br>' . "\n\n";
+    //echo $a . '<br>' . "\n\n";
 
-    //	$a = json_decode( $a, JSON_UNESCAPED_SLASHES );
-    //	print_r( $a );
+    //$a = json_decode( $a, JSON_UNESCAPED_SLASHES );
+    //print_r( $a );
 
-    //	$a = stripcslashes($a);
-    //	echo $a . '<br>' . "\n\n";
-    //	$a = html_entity_decode($a, ENT_QUOTES, 'UTF-8');
-    //	echo $a . '<br>' . "\n\n";
+    //$a = stripcslashes($a);
+    //echo $a . '<br>' . "\n\n";
+    //$a = html_entity_decode($a, ENT_QUOTES, 'UTF-8');
+    //echo $a . '<br>' . "\n\n";
 
     // cái urldecode nó lỗi tiếng Việt nên phải xử lý kiểu này
     $arr = array(
@@ -1007,29 +1011,29 @@ function WGR_decode_for_products_cart( $a ) {
         $a = str_replace( $k, $v, $a );
     }
 
-    //	$a = urldecode( $a );
-    //	echo $a . '<br>' . "\n\n";
-    //	echo urldecode($a);
+    //$a = urldecode( $a );
+    //echo $a . '<br>' . "\n\n";
+    //echo urldecode($a);
 
     // cắt bỏ phần name đi, vì nó hay bị lỗi chữ tiếng Việt
     $a = explode( '"name":"', $a );
-    //	print_r( $a );
+    //print_r( $a );
     foreach ( $a as $k => $v ) {
         if ( $k > 0 ) {
             $v = strstr( $v, '"slug":"' );
             $a[ $k ] = $v;
         }
     }
-    //	print_r( $a );
+    //print_r( $a );
     $a = implode( '', $a );
-    //	echo $a . '<br>' . "\n\n";
+    //echo $a . '<br>' . "\n\n";
 
     // chỉnh lại cái tên màu, do trước đó nó bị decode, nên trong php không hiển thị được
     try {
         $a = json_decode( $a );
         foreach ( $a as $k => $v ) {
             if ( isset( $v->color ) && $v->color != '' ) {
-                //				$v->color = urldecode($v->color);
+                //$v->color = urldecode($v->color);
                 $v->color = preg_replace( "/%u([0-9a-f]{3,4})/i", "&#x\\1;", $v->color );
                 $v->color = html_entity_decode( $v->color, ENT_QUOTES, 'UTF-8' );
 
@@ -1055,17 +1059,17 @@ function WGR_decode_for_discount_cart( $a ) {
     }
     $re = NULL;
 
-    //	echo $str . '<br>' . "\n\n";
+    //echo $str . '<br>' . "\n\n";
 
-    //	echo html_entity_decode($a) . '<br>' . "\n\n";
+    //echo html_entity_decode($a) . '<br>' . "\n\n";
     $a = html_entity_decode( $a, ENT_QUOTES, 'UTF-8' );
-    //	echo $a . '<br>' . "\n\n";
+    //echo $a . '<br>' . "\n\n";
     $a = urldecode( $a );
-    //	echo $a . '<br>' . "\n\n";
+    //echo $a . '<br>' . "\n\n";
 
     // bóc tách lấy phần discount
     $a = explode( '","hd_discount_code":"', $a );
-    //	print_r( $a );
+    //print_r( $a );
     if ( count( $a ) > 1 ) {
         $a = explode( '"', $a[ 1 ] );
 
@@ -1078,23 +1082,23 @@ function WGR_decode_for_discount_cart( $a ) {
                 'hide_empty' => 0,
                 'taxonomy' => 'discount_code'
             ) );
-            //			print_r( $arr_discount_code );
+            //print_r( $arr_discount_code );
 
             //
             if ( !empty( $arr_discount_code ) ) {
-                //				echo $arr_discount_code[0]->term_id . '<br>' . "\n";
+                //echo $arr_discount_code[0]->term_id . '<br>' . "\n";
 
                 $arr_discount_code[ 0 ]->coupon_giagiam = _eb_get_cat_object( $arr_discount_code[ 0 ]->term_id, '_eb_category_coupon_giagiam' );
                 $arr_discount_code[ 0 ]->coupon_phantramgiam = _eb_get_cat_object( $arr_discount_code[ 0 ]->term_id, '_eb_category_coupon_phantramgiam' );
                 $arr_discount_code[ 0 ]->coupon_donggia = _eb_get_cat_object( $arr_discount_code[ 0 ]->term_id, '_eb_category_coupon_donggia' );
 
-                //				print_r( $arr_discount_code );
+                //print_r( $arr_discount_code );
 
                 $re = $arr_discount_code;
             }
         }
 
-        //		return $a;
+        //return $a;
     }
 
     return $re;
