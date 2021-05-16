@@ -74,8 +74,8 @@ var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 /*
 if ( 1 == 2 ) {
 ?>
-<script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/themes/echbaytwo/outsource/javascript/jquery/3.3.1.min.js"></script>
-<script type="text/javascript" src="<?php echo web_link . EB_DIR_CONTENT; ?>/themes/echbaytwo/outsource/javascript/jquery/migrate-3.0.0.min.js" defer></script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PARENT_THEME; ?>outsource/javascript/jquery/3.3.1.min.js"></script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PARENT_THEME; ?>outsource/javascript/jquery/migrate-3.0.0.min.js" defer></script>
 <?php
 }
 */

@@ -8,8 +8,6 @@
  */
 
 
-
-
 //
 //$all_sizes = get_intermediate_image_sizes();
 //print_r( $all_sizes );
@@ -164,7 +162,9 @@ define( 'EB_THEME_PHP', EB_THEME_THEME . 'php/' );
 // URL tương đối
 define( 'EB_URL_TUONG_DOI', EB_DIR_CONTENT . '/echbaydotcom/' );
 // URL tương đối nhưng nối vào theme
-define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/echbaytwo/' );
+define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_info_setting[ 'parent_theme_default' ] . '/' );
+//echo EB_URL_THEMES_TUONG_DOI . '<br>' . "\n";
+//echo basename( EB_URL_THEMES_TUONG_DOI ) . '<br>' . "\n";
 
 // thư mục lưu trữ cache
 if ( !defined( 'EB_THEME_CACHE' ) ) {
@@ -462,8 +462,9 @@ $___eb_template_uri = web_link;
 
 //define( 'EB_URL_OF_THEME', $___eb_template_uri . '/' );
 define( 'EB_URL_OF_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/' . basename( EB_THEME_URL ) . '/' );
-define( 'EB_URL_OF_PARENT_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/echbaytwo/' );
 //echo EB_URL_OF_THEME . '<br>' . "\n";
+define( 'EB_URL_OF_PARENT_THEME', $___eb_template_uri . EB_URL_THEMES_TUONG_DOI );
+//echo EB_URL_OF_PARENT_THEME . '<br>' . "\n";
 //define( 'EB_URL_OF_PLUGIN', esc_url( plugins_url() ) . '/echbaydotcom/' );
 //define( 'EB_URL_OF_PLUGIN', dirname( dirname( $___eb_template_uri ) ) . '/echbaydotcom/' );
 define( 'EB_URL_OF_PLUGIN', $___eb_template_uri . EB_DIR_CONTENT . '/echbaydotcom/' );
@@ -1098,22 +1099,22 @@ function EBE_register_scripts() {
     // xóa jquery mặc định
     //wp_dequeue_script( 'jquery' );
     wp_deregister_script( 'jquery' );
-    
+
     //	wp_deregister_script( 'jquery-core' );
-    
+
     //wp_dequeue_script( 'jquery-migrate' );
     wp_deregister_script( 'jquery-migrate' );
-    
+
     wp_dequeue_script( 'font-awesome-4-shim' );
     wp_deregister_script( 'font-awesome-4-shim' );
 
     // thay font awesome của elementor bằng của echbay -> cho đỡ bị load lại
     wp_dequeue_style( 'font-awesome' );
     wp_deregister_style( 'font-awesome' );
-    
+
     //wp_deregister_style( 'font-awesome-5-all' );
     //wp_dequeue_style( 'font-awesome-5-all' );
-    
+
     //wp_deregister_style( 'font-awesome-4-shim' );
     //wp_dequeue_style( 'font-awesome-4-shim' );
 
@@ -1121,14 +1122,14 @@ function EBE_register_scripts() {
     // add jquery mới
 
     // add dưới dạng file tổng
-    //	wp_register_script('jquery', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery.js', false, '3.3.1');
+    //	wp_register_script('jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery.js', false, '3.3.1');
 
     // add file lẻ
-    wp_register_script( 'jquery', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
-    //	wp_register_script('jquery-core', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/3.3.1.min.js');
+    wp_register_script( 'jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
+    //	wp_register_script('jquery-core', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/3.3.1.min.js');
 
     // migrate
-    wp_register_script( 'jquery-migrate', web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
+    wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
 
     // gọi jquery
     wp_enqueue_script( 'jquery' );
@@ -1142,7 +1143,7 @@ function EBE_register_scripts() {
     // load Font Awesome v5
     /*
     if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
-    	$url = web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fa-5.3.0/css/i.css';
+    	$url = EB_URL_OF_PARENT_THEME . 'outsource/fa-5.3.0/css/i.css';
     	
     	//
     	wp_register_style( 'font-awesome', $url, array(), '5.3.0' );
@@ -1151,7 +1152,7 @@ function EBE_register_scripts() {
     else {
     	*/
     // không có thì dùng của WGR -> lười update hơn
-    //		$url = web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fa-4.7.0/i.css';
+    //		$url = EB_URL_OF_PARENT_THEME . 'outsource/fa-4.7.0/i.css';
     //		$url = '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
     //$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
 

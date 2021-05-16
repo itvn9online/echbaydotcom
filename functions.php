@@ -1372,7 +1372,8 @@ function EBE_replace_link_in_cache_css( $c ) {
 		'../images-global/' => '../../../echbaydotcom/images-global/',
 
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => '../../../themes/echbaytwo/outsource/',
+		'../outsource/' => '../../../themes/' . basename( EB_URL_THEMES_TUONG_DOI ) . '/outsource/',
+		//'../outsource/' => '../../../themes/echbaytwo/outsource/',
 		//'../fonts/' => '../../../themes/echbaytwo/outsource/fonts/'
 	);
 
@@ -1399,7 +1400,8 @@ function EBE_replace_link_in_css( $c ) {
 		'../images-global/' => './' . EB_DIR_CONTENT . '/echbaydotcom/images-global/',
 
 		// các css ngoài -> trong outsource -> vd: font awesome
-		'../outsource/' => './' . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/',
+		'../outsource/' => './' . EB_URL_THEMES_TUONG_DOI . 'outsource/',
+		//'../outsource/' => './' . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/',
 		//'../fonts/' => './' . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/fonts/'
 	);
 

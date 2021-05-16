@@ -324,8 +324,8 @@ function echbay_admin_styles() {
 	//
 	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == false ) {
 		echo '
-<link rel="stylesheet" href="' . web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/jquery-ui/jquery-ui-1.11.2.css" />
-<script src="' . web_link . EB_DIR_CONTENT . '/themes/echbaytwo/outsource/jquery-ui/jquery-ui.min.js"></script>';
+<link rel="stylesheet" href="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css" />
+<script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script>';
 	}
 	
 	
