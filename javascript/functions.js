@@ -313,6 +313,7 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
             product_price = arr[i].child_price;
         }
         product_price *= 1;
+        //product_price *= arr[i].quan;
 
         //
         //tong_tien -= (0 - product_price);
