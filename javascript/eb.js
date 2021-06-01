@@ -3325,7 +3325,7 @@ var _global_js_eb = {
                 setTimeout(function () {
                     _global_js_eb.fb_track(track_name, track_arr, max_for - 1);
                 }, 500);
-                //				console.log( 'Re-load FB tracking (' + max_for + ')...' );
+                console.log( 'Re-load FB tracking (' + max_for + ')...' );
 
                 return false;
             }
@@ -3340,7 +3340,8 @@ var _global_js_eb = {
                 a = a.toLowerCase();
 
                 if (a == 'purchase') {
-                    if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                    //if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                    if (track_arr['content_type'] == 'undefined' || track_arr['contents'] == 'undefined' || track_arr['contents'].length == 0) {
                         return false;
                     }
                 } else if (a == 'addtocart') {
@@ -3365,7 +3366,7 @@ var _global_js_eb = {
         fbq('track', track_name, track_arr);
 
         //
-        console.log('Facebook pixel tracking (' + track_name + ') by ' + private_info_setting_site_upper);
+        console.log('%c Facebook pixel tracking (' + track_name + ') by ' + private_info_setting_site_upper, 'color: green;');
         console.log(track_arr);
 
         //
