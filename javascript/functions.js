@@ -258,7 +258,7 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
 
     // kiểm tra xem GA với FB đã load được chưa, chờ tụi nó 1 lúc, nếu không thể load được thì đành chạy tiếp
     //	if ( typeof ga == 'undefined' || typeof fbq == 'undefined' ) {
-    if (typeof ga == 'undefined') {
+    if (1 == 2 && typeof ga == 'undefined' && typeof fbq == 'undefined') {
         if (typeof max_for == "undefined") {
             max_for = 60;
         }
@@ -294,7 +294,8 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
 
     //
     var tong_tien = 0,
-        arr_ids = [];
+        arr_ids = [],
+        ga_add_product = [];
     for (var i = 0; i < arr.length; i++) {
         //if ( typeof arr[i].__eb_hd_customer_info == 'undefined' ) {
         // bản cũ
@@ -320,22 +321,15 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
         tong_tien += product_price;
 
         //
-        if (typeof ga != 'undefined') {
-            var ga_add_product = {
-                'id': 'p' + arr[i].id,
-                'name': arr[i].name,
-                'category': 'Echbay category',
-                'brand': 'Echbay',
-                'variant': 'red',
-                'price': product_price,
-                'quantity': arr[i].quan
-            };
-            ga('ec:addProduct', ga_add_product);
-
-            //
-            console.log('ec addProduct:');
-            console.log(ga_add_product);
-        }
+        ga_add_product.push({
+            'id': 'p' + arr[i].id,
+            'name': arr[i].name,
+            'category': 'Echbay category',
+            'brand': 'Echbay',
+            'variant': 'red',
+            'price': product_price,
+            'quantity': arr[i].quan
+        });
         //}
     }
 
@@ -358,24 +352,62 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
     });
 
     // google analytics track -> by order
-    if (typeof ga != 'undefined') {
-        var ga_set_action = {
-            //"id": arr[0].id,
-            "id": hd_id,
-            "affiliation": window.location.href.split('//')[1].split('/')[0].replace('www.', ''),
-            //			"revenue": arr[0].price,
-            "revenue": tong_tien,
-            "tax": "0",
-            "shipping": "0",
-            "coupon": ""
-        };
-        ga("ec:setAction", "purchase", ga_set_action);
+    ___eb_add_convertsion_gg_v2( ga_add_product, {
+        //"id": arr[0].id,
+        "id": hd_id,
+        "affiliation": window.location.href.split('//')[1].split('/')[0].replace('www.', ''),
+        //"revenue": arr[0].price,
+        "revenue": tong_tien,
+        "tax": "0",
+        "shipping": "0",
+        "coupon": ""
+    } );
+
+}
+
+function ___eb_add_convertsion_gg_v2(ga_add_product, ga_set_action, max_for) {
+    if (typeof max_for == "undefined") {
+        max_for = 60;
+    }
+    
+    //
+    if (typeof ga == 'undefined') {
+        if (typeof max_for == "undefined") {
+            max_for = 60;
+        }
+        //console.log( 'Max for: ' + max_for );
 
         //
-        console.log('ec setAction:');
-        console.log(ga_set_action);
-    }
+        if (max_for > 0) {
+            setTimeout(function () {
+                ___eb_add_convertsion_gg_v2(ga_add_product, ga_set_action, max_for - 1);
+            }, 500);
 
+            console.log('Re-load GG tracking (' + max_for + ')...');
+
+            return false;
+        }
+
+        //
+        console.log('Max for: ' + max_for);
+        return false;
+    }
+    
+    //
+    for ( var i = 0; i < ga_add_product.length; i++ ) {
+        ga('ec:addProduct', ga_add_product[i]);
+
+        //
+        console.log('ec addProduct:');
+        console.log(ga_add_product[i]);
+    }
+    
+    //
+    ga("ec:setAction", "purchase", ga_set_action);
+
+    //
+    console.log('ec setAction:');
+    console.log(ga_set_action);
 }
 
 
