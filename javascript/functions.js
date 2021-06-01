@@ -302,7 +302,8 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
         // bản mới: https://developers.facebook.com/docs/facebook-pixel/implementation/marketing-api
         arr_ids.push({
             'id': arr[i].id.toString(),
-            'quantity': arr[i].quan * 1,
+            'quantity': arr[i].quan,
+            //'quantity': arr[i].quan * 1,
         });
 
         //
