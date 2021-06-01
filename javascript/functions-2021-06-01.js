@@ -224,7 +224,7 @@ function WGR_hoan_tat_send_tracking(hd_id, current_hd_object, current_tv_object)
 
     //
     if (g_func.getc('wgr_check_tracking_social' + hd_id) != null) {
-        console.log('%c Order has been tracking!', 'color: red;');
+        console.log('Order has been tracking!');
         return false;
     }
     g_func.setc('wgr_check_tracking_social' + hd_id, 'wgr', 0, 7);
@@ -296,14 +296,8 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
     var tong_tien = 0,
         arr_ids = [];
     for (var i = 0; i < arr.length; i++) {
-        //if ( typeof arr[i].__eb_hd_customer_info == 'undefined' ) {
-        // bản cũ
-        //arr_ids.push(arr[i].id);
-        // bản mới: https://developers.facebook.com/docs/facebook-pixel/implementation/marketing-api
-        arr_ids.push({
-            'id': arr[i].id.toString(),
-            'quantity': arr[i].quan * 1,
-        });
+        //		if ( typeof arr[i].__eb_hd_customer_info == 'undefined' ) {
+        arr_ids.push(arr[i].id);
 
         //
         var product_price = arr[i].price;
@@ -311,11 +305,9 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
         if (typeof arr[i].child_price != 'undefined' && arr[i].child_price != '' && arr[i].child_price * 1 > 0) {
             product_price = arr[i].child_price;
         }
-        product_price *= 1;
 
         //
-        //tong_tien -= (0 - product_price);
-        tong_tien += product_price;
+        tong_tien -= (0 - product_price);
 
         //
         if (typeof ga != 'undefined') {
@@ -334,7 +326,7 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
             console.log('ec addProduct:');
             console.log(ga_add_product);
         }
-        //}
+        //		}
     }
 
     //
@@ -346,19 +338,18 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
 
     // fb track -> by products
     _global_js_eb.fb_track("Purchase", {
-        content_type: 'product',
-        //content_ids: arr_ids,
-        contents: arr_ids,
-        //value: arr[i].price,
+        content_ids: arr_ids,
+        content_type: "product",
+        //		value: arr[i].price,
         value: tong_tien,
-        //currency: "VND"
+        //		currency: "VND"
         currency: cf_current_sd_price
     });
 
     // google analytics track -> by order
     if (typeof ga != 'undefined') {
         var ga_set_action = {
-            //"id": arr[0].id,
+            //			"id": arr[0].id,
             "id": hd_id,
             "affiliation": window.location.href.split('//')[1].split('/')[0].replace('www.', ''),
             //			"revenue": arr[0].price,
@@ -936,19 +927,19 @@ function WGR_check_discount_code_return(jd) {
 }
 
 function click2Copy(element, textShow) {
-    element.focus();
-    element.select();
-    document.execCommand('copy');
+	element.focus();
+	element.select();
+	document.execCommand('copy');
 
-    if (typeof textShow != 'undefined' && textShow == true) {
-        try {
-            textShow = element.value;
-            textShow = ' <strong>' + $.trim(textShow) + '</strong>';
-        } catch (e) {
-            textShow = ''
-        }
-    } else {
-        textShow = ''
-    }
-    WGR_html_alert('Copied' + textShow);
+	if (typeof textShow != 'undefined' && textShow == true) {
+		try {
+			textShow = element.value;
+			textShow = ' <strong>' + $.trim(textShow) + '</strong>';
+		} catch (e) {
+			textShow = ''
+		}
+	} else {
+		textShow = ''
+	}
+	WGR_html_alert('Copied' + textShow);
 }

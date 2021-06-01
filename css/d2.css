@@ -2866,7 +2866,7 @@ iframe[name="google_conversion_frame"] {
     font-size: 15px;
 }
 .cart-mua-button {
-    background: #333;
+    background: var(--default-bg);
     color: #fff;
     padding: 15px 25px;
     font-size: 18px;
