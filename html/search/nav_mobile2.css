@@ -95,6 +95,8 @@
     color: #000;
     font-size: 25px;
     cursor: pointer;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 .style-for-mobile .menu-mobile-search input[type=text] {
     width: 98%;

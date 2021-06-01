@@ -498,13 +498,13 @@ var _global_js_eb = {
     sb_token: function (jd) {
         var str = '';
         str += '<input type="text" name="_ebnonce" value="' + window.location.href + '" />';
-
+        
         $('#' + jd).html(str);
     },
-
+    
     check_contact_frm: function () {
         _global_js_eb.add_primari_iframe();
-
+        
         // thêm dữ liệu xác minh
         _global_js_eb.sb_token('frm_contact_token');
 
@@ -519,7 +519,7 @@ var _global_js_eb = {
     //
     check_profile_frm: function () {
         _global_js_eb.add_primari_iframe();
-
+        
         // thêm dữ liệu xác minh
         _global_js_eb.sb_token('frm_profile_token');
 
@@ -532,25 +532,25 @@ var _global_js_eb = {
 
     check_forgot_pasword_frm: function () {
         _global_js_eb.add_primari_iframe();
-
+        
         // thêm dữ liệu xác minh
         _global_js_eb.sb_token('frm_fpasswd_token');
-
+        
         return true;
     },
 
     check_login_frm: function () {
         _global_js_eb.add_primari_iframe();
-
+        
         // thêm dữ liệu xác minh
         _global_js_eb.sb_token('frm_login_token');
-
+        
         return true;
     },
-
+    
     check_pasword_frm: function () {
         _global_js_eb.add_primari_iframe();
-
+        
         // thêm dữ liệu xác minh
         _global_js_eb.sb_token('frm_passwd_token');
 
@@ -604,108 +604,108 @@ var _global_js_eb = {
 
         // tạo attr mặc định để lưu thuộc tính cũ
         jQuery('.img-max-width').each(function () {
-            var max_width = jQuery(this).attr('data-max-width') || '';
-            //			console.log('aaaaaaaaaaa: ' + max_width);
-            if (max_width == '' || max_width < 90) {
-                max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
-                max_width = Math.ceil(max_width) - 1;
-                jQuery(this).attr({
-                    'data-max-width': max_width
-                });
-            }
-            //			console.log('bbbbbbbbbbb: ' + max_width);
-
-            // chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
-            //			jQuery('.wp-caption', this).width( max_width - 5 );
-            jQuery('.wp-caption', this).css({
-                'max-width': max_width + 'px'
-            });
-            /*
-            jQuery('.wp-caption', this).each(function() {
-            	var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
-            	
-            	//
-            	jQuery(this).attr({
-            		'data-width' : wit
-            	}).css({
-            		'max-width' : wit + 'px'
-            	}).width('auto');
-            });
-            */
-
-            //
-            jQuery('img', this).each(function () {
-                var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 'auto',
-                    hai = jQuery(this).attr('data-height') || jQuery(this).attr('height') || 'auto';
-                /*
+			var max_width = jQuery(this).attr('data-max-width') || '';
+//			console.log('aaaaaaaaaaa: ' + max_width);
+			if ( max_width == '' || max_width < 90 ) {
+				max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
+				max_width = Math.ceil( max_width ) - 1;
+				jQuery(this).attr({
+					'data-max-width': max_width
+				});
+			}
+//			console.log('bbbbbbbbbbb: ' + max_width);
+			
+			// chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
+//			jQuery('.wp-caption', this).width( max_width - 5 );
+			jQuery('.wp-caption', this).css({
+				'max-width' : max_width + 'px'
+			});
+			/*
+			jQuery('.wp-caption', this).each(function() {
+				var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
+				
+				//
+				jQuery(this).attr({
+					'data-width' : wit
+				}).css({
+					'max-width' : wit + 'px'
+				}).width('auto');
+			});
+			*/
+			
+			//
+			jQuery('img', this).each(function() {
+				var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 'auto',
+					hai = jQuery(this).attr('data-height') || jQuery(this).attr('height') || 'auto';
+					/*
 				var m_wit = wit == 'auto' ? 0 : wit;
 				
 				if ( m_wit == 0 || m_wit > max_width ) {
 					m_wit = max_width - 1;
 				}
 				*/
-
-                jQuery(this).attr({
-                    'data-height': hai,
-                    'data-width': wit
-                    /*
+				
+				jQuery(this).attr({
+					'data-height' : hai,
+					'data-width' : wit
+					/*
 				}).css({
 					'max-width' : m_wit + 'px'
 					*/
-                });
-                //			}).removeAttr('width').removeAttr('height');
-            });
+				});
+//			}).removeAttr('width').removeAttr('height');
+			});
+			
+			
+			jQuery('iframe', this).each(function() {
+				var a = jQuery(this).attr('src') || '',
+					wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560,
+					no_resize = jQuery(this).attr('data-no-resize') || 0;
+				if (no_resize * 1 != 1) {
+					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a);
 
+					if ( wit > max_width ) {
+						wit = max_width - 1;
+					}
+	//				console.log(wit);
 
-            jQuery('iframe', this).each(function () {
-                var a = jQuery(this).attr('src') || '',
-                    wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560,
-                    no_resize = jQuery(this).attr('data-no-resize') || 0;
-                if (no_resize * 1 != 1) {
-                    if (WGR_check_option_on(cf_tester_mode)) console.log(a);
-
-                    if (wit > max_width) {
-                        wit = max_width - 1;
-                    }
-                    //				console.log(wit);
-
-                    // chỉ xử lý với video youtube
-                    if (a.split('youtube.com/').length > 1) {
-                        jQuery(this).attr({
-                            //						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
-                            'data-width': Math.ceil(wit)
-                        });
-                    }
-                }
-            });
-
-
-            // thẻ TABLE
-            var i = 0;
-            jQuery('table', this)
-                // fixed chiều rộng tối đa cho table
-                .css({
-                    'max-width': max_width + 'px'
-                })
-                .each(function () {
-                    var a = jQuery(this).attr('data-no-reponsive') || '';
-
-                    //
-                    if (a == '') {
-                        jQuery(this).before('<div class="reponsive-for-table reponsive-for-table' + i + '"></div>');
-
-                        jQuery(this).clone().appendTo('.reponsive-for-table' + i);
-
-                        jQuery(this).remove();
-
-                        i++;
-                    }
-                });
-
-            //
-            jQuery('.reponsive-for-table table').attr({
-                'data-no-reponsive': 1
-            });
+					// chỉ xử lý với video youtube
+					if ( a.split('youtube.com/').length > 1 ) {
+						jQuery(this).attr({
+	//						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
+							'data-width' : Math.ceil( wit )
+						});
+					}
+				}
+			});
+			
+			
+			// thẻ TABLE
+			var i = 0;
+			jQuery('table', this)
+			// fixed chiều rộng tối đa cho table
+			.css({
+				'max-width' : max_width + 'px'
+			})
+			.each(function() {
+				var a = jQuery(this).attr('data-no-reponsive') || '';
+				
+				//
+				if ( a == '' ) {
+					jQuery(this).before( '<div class="reponsive-for-table reponsive-for-table' + i + '"></div>' );
+					
+					jQuery(this).clone().appendTo('.reponsive-for-table' + i);
+					
+					jQuery(this).remove();
+					
+					i++;
+				}
+			});
+			
+			//
+			jQuery('.reponsive-for-table table').attr({
+				'data-no-reponsive': 1
+			});
 
         });
 
@@ -830,15 +830,15 @@ var _global_js_eb = {
 
                 // xử lý với video của youtube
                 jQuery('iframe', this).each(function () {
-                    var a = jQuery(this).attr('src') || '';
-
-                    // chỉ xử lý với video youtube
-                    if (a.split('youtube.com/').length > 1) {
-                        jQuery(this).attr({
-                            'width': max_width,
-                            'height': Math.ceil(max_width * youtube_video_default_size)
-                        });
-                    }
+					var a = jQuery(this).attr('src') || '';
+					
+					// chỉ xử lý với video youtube
+					if ( a.split('youtube.com/').length > 1 ) {
+						jQuery(this).attr({
+							'width' : max_width,
+							'height' : Math.ceil( max_width * youtube_video_default_size )
+						});
+					}
                 });
             });
         }
@@ -936,36 +936,37 @@ var _global_js_eb = {
                 jQuery('iframe', this).each(function () {
                     var a = jQuery(this).attr('src') || '';
                     var no_resize = jQuery(this).attr('data-no-resize') || 0;
+					
+					if (no_resize * 1 != 1) {
+						if (WGR_check_option_on(cf_tester_mode)) console.log(a);
 
-                    if (no_resize * 1 != 1) {
-                        if (WGR_check_option_on(cf_tester_mode)) console.log(a);
+						// chỉ xử lý với video youtube
+						if (a.split('youtube.com/').length > 1) {
+							//console.log('a: ' + a);
+							var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
+							//console.log('wit: ' + jQuery(this).attr('width'));
+							if ( wit.toString().split('%').length > 1 ) {
+								wit = wit.replace(/\%/, '') * 1;
+								wit = jQuery(this).width() || 560;
+								//console.log('wit%: ' + wit);
+							}
+							else if ( isNaN(wit) ) {
+								wit = jQuery(this).width() || 560;
+							}
+							//console.log('wit1: ' + wit);
+							if (wit > max_width) {
+								wit = max_width;
+							}
+							wit -= 1;
+							//console.log('wit2: ' + wit);
 
-                        // chỉ xử lý với video youtube
-                        if (a.split('youtube.com/').length > 1) {
-                            //console.log('a: ' + a);
-                            var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 560;
-                            //console.log('wit: ' + jQuery(this).attr('width'));
-                            if (wit.toString().split('%').length > 1) {
-                                wit = wit.replace(/\%/, '') * 1;
-                                wit = jQuery(this).width() || 560;
-                                //console.log('wit%: ' + wit);
-                            } else if (isNaN(wit)) {
-                                wit = jQuery(this).width() || 560;
-                            }
-                            //console.log('wit1: ' + wit);
-                            if (wit > max_width) {
-                                wit = max_width;
-                            }
-                            wit -= 1;
-                            //console.log('wit2: ' + wit);
-
-                            //
-                            jQuery(this).attr({
-                                'width': wit,
-                                'height': Math.ceil(wit * youtube_video_default_size)
-                            });
-                        }
-                    }
+							//
+							jQuery(this).attr({
+								'width': wit,
+								'height': Math.ceil(wit * youtube_video_default_size)
+							});
+						}
+					}
                 });
             });
         }
@@ -1034,11 +1035,11 @@ var _global_js_eb = {
 
                     //
                     //				a *= new_size;
-
+                    
                     // v2 -> tính padding theo chiều rộng
                     a = eval(new_size);
                     show_height *= a;
-
+                    
                     // v1 -> tính chiều cao theo chiều rộng
                     //a *= eval(new_size);
                     //a += 1;
@@ -1052,14 +1053,14 @@ var _global_js_eb = {
                 //				}
                 //console.log(pading_size);
                 //console.log(a);
-
+                
                 if (typeof arr_ti_le_global[pading_size] == 'undefined') {
                     arr_ti_le_global[pading_size] = a;
                     new_arr_ti_le_global[pading_size] = a;
                 }
 
                 // 1 số trường hợp vẫn dùng class cũ
-                if ($(this).hasClass('thread-details-mobileAvt')) {
+                if ( $(this).hasClass('thread-details-mobileAvt') ) {
                     jQuery(this).css({
                         'line-height': show_height + 'px',
                         height: show_height + 'px'
@@ -1076,13 +1077,13 @@ var _global_js_eb = {
         //console.log(arr_ti_le_global);
         //console.log(new_arr_ti_le_global);
         var str_css = '';
-        for (var x in new_arr_ti_le_global) {
+        for ( var x in new_arr_ti_le_global ) {
             new_arr_ti_le_global[x] *= 100;
-
+            
             // quy đổi padding teo % chiều rộng của width
-            str_css += '.' + x + '{padding-top:' + (new_arr_ti_le_global[x].toFixed(3) * 1) + '%}';
+            str_css += '.' + x + '{padding-top:' + ( new_arr_ti_le_global[x].toFixed(3) * 1 ) + '%}';
         }
-        if (str_css != '') {
+        if ( str_css != '' ) {
             console.log('ty-le-global padding CSS: ' + str_css);
             $('head').append('<style>' + str_css + '</style>');
         }
@@ -3276,7 +3277,6 @@ var _global_js_eb = {
 
     // facebook dynamic remarketing
     // https://developers.facebook.com/docs/marketing-api/facebook-pixel/v2.8
-    // https://developers.facebook.com/docs/facebook-pixel/implementation/marketing-api
     fb_track: function (track_name, track_arr, max_for) {
         //
         //		console.log('aaaaaaaaa');
@@ -3340,11 +3340,13 @@ var _global_js_eb = {
                 a = a.toLowerCase();
 
                 if (a == 'purchase') {
-                    if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                    if (track_arr['content_type'] == 'undefined'
+                        || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
                         return false;
                     }
                 } else if (a == 'addtocart') {
-                    if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                    if (track_arr['content_type'] == 'undefined'
+                        || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
                         return false;
                     }
                 } else if (a == 'viewcontent') {

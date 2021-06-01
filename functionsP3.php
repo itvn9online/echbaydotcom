@@ -1116,15 +1116,19 @@ function WGR_download( $source, $dest ) {
 }
 
 // hiển thị shortcode thông qua widget shortcode
-function WGR_echo_shortcode( $key ) {
+function WGR_shortcode( $key ) {
     $value = EBE_get_lang( $key );
-    
+
     // không hiển thị nếu đặt lệnh là ẩn hoặc vẫn là dạng tmp
-    if ( $value == 'hide' || $value == 'null' || strstr($value, 'tmp_shortcode_____' ) == true ) {
+    if ( $value == 'hide' || $value == 'null' || strstr( $value, 'tmp_shortcode_____' ) == true ) {
         return '';
     }
-    
+
     // còn lại sẽ gọi đến hàm shortcode đẻ hiển thị ra
-    echo do_shortcode( $value );
+    return do_shortcode( $value );
+}
+
+function WGR_echo_shortcode( $key ) {
+    echo WGR_shortcode( $key );
     return '';
 }
