@@ -152,6 +152,9 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
             jQuery('#tagsdiv-discount_code, #tagsdiv-discount_code-hide, label[for="tagsdiv-discount_code-hide"]').hide().addClass('hide-if-js').addClass('d-none');
             console.log('Hide tagsdiv-discount_code');
         }
+        
+        //
+        WGR_find_all_taxonomy_for_edit();
     }
     // thêm bài viết mới
     else if (admin_act == 'post-new') {
@@ -164,6 +167,9 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
         // ẩn bớt các công cụ chưa dùng để cho nó tiện
         //		$('#postbox-container-2').hide();
         //		console.log('hide postbox-container-2 in post new');
+        
+        //
+        WGR_find_all_taxonomy_for_edit();
     }
     // danh sách post, page, custom post type
     else if (admin_act == 'list') {
