@@ -1722,3 +1722,10 @@ body.widgets-php #wpadminbar, body.widgets-php #adminmenuwrap {
 .widget-liquid-right #widgets-right.active:before {
     display: none;
 }
+/* */
+.WGR-post-edit-search-taxnomy {
+    padding: 10px 0 0 10px;
+}
+.WGR-post-edit-search-taxnomy input {
+    width: 96%;
+}

@@ -1767,3 +1767,77 @@ function WGR_show_name_for_truong_tuy_bien () {
 }
 
 
+
+// hỗ trợ tìm kiếm các danh mục khi soạn bài viết -> hữu dụng cho trường hợp xuất hiện quá nhiều
+function WGR_find_all_taxonomy_for_edit () {
+    //console.log(Math.random());
+    
+    //
+    WGR_find_taxonomy_for_edit('category');
+    WGR_find_taxonomy_for_edit('post_options');
+    WGR_find_taxonomy_for_edit('blogs');
+}
+
+function WGR_find_taxonomy_for_edit ( tax_id ) {
+    var tax = tax_id + 'div';
+    // lượng dữ liệu nhiều chút thì mới hỗ trợ tìm kiếm
+    if ( jQuery('#' + tax).length === 0 || jQuery('#' + tax_id + 'checklist li').length < 10 ) {
+        return false;
+    }
+    console.log( '%c Hỗ trợ tìm kiếm taxonomy khi sửa bài #' + tax, 'color: blue;' );
+    
+    // thêm ô tìm kiếm
+    var input_id = 'WGR_search_taxonomy_' + tax_id;
+    jQuery('#' + tax + ' .postbox-header').after('<div class="WGR-post-edit-search-taxnomy"><input type="text" placeholder="Tìm kiếm nhanh" id="' + input_id + '" /></div>');
+    
+    //
+    jQuery('#' + tax_id + 'checklist li label').each(function () {
+        var a = $(this).html() || '';
+        
+        if ( a != '' ) {
+            //console.log(a);
+            //a = jQuery(a).find('input').remove().end();
+            a = g_func.strip_tags(a);
+            a = g_func.non_mark_seo(a);
+            a = a.replace(/[^0-9a-zA-Z]/g, '');
+            //console.log(a);
+            
+            //
+            $(this).attr({
+                'data-key': a
+            });
+        }
+    });
+    
+    //
+    jQuery('#' + input_id).off('keyup').keyup(function (e) {
+        if (e.keyCode == 13) {
+            return false;
+        }
+
+        var fix_id = tax_id + 'checklist';
+
+        var key = jQuery(this).val() || '';
+        if (key != '') {
+            key = g_func.non_mark_seo(key);
+            key = key.replace(/[^0-9a-zA-Z]/g, '');
+        }
+
+        if (key != '') {
+            jQuery('#' + fix_id + ' li label').hide().each(function () {
+                if (a != '') {
+                    var a = jQuery(this).attr('data-key') || '';
+                    if (a != '' && a.split(key).length > 1) {
+                        jQuery(this).show();
+                    }
+                }
+            });
+
+            //jQuery('#' + fix_id + ' li[data-show="1"]').show()
+        } else {
+            jQuery('#' + fix_id + ' li label').show()
+        }
+    });
+}
+
+
