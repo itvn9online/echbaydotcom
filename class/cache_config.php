@@ -315,6 +315,7 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
         'cf_instagram_page' => '\'' . $__cf_row[ 'cf_instagram_page' ] . '\'',
         'cf_google_plus' => '\'' . $__cf_row[ 'cf_google_plus' ] . '\'',
         'cf_youtube_chanel' => '\'' . $__cf_row[ 'cf_youtube_chanel' ] . '\'',
+        'cf_pinterest_page' => '\'' . $__cf_row[ 'cf_pinterest_page' ] . '\'',
         'cf_twitter_page' => '\'' . $__cf_row[ 'cf_twitter_page' ] . '\''
     );
     $cache_data_id = '';

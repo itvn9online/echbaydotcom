@@ -97,6 +97,8 @@ $_POST['cf_update_price_if_hethan'] = WGR_default_config('cf_update_price_if_het
 
 $_POST['cf_blog_rm_img_width'] = WGR_default_config('cf_blog_rm_img_width');
 
+$_POST['cf_blog_hide_excerpt'] = WGR_default_config('cf_blog_hide_excerpt');
+
 $_POST['cf_blogs_content_bottom'] = WGR_default_config('cf_blogs_content_bottom');
 
 $_POST['cf_swipe_details_banner'] = WGR_default_config('cf_swipe_details_banner');

@@ -1660,6 +1660,7 @@ function WGR_create_href_for_facebook() {
     al(cf_google_plus, 'ahref-to-gooplus');
     al(cf_youtube_chanel, 'each-to-youtube-chanel');
     al(cf_twitter_page, 'each-to-twitter-page');
+    al(cf_pinterest_page, 'each-to-pinterest-page');
 
     // thiết lập link nhắn tin cho page
     if (cf_facebook_page != '') {

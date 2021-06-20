@@ -77,6 +77,7 @@ $__cf_row_default = array(
 	'cf_twitter_page' => '',
 	'cf_yahoo' => '',
 	'cf_skype' => '',
+	'cf_pinterest_page' => '',
 	
 	'cf_js_allpage' => '',
 	'cf_js_allpage_full' => '',
@@ -312,6 +313,7 @@ $__cf_row_default = array(
 //	'cf_post_rm_img_width' => 1,
 	'cf_post_rm_img_width' => 'off',
 	'cf_blog_rm_img_width' => 'off',
+	'cf_blog_hide_excerpt' => 'off',
 	
 	// Tạo mục lục cho trang chi tiết -> nhập thẻ muốn lấy -> JS sẽ chạy vòng lặp cho thẻ đó
 	'cf_post_index_content' => '',
