@@ -1118,7 +1118,7 @@ $post_format = get_post_format( $pid );
 
 // TEST
 //echo $post_format . '<br>' . "\n";
-//echo $html_v2_file . '<br>' . "\n";
+//echo __FILE__ . ':' . __LINE__ . ':' . $html_v2_file . '<br>' . "\n";
 
 
 // tạo nội dung - v1

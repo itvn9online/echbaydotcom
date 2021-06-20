@@ -271,6 +271,10 @@ if ( count( $schema_BreadcrumbList ) == 0 ) {
 		$json_social_sameAs .= ',"' .$__cf_row ['cf_google_plus']. '"';
 	}
 	
+	if ( $__cf_row['cf_pinterest_page'] != '' ) {
+		$json_social_sameAs .= ',"' .$__cf_row ['cf_pinterest_page']. '"';
+	}
+	
 	//
 	$dynamic_meta .= _eb_del_line( '
 <script type="application/ld+json">

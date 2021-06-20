@@ -162,6 +162,10 @@ function WGR_get_footer_social() {
         $str .= ' <li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_google_plus' ) . '"></i> <span>Google+</span></a></li>';
     }
 
+    if ( $__cf_row[ 'cf_pinterest_page' ] != '' ) {
+        $str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-pinterest-page" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_pinterest' ) . '"></i> <span>Twitter</span></a></li>';
+    }
+
     //
     return '<ul class="footer-social text-center cf">' . $str . '</ul>';
 }

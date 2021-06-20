@@ -10,8 +10,12 @@ if ( $eb_blog_2content != '' ) {
 $arr_list_tag = wp_get_object_terms( $pid, 'blog_tag' );
 
 
+//
+if ( $__cf_row['cf_blog_hide_excerpt'] != 'off' ) {
+    $__post->post_excerpt = '<!-- post_excerpt hide by cf_blog_hide_excerpt OFF -->';
+}
 // thêm H2 cho phần blog
-if ( $__post->post_excerpt != '' ) {
+else if ( $__post->post_excerpt != '' ) {
     $__post->post_excerpt = '<' . EBE_get_lang( 'tag_blog_excerpt' ) . ' class="echbay-tintuc-gioithieu">' . nl2br( trim( $__post->post_excerpt ) ) . '</' . EBE_get_lang( 'tag_blog_excerpt' ) . '>';
 }
 
@@ -40,6 +44,7 @@ $html_v2_file = 'blog_details';
 // nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
 //	if ( ! file_exists( EB_THEME_HTML . $html_file ) ) {
 if ( $__cf_row[ 'cf_blog_column_style' ] != '' ) {
+    //echo __FILE__ . ':' . __LINE__ . ':' . $__cf_row[ 'cf_blog_column_style' ] . '<br>' . "\n";
     //			$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_blog_column_style'];
 
     $custom_product_flex_css = EBE_get_html_file_addon( $html_v2_file, $__cf_row[ 'cf_blog_column_style' ] );
