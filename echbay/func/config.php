@@ -137,6 +137,8 @@ $_POST['cf_auto_nofollow'] = WGR_default_config('cf_auto_nofollow');
 
 $_POST['cf_current_price_before'] = WGR_default_config('cf_current_price_before');
 
+$_POST['cf_big_price_before'] = WGR_default_config('cf_big_price_before');
+
 $_POST['cf_hide_supper_admin_menu'] = WGR_default_config('cf_hide_supper_admin_menu');
 
 $_POST['cf_alow_edit_theme_plugin'] = WGR_default_config('cf_alow_edit_theme_plugin');

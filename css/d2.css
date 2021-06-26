@@ -1725,6 +1725,21 @@ a.search-advanced-btn {
 }
 .ebe-currency:before, .ebe-currency:after {
     content: "\0111";
+    font-size: 90%;
+    /*
+    font-weight: normal;
+    */
+}
+.ebe-currency .ebe-currency:before, .ebe-currency .ebe-currency:after {
+    margin-right: 2px;
+}
+.ebe-currency.convert-to-trieu:before, .ebe-currency.convert-to-trieu:after {
+    content: "tri\00EA.u";
+    content: "triệu";
+}
+.ebe-currency.convert-to-ty:before, .ebe-currency.convert-to-ty:after {
+    content: "tỷ";
+    content: "t\1EF7";
 }
 /* .ebe-currency:after, */
 .ebe-currency:after {
