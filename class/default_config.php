@@ -273,6 +273,8 @@ $__cf_row_default = array(
 	// vị trí của đơn vị tiền tệ
 	'cf_current_price' => '',
 	'cf_current_price_before' => 'off',
+    // chuyển đổi đơn vị triệu, tỷ cho các mức giá quá lớn
+	'cf_big_price_before' => 'off',
 	// Đơn vị tiền tệ cho phần structured data
 	'cf_current_sd_price' => 'VND',
 	

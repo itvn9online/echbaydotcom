@@ -3519,11 +3519,66 @@ var _global_js_eb = {
 
 
     ebe_currency_format: function () {
+        // hỗ trợ chuyển đổi đơn vị tiền tệ nếu to quá
+        var mot_ty = 1000000000;
+        var mot_trieu = 1000000;
+        var conver_to_trieu = false;
+        if (WGR_check_option_on(cf_big_price_before)) {
+            conver_to_trieu = true;
+        }
         jQuery('.ebe-currency-format').each(function () {
             var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
 
-            if (a != '' && a != '0') {
-                jQuery(this).html(g_func.money_format(a));
+            //if (a != '' && a != '0') {
+            if (a != '') {
+                a *= 1;
+                if (a > 0) {
+                    var b = 0;
+                    
+                    //
+                    if (conver_to_trieu == true) {
+                        // nếu lớn hơn 1 tỷ -> tính theo đơn vị tỷ
+                        if (a > mot_ty) {
+                            // làm tròn theo đơn vị tỷ
+                            if (a % mot_ty == 0) {
+                                a = a/ mot_ty;
+                                jQuery(this).addClass('convert-to-ty');
+                            }
+                            // làm tròn theo đơn vị triệu
+                            else if (a % mot_trieu == 0) {
+                                a = a/ mot_trieu;
+                                jQuery(this).addClass('convert-to-trieu');
+                                
+                                // gán b để chuyển đổi sang tỷ
+                                b = a;
+                            }
+                        }
+                        else if (a > mot_trieu) {
+                            // làm tròn theo đơn vị triệu
+                            if (a % mot_trieu == 0) {
+                                a = a/ mot_trieu;
+                                jQuery(this).addClass('convert-to-trieu');
+                            }
+                        }
+                    }
+                    
+                    // trường hợp số tiền > mot_ty và không tròn số
+                    if (b > 0) {
+                        // tính phần tỷ
+                        a = b - (b % 1000);
+                        a = a/ 1000;
+                        
+                        // tính phần triệu
+                        b = b % 1000;
+                        
+                        // in ra
+                        jQuery(this).html('<span class="ebe-currency convert-to-ty">' + g_func.money_format(a) + '</span> ' + b);
+                    }
+                    // còn lại sẽ in bình thường
+                    else {
+                        jQuery(this).html(g_func.money_format(a));
+                    }
+                }
             }
         }).removeClass('ebe-currency-format');
     }

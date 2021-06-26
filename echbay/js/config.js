@@ -628,6 +628,7 @@ if ( current_module_config != 'config_theme' ) {
 	show_note_for_checkbox_config( 'cf_h1_logo' );
 	show_note_for_checkbox_config( 'cf_auto_nofollow' );
 	show_note_for_checkbox_config( 'cf_current_price_before' );
+	show_note_for_checkbox_config( 'cf_big_price_before' );
 	show_note_for_checkbox_config( 'cf_hide_supper_admin_menu' );
 	show_note_for_checkbox_config( 'cf_alow_edit_plugin_theme' );
 	show_note_for_checkbox_config( 'cf_alow_edit_theme_plugin' );

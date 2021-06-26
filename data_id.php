@@ -49,6 +49,7 @@ $add_data_id = array(
     'cf_on_primary_slider' => '\'' . $__cf_row['cf_on_primary_slider'] . '\'',
     'cf_rand_slider' => '\'' . $__cf_row['cf_rand_slider'] . '\'',
     'cf_add_to_cart_iframe' => '\'' . $__cf_row['cf_add_to_cart_iframe'] . '\'',
+    'cf_big_price_before' => '\'' . $__cf_row['cf_big_price_before'] . '\'',
     // tự động submit trong phần tìm kiếm nâng cao
     'cf_search_advanced_auto_submit' => '\'' . $__cf_row['cf_search_advanced_auto_submit'] . '\'',
     // chiều rộng khung
