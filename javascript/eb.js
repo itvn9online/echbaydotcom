@@ -3523,7 +3523,7 @@ var _global_js_eb = {
         var mot_ty = 1000000000;
         var mot_trieu = 1000000;
         var conver_to_trieu = false;
-        if (WGR_check_option_on(cf_big_price_before)) {
+        if (typeof cf_big_price_before != 'undefined' && WGR_check_option_on(cf_big_price_before)) {
             conver_to_trieu = true;
         }
         jQuery('.ebe-currency-format').each(function () {
