@@ -3058,6 +3058,10 @@ iframe[name="google_conversion_frame"] {
     right: 5px;
     top: -16px;
 }
+.oi_big_banner .each-to-edit-ads span {
+    top: 20px;
+    right: 20px;
+}
 /* .quick-edit-content_only .each-to-edit-ads i { */
 .quick-edit-content_only .each-to-edit-ads span {
     top: 0;
