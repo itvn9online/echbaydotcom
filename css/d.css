@@ -322,6 +322,7 @@ body.home .thread-details-tohome {
     -o-transition: all 0.8s ease;
     -webkit-transition: all 0.8s ease;
     transition: all 0.8s ease;
+    margin-left: 0;
 }
 .jEBE_slider-position li {
     float: left;
