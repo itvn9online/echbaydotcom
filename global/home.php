@@ -174,7 +174,8 @@ if ($home_ajax_content == false) {
 
 // nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
 $home_lazyload = 'home-lazyload';
-if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
+// 2021-06-30: tạm bỏ chức năng lazzyload do còn nhiều bất cập
+//if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
 	$home_ajax_content = EBE_html_template( EBE_get_page_template( $strHomeAjaxCacheFilter ), array(
 		'tmp.home_content_bottom_sidebar' => $home_content_bottom_sidebar,
 		'tmp.str_sidebar' => $home_str_sidebar,
@@ -194,10 +195,12 @@ if ( mtv_id > 0 || $__cf_row['cf_lazy_load_home_footer'] != 1 ) {
 	
 	// xóa ID load content = ajax đi
 	$home_lazyload = 'home-no-lazyload';
+/*
 }
 else {
 	$main_content = str_replace( '{tmp.user_login_home_content}', '', $main_content );
 }
+*/
 $main_content = str_replace( '{tmp.home_lazyload}', $home_lazyload, $main_content );
 
 	
