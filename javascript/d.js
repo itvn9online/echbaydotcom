@@ -1737,6 +1737,12 @@ jQuery('.widget-category-selectbox .echbay-widget-title').append('<i class="fas 
 // mở trang đăng ký, đăng nhập cho người dùng khi cần hỗ trợ
 (function (hr) {
     //console.log(hr);
+    if (typeof isLogin != 'undefined' && isLogin * 1 > 0) {
+        console.log('%c Login exist!', 'color: red;');
+        return false;
+    }
+    
+    //
     if (hr.split('?register=1').length > 1) {
         g_func.opopup('register');
     } else if (hr.split('?login=1').length > 1) {
