@@ -104,8 +104,8 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 		
 		var gia = jQuery(this).attr('data-price') || '',
 			a = jQuery(this).val() || 0;
-//		console.log( gia );
-//		console.log( a );
+		//console.log( gia );
+		//console.log( a );
 		
 		//
 		if ( a < 0 ) {
@@ -113,9 +113,10 @@ function WGR_admin_tinh_so_luong_hoa_don () {
 		}
 		
 		//
-		tong = gia * a;
+		tong += gia * a;
 		
 	});
+    //console.log( tong );
 	
 	// sau đó mới tính theo phần chiết khấu
 	WGR_admin_tinh_tong_hoa_don( tong );
