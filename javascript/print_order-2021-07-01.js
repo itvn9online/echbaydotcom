@@ -83,14 +83,13 @@
 </tr>';
 			
 			// for vận đơn
-			str2 += '<div>' + j + '. ' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + ' x ' + order_details_arr_cart_product_list[i].quan + ' = <span class="ebe-currency">' + g_func.money_format( total_line ) + '</span></div>';
+			str2 += '<div>' + j + '. ' + order_details_arr_cart_product_list[i].name + order_details_arr_cart_product_list[i].color + order_details_arr_cart_product_list[i].size + '</div>';
 			
 			//
 			j++;
 			
 		}
         //continue;
-	}
 		
 		//
 		if ( print_type == 'print_van_don' ) {
@@ -126,7 +125,6 @@
 			
 			//
 			if ( ck > 0 ) {
-                console.log('Discount: ' + ck);
 				tong_tien1 = tong_tien1 - ( ck * 1 );
 				jQuery('.show-if-chietkhau').show();
 			}
@@ -145,6 +143,7 @@
 		
 		//
 		jQuery('#tinh_tong_tien').html( g_func.money_format( tong_tien1 ) );
+	}
 	
 })();
 
