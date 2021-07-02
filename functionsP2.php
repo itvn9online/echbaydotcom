@@ -307,11 +307,19 @@ function _eb_load_post(
 
 	//
 	wp_reset_postdata();
+    
+    // xác định có xóa dòng hay không
+	if (!isset($other_options['auto_del_line'])) {
+        $other_options['auto_del_line'] = 'yes';
+    }
 
 	// ưu tiên sử dụng URL tương đối -> có thể gây lỗi trên 1 số phiên bản -> bỏ
 	//	return str_replace( web_link, '', _eb_supper_del_line( $str ) );
-	return _eb_supper_del_line( $str );
+    if ( $other_options['auto_del_line'] != 'no' ) {
+        return _eb_supper_del_line( $str );
+    }
 	//	return str_replace( '{tmp.post_zero}', EBE_get_lang('post_zero'), _eb_supper_del_line( $str ) );
+    return $str;
 }
 
 
