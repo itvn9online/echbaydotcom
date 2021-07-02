@@ -55,7 +55,7 @@ if ( $by_cat_id > 0 ) {
     //
     $arrs_cats = array(
         'taxonomy' => $cats_type,
-        //		'hide_empty' => 0,
+        'hide_empty' => 0,
         'parent' => $by_cat_id
     );
 
@@ -97,7 +97,7 @@ if ( $by_option_id > 0 ) {
     //
     $arrs_cats = array(
         'taxonomy' => 'post_options',
-        //		'hide_empty' => 0,
+        'hide_empty' => 0,
         'parent' => $by_option_id
     );
 
@@ -177,7 +177,7 @@ echo '</ul>';
 //
 $arrs_cats = array(
     'taxonomy' => $cats_type,
-    //	'hide_empty' => 0,
+    'hide_empty' => 0,
     'parent' => 0
 );
 
@@ -202,7 +202,7 @@ foreach ( $arrs_cats as $v ) {
     // lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
     $arrs_sub_cats = array(
         'taxonomy' => $cats_type,
-        //		'hide_empty' => 0,
+        'hide_empty' => 0,
         'parent' => $v->term_id
     );
 
@@ -238,7 +238,7 @@ if (
 ) {
     $arrs_cats = array(
         'taxonomy' => 'post_options',
-        //		'hide_empty' => 0,
+        'hide_empty' => 0,
         'parent' => 0
     );
 
@@ -263,7 +263,7 @@ if (
         // lấy nhóm con thuộc nhóm này -> lọc thêm nhóm cấp 2
         $arrs_sub_cats = array(
             'taxonomy' => 'post_options',
-            //			'hide_empty' => 0,
+            'hide_empty' => 0,
             'parent' => $v->term_id
         );
 

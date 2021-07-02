@@ -704,7 +704,7 @@ jQuery('.click-show-div-content').click(function () {
     });
 
     // xong việc thì xóa class này đi, để đỡ bị lặp lại -> phòng lỗi
-    jQuery('.each-to-fix-ptags').removeClass('each-to-fix-ptags');
+    jQuery('.each-to-fix-ptags').removeClass('each-to-fix-ptags').removeClass('done-fixed-ptags');
 
 })();
 

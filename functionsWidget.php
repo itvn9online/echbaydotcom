@@ -433,6 +433,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
     $content_only = isset( $instance[ 'content_only' ] ) ? $instance[ 'content_only' ] : 'off';
     $off_img_max_width = isset( $instance[ 'off_img_max_width' ] ) ? $instance[ 'off_img_max_width' ] : 'off';
     $js_ptags = isset( $instance[ 'js_ptags' ] ) ? $instance[ 'js_ptags' ] : 'off';
+    //echo 'js_ptags: ' . $js_ptags . '<br>' . "\n";
     $show_content_excerpt = isset( $instance[ 'show_content_excerpt' ] ) ? $instance[ 'show_content_excerpt' ] : 'off';
 
     $num_line = isset( $instance[ 'num_line' ] ) ? $instance[ 'num_line' ] : '';
@@ -802,6 +803,8 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
 
     //
     //		print_r( $arr_select_data );
+    
+    $auto_del_line = 'yes';
 
 
     // nếu là node của sản phẩm -> dùng bản mặc định luôn
@@ -842,8 +845,19 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
         }
 
         if ( isset( $instance[ 'show_post_content' ] ) && $instance[ 'show_post_content' ] == 'on' ) {
-            //			print_r( $instance ); echo 'aaaaaaaaaaa';
-            $html_node = str_replace( '{tmp.trv_gioithieu}', '<div class="echbay-blog-excerpt">{tmp.trv_gioithieu}</div><div class="echbay-blog-content">{tmp.post_content}</div>', $html_node );
+            //echo 'js_ptags: ' . $js_ptags . '<br>' . "\n";
+            //print_r( $instance ); echo 'aaaaaaaaaaa';
+            
+            //
+            $fix_ptags = '';
+            if ( $js_ptags == 'on' ) {
+                $fix_ptags = ' each-to-fix-ptags';
+                //echo 'fix_ptags: ' . $fix_ptags . '<br>' . "\n";
+                $auto_del_line = 'no';
+            }
+            
+            //
+            $html_node = str_replace( '{tmp.trv_gioithieu}', '<div class="echbay-blog-excerpt">{tmp.trv_gioithieu}</div><div class="echbay-blog-content' . $fix_ptags . '">{tmp.post_content}</div>', $html_node );
         }
     }
 
@@ -979,6 +993,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
             //			), EBE_get_page_template( $html_node ) );
             $html_node, 0, array(
                 'pot_tai' => $cat_type,
+                'auto_del_line' => $auto_del_line,
                 'get_full_content' => $get_full_content === 'on' ? 1 : 0
             ) );
 
