@@ -147,7 +147,7 @@ if ( $by_cat_id > 0 ) {
         foreach ( $arrs_cats as $v ) {
             $by_child_cat_id .= ',' . $v->term_id;
         }
-        //		echo $by_child_cat_id . '<br>';
+        //echo $by_child_cat_id . '<br>';
     }
 
 
