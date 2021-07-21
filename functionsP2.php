@@ -1711,16 +1711,25 @@ function EBE_get_file_in_folder( $dir, $file_type = '', $type = '', $get_basenam
 	 * chuẩn hóa đầu vào
 	 */
 	// bỏ dấu * nếu có
+    /*
 	if ( substr( $dir, -1 ) == '*' ) {
 		$dir = substr( $dir, 0, -1 );
 	}
+    */
+    $dir = rtrim($dir,'*');
+    /*
 	if ( substr( $file_type, 0, 1 ) == '*' ) {
 		$file_type = substr( $file_type, 1 );
 	}
+    */
+    $file_type = ltrim($file_type,'*');
 	// thêm dấu / nếu chưa có
+    $dir = rtrim($dir,'/') . '/';
+    /*
 	if ( substr( $dir, -1 ) != '/' ) {
 		$dir .= '/';
 	}
+    */
 
 	// lấy danh sách file
 	if ( $file_type != '' ) {
