@@ -633,6 +633,29 @@ var _global_js_eb = {
             });
             */
 
+            //
+            jQuery('img', this).each(function () {
+                var wit = jQuery(this).attr('data-width') || jQuery(this).attr('width') || 'auto',
+                    hai = jQuery(this).attr('data-height') || jQuery(this).attr('height') || 'auto';
+                /*
+				var m_wit = wit == 'auto' ? 0 : wit;
+				
+				if ( m_wit == 0 || m_wit > max_width ) {
+					m_wit = max_width - 1;
+				}
+				*/
+
+                jQuery(this).attr({
+                    'data-height': hai,
+                    'data-width': wit
+                    /*
+				}).css({
+					'max-width' : m_wit + 'px'
+					*/
+                });
+                //			}).removeAttr('width').removeAttr('height');
+            });
+
 
             jQuery('iframe', this).each(function () {
                 var a = jQuery(this).attr('src') || '',
@@ -778,6 +801,32 @@ var _global_js_eb = {
                 max_width = Math.ceil(max_width) - 1;
                 console.log('max_width: ' + max_width);
 
+                // xử lý với hình ảnh
+                jQuery('img', this).each(function () {
+                    var max_sizes_width = jQuery(this).attr('sizes') || '';
+                    if (max_sizes_width == '') {
+                        max_sizes_width = max_width + 99;
+                        max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
+                    }
+
+                    // chuyển phần fix kích thước về auto và xóa attr liên liên quan đến kích thước
+                    jQuery(this).css({
+                        //						'max-width' : max_width + 'px',
+                        'width': 'auto',
+                        'height': 'auto'
+                        //					}).attr({
+                        //						'width' : 'auto',
+                        //						'height' : 'auto',
+                        //					}).removeAttr('width').removeAttr('height');
+                    }).attr({
+                        sizes: max_sizes_width
+                    });
+                }).css({
+                    'max-width': max_width + 'px'
+                    //				}).attr({
+                    //					sizes : max_sizes_width
+                }).removeAttr('width').removeAttr('height');
+
 
                 // xử lý với video của youtube
                 jQuery('iframe', this).each(function () {
@@ -818,6 +867,21 @@ var _global_js_eb = {
                 max_width = Math.ceil(max_width) - 1;
                 //				console.log('dddddddddd: ' + max_width);
 
+                // xử lý với hình ảnh
+                jQuery('img', this).each(function () {
+                    var max_sizes_width = jQuery(this).attr('sizes') || '';
+
+                    //
+                    if (max_sizes_width == '') {
+                        max_sizes_width = max_width + 99;
+                        max_sizes_width = '(max-width: ' + max_sizes_width + 'px) 100vw, ' + max_sizes_width + 'px';
+                    }
+                }).css({
+                    'max-width': max_width + 'px'
+                    //				}).attr({
+                    //					sizes : max_sizes_width
+                }).removeAttr('height');
+
 
                 // xử lý riêng với chiều rộng
                 // loại bỏ bo chiều rộng của ảnh đi, nếu config có set như thế
@@ -829,7 +893,7 @@ var _global_js_eb = {
                 ) {
                     console.log('User config cf_post_rm_img_width ON');
 
-                    //jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
+                    jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
                     jQuery('.wp-caption', this).width('auto');
                 } else if (
                     pid > 0
@@ -839,10 +903,33 @@ var _global_js_eb = {
                 ) {
                     console.log('User config cf_blog_rm_img_width ON');
 
-                    //jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
+                    jQuery('img', this).removeAttr('width').removeAttr('data-width').removeAttr('height').removeAttr('data-height').removeAttr('sizes');
                     jQuery('.wp-caption', this).width('auto');
                 } else {
-                    //
+                    jQuery('img', this).each(function () {
+
+                        var current_wit = jQuery(this).attr('data-width') || '';
+                        //						console.log(current_wit);
+                        if (current_wit != '' && current_wit != 'auto') {
+                            if (current_wit > max_width) {
+                                current_wit = max_width;
+                            }
+                            current_wit -= 1;
+                        }
+                        //						console.log(current_wit);
+
+                        //
+                        jQuery(this).css({
+                            //							'max-width' : max_width + 'px',
+                            'width': '',
+                            'height': ''
+                        }).attr({
+                            'width': current_wit,
+                            //							'height' : jQuery(this).attr('data-height') || '',
+                            //						}).removeAttr('width').removeAttr('height');
+                        });
+                        //						}).removeAttr('height');
+                    });
                 }
 
                 //

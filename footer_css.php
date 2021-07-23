@@ -34,7 +34,9 @@ if (!file_exists(EB_THEME_CACHE . $cat_js_file_name) || date_time - filemtime(EB
 }
 
 
-echo '<script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/' . $using_js_file_name . '?v=' . date('ymd-Hi', date_time) . '" defer></script>';
+
+echo '<script type="text/javascript" src="' . str_replace( ABSPATH, '', EB_THEME_CACHE ) . $using_js_file_name . '?v=' . date('ymd-Hi', date_time) . '" defer></script>';
+//echo str_replace( ABSPATH, '', EB_THEME_CACHE ) . '<br>' . "\n";
 
 
 //
