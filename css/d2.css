@@ -1091,8 +1091,13 @@ span.hd_status9 { background: #F00; }
 .search-select-option input[type="text"]:-ms-input-placeholder {
     color: #333;
 }
+/*
 .img-max-width {
     overflow: hidden;
+}
+*/
+.img-max-width img{
+    max-width: 100%;
 }
 .hr-line-border {
     height: 1px;

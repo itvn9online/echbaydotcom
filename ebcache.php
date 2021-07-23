@@ -1,8 +1,10 @@
 <?php
 
 //
-define( 'EB_THEME_CACHE', dirname( __DIR__ ) . '/uploads/ebcache/' );
+define( 'EB_THEME_CACHE', dirname( __DIR__ ) . '/uploads/ebcache/' . $_SERVER[ 'HTTP_HOST' ] . '/' );
 //die( EB_THEME_CACHE );
+//define( 'EB_SUB_THEME_CACHE', str_replace( ABSPATH, '', EB_THEME_CACHE ) );
+//echo EB_SUB_THEME_CACHE . '<br>' . "\n";
 
 //
 include_once __DIR__ . '/main_function.php';

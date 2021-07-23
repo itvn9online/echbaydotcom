@@ -168,7 +168,7 @@ define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_in
 
 // thư mục lưu trữ cache
 if ( !defined( 'EB_THEME_CACHE' ) ) {
-    define( 'EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' );
+    define( 'EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $_SERVER['HTTP_HOST'] . '/' );
 }
 //echo EB_THEME_CACHE . '<br>';
 

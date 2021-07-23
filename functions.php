@@ -1063,7 +1063,7 @@ function EBE_add_js_compiler_in_cache(
     }
 
     //
-    echo '<!-- ' . $file_name_cache . ' --><script type="text/javascript" src="' . EB_DIR_CONTENT . '/uploads/ebcache/noclean/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
+    echo '<!-- ' . $file_name_cache . ' --><script type="text/javascript" src="' . str_replace( ABSPATH, '', EB_THEME_CACHE ) . 'noclean/' . $file_show . '?v=' . web_version . '" ' . $async . '></script>' . "\n";
 }
 
 // một số host không dùng được hàm end
@@ -1280,13 +1280,13 @@ function _eb_add_css_js_file( $arr, $file_type = '.css', $include_now = 0, $incl
         //			exit();
         //
         //		$none_http_url = str_replace( 'http://', '//', content_url() );
-        $none_http_url = EB_DIR_CONTENT;
+        //$none_http_url = EB_DIR_CONTENT;
         //		$none_http_url = basename( EB_THEME_CONTENT );
         //
         if ( $file_type == '.js' ) {
 
             // tạo nội dung nhúng file css
-            $f_url = $none_http_url . '/uploads/ebcache/' . $f_filename;
+            $f_url = str_replace( ABSPATH, '', EB_THEME_CACHE ) . $f_filename;
             //				echo 'URL: ' . $f_url . '<br>';
 
             /*
@@ -1808,7 +1808,7 @@ function _eb_add_compiler_v2_css( $arr, $css_inline = 1 ) {
         }
 
         // -> done
-        echo '<!-- ' . $file_cache . ' --><link rel="stylesheet" href="' . EB_DIR_CONTENT . '/uploads/ebcache/noclean/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
+        echo '<!-- ' . $file_cache . ' --><link rel="stylesheet" href="' . str_replace( ABSPATH, '', EB_THEME_CACHE ) . 'noclean/' . $file_show . '?v=' . web_version . '" type="text/css" media="all" />';
 
         //
         return true;
@@ -1904,7 +1904,7 @@ function _eb_add_compiler_link_css( $arr ) {
             //
             //			$file_link = $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
             //			$file_link = web_link . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
-            $file_link = EB_DIR_CONTENT . '/uploads/ebcache/' . $file_cache;
+            $file_link = str_replace( ABSPATH, '', EB_THEME_CACHE ) . $file_cache;
 
             // -> done
             echo '<link rel="stylesheet" href="' . $file_link . '" type="text/css" media="all" />' . "\n";
