@@ -1096,8 +1096,11 @@ span.hd_status9 { background: #F00; }
     overflow: hidden;
 }
 */
-.img-max-width img{
+.img-max-width img {
     max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
 }
 .hr-line-border {
     height: 1px;
