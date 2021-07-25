@@ -10,6 +10,7 @@
 //echo __FILE__ . '<br>' . "\n";
 //$fileList = get_included_files();
 //print_r($fileList);
+//die('dfh dhda');
 
 
 
@@ -609,6 +610,7 @@ else {
 
 
 
+//die('hgj sdgsdgs');
 
 // css định dạng chiều rộng cho phần danh sách blog
 //$main_content = str_replace( '{tmp.custom_blog_css}', $__cf_row['cf_blog_class_style'], $main_content );
