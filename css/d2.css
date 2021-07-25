@@ -19,6 +19,9 @@ label, .cur {
     float: left;
     width: 50%;
 }
+.col-inner .echbay-blog li {
+    margin-left: 0 !important;
+}
 .echbay-blog-padding {
     margin: 0 10px;
     padding-bottom: 20px;

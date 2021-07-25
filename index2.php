@@ -1046,9 +1046,11 @@ else {
 
 
     /*
-     * Không hiển thị menu admin ở theme
+     * Không hiển thị menu admin ở theme -> áp dụng với phiên bản code cũ
      */
-    add_filter( 'after_setup_theme', 'EB_remove_admin_bar_in_theme' );
+    if ( !defined( 'WGR_APP_PATH' ) ) {
+        add_filter( 'after_setup_theme', 'EB_remove_admin_bar_in_theme' );
+    }
 
     // xóa các script không sử dụng đến
     //	add_filter( 'init', 'EBE_deregister_scripts' );
