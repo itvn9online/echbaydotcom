@@ -2,6 +2,9 @@
 
 //echo $act . '<br>' . "\n";
 
+//
+global $id_for_get_sidebar;
+
 // ưu tiên views hiện tại
 if ( file_exists( __DIR__ . '/' . $act . '.php' ) ) {
     include __DIR__ . '/' . $act . '.php';
@@ -13,6 +16,16 @@ else {
 
 get_header();
 
+// xử lý nội dung trước khi in ra
+/*
+if ( $id_for_get_sidebar == '' ) {
+    $id_for_get_sidebar = id_default_for_get_sidebar;
+}
+echo $id_for_get_sidebar . '<br>' . "\n";
+*/
+include_once EB_THEME_PLUGIN_INDEX . 'common_content.php';
+
+// chốt
 echo $main_content;
 
 get_footer();

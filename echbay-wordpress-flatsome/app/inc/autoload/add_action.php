@@ -10,6 +10,41 @@ function EB_flatsome_load_header_static() {
     echo '<base href="' . Wgr::$eb->BaseModelWgr->base_url . '" />';
 
 
+    // nạp phần font awesome trước trước
+    $load_font_awesome = '';
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
+    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/', $load_font_awesome );
+    echo '<style>' . $load_font_awesome . '</style>';
+
+
+    /*
+     * nạp các file css, js dùng chung từ core
+     */
+    Wgr::$eb->BaseModelWgr->adds_css( [
+        /*
+         * for theme
+         */
+        EB_THEME_URL . 'outsource/fontawesome-free-5.15/css/fontawesome.min.css',
+        EB_THEME_URL . 'outsource/fontawesome-free-5.15/css/v4-shims.min.css',
+        /*
+         * for plugin
+         */
+        EB_THEME_PLUGIN_INDEX . 'css/d.css',
+        EB_THEME_PLUGIN_INDEX . 'css/d2.css',
+        //EB_THEME_PLUGIN_INDEX . 'css/m.css',
+        //EB_THEME_PLUGIN_INDEX . 'css/g.css',
+        EB_THEME_PLUGIN_INDEX . 'css/thread_list.css',
+        //EB_THEME_PLUGIN_INDEX . 'css/default/home_hot.css',
+        //EB_THEME_PLUGIN_INDEX . 'css/default/home_node.css',
+        /*
+         * for child theme
+         */
+        EB_CHILD_THEME_URL . 'ui/ifox-threadnode.css',
+        EB_CHILD_THEME_URL . 'ui/d.css',
+    ] );
+
+
     /*
      * lấy các màu sắc được được thiết lập trong theme
      */
@@ -17,6 +52,7 @@ function EB_flatsome_load_header_static() {
     //print_r( $theme_mod );
 
     $arr_root_color = [];
+    $arr_theme_mod = [];
     if ( !isset( $theme_mod[ 'color_primary' ] ) ) {
         $theme_mod[ 'color_primary' ] = '#446084';
     }
@@ -72,7 +108,11 @@ function EB_flatsome_load_header_static() {
     if ( isset( $theme_mod[ 'color_widget_links_hover' ] ) ) {
         $arr_root_color[] = '--widget-hover-color: ' . $theme_mod[ 'color_widget_links_hover' ];
     }
-    echo '<style>:root {' . implode( ';', $arr_root_color ) . '}</style>';
+    if ( isset( $theme_mod[ 'site_width' ] ) ) {
+        // độ rọng của flatsome nó luôn trừ đi 30px, sau đó column trong nó lại padding tổng 2 bên là 30px -> trừ đi 60px để cân bằng
+        $arr_theme_mod[] = '.w99,.w90{max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px}';
+    }
+    echo '<style>:root {' . implode( ';', $arr_root_color ) . '}/* theme_mod */' . implode( '', $arr_theme_mod ) . '</style>';
 
     //
     global $eb_wp_post_type;
@@ -91,39 +131,34 @@ function EB_flatsome_load_header_static() {
     global $eb_background_for_post;
 
     include WGR_APP_PATH . 'inc/header.php';
-
-
-    /*
-     * nạp các file css, js dùng chung từ core
-     */
-    Wgr::$eb->BaseModelWgr->adds_css( [
-        EB_THEME_PLUGIN_INDEX . 'css/d.css',
-        EB_THEME_PLUGIN_INDEX . 'css/d2.css',
-        //EB_THEME_PLUGIN_INDEX . 'css/m.css',
-        //EB_THEME_PLUGIN_INDEX . 'css/g.css',
-        EB_THEME_PLUGIN_INDEX . 'css/thread_list.css',
-        //EB_THEME_PLUGIN_INDEX . 'css/default/home_hot.css',
-        //EB_THEME_PLUGIN_INDEX . 'css/default/home_node.css',
-    ] );
 }
 add_action( 'wp_head', 'EB_flatsome_load_header_static', 9 );
 
 // footer
 function EB_flatsome_load_footer_static() {
     //
-
+    //echo 'mtv_id: ' . mtv_id;
+    //echo ( mtv_id > 0 && current_user_can( 'delete_posts' ) ) ? 1 : 2;
 
     /*
      * nạp các file css, js dùng chung từ core
      */
     Wgr::$eb->BaseModelWgr->adds_js( [
-        //EB_THEME_PLUGIN_INDEX . '/javascript/slider.js',
-        EB_THEME_PLUGIN_INDEX . '/javascript/functions.js',
-        EB_THEME_PLUGIN_INDEX . '/javascript/eb.js',
-        EB_THEME_PLUGIN_INDEX . '/javascript/df.js',
-        EB_THEME_PLUGIN_INDEX . '/javascript/d.js',
-        EB_THEME_PLUGIN_INDEX . '/javascript/footer.js',
-        //EB_THEME_PLUGIN_INDEX . '/javascript/fomo_order.js',
+        /*
+         * for plugin
+         */
+        //EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
+        ( mtv_id > 0 && current_user_can( 'delete_posts' ) ) ? EB_THEME_PLUGIN_INDEX . 'javascript/show-edit-btn.js' : '',
+        EB_THEME_PLUGIN_INDEX . 'javascript/df.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
+        //EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
+        //EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
+        /*
+         * for child theme
+         */
+        EB_CHILD_THEME_URL . 'ui/d.js',
     ] );
 }
 add_action( 'wp_footer', 'EB_flatsome_load_footer_static', 0 );

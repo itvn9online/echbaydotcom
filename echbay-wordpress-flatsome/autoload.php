@@ -72,3 +72,8 @@ foreach ( glob( WGR_APP_PATH . 'inc/autoload/*.php' ) as $filename ) {
     //echo $filename . '<br>' . "\n";
     include $filename;
 }
+
+foreach ( glob( WGR_APP_PATH . 'inc/autoload/shortcode/*.php' ) as $filename ) {
+    //echo $filename . '<br>' . "\n";
+    include $filename;
+}

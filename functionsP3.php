@@ -149,7 +149,7 @@ function WGR_check_and_load_tmp_theme( $load_config_temp, $dir_all_theme ) {
         $arr_for_add_css[ EBE_get_css_for_config_design( $load_config_temp, '.html' ) ] = 1;
         //$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $load_config_temp, '.html' ) ] = 1;
     } else {
-        return 'File ' . $load_config_temp . ' not exist';
+        return 'File not exist! ' . $load_config_temp;
     }
 
     return $main_content;

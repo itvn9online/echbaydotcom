@@ -28,6 +28,7 @@ $add_data_id = array(
     'isQuanly' => ( mtv_id > 0 && current_user_can('manage_options') ) ? 1 : 0,
     'isLogin' => mtv_id,
     'uEmail' => '\'' . mtv_email . '\'',
+    'echbay_for_flatsome' => defined( 'WGR_APP_PATH' ) ? 1 : 0,
     'eb_wp_post_type' => '\'' . $eb_wp_post_type . '\'',
     'logout_url' => '\'' . ( mtv_id > 0 ? wp_logout_url(eb_web_protocol . ':' . _eb_full_url()) : '' ) . '\'',
 //	'cf_categories_url' => $cf_categories_url,

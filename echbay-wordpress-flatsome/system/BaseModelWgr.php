@@ -15,6 +15,11 @@ class BaseModelWgr {
     }
 
     public function add_css( $f, $attr = 'rel="stylesheet" type="text/css" media="all"' ) {
+        if ( $f == '' ) {
+            return false;
+        }
+
+        //
         if ( !file_exists( $f ) ) {
             echo '<!-- File not exist: ' . str_replace( ABSPATH, '', $f ) . ' -->';
             return false;
@@ -32,6 +37,11 @@ class BaseModelWgr {
     }
 
     public function add_js( $f, $attr = 'type="text/javascript" defer' ) {
+        if ( $f == '' ) {
+            return false;
+        }
+
+        //
         if ( !file_exists( $f ) ) {
             echo '<!-- File not exist: ' . str_replace( ABSPATH, '', $f ) . ' -->';
             return false;

@@ -1105,6 +1105,9 @@ span.hd_status9 { background: #F00; }
     display: inline-block;
     vertical-align: middle;
 }
+.img-max-width img.aligncenter {
+    display: block;
+}
 .hr-line-border {
     height: 1px;
     padding: 0;
@@ -3066,12 +3069,12 @@ iframe[name="google_conversion_frame"] {
 }
 /* .each-to-edit-ads i { */
 .each-to-edit-ads span {
-    right: 5px;
-    top: -16px;
+    right: 0;
+    top: 0;
 }
 .oi_big_banner .each-to-edit-ads span {
-    top: 20px;
-    right: 20px;
+    top: 0;
+    right: 0;
 }
 /* .quick-edit-content_only .each-to-edit-ads i { */
 .quick-edit-content_only .each-to-edit-ads span {
