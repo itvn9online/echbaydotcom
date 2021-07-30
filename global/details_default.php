@@ -1289,7 +1289,7 @@ if ( $get_category_in_list === 1 ) {
 // -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
 $main_content .= '<script type="text/javascript">
 var switch_taxonomy="' . $__post->post_type . '",
-//	pid=' . $pid . ',
+	pid=' . $pid . ',
 	product_post_status="' . $__post->post_status . '",
 	product_trv_trangthai="' . $trv_trangthai . '",
 	eb_site_comment_open=' . $eb_site_comment_open . ',

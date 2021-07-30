@@ -1985,9 +1985,18 @@ function EBE_set_default_title_for_seo() {
         } else if (WGR_check_option_on(cf_excerpt_sync_content)) {
             des_post = EBE_set_default_excerpt_for_seo();
 
-            // không lấy tóm tắt nếu nó có URL ở đó
-            if (des_post != '' && des_post.split('//').length == 1) {
-                jQuery('#excerpt').val(des_post);
+            if (des_post != '') {
+                // không lấy tóm tắt nếu nó có URL ở đó
+                if (des_post.split('//').length > 1) {
+                    console.log('%c excerpt has URL', 'color: orange;');
+                }
+                // không lấy tóm tắt nếu nó có URL ở đó -> không tự khởi tạo khi nội dung build bởi flatsome
+                else if (des_post.split('[ux_').length > 1) {
+                    console.log('%c excerpt build by flatsome', 'color: orange;');
+                }
+                else {
+                    jQuery('#excerpt').val(des_post);
+                }
             }
         }
     }

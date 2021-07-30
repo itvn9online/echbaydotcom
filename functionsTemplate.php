@@ -27,10 +27,10 @@ function EBE_get_html_logo( $set_h1 = 0 ) {
 function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_search = '' ) {
     global $current_search_key;
     global $__cf_row;
-	
-	if ( $class_for_search == '' ) {
-		$class_for_search = 'div-search-margin';
-	}
+
+    if ( $class_for_search == '' ) {
+        $class_for_search = 'div-search-margin';
+    }
 
     // sử dụng google tìm kiếm tùy chỉnh
     if ( $__cf_row[ 'cf_gse' ] != '' ) {
@@ -57,19 +57,17 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_s
      */
 
     //
-	$echbay_search_type = 'post_type';
-	if ( $echbay_search != '' ) {
+    $echbay_search_type = 'post_type';
+    if ( $echbay_search != '' ) {
         $echbay_search_name = 'q';
-		$echbay_search_type = 'for_post_type';
-	}
-    else if ( $__cf_row[ 'cf_search_by_echbay' ] == 1 ) {
+        $echbay_search_type = 'for_post_type';
+    } else if ( $__cf_row[ 'cf_search_by_echbay' ] == 1 ) {
         $echbay_search = 'ebsearch/';
         $echbay_search_name = 'q';
-		$echbay_search_type = 'for_post_type';
+        $echbay_search_type = 'for_post_type';
+    } else {
+        $echbay_search_name = 's';
     }
-	else {
-		$echbay_search_name = 's';
-	}
 
     //
     return '
@@ -101,7 +99,7 @@ function EBE_get_html_profile() {
     return '<div class="oi_member_func">.</div>';
 }
 
-function EBE_get_html_address() {
+function EBE_get_html_address( $ops = [] ) {
     global $__cf_row;
 
     //
@@ -112,7 +110,13 @@ function EBE_get_html_address() {
     }
 
     //
-    return EBE_html_template( WGR_get_html_template_lang( 'footer_address' ), array(
+    $str = '';
+    if ( isset( $ops[ 'title' ] ) ) {
+        $str .= '<div class="footer-address-title">' . $ops[ 'title' ] . '</div>';
+    }
+
+    //
+    $str .= EBE_html_template( WGR_get_html_template_lang( 'footer_address' ), array(
         'tmp.cf_ten_cty' => $__cf_row[ 'cf_ten_cty' ],
         'tmp.dc' => $dc,
         'tmp.fd_hotline' => EBE_get_lang( 'fd_hotline' ),
@@ -122,6 +126,12 @@ function EBE_get_html_address() {
         'tmp.fd_email' => EBE_get_lang( 'fd_email' ),
         'tmp.cf_email' => $__cf_row[ 'cf_email' ]
     ) );
+
+    return $str;
+}
+
+function EBE_html_address( $ops = [] ) {
+    echo EBE_get_html_address( $ops );
 }
 
 function WGR_get_bigbanner() {

@@ -4,6 +4,13 @@
 
 //
 global $id_for_get_sidebar;
+//global $group_go_to;
+$group_go_to = [];
+global $image_og_image;
+global $url_og_url;
+global $global_dymanic_meta;
+//global $parent_cid;
+$parent_cid = 0;
 
 // ưu tiên views hiện tại
 if ( file_exists( __DIR__ . '/' . $act . '.php' ) ) {
@@ -13,7 +20,10 @@ if ( file_exists( __DIR__ . '/' . $act . '.php' ) ) {
 else {
     include_once EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
 }
+$group_go_to = implode( ' ', $group_go_to );
 
+
+//
 get_header();
 
 // xử lý nội dung trước khi in ra
@@ -23,6 +33,8 @@ if ( $id_for_get_sidebar == '' ) {
 }
 echo $id_for_get_sidebar . '<br>' . "\n";
 */
+//include_once EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb-top1.php';
+include_once EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb2-top1.php';
 include_once EB_THEME_PLUGIN_INDEX . 'common_content.php';
 
 // chốt

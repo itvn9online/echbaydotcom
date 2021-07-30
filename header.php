@@ -23,6 +23,17 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 <?php
 
 
+// nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
+$load_font_awesome = '';
+$load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
+$load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
+$load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+//echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
+//echo ABSPATH . '<br>' . "\n";
+$load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
+echo '<style>' . $load_font_awesome . '</style>';
+
+
 // thêm NAV menu cho bản mobile
 if ( $__cf_row[ 'cf_search_nav_mobile' ] == 'none' ) {
     $__cf_row[ 'cf_default_css' ] .= 'body.style-for-mobile{margin-top:0}';
@@ -34,9 +45,14 @@ else {
 
 
 // một số css liên quan tới việc hiển thị màn hình đầu tiên, giúp tăng điểm trên google page speed
+//print_r( $arr_for_add_css );
 //_eb_add_css( $arr_for_add_css );
 //_eb_add_compiler_css( $arr_for_add_css + $arr_for_add_theme_css );
 _eb_add_compiler_css( $arr_for_add_css );
+_eb_add_compiler_css( [
+    EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/fontawesome.min.css' => 0,
+    EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/v4-shims.min.css' => 0,
+] );
 //print_r( $arr_for_add_css );
 
 
@@ -50,7 +66,7 @@ _eb_add_compiler_css( $arr_for_add_css );
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
 <?php /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
-    if ( $__cf_row['cf_replace_content'] != '' ) {
+if ( $__cf_row['cf_replace_content'] != '' ) {
 $__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
 }
 echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];

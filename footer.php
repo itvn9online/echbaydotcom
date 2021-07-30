@@ -43,11 +43,11 @@ if ( $check_footer_ajax_content == false ) {
 $footer_lazyload = 'footer-lazyload';
 // 2021-06-30: tạm bỏ chức năng lazzyload do còn nhiều bất cập
 //if ( mtv_id > 0 || $__cf_row[ 'cf_lazy_load_home_footer' ] != 1 ) {
-    $footer_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
-    echo str_replace( '{tmp.footer_content}', $footer_ajax_content, $footer_content );
+$footer_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
+echo str_replace( '{tmp.footer_content}', $footer_ajax_content, $footer_content );
 
-    // xóa ID load content = ajax đi
-    $footer_lazyload = 'footer-no-lazyload';
+// xóa ID load content = ajax đi
+$footer_lazyload = 'footer-no-lazyload';
 //}
 
 ?>
@@ -117,14 +117,14 @@ if ( eb_code_tester == true ) {
 <!-- // FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 // nạp font awesome 5 khi có nhu cầu
-//if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
-?>
-<!-- Our project just needs Font Awesome Solid + Brands -->
-<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/brands.min.js"></script>
-<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/solid.min.js"></script>
-<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js"></script>
+if ( 1 == 2 && $__cf_row[ 'cf_fontawesome_v5' ] == 1 ) {
+    ?>
+<!-- Our project just needs Font Awesome Solid + Brands --> 
+<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/brands.min.js"></script> 
+<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/solid.min.js"></script> 
+<script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/fontawesome.min.js"></script> 
 <script defer src="<?php echo EB_URL_THEMES_TUONG_DOI; ?>outsource/fontawesome-free-5.15.1-web/js/v4-shims.min.js"></script>
 <?php
-//}
+}
 ?>
 </body></html>

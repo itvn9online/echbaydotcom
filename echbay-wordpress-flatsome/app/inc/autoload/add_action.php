@@ -10,11 +10,14 @@ function EB_flatsome_load_header_static() {
     echo '<base href="' . Wgr::$eb->BaseModelWgr->base_url . '" />';
 
 
-    // nạp phần font awesome trước trước
+    // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
     $load_font_awesome = '';
     $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
     $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
-    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/', $load_font_awesome );
+    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+    //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
+    //echo ABSPATH . '<br>' . "\n";
+    $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
     echo '<style>' . $load_font_awesome . '</style>';
 
 
@@ -25,8 +28,8 @@ function EB_flatsome_load_header_static() {
         /*
          * for theme
          */
-        EB_THEME_URL . 'outsource/fontawesome-free-5.15/css/fontawesome.min.css',
-        EB_THEME_URL . 'outsource/fontawesome-free-5.15/css/v4-shims.min.css',
+        EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/fontawesome.min.css',
+        EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/v4-shims.min.css',
         /*
          * for plugin
          */
@@ -37,11 +40,6 @@ function EB_flatsome_load_header_static() {
         EB_THEME_PLUGIN_INDEX . 'css/thread_list.css',
         //EB_THEME_PLUGIN_INDEX . 'css/default/home_hot.css',
         //EB_THEME_PLUGIN_INDEX . 'css/default/home_node.css',
-        /*
-         * for child theme
-         */
-        EB_CHILD_THEME_URL . 'ui/ifox-threadnode.css',
-        EB_CHILD_THEME_URL . 'ui/d.css',
     ] );
 
 
@@ -110,7 +108,7 @@ function EB_flatsome_load_header_static() {
     }
     if ( isset( $theme_mod[ 'site_width' ] ) ) {
         // độ rọng của flatsome nó luôn trừ đi 30px, sau đó column trong nó lại padding tổng 2 bên là 30px -> trừ đi 60px để cân bằng
-        $arr_theme_mod[] = '.w99,.w90{max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px}';
+        $arr_theme_mod[] = '/*.w99,*/.w90{max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px}';
     }
     echo '<style>:root {' . implode( ';', $arr_root_color ) . '}/* theme_mod */' . implode( '', $arr_theme_mod ) . '</style>';
 

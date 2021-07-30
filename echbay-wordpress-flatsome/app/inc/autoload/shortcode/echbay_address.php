@@ -1,7 +1,11 @@
 <?php
 
-function action_echbay_address( $ops ) {
-    echo EBE_get_html_address();
+/*
+[echbay_address title="Liên hệ"]
+*/
+
+function action_echbay_address( $ops = [] ) {
+    EBE_html_address( $ops );
 }
 
 // cách sử dụng -> vào phần nội dung bài viết rồi nhập: [wonder_gotadi]
