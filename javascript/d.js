@@ -1414,8 +1414,9 @@ function WGR_fixed_a_tag() {
                                 if (goto > 90) {
                                     //window.scroll( 0, goto - 110 );
                                     jQuery('body,html').animate({
-                                        scrollTop: goto - 110
-                                    }, 800);
+                                        //scrollTop: goto - 110
+                                        scrollTop: goto - Math.ceil($(window).height()/ 100 * 33)
+                                    }, 600);
 
                                     window.location.hash = a;
 
@@ -1423,6 +1424,13 @@ function WGR_fixed_a_tag() {
                                 }
                             } catch (e) {
                                 console.log(WGR_show_try_catch_err(e));
+                                
+                                //
+                                jQuery('body,html').animate({
+                                    //scrollTop: goto - 110
+                                    scrollTop: jQuery(this).offset().top - Math.ceil($(window).height()/ 100 * 33)
+                                }, 600);
+                                return false;
                             }
                         }
                     });
