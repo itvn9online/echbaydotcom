@@ -13,9 +13,11 @@ define( 'WGR_APP_PATH', __DIR__ . '/app/' );
 /*
  * Kết nối tới theme echbaytwo
  */
-define( 'ECHBAY_TOW_THEME', dirname( EB_CHILD_THEME_URL ) . '/echbaytwo/' );
-//die( ECHBAY_TOW_THEME );
-require ECHBAY_TOW_THEME . 'functions.php';
+if ( !defined( 'ECHBAY_TWO_THEME' ) ) {
+    define( 'ECHBAY_TWO_THEME', dirname( EB_CHILD_THEME_URL ) . '/echbaytwo/' );
+}
+//die( ECHBAY_TWO_THEME );
+require ECHBAY_TWO_THEME . 'functions.php';
 
 
 // global static class

@@ -48,11 +48,15 @@ $arr_private_info_setting = $arrs_private_info_setting[ 'echbaydotcom' ];
 
 // từ nhà phát hành khác (nếu có)
 // -> kiểm tra xem có file ghi tên của nhà phát hành không -> làm cách này để thông tin nhà phát hành không thể tự thay đổi được -> chống kiểu clone vô tội vạ, lỡ ảnh hưởng tới thương hiệu gốc của tác giả
-if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
-    $private_info_setting = file_get_contents( EB_THEME_URL . 'copyright', 1 );
+//echo EB_THEME_URL . '<br>' . "\n";
+//if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
+//  $private_info_setting = file_get_contents( EB_THEME_URL . 'copyright', 1 );
+if ( defined( 'EB_THEME_URL' ) ) {
+    $private_info_setting = basename( EB_THEME_URL );
+    //echo $private_info_setting . '<br>' . "\n";
 
     // có thì ghi đè dữ liệu lên thôi
-    if ( isset( $arrs_private_info_setting[ $private_info_setting ] ) ) {
+    if ( $private_info_setting != 'echbaytwo' && isset( $arrs_private_info_setting[ $private_info_setting ] ) ) {
         // lấy logo
         if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
             include EB_THEME_URL . 'private_setting.php';

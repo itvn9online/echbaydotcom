@@ -55,14 +55,14 @@ function EB_flatsome_load_header_static() {
         $theme_mod[ 'color_primary' ] = '#446084';
     }
     //$arr_root_color[] = '--root-color: ' . $theme_mod[ 'color_primary' ];
-    $arr_root_color[] = '--main-color: ' . $theme_mod[ 'color_primary' ];
-    $arr_root_color[] = '--default-bg: ' . $theme_mod[ 'color_primary' ];
+    //$arr_root_color[] = '--main-color: ' . $theme_mod[ 'color_primary' ];
+    //$arr_root_color[] = '--default-bg: ' . $theme_mod[ 'color_primary' ];
 
     if ( !isset( $theme_mod[ 'color_secondary' ] ) ) {
         $theme_mod[ 'color_secondary' ] = '#d26e4b';
     }
     $arr_root_color[] = '--sub-color: ' . $theme_mod[ 'color_secondary' ];
-    $arr_root_color[] = '--default2-bg: ' . $theme_mod[ 'color_secondary' ];
+    //$arr_root_color[] = '--default2-bg: ' . $theme_mod[ 'color_secondary' ];
 
     if ( !isset( $theme_mod[ 'color_success' ] ) ) {
         $theme_mod[ 'color_success' ] = '#7a9c59';
@@ -79,7 +79,7 @@ function EB_flatsome_load_header_static() {
     }
     $arr_root_color[] = '--text-color: ' . $theme_mod[ 'color_texts' ];
     $arr_root_color[] = '--texts-color: ' . $theme_mod[ 'color_texts' ];
-    $arr_root_color[] = '--default-color: ' . $theme_mod[ 'color_texts' ];
+    //$arr_root_color[] = '--default-color: ' . $theme_mod[ 'color_texts' ];
 
     if ( !isset( $theme_mod[ 'type_headings_color' ] ) ) {
         $theme_mod[ 'type_headings_color' ] = '#555';
@@ -108,7 +108,7 @@ function EB_flatsome_load_header_static() {
     }
     if ( isset( $theme_mod[ 'site_width' ] ) ) {
         // độ rọng của flatsome nó luôn trừ đi 30px, sau đó column trong nó lại padding tổng 2 bên là 30px -> trừ đi 60px để cân bằng
-        $arr_theme_mod[] = '/*.w99,*/.w90{max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px}';
+        $arr_theme_mod[] = '/*.w99,*/.w90{/* max-width:' . $theme_mod[ 'site_width' ] . 'px; */ max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px;}';
     }
     echo '<style>:root {' . implode( ';', $arr_root_color ) . '}/* theme_mod */' . implode( '', $arr_theme_mod ) . '</style>';
 
