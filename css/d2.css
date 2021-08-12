@@ -46,6 +46,8 @@ label, .cur {
 .echbay-blog-title a {
     /* font-weight: bold; */
     color: #333;
+}
+.echbay-blog-title, .echbay-blog-title a {
     font-size: 14px;
 }
 .echbay-blog-infos {
