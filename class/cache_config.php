@@ -95,6 +95,31 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
     }
 
 
+
+    // giải nén các thư mục thuộc dạng outsource nếu chưa có
+    $arr_vendor_list = [
+        EB_THEME_URL . 'outsource',
+    ];
+    //print_r( $arr_vendor_list );
+    foreach ( $arr_vendor_list as $v ) {
+        if ( !is_dir( $v ) ) {
+            $zip = new ZipArchive;
+            $file = $v . '.zip';
+            if ( $zip->open( $file ) === TRUE ) {
+                $zip->extractTo( dirname( $v ) );
+                $zip->close();
+            }
+
+            //
+            if ( is_dir( $v ) ) {
+                echo 'DONE! sync code ' . basename($file) . ' <br>' . "\n";
+            } else {
+                echo 'ERROR! sync code ' . basename($file) . ' <br>' . "\n";
+            }
+        }
+    }
+
+
     /*
      * lấy các dữ liệu được tạo riêng cho config -> $post_id = -1;
      */
