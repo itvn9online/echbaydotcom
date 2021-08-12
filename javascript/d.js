@@ -1349,6 +1349,33 @@ function WGR_fixed_a_tag() {
     if (WGR_check_option_on(cf_auto_nofollow)) {
         nol = 1;
     }
+    
+    // tạo sự liên đới trong tab của flatsome
+    //var current_url
+    var i = 0;
+    $('.tabbed-content .nav li').each(function () {
+        $(this).attr({
+            'data-id': i
+        });
+
+        $('a', this).attr({
+            'href': '#WGR-flatsome-tab' + i,
+        }).addClass('WGR-fixed-atag'); // thêm class này để tab không chịu ảnh hưởng bởi điều phối của thẻ tag trong content
+
+        i++;
+    });
+
+    //
+    var i = 0;
+    $('.tabbed-content .tab-panels .panel').each(function () {
+        $(this).attr({
+            'id': 'WGR-flatsome-tab' + i,
+            'data-id': i
+        });
+
+        i++;
+    });
+
 
     // với các link # -> tắt chức năng click
     //	jQuery('a[href="#"]').attr({
@@ -1394,44 +1421,7 @@ function WGR_fixed_a_tag() {
                             */
 
                             //
-                            try {
-                                var goto = 0;
-
-                                // chuyển tới 1 ID, class hoặc input nào đó
-                                if (jQuery('#' + a).length > 0) {
-                                    goto = jQuery('#' + a).offset().top;
-                                } else if (jQuery('a[name="' + a + '"]').length > 0) {
-                                    goto = jQuery('a[name="' + a + '"]').offset().top;
-                                } else if (jQuery('.' + a).length > 0) {
-                                    goto = jQuery('.' + a).offset().top;
-                                }
-                                // mở popup đăng nhập/ đăng ký
-                                else if (a == 'login' || a == 'register') {
-                                    g_func.opopup(a);
-                                    return false;
-                                }
-
-                                if (goto > 90) {
-                                    //window.scroll( 0, goto - 110 );
-                                    jQuery('body,html').animate({
-                                        //scrollTop: goto - 110
-                                        scrollTop: goto - Math.ceil($(window).height()/ 100 * 33)
-                                    }, 600);
-
-                                    window.location.hash = a;
-
-                                    return false;
-                                }
-                            } catch (e) {
-                                console.log(WGR_show_try_catch_err(e));
-                                
-                                //
-                                jQuery('body,html').animate({
-                                    //scrollTop: goto - 110
-                                    scrollTop: jQuery(this).offset().top - Math.ceil($(window).height()/ 100 * 33)
-                                }, 600);
-                                return false;
-                            }
+                            WGR_goto_a_tag(a);
                         }
                     });
                 } else {
@@ -1459,6 +1449,53 @@ function WGR_fixed_a_tag() {
     });
 }
 WGR_fixed_a_tag();
+
+function WGR_goto_a_tag (a) {
+    setTimeout(function() {
+        action_WGR_goto_a_tag(a);
+    }, 200);
+}
+function action_WGR_goto_a_tag (a) {
+    try {
+        var goto = 0;
+
+        // chuyển tới 1 ID, class hoặc input nào đó
+        if (jQuery('#' + a).length > 0) {
+            goto = jQuery('#' + a).offset().top;
+        } else if (jQuery('a[name="' + a + '"]').length > 0) {
+            goto = jQuery('a[name="' + a + '"]').offset().top;
+        } else if (jQuery('.' + a).length > 0) {
+            goto = jQuery('.' + a).offset().top;
+        }
+        // mở popup đăng nhập/ đăng ký
+        else if (a == 'login' || a == 'register') {
+            g_func.opopup(a);
+            return false;
+        }
+        console.log(goto);
+
+        if (goto > 90) {
+            //window.scroll( 0, goto - 110 );
+            jQuery('body,html').animate({
+                //scrollTop: goto - 110
+                scrollTop: goto - Math.ceil($(window).height()/ 100 * 33)
+            }, 600);
+
+            window.location.hash = a;
+
+            return false;
+        }
+    } catch (e) {
+        console.log(WGR_show_try_catch_err(e));
+
+        //
+        jQuery('body,html').animate({
+            //scrollTop: goto - 110
+            scrollTop: jQuery(this).offset().top - Math.ceil($(window).height()/ 100 * 33)
+        }, 600);
+        return false;
+    }
+}
 
 
 //
