@@ -309,12 +309,12 @@ function WGR_add_for_arr_all_themes ( $position, $ftype, $limit = 20 ) {
 			|| file_exists( EB_THEME_URL . 'ui/' . $fname ) ) {
 				// trang chủ thì mặc định là không nhúng file -> sử dụng elementor hoặc widget
 				if ( $position == 'home' ) {
-					$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
+					$str .= '//$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "$eb_all_themes_name";' . "\n";
 				}
 				// còn lại thì include file như bình thường
 				else {
 //					$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $check_theme_node . '"] = "' . $fname . '";' . "\n";
-					$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "' . $fname . '";' . "\n";
+					$str .= '$eb_all_themes_support[$eb_all_themes_name]["' . $position . '"][] = "$eb_all_themes_name";' . "\n";
 				}
 				
 				$end_i = $j;
@@ -401,7 +401,7 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien .= '*/' . "\n";
 	
 	//
-	$conten_for_bo_giao_dien .= '$eb_all_themes_name = \'' . $create_theme_name . '\';' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_name = basename( __FILE__, \'.php\' );' . "\n";
 	
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name] = array();' . "\n";
 	
@@ -409,7 +409,7 @@ if ( ! file_exists( $file_bo_giao_dien ) ) {
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["name"] = $eb_all_themes_name;' . "\n";
 	
 	// hình ảnh sẽ được đưa lên host của webgiare để quản lý cho dễ
-	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/' . $create_theme_name . '.jpg";' . "\n";
+	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["screenshot"] = "https://img1.webgiare.org/$eb_all_themes_name.jpg";' . "\n";
 	
 	// khung chờ để nhập thông tin tác giả
 	$conten_for_bo_giao_dien .= '$eb_all_themes_support[$eb_all_themes_name]["author"] = "";' . "\n";
