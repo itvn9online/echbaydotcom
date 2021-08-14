@@ -1,0 +1,204 @@
+/*
+* style for mobile
+*/
+/* mobile, table only */
+@media only screen and (max-width:788px) {}
+/* mobile only */
+@media only screen and (max-width:395px) {
+    body {
+        min-width: 250px;
+        /* padding: 0 1px; */
+        /* margin-top: 45px; */
+    }
+    .w90, .w99, .fullsize-if-mobile {
+        max-width: 999px;
+        /*
+	width: 100% !important;
+	width: auto !important;
+	*/
+        float: none;
+    }
+    .w90, .w99 {
+        width: 100% !important;
+        margin: 0 0 0 auto;
+    }
+    .fullsize-if-mobile {
+        width: 96% !important;
+        margin: 0 auto;
+        float: none !important;
+    }
+    .fullsize-if-mobile .fullsize-if-mobile {
+        width: 100% !important;
+        margin: 0;
+        max-width: none;
+    }
+    .w90, .w99 {
+        min-width: 250px;
+    }
+    .hide-if-mobile {
+        display: none !important;
+    }
+    .show-if-mobile {
+        display: block !important;
+    }
+    .right-padding-menu10, .padding-right-menu10, .right-space-menu10, .right-menu-space10, .right-padding-menu40, .padding-right-menu40, .right-space-menu40, .right-menu-space40, .right-padding-menu, .padding-right-menu, .right-space-menu, .right-menu-space {
+        padding-right: 0;
+    }
+    .left-padding-menu10, .padding-left-menu10, .left-space-menu10, .left-menu-space10, .left-padding-menu40, .padding-left-menu40, .left-space-menu40, .left-menu-space40, .left-padding-menu, .padding-left-menu, .left-space-menu, .left-menu-space {
+        padding-left: 0;
+    }
+    .mobile-zero-margin, .echbay-blog, .thread-list, .widget-search-advanced {
+        margin: 0 !important;
+    }
+    /* touch mobile */
+    .home-video-scroll {
+        overflow-x: auto;
+    }
+    .home-video-scroll ul {
+        width: 250%;
+        max-width: 900px;
+    }
+    .home-video-scroll .thread-list16 li {
+        width: 16.666% !important;
+        width: calc(100%/6) !important;
+    }
+    .cart-table-free div {
+        margin: 5px 0 !important;
+    }
+    .cart-ultable li div.f75 {
+        width: 100%;
+    }
+    /* other style mobile */
+    #oi_scroll_top {
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        /*
+	bottom: 0 !important;
+	border-radius: 8px 8px 0 0;
+	*/
+        right: auto;
+        left: 1px;
+        opacity: .8;
+    }
+    #oi_scroll_top:hover {
+        opacity: 1;
+    }
+    .big-banner-button ul {
+        position: inherit;
+        top: 0;
+        margin: 15px 0;
+    }
+    .big-banner-button li.selected {
+        color: #C00;
+    }
+    .banner-chan-trang li {
+        width: 99%;
+    }
+    .global-right-space {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .echbay-blog-left, .echbay-blog-right {
+        width: 100% !important;
+        float: none;
+    }
+    .echbay-blog-right .echbay-blog-marginleft {
+        padding-left: 0 !important;
+        padding-top: 8px !important;
+    }
+    /* chỉnh padding mặc định cho 1 số hạng mục, giúp cho content dễ coi hơn chút */
+    #webgiare__top .fullsize-if-mobile, #webgiare__footer .fullsize-if-mobile {
+        padding: 0 1%;
+    }
+    .mobile-padding {
+        padding: 0 8px;
+    }
+    /* */
+    .jEBE_slider-position {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+    .thread-details-mobileCenter {
+        max-width: 450px;
+    }
+    /*
+* Hủy bỏ việc lật ngược cột
+*/
+    .home_menu_noidung, .thread_list_menu_noidung, .thread_details_menu_noidung, .blogs_menu_noidung, .blog_details_menu_noidung, .page_menu_noidung {
+        display: block;
+        flex-direction: unset;
+    }
+    /*
+* Nội dung với menu nằm trên một cột -> tạo giãn cách cho 2 cái này
+*/
+    .home_noidung_menu .col-sidebar-content, .thread_list_noidung_menu .col-sidebar-content, .thread_details_noidung_menu .col-sidebar-content, .blogs_noidung_menu .col-sidebar-content, .blog_details_noidung_menu .col-sidebar-content, .page_noidung_menu .col-sidebar-content, /* */ .home_menu_noidung .col-sidebar-content, .thread_list_menu_noidung .col-sidebar-content, .thread_details_menu_noidung .col-sidebar-content, .blogs_menu_noidung .col-sidebar-content, .blog_details_menu_noidung .col-sidebar-content, .page_menu_noidung .col-sidebar-content {
+        padding-top: 20px;
+    }
+    .mobile-fullsize li {
+        width: 100%;
+        float: none;
+    }
+    .echbay-blog33 li {
+        width: 50%;
+    }
+    .thread-list-order {
+        display: none;
+        margin: 0 8px;
+    }
+    .ebe-quick-view .quick-view-close i {
+        right: 10px;
+        top: 15px;
+        position: fixed;
+        box-shadow: 0 0 25px #333;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    /* */
+    .thread-list-per, .thread-list-status1, .thread-list-status2, .thread-list-status4 {
+        min-width: 25%;
+        font-size: 70%;
+        line-height: normal;
+        padding: 3px 0;
+    }
+    .thread-list-per {
+        top: 1px;
+        right: 0;
+        left: auto;
+        text-align: center;
+    }
+    .thread-list-status1, .thread-list-status2, .thread-list-status4 {
+        top: 10%;
+        right: 0;
+        left: auto;
+    }
+    .thread-list-status6 {
+        width: 33%;
+        max-width: 60px;
+        height: 33%;
+        max-height: 60px;
+        top: 0;
+        left: 0;
+    }
+    /* */
+    .clone-show-quick-cart {
+        padding: 0 8px;
+    }
+    .text-right-if-mobile, .right-if-mobile {
+        text-align: right !important;
+    }
+    .text-left-if-mobile, .left-if-mobile {
+        text-align: left !important;
+    }
+    .center-if-mobile {
+        text-align: center !important;
+    }
+    /* for elemetor */
+    .fullsize-if-mobile .elementor-column-wrap, .fullsize-if-mobile .elementor-widget-container {
+        padding: 0 !important;
+    }
+    .reponsive-for-table td {
+        width: auto !important;
+    }
+}

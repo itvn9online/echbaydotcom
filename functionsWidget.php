@@ -1054,6 +1054,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
         // thay thế link
         $show_content = str_replace( '{tmp.blog_link_option}', $blog_link_option, $show_content );
         $show_content = str_replace( '{tmp.widget_title_option}', $widget_title_option, $show_content );
+        $show_content = str_replace( '{tmp.post_zero}', EBE_get_lang( 'post_zero' ), $show_content );
 
         // hiển thị nội dung
         echo $show_content;
