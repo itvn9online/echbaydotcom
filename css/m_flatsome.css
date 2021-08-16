@@ -201,4 +201,9 @@
     .reponsive-for-table td {
         width: auto !important;
     }
+    .oneline-in-mobile .col {
+        max-width: 100%;
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
 }

@@ -3463,8 +3463,3 @@ iframe[name="google_conversion_frame"] {
     -webkit-transition: all 0.8s ease;
     transition: all 0.8s ease;
 }
-.oneline-in-mobile .col {
-    max-width: 100%;
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-}
