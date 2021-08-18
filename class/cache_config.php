@@ -95,7 +95,6 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
     }
 
 
-
     // giải nén các thư mục thuộc dạng outsource nếu chưa có
     $arr_vendor_list = [
         EB_THEME_URL . 'outsource',
@@ -112,9 +111,9 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
 
             //
             if ( is_dir( $v ) ) {
-                echo 'DONE! sync code ' . basename($file) . ' <br>' . "\n";
+                echo 'DONE! sync code ' . basename( $file ) . ' <br>' . "\n";
             } else {
-                echo 'ERROR! sync code ' . basename($file) . ' <br>' . "\n";
+                echo 'ERROR! sync code ' . basename( $file ) . ' <br>' . "\n";
             }
         }
     }
@@ -368,45 +367,10 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
 
 
     // kiểm tra và nạp ebsuppercache nếu chưa có -> chỉ áp dụng khi người dùng đang đăng nhập -> thường thì admin mới đăng nhập
-    if ( mtv_id > 0 && $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
-        $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
-
-        // nếu chưa có file cache thì thêm vào thôi
-        if ( strstr( $content_of_wp_index, 'echbaydotcom/ebcache.php' ) == false ) {
-            //echo __DIR__ . '<br>' . "\n";
-
-            // tách theo dấu xuống dòng \n
-            $content_of_wp_index = explode( "\n", $content_of_wp_index );
-            if ( trim( $content_of_wp_index[ 0 ] ) == '<?php' ) {
-                $content_of_wp_index[ 0 ] .= ' ' . "\n" . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
-                //print_r($content_of_wp_index);
-                //die('sdg sgds');
-
-                //
-                _eb_create_file( ABSPATH . 'index.php', implode( "\n", $content_of_wp_index ) );
-                //echo 'add ebsuppercache to index.php (1)<br>' . "\n";
-            } else {
-                // tách theo dấu cách
-                $content_of_wp_index = implode( "\n", $content_of_wp_index );
-                $content_of_wp_index = explode( ' ', $content_of_wp_index );
-
-                //
-                if ( trim( $content_of_wp_index[ 0 ] ) == '<?php' ) {
-                    $content_of_wp_index[ 0 ] .= ' ' . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
-                    _eb_create_file( ABSPATH . 'index.php', implode( ' ', $content_of_wp_index ) );
-                    //echo 'add ebsuppercache to index.php (2)<br>' . "\n";
-                } else {
-                    echo 'ERROR add ebsuppercache<br>' . "\n";
-                }
-            }
-            /*
-        } else {
-            echo ABSPATH . 'index.php' . '<br>' . "\n";
-            echo 'index.php has been add ebsuppercache!<br>' . "\n";
-            */
-        }
-        //echo nl2br($content_of_wp_index);
+    if ( !function_exists( 'WGR_add_ebcache_php_to_index' ) ) {
+        include_once EB_THEME_PLUGIN_INDEX . 'main_function.php';
     }
+    WGR_add_ebcache_php_to_index( $__cf_row );
 
 } else {
     include_once $__eb_cache_only_conf;

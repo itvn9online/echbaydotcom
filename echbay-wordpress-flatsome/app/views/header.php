@@ -1,3 +1,13 @@
+<?php
+
+// kiểm tra nạp footer và kích hoạt cache cho web
+require __DIR__ . '/header_cache.php';
+
+/*
+* Bên dưới là header của flatsome
+*/
+
+?>
 <!DOCTYPE html>
 <!--[if IE 9 ]> <html <?php language_attributes(); ?> class="ie9 <?php flatsome_html_classes(); ?>"> <![endif]-->
 <!--[if IE 8 ]> <html <?php language_attributes(); ?> class="ie8 <?php flatsome_html_classes(); ?>"> <![endif]-->
