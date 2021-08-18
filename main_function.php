@@ -199,7 +199,14 @@ function ___eb_cache_cache( $filename, $data, $data_comment = '' ) {
 
 // kiểm tra và nạp ebsuppercache nếu chưa có -> chỉ áp dụng khi người dùng đang đăng nhập -> thường thì admin mới đăng nhập
 function WGR_add_ebcache_php_to_index( $__cf_row ) {
-    if ( !defined( 'WP_ACTIVE_WGR_SUPPER_CACHE' ) && mtv_id > 0 && $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
+    // nếu chưa có tham số WP_ACTIVE_WGR_SUPPER_CACHE
+    if ( !defined( 'WP_ACTIVE_WGR_SUPPER_CACHE' ) &&
+        // và phải là user đã đăng nhập
+        mtv_id > 0 &&
+        // supper cache đang bật
+        $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 &&
+        // ebcache chưa được nạp
+        strstr( file_get_contents( ABSPATH . 'index.php', 1 ), '/echbaydotcom/ebcache.php' ) == false ) {
         // copy file mẫu
         if ( copy( __DIR__ . '/index-tmp.php', ABSPATH . 'index.php' ) ) {
             echo 'active WP_ACTIVE_WGR_SUPPER_CACHE <br>' . "\n";
