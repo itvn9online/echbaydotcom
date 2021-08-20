@@ -66,9 +66,9 @@ else if ( $__cf_row[ 'cf_reset_cache' ] < 30 ) {
 else if ( is_home() ||
     is_front_page() ||
     is_single() ||
-    //is_page() ||
-    //is_page_template() ||
-    //isset( $is_page_templates ) ||
+    isset( $is_page_templates ) ||
+    is_page() ||
+    is_page_template() ||
     is_archive()
 ) {
     //echo '<!-- ' . basename( 'EB header cache' ) . ' -->' . "\n";
