@@ -30,10 +30,24 @@ require __DIR__ . '/header_cache.php';
 <div id="wrapper">
 <?php
     
-    // nạp top của echbaydotcom
-    global $__cf_row;
-    //print_r($__cf_row);
-    include EB_CHILD_THEME_URL . 'ui/' . basename( EB_CHILD_THEME_URL ) . '-top1.php';
+    // nạp top của echbaydotcom (nếu có)
+    if ( file_exists( EB_CHILD_THEME_URL . 'ui/' . basename( EB_CHILD_THEME_URL ) . '-top1.php' ) ) {
+        global $__cf_row;
+        //print_r($__cf_row);
+        include EB_CHILD_THEME_URL . 'ui/' . basename( EB_CHILD_THEME_URL ) . '-top1.php';
+    }
+    // không thì dùng theme của flatsome
+    else {
+        do_action( 'flatsome_before_header' ); ?>
+
+	<header id="header" class="header <?php flatsome_header_classes(); ?>">
+		<div class="header-wrapper">
+			<?php get_template_part( 'template-parts/header/header', 'wrapper' ); ?>
+		</div>
+	</header>
+
+	<?php do_action( 'flatsome_after_header' );
+    }
     
     ?>
 	<main id="main" class="<?php flatsome_main_classes(); ?>">
