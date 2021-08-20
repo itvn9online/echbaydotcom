@@ -21,8 +21,7 @@ global $flatsome_opt;
 <?php wp_footer(); ?>
 
 </body>
-</html>
-<?php
+</html><?php
 
 /*
 * Bên trên là footer của flatsome

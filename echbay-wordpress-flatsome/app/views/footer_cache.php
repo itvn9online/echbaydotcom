@@ -47,4 +47,7 @@ if ( defined( 'HAS_USING_EBCACHE' ) ) {
 
     //
     ___eb_cache_cache( $filename, $main_content, $eb_cache_note );
+} else {
+    global $why_ebcache_not_active;
+    echo $why_ebcache_not_active;
 }

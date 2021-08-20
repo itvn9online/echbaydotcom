@@ -17,6 +17,9 @@ $set_time_for_main_cache = 600;
 // set tĩnh thời gian cache
 $set_time_for_main_cache = $set_time_for_main_cache - rand( 0, $set_time_for_main_cache / 2 );
 
+// thông điệp về ebcache
+$why_ebcache_not_active = '';
+
 
 //
 function ___eb_cache_getUrl( $cache_dir = 'all' ) {

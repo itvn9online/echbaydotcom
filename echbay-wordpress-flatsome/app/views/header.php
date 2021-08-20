@@ -7,8 +7,7 @@ require __DIR__ . '/header_cache.php';
 * Bên dưới là header của flatsome
 */
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <!--[if IE 9 ]> <html <?php language_attributes(); ?> class="ie9 <?php flatsome_html_classes(); ?>"> <![endif]-->
 <!--[if IE 8 ]> <html <?php language_attributes(); ?> class="ie8 <?php flatsome_html_classes(); ?>"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html <?php language_attributes(); ?> class="<?php flatsome_html_classes(); ?>"> <!--<![endif]-->
@@ -30,13 +29,17 @@ require __DIR__ . '/header_cache.php';
 <div id="wrapper">
 <?php
     
-    // nạp top của echbaydotcom (nếu có)
+    /*
+    * nạp top của echbaydotcom (nếu có)
+    */
     if ( file_exists( EB_CHILD_THEME_URL . 'ui/' . basename( EB_CHILD_THEME_URL ) . '-top1.php' ) ) {
         global $__cf_row;
         //print_r($__cf_row);
         include EB_CHILD_THEME_URL . 'ui/' . basename( EB_CHILD_THEME_URL ) . '-top1.php';
     }
-    // không thì dùng theme của flatsome
+    /*
+    * không thì dùng top của flatsome
+    */
     else {
         do_action( 'flatsome_before_header' ); ?>
 
