@@ -79,3 +79,7 @@ else if ( is_home() ||
     // bắt đầu cache
     ob_start();
 }
+// chỉ cache với 1 số trang cụ thể thôi
+else {
+    $why_ebcache_not_active = '<!-- EchBay Cache cache only home page, category page, post details page -->';
+}
