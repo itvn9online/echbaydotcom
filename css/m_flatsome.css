@@ -3,8 +3,8 @@
 */
 /* mobile, table only */
 @media only screen and (max-width:788px) {}
-/* mobile only */
-@media only screen and (max-width:395px) {
+/* medium size */
+@media only screen and (max-width:588px) {
     body {
         min-width: 250px;
         /* padding: 0 1px; */
@@ -207,3 +207,5 @@
         flex-basis: 100%;
     }
 }
+/* mobile only */
+@media only screen and (max-width:395px) {}
