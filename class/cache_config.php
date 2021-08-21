@@ -33,6 +33,16 @@ $__eb_txt_only_conf = EB_THEME_CACHE . '___conf.txt';
 WGR_check_syntax( $__eb_cache_only_conf, $__eb_txt_only_conf );
 
 
+//
+/*
+$dir_wp_uploads = dirname( dirname( EB_THEME_CACHE ) );
+echo $dir_wp_uploads . '<br>' . "\n";
+$dir_wp_uploads = dirname( EB_THEME_CACHE );
+echo $dir_wp_uploads . '<br>' . "\n";
+echo EB_THEME_CACHE . '<br>' . "\n";
+*/
+
+
 // chỉ tạo khi không có file cache config, hoặc người dùng đang đăng nhập thì lấy config theo thời gian thực
 if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
 
@@ -42,11 +52,20 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
 
     // Kiểm tra và tạo thư mục cache nếu chưa có
     if ( !is_dir( EB_THEME_CACHE ) ) {
-        //		echo EB_THEME_CACHE . '<br>' . "\n";
+        //echo EB_THEME_CACHE . '<br>' . "\n";
+
+        // tự động tạo thư mục uploads nếu chưa có
+        $dir_wp_uploads = dirname( dirname( EB_THEME_CACHE ) );
+        //echo $dir_wp_uploads . '<br>' . "\n";
+        if ( !is_dir( $dir_wp_uploads ) ) {
+            mkdir( $dir_wp_uploads, 0777 )or die( "ERROR create uploads directory: " . $dir_wp_uploads );
+            // server window ko cần chmod
+            chmod( $dir_wp_uploads, 0777 )or die( 'chmod ERROR' );
+        }
 
         // tự động tạo thư mục uploads nếu chưa có
         $dir_wp_uploads = dirname( EB_THEME_CACHE );
-        //		echo $dir_wp_uploads . '<br>' . "\n";
+        //echo $dir_wp_uploads . '<br>' . "\n";
         if ( !is_dir( $dir_wp_uploads ) ) {
             mkdir( $dir_wp_uploads, 0777 )or die( "ERROR create uploads directory: " . $dir_wp_uploads );
             // server window ko cần chmod
