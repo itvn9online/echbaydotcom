@@ -417,6 +417,8 @@ function EBE_select_thread_list_all( $post, $html = __eb_thread_template, $pot_t
     if ( $get_category_in_list === 1 ) {
         $html = WGR_replace_category_slug( $post->ID, $post->post_type, $html );
     }
+    //echo $html;
+    //print_r($post);
 
     //
     return EBE_arr_tmp( $post, $html );
