@@ -9,7 +9,6 @@ if (typeof $ == 'undefined') {
     $ = jQuery;
 }
 
-
 var widget_open_close_tag_confirm = false;
 
 
@@ -1980,7 +1979,11 @@ function EBE_set_default_title_for_seo() {
 
     // tạo tóm tắt mặc định nếu chưa có
     if (des_post == '') {
-        if (WGR_check_option_on(cf_excerpt_sync_yoast) && des_yoast != '' && des_yoast != des_default_yoast) {
+        // không tạo mặc định đối với page
+        if ( typeof adminpage != 'undefined' && adminpage == 'post-php' && typeof typenow != 'undefined' && typenow == 'page' ) {
+            console.log('%c Disable auto excerpt for page', 'color: red;');
+        }
+        else if (WGR_check_option_on(cf_excerpt_sync_yoast) && des_yoast != '' && des_yoast != des_default_yoast) {
             jQuery('#excerpt').val(des_yoast);
         } else if (WGR_check_option_on(cf_excerpt_sync_content)) {
             des_post = EBE_set_default_excerpt_for_seo();
