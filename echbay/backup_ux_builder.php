@@ -1,4 +1,5 @@
-<p class="redcolor medium">* Chức năng này sẽ tiến hành backup các bài viết dạng page, blocks để đề phòng trường hợp bị xóa dữ liệu thì vẫn còn bản backup mà restore. Bấm chọn một file để xem nội dung bên trong, sau đó có thể copy nội dung đó để sửa dụng ch việc restore!</p>
+<p class="redcolor medium">* Chức năng này sẽ tiến hành backup các bài viết dạng page, blocks để đề phòng trường hợp bị xóa dữ liệu thì vẫn còn bản backup mà restore.<br>
+    * Bấm chọn một file để xem nội dung bên trong, sau đó có thể copy nội dung đó để sửa dụng cho việc restore!</p>
 <?php
 
 //
@@ -43,7 +44,7 @@ if ( defined( 'EB_CHILD_THEME_URL' ) ) {
         echo '</ol>';
 
 
-        //
+        // backup các file mới
         if ( $show_file == '' ) {
             $sql = _eb_q( "SELECT *
             FROM
