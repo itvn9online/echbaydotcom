@@ -27,8 +27,11 @@ if ( defined( 'EB_CHILD_THEME_URL' ) ) {
                 continue;
             }
 
-            //
+            // file tồn tại rồi thì thôi, backup tầm 1 tiếng 1 lần
             $file_backup = $ux_builder_dir . '/' . $v->post_name . '-' . $day_backup . '-' . $v->post_type . '-' . $v->ID . '.txt';
+            if ( file_exists( $file_backup ) ) {
+                continue;
+            }
 
             //
             _eb_create_file( $file_backup, $v->post_content );
