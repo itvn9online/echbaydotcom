@@ -9,6 +9,7 @@ $arr_order_tab = array(
 	'404_monitor' => '404 Monitor',
 	'sitemap' => 'Sitemap',
 	'robots' => 'Robots',
+	'backup_ux_builder' => 'Backup UX-builder',
 	'check_html' => 'Kiểm tra mã HTML',
 	'file_list' => 'Kiểm tra chuẩn code',
 	'server_info' => 'Thông tin server',
@@ -48,7 +49,7 @@ $include_tab = ECHBAY_PRI_CODE . $eb_get_tab . '.php';
 
 // nếu không có file -> module lỗi -> hủy bỏ
 if ( ! file_exists( $include_tab ) || ! isset( $arr_order_tab[$eb_get_tab] ) ) {
-	die('Module <strong>' . $eb_get_tab . '</strong> not found');
+	die('Module eb-coder not found: <strong>' . $eb_get_tab . '</strong>');
 }
 
 
