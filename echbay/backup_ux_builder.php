@@ -1,4 +1,4 @@
-<p class="redcolor medium">* Chức năng này sẽ tiến hành backup các bài viết dạng page, blocks để đề phòng trường hợp bị xóa dữ liệu thì vẫn còn bản backup mà restore.</p>
+<p class="redcolor medium">* Chức năng này sẽ tiến hành backup các bài viết dạng page, blocks để đề phòng trường hợp bị xóa dữ liệu thì vẫn còn bản backup mà restore. Bấm chọn một file để xem nội dung bên trong, sau đó có thể copy nội dung đó để sửa dụng ch việc restore!</p>
 <?php
 
 //
@@ -30,7 +30,6 @@ if ( defined( 'EB_CHILD_THEME_URL' ) ) {
 
         // danh sách toàn bộ file backup
         echo '<h3 class="top-menu-space">Danh sách toàn bộ file backup:</h3>';
-        echo '<div class="redcolor">* Bấm chọn một file để xem nội dung bên trong!</div>';
         echo '<ol>';
 
         //
