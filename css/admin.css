@@ -1691,7 +1691,7 @@ body.widgets-php #wpadminbar, body.widgets-php #adminmenuwrap {
 #wpadminbar svg {
     height: 13px;
 }
-#show_list_wgr_plugin_update {
+#show_list_wgr_plugin_update, #show_list_wgr_theme_update {
     max-height: 666px;
     overflow-y: auto;
 }
