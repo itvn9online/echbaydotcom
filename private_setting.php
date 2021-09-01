@@ -27,13 +27,9 @@ $arrs_private_info_setting = array(
     ),
     'hostingviet' => array(
         'parent_theme_default' => 'hostingviet',
-        //'url_update_parent_theme' => 'https://github.com/itvn9online/hostingviet/archive/refs/heads/main.zip',
         //'dir_theme_unzip_to' => 'hostingviet-main',
 
         //'child_theme_default' => 'hostingviet-child',
-
-        //'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
-        //'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/hostingviet/main/VERSION',
 
         'theme_site_upper' => 'HostingViet.vn',
         'theme_site_url' => 'https://hostingviet.vn/',
@@ -46,13 +42,9 @@ $arrs_private_info_setting = array(
     ),
     'ifoxvn' => array(
         'parent_theme_default' => 'ifoxvn',
-        //'url_update_parent_theme' => 'https://github.com/itvn9online/ifoxvn/archive/refs/heads/main.zip',
         //'dir_theme_unzip_to' => 'ifoxvn-main',
 
-        //'child_theme_default' => 'hostingviet-child',
-
-        //'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
-        //'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/ifoxvn/main/VERSION',
+        //'child_theme_default' => 'ifoxvn-child',
 
         'theme_site_upper' => 'ifoxvn',
         'theme_site_url' => 'https://ifox.vn/',
@@ -84,7 +76,7 @@ if ( defined( 'EB_THEME_URL' ) ) {
         }
         $arr_private_info_setting[ 'author_logo' ] = str_replace( ABSPATH, '', EB_THEME_URL ) . 'logo.png';
         $arr_private_info_setting[ 'url_check_WGR_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
-        //$arr_private_info_setting[ 'url_check_EB_theme_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
+        $arr_private_info_setting[ 'url_check_EB_theme_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
     }
 }
 //print_r($arr_private_info_setting);
