@@ -171,9 +171,9 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 		// kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
 		if ( ! file_exists( $v2 ) ) {
 			if ( unlink( $v ) ) {
-				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+				echo $v . ' <strong>deleted old file successful</strong><br>' . "\n";
 			} else {
-				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+				echo '<strong>could not delete old file</strong> ' . $v . '<br>' . "\n";
 			}
 //			echo $v . "\n";
 		}
@@ -182,6 +182,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 	
 	
 	// tìm và xóa các thư mục không tồn tại trong bản mới (thực hiện sau khi xóa file)
+	$arr_old_dir = array_reverse( $arr_old_dir );
 	foreach ( $arr_old_dir as $v ) {
 		
 //		echo $v . "\n";
@@ -191,11 +192,11 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 //		echo $v2 . "\n";
 		
 		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
-		if ( ! file_exists( $v2 ) ) {
+		if ( ! is_dir( $v2 ) ) {
 			if ( rmdir( $v ) ) {
-				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+				echo $v . ' <strong>deleted old dir successful</strong><br>' . "\n";
 			} else {
-				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+				echo '<strong>could not delete old dir</strong> ' . $v . '<br>' . "\n";
 			}
 //			echo $v . "\n";
 		}
@@ -239,7 +240,12 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 	$dir_to_update = EB_THEME_PLUGIN_INDEX;
 	
 	//
-	if ( $dir_name_for_unzip_to == 'echbaytwo-master' ) {
+    $arr_name_for_unzip_to = [
+        'echbaytwo-master',
+        'echbaytwo-main',
+        'hostingviet-main',
+    ];
+	if ( in_array( $dir_name_for_unzip_to, $arr_name_for_unzip_to ) ) {
 		$dir_to_update = EB_THEME_URL;
 	}
 	
@@ -260,7 +266,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 		
 		// chỉ hỗ trợ update theme có tên chỉ định
 //		if ( strstr( $dir_to_update, 'echbaytwo' ) == false ) {
-		if ( $dir_name_for_unzip_to != 'echbaydotcom-master' && $dir_name_for_unzip_to != 'echbaytwo-master' ) {
+		if ( $dir_name_for_unzip_to != 'echbaydotcom-master' && ! in_array( $dir_name_for_unzip_to, $arr_name_for_unzip_to ) ) {
 			echo 'theme it not support update via this panel: ' . $dir_to_update . '<br>' . "\n";
 			echo '* <em>Chỉ hỗ trợ update theme có nền là <strong>echbaytwo</strong>!</em>';
 			return false;
@@ -386,9 +392,9 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 			$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
 			
 			if ( ftp_delete($conn_id, $v) ) {
-				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+				echo $v . ' <strong>deleted old file successful</strong><br>' . "\n";
 			} else {
-				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+				echo '<strong>could not delete old file</strong> ' . $v . '<br>' . "\n";
 			}
 //			echo $v . "\n";
 		}
@@ -407,13 +413,13 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 //		echo $v2 . "\n";
 		
 		// kiểm tra xem có thư mục ở thư mục update không -> không có -> xóa luôn thư mục hiện tại
-		if ( ! file_exists( $v2 ) ) {
+		if ( ! is_dir( $v2 ) ) {
 			$v = '.' . strstr( $v, '/' . $ftp_dir_root . '/' );
 			
 			if ( ftp_rmdir($conn_id, $v) ) {
-				echo $v . ' <strong>deleted successful</strong><br>' . "\n";
+				echo $v . ' <strong>deleted old dir successful</strong><br>' . "\n";
 			} else {
-				echo '<strong>could not delete</strong> ' . $v . '<br>' . "\n";
+				echo '<strong>could not delete old dir</strong> ' . $v . '<br>' . "\n";
 			}
 //			echo $v . "\n";
 		}
@@ -604,7 +610,15 @@ function WGR_remove_github_file ( $f_gitattributes ) {
 				else if ( $connect_to_server == 'theme' ) {
 //					$url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaytwo/archive/master.zip';
 					$url_for_download_ebdotcom = $arr_private_info_setting['url_update_parent_theme'];
+                    
+                    //
 					$dir_name_for_unzip_to = 'echbaytwo-master';
+                    if ( isset( $arr_private_info_setting['dir_theme_unzip_to'] ) ) {
+                        $dir_name_for_unzip_to = $arr_private_info_setting['dir_theme_unzip_to'];
+                    }
+                    //die($arr_private_info_setting['parent_theme_default']);
+                    //die($dir_name_for_unzip_to);
+                    //die($url_for_download_ebdotcom);
 				}
 				// server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
 				else {

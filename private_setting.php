@@ -8,6 +8,7 @@ $arrs_private_info_setting = array(
     'echbaydotcom' => array(
         'parent_theme_default' => 'echbaytwo',
         'url_update_parent_theme' => 'https://github.com/itvn9online/echbaytwo/archive/master.zip',
+        'dir_theme_unzip_to' => 'echbaytwo-master',
 
         'child_theme_default' => 'echbaytwo-child',
 
@@ -26,12 +27,13 @@ $arrs_private_info_setting = array(
     ),
     'hostingviet' => array(
         'parent_theme_default' => 'hostingviet',
-        //'url_update_parent_theme' => 'https://git.hostingviet.vn/itvn9online/hostingviet/-/archive/master/hostingviet-master.zip',
+        'url_update_parent_theme' => 'https://github.com/itvn9online/hostingviet/archive/refs/heads/main.zip',
+        'dir_theme_unzip_to' => 'hostingviet-main',
 
         'child_theme_default' => 'hostingviet-child',
 
         //'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
-        //'url_check_EB_theme_version' => 'https://git.hostingviet.vn/itvn9online/hostingviet/-/raw/master/VERSION',
+        'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/hostingviet/main/VERSION',
 
         'theme_site_upper' => 'HostingViet.vn',
         'theme_site_url' => 'https://hostingviet.vn/',
@@ -57,28 +59,13 @@ if ( defined( 'EB_THEME_URL' ) ) {
 
     // có thì ghi đè dữ liệu lên thôi
     if ( $private_info_setting != 'echbaytwo' && isset( $arrs_private_info_setting[ $private_info_setting ] ) ) {
-        // lấy logo
-        if ( file_exists( EB_THEME_URL . 'private_setting.php' ) ) {
-            include EB_THEME_URL . 'private_setting.php';
-            if ( isset( $uri_for_author_logo ) ) {
-                $arr_private_info_setting[ 'author_logo' ] = $uri_for_author_logo . '/logo.png';
-            }
-            /*
-            if ( defined('WP_SITEURL') ) {
-            	$uri_for_author_logo = str_replace( ABSPATH, WP_SITEURL . '/', __DIR__ );
-            }
-            else {
-            	$uri_for_author_logo = str_replace( ABSPATH, '', __DIR__ );
-            }
-            */
-        }
-
         // các dữ liệu khác sẽ ghi đè từ theme
         foreach ( $arrs_private_info_setting[ $private_info_setting ] as $k => $v ) {
             $arr_private_info_setting[ $k ] = $v;
         }
+        $arr_private_info_setting[ 'author_logo' ] = str_replace( ABSPATH, '', EB_THEME_URL ) . 'logo.png';
         $arr_private_info_setting[ 'url_check_WGR_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
-        $arr_private_info_setting[ 'url_check_EB_theme_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
+        //$arr_private_info_setting[ 'url_check_EB_theme_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
     }
 }
 //print_r($arr_private_info_setting);

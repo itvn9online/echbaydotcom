@@ -8,7 +8,13 @@ var show_update_status = '',
 	show_done2 = '';
 function update_wgr_plugin_theme_done ( h, done_or_error ) {
 	h = h.replace( /uploads\/ebcache\/echbaydotcom-master\//gi, 'echbaydotcom/' );
+	h = h.replace( /uploads\/ebcache\/echbaydotcom-main\//gi, 'echbaydotcom/' );
+    
 	h = h.replace( /uploads\/ebcache\/echbaytwo-master\//gi, 'echbaytwo/' );
+	h = h.replace( /uploads\/ebcache\/echbaytwo-main\//gi, 'echbaytwo/' );
+    
+	h = h.replace( /uploads\/ebcache\/hostingviet-main\//gi, 'hostingviet/' );
+    
 	jQuery('#' + show_update_status).html( h );
 	
 	jQuery('body').addClass('wgr-process-update-complete');

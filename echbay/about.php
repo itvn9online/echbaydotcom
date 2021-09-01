@@ -3,10 +3,6 @@
 global $arr_private_info_setting;
 
 
-//
-WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
-
-
 ?>
 <br>
 <div style="padding-right:10%;text-align:justify;">
@@ -41,3 +37,34 @@ WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
 </div>
 <br>
 <br>
+<?php
+
+
+//
+WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
+
+// tạo thương hiệu riêng cho partner
+if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {
+    //echo $arr_private_info_setting[ 'parent_theme_default' ] . '<br>' . "\n";
+    //echo EB_THEME_URL . '<br>' . "\n";
+
+    // nếu file style vẫn tồn tại trong partner/hostingviet -> copy nội dung đó ra ngoài để thay thế
+    $dir_partner_style = EB_THEME_URL . 'partner/' . $arr_private_info_setting[ 'parent_theme_default' ];
+    //echo $dir_partner_style . '<br>' . "\n";
+
+    if ( is_dir( $dir_partner_style ) ) {
+        foreach ( glob( $dir_partner_style . '/*' ) as $filename ) {
+            echo $filename . '<br>' . "\n";
+
+            $file_replace = EB_THEME_URL . basename( $filename );
+            echo $file_replace . '<br>' . "\n";
+
+            // thay thế file
+            if ( copy( $filename, $file_replace ) ) {
+                unlink( $filename );
+            } else {
+                echo 'Không thay được file cho partner: ' . basename( $filename ) . '<br>' . "\n";
+            }
+        }
+    }
+}
