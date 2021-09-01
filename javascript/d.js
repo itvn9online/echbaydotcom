@@ -1360,6 +1360,7 @@ function WGR_fixed_a_tag() {
 
         $('a', this).attr({
             'href': '#WGR-flatsome-tab' + i,
+            'rel': 'noopener',
         }).addClass('WGR-fixed-atag'); // thêm class này để tab không chịu ảnh hưởng bởi điều phối của thẻ tag trong content
 
         i++;
@@ -1437,7 +1438,7 @@ function WGR_fixed_a_tag() {
                     if (nol == 1) {
                         jQuery(this).attr({
                             target: '_blank',
-                            rel: 'nofollow'
+                            rel: 'noopener'
                         });
                     }
                 }
