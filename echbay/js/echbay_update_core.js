@@ -13,7 +13,8 @@ function update_wgr_plugin_theme_done ( h, done_or_error ) {
 	h = h.replace( /uploads\/ebcache\/echbaytwo-master\//gi, 'echbaytwo/' );
 	h = h.replace( /uploads\/ebcache\/echbaytwo-main\//gi, 'echbaytwo/' );
     
-	h = h.replace( /uploads\/ebcache\/hostingviet-main\//gi, 'hostingviet/' );
+	//h = h.replace( /uploads\/ebcache\/hostingviet-main\//gi, 'hostingviet/' );
+	//h = h.replace( /uploads\/ebcache\/ifoxvn-main\//gi, 'hostingviet/' );
     
 	jQuery('#' + show_update_status).html( h );
 	

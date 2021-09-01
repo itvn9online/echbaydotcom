@@ -52,7 +52,7 @@ if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {
     $dir_partner_style = EB_THEME_URL . 'partner/' . $arr_private_info_setting[ 'parent_theme_default' ];
     //echo $dir_partner_style . '<br>' . "\n";
 
-    if ( is_dir( $dir_partner_style ) ) {
+    if ( is_dir( $dir_partner_style ) && file_exists( $dir_partner_style . '/style.css' ) ) {
         foreach ( glob( $dir_partner_style . '/*' ) as $filename ) {
             echo $filename . '<br>' . "\n";
 

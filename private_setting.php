@@ -10,7 +10,7 @@ $arrs_private_info_setting = array(
         'url_update_parent_theme' => 'https://github.com/itvn9online/echbaytwo/archive/master.zip',
         'dir_theme_unzip_to' => 'echbaytwo-master',
 
-        'child_theme_default' => 'echbaytwo-child',
+        //'child_theme_default' => 'echbaytwo-child',
 
         'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
         'url_check_EB_theme_version' => 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION',
@@ -27,13 +27,13 @@ $arrs_private_info_setting = array(
     ),
     'hostingviet' => array(
         'parent_theme_default' => 'hostingviet',
-        'url_update_parent_theme' => 'https://github.com/itvn9online/hostingviet/archive/refs/heads/main.zip',
-        'dir_theme_unzip_to' => 'hostingviet-main',
+        //'url_update_parent_theme' => 'https://github.com/itvn9online/hostingviet/archive/refs/heads/main.zip',
+        //'dir_theme_unzip_to' => 'hostingviet-main',
 
-        'child_theme_default' => 'hostingviet-child',
+        //'child_theme_default' => 'hostingviet-child',
 
         //'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
-        'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/hostingviet/main/VERSION',
+        //'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/hostingviet/main/VERSION',
 
         'theme_site_upper' => 'HostingViet.vn',
         'theme_site_url' => 'https://hostingviet.vn/',
@@ -43,6 +43,25 @@ $arrs_private_info_setting = array(
         'site_upper' => 'HostingViet.vn',
         'site_url' => 'https://hostingviet.vn/',
         'author' => 'HostingViet'
+    ),
+    'ifoxvn' => array(
+        'parent_theme_default' => 'ifoxvn',
+        //'url_update_parent_theme' => 'https://github.com/itvn9online/ifoxvn/archive/refs/heads/main.zip',
+        //'dir_theme_unzip_to' => 'ifoxvn-main',
+
+        //'child_theme_default' => 'hostingviet-child',
+
+        //'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
+        //'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/ifoxvn/main/VERSION',
+
+        'theme_site_upper' => 'ifoxvn',
+        'theme_site_url' => 'https://ifox.vn/',
+        'theme_author' => 'ifoxvn',
+
+        'author_email' => 'hotro@ifox.vn',
+        'site_upper' => 'ifox.vn',
+        'site_url' => 'https://ifox.vn/',
+        'author' => 'ifoxvn'
     )
 );
 $arr_private_info_setting = $arrs_private_info_setting[ 'echbaydotcom' ];

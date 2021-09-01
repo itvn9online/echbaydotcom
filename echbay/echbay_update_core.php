@@ -243,7 +243,8 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
     $arr_name_for_unzip_to = [
         'echbaytwo-master',
         'echbaytwo-main',
-        'hostingviet-main',
+        //'hostingviet-main',
+        //'ifoxvn-main',
     ];
 	if ( in_array( $dir_name_for_unzip_to, $arr_name_for_unzip_to ) ) {
 		$dir_to_update = EB_THEME_URL;
