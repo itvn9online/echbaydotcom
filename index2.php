@@ -1127,16 +1127,17 @@ function EBE_register_scripts() {
     //	wp_register_script('jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery.js', false, '3.3.1');
 
     // add file lẻ
-    wp_register_script( 'jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
+    //wp_register_script( 'jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/3.3.1.min.js', array(), '3.3.1' );
+    wp_register_script( 'jquery', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-3.6.0.min.js', array(), '3.6.0' );
     //	wp_register_script('jquery-core', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/3.3.1.min.js');
+    wp_enqueue_script( 'jquery' );
 
     // migrate
-    wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
-
-    // gọi jquery
-    wp_enqueue_script( 'jquery' );
+    //wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
+    //wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-migrate-3.3.2.min.js', array(), '3.3.2' );
+    //wp_enqueue_script( 'jquery-migrate' );
+    
     //	wp_enqueue_script('jquery-core');
-    wp_enqueue_script( 'jquery-migrate' );
 
 
     //

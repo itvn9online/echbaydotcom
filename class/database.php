@@ -31,7 +31,8 @@ $default_all_timezone = 'Asia/Ho_Chi_Minh';
 
 // lấy múi giờ trong config -> nếu không có thì set theo múi mặc định của VN
 $tz = get_option('timezone_string');
-if ( $tz == '' ) {
+//echo 'tz: ' . $tz . '<br>' . "\n";
+if ( empty($tz) ) {
 	date_default_timezone_set ( $default_all_timezone );
 }
 else {

@@ -1,7 +1,7 @@
 <?php
 
 //
-$EB_THEME_CACHE = dirname( __DIR__ ) . '/uploads/ebcache/' . $_SERVER[ 'HTTP_HOST' ] . '/';
+$EB_THEME_CACHE = dirname( __DIR__ ) . '/uploads/ebcache/' . str_replace( ':', '-', $_SERVER[ 'HTTP_HOST' ] ) . '/';
 if ( !function_exists( 'wp_is_mobile' ) ) {
     // fake function wp_is_mobile of wordpress
     function WGR_is_mobile() {

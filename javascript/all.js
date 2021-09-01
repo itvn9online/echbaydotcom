@@ -1960,7 +1960,10 @@ function EBE_set_default_title_for_seo() {
     } else if (jQuery('#snippet-editor-meta-description').length > 0) {
         yoast_des_id = '#snippet-editor-meta-description';
     }
-    if (yoast_des_id != '') {
+    if ( typeof adminpage != 'undefined' && adminpage == 'post-php' && typeof typenow != 'undefined' && typenow == 'page' ) {
+        console.log('%c Disable auto excerpt for page', 'color: red;');
+    }
+    else if (yoast_des_id != '') {
         des_yoast = jQuery.trim(jQuery(yoast_des_id).val() || '');
 
         // nếu không có tóm tắt mặc định mà có tóm tắt của yoast -> chuyển sang mặc định

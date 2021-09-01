@@ -130,7 +130,6 @@ function EB_flatsome_load_header_static() {
 
     include WGR_APP_PATH . 'inc/header.php';
 }
-add_action( 'wp_head', 'EB_flatsome_load_header_static', 9 );
 
 // footer
 function EB_flatsome_load_footer_static() {
@@ -159,4 +158,10 @@ function EB_flatsome_load_footer_static() {
         EB_CHILD_THEME_URL . 'ui/d.js',
     ] );
 }
-add_action( 'wp_footer', 'EB_flatsome_load_footer_static', 0 );
+
+//
+// chỉ nạp nếu theme không phải dạng basic
+if ( !defined( 'FLATSOME_BASIC_THEME' ) ) {
+    add_action( 'wp_head', 'EB_flatsome_load_header_static', 9 );
+    add_action( 'wp_footer', 'EB_flatsome_load_footer_static', 0 );
+}
