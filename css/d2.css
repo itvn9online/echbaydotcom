@@ -1346,12 +1346,16 @@ span.hd_status9 { background: #F00; }
     display: none;
     overflow: auto;
 }
-.cart-quick {
+#click_show_cpa .cart-quick {
     background: #fff;
     width: 95%;
     max-width: 500px;
-    margin: 20px auto;
+    margin: 0 auto;
     border-radius: 3px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
 }
 .cart-quick-padding {
     padding: 25px;
@@ -1404,8 +1408,7 @@ span.hd_status9 { background: #F00; }
     background-color: #fff;
 }
 .eb-quickcart-table textarea {
-    height: 45px;
-    min-height: auto;
+    min-height: 90px;
 }
 .eb-quickcart-table button {
     width: 95%;
@@ -1416,6 +1419,8 @@ span.hd_status9 { background: #F00; }
     border-radius: 1px;
     margin: 5px auto;
     display: inline-block;
+    line-height: normal;
+    min-height: auto;
 }
 button.btn-addto-cart {
     color: #fff;
@@ -1439,15 +1444,15 @@ button.btn-addto-cart {
 }
 /* Trên iphone, khi font-size nhỏ hơn 16px, input sẽ tự động bị zoom vào gây khó chịu, set font-size 16 để loại bỏ chức năng này */
 @media only screen and (max-width:788px) {
-    /*
- .eb-quickcart-table,
-*/
+    /* .eb-quickcart-table, */
     .eb-quickcart-table input[type="email"], .eb-quickcart-table input[type="text"], .eb-quickcart-table textarea {
         font-size: 16px;
     }
+    /*
     .eb-quickcart-table textarea {
         height: 90px;
     }
+    */
 }
 #oi_change_soluong number {
     border: 1px #ccc solid;

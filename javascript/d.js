@@ -1085,6 +1085,7 @@ setTimeout(function () {
                 jQuery('#click_show_cpa input[name="t_dienthoai"]').focus();
 
                 //
+                /*
                 var a = jQuery(window).height() - jQuery('.cart-quick').height();
                 if (a > 0) {
                     a = a / 3;
@@ -1094,6 +1095,7 @@ setTimeout(function () {
                 jQuery('.cart-quick').css({
                     'margin-top': a + 'px'
                 });
+                */
             } else {
                 console.log('%c Không xác định được form mua hàng nhanh', 'color: red;');
             }

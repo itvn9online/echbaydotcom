@@ -144,14 +144,15 @@ function EB_flatsome_load_footer_static() {
         /*
          * for plugin
          */
-        //EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
         ( mtv_id > 0 && current_user_can( 'delete_posts' ) ) ? EB_THEME_PLUGIN_INDEX . 'javascript/show-edit-btn.js' : '',
         EB_THEME_PLUGIN_INDEX . 'javascript/df.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/dp.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
-        //EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
-        //EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
         /*
          * for child theme
          */
