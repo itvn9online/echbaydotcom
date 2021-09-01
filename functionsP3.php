@@ -1132,3 +1132,38 @@ function WGR_echo_shortcode( $key ) {
     echo WGR_shortcode( $key );
     return '';
 }
+
+function WGR_unzip_vendor_code( $unzip_from = '' ) {
+    $arr_vendor_list = [
+        EB_THEME_URL . 'outsource',
+    ];
+    //print_r( $arr_vendor_list );
+
+    //
+    $zip = new ZipArchive;
+    foreach ( $arr_vendor_list as $v ) {
+        foreach ( glob( $v . '/*.zip' ) as $filename ) {
+            //echo $filename . '<br>' . "\n";
+
+            //
+            $dir_unzip = dirname( $filename ) . '/' . basename( $filename, '.zip' );
+            //echo $dir_unzip . '<br>' . "\n";
+
+            //
+            if ( !is_dir( $dir_unzip ) ) {
+                if ( $zip->open( $filename ) === TRUE ) {
+                    $zip->extractTo( $v );
+                    $zip->close();
+                }
+
+                //
+                if ( is_dir( $dir_unzip ) ) {
+                    echo 'DONE! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
+                } else {
+                    echo 'ERROR! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
+                }
+                echo 'RUN FROM! ' . $unzip_from . ' <br>' . "\n";
+            }
+        }
+    }
+}
