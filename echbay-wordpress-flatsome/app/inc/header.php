@@ -1,3 +1,4 @@
+<meta name="theme-color" content="<?php echo $__cf_row['cf_default_bg']; ?>" />
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
 <?php /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
