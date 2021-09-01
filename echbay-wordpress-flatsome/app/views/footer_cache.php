@@ -1,5 +1,12 @@
 <?php
 
+//if ( $act != 'cart' ) {
+global $pid;
+global $__post;
+global $__cf_row;
+include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
+//}
+
 // kết thúc cache -> lấy ra nội dung để in ra
 if ( defined( 'HAS_USING_EBCACHE' ) ) {
     $main_content = ob_get_contents();

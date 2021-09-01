@@ -1079,20 +1079,24 @@ setTimeout(function () {
             }
 
             // Hiển thị bình thường
-            jQuery('#click_show_cpa').show();
-            jQuery('body').addClass('body-no-scroll');
-            jQuery('#click_show_cpa input[name="t_dienthoai"]').focus();
+            if ( jQuery('#click_show_cpa').length > 0 ) {
+                jQuery('#click_show_cpa').show();
+                jQuery('body').addClass('body-no-scroll');
+                jQuery('#click_show_cpa input[name="t_dienthoai"]').focus();
 
-            //
-            var a = jQuery(window).height() - jQuery('.cart-quick').height();
-            if (a > 0) {
-                a = a / 3;
+                //
+                var a = jQuery(window).height() - jQuery('.cart-quick').height();
+                if (a > 0) {
+                    a = a / 3;
+                } else {
+                    a = 25;
+                }
+                jQuery('.cart-quick').css({
+                    'margin-top': a + 'px'
+                });
             } else {
-                a = 25;
+                console.log('%c Không xác định được form mua hàng nhanh', 'color: red;');
             }
-            jQuery('.cart-quick').css({
-                'margin-top': a + 'px'
-            });
         }
     });
 
