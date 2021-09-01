@@ -1141,8 +1141,8 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
 
     //
     $zip = new ZipArchive;
-    foreach ( $arr_vendor_list as $v ) {
-        foreach ( glob( $v . '/*.zip' ) as $filename ) {
+    foreach ( $arr_vendor_list as $base_for_unzip ) {
+        foreach ( glob( $base_for_unzip . '/*.zip' ) as $filename ) {
             //echo $filename . '<br>' . "\n";
 
             //
@@ -1151,8 +1151,11 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
 
             //
             if ( !is_dir( $dir_unzip ) ) {
+                echo $filename . '<br>' . "\n";
+
+                //
                 if ( $zip->open( $filename ) === TRUE ) {
-                    $zip->extractTo( $v );
+                    $zip->extractTo( $base_for_unzip );
                     $zip->close();
                 }
 
@@ -1161,6 +1164,61 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
                     echo 'DONE! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
                 } else {
                     echo 'ERROR! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
+
+                    // thử xử lý qua ftp
+                    if ( defined( 'FTP_USER' ) && defined( 'FTP_PASS' ) ) {
+                        $ftp_server = EBE_check_ftp_account();
+                        if ( $ftp_server === false ) {
+                            echo 'FTP account not found <br>' . "\n";
+                        } else {
+                            $ftp_user_name = FTP_USER;
+                            $ftp_user_pass = FTP_PASS;
+
+                            // tạo kết nối
+                            echo 'connect to ftp <br>' . "\n";
+                            $conn_id = ftp_connect( $ftp_server );
+                            if ( !$conn_id ) {
+                                echo 'ERROR FTP connect to server <br>' . "\n";
+                            } else {
+                                // đăng nhập
+                                echo 'login to ftp <br>' . "\n";
+                                if ( !ftp_login( $conn_id, $ftp_user_name, $ftp_user_pass ) ) {
+                                    echo 'ERROR FTP login to server <br>' . "\n";
+                                } else {
+                                    $ftp_dir_root = EBE_get_config_ftp_root_dir( date_time );
+
+                                    //
+                                    $file_for_ftp = $base_for_unzip;
+                                    if ( $ftp_dir_root != '' ) {
+                                        $file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
+                                    }
+                                    echo $file_for_ftp . '<br>' . "\n";
+
+                                    //
+                                    if ( !ftp_chmod( $conn_id, 0777, $file_for_ftp ) ) {
+                                        echo 'ERROR FTP: ftp_chmod error <br>' . "\n";
+
+                                        //
+                                        $file_for_ftp = $filename;
+                                        if ( $ftp_dir_root != '' ) {
+                                            $file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
+                                        }
+                                        echo $file_for_ftp . '<br>' . "\n";
+
+                                        //
+                                        if ( !ftp_chmod( $conn_id, 0777, $file_for_ftp ) ) {
+                                            echo 'ERROR FTP: ftp_chmod error <br>' . "\n";
+                                        } else {
+                                            echo 'chmod vid ftp <br>' . "\n";
+                                        }
+                                    } else {
+                                        echo 'chmod vid ftp <br>' . "\n";
+                                    }
+                                }
+                            }
+                            ftp_close( $conn_id );
+                        }
+                    }
                 }
                 echo 'RUN FROM! ' . $unzip_from . ' <br>' . "\n";
             }

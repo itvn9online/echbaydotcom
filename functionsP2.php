@@ -1316,7 +1316,9 @@ function WGR_ftp_copy( $source, $path ) {
 
 
 	// copy qua FTP_BINARY thì mới copy ảnh chuẩn được
-	ftp_put( $conn_id, $file_for_ftp, $source, FTP_BINARY )or die( 'ERROR copy file via FTP #' . $path );
+	if ( ftp_put( $conn_id, $file_for_ftp, $source, FTP_BINARY )or die( 'ERROR copy file via FTP #' . $path ) ) {
+        return true;
+    }
 
 
 	//

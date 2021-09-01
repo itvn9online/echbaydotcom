@@ -8,6 +8,7 @@ body.login {
     margin: 0 auto 10px auto;
     width: 260px;
     height: 50px;
+    background-size: auto 100% !important;
 }
 .login #backtoblog a, .login #nav a {
     color: #000;

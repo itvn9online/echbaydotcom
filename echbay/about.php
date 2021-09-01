@@ -60,8 +60,8 @@ if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {
             echo $file_replace . '<br>' . "\n";
 
             // thay thế file
-            if ( copy( $filename, $file_replace ) ) {
-                unlink( $filename );
+            if ( WGR_copy( $filename, $file_replace ) ) {
+                _eb_remove_file( $filename );
             } else {
                 echo 'Không thay được file cho partner: ' . basename( $filename ) . '<br>' . "\n";
             }
