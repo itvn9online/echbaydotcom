@@ -6,14 +6,14 @@
     body {
         min-width: 250px;
         /* padding: 0 1px; */
-        /* margin-top: 45px; */
+        margin-top: 45px;
     }
     .w90, .w99, .fullsize-if-mobile {
         max-width: 999px;
         /*
-	width: 100% !important;
-	width: auto !important;
-	*/
+        width: 100% !important;
+        width: auto !important;
+        */
         float: none;
     }
     .w90, .w99 {
@@ -203,6 +203,17 @@
         max-width: 100%;
         -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
+    }
+    .menu-mobile-search input[type=text] {
+        height: auto;
+        line-height: normal;
+        margin-bottom: 0;
+    }
+    #nav_mobile_top li {
+        margin-bottom: 0;
+    }
+    #nav_mobile_top .sub-menu {
+        margin: 0;
     }
 }
 /* medium size */
