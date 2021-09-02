@@ -1,3 +1,23 @@
+<?php
+
+
+global $global_dymanic_meta;
+global $dynamic_meta;
+global $web_name;
+global $web_og_type;
+global $schema_BreadcrumbList;
+//echo 'schema_BreadcrumbList';
+//print_r( $schema_BreadcrumbList );
+
+include EB_THEME_PLUGIN_INDEX . 'BreadcrumbList.php';
+
+//
+//echo _eb_tieu_de_chuan_seo( $__cf_row[ 'cf_title' ] );
+
+include EB_THEME_PLUGIN_INDEX . 'seo.php';
+
+
+?>
 <meta name="theme-color" content="<?php echo $__cf_row['cf_default_bg']; ?>" />
 <style type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */

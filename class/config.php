@@ -6,6 +6,7 @@
 // bật/ tắt chế độ test code
 //define( 'eb_code_tester', false );
 
+$web_og_type = 'website';
 
 
 

@@ -65,6 +65,7 @@ echo $global_dymanic_meta;
 
 
 // trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
+//echo 'cf_on_off_echbay_seo: ' . cf_on_off_echbay_seo . '<br>' . "\n";
 if ( cf_on_off_echbay_seo == 1 ) {
 	
 	
@@ -115,6 +116,9 @@ else {
 $__cf_row ['cf_title'] = str_replace( '"', '&quot;', $__cf_row ['cf_title'] );
 $__cf_row ['cf_keywords'] = str_replace( '"', '&quot;', $__cf_row ['cf_keywords'] );
 $__cf_row ['cf_description'] = str_replace( '"', '&quot;', $__cf_row ['cf_description'] );
+    
+    
+    //print_r($__cf_row);
 
 
 
