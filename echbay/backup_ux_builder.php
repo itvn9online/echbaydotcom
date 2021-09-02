@@ -51,7 +51,9 @@ if ( defined( 'EB_CHILD_THEME_URL' ) ) {
                 `" . wp_posts . "`
             WHERE
                 post_status = 'publish'
-                AND ( post_type = 'page' OR post_type = 'blocks' )" );
+                AND ( post_type = 'page' OR post_type = 'blocks' OR post_type = 'wpcf7_contact_form' )
+            ORDER BY
+                ID" );
             //print_r( $sql );
 
             //
@@ -75,7 +77,7 @@ if ( defined( 'EB_CHILD_THEME_URL' ) ) {
                 }
 
                 // file tồn tại rồi thì thôi, backup tầm 1 tiếng 1 lần
-                $file_backup = $ux_builder_dir . '/' . $v->post_name . '-' . $post_modified_gmt . '-' . $v->post_type . '-' . $v->ID . $backup_ext;
+                $file_backup = $ux_builder_dir . '/' . $v->post_type . '-' . $v->ID . '-' . $v->post_name . '-' . $post_modified_gmt . $backup_ext;
                 if ( file_exists( $file_backup ) ) {
                     //echo 'Backup exist: <em>' . basename( $file_backup ) . '</em><br>' . "\n";
                     continue;
