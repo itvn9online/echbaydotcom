@@ -166,3 +166,6 @@ if ( !defined( 'FLATSOME_BASIC_THEME' ) ) {
     add_action( 'wp_head', 'EB_flatsome_load_header_static', 9 );
     add_action( 'wp_footer', 'EB_flatsome_load_footer_static', 0 );
 }
+
+// xóa thẻ <title> để sử dụng title tùy chỉnh
+remove_action( 'wp_head', '_wp_render_title_tag', 1 );
