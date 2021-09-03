@@ -1,5 +1,4 @@
 <!-- META for design by <?php echo $arr_private_info_setting['author']; ?> - <?php echo $arr_private_info_setting['site_url']; ?> -->
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="RESOURCE-TYPE" content="DOCUMENT" />
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE AUTHOR" content="<?php echo $arr_private_info_setting['site_upper']; ?>" />

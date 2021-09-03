@@ -5,6 +5,8 @@ global $global_dymanic_meta;
 global $dynamic_meta;
 global $web_name;
 global $web_og_type;
+global $import_ecommerce_ga;
+
 global $schema_BreadcrumbList;
 //echo 'schema_BreadcrumbList';
 //print_r( $schema_BreadcrumbList );

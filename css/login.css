@@ -4,11 +4,12 @@ body.login {
     background-size: 100% auto;
 }
 #login h1 a {
-    background: url(../images-global/echbay-wp-logo.png) no-repeat !important;
+    background-image: url(../images-global/echbay-wp-logo.png) !important;
+    background-size: contain !important;
+    background-position: center;
     margin: 0 auto 10px auto;
     width: 260px;
     height: 50px;
-    background-size: auto 100% !important;
 }
 .login #backtoblog a, .login #nav a {
     color: #000;

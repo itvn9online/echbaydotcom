@@ -15,6 +15,13 @@ if ( is_singular() && pings_open( get_queried_object() ) ) {
 echo _eb_tieu_de_chuan_seo( $__cf_row[ 'cf_title' ] );
 echo WGR_show_header_favicon();
 
+
+/*
+ * Do bản kết hợp với flatsome có sẵn 1 số thuộc tính nên bỏ qua các thuộc tính trùng trong SEO
+ */
+?>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<?php
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 ?>
