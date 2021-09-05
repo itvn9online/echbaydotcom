@@ -1355,7 +1355,7 @@ span.hd_status9 { background: #F00; }
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -55%);
 }
 .cart-quick-padding {
     padding: 25px;
@@ -1408,7 +1408,7 @@ span.hd_status9 { background: #F00; }
     background-color: #fff;
 }
 .eb-quickcart-table textarea {
-    min-height: 90px;
+    min-height: 60px;
 }
 .eb-quickcart-table button {
     width: 95%;
@@ -2862,8 +2862,9 @@ iframe[name="google_conversion_frame"] {
     padding: 0 !important;
     margin: 0 !important;
 }
-.cart-pay-method label {}
-.cart-pay-method {}
+.cart-pay-method label, .cart-pay-method input[type=radio] {
+    margin-bottom: 0;
+}
 .cart-table-free {
     line-height: 20px;
 }

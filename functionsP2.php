@@ -2167,6 +2167,11 @@ function _eb_tieu_de_chuan_seo( $str ) {
 		$str = trim( $str );
 
 		// hoặc tự bổ sung nếu có dữ liệu đầu vào
+        /*
+        if ( $__cf_row[ 'cf_abstract' ] == '' ) {
+            $__cf_row[ 'cf_abstract' ] = $__cf_row[ 'cf_title' ];
+        }
+        */
 		if ( strlen( $str ) < 35 && $__cf_row[ 'cf_abstract' ] != '' ) {
 			$str .= ' - ' . $__cf_row[ 'cf_abstract' ];
 
@@ -2193,9 +2198,10 @@ function _eb_tieu_de_chuan_seo( $str ) {
 		}
 		// còn lại thì không can thiệp
 		else {
-			$str = wp_title( '|', false, 'right' );
+			//$str = wp_title( '|', false, 'right' );
+			$str = wp_title( '', false, 'right' );
 		}
-		//		$str = wp_title( '', false );
+		//$str = wp_title( '', false );
 		echo '<!-- title by other plugin -->' . "\n";
 	}
 

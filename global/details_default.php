@@ -5,6 +5,8 @@
 $custom_product_flex_css = '';
 $custom_blog_node_flex_css = '';
 
+global $cid;
+
 
 //
 include EB_THEME_PLUGIN_INDEX . 'global/post.php';
