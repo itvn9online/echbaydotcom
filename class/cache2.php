@@ -323,6 +323,10 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		
 		// số bài viết tối đa trên web
 		include_once EB_THEME_PLUGIN_INDEX . 'cronjob/max_post_cleanup.php';
+
+
+        // giải nén các thư mục thuộc dạng outsource nếu chưa có
+        WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
 		
 		
 		
