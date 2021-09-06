@@ -1066,7 +1066,8 @@ else {
 		// không sử dụng init -> vì nó xóa cả trong admin -> gây lỗi
 		add_filter( 'init', 'EBE_register_scripts' );
 		*/
-    add_filter( 'wp_enqueue_scripts', 'EBE_register_scripts' );
+    // daidq (2021-09-06): kiểm tra thấy wordpress đã update jquery lên bản 3.6.0 -> bản này quá mới với mình rồi
+    //add_filter( 'wp_enqueue_scripts', 'EBE_register_scripts' );
     //	}
 
     //
