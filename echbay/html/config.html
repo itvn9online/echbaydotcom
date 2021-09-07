@@ -533,12 +533,12 @@ div.gallery-add-to-logo, div.gallery-add-to-favicon, div.gallery-add-to-og_image
             <tr>
                 <td class="t">SMTP Host</td>
                 <td class="i"><input type="text" name="cf_smtp_host" value="{tmp.cf_smtp_host}" class="n" maxlength="25" />
-                    <p class="description">IP hoặc host name của server mail. Gmail SMTP: <strong>smtp.gmail.com</strong>, Pepipost SMTP: <strong>smtp.pepipost.com</strong></p></td>
+                    <p class="description">IP hoặc host name của server mail. Gmail SMTP: <strong onDblClick="$('#cf_smtp_host').val(this.innerText)" class="cur">smtp.gmail.com</strong>, Pepipost SMTP: <strong onDblClick="$('#cf_smtp_host').val(this.innerText)" class="cur">smtp.pepipost.com</strong></p></td>
             </tr>
             <tr>
                 <td class="t">SMTP Port</td>
                 <td class="i"><input type="number" name="cf_smtp_port" value="{tmp.cf_smtp_port}" class="s" maxlength="6" />
-                    <p class="description">Port nếu có. Gmail SSL port: <strong>465</strong>, Gmail TLS port: <strong>587</strong>, Pepipost port 2525. <a href="http://support.pepipost.com/knowledge_base/topics/wp-mail-smtp?utm_source=WordPress&utm_campaign=Plugins&utm_medium=echbaydotcom&utm_term=organic" target="_blank">Tìm hiểu thêm</a> về việc gửi email qua Pepipost.</p></td>
+                    <p class="description">Port nếu có. Gmail SSL port: <strong onDblClick="$('#cf_smtp_port').val(this.innerText)" class="cur">465</strong>, Gmail TLS port: <strong onDblClick="$('#cf_smtp_port').val(this.innerText)" class="cur">587</strong>, Pepipost port <strong onDblClick="$('#cf_smtp_port').val(this.innerText)" class="cur">2525</strong>. <a href="http://support.pepipost.com/knowledge_base/topics/wp-mail-smtp?utm_source=WordPress&utm_campaign=Plugins&utm_medium=echbaydotcom&utm_term=organic" target="_blank">Tìm hiểu thêm</a> về việc gửi email qua Pepipost.</p></td>
             </tr>
             <tr>
                 <td class="t">Mã hóa</td>
