@@ -322,7 +322,17 @@ function echbay_admin_styles() {
 <script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
 	
 	//
-	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == false ) {
+    // không nạp jquery-ui trong các page dễ gây xung đột
+	if ( strstr( $_SERVER['REQUEST_URI'], '/widgets.php' ) == true ) {
+        echo '<script>console.log("%c Không load echbay-jquery-ui trong widgets", "color: red;");</script>';
+    }
+    else if ( isset( $_GET['post'] ) && get_post_type( $_GET['post'] ) == 'product' ) {
+        echo '<script>console.log("%c Không load echbay-jquery-ui trong EDIT post_type product", "color: red;");</script>';
+    }
+    else if ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) {
+        echo '<script>console.log("%c Không load echbay-jquery-ui trong ADD post_type product", "color: red;");</script>';
+    }
+    else {
 		echo '
 <link rel="stylesheet" href="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css" />
 <script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script>';

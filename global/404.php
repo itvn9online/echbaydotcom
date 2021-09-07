@@ -277,6 +277,14 @@ if ( isset( $arr_active_for_404_page[ $act ] ) ) {
 		
 		
 }
+// nếu là theme trực tiếp từ flatsome -> dùng file 404 của họ
+else if ( defined( 'FLATSOME_BASIC_THEME' ) ) {
+    if ( file_exists( dirname(EB_CHILD_THEME_URL) . '/flatsome/404.php' ) ) {
+        include dirname(EB_CHILD_THEME_URL) . '/flatsome/404.php';
+        exit();
+    }
+}
+//
 else {
 	/*
 		
