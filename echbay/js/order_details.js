@@ -1,6 +1,5 @@
 
 
-
 // nếu hóa đơn được mở trong popup -> ẩn 1 số thông tin đi cho gọn
 if ( top != self ) {
 	// thêm class để ẩn bớt dữ liệu

@@ -46,6 +46,11 @@ echo WGR_show_header_favicon();
 
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
+// tạo thêm pid cho page template -> có thể việc mua hàng cũng sẽ diễn ra ở đây
+if ( $pid === 0 && is_page_template() ) {
+    $pid = get_the_ID();
+}
+
 
 ?>
 <!-- <meta name="theme-color" content="<?php echo $__cf_row['cf_default_bg']; ?>" /> -->
