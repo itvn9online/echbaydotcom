@@ -108,7 +108,7 @@ function EB_flatsome_load_header_static() {
     }
     if ( isset( $theme_mod[ 'site_width' ] ) ) {
         // độ rọng của flatsome nó luôn trừ đi 30px, sau đó column trong nó lại padding tổng 2 bên là 30px -> trừ đi 60px để cân bằng
-        $arr_theme_mod[] = '/*.w99,*/.w90{/* max-width:' . $theme_mod[ 'site_width' ] . 'px; */ max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px;}';
+        $arr_theme_mod[] = '/*.w99,*/.w90,.row{/* max-width:' . $theme_mod[ 'site_width' ] . 'px; */ max-width:' . ( $theme_mod[ 'site_width' ] - 60 ) . 'px !important;}';
     }
     echo '<style>:root {' . implode( ';', $arr_root_color ) . '}/* theme_mod */' . implode( '', $arr_theme_mod ) . '</style>';
 

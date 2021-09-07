@@ -1433,7 +1433,7 @@ function WGR_for_post_details(function_for_post, function_for_blog) {
         //		}
     }
     // blog, page...
-    else {
+    else if (typeof ___eb_global_blog_details_runing == 'function') {
         /*
         if ( typeof function_for_blog == 'function' ) {
         	___eb_global_blog_details_runing( function_for_blog );

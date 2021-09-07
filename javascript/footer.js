@@ -21,7 +21,7 @@ else if (act == 'archive') {
         ___eb_list_post_run();
     }
     // blog
-    else {
+    else if (typeof ___eb_global_blogs_runing == 'function') {
         ___eb_global_blogs_runing();
     }
 }
