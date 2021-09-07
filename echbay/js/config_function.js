@@ -328,7 +328,7 @@ function WGR_add_filed_for_config_update () {
 	
 	// các filed ẩn -> mặc định sẽ lấy tất cả các text area luôn
 //	$('.config-update-filed-change-only textarea, .load-config-hidden-filed input').each(function() {
-	$('.load-config-hidden-filed textarea, .load-config-hidden-filed input').each(function() {
+	$('.load-config-hidden-filed textarea, .load-config-hidden-filed input, .config-update-filed-change-only input[type="hidden"]').each(function() {
 		var a = $(this).attr('name') || '';
 		
 		if ( a != '' && a.split('cf_').length > 1 && typeof arr_list_filed_config_update[a] == 'undefined' ) {
