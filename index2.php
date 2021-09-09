@@ -1067,7 +1067,7 @@ else {
 		add_filter( 'init', 'EBE_register_scripts' );
 		*/
     // daidq (2021-09-06): kiểm tra thấy wordpress đã update jquery lên bản 3.6.0 -> bản này quá mới với mình rồi
-    //add_filter( 'wp_enqueue_scripts', 'EBE_register_scripts' );
+    add_filter( 'wp_enqueue_scripts', 'EBE_register_scripts' );
     //	}
 
     //
@@ -1135,8 +1135,8 @@ function EBE_register_scripts() {
 
     // migrate
     //wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
-    //wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-migrate-3.3.2.min.js', array(), '3.3.2' );
-    //wp_enqueue_script( 'jquery-migrate' );
+    wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-migrate-3.3.2.min.js', array(), '3.3.2' );
+    wp_enqueue_script( 'jquery-migrate' );
     
     //	wp_enqueue_script('jquery-core');
 

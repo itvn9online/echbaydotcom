@@ -2424,7 +2424,7 @@ function _eb_get_post_img(
 		}
 
 		// size riêng cho bản EchBay mobile
-		//			if ( $_size == 'ebmobile' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
+		//if ( $_size == 'ebmobile' && function_exists('imagepalettetotruecolor') && function_exists('imagewebp') ) {
 		if ( $_size == 'ebwebp' && function_exists( 'imagepalettetotruecolor' ) && function_exists( 'imagewebp' ) ) {
 			return EBE_resize_mobile_table_webp( $cache_thumbnail_id[ $id ], $_size );
 		}
@@ -2435,13 +2435,18 @@ function _eb_get_post_img(
 		// không thì lấy size medium
 		else if ( $_size == 'ebwebp' || $_size == 'ebmobile' ) {
 			$_size = 'medium';
-			//				$_size = 'thumbnail';
+			//$_size = 'thumbnail';
 		}
 
 		//
 		$a = wp_get_attachment_image_src( $cache_thumbnail_id[ $id ], $_size );
-		//			print_r( $a );
-		//			$a = esc_url( $a[0] );
+        //echo $id . '<br>' . "\n";
+        //echo $cache_thumbnail_id[ $id ] . '<br>' . "\n";
+		//print_r( $a );
+		//$a = esc_url( $a[0] );
+        if ( empty( $a ) ) {
+            return '';
+        }
 		$a = $a[ 0 ];
 	}
 	// thumbnail lúc chuyển dữ liệu qua
