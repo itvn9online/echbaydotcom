@@ -1,8 +1,6 @@
 <?php
 /*
- * Thêm shortcode vào UX Builder
- * https://tuongads.com/huong-dan-cach-them-danh-muc-con-vao-element-title-trong-ux-builder-cua-flatsome-khong-dung-plugin/
- * https://levantoan.com/huong-dan-tao-element-moi-cho-ux-builder-flatsome-theme/
+ * Chức năng gọi tới các function dựng sẵn của echbaydotcom
  */
 function add_echbay_call_function() {
     $arr_ebe_function = [

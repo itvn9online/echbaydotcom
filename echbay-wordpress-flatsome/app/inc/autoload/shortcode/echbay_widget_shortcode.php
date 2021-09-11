@@ -3,6 +3,7 @@
  * Echo widget thông qua plugin widget shortcode
  */
 function add_echbay_widget_shortcode() {
+    // lấy danh sách widget đã được tạo
     $arr_list_widget = get_option( 'sidebars_widgets' );
     if ( empty( $arr_list_widget ) ) {
         return false;
