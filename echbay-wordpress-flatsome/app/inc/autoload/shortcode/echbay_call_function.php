@@ -13,6 +13,9 @@ function add_echbay_call_function() {
         'EBE_get_html_cart',
         'EBE_get_html_profile',
         'EBE_html_address',
+        'WGR_get_quick_register',
+        'WGR_get_footer_social',
+        'WGR_get_fb_like_box',
     ];
     $ops_list = [
         '' => '- Chọn function -',
