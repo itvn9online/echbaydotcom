@@ -3484,7 +3484,13 @@ iframe[name="google_conversion_frame"] {
     -webkit-transition: all 0.8s ease;
     transition: all 0.8s ease;
 }
-/* */
+/* for flatsome */
+.cf .col, #webgiare__top .col, .webgiare__top .col {
+    padding-bottom: 0;
+}
+#webgiare__top .row, .webgiare__top .row {
+    margin-top: 0 !important;
+}
 .margin-top0 {
     margin-top: 0;
 }
