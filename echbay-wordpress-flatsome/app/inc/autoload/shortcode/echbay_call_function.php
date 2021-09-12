@@ -14,6 +14,7 @@ function add_echbay_call_function() {
         'WGR_get_quick_register',
         'WGR_get_footer_social',
         'WGR_get_fb_like_box',
+        //'EBE_echbay_license',
     ];
     $ops_list = [
         '' => '- Chọn function -',
@@ -58,7 +59,13 @@ function action_echbay_call_function( $atts ) {
     }
 
     //
-    if ( function_exists( $call_function ) ) {
+    /*
+    if ( $call_function == 'EBE_echbay_license' ) {
+        global $str_footer_echbay_license;
+        return $str_footer_echbay_license;
+    }
+    //
+    else */ if ( function_exists( $call_function ) ) {
         $html = $call_function();
         if ( !empty( $custom_class ) ) {
             $html = '<div class="' . $custom_class . '">' . $html . '</div>';
