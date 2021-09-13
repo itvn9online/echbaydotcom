@@ -92,11 +92,13 @@ $str_fpr_license_echbay = '<span class="powered-by-echbay">' . EBE_get_lang( 'po
 // Phiên bản license mới với thông tin dùng chung nhiều hơn
 
 // lấy tên website -> ưu tiên tên ngắn trước
+/*
 $str_footer_echbay_license = ( $__cf_row[ 'cf_web_name' ] == '' ) ? $web_name : $__cf_row[ 'cf_web_name' ];
 
 // ghép thành chuỗi
 $str_footer_echbay_license = '<div class="global-footer-copyright">' . EBE_get_lang( 'copyright' ) . ' &copy; ' . $year_curent . ' <span>' . $str_footer_echbay_license . '</span>' . EBE_get_lang( 'allrights' ) . ' <span class="powered-by-echbay">' . EBE_get_lang( 'poweredby' ) . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting[ 'author' ] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting[ 'site_upper' ] . '</a></span></div>';
-
+*/
+$str_footer_echbay_license = EBE_echbay_license();
 
 // sử dụng module nhúng file tĩnh riêng
 /*
