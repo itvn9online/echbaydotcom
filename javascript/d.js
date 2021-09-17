@@ -1433,7 +1433,8 @@ function WGR_fixed_a_tag() {
                     });
                 } else {
                     jQuery(this).attr({
-                        href: 'javascript:;'
+                        href: 'javascript:;',
+                        rel: 'noopener'
                     });
                 }
             } else if (a == '/' || a == './' || a == web_link) {
@@ -1454,6 +1455,9 @@ function WGR_fixed_a_tag() {
             }
         }
     });
+    
+    //
+    jQuery('a[href="javascript:;"], a[href="#"]').addClass('no-href');
 }
 WGR_fixed_a_tag();
 
