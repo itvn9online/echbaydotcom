@@ -18,7 +18,9 @@ else if (act == 'archive') {
     if (switch_taxonomy == 'category' ||
         switch_taxonomy == 'post_tag' ||
         switch_taxonomy == 'post_options') {
-        ___eb_list_post_run();
+		if (typeof ___eb_list_post_run == 'function') {
+			___eb_list_post_run();
+		}
     }
     // blog
     else if (typeof ___eb_global_blogs_runing == 'function') {
