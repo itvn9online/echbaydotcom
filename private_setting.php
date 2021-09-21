@@ -51,7 +51,7 @@ $arrs_private_info_setting = array(
         'theme_author' => 'ifoxvn',
 
         'author_email' => 'hotro@ifox.vn',
-        'site_upper' => 'ifox.vn',
+        'site_upper' => 'iFox.vn',
         'site_url' => 'https://ifox.vn/',
         'author' => 'ifoxvn'
     )

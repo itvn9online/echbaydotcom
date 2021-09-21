@@ -40,6 +40,7 @@ include EB_THEME_CORE . 'widget/google_map.php';
 include EB_THEME_CORE . 'widget/popup.php';
 include EB_THEME_CORE . 'widget/category_search_advanced.php';
 include EB_THEME_CORE . 'widget/categorys_search_advanced.php';
+include EB_THEME_CORE . 'widget/categories_level2.php';
 
 
 add_filter( 'widgets_init', '___add_echbay_widget' );
@@ -87,6 +88,7 @@ function ___add_echbay_widget() {
     register_widget( '___echbay_widget_add_search_form' );
 
     register_widget( '___echbay_widget_banner_big' );
+    register_widget( '___echbay_widget_category_level2_list' );
 
     register_widget( '___echbay_widget_go_to' );
 
