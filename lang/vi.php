@@ -563,6 +563,14 @@ $___eb_lang[eb_key_for_site_lang . 'blog_custom_text4'] = 'Blog custom text 4';
 $___eb_lang[eb_key_for_site_lang . 'blog_custom_text5'] = 'Blog custom text 5';
 
 
+//
+$eb_note_first_lang[eb_key_for_site_lang . 'booking_done_mail_title'] = 'Bản dịch cho email đặt hàng thành công';
+$___eb_lang[eb_key_for_site_lang . 'booking_done_mail_title'] = 'Gui ban thong tin don hang:';
+$___eb_lang[eb_key_for_site_lang . 'booking_done_mail_giam'] = 'GIẢM';
+$___eb_lang[eb_key_for_site_lang . 'booking_done_mail_size_price'] = 'Giá riêng theo size';
+$___eb_lang[eb_key_for_site_lang . 'booking_done_mail_post_name'] = 'Tên sản phẩm';
+
+
 // for admin
 $___eb_lang[eb_key_for_site_lang . '_eb_product_noibat'] = 'Điểm nổi bật';
 $___eb_lang[eb_key_for_site_lang . '_eb_product_dieukien'] = 'Điều kiện';

@@ -18,7 +18,16 @@ global $flatsome_opt;
 
 </div>
 
-<?php wp_footer(); ?>
+<?php
+
+
+global $__cf_row;
+echo $__cf_row ['cf_js_allpage'];
+
+
+wp_footer();
+
+?>
 
 </body>
 </html><?php
