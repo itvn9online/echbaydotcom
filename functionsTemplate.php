@@ -235,7 +235,7 @@ function EBE_echbay_license() {
     $str = ( $__cf_row[ 'cf_web_name' ] == '' ) ? $web_name : $__cf_row[ 'cf_web_name' ];
 
     // ghép thành chuỗi
-    $str = '<div class="global-footer-copyright">' . EBE_get_lang( 'copyright' ) . ' &copy; ' . $year_curent . ' <span>' . $str . '</span>' . EBE_get_lang( 'allrights' ) . ' <span class="powered-by-echbay">' . EBE_get_lang( 'poweredby' ) . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting[ 'author' ] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting[ 'site_upper' ] . '</a></span></div>';
+    $str = '<div class="global-footer-copyright">' . EBE_get_lang( 'copyright' ) . ' &copy; ' . $year_curent . ' <span>' . $str . '</span> ' . EBE_get_lang( 'allrights' ) . ' <span class="powered-by-echbay">' . EBE_get_lang( 'poweredby' ) . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting[ 'author' ] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting[ 'site_upper' ] . '</a></span></div>';
 
     //
     return $str;
