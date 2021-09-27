@@ -333,9 +333,11 @@ function echbay_admin_styles() {
         echo '<script>console.log("%c Không load echbay-jquery-ui trong ADD post_type product", "color: red;");</script>';
     }
     else {
+		/*
 		echo '
 <link rel="stylesheet" href="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css" />
-<!-- <script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script> -->';
+<script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script>';
+*/
 	}
 	
 	
@@ -392,14 +394,17 @@ add_filter('admin_head', 'echbay_admin_styles');
  * datepicker script.
  */
 function wpse_enqueue_datepicker() {
+	//echo 'aaaaaaaaaaaaaa';
     // Load the datepicker script (pre-registered in WordPress).
-    wp_enqueue_script( 'jquery-ui-datepicker' );
+    wp_enqueue_script( 'jquery-ui-datepicker', [] );
 
     // You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
-    wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+    //wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+    wp_register_style( 'jquery-ui', EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css' );
     wp_enqueue_style( 'jquery-ui' );  
 }
-//add_filter( 'wp_enqueue_scripts', 'wpse_enqueue_datepicker' );
+add_filter( 'admin_head', 'wpse_enqueue_datepicker' );
+//echo 'sdfsgsgsgs';
 
 
 
