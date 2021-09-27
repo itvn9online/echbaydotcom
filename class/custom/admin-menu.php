@@ -335,7 +335,7 @@ function echbay_admin_styles() {
     else {
 		echo '
 <link rel="stylesheet" href="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css" />
-<script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script>';
+<!-- <script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script> -->';
 	}
 	
 	
