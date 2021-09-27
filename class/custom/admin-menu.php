@@ -313,7 +313,7 @@ function echbay_admin_styles() {
 <script src="' . $web_ad_link . 'eb-load-quick-search"></script>';
 
 	//
-	// không nạp jquery-ui trong các page dễ gây xung đột
+	// không nạp jquery-ui trong các page dễ gây xung đột -> sử dụng jquery-ui của wordpress
 	/*
 	if ( strstr( $_SERVER[ 'REQUEST_URI' ], '/widgets.php' ) == true ) {
 		echo '<script>console.log("%c Không load echbay-jquery-ui trong widgets", "color: red;");</script>';
