@@ -255,7 +255,8 @@ function WGR_load_category_with_ajax ( new_url, time_load ) {
 		console.log('new_url not found!');
 		return false;
 	}
-	else if ( new_url == cache_echo_url_load ) {
+	new_url = web_link + new_url.replace(web_link, '');
+	if ( new_url == cache_echo_url_load ) {
 		console.log('new_url in load!');
 		return false;
 	}
