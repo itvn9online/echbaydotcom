@@ -327,12 +327,17 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
         // giải nén các thư mục thuộc dạng outsource nếu chưa có
         WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
-		
-		
-		
-		
 	}
 }
+
+// nếu tồn tại file .unzipcode -> thực hiện lệnh unzip code luôn
+if ( file_exists( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' ) ) {
+    //echo EB_THEME_PLUGIN_INDEX . ' (' . __LINE__ . ')' . '<br>' . "\n";
+    echo 'Unzip vendor code because file unzipcode exist! <br>' . "\n";
+    WGR_unzip_vendor_code();
+}
+//echo ABSPATH . ' (' . __LINE__ . ')' . '<br>' . "\n";
+//echo EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' . ' (' . __LINE__ . ')' . '<br>' . "\n";
 
 
 

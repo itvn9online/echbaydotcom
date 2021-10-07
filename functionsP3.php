@@ -1224,4 +1224,8 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
             }
         }
     }
+    
+    //
+    _eb_remove_file(EB_THEME_PLUGIN_INDEX . 'unzipcode.txt');
 }
+//echo 'WGR_unzip_vendor_code';
