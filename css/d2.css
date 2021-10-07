@@ -1352,10 +1352,13 @@ span.hd_status9 { background: #F00; }
 	max-width: 500px;
 	margin: 0 auto;
 	border-radius: 3px;
+    /*
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -55%);
+    */
+    margin-top: 20px;
 }
 .cart-quick-padding {
 	padding: 25px;
