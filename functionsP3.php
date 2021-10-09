@@ -1146,11 +1146,11 @@ function WGR_before_optimize_code( $confirm_file ) {
     if ( is_numeric( $content_file ) ) {
         // chỉ giải nén trong khoảng thời gian cho phép
         if ( $content_file > time() ) {
-            //echo __FUNCTION__ . ' run in ' . date( 'r', $content_file ) . '<br>' . "\n";
+            echo '<!-- ' . __FUNCTION__ . ' run in ' . date( 'r', $content_file ) . ' -->' . "\n";
             return false;
         }
     } else {
-        // nếu là chữ -> hẹn thời gian để xử lý code
+        // nếu là chữ -> hẹn thời gian để xử lý code -> xử lý ngay dễ bị trường hợp thu viện cần xử lý chưa được nạp xong -> lỗi luôn
         _eb_create_file( $confirm_file, time() + 60 );
         return false;
     }
