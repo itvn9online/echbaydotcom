@@ -1133,11 +1133,44 @@ function WGR_echo_shortcode( $key ) {
     return '';
 }
 
+function WGR_before_optimize_code( $confirm_file ) {
+    // không tồn tại file cần thiết -> hủy
+    if ( !file_exists( $confirm_file ) ) {
+        return false;
+    }
+
+    // kiểm tra nội dung file
+    $content_file = file_get_contents( $confirm_file, 1 );
+    //echo $content_file . '<br>' . "\n";
+    // nội dung file này phải là 1 số
+    if ( is_numeric( $content_file ) ) {
+        // chỉ giải nén trong khoảng thời gian cho phép
+        if ( $content_file > time() ) {
+            //echo __FUNCTION__ . ' run in ' . date( 'r', $content_file ) . '<br>' . "\n";
+            return false;
+        }
+    } else {
+        // nếu là chữ -> hẹn thời gian để xử lý code
+        _eb_create_file( $confirm_file, time() + 60 );
+        return false;
+    }
+    return true;
+}
+
 function WGR_unzip_vendor_code() {
-    if ( !file_exists( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' ) ) {
+    $confirm_file = EB_THEME_PLUGIN_INDEX . 'unzipcode.txt';
+    if ( WGR_before_optimize_code( $confirm_file ) === false ) {
         return false;
     }
     echo __FUNCTION__ . ' running... <br>' . "\n";
+
+    //
+    _eb_remove_file( $confirm_file );
+    // không xóa được file -> bỏ luôn
+    if ( file_exists( $confirm_file ) ) {
+        echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
+        return false;
+    }
 
     //
     $arr_vendor_list = [
@@ -1229,17 +1262,22 @@ function WGR_unzip_vendor_code() {
             }
         }
     }
-
-    //
-    _eb_remove_file( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' );
 }
-//echo 'WGR_unzip_vendor_code';
 
 function WGR_optimize_static_code() {
-    if ( !file_exists( EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' ) ) {
+    $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
+    if ( WGR_before_optimize_code( $confirm_file ) === false ) {
         return false;
     }
     echo __FUNCTION__ . ' running... <br>' . "\n";
+
+    //
+    _eb_remove_file( $confirm_file );
+    // không xóa được file -> bỏ luôn
+    if ( file_exists( $confirm_file ) ) {
+        echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
+        return false;
+    }
 
     // Nếu không có function cần thiết -> nạp vào thôi
     if ( !function_exists( 'WGR_compiler_update_echbay_css_js' ) ) {
@@ -1251,18 +1289,20 @@ function WGR_optimize_static_code() {
         'css',
         'css/default',
         'css/template',
+
         'class/widget',
-        'javascript',
+
         'html/details',
         'html/details/mobilemua',
         'html/details/pcmua',
         'html/search',
+
         'javascript',
     ];
 
     foreach ( $arr_optimize_dir as $v ) {
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
-        //echo $v . '<br>' . "\n";
+        echo $v . '<br>' . "\n";
 
         //
         if ( is_dir( $v ) ) {
@@ -1273,6 +1313,27 @@ function WGR_optimize_static_code() {
 
             //
             foreach ( glob( $v . '/*.js' ) as $filename ) {
+                //echo $filename . '<br>' . "\n";
+                WGR_compiler_update_echbay_css_js( $filename );
+            }
+        }
+    }
+
+    //
+    $arr_optimize_dir = [
+        'global',
+        'global/temp',
+
+        'class/widget',
+    ];
+
+    foreach ( $arr_optimize_dir as $v ) {
+        $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
+        echo $v . '<br>' . "\n";
+
+        //
+        if ( is_dir( $v ) ) {
+            foreach ( glob( $v . '/*.php' ) as $filename ) {
                 //echo $filename . '<br>' . "\n";
                 WGR_compiler_update_echbay_css_js( $filename );
             }
@@ -1294,7 +1355,7 @@ function WGR_optimize_static_code() {
 
         foreach ( $arr_optimize_dir as $v ) {
             $v = rtrim( EB_CHILD_THEME_URL . $v, '/' );
-            //echo $v . '<br>' . "\n";
+            echo $v . '<br>' . "\n";
 
             //
             if ( is_dir( $v ) ) {
@@ -1311,8 +1372,4 @@ function WGR_optimize_static_code() {
             }
         }
     }
-
-    //
-    _eb_remove_file( EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' );
 }
-//echo 'WGR_optimize_static_code';
