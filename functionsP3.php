@@ -1181,6 +1181,11 @@ function WGR_unzip_vendor_code() {
     //
     $zip = new ZipArchive;
     foreach ( $arr_vendor_list as $base_for_unzip ) {
+        if ( !is_dir( $base_for_unzip ) ) {
+            continue;
+        }
+
+        //
         foreach ( glob( $base_for_unzip . '/*.zip' ) as $filename ) {
             //echo $filename . '<br>' . "\n";
 
@@ -1305,17 +1310,20 @@ function WGR_optimize_static_code() {
         echo $v . '<br>' . "\n";
 
         //
-        if ( is_dir( $v ) ) {
-            foreach ( glob( $v . '/*.css' ) as $filename ) {
-                //echo $filename . '<br>' . "\n";
-                WGR_compiler_update_echbay_css_js( $filename );
-            }
+        if ( !is_dir( $v ) ) {
+            continue;
+        }
 
-            //
-            foreach ( glob( $v . '/*.js' ) as $filename ) {
-                //echo $filename . '<br>' . "\n";
-                WGR_compiler_update_echbay_css_js( $filename );
-            }
+        //
+        foreach ( glob( $v . '/*.css' ) as $filename ) {
+            //echo $filename . '<br>' . "\n";
+            WGR_compiler_update_echbay_css_js( $filename );
+        }
+
+        //
+        foreach ( glob( $v . '/*.js' ) as $filename ) {
+            //echo $filename . '<br>' . "\n";
+            WGR_compiler_update_echbay_css_js( $filename );
         }
     }
 
@@ -1332,11 +1340,14 @@ function WGR_optimize_static_code() {
         echo $v . '<br>' . "\n";
 
         //
-        if ( is_dir( $v ) ) {
-            foreach ( glob( $v . '/*.php' ) as $filename ) {
-                //echo $filename . '<br>' . "\n";
-                WGR_compiler_update_echbay_css_js( $filename );
-            }
+        if ( !is_dir( $v ) ) {
+            continue;
+        }
+
+        //
+        foreach ( glob( $v . '/*.php' ) as $filename ) {
+            //echo $filename . '<br>' . "\n";
+            WGR_compiler_update_echbay_css_js( $filename );
         }
     }
 
@@ -1358,17 +1369,20 @@ function WGR_optimize_static_code() {
             echo $v . '<br>' . "\n";
 
             //
-            if ( is_dir( $v ) ) {
-                foreach ( glob( $v . '/*.css' ) as $filename ) {
-                    //echo $filename . '<br>' . "\n";
-                    WGR_compiler_update_echbay_css_js( $filename );
-                }
+            if ( !is_dir( $v ) ) {
+                continue;
+            }
 
-                //
-                foreach ( glob( $v . '/*.js' ) as $filename ) {
-                    //echo $filename . '<br>' . "\n";
-                    WGR_compiler_update_echbay_css_js( $filename );
-                }
+            //
+            foreach ( glob( $v . '/*.css' ) as $filename ) {
+                //echo $filename . '<br>' . "\n";
+                WGR_compiler_update_echbay_css_js( $filename );
+            }
+
+            //
+            foreach ( glob( $v . '/*.js' ) as $filename ) {
+                //echo $filename . '<br>' . "\n";
+                WGR_compiler_update_echbay_css_js( $filename );
             }
         }
     }
