@@ -115,7 +115,7 @@ if ( mtv_id > 0 || !file_exists( $__eb_txt_only_conf ) ) {
 
 
     // giải nén các thư mục thuộc dạng outsource nếu chưa có
-    //WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
+    //WGR_unzip_vendor_code();
 
 
     /*

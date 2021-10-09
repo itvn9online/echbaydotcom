@@ -132,5 +132,4 @@ function WGR_compiler_update_echbay_css_js( $v ) {
             _eb_create_file( $v, $c );
         }
     }
-
 }

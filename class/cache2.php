@@ -304,26 +304,15 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
         // giải nén các thư mục thuộc dạng outsource nếu chưa có
-        //WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
+        //WGR_unzip_vendor_code();
     }
 }
 
-// nếu tồn tại file unzipcode.txt -> thực hiện lệnh unzip code luôn
-if ( file_exists( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' ) ) {
-    //echo EB_THEME_PLUGIN_INDEX . ' (' . __LINE__ . ')' . '<br>' . "\n";
-    echo 'Unzip vendor code because file unzipcode exist! <br>' . "\n";
-    WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
-}
-//echo ABSPATH . ' (' . __LINE__ . ')' . '<br>' . "\n";
-//echo EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' . ' (' . __LINE__ . ')' . '<br>' . "\n";
+// giải nén các thư viện mã ngoài (outsource, vendor...)
+WGR_unzip_vendor_code();
 
-// nếu tồn tại file optimizecode.txt -> thực hiện lệnh nén các file css, js
-if ( file_exists( EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' ) ) {
-    //echo EB_THEME_PLUGIN_INDEX . ' (' . __LINE__ . ')' . '<br>' . "\n";
-    echo 'Unzip vendor code because file optimizecode exist! <br>' . "\n";
-    WGR_optimize_static_code( basename( __FILE__ ) . ':' . __LINE__ );
-}
-//echo EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' . ' (' . __LINE__ . ')' . '<br>' . "\n";
+// optimize các file tĩnh (css, js...)
+WGR_optimize_static_code();
 
 
 // cập nhật web version định kỳ

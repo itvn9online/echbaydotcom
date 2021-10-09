@@ -41,7 +41,7 @@ global $arr_private_info_setting;
 
 
 //
-//WGR_unzip_vendor_code( basename( __FILE__ ) . ':' . __LINE__ );
+//WGR_unzip_vendor_code();
 
 // tạo thương hiệu riêng cho partner
 if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {

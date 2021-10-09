@@ -1133,8 +1133,11 @@ function WGR_echo_shortcode( $key ) {
     return '';
 }
 
-function WGR_unzip_vendor_code( $unzip_from = '' ) {
-    echo __FUNCTION__ . ' run in ' . $unzip_from . ' <br>' . "\n";
+function WGR_unzip_vendor_code() {
+    if ( !file_exists( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' ) ) {
+        return false;
+    }
+    echo __FUNCTION__ . ' running... <br>' . "\n";
 
     //
     $arr_vendor_list = [
@@ -1223,7 +1226,6 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
                         }
                     }
                 }
-                echo 'RUN FROM! ' . $unzip_from . ' <br>' . "\n";
             }
         }
     }
@@ -1233,8 +1235,11 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
 }
 //echo 'WGR_unzip_vendor_code';
 
-function WGR_optimize_static_code( $unzip_from = '' ) {
-    echo __FUNCTION__ . ' run in ' . $unzip_from . ' <br>' . "\n";
+function WGR_optimize_static_code() {
+    if ( !file_exists( EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' ) ) {
+        return false;
+    }
+    echo __FUNCTION__ . ' running... <br>' . "\n";
 
     // Nếu không có function cần thiết -> nạp vào thôi
     if ( !function_exists( 'WGR_compiler_update_echbay_css_js' ) ) {
