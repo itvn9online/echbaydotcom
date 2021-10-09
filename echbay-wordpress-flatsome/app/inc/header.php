@@ -4,7 +4,38 @@
 //print_r( $__cf_row );
 
 global $global_dymanic_meta;
+
+//global $arr_dymanic_meta;
+//echo 'arr_dymanic_meta: ' . $arr_dymanic_meta . '<br>' . "\n";
 global $dynamic_meta;
+
+global $url_og_url;
+if ( empty( $url_og_url ) ) {
+    $url_og_url = get_permalink();
+}
+//echo 'url_og_url: ' . $url_og_url . '<br>' . "\n";
+
+global $image_og_image;
+if ( empty( $image_og_image ) ) {
+    $image_og_image = $__cf_row[ 'cf_og_image' ];
+}
+//echo 'image_og_image: ' . $image_og_image . '<br>' . "\n";
+
+
+// các thể meta khác nếu có
+$arr_dymanic_meta = array();
+$arr_dymanic_meta[] = '<meta itemprop="url" content="' . $url_og_url . '" />';
+$arr_dymanic_meta[] = '<meta property="og:url" content="' . $url_og_url . '" />';
+
+$arr_dymanic_meta[] = '<meta itemprop="image" content="' . $image_og_image . '" />';
+$arr_dymanic_meta[] = '<meta property="og:image" content="' . $image_og_image . '" />';
+
+
+$dynamic_meta .= implode( "\n", $arr_dymanic_meta );
+//echo 'dynamic_meta: ' . $dynamic_meta . '<br>' . "\n";
+//echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
+
+
 global $web_name;
 global $web_og_type;
 global $import_ecommerce_ga;

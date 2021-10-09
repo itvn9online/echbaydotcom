@@ -7,6 +7,7 @@ global $id_for_get_sidebar;
 //global $group_go_to;
 $group_go_to = [];
 global $image_og_image;
+//echo 'image_og_image: ' . $image_og_image . '<br>' . "\n";
 global $url_og_url;
 global $global_dymanic_meta;
 //global $parent_cid;

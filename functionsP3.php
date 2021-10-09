@@ -1134,6 +1134,9 @@ function WGR_echo_shortcode( $key ) {
 }
 
 function WGR_unzip_vendor_code( $unzip_from = '' ) {
+    echo __FUNCTION__ . ' run in ' . $unzip_from . ' <br>' . "\n";
+
+    //
     $arr_vendor_list = [
         EB_THEME_URL . 'outsource',
     ];
@@ -1224,8 +1227,82 @@ function WGR_unzip_vendor_code( $unzip_from = '' ) {
             }
         }
     }
-    
+
     //
-    _eb_remove_file(EB_THEME_PLUGIN_INDEX . 'unzipcode.txt');
+    _eb_remove_file( EB_THEME_PLUGIN_INDEX . 'unzipcode.txt' );
 }
 //echo 'WGR_unzip_vendor_code';
+
+function WGR_optimize_static_code( $unzip_from = '' ) {
+    echo __FUNCTION__ . ' run in ' . $unzip_from . ' <br>' . "\n";
+
+    // Nếu không có function cần thiết -> nạp vào thôi
+    if ( !function_exists( 'WGR_compiler_update_echbay_css_js' ) ) {
+        include_once ECHBAY_PRI_CODE . 'echbay_compiler_core.php';
+    }
+
+    // thư mục chứa file cần xử lý
+    $arr_optimize_dir = [
+        'css',
+        'css/default',
+        'css/template',
+        'class/widget',
+        'javascript',
+    ];
+
+    foreach ( $arr_optimize_dir as $v ) {
+        $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
+        //echo $v . '<br>' . "\n";
+
+        //
+        if ( is_dir( $v ) ) {
+            foreach ( glob( $v . '/*.css' ) as $filename ) {
+                //echo $filename . '<br>' . "\n";
+                WGR_compiler_update_echbay_css_js( $filename );
+            }
+
+            //
+            foreach ( glob( $v . '/*.js' ) as $filename ) {
+                //echo $filename . '<br>' . "\n";
+                WGR_compiler_update_echbay_css_js( $filename );
+            }
+        }
+    }
+
+    /*
+     * for child theme
+     */
+    if ( defined( 'EB_CHILD_THEME_URL' ) ) {
+        //echo EB_CHILD_THEME_URL . '<br>' . "\n";
+
+        $arr_optimize_dir = [
+            '',
+            'ui',
+            'templates',
+            'shortcode',
+        ];
+
+        foreach ( $arr_optimize_dir as $v ) {
+            $v = rtrim( EB_CHILD_THEME_URL . $v, '/' );
+            //echo $v . '<br>' . "\n";
+
+            //
+            if ( is_dir( $v ) ) {
+                foreach ( glob( $v . '/*.css' ) as $filename ) {
+                    //echo $filename . '<br>' . "\n";
+                    WGR_compiler_update_echbay_css_js( $filename );
+                }
+
+                //
+                foreach ( glob( $v . '/*.js' ) as $filename ) {
+                    //echo $filename . '<br>' . "\n";
+                    WGR_compiler_update_echbay_css_js( $filename );
+                }
+            }
+        }
+    }
+
+    //
+    _eb_remove_file( EB_THEME_PLUGIN_INDEX . 'optimizecode.txt' );
+}
+//echo 'WGR_optimize_static_code';

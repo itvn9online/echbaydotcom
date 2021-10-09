@@ -12,7 +12,7 @@ label, .cur {
     display: none;
 }
 /* Global css (thread_node) */
-.echbay-blog {
+.echbay-blog, .widget ul.echbay-blog {
     margin: 0 -10px;
 }
 .echbay-blog li {
