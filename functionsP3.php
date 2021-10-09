@@ -1253,6 +1253,11 @@ function WGR_optimize_static_code() {
         'css/template',
         'class/widget',
         'javascript',
+        'html/details',
+        'html/details/mobilemua',
+        'html/details/pcmua',
+        'html/search',
+        'javascript',
     ];
 
     foreach ( $arr_optimize_dir as $v ) {
