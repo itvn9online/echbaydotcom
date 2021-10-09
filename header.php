@@ -32,9 +32,13 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
 $load_font_awesome = '';
-$load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
-$load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
-$load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css' ) ) {
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
+    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+} else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web.zip' ) ) {
+    WGR_unzip_vendor_code();
+}
 //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
 //echo ABSPATH . '<br>' . "\n";
 $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
