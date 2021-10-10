@@ -1157,12 +1157,10 @@ function WGR_before_optimize_code( $confirm_file ) {
     return true;
 }
 
-function WGR_unzip_vendor_code( $check_txt_file = true ) {
+function WGR_unzip_vendor_code() {
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'unzipcode.txt';
-    if ( $check_txt_file === true ) {
-        if ( WGR_before_optimize_code( $confirm_file ) === false ) {
-            return false;
-        }
+    if ( WGR_before_optimize_code( $confirm_file ) === false ) {
+        return false;
     }
     if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) != false ) {
         return false;
@@ -1274,12 +1272,10 @@ function WGR_unzip_vendor_code( $check_txt_file = true ) {
     }
 }
 
-function WGR_optimize_static_code( $check_txt_file = true ) {
+function WGR_optimize_static_code() {
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
-    if ( $check_txt_file === true ) {
-        if ( WGR_before_optimize_code( $confirm_file ) === false ) {
-            return false;
-        }
+    if ( WGR_before_optimize_code( $confirm_file ) === false ) {
+        return false;
     }
     if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) != false ) {
         return false;

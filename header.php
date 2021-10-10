@@ -32,7 +32,6 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
 $load_font_awesome = '';
-// chỉ nạp font-awesome khi có file
 if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css' ) ) {
     $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
     $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
