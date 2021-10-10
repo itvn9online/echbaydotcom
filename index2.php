@@ -1012,7 +1012,7 @@ function eb_change_product_query( $query ) {
 /*
  * Bổ sung 1 số trường cho admin
  */
-//if ( mtv_id > 0 && strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) != false ) {
+//if ( mtv_id > 0 && strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) !== false ) {
 if ( mtv_id > 0 && is_admin() ) {
 
     // một số chức năng cho admin
@@ -1058,9 +1058,9 @@ else {
 
     // add các script hay dùng
     /*
-	if ( strpos( $_SERVER['REQUEST_URI'], '/wp-login.php' ) != false
+	if ( strpos( $_SERVER['REQUEST_URI'], '/wp-login.php' ) !== false
 	|| is_admin() ) {
-//	|| strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) != false ) {
+//	|| strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) !== false ) {
 	}
 	else {
 		// không sử dụng init -> vì nó xóa cả trong admin -> gây lỗi

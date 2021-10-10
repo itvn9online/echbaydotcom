@@ -24,7 +24,7 @@ if (isset ( $_GET ['t'], $_GET ['block'], $_GET ['u'], $_GET ['code'] )) {
 	// kiểm tra dữ liệu đầu vào
 	if (
 		date_time - $t < 3600 && _eb_mdnam ( $t ) == $block
-		&& $u != '' && strpos( $u, '@' ) != false && _eb_mdnam ( $u ) == $code
+		&& $u != '' && strpos( $u, '@' ) !== false && _eb_mdnam ( $u ) == $code
 	) {
 		
 		//

@@ -91,9 +91,9 @@ else if ( $mail_to_admin == $__cf_row_default['cf_email'] ) {
 
 
 $bcc_email = '';
-if (strpos ( $t_email, '@gmail.com' ) != false
-|| strpos ( $t_email, '@yahoo.' ) != false
-|| strpos ( $t_email, '@hotmail.com' ) != false) {
+if (strpos ( $t_email, '@gmail.com' ) !== false
+|| strpos ( $t_email, '@yahoo.' ) !== false
+|| strpos ( $t_email, '@hotmail.com' ) !== false) {
 	$bcc_email = $t_email;
 //	_eb_send_email( $t_email, $mail_title, $message, '', $mail_to_admin );
 }

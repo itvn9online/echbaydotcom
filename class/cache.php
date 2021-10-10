@@ -188,7 +188,7 @@ else {
 }
 
 // hỗ trợ link HTTP nếu truy cập vào cổng 443 -> cloudflare
-//if ( eb_web_protocol == 'https' && strpos( $web_link, 'https://' ) == false ) {
+//if ( eb_web_protocol == 'https' && strpos( $web_link, 'https://' ) === false ) {
 	/*
 if ( eb_web_protocol == 'https' ) {
 	$web_link = str_replace( 'http://', 'https://', $web_link );
@@ -219,7 +219,7 @@ if ( $localhost == 1 ) {
 /////////////////////////// tạm thời tắt chức năng hỗ trợ nhiều tên miền -> tốt cho google
 */
 /*
-if ( strpos( $web_link, $_SERVER['HTTP_HOST'] ) == false ) {
+if ( strpos( $web_link, $_SERVER['HTTP_HOST'] ) === false ) {
 	// tách mảng để tạo URL cố định
 	$web_link = explode('/', $web_link);
 //	print_r($web_link);
@@ -251,7 +251,7 @@ $file_last_update = EB_THEME_CACHE . '___all.txt';
 
 
 // chỉ nạp mới cache trong một số trường hợp
-if ( strpos( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) == false ) {
+if ( strpos( $_SERVER['REQUEST_URI'], '/admin-ajax.php' ) === false ) {
 	include_once EB_THEME_CORE . 'cache2.php';
 }
 // còn lại sẽ sử dụng cache cũ (nếu có)

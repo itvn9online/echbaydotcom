@@ -679,7 +679,7 @@ else {
 
     //
     $blog_img_logo = $__cf_row[ 'cf_logo' ];
-    if ( strpos( $blog_img_logo, '//' ) == false ) {
+    if ( strpos( $blog_img_logo, '//' ) === false ) {
         if ( substr( $blog_img_logo, 0, 1 ) == '/' ) {
             $blog_img_logo = substr( $blog_img_logo, 1 );
         }

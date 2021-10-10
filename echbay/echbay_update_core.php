@@ -266,7 +266,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 //		}
 		
 		// chỉ hỗ trợ update theme có tên chỉ định
-//		if ( strpos( $dir_to_update, 'echbaytwo' ) == false ) {
+//		if ( strpos( $dir_to_update, 'echbaytwo' ) === false ) {
 		if ( $dir_name_for_unzip_to != 'echbaydotcom-master' && ! in_array( $dir_name_for_unzip_to, $arr_name_for_unzip_to ) ) {
 			echo 'theme it not support update via this panel: ' . $dir_to_update . '<br>' . "\n";
 			echo '* <em>Chỉ hỗ trợ update theme có nền là <strong>echbaytwo</strong>!</em>';
@@ -554,12 +554,12 @@ function WGR_remove_github_file ( $f_gitattributes ) {
 		
 		// không cập nhật trên localhost
 		if ( $localhost == 1 ) {
-//		if ( strpos( $_SERVER['HTTP_HOST'], 'localhost' ) != false ) {
+//		if ( strpos( $_SERVER['HTTP_HOST'], 'localhost' ) !== false ) {
 //			echo $_SERVER['HTTP_HOST']; exit();
 //			echo $_SERVER['REQUEST_URI']; exit();
 			
 			// nếu thư mục là webgiare thì bỏ qua chế độ cập nhật
-			if ( strpos( $_SERVER['REQUEST_URI'], '/wordpress.org' ) != false ) {
+			if ( strpos( $_SERVER['REQUEST_URI'], '/wordpress.org' ) !== false ) {
 				echo '<h1>Chế độ cập nhật đã bị vô hiệu hóa bởi coder!</h1>';
 				exit();
 			}

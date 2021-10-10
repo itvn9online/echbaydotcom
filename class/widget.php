@@ -761,7 +761,7 @@ function WGR_widget_title_remove_bbcode( $str ) {
 function WGR_widget_title_with_bbcode( $str, $remove_tag = false ) {
     /*
     echo strstr( $str, '[' ) . '<br>';
-    if ( strpos( $str, '[' ) == false || strpos( $str, ']' ) == false ) {
+    if ( strpos( $str, '[' ) === false || strpos( $str, ']' ) === false ) {
     	return $str;
     }
     */

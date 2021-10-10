@@ -123,9 +123,9 @@ if ( isset( $_POST['for_quick_register'] ) ) {
 	
 	// gửi mail thông báo
 	$bcc_email = '';
-	if (strpos ( $user_email, '@gmail.com' ) != false
-	|| strpos ( $user_email, '@yahoo.' ) != false
-	|| strpos ( $user_email, '@hotmail.com' ) != false) {
+	if (strpos ( $user_email, '@gmail.com' ) !== false
+	|| strpos ( $user_email, '@yahoo.' ) !== false
+	|| strpos ( $user_email, '@hotmail.com' ) !== false) {
 		$bcc_email = $user_email;
 	}
 	

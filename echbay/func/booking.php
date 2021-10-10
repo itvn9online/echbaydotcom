@@ -419,7 +419,7 @@ foreach ( $arr as $k => $v ) {
 
 
 //
-if ( strpos( $discount_price, '%' ) != false ) {
+if ( strpos( $discount_price, '%' ) !== false ) {
 	//	if ( mtv_id == 1 ) {
 	$discount_price = str_replace( '%', '', $discount_price );
 	//	echo $discount_price . '<br>' . "\n";
@@ -472,9 +472,9 @@ if ( $__cf_row[ 'cf_email_note' ] != '' ) {
 
 
 $bcc_email = '';
-if ( strpos( $t_email, '@gmail.com' ) != false ||
-	strpos( $t_email, '@yahoo.' ) != false ||
-	strpos( $t_email, '@hotmail.com' ) != false ) {
+if ( strpos( $t_email, '@gmail.com' ) !== false ||
+	strpos( $t_email, '@yahoo.' ) !== false ||
+	strpos( $t_email, '@hotmail.com' ) !== false ) {
 	//	if ( _eb_check_email_type( $t_email ) == 1 ) {
 	$bcc_email = $t_email;
 	//		_eb_send_email( $t_email, $mail_title, $message, '', $mail_to_admin );

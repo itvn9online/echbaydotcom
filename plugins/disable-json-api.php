@@ -81,10 +81,10 @@ function DRA_only_allow_logged_in_rest_access( $access ) {
 // nếu tồn tại tham số rest_route -> đang vào JSON -> hủy luôn
 //if ( isset( $_GET['rest_route'] ) ) {
 // URL mà tồn tại tham số /wp-json/ -> hủy luôn
-//if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json/' ) != false ) {
-if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) != false ) {
+//if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json/' ) !== false ) {
+if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) !== false ) {
 	// một số chức năng như contact-forms 7 có sử dụng json -> vẫn để cho nó dùng
-	if ( strpos( $_SERVER['REQUEST_URI'], '/contact-forms/' ) == false ) {
+	if ( strpos( $_SERVER['REQUEST_URI'], '/contact-forms/' ) === false ) {
 	
 		// Set trạng thái cho trang 404
 		EBE_set_header(401);

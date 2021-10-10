@@ -37,8 +37,8 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 //		echo $k . '<br>' . "\n";
 		
 		//
-//		if ( $k == 'sitemap' || strpos( $k, 'sitemap-' ) != false ) {
-		if ( strpos( $k, 'sitemap-' ) != false ) {
+//		if ( $k == 'sitemap' || strpos( $k, 'sitemap-' ) !== false ) {
+		if ( strpos( $k, 'sitemap-' ) !== false ) {
 			$get_list_sitemap .= WGR_echo_sitemap_node( web_link . $k, $sitemap_current_time );
 		}
 	}

@@ -197,11 +197,11 @@ function WGR_auto_update_link_for_demo( $current_homeurl, $current_siteurl ) {
 
     // riêng đối với domain demo của webgiare
     if (
-        strpos( $current_homeurl, 'webgiare.org/demo' ) != false
-        //|| strpos( $current_homeurl, 'www.webgiare.org/demo' ) != false
-        //|| strpos( $current_siteurl, 'www.webgiare.org/demo' ) != false
+        strpos( $current_homeurl, 'webgiare.org/demo' ) !== false
+        //|| strpos( $current_homeurl, 'www.webgiare.org/demo' ) !== false
+        //|| strpos( $current_siteurl, 'www.webgiare.org/demo' ) !== false
         ||
-        strpos( $current_siteurl, 'webgiare.org/demo' ) != false
+        strpos( $current_siteurl, 'webgiare.org/demo' ) !== false
     ) {
         _eb_update_option( 'home', eb_web_protocol . '://' . $_SERVER[ 'HTTP_HOST' ] );
         _eb_update_option( 'siteurl', eb_web_protocol . '://' . $_SERVER[ 'HTTP_HOST' ] );
@@ -286,7 +286,7 @@ function WGR_replace_for_all_content( $list_replace, $content_replace ) {
 
 // thêm thẻ LI theo tiêu chuẩn chung cho thread node
 function WGR_add_li_to_thread_node( $str ) {
-    if ( strpos( $str, '</li>' ) == false ) {
+    if ( strpos( $str, '</li>' ) === false ) {
         $str = '<li data-id="{tmp.trv_id}" data-ngay="{tmp.trv_ngayhethan}" data-price="{tmp.trv_num_giamoi}" data-per="{tmp.pt}" data-link="{tmp.p_link}" data-status="{tmp.product_status}" class="hide-if-gia-zero">' . $str . '</li>';
     }
 
@@ -423,7 +423,7 @@ function WGR_update_meta_post( $id, $k, $v ) {
     // sử dụng phương thức mặc định của wp (sử dụng song song)
     // nếu không phải key của echbay hoặc tính năng không bật -> bỏ qua luôn
     if ( cf_set_raovat_version != 1 ||
-        strpos( $k, '_eb_' ) == false ) {
+        strpos( $k, '_eb_' ) === false ) {
         update_post_meta( $id, $k, $v );
         return true;
     }
@@ -661,7 +661,7 @@ function WGR_show_header_favicon( $icon = '' ) {
     //
     if ( $icon == '' ) {
         $icon = $__cf_row[ 'cf_favicon' ];
-        if ( strpos( $icon, '//' ) == false ) {
+        if ( strpos( $icon, '//' ) === false ) {
             if ( substr( $icon, 0, 1 ) == '/' ) {
                 $icon = substr( $icon, 1 );
             }
@@ -1120,7 +1120,7 @@ function WGR_shortcode( $key ) {
     $value = EBE_get_lang( $key );
 
     // không hiển thị nếu đặt lệnh là ẩn hoặc vẫn là dạng tmp
-    if ( $value == 'hide' || $value == 'null' || strpos( $value, 'tmp_shortcode_____' ) != false ) {
+    if ( $value == 'hide' || $value == 'null' || strpos( $value, 'tmp_shortcode_____' ) !== false ) {
         return '';
     }
 
@@ -1162,7 +1162,7 @@ function WGR_unzip_vendor_code() {
     if ( WGR_before_optimize_code( $confirm_file ) === false ) {
         return false;
     }
-    if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) != false ) {
+    if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) !== false ) {
         return false;
     }
     echo __FUNCTION__ . ' running... <br>' . "\n";
@@ -1277,7 +1277,7 @@ function WGR_optimize_static_code() {
     if ( WGR_before_optimize_code( $confirm_file ) === false ) {
         return false;
     }
-    if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) != false ) {
+    if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) !== false ) {
         return false;
     }
     echo __FUNCTION__ . ' running... <br>' . "\n";

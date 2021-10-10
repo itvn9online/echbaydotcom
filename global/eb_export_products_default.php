@@ -48,7 +48,7 @@ foreach ( $sql as $v ) {
 	
 	//
 	$trv_img = _eb_get_post_img( $v->ID );
-	if ( strpos( $trv_img, '//' ) == false ) {
+	if ( strpos( $trv_img, '//' ) === false ) {
 		$trv_img = web_link . $trv_img;
 	}
 	
@@ -157,9 +157,9 @@ foreach ( $sql as $v ) {
 	
 	foreach ( $arr_meta as $k2 => $v2 ) {
 		if (
-			strpos( $k2, '_eb_product_' ) != false
-			|| strpos( $k2, '_eb_ads_' ) != false
-			|| strpos( $k2, '_eb_blog_' ) != false
+			strpos( $k2, '_eb_product_' ) !== false
+			|| strpos( $k2, '_eb_ads_' ) !== false
+			|| strpos( $k2, '_eb_blog_' ) !== false
 		) {
 			echo '
 			<wp:postmeta>

@@ -1014,7 +1014,7 @@ function _eb_c_link( $id, $taxx = 'category' ) {
 		$a = str_replace( '/./', '/', $a );
 
 		// nếu tên file là dạng short link -> thử tạo thủ công
-		if ( strpos( $a, '?cat=' ) != false || strpos( $a, '&cat=' ) != false ) {
+		if ( strpos( $a, '?cat=' ) !== false || strpos( $a, '&cat=' ) !== false ) {
 			// lấy URL trực tiếp luôn
 			if ( $taxx == 'category' || $taxx == 'post_tag' ) {
 				if ( $taxx == 'post_tag' ) {
@@ -1049,7 +1049,7 @@ function _eb_c_link( $id, $taxx = 'category' ) {
 		}
 
 		// kiểm tra lại lần nữa
-		if ( strpos( $a, '?cat=' ) != false || strpos( $a, '&cat=' ) != false ) {}
+		if ( strpos( $a, '?cat=' ) !== false || strpos( $a, '&cat=' ) !== false ) {}
 		// lưu tên file vào cache nếu không phải short link
 		else {
 			_eb_get_static_html( $strCacheFilter, $a, '', 60 );
@@ -1311,7 +1311,7 @@ function WGR_ftp_copy( $source, $path ) {
 		//		echo $ftp_dir_root . '<br>';
 
 		// nếu trong chuỗi file không có root dir -> báo lỗi
-		if ( strpos( $file_for_ftp, '/' . $ftp_dir_root . '/' ) == false ) {
+		if ( strpos( $file_for_ftp, '/' . $ftp_dir_root . '/' ) === false ) {
 			echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
 			return false;
 		}
@@ -1582,7 +1582,7 @@ function EBE_ftp_create_file( $file_, $content_, $add_line = '', $mod = 0777 ) {
 		//		echo $ftp_dir_root . '<br>';
 
 		// nếu trong chuỗi file không có root dir -> báo lỗi
-		if ( strpos( $file_, '/' . $ftp_dir_root . '/' ) == false ) {
+		if ( strpos( $file_, '/' . $ftp_dir_root . '/' ) === false ) {
 			echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
 			return false;
 		}
@@ -2802,7 +2802,7 @@ function _eb_get_cat_object( $id, $key, $default_value = '', $no_cache = 0 ) {
 			if ( !empty( $sql ) ) {
 				foreach ( $sql as $v ) {
 					// xác minh đúng là term cho category mới chuyển
-					if ( strpos( $v->meta_key, '_eb_category_' ) != false ) {
+					if ( strpos( $v->meta_key, '_eb_category_' ) !== false ) {
 						//						print_r( $v );
 
 						// nếu dữ liệu trống -> cũng hủy luôn
@@ -2964,7 +2964,7 @@ function _eb_get_post_object( $id, $key, $default_value = '', $meta_key = eb_pos
 		// v3 -> chỉ dành cho post -> ưu tiên lấy trong bảng posts trước
 		if (
 			cf_set_raovat_version == 1
-			//			&& strpos( $key, '_eb_' ) != false
+			//			&& strpos( $key, '_eb_' ) !== false
 			&&
 			$meta_convert != '_eb_category_'
 		) {
@@ -2988,7 +2988,7 @@ function _eb_get_post_object( $id, $key, $default_value = '', $meta_key = eb_pos
 					//
 					foreach ( $sql as $k => $v ) {
 						// kiểm tra đúng key của EchBay thì mới tiếp tục
-						if ( strpos( $k, '_eb_' ) != false ) {
+						if ( strpos( $k, '_eb_' ) !== false ) {
 							// nếu không có giá trị -> thử lấy theo post meta mặc định
 							/*
 							if ( $v == '' ) {
@@ -3122,11 +3122,11 @@ function _eb_get_post_object( $id, $key, $default_value = '', $meta_key = eb_pos
 function _eb_get_post_meta( $id, $key, $sing = true, $default_value = '' ) {
 
 	// chuyển sang sử dụng phiên bản code mới
-	//	if ( strpos( $key, '_eb_product_' ) != false ) {
+	//	if ( strpos( $key, '_eb_product_' ) !== false ) {
 	return _eb_get_post_object( $id, $key, $default_value );
 	/*
 	}
-	else if ( strpos( $key, '_eb_category_' ) != false ) {
+	else if ( strpos( $key, '_eb_category_' ) !== false ) {
 		return _eb_get_cat_object( $id, $key, $default_value );
 	}
 	*/

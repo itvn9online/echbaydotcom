@@ -154,7 +154,7 @@ class EchAMPFunction {
                 $v2 = trim( $v2 );
 
                 // riêng với video youtube
-                if ( strpos( $v2, 'youtube.com/' ) != false ) {
+                if ( strpos( $v2, 'youtube.com/' ) !== false ) {
                     //				echo $v2 . "\n";
                     $v2 = explode( 'src="', $v2 );
                     $v2 = $v2[ 1 ];
@@ -199,12 +199,12 @@ class EchAMPFunction {
                 else if ( $new_tag == 'amp-img' ) {
                     //echo $k . '" ----------- <br>' . "\n\n";
                     //echo '"-----' . $v2 . '------" ----------- <br>' . "\n\n";
-                    if ( $v2 != '' && strpos( $v2, 'src=' ) != false ) {
+                    if ( $v2 != '' && strpos( $v2, 'src=' ) !== false ) {
                         //echo '"-----' . $v2 . '------" ----------- <br>' . "\n\n";
                         $amp_avt_size = array();
 
                         // lấy chiều rộng thực của ảnh nếu chưa có
-                        if ( strpos( $v2, ' width=' ) == false ) {
+                        if ( strpos( $v2, ' width=' ) === false ) {
                             $amp_avt_size = $this->get_src_img( $v2 );
                             //print_r($amp_avt_size);
 
@@ -217,7 +217,7 @@ class EchAMPFunction {
                         }
 
                         // chiều cao thì lấy luôn từ mục chiều rộng trước đó rồi
-                        if ( strpos( $v2, ' height=' ) == false ) {
+                        if ( strpos( $v2, ' height=' ) === false ) {
                             if ( empty( $amp_avt_size ) ) {
                                 $amp_avt_size = $this->get_src_img( $v2 );
                             }
@@ -286,7 +286,7 @@ class EchAMPFunction {
 
             //
             if ( $v != '' ) {
-                if ( strpos( $v, '//' ) != false ) {
+                if ( strpos( $v, '//' ) !== false ) {
                     $v .= "\n";
                 } else {
                     $v .= ' ';

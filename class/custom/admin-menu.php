@@ -143,7 +143,7 @@ add_filter( 'admin_menu', 'echbay_create_admin_menu' );
 
 //
 $str_list_wordpress_rule = '';
-if ( mtv_id > 0 && strpos( $_SERVER[ 'REQUEST_URI' ], '/options-permalink.php' ) != false ) {
+if ( mtv_id > 0 && strpos( $_SERVER[ 'REQUEST_URI' ], '/options-permalink.php' ) !== false ) {
     add_filter( 'rewrite_rules_array', 'get_all_rules_for_nginx' );
 
     function get_all_rules_for_nginx( $rules ) {
@@ -183,7 +183,7 @@ function echbay_admin_styles() {
 
     // lấy số STT lớn nhất của bài viết/ sản phẩm -> gán cho nó sản phẩm mới thêm sẽ luôn được lên đầu
     $order_max_post_new = 0;
-    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/post-new.php' ) != false ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/post-new.php' ) !== false ) {
         $order_by_post_type = 'post';
         if ( isset( $_GET[ 'post_type' ] ) ) {
             $order_by_post_type = $_GET[ 'post_type' ];
@@ -319,7 +319,7 @@ function echbay_admin_styles() {
     //
     // không nạp jquery-ui trong các page dễ gây xung đột -> sử dụng jquery-ui của wordpress
     /*
-	if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/widgets.php' ) != false ) {
+	if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/widgets.php' ) !== false ) {
 		echo '<script>console.log("%c Không load echbay-jquery-ui trong widgets", "color: red;");</script>';
 	} else if ( isset( $_GET[ 'post' ] ) && get_post_type( $_GET[ 'post' ] ) == 'product' ) {
 		echo '<script>console.log("%c Không load echbay-jquery-ui trong EDIT post_type product", "color: red;");</script>';
@@ -677,9 +677,9 @@ function WGR_admin_load_ads_by_status( $query ) {
 
 
 // để cho nhẹ code, chỉ chạy chức năng tương ứng với request
-if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/edit.php' ) != false ) {
+if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/edit.php' ) !== false ) {
     // cho quảng cáo
-    if ( strpos( $_SERVER[ 'REQUEST_URI' ], 'post_type=ads' ) != false ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], 'post_type=ads' ) !== false ) {
         $post_type = 'ads';
 
         add_filter( 'manage_' . $post_type . '_posts_columns', 'eb_add_ads_column_head' );
@@ -687,7 +687,7 @@ if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/edit.php' ) != false ) {
         add_filter( 'pre_get_posts', 'WGR_admin_load_ads_by_status' );
     }
     // cho blog
-    else if ( strpos( $_SERVER[ 'REQUEST_URI' ], 'post_type=blog' ) != false ) {
+    else if ( strpos( $_SERVER[ 'REQUEST_URI' ], 'post_type=blog' ) !== false ) {
         $post_type = 'blog';
 
         add_filter( 'manage_' . $post_type . '_posts_columns', 'eb_add_blog_column_head' );
@@ -772,8 +772,8 @@ add_filter("add_attachment", 'EBE_resizeafter_upload_media');
 
 // cập nhật lại rule mới cho phân nhóm khi người dùng vào sửa nhóm
 if ( $__cf_row[ 'cf_remove_category_base' ] == 1 ) {
-    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/term.php?taxonomy=category' ) != false ||
-        strpos( $_SERVER[ 'REQUEST_URI' ], '/edit-tags.php?taxonomy=category' ) != false ) {
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/term.php?taxonomy=category' ) !== false ||
+        strpos( $_SERVER[ 'REQUEST_URI' ], '/edit-tags.php?taxonomy=category' ) !== false ) {
         add_filter( 'shutdown', 'flush_rewrite_rules' );
         //		flush_rewrite_rules();
     }
