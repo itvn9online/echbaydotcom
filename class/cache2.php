@@ -312,7 +312,6 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 // giải nén các thư viện mã ngoài (outsource, vendor...)
 WGR_unzip_vendor_code();
 
-
 /*
 echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
 if ( strstr( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) == true ) {

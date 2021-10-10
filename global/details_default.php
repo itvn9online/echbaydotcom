@@ -1,6 +1,10 @@
 <?php
 
 
+
+
+//die(__FILE__ . ':' . __LINE__);
+
 //
 $custom_product_flex_css = '';
 $custom_blog_node_flex_css = '';
@@ -11,6 +15,7 @@ global $cid;
 //
 include EB_THEME_PLUGIN_INDEX . 'global/post.php';
 
+//die(__FILE__ . ':' . __LINE__);
 
 //
 //echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
@@ -785,6 +790,7 @@ $other_post_2right = '<!-- Chi tiết Sản phẩm (2) -->';
 $other_post_3right = '<!-- Chi tiết Sản phẩm (3) -->';
 $str_for_details_sidebar = '';
 $str_for_details_top_sidebar = '';
+//die(__FILE__ . ':' . __LINE__);
 
 //
 $product_gallery = '';

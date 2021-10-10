@@ -1,5 +1,6 @@
 <?php
 
+//die(__FILE__ . ':' . __LINE__);
 
 //
 $__post = $post;
@@ -8,6 +9,7 @@ $pid = $__post->ID;
 
 $url_og_url = _eb_p_link( $pid );
 _eb_fix_url( $url_og_url );
+//die(__FILE__ . ':' . __LINE__);
 
 $link_for_fb_comment = web_link . '?p=' . $pid;
 

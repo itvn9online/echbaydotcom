@@ -1,6 +1,7 @@
 <?php
 
 
+//die(__FILE__ . ':' . __LINE__);
 
 
 // lấy lượt xem sản phẩm

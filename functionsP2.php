@@ -839,7 +839,8 @@ function _eb_get_content( $url, $agent = '', $options = array(), $head = 0 ) {
 // fix URL theo 1 chuẩn nhất định
 function _eb_fix_url( $url ) {
 	//	echo $url . '<br>' . "\n";
-	//	echo _eb_full_url() . '<br>' . "\n";
+		//echo _eb_full_url() . '<br>' . "\n";
+	return true;
 
 	//
 	//	if ( strstr( $url, '//' ) != strstr( _eb_full_url (), '//' ) ) {
@@ -851,7 +852,8 @@ function _eb_fix_url( $url ) {
 		//	if ( count( explode( strstr( $url, '//' ), strstr( _eb_full_url (), '//' ) ) ) == 1 ) {
 
 		//		header ( 'Location:' . $url, true, 301 );
-
+echo $url . '<br>' . "\n";
+die(__FILE__ . ':' . __LINE__);
 		wp_redirect( $url, 301 );
 
 		exit();
