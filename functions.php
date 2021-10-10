@@ -932,7 +932,7 @@ function EBE_add_js_compiler_in_cache(
             //			echo $v . "\n";
 
             // nếu trong thư mục mặc định -> lấy tên file là đủ
-            if ( strstr( $v, 'echbaydotcom/javascript' ) == true ) {
+            if ( strpos( $v, 'echbaydotcom/javascript' ) != false ) {
                 $file_name[] = basename( $v );
             } else {
                 $file_name[] = urlencode( strstr( $v, EB_DIR_CONTENT ) );
@@ -1035,7 +1035,7 @@ function EBE_add_js_compiler_in_cache(
                   }
                   // tối ưu sâu hơn chút
                   else if ( $optimize == 1 ) {
-                  if ( strstr( $v, '//' ) == true ) {
+                  if ( strpos( $v, '//' ) != false ) {
                   $v .= "\n";
                   }
                   $new_content .= $v;
@@ -1215,7 +1215,7 @@ function _eb_add_css_js_file( $arr, $file_type = '.css', $include_now = 0, $incl
 
                         //
                         if ( substr( $v, 0, 2 ) != '//' ) {
-                            if ( strstr( $v, '//' ) == true ) {
+                            if ( strpos( $v, '//' ) != false ) {
                                 $v .= "\n";
                             }
 
@@ -1474,7 +1474,7 @@ function WGR_remove_js_comment( $a, $chim = false ) {
 
         if ( $v == '' || substr( $v, 0, 2 ) == '//' ) {} else {
             // thêm dấu xuống dòng với 1 số trường hợp
-            if ( $chim == true || strstr( $v, '//' ) == true || substr( $v, -1 ) == '\\' ) {
+            if ( $chim == true || strpos( $v, '//' ) != false || substr( $v, -1 ) == '\\' ) {
                 $v .= "\n";
             }
             $str .= $v;
@@ -1623,14 +1623,14 @@ function _eb_add_compiler_css( $arr ) {
 
                 // nếu trong thư mục mặc định -> lấy tên file là đủ
                 /*
-                if ( strstr( $k, 'echbaydotcom/css' ) == true
-                || strstr( $k, 'echbaydotcom/html/details' ) == true
-                || strstr( $k, 'echbaydotcom/html/search' ) == true
-                || strstr( $k, 'echbaydotcom/themes/css' ) == true ) {
+                if ( strpos( $k, 'echbaydotcom/css' ) != false
+                || strpos( $k, 'echbaydotcom/html/details' ) != false
+                || strpos( $k, 'echbaydotcom/html/search' ) != false
+                || strpos( $k, 'echbaydotcom/themes/css' ) != false ) {
                 	$file_name[] = basename($k);
                 }
                 */
-                if ( strstr( $k, 'echbaydotcom/' ) == true ) {
+                if ( strpos( $k, 'echbaydotcom/' ) != false ) {
                     $file_name[] = urlencode( strstr( strstr( $k, 'echbaydotcom/' ), '/' ) );
                 } else {
                     //					$file_name[] = urlencode( strstr( $k, '/' . EB_DIR_CONTENT ) );
@@ -3995,7 +3995,7 @@ function _eb_load_ads(
         $youtube_url = _eb_get_post_meta( $post->ID, '_eb_ads_video_url' );
         $post->youtube_uri = $youtube_url;
         $youtube_id = '';
-        if ( strstr( $youtube_url, '.mp4' ) == false ) {
+        if ( strpos( $youtube_url, '.mp4' ) == false ) {
             $youtube_id = _eb_get_youtube_id( $youtube_url );
             //				$youtube_id = _eb_get_youtube_id( _eb_get_ads_object( $post->ID, '_eb_ads_video_url' ) );
             if ( $youtube_id != '' ) {
@@ -4039,11 +4039,11 @@ function _eb_load_ads(
         //			if ( $__cf_row['cf_auto_get_ads_size'] == 1 && $auto_get_size == '' ) {
         if ( $auto_get_size == 'auto_get_size' ) {
             // ảnh phải nằm trong thư mục wp-content
-            if ( strstr( $trv_img, EB_DIR_CONTENT . '/' ) == true ) {
+            if ( strpos( $trv_img, EB_DIR_CONTENT . '/' ) != false ) {
                 $auto_get_size = strstr( $trv_img, EB_DIR_CONTENT . '/' );
             }
             // hoặc cùng với domain cũng được
-            else if ( strstr( $trv_img, web_link ) == true ) {
+            else if ( strpos( $trv_img, web_link ) != false ) {
                 $auto_get_size = str_replace( web_link, '', $trv_img );
             }
             //				echo $auto_get_size . '<br>' . "\n";

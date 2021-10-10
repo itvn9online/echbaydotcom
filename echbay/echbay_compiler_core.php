@@ -19,7 +19,7 @@ function WGR_update_core_remove_html_comment( $a ) {
 			*/
 
             $str .= $v . ' ';
-            if ( strstr( $v, '//' ) == true ) {
+            if ( strpos( $v, '//' ) != false ) {
                 $str .= "\n";
             }
         }
@@ -110,7 +110,7 @@ function WGR_compiler_update_echbay_css_js( $v ) {
         $c = WGR_update_core_remove_js_comment( file_get_contents( $v, 1 ) );
     } else if ( $ext == 'php' ) {
         // với file template thì không remove multi comment -> nó là định danh cho file
-        if ( strstr( $v, '/templates/' ) == true ) {
+        if ( strpos( $v, '/templates/' ) != false ) {
             //file_put_contents( $v, WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) ) );
             $c = WGR_update_core_remove_php_comment( file_get_contents( $v, 1 ) );
         }

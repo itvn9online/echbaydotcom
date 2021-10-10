@@ -17,7 +17,7 @@ if ( $path != NULL ) {
     $elementor_pro = '';
 
     // nếu không phải là sử dụng host của EB thì in thêm thông tin ra
-    if ( strstr( $path, '/home/echbay_libary/' ) == false ) {
+    if ( strpos( $path, '/home/echbay_libary/' ) == false ) {
         echo '<p>' . $path . '</p>';
     }
     // khuyến mại thêm elementor pro

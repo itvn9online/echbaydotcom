@@ -66,7 +66,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
         // dọn cache định kỳ -> chỉ dọn khi không phải thao tác thủ công
         if ( mtv_id > 0
-            //		&& strstr( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) == true
+            //		&& strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) != false
             //		&& is_admin ()
             &&
             !isset( $_GET[ 'tab' ] ) ) {
@@ -308,12 +308,29 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
     }
 }
 
+
 // giải nén các thư viện mã ngoài (outsource, vendor...)
 WGR_unzip_vendor_code();
 
-// optimize các file tĩnh (css, js...)
-WGR_optimize_static_code();
 
+/*
+echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
+if ( strstr( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) == true ) {
+    echo 'strstr true <br>' . "\n";
+} else {
+    echo 'strstr false <br>' . "\n";
+}
+if ( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) != false ) {
+    echo 'strpos true <br>' . "\n";
+} else {
+    echo 'strpos false <br>' . "\n";
+}
+if ( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) == true ) {
+    echo 'strpos true <br>' . "\n";
+} else {
+    echo 'strpos false <br>' . "\n";
+}
+*/
 
 // cập nhật web version định kỳ
 /*

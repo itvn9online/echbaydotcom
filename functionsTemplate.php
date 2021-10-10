@@ -139,7 +139,7 @@ function WGR_get_bigbanner() {
 
     //
     if ( $str_big_banner == '' ) {
-        return '<!-- HTML for big banner-->';
+        return '<!-- HTML for big banner -->';
     }
 
     //

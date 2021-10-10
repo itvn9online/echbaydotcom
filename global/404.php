@@ -353,7 +353,7 @@ else {
 		
 		// nếu có url của bản amp
 //		print_r( $_GET );
-		if ( strstr( $current_404_uri, '/amp/' ) == true ) {
+		if ( strpos( $current_404_uri, '/amp/' ) != false ) {
 			$amp_404_uri = str_replace( '/amp/', '', $current_404_uri );
 //			echo $amp_404_uri . '<br>' . "\n";
 			
@@ -455,7 +455,7 @@ else {
 					OR meta_value = '" . $domain_uri . "'";
 			
 			// cắt bỏ dấu ? nếu có
-			if ( strstr( $domain_uri, '?' ) == true ) {
+			if ( strpos( $domain_uri, '?' ) != false ) {
 				$domain_hoicham_uri = explode('?', $domain_uri);
 				$domain_hoicham_uri = $domain_hoicham_uri[0];
 				
@@ -556,7 +556,7 @@ else {
 			*/
 			
 			//
-			if ( strstr( $redirect_301_link, '?' ) == true ) {
+			if ( strpos( $redirect_301_link, '?' ) != false ) {
 				$redirect_add_link = '&' . $redirect_add_link;
 			}
 			else {

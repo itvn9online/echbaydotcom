@@ -48,7 +48,7 @@ foreach ( $sql as $v ) {
 	$p_link = _eb_p_link( $v->ID );
 	
 	$trv_img = _eb_get_post_img( $v->ID );
-	if ( strstr( $trv_img, '//' ) == false ) {
+	if ( strpos( $trv_img, '//' ) == false ) {
 		$trv_img = web_link . $trv_img;
 	}
 	

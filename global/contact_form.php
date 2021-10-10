@@ -33,7 +33,7 @@ if ( ! isset( $main_content ) ) {
 
 //
 function WGR_conatct_required_field ( $s ) {
-	if ( strstr( $s, '*' ) == true ) {
+	if ( strpos( $s, '*' ) != false ) {
 		return ' aria-required="true" required';
 	}
 	return '';

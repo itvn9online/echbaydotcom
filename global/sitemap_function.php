@@ -218,7 +218,7 @@ function WGR_create_sitemap_image_node ( $sql ) {
 			$url = _eb_p_link( $v->post_parent );
 			
 			// nếu link có chữ __trashed- -> đang trong thùng rác -> dùng link ảnh
-			if ( strstr( $url, '__trashed-' ) == true || strstr( $url, '?ads=' ) == true ) {
+			if ( strpos( $url, '__trashed-' ) != false || strpos( $url, '?ads=' ) != false ) {
 //				$url = $img;
 				$url = web_link;
 			}
@@ -260,7 +260,7 @@ function WGR_echo_sitemap_image_node ( $loc, $img, $title ) {
 function WGR_create_sitemap_image_default_node () {
 	global $__cf_row;
 	
-	if ( strstr( $__cf_row['cf_logo'], '//' ) == false ) {
+	if ( strpos( $__cf_row['cf_logo'], '//' ) == false ) {
 		$__cf_row['cf_logo'] = web_link . $__cf_row['cf_logo'];
 	}
 	

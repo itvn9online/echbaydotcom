@@ -7,7 +7,7 @@ echo _eb_tieu_de_chuan_seo( $__cf_row ['cf_title'] );
 
 
 $url_for_amp_favicon = $__cf_row ['cf_favicon'];
-if ( strstr( $url_for_amp_favicon, '//' ) == false ) {
+if ( strpos( $url_for_amp_favicon, '//' ) == false ) {
 	if ( substr( $url_for_amp_favicon, 0, 1 ) == '/' ) {
 		$url_for_amp_favicon = substr( $url_for_amp_favicon, 1 );
 	}
@@ -86,7 +86,7 @@ $url_for_amp_logo = '';
 $css_for_amp_logo = '';
 if ( $__cf_row['cf_on_off_amp_logo'] == 1 ) {
 	$url_for_amp_logo = $__cf_row['cf_logo'];
-	if ( strstr( $url_for_amp_logo, '//' ) == false ) {
+	if ( strpos( $url_for_amp_logo, '//' ) == false ) {
 		if ( substr( $url_for_amp_logo, 0, 1 ) == '/' ) {
 			$url_for_amp_logo = substr( $url_for_amp_logo, 1 );
 		}

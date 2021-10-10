@@ -291,7 +291,7 @@ function WGR_config_doman_only ( $v ) {
 //
 if ( isset( $_POST['cf_dns_prefetch'] )
 	&& $_POST['cf_dns_prefetch'] != '' ) {
-//	&& strstr( $_POST['cf_dns_prefetch'], '/' ) == true ) {
+//	&& strpos( $_POST['cf_dns_prefetch'], '/' ) != false ) {
 	
 	$arr = explode( "\n", trim( strtolower( $_POST['cf_dns_prefetch'] ) ) );
 	$new_a = array();
@@ -319,7 +319,7 @@ if ( isset( $_POST['cf_dns_prefetch'] )
 
 //
 if ( isset( $_POST['cf_old_domain'] )
-//	&& strstr( $_POST['cf_old_domain'], '/' ) == true
+//	&& strpos( $_POST['cf_old_domain'], '/' ) != false
 	&& $_POST['cf_old_domain'] != '' ) {
 	
 	$arr = explode( ',', $_POST['cf_old_domain'] );
@@ -364,7 +364,7 @@ if (
 		// dữ liệu chuẩn phải không trống
 		// không có dấu # ở đầu
 		// có dấu | để chia tách 2 phần dữ liệu
-		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strstr( $v, '|' ) == true ) {
+		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strpos( $v, '|' ) != false ) {
 			$new_a[] = $v;
 		}
 	}
@@ -433,7 +433,7 @@ if (
 		// dữ liệu chuẩn phải không trống
 		// không có dấu # ở đầu
 		// có dấu | để chia tách 2 phần dữ liệu
-		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strstr( $v, '|' ) == true ) {
+		if ( $v != '' && substr( $v, 0, 1 ) != '#' && strpos( $v, '|' ) != false ) {
 			$new_a[] = $v;
 		}
 	}
@@ -455,7 +455,7 @@ if ( $_POST['cf_logo'] != '' ) {
 	$file_name = $_POST['cf_logo'];
 	
 	// nếu ảnh là 1 URL hoặc không tồn tại trên host
-	if ( strstr( $file_name, '//' ) == true || ! file_exists( $file_name ) ) {
+	if ( strpos( $file_name, '//' ) != false || ! file_exists( $file_name ) ) {
 		// chuyển sang up vào cache để check
 		$file_name = explode( '/', $_POST['cf_logo'] );
 		$file_name = $file_name[ count( $file_name ) - 1 ];
@@ -469,7 +469,7 @@ if ( $_POST['cf_logo'] != '' ) {
 		//
 		/*
 		$url_copy_logo = $_POST['cf_logo'];
-		if ( strstr( $url_copy_logo, 'http:' ) == true || strstr( $url_copy_logo, 'https:' ) == true ) {
+		if ( strpos( $url_copy_logo, 'http:' ) != false || strpos( $url_copy_logo, 'https:' ) != false ) {
 		}
 		else {
 			$url_copy_logo = 'http:' . $url_copy_logo;
@@ -690,7 +690,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 		if ( $v != '' && substr( $v, 0, 6 ) == 'define' ) {
 			
 			// chức năng debug
-			if ( strstr( $v, "'WP_DEBUG'" ) == true || strstr( $v, '"WP_DEBUG"' ) == true ) {
+			if ( strpos( $v, "'WP_DEBUG'" ) != false || strpos( $v, '"WP_DEBUG"' ) != false ) {
 //				echo $v . '<br>' . "\n";
 				
 				//
@@ -705,7 +705,7 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				$arr_cac_thay_doi['WP_DEBUG'] = 1;
 			}
 			// chức năng tự động cập nhật mã nguồn wp
-			else if ( strstr( $v, "'WP_AUTO_UPDATE_CORE'" ) == true || strstr( $v, '"WP_AUTO_UPDATE_CORE"' ) == true ) {
+			else if ( strpos( $v, "'WP_AUTO_UPDATE_CORE'" ) != false || strpos( $v, '"WP_AUTO_UPDATE_CORE"' ) != false ) {
 //				echo $v . '<br>' . "\n";
 				
 				if ( $_POST['cf_on_off_auto_update_wp'] != 1 ) {
@@ -720,11 +720,11 @@ if ( trim( $content_of_new_wp_config[0] ) == '<?php' ) {
 				$arr_cac_thay_doi['WP_AUTO_UPDATE_CORE'] = 1;
 			}
 			// cho phép chính sửa theme, plugin
-			else if ( strstr( $v, "'DISALLOW_FILE_EDIT'" ) == true || strstr( $v, '"DISALLOW_FILE_EDIT"' ) == true
-			|| strstr( $v, "'DISALLOW_FILE_MODS'" ) == true || strstr( $v, '"DISALLOW_FILE_MODS"' ) == true
+			else if ( strpos( $v, "'DISALLOW_FILE_EDIT'" ) != false || strpos( $v, '"DISALLOW_FILE_EDIT"' ) != false
+			|| strpos( $v, "'DISALLOW_FILE_MODS'" ) != false || strpos( $v, '"DISALLOW_FILE_MODS"' ) != false
 			// định nghĩa cứng cho URL website -> xóa đi để add lại vào phần đầu trang
-			|| strstr( $v, "'WP_SITEURL'" ) == true || strstr( $v, '"WP_SITEURL"' ) == true
-			|| strstr( $v, "'WP_HOME'" ) == true || strstr( $v, '"WP_HOME"' ) == true ) {
+			|| strpos( $v, "'WP_SITEURL'" ) != false || strpos( $v, '"WP_SITEURL"' ) != false
+			|| strpos( $v, "'WP_HOME'" ) != false || strpos( $v, '"WP_HOME"' ) != false ) {
 				$content_of_new_wp_config[$k] = '';
 //				unset( $content_of_new_wp_config[$k] );
 			}
@@ -799,7 +799,7 @@ else {
     $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
 
     // nếu chưa có file cache thì thêm vào thôi
-    if (strstr($content_of_wp_index, 'echbaydotcom/ebcache.php') == false) {
+    if (strpos($content_of_wp_index, 'echbaydotcom/ebcache.php') == false) {
         //echo __DIR__ . '<br>' . "\n";
 
         //

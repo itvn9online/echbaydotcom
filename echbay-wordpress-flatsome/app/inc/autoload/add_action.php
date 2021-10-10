@@ -17,16 +17,16 @@ function EB_flatsome_load_header_static() {
         $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
         $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
         $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+        //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
+        //echo ABSPATH . '<br>' . "\n";
+        $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
+        echo '<style>' . $load_font_awesome . '</style>';
     }
     // nếu không có file css mà có file zip -> gọi hàm giải nén
     else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web.zip' ) ) {
         //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
         WGR_unzip_vendor_code( false );
     }
-    //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
-    //echo ABSPATH . '<br>' . "\n";
-    $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
-    echo '<style>' . $load_font_awesome . '</style>';
 
 
     /*

@@ -103,7 +103,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
             // nội dung hợp lệ
             //			if ( $v != '' ) {
 
-            //				if ( strstr( $v, '//' ) == true ) {
+            //				if ( strpos( $v, '//' ) != false ) {
             $v .= "\n";
             /*
 				}
@@ -209,7 +209,7 @@ function WGR_add_ebcache_php_to_index( $__cf_row ) {
         // supper cache đang bật
         $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 &&
         // ebcache chưa được nạp
-        strstr( file_get_contents( ABSPATH . 'index.php', 1 ), '/echbaydotcom/ebcache.php' ) == false ) {
+        strpos( file_get_contents( ABSPATH . 'index.php', 1 ), '/echbaydotcom/ebcache.php' ) == false ) {
         // copy file mẫu
         if ( copy( __DIR__ . '/index-tmp.php', ABSPATH . 'index.php' ) ) {
             echo 'active WP_ACTIVE_WGR_SUPPER_CACHE <br>' . "\n";
@@ -229,7 +229,7 @@ function WGR_add_ebcache_php_to_index_v1( $__cf_row ) {
         $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
 
         // nếu chưa có file cache thì thêm vào thôi
-        if ( strstr( $content_of_wp_index, 'echbaydotcom/ebcache.php' ) == false ) {
+        if ( strpos( $content_of_wp_index, 'echbaydotcom/ebcache.php' ) == false ) {
             //echo __DIR__ . '<br>' . "\n";
 
             // tách theo dấu xuống dòng \n

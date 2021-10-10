@@ -48,7 +48,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 //	echo $b . '<br>' . "\n";
 	
 	// có html
-//	if ( strstr( $a, '.htm' ) == true ) {
+//	if ( strpos( $a, '.htm' ) != false ) {
 //		$a0 = $a;
 //		$a0 = explode( '.', $a );
 //		$a0 = $a0[0];
@@ -176,7 +176,7 @@ function WGR_migrate_v1_to_wordpress_version () {
 		
 		//
 		/*
-		if ( strstr( $new_url, '//' ) == false ) {
+		if ( strpos( $new_url, '//' ) == false ) {
 			$new_url = web_link . $new_url;
 		}
 		*/

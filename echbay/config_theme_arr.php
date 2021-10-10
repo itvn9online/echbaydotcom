@@ -275,12 +275,12 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 				// check file format
 				if ( $type == 'top' || $type == 'footer' ) {
 					// kiểm tra định dạng file đã theo chuẩn chưa
-					if ( strstr( $file_tag, 'cf_' . $type . '_class_style' ) == false ) {
+					if ( strpos( $file_tag, 'cf_' . $type . '_class_style' ) == false ) {
 						$warning_file_format .= '<div class="redcolor"> * Định dạng file thiếu thuộc tính căn chỉnh chiều rộng: <strong>$__cf_row[\'cf_' . $type . '_class_style\']</strong></div>';
 					}
 					
 					// tên file chưa có ID -> cảnh báo luôn
-					if ( strstr( $file_tag, ' id="' . $file_name_only . '"' ) == false ) {
+					if ( strpos( $file_tag, ' id="' . $file_name_only . '"' ) == false ) {
 						$warning_file_format .= '<div class="redcolor"> * Định dạng file thiếu attribute để phân định lớp CSS: <strong>id="' . $file_name_only . '"</strong></div>';
 					}
 				}
@@ -292,7 +292,7 @@ function EBE_config_load_top_footer_include ( $type, $file_type = '.php', $in_th
 			// theo tên miền chính
 			|| $current_domain == $for_domain
 			// theo sub-domain -> tạo thêm dấu . ở đầu chuỗi
-			|| strstr( $current_domain, '.' . $for_domain ) == true ) {
+			|| strpos( $current_domain, '.' . $for_domain ) != false ) {
 				
 //				echo $label_name . '<br>' . "\n";
 				
@@ -600,7 +600,7 @@ foreach ( $eb_all_themes_support as $k => $v ) {
 		$demo_class_show = 'orgcolor small';
 		
 		// nếu URL truyền vào không có dấu chắm -> đặt link mặc định về echbay.net
-		if ( strstr( $v['demo'], '.' ) == false || strstr( $v['demo'], '.echbay.net' ) == true ) {
+		if ( strpos( $v['demo'], '.' ) == false || strpos( $v['demo'], '.echbay.net' ) != false ) {
 //			$v['demo'] = $v['demo'] . '.echbay.net';
 			$v['demo'] = $theme_name . '.echbay.net';
 			$demo_class_show = 'greencolor';

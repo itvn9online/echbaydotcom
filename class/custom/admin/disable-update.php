@@ -8,7 +8,7 @@
 
 
 // tắt các chức năng liên quan đến kiểm tra cập nhật khi, chỉ 1 số trang mới kích hoạt chức năng này
-if ( strstr( $_SERVER['REQUEST_URI'], '/update-core.php' ) == false ) {
+if ( strpos( $_SERVER['REQUEST_URI'], '/update-core.php' ) == false ) {
 	
 	
 	/*
