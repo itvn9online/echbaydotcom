@@ -838,22 +838,26 @@ function _eb_get_content( $url, $agent = '', $options = array(), $head = 0 ) {
 
 // fix URL theo 1 chuẩn nhất định
 function _eb_fix_url( $url ) {
-	//	echo $url . '<br>' . "\n";
+		//echo strstr( _eb_full_url(), '//' ) . '<br>' . "\n";
+		//echo strstr( $url, '//' ) . '<br>' . "\n";
+    //var_dump( strpos( _eb_full_url(), '?' ) );
+    //var_dump( strpos( strstr( _eb_full_url(), '//' ), strstr( $url, '//' ) ) );
+		//echo $url . '<br>' . "\n";
 		//echo _eb_full_url() . '<br>' . "\n";
-	return true;
+    //die(__FILE__ . ':' . __LINE__);
+    return false;
 
 	//
 	//	if ( strstr( $url, '//' ) != strstr( _eb_full_url (), '//' ) ) {
 	// nếu không có dấu ? -> không có tham số nào được truyền trên URL
-	if ( strpos( _eb_full_url(), '?' ) == false
+	if ( strpos( _eb_full_url(), '?' ) === false
 		// nếu URL khác nhau
 		&&
-		strpos( strstr( _eb_full_url(), '//' ), strstr( $url, '//' ) ) == false ) {
+		strpos( strstr( _eb_full_url(), '//' ), strstr( $url, '//' ) ) === false ) {
 		//	if ( count( explode( strstr( $url, '//' ), strstr( _eb_full_url (), '//' ) ) ) == 1 ) {
 
 		//		header ( 'Location:' . $url, true, 301 );
-echo $url . '<br>' . "\n";
-die(__FILE__ . ':' . __LINE__);
+
 		wp_redirect( $url, 301 );
 
 		exit();
