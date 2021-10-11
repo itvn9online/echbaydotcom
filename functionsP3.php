@@ -1167,7 +1167,7 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
     if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) !== false ) {
         return false;
     }
-    echo __FUNCTION__ . ' running... <br>' . "\n";
+    echo '<!-- ' . __FUNCTION__ . ' running... -->';
 
     //
     _eb_remove_file( $confirm_file );
@@ -1200,7 +1200,7 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
 
             //
             if ( !is_dir( $dir_unzip ) ) {
-                echo $filename . '<br>' . "\n";
+                echo '<!-- ' . $filename . ':' . __LINE__ . ' -->' . "\n";
 
                 //
                 if ( $zip->open( $filename ) === TRUE ) {
@@ -1210,29 +1210,31 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
 
                 //
                 if ( is_dir( $dir_unzip ) ) {
-                    echo 'DONE! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
+                    echo '<!-- DONE! sync code ' . basename( $dir_unzip ) . ' -->' . "\n";
                 } else {
-                    echo 'ERROR! sync code ' . basename( $dir_unzip ) . ' <br>' . "\n";
+                    echo '<!-- ERROR! sync code ' . basename( $dir_unzip ) . ' -->' . "\n";
 
                     // thử xử lý qua ftp
                     if ( defined( 'FTP_USER' ) && defined( 'FTP_PASS' ) ) {
                         $ftp_server = EBE_check_ftp_account();
                         if ( $ftp_server === false ) {
-                            echo 'FTP account not found <br>' . "\n";
+                            echo '<!-- FTP account not found -->' . "\n";
                         } else {
                             $ftp_user_name = FTP_USER;
                             $ftp_user_pass = FTP_PASS;
 
                             // tạo kết nối
-                            echo 'connect to ftp <br>' . "\n";
+                            echo '<!-- connect to ftp -->' . "\n";
+
                             $conn_id = ftp_connect( $ftp_server );
                             if ( !$conn_id ) {
-                                echo 'ERROR FTP connect to server <br>' . "\n";
+                                echo '<!-- ERROR FTP connect to server -->' . "\n";
+
                             } else {
                                 // đăng nhập
                                 echo 'login to ftp <br>' . "\n";
                                 if ( !ftp_login( $conn_id, $ftp_user_name, $ftp_user_pass ) ) {
-                                    echo 'ERROR FTP login to server <br>' . "\n";
+                                    echo '<!-- ERROR FTP login to server -->' . "\n";
                                 } else {
                                     $ftp_dir_root = EBE_get_config_ftp_root_dir( date_time );
 
@@ -1241,27 +1243,27 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
                                     if ( $ftp_dir_root != '' ) {
                                         $file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
                                     }
-                                    echo $file_for_ftp . '<br>' . "\n";
+                                    echo '<!-- ' . $file_for_ftp . ' -->' . "\n";
 
                                     //
                                     if ( !ftp_chmod( $conn_id, 0777, $file_for_ftp ) ) {
-                                        echo 'ERROR FTP: ftp_chmod error <br>' . "\n";
+                                        echo '<!-- ERROR FTP: ftp_chmod error -->' . "\n";
 
                                         //
                                         $file_for_ftp = $filename;
                                         if ( $ftp_dir_root != '' ) {
                                             $file_for_ftp = strstr( $file_for_ftp, '/' . $ftp_dir_root . '/' );
                                         }
-                                        echo $file_for_ftp . '<br>' . "\n";
+                                        echo '<!-- ' . $file_for_ftp . ' -->' . "\n";
 
                                         //
                                         if ( !ftp_chmod( $conn_id, 0777, $file_for_ftp ) ) {
-                                            echo 'ERROR FTP: ftp_chmod error <br>' . "\n";
+                                            echo '<!-- ERROR FTP: ftp_chmod error -->' . "\n";
                                         } else {
-                                            echo 'chmod vid ftp <br>' . "\n";
+                                            echo '<!-- chmod via ftp -->' . "\n";
                                         }
                                     } else {
-                                        echo 'chmod vid ftp <br>' . "\n";
+                                        echo '<!-- chmod via ftp -->' . "\n";
                                     }
                                 }
                             }
@@ -1286,6 +1288,7 @@ function WGR_optimize_backup_code( $source_file, $save_dir ) {
 
     // chưa thì thực hiện copy
     error_reporting( 0 );
+    _eb_create_file( $bak_file, date_time );
     WGR_copy( $source_file, $bak_file );
     // tồn tại file thì thực hiện optimize
     if ( file_exists( $bak_file ) ) {
@@ -1420,6 +1423,7 @@ function WGR_optimize_static_code() {
     }
 
     // for php
+    /*
     $arr_optimize_dir = [
         'global',
         'global/temp',
@@ -1452,6 +1456,7 @@ function WGR_optimize_static_code() {
             break;
         }
     }
+    */
 
     // đến cuối cùng mà không còn file nào để optimize -> xóa file xác thực optimize thôi
     if ( $has_optimize === false ) {
