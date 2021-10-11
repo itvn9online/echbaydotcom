@@ -1285,6 +1285,7 @@ function WGR_optimize_backup_code( $source_file, $save_dir ) {
     }
 
     // chưa thì thực hiện copy
+    error_reporting( 0 );
     WGR_copy( $source_file, $bak_file );
     // tồn tại file thì thực hiện optimize
     if ( file_exists( $bak_file ) ) {
