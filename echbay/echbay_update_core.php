@@ -209,7 +209,7 @@ function EBE_update_file_via_php ( $dir_source, $arr_dir, $arr_file, $arr_old_di
 		
 		// kiểm tra và conpiler các file js, css
 //		if ( $localhost != 1 ) {
-			WGR_compiler_update_echbay_css_js( $v );
+			//WGR_compiler_update_echbay_css_js( $v );
 //		}
 		
 		//
@@ -435,7 +435,7 @@ function EBE_update_file_via_ftp ( $dir_name_for_unzip_to ) {
 		
 		// kiểm tra và conpiler các file js, css
 //		if ( $localhost != 1 ) {
-			WGR_compiler_update_echbay_css_js( $v );
+			//WGR_compiler_update_echbay_css_js( $v );
 //		}
 		
 //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );

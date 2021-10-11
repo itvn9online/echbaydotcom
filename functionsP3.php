@@ -1367,40 +1367,6 @@ function WGR_optimize_static_code() {
         }
     }
 
-    //
-    $arr_optimize_dir = [
-        'global',
-        'global/temp',
-
-        'class/widget',
-    ];
-
-    foreach ( $arr_optimize_dir as $v ) {
-        if ( $has_optimize === true ) {
-            break;
-        }
-
-        //
-        $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
-        echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
-
-        //
-        if ( !is_dir( $v ) ) {
-            continue;
-        }
-
-        //
-        foreach ( glob( $v . '/*.php' ) as $filename ) {
-            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
-                $has_optimize = true;
-                break;
-            }
-        }
-        if ( $has_optimize === true ) {
-            break;
-        }
-    }
-
     /*
      * for child theme
      */
@@ -1449,6 +1415,40 @@ function WGR_optimize_static_code() {
             if ( $has_optimize === true ) {
                 break;
             }
+        }
+    }
+
+    // for php
+    $arr_optimize_dir = [
+        'global',
+        'global/temp',
+
+        'class/widget',
+    ];
+
+    foreach ( $arr_optimize_dir as $v ) {
+        if ( $has_optimize === true ) {
+            break;
+        }
+
+        //
+        $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
+        echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
+
+        //
+        if ( !is_dir( $v ) ) {
+            continue;
+        }
+
+        //
+        foreach ( glob( $v . '/*.php' ) as $filename ) {
+            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                $has_optimize = true;
+                break;
+            }
+        }
+        if ( $has_optimize === true ) {
+            break;
         }
     }
 

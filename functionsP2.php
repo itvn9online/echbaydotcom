@@ -1201,13 +1201,13 @@ function _eb_create_file(
 	//
 	if ( $add_line != '' ) {
 		$aa = file_put_contents( $file_, $content_, FILE_APPEND );
-		//		chmod($file_, 0777);
+		//chmod($file_, 0777);
 	}
 	//
 	else {
 		//		file_put_contents( $file_, $content_, LOCK_EX ) or die('ERROR: write to file');
 		$aa = file_put_contents( $file_, $content_ );
-		//		chmod($file_, 0777);
+		//chmod($file_, 0777);
 	}
 
 	//
