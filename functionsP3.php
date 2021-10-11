@@ -1157,10 +1157,12 @@ function WGR_before_optimize_code( $confirm_file ) {
     return true;
 }
 
-function WGR_unzip_vendor_code() {
+function WGR_unzip_vendor_code( $check_confirm_file = true ) {
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'unzipcode.txt';
-    if ( WGR_before_optimize_code( $confirm_file ) === false ) {
-        return false;
+    if ( $check_confirm_file === true ) {
+        if ( WGR_before_optimize_code( $confirm_file ) === false ) {
+            return false;
+        }
     }
     if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) !== false ) {
         return false;

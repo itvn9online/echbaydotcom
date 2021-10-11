@@ -26,6 +26,11 @@ function EB_flatsome_load_header_static() {
     else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web.zip' ) ) {
         //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
         WGR_unzip_vendor_code( false );
+        /*
+    } else {
+        echo 'aaaaaaaaaaaaa: ' . EB_THEME_URL . '<br>' . "\n";
+        echo EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web.zip' . '<br>' . "\n";
+        */
     }
 
 
