@@ -1325,12 +1325,14 @@ function WGR_optimize_static_code() {
             //echo $filename . '<br>' . "\n";
             WGR_compiler_update_echbay_css_js( $filename );
         }
+        sleep( 1 );
 
         //
         foreach ( glob( $v . '/*.js' ) as $filename ) {
             //echo $filename . '<br>' . "\n";
             WGR_compiler_update_echbay_css_js( $filename );
         }
+        sleep( 1 );
     }
 
     //
@@ -1355,6 +1357,7 @@ function WGR_optimize_static_code() {
             //echo $filename . '<br>' . "\n";
             WGR_compiler_update_echbay_css_js( $filename );
         }
+        sleep( 1 );
     }
 
     /*
@@ -1384,12 +1387,14 @@ function WGR_optimize_static_code() {
                 //echo $filename . '<br>' . "\n";
                 WGR_compiler_update_echbay_css_js( $filename );
             }
+            sleep( 1 );
 
             //
             foreach ( glob( $v . '/*.js' ) as $filename ) {
                 //echo $filename . '<br>' . "\n";
                 WGR_compiler_update_echbay_css_js( $filename );
             }
+            sleep( 1 );
         }
     }
 }
