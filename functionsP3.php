@@ -1274,6 +1274,28 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
     }
 }
 
+function WGR_optimize_backup_code( $source_file, $save_dir ) {
+    //echo $save_dir . '<br>' . "\n";
+    $bak_file = $save_dir . '/' . basename( $source_file ) . '-before-optimize.txt';
+    //echo $bak_file . '<br>' . "\n";
+
+    // tồn tại file backup rồi thì thôi
+    if ( file_exists( $bak_file ) ) {
+        return false;
+    }
+
+    // chưa thì thực hiện copy
+    WGR_copy( $source_file, $bak_file );
+    // tồn tại file thì thực hiện optimize
+    if ( file_exists( $bak_file ) ) {
+        WGR_compiler_update_echbay_css_js( $source_file );
+        echo '<!-- ' . str_replace( ABSPATH, '', $bak_file ) . ' -->' . "\n";
+        echo '<!-- ' . str_replace( ABSPATH, '', $source_file ) . ' -->' . "\n";
+        return true;
+    }
+    return false;
+}
+
 function WGR_optimize_static_code() {
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
     if ( WGR_before_optimize_code( $confirm_file ) === false ) {
@@ -1282,20 +1304,15 @@ function WGR_optimize_static_code() {
     if ( strpos( $_SERVER[ 'HTTP_HOST' ], 'localhost' ) !== false ) {
         return false;
     }
-    echo __FUNCTION__ . ' running... <br>' . "\n";
-
-    //
-    _eb_remove_file( $confirm_file );
-    // không xóa được file -> bỏ luôn
-    if ( file_exists( $confirm_file ) ) {
-        echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
-        return false;
-    }
+    //echo __FUNCTION__ . ' running... <br>' . "\n";
 
     // Nếu không có function cần thiết -> nạp vào thôi
     if ( !function_exists( 'WGR_compiler_update_echbay_css_js' ) ) {
         include_once ECHBAY_PRI_CODE . 'echbay_compiler_core.php';
     }
+
+    // tham số này là để optimize từ từ, không cần optimize liên tục
+    $has_optimize = false;
 
     // thư mục chứa file cần xử lý
     $arr_optimize_dir = [
@@ -1314,8 +1331,13 @@ function WGR_optimize_static_code() {
     ];
 
     foreach ( $arr_optimize_dir as $v ) {
+        if ( $has_optimize === true ) {
+            break;
+        }
+
+        //
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
-        echo $v . '<br>' . "\n";
+        echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
 
         //
         if ( !is_dir( $v ) ) {
@@ -1324,17 +1346,25 @@ function WGR_optimize_static_code() {
 
         //
         foreach ( glob( $v . '/*.css' ) as $filename ) {
-            //echo $filename . '<br>' . "\n";
-            WGR_compiler_update_echbay_css_js( $filename );
+            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                $has_optimize = true;
+                break;
+            }
         }
-        sleep( 1 );
+        if ( $has_optimize === true ) {
+            break;
+        }
 
         //
         foreach ( glob( $v . '/*.js' ) as $filename ) {
-            //echo $filename . '<br>' . "\n";
-            WGR_compiler_update_echbay_css_js( $filename );
+            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                $has_optimize = true;
+                break;
+            }
         }
-        sleep( 1 );
+        if ( $has_optimize === true ) {
+            break;
+        }
     }
 
     //
@@ -1346,8 +1376,13 @@ function WGR_optimize_static_code() {
     ];
 
     foreach ( $arr_optimize_dir as $v ) {
+        if ( $has_optimize === true ) {
+            break;
+        }
+
+        //
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
-        echo $v . '<br>' . "\n";
+        echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
 
         //
         if ( !is_dir( $v ) ) {
@@ -1356,10 +1391,14 @@ function WGR_optimize_static_code() {
 
         //
         foreach ( glob( $v . '/*.php' ) as $filename ) {
-            //echo $filename . '<br>' . "\n";
-            WGR_compiler_update_echbay_css_js( $filename );
+            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                $has_optimize = true;
+                break;
+            }
         }
-        sleep( 1 );
+        if ( $has_optimize === true ) {
+            break;
+        }
     }
 
     /*
@@ -1376,8 +1415,13 @@ function WGR_optimize_static_code() {
         ];
 
         foreach ( $arr_optimize_dir as $v ) {
+            if ( $has_optimize === true ) {
+                break;
+            }
+
+            //
             $v = rtrim( EB_CHILD_THEME_URL . $v, '/' );
-            echo $v . '<br>' . "\n";
+            echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
 
             //
             if ( !is_dir( $v ) ) {
@@ -1386,17 +1430,35 @@ function WGR_optimize_static_code() {
 
             //
             foreach ( glob( $v . '/*.css' ) as $filename ) {
-                //echo $filename . '<br>' . "\n";
-                WGR_compiler_update_echbay_css_js( $filename );
+                if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                    $has_optimize = true;
+                    break;
+                }
             }
-            sleep( 1 );
+            if ( $has_optimize === true ) {
+                break;
+            }
 
             //
             foreach ( glob( $v . '/*.js' ) as $filename ) {
-                //echo $filename . '<br>' . "\n";
-                WGR_compiler_update_echbay_css_js( $filename );
+                if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+                    $has_optimize = true;
+                    break;
+                }
             }
-            sleep( 1 );
+            if ( $has_optimize === true ) {
+                break;
+            }
+        }
+    }
+
+    // đến cuối cùng mà không còn file nào để optimize -> xóa file xác thực optimize thôi
+    if ( $has_optimize === false ) {
+        _eb_remove_file( $confirm_file );
+        // không xóa được file -> bỏ luôn
+        if ( file_exists( $confirm_file ) ) {
+            echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
+            return false;
         }
     }
 }
