@@ -7,7 +7,7 @@
 
 
 // optimize các file tĩnh (css, js...)
-WGR_optimize_static_code();
+//WGR_optimize_static_code();
 
 
 // tạo URL động trong admin, hạn chế lỗi URL
