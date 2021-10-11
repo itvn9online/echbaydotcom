@@ -1349,8 +1349,8 @@ function WGR_optimize_static_code() {
         }
 
         //
-        foreach ( glob( $v . '/*.css' ) as $filename ) {
-            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+        foreach ( glob( $v . '/*.css' ) as $css_filename ) {
+            if ( WGR_optimize_backup_code( $css_filename, $v ) === true ) {
                 $has_optimize = true;
                 break;
             }
@@ -1360,8 +1360,8 @@ function WGR_optimize_static_code() {
         }
 
         //
-        foreach ( glob( $v . '/*.js' ) as $filename ) {
-            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+        foreach ( glob( $v . '/*.js' ) as $js_filename ) {
+            if ( WGR_optimize_backup_code( $js_filename, $v ) === true ) {
                 $has_optimize = true;
                 break;
             }
@@ -1374,6 +1374,26 @@ function WGR_optimize_static_code() {
     /*
      * for child theme
      */
+    //if ( $has_optimize === false )$has_optimize = WGR_optimize_child_theme_static_code();
+
+    // for php
+    //if ( $has_optimize === false )$has_optimize = WGR_optimize_php_code();
+
+    // đến cuối cùng mà không còn file nào để optimize -> xóa file xác thực optimize thôi
+    if ( $has_optimize === false ) {
+        _eb_remove_file( $confirm_file );
+        // không xóa được file -> bỏ luôn
+        if ( file_exists( $confirm_file ) ) {
+            echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
+            return false;
+        }
+    }
+}
+
+function WGR_optimize_child_theme_static_code() {
+    $has_optimize = false;
+
+    //
     if ( defined( 'EB_CHILD_THEME_URL' ) ) {
         //echo EB_CHILD_THEME_URL . '<br>' . "\n";
 
@@ -1399,8 +1419,8 @@ function WGR_optimize_static_code() {
             }
 
             //
-            foreach ( glob( $v . '/*.css' ) as $filename ) {
-                if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+            foreach ( glob( $v . '/*.css' ) as $css_filename ) {
+                if ( WGR_optimize_backup_code( $css_filename, $v ) === true ) {
                     $has_optimize = true;
                     break;
                 }
@@ -1410,8 +1430,8 @@ function WGR_optimize_static_code() {
             }
 
             //
-            foreach ( glob( $v . '/*.js' ) as $filename ) {
-                if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+            foreach ( glob( $v . '/*.js' ) as $js_filename ) {
+                if ( WGR_optimize_backup_code( $js_filename, $v ) === true ) {
                     $has_optimize = true;
                     break;
                 }
@@ -1422,8 +1442,11 @@ function WGR_optimize_static_code() {
         }
     }
 
-    // for php
-    /*
+    //
+    return $has_optimize;
+}
+
+function WGR_optimize_php_code() {
     $arr_optimize_dir = [
         'global',
         'global/temp',
@@ -1431,6 +1454,8 @@ function WGR_optimize_static_code() {
         'class/widget',
     ];
 
+    //
+    $has_optimize = false;
     foreach ( $arr_optimize_dir as $v ) {
         if ( $has_optimize === true ) {
             break;
@@ -1446,8 +1471,8 @@ function WGR_optimize_static_code() {
         }
 
         //
-        foreach ( glob( $v . '/*.php' ) as $filename ) {
-            if ( WGR_optimize_backup_code( $filename, $v ) === true ) {
+        foreach ( glob( $v . '/*.php' ) as $php_filename ) {
+            if ( WGR_optimize_backup_code( $php_filename, $v ) === true ) {
                 $has_optimize = true;
                 break;
             }
@@ -1456,15 +1481,7 @@ function WGR_optimize_static_code() {
             break;
         }
     }
-    */
 
-    // đến cuối cùng mà không còn file nào để optimize -> xóa file xác thực optimize thôi
-    if ( $has_optimize === false ) {
-        _eb_remove_file( $confirm_file );
-        // không xóa được file -> bỏ luôn
-        if ( file_exists( $confirm_file ) ) {
-            echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
-            return false;
-        }
-    }
+    //
+    return $has_optimize;
 }
