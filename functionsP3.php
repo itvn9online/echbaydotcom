@@ -1342,8 +1342,6 @@ function WGR_optimize_static_code() {
         //
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
         echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
-
-        //
         if ( !is_dir( $v ) ) {
             continue;
         }
@@ -1371,9 +1369,7 @@ function WGR_optimize_static_code() {
         }
     }
 
-    /*
-     * for child theme
-     */
+    // for child theme
     //if ( $has_optimize === false )$has_optimize = WGR_optimize_child_theme_static_code();
 
     // for php
@@ -1412,8 +1408,6 @@ function WGR_optimize_child_theme_static_code() {
             //
             $v = rtrim( EB_CHILD_THEME_URL . $v, '/' );
             echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
-
-            //
             if ( !is_dir( $v ) ) {
                 continue;
             }
@@ -1464,8 +1458,6 @@ function WGR_optimize_php_code() {
         //
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
         echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
-
-        //
         if ( !is_dir( $v ) ) {
             continue;
         }
