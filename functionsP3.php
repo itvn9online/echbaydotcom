@@ -1326,6 +1326,8 @@ function WGR_optimize_static_code() {
 
         'class/widget',
 
+        'themes/css',
+
         'html/details',
         'html/details/mobilemua',
         'html/details/pcmua',
