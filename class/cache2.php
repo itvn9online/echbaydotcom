@@ -317,20 +317,29 @@ WGR_optimize_static_code();
 
 /*
 echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
+var_dump( strstr( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) );
 if ( strstr( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) == true ) {
-    echo 'strstr true <br>' . "\n";
+    echo 'str str true <br>' . "\n";
 } else {
-    echo 'strstr false <br>' . "\n";
+    echo 'str str false <br>' . "\n";
 }
+var_dump( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) );
 if ( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) !== false ) {
-    echo 'strpos true <br>' . "\n";
+    echo 'str pos true <br>' . "\n";
 } else {
-    echo 'strpos false <br>' . "\n";
+    echo 'str pos false <br>' . "\n";
 }
-if ( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) === true ) {
-    echo 'strpos true <br>' . "\n";
+echo strpos( EB_THEME_PLUGIN_INDEX, 'ech2baydotcom' ) . '<br>' . "\n";
+if ( strpos( EB_THEME_PLUGIN_INDEX, 'ech2baydotcom' ) > 0 ) {
+    echo 'str pos true <br>' . "\n";
 } else {
-    echo 'strpos false <br>' . "\n";
+    echo 'str pos false <br>' . "\n";
+}
+var_dump( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) );
+if ( strpos( EB_THEME_PLUGIN_INDEX, 'echbaydotcom' ) === true ) {
+    echo 'str pos true <br>' . "\n";
+} else {
+    echo 'str pos false <br>' . "\n";
 }
 */
 

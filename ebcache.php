@@ -7,8 +7,9 @@ if ( !function_exists( 'wp_is_mobile' ) ) {
     function WGR_is_mobile() {
         if ( empty( $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
             $is_mobile = false;
-        } elseif ( strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Mobile' ) !== false // Many mobile devices (all iPhone, iPad, etc.)
-            ||
+        }
+        // Many mobile devices (all iPhone, iPad, etc.)
+        else if ( strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Mobile' ) !== false ||
             strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Android' ) !== false ||
             strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Silk/' ) !== false ||
             strpos( $_SERVER[ 'HTTP_USER_AGENT' ], 'Kindle' ) !== false ||
