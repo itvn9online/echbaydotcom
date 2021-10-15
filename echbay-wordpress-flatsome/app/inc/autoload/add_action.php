@@ -47,6 +47,7 @@ function EB_flatsome_load_header_static() {
          * for plugin
          */
         EB_THEME_PLUGIN_INDEX . 'css/d.css',
+        EB_THEME_PLUGIN_INDEX . 'css/d2-flatsome.css',
         EB_THEME_PLUGIN_INDEX . 'css/d2.css',
         EB_THEME_PLUGIN_INDEX . 'css/m_flatsome.css',
         //EB_THEME_PLUGIN_INDEX . 'css/g.css',
