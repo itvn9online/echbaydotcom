@@ -3,6 +3,20 @@
 //
 //print_r( $__cf_row );
 
+//
+if ( $act == '' ) {
+    if ( is_page() ||
+        is_page_template() ||
+        isset( $is_page_templates ) ) {
+        $act = 'page';
+    } else if ( is_single() ) {
+        $act = 'single';
+    } else if ( is_archive() ) {
+        $act = 'archive';
+    }
+}
+//echo 'act: ' . $act . '<br>' . "\n";
+
 global $global_dymanic_meta;
 
 //global $arr_dymanic_meta;
@@ -78,6 +92,7 @@ echo WGR_show_header_favicon();
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 // tạo thêm pid cho page template -> có thể việc mua hàng cũng sẽ diễn ra ở đây
+//echo 'pid: ' . $pid . '<br>' . "\n";
 if ( $pid === 0 && is_page_template() ) {
     $pid = get_the_ID();
 }
