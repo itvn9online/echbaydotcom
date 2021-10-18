@@ -56,7 +56,7 @@ function action_echbay_widget_shortcode( $atts ) {
     ), $atts ) );
 
     //
-    if ( empty( $for_shortcode ) ) {
+    if ( $for_shortcode == '' ) {
         return __FUNCTION__ . ' for_shortcode is empty!';
     }
 

@@ -54,7 +54,7 @@ function action_echbay_call_function( $atts ) {
     ), $atts ) );
 
     //
-    if ( empty( $call_function ) ) {
+    if ( $call_function == '' ) {
         return __FUNCTION__ . ' call_function is empty!';
     }
 

@@ -15,11 +15,8 @@ include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
  * thêm NAV menu cho bản mobile
  */
 if ( wp_is_mobile() ) {
-    if ( $__cf_row[ 'cf_search_nav_mobile' ] == 'none' ) {
-        $__cf_row[ 'cf_default_css' ] .= '@media only screen and (max-width:788px) { body{margin-top:0} }';
-    }
-    // chuyển sang nạp thông qua ajax xem có nhanh web hơn không
-    else {
+    //echo 'cf_search_nav_mobile: ' . $__cf_row[ 'cf_search_nav_mobile' ] . '<br>' . "\n";
+    if ( $__cf_row[ 'cf_search_nav_mobile' ] != 'none' ) {
         // menu dành cho bản mobile
         $str_nav_mobile_top = _eb_echbay_menu( 'nav-for-mobile' );
 
@@ -29,7 +26,7 @@ if ( wp_is_mobile() ) {
         //
         //echo $__cf_row['cf_search_nav_mobile'] . '<br>' . "\n";
         Wgr::$eb->BaseModelWgr->adds_css( [
-            EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row['cf_search_nav_mobile'] . '.css',
+            EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row[ 'cf_search_nav_mobile' ] . '.css',
         ] );
 
         //

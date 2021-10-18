@@ -100,11 +100,14 @@ if ( $pid === 0 && is_page_template() ) {
 
 ?>
 <!-- <meta name="theme-color" content="<?php echo $__cf_row['cf_default_bg']; ?>" /> -->
-<style type="text/css">
+<style id="wgr-cf_default_css" type="text/css">
 /* EchBay custom CSS for replace default CSS by plugin or theme */
 <?php /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
 if ( $__cf_row['cf_replace_content'] != '' ) {
 $__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
+}
+if ( $__cf_row[ 'cf_search_nav_mobile' ] == 'none' ) {
+$__cf_row[ 'cf_default_css' ] .= '@media only screen and (max-width:788px) { body{margin-top:0} }';
 }
 echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
 ?>
