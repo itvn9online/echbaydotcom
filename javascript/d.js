@@ -1445,7 +1445,7 @@ function WGR_fixed_a_tag() {
                     if (nol == 1) {
                         jQuery(this).attr({
                             target: '_blank',
-                            rel: 'noopener'
+                            rel: 'nofollow'
                         });
                     }
                 }
