@@ -1146,7 +1146,7 @@ function WGR_before_optimize_code( $confirm_file ) {
     if ( is_numeric( $content_file ) ) {
         // chỉ giải nén trong khoảng thời gian cho phép
         if ( $content_file > time() ) {
-            echo '<!-- ' . __FUNCTION__ . ' run in ' . date( 'r', $content_file ) . ' -->' . "\n";
+            echo '<!-- ' . __FUNCTION__ . ' run in ' . date( 'Y-m-d H:i:s', $content_file ) . ' -->' . "\n";
             return false;
         }
     } else {
