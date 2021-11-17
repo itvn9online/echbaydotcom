@@ -248,10 +248,10 @@ function echbay_admin_styles() {
         // awesome v5
         //EB_THEME_OUTSOURCE . 'fa-5.3.0/css/i.css',
         //EB_THEME_OUTSOURCE . 'fa-5.3.0/css/v4-shims.min.css',
-        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/fontawesome.min.css',
-        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/brands.min.css',
-        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/solid.min.css',
-        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/v4-shims.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/fontawesome.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/solid.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/v4-shims.min.css',
         //
         EB_THEME_PLUGIN_INDEX . 'css/d.css',
         EB_THEME_PLUGIN_INDEX . 'css/d2.css',
@@ -505,10 +505,10 @@ function echbay_admin_footer_styles() {
 
     // fontawesome-free
     /*
-    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/brands.min.js';
-    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/solid.min.js';
-    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/fontawesome.min.js';
-    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/v4-shims.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/brands.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/solid.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/fontawesome.min.js';
+    $a[] = EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/v4-shims.min.js';
     */
     //print_r($a);
 

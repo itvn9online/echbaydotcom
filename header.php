@@ -32,17 +32,17 @@ include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
 $load_font_awesome = '';
-if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css' ) ) {
-    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/brands.min.css', 1 );
-    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/solid.min.css', 1 );
-    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/webfonts/', $load_font_awesome );
+if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/brands.min.css' ) ) {
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/brands.min.css', 1 );
+    $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/solid.min.css', 1 );
+    $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome );
     //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
     //echo ABSPATH . '<br>' . "\n";
     $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
     echo '<style>' . $load_font_awesome . '</style>';
 }
 // nếu không có file css mà có file zip -> gọi hàm giải nén
-else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web.zip' ) ) {
+else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web.zip' ) ) {
     //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
     WGR_unzip_vendor_code( false );
 }
@@ -64,8 +64,8 @@ else {
 //_eb_add_compiler_css( $arr_for_add_css + $arr_for_add_theme_css );
 _eb_add_compiler_css( $arr_for_add_css );
 _eb_add_compiler_css( [
-    EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/fontawesome.min.css' => 0,
-    EB_THEME_URL . 'outsource/fontawesome-free-5.15.1-web/css/v4-shims.min.css' => 0,
+    EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/fontawesome.min.css' => 0,
+    EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/v4-shims.min.css' => 0,
 ] );
 //print_r( $arr_for_add_css );
 

@@ -14,10 +14,10 @@ $a = array(
     // awesome v5
 	//EB_THEME_OUTSOURCE . 'fa-5.3.0/css/i.css',
 	//EB_THEME_OUTSOURCE . 'fa-5.3.0/css/v4-shims.min.css',
-	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/fontawesome.min.css',
-	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/brands.min.css',
-	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/solid.min.css',
-	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/css/v4-shims.min.css',
+	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/fontawesome.min.css',
+	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css',
+	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/solid.min.css',
+	EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/v4-shims.min.css',
     //
 	EB_THEME_PLUGIN_INDEX . 'css/d.css',
 	EB_THEME_PLUGIN_INDEX . 'css/d2.css',

@@ -17,10 +17,10 @@ $a = array(
 	EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
 //	EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
     /*
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/brands.min.js',
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/solid.min.js',
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/fontawesome.min.js',
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.1-web/js/v4-shims.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/brands.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/solid.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/fontawesome.min.js',
+    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/v4-shims.min.js',
     */
 	EB_THEME_PLUGIN_INDEX . 'echbay/js/export_functions.js'
 );
