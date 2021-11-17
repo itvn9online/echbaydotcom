@@ -164,9 +164,9 @@
 				</div>
 			</li>
 			<li class="cf">
-				<div class="lf f80"><i class="fa fa-map-marker"></i> %cf_diachi%</div>
+				<div class="lf f80"><i class="fas fa-map-marker-alt"></i> %cf_diachi%</div>
 				<div class="lf f20 text-center">
-					<button data-link="#" data-text="<i class='fa fa-map-marker'></i> %cf_diachi%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
+					<button data-link="#" data-text="<i class='fas fa-map-marker-alt'></i> %cf_diachi%" type="button" class="cur click-to-add-custom-link"><i class="fas fa-plus"></i></button>
 				</div>
 			</li>
 			<li class="cf">

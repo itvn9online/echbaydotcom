@@ -9,7 +9,7 @@
 					<div class="upper bold"><?php echo $__cf_row['cf_ten_cty']; ?></div>
 					<div class="bottom-contact">
 						<ul>
-							<li><i class="fa fa-map-marker"></i> <?php echo nl2br( $__cf_row['cf_diachi'] ); ?></li>
+							<li><i class="fas fa-map-marker-alt"></i> <?php echo nl2br( $__cf_row['cf_diachi'] ); ?></li>
 							<li><i class="fas fa-phone-alt"></i> <span class="phone-numbers-inline"><?php echo $__cf_row['cf_call_dienthoai']; ?></span></li>
 							<li><i class="fas fa-envelope"></i> <a href="mailto:<?php echo $__cf_row['cf_email']; ?>" rel="nofollow" target="_blank"><?php echo $__cf_row['cf_email']; ?></a></li>
 						</ul>

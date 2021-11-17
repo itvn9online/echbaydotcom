@@ -317,7 +317,7 @@ $eb_note_lang[eb_key_for_site_lang . 'amp_buy_now'] = 'Nhập đầy đủ cấu
 
 // footer address
 $eb_note_first_lang[eb_key_for_site_lang . 'fd_diachi'] = 'Thông tin liên hệ ở chân trang';
-$___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fa fa-map-marker"></i>';
+$___eb_lang[eb_key_for_site_lang . 'fd_diachi'] = '<strong>Địa chỉ:</strong> <i class="fas fa-map-marker-alt"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_hotline'] = '<strong>Hotline:</strong> <i class="fas fa-phone-alt"></i>';
 $___eb_lang[eb_key_for_site_lang . 'fd_dienthoai'] = '<strong>Điện thoại:</strong>';
 $___eb_lang[eb_key_for_site_lang . 'fd_email'] = '<strong>Email:</strong> <i class="fas fa-envelope"></i>';
