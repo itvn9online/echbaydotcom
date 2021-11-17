@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * @daidq - 0984533228 - itvn9online@gmail.com
+ * file header này sẽ nạp và xử lý header theo phiên bản echbaydotcom cũ, do chưa có thời gian update lên bản mới hoàn toàn
+ */
+
 //
 //print_r( $__cf_row );
 

@@ -7,7 +7,11 @@ function EB_flatsome_load_header_static() {
     /*
      * nạp base -> mình quen dùng kiểu này
      */
-    echo '<base href="' . Wgr::$eb->BaseModelWgr->base_url . '" />';
+    /*
+    if ( !defined( 'HAS_BASE_HREF' ) ) {
+        echo '<base href="' . Wgr::$eb->BaseModelWgr->base_url . '" />';
+    }
+    */
 
 
     // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
