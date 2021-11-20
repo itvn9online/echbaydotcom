@@ -3484,7 +3484,7 @@ iframe[name="google_conversion_frame"] {
     height: 40px !important;
     background: rgba(0, 0, 0, .6) !important;
 }
-.thread-module-name .click-goto-edit svg {
+.thread-module-name .click-goto-edit svg, .thread-module-name .click-goto-edit i {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
