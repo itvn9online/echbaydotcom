@@ -115,8 +115,10 @@
 #aabbcc .quick-register-email {}
 #aabbcc .quick-register-email input[type="email"] {
     width: 85%;
+    padding: 0;
     padding-left: 6px;
     height: 35px;
+    margin: 0;
 }
 #aabbcc .quick-register-submit {}
 #aabbcc .quick-register-submit button {
@@ -129,6 +131,10 @@
     border: 0 none;
     color: #fff;
     text-transform: uppercase;
+    margin: 0;
+    line-height: 0;
+    min-height: 0;
+    padding: 0;
 }
 /* ================================== echbay-blog ================================== */
 .aabbcc {}
@@ -189,12 +195,19 @@
 /* ================================== search ================================== */
 #aabbcc .div-search-margin {}
 #aabbcc .div-search {}
-#aabbcc input[type="search"] {
+#aabbcc .div-search input[type="search"] {
+    padding: 0;
     padding-left: 2%;
+    margin-bottom: 0;
 }
-#aabbcc button {}
-#aabbcc button i {}
-#aabbcc button span {}
+#bei-top1 .div-search button {
+    margin: 0;
+    line-height: normal;
+    min-height: auto;
+    padding: 0;
+}
+#bei-top1 .div-search button i {}
+#bei-top1 .div-search button span {}
 /* ================================== search (hide version) ================================== */
 #aabbcc .top-search-module {
     position: relative;
