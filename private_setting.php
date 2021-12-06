@@ -54,6 +54,21 @@ $arrs_private_info_setting = array(
         'site_upper' => 'iFox.vn',
         'site_url' => 'https://ifox.vn/',
         'author' => 'ifoxvn'
+    ),
+    'beegitalvn' => array(
+        'parent_theme_default' => 'beegitalvn',
+        //'dir_theme_unzip_to' => 'beegitalvn-main',
+
+        //'child_theme_default' => 'beegitalvn-child',
+
+        'theme_site_upper' => 'beegitalvn',
+        'theme_site_url' => 'https://beegital.vn/',
+        'theme_author' => 'beegitalvn',
+
+        'author_email' => 'hotro@beegital.vn',
+        'site_upper' => 'BeeGital.vn',
+        'site_url' => 'https://beegital.vn/',
+        'author' => 'beegitalvn'
     )
 );
 $arr_private_info_setting = $arrs_private_info_setting[ 'echbaydotcom' ];

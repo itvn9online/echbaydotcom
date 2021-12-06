@@ -43,7 +43,9 @@ global $arr_private_info_setting;
 //
 //WGR_unzip_vendor_code();
 
-// tạo thương hiệu riêng cho partner
+/*
+ * tạo thương hiệu riêng cho partner nếu không phải thương hiệu mặc định
+ */
 if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {
     //echo $arr_private_info_setting[ 'parent_theme_default' ] . '<br>' . "\n";
     //echo EB_THEME_URL . '<br>' . "\n";
@@ -52,6 +54,10 @@ if ( $arr_private_info_setting[ 'parent_theme_default' ] != 'echbaytwo' ) {
     $dir_partner_style = EB_THEME_URL . 'partner/' . $arr_private_info_setting[ 'parent_theme_default' ];
     //echo $dir_partner_style . '<br>' . "\n";
 
+    /*
+     * nếu tồn tại thư mục riêng của partner nếu tồn tại file style.css trong thư mục partner
+     * cần cập nhật lại partner -> chỉ cần copy lại các file này là được
+     */
     if ( is_dir( $dir_partner_style ) && file_exists( $dir_partner_style . '/style.css' ) ) {
         foreach ( glob( $dir_partner_style . '/*' ) as $filename ) {
             echo $filename . '<br>' . "\n";
