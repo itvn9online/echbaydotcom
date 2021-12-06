@@ -129,10 +129,14 @@ if ( ! defined('EB_THEME_PLUGIN_INDEX') ) {
 */
 
 
+// sử dụng theo echbaydotcom
+define( 'EB_THEME_OUTSOURCE', EB_THEME_PLUGIN_INDEX . 'outsource/' );
+// sử dụng theo parent theme -> bất lợi khi update code cho partner -> bỏ
 //define( 'EB_THEME_OUTSOURCE', EB_THEME_URL . 'outsource/' );
-//define( 'EB_THEME_OUTSOURCE', EB_THEME_PLUGIN_INDEX . 'outsource/' );
-define( 'EB_THEME_OUTSOURCE', EB_THEME_URL . 'outsource/' );
 //echo 'EB_THEME_OUTSOURCE: ' . EB_THEME_OUTSOURCE . '<br>';
+//
+define( 'EB_URL_OUTSOURCE', str_replace(ABSPATH, '', EB_THEME_OUTSOURCE) );
+//echo 'EB_URL_OUTSOURCE: ' . EB_URL_OUTSOURCE . '<br>';
 
 //define( 'EB_THEME_CORE', EB_THEME_URL . 'plugin/class/' );
 define( 'EB_THEME_CORE', EB_THEME_PLUGIN_INDEX . 'class/' );
@@ -161,9 +165,10 @@ define( 'EB_THEME_PHP', EB_THEME_THEME . 'php/' );
 
 // URL tương đối
 define( 'EB_URL_TUONG_DOI', EB_DIR_CONTENT . '/echbaydotcom/' );
+//echo 'EB_URL_TUONG_DOI: ' . EB_URL_TUONG_DOI . '<br>' . "\n";
 // URL tương đối nhưng nối vào theme
 define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_info_setting[ 'parent_theme_default' ] . '/' );
-//echo EB_URL_THEMES_TUONG_DOI . '<br>' . "\n";
+//echo 'EB_URL_THEMES_TUONG_DOI: ' . EB_URL_THEMES_TUONG_DOI . '<br>' . "\n";
 //echo basename( EB_URL_THEMES_TUONG_DOI ) . '<br>' . "\n";
 
 // thư mục lưu trữ cache
@@ -463,14 +468,16 @@ $___eb_template_uri = web_link;
 //define( 'EB_URL_OF_THEME', $___eb_template_uri . '/' );
 define( 'EB_URL_OF_THEME', $___eb_template_uri . EB_DIR_CONTENT . '/themes/' . basename( EB_THEME_URL ) . '/' );
 //echo EB_URL_OF_THEME . '<br>' . "\n";
-define( 'EB_URL_OF_PARENT_THEME', $___eb_template_uri . EB_URL_THEMES_TUONG_DOI );
-//echo EB_URL_OF_PARENT_THEME . '<br>' . "\n";
 //define( 'EB_URL_OF_PLUGIN', esc_url( plugins_url() ) . '/echbaydotcom/' );
 //define( 'EB_URL_OF_PLUGIN', dirname( dirname( $___eb_template_uri ) ) . '/echbaydotcom/' );
 define( 'EB_URL_OF_PLUGIN', $___eb_template_uri . EB_DIR_CONTENT . '/echbaydotcom/' );
 //echo EB_URL_OF_PLUGIN . '<br>' . "\n";
 //echo '../../plugins/' . basename( EB_URL_OF_PLUGIN ) . '<br>';
 
+// URL cho phần outsource -> tách riêng để có thể linh động sử dụng trong thư mục echbaydotcom hoặc parent theme nếu muốn
+//define( 'EB_URL_OF_PARENT_THEME', $___eb_template_uri . EB_URL_THEMES_TUONG_DOI );
+define( 'EB_URL_OF_PARENT_THEME', EB_URL_OF_PLUGIN );
+//echo 'EB_URL_OF_PARENT_THEME: ' . EB_URL_OF_PARENT_THEME . '<br>' . "\n";
 
 /*
  * Thiết kế lại giao diện trang login

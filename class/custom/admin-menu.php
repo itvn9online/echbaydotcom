@@ -327,8 +327,8 @@ function echbay_admin_styles() {
 		echo '<script>console.log("%c Không load echbay-jquery-ui trong ADD post_type product", "color: red;");</script>';
 	} else {
 		echo '
-<link rel="stylesheet" href="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui-1.11.2.css" />
-<script src="' . EB_URL_OF_PARENT_THEME . 'outsource/jquery-ui/jquery-ui.min.js"></script>';
+<link rel="stylesheet" href="' . EB_URL_OUTSOURCE . 'jquery-ui/jquery-ui-1.11.2.css" />
+<script src="' . EB_URL_OUTSOURCE . 'jquery-ui/jquery-ui.min.js"></script>';
 	}
 */
 

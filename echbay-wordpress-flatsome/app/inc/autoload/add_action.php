@@ -16,24 +16,25 @@ function EB_flatsome_load_header_static() {
 
     // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
     $load_font_awesome = '';
+    //echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
     // chỉ nạp font-awesome khi có file
-    if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/brands.min.css' ) ) {
-        $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/brands.min.css', 1 );
-        $load_font_awesome .= file_get_contents( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/solid.min.css', 1 );
-        $load_font_awesome = str_replace( '../webfonts/', EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome );
-        //echo EB_THEME_URL . 'outsource/' . '<br>' . "\n";
+    if ( file_exists( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css' ) ) {
+        $load_font_awesome .= file_get_contents( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css', 1 );
+        $load_font_awesome .= file_get_contents( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/solid.min.css', 1 );
+        $load_font_awesome = str_replace( '../webfonts/', EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome );
+        //echo EB_THEME_OUTSOURCE . '<br>' . "\n";
         //echo ABSPATH . '<br>' . "\n";
         $load_font_awesome = str_replace( ABSPATH, '', $load_font_awesome );
         echo '<style>' . $load_font_awesome . '</style>';
     }
     // nếu không có file css mà có file zip -> gọi hàm giải nén
-    else if ( file_exists( EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web.zip' ) ) {
+    else if ( file_exists( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip' ) ) {
         //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
         WGR_unzip_vendor_code( false );
         /*
     } else {
         echo 'aaaaaaaaaaaaa: ' . EB_THEME_URL . '<br>' . "\n";
-        echo EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web.zip' . '<br>' . "\n";
+        echo EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip' . '<br>' . "\n";
         */
     }
 
@@ -45,8 +46,8 @@ function EB_flatsome_load_header_static() {
         /*
          * for theme
          */
-        EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/fontawesome.min.css',
-        EB_THEME_URL . 'outsource/fontawesome-free-5.15.4-web/css/v4-shims.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/fontawesome.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/v4-shims.min.css',
         /*
          * for plugin
          */

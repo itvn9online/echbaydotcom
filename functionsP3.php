@@ -1179,6 +1179,7 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
 
     //
     $arr_vendor_list = [
+        EB_THEME_PLUGIN_INDEX . 'outsource',
         EB_THEME_URL . 'outsource',
     ];
     //print_r( $arr_vendor_list );
