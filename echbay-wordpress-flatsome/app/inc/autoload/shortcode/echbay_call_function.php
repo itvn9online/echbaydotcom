@@ -10,7 +10,8 @@ function add_echbay_call_function() {
         'EBE_get_html_search',
         'EBE_get_html_cart',
         'EBE_get_html_profile',
-        'EBE_html_address',
+        //'EBE_html_address',
+        'EBE_get_html_address',
         'WGR_get_quick_register',
         'WGR_get_footer_social',
         'WGR_get_fb_like_box',
@@ -57,6 +58,7 @@ function action_echbay_call_function( $atts ) {
     if ( $call_function == '' ) {
         return __FUNCTION__ . ' call_function is empty!';
     }
+    //echo $call_function . ' bbbbbbbbbbbbbb <br>' . "\n";
 
     //
     if ( !function_exists( $call_function ) ) {
@@ -65,6 +67,7 @@ function action_echbay_call_function( $atts ) {
 
     //
     $html = $call_function();
+    //echo '<aaaaaaaaaaaa>' . $html . '</aaaaaaaaaaaa>';
     if ( $custom_class != '' ) {
         $html = '<div class="' . $custom_class . '">' . $html . '</div>';
     }
