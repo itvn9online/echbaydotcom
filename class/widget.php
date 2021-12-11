@@ -41,6 +41,7 @@ include EB_THEME_CORE . 'widget/popup.php';
 include EB_THEME_CORE . 'widget/category_search_advanced.php';
 include EB_THEME_CORE . 'widget/categorys_search_advanced.php';
 include EB_THEME_CORE . 'widget/categories_level2.php';
+include EB_THEME_CORE . 'widget/shortcode.php';
 
 
 add_filter( 'widgets_init', '___add_echbay_widget' );
@@ -53,6 +54,7 @@ function ___add_echbay_widget() {
     register_widget( '___echbay_widget_random_product' );
 
     register_widget( '___echbay_widget_google_map' );
+    register_widget( '___echbay_widget_shortcode' );
 
     register_widget( '___echbay_widget_youtube_video' );
 

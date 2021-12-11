@@ -24,6 +24,12 @@ function add_echbay_call_menu() {
                 'default' => '',
                 'options' => $ops_list,
             ),
+            'menu_title' => array(
+                'type' => 'textfield',
+                'heading' => 'Title',
+                'default' => '',
+                'placeholder' => 'Menu title',
+            ),
             'custom_class' => array(
                 'type' => 'textfield',
                 'heading' => 'Class CSS',
@@ -39,6 +45,7 @@ add_action( 'ux_builder_setup', 'add_echbay_call_menu' );
 function action_echbay_call_menu( $atts ) {
     extract( shortcode_atts( array(
         'call_menu' => '',
+        'menu_title' => '',
         'custom_class' => '',
     ), $atts ) );
 
@@ -48,6 +55,17 @@ function action_echbay_call_menu( $atts ) {
     }
 
     //
-    return _eb_echbay_menu( $call_menu );
+    $html = _eb_echbay_menu( $call_menu );
+
+    if ( $menu_title != '' ) {
+        $html = '<h4 class="echbay-flatsome-menu">' . $menu_title . '</h4>' . $html;
+    }
+
+    if ( $custom_class != '' ) {
+        $html = '<div class="' . $custom_class . '">' . $html . '</div>';
+    }
+
+    //
+    return $html;
 }
 add_shortcode( 'echbay_call_menu', 'action_echbay_call_menu' );

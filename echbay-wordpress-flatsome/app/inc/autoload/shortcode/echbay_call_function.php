@@ -59,14 +59,16 @@ function action_echbay_call_function( $atts ) {
     }
 
     //
-    if ( function_exists( $call_function ) ) {
-        $html = $call_function();
-        if ( !empty( $custom_class ) ) {
-            $html = '<div class="' . $custom_class . '">' . $html . '</div>';
-        }
-
-        return $html;
+    if ( !function_exists( $call_function ) ) {
+        return __FUNCTION__ . ' function ' . $call_function . ' not exist!';
     }
-    return __FUNCTION__ . ' function ' . $call_function . ' not exist!';
+
+    //
+    $html = $call_function();
+    if ( $custom_class != '' ) {
+        $html = '<div class="' . $custom_class . '">' . $html . '</div>';
+    }
+
+    return $html;
 }
 add_shortcode( 'echbay_call_function', 'action_echbay_call_function' );

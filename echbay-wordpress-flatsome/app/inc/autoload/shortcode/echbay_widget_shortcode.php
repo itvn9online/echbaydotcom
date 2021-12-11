@@ -71,7 +71,7 @@ function action_echbay_widget_shortcode( $atts ) {
 
     // gọi tới function của widget shortcode
     $html = do_shortcode( '[widget id="' . $for_shortcode . '"]' );
-    if ( !empty( $custom_class ) ) {
+    if ( $custom_class != '' ) {
         $html = '<div class="' . $custom_class . '">' . $html . '</div>';
     }
     return $html;

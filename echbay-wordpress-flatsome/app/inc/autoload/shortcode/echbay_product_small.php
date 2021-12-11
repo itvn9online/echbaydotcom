@@ -39,7 +39,7 @@ function action_echbay_product_small( $atts ) {
     ), $atts ) );
 
     //
-    if ( empty( $for_shortcode ) ) {
+    if ( $for_shortcode != '' ) {
         return __FUNCTION__ . ' for_shortcode is empty!';
     }
 
@@ -54,7 +54,7 @@ function action_echbay_product_small( $atts ) {
 
     // gọi tới function của widget shortcode
     $html = do_shortcode( '[widget id="' . $for_shortcode . '"]' );
-    if ( !empty( $custom_class ) ) {
+    if ( $custom_class != '' ) {
         $html = '<div class="' . $custom_class . '">' . $html . '</div>';
     }
     return $html;
