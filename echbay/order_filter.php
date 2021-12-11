@@ -57,6 +57,10 @@ if ( isset( $_GET['tab'] ) &&  $_GET['tab'] != '' ) {
 		$strFilter .= " AND order_status = " . $status_by;
 	}
 }
+// lọc theo IP
+else if ( isset( $_GET['by_ip'] ) &&  $_GET['by_ip'] != '' ) {
+    $strFilter .= " AND order_ip = '" . $_GET['by_ip'] . "' ";
+}
 // khi người dùng tìm kiếm
 else if ( isset ( $_GET ['invoice_key'] ) ) {
 	// nếu tài khoản không phải là supper admin -> ẩn các đơn đã hủy

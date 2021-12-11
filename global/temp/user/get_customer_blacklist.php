@@ -69,6 +69,7 @@ if ( $strFilter != '' ) {
 		//
 		echo $str_js . '.push({
 			"order_id" : ' . $v->order_id . ',
+			"order_ip" : "' . $v->order_ip . '",
 			"order_status" : ' . $v->order_status . ',
 			"order_customer" : "' . $v->order_customer . '"
 		});';

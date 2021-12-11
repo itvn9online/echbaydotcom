@@ -733,19 +733,25 @@ setTimeout(function () {
 	// điện thoại chỉ lấy 9 ký tự sau cùng -> bỏ qua phần số 0 hoặc +84 nếu có
 	if ( dt != '' ) {
 		dt = g_func.non_mark_seo( dt.split('-')[0].split('/')[0] );
-//		console.log( dt );
+		//console.log( dt );
 		dt = g_func.number_only( dt );
+		//console.log( dt );
 		dt = dt.toString().replace(/\-/g, '').substr( dt.toString().length - 9 );
 		
-		uri += '&dt=' + dt;
+        //
+        if ( dt.length > 3 ) {
+            uri += '&dt=' + dt;
+        }
 	}
 	
 	// mail thì không lấy các email cùng với tên miền hiện tại -> vì lấy theo số đt là đủ rồi
 	// kiểm tra quyền điều khiển của người đăng đơn, nếu không phải admin thì bỏ qua email
 	if ( WGR_check_option_on ( order_user_can ) == false && e != '' && e.split( '@' ).length == 2 && e.split( document.domain ).length == 1 ) {
-		uri += '&e=' + e;
+        if ( e.length > 3 ) {
+            uri += '&e=' + e;
+        }
 	}
-	console.log( 'Check blacklist by: ' + uri );
+	console.log( '%c Check blacklist by: ' + uri, 'color: blue;' );
 	
 	//
 	if ( uri != '' ) {
@@ -848,6 +854,7 @@ setTimeout(function () {
 								<td><a href="' + admin_link + 'admin.php?page=eb-order&id=' + arr_list_orther_order[i].order_id + '" target="_blank" class="bold">' + custom_info.hd_ten + '</a></td>\
 								<td>' + custom_info.hd_dienthoai + '</td>\
 								<td>' + custom_info.hd_diachi + '</td>\
+								<td><a href="' + admin_link + 'admin.php?page=eb-order&by_ip=' + arr_list_orther_order[i].order_ip + '" target="_blank">' + arr_list_orther_order[i].order_ip + '</a></td>\
 								<td>' + _date( lang_date_time_format, custom_info.hd_usertime ) + '</td>\
 								<td class="orgcolor">' + custom_info.hd_admin_ghichu + '</li>\
 							</tr>';

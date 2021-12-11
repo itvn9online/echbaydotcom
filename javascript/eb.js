@@ -227,13 +227,20 @@ var g_func = {
             //			return str;
             return str * 1;
         } else {
-            str = str.toString().replace(/[^0-9\-\+]/g, '');
+            //console.log('dfg dhas fsdf');
+            str = $.trim(str);
+            var so_am = str.substr(0, 1);
+            //str = str.toString().replace(/[^0-9\-\+]/g, '');
+            str = str.toString().replace(/[^0-9]/g, '');
 
             if (str == '') {
                 return 0;
             }
+            if (so_am == '-') {
+                str = so_am + str;
+            }
 
-            //			return parseInt( str, 10 );
+            //return parseInt( str, 10 );
             return str * 1;
         }
     },
