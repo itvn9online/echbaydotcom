@@ -62,6 +62,7 @@ $offset = ( $trang - 1 ) * $threadInPage;
 
 //
 $str_hom_nay = date( 'md', date_time );
+$str_7_ngay = date_time - ( 24 * 3600 * 7 );
 
 
 // lấy 10 IP đặt hàng gần đây nhất và có số lượng đơn đặt từ 2 trở lên
@@ -69,7 +70,7 @@ $sql_order_ip = "SELECT *, COUNT(`order_ip`) AS c
     FROM
         `eb_in_con_voi`
     WHERE
-        `order_time` > " . ( date_time - (24 * 3600 * 7) ) . "
+        `order_time` > " . $str_7_ngay . "
     GROUP BY
         `order_ip`
     ORDER BY
@@ -80,10 +81,55 @@ $sql_order_ip = "SELECT *, COUNT(`order_ip`) AS c
 $sql_order_ip = _eb_q( $sql_order_ip );
 //print_r( $sql_order_ip );
 
+
+// lấy các IP trong danh sách đen để cho vào danh sách chặn IP trong 7 ngày
+include_once EB_THEME_PLUGIN_INDEX . 'ebcache_global.php';
+//print_r( $arr_current_blacklist_ip );
+
+//echo 'OrderStatus BLACK_LIST: ' . OrderStatus::BLACK_LIST . '<br>' . "\n";
+$sql_order_blacklist = "SELECT *
+    FROM
+        `eb_in_con_voi`
+    WHERE
+        `order_status` = " . OrderStatus::BLACK_LIST . "
+        AND `order_time` > " . $str_7_ngay . "
+    ORDER BY
+        `order_ip` DESC
+    LIMIT 0, 50";
+$sql_order_blacklist = _eb_q( $sql_order_blacklist );
+//print_r( $sql_order_blacklist );
+
+// nếu có -> tạo danh sách đen theo IP -> lưu vào file để sau còn block
+if ( !empty( $sql_order_blacklist ) ) {
+    // chạy vòng lặp kiểm tra xem có IP mới không
+    $has_new_blacklist_ip = false;
+    foreach ( $sql_order_blacklist as $v ) {
+        if ( !in_array( $v->order_ip, $arr_current_blacklist_ip ) ) {
+            $has_new_blacklist_ip = true;
+            break;
+        }
+    }
+
+    //
+    if ( $has_new_blacklist_ip === true ) {
+        $arr_new_blacklist_ip = [];
+        foreach ( $sql_order_blacklist as $v ) {
+            $arr_new_blacklist_ip[] = $v->order_ip;
+        }
+        print_r( $arr_new_blacklist_ip );
+        $str_new_blacklist_ip = '$arr_current_blacklist_ip=json_decode(\'' . json_encode( $arr_new_blacklist_ip ) . '\');';
+        //echo $str_new_blacklist_ip . '<br>' . "\n";
+
+        // lưu vào file để sau sử dụng lại
+        _eb_create_file( $inc_current_blacklist_ip, '<?php ' . $str_new_blacklist_ip );
+    }
+}
+
+
 ?>
 <div class="cf">
     <?php
-    
+
     //
     foreach ( $sql_order_ip as $v ) {
         // các IP có lượt đặt < 2 -> bỏ qua
@@ -91,10 +137,10 @@ $sql_order_ip = _eb_q( $sql_order_ip );
             continue;
         }
         ?>
-    <div class="lf f25"><a href="admin.php?page=eb-order&by_ip=<?php echo $v->order_ip; ?>" target="_blank"><?php echo $v->order_ip; ?> (<?php echo $v->c; ?>)</a></div>
+    <div class="lf f20"><a href="admin.php?page=eb-order&by_ip=<?php echo $v->order_ip; ?>" target="_blank"><?php echo $v->order_ip; ?> (<?php echo $v->c; ?>)</a></div>
     <?php
     }
-    
+
     ?>
 </div>
 <div class="wrap">

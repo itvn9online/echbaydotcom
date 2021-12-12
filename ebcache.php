@@ -1,7 +1,24 @@
 <?php
 
 //
-$EB_THEME_CACHE = dirname( __DIR__ ) . '/uploads/ebcache/' . str_replace( ':', '-', $_SERVER[ 'HTTP_HOST' ] ) . '/';
+include_once __DIR__ . '/ebcache_global.php';
+
+// kiểm tra xem IP này có trong blacklist thì block luôn
+if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) ) {
+    $check_blacklist_ip = $_SERVER[ 'HTTP_X_FORWARDED_FOR' ];
+} else if ( isset( $_SERVER[ 'HTTP_X_REAL_IP' ] ) ) {
+    $check_blacklist_ip = $_SERVER[ 'HTTP_X_REAL_IP' ];
+} else if ( isset( $_SERVER[ 'HTTP_CLIENT_IP' ] ) ) {
+    $check_blacklist_ip = $_SERVER[ 'HTTP_CLIENT_IP' ];
+} else {
+    $check_blacklist_ip = $_SERVER[ 'REMOTE_ADDR' ];
+}
+if ( in_array( $check_blacklist_ip, $arr_current_blacklist_ip ) ) {
+    die( '<h1>Permission deny!</h1>' );
+}
+
+
+//
 if ( !function_exists( 'wp_is_mobile' ) ) {
     // fake function wp_is_mobile of wordpress
     function WGR_is_mobile() {
@@ -32,6 +49,7 @@ if ( !function_exists( 'wp_is_mobile' ) ) {
 } else if ( wp_is_mobile() ) {
     $EB_THEME_CACHE .= 'm/';
 }
+// thư mục cache có phân biệt mobile với desktop
 define( 'EB_THEME_CACHE', $EB_THEME_CACHE );
 //die( EB_THEME_CACHE );
 //define( 'EB_SUB_THEME_CACHE', str_replace( ABSPATH, '', EB_THEME_CACHE ) );
@@ -48,7 +66,9 @@ $ebsuppercache_filename = ___eb_cache_getUrl();
 if ( isset( $_COOKIE[ 'wgr_ebsuppercache_timeout' ] ) || $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
     // đăng nhập rồi thì bỏ qua -> không nạp cache
     //echo 'wgr_ebsuppercache_timeout';
-} else if ( file_exists( $ebsuppercache_filename ) ) {
+}
+//
+else if ( file_exists( $ebsuppercache_filename ) ) {
     //die( $ebsuppercache_filename );
 
     // thời gian để nạp lại cache cho phần này
