@@ -200,14 +200,14 @@
     padding-left: 2%;
     margin-bottom: 0;
 }
-#bei-top1 .div-search button {
+#aabbcc .div-search button {
     margin: 0;
     line-height: normal;
     min-height: auto;
     padding: 0;
 }
-#bei-top1 .div-search button i {}
-#bei-top1 .div-search button span {}
+#aabbcc .div-search button i {}
+#aabbcc .div-search button span {}
 /* ================================== search (hide version) ================================== */
 #aabbcc .top-search-module {
     position: relative;
