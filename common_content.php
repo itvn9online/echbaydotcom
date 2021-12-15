@@ -71,6 +71,11 @@ $main_content = str_replace( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '
 //	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/uploads/', $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
 //	$main_content = str_replace ( '"' . EB_DIR_CONTENT . '/uploads/', '"' . $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/uploads/', $main_content );
 
+// chỉnh lại url tuyệt đối cho phần header -> do mạng xã hội nó chỉ nhận tuyệt đối
+//echo EB_DIR_CONTENT . '<br>' . "\n";
+$main_content = str_replace( '" content="' . EB_DIR_CONTENT . '/', '" content="' . web_link . EB_DIR_CONTENT . '/', $main_content );
+$main_content = str_replace( 'link href="' . EB_DIR_CONTENT . '/uploads/', 'link href="' . web_link . EB_DIR_CONTENT . '/uploads/', $main_content );
+
 
 //
 if ( $__cf_row[ 'cf_replace_content' ] != '' ) {

@@ -48,6 +48,7 @@ $arr_dymanic_meta[] = '<meta property="og:url" content="' . $url_og_url . '" />'
 
 $arr_dymanic_meta[] = '<meta itemprop="image" content="' . $image_og_image . '" />';
 $arr_dymanic_meta[] = '<meta property="og:image" content="' . $image_og_image . '" />';
+$arr_dymanic_meta[] = '<meta property="og:image:alt" content="' . basename( $image_og_image ) . '" />';
 
 
 $dynamic_meta .= implode( "\n", $arr_dymanic_meta );
