@@ -1068,7 +1068,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
 }
 
 
-function WGR_phom_for_home_list_and_blog( $instance, $default, $this_value, $taxonomy = 'category' ) {
+function WGR_widget_list_checkbox_taxonomy( $instance, $default, $this_value, $taxonomy = 'category' ) {
 
     //
     WGR_add_css_js_for_elementor_editer();
@@ -1138,6 +1138,12 @@ function WGR_phom_for_home_list_and_blog( $instance, $default, $this_value, $tax
 
     echo '<script>WGR_category_for_home_list("' . $id_for . '", 1);</script>';
     //	print_r( $_GET );
+    
+}
+
+
+function WGR_phom_for_home_list_and_blog( $instance, $default, $this_value, $taxonomy = 'category' ) {
+    WGR_widget_list_checkbox_taxonomy($instance, $default, $this_value, $taxonomy);
 
 
     //
