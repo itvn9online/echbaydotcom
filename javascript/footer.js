@@ -1,7 +1,4 @@
 
-
-
-
 /*
  * Các function sẽ được nạp từ theme -> nếu có thì chạy ở đây
  */
@@ -14,6 +11,10 @@ if (act == '') {
 
 // archive (category/ blog)
 else if (act == 'archive') {
+    if (typeof switch_taxonomy=='undefined') {
+        switch_taxonomy = '';
+    }
+    
     // category
     if (switch_taxonomy == 'category' ||
         switch_taxonomy == 'post_tag' ||
