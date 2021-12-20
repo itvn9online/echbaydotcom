@@ -41,7 +41,7 @@ if ( $__cf_row[ 'cf_dns_prefetch' ] != '' ) {
         }
 
         // không trùng -> tạo link cho DNS prefetch
-        $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//' . $v . '" />';
+        $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//' . $v . '/" />';
     }
 
     //

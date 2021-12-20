@@ -10,11 +10,11 @@
 
 // thêm 1 số dns-prefetch cần thiết
 if ( $__cf_row[ 'cf_ga_id' ] != '' ) {
-    $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//www.google-analytics.com" />';
+    $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="https://www.google-analytics.com/" />';
 }
 
 if ( $__cf_row[ 'cf_facebook_id' ] != '' ) {
-    $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="//connect.facebook.net" />';
+    $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="https://connect.facebook.net/" />';
 }
 
 
