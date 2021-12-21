@@ -1,8 +1,11 @@
 /* ================================== menu ================================== */
 #aabbcc .sample-menu {}
-#aabbcc .sample-menu ul {}
+#aabbcc .sample-menu ul {
+    margin: 0;
+}
 #aabbcc .sample-menu li {
     float: left;
+    margin: 0;
 }
 #aabbcc .sample-menu a {
     display: block;
