@@ -31,6 +31,7 @@ a {
     color: #fff;
 }
 /* */
+/*
 .clear, .clear-both {
     display: block;
     clear: both;
@@ -39,6 +40,7 @@ a {
     height: 0;
     overflow: hidden;
 }
+*/
 .cf:before, .cf:after, .clearfix:before, .clearfix:after {
     content: "";
     display: table;
