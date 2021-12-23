@@ -240,6 +240,9 @@ function WGR_main_edit_menu() {
             WGR_load_post_page_for_add_menu(eb_options_group, 'post_options', 'Thông số khác của sản phẩm', 'taxonomy');
             WGR_load_post_page_for_add_menu(eb_blog_group, 'blogs', 'Danh mục tin tức', 'taxonomy');
             //
+            if (typeof eb_product_list != 'undefined') {
+                WGR_load_post_page_for_add_menu(eb_product_list, 'product', 'Sản phẩm');
+            }
             WGR_load_post_page_for_add_menu(eb_posts_list, 'post', 'Sản phẩm');
             WGR_load_post_page_for_add_menu(eb_blogs_list, 'blog', 'Tin tức/ Blog');
             WGR_load_post_page_for_add_menu(eb_pages_list, 'page', 'Trang tĩnh');

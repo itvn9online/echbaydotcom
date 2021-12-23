@@ -186,15 +186,6 @@
 .li-align-center, .div-align-center {
     display: inline-block;
 }
-/* ==================================  ================================== */
-/* desktop only */
-@media only screen and (min-width:748px) {}
-/* mobile, table only */
-@media only screen and (max-width:788px) {}
-/* medium size */
-@media only screen and (max-width:588px) {}
-/* mobile only */
-@media only screen and (max-width:395px) {}
 /* ================================== search ================================== */
 #aabbcc .div-search-margin {}
 #aabbcc .div-search {}
@@ -342,3 +333,12 @@
     border-radius: 2px;
     margin: 0 5px 7px 0;
 }
+/* ================================== reponsive ================================== */
+/* desktop only */
+@media only screen and (min-width:748px) {}
+/* mobile, table only */
+@media only screen and (max-width:788px) {}
+/* medium size */
+@media only screen and (max-width:588px) {}
+/* mobile only */
+@media only screen and (max-width:395px) {}
