@@ -303,7 +303,7 @@ function create_deault_css () {
 	// logo
 	str += create_css_for_custom_in_js( '', '', {
 		'for' : 'logo',
-		'mobile' : '.style-for-mobile #webgiare__top .web-logo, .style-for-mobile .menu-for-mobile .web-mobile-logo',
+		'mobile' : '.style-for-mobile #webgiare__top .web-logo, .style-for-mobile .webgiare__top .web-logo, .style-for-mobile .menu-for-mobile .web-mobile-logo',
 		'pc' : '.web-logo'
 	} );
 	
