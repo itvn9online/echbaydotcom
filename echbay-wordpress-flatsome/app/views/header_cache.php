@@ -76,16 +76,42 @@ else if ( $__cf_row[ 'cf_reset_cache' ] < 30 ) {
     //
     $active_ob_start = true;
 }
+//
+/*
+//else if ( isset( $is_page_templates ) ) {
+else if ( is_front_page() ) {
+    echo '<!-- ' . basename( 'TEST header cache' ) . ' -->' . "\n";
+}
+*/
 // có file footer thì bật chế độ cache
 else if ( is_home() ||
     is_front_page() ||
     is_single() ||
-    isset( $is_page_templates ) ||
-    is_page() ||
-    is_page_template() ||
     is_archive()
 ) {
     //echo '<!-- ' . basename( 'EB header cache' ) . ' -->' . "\n";
+
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = true;
+
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+// page template
+else if ( isset( $is_page_templates ) ||
+    is_page_template() ) {
+    $why_ebcache_not_active = '<!-- EchBay Cache disable in page template -->';
+    //echo $why_ebcache_not_active;
+
+    // xác nhận có sử dụng ebcache
+    //$active_using_ebcache = true;
+
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+// page
+else if ( is_page() ) {
+    //echo '<!-- ' . basename( 'EB header page cache' ) . ' -->' . "\n";
 
     // xác nhận có sử dụng ebcache
     $active_using_ebcache = true;
@@ -102,7 +128,7 @@ else {
 }
 
 
-// kích hoạt ob start
+// kích hoạt ob_start để còn replace content ở footer
 if ( $active_ob_start == true ) {
     define( 'HAS_USING_EB_START', true );
 
