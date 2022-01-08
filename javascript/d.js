@@ -1757,11 +1757,11 @@ if (typeof document.frm_search != 'undefined') {
 
         //
         jQuery('#click_add_to_search').off('click').click(function () {
-            //			document.frm_search.s.value = jQuery('#value_add_to_search').val() || '';
+            //document.frm_search.s.value = jQuery('#value_add_to_search').val() || '';
             jQuery('form[name="frm_search"] input[type="search"]').val(jQuery('#value_add_to_search').val() || '');
 
             //
-            //			if ( document.frm_search.s.value.length > 2 ) {
+            //if ( document.frm_search.s.value.length > 2 ) {
             if (jQuery('form[name="frm_search"] input[type="search"]').val().length > 2) {
                 document.frm_search.submit();
             } else {
