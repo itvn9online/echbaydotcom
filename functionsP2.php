@@ -2598,7 +2598,8 @@ function EBE_resize_mobile_table_webp( $attachment_id, $_size, $new_size = 440 )
         imagepalettetotruecolor( $img );
         imagealphablending( $img, true );
         imagesavealpha( $img, true );
-        imagewebp( $img, $check_file, 100 );
+        //imagewebp( $img, $check_file, 100 );
+        imagewebp( $img, $check_file );
         imagedestroy( $img );
         chmod( $check_file, 0766 );
     }
