@@ -20,7 +20,7 @@ echo WGR_show_header_favicon();
  * Do bản kết hợp với flatsome có sẵn 1 số thuộc tính nên bỏ qua các thuộc tính trùng trong SEO
  */
 ?>
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
