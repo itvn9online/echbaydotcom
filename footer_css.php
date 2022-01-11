@@ -172,6 +172,10 @@ if ( $__cf_row[ 'cf_show_order_fomo' ] > 0 ) {
 EBE_add_js_compiler_in_cache( $arr_for_add_js, 'defer', 1 );
 
 
+//
+$arr_for_add_outsource_async_js[] = str_replace( ABSPATH, '', EB_THEME_PLUGIN_INDEX ) . 'javascript/analytics.js';
+
+
 // JS ngoài
 foreach ( $arr_for_add_outsource_async_js as $v ) {
     echo '<script type="text/javascript" src="' . $v . '" defer></script>' . "\n";
