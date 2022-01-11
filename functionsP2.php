@@ -1682,22 +1682,22 @@ function _eb_getCucki( $c_name, $default_value = '' ) {
 }
 
 
-function _eb_alert( $m ) {
-    return _eb_html_alert( $m );
+function _eb_alert( $m, $redirect='' ) {
+    return _eb_html_alert( $m, $redirect );
 
     //
     die( '<script type="text/javascript">alert("' . str_replace( '"', '\'', $m ) . '");</script>' );
 }
 
-function _eb_html_alert( $m ) {
+function _eb_html_alert( $m, $redirect='' ) {
     die( '<script type="text/javascript">
 (function () {
 	try {
 		if ( top != self && typeof parent.WGR_html_alert == "function" ) {
-			parent.WGR_html_alert("' . $m . '");
+			parent.WGR_html_alert("' . $m . '", "' . $redirect . '");
 		}
 		else if ( typeof WGR_html_alert == "function" ) {
-			WGR_html_alert("' . $m . '");
+			WGR_html_alert("' . $m . '", "' . $redirect . '");
 		}
 		else {
 			alert("' . str_replace( '"', '\'', $m ) . '");

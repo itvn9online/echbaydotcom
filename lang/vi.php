@@ -294,6 +294,7 @@ $___eb_lang[eb_key_for_site_lang . 'pr_email'] = 'E-mail';
 $___eb_lang[eb_key_for_site_lang . 'pr_id'] = 'Mã tài khoản';
 $___eb_lang[eb_key_for_site_lang . 'pr_matkhau'] = 'Mật khẩu';
 $___eb_lang[eb_key_for_site_lang . 'pr_doimatkhau'] = 'Thay đổi mật khẩu';
+$___eb_lang[eb_key_for_site_lang . 'pr_logout'] = 'Đăng xuất';
 $___eb_lang[eb_key_for_site_lang . 'pr_hoten'] = 'Họ và tên';
 $___eb_lang[eb_key_for_site_lang . 'pr_dienthoai'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'pr_diachi'] = 'Địa chỉ';

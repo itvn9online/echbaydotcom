@@ -352,7 +352,7 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
     });
 
     // google analytics track -> by order
-    ___eb_add_convertsion_gg_v2( ga_add_product, {
+    ___eb_add_convertsion_gg_v2(ga_add_product, {
         //"id": arr[0].id,
         "id": hd_id,
         "affiliation": window.location.href.split('//')[1].split('/')[0].replace('www.', ''),
@@ -361,7 +361,7 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
         "tax": "0",
         "shipping": "0",
         "coupon": ""
-    } );
+    });
 
 }
 
@@ -369,7 +369,7 @@ function ___eb_add_convertsion_gg_v2(ga_add_product, ga_set_action, max_for) {
     if (typeof max_for == "undefined") {
         max_for = 60;
     }
-    
+
     //
     if (typeof ga == 'undefined') {
         if (typeof max_for == "undefined") {
@@ -392,16 +392,16 @@ function ___eb_add_convertsion_gg_v2(ga_add_product, ga_set_action, max_for) {
         console.log('Max for: ' + max_for);
         return false;
     }
-    
+
     //
-    for ( var i = 0; i < ga_add_product.length; i++ ) {
+    for (var i = 0; i < ga_add_product.length; i++) {
         ga('ec:addProduct', ga_add_product[i]);
 
         //
         console.log('ec addProduct:');
         console.log(ga_add_product[i]);
     }
-    
+
     //
     ga("ec:setAction", "purchase", ga_set_action);
 
@@ -529,7 +529,6 @@ function WGR_backup_order_to_google_sheet(arr, arr2) {
 }
 
 
-
 function WGR_show_try_catch_err(e) {
     return 'name: ' + e.name + '; line: ' + (e.lineNumber || e.line) + '; script: ' + (e.fileName || e.sourceURL || e.script) + '; stack: ' + (e.stackTrace || e.stack) + '; message: ' + e.message;
 }
@@ -538,7 +537,23 @@ function WGR_show_try_catch_err(e) {
 // Thay cái alert mặc định bằng cái alert HTML này cho thân thiện
 var time_for_hide_html_alert = null;
 
-function WGR_html_alert(m) {
+function WGR_html_alert(m, redirect) {
+    if (typeof redirect == 'undefined') {
+        redirect = '';
+    }
+
+    // luôn mở trong cửa sổ cha
+    if (top != self && typeof top.WGR_html_alert == 'function') {
+        return top.WGR_html_alert(m, redirect);
+    }
+
+    //
+    if (redirect != '') {
+        window.location = redirect;
+        return false;
+    }
+
+    //
     if (dog('WGR_html_alert') == null) {
         jQuery('body').append('<div id="WGR_html_alert" class="d-none"></div>');
     }
