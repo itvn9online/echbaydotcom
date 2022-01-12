@@ -4,6 +4,7 @@
 include_once __DIR__ . '/ebcache_global.php';
 
 // kiểm tra xem IP này có trong blacklist thì block luôn
+/*
 if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) ) {
     $check_blacklist_ip = $_SERVER[ 'HTTP_X_FORWARDED_FOR' ];
 } else if ( isset( $_SERVER[ 'HTTP_X_REAL_IP' ] ) ) {
@@ -14,8 +15,9 @@ if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_FOR' ] ) ) {
     $check_blacklist_ip = $_SERVER[ 'REMOTE_ADDR' ];
 }
 if ( in_array( $check_blacklist_ip, $arr_current_blacklist_ip ) ) {
-    die( '<h1>Permission deny!</h1>' );
+    die( '<h1>Unauthorized!</h1>' );
 }
+*/
 
 
 //
