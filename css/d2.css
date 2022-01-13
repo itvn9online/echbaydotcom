@@ -1716,7 +1716,7 @@ a.search-advanced-btn {
     background: #fff;
     padding: 15px 20px 50px 20px;
 }
-#oi_popup_inner input[type="email"], #oi_popup_inner input[type="password"] {
+#oi_popup_inner input[type="text"], #oi_popup_inner input[type="email"], #oi_popup_inner input[type="password"] {
     background: #fff;
     outline: none;
     width: 90%;

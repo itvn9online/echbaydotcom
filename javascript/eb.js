@@ -362,7 +362,7 @@ var g_func = {
         }
 
         //
-        dog('oi_popup', '<div id="oi_popup_inner"><div align="center" style="padding:168px 0">Loading...</div></div>');
+        dog('oi_popup', '<div id="oi_popup_inner"><div align="center" style="padding:168px 0">Loading...</div></div><div onclick="g_func.opopup();" class="oi_popup_close"></div>');
 
         //
         //		ajaxl(web_link + 'eb-' + o, 'oi_popup_inner', 9, function () {

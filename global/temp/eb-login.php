@@ -12,14 +12,14 @@ if ( $mtv_id > 0 ) {
         <form name="frm_dangnhap" method="post" action="process/?set_module=login" target="target_eb_iframe" onSubmit="return _global_js_eb.check_login_frm();">
             <div id="frm_login_token" class="d-none"></div>
             <div>
-                <label for="t_email"><strong>Email</strong></label>
+                <label class="bold"><?php echo EBE_get_lang('login_username'); ?></label>
             </div>
             <div>
-                <input type="email" name="t_email" value="" placeholder="Email" aria-required="true" required />
+                <input type="text" name="t_email" value="" placeholder="<?php echo EBE_get_lang('login_username'); ?>" aria-required="true" required />
             </div>
             <br />
             <div>
-                <label for="t_matkhau"><strong>Mật khẩu</strong></label>
+                <label class="bold">Mật khẩu</label>
             </div>
             <div>
                 <input type="password" name="t_matkhau" value="" placeholder="Password" aria-required="true" required />
@@ -31,7 +31,7 @@ if ( $mtv_id > 0 ) {
             </div>
             <br />
             <div>
-                <button type="submit" class="cur">Đăng nhập</button>
+                <button type="submit" class="cur btn primary">Đăng nhập</button>
             </div>
             <br />
             <div><a href="javascript:;" onClick="g_func.opopup('fogotpassword');">Bạn quên mật khẩu? lấy lại mật khẩu tại đây</a></div>

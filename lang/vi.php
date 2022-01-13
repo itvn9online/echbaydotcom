@@ -286,6 +286,7 @@ $___eb_lang[eb_key_for_site_lang . 'qreg_name'] = 'Họ tên';
 $___eb_lang[eb_key_for_site_lang . 'qreg_phone'] = 'Điện thoại';
 $___eb_lang[eb_key_for_site_lang . 'qreg_email'] = 'Email';
 $___eb_lang[eb_key_for_site_lang . 'qreg_submit'] = 'Gửi';
+$___eb_lang[eb_key_for_site_lang . 'login_username'] = 'Email';
 
 // profile
 $eb_note_first_lang[eb_key_for_site_lang . 'pr_tonquan'] = 'Trang tài khoản';
