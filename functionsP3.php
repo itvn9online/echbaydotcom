@@ -1139,6 +1139,14 @@ function WGR_before_optimize_code( $confirm_file ) {
         return false;
     }
 
+    //
+    _eb_remove_file( $confirm_file );
+    // không xóa được file -> bỏ luôn
+    if ( file_exists( $confirm_file ) ) {
+        echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
+        return false;
+    }
+
     // kiểm tra nội dung file
     $content_file = file_get_contents( $confirm_file, 1 );
     //echo $content_file . '<br>' . "\n";
@@ -1168,14 +1176,6 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
         return false;
     }
     echo '<!-- ' . __FUNCTION__ . ' running... -->';
-
-    //
-    _eb_remove_file( $confirm_file );
-    // không xóa được file -> bỏ luôn
-    if ( file_exists( $confirm_file ) ) {
-        echo '<!-- Can not remove file ' . basename( $confirm_file ) . ' -->';
-        return false;
-    }
 
     //
     $arr_vendor_list = [
