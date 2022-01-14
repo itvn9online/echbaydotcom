@@ -1201,7 +1201,7 @@ function WGR_unzip_vendor_code( $check_confirm_file = true ) {
 
             //
             if ( !is_dir( $dir_unzip ) ) {
-                echo '<!-- ' . $filename . ':' . __LINE__ . ' -->' . "\n";
+                echo '<!-- ' . __FUNCTION__ . ' ' . $filename . ':' . __LINE__ . ' -->' . "\n";
 
                 //
                 if ( $zip->open( $filename ) === TRUE ) {
@@ -1344,7 +1344,7 @@ function WGR_optimize_static_code() {
 
         //
         $v = rtrim( EB_THEME_PLUGIN_INDEX . $v, '/' );
-        echo '<!-- ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
+        echo '<!-- ' . __FUNCTION__ . ' ' . str_replace( ABSPATH, '', $v ) . ' -->' . "\n";
         if ( !is_dir( $v ) ) {
             continue;
         }
