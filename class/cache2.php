@@ -313,7 +313,7 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 WGR_unzip_vendor_code();
 
 // optimize các file tĩnh (css, js...)
-WGR_optimize_static_code();
+//WGR_optimize_static_code();
 
 /*
 echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
