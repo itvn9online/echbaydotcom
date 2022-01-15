@@ -18,7 +18,7 @@ function EBE_get_html_logo( $set_h1 = 0 ) {
     }
 
     //
-    return '<' . $logo_tag . '><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row[ 'cf_logo' ] . ');">&nbsp;</a></' . $logo_tag . '>';
+    return '<' . $logo_tag . '><a href="./" class="web-logo d-block" style="background-image:url(' . $__cf_row[ 'cf_logo' ] . ');" aria-label="Home">&nbsp;</a></' . $logo_tag . '>';
 
     // v1 -> auto set height
     //	return '<div><a data-size="' . $__cf_row['cf_size_logo'] . '" href="./" class="web-logo ti-le-global d-block" style="background-image:url(' . $__cf_row['cf_logo'] . ');">&nbsp;</a></div>';
@@ -76,7 +76,7 @@ function EBE_get_html_search( $class_for_search = 'div-search-margin', $echbay_s
 		<form role="search" method="get" action="' . web_link . $echbay_search . '">
 			<input type="search" placeholder="' . EBE_get_lang( 'searchp' ) . '" value="' . $current_search_key . '" name="' . $echbay_search_name . '" autocomplete="' . EBE_get_lang( 'search_autocomplete' ) . '" aria-required="true" required>
 			<input type="hidden" name="' . $echbay_search_type . '" value="post" />
-			<button type="submit" class="default-bg"><i class="fas fa-search"></i><span class="d-none">' . EBE_get_lang( 'search' ) . '</span></button>
+			<button type="submit" class="default-bg" aria-label="Search"><i class="fas fa-search"></i><span class="d-none">' . EBE_get_lang( 'search' ) . '</span></button>
 			<span data-active="' . $class_for_search . '" class="span-search-icon cur"><i class="fas fa-search"></i></span>
 		</form>
 	</div>
@@ -153,27 +153,27 @@ function WGR_get_footer_social() {
     $str = '';
 
     if ( $__cf_row[ 'cf_facebook_page' ] != '' ) {
-        $str .= ' <li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_facebook' ) . '"></i> <span>Facebook</span></a></li>';
+        $str .= ' <li class="footer-social-fb"><a href="javascript:;" class="ahref-to-facebook" target="_blank" rel="nofollow" aria-label="Facebook page"><i class="' . EBE_get_lang( 'social_facebook' ) . '"></i> <span>Facebook</span></a></li>';
     }
 
     if ( $__cf_row[ 'cf_instagram_page' ] != '' ) {
-        $str .= ' <li class="footer-social-it"><a href="javascript:;" class="ahref-to-instagram" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_instagram' ) . '"></i> <span>Instagram</span></a></li>';
+        $str .= ' <li class="footer-social-it"><a href="javascript:;" class="ahref-to-instagram" target="_blank" rel="nofollow" aria-label="Instagram page"><i class="' . EBE_get_lang( 'social_instagram' ) . '"></i> <span>Instagram</span></a></li>';
     }
 
     if ( $__cf_row[ 'cf_twitter_page' ] != '' ) {
-        $str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_twitter' ) . '"></i> <span>Twitter</span></a></li>';
+        $str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-twitter-page" target="_blank" rel="nofollow" aria-label="Twitter page"><i class="' . EBE_get_lang( 'social_twitter' ) . '"></i> <span>Twitter</span></a></li>';
     }
 
     if ( $__cf_row[ 'cf_youtube_chanel' ] != '' ) {
-        $str .= ' <li class="footer-social-yt"><a href="javascript:;" class="each-to-youtube-chanel" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_youtube' ) . '"></i> <span>Youtube</span></a></li>';
+        $str .= ' <li class="footer-social-yt"><a href="javascript:;" class="each-to-youtube-chanel" target="_blank" rel="nofollow" aria-label="Youtube chanel"><i class="' . EBE_get_lang( 'social_youtube' ) . '"></i> <span>Youtube</span></a></li>';
     }
 
     if ( $__cf_row[ 'cf_google_plus' ] != '' ) {
-        $str .= ' <li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_google_plus' ) . '"></i> <span>Google+</span></a></li>';
+        $str .= ' <li class="footer-social-gg"><a href="javascript:;" class="ahref-to-gooplus" target="_blank" rel="nofollow" aria-label="Google plus"><i class="' . EBE_get_lang( 'social_google_plus' ) . '"></i> <span>Google+</span></a></li>';
     }
 
     if ( $__cf_row[ 'cf_pinterest_page' ] != '' ) {
-        $str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-pinterest-page" target="_blank" rel="nofollow"><i class="' . EBE_get_lang( 'social_pinterest' ) . '"></i> <span>Twitter</span></a></li>';
+        $str .= ' <li class="footer-social-tw"><a href="javascript:;" class="each-to-pinterest-page" target="_blank" rel="nofollow" aria-label="Pinterest page"><i class="' . EBE_get_lang( 'social_pinterest' ) . '"></i> <span>Twitter</span></a></li>';
     }
 
     //

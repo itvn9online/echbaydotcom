@@ -56,6 +56,7 @@ foreach ( $arr_for_add_outsource_js as $v ) {
 
 //
 $arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d.js';
+$arr_for_add_js[] = EB_THEME_PLUGIN_INDEX . 'javascript/d2.js';
 
 // nạp js từ child theme (nếu có)
 //if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'javascript/display.js' ) ) {

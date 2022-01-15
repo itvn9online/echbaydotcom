@@ -6,6 +6,7 @@
 $arr_order_tab = array(
 	'languages' => 'Ngôn ngữ',
 //	'design' => 'Chỉnh sửa giao diện',
+	'optimize_static' => 'Optimize code',
 	'404_monitor' => '404 Monitor',
 	'sitemap' => 'Sitemap',
 	'robots' => 'Robots',

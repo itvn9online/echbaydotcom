@@ -149,7 +149,7 @@ else if (act == '404') {
 
 // hệ thống banner quảng cáo
 //___eb_logo_doitac_chantrang(6);
-___eb_thread_details_timeend();
+if (typeof confirm_df2_loaded != 'undefined') ___eb_thread_details_timeend();
 ___eb_thread_list_li();
 //___eb_add_space_for_breadcrumb();
 //___eb_click_open_video_popup();
@@ -552,7 +552,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 // tạo link để admin chỉnh sửa khi cần
-WGR_create_quick_link_edit_post();
+if (typeof confirm_df2_loaded != 'undefined') WGR_create_quick_link_edit_post();
 WGR_open_local_link_in_iframe();
 
 

@@ -168,8 +168,10 @@ function EB_flatsome_load_footer_static() {
         EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
         ( mtv_id > 0 && current_user_can( 'delete_posts' ) ) ? EB_THEME_PLUGIN_INDEX . 'javascript/show-edit-btn.js' : '',
         EB_THEME_PLUGIN_INDEX . 'javascript/df.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/df2.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/dp.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/d2.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
         /*

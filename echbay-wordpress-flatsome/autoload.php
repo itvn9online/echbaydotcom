@@ -6,6 +6,16 @@
 require dirname( dirname( __DIR__ ) ) . '/echbay-wordpress-flatsome/autoload.php';
  */
 
+/*
+ * Do đoạn code viewport của flatsome chưa đạt chuẩn điểm của google page speed -> cần phải chỉnh lại
+ */
+// Remove Header Viewport Meta 
+function remove_flatsome_viewport_meta() {
+    remove_action( 'wp_head', 'flatsome_viewport_meta', 1 );
+}
+add_action( 'init', 'remove_flatsome_viewport_meta', 15 );
+
+
 define( 'WGR_APP_PATH', __DIR__ . '/app/' );
 //define( 'WGR_PUBLIC_PATH', __DIR__ . '/public/' );
 //define( 'WGR_DEFAULT_SIDEBAR', 'main_sidebar' );

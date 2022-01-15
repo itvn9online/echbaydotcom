@@ -86,13 +86,15 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
     foreach ( $a as $v ) {
         $v = trim( $v );
 
-        if ( $v != '' ) {
+        if ( $v == '' ) {
+            continue;
+        }
 
-            //			echo substr( $v, -3 ) . "\n";
+        //			echo substr( $v, -3 ) . "\n";
 
-            // xóa HTML comment
-            // https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
-            /*
+        // xóa HTML comment
+        // https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
+        /*
 			if ( substr( $v, 0, 4 ) == '<!--' && substr( $v, -3 ) == '-->' ) {
 //				$v = trim( preg_replace('/<!--(.*)-->/Uis', '', $v) );
 //				$v = trim( preg_replace('s/<!--[^>]*-->//g', '', $v) );
@@ -100,40 +102,34 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
 			}
 			*/
 
-            // nội dung hợp lệ
-            //			if ( $v != '' ) {
-
-            //				if ( strpos( $v, '//' ) !== false ) {
+        // nội dung hợp lệ
+        if ( strpos( $v, '//' ) !== false ) {
             $v .= "\n";
-            /*
-				}
-				else {
-					$v .= ' ';
-				}
-				*/
-
-            // v1
-            $data .= $v;
-
-
-            // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file_put_contents bị gọi nhiều quá
-            if ( $i % 55 == 0 ) {
-                // lần đầu tiên thì add nội dung, để nó reset lại file từ đầu
-                if ( $create_file == 1 ) {
-                    file_put_contents( $filename, $data )or die( 'ERROR: add main cache file' );
-                    $create_file = 0;
-                }
-                // sau đó là append
-                else {
-                    file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append main cache file' );
-                }
-                $data = '';
-                $i = 0;
-            }
-            $i++;
-
-            //			}
+        } else {
+            $v .= ' ';
         }
+
+        // v1
+        $data .= $v;
+
+
+        // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file_put_contents bị gọi nhiều quá
+        if ( $i % 55 == 0 ) {
+            // lần đầu tiên thì add nội dung, để nó reset lại file từ đầu
+            if ( $create_file == 1 ) {
+                file_put_contents( $filename, $data )or die( 'ERROR: add main cache file' );
+                $create_file = 0;
+            }
+            // sau đó là append
+            else {
+                file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append main cache file' );
+            }
+            $data = '';
+            $i = 0;
+        }
+        $i++;
+
+        //			}
     }
     // v2 -> nhúng nội dung còn thiếu ở những vòng lặp cuối
     if ( $data != '' ) {

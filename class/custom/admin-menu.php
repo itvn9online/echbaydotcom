@@ -8,6 +8,7 @@
 
 // optimize các file tĩnh (css, js...)
 WGR_optimize_static_code();
+//echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
 
 
 // tạo URL động trong admin, hạn chế lỗi URL

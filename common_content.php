@@ -75,6 +75,7 @@ $main_content = str_replace( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '
 //echo EB_DIR_CONTENT . '<br>' . "\n";
 $main_content = str_replace( '" content="' . EB_DIR_CONTENT . '/', '" content="' . web_link . EB_DIR_CONTENT . '/', $main_content );
 $main_content = str_replace( 'link href="' . EB_DIR_CONTENT . '/uploads/', 'link href="' . web_link . EB_DIR_CONTENT . '/uploads/', $main_content );
+//$main_content = str_replace( ' href="./', ' href="' . web_link, $main_content );
 
 
 //
