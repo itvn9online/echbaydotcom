@@ -24,6 +24,7 @@ if ( !file_exists( $confirm_file ) ) {
 // còn thì tự động nạp lại trang cho đến khi hoàn tất
 else {
     ?>
+<p class="medium18 redcolor">Vui lòng chờ các file tĩnh đang được dọn dẹp bớt comment...</p>
 <script>
 setTimeout(function () {
     window.location=window.location.href;
