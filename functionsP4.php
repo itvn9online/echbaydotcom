@@ -359,6 +359,12 @@ function WGR_optimize_backup_code( $source_file, $save_dir, $min_line = 10 ) {
 }
 
 function WGR_optimize_static_code() {
+    // không thực thi chức năng này ở phần load ajax
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ] ) === false ) {
+        return false;
+    }
+
+    //
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
     //echo $confirm_file . '<br>' . "\n";
     if ( WGR_before_optimize_code( $confirm_file ) === false ) {

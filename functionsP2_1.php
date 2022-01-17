@@ -36,6 +36,12 @@ function _eb_create_file(
 
         // nếu không tạo được file
         if ( !$filew ) {
+            /*
+            foreach ( debug_backtrace() as $backtrace ) {
+                echo $backtrace[ 'file' ] . ':' . $backtrace[ 'line' ] . ':' . $backtrace[ 'function' ] . '<br>' . PHP_EOL;
+            }
+            */
+
             // thử tạo bằng ftp
             if ( $ftp == 1 ) {
                 return EBE_ftp_create_file( $file_, $content_, $add_line );

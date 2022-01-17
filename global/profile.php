@@ -79,8 +79,12 @@ if ( mtv_id > 0 ) {
     include EB_THEME_PLUGIN_INDEX . 'global/user.php';
     //echo $user_temp . '<br>' . "\n";
 
+    //
+    $msg_error = isset( $_GET[ 'msg' ] ) ? '<p class="redcolor">' . $_GET[ 'msg' ] . '</p>': '';
+
     //	$main_content = EBE_str_template( 'profile.html', array(
     $main_content = EBE_html_template( $user_temp, array(
+        'tmp.msg_error' => $msg_error,
         'tmp.role_name' => $role_name,
         'tmp.len_activation_key' => $len_activation_key,
         'tmp.tv_email' => mtv_email,

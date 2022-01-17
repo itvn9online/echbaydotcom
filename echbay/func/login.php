@@ -37,10 +37,12 @@ if ( isset($_POST['t_remember']) && $_POST['t_remember'] == 1 ) {
 	$creds['remember'] = false;
 }
 
-//
+// hỗ trợ đăng nhập bằng username haowcj email nên không check định dạng email ở đây nữa
+/*
 if ( _eb_check_email_type ( $creds['user_login'] ) != 1 ) {
 	_eb_alert( 'Email không đúng định dạng' );
 }
+*/
 
 // true -> với site có SSL không cần đăng nhập lại
 if ( eb_web_protocol == 'https' ) {
@@ -70,8 +72,6 @@ die('<script type="text/javascript">
 parent.___eb_custom_login_done();
 </script>');
 
+//
 exit();
-
-
-
 

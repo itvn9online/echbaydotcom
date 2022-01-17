@@ -9,7 +9,10 @@ $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
 
 // nếu chưa có file confirm thì tạo -> ép buộc optimize
 if ( !file_exists( $confirm_file ) ) {
-    _eb_create_file( $confirm_file, time() );
+    ?>
+<p class="medium18 orgcolor">Tạo file <?php echo basename($confirm_file); ?> để ép buộc tiến trình optimize code...</p>
+<?php
+_eb_create_file( $confirm_file, time() );
 }
 
 //
