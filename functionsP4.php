@@ -360,9 +360,13 @@ function WGR_optimize_backup_code( $source_file, $save_dir, $min_line = 10 ) {
 
 function WGR_optimize_static_code() {
     // không thực thi chức năng này ở phần load ajax
-    if ( strpos( $_SERVER[ 'REQUEST_URI' ] ) === false ) {
+    //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) );
+    //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/post.php' ) );
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) !== false ) {
+        //echo '1';
         return false;
     }
+    //echo '0';
 
     //
     $confirm_file = EB_THEME_PLUGIN_INDEX . 'optimizecode.txt';
