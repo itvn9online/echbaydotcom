@@ -208,7 +208,7 @@ function WGR_add_ebcache_php_to_index( $__cf_row ) {
         strpos( file_get_contents( ABSPATH . 'index.php', 1 ), '/echbaydotcom/ebcache.php' ) === false ) {
         // copy file mẫu
         if ( copy( __DIR__ . '/index-tmp.php', ABSPATH . 'index.php' ) ) {
-            echo 'active WP_ACTIVE_WGR_SUPPER_CACHE <br>' . "\n";
+            echo 'active WP ACTIVE WGR SUPPER CACHE <br>' . "\n";
         } else {
             // không copy được thì dùng chức năng tạo file -> có hỗ trợ sử dụng phương thức FTP
             _eb_create_file( ABSPATH . 'index.php', file_get_contents( __DIR__ . '/index-tmp.php', 1 ) );
@@ -219,7 +219,7 @@ function WGR_add_ebcache_php_to_index( $__cf_row ) {
     }
 }
 
-function WGR_add_ebcache_php_to_index_v1( $__cf_row ) {
+function WGR_v1_add_ebcache_php_to_index( $__cf_row ) {
     if ( mtv_id > 0 && $__cf_row[ 'cf_enable_ebsuppercache' ] == 1 ) {
         //echo ABSPATH . '<br>' . "\n";
         $content_of_wp_index = trim( file_get_contents( ABSPATH . 'index.php', 1 ) );
