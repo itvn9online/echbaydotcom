@@ -520,7 +520,7 @@ function _eb_add_compiler_css( $arr ) {
         //
         //		print_r( $arr );
         foreach ( $arr as $k => $v ) {
-            //			echo $v . "\n";
+            //echo $v . "\n";
             if ( $v * 1 === 1 ) {
                 if ( $__cf_row[ 'cf_css2_inline' ] == 1 ) {
                     $new_arr2[ $k ] = 1;
@@ -533,17 +533,17 @@ function _eb_add_compiler_css( $arr ) {
                 }
             }
         }
-        //		print_r( $new_arr1 );
-        //		print_r( $new_arr2 );
-        //		$arr = array_merge( $new_arr1, $new_arr2 );
-        //		print_r( $arr );
-        //		echo count( $arr ) . "\n";
+        //print_r( $new_arr1 );
+        //print_r( $new_arr2 );
+        //$arr = array_merge( $new_arr1, $new_arr2 );
+        //print_r( $arr );
+        //echo count( $arr ) . "\n";
 
 
         // chức năng load nội dung file trực tiếp giống wordpress
         $file_name = array();
         $file2_name = array();
-        //		print_r( $arr );
+        //print_r( $arr );
         foreach ( $arr as $k => $v ) {
             /*
             if ( file_exists($k) ) {
@@ -595,7 +595,7 @@ function _eb_add_compiler_css( $arr ) {
 
 
         // cho vào 1 file để giảm request
-        //			_eb_add_compiler_v2_css( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
+        //_eb_add_compiler_v2_css( array_merge( $new_arr1, $new_arr2 ), 0 ); return true;
         // nhúng nội dung file css
         if ( $__cf_row[ 'cf_css_inline' ] == 1 ) {
             _eb_add_compiler_v2_css( $new_arr1 );
@@ -612,7 +612,7 @@ function _eb_add_compiler_css( $arr ) {
             _eb_add_compiler_v2_css( $new_arr2, 0 );
         }
     }
-    //	}
+    //}
 }
 
 function _eb_add_compiler_v2_css( $arr, $css_inline = 1 ) {
