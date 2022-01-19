@@ -362,10 +362,12 @@ function WGR_optimize_static_code() {
     // không thực thi chức năng này ở phần load ajax
     //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) );
     //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/post.php' ) );
+    /*
     if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) !== false ) {
         //echo '1';
         return false;
     }
+    */
     //echo '0';
 
     //

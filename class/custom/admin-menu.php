@@ -7,7 +7,17 @@
 
 
 // optimize các file tĩnh (css, js...)
-WGR_optimize_static_code();
+//print_r( $_SERVER );
+// khi truy cập các link từ các file sau thì mới thực hiện lệnh optimize
+$whitelist_optimize = [
+    'admin.php',
+    'edit.php',
+    'edit-tags.php',
+    //'admin.php',
+];
+if ( in_array( basename( $_SERVER[ 'PHP_SELF' ] ), $whitelist_optimize ) ) {
+    WGR_optimize_static_code();
+}
 //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
 
 
