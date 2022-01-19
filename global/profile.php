@@ -57,13 +57,29 @@ if ( mtv_id > 0 ) {
     // nếu có phần xác thực tài khoản -> hiển thị form xác thực
     $len_activation_key = 0;
     $role_name = '';
-    if ( isset( $arr_user_profile->data ) && isset( $arr_user_profile->data->user_activation_key ) && $arr_user_profile->data->user_activation_key != '' ) {
+    // các loại tài khoản trong đây sẽ không cần phải xác minh nữa
+    $whitelist_role = [
+        'contributor',
+        'author',
+        'editor',
+        'administrator',
+    ];
+    // xác minh này hiện chỉ dành cho số điện thoại
+    if ( $tv_dienthoai != '' &&
+        // không cần xác minh đối với các tài khoản cấp cao hơn
+        !in_array( $current_role, $whitelist_role ) &&
+        isset( $arr_user_profile->data ) &&
+        isset( $arr_user_profile->data->user_activation_key ) &&
+        $arr_user_profile->data->user_activation_key != '' ) {
+        // kích hoạt chế độ xác minh
         $act = 'verification_account';
 
         $len_activation_key = strlen( $arr_user_profile->data->user_activation_key );
     } else {
         global $wp_roles;
         //print_r( $wp_roles );
+
+        //
         if ( isset( $wp_roles->roles ) ) {
             foreach ( $wp_roles->roles as $k => $v ) {
                 if ( $k == $current_role ) {
@@ -82,7 +98,7 @@ if ( mtv_id > 0 ) {
     //
     $msg_error = isset( $_GET[ 'msg' ] ) ? '<p class="redcolor">' . $_GET[ 'msg' ] . '</p>': '';
 
-    //	$main_content = EBE_str_template( 'profile.html', array(
+    //$main_content = EBE_str_template( 'profile.html', array(
     $main_content = EBE_html_template( $user_temp, array(
         'tmp.msg_error' => $msg_error,
         'tmp.role_name' => $role_name,
