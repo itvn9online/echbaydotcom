@@ -321,14 +321,14 @@ function WGR_optimize_backup_code( $source_file, $save_dir, $min_line = 10 ) {
     }
 
     // nếu tồn tại file done -> lượng dòng của file này nhiều sẵn rồi -> bỏ qua
-    $done_file = $save_dir . '/' . basename( $source_file ) . '-after-optimize.txt';
+    $done_file = $save_dir . '/' . str_replace( '.', '-', basename( $source_file ) ) . '-after-optimize.txt';
     if ( file_exists( $done_file ) ) {
         //echo $done_file . '<br>' . "\n";
         return false;
     }
 
     //echo $save_dir . '<br>' . "\n";
-    $bak_file = $save_dir . '/' . basename( $source_file ) . '-before-optimize.txt';
+    $bak_file = $save_dir . '/' . str_replace( '.', '-', basename( $source_file ) ) . '-before-optimize.txt';
     //echo $bak_file . '<br>' . "\n";
 
     // chưa tại file backup rồi thì thực hiện copy
