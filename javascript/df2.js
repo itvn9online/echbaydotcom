@@ -1063,10 +1063,11 @@ function WGR_fixed_a_tag() {
                 if (a.split('//').length > 1 && a.split('//')[1].split('/')[0] != dm) {
                     if (nol == 1) {
                         jQuery(this).attr({
-                            target: '_blank',
-                            //rel: 'nofollow'
-                            //rel: 'noreferrer'
-                            rel: 'nofollow noreferrer'
+                            //rel: 'nofollow',
+                            //rel: 'noreferrer',
+                            //rel: 'nofollow noreferrer',
+                            rel: 'noopener noreferrer',
+                            target: '_blank'
                         });
                     }
                 }
