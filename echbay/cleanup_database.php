@@ -285,8 +285,9 @@ else if ( isset( $_GET['reset_post'] ) && trim( $_GET['reset_post'] ) != '' ) {
 	$_GET['reset_post'] = trim( $_GET['reset_post'] );
 	
 	echo 'Lệnh này khá nguy hiểm, nên cần vào trực tiếp database rồi chạy lệnh này:<br>
-<pre><code>DELETE FROM `wp_postmeta` WHERE `post_id` IN (select ID from `wp_posts` where `post_type` = "' . $_GET['reset_post'] . '");<br>
-DELETE FROM `wp_posts` WHERE `post_type` = "' . $_GET['reset_post'] . '";</code></pre>
+<pre><code>DELETE FROM `wp_postmeta` WHERE `post_id` IN (select ID from `wp_posts` where `post_type` = \'' . $_GET['reset_post'] . '\');<br>
+DELETE FROM `wp_term_relationships` WHERE `object_id` IN (select ID from `wp_posts` where `post_type` = \'' . $_GET['reset_post'] . '\');<br>
+DELETE FROM `wp_posts` WHERE `post_type` = \'' . $_GET['reset_post'] . '\';</code></pre>
 <br>';
 	
 }
