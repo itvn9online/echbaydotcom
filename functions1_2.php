@@ -828,6 +828,9 @@ function _eb_non_mark_seo_v1( $str ) {
 }
 
 function _eb_non_mark_seo( $str ) {
+    // sử dụng hàm của wordpress
+    //return sanitize_title( $str );
+
     //	$str = _eb_non_mark_seo_v1( $str );
     $str = _eb_non_mark_seo_v2( $str );
 
