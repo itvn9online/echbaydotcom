@@ -1912,6 +1912,10 @@ function EBE_set_default_excerpt_for_seo() {
 }
 
 function EBE_set_default_title_for_seo() {
+    if (dog('postexcerpt-hide') == null) {
+        return false;
+    }
+    
     if (dog('postexcerpt-hide').checked == false) {
         jQuery('#postexcerpt-hide').click();
         if (dog('postexcerpt-hide').checked == false) {

@@ -20,7 +20,7 @@ require __DIR__ . '/header_cache.php';
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<base href="<?php echo web_link; ?>" />
+<!-- <base href="<?php echo web_link; ?>" /> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 

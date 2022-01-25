@@ -1521,7 +1521,7 @@ function WGR_run_for_admin_edit_post () {
 	
 	//
 	jQuery(window).on('load', function () {
-		EBE_set_default_title_for_seo();
+        if (typeof EBE_set_default_title_for_seo == 'function')EBE_set_default_title_for_seo();
 	});
 	
 	

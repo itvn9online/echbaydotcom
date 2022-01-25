@@ -64,7 +64,7 @@ foreach ( $arr_global_main as $k => $v ) {
 
 // chuyển sang dùng CDN (nếu có)
 // URL tương đối
-$main_content = str_replace( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $main_content );
+//$main_content = str_replace( web_link . EB_DIR_CONTENT . '/', EB_DIR_CONTENT . '/', $main_content );
 // URL từ thư mục wp-content
 //	$main_content = str_replace ( web_link . EB_DIR_CONTENT . '/', $__cf_row['cf_dns_prefetch'] . EB_DIR_CONTENT . '/', $main_content );
 // URL từ thư mục uploads
