@@ -1015,7 +1015,7 @@ function WGR_fixed_a_tag() {
         //
         if (label == '') {
             $(this).attr({
-                'aria-label': $(this).attr('title') || 'External'
+                'aria-label': $(this).attr('title') || $(this).attr('data-title') || 'External'
             });
         }
 
