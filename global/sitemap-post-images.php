@@ -54,7 +54,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			) );
 			
 			foreach ( $strsql as $v2 ) {
-				$img = $v2->guid;
+                $img = str_replace( ABSPATH, web_link, $v2->guid );
 				
 				$name = $v2->post_excerpt;
 				if ( $name == '' && $v2->post_title != '' ) {
@@ -64,7 +64,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 				//
 				$str .= '
 <image:image>
-	<image:loc>' . $img . '</image:loc>
+	<image:loc><![CDATA[' . $img . ']]></image:loc>
 	<image:title><![CDATA[' . $name . ']]></image:title>
 </image:image>';
 				
@@ -75,7 +75,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		if ( $str != '' ) {
 			$get_list_sitemap .= '
 <url>
-<loc>' . web_link . '</loc>' . $str . '
+<loc><![CDATA[' . web_link . ']]></loc>' . $str . '
 </url>';
 			
 		}
@@ -90,7 +90,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			
 			$str = '';
 			foreach ( $strsql as $v2 ) {
-				$img = $v2->guid;
+                $img = str_replace( ABSPATH, web_link, $v2->guid );
 				
 				$name = $v2->post_excerpt;
 				if ( $name == '' && $v2->post_title != '' ) {
@@ -100,7 +100,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 				//
 				$str .= '
 <image:image>
-	<image:loc>' . $img . '</image:loc>
+	<image:loc><![CDATA[' . $img . ']]></image:loc>
 	<image:title><![CDATA[' . $name . ']]></image:title>
 </image:image>';
 				
@@ -111,7 +111,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			if ( $str != '' ) {
 				$get_list_sitemap .= '
 <url>
-<loc>' . _eb_p_link( $v->ID ) . '</loc>' . $str . '
+<loc><![CDATA[' . _eb_p_link( $v->ID ) . ']]></loc>' . $str . '
 </url>';
 				
 			}

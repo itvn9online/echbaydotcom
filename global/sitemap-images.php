@@ -42,7 +42,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 //	print_r( $sql );
 	
 	foreach ( $sql as $v ) {
-		$img = $v->guid;
+        $img = str_replace( ABSPATH, web_link, $v->guid );
 		
 		$name = $v->post_excerpt;
 		if ( $name == '' && $v->post_title != '' ) {
@@ -52,7 +52,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		//
 		$get_list_sitemap .= '
 <image:image>
-	<image:loc>' . $img . '</image:loc>
+	<image:loc><![CDATA[' . $img . ']]></image:loc>
 	<image:title><![CDATA[' . $name . ']]></image:title>
 </image:image>';
 		
@@ -61,7 +61,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	// lấy tất cả các ảnh không có parent cho về trang chủ
 	$get_list_sitemap = '
 <url>
-<loc>' . web_link . '</loc>' . $get_list_sitemap . '
+<loc><![CDATA[' . web_link . ']]></loc>' . $get_list_sitemap . '
 </url>';
 	
 	

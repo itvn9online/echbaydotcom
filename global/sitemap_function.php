@@ -23,7 +23,7 @@ function WGR_echo_sitemap_urlset () {
 function WGR_echo_sitemap_node ( $loc, $lastmod ) {
 	return '
 <sitemap>
-	<loc>' . $loc . '</loc>
+	<loc><![CDATA[' . $loc . ']]></loc>
 	<lastmod>' . $lastmod . '</lastmod>
 </sitemap>';
 }
@@ -116,7 +116,7 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 			
 			//
 			foreach ( $sql as $v ) {
-				$img = $v->guid;
+                $img = str_replace( ABSPATH, web_link, $v->guid );
 				
 				$name = $v->post_excerpt;
 				if ( $name == '' && $v->post_title != '' ) {
@@ -133,7 +133,7 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 				//
 				$str_list_img .= '
 <image:image>
-	<image:loc>' . $img . '</image:loc>
+	<image:loc><![CDATA[' . $img . ']]></image:loc>
 	<image:title><![CDATA[' . $name . ']]></image:title>
 </image:image>';
 			}
@@ -147,7 +147,7 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 			
 			//
 			foreach ( $sql as $v ) {
-				$img = $v->guid;
+                $img = str_replace( ABSPATH, web_link, $v->guid );
 				
 				$name = $v->post_excerpt;
 				if ( $name == '' && $v->post_title != '' ) {
@@ -164,7 +164,7 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 				//
 				$str_list_img .= '
 <image:image>
-	<image:loc>' . $img . '</image:loc>
+	<image:loc><![CDATA[' . $img . ']]></image:loc>
 	<image:title><![CDATA[' . $name . ']]></image:title>
 </image:image>';
 			}
@@ -177,7 +177,7 @@ function WGR_echo_sitemap_url_node ( $loc, $priority, $lastmod, $op = array() ) 
 	//
 	return '
 <url>
-<loc>' . $loc . '</loc>
+<loc><![CDATA[' . $loc . ']]></loc>
 <lastmod>' . $lastmod . '</lastmod>
 <changefreq>' . $op['changefreq'] . '</changefreq>
 <priority>' . $priority . '</priority>' . $str_list_img . '
@@ -248,9 +248,9 @@ function WGR_echo_sitemap_image_node ( $loc, $img, $title ) {
 	//
 	return '
 <url>
-	<loc>' . $loc . '</loc>
+	<loc><![CDATA[' . $loc . ']]></loc>
 	<image:image>
-		<image:loc>' . $img . '</image:loc>
+		<image:loc><![CDATA[' . $img . ']]></image:loc>
 		<image:title><![CDATA[' . $title . ']]></image:title>
 	</image:image>
 </url>';

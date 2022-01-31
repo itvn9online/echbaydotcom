@@ -67,6 +67,16 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		$get_list_sitemap .= WGR_sitemap_part_page( $count_post, 'blog', 'sitemap-blog', 'sitemap-blog-images' );
 	}
 	
+	$count_post = WGR_get_sitemap_total_post( 'product' );
+//	echo 'product -> ' . $count_post . '<br>' . "\n";
+	if ( $count_post > 0 ) {
+		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-product', $sitemap_current_time );
+//		$get_list_sitemap .= WGR_echo_sitemap_node( web_link . 'sitemap-product-images', $sitemap_current_time );
+		
+		// phân trang cho sitemap (lấy từ trang 2 trở đi)
+		$get_list_sitemap .= WGR_sitemap_part_page( $count_post, 'product', 'sitemap-product', 'sitemap-product-images' );
+	}
+	
 	$count_post = WGR_get_sitemap_total_post( 'page' );
 //	echo 'page -> ' . $count_post . '<br>' . "\n";
 	if ( $count_post > 0 ) {
