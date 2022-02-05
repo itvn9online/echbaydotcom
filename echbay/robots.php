@@ -56,6 +56,7 @@ if ( ! file_exists( $dir_robots_txt ) || $robots_txt_content == '' ) {
 	} else {
 //		$ftp_server = $_SERVER['HTTP_HOST'];
 		$ftp_server = $_SERVER['SERVER_ADDR'];
+		$ftp_server = '127.0.0.1';
 	}
 	if ( defined('FTP_USER') ) {
 		$ftp_user_name = FTP_USER;

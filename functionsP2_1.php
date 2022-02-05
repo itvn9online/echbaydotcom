@@ -284,8 +284,9 @@ function EBE_check_ftp_account() {
     if ( defined( 'FTP_HOST' ) ) {
         $ftp_server = FTP_HOST;
     } else {
-        //		$ftp_server = $_SERVER['HTTP_HOST'];
-        $ftp_server = $_SERVER[ 'SERVER_ADDR' ];
+        //$ftp_server = $_SERVER['HTTP_HOST'];
+        //$ftp_server = $_SERVER[ 'SERVER_ADDR' ];
+        $ftp_server = '127.0.0.1';
     }
     //	echo $ftp_server . '<br>' . "\n";
 

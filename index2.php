@@ -379,8 +379,9 @@ if ( ! defined('FS_METHOD') ) {
 }
 */
 if ( !defined( 'FTP_HOST' ) ) {
-    //	define( 'FTP_HOST', $_SERVER['HTTP_HOST'] );
-    define( 'FTP_HOST', $_SERVER[ 'SERVER_ADDR' ] );
+    //define( 'FTP_HOST', $_SERVER['HTTP_HOST'] );
+    //define( 'FTP_HOST', $_SERVER[ 'SERVER_ADDR' ] );
+    define( 'FTP_HOST', '127.0.0.1' );
 }
 
 /*

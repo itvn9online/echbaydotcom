@@ -20,7 +20,8 @@ foreach ( $server_opts as $option => $value ) {
 
 
 define( 'WP_AUTO_UPDATE_CORE', false );
-//define( 'FTP_HOST', $_SERVER['SERVER_ADDR'] );
+//define( 'FTP_HOST', '$_SERVER['SERVER_ADDR']' );
+//define( 'FTP_HOST', '127.0.0.1' );
 //define( 'FTP_USER', '' );
 //define( 'FTP_PASS', '' );
 //
