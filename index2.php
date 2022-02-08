@@ -135,7 +135,7 @@ define( 'EB_THEME_OUTSOURCE', EB_THEME_PLUGIN_INDEX . 'outsource/' );
 //define( 'EB_THEME_OUTSOURCE', EB_THEME_URL . 'outsource/' );
 //echo 'EB_THEME_OUTSOURCE: ' . EB_THEME_OUTSOURCE . '<br>';
 //
-define( 'EB_URL_OUTSOURCE', str_replace(ABSPATH, '', EB_THEME_OUTSOURCE) );
+define( 'EB_URL_OUTSOURCE', str_replace( ABSPATH, '', EB_THEME_OUTSOURCE ) );
 //echo 'EB_URL_OUTSOURCE: ' . EB_URL_OUTSOURCE . '<br>';
 
 //define( 'EB_THEME_CORE', EB_THEME_URL . 'plugin/class/' );
@@ -173,7 +173,7 @@ define( 'EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_in
 
 // thư mục lưu trữ cache
 if ( !defined( 'EB_THEME_CACHE' ) ) {
-    define( 'EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $_SERVER['HTTP_HOST'] . '/' );
+    define( 'EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $_SERVER[ 'HTTP_HOST' ] . '/' );
 }
 //echo EB_THEME_CACHE . '<br>';
 
@@ -721,68 +721,75 @@ add_filter( 'init', 'echbay_theme_setup' );
  * https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 function eb_change_product_query( $query ) {
+    if ( is_admin() ) {
+        //echo 'is admin';
+        return $query;
+    }
 
     global $__cf_row;
 
 
     //
-    $current_order = isset( $_GET[ 'orderby' ] ) ? trim( strtolower( $_GET[ 'orderby' ] ) ) : '';
-
-
-    //
-    //	print_r( $query );
+    //print_r( $query );
 
 
     // các post_type mặc định chỉ có 1 dạng sắp xếp
     if ( isset( $query->query_vars[ 'post_type' ] ) ) {
-        if ( $query->query_vars[ 'post_type' ] == 'nav_menu_item' ||
-            $query->query_vars[ 'post_type' ] == EB_BLOG_POST_TYPE ||
+        /*
+        if ( $query->is_main_query() ) {
+            print_r( $query );
+            echo $query->query_vars[ 'post_type' ] . '<br>' . "\n";
+        }
+        */
+        if ( $query->query_vars[ 'post_type' ] == 'nav_menu_item' ) {
+            return $query;
+        } else if ( $query->query_vars[ 'post_type' ] == EB_BLOG_POST_TYPE ||
             $query->query_vars[ 'post_type' ] == 'ads' ) {
 
-            // đây là chỉ số sắp xếp riêng của wordpress
-            /*
-            if ( $current_order == 'title' || $current_order == 'date' ) {
-            }
-            // mặc định sắp xếp theo STT
-            else {
-            	*/
-            if ( $current_order == '' ) {
-                if ( $query->query_vars[ 'post_type' ] == EB_BLOG_POST_TYPE ) {
-                    //					$query->set( 'orderby', array(
-                    //						'menu_order' => 'DESC',
-                    //						'date' => 'DESC'
-                    //					) );
-                    $query->set( 'orderby', 'menu_order ID' );
-
-                    //
-                    //					if ( mtv_id == 1 ) print_r( $query );
-                } else if ( $query->query_vars[ 'post_type' ] == 'ads' ) {
-                    $query->set( 'orderby', 'menu_order ID' );
-                    //					$query->set( 'order', 'DESC' );
-                }
-                //				$query->set( 'orderby', 'menu_order' );
-                // v1
-                //				$query->set( 'orderby', 'menu_order' );
-                //				$query->set( 'order', 'DESC' );
-                //				$query->set( 'orderby', 'ID' );
-                //				$query->set( 'order', 'DESC' );
-            }
+            //$query->set( 'orderby', 'menu_order post_date ID' );
+            $query->set( 'orderby', 'menu_order ID' );
+            //$query->set( 'order', 'DESC' );
 
             //
             return $query;
         }
-    } else {
-
-        //		echo EB_BLOG_POST_LINK;
-        //		print_r( $query );
+    } else if ( $query->is_main_query() ) {
+        //
+        //echo EB_BLOG_POST_LINK;
+        //echo $query->query_vars[ 'post_type' ] . '<br>' . "\n";
 
         // điều chỉnh số lượng post sẽ được hiển thị trên mỗi trang Blog
-        if ( $__cf_row[ 'cf_blogs_per_page' ] > 0 && isset( $query->query_vars[ EB_BLOG_POST_LINK ] ) ) {
-            //			print_r( $query );
-            $query->set( 'posts_per_page', $__cf_row[ 'cf_blogs_per_page' ] );
+        if ( isset( $query->query_vars[ EB_BLOG_POST_LINK ] ) ) {
+            //$query->set( 'orderby', 'menu_order post_date ID' );
+            $query->set( 'orderby', 'menu_order ID' );
+            //$query->set( 'order', 'DESC' );
+
+            //
+            if ( $__cf_row[ 'cf_blogs_per_page' ] > 0 ) {
+                //print_r( $query );
+                $query->set( 'posts_per_page', $__cf_row[ 'cf_blogs_per_page' ] );
+            }
+
+            //
+            //print_r( $query );
+            return $query;
         }
 
     }
+
+    // các phần sau chỉ dành cho main query
+    if ( !$query->is_main_query() ) {
+        //echo 'is main query';
+        return $query;
+        /*
+    } else {
+        print_r( $query );
+        */
+    }
+
+
+    //
+    $current_order = isset( $_GET[ 'orderby' ] ) ? trim( strtolower( $_GET[ 'orderby' ] ) ) : '';
 
 
     /*
@@ -953,7 +960,7 @@ function eb_change_product_query( $query ) {
         case "view":
             $query->set( 'meta_key', '_eb_product_views' );
             $query->set( 'orderby', 'meta_value_num' );
-            //			$query->set( 'order', 'DESC' );
+            //$query->set( 'order', 'DESC' );
             break;
 
             // giá tăng dần
@@ -995,7 +1002,7 @@ function eb_change_product_query( $query ) {
             // Tên sản phẩm từ Z-A
         case "za":
             $query->set( 'orderby', 'name' );
-            //			$query->set( 'order', 'DESC' );
+            //$query->set( 'order', 'DESC' );
             break;
 
             // đây là chỉ số sắp xếp riêng của wordpress
@@ -1006,14 +1013,14 @@ function eb_change_product_query( $query ) {
             // mặc định sắp xếp theo STT giảm dần
         default:
             $query->set( 'orderby', 'menu_order ID' );
-            //			$query->set( 'order', 'DESC' );
+            //$query->set( 'order', 'DESC' );
             break;
     }
 
     //
-    //	print_r( $query );
-    //	return $query;
-    return;
+    //print_r( $query );
+    return $query;
+    //return;
 }
 
 
@@ -1145,7 +1152,7 @@ function EBE_register_scripts() {
     //wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/migrate-3.0.0.min.js', array(), '3.0.0' );
     wp_register_script( 'jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-migrate-3.3.2.min.js', array(), '3.3.2' );
     wp_enqueue_script( 'jquery-migrate' );
-    
+
     //	wp_enqueue_script('jquery-core');
 
 

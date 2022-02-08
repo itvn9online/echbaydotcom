@@ -574,7 +574,8 @@ jQuery(document).keydown(function (e) {
     .ready(function () {
         // điều chỉnh dữ liệu phần discount code
         if (dog('_eb_category_coupon_ngayhethan') != null) {
-            _global_js_eb.select_date('#_eb_category_coupon_ngayhethan');
+            //_global_js_eb.select_date('#_eb_category_coupon_ngayhethan');
+            $('#_eb_category_coupon_ngayhethan').datepicker();
 
             // chuyển định dạng số cho phần giá
             jQuery('#_eb_category_coupon_giagiam, #_eb_category_coupon_donggia, #_eb_category_coupon_toithieu, #_eb_category_coupon_toida').change(function () {

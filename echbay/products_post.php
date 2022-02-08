@@ -314,6 +314,42 @@ $totalThread = _eb_c( "SELECT COUNT(ID) AS c
 //echo $strFilter . '<br>' . "\n";
 //echo $totalThread . '<br>' . "\n";
 
+//
+if ( isset( $_GET[ 'convert_date_to_date' ] ) ) {
+    $sql = "UPDATE `" . wp_posts . "`
+		" . $joinFilter . "
+	SET
+		`" . wp_posts . "`.`menu_order` = DATE_FORMAT(`" . wp_posts . "`.post_date, '%Y%m%d')
+	WHERE
+		$strFilter";
+    //echo $sql;
+    _eb_q( $sql, 0 );
+
+    //die( __FILE__ . ':' . __LINE__ );
+} else if ( isset( $_GET[ 'convert_date_to_month' ] ) ) {
+    $sql = "UPDATE `" . wp_posts . "`
+		" . $joinFilter . "
+	SET
+		`" . wp_posts . "`.`menu_order` = DATE_FORMAT(`" . wp_posts . "`.post_date, '%Y%m')
+	WHERE
+		$strFilter";
+    //echo $sql;
+    _eb_q( $sql, 0 );
+
+    //die( __FILE__ . ':' . __LINE__ );
+} else if ( isset( $_GET[ 'convert_date_to_zero' ] ) ) {
+    $sql = "UPDATE `" . wp_posts . "`
+		" . $joinFilter . "
+	SET
+		`" . wp_posts . "`.`menu_order` = 0
+	WHERE
+		$strFilter";
+    //echo $sql;
+    _eb_q( $sql, 0 );
+
+    //die( __FILE__ . ':' . __LINE__ );
+}
+
 
 // phân trang bình thường
 $totalPage = ceil( $totalThread / $threadInPage );
@@ -454,6 +490,39 @@ $strAjaxLink .= '&trang=' . $trang;
                         <br>
                     </div>
                     <br>
+                    <div class="bborder">
+                        <div class="cf">
+                            <div class="lf f20 bold">Số thứ tự theo năm tháng</div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo năm tháng của bài viết. Sắp xếp bài viết theo tháng đăng bài. </div>
+                            <div class="lf f20">
+                                <button type="button" data-ajax="&convert_date_to_month=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                    <div class="bborder">
+                        <div class="cf">
+                            <div class="lf f20 bold">Số thứ tự theo tháng ngày</div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo tháng ngày của bài viết. Sắp xếp bài viết theo ngày đăng bài. </div>
+                            <div class="lf f20">
+                                <button type="button" data-ajax="&convert_date_to_date=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
+                    <div class="bborder">
+                        <div class="cf">
+                            <div class="lf f20 bold">Đặt số thứ tự về 0</div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết về 0 </div>
+                            <div class="lf f20">
+                                <button type="button" data-ajax="&convert_date_to_zero=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <br>
                     <div class="thread_list_edit_options"></div>
                 </form>
             </div>
@@ -530,11 +599,12 @@ $strAjaxLink .= '&trang=' . $trang;
         WHERE
             " . $strFilter . "
         ORDER BY
-            `" . wp_posts . "`.menu_order DESC
+            `" . wp_posts . "`.menu_order DESC, `" . wp_posts . "`.ID DESC
         LIMIT " . $offset . ", " . $threadInPage;
-        //	echo $sql; 
+        //echo $sql; 
         $sql = _eb_q( $sql );
-        //	print_r( $sql ); exit();
+        //print_r( $sql );
+        //exit();
 
         //
         $arr_all_stick = get_option( 'sticky_posts' );

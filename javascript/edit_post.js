@@ -1535,7 +1535,8 @@ function WGR_run_for_admin_edit_post () {
 	//
 	jQuery(document).ready(function() {
 		if ( dog('_eb_product_ngayhethan') != null ) {
-			_global_js_eb.select_date('#_eb_product_ngayhethan');
+			//_global_js_eb.select_date('#_eb_product_ngayhethan');
+            $('#_eb_product_ngayhethan').datepicker();
 		}
 	});
 	
