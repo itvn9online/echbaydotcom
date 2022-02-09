@@ -343,12 +343,14 @@ if ( isset( $_GET[ 'convert_date_to_date' ] ) ) {
 	SET
 		`" . wp_posts . "`.`menu_order` = 0
 	WHERE
-		$strFilter";
+		$strFilter
+        AND `" . wp_posts . "`.`menu_order` > 0";
     //echo $sql;
     _eb_q( $sql, 0 );
 
     //die( __FILE__ . ':' . __LINE__ );
 }
+
 
 
 // phân trang bình thường
@@ -493,7 +495,7 @@ $strAjaxLink .= '&trang=' . $trang;
                     <div class="bborder">
                         <div class="cf">
                             <div class="lf f20 bold">Số thứ tự theo năm tháng</div>
-                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo năm tháng của bài viết. Sắp xếp bài viết theo tháng đăng bài. </div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo năm tháng của bài viết. Sắp xếp bài viết theo tháng đăng bài (giảm dần). </div>
                             <div class="lf f20">
                                 <button type="button" data-ajax="&convert_date_to_month=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
@@ -504,7 +506,7 @@ $strAjaxLink .= '&trang=' . $trang;
                     <div class="bborder">
                         <div class="cf">
                             <div class="lf f20 bold">Số thứ tự theo tháng ngày</div>
-                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo tháng ngày của bài viết. Sắp xếp bài viết theo ngày đăng bài. </div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo tháng ngày của bài viết. Sắp xếp bài viết theo ngày đăng bài (giảm dần). </div>
                             <div class="lf f20">
                                 <button type="button" data-ajax="&convert_date_to_date=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
@@ -515,7 +517,7 @@ $strAjaxLink .= '&trang=' . $trang;
                     <div class="bborder">
                         <div class="cf">
                             <div class="lf f20 bold">Đặt số thứ tự về 0</div>
-                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết về 0 </div>
+                            <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết về 0. Sắp xếp bài viết theo ID bài viết (giảm dần). </div>
                             <div class="lf f20">
                                 <button type="button" data-ajax="&convert_date_to_zero=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
