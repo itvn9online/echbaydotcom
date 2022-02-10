@@ -548,7 +548,7 @@ function WGR_html_alert(m, redirect) {
     }
 
     //
-    if (redirect != '') {
+    if (redirect != '' && redirect != 'error' && redirect != 'warning') {
         window.location = redirect;
         return false;
     }

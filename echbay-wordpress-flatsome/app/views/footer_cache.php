@@ -20,7 +20,7 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
 
 
     // kết thúc cache -> lấy ra nội dung để in ra
-    if ( defined( 'HAS_USING_EBCACHE' ) ) {
+    if ( defined( 'HAS_USING_EBCACHE' ) && HAS_USING_EBCACHE === true ) {
         // bắt đầu cache
         $filename = ___eb_cache_getUrl();
         //echo $filename . '<br>' . "\n";
