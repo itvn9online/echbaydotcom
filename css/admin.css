@@ -1140,6 +1140,7 @@ tr[data-row="_eb_show_product_avatar"] .show_product_avatar {
     right: 120px;
     top: 42px;
     left: 50%;
+    max-width: 150px;
 }
 .button-redprimary {
     background: #c00 !important;
