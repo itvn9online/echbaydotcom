@@ -14,6 +14,7 @@ global $flatsome_opt;
     <?php do_action('flatsome_footer'); ?>
 </footer>
 </div>
+<div id="fb-root"></div>
 <?php
 
 
@@ -27,7 +28,6 @@ wp_footer();
 require __DIR__ . '/footer_cache_quick_cart.php';
 
 ?>
-<div id="fb-root"></div>
 <div id="oi_popup"></div>
 <script type="text/javascript" src="wp-content/echbaydotcom/javascript/analytics.js" defer></script>
 </body>
