@@ -36,8 +36,8 @@ function DRA_Force_Auth_Error() {
  * We are able to make use of filters to actually disable the functionality entirely
  */
 function DRA_Disable_Via_Filters() {
-    
-	// Filters for WP-API version 1.x
+
+    // Filters for WP-API version 1.x
     add_filter( 'json_enabled', '__return_false' );
     add_filter( 'json_jsonp_enabled', '__return_false' );
 
@@ -49,7 +49,7 @@ function DRA_Disable_Via_Filters() {
     remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
     remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
     remove_action( 'template_redirect', 'rest_output_link_header', 11 );
-	
+
 }
 
 /**
@@ -58,22 +58,21 @@ function DRA_Disable_Via_Filters() {
  * @return WP_Error
  */
 function DRA_only_allow_logged_in_rest_access( $access ) {
-	
-	//
-	return '{"code":"rest_cannot_access","message":"Only authenticated users can access the REST API.","data":{"status":401}}';
-	
-	if ( ! is_user_logged_in() ) {
-		return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'disable-json-api' ), array( 'status' => rest_authorization_required_code() ) );
-	}
-	
-	return $access;
-	
+
+    //
+    return '{"code":"rest_cannot_access","message":"Only authenticated users can access the REST API.","data":{"status":401}}';
+
+    if ( !is_user_logged_in() ) {
+        return new WP_Error( 'rest_cannot_access', __( 'Only authenticated users can access the REST API.', 'disable-json-api' ), array( 'status' => rest_authorization_required_code() ) );
+    }
+
+    return $access;
+
 }
 
 
 // v1
 //add_filter( 'rest_authentication_errors', 'DRA_only_allow_logged_in_rest_access' );
-
 
 
 // v2
@@ -82,20 +81,18 @@ function DRA_only_allow_logged_in_rest_access( $access ) {
 //if ( isset( $_GET['rest_route'] ) ) {
 // URL mà tồn tại tham số /wp-json/ -> hủy luôn
 //if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json/' ) !== false ) {
-if ( strpos( $_SERVER['REQUEST_URI'], '/wp-json' ) !== false ) {
-	// một số chức năng như contact-forms 7 có sử dụng json -> vẫn để cho nó dùng
-	if ( strpos( $_SERVER['REQUEST_URI'], '/contact-forms/' ) === false ) {
-	
-		// Set trạng thái cho trang 404
-		EBE_set_header(401);
-		
-		// hiển thị dưới dạng text
-		header("Content-type: text/plain");
-		
-		// chặn nội dung
-		die('{"message":"JSON disable by ' . $arr_private_info_setting['site_upper'] . '"}');
-	
-	}
+if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/wp-json' ) !== false ) {
+    // một số chức năng như contact-forms 7 có sử dụng json -> vẫn để cho nó dùng
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/contact-forms/' ) === false ) {
+
+        // Set trạng thái cho trang 404
+        EBE_set_header( 401 );
+
+        // hiển thị dưới dạng text
+        header( "Content-type: text/plain" );
+
+        // chặn nội dung
+        die( '{"message":"JSON disable by ' . $arr_private_info_setting[ 'site_upper' ] . ' (' . $__cf_row[ 'cf_on_off_json' ] . ')"}' );
+
+    }
 }
-
-
