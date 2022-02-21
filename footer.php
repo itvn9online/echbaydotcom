@@ -63,7 +63,7 @@ $footer_lazyload = 'footer-no-lazyload';
     </div>
 </div>
 <div id="oi_scroll_top" class="default-bg"><i class="fas fa-chevron-up"></i></div>
-<div id="fb-root"></div>
+<!-- <div id="fb-root"></div> -->
 <div id="oi_popup"></div>
 <!-- mobile menu -->
 <?php

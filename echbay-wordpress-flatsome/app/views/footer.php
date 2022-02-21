@@ -14,7 +14,7 @@ global $flatsome_opt;
     <?php do_action('flatsome_footer'); ?>
 </footer>
 </div>
-<div id="fb-root"></div>
+<!-- <div id="fb-root"></div> -->
 <?php
 
 
