@@ -174,7 +174,7 @@ EBE_add_js_compiler_in_cache( $arr_for_add_js, 'defer', 1 );
 
 
 //
-$arr_for_add_outsource_async_js[] = str_replace( ABSPATH, '', EB_THEME_PLUGIN_INDEX ) . 'javascript/analytics.js';
+//$arr_for_add_outsource_async_js[] = str_replace( ABSPATH, '', EB_THEME_PLUGIN_INDEX ) . 'javascript/analytics.js';
 
 
 // JS ngoài
