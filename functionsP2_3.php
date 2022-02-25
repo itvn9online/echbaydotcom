@@ -627,6 +627,20 @@ function EBE_tao_bang_hoa_don_cho_echbay_wp() {
             'default' => '',
             'extra' => '',
         ),
+        'post_parent' => array(
+            'type' => 'bigint(20)',
+            'null' => 'no',
+            'key' => 'mul',
+            'default' => '',
+            'extra' => '',
+        ),
+        'post_type' => array(
+            'type' => 'varchar(20)',
+            'null' => 'yes',
+            'key' => 'mul',
+            'default' => '',
+            'extra' => '',
+        ),
         'tv_id' => array(
             'type' => 'bigint(20)',
             'null' => 'no',

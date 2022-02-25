@@ -699,10 +699,12 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
 	WHERE
 		ID = " . $postid );
     //print_r( $sql );
-    if ( !empty( $sql ) ) {
-        foreach ( $sql[ 0 ] as $k => $v ) {
-            $str .= '<' . $k . '><![CDATA[' . $v . ']]></' . $k . '>' . "\n";
-        }
+    if ( empty( $sql ) ) {
+        return false;
+    }
+    $data = $sql[ 0 ];
+    foreach ( $data as $k => $v ) {
+        $str .= '<' . $k . '><![CDATA[' . $v . ']]></' . $k . '>' . "\n";
     }
 
 
@@ -838,6 +840,8 @@ function WGR_save_post_xml( $postid, $save_table = 'eb_backup_post_xml' ) {
         'bpx_time' => date_time,
         'bpx_date' => date( 'YmdH', date_time ),
         'post_id' => $postid,
+        'post_type' => $data->post_type,
+        'post_parent' => $data->post_parent,
         'tv_id' => mtv_id,
     ), $save_table );
 
