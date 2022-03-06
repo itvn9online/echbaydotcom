@@ -7,7 +7,9 @@
 global $pid;
 global $__post;
 global $__cf_row;
-include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
+if ( !defined( 'FLATSOME_BASIC_THEME' ) ) {
+    include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
+}
 //}
 
 
