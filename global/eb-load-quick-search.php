@@ -80,11 +80,12 @@ if ( $get_list_quick_search == false || eb_code_tester == true ) {
     WGR_quick_search_set_content( 'var eb_pages_list=[' . WGR_quick_search_get_js_post( 'page' ) . '];' );
 
     if ( defined( 'WGR_FOR_WOOCOMERCE' ) ) {
+        WGR_quick_search_set_content( 'var eb_woo_product_cat=[' . _eb_get_full_category_v2( 0, 'product_cat', 0, array(
+            'hide_empty' => 0
+        ) ) . '];' );
         WGR_quick_search_set_content( 'var eb_product_list=[' . WGR_quick_search_get_js_post( 'product' ) . '];' );
     }
-
 }
-
 
 //
 echo file_get_contents( $quick_search_in_cache, 1 );

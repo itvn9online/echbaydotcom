@@ -243,6 +243,10 @@ function WGR_main_edit_menu() {
             if (typeof eb_product_list != 'undefined') {
                 WGR_load_post_page_for_add_menu(eb_product_list, 'product', 'Sản phẩm');
             }
+            if (typeof eb_woo_product_cat != 'undefined') {
+                WGR_load_post_page_for_add_menu(eb_woo_product_cat, 'product_cat', 'Chuyên mục sản phẩm (woo)', 'taxonomy');
+                WGR_load_post_page_for_add_menu(eb_product_list, 'product', 'Sản phẩm');
+            }
             WGR_load_post_page_for_add_menu(eb_posts_list, 'post', 'Sản phẩm');
             WGR_load_post_page_for_add_menu(eb_blogs_list, 'blog', 'Tin tức/ Blog');
             WGR_load_post_page_for_add_menu(eb_pages_list, 'page', 'Trang tĩnh');
@@ -288,5 +292,4 @@ function WGR_main_edit_menu() {
     setInterval(function () {
         WGR_add_img_edit_menu();
     }, 2000);
-
 }
