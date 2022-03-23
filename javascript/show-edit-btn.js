@@ -1,7 +1,9 @@
 function WGR_action_create_quick_link_edit_post() {
     if (isQuanly != 1 || top != self) {
+        //console.log(Math.random());
         return false;
     }
+    //console.log(Math.random());
 
     var icon_edit = 'fa fa-edit';
     if (echbay_for_flatsome === 1) {
@@ -177,3 +179,4 @@ function WGR_action_create_quick_link_edit_post() {
 
     }, 3000);
 }
+WGR_action_create_quick_link_edit_post();

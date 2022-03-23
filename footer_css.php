@@ -175,6 +175,9 @@ EBE_add_js_compiler_in_cache( $arr_for_add_js, 'defer', 1 );
 
 //
 //$arr_for_add_outsource_async_js[] = str_replace( ABSPATH, '', EB_THEME_PLUGIN_INDEX ) . 'javascript/analytics.js';
+if ( mtv_id > 0 && current_user_can( 'delete_posts' ) ) {
+    $arr_for_add_outsource_async_js[] = str_replace( ABSPATH, '', EB_THEME_PLUGIN_INDEX ) . 'javascript/show-edit-btn.js';
+}
 
 
 // JS ngoài

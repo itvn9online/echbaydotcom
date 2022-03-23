@@ -2551,6 +2551,10 @@ function WGR_finish_search_and_add_menu(post_id, post_type, post_url, item_type)
             for_process = 'post_optionschecklist-pop';
 
             post_title = WGR_js_get_post_title_by_id(eb_options_group, post_id);
+        } else if (post_type == 'product_cat') {
+            for_process = 'product_catchecklist-pop';
+
+            post_title = WGR_js_get_post_title_by_id(eb_woo_product_cat, post_id);
         } else if (post_type == 'blogs') {
             //			for_process = jQuery('#blogschecklist-pop li:last');
             for_process = 'blogschecklist-pop';
@@ -2572,9 +2576,9 @@ function WGR_finish_search_and_add_menu(post_id, post_type, post_url, item_type)
             }
             else {
             	*/
-            console.log('for_process not found');
+            console.log('for_process not found, post_type: ' + post_type);
             return false;
-            //			}
+            //}
         }
         for_process = jQuery('#' + for_process);
 
