@@ -1251,7 +1251,7 @@ function _eb_q( $str, $type = 1 ) {
 
     //	echo $str . '<br>' . "\n";
     // Không trả về gì cả -> delete, update, insert
-    if ( $type == 0 ) {
+    if ( $type === 0 ) {
         //		$wpdb->query( $wpdb->prepare( $str ) );
         $wpdb->query( trim( $str ) );
     }
