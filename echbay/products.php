@@ -35,6 +35,7 @@ $trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
 //
 $arr_for_show_post_type = array(
     'post' => 'Sản phẩm',
+    'product' => 'Sản phẩm (Woocommerce)',
     'blog' => 'Blog/ Tin tức',
     'ads' => 'Banner Quảng cáo',
 );
