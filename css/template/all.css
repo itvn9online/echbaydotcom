@@ -333,6 +333,10 @@
     border-radius: 2px;
     margin: 0 5px 7px 0;
 }
+/* flatsome */
+.row-collapse {}
+.row-small {}
+.align-middle {}
 /* ================================== reponsive ================================== */
 /* desktop only */
 @media only screen and (min-width:748px) {}
