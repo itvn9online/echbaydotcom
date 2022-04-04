@@ -470,6 +470,9 @@ function _eb_product_form_for_widget( $instance, $field_name = array() ) {
     echo '</blockquote>';
 
     echo '</blockquote>';
+    
+    //
+    _eb_widget_echo_widget_input_checkbox( $field_name[ 'post__not_in' ], $post__not_in, '<strong>Bỏ qua chế độ lọc trùng sản phẩm theo ID, cho phép sản phẩm được hiển thị lặp lại.' );
 
 
     //

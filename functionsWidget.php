@@ -49,6 +49,8 @@ function WGR_widget_arr_default_home_hot( $new_arr = array() ) {
         'custom_style' => '',
         'custom_id' => '',
         'custom_size' => '',
+        // bỏ qua chế độ lọc trùng sản phẩm nếu được kích hoạt
+        'post__not_in' => '',
         'page_id' => 0
     );
 

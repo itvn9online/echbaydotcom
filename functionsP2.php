@@ -238,7 +238,7 @@ function _eb_load_post(
     //	echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
 
     // lọc các sản phẩm trùng nhau
-    if ( $___eb_post__not_in != '' && $not_set_not_in == 0 ) {
+    if ( $___eb_post__not_in != '' && $not_set_not_in === 0 ) {
         $_eb_query[ 'post__not_in' ] = explode( ',', substr( $___eb_post__not_in, 1 ) );
     }
     /*

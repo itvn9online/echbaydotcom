@@ -70,6 +70,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		
 		$custom_style = isset( $instance ['custom_style'] ) ? $instance ['custom_style'] : '';
 		$custom_size = isset( $instance ['custom_size'] ) ? $instance ['custom_size'] : '';
+        
+        //
+        $not_set_not_in = 0;
+		$post__not_in = isset( $instance ['post__not_in'] ) ? $instance ['post__not_in'] : '';
 		
 		// ẩn các thuộc tính theo option
 		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
@@ -191,10 +195,10 @@ class ___echbay_widget_home_category_content extends WP_Widget {
 		if ( $custom_size != '' ) {
 			$html = str_replace( '{tmp.cf_product_size}', $custom_size, __eb_thread_template );
 //			echo $html;
-			$home_node_cat = _eb_load_post( $post_number, $args, $html );
+			$home_node_cat = _eb_load_post( $post_number, $args, $html, $not_set_not_in );
 		}
 		else {
-			$home_node_cat = _eb_load_post( $post_number, $args );
+			$home_node_cat = _eb_load_post( $post_number, $args, __eb_thread_template, $not_set_not_in );
 		}
 		
 		
