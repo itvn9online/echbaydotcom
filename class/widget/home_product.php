@@ -74,6 +74,9 @@ class ___echbay_widget_home_category_content extends WP_Widget {
         //
         $not_set_not_in = 0;
 		$post__not_in = isset( $instance ['post__not_in'] ) ? $instance ['post__not_in'] : '';
+        if ($post__not_in == 'on') {
+            $not_set_not_in = 1;
+        }
 		
 		// ẩn các thuộc tính theo option
 		$custom_style .= WGR_add_option_class_for_post_widget( $instance );
