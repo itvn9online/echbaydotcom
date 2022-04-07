@@ -6,7 +6,7 @@
 class ___echbay_widget_shortcode extends WP_Widget {
     function __construct() {
         parent::__construct( 'echbay_shortcode', 'EchBay call shortcode', array(
-            'description' => 'Chức năng gọi tới 1 shortcode mà không in thêm thẻ DIV bên ngoài &rarr; hạn chế độ sau cho HTML'
+            'description' => 'Chức năng gọi tới 1 shortcode mà không in thêm thẻ DIV bên ngoài &rarr; hạn chế độ sâu cho HTML'
         ) );
     }
 
