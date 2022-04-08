@@ -1145,32 +1145,36 @@ function WGR_widget_list_checkbox_taxonomy( $instance, $default, $this_value, $t
 
 
 function WGR_phom_for_home_list_and_blog( $instance, $default, $this_value, $taxonomy = 'category' ) {
+    foreach ($instance as $k=> $v) {
+        $default[$k]=$v;
+    }
+    
+    //
     WGR_widget_list_checkbox_taxonomy($instance, $default, $this_value, $taxonomy);
 
-
     //
-    _eb_widget_echo_number_of_posts_to_show( $this_value[ 'post_number' ], $post_number );
-
-
-    //
-    _eb_widget_number_of_posts_inline( $this_value[ 'num_line' ], $num_line );
+    _eb_widget_echo_number_of_posts_to_show( $this_value[ 'post_number' ], $default['post_number'] );
 
 
     //
-    _eb_widget_style_for_post_cloumn( $this_value[ 'post_cloumn' ], $post_cloumn );
+    _eb_widget_number_of_posts_inline( $this_value[ 'num_line' ], $default['num_line'] );
 
 
     //
-    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_title' ], $hide_title, 'Ẩn tiêu đề của bài viết.' );
+    _eb_widget_style_for_post_cloumn( $this_value[ 'post_cloumn' ], $default['post_cloumn'] );
+
 
     //
-    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_description' ], $hide_description, 'Ẩn tóm tắt của bài viết.' );
+    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_title' ], $default['hide_title'], 'Ẩn tiêu đề của bài viết.' );
 
     //
-    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_info' ], $hide_info, 'Ẩn ngày tháng, danh mục của bài viết.' );
+    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_description' ], $default['hide_description'], 'Ẩn tóm tắt của bài viết.' );
 
     //
-    _eb_widget_echo_widget_input_checkbox( $this_value[ 'run_slider' ], $run_slider, 'Chạy slider.' );
+    _eb_widget_echo_widget_input_checkbox( $this_value[ 'hide_info' ], $default['hide_info'], 'Ẩn ngày tháng, danh mục của bài viết.' );
+
+    //
+    _eb_widget_echo_widget_input_checkbox( $this_value[ 'run_slider' ], $default['run_slider'], 'Chạy slider.' );
 
 
     //
@@ -1191,7 +1195,7 @@ function WGR_phom_for_home_list_and_blog( $instance, $default, $this_value, $tax
     }
 
     //
-    echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $this_value[ 'custom_style' ] . '" value="' . $custom_style . '" /> * Tạo class CSS để custom riêng:<br>
+    echo '<p><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $this_value[ 'custom_style' ] . '" value="' . $default['custom_style'] . '" /> * Tạo class CSS để custom riêng:<br>
 	' . $str_click_add_style . '</p>';
     /*
     - <strong>r99</strong>: remove class w90, w99<br>
