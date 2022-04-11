@@ -909,7 +909,7 @@ function WGR_show_widget_blog( $args, $instance, $options = array() ) {
         //		print_r( $arr_select_data );
 
         // bắt buộc là sắp xếp theo menu_order DESC
-        $arr_select_data[ 'orderby' ] = 'menu_order';
+        $arr_select_data[ 'orderby' ] = 'menu_order ID';
         $arr_select_data[ 'order' ] = 'DESC';
         //		print_r( $arr_select_data ); exit();
 

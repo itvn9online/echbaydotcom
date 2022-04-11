@@ -591,7 +591,7 @@ function _eb_widget_set_sortby_field( $select_name, $select_val ) {
 
     __eb_widget_load_select(
         array(
-            'menu_order' => 'Post order',
+            'menu_order ID' => 'Post order',
             'ID' => 'Post ID',
             'post_title' => 'Post title',
             'rand' => 'Random'
