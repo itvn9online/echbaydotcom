@@ -16,6 +16,7 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
     global $id_for_get_sidebar;
     global $act;
     // ->
+    include_once EB_THEME_PLUGIN_INDEX . 'common_category_list.php';
     include_once EB_THEME_PLUGIN_INDEX . 'common_content.php';
 
 

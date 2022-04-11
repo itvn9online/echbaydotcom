@@ -36,6 +36,7 @@ echo $id_for_get_sidebar . '<br>' . "\n";
 */
 //include_once EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb-top1.php';
 include_once EB_THEME_PLUGIN_INDEX . 'themes/top/breadcrumb2-top1.php';
+include_once EB_THEME_PLUGIN_INDEX . 'common_category_list.php';
 include_once EB_THEME_PLUGIN_INDEX . 'common_content.php';
 
 // chốt
