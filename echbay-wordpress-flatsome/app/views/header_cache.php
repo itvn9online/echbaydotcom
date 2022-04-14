@@ -66,8 +66,8 @@ else if ( isset( $_GET[ 'search_advanced' ] ) ) {
     $active_ob_start = true;
 }
 // không cache với post
-else if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' ) {
-    $why_ebcache_not_active = '<!-- EchBay Cache (ebcache) not running in POST method -->';
+else if ( $_SERVER[ 'REQUEST_METHOD' ] != 'GET' ) {
+    $why_ebcache_not_active = '<!-- EchBay Cache (ebcache) running in GET method only -->';
 }
 // thời gian tối thiểu để cache là 30s
 else if ( $__cf_row[ 'cf_reset_cache' ] < 30 ) {
