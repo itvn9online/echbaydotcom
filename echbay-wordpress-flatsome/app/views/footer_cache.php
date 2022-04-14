@@ -21,7 +21,8 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
 
 
     // kết thúc cache -> lấy ra nội dung để in ra
-    if ( defined( 'HAS_USING_EBCACHE' ) && HAS_USING_EBCACHE === true ) {
+    if ( defined( 'HAS_USING_EBCACHE' ) && HAS_USING_EBCACHE !== false ) {
+        //echo '<!-- HAS_USING_EBCACHE: ' . HAS_USING_EBCACHE . ' -->' . "\n";
         // bắt đầu cache
         $filename = ___eb_cache_getUrl();
         //echo $filename . '<br>' . "\n";
@@ -46,7 +47,7 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
 
 
         // thêm câu báo rằng đang lấy nội dung trong cache
-        $eb_cache_note = WGR_create_eb_cache_note();
+        $eb_cache_note = WGR_create_eb_cache_note() . '<!-- HAS USING EBCACHE: ' . HAS_USING_EBCACHE . ' -->';
 
         // END
         //echo $eb_cache_note;

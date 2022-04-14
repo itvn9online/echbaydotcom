@@ -79,28 +79,73 @@ else if ( $__cf_row[ 'cf_reset_cache' ] < 30 ) {
 // nếu có khai báo việc sử dụng cache -> tái sử dụng thôi
 else if ( defined( 'HAS_USING_EBCACHE' ) ) {
     // xác nhận có sử dụng ebcache
-    $active_using_ebcache = true;
+    $active_using_ebcache = 'HAS USING EBCACHE';
 
     // kích hoạt ob_start để còn replace content ở footer
     $active_ob_start = true;
 }
-// có file footer thì bật chế độ cache
-else if ( is_home() ||
-    is_front_page() ||
-    is_single() ||
-    is_archive() ||
-    isset( $is_page_templates ) ||
-    is_page_template() ||
-    is_page()
-) {
-    //echo '<!-- ' . basename( 'EB header page cache' ) . ' -->' . "\n";
+//
+else if ( is_home() ) {
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = 'is home';
+    defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+//
+else if ( is_front_page() ) {
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = 'is front page';
+    defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+//
+else if ( is_single() ) {
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = 'is single';
+    defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+//
+else if ( is_archive() ) {
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = 'is archive';
+    defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
+}
+//
+//else if ( is_page_template() || isset( $is_page_templates ) ) {
+else if ( is_page_template() ) {
+    //echo '<!-- ' . basename( 'EB header page template cache' ) . ' -->' . "\n";
 
     // xác nhận có sử dụng ebcache
-    $active_using_ebcache = true;
+    $active_using_ebcache = 'is page template';
 
     // kích hoạt ob_start để còn replace content ở footer
     $active_ob_start = true;
+
+    // mặc định không kích hoạt cache với các page template
+    if ( function_exists( 'is_cart' ) && is_cart() ) {
+        defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', false );
+        $why_ebcache_not_active = '<!-- EchBay Cache not cache in: cart template -->';
+    } else if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+        defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', false );
+        $why_ebcache_not_active = '<!-- EchBay Cache not cache in: checkout template -->';
+    } else {
+        defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    }
+} else if ( is_page() ) {
+    // xác nhận có sử dụng ebcache
+    $active_using_ebcache = 'is page';
+    defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', $active_using_ebcache );
+    //defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', false );
+    // kích hoạt ob_start để còn replace content ở footer
+    $active_ob_start = true;
 }
+//
 // chỉ cache với 1 số trang cụ thể thôi
 else {
     $why_ebcache_not_active = '<!-- EchBay Cache cache only home page, category page, post details page -->';
@@ -108,15 +153,15 @@ else {
     //
     $active_ob_start = true;
 }
-
+//echo '<!-- ' . $active_using_ebcache . ' -->' . "\n";
 
 // kích hoạt ob_start để còn replace content ở footer
 if ( $active_ob_start == true ) {
     define( 'HAS_USING_EB_START', true );
 
     // -> kích hoạt ebcache (chỉ hoạt động khi ob start được kích hoạt)
-    if ( $active_using_ebcache == true ) {
-        defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', true );
+    if ( $active_using_ebcache !== false ) {
+        defined( 'HAS_USING_EBCACHE' ) || define( 'HAS_USING_EBCACHE', false );
     }
 
     ob_start();
