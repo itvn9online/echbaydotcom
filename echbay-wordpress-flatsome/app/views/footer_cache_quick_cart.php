@@ -29,6 +29,7 @@ if ( wp_is_mobile() ) {
         //echo $__cf_row['cf_search_nav_mobile'] . '<br>' . "\n";
         Wgr::$eb->BaseModelWgr->adds_css( [
             EB_THEME_PLUGIN_INDEX . 'html/search/' . $__cf_row[ 'cf_search_nav_mobile' ] . '.css',
+            EB_CHILD_THEME_URL . 'html/' . $__cf_row[ 'cf_search_nav_mobile' ] . '.css',
         ] );
 
         //
