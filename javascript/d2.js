@@ -341,20 +341,30 @@ setTimeout(function () {
 
             //
             var ids = '',
-                args = [];
-            jQuery('.thread-list li').slice(0, 10).each(function () {
+                args = [],
+                dr_items = [],
+                dr_value = 0;
+            jQuery('.thread-list li').slice(0, 25).each(function () {
                 var a = jQuery(this).attr('data-id') || '';
 
                 if (a != '') {
+                    var price = jQuery(this).attr('data-price') || 0;
                     ids += ',' + a;
-                }
 
-                //
-                args.push({
-                    "id": "P" + a,
-                    "name": jQuery('a:first', this).attr('title') || '',
-                    "price": jQuery(this).attr('data-price') || 0
-                });
+                    //
+                    args.push({
+                        "id": "P" + a,
+                        "name": jQuery('a:first', this).attr('title') || '',
+                        "price": price
+                    });
+
+                    //
+                    dr_items.push({
+                        'id': a,
+                        'google_business_vertical': 'retail'
+                    });
+                    dr_value += price * 1;
+                }
             });
             if (ids != '') {
                 track_arr['content_ids'] = ids.substr(1).split(',');
@@ -362,16 +372,31 @@ setTimeout(function () {
                 //
                 _global_js_eb.fb_track('ViewContent', track_arr);
             } else {
-                console.log('ids for facebok track not found');
+                console.log('ids for facebook track not found');
             }
+            console.log('args:', args);
+            console.log('dr_items:', dr_items);
+            console.log('dr_value:', dr_value);
 
             //
-            _global_js_eb.ga_event_track('View list', 'Xem danh sach san pham', '', {
-                //				'category' : '',
-                //				'label' : '',
-                'items': args,
-                'action': 'view_item_list'
-            });
+            if (args.length > 0) {
+                _global_js_eb.ga_event_track('View list', 'Xem danh sach san pham', '', {
+                    //'category' : '',
+                    //'label' : '',
+                    'items': args,
+                    'action': 'view_item_list'
+                });
+
+                //
+                if (typeof dataLayer != 'undefined') {
+                    dataLayer.push({
+                        'dr_event_type': 'view_item_list',
+                        'dr_items': dr_items,
+                        'dr_value': dr_value,
+                        'event': 'dynamic_remarketing'
+                    });
+                }
+            }
         }
     } else if (act == 'cart') {
         _global_js_eb.ga_event_track('View cart', 'Xem gio hang', '', {
