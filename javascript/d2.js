@@ -344,7 +344,12 @@ setTimeout(function () {
                 args = [],
                 dr_items = [],
                 dr_value = 0;
-            jQuery('.thread-list li').slice(0, 25).each(function () {
+            jQuery('.thread-list li').each(function () {
+                if (args.length > 25) {
+                    return false;
+                }
+                
+                //
                 var a = jQuery(this).attr('data-id') || '';
 
                 if (a != '') {
@@ -389,6 +394,7 @@ setTimeout(function () {
 
                 //
                 if (typeof dataLayer != 'undefined') {
+                    console.log('dataLayer push');
                     dataLayer.push({
                         'dr_event_type': 'view_item_list',
                         'dr_items': dr_items,
