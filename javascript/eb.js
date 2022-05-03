@@ -763,9 +763,15 @@ var _global_js_eb = {
                     if (w < 1) {
                         w = 1;
                     }
+                    //console.log(w);
+                    //console.log(fix_for);
 
                     //
-                    jQuery(fix_for, this).width((100 / w) + '%');
+                    //jQuery(fix_for, this).width((100 / w) + '%');
+                    jQuery(fix_for, this).css({
+                        'width': ((100 / w).toFixed(6) * 1).toString() + '%'
+                    });
+                    //console.log(jQuery(fix_for, this).attr('style'));
                 }
             });
 
