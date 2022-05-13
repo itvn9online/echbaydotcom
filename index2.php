@@ -1230,6 +1230,57 @@ add_filter( 'document_title_parts', function( $title ) {
 } );
 */
 
+/*
+ * thay đổi query tìm kiếm -> chỉ tìm theo post title
+ */
+function WGR_search_by_title_only( $search, & $wp_query ) {
+    if ( !is_search() ) return $search;
+
+    //
+    //if ( mtv_id * 1 !== 1 ) return $search;
+    //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
+
+    // skip processing - no search term in query
+    if ( empty( $search ) ) return $search;
+
+    //
+    global $wpdb;
+
+    //
+    $q = $wp_query->query_vars;
+    //print_r( $q );
+    $n = !empty( $q[ 'exact' ] ) ? '' : '%';
+    $search = '';
+    $or_search = '';
+    $searchand = '';
+    foreach ( ( array )$q[ 'search_terms' ] as $term ) {
+        $term = esc_sql( $wpdb->esc_like( $term ) );
+        $search .= "{$searchand}($wpdb->posts.post_title LIKE '{$n}{$term}{$n}')";
+
+        // daidq (2022-05-12): định tạo lệnh tìm kiếm theo post name để tìm theo tiếng Việt không dấu, nhưng bên nave để sku sản phẩm nên không áp dụng được
+        $term = esc_sql( $wpdb->esc_like( sanitize_title( $term ) ) );
+        $or_search .= "{$searchand}($wpdb->posts.post_name LIKE '{$n}{$term}{$n}')";
+
+        $searchand = ' AND ';
+    }
+    if ( !empty( $search ) ) {
+        //echo $search . '<br>' . "\n";
+        //echo $or_search . '<br>' . "\n";
+
+        // search title and name
+        $search = " AND ( ({$search}) OR ({$or_search}) ) ";
+
+        // search title only
+        //$search = " AND ({$search}) ";
+
+        //
+        //if ( !is_user_logged_in() )$search .= " AND ($wpdb->posts.post_password = '') ";
+    }
+    //echo $search . '<br>' . "\n";
+    return $search;
+}
+add_filter( 'posts_search', 'WGR_search_by_title_only', 500, 2 );
+
 
 // top menu
 $arr_tmp_top_menu = array();
