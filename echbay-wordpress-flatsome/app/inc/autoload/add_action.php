@@ -170,6 +170,7 @@ function EB_flatsome_load_footer_static() {
         EB_THEME_PLUGIN_INDEX . 'javascript/dp.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/d2.js',
+        ( is_archive() ) ? EB_THEME_PLUGIN_INDEX . 'javascript/dc.js' : '',
         EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
         EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
         /*

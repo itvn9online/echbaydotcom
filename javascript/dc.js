@@ -42,7 +42,7 @@
     }
 
     //
-    dog('oi_order_by', '<select>' + str + '</select>');
+    $('#oi_order_by').html('<select>' + str + '</select>');
     jQuery('#oi_order_by select').change(function () {
         var a = jQuery(this).val() || '';
         if (a != '') {
@@ -269,7 +269,7 @@ function WGR_load_category_with_ajax(new_url, time_load) {
     jQuery('#category_main').html('<li class="no-set-width-this-li"><div class="waiting-load">&nbsp;</div></li>');
 
     // no ajax
-    if (dog('category_main') == null) {
+    if ($('#category_main').length == 0) {
         window.location = new_url;
         return true;
     }
@@ -327,7 +327,7 @@ function WGR_load_category_with_ajax(new_url, time_load) {
 }
 
 function WGR_open_new_part_with_ajax() {
-    if (dog('category_main') == null) {
+    if ($('#category_main').length == 0) {
         console.log('category_main not found!');
         return false;
     }
