@@ -1233,7 +1233,7 @@ add_filter( 'document_title_parts', function( $title ) {
 /*
  * thay đổi query tìm kiếm -> chỉ tìm theo post title
  */
-function WGR_search_by_title_only( $search, & $wp_query ) {
+function WGR_search_by_title_only( $search, $wp_query ) {
     if ( !is_search() ) return $search;
 
     //
