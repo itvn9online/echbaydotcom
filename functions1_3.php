@@ -80,7 +80,11 @@ function _eb_send_email( $to_email, $title, $message, $headers = '', $bcc_email 
           $headers = _eb_build_mail_header ( $__cf_row['cf_email'] );
           } else {
          */
-        $headers = _eb_build_mail_header( 'noreply@' . $chost, $bcc_email );
+        if ( $__cf_row['cf_smtp_email'] != '' ) {
+            $headers = _eb_build_mail_header( $__cf_row['cf_smtp_email'], $bcc_email );
+        } else {
+            $headers = _eb_build_mail_header( 'noreply@' . $chost, $bcc_email );
+        }
         /*
           }
          */
