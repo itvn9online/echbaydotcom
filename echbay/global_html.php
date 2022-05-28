@@ -232,7 +232,7 @@
 		</ul>
 	</div>
 </div>
-<!-- Nút nhân bản bài viết, trang -> kết hợp với plugin Pót duplicator -->
+<!-- Nút nhân bản bài viết, trang -> kết hợp với plugin Post duplicator -->
 <div id="wgr-for-duplicator" class="d-none">
 	<button type="button" title="Hệ thống sẽ copy một sản phẩm tương tự sản phẩm này" class="button button-primary button-orgprimary button-large click-set-nhanban cur"><i class="fa fa-copy"></i> Nhân bản</button>
 	<div class="show-if-duplicator-null d-none">
