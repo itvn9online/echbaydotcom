@@ -1,7 +1,7 @@
 <?php
 
 //
-$EB_THEME_CACHE = dirname( __DIR__ ) . '/uploads/ebcache/' . str_replace( ':', '-', $_SERVER[ 'HTTP_HOST' ] ) . '/';
+$EB_THEME_CACHE = dirname( __DIR__ ) . '/uploads/ebcache/' . explode( ':', $_SERVER[ 'HTTP_HOST' ] )[ 0 ] . '/';
 
 // thư mục cache dùng chung, không phân biệt mobile với desktop
 define( 'EB_GLOBAL_CACHE', $EB_THEME_CACHE );
