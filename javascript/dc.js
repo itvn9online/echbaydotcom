@@ -299,7 +299,8 @@ function WGR_load_category_with_ajax(new_url, time_load) {
         //
         ajaxl(new_url, 'category_main', 9, function () {
             // về đầu trang
-            window.scroll(0, jQuery('#webgiare__top').height() || jQuery('#container').offset().top || jQuery('#category_main').offset().top || 0);
+            //window.scroll(0, jQuery('#webgiare__top').height() || jQuery('#container').offset().top || jQuery('#category_main').offset().top || 0);
+            window.scroll(0, 0);
 
             // sau đó load các hiệu ứng
             disable_eblazzy_load = false;
