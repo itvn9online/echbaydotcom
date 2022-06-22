@@ -69,7 +69,7 @@ function ___eb_cache_getUrl( $cache_dir = 'all' ) {
 }
 
 // rút gọn HTML
-function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
+function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '', $data_comment = '' ) {
 
     //
     //	return $data;
@@ -90,7 +90,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
             continue;
         }
 
-        //			echo substr( $v, -3 ) . "\n";
+        //echo substr( $v, -3 ) . "\n";
 
         // xóa HTML comment
         // https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
@@ -113,7 +113,8 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
         $data .= $v;
 
 
-        // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file_put_contents bị gọi nhiều quá
+        // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file put contents bị gọi nhiều quá
+        /*
         if ( $i % 55 == 0 ) {
             // lần đầu tiên thì add nội dung, để nó reset lại file từ đầu
             if ( $create_file == 1 ) {
@@ -128,14 +129,17 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename = '' ) {
             $i = 0;
         }
         $i++;
+        */
 
         //			}
     }
     // v2 -> nhúng nội dung còn thiếu ở những vòng lặp cuối
     if ( $data != '' ) {
-        file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append last main cache file' );
+        //file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append last main cache file' );
+        file_put_contents( $filename, $data . $data_comment, LOCK_EX )or die( 'ERROR: append last main cache file' );
     }
 
+    //
     return true;
 
 
@@ -160,10 +164,12 @@ function ___eb_cache_cache( $filename, $data, $data_comment = '' ) {
     // v2
     // nhúng comment vào trước
     //	file_put_contents( $filename, $data_comment ) or die('ERROR: write comment main cache file');
-    file_put_contents( $filename, '<!-- -->' )or die( 'ERROR: create file' );
+    //file_put_contents( $filename, '<!-- -->' )or die( 'ERROR: create file' );
 
     // rồi nhúng các nội dung khác vào sau
-    WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename );
+    WGR_rut_gon_HTML_truoc_khi_tao_cache( $data, $filename, $data_comment );
+
+    return true;
 
     // v3
     // nhúng comment vào sau
