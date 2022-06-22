@@ -64,7 +64,6 @@ if ( file_exists( EB_THEME_CACHE . 'update_running.txt' ) ) {
 
 
 
-
 function ___eb_cache_display ( $cache_time = 60 ) {
 	$filename = ___eb_cache_getUrl();
 	
