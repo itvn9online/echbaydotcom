@@ -1192,7 +1192,8 @@ if ( $bai_san_pham == true ) {
             $check_dinh_dang_ngay = explode( '/', $_eb_product_ngayhethan );
 
             // định dạng chuẩn là: YYYY/MM/DD
-            if ( count( $check_dinh_dang_ngay ) == 3 && strlen( $check_dinh_dang_ngay[ 0 ] ) == 4 ) {
+            //if ( count( $check_dinh_dang_ngay ) == 3 && strlen( $check_dinh_dang_ngay[ 0 ] ) == 4 ) {
+            if ( count( $check_dinh_dang_ngay ) == 3 ) {
                 $trv_ngayhethan = $_eb_product_ngayhethan . ' ' . $_eb_product_giohethan;
                 //				echo $trv_ngayhethan;
                 $trv_ngayhethan = strtotime( $trv_ngayhethan );
