@@ -30,7 +30,7 @@ if ( !isset( $main_content ) ) {
 
 
 //
-function WGR_conatct_required_field( $s ) {
+function WGR_contact_required_field( $s ) {
     if ( strpos( $s, '*' ) !== false ) {
         return ' aria-required="true" required';
     }
@@ -56,19 +56,19 @@ $main_content = EBE_html_template( $custom_lang_html, array(
     'tmp.lh_luuy' => EBE_get_lang( 'lh_luuy' ),
 
     'tmp.lh_hoten' => $lh_hoten,
-    'tmp.lh_required_hoten' => WGR_conatct_required_field( $lh_hoten ),
+    'tmp.lh_required_hoten' => WGR_contact_required_field( $lh_hoten ),
 
     'tmp.lh_email' => $lh_email,
-    'tmp.lh_required_email' => WGR_conatct_required_field( $lh_email ),
+    'tmp.lh_required_email' => WGR_contact_required_field( $lh_email ),
 
     'tmp.lh_diachi' => $lh_diachi,
-    'tmp.lh_required_diachi' => WGR_conatct_required_field( $lh_diachi ),
+    'tmp.lh_required_diachi' => WGR_contact_required_field( $lh_diachi ),
 
     'tmp.lh_dienthoai' => $lh_dienthoai,
-    'tmp.lh_required_dienthoai' => WGR_conatct_required_field( $lh_dienthoai ),
+    'tmp.lh_required_dienthoai' => WGR_contact_required_field( $lh_dienthoai ),
 
     'tmp.lh_noidung' => $lh_noidung,
-    'tmp.lh_required_noidung' => WGR_conatct_required_field( $lh_noidung ),
+    'tmp.lh_required_noidung' => WGR_contact_required_field( $lh_noidung ),
 
     'tmp.lh_submit' => EBE_get_lang( 'lh_submit' ),
     'tmp.lh_note' => EBE_get_lang( 'lh_note' ),
