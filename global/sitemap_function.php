@@ -324,7 +324,7 @@ function WGR_get_sitemap_post ( $type = 'post', $op = array() ) {
 		post_status = '" . $status . "'
 		" . $strByPostType . $strFilter . "
 	ORDER BY
-		ID DESC
+		ID ASC
 	LIMIT " . $offset . ", " . $threadInPage);
 //	print_r( $sql );
 	

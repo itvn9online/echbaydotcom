@@ -112,7 +112,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	GROUP BY
 		post_parent
 	ORDER BY
-		ID DESC");
+		ID ASC");
 	$count_post = count( $sql );
 //	echo 'count_post --> ' . $count_post . '<br>' . "\n";
 	if ( $count_post > 0 ) {

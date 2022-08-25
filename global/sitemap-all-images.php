@@ -44,7 +44,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	GROUP BY
 		post_parent
 	ORDER BY
-		ID DESC" );
+		ID ASC" );
     $totalThread = count( $sql );
     //	echo 'totalThread --> ' . $totalThread . '<br>' . "\n";
     $threadInPage = $limit_post_get;
@@ -76,7 +76,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	GROUP BY
 		post_parent
 	ORDER BY
-		ID DESC
+		ID ASC
 	LIMIT " . $offset . ", " . $threadInPage );
     //	print_r( $sql );
     //	exit();
@@ -90,7 +90,7 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			AND post_status = 'inherit'
 			AND post_parent = " . $v->post_parent . "
 		ORDER BY
-			ID DESC
+			ID ASC
 		LIMIT 0, 10" );
 
         //
