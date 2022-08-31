@@ -333,6 +333,10 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
         <td class="t">IP</td>
         <td class="i"><a href="admin.php?page=eb-order&by_ip=<?php echo $post->order_ip; ?>" target="_blank"><?php echo $post->order_ip; ?></a></td>
     </tr>
+    <tr>
+        <td class="t">Vị trí</td>
+        <td class="i"><a href="https://echbay.com/iplocation.html?ip=<?php echo $post->order_ip; ?>" target="_blank">Xem vị trí trên bản đồ</a></td>
+    </tr>
 </table>
 <br>
 <br>

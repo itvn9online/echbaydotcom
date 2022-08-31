@@ -104,9 +104,11 @@ class WGR_GeoLite2Helper {
             $path = GeoLite2Helper_UploadPATH . $f_City;
         }
         // echbay hosting
+        /*
         else if ( file_exists( GeoLite2Helper_EBPATH . $f_City ) ) {
             $path = GeoLite2Helper_EBPATH . $f_City;
         }
+        */
         // v1
         else if ( file_exists( GeoLite2Helper_PATH . $f_City ) ) {
             $path = GeoLite2Helper_PATH . $f_City;
@@ -120,9 +122,11 @@ class WGR_GeoLite2Helper {
             $path = GeoLite2Helper_UploadPATH . $f_Country;
         }
         // echbay hosting
+        /*
         else if ( file_exists( GeoLite2Helper_EBPATH . $f_Country ) ) {
             $path = GeoLite2Helper_EBPATH . $f_Country;
         }
+        */
         // v1
         else if ( file_exists( GeoLite2Helper_PATH . $f_Country ) ) {
             $path = GeoLite2Helper_PATH . $f_Country;
