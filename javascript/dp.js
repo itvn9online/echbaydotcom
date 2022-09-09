@@ -373,7 +373,7 @@ function ___eb_details_excerpt_html(a_before, a_after) {
     cf_details_excerpt = 'off';
 
     //
-    var a = jQuery('.thread-details-comment .blog-details-excerpt').html() || jQuery('.thread-details-comment').html() || '',
+    var a = jQuery('.thread-details-comment .blog-details-excerpt').text() || jQuery('.thread-details-comment').text() || '',
         str = '';
 
     // Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
@@ -388,25 +388,36 @@ function ___eb_details_excerpt_html(a_before, a_after) {
 
     // tạo dưới dạng bảng -> cho vào bảng post options luôn
     if (WGR_check_option_on(cf_options_excerpt)) {
+        var is_mobile = false;
+        if ($(window).width() < 768) {
+            is_mobile = true;
+        }
         for (var i = 0; i < a.length; i++) {
             a[i] = g_func.trim(a[i]);
 
             if (a[i] != '') {
-                var a_bold = a[i].split(':');
-
-                // in đậm đề mục
-                if (WGR_check_option_on(cf_details_bold_excerpt)) {
-                    a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
+                // với mobile thì hiển thị thẻ P thôi, do lỗi tạo bảng
+                if (is_mobile === true) {
+                    $('.thread-details-options').after('<p>' + a[i] + '</p>');
                 }
+                // desktop thì hiển thị bảng
+                else {
+                    var a_bold = a[i].split(':');
 
-                for (var j = 0; j < a_bold.length; j++) {
-                    if (jQuery.trim(a_bold[j]) != '') {
-                        a_bold[j] = '<td><div>' + a_bold[j] + '</div></td>';
+                    // in đậm đề mục
+                    if (WGR_check_option_on(cf_details_bold_excerpt)) {
+                        a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
                     }
-                }
 
-                //
-                jQuery('.thread-details-options').append('<tr>' + a_bold.join('') + '</tr>');
+                    for (var j = 0; j < a_bold.length; j++) {
+                        if (jQuery.trim(a_bold[j]) != '') {
+                            a_bold[j] = '<td><div>' + a_bold[j] + '</div></td>';
+                        }
+                    }
+
+                    //
+                    jQuery('.thread-details-options').append('<tr>' + a_bold.join('') + '</tr>');
+                }
             }
         }
 
