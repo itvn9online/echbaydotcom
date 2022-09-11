@@ -361,10 +361,15 @@ function ___eb_details_ul_options() {
 }
 
 function ___eb_details_excerpt_html(a_before, a_after) {
-
     // tắt chế độ tạo style cho phần excerpt nếu option này đang được tắt
     if (!WGR_check_option_on(cf_details_excerpt)) {
         if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html disable');
+        return false;
+    }
+    // với mobile thì bỏ qua -> do lỗi mất HTML chưa rõ nguyên nhân
+    if ($(window).width() < 768) {
+        $('.thread-details-comment').removeClass('graycolor');
+        if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html not run in mobile');
         return false;
     }
     if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html is running...');
@@ -381,45 +386,37 @@ function ___eb_details_excerpt_html(a_before, a_after) {
         if (WGR_check_option_on(cf_tester_mode)) console.log('thread-details-comment is NULL');
         return false;
     }
-
     // Tách lấy từng dòng -> để tạo style cho thống nhất
     a = a.split("\n");
 
-
     // tạo dưới dạng bảng -> cho vào bảng post options luôn
     if (WGR_check_option_on(cf_options_excerpt)) {
-        var is_mobile = false;
-        if ($(window).width() < 768) {
-            is_mobile = true;
-        }
+        var str_table = '';
         for (var i = 0; i < a.length; i++) {
             a[i] = g_func.trim(a[i]);
 
             if (a[i] != '') {
-                // với mobile thì hiển thị thẻ P thôi, do lỗi tạo bảng
-                if (is_mobile === true) {
-                    $('.thread-details-options').after('<p>' + a[i] + '</p>');
+                var a_bold = a[i].split(':');
+                var str_tr = '';
+
+                // in đậm đề mục
+                if (WGR_check_option_on(cf_details_bold_excerpt)) {
+                    a_bold[0] = '<strong>' + $.trim(a_bold[0]) + '</strong>';
                 }
-                // desktop thì hiển thị bảng
-                else {
-                    var a_bold = a[i].split(':');
 
-                    // in đậm đề mục
-                    if (WGR_check_option_on(cf_details_bold_excerpt)) {
-                        a_bold[0] = '<strong>' + a_bold[0] + '</strong>';
+                for (var j = 0; j < a_bold.length; j++) {
+                    if (jQuery.trim(a_bold[j]) != '') {
+                        a_bold[j] = '<td><div>' + a_bold[j] + '</div></td>';
+                        str_tr += a_bold[j];
                     }
-
-                    for (var j = 0; j < a_bold.length; j++) {
-                        if (jQuery.trim(a_bold[j]) != '') {
-                            a_bold[j] = '<td><div>' + a_bold[j] + '</div></td>';
-                        }
-                    }
-
-                    //
-                    jQuery('.thread-details-options').append('<tr>' + a_bold.join('') + '</tr>');
                 }
+
+                //
+                //jQuery('.thread-details-options').append('<tr>' + a_bold.join(' ') + '</tr>');
+                str_table += '<tr>' + str_tr + '</tr>';
             }
         }
+        jQuery('.thread-details-options').append(str_table);
 
         //
         jQuery('.thread-details-comment').hide();
@@ -427,7 +424,6 @@ function ___eb_details_excerpt_html(a_before, a_after) {
         //
         return false;
     }
-
 
     // 1 dòng thì cũng bỏ qua luôn
     if (a.length <= 1) {
@@ -467,7 +463,6 @@ function ___eb_details_excerpt_html(a_before, a_after) {
     if (str != '') {
         jQuery('.thread-details-comment').show().html('<ul>' + str + '</ul>');
     }
-
 }
 
 

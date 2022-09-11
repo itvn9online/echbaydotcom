@@ -950,7 +950,7 @@ $arr_main_content = array(
 
     'tmp.cf_hotline' => $cf_hotline,
 
-    'tmp.trv_goithieu' => $__post->post_excerpt != '' ? '<div class="blog-details-excerpt">' . $__post->post_excerpt . '</div>' : '',
+    'tmp.trv_goithieu' => $__post->post_excerpt != '' ? '<div class="blog-details-excerpt">' . nl2br($__post->post_excerpt) . '</div>' : '',
     'tmp.trv_noidung' => $trv_noidung,
     'tmp.trv_dieukien' => _eb_get_post_object( $pid, '_eb_product_dieukien' ),
     'tmp.trv_tomtat' => _eb_get_post_object( $pid, '_eb_product_noibat' ),
