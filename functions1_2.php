@@ -581,6 +581,10 @@ function _eb_get_log_search( $limit = '' ) {
 }
 
 function _eb_set_log( $arr, $log_type = 0 ) {
+    // daidq (2022-09-14): do việc ghi log đợt gần đây dễ gây crash db nên bỏ nó đi vậy
+    return false;
+    
+    //
     global $client_ip;
 
     $arr[ 'l_agent' ] = isset( $_SERVER[ 'HTTP_USER_AGENT' ] ) ? $_SERVER[ 'HTTP_USER_AGENT' ] : '';
