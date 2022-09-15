@@ -3186,7 +3186,7 @@ var _global_js_eb = {
                 setTimeout(function () {
                     _global_js_eb.ga_event_track(eventCategory, eventAction, eventLabel, ops, max_for - 1);
                 }, 500);
-                //				console.log( 'Re-load GG tracking (' + max_for + ')...' );
+                //console.log( 'Re-load GG tracking (' + max_for + ')...' );
 
                 return false;
             }
@@ -3251,7 +3251,7 @@ var _global_js_eb = {
                 setTimeout(function () {
                     _global_js_eb.fb_track(track_name, track_arr, max_for - 1);
                 }, 500);
-                console.log( 'Re-load FB tracking (' + max_for + ')...' );
+                //console.log( 'Re-load FB tracking (' + max_for + ')...' );
 
                 return false;
             }
