@@ -67,7 +67,7 @@ if ( $by_cat_id > 0 ) {
         foreach ( $arrs_cats as $v ) {
             $by_child_cat_id .= ',' . $v->term_id;
         }
-        //		echo $by_child_cat_id . '<br>';
+        //echo $by_child_cat_id . '<br>';
     }
 
 
@@ -310,7 +310,8 @@ $totalThread = _eb_c( "SELECT COUNT(ID) AS c
 		`" . wp_posts . "`
 		" . $joinFilter . "
 	WHERE
-		" . $strFilter );
+		" . $strFilter . "" );
+//echo $joinFilter . '<br>' . "\n";
 //echo $strFilter . '<br>' . "\n";
 //echo $totalThread . '<br>' . "\n";
 
@@ -350,7 +351,6 @@ if ( isset( $_GET[ 'convert_date_to_date' ] ) ) {
 
     //die( __FILE__ . ':' . __LINE__ );
 }
-
 
 
 // phân trang bình thường
@@ -600,8 +600,11 @@ $strAjaxLink .= '&trang=' . $trang;
             " . $joinFilter . "
         WHERE
             " . $strFilter . "
+        GROUP BY
+            `" . wp_posts . "`.ID
         ORDER BY
-            `" . wp_posts . "`.menu_order DESC, `" . wp_posts . "`.ID DESC
+            `" . wp_posts . "`.menu_order DESC,
+            `" . wp_posts . "`.ID DESC
         LIMIT " . $offset . ", " . $threadInPage;
         //echo $sql; 
         $sql = _eb_q( $sql );
