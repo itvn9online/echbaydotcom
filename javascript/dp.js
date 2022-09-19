@@ -210,8 +210,8 @@ function ___eb_details_slider_v2() {
         if (a != '') {
             /*
             jQuery('.thread-details-mobileAvt').removeClass('ti-le-global').height('auto').css({
-            	'background-image' : 'none',
-            	'line-height' : 'normal'
+                'background-image' : 'none',
+                'line-height' : 'normal'
             }).html( '<img src="' + ___eb_set_thumb_to_fullsize(a) + '" data-width="' + wit + '" style="max-width:' + wit + 'px;" />' );
             */
             jQuery('.thread-details-mobileAvt').css({
@@ -306,7 +306,7 @@ function ___eb_details_slider_v2() {
 
     /*
     jQuery(".jEBE_slider-toRight").on("swipeleft", function() {
-    	console.log('to left');
+        console.log('to left');
     });
     */
 
@@ -317,7 +317,7 @@ function ___eb_details_slider_v2() {
 function ___eb_details_countdown() {
 
     var a = jQuery('.thread-details-countdown').attr('data-timeend') || 0;
-    if (a == 0 || a == '0') {} else {
+    if (a == 0 || a == '0') { } else {
         jQuery('.thread-details-countdown').show();
     }
 
@@ -366,13 +366,6 @@ function ___eb_details_excerpt_html(a_before, a_after) {
         if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html disable');
         return false;
     }
-    // với mobile thì bỏ qua -> do lỗi mất HTML chưa rõ nguyên nhân
-    if ($(window).width() < 768) {
-        $('.thread-details-comment').removeClass('graycolor');
-        if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html not run in mobile');
-        return false;
-    }
-    if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html is running...');
 
     // chặn -> không cho chạy lại lần nữa
     cf_details_excerpt = 'off';
@@ -386,6 +379,15 @@ function ___eb_details_excerpt_html(a_before, a_after) {
         if (WGR_check_option_on(cf_tester_mode)) console.log('thread-details-comment is NULL');
         return false;
     }
+
+    // với mobile thì bỏ qua -> do lỗi mất HTML chưa rõ nguyên nhân
+    if ($(window).width() < 768) {
+        $('.thread-details-comment').removeClass('graycolor').html(a.replace(/\n/gi, '<br>'));
+        if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html not run in mobile');
+        return false;
+    }
+    if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html is running...');
+
     // Tách lấy từng dòng -> để tạo style cho thống nhất
     a = a.split("\n");
 
@@ -711,7 +713,7 @@ function ___eb_details_product_color() {
 
                     //
                     if (color_color != '') {
-                        if ( color_color.substr(0, 1) == '#' ) {
+                        if (color_color.substr(0, 1) == '#') {
                             color_color = color_color.substr(1);
                         }
                         if (color_color.length == 3 || color_color.length == 6) {
@@ -771,7 +773,7 @@ function ___eb_details_product_color() {
             color_node = jQuery(this).attr('data-node') || 0;
 
         // đổi ảnh đại diện khi click đổi màu
-        if (color_color != '' && (color_color.length == 3 || color_color.length == 6)) {} else if (WGR_check_option_on(cf_show_img_color)) {
+        if (color_color != '' && (color_color.length == 3 || color_color.length == 6)) { } else if (WGR_check_option_on(cf_show_img_color)) {
             jQuery('.thread-details-mobileAvt li').css({
                 'background-image': 'url(' + color_img + ')'
             });
@@ -798,7 +800,7 @@ function ___eb_details_product_color() {
 
             /*
             if ( color_img != '' ) {
-            	color_img = ' <img src="' + color_img + '" height="50" />';
+                color_img = ' <img src="' + color_img + '" height="50" />';
             }
             */
 
@@ -865,9 +867,9 @@ function ___eb_details_product_color() {
     //
     /*
     if ( jQuery('.oi_product_color').length > 1 ) {
-    	jQuery('.oi_product_color').each(function() {
-    		jQuery('li:first', this).addClass('selected');
-    	});
+        jQuery('.oi_product_color').each(function() {
+            jQuery('li:first', this).addClass('selected');
+        });
     }
     */
 
@@ -1179,15 +1181,15 @@ function ___eb_details_post_run(r) {
     // với bản pc -> chỉnh lại kích thước ảnh thành fullsize (mặc định trước đó trong admind dể mobile hết)
     /*
     if ( global_window_width > 768 ) {
-    	jQuery('#content_img_product img, .max-width-img-content img, .echbay-tintuc-noidung img').removeAttr('sizes');
-    	console.log('Set img fullsize for mobile');
+        jQuery('#content_img_product img, .max-width-img-content img, .echbay-tintuc-noidung img').removeAttr('sizes');
+        console.log('Set img fullsize for mobile');
     }
     */
 
     // chạy function riêng (nếu có)
     /*
     if ( typeof r == 'function' ) {
-    	r();
+        r();
     }
     */
     if (typeof Child_eb_details_post_run == 'function') {
@@ -1226,7 +1228,7 @@ function ___eb_details_post_run(r) {
         console.log('Show quick cart for Facebook browser');
         jQuery('.clone-show-mobile-quick-cart').addClass('clone-show-quick-cart');
     }
-    
+
     // nếu có lệnh chuyển quick cart xuống cuối trang
     if (WGR_check_option_on(cf_details_bottom_quick_cart)) {
         // xóa class này ở những mục khác
@@ -1290,29 +1292,29 @@ function ___eb_details_post_run(r) {
 
     //
     /*
-	var arr_attr_img_content = [],
-		i = 0;
-	jQuery('.thread-details-tab-content img').each(function(index, element) {
-		var arr = {};
-		
-		jQuery(this).each(function() {
-			jQuery.each(this.attributes, function() {
-				// this.attributes is not a plain object, but an array
-				// of attribute nodes, which contain both the name and value
-				if(this.specified) {
+    var arr_attr_img_content = [],
+        i = 0;
+    jQuery('.thread-details-tab-content img').each(function(index, element) {
+        var arr = {};
+    	
+        jQuery(this).each(function() {
+            jQuery.each(this.attributes, function() {
+                // this.attributes is not a plain object, but an array
+                // of attribute nodes, which contain both the name and value
+                if(this.specified) {
 //					console.log(this.name, this.value);
-					
-					arr[this.name] = this.value;
-				}
-			});
-		});
-		
-		//
-		arr_attr_img_content[i] = arr;
-		i++;
-	});
-	console.log( arr_attr_img_content );
-	*/
+                	
+                    arr[this.name] = this.value;
+                }
+            });
+        });
+    	
+        //
+        arr_attr_img_content[i] = arr;
+        i++;
+    });
+    console.log( arr_attr_img_content );
+    */
 
 
     // đếm thời gian hiển thị
