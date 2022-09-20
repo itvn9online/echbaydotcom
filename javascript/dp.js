@@ -366,13 +366,13 @@ function ___eb_details_excerpt_html(a_before, a_after) {
         if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html disable');
         return false;
     }
-
     // chặn -> không cho chạy lại lần nữa
     cf_details_excerpt = 'off';
 
     //
     var a = jQuery('.thread-details-comment .blog-details-excerpt').text() || jQuery('.thread-details-comment').text() || '',
         str = '';
+    a = $.trim(a);
 
     // Bỏ qua nếu không tìm thấy CSS hoặc dữ liệu bị trống
     if (a == '') {
@@ -382,9 +382,9 @@ function ___eb_details_excerpt_html(a_before, a_after) {
 
     // với mobile thì bỏ qua -> do lỗi mất HTML chưa rõ nguyên nhân
     if ($(window).width() < 768) {
-        $('.thread-details-comment').removeClass('graycolor').html(a.replace(/\n/gi, '<br>'));
         if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html not run in mobile');
-        return false;
+        //$('.thread-details-comment').removeClass('graycolor').html(a.replace(/\n/gi, '<br>'));
+        //return false;
     }
     if (WGR_check_option_on(cf_tester_mode)) console.log('___eb_details_excerpt_html is running...');
 
