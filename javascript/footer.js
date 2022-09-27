@@ -4,24 +4,24 @@
  */
 // for home
 if (act == '') {
-//if ( typeof ___eb_global_home_runing == 'function' ) {
+    //if ( typeof ___eb_global_home_runing == 'function' ) {
     ___eb_global_home_runing();
 }
 // end home
 
 // archive (category/ blog)
 else if (act == 'archive') {
-    if (typeof switch_taxonomy=='undefined') {
+    if (typeof switch_taxonomy == 'undefined') {
         switch_taxonomy = '';
     }
-    
+
     // category
     if (switch_taxonomy == 'category' ||
         switch_taxonomy == 'post_tag' ||
         switch_taxonomy == 'post_options') {
-		if (typeof ___eb_list_post_run == 'function') {
-			___eb_list_post_run();
-		}
+        if (typeof ___eb_list_post_run == 'function') {
+            ___eb_list_post_run();
+        }
     }
     // blog
     else if (typeof ___eb_global_blogs_runing == 'function') {
@@ -35,18 +35,18 @@ else if (act == 'single') {
     WGR_for_post_details();
 
     //
-    jQuery('.wp-caption-text').each(function() {
+    jQuery('.wp-caption-text').each(function () {
         var a = jQuery(this).html() || '';
         if (a != '') {
             jQuery(this).html(a.replace(/\\n/g, '<br>'));
         }
     });
-	
-	// hiển thị bộ thẻ tag nếu có
-	if ( jQuery('.thread-details-tags a').length > 0 ) {
-		jQuery('.thread-details-tags').show();
-	}
-	//console.log( jQuery('.thread-details-tags a').length );
+
+    // hiển thị bộ thẻ tag nếu có
+    if (jQuery('.thread-details-tags a').length > 0) {
+        jQuery('.thread-details-tags').show();
+    }
+    //console.log( jQuery('.thread-details-tags a').length );
 }
 // end details
 
@@ -61,13 +61,13 @@ else if (act == 'cart') {
     _global_js_eb.cart_func();
 
     // hiển thị hộp nhập mã giảm giá nếu có
-	if ( typeof co_ma_giam_gia != 'undefined' ) {
-	    _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-global-cart-coupon');
-	}
-	
-	if ( typeof cart_shipping_content != 'undefined' && cart_shipping_content != '' ) {
-		$('.eb-global-cart-shipping_fee').show();
-	}
+    if (typeof co_ma_giam_gia != 'undefined') {
+        _global_js_eb.cart_discount_code(co_ma_giam_gia, '.eb-global-cart-coupon');
+    }
+
+    if (typeof cart_shipping_content != 'undefined' && cart_shipping_content != '') {
+        $('.eb-global-cart-shipping_fee').show();
+    }
 }
 // end cart
 
@@ -81,7 +81,7 @@ else if (act == '404') {
 
 
 // tạo slider cho widget
-(function() {
+(function () {
     var i = 0;
 
     // Tạo số lượng chạy slider dựa theo kích cỡ ảnh đã được chỉ định
@@ -101,8 +101,8 @@ else if (act == '404') {
     }
 
     //
-    setTimeout(function() {
-        jQuery('.ebwidget-run-slider').each(function() {
+    setTimeout(function () {
+        jQuery('.ebwidget-run-slider').each(function () {
             var c = 'ebwidget-run-slider' + i,
                 s = '';
 
@@ -127,15 +127,15 @@ else if (act == '404') {
 
             //
             console.log('Run widget slider ' + c + ' with size: ' + s);
-            setTimeout(function() {
+            setTimeout(function () {
                 jEBE_slider(c, {
-//					size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
+                    //					size : jQuery( c + ' li:first .echbay-blog-avt').attr('data-size') || '',
                     size: s,
 
                     visible: jQuery(c + ' ul').attr('data-visible') || 1,
-//					buttonListNext: false,
+                    //					buttonListNext: false,
                     autoplay: true
-//				}, function () {
+                    //				}, function () {
                 });
             }, 2000);
 
@@ -161,8 +161,8 @@ ___eb_thread_list_li();
 
 
 // thuộc tính mở rộng khung tìm kiếm
-(function() {
-    jQuery('.span-search-icon').click(function() {
+(function () {
+    jQuery('.span-search-icon').click(function () {
         var a = jQuery(this).attr('data-active') || '';
 
         if (a != '') {
@@ -203,7 +203,7 @@ function WGR_click_add_product_to_favorite() {
     }
 
     // Khi người dùng bấm vào lưu sản phẩm yêu thích
-    jQuery('.add-to-favorite').click(function() {
+    jQuery('.add-to-favorite').click(function () {
         var a = jQuery(this).attr('data-id') || pid;
         var b = ___wgr_set_product_id_cookie(cookie_name, a, 50, limit_save);
 
@@ -234,8 +234,8 @@ function WGR_click_add_product_to_favorite() {
 
             //
             _global_js_eb.ga_event_track('', '', '', {
-//				'category' : '',
-//				'label' : '',
+                //				'category' : '',
+                //				'label' : '',
                 'action': 'add_to_wishlist'
             });
         }
@@ -305,7 +305,7 @@ function add_fb_messages_for_page() {
 	</div>');
 
     //
-    jQuery(".chat_fb").click(function() {
+    jQuery(".chat_fb").click(function () {
         jQuery('.fchat').toggle('slow');
     });
 }
@@ -322,24 +322,24 @@ WGR_create_href_for_facebook();
 
 
 // load các module mạng xã hội
-(function() {
-	
-	//
-	if ( WGR_check_option_on ( cf_tester_mode ) ) {
-		console.log('%c Social disable by cf_tester_mode', 'color: red;');
-		return false;
-	}
-	
-	// căn lại chiều rộng cho fb plugin
-	// https://developers.facebook.com/docs/plugins/comments/
-//	jQuery('.fb-like, .fb-comments').each(function() {
-//		jQuery(this).attr({
-//			'data-width': Math.ceil(jQuery(this).width() || 320)
-//		});
-//	});
-	
-	
-    jQuery(document).ready(function() {
+(function () {
+
+    //
+    if (WGR_check_option_on(cf_tester_mode)) {
+        console.log('%c Social disable by cf_tester_mode', 'color: red;');
+        return false;
+    }
+
+    // căn lại chiều rộng cho fb plugin
+    // https://developers.facebook.com/docs/plugins/comments/
+    //	jQuery('.fb-like, .fb-comments').each(function() {
+    //		jQuery(this).attr({
+    //			'data-width': Math.ceil(jQuery(this).width() || 320)
+    //		});
+    //	});
+
+
+    jQuery(document).ready(function () {
         window.___gcfg = {
             lang: 'vi'
         };
@@ -358,7 +358,7 @@ WGR_create_href_for_facebook();
         /*
          * G+ Comment
          */
-        jQuery('.g-comments').each(function() {
+        jQuery('.g-comments').each(function () {
             jQuery(this).attr({
                 'data-width': jQuery(this).width()
             });
@@ -368,7 +368,7 @@ WGR_create_href_for_facebook();
         if (jQuery('.g-comments').length > 0) {
             po = document.createElement('script');
             po.type = 'text/javascript';
-//			po.async = true;
+            //			po.async = true;
             po.src = 'https://apis.google.com/js/plusone.js';
             s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(po, s);
@@ -380,26 +380,26 @@ WGR_create_href_for_facebook();
 
             //
             if (WGR_check_option_on(cf_tester_mode)) console.log('FB app ID: ' + __global_facebook_id);
-			
-			//
-             window.fbAsyncInit = function() {
-				 FB.init({
-//					 appId: __global_facebook_id,
-					 xfbml: true,
-					 version: 'v6.0'
-				 });
-             };
-			
-			// căn lại chiều rộng cho fb plugin
-//			jQuery('.fb-like, .fb-comments').each(function() {
-//				jQuery(this).attr({
-//					'data-width': Math.ceil(jQuery(this).width() || 320)
-//				});
-//			});
+
+            //
+            window.fbAsyncInit = function () {
+                FB.init({
+                    //					 appId: __global_facebook_id,
+                    xfbml: true,
+                    version: 'v6.0'
+                });
+            };
+
+            // căn lại chiều rộng cho fb plugin
+            //			jQuery('.fb-like, .fb-comments').each(function() {
+            //				jQuery(this).attr({
+            //					'data-width': Math.ceil(jQuery(this).width() || 320)
+            //				});
+            //			});
 
 
             //
-            var fb_lang = (function() {
+            var fb_lang = (function () {
                 var lang = jQuery('html').attr('lang') || navigator.language || navigator.userLanguage || '';
                 if (lang != '') {
                     lang = lang.split('_')[0].split('-')[0].toLowerCase();
@@ -410,22 +410,22 @@ WGR_create_href_for_facebook();
                 }
                 return 'en_US';
             })();
-//			console.log( fb_lang );
+            //			console.log( fb_lang );
 
             //
-            (function(d, s, id) {
+            (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) {
-					return;
-				}
-				js = d.createElement(s);
-				js.id = id;
-				js.async = true;
-				js.defer = true;
-				js.crossorigin = "anonymous";
-//				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.2&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
-				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.3&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
-				fjs.parentNode.insertBefore(js, fjs);
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.async = true;
+                js.defer = true;
+                js.crossorigin = "anonymous";
+                //				js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.2&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
+                js.src = 'https://connect.facebook.net/' + fb_lang + '/sdk.js#xfbml=1&version=v3.3&appId=' + __global_facebook_id + '&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
 
@@ -456,6 +456,11 @@ WGR_create_href_for_facebook();
              */
         }
 
+        //
+        $(document).ready(function () {
+            $('body').addClass('document-ready');
+        });
+
     });
 
 })();
@@ -467,12 +472,12 @@ WGR_create_href_for_facebook();
 
 // Thêm link bản quyền cho theme
 jQuery('.powered-by-echbay a').attr({
-//	href: 'https://echbay.com/'
-	href: private_info_setting_site_url
+    //	href: 'https://echbay.com/'
+    href: private_info_setting_site_url
 });
 
 // kiểm tra phiên bản HTML mới hay cũ
-setTimeout(function() {
+setTimeout(function () {
     //	if ( jQuery('title').length != 1 ) {
     if (top == self && jQuery('head title').length != 1) {
         a_lert('Lỗi HTML! vui lòng kiểm tra lại! jQuery(head title).length != 1');
@@ -490,7 +495,7 @@ ___eb_click_open_video_popup();
 
 
 // ẩn các khối không có dữ liệu
-jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
+jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function () {
     if (jQuery('li', this).length == 0) {
         jQuery(this).hide();
     }
@@ -500,7 +505,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 // tạo nút share lên các mạng xã hội
-(function() {
+(function () {
     if (pid == 0 || typeof post_canonical_url == 'undefined' || post_canonical_url == '') {
         return false;
     }
@@ -531,7 +536,7 @@ jQuery('.hide-if-zero-post, .hide-if-zero-other').each(function() {
 
 
 // lưu thông tin các thuộc tính utm nếu có
-(function(src) {
+(function (src) {
     if (src == '') {
         return false;
     }

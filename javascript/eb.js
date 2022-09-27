@@ -11,11 +11,11 @@ if (typeof $ == 'undefined') {
 
 
 var bg_load = 'Loading...',
-    //	ctimeout = null,
+    //ctimeout = null,
     // tỉ lệ tiêu chuẩn của video youtube -> lấy trên youtube
     //youtube_video_default_size = 315 / 560,
     youtube_video_default_size = 9 / 16,
-    //	youtube_video_default_size = 480/ 854,
+    //youtube_video_default_size = 480/ 854,
     // tên miền chính sử dụng code này
     primary_domain_usage_eb = '',
     disable_eblazzy_load = false,
@@ -29,21 +29,21 @@ var bg_load = 'Loading...',
 //
 /*
 if (top == self) {
-	var so_lan_reset_current_page = 0;
-	setInterval(function() {
-		so_lan_reset_current_page++;
-		if (so_lan_reset_current_page < 3) {
-			var jd = '_____eb_js_session_reset_timeout';
-			if (dog(jd) == null) {
-				jQuery('<div id="' + jd + '" class="d-none"></div>').appendTo('body');
-			}
-			ajaxl('guest.php?act=reset_timeout', jd, 9, function() {
-				console.log('Reset timeout');
-			});
-		} else {
-			window.location = window.location.href;
-		}
-	}, 1200 * 1000);
+    var so_lan_reset_current_page = 0;
+    setInterval(function() {
+        so_lan_reset_current_page++;
+        if (so_lan_reset_current_page < 3) {
+            var jd = '_____eb_js_session_reset_timeout';
+            if (dog(jd) == null) {
+                jQuery('<div id="' + jd + '" class="d-none"></div>').appendTo('body');
+            }
+            ajaxl('guest.php?act=reset_timeout', jd, 9, function() {
+                console.log('Reset timeout');
+            });
+        } else {
+            window.location = window.location.href;
+        }
+    }, 1200 * 1000);
 }
 */
 
@@ -103,7 +103,7 @@ var g_func = {
     },
     trim: function (str) {
         return jQuery.trim(str);
-        //		return str.replace(/^\s+|\s+$/g, "");
+        //return str.replace(/^\s+|\s+$/g, "");
     },
 
     setc: function (name, value, seconds, days, set_domain) {
@@ -117,8 +117,8 @@ var g_func = {
         }
 
         //
-        //		if ( typeof seconds == 'number' && seconds > 0 ) {
-        //		if ( typeof seconds == 'number' && seconds != 0 ) {
+        //if ( typeof seconds == 'number' && seconds > 0 ) {
+        //if ( typeof seconds == 'number' && seconds != 0 ) {
         if (typeof seconds == 'number') {
             // chuyển sang dạng timestamp
             seconds = seconds * 1000;
@@ -140,7 +140,7 @@ var g_func = {
 
             //
             cdomain = cdomain.split('.');
-            //			console.log(cdomain);
+            //console.log(cdomain);
 
             // bỏ www đi -> áp dụng cho tất cả các domain
             if (cdomain[0] == 'www') {
@@ -155,7 +155,7 @@ var g_func = {
             else {
                 cdomain = cdomain.join('.');
             }
-            //			console.log(cdomain);
+            //console.log(cdomain);
 
             //
             document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + ";domain=" + cdomain + ";path=/";
@@ -192,11 +192,11 @@ var g_func = {
     delck: function (name) {
         g_func.setc(name, "", 0 - (24 * 3600 * 7));
 
-        //		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        //document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 
         // v1 -> lỗi
-        //		g_func.setc(name, "", -1);
-        //		g_func.setc(name, "", -1, 0, true);
+        //g_func.setc(name, "", -1);
+        //g_func.setc(name, "", -1, 0, true);
     },
 
     text_only: function (str) {
@@ -217,14 +217,14 @@ var g_func = {
         }
         // mặc định chỉ lấy số
         if (typeof format == 'string' && format != '') {
-            //			console.log(format);
+            //console.log(format);
             str = str.toString().replace(eval(format), '');
 
             if (str == '') {
                 return 0;
             }
 
-            //			return str;
+            //return str;
             return str * 1;
         } else {
             //console.log('dfg dhas fsdf');
@@ -253,7 +253,7 @@ var g_func = {
     money_format: function (str) {
         // loại bỏ số 0 ở đầu chuỗi số
         str = str.toString().replace(/\,/g, '').split('.');
-        //		str[0] = parseInt( str[0], 10 );
+        //str[0] = parseInt( str[0], 10 );
         str[0] = str[0] * 1;
 
         // chuyển sang định dạng tiền tệ
@@ -271,11 +271,11 @@ var g_func = {
         if (typeof dot == 'undefined' || dot == '') {
             dot = ',';
         }
-        //		console.log( dot );
+        //console.log( dot );
 
         num = num.toString().replace(/\s/g, '');
         var str = num,
-            //			re = /^\d+$/,
+            //re = /^\d+$/,
             so_am = '',
             so_thap_phan = '';
         if (num.substr(0, 1) == '-') {
@@ -284,18 +284,18 @@ var g_func = {
 
         /*
         for (var i = 0, t = ''; i < num.length; i++) {
-        	t = num.substr(i, 1);
-        	if (re.test(t) == true) {
-        		str += t;
-        	}
+            t = num.substr(i, 1);
+            if (re.test(t) == true) {
+                str += t;
+            }
         }
         */
         // Nếu không phải tách số theo dấu chấm -> tìm cả số thập phân
         if (dot != '.') {
-            //			console.log( str );
+            //console.log( str );
             str = g_func.float_only(str);
-            //			if ( str != 0 ) {
-            //				console.log( str );
+            //if ( str != 0 ) {
+            //console.log( str );
             so_thap_phan = str.toString().split('.');
             if (so_thap_phan.length > 1) {
                 str = so_thap_phan[0];
@@ -307,24 +307,24 @@ var g_func = {
             } else {
                 so_thap_phan = '';
             }
-            //			}
-            //			console.log( str );
+            //}
+            //console.log( str );
         }
         // Tách theo dấu chấm thì bỏ qua
         else {
-            //			console.log( str );
+            //console.log( str );
             str = g_func.number_only(str);
         }
 
         var len = str.toString().length;
-        //		var len = str.length;
-        //		console.log( len );
+        //var len = str.length;
+        //console.log( len );
         if (len > 3) {
             var new_str = str.toString();
             str = '';
             for (var i = 0; i < new_str.length; i++) {
                 len -= 3;
-                //				console.log( len );
+                //console.log( len );
                 if (len > 0) {
                     str = dot + new_str.substr(len, 3) + str;
                 } else {
@@ -336,10 +336,10 @@ var g_func = {
         return so_am + str + so_thap_phan;
 
         //
-        //		return num;
+        //return num;
     },
 
-    wh: function () {},
+    wh: function () { },
     opopup: function (o) {
         if (typeof o == 'undefined') {
             jQuery('#oi_popup').hide();
@@ -349,14 +349,14 @@ var g_func = {
         //
         if (o == 'login') {
             _global_js_eb.ga_event_track('', '', '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'action': 'login'
             });
         } else if (o == 'register') {
             _global_js_eb.ga_event_track('', '', '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'action': 'sign_up'
             });
         }
@@ -365,7 +365,7 @@ var g_func = {
         dog('oi_popup', '<div id="oi_popup_inner"><div align="center" style="padding:168px 0">Loading...</div></div><div onclick="g_func.opopup();" class="oi_popup_close"></div>');
 
         //
-        //		ajaxl(web_link + 'eb-' + o, 'oi_popup_inner', 9, function () {
+        //ajaxl(web_link + 'eb-' + o, 'oi_popup_inner', 9, function () {
         ajaxl('eb-' + o, 'oi_popup_inner', 9, function () {
             jQuery('#oi_popup_inner .popup-border').show();
         });
@@ -419,7 +419,7 @@ var g_func = {
 
         if (len > 0 && str.length > len) {
             var a = str.split(" ");
-            //			console.log(a);
+            //console.log(a);
             str = '';
 
             for (var i = 0; i < a.length; i++) {
@@ -431,7 +431,7 @@ var g_func = {
                     }
                 }
             }
-            //			console.log(str.length);
+            //console.log(str.length);
             str = jQuery.trim(str);
 
             if (typeof more == 'undefined' || more == true || more == 1) {
@@ -602,17 +602,17 @@ var _global_js_eb = {
 
     auto_margin: function () {
 
-        //		if ( window.location.href.split('localhost').length == 1 ) {
-        //			console.log('test on localhost');
-        //			return false;
-        //		}
-        //		console.log( 560 * 1.5 );
-        //		console.log( 315 * 1.5 );
+        //if ( window.location.href.split('localhost').length == 1 ) {
+        //console.log('test on localhost');
+        //return false;
+        //}
+        //console.log( 560 * 1.5 );
+        //console.log( 315 * 1.5 );
 
         // tạo attr mặc định để lưu thuộc tính cũ
         jQuery('.img-max-width').each(function () {
             var max_width = jQuery(this).attr('data-max-width') || '';
-            //			console.log('aaaaaaaaaaa: ' + max_width);
+            //console.log('aaaaaaaaaaa: ' + max_width);
             if (max_width == '' || max_width < 90) {
                 max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 0;
                 max_width = Math.ceil(max_width) - 1;
@@ -620,23 +620,23 @@ var _global_js_eb = {
                     'data-max-width': max_width
                 });
             }
-            //			console.log('bbbbbbbbbbb: ' + max_width);
+            //console.log('bbbbbbbbbbb: ' + max_width);
 
             // chỉnh lại chiều rộng của thẻ DIV trong khung nội dung (trừ đi padding với border của div)
-            //			jQuery('.wp-caption', this).width( max_width - 5 );
+            //jQuery('.wp-caption', this).width( max_width - 5 );
             jQuery('.wp-caption', this).css({
                 'max-width': max_width + 'px'
             });
             /*
             jQuery('.wp-caption', this).each(function() {
-            	var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
+                var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
             	
-            	//
-            	jQuery(this).attr({
-            		'data-width' : wit
-            	}).css({
-            		'max-width' : wit + 'px'
-            	}).width('auto');
+                //
+                jQuery(this).attr({
+                    'data-width' : wit
+                }).css({
+                    'max-width' : wit + 'px'
+                }).width('auto');
             });
             */
 
@@ -651,12 +651,12 @@ var _global_js_eb = {
                     if (wit > max_width) {
                         wit = max_width - 1;
                     }
-                    //				console.log(wit);
+                    //console.log(wit);
 
                     // chỉ xử lý với video youtube
                     if (a.split('youtube.com/').length > 1) {
                         jQuery(this).attr({
-                            //						'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
+                            //'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
                             'data-width': Math.ceil(wit)
                         });
                     }
@@ -695,7 +695,7 @@ var _global_js_eb = {
 
 
         var avt_max_height = 250,
-            //			css_m_id = 'css-for-mobile',
+            //css_m_id = 'css-for-mobile',
             screen_width = jQuery(window).width(),
             current_device = '';
 
@@ -710,15 +710,15 @@ var _global_js_eb = {
         if (screen_width < 950 && current_device != 'desktop') {
             /*
             (function(d, j) {
-            	if (d.getElementById(j)) return;
-            	var head = d.getElementsByTagName('head')[0];
-            	var l = d.createElement('link');
-            	l.rel = 'stylesheet';
-            	l.type = 'text/css';
-            	l.href = 'css/m.css?v=' + _date('Y-m-d-H');
-            	l.media = 'all';
-            	l.id = css_m_id;
-            	head.appendChild(l);
+                if (d.getElementById(j)) return;
+                var head = d.getElementsByTagName('head')[0];
+                var l = d.createElement('link');
+                l.rel = 'stylesheet';
+                l.type = 'text/css';
+                l.href = 'css/m.css?v=' + _date('Y-m-d-H');
+                l.media = 'all';
+                l.id = css_m_id;
+                head.appendChild(l);
             }(document, css_m_id));
             */
 
@@ -751,9 +751,9 @@ var _global_js_eb = {
                 if (a > 0 && w != '') {
 
                     // Với màn hình ipad dọc Sử dụng kích thước lớn hơn chút
-                    //					if ( screen_width > 700 ) {
-                    //						w *= 1.5;
-                    //					}
+                    //if ( screen_width > 700 ) {
+                    //w *= 1.5;
+                    //}
                     if (screen_width > 700 && w_big != '') {
                         w = w_big;
                     }
@@ -781,7 +781,7 @@ var _global_js_eb = {
 
 
             //
-            //			console.log('TEST max_width');
+            //console.log('TEST max_width');
 
 
             // trên mobile -> giới hạn kích thước media
@@ -808,7 +808,7 @@ var _global_js_eb = {
         }
         // for PC
         else {
-            //			jQuery('#' + css_m_id).remove();
+            //jQuery('#' + css_m_id).remove();
             jQuery('body').removeClass('style-for-mobile').removeClass('style-for-table').removeClass('style-for-ngang-mobile');
 
             //
@@ -825,11 +825,11 @@ var _global_js_eb = {
                 var max_width = jQuery(this).attr('data-max-width') || 250;
                 /*
                 if ( max_width == '' || max_width < 90 ) {
-                	max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
+                    max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
                 }
                 */
                 max_width = Math.ceil(max_width) - 1;
-                //				console.log('dddddddddd: ' + max_width);
+                //console.log('dddddddddd: ' + max_width);
 
 
                 // xử lý riêng với chiều rộng
@@ -924,7 +924,7 @@ var _global_js_eb = {
 
             // với size auto -> set thẳng ảnh vào thay vì background
             if (new_size == 'auto') {
-                //				new_size = '';
+                //new_size = '';
 
                 //
                 var img = jQuery(this).attr('data-img') || '';
@@ -932,15 +932,15 @@ var _global_js_eb = {
                     jQuery(this).after('<div class="echbay-blog-avt auto-size"><img src="' + img + '" width="' + a + '" /></div>').remove();
                     /*
                     .addClass('auto-size').removeClass('ti-le-global').height('auto').css({
-                    	'background' : 'none',
-                    	'background-image' : 'none',
-                    	'line-height': 'normal'
+                        'background' : 'none',
+                        'background-image' : 'none',
+                        'line-height': 'normal'
                     }).html('<img src="' + img + '" width="' + a + '" />');
                     */
                 }
             } else if (new_size == 'full') {
                 a = jQuery(window).height();
-                //				console.log(a);
+                //console.log(a);
 
                 //
                 jQuery(this).css({
@@ -959,7 +959,7 @@ var _global_js_eb = {
                     pading_size = 'ty-le-h' + new_size.replace(/\/|\./gi, '_');
 
                     //
-                    //				a *= new_size;
+                    //a *= new_size;
 
                     // v2 -> tính padding theo chiều rộng
                     a = eval(new_size);
@@ -974,8 +974,8 @@ var _global_js_eb = {
                     a = 1;
                 }
                 // Mặc định là 1x1 -> chiều cao = chiều rộng
-                //				else {
-                //				}
+                //else {
+                //}
                 //console.log(pading_size);
                 //console.log(a);
 
@@ -1012,12 +1012,12 @@ var _global_js_eb = {
             console.log('ty-le-global padding CSS: ' + str_css);
             $('head').append('<style>' + str_css + '</style>');
         }
-        //		console.log( eval('560/315') );
-        //		console.log( eval('2/3') );
+        //console.log( eval('560/315') );
+        //console.log( eval('2/3') );
 
 
         //
-        //		_global_js_eb.big_banner();
+        //_global_js_eb.big_banner();
 
     },
 
@@ -1027,7 +1027,7 @@ var _global_js_eb = {
         jQuery('.oi_big_banner, .oi_big_banner li').height(a).css({
             'line-height': a + 'px'
         });
-        //		jQuery('.oi_big_banner').height( a );
+        //jQuery('.oi_big_banner').height( a );
     },
 
     money_format_keyup: function () {
@@ -1071,8 +1071,8 @@ var _global_js_eb = {
                 df = jQuery(this).attr('date-format') || '',
                 b = '';
             a = jQuery.trim(a);
-            //			console.log(a);
-            //			console.log(df);
+            //console.log(a);
+            //console.log(df);
 
             // kiểm tra và chuyển về 1 định dạng
             if (a != '' && a.length == 10 && df != '') {
@@ -1087,8 +1087,8 @@ var _global_js_eb = {
 
                 //
                 df = df.toLowerCase().replace(/\-|\s/g, '/').split('/');
-                //				console.log(a);
-                //				console.log(df);
+                //console.log(a);
+                //console.log(df);
 
                 //
                 if (df.length == 3) {
@@ -1136,13 +1136,13 @@ var _global_js_eb = {
             }
 
             // Nếu không phải chế độ TEST -> bỏ qua khi cùng là domain
-            //			if ( WGR_check_option_on ( cf_tester_mode ) ) {
+            //if ( WGR_check_option_on ( cf_tester_mode ) ) {
             s = a.split('//')[1].split('/')[0];
             s2 = click_url.split('//')[1].split('/')[0];
             if (s.split(s2).length > 1 || s2.split(s).length > 1) {
                 return false;
             }
-            //			}
+            //}
 
             // lưu cookie của referrer để còn cho vào đơn hàng tiện theo dõi
             g_func.setc('eb_document_referrer', escape(a), 0, 7);
@@ -1150,18 +1150,18 @@ var _global_js_eb = {
 
             /*
             if (dog(jd) == null) {
-            	jQuery('<div id="' + jd + '" style="display:none;"></div>').appendTo('body');
+                jQuery('<div id="' + jd + '" style="display:none;"></div>').appendTo('body');
             }
             */
 
             //
             var pad = function (number, length) {
-                    var str = "" + number;
-                    while (str.length < length) {
-                        str = '0' + str;
-                    }
-                    return str;
-                },
+                var str = "" + number;
+                while (str.length < length) {
+                    str = '0' + str;
+                }
+                return str;
+            },
                 offset = new Date().getTimezoneOffset();
             offset = ((offset < 0 ? '+' : '-') + pad(parseInt(Math.abs(offset / 60)), 2) + pad(Math.abs(offset % 60), 2));
 
@@ -1186,7 +1186,7 @@ var _global_js_eb = {
                 })(),
                 usertime: (function () {
                     var t = new Date().getTime();
-                    //					t = parseInt(t / 1000, 10);
+                    //t = parseInt(t / 1000, 10);
                     t = t / 1000 * 1;
                     return t;
                 })(),
@@ -1196,9 +1196,9 @@ var _global_js_eb = {
                 quaylai: (g_func.getc('eb_wgr_quaylai_log_click') != null) ? 1 : 0,
                 /*
                 agent: (function() {
-                	var str = navigator.userAgent || navigator.vendor || window.opera || '';
-                	str = str.replace(/\s/g, '+');
-                	return str;
+                    var str = navigator.userAgent || navigator.vendor || window.opera || '';
+                    str = str.replace(/\s/g, '+');
+                    return str;
                 })(),
                 */
                 staff_id: staff_id
@@ -1206,7 +1206,7 @@ var _global_js_eb = {
             /*
             uri = '';
             for (var x in arr) {
-            	uri += '&' + x + '=' + arr[x];
+                uri += '&' + x + '=' + arr[x];
             }
             */
             uri = JSON.stringify(arr);
@@ -1229,44 +1229,44 @@ var _global_js_eb = {
 
             //
             /*
-			return false;
-			
-			
-			//
-			check_staff_id = click_url.split('utm_source=');
-			if (check_staff_id.length > 1) {
-				staff_id = check_staff_id[1].split('&')[0].split('/')[0].split('?')[0].split('#')[0];
-				if (staff_id != '') {
-					staff_id = staff_id.toLowerCase().split('ctv');
-					if (staff_id.length > 1) {
-						staff_id = staff_id[1].split('eb')[0];
-//						staff_id = parseInt(staff_id, 10);
-						staff_id = staff_id * 1;
-						if (isNaN(staff_id) || staff_id <= 0) {
-							staff_id = '';
-						}
-					} else {
-						staff_id = '';
-					}
-				}
-			}
-			if (staff_id == '') {
-				staff_id = 0;
-			}
-			if (staff_id > 0) {
-				g_func.setc('ss_staff_id', staff_id, 0, 30);
-			}
-			if (g_func.getc('ss_ads_referre') != null) {
-				console.log('user return');
-				return false;
-			}
-			g_func.setc('ss_ads_referre', encodeURIComponent(a), 3600 * 6);
-			*/
+            return false;
+        	
+        	
+            //
+            check_staff_id = click_url.split('utm_source=');
+            if (check_staff_id.length > 1) {
+                staff_id = check_staff_id[1].split('&')[0].split('/')[0].split('?')[0].split('#')[0];
+                if (staff_id != '') {
+                    staff_id = staff_id.toLowerCase().split('ctv');
+                    if (staff_id.length > 1) {
+                        staff_id = staff_id[1].split('eb')[0];
+//staff_id = parseInt(staff_id, 10);
+                        staff_id = staff_id * 1;
+                        if (isNaN(staff_id) || staff_id <= 0) {
+                            staff_id = '';
+                        }
+                    } else {
+                        staff_id = '';
+                    }
+                }
+            }
+            if (staff_id == '') {
+                staff_id = 0;
+            }
+            if (staff_id > 0) {
+                g_func.setc('ss_staff_id', staff_id, 0, 30);
+            }
+            if (g_func.getc('ss_ads_referre') != null) {
+                console.log('user return');
+                return false;
+            }
+            g_func.setc('ss_ads_referre', encodeURIComponent(a), 3600 * 6);
+            */
         }, 600);
     },
 
     ebBgLazzyLoadOffset: function (i) {
-        //		console.log( 'each-to-bgimg offset' );
+        //console.log( 'each-to-bgimg offset' );
 
         if (typeof i != 'number') {
             i = 5;
@@ -1308,28 +1308,28 @@ var _global_js_eb = {
             }
 
             // load trước các ảnh ngoài màn hình, để lát khách kéo xuống có thể xem được luôn
-            //			lazzy_show += 600;
-            //			lazzy_show += 1500;
-            //			lazzy_show += jQuery(window).height()/ 2;
+            //lazzy_show += 600;
+            //lazzy_show += 1500;
+            //lazzy_show += jQuery(window).height()/ 2;
             lazzy_show += height_for_lazzy_load;
-            //			console.log( height_for_lazzy_load );
+            //console.log( height_for_lazzy_load );
 
             //
             jQuery('.' + eb_lazzy_class).each(function () {
                 a = jQuery(this).offset().top || 0;
-                //				a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
+                //a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
 
                 if (a < lazzy_show) {
                     var wit = jQuery(this).width() || 300;
 
                     // v1
                     /*
-					jQuery(this).css({
-//						opacity: 1,
-//					}).css({
-						'background-image': 'url(\'' + (jQuery(this).attr('data-img') || '') + '\')'
-					});
-					*/
+                    jQuery(this).css({
+//opacity: 1,
+//}).css({
+                        'background-image': 'url(\'' + (jQuery(this).attr('data-img') || '') + '\')'
+                    });
+                    */
 
 
                     // v2
@@ -1341,7 +1341,7 @@ var _global_js_eb = {
                     if (img == 'speed') {
                         img = img_mobile;
                         // sử dụng ảnh cho bản mobile
-                        //						if ( wh < 768 && img_mobile != '' ) {
+                        //if ( wh < 768 && img_mobile != '' ) {
                         if (img_mobile != '') {
                             // mobile
                             if (wit < 250) {
@@ -1350,16 +1350,16 @@ var _global_js_eb = {
                             // table
                             /*
                             else if ( wit < 400 ) {
-                            	img += 't';
+                                img += 't';
                             }
                             */
                         }
                         jQuery(this).addClass(img);
                     } else if (img != '') {
                         // sử dụng ảnh cho bản mobile
-                        //						if ( wh < 768 && img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
-                        //						if ( img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
-                        //							if ( wit < 250 ) {
+                        //if ( wh < 768 && img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
+                        //if ( img_mobile != '' && img.split('.').pop().toLowerCase() != 'png' ) {
+                        //if ( wit < 250 ) {
                         if (wh < 550) {
                             if (wit < 150) {
                                 img = img_mobile;
@@ -1371,21 +1371,21 @@ var _global_js_eb = {
                         }
                         /*
                         else if ( wit < 768 ) {
-                        	img = img_table;
+                            img = img_table;
                         }
                         */
-                        //						}
+                        //}
 
                         // sử dụng cdn nếu ảnh trong thư mục upload
-                        //						if ( primary_domain_usage_eb != '' && img.split('/')[0] == 'upload' ) {
-                        //							img = img.replace( 'upload/', '//upload.' +primary_domain_usage_eb+ '.com.vn/' );
-                        //						}
+                        //if ( primary_domain_usage_eb != '' && img.split('/')[0] == 'upload' ) {
+                        //img = img.replace( 'upload/', '//upload.' +primary_domain_usage_eb+ '.com.vn/' );
+                        //}
 
                         //
                         jQuery(this).css({
-                            //							opacity: 1,
-                            //						}).css({
-                            //							'background-image': 'url(\'' + _global_js_eb.resize_img( img, jQuery(this).width() ) + '\')'
+                            //opacity: 1,
+                            //}).css({
+                            //'background-image': 'url(\'' + _global_js_eb.resize_img( img, jQuery(this).width() ) + '\')'
                             'background-image': 'url(\'' + img + '\')'
                         });
                     }
@@ -1395,7 +1395,7 @@ var _global_js_eb = {
                 }
                 /*
                 else {
-                	return false;
+                    return false;
                 }
                 */
             });
@@ -1404,17 +1404,17 @@ var _global_js_eb = {
             //
             jQuery('.' + eb_lazzy_iframe).each(function () {
                 a = jQuery(this).offset().top || 0;
-                //				a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
-                //				console.log( 'a: ' + a );
-                //				console.log( 'lazzy_show: ' + lazzy_show );
+                //a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
+                //console.log( 'a: ' + a );
+                //console.log( 'lazzy_show: ' + lazzy_show );
 
                 if (a < lazzy_show) {
                     c = jQuery(this).attr('data-iframe') || '';
-                    //					console.log(c);
+                    //console.log(c);
                     if (c != '') {
-                        //						console.log(c);
+                        //console.log(c);
                         c = unescape(c);
-                        //						console.log(c);
+                        //console.log(c);
                         jQuery(this).html(c);
 
                         //
@@ -1428,7 +1428,7 @@ var _global_js_eb = {
             jQuery('.url-to-google-map').addClass(eb_lazzy_iframe);
             /*
             jQuery('.each-to-bgimg').addClass(eb_lazzy_class).css({
-            	opacity: .2
+                opacity: .2
             });
             */
 
@@ -1451,24 +1451,24 @@ var _global_js_eb = {
 
         //
         /*
-		if (pid > 0) {
-			if (typeof fix_url_pid != 'undefined' && fix_url_pid != '') {
-				fix_url_pid = web_link + fix_url_pid;
-				
-//					console.log( window.location.href.split('//')[1] );
-//					console.log( fix_url_pid.split('//')[1] );
-				
-				try {
-					if ( window.location.href.split('//')[1] != fix_url_pid.split('//')[1] ) {
-						new_url = fix_url_pid;
-					}
-				} catch (e) {
-					console.log( WGR_show_try_catch_err( e ) );
-				}
-			}
-		}
-		else if (fid > 0) {
-			*/
+        if (pid > 0) {
+            if (typeof fix_url_pid != 'undefined' && fix_url_pid != '') {
+                fix_url_pid = web_link + fix_url_pid;
+            	
+//console.log( window.location.href.split('//')[1] );
+//console.log( fix_url_pid.split('//')[1] );
+            	
+                try {
+                    if ( window.location.href.split('//')[1] != fix_url_pid.split('//')[1] ) {
+                        new_url = fix_url_pid;
+                    }
+                } catch (e) {
+                    console.log( WGR_show_try_catch_err( e ) );
+                }
+            }
+        }
+        else if (fid > 0) {
+            */
         if (fid > 0) {
             for (var i = 0; i < site_group.length; i++) {
                 if (new_url == '') {
@@ -1527,12 +1527,12 @@ var _global_js_eb = {
 
         //
         var pad = function (number, length) {
-                var str = "" + number;
-                while (str.length < length) {
-                    str = '0' + str;
-                }
-                return str;
-            },
+            var str = "" + number;
+            while (str.length < length) {
+                str = '0' + str;
+            }
+            return str;
+        },
             offset = new Date().getTimezoneOffset(),
             str = '';
 
@@ -1577,7 +1577,7 @@ var _global_js_eb = {
             })(navigator.userLanguage || navigator.language || ''),
             hd_usertime: (function () {
                 var t = new Date().getTime();
-                //				t = parseInt(t / 1000, 10);
+                //t = parseInt(t / 1000, 10);
                 t = t / 1000 * 1;
                 return t;
             })(),
@@ -1650,33 +1650,33 @@ var _global_js_eb = {
         arr.hd_key = g_func.non_mark_seo(arr.hd_ten + arr.hd_dienthoai + arr.hd_email);
         arr.hd_key = arr.hd_key.replace(/\-/g, '');
 
-        //		console.log(arr);
+        //console.log(arr);
 
         /*
-		for (var x in arr) {
-			// v2
-			arr[x] = encodeURIComponent(arr[x].toString().replace(/"/g, '&quot;'));
-			str += ',' + x + ':"' + arr[x] + '"'
-			
-			// v1
-//					str += '<input type="text" name="' + x + '" value="' + arr[x] + '" />';
-		}
-		if (str != '') {
-			str = str.substr(1)
-		}
-		*/
-        //		str = JSON.stringify( arr );
-        //		alert( str );
+        for (var x in arr) {
+            // v2
+            arr[x] = encodeURIComponent(arr[x].toString().replace(/"/g, '&quot;'));
+            str += ',' + x + ':"' + arr[x] + '"'
+        	
+            // v1
+//str += '<input type="text" name="' + x + '" value="' + arr[x] + '" />';
+        }
+        if (str != '') {
+            str = str.substr(1)
+        }
+        */
+        //str = JSON.stringify( arr );
+        //alert( str );
 
         //
-        //		if ( dog('hd_customer_info') == null ) {
+        //if ( dog('hd_customer_info') == null ) {
         if (jQuery('#hd_customer_info').length == 0) {
             jQuery('#cart_user_agent').append('<textarea name="hd_customer_info" id="hd_customer_info"></textarea>');
         }
         jQuery('#hd_customer_info').val(escape(JSON.stringify(arr)));
 
         //
-        //		if ( dog('hd_re_link') == null ) {
+        //if ( dog('hd_re_link') == null ) {
         if (jQuery('#hd_re_link').length == 0) {
             jQuery('#cart_user_agent').append('<input type="text" name="t_re_link" id="hd_re_link" value="" />');
         }
@@ -1727,7 +1727,7 @@ var _global_js_eb = {
                 e = '';
             if (typeof start_end != 'undefined') {
                 start_end = a.replace(/\?/g, '&');
-                //				console.log( start_end );
+                //console.log( start_end );
 
                 //
                 s = start_end.split('&start=');
@@ -1765,12 +1765,12 @@ var _global_js_eb = {
     user_img_loc: function (wit, hai) {
         // lấy tọa độ người dùng
         var a = _global_js_eb.user_loc();
-        //		console.log(a);
-        //		console.log(typeof a);
+        //console.log(a);
+        //console.log(typeof a);
 
         // Kiểu dữ liệu về bắt buộc phải là một mảng
         if (typeof a == 'object' && typeof a.loc != 'undefined') {
-            //			console.log(a);
+            //console.log(a);
 
             //
             if (typeof wit != 'number') wit = 400;
@@ -1787,15 +1787,15 @@ var _global_js_eb = {
     user_string_loc: function () {
         // lấy tọa độ người dùng
         var a = _global_js_eb.user_loc();
-        //		console.log(a);
-        //		console.log(typeof a);
+        //console.log(a);
+        //console.log(typeof a);
 
         // Kiểu dữ liệu về bắt buộc phải là một mảng
         if (typeof a == 'object') {
             // Chuyển thành chuỗi
             a = JSON.stringify(a);
-            //			console.log(a);
-            //			console.log(typeof a);
+            //console.log(a);
+            //console.log(typeof a);
 
             return a;
         }
@@ -1806,7 +1806,7 @@ var _global_js_eb = {
 
     user_loc: function (real_time, after_load) {
         // TEST
-        //		g_func.delck('ipinfo_to_language'); return;
+        //g_func.delck('ipinfo_to_language'); return;
 
         // kiểm tra trong cookie xem có ko
         if (typeof real_time != 'undefined' && real_time == 1) {
@@ -1815,15 +1815,15 @@ var _global_js_eb = {
         } else {
             var a = g_func.getc('ipinfo_to_language');
         }
-        //		console.log( a );
+        //console.log( a );
 
         // nếu có -> trả về luôn
         if (a != null) {
-            //			console.log(a);
-            //			console.log(typeof a);
+            //console.log(a);
+            //console.log(typeof a);
 
             //
-            //			g_func.setc('ipinfo_to_language', a, 3600 * 2 );
+            //g_func.setc('ipinfo_to_language', a, 3600 * 2 );
 
             //
             var json_array = function (a) {
@@ -1881,11 +1881,11 @@ var _global_js_eb = {
             var lat = position.coords.latitude,
                 lon = position.coords.longitude;
             if (WGR_check_option_on(cf_tester_mode)) console.log(position);
-            //			console.log( lat );
-            //			console.log( lon );
+            //console.log( lat );
+            //console.log( lon );
 
             //
-            //			var data = '{"loc":"' +lat+ ',' +lon+ '"}';
+            //var data = '{"loc":"' +lat+ ',' +lon+ '"}';
             var data = {
                 loc: lat + ',' + lon,
                 lat: lat,
@@ -1902,7 +1902,7 @@ var _global_js_eb = {
 
             return data;
         }, function () {
-            //			return _global_js_eb.user_auto_loc( after_load );
+            //return _global_js_eb.user_auto_loc( after_load );
             return _global_js_eb.user_auto_loc();
         }, {
             timeout: 10000
@@ -1978,7 +1978,7 @@ var _global_js_eb = {
         // reset lại mảng
         ebe_arr_cart_product_list = [];
 
-        //		var cart_total_price = 0;
+        //var cart_total_price = 0;
 
         // nếu đang là xem trang chi tiết
         if (pid > 0 && typeof eb_wp_post_type != 'undefined' && eb_wp_post_type == 'post') {
@@ -1989,7 +1989,7 @@ var _global_js_eb = {
                 sku = jQuery('.oi_product_color li.selected').attr('data-sku') || jQuery('.oi_product_color li:first').attr('data-sku') || product_js.sku || '';
             /*
             if ( color_img != '' ) {
-            	color_img = ' <span data-src="' + color_img + '" class="order-img-color-product"></span>';
+                color_img = ' <span data-src="' + color_img + '" class="order-img-color-product"></span>';
             }
             */
 
@@ -2003,7 +2003,7 @@ var _global_js_eb = {
                 "name": product_js.tieude,
                 "slug": cart_product_slug.replace(/\-/g, ''),
                 "size": jQuery('.oi_product_size li.selected').attr('data-name') || jQuery('.oi_product_size li:first').attr('data-name') || '',
-                //				"color" : color_name + color_img,
+                //"color" : color_name + color_img,
                 "color": color_name,
                 "color_img": color_img,
                 "old_price": product_js.gia,
@@ -2016,7 +2016,7 @@ var _global_js_eb = {
 
             //
             jQuery('.eb-global-frm-cart input[name^=t_new_price]').val(price_for_quick_cart);
-            //			cart_total_price = price_for_quick_cart * cart_quan;
+            //cart_total_price = price_for_quick_cart * cart_quan;
         }
         // nếu đang là xem trong giỏ hàng
         else {
@@ -2068,14 +2068,14 @@ var _global_js_eb = {
                 });
 
                 //
-                //				cart_total_price += ( gia_moi * 1 ) * ( cart_quan * 1 );
-                //				cart_total_price += ( gia_rieng * 1 ) * ( cart_quan * 1 );
+                //cart_total_price += ( gia_moi * 1 ) * ( cart_quan * 1 );
+                //cart_total_price += ( gia_rieng * 1 ) * ( cart_quan * 1 );
             });
         }
         if (WGR_check_option_on(cf_tester_mode)) console.log(ebe_arr_cart_product_list);
 
         //
-        //		if ( dog('hd_products_info') == null ) {
+        //if ( dog('hd_products_info') == null ) {
         if (jQuery('#hd_products_info').length == 0) {
             jQuery('#cart_user_agent').append('<textarea name="hd_products_info" id="hd_products_info"></textarea>');
         }
@@ -2148,7 +2148,7 @@ var _global_js_eb = {
 
             //
             jQuery.ajax({
-                //				type: 'POST',
+                //type: 'POST',
                 type: 'GET',
                 url: ajaxl_url('check_discount_code&code=' + a + '&no_echo=1'),
                 data: ''
@@ -2161,13 +2161,13 @@ var _global_js_eb = {
                     jQuery('#' + jd).html('<span class="orgcolor">Lỗi cú pháp! vui lòng báo cho kỹ thuật viên. Xin cảm ơn</span>');
                 }
             });
-            //			ajaxl('check_discount_code&code=' + a, jd, 1 );
-            //			ajaxl('check_discount_code&code=' + a, jd, 1, function() {
-            //			});
+            //ajaxl('check_discount_code&code=' + a, jd, 1 );
+            //ajaxl('check_discount_code&code=' + a, jd, 1, function() {
+            //});
             /*
-		}).off('keyup').keyup(function () {
-			return false;
-			*/
+        }).off('keyup').keyup(function () {
+            return false;
+            */
         });
 
     },
@@ -2178,9 +2178,9 @@ var _global_js_eb = {
         // select màu với size theo lựa chọn trước đó
         var a = g_func.getc('eb_cookie_cart_lists');
         if (a != null) {
-            //			console.log(a);
+            //console.log(a);
             a = jQuery.parseJSON(unescape(a));
-            //			console.log(a);
+            //console.log(a);
             return a;
         }
         return {};
@@ -2194,8 +2194,8 @@ var _global_js_eb = {
         // Size cho phần giỏ hàng
         jQuery('.show-list-size').each(function () {
             // ưu tiên lấy zie của color trước
-            //			var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || jQuery(this).html() || '',
-            //			var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || '',
+            //var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || jQuery(this).html() || '',
+            //var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || '',
             var a = jQuery(this).attr('data-color-size') || '',
                 t_post_id = jQuery(this).attr('data-id') || '';
 
@@ -2207,12 +2207,12 @@ var _global_js_eb = {
             //
             if (a != '') {
                 a = jQuery.parseJSON(unescape(a));
-                //				console.log(a);
-                //				console.log(a.length);
+                //console.log(a);
+                //console.log(a.length);
 
                 //
                 if (typeof a[0] != 'undefined' && typeof a[0].name == 'undefined') {
-                    //				if ( a.length == 1 && typeof a[0][0].ten != 'undefined' ) {
+                    //if ( a.length == 1 && typeof a[0][0].ten != 'undefined' ) {
                     a = a[0];
                 }
 
@@ -2280,14 +2280,14 @@ var _global_js_eb = {
         jQuery('.show-list-size').each(function () {
             var a = jQuery(this).html() || '';
             if (a != '') {
-                //				console.log(a);
+                //console.log(a);
                 if (a.substr(0, 1) == ',') {
                     a = a.substr(1);
                 }
                 if (a.substr(0, 1) != '[') {
                     a = "[" + a + "]";
                 }
-                //				console.log(a);
+                //console.log(a);
                 try {
                     a = eval(a);
                 } catch (e) {
@@ -2305,8 +2305,8 @@ var _global_js_eb = {
         //
         jQuery('.show-list-color').each(function () {
             var t_post_id = jQuery(this).attr('data-id') || '';
-            //			console.log(t_post_id);
-            //			console.log(jQuery('img', this).length);
+            //console.log(t_post_id);
+            //console.log(jQuery('img', this).length);
 
             //
             var str = '';
@@ -2372,7 +2372,7 @@ var _global_js_eb = {
             var a = jQuery(this).attr('data-id') || '';
             if (a != '') {
                 var color_size = jQuery('.show-list-color[data-id="' + a + '"] select').find(':selected').attr('data-size') || '';
-                //				console.log(color_size);
+                //console.log(color_size);
 
                 jQuery('.show-list-size[data-id="' + a + '"]').attr({
                     'data-color-size': color_size
@@ -2439,10 +2439,10 @@ var _global_js_eb = {
         }
 
         var a = jQuery('#oi_cart .each-for-set-cart-value').length || jQuery('.cart-count-tr tr').length || 0;
-        //		console.log(a);
+        //console.log(a);
 
         // Nếu có sản phẩm trong giỏ hàng (bỏ đi tr đầu tiên)
-        //		if ( a > 1 ) {
+        //if ( a > 1 ) {
         if (a > 0) {
             jQuery('#cart_null').hide();
             jQuery('#oi_cart, #oi_send_invoice').fadeIn();
@@ -2538,9 +2538,9 @@ var _global_js_eb = {
         // -> sử dụng form động để loại bỏ mã HTML
         /*
         jQuery('form[name="frm_cart"] input[type="text"], form[name="frm_cart"] textarea').each(function() {
-        	if ( jQuery(this).val() != '' ) {
-        		jQuery(this).val() = g_func.strip_tags( jQuery(this).val() );
-        	}
+            if ( jQuery(this).val() != '' ) {
+                jQuery(this).val() = g_func.strip_tags( jQuery(this).val() );
+            }
         });
         */
 
@@ -2573,9 +2573,9 @@ var _global_js_eb = {
             f.t_diachi.value = f.t_dienthoai.value;
         }
 
-        //		_global_js_eb.cart_create_arr_poruduct();
+        //_global_js_eb.cart_create_arr_poruduct();
         _global_js_eb.cart_agent();
-        //		return false;
+        //return false;
 
         // lưu thông tin khách hàng
         g_func.setc('eb_cookie_cart_name', f.t_ten.value, 0, 7);
@@ -2589,7 +2589,7 @@ var _global_js_eb = {
         });
 
         // không cho submit đơn liên tục
-        //		f.sb_submit_cart.disabled = true;
+        //f.sb_submit_cart.disabled = true;
         sb_submit_cart_disabled = 1;
 
         // khi load xong sẽ cho submit trở lại
@@ -2600,7 +2600,7 @@ var _global_js_eb = {
 
 
             //
-            //			f.sb_submit_cart.disabled = false;
+            //f.sb_submit_cart.disabled = false;
             sb_submit_cart_disabled = 0;
         });
 
@@ -2611,8 +2611,8 @@ var _global_js_eb = {
 
         //
         _global_js_eb.ga_event_track('', '', '', {
-            //			'category' : '',
-            //			'label' : '',
+            //'category' : '',
+            //'label' : '',
             'action': 'checkout_progress'
         });
 
@@ -2637,7 +2637,7 @@ var _global_js_eb = {
         if (typeof action_obj.remove_item != 'undefined') {
             remove_item = action_obj.remove_item;
         }
-        //		console.log(remove_item);
+        //console.log(remove_item);
 
         var tr_id = '';
         if (typeof action_obj.tr_id != 'undefined') {
@@ -2681,8 +2681,8 @@ var _global_js_eb = {
 
             //
             _global_js_eb.ga_event_track('', '', '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'action': 'remove_from_cart'
             });
 
@@ -2695,10 +2695,10 @@ var _global_js_eb = {
                     list_cart_id += ',' + cart_arr_in_cookie[i].id;
                 }
             }
-            //			console.log(list_cart_id);
+            //console.log(list_cart_id);
             g_func.setc(c, list_cart_id, 0, 7);
 
-            //			console.log(list_cart_id);
+            //console.log(list_cart_id);
             g_func.setc(c_arr, JSON.stringify(cart_arr_in_cookie), 0, 7);
 
             //
@@ -2753,18 +2753,18 @@ var _global_js_eb = {
         // google tracking add to cart -> Sử dụng chức năng Mục tiêu trong google analytics
         /*
         if ( _global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id ) == true ) {
-        	time_to_cart = 1200;
+            time_to_cart = 1200;
         }
         */
         setTimeout(function () {
             //
-            //			_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
+            //_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
 
             //
             _global_js_eb.ga_event_track('Add to cart', 'Product ' + new_cart_id, '', {
-                //				'category' : '',
-                //				'label' : '',
-                //				'action' : 'add_to_cart'
+                //'category' : '',
+                //'label' : '',
+                //'action' : 'add_to_cart'
                 'action': 'begin_checkout'
             });
         }, 200);
@@ -2772,10 +2772,10 @@ var _global_js_eb = {
 
         // facebook tracking add to cart
         var track_arr = {
-            //			'content_name' : '',
-            //			'content_category' : '',
+            //'content_name' : '',
+            //'content_category' : '',
             'content_ids': [new_cart_id]
-            //			'content_type' : 'product'
+            //'content_type' : 'product'
         };
 
         if (typeof action_obj.price != 'undefined' && action_obj.price > 0) {
@@ -2787,6 +2787,14 @@ var _global_js_eb = {
         if (_global_js_eb.fb_track('AddToCart', track_arr) == true) {
             time_to_cart = 1200;
         }
+
+        /*
+        _global_js_eb.tt_track('AddToCart', {
+            content_name: 'book',
+            value: 10.0,
+            currency: cf_current_sd_price,
+        });
+        */
 
 
         // nếu có ID tự động add
@@ -2800,7 +2808,7 @@ var _global_js_eb = {
             //
             setTimeout(function () {
                 window.location = web_link + 'cart/';
-                //					window.location = web_link + 'cart/?id=' + new_cart_id;
+                //window.location = web_link + 'cart/?id=' + new_cart_id;
             }, time_to_cart);
         }
 
@@ -2811,7 +2819,7 @@ var _global_js_eb = {
         console.log(action_obj);
 
         //
-        //		if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
+        //if ( typeof g_func.number_only( new_cart_id ) != 'number' ) {
         if (g_func.number_only(new_cart_id) * 1 <= 0) {
             a_lert(lang_cart_post_null);
             return false;
@@ -2827,7 +2835,7 @@ var _global_js_eb = {
         if (typeof action_obj.remove_item != 'undefined') {
             remove_item = action_obj.remove_item;
         }
-        //		console.log(remove_item);
+        //console.log(remove_item);
 
         var tr_id = '';
         if (typeof action_obj.tr_id != 'undefined') {
@@ -2841,7 +2849,7 @@ var _global_js_eb = {
 
         list_cart_id = (cart_id_in_cookie == null) ? '' : cart_id_in_cookie;
         console.log(list_cart_id);
-        //		console.log(add_cart_id);
+        //console.log(add_cart_id);
 
         // xóa khỏi giỏ hàng
         if (remove_item == 1) {
@@ -2851,8 +2859,8 @@ var _global_js_eb = {
 
             //
             _global_js_eb.ga_event_track('', '', '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'action': 'remove_from_cart'
             });
 
@@ -2860,14 +2868,14 @@ var _global_js_eb = {
             // v1
             /*
             if ( list_cart_id != '' ) {
-            	list_cart_id = list_cart_id.replace( add_cart_id, '' );
-            	console.log(list_cart_id);
+                list_cart_id = list_cart_id.replace( add_cart_id, '' );
+                console.log(list_cart_id);
             	
-            	if ( list_cart_id == '' ) {
-            		g_func.delck( c );
-            	} else {
-            		g_func.setc( c, list_cart_id, 0, 7 );
-            	}
+                if ( list_cart_id == '' ) {
+                    g_func.delck( c );
+                } else {
+                    g_func.setc( c, list_cart_id, 0, 7 );
+                }
             }
             */
 
@@ -2894,13 +2902,13 @@ var _global_js_eb = {
                 jQuery('.cart-table-total .global-details-giamoi').html(g_func.money_format(total));
 
                 // lưu giỏ hàng mới
-                //				console.log(list_cart_id);
+                //console.log(list_cart_id);
                 if (list_cart_id == '') {
                     g_func.delck(c);
                 } else {
                     g_func.setc(c, list_cart_id, 0, 7);
                 }
-                //				console.log( g_func.getc( c ) );
+                //console.log( g_func.getc( c ) );
 
             }
 
@@ -2911,7 +2919,7 @@ var _global_js_eb = {
 
             return false;
         }
-        //		console.log(list_cart_id);
+        //console.log(list_cart_id);
 
 
         // thêm vào giỏ hàng
@@ -2923,7 +2931,7 @@ var _global_js_eb = {
         } else {
             console.log('Cart exist (' + new_cart_id + ')');
         }
-        //		return false;
+        //return false;
 
 
         // thời gian chuyển sang trang cart -> để mấy cái pixel tải xong đã
@@ -2933,15 +2941,15 @@ var _global_js_eb = {
         // google tracking add to cart -> Sử dụng chức năng Mục tiêu trong google analytics
         /*
         if ( _global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id ) == true ) {
-        	time_to_cart = 1200;
+            time_to_cart = 1200;
         }
         */
         setTimeout(function () {
-            //			_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
+            //_global_js_eb.gg_track( web_link + 'cart/?id=' + new_cart_id );
             _global_js_eb.ga_event_track('Add to cart', 'Product ' + new_cart_id, '', {
-                //				'category' : '',
-                //				'label' : '',
-                //				'action' : 'add_to_cart'
+                //'category' : '',
+                //'label' : '',
+                //'action' : 'add_to_cart'
                 'action': 'begin_checkout'
             });
         }, 200);
@@ -2949,10 +2957,10 @@ var _global_js_eb = {
 
         // facebook tracking add to cart
         var track_arr = {
-            //			'content_name' : '',
-            //			'content_category' : '',
+            //'content_name' : '',
+            //'content_category' : '',
             'content_ids': [new_cart_id]
-            //			'content_type' : 'product'
+            //'content_type' : 'product'
         };
 
         if (typeof action_obj.price != 'undefined' && action_obj.price > 0) {
@@ -2964,6 +2972,14 @@ var _global_js_eb = {
         if (_global_js_eb.fb_track('AddToCart', track_arr) == true) {
             time_to_cart = 1200;
         }
+
+        /*
+        _global_js_eb.tt_track('AddToCart', {
+            content_name: 'book',
+            value: 10.0,
+            currency: cf_current_sd_price,
+        });
+        */
 
 
         // nếu có ID tự động add
@@ -2996,7 +3012,7 @@ var _global_js_eb = {
                 // mở trong cửa sổ hiện tại
                 else {
                     window.location = web_link + 'cart/';
-                    //					window.location = web_link + 'cart/?id=' + new_cart_id;
+                    //window.location = web_link + 'cart/?id=' + new_cart_id;
                 }
             }
 
@@ -3007,13 +3023,13 @@ var _global_js_eb = {
 
         /*
         _global_js_eb.cart_func.pro_add(pid, {
-        	size: (jQuery('#oi_product_size li.selected').attr('data-id') || '')
+            size: (jQuery('#oi_product_size li.selected').attr('data-id') || '')
         });
         */
     },
 
     cart_remove_item: function (remove_id, tr_id) {
-        //		alert(remove_id);
+        //alert(remove_id);
         _global_js_eb.cart_add_item(remove_id, {
             'remove_item': 1,
             'tr_id': tr_id
@@ -3021,7 +3037,7 @@ var _global_js_eb = {
     },
 
     cpl_cart: function (my_hd_id, my_hd_mahoadon, my_message) {
-        //		alert(my_hd_id); alert(my_hd_mahoadon); return false;
+        //alert(my_hd_id); alert(my_hd_mahoadon); return false;
 
         // xóa cookie giỏ hàng
         g_func.delck('eb_cookie_cart_list_id');
@@ -3035,10 +3051,10 @@ var _global_js_eb = {
 
         // lưu thông tin đơn hàng để gửi đi
         g_func.setc('eb_cookie_order_id', my_hd_id, 0, 7);
-        //		g_func.setc( 'eb_cookie_order_sku', my_hd_mahoadon, 0, 7 );
+        //g_func.setc( 'eb_cookie_order_sku', my_hd_mahoadon, 0, 7 );
 
         //
-        //		if ( typeof my_message != 'undefined' && my_message != '' ) alert( my_message );
+        //if ( typeof my_message != 'undefined' && my_message != '' ) alert( my_message );
 
         //
         window.location = web_link + 'hoan-tat';
@@ -3047,7 +3063,7 @@ var _global_js_eb = {
     // nạp thông tin khách hàng cho giỏ hàng -> từ cookies
     cart_customer_cache: function (f) {
 
-        //		return false;
+        //return false;
 
         // nếu không có form truyền vào -> tìm form mặc định
         if (typeof f == 'undefined') {
@@ -3064,8 +3080,8 @@ var _global_js_eb = {
             c = g_func.getc(c);
             return c == null ? '' : c;
         };
-        //		console.log(a);
-        //		return false;
+        //console.log(a);
+        //return false;
 
         if (typeof f.t_ten != 'undefined') f.t_ten.value = a('eb_cookie_cart_name');
         if (typeof f.t_dienthoai != 'undefined') f.t_dienthoai.value = a('eb_cookie_cart_phone');
@@ -3077,7 +3093,7 @@ var _global_js_eb = {
     // https://support.google.com/adwords/answer/6331304?&hl=vi
     gg_track: function (url) {
         if (typeof url == 'undefined'
-            //		|| typeof goog_report_conversion != 'function'
+            //|| typeof goog_report_conversion != 'function'
             || url == '') {
             return false;
         }
@@ -3107,7 +3123,7 @@ var _global_js_eb = {
         //
         /*
         if ( typeof goog_report_conversion == 'undefined' ) {
-        	return false;
+            return false;
         }
         */
 
@@ -3170,7 +3186,7 @@ var _global_js_eb = {
             ga('send', 'event', eventCategory + ' (EB)', eventAction, eventLabel);
             console.log('Google analytics event tracking (' + eventAction + ') by ' + private_info_setting_site_upper);
         } else {
-            //		if ( typeof ga != 'function' ) {
+            //if ( typeof ga != 'function' ) {
             if (typeof max_for == "undefined") {
                 max_for = 20;
             }
@@ -3205,22 +3221,22 @@ var _global_js_eb = {
     // https://developers.facebook.com/docs/facebook-pixel/implementation/marketing-api
     fb_track: function (track_name, track_arr, max_for) {
         //
-        //		console.log('aaaaaaaaa');
+        //console.log('aaaaaaaaa');
 
         if (WGR_check_option_on(cf_facebook_tracking) == false) {
-            console.log('fb_track has been disable!');
+            console.log('fb track has been disable!');
             return false;
         }
 
         // Không chạy trong iframe
         if (top != self) {
-            console.log('fb_track not run in iframe');
+            console.log('fb track not run in iframe');
             return false;
         }
 
         // không track đối với người dùng đã đăng nhập
         if (isLogin > 0 && WGR_check_option_on(cf_disable_tracking)) {
-            console.log('fb_track disable by user login');
+            console.log('fb track disable by user login');
             return false;
         }
 
@@ -3263,26 +3279,26 @@ var _global_js_eb = {
 
         // kiểm tra độ chuẩn của track
         if ((function (a) {
-                a = a.toLowerCase();
+            a = a.toLowerCase();
 
-                if (a == 'purchase') {
-                    //if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
-                    if (track_arr['content_type'] == 'undefined' || track_arr['contents'] == 'undefined' || track_arr['contents'].length == 0) {
-                        return false;
-                    }
-                } else if (a == 'addtocart') {
-                    if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
-                        return false;
-                    }
-                } else if (a == 'viewcontent') {
-                    if (track_arr['content_type'] == 'undefined') {
-                        return false;
-                    }
+            if (a == 'purchase') {
+                //if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                if (track_arr['content_type'] == 'undefined' || track_arr['contents'] == 'undefined' || track_arr['contents'].length == 0) {
+                    return false;
                 }
+            } else if (a == 'addtocart') {
+                if (track_arr['content_type'] == 'undefined' || track_arr['content_ids'] == 'undefined' || track_arr['content_ids'].length == 0) {
+                    return false;
+                }
+            } else if (a == 'viewcontent') {
+                if (track_arr['content_type'] == 'undefined') {
+                    return false;
+                }
+            }
 
-                //
-                return true;
-            })(track_name) == false) {
+            //
+            return true;
+        })(track_name) == false) {
             console.log('Facebook pixel tracking (' + track_name + ') disable by parameter is NULL');
             console.log(track_arr);
             return false;
@@ -3318,6 +3334,80 @@ var _global_js_eb = {
         }
     },
 
+    // TikTok track
+    // https://ads.tiktok.com/help/article?aid=10028
+    tt_track: function (track_name, track_arr, max_for) {
+        //console.log(Math.random());
+
+        if (WGR_check_option_on(cf_facebook_tracking) == false) {
+            console.log('tt track has been disable!');
+            return false;
+        }
+
+        // Không chạy trong iframe
+        if (top != self) {
+            console.log('tt track not run in iframe');
+            return false;
+        }
+
+        // không track đối với người dùng đã đăng nhập
+        if (isLogin > 0 && WGR_check_option_on(cf_disable_tracking)) {
+            console.log('tt track disable by user login');
+            return false;
+        }
+
+        // không có tên sự kiện cũng thoát
+        if (typeof track_name == 'undefined' || track_name == '') {
+            console.log('track_name not found');
+            return false;
+        }
+
+        //
+        if (typeof track_arr != 'object') {
+            track_arr = {};
+        } else {
+            // mặc định type = product
+            if (typeof track_arr.content_type == 'undefined' || track_arr.content_type == '') {
+                track_arr.content_type = 'product';
+            }
+        }
+
+        // nếu fb chưa được nạp -> thử kiểm tra và chờ load lại
+        if (typeof ttq == 'undefined') {
+            if (typeof max_for == "undefined") {
+                max_for = 60;
+            }
+
+            // nạp lại track này lần nữa (do ttq thường load chậm hơn website)
+            if (max_for > 0) {
+                setTimeout(function () {
+                    _global_js_eb.tt_track(track_name, track_arr, max_for - 1);
+                }, 500);
+                //console.log( 'Re-load TT tracking (' + max_for + ')...' );
+
+                return false;
+            }
+
+            // 
+            console.log('Max for TT track: ' + max_for);
+            return false;
+        }
+
+        //
+        if ($.isEmptyObject(track_arr)) {
+            ttq.track(track_name);
+        } else {
+            ttq.track(track_name, track_arr);
+        }
+
+        //
+        console.log('%c TikTok pixel tracking (' + track_name + ') by ' + private_info_setting_site_upper, 'color: green;');
+        console.log('track arr:', track_arr);
+
+        //
+        return true;
+    },
+
 
     /*
      * Nạp iframe để submit
@@ -3348,15 +3438,15 @@ var _global_js_eb = {
         //
         var str = '',
             current_url = window.location.href.split(parameter);
-        //		console.log( current_url.length );
-        //		console.log( current_url );
+        //console.log( current_url.length );
+        //console.log( current_url );
 
         // nếu có giá trị sẵn -> thay thế
         if (current_url.length > 1) {
             var new_url = current_url[1].split('&');
-            //			console.log( new_url );
+            //console.log( new_url );
             new_url[0] = new_value;
-            //			console.log( new_url );
+            //console.log( new_url );
 
             // ghép giá trị mới
             current_url[1] = new_url.join('&');
@@ -3368,7 +3458,7 @@ var _global_js_eb = {
         else {
             str = current_url[0] + parameter + new_value;
         }
-        //		console.log( str );
+        //console.log( str );
         window.history.pushState("", '', str);
 
         return true;
@@ -3425,11 +3515,11 @@ var _global_js_eb = {
 
         return _global_js_eb.add_primari_iframe();
         /*
-	},
+    },
 	
 	
-	_eb_code64 : function ( str, type ) {
-		*/
+    _eb_code64 : function ( str, type ) {
+        */
     },
 
     // giả lập GET của PHP
@@ -3460,21 +3550,21 @@ var _global_js_eb = {
                 a *= 1;
                 if (a > 0) {
                     var b = 0;
-                    
+
                     //
                     if (conver_to_trieu == true) {
                         // nếu lớn hơn 1 tỷ -> tính theo đơn vị tỷ
                         if (a > mot_ty) {
                             // làm tròn theo đơn vị tỷ
                             if (a % mot_ty == 0) {
-                                a = a/ mot_ty;
+                                a = a / mot_ty;
                                 jQuery(this).addClass('convert-to-ty');
                             }
                             // làm tròn theo đơn vị triệu
                             else if (a % mot_trieu == 0) {
-                                a = a/ mot_trieu;
+                                a = a / mot_trieu;
                                 jQuery(this).addClass('convert-to-trieu');
-                                
+
                                 // gán b để chuyển đổi sang tỷ
                                 b = a;
                             }
@@ -3482,21 +3572,21 @@ var _global_js_eb = {
                         else if (a > mot_trieu) {
                             // làm tròn theo đơn vị triệu
                             if (a % mot_trieu == 0) {
-                                a = a/ mot_trieu;
+                                a = a / mot_trieu;
                                 jQuery(this).addClass('convert-to-trieu');
                             }
                         }
                     }
-                    
+
                     // trường hợp số tiền > mot_ty và không tròn số
                     if (b > 0) {
                         // tính phần tỷ
                         a = b - (b % 1000);
-                        a = a/ 1000;
-                        
+                        a = a / 1000;
+
                         // tính phần triệu
                         b = b % 1000;
-                        
+
                         // in ra
                         jQuery(this).html('<span class="ebe-currency convert-to-ty">' + g_func.money_format(a) + '</span> ' + b);
                     }

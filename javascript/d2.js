@@ -38,7 +38,7 @@ setTimeout(function () {
                 // sau sư dụng php để tạo list chọn size, color
                 /*
                 if ( _global_js_eb.check_size_color_cart() == false ) {
-                	return false;
+                    return false;
                 }
                 */
 
@@ -165,7 +165,7 @@ setTimeout(function () {
     //
     /*
     jQuery('.click-jquery-add-to-cart a, .click-jquery-quickcart-or-cart a').click(function() {
-    	return false;
+        return false;
     });
     */
 
@@ -310,8 +310,8 @@ setTimeout(function () {
         // đối với sản phẩm
         if (eb_wp_post_type == 'post') {
             _global_js_eb.ga_event_track('View product', document.title, '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'items': [{
                     "id": "P" + pid,
                     "name": product_js.tieude,
@@ -319,12 +319,18 @@ setTimeout(function () {
                 }],
                 'action': 'view_item',
             });
+
+            //
+            _global_js_eb.tt_track('ViewContent', {
+                description: product_js.tieude,
+                content_id: '' + pid,
+            });
         }
         // mặc định là cho blog
         else {
             _global_js_eb.ga_event_track('View blog', document.title, '', {
-                //				'category' : '',
-                //				'label' : '',
+                //'category' : '',
+                //'label' : '',
                 'action': 'view_blog'
             });
         }
@@ -348,7 +354,7 @@ setTimeout(function () {
                 if (args.length > 25) {
                     return false;
                 }
-                
+
                 //
                 var a = jQuery(this).attr('data-id') || '';
 
@@ -376,6 +382,11 @@ setTimeout(function () {
 
                 //
                 _global_js_eb.fb_track('ViewContent', track_arr);
+
+                // tiktok
+                _global_js_eb.tt_track('ViewContent', {
+                    content_id: '' + track_arr['content_ids'][0],
+                });
             } else {
                 console.log('ids for facebook track not found');
             }

@@ -295,7 +295,8 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
     //
     var tong_tien = 0,
         arr_ids = [],
-        ga_add_product = [];
+        ga_add_product = [],
+        tt_add_product = {};
     for (var i = 0; i < arr.length; i++) {
         //if ( typeof arr[i].__eb_hd_customer_info == 'undefined' ) {
         // bản cũ
@@ -331,6 +332,16 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
             'quantity': arr[i].quan
         });
         //}
+
+        //
+        tt_add_product = {
+            content_type: 'product',
+            quantity: arr[i].quan,
+            //description: arr[i].quan,
+            content_id: '' + arr[i].id,
+            currency: cf_current_sd_price,
+            value: product_price,
+        };
     }
 
     //
@@ -350,6 +361,9 @@ function ___eb_add_convertsion_gg_fb(hd_id, arr, max_for) {
         //currency: "VND"
         currency: cf_current_sd_price
     });
+
+    //
+    _global_js_eb.tt_track('CompletePayment', tt_add_product);
 
     // google analytics track -> by order
     ___eb_add_convertsion_gg_v2(ga_add_product, {
@@ -810,7 +824,7 @@ function a_lert(m) {
     clearTimeout(ctimeout);
     dog('o_load', '<div class="o-load">' + m + '</div>');
     ctimeout = setTimeout(function() {
-    	g_func.jquery_null('o_load');
+        g_func.jquery_null('o_load');
     }, 3000);
     */
 }
