@@ -12,7 +12,7 @@ if ( !file_exists( $confirm_file ) ) {
     ?>
 <p class="medium18 orgcolor">Tạo file <?php echo basename($confirm_file); ?> để ép buộc tiến trình optimize code...</p>
 <?php
-_eb_create_file( $confirm_file, time() );
+_eb_create_file( $confirm_file, date_time );
 }
 
 //
@@ -29,8 +29,8 @@ else {
     ?>
 <p class="medium18 redcolor">Vui lòng chờ các file tĩnh đang được dọn dẹp bớt comment...</p>
 <script>
-setTimeout(function () {
-    window.location=window.location.href;
+setTimeout(function() {
+    window.location = window.location.href;
 }, 600);
 </script>
 <?php

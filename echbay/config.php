@@ -12,25 +12,26 @@ global $arr_private_info_setting;
 
 
 
-function WGR_config_list_radio_option ( $arr, $key ) {
+function WGR_config_list_radio_option($arr, $key)
+{
 	global $__cf_row;
-	
+
 	$str = '';
-	foreach ( $arr as $k => $v ) {
+	foreach ($arr as $k => $v) {
 		$label_id = 'label_' . $key . $k;
-		
+
 		$sl = '';
-		if ( $__cf_row[$key] == $k ) {
+		if ($__cf_row[$key] == $k) {
 			$sl = ' checked="checked"';
 		}
-		
+
 		$str .= '
 <div>
-	<input type="radio" name="' . $key . '" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
-	<label for="' .$label_id. '">' .$v. '</label>
+	<input type="radio" name="' . $key . '" id="' . $label_id . '" value="' . $k . '"' . $sl . '>
+	<label for="' . $label_id . '">' . $v . '</label>
 </div>';
 	}
-	
+
 	return $str;
 }
 
@@ -74,29 +75,29 @@ $current_siteurl = _eb_get_option('siteurl');
 
 
 // tự động cập nhật lại URL cho bản SSL
-if ( eb_web_protocol == 'https' ) {
-	$new_current_homeurl = explode( '/', $current_homeurl );
-	if ( $new_current_homeurl[0] != 'https:' ) {
+if (eb_web_protocol == 'https') {
+	$new_current_homeurl = explode('/', $current_homeurl);
+	if ($new_current_homeurl[0] != 'https:') {
 		$new_current_homeurl[0] = 'https:';
-		
+
 		//
-		echo implode( '/', $new_current_homeurl ) . '<br>' . "\n";
-		_eb_update_option( 'home', implode( '/', $new_current_homeurl ) );
+		echo implode('/', $new_current_homeurl) . '<br>' . "\n";
+		_eb_update_option('home', implode('/', $new_current_homeurl));
 	}
-	
-	$new_current_siteurl = explode( '/', $current_siteurl );
-	if ( $new_current_siteurl[0] != 'https:' ) {
+
+	$new_current_siteurl = explode('/', $current_siteurl);
+	if ($new_current_siteurl[0] != 'https:') {
 		$new_current_siteurl[0] = 'https:';
-		
+
 		//
-		echo implode( '/', $new_current_siteurl ) . '<br>' . "\n";
-		_eb_update_option( 'siteurl', implode( '/', $new_current_siteurl ) );
+		echo implode('/', $new_current_siteurl) . '<br>' . "\n";
+		_eb_update_option('siteurl', implode('/', $new_current_siteurl));
 	}
 }
 
 
 //
-WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
+WGR_auto_update_link_for_demo($current_homeurl, $current_siteurl);
 
 
 
@@ -106,7 +107,7 @@ WGR_auto_update_link_for_demo ( $current_homeurl, $current_siteurl );
 //print_r( $__cf_row_default );
 $__cf_row = $__cf_row_default;
 //print_r( $__cf_row );
-_eb_get_config( true );
+_eb_get_config(true);
 //print_r( $__cf_row );
 
 // Các chức năng dùng chung với config của wp
@@ -114,7 +115,7 @@ _eb_get_config( true );
 //$__cf_row['cf_description'] = _eb_get_option('blogdescription');
 
 //
-if ( (int) $__cf_row['cf_reset_cache'] < 0 ) {
+if ((int)$__cf_row['cf_reset_cache'] < 0) {
 	$__cf_row['cf_reset_cache'] = 60;
 }
 //print_r( $__cf_row );
@@ -133,21 +134,21 @@ $arr_cf_reset_cache = array(
 );
 //print_r($arr_cf_reset_cache);
 $str_cf_reset_cache = '';
-foreach ( $arr_cf_reset_cache as $k => $v ) {
+foreach ($arr_cf_reset_cache as $k => $v) {
 	// Đơn vị tính là phút -> nhân với 60 giây
 	$k = $k * 60;
-	
-	$label_id = 'config_label_id' .$k;
-	
+
+	$label_id = 'config_label_id' . $k;
+
 	$sl = '';
-	if ( $__cf_row['cf_reset_cache'] == $k ) {
+	if ($__cf_row['cf_reset_cache'] == $k) {
 		$sl = ' checked="checked"';
 	}
-	
+
 	$str_cf_reset_cache .= '
 <div>
-	<input type="radio" name="cf_reset_cache" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
-	<label for="' .$label_id. '">' .$v. '</label>
+	<input type="radio" name="cf_reset_cache" id="' . $label_id . '" value="' . $k . '"' . $sl . '>
+	<label for="' . $label_id . '">' . $v . '</label>
 </div>';
 }
 
@@ -155,70 +156,72 @@ foreach ( $arr_cf_reset_cache as $k => $v ) {
 
 
 /*
-* Chung
-*/
-function __eb_create_select_checked_config ( $arr, $val, $key, $file_name = '' ) {
+ * Chung
+ */
+function __eb_create_select_checked_config($arr, $val, $key, $file_name = '')
+{
 	$str = '';
-	
-	foreach ( $arr as $k => $v ) {
-		
+
+	foreach ($arr as $k => $v) {
+
 		$label_id = $key . '_id' . $k;
-		
+
 		// đánh dấu kiểm
 		$sl = '';
-		if ( $val == $k ) {
+		if ($val == $k) {
 			$sl = ' selected="selected"';
 		}
-		
+
 		// ví dụ cho code dễ hình dung
 		$phai = $k;
-		if ( $file_name != '' ) {
+		if ($file_name != '') {
 			$phai = $file_name;
-			if ( $k != '' ) {
+			if ($k != '') {
 				$phai .= '_' . $k;
 			}
 		}
-		
+
 		// tạo HTML
-		$str .= '<option value="' .$k. '"' . $sl . '>' .$v. ' (' . $phai . ')</option>';
+		$str .= '<option value="' . $k . '"' . $sl . '>' . $v . ' (' . $phai . ')</option>';
 	}
-	
-	return '<select name="' . $key . '" id="' .$label_id. '">' . $str . '</select>';
+
+	return '<select name="' . $key . '" id="' . $label_id . '">' . $str . '</select>';
 }
 
 
 
-function __eb_create_radio_checked_config ( $arr, $val, $key, $file_name = '' ) {
+function __eb_create_radio_checked_config($arr, $val, $key, $file_name = '')
+{
 	$str = '';
-	
-	foreach ( $arr as $k => $v ) {
-		
+
+	foreach ($arr as $k => $v) {
+
 		$label_id = $key . '_id' . $k;
-		
+
 		// đánh dấu kiểm
 		$sl = '';
-		if ( $val == $k ) {
+		if ($val == $k) {
 			$sl = ' checked="checked"';
 		}
-		
+
 		// ví dụ cho code dễ hình dung
 		$phai = $k;
-		if ( $file_name != '' ) {
+		if ($file_name != '') {
 			$phai = $file_name;
-			if ( $k != '' ) {
+			if ($k != '') {
 				$phai .= '_' . $k;
 			}
 		}
-		
+
 		// tạo HTML
 		$str .= '
 <div class="ebdesign-table-for ebdesign-table-for-' . $phai . '">
-	<input type="radio" name="' . $key . '" id="' .$label_id. '" value="' .$k. '"' . $sl . '>
-	<label for="' .$label_id. '">' .$v. ' (' . $phai . ')</label>
+	<input type="radio" name="' . $key . '" id="' . $label_id . '" value="' . $k . '"' . $sl . '>
+	<label for="' . $label_id . '">' . $v . ' (' . $phai . ')</label>
 </div>';
 	}
-	
-	return trim( $str );
+
+	return trim($str);
 }
 
 
@@ -241,13 +244,13 @@ $str_cf_blog_class_style = __eb_create_select_checked_config(
 
 
 /*
-* Danh sách tin
-*/
+ * Danh sách tin
+ */
 $arr_cf_blog_column_style = array(
 	'' => 'Một cột, không có menu',
 	'noidung_menu' => 'Hai cột, menu nằm bên phải',
 	'menu_noidung' => 'Hai cột, menu nằm bên trái',
-//	'menu_noidung_menu' => 'Ba cột, menu nằm hai bên',
+	//	'menu_noidung_menu' => 'Ba cột, menu nằm hai bên',
 );
 
 $str_cf_blogs_column_style = __eb_create_select_checked_config(
@@ -296,8 +299,8 @@ $str_cf_blogs_num_line = __eb_create_select_checked_config(
 
 
 /*
-* Chi tiết tin
-*/
+ * Chi tiết tin
+ */
 $str_cf_blog_column_style = __eb_create_select_checked_config(
 	$arr_cf_blog_column_style,
 	$__cf_row['cf_blog_column_style'],
@@ -317,8 +320,8 @@ $str_cf_blog_node_html = __eb_create_select_checked_config(
 
 
 /*
-* Page
-*/
+ * Page
+ */
 $str_cf_page_class_style = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_page_class_style'],
@@ -356,37 +359,37 @@ $str_cf_product_thumbnail_size = '';
 $str_cf_ads_thumbnail_size = '';
 $str_cf_ads_thumbnail_table_size = '';
 $str_cf_ads_thumbnail_mobile_size = '';
-foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
+foreach ($arr_cf_product_thumbnail_size as $k => $v) {
 	// post
 	$sl = '';
-	if ( $__cf_row['cf_product_thumbnail_size'] == $k ) {
+	if ($__cf_row['cf_product_thumbnail_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_product_thumbnail_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
-	
+
 	// ads
 	$sl = '';
-	if ( $__cf_row['cf_ads_thumbnail_size'] == $k ) {
+	if ($__cf_row['cf_ads_thumbnail_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_ads_thumbnail_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
-	
+
 	//
 	$sl = '';
-	if ( $__cf_row['cf_ads_thumbnail_table_size'] == $k ) {
+	if ($__cf_row['cf_ads_thumbnail_table_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_ads_thumbnail_table_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
-	
+
 	//
 	$sl = '';
-	if ( $__cf_row['cf_ads_thumbnail_mobile_size'] == $k ) {
+	if ($__cf_row['cf_ads_thumbnail_mobile_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_ads_thumbnail_mobile_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 }
 
@@ -395,32 +398,32 @@ foreach ( $arr_cf_product_thumbnail_size as $k => $v ) {
 //
 $str_cf_rand_slider = '<option value="' . $__cf_row_default['cf_rand_slider'] . '">Ngẫu nhiên</option>';
 $arr_cf_rand_slider = array(
-    'Mặc định (phải - trái)',
-    'Phải - Trái kèm hiệu ứng ẩn hiện',
-    'Góc dưới cùng bên phải',
-    'Trên xuống dưới',
-    'Góc dưới cùng bên trái',
-    'Trái - Phải kèm hiệu ứng ẩn hiện',
-    'Góc trên cùng bên trái',
-    'Cuộn từ dưới lên trên',
-    'Góc trên cùng bên phải',
-    'Ẩn hiện tại chính giữa',
-    'Phóng to ra ngoài trang'
+	'Mặc định (phải - trái)',
+	'Phải - Trái kèm hiệu ứng ẩn hiện',
+	'Góc dưới cùng bên phải',
+	'Trên xuống dưới',
+	'Góc dưới cùng bên trái',
+	'Trái - Phải kèm hiệu ứng ẩn hiện',
+	'Góc trên cùng bên trái',
+	'Cuộn từ dưới lên trên',
+	'Góc trên cùng bên phải',
+	'Ẩn hiện tại chính giữa',
+	'Phóng to ra ngoài trang'
 );
-foreach ( $arr_cf_rand_slider as $i => $v ) {
-    $j = $i + 1;
-    /*
-	$v = $j;
-	if ( $j == 1 ) {
-		$v = 'Mặc định';
-	}
-    */
-	
+foreach ($arr_cf_rand_slider as $i => $v) {
+	$j = $i + 1;
+	/*
+	 $v = $j;
+	 if ( $j == 1 ) {
+	 $v = 'Mặc định';
+	 }
+	 */
+
 	$sl = '';
-	if ( $__cf_row['cf_rand_slider'] == $j ) {
+	if ($__cf_row['cf_rand_slider'] == $j) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_rand_slider .= '<option value="' . $j . '"' . $sl . '>' . $v . '</option>';
 }
 
@@ -430,32 +433,32 @@ foreach ( $arr_cf_rand_slider as $i => $v ) {
 $arr_cf_product_thumbnail_table_size = $arr_cf_product_thumbnail_size;
 //print_r($arr_cf_product_thumbnail_table_size);
 $str_cf_product_thumbnail_table_size = '';
-foreach ( $arr_cf_product_thumbnail_table_size as $k => $v ) {
+foreach ($arr_cf_product_thumbnail_table_size as $k => $v) {
 	$sl = '';
-	if ( $__cf_row['cf_product_thumbnail_table_size'] == $k ) {
+	if ($__cf_row['cf_product_thumbnail_table_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_product_thumbnail_table_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 }
 
 
 //
 $arr_cf_product_thumbnail_mobile_size = $arr_cf_product_thumbnail_size + array(
-//	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
+	//	'ebmobile' => 'Tối ưu cho mobile (khuyên dùng)',
 	'ebmobile' => 'Tối ưu cho mobile',
 	'thumbnail' => 'Bản cắt gọn (thumbnail)'
-//	'medium' => 'Thu gọn (medium)',
+	//	'medium' => 'Thu gọn (medium)',
 //	'full' => 'Đầy đủ (bản gốc)',
 );
 //print_r($arr_cf_product_thumbnail_mobile_size);
 $str_cf_product_thumbnail_mobile_size = '';
-foreach ( $arr_cf_product_thumbnail_mobile_size as $k => $v ) {
+foreach ($arr_cf_product_thumbnail_mobile_size as $k => $v) {
 	$sl = '';
-	if ( $__cf_row['cf_product_thumbnail_mobile_size'] == $k ) {
+	if ($__cf_row['cf_product_thumbnail_mobile_size'] == $k) {
 		$sl = ' selected="selected"';
 	}
-	
+
 	$str_cf_product_thumbnail_mobile_size .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 }
 
@@ -463,9 +466,9 @@ foreach ( $arr_cf_product_thumbnail_mobile_size as $k => $v ) {
 
 
 //
-foreach ( $__cf_row as $k => $v ) {
-	if ( trim( $v != '' ) && ! is_numeric($v) ) {
-		$__cf_row[$k] = esc_html( $__cf_row[$k] );
+foreach ($__cf_row as $k => $v) {
+	if (trim($v != '') && !is_numeric($v)) {
+		$__cf_row[$k] = esc_html($__cf_row[$k]);
 	}
 }
 //print_r($__cf_row);
@@ -481,33 +484,32 @@ foreach ( $__cf_row as $k => $v ) {
  */
 $timezone_wp_full = '';
 /*
-function get_timezone_list () {
-	$zones_array = array();
-	$timestamp = time();
-	
-	// lấy danh sách múi giờ được hỗ trợ bởi PHP
-	foreach( timezone_identifiers_list() as $key => $zone ) {
-		date_default_timezone_set($zone);
-		
-		// zone
-		$zones_array[$key]['z'] = $zone;
-		
-		// diff_from_GMT
-		$zones_array[$key]['d'] = date('P', $timestamp);
-	}
-//	print_r( $zones_array );
-	
-	return $zones_array;
-}
-foreach( get_timezone_list() as $t ) {
-	$timezone_wp_full .= '<option value="' .$t['z']. '">' .$t['d']. ' - ' .$t['z']. '</option>';
-}
-$timezone_wp_full = '<select name="cf_timezone">' .$timezone_wp_full. '</select>';
-
-// Set lại timezone do function ở trên làm sai giờ
-date_default_timezone_set( $__cf_row['cf_timezone'] );
-//echo date( 'r', $date_time );
-*/
+ function get_timezone_list () {
+ $zones_array = array();
+ $timestamp = date_time;
+ 
+ // lấy danh sách múi giờ được hỗ trợ bởi PHP
+ foreach( timezone_identifiers_list() as $key => $zone ) {
+ date_default_timezone_set($zone);
+ 
+ // zone
+ $zones_array[$key]['z'] = $zone;
+ 
+ // diff_from_GMT
+ $zones_array[$key]['d'] = date('P', $timestamp);
+ }
+ //	print_r( $zones_array );
+ 
+ return $zones_array;
+ }
+ foreach( get_timezone_list() as $t ) {
+ $timezone_wp_full .= '<option value="' .$t['z']. '">' .$t['d']. ' - ' .$t['z']. '</option>';
+ }
+ $timezone_wp_full = '<select name="cf_timezone">' .$timezone_wp_full. '</select>';
+ // Set lại timezone do function ở trên làm sai giờ
+ date_default_timezone_set( $__cf_row['cf_timezone'] );
+ //echo date( 'r', date_time );
+ */
 
 //$timezone_wp_full = file_get_contents( $dir_index . 'timezone.html', 1 );
 //$timezone_wp_full = file_get_contents( $dir_index . 'timezone_gmt.html', 1 );
@@ -547,7 +549,7 @@ foreach ( $arr_file_for_lang as $v ) {
 
 
 //
-if ( class_exists('Imagick') ) {
+if (class_exists('Imagick')) {
 	$config_check_Imagick_exist = '<span class="greencolor">Great! Imagick exist in your server.</span>';
 }
 else {
@@ -559,69 +561,69 @@ else {
 
 
 //
-$main_content = EBE_str_template( 'html/' . $include_page . '.html', array(
+$main_content = EBE_str_template('html/' . $include_page . '.html', array(
 	'tmp.js' => 'var cf_timezone="' . $__cf_row['cf_timezone'] . '",current_module_config="' . $include_page . '",cf_current_theme_using="' . $__cf_row['cf_current_theme_using'] . '";',
-	
+
 	'tmp.config_module_name' => $include_page == 'config_theme' ? 'Cài đặt giao diện' : 'Cấu hình Website',
 	'tmp.include_page' => $include_page,
-//	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
-	'tmp.js_version' => time(),
-	
-	'tmp.cf_smtp_encryption' => WGR_config_list_radio_option( array(
+	//	'tmp.js_version' => date( 'Ymd-His', filemtime( ECHBAY_PRI_CODE . 'js/config.js' ) ),
+	'tmp.js_version' => date_time,
+
+	'tmp.cf_smtp_encryption' => WGR_config_list_radio_option(array(
 		'' => 'Không sử dụng',
 		'ssl' => 'Sử dụng mã hóa SSL',
 		'tls' => 'Sử dụng mã hóa TLS (<em>khuyên dùng nếu sử dụng dịch vụ mail của google</em>)',
-	), 'cf_smtp_encryption' ),
-	
-	'tmp.cf_sys_email' => WGR_config_list_radio_option( array(
+	), 'cf_smtp_encryption'),
+
+	'tmp.cf_sys_email' => WGR_config_list_radio_option(array(
 		'' => 'Sử dụng hàm mail() mặc định của server (nhanh, gọn, nhẹ nhưng hay vào spam)',
 		'wpmail' => 'Sử dụng WordPress Mail (lâu hơn chút, nhưng ổn định hơn hàm mail() *<em>mặc định</em>)',
 		'smtp' => 'Sử dụng SMTP email (lâu hơn chút, tỉ lệ vào spam phụ thuộc vào server mail)',
 		'pepipost' => 'Sử dụng Pepipost SMTP (miễn phí và khá tốt, ít vào spam, hay vào mục quảng cáo của Gmail)',
-	), 'cf_sys_email' ),
-	
-//	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],
+	), 'cf_sys_email'),
+
+	//	'tmp.ex_dns_prefetch' => $_SERVER['HTTP_HOST'],
 	'tmp.timezone_wp_full' => $timezone_wp_full,
 	'tmp.cf_reset_cache' => $str_cf_reset_cache,
-	
+
 	'tmp.current_homeurl' => $current_homeurl,
 	'tmp.current_siteurl' => $current_siteurl,
-	
+
 	'tmp.config_check_Imagick_exist' => $config_check_Imagick_exist,
-	
+
 	// blog
 	'tmp.cf_blog_class_style' => $str_cf_blog_class_style,
-	
+
 	'tmp.cf_blogs_column_style' => $str_cf_blogs_column_style,
 	'tmp.cf_blogs_node_html' => $str_cf_blogs_node_html,
 	'tmp.cf_blogs_num_line' => $str_cf_blogs_num_line,
-	
+
 	'tmp.cf_blog_column_style' => $str_cf_blog_column_style,
 	'tmp.cf_blog_node_html' => $str_cf_blog_node_html,
-	
+
 	// page
 	'tmp.cf_page_class_style' => $str_cf_page_class_style,
 	'tmp.cf_page_column_style' => $str_cf_page_column_style,
-	
-	
+
+
 	//
 	'tmp.cf_product_thumbnail_size' => '<select name="cf_product_thumbnail_size">' . $str_cf_product_thumbnail_size . '</select>',
 	'tmp.cf_product_thumbnail_table_size' => '<select name="cf_product_thumbnail_table_size">' . $str_cf_product_thumbnail_table_size . '</select>',
 	'tmp.cf_product_thumbnail_mobile_size' => '<select name="cf_product_thumbnail_mobile_size">' . $str_cf_product_thumbnail_mobile_size . '</select>',
-	
+
 	//
 	'tmp.cf_ads_thumbnail_size' => '<select name="cf_ads_thumbnail_size">' . $str_cf_ads_thumbnail_size . '</select>',
 	'tmp.cf_ads_thumbnail_table_size' => '<select name="cf_ads_thumbnail_table_size">' . $str_cf_ads_thumbnail_table_size . '</select>',
 	'tmp.cf_ads_thumbnail_mobile_size' => '<select name="cf_ads_thumbnail_mobile_size">' . $str_cf_ads_thumbnail_mobile_size . '</select>',
-	
+
 	//
 	'tmp.cf_rand_slider' => '<select name="cf_rand_slider">' . $str_cf_rand_slider . '</select>',
-	
-	
-//	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
+
+
+	//	'tmp.list_file_for_lang' => '<select name="cf_content_language">' . $list_file_for_lang . '</select>',
 	'tmp.list_file_for_lang' => '',
 	'tmp.web_admin_link' => admin_link,
-), ECHBAY_PRI_CODE );
+), ECHBAY_PRI_CODE);
 
 
 
@@ -631,8 +633,8 @@ $arr_for_set_template = array();
 
 
 /*
-* Tranh chủ
-*/
+ * Tranh chủ
+ */
 $arr_for_set_template['cf_home_class_style'] = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_home_class_style'],
@@ -649,8 +651,8 @@ $arr_for_set_template['cf_home_column_style'] = __eb_create_select_checked_confi
 
 
 /*
-* Tranh danh sách sản phẩm
-*/
+ * Tranh danh sách sản phẩm
+ */
 $arr_for_set_template['cf_cats_class_style'] = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_cats_class_style'],
@@ -698,8 +700,8 @@ $arr_for_set_template['cf_cats_num_line'] = __eb_create_select_checked_config(
 
 
 /*
-* Trang chi tiết sản phẩm
-*/
+ * Trang chi tiết sản phẩm
+ */
 $arr_for_set_template['cf_post_class_style'] = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_post_class_style'],
@@ -724,8 +726,8 @@ $arr_for_set_template['cf_post_node_html'] = __eb_create_select_checked_config(
 
 
 /*
-* Trang danh sách blogs
-*/
+ * Trang danh sách blogs
+ */
 $arr_for_set_template['cf_blogs_class_style'] = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_blogs_class_style'],
@@ -735,8 +737,8 @@ $arr_for_set_template['cf_blogs_class_style'] = __eb_create_select_checked_confi
 
 
 /*
-* Trang chi tiết blog
-*/
+ * Trang chi tiết blog
+ */
 $arr_for_set_template['cf_blogd_class_style'] = __eb_create_select_checked_config(
 	$arr_cf_blog_class_style,
 	$__cf_row['cf_blogd_class_style'],
@@ -772,19 +774,19 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 //echo $__cf_row['cf_current_price'] . 'aaaaaaaaaaaaaaaa<br>';
 $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 	array(
-		'' => 'đ',
-		'vn/0111' => 'vnđ',
-		'VN/00d0' => 'VNĐ',
-		'VND' => 'VND',
-		'/00A5' => '&yen;',
-		'NT$' => 'NT$',
-		'$' => '$',
-		'USD' => 'USD',
-//		'KRW' => 'Korean won',
-		'/20A9' => '&#8361;',
-//		'PHP' => '&#8369;',
-		'/20B1' => '&#8369;'
-	),
+	'' => 'đ',
+	'vn/0111' => 'vnđ',
+	'VN/00d0' => 'VNĐ',
+	'VND' => 'VND',
+	'/00A5' => '&yen;',
+	'NT$' => 'NT$',
+	'$' => '$',
+	'USD' => 'USD',
+	//		'KRW' => 'Korean won',
+	'/20A9' => '&#8361;',
+	//		'PHP' => '&#8369;',
+	'/20B1' => '&#8369;'
+),
 	$__cf_row['cf_current_price'],
 	'cf_current_price'
 );
@@ -794,13 +796,13 @@ $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 
 
 // lựa chọn giao diện nút mua ngay trên
-$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/', '.{html}' );
+$arr = EBE_get_file_in_folder(EB_THEME_PLUGIN_INDEX . 'html/details/pcmua/', '.{html}');
 //print_r( $arr );
 $arr_for_get_template = array(
 	'none' => '[ Không hiển thị ]'
 );
-foreach ( $arr as $k => $v ) {
-	$v = basename( $v, '.html' );
+foreach ($arr as $k => $v) {
+	$v = basename($v, '.html');
 	$arr_for_get_template[$v] = $v;
 }
 //print_r( $arr_for_get_template );
@@ -821,13 +823,13 @@ $arr_for_set_template['cf_details_buttonmua'] = __eb_create_select_checked_confi
 
 // lựa chọn giao diện nút mua ngay trên mobile
 //$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/details/*' );
-$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/details/mobilemua/', '.{html}' );
+$arr = EBE_get_file_in_folder(EB_THEME_PLUGIN_INDEX . 'html/details/mobilemua/', '.{html}');
 //print_r( $arr );
 $arr_for_get_template = array(
 	'none' => '[ Không hiển thị ]'
 );
-foreach ( $arr as $k => $v ) {
-	$v = basename( $v, '.html' );
+foreach ($arr as $k => $v) {
+	$v = basename($v, '.html');
 	$arr_for_get_template[$v] = $v;
 }
 //print_r( $arr_for_get_template );
@@ -848,13 +850,13 @@ $arr_for_set_template['cf_details_mobilemua'] = __eb_create_select_checked_confi
 
 // lựa chọn giao diện nút mua ngay trên mobile
 //$arr = glob ( EB_THEME_PLUGIN_INDEX . 'html/search/*' );
-$arr = EBE_get_file_in_folder ( EB_THEME_PLUGIN_INDEX . 'html/search/', '.{html}' );
+$arr = EBE_get_file_in_folder(EB_THEME_PLUGIN_INDEX . 'html/search/', '.{html}');
 //print_r( $arr );
 $arr_for_get_template = array(
 	'none' => '[ Không hiển thị ]'
 );
-foreach ( $arr as $k => $v ) {
-	$v = basename( $v, '.html' );
+foreach ($arr as $k => $v) {
+	$v = basename($v, '.html');
 	$arr_for_get_template[$v] = $v;
 }
 //print_r( $arr_for_get_template );
@@ -873,25 +875,25 @@ $arr_for_set_template['cf_search_nav_mobile'] = __eb_create_select_checked_confi
 
 
 //
-if ( $include_page == 'config_theme' ) {
+if ($include_page == 'config_theme') {
 	include ECHBAY_PRI_CODE . 'config_theme_arr.php';
 }
 
 
 
 // -> HTML
-$main_content = EBE_arr_tmp( $arr_for_set_template, $main_content );
-$main_content = EBE_arr_tmp( array(
+$main_content = EBE_arr_tmp($arr_for_set_template, $main_content);
+$main_content = EBE_arr_tmp(array(
 	'private_info_setting_site_upper' => $arr_private_info_setting['site_upper'],
 	'private_info_setting_author' => $arr_private_info_setting['author']
-), $main_content );
+), $main_content);
 
 
 
 // các cấu hình mặc định
-$main_content = EBE_arr_tmp( $__cf_row, $main_content );
+$main_content = EBE_arr_tmp($__cf_row, $main_content);
 
-$main_content = EBE_arr_tmp( $__cf_row_default, $main_content, 'aaa.' );
+$main_content = EBE_arr_tmp($__cf_row_default, $main_content, 'aaa.');
 
 
 
@@ -899,10 +901,6 @@ $main_content = EBE_arr_tmp( $__cf_row_default, $main_content, 'aaa.' );
 
 
 // cập nhật lại rule cho wp
-if ( $__cf_row['cf_remove_category_base'] == 1 ) {
-	add_filter( 'shutdown', 'flush_rewrite_rules' );
+if ($__cf_row['cf_remove_category_base'] == 1) {
+	add_filter('shutdown', 'flush_rewrite_rules');
 }
-
-
-
-
