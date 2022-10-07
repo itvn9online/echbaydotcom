@@ -108,12 +108,14 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
          */
 
         // nội dung hợp lệ
-        if (strpos($v, '//') !== false) {
-            $v .= "\n";
-        }
-        else {
-            $v .= ' ';
-        }
+        //if (strpos($v, '//') !== false) {
+        $v .= "\n";
+        /*
+         }
+         else {
+         $v .= ' ';
+         }
+         */
 
         // v1
         $data .= $v;
