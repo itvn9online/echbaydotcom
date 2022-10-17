@@ -121,6 +121,7 @@ function WGR_show_hoan_tat_product_for_gg(arr, arr2) {
 
     //
     if (current_hd_object == false || current_hd_object.length == 0) {
+        console.log('current hd object = false');
         return false;
     }
 
@@ -216,6 +217,14 @@ function WGR_show_hoan_tat_product_for_gg(arr, arr2) {
         jQuery('#show-product-for-google').html(str);
     } else if (jQuery('.col-booking-done-padding').length > 0) {
         jQuery('.col-booking-done-padding').append(str);
+    } else if ($('#rME .w90')) {
+        jQuery('#rME .w90').append(str);
+    } else if ($('#rME .w99')) {
+        jQuery('#rME .w99').append(str);
+    } else if ($('#rME')) {
+        jQuery('#rME').append(str);
+    } else {
+        console.log('append HTML not found!');
     }
 }
 
