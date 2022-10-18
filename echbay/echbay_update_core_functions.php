@@ -474,7 +474,7 @@ function EBE_eb_update_time_to_new_time($t)
 
 function EBE_rename_dir_for_update_code($desc_dir)
 {
-    die($desc_dir);
+    //die($desc_dir);
     if (!is_dir($desc_dir)) {
         return false;
     }
