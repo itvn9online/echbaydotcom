@@ -472,8 +472,13 @@ function EBE_eb_update_time_to_new_time($t)
     return $t;
 }
 
-function EBE_ftp_rename($from, $to)
+function EBE_try_ftp_rename($from, $to)
 {
+    // ưu tiên sử dụng PHP thuần cho nó nhanh
+    if (rename($from, $to)) {
+        return true;
+    }
+
     // update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
     $ftp_server = EBE_check_ftp_account();
     if ($ftp_server === false) {
@@ -515,18 +520,14 @@ function EBE_rename_dir_for_update_code($desc_dir)
     $myoldfolder = str_replace('-master', '', $myoldfolder);
     //die($myoldfolder);
     if (is_dir($myoldfolder)) {
-        if (!rename($myoldfolder, $myoldfolder . '-' . date('Ymd-His'))) {
-            if (EBE_ftp_rename($myoldfolder, $myoldfolder . '-' . date('Ymd-His')) === false) {
-                return false;
-            }
+        if (EBE_try_ftp_rename($myoldfolder, $myoldfolder . '-' . date('Ymd-His')) === false) {
+            return false;
         }
     }
 
     // đổi tên thư mục mới
-    if (!rename($desc_dir, $myoldfolder)) {
-        if (EBE_ftp_rename($desc_dir, $myoldfolder) === false) {
-            return false;
-        }
+    if (EBE_try_ftp_rename($desc_dir, $myoldfolder) === false) {
+        return false;
     }
 
     //
