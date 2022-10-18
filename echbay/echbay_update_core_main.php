@@ -75,6 +75,9 @@ if (isset($_GET['confirm_eb_process'])) {
         $dir_unzip_update_to = WP_CONTENT_DIR . '/';
         // nếu update theme thì phải thêm path cho themes
         if ($connect_to_server == 'theme') {
+            $dir_name_for_unzip_to = 'echbaytwo-master';
+
+            //
             $dir_unzip_update_to .= 'themes/';
             //die($dir_unzip_update_to . ':' . __LINE__);
         }
@@ -96,7 +99,6 @@ if (isset($_GET['confirm_eb_process'])) {
                 $url_for_download_ebdotcom = $arr_private_info_setting['url_update_parent_theme'];
 
                 //
-                $dir_name_for_unzip_to = 'echbaytwo-master';
                 if (isset($arr_private_info_setting['dir_theme_unzip_to'])) {
                     $dir_name_for_unzip_to = $arr_private_info_setting['dir_theme_unzip_to'];
                 }
@@ -240,6 +242,7 @@ if (isset($_GET['confirm_eb_process'])) {
             echo '<br>' . "\n";
             //die(EB_THEME_PLUGIN_INDEX);
             //die(__FILE__ . ':' . __LINE__);
+            //die($dir_unzip_update_to . ':' . __LINE__);
 
 
             /*

@@ -215,7 +215,7 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to)
         $ftp_server = EBE_check_ftp_account();
 
         //		if ( ! defined('FTP_USER') || ! defined('FTP_PASS') ) {
-        if ($ftp_server == false) {
+        if ($ftp_server === false) {
 
             // update thông qua hàm cơ bản của php
             //		return EBE_update_file_via_php( $dir_source_update, $list_dir_for_update_eb_core, $list_file_for_update_eb_core, $list_dir_for_update_old_core, $list_file_for_update_old_core, $dir_to_update );
@@ -472,6 +472,37 @@ function EBE_eb_update_time_to_new_time($t)
     return $t;
 }
 
+function EBE_ftp_rename($from, $to)
+{
+    // update file thông qua ftp -> nếu không có dữ liệu -> hủy luôn
+    $ftp_server = EBE_check_ftp_account();
+    if ($ftp_server === false) {
+        // đến đây mà không up được thì bỏ qua luôn
+        return false;
+    }
+
+    // tạo kết nối tới FTP
+    $ftp_user_name = FTP_USER;
+    $ftp_user_pass = FTP_PASS;
+
+    //
+    $ftp_dir_root = EBE_get_ftp_root_dir();
+    echo 'FTP root dir: <strong>' . $ftp_dir_root . '</strong><br><br>' . "\n";
+
+    // tạo kết nối
+    $conn_id = ftp_connect($ftp_server) or die('ERROR connect to server');
+
+    // đăng nhập
+    ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) or die('AutoBot login false');
+
+    // đổi tên filr hoặc thư mục
+    $from = '.' . strstr($from, '/' . $ftp_dir_root . '/');
+    $to = '.' . strstr($to, '/' . $ftp_dir_root . '/');
+
+    //
+    return ftp_rename($conn_id, $from, $to);
+}
+
 function EBE_rename_dir_for_update_code($desc_dir)
 {
     //die($desc_dir);
@@ -480,21 +511,22 @@ function EBE_rename_dir_for_update_code($desc_dir)
     }
 
     // đổi tên thư mục cũ
-    if (is_dir(EB_THEME_PLUGIN_INDEX)) {
-        $myoldfolder = rtrim(EB_THEME_PLUGIN_INDEX, '/');
-        //die($myoldfolder);
+    $myoldfolder = rtrim($desc_dir, '/');
+    $myoldfolder = str_replace('-master', '', $myoldfolder);
+    //die($myoldfolder);
+    if (is_dir($myoldfolder)) {
         if (!rename($myoldfolder, $myoldfolder . '-' . date('Ymd-His'))) {
-            return false;
+            if (EBE_ftp_rename($myoldfolder, $myoldfolder . '-' . date('Ymd-His')) === false) {
+                return false;
+            }
         }
     }
 
     // đổi tên thư mục mới
-    $mynewfolder = rtrim($desc_dir, '/');
-    //die($mynewfolder);
-    $mynewfolder = str_replace('-master', '', $mynewfolder);
-    //die($mynewfolder);
-    if (!rename($desc_dir, $mynewfolder)) {
-        return false;
+    if (!rename($desc_dir, $myoldfolder)) {
+        if (EBE_ftp_rename($desc_dir, $myoldfolder) === false) {
+            return false;
+        }
     }
 
     //
