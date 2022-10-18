@@ -274,7 +274,7 @@ if (isset($_GET['confirm_eb_process'])) {
 
             //
             //die($dir_name_for_unzip_to);
-            die($dir_unzip_update_to . $dir_name_for_unzip_to);
+            //die($dir_unzip_update_to . $dir_name_for_unzip_to);
 
             // bắt đầu cập nhật
             // sử dụng chức năng đổi tên thư mục -> ưu tiên
