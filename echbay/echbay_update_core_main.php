@@ -73,6 +73,7 @@ if (isset($_GET['confirm_eb_process'])) {
 
         // thư mục mà code sẽ được giải nén tới
         $dir_unzip_update_to = WP_CONTENT_DIR . '/';
+        //$dir_unzip_update_to = EB_THEME_CACHE; // daidq (2022-10-19): update thông qua cache có vẻ phức tạp và nặng nề hơn
         // nếu update theme thì phải thêm path cho themes
         if ($connect_to_server == 'theme') {
             $dir_name_for_unzip_to = 'echbaytwo-master';
@@ -81,7 +82,6 @@ if (isset($_GET['confirm_eb_process'])) {
             $dir_unzip_update_to .= 'themes/';
             //die($dir_unzip_update_to . ':' . __LINE__);
         }
-        //$dir_unzip_update_to = EB_THEME_CACHE;
 
         // download từ github
         if (!file_exists($destination_path)) {
@@ -203,7 +203,6 @@ if (isset($_GET['confirm_eb_process'])) {
                 }
 
                 // xóa file của github luôn và ngay
-//WGR_remove_github_file( $dir_unzip_update_to . 'echbaydotcom-master/.gitattributes' );
                 WGR_remove_github_file($dir_unzip_update_to . $dir_name_for_unzip_to . '/.gitattributes');
                 WGR_remove_github_file($dir_unzip_update_to . $dir_name_for_unzip_to . '/.gitignore');
 
@@ -245,30 +244,6 @@ if (isset($_GET['confirm_eb_process'])) {
             //die($dir_unzip_update_to . ':' . __LINE__);
 
 
-            /*
-             // Get array of all source files
-             $files = scandir( EB_THEME_CONTENT );
-             // Identify directories
-             $source = $dir_unzip_update_to . 'echbaydotcom-master/';
-             $destination = EB_THEME_CONTENT;
-             $delete = array();
-             // Cycle through all source files
-             foreach ($files as $file) {
-             if ( in_array( $file, array( ".", ".." ) ) ) continue;
-             
-             // If we copied this successfully, mark it for deletion
-             if ( copy( $source . $file, $destination . $file ) ) {
-             $delete[] = $source . $file;
-             }
-             }
-             
-             // Delete all successfully-copied files
-             foreach ($delete as $file) {
-             unlink($file);
-             }
-             */
-
-
 
             // Bật chế độ bảo trì hệ thống
             $bat_che_do_bao_tri = EB_THEME_CACHE . 'update_running.txt';
@@ -283,7 +258,7 @@ if (isset($_GET['confirm_eb_process'])) {
             // sử dụng chức năng đổi tên thư mục -> ưu tiên
             if (EBE_rename_dir_for_update_code($dir_unzip_update_to . $dir_name_for_unzip_to) === true ||
                     // hoặc chuyển từng file
-                EBE_update_file_via_ftp($dir_name_for_unzip_to) === true) {
+                EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_unzip_update_to . $dir_name_for_unzip_to) === true) {
 
                 // xóa file download để lần sau còn ghi đè lên
                 unlink($destination_path);
