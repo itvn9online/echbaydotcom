@@ -14,7 +14,7 @@ img,
     }
 
     body:not(.document-ready),
-    body: not(.document-ready) * {
+    body:not(.document-ready) * {
         line-height: 2.5;
     }
 }
