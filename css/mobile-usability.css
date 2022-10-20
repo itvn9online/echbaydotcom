@@ -15,6 +15,6 @@ img,
 
     body:not(.document-ready),
     body:not(.document-ready) * {
-        line-height: 2.5;
+        line-height: 1.6;
     }
 }
