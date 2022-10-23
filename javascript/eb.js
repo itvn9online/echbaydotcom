@@ -1564,7 +1564,8 @@ var _global_js_eb = {
             hd_diachi: '',
             hd_ghichu: '',
             hd_discount_code: '',
-            hd_thanhtoan: 'tructiep',
+            //hd_thanhtoan: 'tructiep',
+            hd_thanhtoan: jQuery('input[name="t_thanhtoan"]').val() || 'tructiep',
 
             // user agent
             hd_url: window.location.href,
