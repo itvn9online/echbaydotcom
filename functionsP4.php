@@ -196,7 +196,7 @@ function WGR_before_optimize_code($confirm_file)
 function WGR_unzip1_vendor_code($check_confirm_file = true)
 {
     // nếu có file này -> thì bỏ qua luôn -> tránh chạy quá nhiều lần
-    $f = EB_THEME_PLUGIN_INDEX . 'has_unzipcode.txt';
+    $f = EB_THEME_PLUGIN_INDEX . '_done_unzipcode.txt';
     if (file_exists($f)) {
         return false;
     }
