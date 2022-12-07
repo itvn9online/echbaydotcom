@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="<?php echo $__cf_row['cf_content_language']; ?>" class="no-js no-svg" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<html lang="<?php echo $__cf_row['cf_content_language']; ?>" class="no-js no-svg"
+    prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+
 <head>
-<!-- header -->
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<link rel="profile" href="http://gmgp.org/xfn/11" />
-<?php
+    <!-- header -->
+    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <link rel="profile" href="http://gmgp.org/xfn/11" />
+    <?php
 
 if ( is_singular() && pings_open( get_queried_object() ) ) {
     ?>
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<?php
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <?php
 }
 
 echo _eb_tieu_de_chuan_seo( $__cf_row[ 'cf_title' ] );
@@ -20,14 +22,14 @@ echo WGR_show_header_favicon();
  * Do bản kết hợp với flatsome có sẵn 1 số thuộc tính nên bỏ qua các thuộc tính trùng trong SEO
  */
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<?php
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
 include EB_THEME_PLUGIN_INDEX . 'seo.php';
 
 ?>
-<!-- Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
-<base href="<?php echo web_link; ?>" />
-<?php
+    <!-- Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
+    <base href="<?php echo web_link; ?>" />
+    <?php
 
 
 // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
@@ -44,7 +46,7 @@ if ( file_exists( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.m
 // nếu không có file css mà có file zip -> gọi hàm giải nén
 else if ( file_exists( EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip' ) ) {
     //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
-    WGR_unzip_vendor_code( false );
+    WGR_unzip1_vendor_code(false);
 }
 
 
@@ -77,26 +79,29 @@ _eb_add_compiler_css( [
 
 // phần style này phải đặt ở cuối cùng, để nó replace tất cả các style tĩnh trước đó
 ?>
-<style type="text/css">
-/* EchBay custom CSS for replace default CSS by plugin or theme */
-<?php /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
-if ( $__cf_row['cf_replace_content'] != '' ) {
-$__cf_row['cf_default_css'] = WGR_replace_for_all_content( $__cf_row['cf_replace_content'], $__cf_row['cf_default_css'] );
-}
-echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
-?>
-</style>
-<script type="text/javascript">
-<?php
+    <style type="text/css">
+    /* EchBay custom CSS for replace default CSS by plugin or theme */
+    <?php
+
+    /* do phần css chứa các url ảnh nên cần thay thế lại luôn nếu có */
+    if ($__cf_row['cf_replace_content'] !='') {
+        $__cf_row['cf_default_css']=WGR_replace_for_all_content($__cf_row['cf_replace_content'], $__cf_row['cf_default_css']);
+    }
+
+    echo $__cf_row['cf_default_css'] . $__cf_row['cf_default_themes_css'];
+    ?>
+    </style>
+    <script type="text/javascript">
+    <?php
 
 
 include EB_THEME_PLUGIN_INDEX . 'data_id.php';
 
 
 ?>
-var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
-</script>
-<?php
+    var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
+    </script>
+    <?php
 
 // do xung đột với elementor nên chỉ nạp jquery riêng khi không đăng nhập
 //if ( mtv_id == 0 ) {
@@ -104,17 +109,18 @@ var web_link = '<?php echo str_replace( '/', '\/', web_link ); ?>';
 /*
 if ( 1 == 2 ) {
 ?>
-<script type="text/javascript" src="<?php echo EB_URL_OUTSOURCE; ?>javascript/jquery/3.3.1.min.js"></script>
-<script type="text/javascript" src="<?php echo EB_URL_OUTSOURCE; ?>javascript/jquery/migrate-3.0.0.min.js" defer></script>
-<?php
+    <script type="text/javascript" src="<?php echo EB_URL_OUTSOURCE; ?>javascript/jquery/3.3.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo EB_URL_OUTSOURCE; ?>javascript/jquery/migrate-3.0.0.min.js" defer>
+    </script>
+    <?php
 }
 */
 
 ?>
-<!-- HEAD by <?php echo $arr_private_info_setting['author']; ?> --> 
-<?php echo $__cf_row['cf_js_head']; ?> 
-<!-- // Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
-<?php
+    <!-- HEAD by <?php echo $arr_private_info_setting['author']; ?> -->
+    <?php echo $__cf_row['cf_js_head']; ?>
+    <!-- // Global site format by <?php echo $arr_private_info_setting['author']; ?> -->
+    <?php
 
 //echo 'aaaaaaaaaaaaaaaaaaaa';
 wp_head();
@@ -133,4 +139,5 @@ $eb_background_for_post = array();
 ?>
 </head>
 <!-- Thêm class tượng trưng cho mỗi trang lên BODY để tùy biến-->
+
 <body class="<?php echo trim( implode( ' ', $css_m_css ) . $class_css_of_post ); ?>">

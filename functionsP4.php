@@ -72,8 +72,7 @@ function WGR_decode_for_products_cart($a)
                 }
             }
         }
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
         $a = NULL;
     }
 
@@ -104,12 +103,14 @@ function WGR_decode_for_discount_cart($a)
         //
         $a = $a[0];
         if ($a != '') {
-            $arr_discount_code = get_categories(array(
-                'name' => $a,
-                'orderby' => 'id',
-                'hide_empty' => 0,
-                'taxonomy' => 'discount_code'
-            ));
+            $arr_discount_code = get_categories(
+                array(
+                    'name' => $a,
+                    'orderby' => 'id',
+                    'hide_empty' => 0,
+                    'taxonomy' => 'discount_code'
+                )
+            );
             //print_r( $arr_discount_code );
 
             //
@@ -126,7 +127,7 @@ function WGR_decode_for_discount_cart($a)
             }
         }
 
-    //return $a;
+        //return $a;
     }
 
     return $re;
@@ -181,8 +182,7 @@ function WGR_before_optimize_code($confirm_file)
             echo '<!-- ' . __FUNCTION__ . ' run in ' . date('Y-m-d H:i:s', $content_file) . ' -->' . "\n";
             return false;
         }
-    }
-    else {
+    } else {
         // nếu là chữ -> hẹn thời gian để xử lý code -> xử lý ngay dễ bị trường hợp thu viện cần xử lý chưa được nạp xong -> lỗi luôn
         _eb_create_file($confirm_file, date_time + 60);
         return false;
@@ -190,6 +190,20 @@ function WGR_before_optimize_code($confirm_file)
 
     //
     return true;
+}
+
+// unzip code -> chạy 1 lần duy nhất
+function WGR_unzip1_vendor_code($check_confirm_file = true)
+{
+    // nếu có file này -> thì bỏ qua luôn -> tránh chạy quá nhiều lần
+    $f = EB_THEME_PLUGIN_INDEX . 'has_unzipcode.txt';
+    if (file_exists($f)) {
+        return false;
+    }
+    // tạo file để tránh chạy nhiều lần
+    _eb_create_file($f, __FILE__);
+    // bắt đầu unzip code
+    return WGR_unzip_vendor_code($check_confirm_file);
 }
 
 function WGR_unzip_vendor_code($check_confirm_file = true)
@@ -211,8 +225,8 @@ function WGR_unzip_vendor_code($check_confirm_file = true)
 
     //
     $arr_vendor_list = [
-        EB_THEME_PLUGIN_INDEX . 'outsource',
-        EB_THEME_URL . 'outsource',
+    EB_THEME_PLUGIN_INDEX . 'outsource',
+    EB_THEME_URL . 'outsource',
     ];
     //print_r( $arr_vendor_list );
 
@@ -302,12 +316,10 @@ function WGR_unzip_vendor_code($check_confirm_file = true)
                 //
                 if (!ftp_chmod($conn_id, 0777, $file_for_ftp)) {
                     echo '<!-- ERROR FTP: ftp_chmod error -->' . "\n";
-                }
-                else {
+                } else {
                     echo '<!-- chmod via ftp -->' . "\n";
                 }
-            }
-            else {
+            } else {
                 echo '<!-- chmod via ftp -->' . "\n";
             }
             ftp_close($conn_id);
@@ -348,7 +360,7 @@ function WGR_optimize_backup_code($source_file, $save_dir, $min_line = 10)
         error_reporting(0);
         //_eb_create_file( $bak_file, date_time );
         WGR_copy($source_file, $bak_file);
-    //return false;
+        //return false;
     }
 
     // thực hiện optimize
@@ -376,11 +388,11 @@ function WGR_optimize_static_code()
     //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) );
     //var_dump( strpos( $_SERVER[ 'REQUEST_URI' ], '/post.php' ) );
     /*
-     if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) !== false ) {
-     //echo '1';
-     return false;
-     }
-     */
+    if ( strpos( $_SERVER[ 'REQUEST_URI' ], '/admin-ajax.php' ) !== false ) {
+    //echo '1';
+    return false;
+    }
+    */
     //echo '0';
 
     //
@@ -407,16 +419,12 @@ function WGR_optimize_static_code()
         'css',
         'css/default',
         'css/template',
-
         'class/widget',
-
         'themes/css',
-
         'html/details',
         'html/details/mobilemua',
         'html/details/pcmua',
         'html/search',
-
         'javascript',
     ];
 
@@ -540,7 +548,6 @@ function WGR_optimize_php_code()
     $arr_optimize_dir = [
         'global',
         'global/temp',
-
         'class/widget',
     ];
 
