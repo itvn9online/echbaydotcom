@@ -12,8 +12,10 @@ $arrs_private_info_setting = array(
 
         //'child_theme_default' => 'echbaytwo-child',
 
-        'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
-        'url_check_EB_theme_version' => 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION',
+        //'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
+        'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
+        //'url_check_EB_theme_version' => 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION',
+        'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION',
 
         //		'theme_author_email' => 'lienhe@echbay.com',
         'theme_site_upper' => 'WebGiaRe.org',
@@ -71,7 +73,7 @@ $arrs_private_info_setting = array(
         'author' => 'beegitalvn'
     )
 );
-$arr_private_info_setting = $arrs_private_info_setting[ 'echbaydotcom' ];
+$arr_private_info_setting = $arrs_private_info_setting['echbaydotcom'];
 
 
 // từ nhà phát hành khác (nếu có)
@@ -79,19 +81,19 @@ $arr_private_info_setting = $arrs_private_info_setting[ 'echbaydotcom' ];
 //echo EB_THEME_URL . '<br>' . "\n";
 //if ( file_exists( EB_THEME_URL . 'copyright' ) ) {
 //  $private_info_setting = file_get_contents( EB_THEME_URL . 'copyright', 1 );
-if ( defined( 'EB_THEME_URL' ) ) {
-    $private_info_setting = basename( EB_THEME_URL );
+if (defined('EB_THEME_URL')) {
+    $private_info_setting = basename(EB_THEME_URL);
     //echo $private_info_setting . '<br>' . "\n";
 
     // có thì ghi đè dữ liệu lên thôi
-    if ( $private_info_setting != 'echbaytwo' && isset( $arrs_private_info_setting[ $private_info_setting ] ) ) {
+    if ($private_info_setting != 'echbaytwo' && isset($arrs_private_info_setting[$private_info_setting])) {
         // các dữ liệu khác sẽ ghi đè từ theme
-        foreach ( $arrs_private_info_setting[ $private_info_setting ] as $k => $v ) {
-            $arr_private_info_setting[ $k ] = $v;
+        foreach ($arrs_private_info_setting[$private_info_setting] as $k => $v) {
+            $arr_private_info_setting[$k] = $v;
         }
-        $arr_private_info_setting[ 'author_logo' ] = str_replace( ABSPATH, '', EB_THEME_URL ) . 'logo.png';
-        $arr_private_info_setting[ 'url_check_WGR_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
-        $arr_private_info_setting[ 'url_check_EB_theme_version' ] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
+        $arr_private_info_setting['author_logo'] = str_replace(ABSPATH, '', EB_THEME_URL) . 'logo.png';
+        $arr_private_info_setting['url_check_WGR_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
+        $arr_private_info_setting['url_check_EB_theme_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
     }
 }
 //print_r($arr_private_info_setting);
