@@ -3,24 +3,25 @@
 <meta name="DISTRIBUTION" content="GLOBAL" />
 <meta name="CODE-AUTHOR" content="<?php echo $arr_private_info_setting['site_upper']; ?>" />
 <meta name="CODE-VERSION" content="<?php echo file_get_contents(__DIR__ . '/VERSION'); ?>" />
-<meta name="COPYRIGHT" content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - <?php echo $arr_private_info_setting['author_email']; ?>" />
-<!-- // META for design by <?php echo $arr_private_info_setting['author']; ?> --> 
+<meta name="COPYRIGHT"
+    content="Copyright (c) 2011 by <?php echo $arr_private_info_setting['site_upper']; ?> - <?php echo $arr_private_info_setting['author_email']; ?>" />
+<!-- // META for design by <?php echo $arr_private_info_setting['author']; ?> -->
 <!-- <?php echo $arr_private_info_setting['author']; ?> SEO plugin - <?php echo $arr_private_info_setting['site_url']; ?> -->
 <?php
 
 // thêm 1 số dns-prefetch cần thiết
-if ( $__cf_row[ 'cf_ga_id' ] != '' ) {
+if ($__cf_row['cf_ga_id'] != '') {
     $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="https://www.google-analytics.com/" />';
 }
 
-if ( $__cf_row[ 'cf_facebook_id' ] != '' ) {
+if ($__cf_row['cf_facebook_id'] != '') {
     $echo_dns_prefetch[] = '<link rel="dns-prefetch" href="https://connect.facebook.net/" />';
 }
 
 
-if ( !empty( $echo_dns_prefetch ) ) {
+if (!empty($echo_dns_prefetch)) {
     echo '<meta http-equiv="x-dns-prefetch-control" content="on">';
-    echo implode( "\n", $echo_dns_prefetch );
+    echo implode("\n", $echo_dns_prefetch);
 }
 
 
@@ -39,22 +40,27 @@ if ( !empty( $echo_dns_prefetch ) ) {
 
 // chế độ index website
 // đối với các trang riêng của plugin
-if ( $act != '' && isset( $arr_active_for_404_page[ $act ] ) ) {
-    if ( $__cf_row[ "cf_blog_public" ] == 0 ) {
-        echo '<meta name="robots" content="noindex,follow" />' . "\n";
+if ($act != '' && isset($arr_active_for_404_page[$act])) {
+    if ($__cf_row["cf_blog_public"] == 0) {
+        echo '
+<!-- by cf_blog_public zero -->
+<meta name="robots" content="noindex,follow" />' . "\n";
     }
-} else if ( $__cf_row[ "cf_blog_public" ] == 0 ) {
+} else if ($__cf_row["cf_blog_public"] == 0) {
     // chỉ áp dụng khi giá trị của cf_blog_public khác với option blog_public
-    if ( get_option( 'blog_public' ) != $__cf_row[ "cf_blog_public" ] ) {
-        //		wp_no_robots();
-        echo '<meta name="robots" content="noindex,follow" />' . "\n";
+    if (get_option('blog_public') != $__cf_row["cf_blog_public"]) {
+        //wp_no_robots();
+        echo '
+<!-- by blog_public != cf_blog_public -->
+<meta name="robots" content="noindex,follow" />' . "\n";
     }
 }
 
 
 //
-if ( $__cf_row[ "cf_phone_detection" ] != 1 ) {
-    echo '<meta name="format-detection" content="telephone=no">' . "\n";
+if ($__cf_row["cf_phone_detection"] != 1) {
+    echo '
+<meta name="format-detection" content="telephone=no">' . "\n";
 }
 
 
@@ -64,7 +70,7 @@ echo $global_dymanic_meta;
 
 // trường hợp khách hàng không sử dụng plugin SEO khác thì mới dùng plugin SEO của EchBay
 //echo 'cf_on_off_echbay_seo: ' . cf_on_off_echbay_seo . '<br>' . "\n";
-if ( cf_on_off_echbay_seo == 1 ) {
+if (cf_on_off_echbay_seo == 1) {
 
 
     ob_start();
@@ -75,105 +81,129 @@ if ( cf_on_off_echbay_seo == 1 ) {
 
 
     // cho phép google index
-    //echo get_option( 'blog_public' );
-    /*
-    if ( $__cf_row ["cf_blog_public"] == 1 ) {
-    	echo '<meta name="robots" content="noodp,noydir" />';
-    }
-    */
+//echo get_option( 'blog_public' );
+/*
+if ( $__cf_row ["cf_blog_public"] == 1 ) {
+echo '
+<meta name="robots" content="noodp,noydir" />';
+}
+*/
     // chặn index nếu chưa có
-    /*
-    else {
-    	if ( get_option( 'blog_public' ) == 0 ) {
-    		echo '<meta name="robots" content="noindex,follow" />';
-    	}
-    	*/
+/*
+else {
+if ( get_option( 'blog_public' ) == 0 ) {
+echo '
+<meta name="robots" content="noindex,follow" />';
+}
+*/
 
     /*
-	$sql = _eb_q("SELECT option_value
-	FROM
-		" . $wpdb->options . "
-	WHERE
-		option_name = 'blog_public'
-	ORDER BY
-		option_id DESC
-	LIMIT 0, 1");
-//	print_r($sql);
-	
-	//
-	if ( isset( $sql[0]->option_value ) && $sql[0]->option_value == 0 ) {
-		echo '<meta name="robots" content="noindex,follow" />';
-	}
-	*/
+    $sql = _eb_q("SELECT option_value
+    FROM
+    " . $wpdb->options . "
+    WHERE
+    option_name = 'blog_public'
+    ORDER BY
+    option_id DESC
+    LIMIT 0, 1");
+    // print_r($sql);
+    //
+    if ( isset( $sql[0]->option_value ) && $sql[0]->option_value == 0 ) {
+    echo '
+    <meta name="robots" content="noindex,follow" />';
+    }
+    */
     //}
 
 
     //
-    $__cf_row[ 'cf_title' ] = str_replace( '"', '&quot;', $__cf_row[ 'cf_title' ] );
-    $__cf_row[ 'cf_keywords' ] = str_replace( '"', '&quot;', $__cf_row[ 'cf_keywords' ] );
-    $__cf_row[ 'cf_description' ] = str_replace( '"', '&quot;', $__cf_row[ 'cf_description' ] );
+    $__cf_row['cf_title'] = str_replace('"', '&quot;', $__cf_row['cf_title']);
+    $__cf_row['cf_keywords'] = str_replace('"', '&quot;', $__cf_row['cf_keywords']);
+    $__cf_row['cf_description'] = str_replace('"', '&quot;', $__cf_row['cf_description']);
 
 
     //print_r($__cf_row);
 
 
     ?>
-<meta name="revisit-after" content="1 days" />
-<meta name="title" content="<?php echo $__cf_row ['cf_title']; ?>" />
-<meta name="keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
-<meta name="news_keywords" content="<?php echo $__cf_row ['cf_keywords']; ?>" />
-<meta name="description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta name="abstract" content="<?php echo $__cf_row ['cf_abstract'] != '' ? str_replace( '"', '&quot;', $__cf_row ['cf_abstract'] ) : $__cf_row ['cf_description']; ?>" />
-<meta name="RATING" content="GENERAL" />
-<meta name="GENERATOR" content="<?php echo $arr_private_info_setting['site_upper']; ?> eCommerce Software" />
-<meta itemprop="name" content="<?php echo $__cf_row ['cf_title']; ?>" />
-<meta itemprop="description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta property="og:title" content="<?php echo $__cf_row ['cf_title']; ?>" />
-<meta property="og:description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta property="og:type" content="<?php echo $web_og_type; ?>" />
-<meta property="og:site_name" content="<?php echo $web_name; ?>" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:description" content="<?php echo $__cf_row ['cf_description']; ?>" />
-<meta name="twitter:title" content="<?php echo $__cf_row ['cf_title']; ?>" />
-<?php
+    <meta name="revisit-after" content="1 days" />
+    <meta name="title" content="<?php echo $__cf_row['cf_title']; ?>" />
+    <meta name="keywords" content="<?php echo $__cf_row['cf_keywords']; ?>" />
+    <meta name="news_keywords" content="<?php echo $__cf_row['cf_keywords']; ?>" />
+    <meta name="description" content="<?php echo $__cf_row['cf_description']; ?>" />
+    <meta name="abstract"
+        content="<?php echo $__cf_row['cf_abstract'] != '' ? str_replace('"', '&quot;', $__cf_row['cf_abstract']) : $__cf_row['cf_description']; ?>" />
+    <meta name="RATING" content="GENERAL" />
+    <meta name="GENERATOR" content="<?php echo $arr_private_info_setting['site_upper']; ?> eCommerce Software" />
+    <meta itemprop="name" content="<?php echo $__cf_row['cf_title']; ?>" />
+    <meta itemprop="description" content="<?php echo $__cf_row['cf_description']; ?>" />
+    <meta property="og:title" content="<?php echo $__cf_row['cf_title']; ?>" />
+    <meta property="og:description" content="<?php echo $__cf_row['cf_description']; ?>" />
+    <meta property="og:type" content="<?php echo $web_og_type; ?>" />
+    <meta property="og:site_name" content="<?php echo $web_name; ?>" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="<?php echo $__cf_row['cf_description']; ?>" />
+    <meta name="twitter:title" content="<?php echo $__cf_row['cf_title']; ?>" />
+    <?php
 
 
-//
-$header_seo_content = ob_get_contents();
+    //
+    $header_seo_content = ob_get_contents();
 
-//ob_clean();
+    //ob_clean();
 //ob_end_flush();
-ob_end_clean();
+    ob_end_clean();
 
 
-if ( $__cf_row[ 'cf_replace_content' ] != '' ) {
-    $header_seo_content = WGR_replace_for_all_content( $__cf_row[ 'cf_replace_content' ], $header_seo_content );
-}
-echo $header_seo_content;
+    if ($__cf_row['cf_replace_content'] != '') {
+        $header_seo_content = WGR_replace_for_all_content($__cf_row['cf_replace_content'], $header_seo_content);
+    }
+    echo $header_seo_content;
 
-}
-else {
+} else {
     ?>
-<!-- // <?php echo $arr_private_info_setting['author']; ?> SEO plugin disable by customer -->
-<?php
+    <!-- // <?php echo $arr_private_info_setting['author']; ?> SEO plugin disable by customer -->
+    <?php
 }
 
 
 // google analytics
-if ( $__cf_row[ 'cf_ga_id' ] != '' && $__cf_row[ 'cf_tester_mode' ] == 'off' ) {
+if ($__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off') {
     // gtag
-    if ( $__cf_row[ 'cf_gtag_id' ] == 1 ) {
+    if ($__cf_row['cf_gtag_id'] == 1) {
         ?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $__cf_row['cf_ga_id']; ?>"></script> 
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo $__cf_row['cf_ga_id']; ?>');</script>
-<?php
-}
-// analytic
-else {
-    ?>
-<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','<?php echo $__cf_row['cf_ga_id']; ?>','auto');ga('require','displayfeatures');<?php echo $import_ecommerce_ga; ?>ga('send','pageview');</script>
-<?php
-}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $__cf_row['cf_ga_id']; ?>"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', '<?php echo $__cf_row['cf_ga_id']; ?>');
+        </script>
+        <?php
+    }
+    // analytic
+    else {
+        ?>
+        <script type="text/javascript">
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', '<?php echo $__cf_row['cf_ga_id']; ?>', 'auto');
+            ga('require', 'displayfeatures');
+        <?php echo $import_ecommerce_ga; ?>ga('send', 'pageview');
+        </script>
+        <?php
+    }
 }
 
 ?>
