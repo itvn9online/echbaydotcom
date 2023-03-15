@@ -28,8 +28,8 @@ if (isset($_GET['confirm_eb_process'])) {
     // không cập nhật trên localhost
     if ($localhost == 1) {
         //		if ( strpos( $_SERVER['HTTP_HOST'], 'localhost' ) !== false ) {
-//			echo $_SERVER['HTTP_HOST']; exit();
-//			echo $_SERVER['REQUEST_URI']; exit();
+        //			echo $_SERVER['HTTP_HOST']; exit();
+        //			echo $_SERVER['REQUEST_URI']; exit();
 
         // nếu thư mục là webgiare thì bỏ qua chế độ cập nhật
         if (strpos($_SERVER['REQUEST_URI'], '/wordpress.org') !== false) {
@@ -108,15 +108,18 @@ if (isset($_GET['confirm_eb_process'])) {
             }
             // server của echbay thì update chậm hơn chút, nhưng tải nhanh hơn -> mặc định
             else {
-                $url_for_download_ebdotcom = $arr_private_info_setting['site_url'] . 'daoloat/echbaydotcom.zip';
+                // daidq (2023-03-15): bỏ chế độ update tại server VN
+                //$url_for_download_ebdotcom = $arr_private_info_setting['site_url'] . 'daoloat/echbaydotcom.zip';
+                // -> chỉ dùng bản từ github
+                $url_for_download_ebdotcom = 'https://github.com/itvn9online/echbaydotcom/archive/master.zip';
 
                 // thiết lập chế độ download từ server dự phòng
                 $url2_for_download_ebdotcom = 'http://api.echbay.com/daoloat/echbaydotcom.zip';
             }
 
             // TEST
-//$url_for_download_ebdotcom = 'http://api.echbay.com/css/bg/HD-Eagle-Wallpapers.jpg';
-//$destination_path = EB_THEME_CACHE . 'w.jpg';
+            //$url_for_download_ebdotcom = 'http://api.echbay.com/css/bg/HD-Eagle-Wallpapers.jpg';
+            //$destination_path = EB_THEME_CACHE . 'w.jpg';
 
             // thử download theo cách thông thường
             if (WGR_download($url_for_download_ebdotcom, $destination_path)) {
@@ -227,7 +230,6 @@ if (isset($_GET['confirm_eb_process'])) {
                  echo str_replace( EB_THEME_CONTENT, '', $dir_to ) . '.gitattributes<br>' . "\n";
                  }
                  */
-
             } else {
                 echo '<div>Do not unzip file, update faild!</div>';
 
@@ -256,9 +258,11 @@ if (isset($_GET['confirm_eb_process'])) {
 
             // bắt đầu cập nhật
             // sử dụng chức năng đổi tên thư mục -> ưu tiên
-            if (EBE_rename_dir_for_update_code($dir_unzip_update_to . $dir_name_for_unzip_to) === true ||
-                    // hoặc chuyển từng file
-                EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_unzip_update_to . $dir_name_for_unzip_to) === true) {
+            if (
+                EBE_rename_dir_for_update_code($dir_unzip_update_to . $dir_name_for_unzip_to) === true ||
+                // hoặc chuyển từng file
+                EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_unzip_update_to . $dir_name_for_unzip_to) === true
+            ) {
 
                 // xóa file download để lần sau còn ghi đè lên
                 unlink($destination_path);
@@ -271,8 +275,8 @@ if (isset($_GET['confirm_eb_process'])) {
                 echo '<div id="eb_core_update_all_done"></div>';
 
                 // cho website vào chế độ chờ
-//sleep(15);
-//sleep(5);
+                //sleep(15);
+                //sleep(5);
 
                 //
                 include ECHBAY_PRI_CODE . 'func/config_reset_cache.php';
@@ -280,7 +284,6 @@ if (isset($_GET['confirm_eb_process'])) {
                 // cập nhật lại dữ liệu bảng
                 EBE_tao_bang_hoa_don_cho_echbay_wp();
                 echo '<strong>Update</strong> WGR table database<br>' . "\n";
-
             }
 
             // tắt chế độ bảo trì
@@ -293,7 +296,6 @@ if (isset($_GET['confirm_eb_process'])) {
              echo '<br><h2>Không TẮT được chế độ bảo trì! Hãy vào thư mục ebcache và xóa file update_running.txt thủ công.</h2>';
              }
              */
-
         } else {
             echo '<h3>Không tồn tại file zip để giải nén!</h3>';
         }
@@ -323,7 +325,7 @@ if (isset($_GET['confirm_eb_process'])) {
     }
 
     // Phiên bản hiện tại
-//		$version_current = EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) );
+    //		$version_current = EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) );
     $version_current = file_get_contents(EB_THEME_PLUGIN_INDEX . 'VERSION', 1);
 
     //
@@ -344,7 +346,6 @@ if (isset($_GET['confirm_eb_process'])) {
 
     //
     echo '<p class="bluecolor"><em>' . $url_check_version . '</em></p>';
-
 }
 
 /*	
