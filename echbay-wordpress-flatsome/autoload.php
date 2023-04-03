@@ -104,7 +104,7 @@ if (
     // nếu còn tồn tại chuỗi _site_transient_update_themes -> vẫn còn đang dùng code của flatsome
     if (
         file_exists($flatsome_function_update)
-        && strpos(file_get_contents($flatsome_function_update), 'webgiare_v2_update_themes') === false
+        && strpos(file_get_contents($flatsome_function_update), 'webgiare_v3_update_themes') === false
     ) {
         //die(__FILE__ . ':' . __LINE__);
         echo $flatsome_function_update . PHP_EOL;
