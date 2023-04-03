@@ -95,6 +95,7 @@ foreach (glob(WGR_APP_PATH . 'inc/autoload/shortcode/*.php') as $filename) {
 //
 if (
     $_SERVER['HTTP_HOST'] != 'webgiare.org'
+    && $_SERVER['HTTP_HOST'] != 'www.webgiare.org'
     && is_admin()
     //&& defined('EB_CHILD_THEME_URL')
 ) {

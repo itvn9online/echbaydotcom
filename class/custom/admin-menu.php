@@ -147,6 +147,9 @@ function echbay_create_admin_menu()
         add_submenu_page($parent_slug, 'Phiên bản cao cấp, hỗ trợ nhiều tính năng hơn', 'Phiên bản ', 'manage_options', 'eb-licenses', 'func_include_eb_private_code');
     }
 
+    //
+    //add_submenu_page(null, '', '', 'manage_options', 'wgr-version-flatsome', '__wgr_v2_version_flatsome');
+
 
     //
     //	add_filter( 'admin_init', 'register_mysettings' );
@@ -161,7 +164,6 @@ function __wgr_v2_version_flatsome()
     $a = file_get_contents('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/changes.txt');
     echo nl2br($a);
 }
-add_submenu_page(null, '', '', 'manage_options', 'wgr-version-flatsome', '__wgr_v2_version_flatsome');
 
 
 //
