@@ -161,7 +161,8 @@ add_filter('admin_menu', 'echbay_create_admin_menu');
 // Tạo page để xem thông tin phiên bản
 function __wgr_v2_version_flatsome()
 {
-    $a = file_get_contents('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/changes.txt');
+    //$a = file_get_contents('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/changes.txt');
+    $a = file_get_contents('https://webgiare.org/wp-content/themes/flatsome/changes.txt');
     echo nl2br($a);
 }
 
