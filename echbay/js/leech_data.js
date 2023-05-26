@@ -21,9 +21,35 @@ var EBE_current_first_domain = "",
 	auto_submit_auto_save_config = 0,
 	// vị trí đang lấy dữ liệu tự động -> mặc định là null -> chưa được lấy
 	//cache_node_for_auto_leech = g_func.getc("cache_node_for_au_leech"),
-	cache_node_for_auto_leech = localStorage.getItem("cache_node_for_au_leech"),
+	cache_node_for_auto_leech = "",
 	// đếm số tin đã lấy, cứ vài tin thì nhảy đến chỗ tin đang lấy 1 lần,
-	go_to_current_process = 0;
+	go_to_current_process = 0,
+	ld_domain_prefix = "";
+
+// lưu hoặc lấy dữ liệu trong localStorage
+function ld_local_storage(k, v) {
+	if (ld_domain_prefix == "") {
+		ld_domain_prefix = web_link.split("//")[1].replace(/\.|\//gi, "_");
+		console.log(ld_domain_prefix);
+	}
+	//return false;
+	k = ld_domain_prefix + k;
+	if (typeof v != "undefined") {
+		return localStorage.setItem(k, v);
+	}
+	return localStorage.getItem(k);
+}
+
+function ld_local_set_item(k, v) {
+	ld_local_storage(k, v);
+}
+
+function ld_local_get_item(k) {
+	return ld_local_storage(k);
+}
+
+//
+cache_node_for_auto_leech = ld_local_get_item("cache_node_for_au_leech");
 
 //
 if (arr_for_save_domain_config != "") {
@@ -586,7 +612,7 @@ function leech_data_save_cookie(nem, val) {
 	}
 
 	//g_func.setc(nem, val, 0, 30);
-	localStorage.setItem(nem, val);
+	ld_local_set_item(nem, val);
 
 	console.log("Save cookies #" + nem + " with: " + val);
 }
@@ -1516,7 +1542,7 @@ jQuery("#categories_url")
 		if (typeof a[0] != "undefined" && a[0] != "") {
 			//		console.log( a[0] );
 			//g_func.setc("ck_old_categories_url", a[0], 0, 30);
-			localStorage.setItem("ck_old_categories_url", a[0]);
+			ld_local_set_item("ck_old_categories_url", a[0]);
 
 			//
 			set_source_url_leech(a[0]);
@@ -2019,7 +2045,7 @@ setTimeout(function () {
 	else {
 		(function () {
 			//var a = g_func.getc("ck_old_categories_url");
-			var a = localStorage.getItem("ck_old_categories_url");
+			var a = ld_local_get_item("ck_old_categories_url");
 
 			// nạp dữ liệu từ phiên làm việc cũ
 			if (a != null) {
@@ -2302,10 +2328,10 @@ var arr_save_checkbox_options = [
 				//
 				if (dog(a).checked == true) {
 					//g_func.setc(a, 1, 0, 30);
-					localStorage.setItem(a, 1);
+					ld_local_set_item(a, 1);
 				} else {
 					//g_func.setc(a, 0, 0, 30);
-					localStorage.setItem(a, 0);
+					ld_local_set_item(a, 0);
 				}
 
 				//
@@ -2314,7 +2340,7 @@ var arr_save_checkbox_options = [
 
 		//
 		//if (g_func.getc(arr[i]) == 1) {
-		if (localStorage.getItem(arr[i]) == 1) {
+		if (ld_local_get_item(arr[i]) === 1 || ld_local_get_item(arr[i]) === "1") {
 			dog(arr[i]).checked = true;
 		}
 	}
@@ -2325,12 +2351,12 @@ var arr_save_checkbox_options = [
 		var a = "select_name_post_tai";
 		//		console.log(a);
 		//g_func.setc(a, jQuery(this).val(), 0, 30);
-		localStorage.setItem(a, jQuery(this).val());
+		ld_local_set_item(a, jQuery(this).val());
 	});
 
 	//
 	//a = g_func.getc(a);
-	a = localStorage.getItem(a);
+	a = ld_local_get_item(a);
 	//	console.log( a );
 	if (a != null && typeof a == "string") {
 		jQuery('select[name="post_tai"]').val(a) ||
@@ -2346,16 +2372,16 @@ var arr_save_checkbox_options = [
 jQuery('#leech_data_auto_next').off('click').click(function () {
 	if ( dog('leech_data_auto_next').checked == true ) {
 		//g_func.setc( 'leech_data_auto_next', 1, 0, 30 );
-        localStorage.setItem( 'leech_data_auto_next', 1 );
+        ld_local_set_item( 'leech_data_auto_next', 1 );
 	} else {
 		//g_func.setc( 'leech_data_auto_next', 0, 0, 30 );
-		localStorage.setItem( 'leech_data_auto_next', 0 );
+		ld_local_set_item( 'leech_data_auto_next', 0 );
 	}
 });
 
 //
 //if ( g_func.getc( 'leech_data_auto_next' ) == 1 ) {
-if ( localStorage.getItem( 'leech_data_auto_next' ) == 1 ) {
+if ( ld_local_get_item( 'leech_data_auto_next' ) == 1 ) {
 	dog('leech_data_auto_next').checked = true;
 }
 */
@@ -2430,7 +2456,7 @@ var default_arr_cookie_lamviec = {
 		} else if (dog(x) != null) {
 			var a_name = "leech_data_" + x,
 				//a = g_func.getc(a_name);
-				a = localStorage.getItem(a_name);
+				a = ld_local_get_item(a_name);
 			//			console.log( a_name );
 			//			console.log( a );
 
