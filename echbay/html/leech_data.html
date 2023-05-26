@@ -1,30 +1,43 @@
 <style>
-#leech_data_html,
-#leech_data_fix_content,
-#oi_download_img_to_my_host {
-	max-height: 600px;
-	overflow: auto;
-	width: 90%;
-	max-width: 999px;
-}
-#crawl_eb_iframe { max-width: 999px; }
-.submit-leech-frm {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index: 99999;
-	background: rgba(0, 0, 0, .6);
-	padding: 10px;
-	border-top: 2px #ccc solid;
-}
-.submit-leech-frm button { padding: 5px; }
-.eb-public-table .m { width: 95%; }
+	#leech_data_html,
+	#leech_data_fix_content,
+	#oi_download_img_to_my_host {
+		max-height: 600px;
+		overflow: auto;
+		width: 90%;
+		max-width: 999px;
+	}
+
+	#crawl_eb_iframe {
+		max-width: 999px;
+	}
+
+	.submit-leech-frm {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 99999;
+		background: rgba(0, 0, 0, .6);
+		padding: 10px;
+		border-top: 2px #ccc solid;
+	}
+
+	.submit-leech-frm button {
+		padding: 5px;
+	}
+
+	.eb-public-table .m {
+		width: 95%;
+	}
 </style>
-<p><em>* Với công cụ này, chúng tôi sẽ hỗ trợ bạn chuyển dữ liệu từ website cũ sang hệ thống website của Ếch Bay một cách nhanh gọn nhất. Việc của bạn cần làm chỉ đơn giản là kiểm tra và ra soát lại dữ liệu mới sau khi chuyển giao.</em></p>
+<p><em>* Với công cụ này, chúng tôi sẽ hỗ trợ bạn chuyển dữ liệu từ website cũ sang hệ thống website của Ếch Bay một
+		cách nhanh gọn nhất. Việc của bạn cần làm chỉ đơn giản là kiểm tra và ra soát lại dữ liệu mới sau khi chuyển
+		giao.</em></p>
 <div>
-	<div><em>Bạn cần hiểu về cấu trúc HTML của site gốc, từ đó bạn mới có thể đưa ra cấu trúc cụ thể cho phân mềm bóc tách URL chi tiết sản phẩm từ phân nhóm.<br>
-		* Lưu ý: cấu trúc được sử dụng cho bộ mã nguồn mở jQuery.</em><br>
+	<div><em>Bạn cần hiểu về cấu trúc HTML của site gốc, từ đó bạn mới có thể đưa ra cấu trúc cụ thể cho phân mềm bóc
+			tách URL chi tiết sản phẩm từ phân nhóm.<br>
+			* Lưu ý: cấu trúc được sử dụng cho bộ mã nguồn mở jQuery.</em><br>
 		<br>
 		<div><strong>Ví dụ về cấu trúc đầu vào:</strong></div>
 		<br>
@@ -33,14 +46,17 @@
 		-> Câu lệnh thực thi: thực thi trực tiếp.<br>
 		<br>
 		<pre><code>#id_so1 && .class_so2</code></pre>
-		-> Lệnh sẽ được cắt thông qua dấu <strong>&&</strong> sau đó vòng lặp sẽ chạy và xử lý các lớp css được cắt ra.<br>
+		-> Lệnh sẽ được cắt thông qua dấu <strong>&&</strong> sau đó vòng lặp sẽ chạy và xử lý các lớp css được cắt
+		ra.<br>
 		<br>
 		<pre><code>#id_so1, .class_so2, #id_so2, .class_so4</code></pre>
 		-> Lấy một trong các ID, class được khai báo! Cái nào khai báo trước sẽ ưu tiên trước.<br>
 		<br>
 		<pre><code>#id_so1, .class_so1:each && .class_so2, #id_so2:eachn</code></pre>
-		-> Chữ <strong>:each</strong> ở cuối -> Sử dụng vòng lặp để lấy nội dung trong tất cả các ID, class đã được khai báo rồi ghép nó lại, vì nội dung có thể sẽ nằm ở nhiều chỗ.<br>
-		-> Chữ <strong>:eachn</strong> ở cuối -> giống như each, nhưng nội dung sẽ được ghép dưới dạng dấu xuống dòng (<strong>\n</strong>).<br>
+		-> Chữ <strong>:each</strong> ở cuối -> Sử dụng vòng lặp để lấy nội dung trong tất cả các ID, class đã được khai
+		báo rồi ghép nó lại, vì nội dung có thể sẽ nằm ở nhiều chỗ.<br>
+		-> Chữ <strong>:eachn</strong> ở cuối -> giống như each, nhưng nội dung sẽ được ghép dưới dạng dấu xuống dòng
+		(<strong>\n</strong>).<br>
 		<br>
 		<br>
 		Đối với đường link:
@@ -67,11 +83,15 @@
 		<label for="this_id_url_product_detail">Đây là URL của trang chi tiết</label>
 	</div>
 	<div class="ui-sortable-input">
-		<textarea id="categories_url" placeholder="URL source categories | Category slug (auto change category)" style="width:99%;height:90px;"></textarea>
+		<textarea id="categories_url" placeholder="URL source categories | Category slug (auto change category)"
+			style="width:99%;height:90px;"></textarea>
 	</div>
-	<div><em>Nhập URL phân nhóm sản phẩm ở trang gốc, sau đó thiết lập cấu trúc bóc tách dữ liệu để lấy URL trang chi tiết sản phẩm.<br>
-		* Nếu slug được thiết lập, phân nhóm sẽ được chọn tự động chính xác theo slug đó.<br>
-		* Mẫu thử nghiệm: <a href="javascript:;" onClick="$('#categories_url').val('https://kinhdoanh.vnexpress.net/').change();">https://kinhdoanh.vnexpress.net/</a></em></div>
+	<div><em>Nhập URL phân nhóm sản phẩm ở trang gốc, sau đó thiết lập cấu trúc bóc tách dữ liệu để lấy URL trang chi
+			tiết sản phẩm.<br>
+			* Nếu slug được thiết lập, phân nhóm sẽ được chọn tự động chính xác theo slug đó.<br>
+			* Mẫu thử nghiệm: <a href="javascript:;"
+				onClick="$('#categories_url').val('https://kinhdoanh.vnexpress.net/').change();">https://kinhdoanh.vnexpress.net/</a></em>
+	</div>
 	<ol id="categories_list_finish" class="l19 small">
 	</ol>
 	<ol id="categories_list_url" class="l19">
@@ -80,18 +100,21 @@
 	<br>
 	<div class="ui-sortable-handle">Cấu trúc bóc tách URL sản phẩm</div>
 	<div class="ui-sortable-input">
-		<input type="text" id="categories_tags" value="" placeholder="HTML ID or class for details URL" style="width:99%;" />
+		<input type="text" id="categories_tags" value="" placeholder="HTML ID or class for details URL"
+			style="width:99%;" />
 	</div>
 	<br>
 	<div class="ui-sortable-handle">
 		<input type="checkbox" id="get_list_post_in_iframe">
-		<label for="get_list_post_in_iframe">Lấy danh sách sản phẩm trong iframe (Một số website load sản phẩm thông qua ajax, nên phải dùng iframe để chờ web đó load xong nội dung mới lấy được)</label>
+		<label for="get_list_post_in_iframe">Lấy danh sách sản phẩm trong iframe (Một số website load sản phẩm thông qua
+			ajax, nên phải dùng iframe để chờ web đó load xong nội dung mới lấy được)</label>
 	</div>
 	<br>
 	<br>
 	<div class="ui-sortable-handle">
 		<input type="checkbox" id="get_full_code_in_head">
-		<label for="get_full_code_in_head">Mặc định sẽ lấy nội dung trong BODY thôi, nếu muốn lấy cả nội dung trong HEAD thì tích vào đây</label>
+		<label for="get_full_code_in_head">Mặc định sẽ lấy nội dung trong BODY thôi, nếu muốn lấy cả nội dung trong HEAD
+			thì tích vào đây</label>
 	</div>
 	<br>
 	<br>
@@ -106,7 +129,8 @@
 	<ol id="details_finish_url" class="l19">
 	</ol>
 	<p align="center">
-		<button type="button" onClick="$('#details_finish_url').html('');" class="cur">[ Xóa danh sách bài viết đã hoàn thành ]</button>
+		<button type="button" onClick="$('#details_finish_url').html('');" class="cur">[ Xóa danh sách bài viết đã hoàn
+			thành ]</button>
 	</p>
 	<ol id="details_list_url" class="l19">
 	</ol>
@@ -114,7 +138,8 @@
 		<ol id="remove_list_url" class="l19 small">
 		</ol>
 	</div>
-	<div><em>Ở đây sẽ liệt kê danh sách sản phẩm tìm sau khi bạn nhập URL phân nhóm ở trên, nếu không có danh sách này, có thể URL hoặc cấu trúc HTML bạn nhập sai, hoặc trang không có sản phẩm...</em></div>
+	<div><em>Ở đây sẽ liệt kê danh sách sản phẩm tìm sau khi bạn nhập URL phân nhóm ở trên, nếu không có danh sách này,
+			có thể URL hoặc cấu trúc HTML bạn nhập sai, hoặc trang không có sản phẩm...</em></div>
 	<br>
 	<br>
 	<div class="ui-sortable-handle bold">Phân nhóm sản phẩm</div>
@@ -134,63 +159,77 @@
 		<label for="leech_data_auto_next">Tự động tiếp tục</label>
 	</div>
 	<div><em>Sau khi nhấn nút Submit, hệ thống sẽ tự tìm sản phẩm tiếp theo và lấy (nếu có).<br>
-		<span class="redcolor">* Chỉ nên đánh dấu chọn sau khi đã thử nghiệm việc bóc tách dữ liệu đúng ý muốn.</span></em></div>
+			<span class="redcolor">* Chỉ nên đánh dấu chọn sau khi đã thử nghiệm việc bóc tách dữ liệu đúng ý
+				muốn.</span></em></div>
 	<br>
 	<br>
 	<div>
 		<input type="checkbox" id="bai_viet_nay_duoc_lay_theo_id" />
-		<label for="bai_viet_nay_duoc_lay_theo_id">Xác định bài viết dựa theo ID (thường sẽ xác định theo URL, nếu có ID thì check vào đây để lọc theo ID sẽ chuẩn hơn)</label>
+		<label for="bai_viet_nay_duoc_lay_theo_id">Xác định bài viết dựa theo ID (thường sẽ xác định theo URL, nếu có ID
+			thì check vào đây để lọc theo ID sẽ chuẩn hơn)</label>
 		<blockquote>
-			<div><em>* Nhập vào định dạng để cắt ID bài viết theo định dạng này (mặc định sẽ lấy theo số ở cuối URL)</em></div>
+			<div><em>* Nhập vào định dạng để cắt ID bài viết theo định dạng này (mặc định sẽ lấy theo số ở cuối
+					URL)</em></div>
 			<div>
 				<input type="text" id="id_post_begin" value="" placeholder="Bắt đầu bằng" />
-				<div class="small">* Nếu chỉ nhập 1 ký tự (ví dụ: - hoặc /) -&gt; URL sẽ được cắt ngay lập tức, và mảng cuối cùng sẽ được lấy.</div>
+				<div class="small">* Nếu chỉ nhập 1 ký tự (ví dụ: - hoặc /) -&gt; URL sẽ được cắt ngay lập tức, và mảng
+					cuối cùng sẽ được lấy.</div>
 			</div>
 			<div>
 				<input type="text" id="id_post_end" value="" placeholder="Kết thúc bằng" />
-				<div class="small">* Nếu có nhiều định dạng lọc, mỗi định dạng phân tách nhau bởi cặp dấu <strong>||</strong></div>
+				<div class="small">* Nếu có nhiều định dạng lọc, mỗi định dạng phân tách nhau bởi cặp dấu
+					<strong>||</strong>
+				</div>
 			</div>
 			<div>
 				<input type="checkbox" id="post_id_is_numberic" />
-				<label for="post_id_is_numberic">ID bài viết là dạng số (với trường hợp lọc ID nhưng vẫn có lẫn cả chữ, tích vào đây để tách luôn cả chữ ra khỏi kết quả lọc).</label>
+				<label for="post_id_is_numberic">ID bài viết là dạng số (với trường hợp lọc ID nhưng vẫn có lẫn cả chữ,
+					tích vào đây để tách luôn cả chữ ra khỏi kết quả lọc).</label>
 			</div>
 			<div>
 				<input type="checkbox" id="set_this_post_id" />
-				<label for="set_this_post_id">Khi tính năng được được thiết lập, ID của web nguồn sẽ được insert vào web đích luôn (thường dùng khi chuyển đổi mã nguồn khác sang mã nguồn này).</label>
+				<label for="set_this_post_id">Khi tính năng được được thiết lập, ID của web nguồn sẽ được insert vào web
+					đích luôn (thường dùng khi chuyển đổi mã nguồn khác sang mã nguồn này).</label>
 			</div>
 		</blockquote>
 	</div>
 	<br>
 	<div>
 		<input type="checkbox" id="download_img_to_my_host" />
-		<label for="download_img_to_my_host">Tải hình ảnh về host hiện tại (Mặc định, hình ảnh sẽ sử dụng từ host của đội bạn! Nếu muốn chuyển hết về host của mình thì dùng chức năng này -&gt; lấy bài viết sẽ lâu hơn).</label>
+		<label for="download_img_to_my_host">Tải hình ảnh về host hiện tại (Mặc định, hình ảnh sẽ sử dụng từ host của
+			đội bạn! Nếu muốn chuyển hết về host của mình thì dùng chức năng này -&gt; lấy bài viết sẽ lâu hơn).</label>
 	</div>
 	<br>
 	<div>
 		<input type="checkbox" id="loai_bo_a_trong_noi_dung" />
-		<label for="loai_bo_a_trong_noi_dung">Loại bỏ thẻ A trong nội dung (Thẻ A trong nội dung sẽ bị remove hoàn toàn, chỉ giữ lại phần HTML bên trong nó).</label>
+		<label for="loai_bo_a_trong_noi_dung">Loại bỏ thẻ A trong nội dung (Thẻ A trong nội dung sẽ bị remove hoàn toàn,
+			chỉ giữ lại phần HTML bên trong nó).</label>
 	</div>
 	<br>
 	<div>
 		<input type="checkbox" id="loai_bo_url_trong_noi_dung" />
-		<label for="loai_bo_url_trong_noi_dung">Loại bỏ URL trong nội dung (Nếu clone nội dung từ site của đơn vị khác, kích hoạt chức năng này để loại bỏ outlink).</label>
+		<label for="loai_bo_url_trong_noi_dung">Loại bỏ URL trong nội dung (Nếu clone nội dung từ site của đơn vị khác,
+			kích hoạt chức năng này để loại bỏ outlink).</label>
 	</div>
 	<br>
 	<div>
 		<input type="checkbox" id="nap_lai_trang_sau_khi_hoan_thanh" />
-		<label for="nap_lai_trang_sau_khi_hoan_thanh">Nạp lại trang sau khi hoàn thành (Với lựa chọn này, trang sẽ tự động tải lại thay vì chỉ hiển thị thông báo).</label>
+		<label for="nap_lai_trang_sau_khi_hoan_thanh">Nạp lại trang sau khi hoàn thành (Với lựa chọn này, trang sẽ tự
+			động tải lại thay vì chỉ hiển thị thông báo).</label>
 		<ol id="show_text_after_done" class="redcolor">
 		</ol>
 	</div>
 	<br>
 	<div>
-		<label for="time_for_submit">Giãn cách giữa các lần lấy tin (tính theo giây)! Nên để thời gian vừa đủ, không lấy nhanh quá dễ bị website nguồn họ block theo domain hoặc IP thì khỏi lấy tin của họ.</label>
+		<label for="time_for_submit">Giãn cách giữa các lần lấy tin (tính theo giây)! Nên để thời gian vừa đủ, không lấy
+			nhanh quá dễ bị website nguồn họ block theo domain hoặc IP thì khỏi lấy tin của họ.</label>
 		<br>
 		<input type="number" id="time_for_submit" value="" placeholder="50" />
 	</div>
 	<br>
 	<div>
-		<label for="min_title_length">Độ dài tiêu đề tối thiểu (tính theo số ký tự), khuyên dùng là trong khoảng 10-70 ký tự. Mặc định là tối thiểu 16 ký tự mới được submit, nếu không sẽ bị hủy bỏ.</label>
+		<label for="min_title_length">Độ dài tiêu đề tối thiểu (tính theo số ký tự), khuyên dùng là trong khoảng 10-70
+			ký tự. Mặc định là tối thiểu 16 ký tự mới được submit, nếu không sẽ bị hủy bỏ.</label>
 		<br>
 		<input type="number" id="min_title_length" value="" placeholder="16" />
 	</div>
@@ -198,7 +237,9 @@
 	<div>
 		<label for="min_title_length">Dọn dẹp các đoạn HTML thừa trước khi lấy dữ liệu.</label>
 		<br>
-		<input type="text" id="remove_html_before_leech" value="" placeholder="Sử dụng trong trường hợp muốn loại bỏ các đoạn mã HTML (thường là mã quảng cáo)" style="width: 99%;" />
+		<input type="text" id="remove_html_before_leech" value=""
+			placeholder="Sử dụng trong trường hợp muốn loại bỏ các đoạn mã HTML (thường là mã quảng cáo)"
+			style="width: 99%;" />
 	</div>
 	<br>
 	<div>
@@ -206,7 +247,8 @@
 	</div>
 	<br>
 	<br>
-	<form name="frm_leech_data" method="post" action="{tmp.web_link}process/?set_module=leech_data" target="target_eb_iframe" onSubmit="return check_lech_data_submit();">
+	<form name="frm_leech_data" method="post" action="{tmp.web_link}process/?set_module=leech_data"
+		target="target_eb_iframe" onSubmit="return check_lech_data_submit();">
 		<table cellpadding="0" cellspacing="0" width="100%" border="0" class="eb-public-table fix-textarea-height">
 			<tr>
 				<td class="t">URL details</td>
@@ -234,11 +276,31 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_title" value="" placeholder="HTML tags (thường là thẻ H1)" class="m" /></td>
+				<td class="i"><input type="text" id="details_title" value="" placeholder="HTML tags (thường là thẻ H1)"
+						class="m" /></td>
 			</tr>
 			<tr>
-				<td class="t">SEO</td>
+				<td class="t">Slug</td>
 				<td class="i"><input type="text" name="t_seo" value="" class="m" /></td>
+			</tr>
+			<tr>
+				<td class="t">&nbsp;</td>
+				<td class="i">
+					<div>
+						<label>
+							<input type="checkbox" id="get_last_url_segments" value="1" />
+							Lấy đoạn cuối của URL làm Slug (URL truyền vào sẽ được split / xong lấy phần tử cuối cùng)
+						</label>
+					</div>
+					<br>
+					<div>
+						<label>
+							<input type="checkbox" id="split_last_html" value="1" />
+							Cắt bỏ định dạng URL nếu có. Ví dụ URL có .html thì sẽ split URL và bỏ đoạn cuối cùng để
+							loại trừ .html
+						</label>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Mã sản phẩm</td>
@@ -246,12 +308,15 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_masanpham" value="" placeholder="HTML tags" class="m" /></td>
+				<td class="i"><input type="text" id="details_masanpham" value="" placeholder="HTML tags" class="m" />
+				</td>
 			</tr>
 			<tr>
 				<td class="t">SKU (leech data)</td>
 				<td class="i"><input type="text" name="t_sku_leech_data" value="" class="m" />
-					<div class="small">Tự tạo một SKU theo tên miền dùng để xác định bài viết được lấy rồi hay chưa.</div></td>
+					<div class="small">Tự tạo một SKU theo tên miền dùng để xác định bài viết được lấy rồi hay chưa.
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Ngày đăng</td>
@@ -259,7 +324,8 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_ngaydang" value="" placeholder="HTML tags" class="m" /></td>
+				<td class="i"><input type="text" id="details_ngaydang" value="" placeholder="HTML tags" class="m" />
+				</td>
 			</tr>
 			<tr>
 				<td class="t">IMG</td>
@@ -267,7 +333,8 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_img" value="" placeholder="HTML tags (kết thúc phải là thẻ IMG hoặc EB-IMG)" class="m" /></td>
+				<td class="i"><input type="text" id="details_img" value=""
+						placeholder="HTML tags (kết thúc phải là thẻ IMG hoặc EB-IMG)" class="m" /></td>
 			</tr>
 			<tr>
 				<td class="t">Youtube Video</td>
@@ -275,7 +342,8 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_youtube_url" value="" placeholder="HTML tags (kết thúc phải là thẻ IFRAME hoặc EB-IFRAME)" class="m" /></td>
+				<td class="i"><input type="text" id="details_youtube_url" value=""
+						placeholder="HTML tags (kết thúc phải là thẻ IFRAME hoặc EB-IFRAME)" class="m" /></td>
 			</tr>
 			<tr>
 				<td class="t">Giá cũ</td>
@@ -295,25 +363,33 @@
 			</tr>
 			<tr>
 				<td class="t">Định dạng tiền tệ</td>
-				<td class="i"><input type="text" id="details_format_price" value="" placeholder="/[^0-9\-\+]/g hoặc /[^0-9\-\+\.]/g" class="m" />
-					<div class="small">Mặc định, tiền tệ sau khi lấy sẽ bị lọc hết các dữ liệu khác, chỉ giữ lại số, dấu - với dấu +</div></td>
+				<td class="i"><input type="text" id="details_format_price" value=""
+						placeholder="/[^0-9\-\+]/g hoặc /[^0-9\-\+\.]/g" class="m" />
+					<div class="small">Mặc định, tiền tệ sau khi lấy sẽ bị lọc hết các dữ liệu khác, chỉ giữ lại số, dấu
+						- với dấu +</div>
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Giá tối thiểu</td>
 				<td class="i"><input type="number" id="details_min_price" value="" class="n" />
-					<div class="small">Khi giá này được thiết lập, các sản phẩm có giá thấp hơn sẽ bị bỏ qua. Ví dụ bạn chỉ muốn lấy sản phẩm có giá từ 200,000đ trở lên, hãy nhập: 200000</div></td>
+					<div class="small">Khi giá này được thiết lập, các sản phẩm có giá thấp hơn sẽ bị bỏ qua. Ví dụ bạn
+						chỉ muốn lấy sản phẩm có giá từ 200,000đ trở lên, hãy nhập: 200000</div>
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Mô tả ngắn</td>
-				<td class="i"><textarea name="t_goithieu" class="small" style="width:99%;height:90px;border: 1px #c00 solid;"></textarea></td>
+				<td class="i"><textarea name="t_goithieu" class="small"
+						style="width:99%;height:90px;border: 1px #c00 solid;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_goithieu" value="" placeholder="HTML tags" class="m" /></td>
+				<td class="i"><input type="text" id="details_goithieu" value="" placeholder="HTML tags" class="m" />
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Nội dung</td>
-				<td class="i"><textarea name="t_noidung" class="small" style="width:99%;height:300px;border: 1px #c00 solid;"></textarea></td>
+				<td class="i"><textarea name="t_noidung" class="small"
+						style="width:99%;height:300px;border: 1px #c00 solid;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
@@ -325,7 +401,8 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_dieukien" value="" placeholder="HTML tags" class="m" /></td>
+				<td class="i"><input type="text" id="details_dieukien" value="" placeholder="HTML tags" class="m" />
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Thư viện ảnh</td>
@@ -333,11 +410,14 @@
 			</tr>
 			<tr>
 				<td class="t">&nbsp;</td>
-				<td class="i"><input type="text" id="details_gallery" value="" placeholder="HTML tags (kết thúc phải là thẻ IMG hoặc EB-IMG)" class="m" /></td>
+				<td class="i"><input type="text" id="details_gallery" value=""
+						placeholder="HTML tags (kết thúc phải là thẻ IMG hoặc EB-IMG)" class="m" /></td>
 			</tr>
 			<tr>
 				<td class="t">Kích thước</td>
-				<td class="i"><textarea name="t_size_list" placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript" class="small" style="width:99%;height:90px;"></textarea></td>
+				<td class="i"><textarea name="t_size_list"
+						placeholder="Sử dụng vòng lặp riêng để tạo ra danh sách size dưới dạng mảng javascript"
+						class="small" style="width:99%;height:90px;"></textarea></td>
 			</tr>
 			<tr>
 				<td class="t">Tự tìm nhóm</td>
@@ -346,7 +426,9 @@
 			<tr>
 				<td class="t">&nbsp;</td>
 				<td class="i"><input type="text" id="details_category" value="" placeholder="HTML tags" class="m" />
-					<div class="small">Khi chế độ Tự động tìm và thêm nhóm được thiết lập, nếu tìm thấy nhóm, nhóm mới sẽ được thêm vào hệ thống và add sản phẩm này vào nhóm đó luôn.</div></td>
+					<div class="small">Khi chế độ Tự động tìm và thêm nhóm được thiết lập, nếu tìm thấy nhóm, nhóm mới
+						sẽ được thêm vào hệ thống và add sản phẩm này vào nhóm đó luôn.</div>
+				</td>
 			</tr>
 			<tr>
 				<td class="t">Tự tìm nhóm (2)</td>
@@ -355,34 +437,45 @@
 			<tr>
 				<td class="t">&nbsp;</td>
 				<td class="i"><input type="text" id="details_2category" value="" placeholder="HTML tags" class="m" />
-					<div class="small">Lấy nhóm cấp 2 rồi add vào nhóm cấp 1 ở trên. Quá trình INSERT sẽ tính theo nhóm cấp 2</div></td>
+					<div class="small">Lấy nhóm cấp 2 rồi add vào nhóm cấp 1 ở trên. Quá trình INSERT sẽ tính theo nhóm
+						cấp 2</div>
+				</td>
 			</tr>
 			<tr>
 				<td valign="top" class="t">Cập nhật dữ liệu</td>
-				<td class="i"><div>
-						<input type="checkbox" name="cap_nhat_stt_cho_bai_viet" id="cap_nhat_stt_cho_bai_viet" value="1" />
+				<td class="i">
+					<div>
+						<input type="checkbox" name="cap_nhat_stt_cho_bai_viet" id="cap_nhat_stt_cho_bai_viet"
+							value="1" />
 						<label for="cap_nhat_stt_cho_bai_viet">Tạo STT cho bài viết (cả khi update lẫn insert).</label>
 					</div>
 					<br>
 					<div>
 						<input type="checkbox" name="cap_nhat_stt_ngau_nhien" id="cap_nhat_stt_ngau_nhien" value="1" />
-						<label for="cap_nhat_stt_ngau_nhien">Thêm một số ngẫu nhiên vào STT để tạo giãn cách update, tránh các bài viết giống nhau và sát nhau quá.</label>
+						<label for="cap_nhat_stt_ngau_nhien">Thêm một số ngẫu nhiên vào STT để tạo giãn cách update,
+							tránh các bài viết giống nhau và sát nhau quá.</label>
 					</div>
 					<br>
 					<div>
 						<input type="checkbox" name="get_old_id_to_new" id="get_old_id_to_new" value="1" />
-						<label for="get_old_id_to_new">Lấy ID từ phiên bản cũ (chỉ hoạt động khi ID được xác định là dạng <strong>số</strong>).</label>
+						<label for="get_old_id_to_new">Lấy ID từ phiên bản cũ (chỉ hoạt động khi ID được xác định là
+							dạng <strong>số</strong>).</label>
 					</div>
-					<br></td>
+					<br>
+				</td>
 			</tr>
 		</table>
 		<div class="submit-leech-frm">
 			<div class="cf w99">
 				<div class="lf f75">
-					<button type="button" onClick="window.location = window.location.href.split('#')[0];" class="cur"><i class="fa fa-refresh"></i> Tải lại trang</button>
-					<button type="button" onClick="window.scroll( 0, $('#details_list_url').offset().top - 220 );" class="cur"><i class="fa fa-eye"></i> Xem tin đang lấy</button>
-					<button type="button" onClick="window.scroll( 0, 0 );" class="cur"><i class="fa fa-arrow-up"></i> Đầu trang (<span id="show_next_page_leech"></span>)</button>
-					<button type="button" onClick="window.scroll( 0, $('#leech_data_auto_next').offset().top - 220 );" class="cur"><i class="fa fa-cog"></i> Cấu hình</button>
+					<button type="button" onClick="window.location = window.location.href.split('#')[0];" class="cur"><i
+							class="fa fa-refresh"></i> Tải lại trang</button>
+					<button type="button" onClick="window.scroll( 0, $('#details_list_url').offset().top - 220 );"
+						class="cur"><i class="fa fa-eye"></i> Xem tin đang lấy</button>
+					<button type="button" onClick="window.scroll( 0, 0 );" class="cur"><i class="fa fa-arrow-up"></i>
+						Đầu trang (<span id="show_next_page_leech"></span>)</button>
+					<button type="button" onClick="window.scroll( 0, $('#leech_data_auto_next').offset().top - 220 );"
+						class="cur"><i class="fa fa-cog"></i> Cấu hình</button>
 				</div>
 				<div class="text-right lf f25">
 					<button type="submit" class="cur admin-big-button"><i class="fa fa-save"></i> Đăng tin</button>
@@ -391,21 +484,24 @@
 		</div>
 	</form>
 </div>
-<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save" target="irf_leech_data_save">
+<form name="frm_leech_data_save" method="post" action="{tmp.web_link}process/?set_module=leech_data_save"
+	target="irf_leech_data_save">
 	<p class="bold">Lưu lại danh sách nhóm, để lần sau đỡ phải nạp lại. Thường dùng khi chạy Affiliate content.</p>
 	<div class="fix-textarea-height2">
-		<textarea name="t_list" id="oi_save_list_category" class="small" style="width:99%;height:90px;">{tmp.str_for_save_list_category}</textarea>
+		<textarea name="t_list" id="oi_save_list_category" class="small"
+			style="width:99%;height:90px;">{tmp.str_for_save_list_category}</textarea>
 		<div class="text-center">
 			<div>
 				<button type="button" class="add-db-list-post-to-process cur bold">Sử dụng danh sách này</button>
 			</div>
 			<br>
-			<div> 
+			<div>
 				<!--
 				<input type="checkbox" id="auto_get_random_category_for_leech" />
 				<label for="auto_get_random_category_for_leech">Tự động lấy nhóm bất kỳ để tiếp tục mỗi khi tải xong</label>
 				-->
-				<button type="button" id="star_get_random_category_for_leech" data-stop="Tạm dừng việc lấy tin tự động" class="cur bold">Bắt đầu lấy tin Ngẫu nhiên, Tự động và Lặp lại</button>
+				<button type="button" id="star_get_random_category_for_leech" data-stop="Tạm dừng việc lấy tin tự động"
+					class="cur bold">Bắt đầu lấy tin Ngẫu nhiên, Tự động và Lặp lại</button>
 			</div>
 		</div>
 	</div>
@@ -425,9 +521,10 @@
 	<div id="oi_download_img_to_my_host"></div>
 	<br>
 	<iframe id="crawl_eb_iframe" name="crawl_eb_iframe" src="about:blank" width="90%" height="600">AJAX form</iframe>
-	<iframe id="irf_leech_data_save" name="irf_leech_data_save" src="about:blank" width="90%" height="90">AJAX form</iframe>
+	<iframe id="irf_leech_data_save" name="irf_leech_data_save" src="about:blank" width="90%" height="90">AJAX
+		form</iframe>
 </div>
 <script type="text/javascript">
-{tmp.js}
-</script> 
-<script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.media_version}"></script> 
+	{ tmp.js }
+</script>
+<script type="text/javascript" src="{tmp.admin_js_uri}leech_data.js?v={tmp.media_version}"></script>

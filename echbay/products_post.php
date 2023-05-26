@@ -75,7 +75,7 @@ if ($by_cat_id > 0) {
     $strFilter .= " AND `" . $wpdb->term_taxonomy . "`.taxonomy = '" . $cats_type . "'
 		AND `" . $wpdb->term_taxonomy . "`.term_id IN (" . $by_cat_id . $by_child_cat_id . ") ";
 
-    // câu lệnh jion các bảng lại với nhau
+    // câu lệnh join các bảng lại với nhau
     $joinFilter = " LEFT JOIN `" . $wpdb->term_relationships . "` ON ( `" . wp_posts . "`.ID = `" . $wpdb->term_relationships . "`.object_id)
 		LEFT JOIN `" . $wpdb->term_taxonomy . "` ON ( `" . $wpdb->term_relationships . "`.term_taxonomy_id = `" . $wpdb->term_taxonomy . "`.term_taxonomy_id ) ";
     //	$joinFilter = ", `" . $wpdb->term_taxonomy . "`, `" . $wpdb->term_relationships . "` ";
@@ -139,9 +139,7 @@ if ($by_search_key != '') {
         $by_slug_key = _eb_non_mark_seo(urldecode($by_search_key));
 
         $strFilter .= " AND ( `" . wp_posts . "`.post_name LIKE '%{$by_slug_key}%' OR `" . wp_posts . "`.post_title LIKE '%{$by_search_key}%' ) ";
-
     }
-
 }
 
 
@@ -412,8 +410,7 @@ $strAjaxLink .= '&trang=' . $trang;
             <div class="cf">
                 <div class="lf f50">
                     <input type="checkbox" id="thread-all-checkbox" value="0" class="thread-multi-checkbox" />
-                    <button type="button" class="small bold click-show-tools">Công cụ chỉnh sửa nhiều và nhanh <i
-                            class="fa fa-caret-down"></i></button>
+                    <button type="button" class="small bold click-show-tools">Công cụ chỉnh sửa nhiều và nhanh <i class="fa fa-caret-down"></i></button>
                 </div>
                 <div align="right" class="lf f50"> Số sản phẩm trên mỗi trang
                     <select id="change_set_thread_show_in_page" style="padding:3px;">
@@ -421,8 +418,7 @@ $strAjaxLink .= '&trang=' . $trang;
                 </div>
             </div>
             <div class="show-if-click-tools thread-multi-edit d-none">
-                <form name="frm_multi_edit_post" method="post" action="process/?set_module=multi_edit_post"
-                    target="target_eb_iframe">
+                <form name="frm_multi_edit_post" method="post" action="process/?set_module=multi_edit_post" target="target_eb_iframe">
                     <div class="d-none">
                         <textarea name="t_list_id"></textarea>
                         <input type="text" name="actions_for" value="" />
@@ -438,8 +434,7 @@ $strAjaxLink .= '&trang=' . $trang;
                         <div class="cf">
                             <div class="lf f20 bold">Tăng giá (%)</div>
                             <div class="lf f60 thread-multi-input">
-                                <input type="text" name="t_tanggia" value="" placeholder="Phần trăm giảm giá"
-                                    data-for="tanggia" maxlength="2" class="focus-set-actions-for s" />
+                                <input type="text" name="t_tanggia" value="" placeholder="Phần trăm giảm giá" data-for="tanggia" maxlength="2" class="focus-set-actions-for s" />
                                 <p class="description">Nhập phần trăm muốn tăng cho các sản phẩm đã được chọn, hệ thống
                                     sẽ cập nhật Giá cũ theo chính Giá cũ của chính sản phẩm đó. Ví dụ: <strong>Giá
                                         cũ</strong>: 10,000, nhập vào 10, <strong>Giá cũ</strong> sẽ được thiết lập là:
@@ -456,8 +451,7 @@ $strAjaxLink .= '&trang=' . $trang;
                         <div class="cf">
                             <div class="lf f20 bold">Giảm giá (%)</div>
                             <div class="lf f60 thread-multi-input">
-                                <input type="text" name="t_giamgia" value="" placeholder="Phần trăm giảm giá"
-                                    data-for="giamgia" maxlength="2" class="focus-set-actions-for s" />
+                                <input type="text" name="t_giamgia" value="" placeholder="Phần trăm giảm giá" data-for="giamgia" maxlength="2" class="focus-set-actions-for s" />
                                 <p class="description">Nhập phần trăm muốn giảm cho các sản phẩm đã được chọn, hệ thống
                                     sẽ cập nhật Giá mới theo Giá cũ của chính sản phẩm đó. Ví dụ: <strong>Giá
                                         cũ</strong>: 10,000, nhập vào 30, <strong>Giá mới</strong> sẽ được thiết lập là:
@@ -502,9 +496,7 @@ $strAjaxLink .= '&trang=' . $trang;
                         <div class="cf">
                             <div class="lf f20 bold">Ngày hết hạn</div>
                             <div class="lf f60 thread-multi-input">
-                                <input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày"
-                                    data-for="enddate" maxlength="10" autocomplete="off"
-                                    class="focus-set-actions-for thread-list-ngayhethan" />
+                                <input type="text" name="t_ngayhethan" value="" placeholder="Năm/Tháng/Ngày" data-for="enddate" maxlength="10" autocomplete="off" class="focus-set-actions-for thread-list-ngayhethan" />
                             </div>
                             <div class="lf f20">
                                 <button type="button" data-for="enddate" class="click-set-actions-for">Cập nhật</button>
@@ -517,8 +509,7 @@ $strAjaxLink .= '&trang=' . $trang;
                         <div class="cf">
                             <div class="lf f20 bold">Số thứ tự</div>
                             <div class="lf f60 thread-multi-input">
-                                <input type="text" name="t_stt" value="0" placeholder="Số thứ tự" data-for="stt"
-                                    maxlength="5" class="focus-set-actions-for" />
+                                <input type="text" name="t_stt" value="0" placeholder="Số thứ tự" data-for="stt" maxlength="5" class="focus-set-actions-for" />
                             </div>
                             <div class="lf f20">
                                 <button type="button" data-for="stt" class="click-set-actions-for">Cập nhật</button>
@@ -533,8 +524,7 @@ $strAjaxLink .= '&trang=' . $trang;
                             <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo năm
                                 tháng của bài viết. Sắp xếp bài viết theo tháng đăng bài (giảm dần). </div>
                             <div class="lf f20">
-                                <button type="button" data-ajax="&convert_date_to_month=1<?php echo $strAjaxLink; ?>"
-                                    class="click-convert-date-to-stt">Chuyển đổi</button>
+                                <button type="button" data-ajax="&convert_date_to_month=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
                         </div>
                         <br>
@@ -546,8 +536,7 @@ $strAjaxLink .= '&trang=' . $trang;
                             <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết dựa theo
                                 tháng ngày của bài viết. Sắp xếp bài viết theo ngày đăng bài (giảm dần). </div>
                             <div class="lf f20">
-                                <button type="button" data-ajax="&convert_date_to_date=1<?php echo $strAjaxLink; ?>"
-                                    class="click-convert-date-to-stt">Chuyển đổi</button>
+                                <button type="button" data-ajax="&convert_date_to_date=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
                         </div>
                         <br>
@@ -559,8 +548,7 @@ $strAjaxLink .= '&trang=' . $trang;
                             <div class="lf f60 thread-multi-input"> Cập nhật toàn bộ số thứ tự của bài viết về 0. Sắp
                                 xếp bài viết theo ID bài viết (giảm dần). </div>
                             <div class="lf f20">
-                                <button type="button" data-ajax="&convert_date_to_zero=1<?php echo $strAjaxLink; ?>"
-                                    class="click-convert-date-to-stt">Chuyển đổi</button>
+                                <button type="button" data-ajax="&convert_date_to_zero=1<?php echo $strAjaxLink; ?>" class="click-convert-date-to-stt">Chuyển đổi</button>
                             </div>
                         </div>
                         <br>
@@ -573,13 +561,11 @@ $strAjaxLink .= '&trang=' . $trang;
     </div>
     <!-- chức năng tìm kiếm qua ajax -->
     <div class="w99 quick-show-if-postblog">
-        <form name="frm_products_post_search" method="get" action="javascript:;"
-            onSubmit="return auto_submit_products_post_search();">
+        <form name="frm_products_post_search" method="get" action="javascript:;" onSubmit="return auto_submit_products_post_search();">
             <input type="hidden" name="page" value="eb-products">
             <input type="hidden" name="by_post_type" value="<?php echo $by_post_type; ?>">
             <div class="products-post-search">
-                <input type="search" name="q" value="<?php echo $by_search_key; ?>"
-                    placeholder="Tìm kiếm theo tên sản phẩm" aria-required="true" required />
+                <input type="search" name="q" value="<?php echo $by_search_key; ?>" placeholder="Tìm kiếm theo tên sản phẩm" aria-required="true" required />
                 <button type="submit" class="cur"><i class="fas fa-search"></i></button>
             </div>
         </form>
@@ -589,8 +575,7 @@ $strAjaxLink .= '&trang=' . $trang;
 <div id="frm_quick_edit_price" class="hide-if-press-esc">
     <div class="edit-price-padding">
         <div class="text-right"><i class="fa fa-close cur" onClick="$('#frm_quick_edit_price').fadeOut();"></i></div>
-        <form name="frm_quick_edit_price" method="get" action="javascript:;"
-            onSubmit="return WGR_check_quick_edit_price();">
+        <form name="frm_quick_edit_price" method="get" action="javascript:;" onSubmit="return WGR_check_quick_edit_price();">
             <input type="hidden" name="t_product_id" value="0">
             <input type="hidden" name="data_ajax" value="">
             <div class="cf">
@@ -622,8 +607,7 @@ $strAjaxLink .= '&trang=' . $trang;
         </form>
     </div>
 </div>
-<table border="0" cellpadding="0" cellspacing="0" width="100%"
-    class="table-list class-for-post-type class-for-<?php echo $by_post_type; ?>">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-list class-for-post-type class-for-<?php echo $by_post_type; ?>">
     <tr class="table-list-title">
         <td width="5%">&nbsp;</td>
         <td width="10%">ID</td>
@@ -637,7 +621,7 @@ $strAjaxLink .= '&trang=' . $trang;
 
     if ($totalThread > 0) {
         //	echo $strFilter . ' aaaaaaaaaaaaaaaa<br>' . "\n"; echo $offset . '<br>' . "\n"; echo $threadInPage . '<br>' . "\n";
-    
+
         //
         $sql = "SELECT *
         FROM
@@ -655,7 +639,7 @@ $strAjaxLink .= '&trang=' . $trang;
         $sql = _eb_q($sql);
         //print_r( $sql );
         //exit();
-    
+
         //
         $arr_all_stick = get_option('sticky_posts');
 
@@ -663,7 +647,7 @@ $strAjaxLink .= '&trang=' . $trang;
         foreach ($sql as $o) {
 
             //		print_r( $o ); exit();
-    
+
             $trv_id = $o->ID;
             $trv_link = web_link . '?p=' . $trv_id;
             $trv_tieude = $o->post_title;
@@ -791,7 +775,7 @@ $strAjaxLink .= '&trang=' . $trang;
 
                     //
                     //				echo _eb_get_post_object( $o->ID, '_eb_product_title', $o->post_title ) . '<br>';
-    
+
                     // check title
                     $a = strlen(_eb_get_post_object($o->ID, '_eb_product_title', $o->post_title));
                     if ($a > 10 && $a < 70) {
@@ -882,9 +866,7 @@ $strAjaxLink .= '&trang=' . $trang;
 	</td>
 	<td class="text-center">' . date($__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime($o->post_date)) . '<br>' . date($__cf_row['cf_date_format'] . ' ' . $__cf_row['cf_time_format'], strtotime($o->post_modified)) . '</td>
 </tr>';
-
         }
-
     }
 
     ?>
