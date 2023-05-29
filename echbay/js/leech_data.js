@@ -573,6 +573,7 @@ function check_category_by_auto_slug(a, alert_now) {
 }
 
 function full_url_for_img_src(a) {
+	//console.log(a);
 	if (a.split("//").length == 1) {
 		if (a.substr(0, 1) == "/") {
 			a = a.substr(1);
@@ -588,13 +589,15 @@ function full_url_for_img_src(a) {
 			a = "http:" + a;
 		}
 	}
-	//	console.log( a );
+	//console.log(a);
 
 	//
-	return a
+	a = a
 		.replace(/\.\.\//gi, "")
 		.split("?")[0]
 		.split("#")[0];
+	//console.log(a);
+	return a;
 }
 
 function set_source_url_leech(str) {
@@ -913,14 +916,17 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					new_category_tags: {
 						get: jQuery("#details_category").val() || "",
 						set: "t_new_category",
+						strip_tags: true,
 					},
 					new_2category_tags: {
 						get: jQuery("#details_2category").val() || "",
 						set: "t_new_2category",
+						strip_tags: true,
 					},
 					tit_tags: {
 						get: jQuery("#details_title").val() || "",
 						set: "t_tieude",
+						strip_tags: true,
 					},
 					masanpham_tags: {
 						get: jQuery("#details_masanpham").val() || "",
@@ -1079,7 +1085,11 @@ function func_leech_data_lay_chi_tiet(push_url) {
 											// bắt đầu vòng lặp
 											jQuery(str_query[j].replace(/\s?\|\|\s?/g, ",")).each(
 												function () {
-													var get_html = jQuery(this).html() || "";
+													if (typeof arr[x].strip_tags != "undefined") {
+														var get_html = jQuery(this).text() || "";
+													} else {
+														var get_html = jQuery(this).html() || "";
+													}
 
 													// nếu có nội dung
 													if (get_html != "") {
@@ -1104,7 +1114,11 @@ function func_leech_data_lay_chi_tiet(push_url) {
 												}
 											}
 										} else {
-											str = jQuery(str_query[j]).html() || "";
+											if (typeof arr[x].strip_tags != "undefined") {
+												str = jQuery(str_query[j]).text() || "";
+											} else {
+												str = jQuery(str_query[j]).html() || "";
+											}
 											str = g_func.trim(str);
 
 											// tìm được phát -> thoát luôn
@@ -1120,7 +1134,11 @@ function func_leech_data_lay_chi_tiet(push_url) {
 										str = jQuery(a2[i] + ":first").remove();
 									}
 									//								else {
-									str = jQuery(a2[i]).html() || "";
+									if (typeof arr[x].strip_tags != "undefined") {
+										str = jQuery(a2[i]).text() || "";
+									} else {
+										str = jQuery(a2[i]).html() || "";
+									}
 									//								}
 									str = g_func.trim(str);
 								}
@@ -1130,7 +1148,29 @@ function func_leech_data_lay_chi_tiet(push_url) {
 							}
 						}
 						a = g_func.trim(a);
-						//					console.log(a);
+
+						//
+						if (
+							x == "ngaydang_tags" &&
+							web_link.includes("demo.webgiare.org/dhtgroup") === true
+						) {
+							a = a.replace("Ngày: ", "");
+							a = a.split(" ");
+							if (a.length > 1) {
+								var gio = a[0];
+								var ngay = a[1].split("/");
+								if (ngay.length > 1) {
+									ngay = ngay[2] + "/" + ngay[1] + "/" + ngay[0];
+									a = ngay + " " + gio;
+									console.log(a);
+								} else {
+									a = "";
+								}
+							} else {
+								a = "";
+							}
+						}
+						//console.log(a);
 					}
 
 					//
@@ -1178,10 +1218,18 @@ function func_leech_data_lay_chi_tiet(push_url) {
 
 				// Tạo URL SEO
 				if (dog("get_last_url_segments").checked == true) {
-					var t_seo = f.t_source.value.split("/");
-					t_seo = t_seo[t_seo.length - 1];
+					var t_seo = jQuery.trim(f.t_source.value);
+					t_seo = t_seo.split("/");
+					if (t_seo[t_seo.length - 1] != "") {
+						t_seo = t_seo[t_seo.length - 1];
+					} else {
+						t_seo = t_seo[t_seo.length - 2];
+					}
 					if (dog("split_last_html").checked == true) {
-						t_seo = t_seo.split(".html")[0];
+						var str_post_end = jQuery("#id_post_end").val() || "";
+						if (str_post_end != "") {
+							t_seo = t_seo.split(str_post_end)[0];
+						}
 						t_seo = t_seo.split(".");
 						if (t_seo.length > 1) {
 							t_seo[t_seo.length - 1] = "";
@@ -1727,8 +1775,10 @@ function after_list_post_for_crawl(str) {
 		console.log("Product list not found!");
 		return false;
 	}
+	//console.log(str);
 	// Thay URL chuẩn của tên miền đang lấy tin, do thi thoảng bị lỗi domain (như của amazon)
 	str = str.split(web_link).join(source_url);
+	//console.log(str);
 
 	// gán d.sách tìm được
 	jQuery("#details_list_url").html(str);
@@ -2178,8 +2228,8 @@ jQuery(".click-submit-url-categories")
 		current_loading_tags = html_tags;
 
 		//
-		(a = jQuery("#categories_list_url li:first").html() || ""),
-			(a = g_func.trim(a));
+		var a = jQuery("#categories_list_url li:first").html() || "";
+		a = g_func.trim(a);
 
 		// nếu có URL -> tiếp tục
 		if (a != "") {

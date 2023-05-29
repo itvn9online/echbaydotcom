@@ -7,12 +7,12 @@ include_once EB_THEME_CORE . 'cache_lang.php';
 
 
 //
-$error_admin_log_cache = WGR_check_syntax( $__eb_cache_conf, $file_last_update, true );
+$error_admin_log_cache = WGR_check_syntax($__eb_cache_conf, $file_last_update, true);
 $last_update = 0;
-if ( $error_admin_log_cache == '' ) {
+if ($error_admin_log_cache == '') {
     @include_once $__eb_cache_conf;
 } else {
-    _eb_log_admin( $error_admin_log_cache );
+    _eb_log_admin($error_admin_log_cache);
 }
 // chấp nhận lần đầu truy cập sẽ lỗi
 //@include_once $__eb_cache_conf;
@@ -31,29 +31,29 @@ if ( mtv_id > 0 ) {
 
 
 // kiểm tra thời gian tạo cache
-$__eb_cache_time = date_time - $__eb_cache_time + rand( 0, 20 );
+$__eb_cache_time = date_time - $__eb_cache_time + rand(0, 20);
 //$__eb_cache_time += rand ( 0, 60 );
 //echo $__eb_cache_time . '<br>';
 
 //$time_for_update_cache = $cf_reset_cache;
-$time_for_update_cache = $__cf_row[ 'cf_reset_cache' ];
+$time_for_update_cache = $__cf_row['cf_reset_cache'];
 //echo $time_for_update_cache . '<br>';
 
 
 // nếu thành viên đang đăng nhập hoặc thời gian cache đã hết -> nạp cache theo thời gian thực
-if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
+if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
     //if ( 1 == 2 ) {
     //
-    if ( file_exists( $file_last_update ) ) {
-        $last_update = filemtime( $file_last_update );
+    if (file_exists($file_last_update)) {
+        $last_update = filemtime($file_last_update);
     }
 
     // nếu thời gian update cache nhỏ quá -> bỏ qua
     //	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
-    if ( $last_update > 0 ) {
-        if ( date_time - $last_update < $time_for_update_cache / 2 ) {
+    if ($last_update > 0) {
+        if (date_time - $last_update < $time_for_update_cache / 2) {
             $__eb_cache_time = 0;
-            if ( file_exists( $__eb_cache_conf ) ) {
+            if (file_exists($__eb_cache_conf)) {
                 include_once $__eb_cache_conf;
             }
             //			echo '<!-- __eb_cache_time: ' . $__eb_cache_time . ' -->' . "\n";
@@ -62,25 +62,27 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 
 
     // kiểm tra lại lần nữa cho chắc ăn
-    if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
+    if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 
         // dọn cache định kỳ -> chỉ dọn khi không phải thao tác thủ công
-        if ( mtv_id > 0
+        if (
+            mtv_id > 0
             //		&& strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) !== false
             //		&& is_admin ()
             &&
-            !isset( $_GET[ 'tab' ] ) ) {
-            $_GET[ 'time_auto_cleanup_cache' ] = 6 * 3600;
+            !isset($_GET['tab'])
+        ) {
+            $_GET['time_auto_cleanup_cache'] = 6 * 3600;
 
             include_once EB_THEME_PLUGIN_INDEX . 'cronjob/cleanup_cache.php';
         }
 
 
         //
-        if ( mtv_id == 0 || !file_exists( $file_last_update ) ) {
+        if (mtv_id == 0 || !file_exists($file_last_update)) {
             //		if ( ! file_exists( $file_last_update ) ) {
             // tạo file cache
-            _eb_create_file( $file_last_update, date_time );
+            _eb_create_file($file_last_update, date_time);
         }
 
 
@@ -94,33 +96,35 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
          */
 
         //
-        if ( $__cf_row[ 'cf_web_name' ] == '' ) {
+        if ($__cf_row['cf_web_name'] == '') {
             //			$web_name = get_bloginfo ( 'name' );
-            $web_name = get_bloginfo( 'blogname' );
+            $web_name = get_bloginfo('blogname');
             //			$web_name = get_bloginfo ( 'sitename' );
         } else {
-            $web_name = $__cf_row[ 'cf_web_name' ];
+            $web_name = $__cf_row['cf_web_name'];
         }
 
         //
         //		$__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";$web_link="' . str_replace( '"', '\"', $web_link ) . '";' . "\n";
-        $__eb_cache_content .= '$web_name="' . str_replace( '"', '\"', $web_name ) . '";' . "\n";
+        $__eb_cache_content .= '$web_name="' . str_replace('"', '\"', $web_name) . '";' . "\n";
 
 
         //
-        $__cf_row[ 'cf_reset_cache' ] = ( int )$__cf_row[ 'cf_reset_cache' ];
+        $__cf_row['cf_reset_cache'] = (int)$__cf_row['cf_reset_cache'];
 
         // nếu thời gian update config lâu rồi, cache chưa set -> để cache mặc định
         // lần cập nhật config cuối là hơn 3 tiếng trước -> để mặc định
-        if ( $localhost != 1 &&
-            $__cf_row[ "cf_reset_cache" ] <= 0 ) {
+        if (
+            $localhost != 1 &&
+            $__cf_row["cf_reset_cache"] <= 0
+        ) {
             // cho cache 120s mặc định
-            if ( $__cf_row[ 'cf_ngay' ] < date_time - 3 * 3600 ) {
-                $arr_new_config[ "cf_reset_cache" ] = 120;
+            if ($__cf_row['cf_ngay'] < date_time - 3 * 3600) {
+                $arr_new_config["cf_reset_cache"] = 120;
             }
             // hoặc tối thiểu 10s để còn test cache
             else {
-                $arr_new_config[ "cf_reset_cache" ] = 10;
+                $arr_new_config["cf_reset_cache"] = 10;
             }
         }
         //		print_r( $__cf_row );
@@ -143,40 +147,42 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
 		}
 		*/
         //		$arr_new_config ["cf_blog_public"] = get_option( 'blog_public' );
-        $arr_new_config[ "cf_blog_public" ] = _eb_get_option( 'blog_public' );
+        $arr_new_config["cf_blog_public"] = _eb_get_option('blog_public');
 
         // định dạng ngày giờ
         //		$arr_new_config ["cf_date_format"] = get_option( 'date_format' );
-        $arr_new_config[ "cf_date_format" ] = _eb_get_option( 'date_format' );
+        $arr_new_config["cf_date_format"] = _eb_get_option('date_format');
         //		$arr_new_config ["cf_time_format"] = get_option( 'time_format' );
-        $arr_new_config[ "cf_time_format" ] = _eb_get_option( 'time_format' );
+        $arr_new_config["cf_time_format"] = _eb_get_option('time_format');
 
         // -> tạo chuỗi để lưu cache
-        foreach ( $arr_new_config as $k => $v ) {
-            $__eb_cache_content .= '$__cf_row[\'' . $k . '\']="' . str_replace( '"', '\"', str_replace( '$', '\$', $v ) ) . '";' . "\n";
+        foreach ($arr_new_config as $k => $v) {
+            $__eb_cache_content .= '$__cf_row[\'' . $k . '\']="' . str_replace('"', '\"', str_replace('$', '\$', $v)) . '";' . "\n";
 
             //
-            $__cf_row[ $k ] = $v;
+            $__cf_row[$k] = $v;
         }
 
 
         // tạo file timezone nếu chưa có
         // chỉ với các website có ngôn ngữ không phải tiếng Việt
-        if ( $__cf_row[ 'cf_content_language' ] != 'vi'
+        if (
+            $__cf_row['cf_content_language'] != 'vi'
             // timezone phải tồn tại
             &&
-            $__cf_row[ 'cf_timezone' ] != ''
+            $__cf_row['cf_timezone'] != ''
             // file chưa được tạo
             &&
-            !file_exists( EB_THEME_CACHE . '___timezone.txt' ) ) {
-            _eb_create_file( EB_THEME_CACHE . '___timezone.txt', $__cf_row[ 'cf_timezone' ] );
+            !file_exists(EB_THEME_CACHE . '___timezone.txt')
+        ) {
+            _eb_create_file(EB_THEME_CACHE . '___timezone.txt', $__cf_row['cf_timezone']);
         }
 
 
         // danh sách menu đã được đăng ký
         $menu_locations = get_nav_menu_locations();
         //		print_r($menu_locations);
-        foreach ( $menu_locations as $k => $v ) {
+        foreach ($menu_locations as $k => $v) {
             $__eb_cache_content .= '$menu_cache_locations[\'' . $k . '\']="' . $v . '";' . "\n";
         }
 
@@ -200,15 +206,14 @@ if ( mtv_id > 0 || $__eb_cache_time > $time_for_update_cache ) {
         */
         // không cho tạo cache liên tục
         // chỉ tạo khi khách truy cập hoặc không có file
-        if ( mtv_id == 0 || !file_exists( $__eb_cache_conf ) ) {
+        if (mtv_id == 0 || !file_exists($__eb_cache_conf)) {
             //		if ( ! file_exists( $__eb_cache_conf ) ) {
 
             //			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
-            _eb_create_file( $__eb_cache_conf, '<?php ' . str_replace( '\\\"', '\"', $__eb_cache_content ) );
+            _eb_create_file($__eb_cache_conf, '<?php ' . str_replace('\\\"', '\"', $__eb_cache_content));
 
             //
-            _eb_log_user( 'Update common_cache: ' . $_SERVER[ 'REQUEST_URI' ] );
-
+            _eb_log_user('Update common_cache: ' . $_SERVER['REQUEST_URI']);
         }
 
 
