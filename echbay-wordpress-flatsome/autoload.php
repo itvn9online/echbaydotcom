@@ -94,7 +94,7 @@ foreach (glob(WGR_APP_PATH . 'inc/autoload/shortcode/*.php') as $filename) {
 
 //
 if (
-    in_array(
+    !in_array(
         $_SERVER['HTTP_HOST'],
         [
             'webgiare.org',
