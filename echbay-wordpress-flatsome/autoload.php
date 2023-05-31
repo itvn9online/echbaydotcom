@@ -92,6 +92,25 @@ foreach (glob(WGR_APP_PATH . 'inc/autoload/shortcode/*.php') as $filename) {
     include $filename;
 }
 
+function WGR_flatsome_function_update($f)
+{
+    //echo $f . PHP_EOL;
+    // nếu còn tồn tại chuỗi _site_transient_update_themes -> vẫn còn đang dùng code của flatsome
+    if (
+        file_exists($f)
+        && strpos(file_get_contents($f), 'webgiare_v3_update_themes') === false
+    ) {
+        //die(__FILE__ . ':' . __LINE__);
+        echo $f . PHP_EOL;
+
+        // copy 1 bản backup
+        copy($f, str_replace('/function-update.php', '/function-update-flatsome.php', $f));
+
+        // copy file mẫu ghi đè vào file của flatsome
+        copy('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', $f);
+    }
+}
+
 //
 if (
     !in_array(
@@ -105,19 +124,7 @@ if (
     && is_admin()
     //&& defined('EB_CHILD_THEME_URL')
 ) {
-    $flatsome_function_update = dirname(EB_CHILD_THEME_URL) . '/flatsome/inc/functions/function-update.php';
-    //echo $flatsome_function_update . PHP_EOL;
-    // nếu còn tồn tại chuỗi _site_transient_update_themes -> vẫn còn đang dùng code của flatsome
-    if (
-        file_exists($flatsome_function_update)
-        && strpos(file_get_contents($flatsome_function_update), 'webgiare_v3_update_themes') === false
-    ) {
-        //die(__FILE__ . ':' . __LINE__);
-        echo $flatsome_function_update . PHP_EOL;
-
-        // copy file mẫu ghi đè vào file của flatsome
-        copy('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', $flatsome_function_update);
-    }
+    WGR_flatsome_function_update(dirname(EB_CHILD_THEME_URL) . '/flatsome/inc/functions/function-update.php');
 }
 //die(WGR_APP_PATH);
 //die(EB_CHILD_THEME_URL);
