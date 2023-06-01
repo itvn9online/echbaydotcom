@@ -374,7 +374,7 @@ function func_download_img_content_to_my_host() {
 
 	// không có -> có thể là xong rồi -> finish thôi
 	if (jQuery("#leech_data_fix_content img.download-img-to-here").length == 0) {
-		console.log("img for download not found!");
+		console.log("%c img for download not found!", "color:red");
 		//		console.log( jQuery('#leech_data_fix_content').html() );
 
 		var add_content = jQuery("#leech_data_fix_content").html() || "";
@@ -400,8 +400,7 @@ function func_download_img_content_to_my_host() {
 	}
 
 	// lấy tên file sẽ được download
-	var file_name = decodeURIComponent(img).split("/");
-	file_name = file_name[file_name.length - 1];
+	var file_name = get_img_filename(img);
 
 	//
 	jQuery("#leech_data_fix_content img.download-img-to-here:first").attr({
@@ -411,27 +410,69 @@ function func_download_img_content_to_my_host() {
 	// tạo url file download luôn
 	jQuery("#leech_data_fix_content img.download-img-to-here:first")
 		.attr({
-			"download-src":
-				web_link +
-				"ebarchive/" +
-				year_curent +
-				"/" +
-				month_curent +
-				"/" +
-				file_name,
+			"download-src": join_img_to_url_download(file_name),
 		})
 		.removeClass("download-img-to-here");
 
 	// bắt đầu download ảnh về host
-	func_download_img_to_my_host(img, dm);
+	func_download_img_to_my_host(img, dm, file_name);
 
 	// lấy tiếp ảnh tiếp theo
 	func_download_img_content_to_my_host();
 }
 
-function func_download_img_to_my_host(img, dm) {
-	//	console.log( img );
-	//	console.log( dm );
+function join_img_to_url_download(file_name) {
+	return (
+		web_link + "ebarchive/" + year_curent + "/" + month_curent + "/" + file_name
+	);
+}
+
+// cắt bớt thư mục thừa thường gặp -> giảm thiểu độ dài cho tên file
+function cut_by_dirname_for_img_donwload(img, str) {
+	img = img.split(str);
+	// đúng = 2 mảng thì mới cắt
+	if (img.length === 2) {
+		return img[1];
+	}
+	// không thì nối lại rồi trả về
+	return img.join(str);
+}
+
+function get_img_filename(file_name) {
+	file_name = decodeURIComponent(file_name).split("//")[1].toLowerCase();
+	//
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/upload/");
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/uploads/");
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/image/");
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/images/");
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/media/");
+	file_name = cut_by_dirname_for_img_donwload(file_name, "/medias/");
+	//
+	file_name = file_name.split("?")[0].split("/");
+	file_name[0] = "";
+	file_name = file_name.join("-");
+	file_name = file_name.replace(/\s/gi, "-");
+	// cắt lấy định dạng tệp
+	file_name = file_name.split(".");
+	var file_ext = "";
+	if (file_name.length > 1) {
+		file_ext = file_name[file_name.length - 1];
+		if (file_ext.length > 10) {
+			file_ext = "";
+		}
+	}
+	// bỏ ext
+	file_name[file_name.length - 1] = "";
+	file_name = g_func.non_mark_seo(file_name.join(".")) + "." + file_ext;
+	console.log(file_name);
+
+	//
+	return file_name;
+}
+
+function func_download_img_to_my_host(img, dm, file_name) {
+	console.log(img);
+	console.log(dm);
 	if (typeof img == "undefined" || img == "") {
 		return "";
 	}
@@ -441,13 +482,16 @@ function func_download_img_to_my_host(img, dm) {
 		//
 		if (img.split("//")[0] == "") {
 			img = "http:" + img;
+		} else if (img.split("data:image/").length > 1) {
+			return "";
 		}
 
 		//
 		var download_url =
 			web_link + "download_img_to_site/?img=" + encodeURIComponent(img);
-		var file_name = decodeURIComponent(img).split("/");
-		file_name = file_name[file_name.length - 1];
+		if (typeof file_name == "undefined" || file_name == "") {
+			file_name = get_img_filename(img);
+		}
 		download_url += "&file_name=" + file_name;
 
 		// thư mục download theo năm
@@ -463,6 +507,7 @@ function func_download_img_to_my_host(img, dm) {
 		download_img_runing = 1;
 		ajaxl(download_url, "oi_download_img_to_my_host", 1, function () {
 			var a = jQuery("#oi_download_img_to_my_host").html();
+			a = a.replace(/\s/gi, "%20");
 			console.log(a);
 
 			//
@@ -471,15 +516,7 @@ function func_download_img_to_my_host(img, dm) {
 		});
 
 		//
-		return (
-			web_link +
-			"ebarchive/" +
-			year_curent +
-			"/" +
-			month_curent +
-			"/" +
-			file_name
-		);
+		return join_img_to_url_download(file_name);
 	}
 
 	return img;
