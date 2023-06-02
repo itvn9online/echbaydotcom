@@ -511,7 +511,7 @@ function func_download_img_to_my_host(img, dm, file_name) {
 			console.log(a);
 
 			//
-			//			cache_name_for_download_img = a;
+			//cache_name_for_download_img = a;
 			download_img_runing = 0;
 		});
 
