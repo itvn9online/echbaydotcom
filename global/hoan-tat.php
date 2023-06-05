@@ -265,6 +265,11 @@ var current_hd_id = "' . $hd_id . '",
 		"pp" : "' . _eb_str_block_fix_content(EBE_get_lang('cart_payment_pp')) . '"
 	};
 </script>';
+
+	// nếu có khai báo function sau khi hoàn tất đơn hàng thì gọi lại ở đây
+	if (function_exists('WGR_after_done_booking')) {
+		$main_content .= WGR_after_done_booking($current_tv_object, $current_hd_object);
+	}
 } else {
 	$main_content = '<h4 class="text-center" style="padding:90px 0;">Oh! your order not found!</h4>';
 }

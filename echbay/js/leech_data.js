@@ -941,6 +941,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					goithieu_tags: {
 						get: jQuery("#details_goithieu").val() || "",
 						set: "t_goithieu",
+						strip_tags: true,
 					},
 					giacu_tags: {
 						get: jQuery("#details_giacu").val() || "",
