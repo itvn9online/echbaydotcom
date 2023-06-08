@@ -1534,10 +1534,12 @@ jQuery("#categories_url")
 
 			for (var i = 0; i < a.length; i++) {
 				a[i] = g_func.trim(a[i]);
-
+				if (a[i] == "") {
+					continue;
+				}
 				if (a[i].substr(0, 1) == "#") {
 					a[i] = "";
-				} else if (a[i] != "" && a[i].split("//").length > 1) {
+				} else if (a[i].split("//").length > 1) {
 					str +=
 						'<li><a href="' +
 						a[i] +
@@ -1560,10 +1562,12 @@ jQuery("#categories_url")
 			str_slug_error = "";
 		for (var i = 0; i < a.length; i++) {
 			a[i] = g_func.trim(a[i]);
-
+			if (a[i] == "") {
+				continue;
+			}
 			if (a[i].substr(0, 1) == "#") {
 				a[i] = "";
-			} else if (a[i] != "" && a[i].split("//").length > 1) {
+			} else if (a[i].split("//").length > 1) {
 				console.log(Math.random());
 				if (check_category_by_auto_slug(a[i]) != false) {
 					if (EBE_current_first_domain == "") {
