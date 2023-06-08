@@ -1524,7 +1524,7 @@ function ket_thuc_lay_du_lieu(id, m, lnk) {
 jQuery("#categories_url")
 	.off("change")
 	.change(function () {
-		var a = jQuery(this).val() || "";
+		var a = jQuery.trim(jQuery(this).val() || "");
 		//	console.log(a);
 
 		// nếu là url trang chi tiết -> hiển thị chi tiết luôn
