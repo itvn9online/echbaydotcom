@@ -1254,6 +1254,17 @@ function func_leech_data_lay_chi_tiet(push_url) {
 				f.t_tieude.value = f.t_tieude.value.replace(/\s+\s/g, " ");
 				f.t_tieude.value = f.t_tieude.value.replace(/\s+\s/g, " ");
 
+				// xử lý phần danh mục
+				var check_cat1 = jQuery.trim(jQuery("#details_category").val() || "");
+				if (check_cat1 != "") {
+					// nếu không tìm thấy danh mục hoặc bị trống -> thử xóa đi tìm lại
+					if ($.trim(f.t_new_category.value) == "") {
+						$(check_cat1).remove();
+						f.t_new_category.value = $(check_cat1).html() || "";
+						f.t_new_category.value = g_func.strip_tags(f.t_new_category.value);
+					}
+				}
+
 				// Tạo URL SEO
 				if (dog("get_last_url_segments").checked == true) {
 					var t_seo = jQuery.trim(f.t_source.value);
