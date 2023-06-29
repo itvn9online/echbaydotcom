@@ -12,11 +12,11 @@ global $arr_private_info_setting;
     //
     if (defined('WGR_CHECKED_UPDATE_THEME')) {
     ?>
-        <p class="bluecolor">Phiên bản Flatsome của bạn đang được cập nhật thông qua server của webgiare.org</p>
+        <p class="bluecolor">Phiên bản Flatsome của bạn đang được cập nhật thông qua server của <span class="bold">webgiare.org</span></p>
     <?php
     } else {
     ?>
-        <p class="greencolor">Phiên bản Flatsome của bạn đang được cập nhật thông qua server của themeforest.net</p>
+        <p class="greencolor">Phiên bản Flatsome của bạn đang được cập nhật thông qua server của <span class="bold">themeforest.net</span></p>
     <?php
     }
 

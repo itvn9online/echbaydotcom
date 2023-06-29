@@ -1188,24 +1188,54 @@ function func_leech_data_lay_chi_tiet(push_url) {
 						a = g_func.trim(a);
 
 						//
-						if (
-							x == "ngaydang_tags" &&
-							web_link.includes("demo.webgiare.org/dhtgroup") === true
-						) {
-							a = a.replace("Ngày: ", "");
-							a = a.split(" ");
-							if (a.length > 1) {
-								var gio = a[0];
-								var ngay = a[1].split("/");
-								if (ngay.length > 1) {
-									ngay = ngay[2] + "/" + ngay[1] + "/" + ngay[0];
-									a = ngay + " " + gio;
-									console.log(a);
+						if (x == "ngaydang_tags") {
+							if (web_link.includes("demo.webgiare.org/dhtgroup") === true) {
+								a = a.replace("Ngày: ", "");
+								a = a.split(" ");
+								if (a.length > 1) {
+									var gio = a[0];
+									var ngay = a[1].split("/");
+									if (ngay.length > 1) {
+										ngay = ngay[2] + "/" + ngay[1] + "/" + ngay[0];
+										a = ngay + " " + gio;
+										console.log(a);
+									} else {
+										a = "";
+									}
 								} else {
 									a = "";
 								}
 							} else {
+								a = a.toString().replace(/[^0-9\-\/\:\s]/g, "");
+								a = a.replace(/\s\s/g, " ");
+								a = $.trim(a);
+								a = a.split(" ")[0];
+								console.log(a);
+
+								//
+								var b = a.split("/");
+								if (b.length < 3) {
+									b = a.split("-");
+									if (b.length < 3) {
+										b = [];
+									}
+								}
+								console.log(b);
+
+								//
 								a = "";
+								if (b.length > 0) {
+									if (b[0].length == 4) {
+										a = b[0] + "/" + b[1] + "/" + b[2];
+									} else if (b[2].length == 4) {
+										a = b[2] + "/" + b[1] + "/" + b[0];
+									}
+
+									//
+									if (a != "") {
+										a += " 08:08:08";
+									}
+								}
 							}
 						}
 						//console.log(a);
