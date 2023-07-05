@@ -30,13 +30,15 @@ if (!function_exists('wp_is_mobile')) {
             $is_mobile = false;
         }
         // Many mobile devices (all iPhone, iPad, etc.)
-        else if (strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false ||
+        else if (
+            strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false ||
             strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false ||
             strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false ||
             strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false ||
             strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false ||
             strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false ||
-            strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false) {
+            strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false
+        ) {
             $is_mobile = true;
         } else {
             $is_mobile = false;
@@ -72,7 +74,7 @@ $ebsuppercache_filename = ___eb_cache_getUrl();
 // nếu tồn tại cookie wgr_ebsuppercache_timeout -> người dùng đang đăng nhập -> bỏ
 if (isset($_COOKIE['wgr_ebsuppercache_timeout']) || $_SERVER['REQUEST_METHOD'] == 'POST') {
     // đăng nhập rồi thì bỏ qua -> không nạp cache
-//echo 'wgr_ebsuppercache_timeout';
+    //echo 'wgr_ebsuppercache_timeout';
 }
 //
 else if (file_exists($ebsuppercache_filename)) {
