@@ -23,8 +23,7 @@ function _eb_create_file(
     $add_line = '',
     $ftp = 1,
     $set_permission = 0777
-)
-{
+) {
 
     //
     if ($content_ == '') {
@@ -189,7 +188,6 @@ function WGR_ftp_copy($source, $path)
 
     //
     return false;
-
 }
 
 function EBE_create_dir($path, $ftp = 1, $mod = 0755)
@@ -270,7 +268,6 @@ function WGR_ftp_create_dir($path, $mod = 0755)
 
     //
     return $result;
-
 }
 
 function EBE_create_cache_for_ftp()
@@ -479,7 +476,6 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
 
     //
     return $result;
-
 }
 
 // Xóa file thông qua tài khoản FTP
@@ -533,7 +529,6 @@ function EBE_ftp_remove_file($file_)
 
     //
     return $result;
-
 }
 
 
@@ -896,15 +891,14 @@ function _eb_create_breadcrumb($url, $tit, $id = 0, $rel = '', $to_first = false
     }
 
     //
-    return '
-	, {
-		"@type": "ListItem",
-		"position": ' . $p . ',
-		"item": {
-			"@id": "' . str_replace('/', '\/', $url) . '",
-			"name": "' . str_replace('"', '&quot;', $tit) . '"
-		}
-	}';
+    return [
+        '@type' => 'ListItem',
+        'position' => $p,
+        'item' => [
+            '@id' => $url,
+            'name' => $tit,
+        ],
+    ];
 }
 
 function _eb_create_html_breadcrumb($c)
@@ -1002,7 +996,6 @@ function _eb_echbay_category_menu($id, $tax = 'category')
 
         //
         _eb_get_static_html($strCacheFilter, $str);
-
     }
 
     //
