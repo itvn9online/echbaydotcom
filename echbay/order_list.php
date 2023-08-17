@@ -137,8 +137,7 @@ if (!empty($sql_order_blacklist)) {
             continue;
         }
     ?>
-    <div class="lf f20"><a href="admin.php?page=eb-order&by_ip=<?php echo $v->order_ip; ?>"
-            target="_blank"><?php echo $v->order_ip; ?> (<?php echo $v->c; ?>)</a></div>
+        <div class="lf f20"><a href="admin.php?page=eb-order&by_ip=<?php echo $v->order_ip; ?>" target="_blank"><?php echo $v->order_ip; ?> (<?php echo $v->c; ?>)</a></div>
     <?php
     }
 
@@ -158,19 +157,15 @@ if (!empty($sql_order_blacklist)) {
 <div class="cf">
     <div class="lf f20">&nbsp;</div>
     <div class="lf f60 cf">
-        <form name="frm_search_invoice" id="frm_search_invoice" method="get" action="<?php echo admin_link; ?>admin.php"
-            onsubmit="return invoice_func_check_search();">
+        <form name="frm_search_invoice" id="frm_search_invoice" method="get" action="<?php echo admin_link; ?>admin.php" onsubmit="return invoice_func_check_search();">
             <input type="hidden" name="page" value="eb-order">
             <!-- <input type="hidden" name="ost" value="search"> -->
             <input type="hidden" name="tab" value="<?php echo $status_by; ?>">
             <input type="hidden" name="type_search" value="<?php echo $type_search; ?>">
-            <input type="text" name="invoice_key" id="oi_invoice_key" title="Tìm kiếm"
-                value="<?php echo $invoice_key; ?>" placeholder="Mã đơn hàng, Số điện thoại, Email" maxlength="20" />
+            <input type="text" name="invoice_key" id="oi_invoice_key" title="Tìm kiếm" value="<?php echo $invoice_key; ?>" placeholder="Mã đơn hàng, Số điện thoại, Email" maxlength="20" />
             <input type="submit" value="Tìm" class="cur oi_invoice_submit" />
         </form>
-        <div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp"
-                href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a> <span
-                class="redcolor small">* Lưu ý: từ khóa tìm kiếm có thể sẽ phân biệt chữ HOA, chữ thường, có dấu và
+        <div class="click-search-by-type"><a data-type="dt" href="javascript:;">Số điện thoại</a> | <a data-type="sp" href="javascript:;">Tên sản phẩm</a> | <a data-type="id" href="javascript:;">Mã hóa đơn</a> <span class="redcolor small">* Lưu ý: từ khóa tìm kiếm có thể sẽ phân biệt chữ HOA, chữ thường, có dấu và
                 không dấu.</span></div>
     </div>
 </div>
@@ -190,7 +185,7 @@ if (!empty($sql_order_blacklist)) {
     //
     //	wp_delete_post( 16018, true );
     //	wp_delete_post( 16017, true );
-    
+
     //
     $sql = _eb_load_order($threadInPage, array(
         //		'status_by' => $status_by,
@@ -198,7 +193,7 @@ if (!empty($sql_order_blacklist)) {
         'offset' => $offset
     ));
     //	print_r( $sql ); exit();
-    
+
     //
     /*
     while ( $sql->have_posts() ) {
@@ -208,7 +203,7 @@ if (!empty($sql_order_blacklist)) {
     $o = $sql->post;
     */
     //		print_r( $o );
-    
+
     //
     foreach ($sql as $o) {
 
@@ -271,7 +266,6 @@ if (!empty($sql_order_blacklist)) {
 			<td class="show-if-order-fullsize">' . $ngay_gui_don . '</td>
 		</tr>
 		<script type="text/javascript">post_excerpt_to_prodcut_list("' . $o->order_products . '", "' . $o->order_customer . '");</script>';
-
     }
 
 
@@ -280,7 +274,7 @@ if (!empty($sql_order_blacklist)) {
     foreach ($sql as $o) {
 
         //		print_r( $o );
-    
+
         //
         //		$hd_trangthai = get_post_meta( $o->ID, '__eb_hd_trangthai', true );
         $hd_trangthai = _eb_get_post_object($o->ID, '__eb_hd_trangthai');
@@ -296,7 +290,6 @@ if (!empty($sql_order_blacklist)) {
 			<td><em>Chưa đồng bộ</em></td>
 			<td><a href="user-edit.php?user_id=' . $o->post_author . '" target="_blank">' . _eb_lay_email_tu_cache($o->post_author) . '</a></td>
 		</tr>';
-
     }
 
 
@@ -314,8 +307,7 @@ if (!empty($sql_order_blacklist)) {
 </div>
 <br>
 <div class="text-center cf div-inline-block">
-    <div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam($_SERVER['HTTP_HOST']) . '&d=' . $filterDay . '&tab=' . $status_by; ?>&type_search=<?php echo $type_search; ?>&invoice_key=<?php echo $invoice_key; ?>"
-            target="_blank" class="rf d-block blue-button whitecolor">Export to HTML</a></div>
+    <div><a href="<?php echo web_link; ?>order_export?token=<?php echo _eb_mdnam($_SERVER['HTTP_HOST']) . '&d=' . $filterDay . '&tab=' . $status_by; ?>&type_search=<?php echo $type_search; ?>&invoice_key=<?php echo $invoice_key; ?>" target="_blank" class="rf d-block blue-button whitecolor">Export to HTML</a></div>
 </div>
 <br>
 
@@ -325,19 +317,18 @@ if (!empty($sql_order_blacklist)) {
         form</iframe>
 </div>
 <script type="text/javascript">
-var str_hom_nay = "<?php echo $str_hom_nay; ?>";
-$('.check_hom_nay' + str_hom_nay + ':last').after('<tr><td colspan="' + $('.check_hom_nay' + str_hom_nay + ' td')
-    .length + '">&nbsp;</td></tr>');
+    var str_hom_nay = "<?php echo $str_hom_nay; ?>";
+    $('.check_hom_nay' + str_hom_nay + ':last').after('<tr><td colspan="' + $('.check_hom_nay' + str_hom_nay + ' td')
+        .length + '">&nbsp;</td></tr>');
 
-// ẩn bớt menu khi người dùng xem danh sách đơn
-$('body').addClass('folded');
+    // ẩn bớt menu khi người dùng xem danh sách đơn
+    $('body').addClass('folded');
 
 
-WGR_view_by_time_line('<?php echo admin_link . 'admin.php?page=eb-order' . $jsLinkPager; ?>',
-    '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>');
+    WGR_view_by_time_line('<?php echo admin_link . 'admin.php?page=eb-order' . $jsLinkPager; ?>',
+        '<?php echo $filterDay; ?>', '<?php echo $str_for_order_cookie_name; ?>');
 
-click_set_search_order_by_type();
+    click_set_search_order_by_type();
 </script>
-<script type="text/javascript"
-    src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_list.js?v=' . EBE_admin_get_realtime_for_file(EB_URL_OF_PLUGIN . 'echbay/js/order_list.js'); ?>">
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_list.js?v=' . EBE_admin_get_realtime_for_file(EB_URL_OF_PLUGIN . 'echbay/js/order_list.js'); ?>">
 </script>
