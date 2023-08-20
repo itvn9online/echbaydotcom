@@ -2,7 +2,7 @@
 
 //
 //$EB_THEME_CACHE = dirname(__DIR__) . '/uploads/ebcache/' . explode(':', str_replace('www.', '', $_SERVER['HTTP_HOST']))[0] . '/';
-$sub_dir_cache = ['ebcache'];
+$sub_dir_cache = ['uploads', 'ebcache'];
 $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
 
 //
