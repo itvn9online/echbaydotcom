@@ -32,8 +32,7 @@ define('wp_posts', $wpdb->posts);
 //
 if (defined('EB_CHILD_THEME_URL')) {
     define('using_child_wgr_theme', 1);
-}
-else {
+} else {
     define('using_child_wgr_theme', 0);
 }
 
@@ -72,16 +71,15 @@ $arr_for_add_css[EB_THEME_PLUGIN_INDEX . 'css/g.css'] = 1;
 if (using_child_wgr_theme == 1) {
     $arr_for_add_css[EB_CHILD_THEME_URL . 'css/style.css'] = 1;
     $arr_for_add_css[EB_CHILD_THEME_URL . 'css/mobile.css'] = 1;
-}
-else {
+} else {
     $arr_for_add_css[EB_THEME_URL . 'css/style.css'] = 1;
 
     // cho phiên bản mobile
     //$arr_for_add_theme_css[ EB_THEME_URL . 'css/mobile.css' ] = 1;
     $arr_for_add_css[EB_THEME_URL . 'css/mobile.css'] = 1;
 
-// tối ưu cho màn hình đầu tiên
-//$arr_for_add_css[ EB_THEME_URL . 'css/first_screen.css' ] = 1;
+    // tối ưu cho màn hình đầu tiên
+    //$arr_for_add_css[ EB_THEME_URL . 'css/first_screen.css' ] = 1;
 }
 
 
@@ -175,7 +173,8 @@ define('EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_inf
 
 // thư mục lưu trữ cache
 if (!defined('EB_THEME_CACHE')) {
-    define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $_SERVER['HTTP_HOST'] . '/');
+    $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
+    define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $cache_prefix . '/');
 }
 //echo EB_THEME_CACHE . '<br>';
 
@@ -300,7 +299,7 @@ if (isset($arr_eb_ads_custom_status)) {
     foreach ($arr_eb_ads_custom_status as $k => $v) {
         $arr_eb_ads_status[$k] = $v;
     }
-//	print_r( $arr_eb_ads_status );
+    //	print_r( $arr_eb_ads_status );
 }
 
 
@@ -312,13 +311,12 @@ $load_config_temp = $__cf_row['cf_threadnode_include_file'];
 $__eb_thread_template = '';
 if ($load_config_temp != '') {
     $__eb_thread_template = WGR_check_and_load_tmp_theme($load_config_temp, 'threadnode');
-}
-else {
+} else {
     $__eb_thread_template = EBE_get_page_template(
         EBE_get_html_file_addon(
-        'thread_node',
-        $__cf_row['cf_cats_node_html']
-    )
+            'thread_node',
+            $__cf_row['cf_cats_node_html']
+        )
     );
 }
 
@@ -347,8 +345,7 @@ $arr_for_add_css[EB_THEME_PLUGIN_INDEX . 'css/thread_list.css'] = 1;
 if (!defined('WP_AUTO_UPDATE_CORE')) {
     if ($__cf_row['cf_on_off_auto_update_wp'] == 1) {
         define('WP_AUTO_UPDATE_CORE', true);
-    }
-    else {
+    } else {
         define('WP_AUTO_UPDATE_CORE', false);
     }
 }
@@ -395,8 +392,7 @@ if (!defined('FTP_HOST')) {
 if (!defined('DISALLOW_FILE_EDIT')) {
     if ($__cf_row['cf_alow_edit_plugin_theme'] != 1) {
         define('DISALLOW_FILE_EDIT', true);
-    }
-    else {
+    } else {
         define('DISALLOW_FILE_EDIT', false);
     }
 }
@@ -408,8 +404,7 @@ if (!defined('DISALLOW_FILE_EDIT')) {
 if (!defined('DISALLOW_FILE_MODS')) {
     if ($__cf_row['cf_alow_edit_plugin_theme'] != 1) {
         define('DISALLOW_FILE_MODS', true);
-    }
-    else {
+    } else {
         define('DISALLOW_FILE_MODS', false);
     }
 }
@@ -542,9 +537,9 @@ if (mtv_id == 0) {
             //
             WGR_auto_update_link_for_demo($current_homeurl, $current_siteurl);
 
-        //
-        //			echo $current_homeurl . '<br>' . "\n";
-        //			echo $current_siteurl . '<br>' . "\n";
+            //
+            //			echo $current_homeurl . '<br>' . "\n";
+            //			echo $current_siteurl . '<br>' . "\n";
         }
 
 
@@ -568,10 +563,8 @@ if (mtv_id == 0) {
 }
 </style>';
         }
-
     }
     add_filter('login_head', 'EBE_login_css');
-
 }
 
 
@@ -717,8 +710,6 @@ function echbay_theme_setup()
     foreach ($arr_to_add_sidebar as $k => $v) {
         WGR_register_sidebar($k, $v);
     }
-
-
 }
 
 //
@@ -753,9 +744,10 @@ function eb_change_product_query($query)
          */
         if ($query->query_vars['post_type'] == 'nav_menu_item') {
             return $query;
-        }
-        else if ($query->query_vars['post_type'] == EB_BLOG_POST_TYPE ||
-        $query->query_vars['post_type'] == 'ads') {
+        } else if (
+            $query->query_vars['post_type'] == EB_BLOG_POST_TYPE ||
+            $query->query_vars['post_type'] == 'ads'
+        ) {
 
             //$query->set( 'orderby', 'menu_order post_date ID' );
             $query->set('orderby', 'menu_order ID');
@@ -764,8 +756,7 @@ function eb_change_product_query($query)
             //
             return $query;
         }
-    }
-    else if ($query->is_main_query()) {
+    } else if ($query->is_main_query()) {
         //
         //echo EB_BLOG_POST_LINK;
         //echo $query->query_vars[ 'post_type' ] . '<br>' . "\n";
@@ -786,14 +777,13 @@ function eb_change_product_query($query)
             //print_r( $query );
             return $query;
         }
-
     }
 
     // các phần sau chỉ dành cho main query
     if (!$query->is_main_query()) {
         //echo 'is main query';
         return $query;
-    /*
+        /*
      } else {
      print_r( $query );
      */
@@ -832,8 +822,7 @@ function eb_change_product_query($query)
                     'compare' => 'BETWEEN',
                     'type' => 'NUMERIC'
                 );
-            }
-            else if (count($price_in) == 2) {
+            } else if (count($price_in) == 2) {
                 // từ max_price trở lên
                 if (trim($price_in[0]) == '') {
                     $price_in = array(
@@ -853,8 +842,7 @@ function eb_change_product_query($query)
                         'type' => 'NUMERIC'
                     );
                 }
-            }
-            else {
+            } else {
                 $price_in = NULL;
             }
 
@@ -895,7 +883,7 @@ function eb_change_product_query($query)
                 if ($v != '' && is_numeric($v)) {
                     $arr_ids[] = $v;
                 }
-            /*
+                /*
              if ( $v != '' && ! is_numeric( $v ) ) {
              unset( $tim_nang_cao[$k] );
              }
@@ -951,13 +939,11 @@ function eb_change_product_query($query)
                     $arr_ids,
                     $arr_in_ids
                 ));
-            }
-            else if (!empty($arr_ids)) {
+            } else if (!empty($arr_ids)) {
                 $query->set('tax_query', array(
                     $arr_ids
                 ));
-            }
-            else if (!empty($arr_in_ids)) {
+            } else if (!empty($arr_in_ids)) {
                 $query->set('tax_query', array(
                     $arr_in_ids
                 ));
@@ -972,28 +958,28 @@ function eb_change_product_query($query)
      */
 
     switch ($current_order) {
-        // xem nhiều -> lượt xem giảm dần
+            // xem nhiều -> lượt xem giảm dần
         case "view":
             $query->set('meta_key', '_eb_product_views');
             $query->set('orderby', 'meta_value_num');
             //$query->set( 'order', 'DESC' );
             break;
 
-        // giá tăng dần
+            // giá tăng dần
         case "price_up":
             $query->set('meta_key', '_eb_product_price');
             $query->set('orderby', 'meta_value_num');
             $query->set('order', 'ASC');
             break;
 
-        // giá giảm dần
+            // giá giảm dần
         case "price_down":
             $query->set('meta_key', '_eb_product_price');
             $query->set('orderby', 'meta_value_num');
             //$query->set( 'order', 'DESC' );
             break;
 
-        // thêm chức năng để có thể order theo thuộc tính meta bất kỳ
+            // thêm chức năng để có thể order theo thuộc tính meta bất kỳ
         case "meta_key":
             if (isset($_GET['by_key']) && trim($_GET['by_key']) != '') {
                 //print_r($_GET);
@@ -1003,31 +989,30 @@ function eb_change_product_query($query)
                 //
                 if (isset($_GET['by_type']) && trim($_GET['by_type']) != '') {
                     $query->set('order', trim($_GET['by_type']));
-                }
-                else {
+                } else {
                     $query->set('order', 'DESC');
                 }
             }
             break;
 
-        // tên sản phẩm từ A-Z
+            // tên sản phẩm từ A-Z
         case "az":
             $query->set('orderby', 'name');
             $query->set('order', 'ASC');
             break;
 
-        // Tên sản phẩm từ Z-A
+            // Tên sản phẩm từ Z-A
         case "za":
             $query->set('orderby', 'name');
             //$query->set( 'order', 'DESC' );
             break;
 
-        // đây là chỉ số sắp xếp riêng của wordpress
+            // đây là chỉ số sắp xếp riêng của wordpress
         case "title":
         case "date":
             break;
 
-        // mặc định sắp xếp theo STT giảm dần
+            // mặc định sắp xếp theo STT giảm dần
         default:
             $query->set('orderby', 'menu_order ID');
             //$query->set( 'order', 'DESC' );
@@ -1037,7 +1022,7 @@ function eb_change_product_query($query)
     //
     //print_r( $query );
     return $query;
-//return;
+    //return;
 }
 
 
@@ -1049,7 +1034,6 @@ if (mtv_id > 0 && is_admin()) {
 
     // một số chức năng cho admin
     include EB_THEME_CORE . 'custom/admin-menu.php';
-
 }
 // các thiết lập chỉ dành cho trang khách hàng
 else {
@@ -1068,7 +1052,7 @@ else {
         // Từ bản 5.0, bắt buộc phải có json
         //if ( version_compare( $wp_version, '5.0', '<' ) ) {
         include EB_THEME_PLUGIN_INDEX . 'plugins/disable-json-api.php';
-    //}
+        //}
     }
 
 
@@ -1175,14 +1159,14 @@ function EBE_register_scripts()
     wp_register_script('jquery-migrate', EB_URL_OF_PARENT_THEME . 'outsource/javascript/jquery/jquery-migrate-3.3.2.min.js', array(), '3.3.2');
     wp_enqueue_script('jquery-migrate');
 
-//	wp_enqueue_script('jquery-core');
+    //	wp_enqueue_script('jquery-core');
 
 
-//
-//global $__cf_row;
+    //
+    //global $__cf_row;
 
-// load Font Awesome v5
-/*
+    // load Font Awesome v5
+    /*
  if ( $__cf_row['cf_fontawesome_v5'] == 1 ) {
  $url = EB_URL_OF_PARENT_THEME . 'outsource/fa-5.3.0/css/i.css';
  
@@ -1192,28 +1176,28 @@ function EBE_register_scripts()
  // v4
  else {
  */
-// không có thì dùng của WGR -> lười update hơn
-//		$url = EB_URL_OF_PARENT_THEME . 'outsource/fa-4.7.0/i.css';
-//		$url = '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
-//$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
+    // không có thì dùng của WGR -> lười update hơn
+    //		$url = EB_URL_OF_PARENT_THEME . 'outsource/fa-4.7.0/i.css';
+    //		$url = '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+    //$url = web_link . EB_DIR_CONTENT . '/echbaydotcom/css/template/font-awesome.css';
 
-// ưu tiên sử dụng của elementor -> họ update liên tục
-/*
+    // ưu tiên sử dụng của elementor -> họ update liên tục
+    /*
  if ( file_exists( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
  $url = web_link . EB_DIR_CONTENT . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css';
  }
  */
 
-//
-//wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
-//	}
+    //
+    //wp_register_style( 'font-awesome', $url, array(), '4.7.0' );
+    //	}
 
-//
-//wp_enqueue_style( 'font-awesome' );
+    //
+    //wp_enqueue_style( 'font-awesome' );
 
 
-//
-//	echo WP_CONTENT_DIR . 'aaaaaaaaaaaaaaaaaaaaa';
+    //
+    //	echo WP_CONTENT_DIR . 'aaaaaaaaaaaaaaaaaaaaa';
 
 }
 
@@ -1294,11 +1278,11 @@ function WGR_search_by_title_only($search, $wp_query)
         // search title and name
         $search = " AND ( ({$search}) OR ({$or_search}) ) ";
 
-    // search title only
-    //$search = " AND ({$search}) ";
+        // search title only
+        //$search = " AND ({$search}) ";
 
-    //
-    //if ( !is_user_logged_in() )$search .= " AND ($wpdb->posts.post_password = '') ";
+        //
+        //if ( !is_user_logged_in() )$search .= " AND ($wpdb->posts.post_password = '') ";
     }
     //echo $search . '<br>' . "\n";
     return $search;

@@ -279,6 +279,7 @@ function EBE_check_ftp_account()
 {
 
     if (!defined('FTP_USER') || !defined('FTP_PASS')) {
+        echo debug_backtrace()[1]['function'] . '<br>' . PHP_EOL;
         echo 'ERROR FTP: FTP_USER or FTP_PASS not found<br>' . "\n";
         return false;
     }
