@@ -17,7 +17,7 @@ $auto_reset_status_after_view = 0;
 
 
 //
-$list_log_for_order = _eb_get_log_admin_order( $post->order_id );
+$list_log_for_order = _eb_get_log_admin_order($post->order_id);
 //	print_r( $list_log_for_order );
 
 // xem có update log xem cho đơn này hay không
@@ -28,7 +28,7 @@ $i = 0;
 
 // chỉ hiện thị log với tài khoản admin
 $show_log_for_supper_admin = 0;
-if ( current_user_can( 'manage_options' ) ) {
+if (current_user_can('manage_options')) {
     $show_log_for_supper_admin = 1;
 }
 
@@ -39,33 +39,33 @@ if ( empty( $list_log_for_order ) ) {
 }
 else {
 	*/
-foreach ( $list_log_for_order as $v ) {
+foreach ($list_log_for_order as $v) {
     //
     //		if ( $update_log_view_order == 0 && $v->tv_id == mtv_id ) {
-    if ( $update_log_view_order == 1 && $v->tv_id == mtv_id ) {
+    if ($update_log_view_order == 1 && $v->tv_id == mtv_id) {
         //			echo date_time - $v->l_ngay . '<br>' . "\n";
         //			if ( $i == 0 && date_time - $v->l_ngay > 600 ) {
         //				$update_log_view_order = 1;
-        if ( $i == 0 && date_time - $v->l_ngay < 600 ) {
+        if ($i == 0 && date_time - $v->l_ngay < 600) {
             $update_log_view_order = 0;
         }
         $i++;
     }
 
     // với đơn hàng mới hoặc đơn hàng đang xác nhận
-    if ( $post->order_status == 0 || $post->order_status == 3 ) {
+    if ($post->order_status == 0 || $post->order_status == 3) {
         // kiểm tra thời gian xác nhận lần cuối để thông báo tới người dùng
-        if ( $show_dang_xac_nhan == '' && date_time - $v->l_ngay < 300 ) {
-            $show_dang_xac_nhan = '<a data-id="' . $v->tv_id . '" href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a>';
+        if ($show_dang_xac_nhan == '' && date_time - $v->l_ngay < 300) {
+            $show_dang_xac_nhan = '<a data-id="' . $v->tv_id . '" href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email($v->tv_id) . '</a>';
         }
     }
 
     //
-    if ( $show_log_for_supper_admin == 1 ) {
+    if ($show_log_for_supper_admin == 1) {
         $str_log_view_order .= '
 <tr>
-<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email( $v->tv_id ) . '</a></td>
-<td>' . date( 'd/m/Y (H:i)', $v->l_ngay ) . '</td>
+<td><a href="' . admin_link . 'user-edit.php?user_id=' . $v->tv_id . '" target="_blank">' . WGR_get_user_email($v->tv_id) . '</a></td>
+<td>' . date('d/m/Y (H:i)', $v->l_ngay) . '</td>
 <td>' . $v->l_ip . '</td>
 <td>' . $v->l_noidung . '</td>
 </tr>';
@@ -75,15 +75,15 @@ foreach ( $list_log_for_order as $v ) {
 
 
 // tự động cập nhật trạng thái đơn mới để người sau nắm được
-if ( $update_log_view_order == 1 ) {
+if ($update_log_view_order == 1) {
     // lưu log mỗi khi có người xem đơn hàng
-    _eb_log_admin_order( 'Xem đơn hàng', $post->order_id );
+    _eb_log_admin_order('Xem đơn hàng', $post->order_id);
 }
 
 
 //
 //if ( $post->order_status == 3 ) {
-if ( $show_dang_xac_nhan != '' ) {
+if ($show_dang_xac_nhan != '') {
     // nếu mới cập nhật -> hiển thị thông báo cho người sau được biết
     //	if ( date_time - $post->l_ngay < 300 ) {
     echo '<div class="dang-xac-nhan">Hóa đơn đang được kiểm duyệt bởi ' . $show_dang_xac_nhan . '</div>';
@@ -97,7 +97,7 @@ if ( $show_dang_xac_nhan != '' ) {
 
 
 // xem người gửi đơn là admin hay khách
-$order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
+$order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 
 
 ?>
@@ -127,12 +127,14 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
         <tr>
             <td class="t">Quận/ Huyện</td>
             <td class="i"><input type="text" name="t_quanhuyen" id="oi_hd_quanhuyen" value="" autocomplete="off" class="m" />
-                <input type="hidden" name="t_id_quanhuyen" id="oi_hd_id_quanhuyen" value="" /></td>
+                <input type="hidden" name="t_id_quanhuyen" id="oi_hd_id_quanhuyen" value="" />
+            </td>
         </tr>
         <tr>
             <td class="t">Tỉnh/ Thành phố</td>
             <td class="i"><input type="text" name="t_tinhthanh" id="oi_hd_tinhthanh" value="" class="m" />
-                <input type="hidden" name="t_id_tinhthanh" id="oi_hd_id_tinhthanh" value="" /></td>
+                <input type="hidden" name="t_id_tinhthanh" id="oi_hd_id_tinhthanh" value="" />
+            </td>
         </tr>
         <tr>
             <td class="t">Địa chỉ (đầy đủ)</td>
@@ -167,12 +169,14 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
         <tr class="medium">
             <td colspan="2" class="tborder text-right">Chiết khấu</td>
             <td colspan="3" class="tborder"><input type="text" id="hd_chietkhau" placeholder="VD: 50000 hoặc 20%" maxlength="10" class="n" />
-                <span class="ebe-currency"></span> hoặc %</td>
+                <span class="ebe-currency"></span> hoặc %
+            </td>
         </tr>
         <tr class="medium">
             <td colspan="2" class="tborder text-right">Phí vận chuyển</td>
             <td colspan="3" class="tborder"><input type="text" id="hd_phivanchuyen" placeholder="Ví dụ: 50000" maxlength="10" class="n" />
-                <span class="ebe-currency"></span></td>
+                <span class="ebe-currency"></span>
+            </td>
         </tr>
         <tr class="medium">
             <td colspan="2" class="tborder text-right">Tổng cộng</td>
@@ -188,14 +192,14 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
         $hd_trangthai = $post->order_status;
 
         //
-        if ( $hd_trangthai == 0 && isset( $post->order_update_time ) ) {
+        if ($hd_trangthai == 0 && isset($post->order_update_time)) {
             $sql = "UPDATE eb_in_con_voi
 			SET
 				order_update_time = " . date_time . "
 			WHERE
 				order_id = " . $post->order_id;
             //						echo $sql . "\n";
-            _eb_q( $sql, 0 );
+            _eb_q($sql, 0);
 
             //
             //						$auto_reset_status_after_view = 0;
@@ -204,11 +208,11 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
         //
         $str_select_trangthai = '';
         $str_button_trangthai = '';
-        foreach ( $arr_hd_trangthai as $k => $v ) {
-            if ( $k >= 0 && $v != 'none' ) {
+        foreach ($arr_hd_trangthai as $k => $v) {
+            if ($k >= 0 && $v != 'none') {
                 $sl = '';
                 $cl = '';
-                if ( $k == $hd_trangthai ) {
+                if ($k == $hd_trangthai) {
                     $sl = ' selected="selected"';
                     $cl = 'selected';
                 }
@@ -216,7 +220,7 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
                 //
                 $str_select_trangthai .= '<option value="' . $k . '"' . $sl . '>' . $v . '</option>';
 
-                $str_button_trangthai .= '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button></li>';
+                $str_button_trangthai .= '<li data-tab="' . $k . '" title="' . str_replace('"', '&quot;', $v) . '"><button type="button" data-tab="' . $k . '" class="' . $cl . '"><span>' . $v . '</span></button></li>';
             }
         }
 
@@ -225,9 +229,11 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
             <td class="t">Phân loại đơn hàng:</td>
         </tr>
         <tr>
-            <td colspan="2"><ul class="cf bill-detail-status">
+            <td colspan="2">
+                <ul class="cf bill-detail-status">
                     <?php echo $str_button_trangthai; ?>
-                </ul></td>
+                </ul>
+            </td>
         </tr>
         <!--
 		<tr>
@@ -239,57 +245,61 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
 		-->
         <tr>
             <td valign="top" class="t">Vị trí địa lý</td>
-            <td class="i"><?php
+            <td class="i">
+                <?php
 
-            //
-            /*
+                //
+                /*
             echo EB_THEME_PLUGIN_INDEX . '<br>';
             echo EB_URL_OF_PLUGIN . '<br>';
             echo WP_CONTENT_DIR . '<br>';
             */
 
-            // GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
-            if ( $order_user_can == 1 ) {
-                echo 'Gửi bởi Biên tập viên';
-            } else {
-                include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
-
-                //
-                if ( $cGeoLite2->getPath() != NULL ) {
-                    //		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
-                    echo $cGeoLite2->getUserOptionByIp( $post->order_ip );
+                // GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
+                if ($order_user_can == 1) {
+                    echo 'Gửi bởi Biên tập viên';
+                    /*
                 } else {
-                    echo 'Phiên bản <i class="fa-pro upper small"></i>';
-                }
-            }
+                    include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
 
-            ?>
-                <div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div></td>
+                    //
+                    if ($cGeoLite2->getPath() != NULL) {
+                        //		echo $cGeoLite2->getUserAddressByIp( $post->order_ip );
+                        echo $cGeoLite2->getUserOptionByIp($post->order_ip);
+                    } else {
+                        echo 'Phiên bản <i class="fa-pro upper small"></i>';
+                    }
+                }
+                    */
+
+                ?>
+                <div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div>
+            </td>
         </tr>
         <tr>
             <td class="t">Email</td>
-            <td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache( $post->tv_id ); ?></a></td>
+            <td class="i"><a href="<?php echo admin_link; ?>user-edit.php?user_id=<?php echo $post->tv_id; ?>" target="_blank" id="get-order-email"><?php echo _eb_lay_email_tu_cache($post->tv_id); ?></a></td>
         </tr>
         <tr>
             <td class="t">Ngày gửi</td>
-            <td data-time="<?php echo $post->order_time; ?>" class="i order-time-server"><?php echo date( 'd-m-Y H:i', $post->order_time ); ?></td>
+            <td data-time="<?php echo $post->order_time; ?>" class="i order-time-server"><?php echo date('d-m-Y H:i', $post->order_time); ?></td>
         </tr>
         <tr>
             <td class="t">Cập nhật cuối</td>
-            <td class="i"><?php echo date( 'd-m-Y H:i', $post->order_update_time ); ?></td>
+            <td class="i"><?php echo date('d-m-Y H:i', $post->order_update_time); ?></td>
         </tr>
         <tr>
             <td class="t">Giá trị đơn hàng</td>
             <td class="i"><?php
-            //			if ( isset( $post->order_total_price ) ) {
-            echo $post->order_total_price;
-            /*
+                            //			if ( isset( $post->order_total_price ) ) {
+                            echo $post->order_total_price;
+                            /*
 			}
 			else {
 				EBE_tao_bang_hoa_don_cho_echbay_wp();
 			}
 			*/
-            ?></td>
+                            ?></td>
         </tr>
     </table>
     <br>
@@ -347,22 +357,20 @@ $order_user_can = user_can( $post->tv_id, 'delete_posts' ) ? 1 : 0;
     </ul>
 </div>
 <script type="text/javascript">
+    // v1
+    var order_details_arr_cart_product_list_v1 = (function(arr) {
+        if (typeof arr == 'undefined') {
+            arr = '';
+        }
+        return arr;
+    })(<?php echo $post->post_excerpt; ?>);
 
-// v1
-var order_details_arr_cart_product_list_v1 = (function ( arr ) {
-	if ( typeof arr == 'undefined' ) {
-		arr = '';
-	}
-	return arr;
-})( <?php echo $post->post_excerpt; ?> );
-
-// v2
-var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
-	order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
-	order_id = "<?php echo $id; ?>",
-	order_user_can = "<?php echo $order_user_can; ?>";
-
-</script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'javascript/districts_vn.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_details.js' ); ?>"></script> 
-<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_api.js?v=' . EBE_admin_get_realtime_for_file( EB_URL_OF_PLUGIN . 'echbay/js/order_api.js' ); ?>"></script> 
+    // v2
+    var order_details_arr_cart_product_list = "<?php echo $post->order_products; ?>",
+        order_details_arr_cart_customer_info = "<?php echo $post->order_customer; ?>",
+        order_id = "<?php echo $id; ?>",
+        order_user_can = "<?php echo $order_user_can; ?>";
+</script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'javascript/districts_vn.js?v=' . EBE_admin_get_realtime_for_file(EB_URL_OF_PLUGIN . 'echbay/js/order_details.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_details.js?v=' . EBE_admin_get_realtime_for_file(EB_URL_OF_PLUGIN . 'echbay/js/order_details.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo EB_URL_OF_PLUGIN . 'echbay/js/order_api.js?v=' . EBE_admin_get_realtime_for_file(EB_URL_OF_PLUGIN . 'echbay/js/order_api.js'); ?>"></script>

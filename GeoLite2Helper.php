@@ -21,19 +21,19 @@
 //
 //define('GeoLite2Helper_PATH', dirname(__FILE__));
 //define('GeoLite2Helper_PATH', WP_CONTENT_DIR . '/echbaydotcom-pro/geolite2');
-define( 'GeoLite2Helper_PATH', EB_THEME_OUTSOURCE . 'geolite2' );
+define('GeoLite2Helper_PATH', EB_THEME_OUTSOURCE . 'geolite2');
 //echo GeoLite2Helper_PATH . '<br>';
 //
 //if ( is_dir( GeoLite2Helper_PATH ) ) {
 // path dành riêng cho EchBay Hosting
-define( 'GeoLite2Helper_EBPATH', '/home/echbay_libary/geolite2-db' );
+define('GeoLite2Helper_EBPATH', '/home/echbay_libary/geolite2-db');
 //	echo GeoLite2Helper_EBPATH . '<br>';
 // file db sẽ để trong thư mục upload -> theo woo
 $arr = wp_upload_dir();
-define( 'GeoLite2Helper_UploadPATH', $arr[ 'basedir' ] );
+define('GeoLite2Helper_UploadPATH', $arr['basedir']);
 //	echo GeoLite2Helper_UploadPATH . '<br>';
 // URL phụ, dùng để test trên localhost thôi
-define( 'GeoLite2Helper_DBPATH', ABSPATH . 'geolite2-db' );
+define('GeoLite2Helper_DBPATH', ABSPATH . 'geolite2-db');
 //	echo GeoLite2Helper_DBPATH . '<br>';
 //
 include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2HelperInc.php';
