@@ -537,6 +537,7 @@ $_POST['cf_default_css'] = WGR_remove_css_multi_comment($_POST['cf_default_css']
 
 
 // Tự động xác định lại vị trí của admin website để tạo map
+/*
 if ($_POST['cf_region'] == '' || $_POST['cf_placename'] == '') {
 	include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
 
@@ -551,7 +552,7 @@ if ($_POST['cf_region'] == '' || $_POST['cf_placename'] == '') {
 		}
 	}
 }
-
+*/
 
 
 

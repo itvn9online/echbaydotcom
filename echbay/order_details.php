@@ -269,8 +269,8 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
                     } else {
                         echo 'Phiên bản <i class="fa-pro upper small"></i>';
                     }
-                }
                     */
+                }
 
                 ?>
                 <div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div>
