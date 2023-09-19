@@ -59,7 +59,7 @@ foreach ($sub_dir_cache as $v) {
 
 // thư mục cache có phân biệt mobile với desktop
 //define('EB_THEME_CACHE', $EB_THEME_CACHE);
-define('EB_THEME_CACHE', $root_dir_cache . '/');
+defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', $root_dir_cache . '/');
 //die(EB_THEME_CACHE);
 //define( 'EB_SUB_THEME_CACHE', str_replace( ABSPATH, '', EB_THEME_CACHE ) );
 //echo EB_SUB_THEME_CACHE . '<br>' . "\n";

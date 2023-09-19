@@ -174,7 +174,8 @@ define('EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_inf
 // thư mục lưu trữ cache
 if (!defined('EB_THEME_CACHE')) {
     $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
-    define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $cache_prefix . '/');
+    defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $cache_prefix . '/');
+    //echo EB_THEME_CACHE . '<br>';
 }
 //echo EB_THEME_CACHE . '<br>';
 
