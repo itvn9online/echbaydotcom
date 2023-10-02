@@ -2484,7 +2484,7 @@ a.search-advanced-btn {
 }
 
 .eb-public-table {
-    max-width: 999px;
+    /* max-width: 999px; */
     border-radius: 2px;
     padding: 10px 15px;
 }

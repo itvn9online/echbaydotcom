@@ -504,6 +504,7 @@ function echbay_admin_footer_styles()
 	private_info_setting_parent_theme_default = "' . $arr_private_info_setting['parent_theme_default'] . '",
 	
 	wgr_plugin_current_version = "' . $current_version . '",
+	url_check_WGR_version = "' . $arr_private_info_setting['url_check_WGR_version'] . '",
 	wgr_plugin_github_version = "' . $current_github_version . '",
     
 	ELEMENTOR_cPRO_VERSION = "' . (defined('ELEMENTOR_cPRO_VERSION') ? ELEMENTOR_cPRO_VERSION : 0) . '",
