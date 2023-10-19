@@ -325,22 +325,21 @@ if (mtv_id > 0 || !file_exists($__eb_txt_only_conf)) {
     $__eb_cache_content .= '$dynamic_meta="' . str_replace('"', '\"', $dynamic_meta) . '";' . "\n";
 
 
-    /**
+    /*
      * ID và tài khoản MXH
      */
-    /*
     $add_data_id = array(
-        //		'web_name' => $__cf_row ['web_name'],
-        //		'service_name' => $service_name,
+        //		'web_name' => '\'' . $__cf_row ['web_name'] . '\'',
+        //		'service_name' => '\'' . $service_name . '\'',
 
-        'eb_disable_auto_get_thumb' => $__cf_row['cf_disable_auto_get_thumb'],
-        'cf_facebook_page' => $__cf_row['cf_facebook_page'],
-        '__global_facebook_id' => $__cf_row['cf_facebook_id'],
-        'cf_instagram_page' => $__cf_row['cf_instagram_page'],
-        'cf_google_plus' => $__cf_row['cf_google_plus'],
-        'cf_youtube_chanel' => $__cf_row['cf_youtube_chanel'],
-        'cf_pinterest_page' => $__cf_row['cf_pinterest_page'],
-        'cf_twitter_page' => $__cf_row['cf_twitter_page']
+        'eb_disable_auto_get_thumb' => (int) $__cf_row['cf_disable_auto_get_thumb'],
+        'cf_facebook_page' => '\'' . $__cf_row['cf_facebook_page'] . '\'',
+        '__global_facebook_id' => '\'' . $__cf_row['cf_facebook_id'] . '\'',
+        'cf_instagram_page' => '\'' . $__cf_row['cf_instagram_page'] . '\'',
+        'cf_google_plus' => '\'' . $__cf_row['cf_google_plus'] . '\'',
+        'cf_youtube_chanel' => '\'' . $__cf_row['cf_youtube_chanel'] . '\'',
+        'cf_pinterest_page' => '\'' . $__cf_row['cf_pinterest_page'] . '\'',
+        'cf_twitter_page' => '\'' . $__cf_row['cf_twitter_page'] . '\''
     );
     $cache_data_id = '';
     foreach ($add_data_id as $k => $v) {
@@ -348,7 +347,6 @@ if (mtv_id > 0 || !file_exists($__eb_txt_only_conf)) {
     }
     $cache_data_id = substr($cache_data_id, 1);
     $__eb_cache_content .= '$cache_data_id="' . $cache_data_id . '";' . "\n";
-    */
 
 
     //

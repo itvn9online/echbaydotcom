@@ -642,9 +642,12 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0, $rem
     //	echo $dir . '<br>'; exit();
 
     // nếu ký tự cuối là dấu / -> bỏ đi
+    /*
     if (substr($dir, -1) == '/') {
         $dir = substr($dir, 0, -1);
     }
+    */
+    $dir = rtrim($dir, '/');
     //	echo $dir . '<br>';
 
     //	exit();

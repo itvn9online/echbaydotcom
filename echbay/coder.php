@@ -5,7 +5,7 @@
 //
 $arr_order_tab = array(
 	'languages' => 'Ngôn ngữ',
-//	'design' => 'Chỉnh sửa giao diện',
+	//	'design' => 'Chỉnh sửa giao diện',
 	'optimize_static' => 'Optimize code',
 	'404_monitor' => '404 Monitor',
 	'sitemap' => 'Sitemap',
@@ -23,14 +23,14 @@ $arr_order_tab = array(
 	'install_demo' => 'Install demo',
 	'cleanup_database' => 'Dọn dẹp website',
 	'recycle_bin' => 'Thùng rác'
-//	'wordpress_update_core' => 'Cập nhật WordPress',
-//	'echbay_update_core' => 'Cập nhật EchBay',
-//	'wordpress_rules' => 'WordPress rules',
+	//	'wordpress_update_core' => 'Cập nhật WordPress',
+	//	'echbay_update_core' => 'Cập nhật EchBay',
+	//	'wordpress_rules' => 'WordPress rules',
 );
 
 echo '<ul class="cf eb-admin-tab">';
 
-foreach ( $arr_order_tab as $k => $v ) {
+foreach ($arr_order_tab as $k => $v) {
 	echo '<li><a href="admin.php?page=eb-coder&tab=' . $k . '">' . $v . '</a></li>';
 }
 
@@ -49,14 +49,10 @@ $include_tab = ECHBAY_PRI_CODE . $eb_get_tab . '.php';
 
 
 // nếu không có file -> module lỗi -> hủy bỏ
-if ( ! file_exists( $include_tab ) || ! isset( $arr_order_tab[$eb_get_tab] ) ) {
+if (!file_exists($include_tab) || !isset($arr_order_tab[$eb_get_tab])) {
 	die('Module eb-coder not found: <strong>' . $eb_get_tab . '</strong>');
 }
 
 
 //
 include_once $include_tab;
-
-
-
-

@@ -53,7 +53,7 @@ foreach ($sub_dir_cache as $v) {
     if (!is_dir($root_dir_cache)) {
         mkdir($root_dir_cache, 0777);
         chmod($root_dir_cache, 0777) or die('ERROR chmod cache dir');
-        echo $root_dir_cache . '<br>' . "\n";
+        echo $root_dir_cache . '<br>' . PHP_EOL;
     }
 }
 
@@ -62,13 +62,42 @@ foreach ($sub_dir_cache as $v) {
 defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', $root_dir_cache . '/');
 //die(EB_THEME_CACHE);
 //define( 'EB_SUB_THEME_CACHE', str_replace( ABSPATH, '', EB_THEME_CACHE ) );
-//echo EB_SUB_THEME_CACHE . '<br>' . "\n";
-//echo EB_THEME_CACHE . '<br>' . "\n";
+//echo EB_SUB_THEME_CACHE . '<br>' . PHP_EOL;
+//echo EB_THEME_CACHE . '<br>' . PHP_EOL;
 //echo '<!-- ' . EB_THEME_CACHE . ' -->';
 
 // thư mục cache dùng chung, không phân biệt mobile với desktop
 //define('EB_GLOBAL_CACHE', $EB_THEME_CACHE);
 //echo EB_GLOBAL_CACHE . '<br>';
+
+// file nạp config kết nối database
+define('EB_MY_CACHE_CONFIG', dirname(EB_THEME_CACHE) . '/my-config.php');
+//echo EB_MY_CACHE_CONFIG . '<br>' . PHP_EOL;
+
+//
+if (file_exists(EB_MY_CACHE_CONFIG)) {
+    include EB_MY_CACHE_CONFIG;
+
+    //
+    if (!empty(phpversion('redis'))) {
+        // xác định cache qua redis
+        if (defined('REDIS_MY_HOST') && defined('REDIS_MY_PORT')) {
+            define('EB_REDIS_CACHE', true);
+        } else {
+            // xóa file my-config nếu có -> vì có mà không có 2 tham số kia thì coi như lỗi
+            if (defined('EB_MY_CACHE_CONFIG') && file_exists(EB_MY_CACHE_CONFIG)) {
+                echo 'Remove file ' . basename(EB_MY_CACHE_CONFIG) . ' because REDIS_MY_HOST not found!' . '<br>' . PHP_EOL;
+                unlink(EB_MY_CACHE_CONFIG);
+            }
+            define('EB_REDIS_CACHE', false);
+        }
+    } else {
+        define('EB_REDIS_CACHE', false);
+    }
+} else {
+    define('EB_REDIS_CACHE', false);
+}
+//var_dump(EB_REDIS_CACHE);
 
 
 //
