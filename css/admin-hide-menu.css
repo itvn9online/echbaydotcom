@@ -1,6 +1,13 @@
-#menu-dashboard ul, #menu-appearance .hide-if-no-customize, #menu-appearance .wp-submenu li:last-child, #menu-plugins, #menu-settings, /*
+#menu-dashboard ul,
+#menu-appearance .hide-if-no-customize,
+#menu-appearance .wp-submenu li:last-child,
+#menu-plugins,
+#menu-settings,
+/*
 #menu-pages,
 #menu-tools,
-*/ #toplevel_page_flatsome-panel, .show-administrator-only {
-    display: none;
+*/
+#toplevel_page_flatsome-panel,
+.show-administrator-only {
+    /* display: none; */
 }
