@@ -809,7 +809,7 @@ function _eb_load_ads(
                 $auto_get_size = ABSPATH . $auto_get_size;
                 //					echo $auto_get_size . '<br>' . "\n";
 
-                if (file_exists($auto_get_size)) {
+                if (is_file($auto_get_size)) {
                     $auto_get_size = getimagesize($auto_get_size);
                     //						print_r( $auto_get_size );
                     // -> tạo size mới

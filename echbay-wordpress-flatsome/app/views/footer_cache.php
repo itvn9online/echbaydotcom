@@ -2,7 +2,7 @@
 
 
 // nếu được kích hoạt -> ở đây sẽ lấy nội dung để in ra và replace
-if ( defined( 'HAS_USING_EB_START' ) ) {
+if (defined('HAS_USING_EB_START')) {
     $main_content = ob_get_contents();
     ob_end_clean();
 
@@ -21,7 +21,7 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
 
 
     // kết thúc cache -> lấy ra nội dung để in ra
-    if ( defined( 'HAS_USING_EBCACHE' ) && HAS_USING_EBCACHE !== false ) {
+    if (defined('HAS_USING_EBCACHE') && HAS_USING_EBCACHE !== false) {
         //echo '<!-- HAS_USING_EBCACHE: ' . HAS_USING_EBCACHE . ' -->' . "\n";
         // bắt đầu cache
         $filename = ___eb_cache_getUrl();
@@ -30,7 +30,7 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
         //echo mtv_id . '<br>' . "\n";
 
         // nếu không tồn tại file/
-        if ( !file_exists( $filename ) ) {
+        if (!is_file($filename)) {
             //
             /*
             file_put_contents( $filename, '.', LOCK_EX ) or die('ERROR: create cache file');
@@ -39,10 +39,10 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
             //exit();
 
             // -> tạo file và trả về tên file
-            $filew = fopen( $filename, 'x+' );
+            $filew = fopen($filename, 'x+');
             // nhớ set 777 cho file
-            chmod( $filename, 0777 );
-            fclose( $filew );
+            chmod($filename, 0777);
+            fclose($filew);
         }
 
 
@@ -59,12 +59,12 @@ if ( defined( 'HAS_USING_EB_START' ) ) {
         //print_r( $arr_cat_js_cache );
 
         //
-        $cat_js_file_name = $arr_cat_js_cache[ 'cat_js_file_name' ];
-        $using_js_file_name = $arr_cat_js_cache[ 'using_js_file_name' ];
-        WGR_content_cat_js_cache( $cat_js_file_name, $using_js_file_name );
+        $cat_js_file_name = $arr_cat_js_cache['cat_js_file_name'];
+        $using_js_file_name = $arr_cat_js_cache['using_js_file_name'];
+        WGR_content_cat_js_cache($cat_js_file_name, $using_js_file_name);
 
         //
-        ___eb_cache_cache( $filename, $main_content, $eb_cache_note );
+        ___eb_cache_cache($filename, $main_content, $eb_cache_note);
     } else {
         echo $main_content;
 

@@ -168,7 +168,7 @@ function WGR_echo_shortcode($key)
 function WGR_before_optimize_code($confirm_file)
 {
     // không tồn tại file cần thiết -> hủy
-    if (!file_exists($confirm_file)) {
+    if (!is_file($confirm_file)) {
         return false;
     }
 
@@ -197,7 +197,7 @@ function WGR_unzip1_vendor_code($check_confirm_file = true)
 {
     // nếu có file này -> thì bỏ qua luôn -> tránh chạy quá nhiều lần
     $f = EB_THEME_PLUGIN_INDEX . '_done_unzipcode.txt';
-    if (file_exists($f)) {
+    if (is_file($f)) {
         return false;
     }
     // tạo file để tránh chạy nhiều lần
@@ -225,8 +225,8 @@ function WGR_unzip_vendor_code($check_confirm_file = true)
 
     //
     $arr_vendor_list = [
-    EB_THEME_PLUGIN_INDEX . 'outsource',
-    EB_THEME_URL . 'outsource',
+        EB_THEME_PLUGIN_INDEX . 'outsource',
+        EB_THEME_URL . 'outsource',
     ];
     //print_r( $arr_vendor_list );
 
@@ -329,7 +329,7 @@ function WGR_unzip_vendor_code($check_confirm_file = true)
     //
     _eb_remove_file($confirm_file);
     // không xóa được file -> bỏ luôn
-    if (file_exists($confirm_file)) {
+    if (is_file($confirm_file)) {
         echo '<!-- Can not remove file ' . basename($confirm_file) . ' -->';
         return false;
     }
@@ -346,7 +346,7 @@ function WGR_optimize_backup_code($source_file, $save_dir, $min_line = 10)
 
     // nếu tồn tại file done -> lượng dòng của file này nhiều sẵn rồi -> bỏ qua
     $done_file = $save_dir . '/' . str_replace('.', '-', basename($source_file)) . '-after-optimize.txt';
-    if (file_exists($done_file)) {
+    if (is_file($done_file)) {
         //echo $done_file . '<br>' . "\n";
         return false;
     }
@@ -356,7 +356,7 @@ function WGR_optimize_backup_code($source_file, $save_dir, $min_line = 10)
     //echo $bak_file . '<br>' . "\n";
 
     // chưa tại file backup rồi thì thực hiện copy
-    if (!file_exists($bak_file)) {
+    if (!is_file($bak_file)) {
         error_reporting(0);
         //_eb_create_file( $bak_file, date_time );
         WGR_copy($source_file, $bak_file);
@@ -364,7 +364,7 @@ function WGR_optimize_backup_code($source_file, $save_dir, $min_line = 10)
     }
 
     // thực hiện optimize
-    if (file_exists($bak_file)) {
+    if (is_file($bak_file)) {
         WGR_compiler_update_echbay_css_js($source_file);
 
         // với 1 số file, sau khi optimize xong lượng dòng vẫn quá lớn -> tạo file confirm để bỏ qua
@@ -477,7 +477,7 @@ function WGR_optimize_static_code()
     if ($has_optimize === false) {
         _eb_remove_file($confirm_file);
         // không xóa được file -> bỏ luôn
-        if (file_exists($confirm_file)) {
+        if (is_file($confirm_file)) {
             echo '<!-- Can not remove file ' . basename($confirm_file) . ' -->';
             return false;
         }

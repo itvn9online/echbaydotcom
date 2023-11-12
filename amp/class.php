@@ -272,7 +272,7 @@ class EchAMPFunction
         foreach ($arr as $v) {
             $v = EB_THEME_PLUGIN_INDEX . $v;
 
-            if (file_exists($v)) {
+            if (is_file($v)) {
                 $f_content .= trim(file_get_contents($v, 1)) . "\n";
             }
         }
@@ -346,7 +346,7 @@ class EchAMPFunction
         //		echo $local_img . '<br>' . "\n";
 
         //
-        if ($local_img != '' && file_exists($local_img)) {
+        if ($local_img != '' && is_file($local_img)) {
             $local_img = getimagesize($local_img);
             //			print_r( $check_img );
 

@@ -14,11 +14,11 @@ global $wpdb;
 
 
 //$arr = glob ( EB_THEME_HTML . '*.html' );
-$arr = EBE_get_file_in_folder ( EB_THEME_URL, '.{html}' );
+$arr = EBE_get_file_in_folder(EB_THEME_URL, '.{html}');
 //print_r($arr);
 
 //
-$arr = array_filter ( $arr, 'is_file' );
+$arr = array_filter($arr, 'is_file');
 
 //
 $curent_file = isset($_GET['file']) ? $_GET['file'] : '';
@@ -29,14 +29,14 @@ $curent_theme_dir = $__cf_row['cf_theme_dir'];
 //$curent_theme_dir = basename( dirname( dirname( EB_THEME_HTML ) ) );
 
 // kiểm tra xem có tồn tại file không
-if ( $curent_file != '' && file_exists( EB_THEME_HTML . $curent_file ) ) {
-	
+if ($curent_file != '' && is_file(EB_THEME_HTML . $curent_file)) {
+
 	//
-	$curent_page_name = str_replace( '.html', '', $curent_file );
-	
+	$curent_page_name = str_replace('.html', '', $curent_file);
+
 	//
 	$curent_page_name = $__cf_row['cf_theme_dir'] . '-' . $curent_page_name;
-	
+
 	// kiểm tra xem trong CSDL có nội dung cho file này không
 	$sql = _eb_q("SELECT ID, post_title, post_excerpt
 	FROM
@@ -45,16 +45,16 @@ if ( $curent_file != '' && file_exists( EB_THEME_HTML . $curent_file ) ) {
 		post_name = '" . $curent_page_name . "'
 		AND post_type = 'eb_page'
 		AND post_status = 'private'");
-//	print_r( $sql );
-	
+	//	print_r( $sql );
+
 	// có -> sử dụng nội dung theme này
-	if ( isset( $sql[0] ) && isset($sql[0]->ID) ) {
+	if (isset($sql[0]) && isset($sql[0]->ID)) {
 		$curent_page_id = $sql[0]->ID;
 		$curent_page_content = $sql[0]->post_excerpt;
 	}
 	// không
 	else {
-		$curent_page_content = file_get_contents( EB_THEME_HTML . $curent_file, 1 );
+		$curent_page_content = file_get_contents(EB_THEME_HTML . $curent_file, 1);
 	}
 }
 // không thì loại ngay
@@ -64,14 +64,14 @@ else {
 
 //
 $str_file_list = '';
-foreach ( $arr as $k => $v ) {
-	$v = basename( $v );
-	
+foreach ($arr as $k => $v) {
+	$v = basename($v);
+
 	$cl = '';
-	if ( $v == $curent_file ) {
+	if ($v == $curent_file) {
 		$cl = 'bold redcolor';
 	}
-	
+
 	$str_file_list .= '<li><a href="' . admin_link . 'admin.php?page=eb-coder&tab=design&file=' . $v . '" class="' . $cl . '">' . $v . '</a></li>';
 }
 //print_r($arr);

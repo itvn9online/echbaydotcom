@@ -100,7 +100,7 @@ if ($arr_private_info_setting['parent_theme_default'] != 'echbaytwo') {
      * nếu tồn tại thư mục riêng của partner nếu tồn tại file style.css trong thư mục partner
      * cần cập nhật lại partner -> chỉ cần copy lại các file này là được
      */
-    if (is_dir($dir_partner_style) && file_exists($dir_partner_style . '/style.css')) {
+    if (is_dir($dir_partner_style) && is_file($dir_partner_style . '/style.css')) {
         foreach (glob($dir_partner_style . '/*') as $filename) {
             echo $filename . '<br>' . "\n";
 

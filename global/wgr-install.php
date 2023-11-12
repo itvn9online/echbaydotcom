@@ -8,7 +8,7 @@
 
 
 
-if ( file_exists( ABSPATH . 'wp-index.php' ) ) {
+if (is_file(ABSPATH . 'wp-index.php')) {
 	require ABSPATH . 'wp-index.php';
 }
 
@@ -16,5 +16,3 @@ if ( file_exists( ABSPATH . 'wp-index.php' ) ) {
 
 
 exit();
-
-

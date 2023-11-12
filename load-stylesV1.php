@@ -32,34 +32,29 @@ foreach ($load as $v) {
 	//	echo $v . "\n";
 
 	// nếu có trong thư mục mặc định của js echbaydotcom
-	if (file_exists($dir . 'css/' . $v)) {
+	if (is_file($dir . 'css/' . $v)) {
 		$out .= file_get_contents($dir . 'css/' . $v, 1);
-	}
-	else if (file_exists($dir . 'css/default/' . $v)) {
+	} else if (is_file($dir . 'css/default/' . $v)) {
 		$out .= file_get_contents($dir . 'css/default/' . $v, 1);
-	}
-	else if (file_exists($dir . 'css/template/' . $v)) {
+	} else if (is_file($dir . 'css/template/' . $v)) {
 		$out .= file_get_contents($dir . 'css/template/' . $v, 1);
 	}
 	// details
-	else if (file_exists($dir . 'html/details/' . $v)) {
+	else if (is_file($dir . 'html/details/' . $v)) {
 		$out .= file_get_contents($dir . 'html/details/' . $v, 1);
-	}
-	else if (file_exists($dir . 'html/details/mobilemua/' . $v)) {
+	} else if (is_file($dir . 'html/details/mobilemua/' . $v)) {
 		$out .= file_get_contents($dir . 'html/details/mobilemua/' . $v, 1);
-	}
-	else if (file_exists($dir . 'html/details/pcmua/' . $v)) {
+	} else if (is_file($dir . 'html/details/pcmua/' . $v)) {
 		$out .= file_get_contents($dir . 'html/details/pcmua/' . $v, 1);
 	}
 	// search
-	else if (file_exists($dir . 'html/search/' . $v)) {
+	else if (is_file($dir . 'html/search/' . $v)) {
 		$out .= file_get_contents($dir . 'html/search/' . $v, 1);
 	}
 	// theme
-	else if (file_exists($dir . 'themes/css/' . $v)) {
+	else if (is_file($dir . 'themes/css/' . $v)) {
 		$out .= file_get_contents($dir . 'themes/css/' . $v, 1);
-	}
-	else {
+	} else {
 		// nếu chưa có dir2 -> tìm dir2
 		if ($dir2 == '') {
 			$get_dir = $dir;
@@ -67,7 +62,7 @@ foreach ($load as $v) {
 				$get_dir = dirname($get_dir);
 				//				echo $get_dir . "\n";
 
-				if (file_exists($get_dir . '/' . $v)) {
+				if (is_file($get_dir . '/' . $v)) {
 					$dir2 = $get_dir . '/';
 					break;
 				}
@@ -75,9 +70,9 @@ foreach ($load as $v) {
 		}
 
 		// kiểm tra lại lần nữa
-//		if ( $dir2 != '' ) {
+		//		if ( $dir2 != '' ) {
 		$out .= file_get_contents($dir2 . $v, 1);
-	//		}
+		//		}
 	}
 }
 

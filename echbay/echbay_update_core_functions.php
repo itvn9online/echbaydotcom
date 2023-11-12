@@ -48,18 +48,18 @@ function EBE_update_file_via_php($dir_source, $arr_dir, $arr_file, $arr_old_dir,
 
 
     // thử tạo 1 file mẫu
-//	_eb_alert( $dir_to );
+    //	_eb_alert( $dir_to );
     $file_test = $dir_to . 'test_local_attack.txt';
 
     //
-    if (file_exists($file_test)) {
+    if (is_file($file_test)) {
         _eb_remove_file($file_test);
     }
 
     //
     _eb_create_file($file_test, date_time, '', 0);
     // nếu không có -> không up được qua php -> dùng ftp
-    if (!file_exists($file_test)) {
+    if (!is_file($file_test)) {
         return false;
     } else {
         echo '<strong class="redcolor">OK! update via PHP function...</strong><br>' . "\n";
@@ -77,7 +77,7 @@ function EBE_update_file_via_php($dir_source, $arr_dir, $arr_file, $arr_old_dir,
         //		echo $v2 . "\n";
 
         // kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
-        if (!file_exists($v2)) {
+        if (!is_file($v2)) {
             if (unlink($v)) {
                 echo $v . ' <strong>deleted old file successful</strong><br>' . "\n";
             } else {
@@ -116,9 +116,9 @@ function EBE_update_file_via_php($dir_source, $arr_dir, $arr_file, $arr_old_dir,
     foreach ($arr_file as $v) {
 
         // kiểm tra và conpiler các file js, css
-//		if ( $localhost != 1 ) {
+        //		if ( $localhost != 1 ) {
         //WGR_compiler_update_echbay_css_js( $v );
-//		}
+        //		}
 
         //
         $v2 = str_replace($dir_source, $dir_to, $v);
@@ -135,7 +135,6 @@ function EBE_update_file_via_php($dir_source, $arr_dir, $arr_file, $arr_old_dir,
     EBE_remove_dir_after_update($dir_source, $arr_dir, $dir_to);
 
     return true;
-
 }
 
 function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = '')
@@ -216,7 +215,6 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
             // đến đây mà không up được thì bỏ qua luôn
             return false;
         }
-
     }
 
 
@@ -239,11 +237,11 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
     ftp_login($conn_id, $ftp_user_name, $ftp_user_pass) or die('AutoBot login false');
 
     //
-//	echo getcwd() . "\n";
+    //	echo getcwd() . "\n";
 
 
     //
-//	print_r( $list_dir_for_update_eb_core );
+    //	print_r( $list_dir_for_update_eb_core );
     foreach ($list_dir_for_update_eb_core as $v) {
         $v2 = str_replace($dir_source_update, $dir_to_update, $v);
 
@@ -269,7 +267,7 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
         //		echo $v2 . '<br>' . "\n";
 
         // kiểm tra xem có file ở thư mục update không -> không có -> xóa luôn file hiện tại
-        if (!file_exists($v2)) {
+        if (!is_file($v2)) {
             $v = '.' . strstr($v, '/' . $ftp_dir_root . '/');
 
             if (ftp_delete($conn_id, $v)) {
@@ -310,13 +308,13 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
 
 
     //
-//	print_r( $list_file_for_update_eb_core );
+    //	print_r( $list_file_for_update_eb_core );
     foreach ($list_file_for_update_eb_core as $v) {
 
         // kiểm tra và conpiler các file js, css
-//		if ( $localhost != 1 ) {
+        //		if ( $localhost != 1 ) {
         //WGR_compiler_update_echbay_css_js( $v );
-//		}
+        //		}
 
         //		_eb_create_file( $file_cache_update, file_get_contents( $v, 1 ) );
 
@@ -329,10 +327,10 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
         //		echo $file_test . ' - file cache<br>' . "\n";
 
         // upload file FTP_BINARY or FTP_ASCII -> nên sử dụng FTP_BINARY
-//		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
+        //		ftp_put($conn_id, $v2, $v, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
         ftp_put($conn_id, $v2, $v, FTP_BINARY) or die('ERROR upload file to server #' . $v);
         //		ftp_put($conn_id, $v2, $v) or die( 'ERROR upload file to server #' . $v );
-//		ftp_put($conn_id, $v2, $file_cache_update, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
+        //		ftp_put($conn_id, $v2, $file_cache_update, FTP_ASCII) or die( 'ERROR upload file to server #' . $v );
 
         unlink($v);
     }
@@ -341,8 +339,8 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
 
 
     // xóa thư mục sau khi update
-//	foreach ( $list_dir_for_update_eb_core as $v ) {
-//	}
+    //	foreach ( $list_dir_for_update_eb_core as $v ) {
+    //	}
 
 
 
@@ -357,7 +355,6 @@ function EBE_update_file_via_ftp($dir_name_for_unzip_to, $dir_source_update = ''
 
     //
     return true;
-
 }
 
 function EBE_remove_dir_after_update($dir, $arr, $dir_to = '')
@@ -380,18 +377,17 @@ function EBE_remove_dir_after_update($dir, $arr, $dir_to = '')
     //	echo '<strong>remove dir</strong>: ' . $dir . '<br>' . "\n";
 
     // test
-//	exit();
+    //	exit();
 
 
     // cập nhật lại version trong file cache
-//	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
+    //	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
     _eb_get_static_html('github_version', file_get_contents(EB_THEME_PLUGIN_INDEX . 'VERSION', 1), '', 60);
-
 }
 
 function EBE_remove_dir_and_file($dir)
 {
-    if (!file_exists($dir)) {
+    if (!is_file($dir)) {
         return true;
     }
 
@@ -407,7 +403,6 @@ function EBE_remove_dir_and_file($dir)
         if (!EBE_remove_dir_and_file($dir . DIRECTORY_SEPARATOR . $item)) {
             return false;
         }
-
     }
 
     return rmdir($dir);
@@ -425,7 +420,7 @@ function EBE_get_text_version($str)
 
 function WGR_remove_github_file($f_gitattributes)
 {
-    if (file_exists($f_gitattributes)) {
+    if (is_file($f_gitattributes)) {
         if (unlink($f_gitattributes)) {
             echo '<strong>remove file</strong>: ';
         } else {

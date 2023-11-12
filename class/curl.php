@@ -2,109 +2,113 @@
 
 
 
-class ___xe_url {
+class ___xe_url
+{
 	var $headers;
 	var $user_agent = NULL;
 	var $compression;
 	var $cookie_file;
 	var $proxy;
 	var $run_loat = false;
-	
-	
-	function loat($proxy = '', $cookies = FALSE, $cookie = 'cookies.txt', $compression = 'gzip') {
-//	function cURL($cookies = TRUE, $cookie = 'cookies.txt', $compression = 'gzip', $proxy = '') {
-		$this->headers [] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg';
-		$this->headers [] = 'Connection: Keep-Alive';
-		$this->headers [] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
-		
+
+
+	function loat($proxy = '', $cookies = FALSE, $cookie = 'cookies.txt', $compression = 'gzip')
+	{
+		//	function cURL($cookies = TRUE, $cookie = 'cookies.txt', $compression = 'gzip', $proxy = '') {
+		$this->headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg';
+		$this->headers[] = 'Connection: Keep-Alive';
+		$this->headers[] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
+
 		if ($this->user_agent == NULL) {
-			if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+			if (isset($_SERVER['HTTP_USER_AGENT'])) {
 				$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
-			}
-			else {
+			} else {
 				$this->user_agent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.0.3705; .NET CLR 1.1.4322; Media Center PC 4.0)';
 			}
 		}
-		
+
 		$this->compression = $compression;
-		
+
 		$this->proxy = $proxy;
-		
+
 		$this->cookies = $cookies;
 		if ($this->cookies == TRUE) {
-			$this->cookie ( $cookie );
+			$this->cookie($cookie);
 		}
 	}
-	
-	
-	function cookie($cookie_file) {
-		if (file_exists ( $cookie_file )) {
+
+
+	function cookie($cookie_file)
+	{
+		if (is_file($cookie_file)) {
 			$this->cookie_file = $cookie_file;
 		} else {
-			fopen ( $cookie_file, 'w' ) or $this->error ( 'The cookie file could not be opened. Make sure this directory has the correct permissions' );
+			fopen($cookie_file, 'w') or $this->error('The cookie file could not be opened. Make sure this directory has the correct permissions');
 			$this->cookie_file = $cookie_file;
-			fclose ( $this->cookie_file );
+			fclose($this->cookie_file);
 		}
 	}
-	
-	
-	
-	function get($url, $agent = '', $options = array(), $show_header = 0) {
+
+
+
+	function get($url, $agent = '', $options = array(), $show_header = 0)
+	{
 		// nạp agent nếu có yêu cầu
-		if ( $agent != '' ) {
+		if ($agent != '') {
 			$this->user_agent = $agent;
 		}
-		
+
 		// xây dựng header
-		if ( $this->run_loat == false ) {
+		if ($this->run_loat == false) {
 			$this->loat();
 		}
-		
+
 		//
-		$process = curl_init ( $url );
-		curl_setopt ( $process, CURLOPT_HTTPHEADER, $this->headers );
-		curl_setopt ( $process, CURLOPT_HEADER, $show_header );
-		curl_setopt ( $process, CURLOPT_USERAGENT, $this->user_agent );
+		$process = curl_init($url);
+		curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
+		curl_setopt($process, CURLOPT_HEADER, $show_header);
+		curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
 		if ($this->cookies == TRUE) {
-			curl_setopt ( $process, CURLOPT_COOKIEFILE, $this->cookie_file );
-			curl_setopt ( $process, CURLOPT_COOKIEJAR, $this->cookie_file );
+			curl_setopt($process, CURLOPT_COOKIEFILE, $this->cookie_file);
+			curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
 		}
-		curl_setopt ( $process, CURLOPT_ENCODING, $this->compression );
-		curl_setopt ( $process, CURLOPT_TIMEOUT, 30 );
+		curl_setopt($process, CURLOPT_ENCODING, $this->compression);
+		curl_setopt($process, CURLOPT_TIMEOUT, 30);
 		if ($this->proxy != '') {
-			curl_setopt ( $process, CURLOPT_PROXY, $this->proxy );
+			curl_setopt($process, CURLOPT_PROXY, $this->proxy);
 		}
-		curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
-		curl_setopt ( $process, CURLOPT_FOLLOWLOCATION, 1 );
-		curl_setopt ( $process, CURLOPT_SSL_VERIFYPEER, false );
-		$return = curl_exec ( $process );
-		curl_close ( $process );
-		
+		curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
+		$return = curl_exec($process);
+		curl_close($process);
+
 		return $return;
 	}
-	
-	
-	
-	function post($url, $data, $show_header = 1) {
-		if ( $this->run_loat == false ) {
+
+
+
+	function post($url, $data, $show_header = 1)
+	{
+		if ($this->run_loat == false) {
 			$this->loat();
 		}
-		
+
 		//
-		$process = curl_init ( $url );
-		curl_setopt ( $process, CURLOPT_HTTPHEADER, $this->headers );
-		curl_setopt ( $process, CURLOPT_HEADER, $show_header );
-		curl_setopt ( $process, CURLOPT_USERAGENT, $this->user_agent );
+		$process = curl_init($url);
+		curl_setopt($process, CURLOPT_HTTPHEADER, $this->headers);
+		curl_setopt($process, CURLOPT_HEADER, $show_header);
+		curl_setopt($process, CURLOPT_USERAGENT, $this->user_agent);
 		if ($this->cookies == TRUE) {
-			curl_setopt ( $process, CURLOPT_COOKIEFILE, $this->cookie_file );
-			curl_setopt ( $process, CURLOPT_COOKIEJAR, $this->cookie_file );
+			curl_setopt($process, CURLOPT_COOKIEFILE, $this->cookie_file);
+			curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
 		}
-		curl_setopt ( $process, CURLOPT_ENCODING, $this->compression );
-		curl_setopt ( $process, CURLOPT_TIMEOUT, 30 );
+		curl_setopt($process, CURLOPT_ENCODING, $this->compression);
+		curl_setopt($process, CURLOPT_TIMEOUT, 30);
 		if ($this->proxy != '') {
-			curl_setopt ( $process, CURLOPT_PROXY, $this->proxy );
+			curl_setopt($process, CURLOPT_PROXY, $this->proxy);
 		}
-		
+
 		// chuyển data từ chuỗi sang mảng
 		/*
 		if ( gettype($data) != 'object' ) {
@@ -119,33 +123,34 @@ class ___xe_url {
 		}
 		*/
 		// chuyển từ mảng sang chuỗi
-		if ( gettype($data) == 'object' ) {
-			$data = http_build_query( $data );
+		if (gettype($data) == 'object') {
+			$data = http_build_query($data);
 		}
-//		print_r( $data );
-//		echo $data . '<br>' . "\n";
-		
+		//		print_r( $data );
+		//		echo $data . '<br>' . "\n";
+
 		//
-		curl_setopt ( $process, CURLOPT_POSTFIELDS, $data );
-		curl_setopt ( $process, CURLOPT_RETURNTRANSFER, 1 );
-		curl_setopt ( $process, CURLOPT_FOLLOWLOCATION, 1 );
-		curl_setopt ( $process, CURLOPT_POST, 1 );
-		$return = curl_exec ( $process );
-		curl_close ( $process );
-		
+		curl_setopt($process, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($process, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($process, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($process, CURLOPT_POST, 1);
+		$return = curl_exec($process);
+		curl_close($process);
+
 		return $return;
 	}
-	
-	
-	function error($error) {
+
+
+	function error($error)
+	{
 		echo "<center><div style='width:500px;border: 3px solid #FFEEFF; padding: 3px; background-color: #FFDDFF;font-family: verdana; font-size: 10px'><b>cURL Error</b><br>$error</div></center>";
-		die ();
+		die();
 	}
 }
 
 
 
-$post_get_cc = new ___xe_url ();
+$post_get_cc = new ___xe_url();
 //$post_get_cc->loat();
 
 

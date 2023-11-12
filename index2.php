@@ -1184,7 +1184,7 @@ function EBE_register_scripts()
 
     // ưu tiên sử dụng của elementor -> họ update liên tục
     /*
- if ( file_exists( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
+ if ( is_file( WP_CONTENT_DIR . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css' ) ) {
  $url = web_link . EB_DIR_CONTENT . '/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css';
  }
  */

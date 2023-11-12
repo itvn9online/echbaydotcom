@@ -2,7 +2,7 @@
 
 // v1
 /*
-if ( ! file_exists( GeoLite2Helper_PATH . '/Reader.php' ) && file_exists( GeoLite2Helper_PATH . '/Db/Reader.php' ) ) {
+if ( ! is_file( GeoLite2Helper_PATH . '/Reader.php' ) && is_file( GeoLite2Helper_PATH . '/Db/Reader.php' ) ) {
 	include GeoLite2Helper_PATH . '/Db/Reader.php';
 	include GeoLite2Helper_PATH . '/Db/Reader/Decoder.php';
 	include GeoLite2Helper_PATH . '/Db/Reader/InvalidDatabaseException.php';
@@ -100,39 +100,39 @@ class WGR_GeoLite2Helper {
 
         // nạp DB, ưu tiên nạp trong thư mục Upload trước
         // nếu có cấp độ City -> lấy theo cấp độ City
-        if ( file_exists( GeoLite2Helper_UploadPATH . $f_City ) ) {
+        if (is_file( GeoLite2Helper_UploadPATH . $f_City ) ) {
             $path = GeoLite2Helper_UploadPATH . $f_City;
         }
         // echbay hosting
         /*
-        else if ( file_exists( GeoLite2Helper_EBPATH . $f_City ) ) {
+        else if ( is_file( GeoLite2Helper_EBPATH . $f_City ) ) {
             $path = GeoLite2Helper_EBPATH . $f_City;
         }
         */
         // v1
-        else if ( file_exists( GeoLite2Helper_PATH . $f_City ) ) {
+        else if (is_file( GeoLite2Helper_PATH . $f_City ) ) {
             $path = GeoLite2Helper_PATH . $f_City;
         }
         // localhost
-        else if ( file_exists( GeoLite2Helper_DBPATH . $f_City ) ) {
+        else if (is_file( GeoLite2Helper_DBPATH . $f_City ) ) {
             $path = GeoLite2Helper_DBPATH . $f_City;
         }
         // mặc định chỉ lấy Country
-        else if ( file_exists( GeoLite2Helper_UploadPATH . $f_Country ) ) {
+        else if (is_file( GeoLite2Helper_UploadPATH . $f_Country ) ) {
             $path = GeoLite2Helper_UploadPATH . $f_Country;
         }
         // echbay hosting
         /*
-        else if ( file_exists( GeoLite2Helper_EBPATH . $f_Country ) ) {
+        else if ( is_file( GeoLite2Helper_EBPATH . $f_Country ) ) {
             $path = GeoLite2Helper_EBPATH . $f_Country;
         }
         */
         // v1
-        else if ( file_exists( GeoLite2Helper_PATH . $f_Country ) ) {
+        else if (is_file( GeoLite2Helper_PATH . $f_Country ) ) {
             $path = GeoLite2Helper_PATH . $f_Country;
         }
         // localhost
-        else if ( file_exists( GeoLite2Helper_DBPATH . $f_Country ) ) {
+        else if (is_file( GeoLite2Helper_DBPATH . $f_Country ) ) {
             $path = GeoLite2Helper_DBPATH . $f_Country;
         }
         //echo $path . '<br>' . "\n";

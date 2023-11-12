@@ -75,7 +75,7 @@ define('EB_MY_CACHE_CONFIG', dirname(EB_THEME_CACHE) . '/my-config.php');
 //echo EB_MY_CACHE_CONFIG . '<br>' . PHP_EOL;
 
 //
-if (file_exists(EB_MY_CACHE_CONFIG)) {
+if (is_file(EB_MY_CACHE_CONFIG)) {
     include EB_MY_CACHE_CONFIG;
 
     //
@@ -85,7 +85,7 @@ if (file_exists(EB_MY_CACHE_CONFIG)) {
             define('EB_REDIS_CACHE', true);
         } else {
             // xóa file my-config nếu có -> vì có mà không có 2 tham số kia thì coi như lỗi
-            if (defined('EB_MY_CACHE_CONFIG') && file_exists(EB_MY_CACHE_CONFIG)) {
+            if (defined('EB_MY_CACHE_CONFIG') && is_file(EB_MY_CACHE_CONFIG)) {
                 echo 'Remove file ' . basename(EB_MY_CACHE_CONFIG) . ' because REDIS_MY_HOST not found!' . '<br>' . PHP_EOL;
                 unlink(EB_MY_CACHE_CONFIG);
             }
@@ -106,7 +106,7 @@ $arr_current_blacklist_ip = [];
 $inc_current_blacklist_ip = EB_THEME_CACHE . 'current_blacklist_ip.php';
 
 //
-if (file_exists($inc_current_blacklist_ip)) {
+if (is_file($inc_current_blacklist_ip)) {
     include $inc_current_blacklist_ip;
     //print_r( $arr_current_blacklist_ip );
 }

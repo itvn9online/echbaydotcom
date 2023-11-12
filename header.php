@@ -33,7 +33,7 @@
 
     // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
     $load_font_awesome = '';
-    if (file_exists(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css')) {
+    if (is_file(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css')) {
         $load_font_awesome .= file_get_contents(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css', 1);
         $load_font_awesome .= file_get_contents(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/solid.min.css', 1);
         $load_font_awesome = str_replace('../webfonts/', EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome);
@@ -43,7 +43,7 @@
         echo '<style>' . $load_font_awesome . '</style>';
     }
     // nếu không có file css mà có file zip -> gọi hàm giải nén
-    else if (file_exists(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip')) {
+    else if (is_file(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip')) {
         //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
         WGR_unzip1_vendor_code(false);
     }

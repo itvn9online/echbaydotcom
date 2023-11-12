@@ -12,28 +12,27 @@ include_once EB_THEME_PLUGIN_INDEX . 'main_function.php';
 
 
 // chế độ bảo trì đang được bật -> tạm dừng mọi truy cập
-if (file_exists(EB_THEME_CACHE . 'update_running.txt')) {
+if (is_file(EB_THEME_CACHE . 'update_running.txt')) {
 
 	//
 	$time_for_bao_tri = file_get_contents(EB_THEME_CACHE . 'update_running.txt', 1);
 
 	// Hiển thị chế độ bảo trì trong vòng 2 phút thôi
-//	if ( date_time - $time_for_bao_tri < 30 ) {
+	//	if ( date_time - $time_for_bao_tri < 30 ) {
 	if (date_time - $time_for_bao_tri < 60) {
 		//	if ( date_time - $time_for_bao_tri < 120 ) {
-//	if ( date_time - $time_for_bao_tri < 300 ) {
+		//	if ( date_time - $time_for_bao_tri < 300 ) {
 
 		// Set trạng thái cho trang 404
 		EBE_set_header(404);
 		//		$protocol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
 
 		//echo $protocol;
-//		header( $protocol . ' 404 Not Found' );
+		//		header( $protocol . ' 404 Not Found' );
 
 		$m = 'He thong dang duoc bao tri</title><h1>He thong dang duoc bao tri! Vui long quay lai sau ' . (60 - (date_time - $time_for_bao_tri)) . ' giay';
 
 		die('<title>' . $m . '</h1><script>if (top != self) { alert("' . $m . '") }</script>');
-
 	} else {
 		// xóa file
 		_eb_remove_file(EB_THEME_CACHE . 'update_running.txt');
@@ -68,7 +67,7 @@ function ___eb_cache_display($cache_time = 60)
 	$filename = ___eb_cache_getUrl();
 
 	// nếu không tồn tại file/
-	if (!file_exists($filename)) {
+	if (!is_file($filename)) {
 
 		//
 		/*
@@ -84,7 +83,7 @@ function ___eb_cache_display($cache_time = 60)
 		fclose($filew);
 
 		//
-//		exit();
+		//		exit();
 
 		// trả về tên file
 		return $filename;
@@ -100,9 +99,9 @@ function ___eb_cache_display($cache_time = 60)
 	//
 	$time_file = filemtime($filename);
 	//	echo '<!-- ';
-//	echo date_time - $time_file . '<br>' . "\n";
-//	echo $cache_time . '<br>' . "\n";
-//	echo ' -->';
+	//	echo date_time - $time_file . '<br>' . "\n";
+	//	echo $cache_time . '<br>' . "\n";
+	//	echo ' -->';
 	// 100 is the cache time here!!!
 	if (date_time - $time_file > $cache_time) {
 		return $filename;
@@ -131,7 +130,6 @@ function ___eb_cache_mobile_class($data)
 	}
 
 	echo _eb_ssl_template($data);
-
 }
 
 
@@ -150,7 +148,7 @@ function ___eb_cache_end_ob_cache($strEBPageDynamicCache)
 
 
 	//
-//	ob_end_flush();
+	//	ob_end_flush();
 	ob_end_clean();
 
 
@@ -170,20 +168,20 @@ function ___eb_cache_end_ob_cache($strEBPageDynamicCache)
 	 */
 
 	// xóa các thẻ TAB đi -> rút gọn lại HTML 1 chút
-//	$main_content = preg_replace( "/\t/", "", $main_content );
+	//	$main_content = preg_replace( "/\t/", "", $main_content );
 
 	// bỏ phần comment HTML
-//	$main_content = WGR_remove_js_multi_comment( $main_content, '<!--', '-->' );
+	//	$main_content = WGR_remove_js_multi_comment( $main_content, '<!--', '-->' );
 
 	// optimize javascript
 
 	// bỏ các dấu xuống dòng thừa
-//	$main_content = preg_replace( "/\n\n/", "\n", $main_content );
+	//	$main_content = preg_replace( "/\n\n/", "\n", $main_content );
 
 
 
 	// -> echo nội dung ra -> bị ob nên nội dung không được in ra
-//	echo $main_content;
+	//	echo $main_content;
 	___eb_cache_mobile_class($main_content);
 
 
@@ -193,12 +191,12 @@ function ___eb_cache_end_ob_cache($strEBPageDynamicCache)
 	$eb_cache_note = WGR_create_eb_cache_note();
 
 	//
-//	echo $eb_cache_note;
+	//	echo $eb_cache_note;
 
 
 
 	// lưu file tĩnh
-//	_eb_get_static_html ( $strEBPageDynamicCache, $main_content );
+	//	_eb_get_static_html ( $strEBPageDynamicCache, $main_content );
 	___eb_cache_cache($strEBPageDynamicCache, $main_content, $eb_cache_note);
 }
 
@@ -280,7 +278,7 @@ $class_css_of_post = '';
 
 // load file index theo theme
 $file_index_theo_theme = EB_THEME_URL . 'i.php';
-if (using_child_wgr_theme == 1 && file_exists(EB_CHILD_THEME_URL . 'i.php')) {
+if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'i.php')) {
 	$file_index_theo_theme = EB_CHILD_THEME_URL . 'i.php';
 }
 //echo $file_index_theo_theme;
@@ -319,7 +317,7 @@ if ($enable_echbay_super_cache == 1) {
 
 
 	// tạo file trước để giữ chỗ luôn và ngay đã
-//	_eb_create_file ( EB_THEME_CACHE . $strEBPageDynamicCache . '.txt', '&nbsp;' );
+	//	_eb_create_file ( EB_THEME_CACHE . $strEBPageDynamicCache . '.txt', '&nbsp;' );
 
 
 
@@ -340,16 +338,13 @@ if ($enable_echbay_super_cache == 1) {
 
 	//
 	___eb_cache_end_ob_cache($strEBPageDynamicCache);
-
-
-
 }
 // nếu không có cache -> include bình thường thôi
 else {
 	//	echo 1;
 	// check device (không cache)
-//	$css_m_css = implode( ' ', get_body_class() );
-//	$css_m_css = '';
+	//	$css_m_css = implode( ' ', get_body_class() );
+	//	$css_m_css = '';
 	// dùng tính năng cache toàn trang thì tạm thời tắt chức năng phát hiện mobile bằng php
 	if (_eb_checkDevice() == 'mobile') {
 		$css_m_css[] = 'style-for-mobile';

@@ -30,13 +30,13 @@ $__category = get_queried_object();
 
 
 //
-$switch_taxonomy = isset( $__category->taxonomy ) ? $__category->taxonomy : '';
+$switch_taxonomy = isset($__category->taxonomy) ? $__category->taxonomy : '';
 $wgr_support_taxonomy = '';
 
 
 
 // Nếu config không tạo menu -> không load sidebar
-if ( $__cf_row['cf_cats_column_style'] == '' ) {
+if ($__cf_row['cf_cats_column_style'] == '') {
 	$id_for_get_sidebar = '';
 } else {
 	$id_for_get_sidebar = 'category_sidebar';
@@ -46,52 +46,54 @@ if ( $__cf_row['cf_cats_column_style'] == '' ) {
 
 // Chỉ nhận bài viết với định dạng được hỗ trợ
 //if ( $switch_taxonomy != '' ) {
-if ( $switch_taxonomy == 'post_tag'
-	
+if (
+	$switch_taxonomy == 'post_tag'
+
 	|| $switch_taxonomy == EB_BLOG_POST_LINK
 	|| $switch_taxonomy == 'blog_tag'
-	
+
 	|| $switch_taxonomy == 'post_options'
-	|| $switch_taxonomy == 'category' ) {
-	
-	
+	|| $switch_taxonomy == 'category'
+) {
+
+
 	//
 	$cid = $__category->term_id;
 	$eb_wp_taxonomy = $__category->taxonomy;
-	
-	
-	
+
+
+
 	//
-//	echo _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) . '<br>' . "\n";
-//	echo $cid . '<br>' . "\n";
-	
+	//	echo _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) . '<br>' . "\n";
+	//	echo $cid . '<br>' . "\n";
+
 	// nhóm bị ẩn thì ẩn luôn
-	if ( _eb_get_cat_object( $cid, '_eb_category_hidden', 0 ) == 1 ) {
-		
+	if (_eb_get_cat_object($cid, '_eb_category_hidden', 0) == 1) {
+
 		// nếu có URL cũ -> chuyển tới đó
-		$old_url_for_redirect = _eb_get_cat_object( $cid, '_eb_category_old_url', '' );
-		if ( $old_url_for_redirect == '' ) {
-			$old_url_for_redirect = _eb_get_cat_object( $cid, '_eb_category_leech_url', '' );
+		$old_url_for_redirect = _eb_get_cat_object($cid, '_eb_category_old_url', '');
+		if ($old_url_for_redirect == '') {
+			$old_url_for_redirect = _eb_get_cat_object($cid, '_eb_category_leech_url', '');
 		}
-		
-		if ( $old_url_for_redirect != '' ) {
-			wp_redirect( $old_url_for_redirect, 301 ); exit();
+
+		if ($old_url_for_redirect != '') {
+			wp_redirect($old_url_for_redirect, 301);
+			exit();
 		}
-		
-		
+
+
 		//
-		$__cf_row ["cf_blog_public"] = 0;
-		
+		$__cf_row["cf_blog_public"] = 0;
+
 		EBE_set_header(401);
-		
+
 		//
 		$main_content = '<h4 class="text-center" style="padding:90px 0;">Dữ liệu đang được cập nhật hoặc đã bị xóa...</h4>';
-		
+
 		$current_order = '';
 		$tim_nang_cao = '';
 		$seach_advanced_by_cats = '';
 		$seach_advanced_by_price = '';
-		
 	}
 	// mặc định sẽ hiển thị danh sách bài viết
 	else {
@@ -102,8 +104,8 @@ if ( $switch_taxonomy == 'post_tag'
 
 
 
-// -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
-$main_content .= '<script type="text/javascript">
+	// -> thêm đoạn JS dùng để xác định xem khách đang ở đâu trên web
+	$main_content .= '<script type="text/javascript">
 var current_order="' . $current_order . '",
 	seach_advanced_value="' . $tim_nang_cao . '",
 	seach_advanced_by_cats="' . $seach_advanced_by_cats . '",
@@ -111,23 +113,18 @@ var current_order="' . $current_order . '",
 	cf_cats_description_viewmore=' . $__cf_row['cf_cats_description_viewmore'] . ',
 	switch_taxonomy="' . $switch_taxonomy . '";
 </script>';
-	
-	
-	
 }
 // nếu người dùng sử dụng taxonomy riêng -> include taxonomy này vào
 // for child-theme
-else if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'archive-' . $switch_taxonomy . '.php' ) ) {
-	
+else if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'archive-' . $switch_taxonomy . '.php')) {
+
 	include EB_CHILD_THEME_URL . 'archive-' . $switch_taxonomy . '.php';
-	
 }
 // for theme
-else if ( file_exists( EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php' ) ) {
-	
+else if (is_file(EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php')) {
+
 	// nếu sử dụng giao diện riêng -> người dùng tự exist chứ mình mặc định là không exist
 	include EB_THEME_PHP . 'archive-' . $switch_taxonomy . '.php';
-	
 }
 /*
 else if ( $act == 'archive' ) {
@@ -136,8 +133,8 @@ else if ( $act == 'archive' ) {
 */
 // không thì in ra file 404 thôi
 else {
-	echo '<!-- ' .$act . ' -->' . "\n";
-	
+	echo '<!-- ' . $act . ' -->' . "\n";
+
 	include EB_THEME_PHP . '404.php';
 }
 
@@ -146,6 +143,3 @@ else {
 
 // loại bỏ chức năng bỏ qua sản phẩm đã lấy, để custom code còn hoạt động được
 $___eb_post__not_in = '';
-
-
-

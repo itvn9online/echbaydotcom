@@ -11,26 +11,23 @@ $file_test = ABSPATH . 'test_local_attack.txt';
 
 
 //
-if ( file_exists( $file_test ) ) {
-//	unlink($file_test) or die('Không xóa được file test cũ, vui lòng xóa đi rồi thử lại');
+if (is_file($file_test)) {
+	//	unlink($file_test) or die('Không xóa được file test cũ, vui lòng xóa đi rồi thử lại');
 	_eb_remove_file($file_test);
 }
 
 
 //
-_eb_create_file( $file_test, date_time, '', 0 );
+_eb_create_file($file_test, date_time, '', 0);
 
 
 
 // kiểm tra xem file có tạo thành công không
 // thành công -> host này có thể hack bằng local attack được
-if ( file_exists( $file_test ) ) {
+if (is_file($file_test)) {
 	echo '<h2 style="color:#f00;">Host không an toàn! có nguy cơ bị local attack</h2>';
 }
 // không nghĩa là khó hack hơn
 else {
 	echo '<h2 style="color:#00f;">Host an toàn! đã hạn chế local attack</h2>';
 }
-
-
-

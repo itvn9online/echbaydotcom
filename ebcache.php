@@ -33,7 +33,7 @@ if (isset($_COOKIE['wgr_ebsuppercache_timeout']) || $_SERVER['REQUEST_METHOD'] =
     //echo 'wgr_ebsuppercache_timeout';
 }
 //
-else if (file_exists($ebsuppercache_filename)) {
+else if (is_file($ebsuppercache_filename)) {
     //die( $ebsuppercache_filename );
 
     //

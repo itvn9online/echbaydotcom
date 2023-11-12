@@ -47,7 +47,7 @@ $file_name = explode('?', $file_name);
 $file_name = ltrim($file_name[0], '-');
 $save_to .= $file_name;
 //echo $save_to . '<br>' . "\n";
-if (!file_exists($save_to)) {
+if (!is_file($save_to)) {
 
     $post_ID = 0;
     if (isset($_GET['post_ID'])) {

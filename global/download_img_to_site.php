@@ -37,7 +37,7 @@ function EBE_sync_product_avatar($f, $parent_post_id = 0)
 	//$filename = str_replace('/ebarchive/', '/wp-content/uploads/', $f);
 	$filename = str_replace(ABSPATH . 'ebarchive/', $wp_upload_dir['basedir'] . '/', $f);
 	//echo $filename . PHP_EOL;
-	if (file_exists($filename)) {
+	if (is_file($filename)) {
 		return false;
 	}
 	//echo $f . PHP_EOL;
@@ -162,7 +162,7 @@ $file_name = explode('?', $file_name);
 $file_name = ltrim($file_name[0], '-');
 $save_to .= $file_name;
 //echo $save_to . '<br>' . "\n";
-if (!file_exists($save_to)) {
+if (!is_file($save_to)) {
 	$post_ID = isset($_GET['post_ID']) ? (int) $_GET['post_ID'] : 0;
 
 	//

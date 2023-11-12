@@ -3,7 +3,7 @@
 
 
 //
-if ( ! isset( $_GET['id'] ) ) {
+if (!isset($_GET['id'])) {
 	die('Booking ID not found!');
 }
 $hd_id = (int)$_GET['id'];
@@ -17,8 +17,9 @@ $file_for_sendmail = EB_THEME_CACHE . 'booking_mail/' . $hd_id . '.txt';
 
 
 // nếu file không tồn tại -> mail đã được gửi -> bỏ qua
-if ( ! file_exists( $file_for_sendmail ) ) {
-	EBE_show_log( 'Mail has been send or mail content not create!' ); exit();
+if (!is_file($file_for_sendmail)) {
+	EBE_show_log('Mail has been send or mail content not create!');
+	exit();
 }
 
 
@@ -37,20 +38,15 @@ $bcc_email = WGR_get_dom_xml($mail_content, 'bcc_email');
 
 
 // Nếu gửi mail thành công
-if ( _eb_send_email ( $mail_to_admin, $mail_title, $message, '', $bcc_email ) == true ) {
+if (_eb_send_email($mail_to_admin, $mail_title, $message, '', $bcc_email) == true) {
 	// Xóa file
-	_eb_remove_file( $file_for_sendmail );
-	
+	_eb_remove_file($file_for_sendmail);
+
 	//
 	$m_log = 'Send mail OK!';
-}
-else {
+} else {
 	$m_log = 'ERROR! mail not send';
 }
 
 //
-_eb_log_admin_order( $m_log . ' (To: ' . $mail_to_admin . '. Bcc: ' . $bcc_email . ')', $hd_id );
-
-
-
-
+_eb_log_admin_order($m_log . ' (To: ' . $mail_to_admin . '. Bcc: ' . $bcc_email . ')', $hd_id);

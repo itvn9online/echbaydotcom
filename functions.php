@@ -587,7 +587,7 @@ function EBE_str_template($f, $arr = array(), $dir = EB_THEME_HTML)
 {
     $f = $dir . $f;
 
-    if (file_exists($f)) {
+    if (is_file($f)) {
         $f = file_get_contents($f, 1);
 
         //
@@ -681,7 +681,7 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
     $f = $dir . $page_name . '.html';
     //	echo $f . '<br>';
     // tìm trong thư mục theme riêng (ưu tiên)
-    if ($tmp_child_theme != '' && file_exists($tmp_child_theme)) {
+    if ($tmp_child_theme != '' && is_file($tmp_child_theme)) {
         $f = $tmp_child_theme;
 
         $arr_for_show_html_file_load[] = '<!-- child theme HTML: ' . $page_name . ' -->';
@@ -691,13 +691,13 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
         // dùng chung thì gán CSS dùng chung luôn (nếu có)
         $css = EB_CHILD_THEME_URL . 'css/' . $page_name . '.css';
         //		echo $css;
-        //		if ( file_exists( $css ) ) {
+        //		if ( is_file( $css ) ) {
         //			$arr_for_add_theme_css[ $css ] = 1;
         $arr_for_add_css[$css] = 1;
 
         //			$arr_for_show_html_file_load[] = '<!-- child theme CSS: ' . $page_name . ' -->';
         //		}
-    } else if ($tmp_child_ui_theme != '' && file_exists($tmp_child_ui_theme)) {
+    } else if ($tmp_child_ui_theme != '' && is_file($tmp_child_ui_theme)) {
         $f = $tmp_child_ui_theme;
 
         $arr_for_show_html_file_load[] = '<!-- child theme ui HTML: ' . $page_name . ' -->';
@@ -707,13 +707,13 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
         // dùng chung thì gán CSS dùng chung luôn (nếu có)
         $css = EB_CHILD_THEME_URL . 'ui/' . $page_name . '.css';
         //		echo $css;
-        //		if ( file_exists( $css ) ) {
+        //		if ( is_file( $css ) ) {
         //			$arr_for_add_theme_css[ $css ] = 1;
         $arr_for_add_css[$css] = 1;
 
         //			$arr_for_show_html_file_load[] = '<!-- child theme CSS: ' . $page_name . ' -->';
         //		}
-    } else if (file_exists($f)) {
+    } else if (is_file($f)) {
         $arr_for_show_html_file_load[] = '<!-- theme HTML: ' . $page_name . ' -->';
 
         $html = file_get_contents($f, 1);
@@ -721,7 +721,7 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
         // dùng chung thì gán CSS dùng chung luôn (nếu có)
         $css = EB_THEME_THEME . 'css/' . $page_name . '.css';
         //		echo $css;
-        //		if ( file_exists( $css ) ) {
+        //		if ( is_file( $css ) ) {
         //			$arr_for_add_theme_css[ $css ] = 1;
         $arr_for_add_css[$css] = 1;
 
@@ -733,7 +733,7 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
         $f = EB_THEME_PLUGIN_INDEX . 'html/' . $page_name . '.html';
 
         // nếu không -> báo lỗi
-        if (!file_exists($f)) {
+        if (!is_file($f)) {
             return 'File HTML "' . $page_name . '" not found.';
         }
 
@@ -751,7 +751,7 @@ function EBE_get_page_template($page_name = '', $dir = EB_THEME_HTML, $f_css = '
          */
         // dùng chung thì gán CSS dùng chung luôn (nếu có)
         $css = EB_THEME_PLUGIN_INDEX . 'css/default/' . $page_name . '.css';
-        //			if ( file_exists( $css ) ) {
+        //			if ( is_file( $css ) ) {
         $arr_for_add_css[$css] = 1;
 
         //				$arr_for_show_html_file_load[] = '<!-- global CSS: ' . $page_name . ' -->';
@@ -782,7 +782,7 @@ function EBE_get_custom_template($n, $plugin_dir)
     }
 
     // child theme
-    if ($tmp_child_theme != '' && file_exists($tmp_child_theme)) {
+    if ($tmp_child_theme != '' && is_file($tmp_child_theme)) {
         $h = file_get_contents($tmp_child_theme, 1);
 
         $arr_for_add_css[EB_CHILD_THEME_URL . 'css/' . $n . '.css'] = 1;
@@ -791,7 +791,7 @@ function EBE_get_custom_template($n, $plugin_dir)
         $arr_for_show_html_file_load[] = '<!-- chile theme HTML: ' . $n . ' -->';
     }
     // kiểm tra trong theme
-    else if (file_exists($f)) {
+    else if (is_file($f)) {
         $h = file_get_contents($f, 1);
         //		echo $f . '<br>' . "\n";
 
@@ -831,13 +831,13 @@ function WGR_get_html_template_lang($f, $file_name = '', $default_dir = '')
         }
 
         //
-        if (using_child_wgr_theme == 1 && file_exists(EB_CHILD_THEME_URL . 'html/' . $file_name . '.html')) {
+        if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'html/' . $file_name . '.html')) {
             $c = file_get_contents(EB_CHILD_THEME_URL . 'html/' . $file_name . '.html');
 
             $arr_for_add_css[EB_CHILD_THEME_URL . 'css/' . $file_name . '.css'] = 1;
         }
         /*
-          else if ( file_exists( EB_THEME_URL . 'html/' . $file_name . '.html' ) ) {
+          else if ( is_file( EB_THEME_URL . 'html/' . $file_name . '.html' ) ) {
           $c = file_get_contents( EB_THEME_URL . 'html/' . $file_name . '.html' );
           }
          */ else {
@@ -929,7 +929,7 @@ function EBE_add_js_compiler_in_cache(
         //		$ver = web_version;
 
         foreach ($arr_eb_add_full_js as $v) {
-            if (file_exists($v)) {
+            if (is_file($v)) {
                 $ver = filemtime($v);
 
                 //				echo ABSPATH . "\n";
@@ -946,7 +946,7 @@ function EBE_add_js_compiler_in_cache(
     // chức năng load nội dung file trực tiếp giống wordpress
     $file_name = array();
     foreach ($arr_eb_add_full_js as $v) {
-        if (file_exists($v)) {
+        if (is_file($v)) {
             //			echo $v . "\n";
 
             // nếu trong thư mục mặc định -> lấy tên file là đủ
@@ -976,7 +976,7 @@ function EBE_add_js_compiler_in_cache(
     $file_name_cache = '';
     $full_file_name = '';
     foreach ($arr_eb_add_full_js as $v) {
-        if (file_exists($v)) {
+        if (is_file($v)) {
             //			$file_name_cache .= basename( $v ) . filemtime( $v );
             // thời gian cập nhật file
             //			$file_time = filemtime ( $v );
@@ -1013,21 +1013,21 @@ function EBE_add_js_compiler_in_cache(
     //	$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
     $file_in_cache = EB_THEME_CACHE . 'noclean/' . $file_name_cache;
     // chỉ cập nhật file khi có sự thay đổi
-    //	if ( file_exists( $file_in_cache ) ) {
+    //	if ( is_file( $file_in_cache ) ) {
     // cập nhật file định kỳ
-    if (!file_exists($file_in_cache) || date_time - filemtime($file_in_cache) + rand(0, 30) > 500) {
+    if (!is_file($file_in_cache) || date_time - filemtime($file_in_cache) + rand(0, 30) > 500) {
 
         //
         $new_content = '';
         foreach ($arr_eb_add_full_js as $v) {
             // xem file có tồn tại không
-            if (file_exists($v)) {
+            if (is_file($v)) {
                 //			echo $v . "\n";
                 // xem trong cache có chưa
                 //			$file_name_cache = basename( $v ) . filemtime( $v ) . '.js';
                 //			$file_in_cache = ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/' . $file_name_cache;
                 // nếu chưa có -> tạo cache
-                //			if ( ! file_exists( $file_in_cache ) ) {
+                //			if ( ! is_file( $file_in_cache ) ) {
                 //				echo $file_in_cache . "\n";
                 //
                 $file_content = file_get_contents($v, 1);
@@ -1072,7 +1072,7 @@ function EBE_add_js_compiler_in_cache(
         _eb_create_file($file_in_cache, create_cache_infor_by($full_file_name) . $new_content);
 
         // chưa có file phụ -> tạo luôn file phụ
-        if (!file_exists(EB_THEME_CACHE . 'noclean/' . $file_show)) {
+        if (!is_file(EB_THEME_CACHE . 'noclean/' . $file_show)) {
             if (copy($file_in_cache, EB_THEME_CACHE . 'noclean/' . $file_show)) {
                 chmod(EB_THEME_CACHE . 'noclean/' . $file_show, 0777);
             }

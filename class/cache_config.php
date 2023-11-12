@@ -45,7 +45,7 @@ echo EB_THEME_CACHE . '<br>' . "\n";
 
 
 // chỉ tạo khi không có file cache config, hoặc người dùng đang đăng nhập thì lấy config theo thời gian thực
-if (mtv_id > 0 || !file_exists($__eb_txt_only_conf)) {
+if (mtv_id > 0 || !is_file($__eb_txt_only_conf)) {
 
     /*
      * Tự tạo các thư mục phục vụ cho cache nếu chưa có
@@ -80,7 +80,7 @@ if (mtv_id > 0 || !file_exists($__eb_txt_only_conf)) {
 
 
     // tạo file này càng sớm càng tốt -> để hạn chế nhiều người cùng tạo file 1 lúc
-    if (!file_exists($__eb_txt_only_conf)) {
+    if (!is_file($__eb_txt_only_conf)) {
         _eb_create_file($__eb_txt_only_conf, __FILE__);
     }
 
@@ -352,7 +352,7 @@ if (mtv_id > 0 || !file_exists($__eb_txt_only_conf)) {
 
 
     //
-    if (!file_exists($__eb_cache_only_conf)) {
+    if (!is_file($__eb_cache_only_conf)) {
         //		echo '<!-- ' . $__eb_cache_only_conf . ' (!!!!!) -->' . "\n";
         _eb_create_file($__eb_cache_only_conf, '<?php ' . str_replace('\\\"', '\"', $__eb_cache_content));
 

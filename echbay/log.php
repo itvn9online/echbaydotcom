@@ -22,7 +22,7 @@ $include_tab = ECHBAY_PRI_CODE . $eb_get_tab . '.php';
 
 
 // nếu không có file -> module lỗi -> hủy bỏ
-if ( ! file_exists( $include_tab ) ) {
+if (!is_file($include_tab)) {
 	die('Module <strong>' . $eb_get_tab . '</strong> not found');
 }
 
@@ -46,55 +46,48 @@ include_once $include_tab;
 
 ?>
 <script type="text/javascript">
+	//
+	_time_date();
 
 
-
-//
-_time_date();
-
-
-//
-$('.content-to-short').each(function() {
-	var len = 110,
-		a = $(this).html() || '',
-		str_len = g_func.strip_tags(a),
-		str = '';
-	if (a != '' && str_len.length > len + 10) {
-		$(this).attr({
-			title: str_len
-		});
-		a = a.split(' ');
-		for (var i = 0; i < a.length; i++) {
-			str += a[i] + ' ';
-			if (str.length > len) {
-				break;
+	//
+	$('.content-to-short').each(function() {
+		var len = 110,
+			a = $(this).html() || '',
+			str_len = g_func.strip_tags(a),
+			str = '';
+		if (a != '' && str_len.length > len + 10) {
+			$(this).attr({
+				title: str_len
+			});
+			a = a.split(' ');
+			for (var i = 0; i < a.length; i++) {
+				str += a[i] + ' ';
+				if (str.length > len) {
+					break;
+				}
 			}
+			if (str.length > len + 10) {
+				str = str.substr(0, len);
+			}
+			str += '...';
+			$(this).html(str);
 		}
-		if (str.length > len + 10) {
-			str = str.substr(0, len);
+	});
+
+
+
+	// nạp lại trang sau 1 khoảng thời gian
+	if (typeof eb_reload_this_page != 'number') {
+		var eb_reload_this_page = 1;
+	}
+	setTimeout(function() {
+		eb_reload_this_page++;
+		console.log(eb_reload_this_page);
+		if (eb_reload_this_page > 10) {
+			window.location = window.location.href;
+		} else {
+			ajaxl('log&tab=<?php echo $eb_ajax_get_tab; ?>', 'rAdminME');
 		}
-		str += '...';
-		$(this).html(str);
-	}
-});
-
-
-
-// nạp lại trang sau 1 khoảng thời gian
-if ( typeof eb_reload_this_page != 'number' ) {
-	var eb_reload_this_page = 1;
-}
-setTimeout(function () {
-	eb_reload_this_page ++;
-	console.log(eb_reload_this_page);
-	if ( eb_reload_this_page > 10 ) {
-		window.location = window.location.href;
-	}
-	else {
-		ajaxl('log&tab=<?php echo $eb_ajax_get_tab; ?>', 'rAdminME');
-	}
-}, 61 * 1000);
-
-
-
-</script> 
+	}, 61 * 1000);
+</script>

@@ -22,20 +22,20 @@ include_once EB_THEME_PLUGIN_INDEX . 'common_category_list.php';
 // nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
 $echo_dns_prefetch = array();
 
-if ( $__cf_row[ 'cf_dns_prefetch' ] != '' ) {
-    $arr_dns_prefetch = explode( "\n", trim( $__cf_row[ 'cf_dns_prefetch' ] ) );
+if ($__cf_row['cf_dns_prefetch'] != '') {
+    $arr_dns_prefetch = explode("\n", trim($__cf_row['cf_dns_prefetch']));
     //	if ( mtv_id == 1 ) print_r( $arr_dns_prefetch );
 
     // trùng thì hủy bỏ truy cập này luôn
     //	if ( $__cf_row['cf_dns_prefetch'] == $_SERVER['HTTP_HOST'] ) {
-    foreach ( $arr_dns_prefetch as $v ) {
-        if ( trim( $v ) == $_SERVER[ 'HTTP_HOST' ] ) {
-            EBE_set_header( 403 );
+    foreach ($arr_dns_prefetch as $v) {
+        if (trim($v) == $_SERVER['HTTP_HOST']) {
+            EBE_set_header(403);
             //			$pcol = ( isset($_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
             //echo $pcol;
             //			header( $pcol . ' 403 Forbidden' );
 
-            echo file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1 );
+            echo file_get_contents(EB_THEME_PLUGIN_INDEX . 'html/dns_prefetch.html', 1);
 
             exit();
         }
@@ -45,10 +45,10 @@ if ( $__cf_row[ 'cf_dns_prefetch' ] != '' ) {
     }
 
     //
-    $__cf_row[ 'cf_dns_prefetch' ] = '//' . $arr_dns_prefetch[ 0 ] . '/';
+    $__cf_row['cf_dns_prefetch'] = '//' . $arr_dns_prefetch[0] . '/';
 } else {
     //	$__cf_row['cf_dns_prefetch'] = strstr( web_link, '//' );
-    $__cf_row[ 'cf_dns_prefetch' ] = '//' . $_SERVER[ 'HTTP_HOST' ] . '/';
+    $__cf_row['cf_dns_prefetch'] = '//' . $_SERVER['HTTP_HOST'] . '/';
 }
 //echo $__cf_row['cf_dns_prefetch'];
 
@@ -85,7 +85,7 @@ $html_search_nav_mobile = '';
 //
 //$str_fpr_license_echbay = '';
 //if ( $__cf_row['cf_on_off_echbay_logo'] == 1 ) {
-$str_fpr_license_echbay = '<span class="powered-by-echbay">' . EBE_get_lang( 'poweredby' ) . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting[ 'author' ] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting[ 'site_upper' ] . '</a></span>';
+$str_fpr_license_echbay = '<span class="powered-by-echbay">' . EBE_get_lang('poweredby') . ' <a href="#" title="Cung cấp bởi ' . $arr_private_info_setting['author'] . ' - Thiết kế web chuyên nghiệp" target="_blank" rel="nofollow">' . $arr_private_info_setting['site_upper'] . '</a></span>';
 //}
 
 
@@ -126,7 +126,7 @@ $arr_for_add_link_css = array(
 
 
 // menu dành cho bản mobile
-$str_nav_mobile_top = _eb_echbay_menu( 'nav-for-mobile' );
+$str_nav_mobile_top = _eb_echbay_menu('nav-for-mobile');
 
 
 /*
@@ -137,7 +137,7 @@ $str_nav_mobile_top = _eb_echbay_menu( 'nav-for-mobile' );
 // Xem các ID sidebar được hỗ trợ trong phần plugin
 $id_for_get_sidebar = id_default_for_get_sidebar;
 
-if ( $act == '' ) {
+if ($act == '') {
     //if ( $act == '' || is_home() ) {
     // gán lại act về trống
     //	$act = '';
@@ -149,7 +149,7 @@ if ( $act == '' ) {
 }
 //echo $inc_file . '<br>' . "\n";
 $inc_child_file = '';
-if ( using_child_wgr_theme == 1 ) {
+if (using_child_wgr_theme == 1) {
     $inc_child_file = EB_CHILD_THEME_URL . 'php/' . $inc_file . '.php';
     //	echo $inc_child_file . '<br>' . "\n";
 }
@@ -161,7 +161,7 @@ $inc_file = EB_THEME_PHP . $inc_file . '.php';
 
 
 // sử dụng child theme (ưu tiên)
-if ( $inc_child_file != '' && file_exists( $inc_child_file ) ) {
+if ($inc_child_file != '' && is_file($inc_child_file)) {
     //	include $inc_child_file;
     $inc_file = $inc_child_file;
 }
@@ -173,7 +173,7 @@ else {
 */
 
 // nếu có file -> include file vào
-if ( file_exists( $inc_file ) ) {
+if (is_file($inc_file)) {
     //	echo '<!-- ' . $inc_file . ' -->' . "\n";
 
 
@@ -182,23 +182,25 @@ if ( file_exists( $inc_file ) ) {
 
     //
     include $inc_file;
-
 }
 // hoặc nếu đây là một page template -> code sẽ nằm trong file template kia
-else if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'templates/' . $act . '.php' ) ) {
+else if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'templates/' . $act . '.php')) {
     // Nạp lại header cho page ở mục này để làm SEO
     include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
 }
 // page template cho theme
-else if ( file_exists( EB_THEME_URL . 'templates/' . $act . '.php' ) ) {
+else if (is_file(EB_THEME_URL . 'templates/' . $act . '.php')) {
     include EB_THEME_PLUGIN_INDEX . 'global/page_templates_header.php';
-} else if ( $act == 'favorite' ||
+} else if (
+    $act == 'favorite' ||
     $act == 'golden_time' ||
     $act == 'products_hot' ||
     $act == 'products_new' ||
     $act == 'products_selling' ||
     $act == 'products_sales_off' ||
-    $act == 'products_all' ) {}
+    $act == 'products_all'
+) {
+}
 // nếu không -> hiển thị trang 404
 else {
     echo '<!-- ' . $inc_file . ' -->' . "\n";
@@ -217,15 +219,15 @@ include EB_THEME_PLUGIN_INDEX . 'BreadcrumbList.php';
 
 
 // các thể meta khác nếu có
-if ( $url_og_url != '' ) {
+if ($url_og_url != '') {
     $arr_dymanic_meta[] = '<meta itemprop="url" content="' . $url_og_url . '" />';
     $arr_dymanic_meta[] = '<meta property="og:url" content="' . $url_og_url . '" />';
 }
 
-if ( $image_og_image == '' && $__cf_row[ 'cf_og_image' ] != '' ) {
-    $image_og_image = $__cf_row[ 'cf_og_image' ];
+if ($image_og_image == '' && $__cf_row['cf_og_image'] != '') {
+    $image_og_image = $__cf_row['cf_og_image'];
 }
-if ( $image_og_image != '' ) {
+if ($image_og_image != '') {
     $arr_dymanic_meta[] = '<meta itemprop="image" content="' . $image_og_image . '" />';
     $arr_dymanic_meta[] = '<meta property="og:image" content="' . $image_og_image . '" />';
 }
@@ -236,12 +238,12 @@ foreach ( $arr_dymanic_meta as $v ) {
 	$dynamic_meta .= $v . "\n";
 }
 */
-$dynamic_meta .= implode( "\n", $arr_dymanic_meta );
+$dynamic_meta .= implode("\n", $arr_dymanic_meta);
 
 
 //
-if ( $__cf_row[ 'cf_title' ] == '' ) {
-    $__cf_row[ 'cf_title' ] = web_name;
+if ($__cf_row['cf_title'] == '') {
+    $__cf_row['cf_title'] = web_name;
     /*
 } else {
 	$__cf_row ['cf_title'] .= ' | ' . web_name;
@@ -260,13 +262,13 @@ if ( $str_big_banner != '' ) {
 */
 
 // nếu chế độ global banner được kích hoạt -> lấy banner theo file tổng
-if ( $__cf_row[ 'cf_global_big_banner' ] == 1 ) {
-    $str_big_banner = EBE_get_big_banner( EBE_get_lang( 'bigbanner_num' ) );
+if ($__cf_row['cf_global_big_banner'] == 1) {
+    $str_big_banner = EBE_get_big_banner(EBE_get_lang('bigbanner_num'));
 }
 
 
 //
-$group_go_to = implode( ' ', $group_go_to );
+$group_go_to = implode(' ', $group_go_to);
 
 
 //
@@ -277,14 +279,14 @@ $group_go_to = implode( ' ', $group_go_to );
 $arr_includes_top_file = array();
 
 // Nạp CSS mặc định cho top và footer
-if ( $__cf_row[ 'cf_using_top_default' ] == 1 ) {
+if ($__cf_row['cf_using_top_default'] == 1) {
     //	$arr_for_add_css[ EB_THEME_PLUGIN_INDEX . 'css/top_default.css' ] = 1;
 
     // Kiểm tra và load các file top tương ứng
-    $arr_includes_top_file = WGR_load_module_name_css( 'top', 0 );
+    $arr_includes_top_file = WGR_load_module_name_css('top', 0);
 
     //
-    if ( count( $arr_includes_top_file ) == 0 ) {
+    if (count($arr_includes_top_file) == 0) {
         include EB_THEME_PLUGIN_INDEX . 'top_default.php';
     }
     //	print_r( $arr_includes_top_file );
@@ -294,12 +296,12 @@ if ( $__cf_row[ 'cf_using_top_default' ] == 1 ) {
 include EB_THEME_PLUGIN_INDEX . 'common_footer.php';
 
 // xong sẽ nạp CSS tổng của theme (trang nào cũng có mặt)
-if ( $__cf_row[ 'cf_current_theme_using' ] != '' ) {
+if ($__cf_row['cf_current_theme_using'] != '') {
     //	$arr_for_add_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
     //	$arr_for_add_theme_css[ EBE_get_css_for_config_design ( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
-    $arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin( $__cf_row[ 'cf_current_theme_using' ] ) ] = 1;
+    $arr_for_add_css[WGR_check_add_add_css_themes_or_plugin($__cf_row['cf_current_theme_using'])] = 1;
     // d.css
-    $arr_for_add_css[ WGR_check_add_add_css_themes_or_plugin( 'd' ) ] = 1;
+    $arr_for_add_css[WGR_check_add_add_css_themes_or_plugin('d')] = 1;
 }
 //print_r( $arr_for_add_css );
 

@@ -7,22 +7,22 @@ $dir_optimize_jquery_js = EB_THEME_OUTSOURCE . 'javascript/';
 // các file compiler trước khi xuất ra
 //EBE_add_js_compiler_in_cache( array(
 $file_optimize_jquery_js = array(
-//	$dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.js',
-	
+	//	$dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.js',
+
 	// Bản hỗ trợ chuyển đổi từ jQuery thấp lên jQuery cao hơn
-//	$dir_optimize_jquery_js . 'jquery/migrate-1.4.1.min.js',
-//	$dir_optimize_jquery_js . 'jquery/migrate-3.0.0.min.js',
-	
+	//	$dir_optimize_jquery_js . 'jquery/migrate-1.4.1.min.js',
+	//	$dir_optimize_jquery_js . 'jquery/migrate-3.0.0.min.js',
+
 	// jquery cho bản mobile -> đang gây lỗi cho bản PC nên thôi
-//	$dir_optimize_jquery_js . 'jquery.mobile-1.4.5.min.js',
-//	ABSPATH . 'wp-includes/js/jquery/jquery.ui.touch-punch.js',
-	
+	//	$dir_optimize_jquery_js . 'jquery.mobile-1.4.5.min.js',
+	//	ABSPATH . 'wp-includes/js/jquery/jquery.ui.touch-punch.js',
+
 	// jQuery plugin
-//	$dir_optimize_jquery_js . 'jcarousellite.js',
+	//	$dir_optimize_jquery_js . 'jcarousellite.js',
 	$dir_optimize_jquery_js . 'lazyload.js',
-//	$dir_optimize_jquery_js . 'swiper.min.js',
+	//	$dir_optimize_jquery_js . 'swiper.min.js',
 	$dir_optimize_jquery_js . 'jquery.touchSwipe.min.js'
-//) );
+	//) );
 );
 
 // tổng hợp các file jQuery cần thiết rồi cho hết vào 1 file để optimize
@@ -39,16 +39,16 @@ $str_optimize_jquery_js = EB_THEME_OUTSOURCE . 'javascript/optimize/' . $str_opt
 //echo $str_optimize_jquery_js . '<br>' . "\n";
 
 // tạo file trên localhost hoặc nếu chưa có
-if ( $localhost == 1 && ! file_exists( $str_optimize_jquery_js ) ) {
-//if ( ! file_exists( $str_optimize_jquery_js ) ) {
-//	echo $localhost . '<br>' . "\n";
-	
+if ($localhost == 1 && !is_file($str_optimize_jquery_js)) {
+	//if ( ! is_file( $str_optimize_jquery_js ) ) {
+	//	echo $localhost . '<br>' . "\n";
+
 	//
 	$content_optimize_jquery_js = '';
-	foreach ( $file_optimize_jquery_js as $v ) {
-		$content_optimize_jquery_js .= file_get_contents( $v, 1 );
+	foreach ($file_optimize_jquery_js as $v) {
+		$content_optimize_jquery_js .= file_get_contents($v, 1);
 	}
-	_eb_create_file( $str_optimize_jquery_js, $content_optimize_jquery_js );
+	_eb_create_file($str_optimize_jquery_js, $content_optimize_jquery_js);
 }
 
 //
@@ -58,7 +58,7 @@ echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
 echo $str_optimize_jquery_js . '<br>' . "\n";
 */
 /* */
-echo '<script type="text/javascript" src="' . strstr( $str_optimize_jquery_js, EB_DIR_CONTENT ) . '" defer></script>' . "\n";
+echo '<script type="text/javascript" src="' . strstr($str_optimize_jquery_js, EB_DIR_CONTENT) . '" defer></script>' . "\n";
 /* */
 
 // phiên bản include thông qua file phụ
@@ -68,9 +68,9 @@ echo '<script>var jquery_mod_by_echbay_path="' . strstr( $str_optimize_jquery_js
 
 // tạo file jQuery map nếu chưa có
 $file_jquery_map = EB_THEME_CACHE . $file_jquery_js . '.map';
-if ( ! file_exists( $file_jquery_map ) ) {
-	copy( $dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.map', $file_jquery_map );
-	chmod( $file_jquery_map, 0777 );
+if (!is_file($file_jquery_map)) {
+	copy($dir_optimize_jquery_js . 'jquery/' . $file_jquery_js . '.map', $file_jquery_map);
+	chmod($file_jquery_map, 0777);
 }
 
 
@@ -87,8 +87,3 @@ function WGR_change_src_for_jquery () {
 }
 add_filter('wp_enqueue_scripts', 'WGR_change_src_for_jquery', 99);
 /* */
-
-
-
-
-

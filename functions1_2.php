@@ -33,8 +33,7 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
     // lưu nội dung file nếu có
     if ($c != '') {
         _eb_create_file($f, time() . '¦' . $c);
-    }
-    else if (file_exists($f)) {
+    } else if (is_file($f)) {
         $data = file_get_contents($f, 1);
         $content = explode('¦', $data, 2);
         if (count($content) != 2 || !is_numeric($content[0])) {
@@ -55,7 +54,7 @@ function _eb_remove_static_html($f, $file_type = '.txt')
 {
     $f = EB_THEME_CACHE . $f . $file_type;
 
-    if (file_exists($f)) {
+    if (is_file($f)) {
         unlink($f);
     }
 }
@@ -67,8 +66,8 @@ function _eb_check_email_type($e_mail = '')
     }
     return 1;
 
-//
-/*
+    //
+    /*
  $r = 0;
  if ($e_mail != '') {
  $arr = explode ( '@', $e_mail );
@@ -194,16 +193,14 @@ function _eb_set_config($key, $val, $etro = 1)
         if ($etro == 1) {
             if (strlen($val) < 50) {
                 echo 'Add: ' . $key . ' (' . $val . ')<br>' . "\n";
-            }
-            else {
+            } else {
                 echo 'Add: ' . $key . '<br>' . "\n";
             }
         }
-    }
-    else if ($etro == 1) {
+    } else if ($etro == 1) {
         echo 'Value: ' . $key . ' is NULL<br>' . "\n";
     }
-/*
+    /*
  else {
  update_option( $key, $val, 'no' );
  //		update_option( $key, $val );
@@ -250,10 +247,10 @@ function _eb_get_config_v3($real_time = false)
                 $__cf_row[$k] = WGR_stripslashes($v);
             }
         }
-    //		print_r( $__cf_row );
+        //		print_r( $__cf_row );
     }
-// nếu chưa có -> load theo v2 và đồng bộ cho v3 luôn
-/*
+    // nếu chưa có -> load theo v2 và đồng bộ cho v3 luôn
+    /*
  else {
  _eb_get_config_v2();
  }
@@ -337,27 +334,26 @@ function _eb_get_config($real_time = false)
              else if ( $a->option_value == 'off' ) {
              $__cf_row[ $a->option_name ] = 0;
              }
-             */
-            else {
+             */ else {
                 $a->option_value = WGR_stripslashes($a->option_value);
-            //				$__cf_row[ $a->option_name ] = $a->option_value;
+                //				$__cf_row[ $a->option_name ] = $a->option_value;
             }
 
             //
             $__cf_row[$a->option_name] = $a->option_value;
 
-        //
-        //			$arr_for_update_eb_config[ $a->option_name ] = addslashes( $__cf_row[ $a->option_name ] );
+            //
+            //			$arr_for_update_eb_config[ $a->option_name ] = addslashes( $__cf_row[ $a->option_name ] );
         }
-    //		$__cf_row[ $a->option_name ] = stripslashes( $a->option_value );
+        //		$__cf_row[ $a->option_name ] = stripslashes( $a->option_value );
     }
-//	print_r( $__cf_row );
-// xóa config cũ đi -> tránh cache lưu lại
-//	delete_option( eb_conf_obj_option );
-// lưu cấu hình mới dưới dạng object
-//	add_option( eb_conf_obj_option, $arr_for_update_eb_config, '', 'no' );
-// mọi option đều phải dựa vào mảng cấu hình mặc định -> lệch phát bỏ qua luôn
-/*
+    //	print_r( $__cf_row );
+    // xóa config cũ đi -> tránh cache lưu lại
+    //	delete_option( eb_conf_obj_option );
+    // lưu cấu hình mới dưới dạng object
+    //	add_option( eb_conf_obj_option, $arr_for_update_eb_config, '', 'no' );
+    // mọi option đều phải dựa vào mảng cấu hình mặc định -> lệch phát bỏ qua luôn
+    /*
  foreach ( $__cf_row_default as $k => $v ) {
  $a = get_option( _eb_option_prefix . $k );
  //
@@ -393,7 +389,7 @@ function _eb_get_config_v1($real_time = false)
         }
         $__cf_row[$a->meta_key] = stripslashes($a->meta_value);
     }
-/*
+    /*
  }
  else {
  foreach ( $row as $k => $a ) {
@@ -403,7 +399,7 @@ function _eb_get_config_v1($real_time = false)
  }
  }
  */
-//	print_r( $__cf_row );
+    //	print_r( $__cf_row );
 }
 
 // Log mặc định
@@ -771,11 +767,9 @@ function _eb_number_only($str = '', $re = '/[^0-9]+/')
     //	echo $a . ' a number<br>';
     if ($a == '') {
         $a = 0;
-    }
-    else if (substr($str, 0, 1) == '-') {
+    } else if (substr($str, 0, 1) == '-') {
         $a = 0 - $a;
-    }
-    else {
+    } else {
         $a *= 1;
     }
     return $a;
@@ -797,8 +791,7 @@ function _eb_float_only($str = '', $lam_tron = 0)
         $a = explode('.', $a);
         if (isset($a[1])) {
             $a = (int)$a[0] . '.' . $a[1];
-        }
-        else {
+        } else {
             $a = (int)$a[0];
         }
     }
@@ -895,7 +888,7 @@ function _eb_non_mark_seo($str)
 
     //
     return $str;
-//	return strtolower($str);
+    //	return strtolower($str);
 }
 
 function _eb_non_mark($str)

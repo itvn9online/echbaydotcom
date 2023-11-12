@@ -17,7 +17,7 @@ function EB_flatsome_load_header_static()
     $load_font_awesome = '';
     //echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
     // chỉ nạp font-awesome khi có file
-    if (file_exists(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css')) {
+    if (is_file(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css')) {
         $load_font_awesome .= file_get_contents(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/brands.min.css', 1);
         $load_font_awesome .= file_get_contents(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/solid.min.css', 1);
         $load_font_awesome = str_replace('../webfonts/', EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome);
@@ -27,7 +27,7 @@ function EB_flatsome_load_header_static()
         echo '<style>' . $load_font_awesome . '</style>';
     }
     // nếu không có file css mà có file zip -> gọi hàm giải nén
-    else if (file_exists(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip')) {
+    else if (is_file(EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web.zip')) {
         //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
         WGR_unzip1_vendor_code(false);
         /*
@@ -45,17 +45,17 @@ function EB_flatsome_load_header_static()
         /*
          * for theme
          */
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/fontawesome.min.css',
-    EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/v4-shims.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/fontawesome.min.css',
+        EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/css/v4-shims.min.css',
         /*
          * for plugin
          */
-    EB_THEME_PLUGIN_INDEX . 'css/d.css',
-    EB_THEME_PLUGIN_INDEX . 'css/d2-flatsome.css',
-    EB_THEME_PLUGIN_INDEX . 'css/d2.css',
-    EB_THEME_PLUGIN_INDEX . 'css/m_flatsome.css',
+        EB_THEME_PLUGIN_INDEX . 'css/d.css',
+        EB_THEME_PLUGIN_INDEX . 'css/d2-flatsome.css',
+        EB_THEME_PLUGIN_INDEX . 'css/d2.css',
+        EB_THEME_PLUGIN_INDEX . 'css/m_flatsome.css',
         //EB_THEME_PLUGIN_INDEX . 'css/g.css',
-    EB_THEME_PLUGIN_INDEX . 'css/thread_list.css',
+        EB_THEME_PLUGIN_INDEX . 'css/thread_list.css',
         //EB_THEME_PLUGIN_INDEX . 'css/default/home_hot.css',
         //EB_THEME_PLUGIN_INDEX . 'css/default/home_node.css',
 
@@ -164,22 +164,22 @@ function EB_flatsome_load_footer_static()
         /*
          * for plugin
          */
-    EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/slider.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
         (mtv_id > 0 && current_user_can('delete_posts')) ? EB_THEME_PLUGIN_INDEX . 'javascript/show-edit-btn.js' : '',
-    EB_THEME_PLUGIN_INDEX . 'javascript/df.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/df2.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/dp.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/d2.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/df.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/df2.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/dp.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/d.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/d2.js',
         (is_archive()) ? EB_THEME_PLUGIN_INDEX . 'javascript/dc.js' : '',
-    EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
-    EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/footer.js',
+        EB_THEME_PLUGIN_INDEX . 'javascript/fomo_order.js',
         /*
          * for child theme
          */
-    EB_CHILD_THEME_URL . 'ui/d.js',
+        EB_CHILD_THEME_URL . 'ui/d.js',
     ]);
 }
 

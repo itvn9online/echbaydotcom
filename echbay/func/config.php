@@ -456,7 +456,7 @@ if ($_POST['cf_logo'] != '') {
 	$file_name = $_POST['cf_logo'];
 
 	// nếu ảnh là 1 URL hoặc không tồn tại trên host
-	if (strpos($file_name, '//') !== false || !file_exists($file_name)) {
+	if (strpos($file_name, '//') !== false || !is_file($file_name)) {
 		// chuyển sang up vào cache để check
 		$file_name = explode('/', $_POST['cf_logo']);
 		$file_name = $file_name[count($file_name) - 1];
@@ -478,7 +478,7 @@ if ($_POST['cf_logo'] != '') {
 		*/
 
 		// nếu có trong cache rồi thì thôi
-		if (file_exists($file_name)) {
+		if (is_file($file_name)) {
 		}
 		// nếu ko -> copy về
 		else if (!copy($_POST['cf_logo'], $file_name)) {
@@ -494,7 +494,7 @@ else {
 echo $file_name . '<br>' . "\n";
 
 //
-if ($file_name != '' && file_exists($file_name)) {
+if ($file_name != '' && is_file($file_name)) {
 	$file_name = getimagesize($file_name);
 	//	print_r($file_name);
 

@@ -56,7 +56,7 @@ if (isset($_GET['confirm_eb_process'])) {
 
     //
     $lats_update_file_test = 0;
-    if (file_exists($file_cache_test)) {
+    if (is_file($file_cache_test)) {
         $lats_update_file_test = file_get_contents($file_cache_test, 1);
     }
 
@@ -84,7 +84,7 @@ if (isset($_GET['confirm_eb_process'])) {
         }
 
         // download từ github
-        if (!file_exists($destination_path)) {
+        if (!is_file($destination_path)) {
 
             // server dự phòng
             $url2_for_download_ebdotcom = '';
@@ -174,7 +174,7 @@ if (isset($_GET['confirm_eb_process'])) {
 
 
         // Giải nén file
-        if (file_exists($destination_path)) {
+        if (is_file($destination_path)) {
 
             // kết quả giải nén
             $unzipfile = false;
@@ -211,7 +211,7 @@ if (isset($_GET['confirm_eb_process'])) {
 
                 // v1
                 /*
-                 if ( file_exists( $dir . '.gitattributes' ) ) {
+                 if ( is_file( $dir . '.gitattributes' ) ) {
                  if ( unlink( $dir . '.gitattributes' ) ) {
                  echo '<strong>remove file</strong>: ';
                  }
@@ -220,7 +220,7 @@ if (isset($_GET['confirm_eb_process'])) {
                  }
                  echo str_replace( EB_THEME_CONTENT, '', $dir ) . '.gitattributes<br>' . "\n";
                  }
-                 if ( $dir_to != '' && file_exists( $dir_to . '.gitattributes' ) ) {
+                 if ( $dir_to != '' && is_file( $dir_to . '.gitattributes' ) ) {
                  if ( _eb_remove_file( $dir_to . '.gitattributes' ) ) {
                  echo '<strong>remove file</strong>: ';
                  }
@@ -365,7 +365,7 @@ $last_time_update_theme_eb = filemtime(EB_THEME_URL . 'index.php');
 // thư mục chứa theme hiện tại
 $current_theme_dir_update = basename(EB_THEME_URL);
 $current_theme_version_update = '';
-if (file_exists(EB_THEME_URL . 'VERSION')) {
+if (is_file(EB_THEME_URL . 'VERSION')) {
     $current_theme_version_update = ' (' . file_get_contents(EB_THEME_URL . 'VERSION', 1) . ')';
 }
 

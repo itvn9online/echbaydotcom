@@ -589,7 +589,7 @@ if ($this_post_author == '') {
 //
 //echo $trv_img . '<br>';
 //echo $get_img_size . '<br>';
-if ($get_img_size != '' && file_exists($get_img_size)) {
+if ($get_img_size != '' && is_file($get_img_size)) {
     $get_img_size = getimagesize($get_img_size);
     //	print_r( $get_img_size );
     $trv_width_img = $get_img_size[0];
@@ -846,7 +846,7 @@ if ($__post->post_type == 'post') {
 // cơ bản là các hàm khác với post mặc định
 else {
     include EB_THEME_PLUGIN_INDEX . 'global/details_count_view.php';
-    if (file_exists(EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php')) {
+    if (is_file(EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php')) {
         include EB_THEME_PLUGIN_INDEX . 'global/details_' . $__post->post_type . '.php';
     } else {
         include EB_THEME_PLUGIN_INDEX . 'global/details_blog.php';

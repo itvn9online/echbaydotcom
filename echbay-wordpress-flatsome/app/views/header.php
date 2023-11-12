@@ -26,14 +26,14 @@ require __DIR__ . '/header_cache.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
 
-// đặt tham số này để không nạp lại base nữa
-//define( 'HAS_BASE_HREF', true );
+    // đặt tham số này để không nạp lại base nữa
+    //define( 'HAS_BASE_HREF', true );
 
-wp_head();
-?>
-    <style>
-    <?php echo file_get_contents(EB_THEME_PLUGIN_INDEX . 'css/mobile-usability.css', 1);
+    wp_head();
     ?>
+    <style>
+        <?php echo file_get_contents(EB_THEME_PLUGIN_INDEX . 'css/mobile-usability.css', 1);
+        ?>
     </style>
 </head>
 
@@ -47,27 +47,26 @@ wp_head();
         <?php
 
 
-/*
+        /*
  * nạp top của echbaydotcom (nếu có)
  */
-if (file_exists(EB_CHILD_THEME_URL . 'ui/' . basename(EB_CHILD_THEME_URL) . '-top1.php')) {
-    global $__cf_row;
-    //print_r($__cf_row);
-    include EB_CHILD_THEME_URL . 'ui/' . basename(EB_CHILD_THEME_URL) . '-top1.php';
-}
-/*
+        if (is_file(EB_CHILD_THEME_URL . 'ui/' . basename(EB_CHILD_THEME_URL) . '-top1.php')) {
+            global $__cf_row;
+            //print_r($__cf_row);
+            include EB_CHILD_THEME_URL . 'ui/' . basename(EB_CHILD_THEME_URL) . '-top1.php';
+        }
+        /*
  * không thì dùng top của flatsome
- */
-else {
-    do_action('flatsome_before_header');
-?>
-        <header id="header" class="header <?php flatsome_header_classes(); ?>">
-            <div class="header-wrapper">
-                <?php get_template_part('template-parts/header/header', 'wrapper'); ?>
-            </div>
-        </header>
+ */ else {
+            do_action('flatsome_before_header');
+        ?>
+            <header id="header" class="header <?php flatsome_header_classes(); ?>">
+                <div class="header-wrapper">
+                    <?php get_template_part('template-parts/header/header', 'wrapper'); ?>
+                </div>
+            </header>
         <?php do_action('flatsome_after_header');
-}
+        }
 
-?>
+        ?>
         <main id="main" class="<?php flatsome_main_classes(); ?>">

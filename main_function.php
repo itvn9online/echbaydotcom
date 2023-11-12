@@ -26,15 +26,13 @@ function ___eb_cache_getUrl($cache_dir = 'all')
 {
     if (isset($_SERVER['REQUEST_URI'])) {
         $url = $_SERVER['REQUEST_URI'];
-    }
-    else {
+    } else {
         $url = $_SERVER['SCRIPT_NAME'];
         $url .= (!empty($_SERVER['QUERY_STRING'])) ? '?' . $_SERVER['QUERY_STRING'] : '';
     }
     if ($url == '/' || $url == '') {
         $url = '-';
-    }
-    else {
+    } else {
         $arr_cat_social_parameter = array(
             'fbclid=',
             'gclid=',
@@ -59,8 +57,7 @@ function ___eb_cache_getUrl($cache_dir = 'all')
         //
         if (strlen($url) > 200) {
             $url = md5($url);
-        }
-        else {
+        } else {
             $url = preg_replace("/\/|\?|\&|\,|\=/", '-', $url);
         }
     }
@@ -121,8 +118,8 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
         $data .= $v;
 
 
-    // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file put contents bị gọi nhiều quá
-    /*
+        // v2 -> vài vòng lặp sẽ add nội dung 1 lần để tránh biến to quá hoặc hàm file put contents bị gọi nhiều quá
+        /*
      if ( $i % 55 == 0 ) {
      // lần đầu tiên thì add nội dung, để nó reset lại file từ đầu
      if ( $create_file == 1 ) {
@@ -139,16 +136,16 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
      $i++;
      */
 
-    //			}
+        //			}
     }
     // v2 -> nhúng nội dung còn thiếu ở những vòng lặp cuối
     if ($data != '') {
         WGR_cache($filename, $data . $data_comment);
-    //die(basename(__FILE__) . ':' . __LINE__);
-    //file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append last main cache file' );
-    //file_put_contents($filename, $data . $data_comment, LOCK_EX) or die('ERROR: append last main cache file');
-    //die(basename(__FILE__) . ':' . __LINE__);
-    //touch($filename);
+        //die(basename(__FILE__) . ':' . __LINE__);
+        //file_put_contents( $filename, $data, FILE_APPEND )or die( 'ERROR: append last main cache file' );
+        //file_put_contents($filename, $data . $data_comment, LOCK_EX) or die('ERROR: append last main cache file');
+        //die(basename(__FILE__) . ':' . __LINE__);
+        //touch($filename);
     }
 
     //
@@ -166,7 +163,6 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
     }
 
     return $data;
-
 }
 
 // page's content is $buffer ($data)
@@ -219,18 +215,19 @@ function ___eb_cache_cache($filename, $data, $data_comment = '')
 function WGR_add_ebcache_php_to_index($__cf_row)
 {
     // nếu chưa có tham số WP_ACTIVE_WGR_SUPPER_CACHE
-    if (!defined('WP_ACTIVE_WGR_SUPPER_CACHE') &&
-    // và phải là user đã đăng nhập
-    mtv_id > 0 &&
-    // supper cache đang bật
-    $__cf_row['cf_enable_ebsuppercache'] == 1 &&
-    // ebcache chưa được nạp
-    strpos(file_get_contents(ABSPATH . 'index.php', 1), '/echbaydotcom/ebcache.php') === false) {
+    if (
+        !defined('WP_ACTIVE_WGR_SUPPER_CACHE') &&
+        // và phải là user đã đăng nhập
+        mtv_id > 0 &&
+        // supper cache đang bật
+        $__cf_row['cf_enable_ebsuppercache'] == 1 &&
+        // ebcache chưa được nạp
+        strpos(file_get_contents(ABSPATH . 'index.php', 1), '/echbaydotcom/ebcache.php') === false
+    ) {
         // copy file mẫu
         if (copy(__DIR__ . '/index-tmp.php', ABSPATH . 'index.php')) {
             echo 'active WP ACTIVE WGR SUPPER CACHE <br>' . "\n";
-        }
-        else {
+        } else {
             // không copy được thì dùng chức năng tạo file -> có hỗ trợ sử dụng phương thức FTP
             _eb_create_file(ABSPATH . 'index.php', file_get_contents(__DIR__ . '/index-tmp.php', 1));
 
@@ -260,8 +257,7 @@ function WGR_v1_add_ebcache_php_to_index($__cf_row)
                 //
                 _eb_create_file(ABSPATH . 'index.php', implode("\n", $content_of_wp_index));
                 echo 'add ebsuppercache to index.php (1)<br>' . "\n";
-            }
-            else {
+            } else {
                 // tách theo dấu cách
                 $content_of_wp_index = implode("\n", $content_of_wp_index);
                 $content_of_wp_index = explode(' ', $content_of_wp_index);
@@ -271,15 +267,13 @@ function WGR_v1_add_ebcache_php_to_index($__cf_row)
                     $content_of_wp_index[0] .= ' ' . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
                     _eb_create_file(ABSPATH . 'index.php', implode(' ', $content_of_wp_index));
                     echo 'add ebsuppercache to index.php (2)<br>' . "\n";
-                }
-                else {
+                } else {
                     echo 'ERROR add ebsuppercache<br>' . "\n";
                 }
             }
-        }
-        else {
-        //echo ABSPATH . 'index.php' . '<br>' . "\n";
-        //echo 'index.php has been add ebsuppercache!<br>' . "\n";
+        } else {
+            //echo ABSPATH . 'index.php' . '<br>' . "\n";
+            //echo 'index.php has been add ebsuppercache!<br>' . "\n";
         }
     }
 }
@@ -308,8 +302,7 @@ function WGR_cat_js_cache()
     // nếu phút hiện tại là 0
     if ($cat_js_file_name == 0) {
         $using_js_file_name = 5;
-    }
-    else {
+    } else {
         $using_js_file_name = $cat_js_file_name - 1;
     }
 
@@ -329,7 +322,7 @@ function WGR_content_cat_js_cache($cat_js_file_name, $using_js_file_name)
     _eb_create_file(EB_THEME_CACHE . $cat_js_file_name, 'var eb_site_group=[' . _eb_get_full_category_v2(0, 'category', 1) . '],eb_post_options_group=[' . _eb_get_full_category_v2(0, 'post_options', 1) . '],eb_blog_group=[' . _eb_get_full_category_v2(0, EB_BLOG_POST_LINK, 1) . '];');
 
     //
-    if (!file_exists(EB_THEME_CACHE . $using_js_file_name)) {
+    if (!is_file(EB_THEME_CACHE . $using_js_file_name)) {
         copy(EB_THEME_CACHE . $cat_js_file_name, EB_THEME_CACHE . $using_js_file_name);
         chmod(EB_THEME_CACHE . $using_js_file_name, 0777);
     }
@@ -365,7 +358,7 @@ function WGR_display($f, $reset_time = 120)
     $using_js_file_name = $arr_cat_js_cache['using_js_file_name'];
 
     // -> done
-    if (file_exists(EB_THEME_CACHE . $cat_js_file_name) && file_exists(EB_THEME_CACHE . $using_js_file_name)) {
+    if (is_file(EB_THEME_CACHE . $cat_js_file_name) && is_file(EB_THEME_CACHE . $using_js_file_name)) {
         echo $content[1];
         echo '<!-- generated by ebsuppercache (' . $active_reset . ' | ' . $reset_time . ' | ' . date('Y-m-d H:i:s', $content[0]) . ') -->';
         exit();

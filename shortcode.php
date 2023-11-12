@@ -17,8 +17,9 @@ add_shortcode( 'get_child_html_template',
         print_r( $post );
     } );
     */
-add_shortcode( 'get_child_php_template',
-    function ( $args ) {
+add_shortcode(
+    'get_child_php_template',
+    function ($args) {
         /*
          * Truyền tham số path vào mảng $args (theo cấu trúc của wordpress) rồi gọi trong page, post...
          * Ví dụ: [get_child_php_template path="home.php"]
@@ -26,18 +27,19 @@ add_shortcode( 'get_child_php_template',
         //print_r( $args );
 
         //
-        if ( !isset( $args[ 'path' ] ) ) {
+        if (!isset($args['path'])) {
             echo 'No parameter: path ---> [get_child_php_template path="home.php"]' . '<br>' . "\n";
             return false;
         }
 
         // không có thì trả về lỗi
-        $f = EB_CHILD_THEME_URL . 'shortcode/' . $args[ 'path' ];
-        if ( !file_exists( $f ) ) {
+        $f = EB_CHILD_THEME_URL . 'shortcode/' . $args['path'];
+        if (!is_file($f)) {
             echo 'File not exist: ' . $f . '<br>' . "\n";
             return false;
         }
 
         // có thì include vào thôi
         include_once $f;
-    } );
+    }
+);

@@ -1,20 +1,19 @@
 <br>
 <div><a href="javascript:;" class="medium blackcolor bold admin-set-reload-url">Trang tổng quan</a></div>
 <p>* Các cài đặt được chúng tôi khuyên dùng sẽ được đưa ra tại đây, bao gồm: các cài đặt liên quan đến bảo mật website,
-    tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a
-        href="<?php echo admin_link; ?> 'admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.
+	tối ưu tốc độ web... Và các cài đặt này thường đường thay đổi trong file wp-config.php hoặc <a href="<?php echo admin_link; ?> 'admin.php?page=eb-config&tab=permalinks" target="_blank">thay đổi tại đây</a>.
 </p>
 <br>
 <div class="l25">
-    <h3>Giờ hiện tại của máy chủ là:
-        <?php echo date('r', date_time); ?>
-    </h3>
-    <h3>Múi giờ hiện tại của máy chủ là:
-        <?php echo date_default_timezone_get(); ?>
-    </h3>
-    <h3>Múi giờ trong cấu hình là: UTC
-        <?php echo get_option('gmt_offset') . ' (' . get_option('timezone_string'); ?>)
-    </h3>
+	<h3>Giờ hiện tại của máy chủ là:
+		<?php echo date('r', date_time); ?>
+	</h3>
+	<h3>Múi giờ hiện tại của máy chủ là:
+		<?php echo date_default_timezone_get(); ?>
+	</h3>
+	<h3>Múi giờ trong cấu hình là: UTC
+		<?php echo get_option('gmt_offset') . ' (' . get_option('timezone_string'); ?>)
+	</h3>
 </div>
 <br>
 <?php
@@ -140,8 +139,7 @@ if (defined('FTP_USER') && defined('FTP_PASS')) {
 	<div class="orgcolor"><i class="fa fa-warning"></i> NGUY HIỂM: Bạn đang cho phép website được update hoặc ghi file thông qua tài khoản FTP. Điều này làm giảm khả năng bảo mật của website khi bị dính mã độc hại. Chúng tôi khuyên bạn <strong>HÃY NHẬP THỦ CÔNG NẾU CÓ THỂ</strong>.<br>
 	User: <span class="graycolor">' . FTP_USER . '</span><br>
 	Host: ' . FTP_HOST . '</div>';
-}
-else {
+} else {
 	$str_eb_warning .= '
 	<div class="graycolor"><i class="fa fa-lightbulb-o orgcolor"></i> LƯU Ý: trong một số trường hợp, bạn không thể update được wordpress cho permission của hosting không cho phép, hãy nhập cấu hình qua tài khoản FTP trog file wp-config.php theo mẫu sau:
 		<pre><code>define( \'FTP_HOST\', \'127.0.0.1\' );</code></pre>
@@ -157,7 +155,7 @@ $file_cache_test = EB_THEME_CACHE . 'test_local_attack.txt';
 
 //
 $last_update_file_test = 0;
-if (file_exists($file_cache_test)) {
+if (is_file($file_cache_test)) {
 	$last_update_file_test = file_get_contents($file_cache_test, 1);
 }
 
@@ -169,17 +167,17 @@ if (date_time - $last_update_file_test > 3600) {
 
 
 	// xóa file test trước đó nếu có
-	if (file_exists($file_test)) {
+	if (is_file($file_test)) {
 		_eb_remove_file($file_test);
-	//		unlink( $file_test );
+		//		unlink( $file_test );
 	}
 
 	// tạo file ở root
 	_eb_create_file($file_test, date_time, '', 0);
 
 
-// kiểm tra quyền đọc thư mục host khác từ host hiện tại
-/*
+	// kiểm tra quyền đọc thư mục host khác từ host hiện tại
+	/*
  $check___FILE__ = __FILE__;
  $arr_check___FILE__ = array();
  //	$arr_check___FILE__[] = $check___FILE__;
@@ -198,13 +196,13 @@ if (date_time - $last_update_file_test > 3600) {
  echo implode( '<br>', $arr_check___FILE__ );
  */
 
-/*
+	/*
  $check_read_home_arr = glob ( '/home/*' );
  //	print_r( $check_read_home_arr );
  echo implode( '<br>', $check_read_home_arr );
  */
 
-/*
+	/*
  $check_read_home_arr = glob ( '/home/logs/*' );
  //	print_r( $check_read_home_arr );
  echo implode( '<br>', $check_read_home_arr );
@@ -213,7 +211,7 @@ if (date_time - $last_update_file_test > 3600) {
 
 
 //
-if (file_exists($file_test)) {
+if (is_file($file_test)) {
 	$str_eb_warning .= '
 	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Hệ thống có thể tạo vào ghi nội dung file bất kỳ vào website, điều này không an toàn cho web khi bị dính mã độc.</div>';
 }
@@ -223,7 +221,7 @@ if (file_exists($file_test)) {
 $dir_robots_txt = ABSPATH . 'robots.txt';
 
 // nếu file không tồn tại -> cảnh báo
-if (!file_exists($dir_robots_txt)) {
+if (!is_file($dir_robots_txt)) {
 	$str_eb_warning .= '
 	<div class="redcolor"><i class="fa fa-warning redcolor"></i> CẢNH BÁO: Bạn chưa tạo file robots.txt cho website, hãy <a href="' . admin_link . 'admin.php?page=eb-coder&tab=robots" target="_blank"><u>nhấn vào đây</u></a> để tạo.</div>';
 }
@@ -236,7 +234,8 @@ else if (strpos(file_get_contents($dir_robots_txt, 1), web_link . 'sitemap') ===
 
 // kiểm tra quyền đọc ghi qua FTP
 if ((defined('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT == true) ||
-(defined('DISALLOW_FILE_MODS') && DISALLOW_FILE_MODS == true)) {
+	(defined('DISALLOW_FILE_MODS') && DISALLOW_FILE_MODS == true)
+) {
 	$str_eb_warning .= '
 	<div class="graycolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Bạn đang sử dụng phiên bản miễn phí, ở phiên bản này bạn sẽ bị giới hạn một số tính năng, để mở các chức năng này, vui lòng liên hệ kỹ thuật đã cài đặt website cho bạn hoặc bổ sung đoạn mã sau (chỉ bổ sung đoạn nào chưa có) vào trong file wp-config.php của bạn:
 		<pre><code>define( \'DISALLOW_FILE_EDIT\', false );</code></pre>
@@ -251,8 +250,7 @@ if ((defined('WP_AUTO_UPDATE_CORE') && WP_AUTO_UPDATE_CORE == true)) {
 	<div class="greencolor"><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang được BẬT, điều này chỉ nên áp dụng cho các website không quan trọng (site vệ tinh). Với các site chính, ưu tiên việc update thủ công để còn kiểm tra lỗi sau mỗi lần update. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', false );</code></pre>
 	</div>';
-}
-else {
+} else {
 	$str_eb_warning .= '
 	<div><i class="fa fa-lightbulb-o orgcolor"></i> THÔNG BÁO: Tính năng tự động cập nhật đang bị TẮT, nếu đây là site vệ tinh hoặc bạn không có nhiều thời gian chăm sóc cho nó, chúng tôi khuyên bạn hãy bật nó lên. Thay đổi điều này bằng cách đặt lệnh sau vào file wp-config.php hoặc bật tắt trong phần <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_auto_update_wp" target="_blank">Cấu hình website</a>:
 		<pre><code>define( \'WP_AUTO_UPDATE_CORE\', true );</code></pre>
@@ -275,8 +273,7 @@ if ( webgiare_dot_org_install == true ) {
 if ($__cf_row['cf_enable_ebsuppercache'] == 1) {
 	$str_eb_warning .= '
 	<div class="greencolor"><i class="fa fa-lightbulb-o"></i> XIN CHÚC MỪNG: chức năng <strong>ebsuppercache</strong> đang được bật, điều này có thể giúp tăng tốc website của bạn lên rất nhiều lần do hạn chế được nhiều request tới database và kết nối thẳng tới file HTML tĩnh được tạo tự động 120 giây mỗi lần.</div>';
-}
-else {
+} else {
 	$str_eb_warning .= '
 	<div class="orgcolor"><i class="fa fa-warning"></i> CẢNH BÁO: chức năng <strong>Chia sẻ dữ liệu qua XML-RPC</strong> đang được bật, điều này có thể gây tốn tài nguyên không cần thiết cho website của bạn. Nếu bạn không sử dụng nó hoặc không biết XML-RPC là gì thì hãy tắt nó đi <a href="' . admin_link . 'admin.php?page=eb-config&tab=permalinks&support_tab=cf_on_off_xmlrpc" target="_blank">tại đây</a>.</div>';
 }
@@ -322,14 +319,11 @@ if ($str_eb_warning != '') {
 
 ?>
 <p class="greencolor medium"><i class="fa fa-lightbulb-o orgcolor"></i> Thường xuyên xem và cải thiện tốc độ cho website
-    bằng công cụ <a
-        href="https://developers.google.com/speed/pagespeed/insights/?url=<?php echo urlencode(web_link); ?>&tab=desktop"
-        target="_blank" rel="nofollow">PageSpeed Insights</a> của Google để tối ưu tốc độ tải trang cho website của bạn.
+	bằng công cụ <a href="https://developers.google.com/speed/pagespeed/insights/?url=<?php echo urlencode(web_link); ?>&tab=desktop" target="_blank" rel="nofollow">PageSpeed Insights</a> của Google để tối ưu tốc độ tải trang cho website của bạn.
 </p>
 <div data-src="https://www.youtube.com/embed/L45U7ChIMto" class="text-center admin-add-youtube-video"></div>
 <br>
 <p class="greencolor medium"><i class="fa fa-lightbulb-o orgcolor"></i> Kiểm tra độ thân thiện cho website bằng công cụ
-    <a href="https://search.google.com/test/mobile-friendly?url=<?php echo urlencode(web_link); ?>&tab=desktop"
-        target="_blank" rel="nofollow">Mobile friendly</a> của Google để tối ưu trải nghiệm người cho website của bạn
-    trên điện thoại.
+	<a href="https://search.google.com/test/mobile-friendly?url=<?php echo urlencode(web_link); ?>&tab=desktop" target="_blank" rel="nofollow">Mobile friendly</a> của Google để tối ưu trải nghiệm người cho website của bạn
+	trên điện thoại.
 </p>

@@ -49,7 +49,7 @@ $include_tab = ECHBAY_PRI_CODE . $eb_get_tab . '.php';
 
 
 // nếu không có file -> module lỗi -> hủy bỏ
-if (!file_exists($include_tab) || !isset($arr_order_tab[$eb_get_tab])) {
+if (!is_file($include_tab) || !isset($arr_order_tab[$eb_get_tab])) {
 	die('Module eb-coder not found: <strong>' . $eb_get_tab . '</strong>');
 }
 

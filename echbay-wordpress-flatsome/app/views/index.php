@@ -14,14 +14,14 @@ global $global_dymanic_meta;
 $parent_cid = 0;
 
 // ưu tiên views hiện tại
-if ( file_exists( __DIR__ . '/' . $act . '.php' ) ) {
+if (is_file(__DIR__ . '/' . $act . '.php')) {
     include __DIR__ . '/' . $act . '.php';
 }
 // sau đó mới sử dụng đến các views cũ
 else {
     include_once EB_THEME_PLUGIN_INDEX . 'global/' . $act . '.php';
 }
-$group_go_to = implode( ' ', $group_go_to );
+$group_go_to = implode(' ', $group_go_to);
 
 
 //

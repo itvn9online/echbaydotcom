@@ -3,7 +3,7 @@
 
 function _eb_remove_file($file_, $ftp = 1)
 {
-    if (file_exists($file_)) {
+    if (is_file($file_)) {
         if (!unlink($file_)) {
             // thử xóa bằng ftp
             if ($ftp == 1) {
@@ -32,7 +32,7 @@ function _eb_create_file(
     }
 
     //
-    if (!file_exists($file_)) {
+    if (!is_file($file_)) {
         $filew = fopen($file_, 'x+');
 
         // nếu không tạo được file
@@ -85,7 +85,7 @@ function _eb_create_file(
 
     /*
     // nếu tồn tại file rồi -> sửa
-    if (file_exists($file_)) {
+    if (is_file($file_)) {
     //			if( flock( $file_, LOCK_EX ) ) {
     // open
     //		$fh = fopen($file_, 'r+') or die('ERROR: open 1');
@@ -412,7 +412,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
     $ftp_dir_root = EBE_get_config_ftp_root_dir($content_);
 
 
-    if (!file_exists($file_) && !is_dir(dirname($file_))) {
+    if (!is_file($file_) && !is_dir(dirname($file_))) {
         echo 'ERROR FTP: dir not found<br>' . "\n";
         return false;
     }

@@ -537,7 +537,7 @@ class EchBayCommerce
 	{
 
 		//
-		if (!file_exists($file_)) {
+		if (!is_file($file_)) {
 			$filew = fopen($file_, 'x+');
 			// nhớ set 777 cho file
 			chmod($file_, 0777);
@@ -566,7 +566,7 @@ class EchBayCommerce
 
 		/*
 		// nếu tồn tại file rồi -> sửa
-		if (file_exists($file_)) {
+		if (is_file($file_)) {
 //			if( flock( $file_, LOCK_EX ) ) {
 				// open
 		//		$fh = fopen($file_, 'r+') or die('ERROR: open 1');
@@ -821,11 +821,11 @@ class EchBayCommerce
 	function get_html_for_module($check_file)
 	{
 		// kiểm tra ở thư mục code riêng
-		if (file_exists(EB_THEME_HTML . $check_file)) {
+		if (is_file(EB_THEME_HTML . $check_file)) {
 			$f = EB_THEME_HTML . $check_file;
 		}
 		// nếu không -> kiểm tra ở thư mục dùng chung
-		else if (file_exists(EB_THEME_PLUGIN_INDEX . 'html/' . $check_file)) {
+		else if (is_file(EB_THEME_PLUGIN_INDEX . 'html/' . $check_file)) {
 			$f = EB_THEME_PLUGIN_INDEX . 'html/' . $check_file;
 		}
 

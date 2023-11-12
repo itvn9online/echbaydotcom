@@ -33,13 +33,13 @@ $dir_robots_txt = ABSPATH . 'robots.txt';
 
 //
 $robots_txt_content = '';
-if (file_exists($dir_robots_txt)) {
+if (is_file($dir_robots_txt)) {
 	$robots_txt_content = file_get_contents($dir_robots_txt, 1);
 }
 
 
 // tạo file robots nếu chưa có
-if (!file_exists($dir_robots_txt) || $robots_txt_content == '') {
+if (!is_file($dir_robots_txt) || $robots_txt_content == '') {
 
 	/*
 	// ưu tiên tạo bằng FTP trước

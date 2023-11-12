@@ -36,10 +36,9 @@ foreach ($load as $v) {
 	//	echo $v . "\n";
 
 	// nếu có trong thư mục mặc định của js echbaydotcom
-	if (file_exists($dir . $by_dir . $v)) {
+	if (is_file($dir . $by_dir . $v)) {
 		echo file_get_contents($dir . $by_dir . $v, 1);
-	}
-	else {
+	} else {
 		// nếu chưa có dir2 -> tìm dir2
 		if ($dir2 == '') {
 			$get_dir = $dir;
@@ -47,7 +46,7 @@ foreach ($load as $v) {
 				$get_dir = dirname($get_dir);
 				//				echo $get_dir . "\n";
 
-				if (file_exists($get_dir . '/' . $v)) {
+				if (is_file($get_dir . '/' . $v)) {
 					$dir2 = $get_dir . '/';
 					break;
 				}
@@ -55,9 +54,9 @@ foreach ($load as $v) {
 		}
 
 		// kiểm tra lại lần nữa
-//		if ( $dir2 != '' ) {
+		//		if ( $dir2 != '' ) {
 		echo file_get_contents($dir2 . $v, 1);
-	//		}
+		//		}
 	}
 }
 

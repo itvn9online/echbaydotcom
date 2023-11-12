@@ -17,7 +17,7 @@ if (isset($_GET['echo_now'])) {
     //	echo _eb_non_mark_seo('Bình Lọc Bể Bơi Tafuma TS Van Đỉnh') . '<br>';
 
     // nếu có file -> kiểm tra thời gian tạo file
-    if (file_exists($echo_now_file_name)) {
+    if (is_file($echo_now_file_name)) {
         $echo_now_time_file = filemtime($echo_now_file_name);
         //		echo date_time . '<br>';
         //		echo date( 'r', date_time ) . '<br>';
@@ -437,14 +437,14 @@ else if (
     $custom_blogs_node_flex_css = '';
 
     // ưu tiên sử dụng file thiết kế riêng theo theme
-    if (file_exists(EB_THEME_HTML . $get_blog_html_node . '.html')) {
+    if (is_file(EB_THEME_HTML . $get_blog_html_node . '.html')) {
         $blog_html_node = file_get_contents(EB_THEME_HTML . $get_blog_html_node . '.html', 1);
     }
     // nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
     else {
 
         // gán css dùng chung
-        if (file_exists(EB_THEME_PLUGIN_INDEX . 'css/default/' . $get_blog_html_node . '.css')) {
+        if (is_file(EB_THEME_PLUGIN_INDEX . 'css/default/' . $get_blog_html_node . '.css')) {
             $arr_for_add_css[EB_THEME_PLUGIN_INDEX . 'css/default/' . $get_blog_html_node . '.css'] = 1;
             //					$arr_for_add_theme_css[ EB_THEME_PLUGIN_INDEX . 'css/default/' . $get_blog_html_node . '.css' ] = 1;
         }
@@ -485,7 +485,7 @@ else if (
     $custom_blogs_flex_css = '';
 
     // nếu không tồn tại file thiết kế riêng -> kiểm tra file HTML mẫu
-    //			if ( ! file_exists( EB_THEME_HTML . $tep_tin_for_html ) ) {
+    //			if ( ! is_file( EB_THEME_HTML . $tep_tin_for_html ) ) {
     if ($__cf_row['cf_blogs_column_style'] != '') {
         //					$html_v2_file = $html_v2_file . '_' . $__cf_row['cf_blogs_column_style'];
         $custom_blogs_flex_css = $html_v2_file . '_' . $__cf_row['cf_blogs_column_style'];

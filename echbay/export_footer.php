@@ -15,8 +15,8 @@ $a = array(
 	EB_THEME_PLUGIN_INDEX . 'javascript/functions.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/eb.js',
 	EB_THEME_PLUGIN_INDEX . 'javascript/all.js',
-//	EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
-    /*
+	//	EB_THEME_PLUGIN_INDEX . 'javascript/edit_post.js'
+	/*
     EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/brands.min.js',
     EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/solid.min.js',
     EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/js/fontawesome.min.js',
@@ -24,14 +24,8 @@ $a = array(
     */
 	EB_THEME_PLUGIN_INDEX . 'echbay/js/export_functions.js'
 );
-foreach ( $a as $v ) {
-//	if ( file_exists( $v ) ) {
-		echo '<script type="text/javascript" src="' . str_replace( ABSPATH, web_link, $v ) . '?v=' . filemtime( $v ) . '"></script>' . "\n";
-//	}
+foreach ($a as $v) {
+	//	if ( is_file( $v ) ) {
+	echo '<script type="text/javascript" src="' . str_replace(ABSPATH, web_link, $v) . '?v=' . filemtime($v) . '"></script>' . "\n";
+	//	}
 }
-
-
-
-
-
-

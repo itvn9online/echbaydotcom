@@ -44,16 +44,16 @@ $time_for_update_cache = $__cf_row['cf_reset_cache'];
 if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
     //if ( 1 == 2 ) {
     //
-    if (file_exists($file_last_update)) {
+    if (is_file($file_last_update)) {
         $last_update = filemtime($file_last_update);
     }
 
     // nếu thời gian update cache nhỏ quá -> bỏ qua
-    //	if ( file_exists ( $file_last_update ) && file_exists ( $__eb_cache_conf ) ) {
+    //	if ( is_file ( $file_last_update ) && is_file ( $__eb_cache_conf ) ) {
     if ($last_update > 0) {
         if (date_time - $last_update < $time_for_update_cache / 2) {
             $__eb_cache_time = 0;
-            if (file_exists($__eb_cache_conf)) {
+            if (is_file($__eb_cache_conf)) {
                 include_once $__eb_cache_conf;
             }
             //			echo '<!-- __eb_cache_time: ' . $__eb_cache_time . ' -->' . "\n";
@@ -79,8 +79,8 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 
 
         //
-        if (mtv_id == 0 || !file_exists($file_last_update)) {
-            //		if ( ! file_exists( $file_last_update ) ) {
+        if (mtv_id == 0 || !is_file($file_last_update)) {
+            //		if ( ! is_file( $file_last_update ) ) {
             // tạo file cache
             _eb_create_file($file_last_update, date_time);
         }
@@ -173,7 +173,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
             $__cf_row['cf_timezone'] != ''
             // file chưa được tạo
             &&
-            !file_exists(EB_THEME_CACHE . '___timezone.txt')
+            !is_file(EB_THEME_CACHE . '___timezone.txt')
         ) {
             _eb_create_file(EB_THEME_CACHE . '___timezone.txt', $__cf_row['cf_timezone']);
         }
@@ -194,20 +194,20 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
         echo '<!-- aaaaaaaaaaaaa -->' . "\n";
         echo '<!-- ' . mtv_id . ' -->' . "\n";
         echo '<!-- ' . $__eb_cache_conf . ' (??????) -->' . "\n";
-        if ( ! file_exists( $__eb_cache_conf ) ) {
+        if ( ! is_file( $__eb_cache_conf ) ) {
         	echo '<!-- file not exist -->' . "\n";
         }
         else {
         	echo '<!-- file exist -->' . "\n";
         }
-        if ( ! function_exists('file_exists') ) {
+        if ( ! function_exists('is_file') ) {
         	echo '<!-- function not exists -->' . "\n";
         }
         */
         // không cho tạo cache liên tục
         // chỉ tạo khi khách truy cập hoặc không có file
-        if (mtv_id == 0 || !file_exists($__eb_cache_conf)) {
-            //		if ( ! file_exists( $__eb_cache_conf ) ) {
+        if (mtv_id == 0 || !is_file($__eb_cache_conf)) {
+            //		if ( ! is_file( $__eb_cache_conf ) ) {
 
             //			echo '<!-- ' . $__eb_cache_conf . ' (!!!!!) -->' . "\n";
             _eb_create_file($__eb_cache_conf, '<?php ' . str_replace('\\\"', '\"', $__eb_cache_content));
@@ -354,7 +354,7 @@ $auto_update_web_version = EB_THEME_CACHE . 'web_version_auto.txt';
 
 //
 $last_update_web_version = 0;
-if ( file_exists( $auto_update_web_version ) ) {
+if ( is_file( $auto_update_web_version ) ) {
 	$last_update_web_version = filemtime( $auto_update_web_version );
 }
 

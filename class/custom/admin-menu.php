@@ -293,7 +293,7 @@ function echbay_admin_styles()
     foreach ($a as $v) {
         //		$k = EB_THEME_PLUGIN_INDEX . $v;
         //		echo $k . '<br>' . "\n";
-        //		if ( file_exists( $v ) ) {
+        //		if ( is_file( $v ) ) {
         echo '<link rel="stylesheet" href="' . WGR_path_to_lnk($v) . '?v=' . filemtime($v) . '" type="text/css" media="all" />' . "\n";
         //		}
     }
@@ -323,7 +323,7 @@ function echbay_admin_styles()
     foreach ($a as $v) {
         //		$k = EB_THEME_PLUGIN_INDEX . $v;
         //		echo $k . '<br>' . "\n";
-        //		if ( file_exists( $v ) ) {
+        //		if ( is_file( $v ) ) {
         echo '<script type="text/javascript" src="' . WGR_path_to_lnk($v) . '?v=' . filemtime($v) . '"></script>' . "\n";
         //		}
     }
@@ -472,7 +472,7 @@ function echbay_admin_footer_styles()
 
     // phiên bản của theme
     $current_theme_version = '';
-    if (file_exists(EB_THEME_URL . 'VERSION')) {
+    if (is_file(EB_THEME_URL . 'VERSION')) {
         $current_theme_version = file_get_contents(EB_THEME_URL . 'VERSION', 1);
     }
 
@@ -526,7 +526,7 @@ function echbay_admin_footer_styles()
 
     // Thêm file admin của child theme nếu có
     if (using_child_wgr_theme == 1) {
-        if (file_exists(EB_CHILD_THEME_URL . 'ui/a.js')) {
+        if (is_file(EB_CHILD_THEME_URL . 'ui/a.js')) {
             $a[] = EB_CHILD_THEME_URL . 'ui/a.js';
         }
     }
@@ -547,7 +547,7 @@ function echbay_admin_footer_styles()
         //		$k = EB_THEME_PLUGIN_INDEX . $v;
         //		$k =  $v;
         //		echo $k . '<br>' . "\n";
-        //		if ( file_exists( $v ) ) {
+        //		if ( is_file( $v ) ) {
         echo '<script type="text/javascript" src="' . WGR_path_to_lnk($v) . '?v=' . filemtime($v) . '"></script>' . "\n";
         //		}
     }
@@ -776,14 +776,14 @@ function __eb_sanitize_file_name($filename)
 	
 	// kiểm tra nếu có file rồi -> đổi tên file luôn
 	$path = $arr['path'] . '/' . $a;
-	if ( file_exists( $path ) ) {
+	if ( is_file( $path ) ) {
 		$arr_file = explode( '.', $a );
 		$file_type = $arr_file[ count($arr_file) - 1 ];
 		for ( $i = 0; $i < 50; $i++ ) {
 			$a2 = $arr_file;
 			$a2[ count( $a2 ) - 1 ] = '-' . $i . '.' . $file_type;
 			$a2 = implode( '.', $a2 );
-			if ( ! file_exists( $a2 ) ) {
+			if ( ! is_file( $a2 ) ) {
 				$a = $a2;
 				break;
 			}

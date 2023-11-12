@@ -4,18 +4,20 @@
 //echo 'aaaaaaaaaa';
 
 // có nội dung
-if ( have_posts() ) {
+if (have_posts()) {
     //	echo '<!-- TEST -->' . "\n";
     //	print_r( $post );
 
     // các post type được hỗ trợ
-    if ( $post->post_type == 'post' ||
+    if (
+        $post->post_type == 'post' ||
         // blog của WGR
         $post->post_type == EB_BLOG_POST_TYPE ||
         // product của woocommerce
-        $post->post_type == 'product' ) {
+        $post->post_type == 'product'
+    ) {
         // sử dụng child theme
-        if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'php/content.php' ) ) {
+        if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'php/content.php')) {
             //echo '<!-- ' . EB_CHILD_THEME_URL . ' -->' . "\n";
             include EB_CHILD_THEME_URL . 'php/content.php';
         }
@@ -25,33 +27,33 @@ if ( have_posts() ) {
         }
     }
     // định dạng ads của WGR sẽ bị ẩn
-    else if ( $post->post_type == 'ads' ) {
+    else if ($post->post_type == 'ads') {
         //print_r( $post );
         //echo $post->ID . '<br>' . "\n";
 
-        $ads_url_redirect = get_post_meta( $post->ID, '_eb_ads_url' );
+        $ads_url_redirect = get_post_meta($post->ID, '_eb_ads_url');
         //print_r( $ads_url_redirect );
-        if ( !empty( $ads_url_redirect ) ) {
-            $ads_url_redirect = $ads_url_redirect[ 0 ];
+        if (!empty($ads_url_redirect)) {
+            $ads_url_redirect = $ads_url_redirect[0];
         } else {
             $ads_url_redirect = '';
         }
-        if ( $ads_url_redirect == '' ) {
-            $ads_url_redirect = _eb_get_post_object( $post->ID, '_eb_ads_url' );
+        if ($ads_url_redirect == '') {
+            $ads_url_redirect = _eb_get_post_object($post->ID, '_eb_ads_url');
         }
         //echo $ads_url_redirect . ' asdg sdgs <br>' . "\n";
         //echo web_link . '<br>' . "\n";
         //die( 'gh ssf' );
 
         // trỏ thẳng tới URL mà người dùng hướng tới
-        if ( $ads_url_redirect != '' ) {
-            wp_redirect( $ads_url_redirect );
+        if ($ads_url_redirect != '') {
+            wp_redirect($ads_url_redirect);
         } else {
             //echo 'df dhfh dh';
             //wp_redirect( web_link, 301 );
 
             // sử dụng child theme
-            if ( using_child_wgr_theme == 1 && file_exists( EB_CHILD_THEME_URL . 'php/404.php' ) ) {
+            if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'php/404.php')) {
                 include EB_CHILD_THEME_URL . 'php/404.php';
             }
             // sử dụng theme mặc định
