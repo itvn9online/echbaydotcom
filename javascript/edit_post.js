@@ -47,12 +47,12 @@ function WGR_check_and_load_submit_v5(i) {
 
 		// textarea đang lỗi -> chế cách khắc phục kiểu này
 		jQuery(".get-html-for-v5-submit").each(function () {
-			var t = jQuery(this).attr("name") || null;
+			let t = jQuery(this).attr("name") || null;
 
 			//
 			if (t != null) {
 				// lấy nội dung trong iframe
-				var a =
+				let a =
 					jQuery("#" + t.replace("_forv5", "") + "_ifr")
 						.contents()
 						.find("body")
@@ -74,9 +74,9 @@ function WGR_check_and_load_submit_v5(i) {
 
 // xóa các mảng bị null
 function WGR_remove_add_null_value(arr) {
-	var new_arr = [];
+	let new_arr = [];
 
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		if (arr[i] != null) {
 			new_arr.push(arr[i]);
 		}
@@ -111,7 +111,7 @@ function WGR_add_value_form_edit_size(arr) {
 	jQuery(".eb-input-edit-product-size button")
 		.off("click")
 		.click(function () {
-			var a = jQuery(this).attr("data-action") || "";
+			let a = jQuery(this).attr("data-action") || "";
 			console.log(a);
 
 			// size theo màu
@@ -119,7 +119,7 @@ function WGR_add_value_form_edit_size(arr) {
 				console.log("Edit size for color");
 
 				//
-				var a_node = jQuery("#eb_input_edit_color_size_node").val();
+				let a_node = jQuery("#eb_input_edit_color_size_node").val();
 
 				//
 				if (a == "save") {
@@ -166,8 +166,8 @@ function WGR_add_value_form_edit_size(arr) {
 }
 
 function WGR_show_list_size_in_color() {
-	var str = "";
-	for (var i = 0; i < admin_global_size_color.length; i++) {
+	let str = "";
+	for (let i = 0; i < admin_global_size_color.length; i++) {
 		str += WGR_create_note_for_product_size(admin_global_size_color[i], i);
 	}
 	str +=
@@ -184,7 +184,7 @@ function WGR_show_list_size_in_color() {
 			// Bỏ phần sửa size chính
 			jQuery("#eb_input_edit_product_size_node").val("");
 
-			var a = jQuery(this).attr("data-add") || "",
+			let a = jQuery(this).attr("data-add") || "",
 				a_node = 0;
 			//		console.log(a);
 
@@ -226,17 +226,17 @@ function WGR_show_list_size_in_color() {
 function WGR_create_note_for_product_size(arr, j) {
 	//	console.log( arr );
 
-	var str = "",
+	let str = "",
 		show_text = "",
 		show_title = "";
 
 	if (typeof arr == "object") {
 		// khi chuyển size sang còn 1 mảng duy nhất -> khai báo j để đỡ phải viết lại nhiều code
-		//		var j = 0;
+		//		let j = 0;
 		//		arr[j] = arr;
 
 		//
-		//		for ( var j = 0; j < arr.length; j++ ) {
+		//		for ( let j = 0; j < arr.length; j++ ) {
 		/*
 			if ( arr == null ) {
 			}
@@ -312,7 +312,7 @@ function WGR_ads_get_current_select_category_or_post_name(action_id) {
 	}
 
 	//
-	var a = jQuery("#" + action_id).val() || "";
+	let a = jQuery("#" + action_id).val() || "";
 	//	console.log(a);
 	if (a != "") {
 		a = g_func.number_only(a);
@@ -379,10 +379,10 @@ function WGR_ads_show_current_select_category_or_post_name(a, arr, id) {
 	//	console.log(a);
 
 	//
-	var r = false;
+	let r = false;
 
 	//
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		if (a == arr[i].id) {
 			jQuery(".show-for-" + id).html(arr[i].ten);
 			r = true;
@@ -420,7 +420,7 @@ function WGR_run_for_admin_edit_ads_post(action_id) {
 	WGR_ads_get_current_select_category_or_post_name(action_id);
 
 	// nhập ID blog, product, page mà q.cáo alias tới
-	var jd_for_quick_search_post = "quick_sreach_for" + action_id,
+	let jd_for_quick_search_post = "quick_sreach_for" + action_id,
 		action_for_quick_search_post = "";
 	jQuery("#" + action_id)
 		.attr({
@@ -554,7 +554,7 @@ function WGR_run_for_admin_edit_ads_post(action_id) {
 		//		console.log(e.keyCode);
 
 		//
-		var fix_id = "#" + action_for_quick_search_post + " li";
+		let fix_id = "#" + action_for_quick_search_post + " li";
 
 		// enter
 		if (e.keyCode == 13) {
@@ -567,7 +567,7 @@ function WGR_run_for_admin_edit_ads_post(action_id) {
 		}
 
 		//
-		var key = jQuery(this).val() || "";
+		let key = jQuery(this).val() || "";
 		if (key != "") {
 			key = g_func.non_mark_seo(key);
 			key = key.replace(/[^0-9a-zA-Z]/g, "");
@@ -578,7 +578,7 @@ function WGR_run_for_admin_edit_ads_post(action_id) {
 			jQuery(fix_id)
 				.hide()
 				.each(function () {
-					var a = jQuery(this).attr("data-key") || "";
+					let a = jQuery(this).attr("data-key") || "";
 
 					//
 					if (a != "") {
@@ -641,10 +641,10 @@ function edit_post_load_list_details_post_for_quick_search(
 	}
 
 	//
-	var str = "",
+	let str = "",
 		key = "",
 		lnk = "";
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		key = g_func.non_mark_seo(arr[i].ten) + arr[i].seo;
 
 		// taxonomy
@@ -705,7 +705,7 @@ function edit_post_load_list_taxonomy_for_quick_search(
 }
 
 function check_eb_input_edit_product_color() {
-	var f = document.frm_eb_input_edit_product_color;
+	let f = document.frm_eb_input_edit_product_color;
 
 	jd = f.eb_input_edit_product_color_id.value;
 	ten = f.eb_input_edit_product_color_name.value;
@@ -716,7 +716,7 @@ function check_eb_input_edit_product_color() {
 	size_color = f.eb_input_edit_product_size_bycolor_id.value;
 
 	//
-	var iff_id = "_eb_product_list_color_ifr";
+	let iff_id = "_eb_product_list_color_ifr";
 
 	jQuery("#" + iff_id)
 		.contents()
@@ -807,7 +807,7 @@ function eb_func_show_product_size() {
 			typeof eb_global_product_size[0].name == "undefined"
 		) {
 			//
-			for (var i = 0; i < eb_global_product_size.length; i++) {
+			for (let i = 0; i < eb_global_product_size.length; i++) {
 				// chuyển ten -> name
 				if (
 					typeof eb_global_product_size[i].ten != "undefined" &&
@@ -842,7 +842,7 @@ function eb_func_show_product_size() {
 		/*
 		if ( typeof eb_global_product_size[0] != 'undefined' ) {
 			if ( typeof eb_global_product_size[0][0] == 'undefined' ) {
-				var eb_global_product_size_v2 = eb_global_product_size.slice();
+				let eb_global_product_size_v2 = eb_global_product_size.slice();
 //				console.log( eb_global_product_size );
 //				console.log( eb_global_product_size_v2 );
 				
@@ -857,14 +857,14 @@ function eb_func_show_product_size() {
 	//	console.log( eb_global_product_size.length );
 	//	return false;
 
-	var str_size = "";
+	let str_size = "";
 	if (eb_global_product_size.length > 0) {
-		for (var i = 0; i < eb_global_product_size.length; i++) {
+		for (let i = 0; i < eb_global_product_size.length; i++) {
 			//			console.log( i );
 
 			//
-			//			var arr = eb_global_product_size[i];
-			//			var str_node_size = (function ( arr ) {
+			//			let arr = eb_global_product_size[i];
+			//			let str_node_size = (function ( arr ) {
 			//			str_size += (function ( arr ) {
 			//			})( eb_global_product_size[i] );
 			str_size += WGR_create_note_for_product_size(
@@ -930,7 +930,7 @@ function check_eb_input_edit_product_size() {
 
 	//
 	/*
-	var current_select = '#' + eb_inner_html_product_size + ' li.selected';
+	let current_select = '#' + eb_inner_html_product_size + ' li.selected';
 	console.log(current_select);
 	if ( jQuery( current_select ).length == 0 ) {
 		console.log('current_select(2) not found!');
@@ -939,10 +939,10 @@ function check_eb_input_edit_product_size() {
 	*/
 
 	//
-	//	var a_parent = jQuery(current_select).attr('data-parent') || 0,
+	//	let a_parent = jQuery(current_select).attr('data-parent') || 0,
 	//		a_node = jQuery(current_select).attr('data-node') || 0;
-	var a_parent = 0,
-		a_node = jQuery("#eb_input_edit_product_size_node").val() || 0;
+	// let a_parent = 0;
+	let a_node = jQuery("#eb_input_edit_product_size_node").val() || 0;
 	//	console.log( a_parent );
 	console.log(a_node);
 
@@ -955,63 +955,6 @@ function check_eb_input_edit_product_size() {
 		price: jQuery("#eb_input_edit_product_size_price").val().replace(/\,/g, ""),
 	};
 	console.log(eb_global_product_size);
-
-	//
-	eb_func_global_product_size();
-
-	return false;
-
-	// v1
-	if (typeof eb_global_product_size[a_parent][a_node] == "undefined") {
-		alert("Object value (node) not found");
-		return false;
-	}
-
-	jQuery(
-		'.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]'
-	).val(eb_global_product_size[a_parent][a_node].sku);
-	jQuery(
-		'.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]'
-	).val(eb_global_product_size[a_parent][a_node].price);
-	jQuery(
-		'.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]'
-	).val(eb_global_product_size[a_parent][a_node].val);
-	jQuery(
-		'.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]'
-	).val(eb_global_product_size[a_parent][a_node].name);
-
-	//
-	var ten =
-			jQuery(
-				'.eb-input-edit-product-size input[name="eb_input_edit_product_size_name"]'
-			).val() || "",
-		sku =
-			jQuery(
-				'.eb-input-edit-product-size input[name="eb_input_edit_product_size_sku"]'
-			).val() || "",
-		sai =
-			jQuery(
-				'.eb-input-edit-product-size input[name="eb_input_edit_product_size_quan"]'
-			).val() || "",
-		price =
-			jQuery(
-				'.eb-input-edit-product-size input[name="eb_input_edit_product_size_price"]'
-			).val() || "";
-
-	/*
-	if ( ten == '' || sai == '' ) {
-		eb_global_product_size[ a_parent ][ a_node ] = null;
-	}
-	else {
-		*/
-	eb_global_product_size[a_parent][a_node] = {
-		name: ten,
-		sku: sku,
-		val: sai,
-		price: price,
-	};
-	//		console.log(eb_global_product_size);
-	//	}
 
 	//
 	eb_func_global_product_size();
@@ -1034,7 +977,7 @@ function eb_func_click_modife_product_size() {
 				.removeClass("selected");
 
 			//
-			var a = jQuery(this).attr("data-add") || "";
+			let a = jQuery(this).attr("data-add") || "";
 			//		console.log(a);
 
 			// nếu không có thông số add -> sửa size
@@ -1043,7 +986,7 @@ function eb_func_click_modife_product_size() {
 				jQuery(this).addClass("redcolor").addClass("selected");
 
 				//
-				var a_node = jQuery(this).attr("data-node") || 0;
+				let a_node = jQuery(this).attr("data-node") || 0;
 				//			console.log('Edit size #' + a_node);
 
 				// lưu vị trí cấn chỉnh sửa dữ liệu
@@ -1051,7 +994,7 @@ function eb_func_click_modife_product_size() {
 
 				//
 				/*
-			var current_select = '#' + eb_inner_html_product_size + ' li.selected';
+			let current_select = '#' + eb_inner_html_product_size + ' li.selected';
 			console.log(eb_inner_html_product_size);
 			if ( jQuery( current_select ).length == 0 ) {
 				console.log('current_select not found!');
@@ -1065,7 +1008,7 @@ function eb_func_click_modife_product_size() {
 				// thêm nhóm size
 				if (a == "group") {
 					if (typeof eb_global_product_size[0] != "undefined") {
-						var add_new_group_size = eb_global_product_size[0].slice();
+						let add_new_group_size = eb_global_product_size[0].slice();
 
 						//					eb_global_product_size[ eb_global_product_size.length ] = [];
 						eb_global_product_size.push(add_new_group_size);
@@ -1078,7 +1021,7 @@ function eb_func_click_modife_product_size() {
 				else {
 					//
 					/*
-				var size_parent = jQuery(this).attr('data-parent') || 0;
+				let size_parent = jQuery(this).attr('data-parent') || 0;
 				
 				if ( typeof eb_global_product_size[size_parent] == 'undefined' ) {
 					eb_global_product_size[size_parent] = [];
@@ -1124,7 +1067,7 @@ function eb_func_click_modife_product_size() {
 // kiểm tra và tạo size
 function eb_func_global_product_size() {
 	// nếu có module size -> chỉ sản phẩm mới có
-	var kk = "_eb_product_size";
+	let kk = "_eb_product_size";
 
 	if (dog(kk) == null) {
 		return false;
@@ -1188,7 +1131,7 @@ function WGR_run_for_admin_edit_post() {
 		// chuyển định dạng số cho phần giá
 		jQuery("#_eb_product_oldprice, #_eb_product_price")
 			.change(function () {
-				var a = jQuery(this).val() || 0;
+				let a = jQuery(this).val() || 0;
 
 				//				a = g_func.number_only( a );
 				a = g_func.money_format(a);
@@ -1201,7 +1144,7 @@ function WGR_run_for_admin_edit_post() {
 				jQuery(this).val(a);
 
 				// kiểm tra và phân bổ lại giá
-				var giacu = jQuery("#_eb_product_oldprice").val(),
+				let giacu = jQuery("#_eb_product_oldprice").val(),
 					giaban = jQuery("#_eb_product_price").val();
 
 				if (giaban == 0 && giacu > 0) {
@@ -1217,7 +1160,7 @@ function WGR_run_for_admin_edit_post() {
 		}
 
 		//
-		var a = jQuery("#_eb_product_avatar").val() || "",
+		let a = jQuery("#_eb_product_avatar").val() || "",
 			b = jQuery('tr[data-row="_eb_product_avatar"]').length;
 		if (a != "" && b > 0) {
 			// xử lý hình ảnh lỗi cho xwatch cũ
@@ -1229,7 +1172,7 @@ function WGR_run_for_admin_edit_post() {
 		}
 
 		jQuery("#_eb_product_avatar").change(function () {
-			var a = jQuery(this).val() || "";
+			let a = jQuery(this).val() || "";
 
 			// không có ảnh thì xóa
 			if (a == "") {
@@ -1258,8 +1201,8 @@ function WGR_run_for_admin_edit_post() {
 
 		// gán hình ảnh cho video youtube
 		$("#_eb_ads_url, #_eb_ads_video_url").change(function () {
-			var ytb = $("#_eb_ads_url").val() || "";
-			var img = $("#_eb_product_avatar").val() || "";
+			let ytb = $("#_eb_ads_url").val() || "",
+				img = $("#_eb_product_avatar").val() || "";
 
 			if (ytb == "") {
 				ytb = $("#_eb_ads_video_url").val() || "";
@@ -1271,7 +1214,7 @@ function WGR_run_for_admin_edit_post() {
 					ytb.split("youtu.be/").length > 1
 				) {
 					console.log(ytb);
-					var a = _global_js_eb.youtube_id(ytb);
+					let a = _global_js_eb.youtube_id(ytb);
 					console.log(a);
 
 					if (a != "") {
@@ -1290,7 +1233,7 @@ function WGR_run_for_admin_edit_post() {
 			console.log('for xwatch domain');
 			if ( jQuery("#_eb_product_gallery_ifr").length > 0 ) {
 				jQuery("#_eb_product_gallery_ifr").contents().find('img').each(function() {
-					var a = jQuery(this).attr('src') || '',
+					let a = jQuery(this).attr('src') || '',
 						b = a;
 					if (a != '') {
 						a = a.replace( '/home/pictures/', '/Home/Pictures/' );
@@ -1368,7 +1311,7 @@ function WGR_run_for_admin_edit_post() {
 	})();
 
 	//
-	var check_and_set_height_for_img_content = function (
+	let check_and_set_height_for_img_content = function (
 		iff_id,
 		default_h,
 		fix_height
@@ -1388,7 +1331,7 @@ function WGR_run_for_admin_edit_post() {
 				.find("img")
 				.each(function () {
 					// current style
-					var cs = jQuery(this).attr("style") || "",
+					let cs = jQuery(this).attr("style") || "",
 						// height
 						h = jQuery(this).attr("height") || "",
 						// width
@@ -1428,10 +1371,10 @@ function WGR_run_for_admin_edit_post() {
 					// có chiều cao -> set thuộc tính mới luôn
 					//				else if ( h > default_h && fix_height == 1 ) {
 					else if (h != default_h && fix_height == 1) {
-						var dh = jQuery(this).attr("data-height") || h,
+						let dh = jQuery(this).attr("data-height") || h,
 							dw = jQuery(this).attr("data-width") || w;
 
-						var nw = dh / default_h;
+						let nw = dh / default_h;
 						//					console.log(nw);
 						nw = dw / nw;
 						//					console.log(nw);
@@ -1473,7 +1416,7 @@ function WGR_run_for_admin_edit_post() {
 					}
 
 					// thêm ALT để hiển thị các ảnh lỗi URL
-					var b_alt = jQuery(this).attr("alt") || "",
+					let b_alt = jQuery(this).attr("alt") || "",
 						b_color = jQuery(this).attr("data-color") || "",
 						b_sku = jQuery(this).attr("data-sku") || "",
 						b_name = jQuery(this).attr("title") || "",
@@ -1504,7 +1447,7 @@ function WGR_run_for_admin_edit_post() {
 					.contents()
 					.find("dl")
 					.each(function () {
-						var a = jQuery(".wp-caption-dd", this).html() || "",
+						let a = jQuery(".wp-caption-dd", this).html() || "",
 							b = jQuery("img", this).attr("alt") || "";
 						//						console.log(a);
 						if (a != "" && a != b) {
@@ -1522,7 +1465,7 @@ function WGR_run_for_admin_edit_post() {
 					.find("img")
 					.off("click")
 					.click(function () {
-						var jd = jQuery(this).attr("id") || "";
+						let jd = jQuery(this).attr("id") || "";
 
 						if (jd == "") {
 							return false;
@@ -1537,10 +1480,10 @@ function WGR_run_for_admin_edit_post() {
 						jQuery("#eb_input_edit_product_color_name").focus();
 
 						//
-						var f = document.frm_eb_input_edit_product_color;
+						let f = document.frm_eb_input_edit_product_color;
 
 						// các thông số của màu sắc đang chỉnh sửa
-						var ten = jQuery(this).attr("alt") || "",
+						let ten = jQuery(this).attr("alt") || "",
 							sku = jQuery(this).attr("data-sku") || "",
 							color = jQuery(this).attr("data-color") || "",
 							quan = jQuery(this).attr("data-quan") || "",
@@ -1603,7 +1546,7 @@ function WGR_run_for_admin_edit_post() {
 		jQuery(".eb-input-edit-product-color button")
 			.off("click")
 			.click(function () {
-				var a = jQuery(this).attr("data-action") || "";
+				let a = jQuery(this).attr("data-action") || "";
 
 				if (a == "save") {
 					check_eb_input_edit_product_color();
@@ -1662,27 +1605,11 @@ function WGR_run_for_admin_edit_post() {
 
 		//
 		return true;
-
-		//
-		var a = jQuery("#post_ID").val() || 0;
-
-		if (a <= 0) {
-			alert("Post ID not found!");
-			return false;
-		}
-
-		//
-		var uri = web_link + "duplicate_post?post_id=" + a;
-		console.log(uri);
-
-		if (confirm("Xác nhận nhân bản bài viết này") == false) {
-			return false;
-		}
 	});
 
 	// sau khi nhân bản xong, chuyển sang bài đó luôn
 	if (window.location.href.split("&post-duplicated=").length > 1) {
-		var a = jQuery("#wpbody-content .updated a").attr("href") || "";
+		let a = jQuery("#wpbody-content .updated a").attr("href") || "";
 
 		if (a != "") {
 			window.location = a;
@@ -1718,27 +1645,27 @@ function WGR_run_for_admin_edit_post() {
 	);
 
 	// chỉnh lại URL ảnh để tránh bị lỗi
-	var content_id =
+	let content_id =
 			"#content_ifr, #_eb_product_gallery_ifr, #_eb_product_list_color_ifr",
 		dm = document.domain;
 
 	//
 	jQuery(window).on("load", function () {
 		if (cf_old_domain != "") {
-			var arr_old_domain = cf_old_domain.replace(/\s/g, "").split(",");
+			let arr_old_domain = cf_old_domain.replace(/\s/g, "").split(",");
 
 			//
 			jQuery(content_id)
 				.contents()
 				.find("img")
 				.each(function () {
-					var a =
+					let a =
 						jQuery(this).attr("src") || jQuery(this).attr("data-mce-src") || "";
 					//				console.log(a);
 
 					//
 					if (a != "") {
-						for (var i = 0; i < arr_old_domain.length; i++) {
+						for (let i = 0; i < arr_old_domain.length; i++) {
 							a = a.replace("//" + arr_old_domain[i] + "/", "//" + dm + "/");
 						}
 						//					console.log(a);
@@ -1762,9 +1689,9 @@ function WGR_run_for_admin_edit_post() {
 				});
 
 			//
-			var a = jQuery("#_eb_product_avatar").val() || "";
+			let a = jQuery("#_eb_product_avatar").val() || "";
 			if (a != "") {
-				for (var i = 0; i < arr_old_domain.length; i++) {
+				for (let i = 0; i < arr_old_domain.length; i++) {
 					a = a.replace("//" + arr_old_domain[i] + "/", "//" + dm + "/");
 				}
 
@@ -1777,7 +1704,7 @@ function WGR_run_for_admin_edit_post() {
 				.contents()
 				.find("img")
 				.each(function () {
-					var a =
+					let a =
 						jQuery(this).attr("src") || jQuery(this).attr("data-mce-src") || "";
 					//				console.log(a);
 
@@ -1803,11 +1730,11 @@ function WGR_run_for_admin_edit_post() {
 		}
 
 		// tạo các quick menu cho phần edit post
-		var str = "";
+		let str = "";
 		jQuery(
 			"#normal-sortables .postbox, #advanced-sortables .postbox, #side-sortables .postbox"
 		).each(function () {
-			var a =
+			let a =
 					jQuery(".postbox-header h2:first", this).html() ||
 					jQuery("h2 span", this).html() ||
 					"",
@@ -1832,7 +1759,7 @@ function WGR_run_for_admin_edit_post() {
 		jQuery("body").append('<ul class="edit-post-wgr-tab">' + str + "</ul>");
 
 		jQuery(".edit-post-wgr-tab li").click(function () {
-			var jd = jQuery(this).attr("data-id") || "",
+			let jd = jQuery(this).attr("data-id") || "",
 				to_id = 0;
 
 			//
@@ -1879,11 +1806,11 @@ function WGR_show_name_for_truong_tuy_bien() {
 
 	//
 	//	console.log(arr_cf_truong_tuy_bien);
-	var str = "";
-	for (var i = 0; i < arr_cf_truong_tuy_bien.length; i++) {
+	let str = "";
+	for (let i = 0; i < arr_cf_truong_tuy_bien.length; i++) {
 		arr_cf_truong_tuy_bien[i] = $.trim(arr_cf_truong_tuy_bien[i]);
 		if (arr_cf_truong_tuy_bien[i] != "") {
-			var a = g_func.non_mark_seo(arr_cf_truong_tuy_bien[i]);
+			let a = g_func.non_mark_seo(arr_cf_truong_tuy_bien[i]);
 			a = a.replace(/\-/g, "_");
 			//			console.log(a);
 
@@ -1910,12 +1837,12 @@ function WGR_show_name_for_truong_tuy_bien() {
 	}
 
 	// hiển thị tên các trường tùy biến đã dược thiết lập cho dễ nhìn
-	var colspan_th = 0;
+	let colspan_th = 0;
 	$("#the-list tr").each(function () {
-		var this_id = $(this).attr("id") || "";
+		let this_id = $(this).attr("id") || "";
 
 		if (this_id != "" && $('input[id="' + this_id + '-key"]').length > 0) {
-			var td_key = $('input[id="' + this_id + '-key"]').val() || "";
+			let td_key = $('input[id="' + this_id + '-key"]').val() || "";
 			if (
 				td_key != "" &&
 				typeof arr_ten_truong_tuy_bien[td_key] != "undefined"
@@ -1967,7 +1894,7 @@ function WGR_find_all_taxonomy_for_edit() {
 }
 
 function WGR_find_taxonomy_for_edit(tax_id) {
-	var tax = tax_id + "div";
+	let tax = tax_id + "div";
 	// lượng dữ liệu nhiều chút thì mới hỗ trợ tìm kiếm
 	if (
 		jQuery("#" + tax).length === 0 ||
@@ -1981,7 +1908,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 	);
 
 	// thêm ô tìm kiếm
-	var input_id = "WGR_search_taxonomy_" + tax_id;
+	let input_id = "WGR_search_taxonomy_" + tax_id;
 	jQuery("#" + tax + " .postbox-header").after(
 		'<div class="WGR-post-edit-search-taxnomy"><textarea placeholder="Tìm kiếm nhanh, mỗi từ khóa cách nhau bởi dấu xuống dòng" id="' +
 			input_id +
@@ -1990,7 +1917,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 
 	//
 	jQuery("#" + tax_id + "checklist li label").each(function () {
-		var a = $(this).html() || "";
+		let a = $(this).html() || "";
 
 		if (a != "") {
 			//console.log(a);
@@ -2016,9 +1943,8 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 				return false;
 			}
 
-			var fix_id = tax_id + "checklist";
-
-			var keys = $.trim(jQuery(this).val() || "");
+			let fix_id = tax_id + "checklist",
+				keys = $.trim(jQuery(this).val() || "");
 			if (keys.length < 3) {
 				jQuery("#" + fix_id + " li label").show();
 				return false;
@@ -2027,8 +1953,8 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 
 			//
 			keys = keys.split("\n");
-			for (var i = 0; i < keys.length; i++) {
-				var key = g_func.non_mark_seo(keys[i]);
+			for (let i = 0; i < keys.length; i++) {
+				let key = g_func.non_mark_seo(keys[i]);
 				key = key.replace(/[^0-9a-zA-Z]/g, "");
 				if (key == "") {
 					continue;
@@ -2036,7 +1962,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 
 				//
 				jQuery("#" + fix_id + " li label").each(function () {
-					var a = jQuery(this).attr("data-key") || "";
+					let a = jQuery(this).attr("data-key") || "";
 					if (a != "" && a.split(key).length > 1) {
 						jQuery(this).show();
 					}

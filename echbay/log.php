@@ -52,7 +52,7 @@ include_once $include_tab;
 
 	//
 	$('.content-to-short').each(function() {
-		var len = 110,
+		let len = 110,
 			a = $(this).html() || '',
 			str_len = g_func.strip_tags(a),
 			str = '';
@@ -61,7 +61,7 @@ include_once $include_tab;
 				title: str_len
 			});
 			a = a.split(' ');
-			for (var i = 0; i < a.length; i++) {
+			for (let i = 0; i < a.length; i++) {
 				str += a[i] + ' ';
 				if (str.length > len) {
 					break;

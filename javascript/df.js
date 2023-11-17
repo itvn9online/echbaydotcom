@@ -12,7 +12,7 @@ function ___eb_set_thumb_to_fullsize(s) {
 
 	//
 	if (s.split(wp_content + "/uploads/").length > 1) {
-		var t = s.split("-");
+		let t = s.split("-");
 		t = t[t.length - 1];
 		//		console.log( t );
 
@@ -20,7 +20,7 @@ function ___eb_set_thumb_to_fullsize(s) {
 			t = t.split(".")[0].split("x");
 
 			if (t.length == 2) {
-				var re = /^\d+$/;
+				let re = /^\d+$/;
 
 				// nếu đang là thumbnail hoặc ảnh thu nhỏ -> thì mới cần chuyển sang ảnh to
 				if (re.test(t[0]) == true && re.test(t[1]) == true) {
@@ -83,22 +83,22 @@ function ___eb_set_img_to_thumbnail(sr, srcset) {
 		}
 
 		// cắt lấy chuỗi cuối cùng của ảnh để kiểm tra xem có phải thumb hay không
-		var file_name = sr.split("/");
+		let file_name = sr.split("/");
 		file_name = file_name[file_name.length - 1];
 		//		console.log( file_name );
 
-		//		var is_thumb = sr.split('/').pop().split('-').pop().split('.')[0];
-		var is_thumb = file_name.split("-");
+		//		let is_thumb = sr.split('/').pop().split('-').pop().split('.')[0];
+		let is_thumb = file_name.split("-");
 		is_thumb = is_thumb[is_thumb.length - 1];
 		//		console.log( is_thumb );
 
 		//
 		if (is_thumb.split(".").length == 2) {
-			var file_type = file_name.split(".");
+			let file_type = file_name.split(".");
 			file_type = file_type[file_type.length - 1];
 			//			console.log( file_type );
 
-			var thumbnail = "-150x150." + file_type;
+			let thumbnail = "-150x150." + file_type;
 			//			console.log( thumbnail );
 
 			is_thumb = is_thumb.split(".")[0];
@@ -106,7 +106,7 @@ function ___eb_set_img_to_thumbnail(sr, srcset) {
 
 			// có chữ x -> có thể là thumb -> xóa cái đoạn đó đi -> có thể gây lỗi nếu đó là tên file ảnh =))
 			if (is_thumb.split("x").length > 1) {
-				var re = /^\d+$/;
+				let re = /^\d+$/;
 				is_thumb = is_thumb.split("x");
 
 				// nếu đang là thumbnail hoặc ảnh thu nhỏ
@@ -136,7 +136,7 @@ function ___eb_set_img_to_thumbnail(sr, srcset) {
 			else {
 				//			if ( is_thumb.split('x').length != 2 ) {
 				// -> thêm thumb
-				//				var img_type = sr.split('.').pop();
+				//				let img_type = sr.split('.').pop();
 
 				sr = sr.replace("." + file_type, thumbnail);
 			}
@@ -159,7 +159,7 @@ function WGR_fixed_tab_height_in_line(jd, for_tag, max_height) {
 	//	}
 
 	// Chiều cao định vị cho tab
-	var min_tab_height = jQuery(jd).attr("data-max-height") || "",
+	let min_tab_height = jQuery(jd).attr("data-max-height") || "",
 		tag = jQuery(jd).attr("data-tag") || for_tag;
 
 	//
@@ -184,8 +184,8 @@ function WGR_fixed_tab_height_in_line(jd, for_tag, max_height) {
 
 	//	console.log( jQuery('.thread-details-tab').height() );
 	if (jQuery(jd).height() > min_tab_height) {
-		var j = 30;
-		for (var i = 0; i < 28; i++) {
+		let j = 30;
+		for (let i = 0; i < 28; i++) {
 			jQuery(jd + " " + tag).css({
 				//				padding: '0 ' +j+ 'px',
 				"padding-left": j + "px",
@@ -205,8 +205,8 @@ function WGR_fixed_tab_height_in_line(jd, for_tag, max_height) {
 
 	// nếu vẫn chưa được -> màn hình có thể còn nhỏ hơn nữa -> tiếp tục thu font-size
 	if (jQuery(jd).height() > min_tab_height) {
-		var j = 17;
-		for (var i = 0; i < 7; i++) {
+		let j = 17;
+		for (let i = 0; i < 7; i++) {
 			jQuery(jd + " " + tag).css({
 				"font-size": j + "px",
 			});
@@ -243,7 +243,7 @@ function ___eb_logo_doitac_chantrang(so_the_li_mong_muon, li_fo_scroll) {
 // tạo hiệu ứng với phần danh sách sản phẩm
 function ___eb_thread_list_li() {
 	jQuery(".thread-list li").each(function () {
-		var ngay = jQuery(this).attr("data-ngay") || 0,
+		let ngay = jQuery(this).attr("data-ngay") || 0,
 			//		giacu = jQuery(this).attr('data-gia') || '',
 			//		giamoi = jQuery(this).attr('data-giamoi') || '',
 			//		a = jQuery(this).attr('data-giovang') || '',
@@ -325,7 +325,7 @@ function WGR_active_popup(op) {
 	if (typeof op["cookie_time2"] != "number" || op["cookie_time2"] * 1 < 0) {
 		op["cookie_time2"] = 0;
 	}
-	var rtime =
+	let rtime =
 		op["cookie_time"] * 60 +
 		op["cookie_time1"] * 60 * 60 +
 		op["cookie_time2"] * 24 * 3600;
@@ -346,7 +346,7 @@ function WGR_active_popup(op) {
 	if (WGR_check_option_on(cf_tester_mode)) console.log(op);
 
 	//
-	var a = g_func.getc(op["cookie_name"]);
+	let a = g_func.getc(op["cookie_name"]);
 	if (a != null) {
 		console.log("Popup hide by WGR_active_popup");
 		return false;
@@ -412,7 +412,7 @@ function close_img_quick_video_details() {
 function ___eb_click_open_video_popup() {
 	jQuery(".click-quick-view-video")
 		.each(function () {
-			var a = jQuery(this).attr("data-video") || "",
+			let a = jQuery(this).attr("data-video") || "",
 				lnk = jQuery(this).attr("href") || "",
 				module = jQuery(this).attr("data-module") || "";
 			if (module == "") {
@@ -436,7 +436,7 @@ function ___eb_click_open_video_popup() {
 		.off("click")
 		.click(function () {
 			//		alert(1);
-			var a = jQuery(this).attr("data-video") || "",
+			let a = jQuery(this).attr("data-video") || "",
 				tit = jQuery(this).attr("title") || "",
 				lnk = jQuery(this).attr("href") || "",
 				// nhóm các video liên quan theo module
@@ -451,9 +451,9 @@ function ___eb_click_open_video_popup() {
 				//			jQuery('body').addClass('body-scroll-disable');
 
 				//
-				var wit = jQuery("#quick-video-content").width(),
-					hai = jQuery(window).height(),
-					wit_hai = 0;
+				let wit = jQuery("#quick-video-content").width(),
+					// wit_hai = 0,
+					hai = jQuery(window).height();
 
 				// xem đang là màn ngang hay dọc
 				/*
@@ -502,11 +502,11 @@ function ___eb_click_open_video_popup() {
 				}
 
 				//
-				var ytb_ifr =
+				let ytb_ifr =
 					"https://www.youtube.com/embed/" +
 					a +
 					"?feature=oembed&autoplay=1&start&end&wmode=opaque&loop=0&controls=1&mute=0&rel=0&modestbranding=0";
-				//			var ytb_ifr = 'https://www.youtube.com/embed/' +a+ '?autoplay=1';
+				//			let ytb_ifr = 'https://www.youtube.com/embed/' +a+ '?autoplay=1';
 
 				//
 				str +=
@@ -529,7 +529,7 @@ function ___eb_click_open_video_popup() {
 					"</div>";
 
 				// Tạo list video -> Lấy các video khác trên cùng trang
-				var get_other_video = ".click-quick-view-video";
+				let get_other_video = ".click-quick-view-video";
 				if (module != "") {
 					if (WGR_check_option_on(cf_tester_mode)) console.log(module);
 					get_other_video =
@@ -542,7 +542,7 @@ function ___eb_click_open_video_popup() {
 
 				//
 				jQuery(get_other_video).each(function () {
-					var a2 = jQuery(this).attr("data-video") || "",
+					let a2 = jQuery(this).attr("data-video") || "",
 						tit2 = jQuery(this).attr("title") || "";
 
 					//
@@ -559,7 +559,7 @@ function ___eb_click_open_video_popup() {
 				//			console.log( arr_list_video );
 
 				//
-				for (var x in arr_list_video) {
+				for (let x in arr_list_video) {
 					//
 					str +=
 						"" +
@@ -582,7 +582,7 @@ function ___eb_click_open_video_popup() {
 				}
 
 				//
-				var new_scroll_top = window.scrollY || jQuery(window).scrollTop();
+				let new_scroll_top = window.scrollY || jQuery(window).scrollTop();
 
 				//
 				jQuery("#quick-video-content").css({
@@ -613,7 +613,7 @@ function ___eb_click_open_video_popup() {
 //
 function ___eb_func_fix_right_menu() {
 	// chiều cao của menu phải
-	//	var a = jQuery('.fix-right-menu').height();
+	//	let a = jQuery('.fix-right-menu').height();
 	fix_right_window_height = jQuery(window).height();
 
 	// chiều cao của main -> lớn hơn right thì mới dùng chức năng này
@@ -654,67 +654,14 @@ function ___eb_func_fix_right_menu() {
 
 function ___eb_fix_left_right_menu() {
 	return ___WGR_fixed_left_right_menu();
-
-	//
-	if (g_func.mb_v2() == true) {
-		console.log("___eb_fix_left_right_menu disable in mobile");
-		return false;
-	}
-
-	// Xác định lại vị trí menu
-	setTimeout(function () {
-		___eb_func_fix_right_menu();
-	}, 2000);
-
-	setInterval(function () {
-		___eb_func_fix_right_menu();
-	}, 5000);
-
-	//
-	jQuery(window)
-		.resize(function () {
-			___eb_func_fix_right_menu();
-			//}).on('load', function() {
-			//___eb_func_fix_right_menu();
-		})
-		.scroll(function () {
-			//console.log( fix_right_left_menu );
-			//console.log( 'fix_right_top_menu: ' + fix_right_top_menu );
-			//console.log( 'end_right_top_menu: ' + end_right_top_menu );
-
-			//
-			var a = window.scrollY || jQuery(window).scrollTop();
-			//console.log( 'end_right_top_menu: ' + end_right_top_menu );
-
-			if (fix_details_right_menu == true) {
-				if (a > right_main_height) {
-					// fixed
-					if (a < end_right_top_menu) {
-						jQuery("body")
-							.removeClass("abs-right-menu")
-							.addClass("fixed-right-menu");
-					}
-					// absolute
-					else {
-						jQuery("body")
-							.removeClass("fixed-right-menu")
-							.addClass("abs-right-menu");
-					}
-				} else {
-					jQuery("body")
-						.removeClass("fixed-right-menu")
-						.removeClass("abs-right-menu");
-				}
-			}
-		});
 }
 
 //
 function ___WGR__fixed_left_right_menu(add_padding_top) {
-	var a = window.scrollY || jQuery(window).scrollTop();
+	let a = window.scrollY || jQuery(window).scrollTop();
 
 	// từ top tới right menu
-	var top_to_right = $("#main_right").offset().top;
+	let top_to_right = $("#main_right").offset().top;
 	//console.log(top_to_right);
 
 	// nhỏ hơn thì fixed cứng top 0
@@ -726,11 +673,11 @@ function ___WGR__fixed_left_right_menu(add_padding_top) {
 	// lớn hơn thì tính toán tiếp
 	else {
 		// chiều cao phần nội dung
-		var right_hight = $(".fix-right-menu").height();
+		let right_hight = $(".fix-right-menu").height();
 		//console.log('right_hight:' + right_hight);
 		// điểm cuối của right menu
-		//var end_right = $('.col-sidebar-content').height() - top_to_right;
-		var end_right =
+		//let end_right = $('.col-sidebar-content').height() - top_to_right;
+		let end_right =
 			$("#fix_end_right_menu").offset().top -
 			top_to_right -
 			right_hight -
@@ -738,7 +685,7 @@ function ___WGR__fixed_left_right_menu(add_padding_top) {
 		//console.log('end_right:' + end_right);
 
 		// phần top add thêm
-		var add_top = a - top_to_right;
+		let add_top = a - top_to_right;
 		if (add_top > end_right) {
 			add_top = end_right;
 		}
@@ -778,7 +725,7 @@ function ___WGR_fixed_left_right_menu(add_padding_top) {
 }
 
 function ___eb_show_cart_count() {
-	var c = "eb_cookie_cart_list_id",
+	let c = "eb_cookie_cart_list_id",
 		cart_id_in_cookie = g_func.getc(c);
 	//	console.log( cart_id_in_cookie );
 	if (cart_id_in_cookie == null) {
@@ -844,7 +791,7 @@ function ___wgr_set_product_id_cookie(
 	}
 
 	// lấy danh sách trong cookie trước đó
-	var str_history = g_func.getc(cookie_name),
+	let str_history = g_func.getc(cookie_name),
 		new_id = "[" + add_id + "]";
 	if (WGR_check_option_on(cf_tester_mode)) {
 		console.log(str_history);
@@ -867,7 +814,7 @@ function ___wgr_set_product_id_cookie(
 	//	console.log(str_history);
 
 	// kiểm tra đọ dài của log
-	var check_history = str_history.split("][");
+	let check_history = str_history.split("][");
 	//	console.log(check_history.length);
 	//	console.log(check_history);
 
@@ -884,7 +831,7 @@ function ___wgr_set_product_id_cookie(
 			str_history = check_history.join("][");
 		} else {
 			str_history = "";
-			for (var i = 0; i < limit_history + 1; i++) {
+			for (let i = 0; i < limit_history + 1; i++) {
 				str_history += check_history[i] + "][";
 			}
 			// thêm vào cuối
@@ -919,7 +866,7 @@ function WGR_goto_a_tag(a) {
 
 function action_WGR_goto_a_tag(a) {
 	try {
-		var goto = 0;
+		let goto = 0;
 
 		// chuyển tới 1 ID, class hoặc input nào đó
 		if (jQuery("#" + a).length > 0) {

@@ -2,7 +2,7 @@
 var confirm_df2_loaded = true;
 
 function WGR_show_or_hide_to_top() {
-	var new_scroll_top = window.scrollY || jQuery(window).scrollTop();
+	let new_scroll_top = window.scrollY || jQuery(window).scrollTop();
 
 	//
 	/*
@@ -120,23 +120,22 @@ function ___eb_thread_details_timeend() {
 
 		//
 		jQuery(".thread-details-timeend").each(function () {
-			var te = jQuery(this).attr("data-timeend") || "";
+			let te = jQuery(this).attr("data-timeend") || "";
 			//		te = date_time + 24 * 3600 + 5;
 			//		console.log( te );
 			if (te != "") {
-				var a = te - date_time;
+				let a = te - date_time;
 
 				//
 				if (a > 0) {
-					var mot_ngay = 24 * 3600,
+					let mot_ngay = 24 * 3600,
 						giay = a % 60,
 						phut = a - giay,
 						phut = a > 3600 ? phut % 3600 : phut,
 						ngay = a > mot_ngay ? Math.ceil(a / mot_ngay) - 1 : 0,
-						gio = ngay > 0 ? a - ngay * mot_ngay : a,
 						//					so_du = a > mot_ngay ? a % mot_ngay : a,
 						//					phut = gio > 0 ? a % 3600 : a,
-						bbbbbbb = 1;
+						gio = ngay > 0 ? a - ngay * mot_ngay : a;
 
 					//
 					gio = Math.ceil(gio / 3600) - 1;
@@ -201,15 +200,15 @@ function WGR_get_js_sub_category_to_menu(arr, by_id) {
     */
 
 	//
-	//	var str = '<!-- JS for sub-category menu -->';
-	var str = "",
+	//	let str = '<!-- JS for sub-category menu -->';
+	let str = "",
 		avt = "",
 		icon = "",
 		check_id = 0;
 
 	// lấy theo ID cụ thể
 	if (typeof by_id != "undefined" && by_id > 0) {
-		for (var i = 0; i < arr.length; i++) {
+		for (let i = 0; i < arr.length; i++) {
 			if (arr[i].id == by_id) {
 				check_id = 1;
 				break;
@@ -223,7 +222,7 @@ function WGR_get_js_sub_category_to_menu(arr, by_id) {
 	}
 
 	// lấy tất cả
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		/*
         if (by_id > 0) console.log('arr[i].id: ' + arr[i].id);
         if ( by_id > 0 ) {
@@ -292,9 +291,9 @@ function WGR_get_js_category_to_menu(arr) {
 	//	console.log( arr );
 
 	//
-	var str = "<!-- JS for category menu -->";
+	let str = "<!-- JS for category menu -->";
 
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		if (typeof arr[i].hidden == "undefined" || arr[i].hidden * 1 != 1) {
 			str +=
 				'<li class="echbay-category-order"><a href="' +
@@ -370,7 +369,7 @@ function WGR_check_load_js_category(i) {
 	// sub taxonomy group -> tự xác định taxonomy theo title được truyền vào
 	if (jQuery(".wgr-load-js-sub-taxonomy").length > 0) {
 		jQuery(".wgr-load-js-sub-taxonomy a").each(function () {
-			var a = $(this).attr("title") || "";
+			let a = $(this).attr("title") || "";
 			console.log(a);
 
 			if (a != "") {
@@ -428,7 +427,7 @@ function WGR_show_or_scroll_to_quick_cart() {
 //
 function WGR_set_a_target_top() {
 	jQuery("a").each(function () {
-		var a = jQuery(this).attr("target") || "";
+		let a = jQuery(this).attr("target") || "";
 		if (a == "") {
 			jQuery(this).attr({
 				target: "_top",
@@ -466,14 +465,14 @@ function WGR_set_quick_view_height() {
 	}, time_for_new_height_quick_view);
 
 	//
-	var h = jQuery("#ui_ebe_quick_view").contents().find("body").height() || 0;
+	let h = jQuery("#ui_ebe_quick_view").contents().find("body").height() || 0;
 	console.log(h);
 	if (h == 0) {
 		h = 600;
 	} else if (h > $(window).height()) {
 		h -= -200;
 	} else {
-		var new_margin = $(window).height() - h;
+		let new_margin = $(window).height() - h;
 		console.log(new_margin);
 
 		$(".quick-view-margin").css({
@@ -525,24 +524,24 @@ function WGR_list_of_content(for_tag, for_class) {
 	}
 
 	//
-	var str = "";
+	let str = "";
 
 	//
 	for_tag = $.trim(for_tag).replace(/\s|\;/g, ",").split(",");
 	//console.log(for_tag);
 
 	//
-	var pho_tag = [];
-	for (var i = 0; i < for_tag.length; i++) {
+	let pho_tag = [];
+	for (let i = 0; i < for_tag.length; i++) {
 		if (for_tag[i] != "") {
 			pho_tag.push(for_class + " " + for_tag[i]);
 		}
 	}
 	//console.log(pho_tag);
 	if (pho_tag.length > 0) {
-		var base_href = window.location.href;
+		let base_href = window.location.href;
 		jQuery(pho_tag.join(",")).each(function () {
-			var jd = jQuery(this).attr("id") || "",
+			let jd = jQuery(this).attr("id") || "",
 				a = jQuery(this).html();
 
 			if (jd == "") {
@@ -553,7 +552,7 @@ function WGR_list_of_content(for_tag, for_class) {
 				});
 			}
 			a = g_func.strip_tags(a);
-			var a_href = g_func.non_mark_seo(a);
+			let a_href = g_func.non_mark_seo(a);
 			a_href = a_href.replace(/\-/g, "_");
 
 			str +=
@@ -596,7 +595,7 @@ function WGR_list_of_content(for_tag, for_class) {
 
 	//
 	jQuery(".thread-details-index li a").click(function () {
-		var a = jQuery(this).attr("data-id") || "";
+		let a = jQuery(this).attr("data-id") || "";
 
 		if (a != "") {
 			//window.scroll( 0, jQuery('#' + a).offset().top - 90 );
@@ -648,14 +647,14 @@ function WGR_for_post_details(function_for_post, function_for_blog) {
 }
 
 function WGR_create_href_for_facebook() {
-	var f = function (lnk, clat) {
+	let f = function (lnk, clat) {
 			if (lnk != "") {
 				jQuery("." + clat + " div")
 					.attr({
 						"data-href": lnk,
 					})
 					.each(function () {
-						var w =
+						let w =
 							jQuery(this).attr("data-width") || jQuery(this).width() || 0;
 						if (w == 0) {
 							w = 180;
@@ -698,7 +697,7 @@ function WGR_create_href_for_facebook() {
 
 	// thiết lập link nhắn tin cho page
 	if (cf_facebook_page != "") {
-		var a = cf_facebook_page.split("/");
+		let a = cf_facebook_page.split("/");
 		//console.log(a[a.length - 1]);
 
 		//
@@ -822,9 +821,9 @@ function WGR_open_local_link_in_iframe() {
 	//	console.log('WGR_open_local_link_in_iframe: ' + Math.random());
 
 	try {
-		var a = document.getElementsByTagName("a");
+		let a = document.getElementsByTagName("a");
 		//		console.log(a.length);
-		for (var i = 0; i < a.length; i++) {
+		for (let i = 0; i < a.length; i++) {
 			if (
 				typeof a[i].href != "undefined" &&
 				a[i].href != "" &&
@@ -855,14 +854,14 @@ function WGR_open_local_link_in_iframe() {
 		//
 		//		$('#webgiare__top a[data-local="localink"]').click(function() {
 		$('a[data-local="localink"]').click(function () {
-			var by_link = $(this).attr("data-href") || $(this).attr("href") || "",
+			let by_link = $(this).attr("data-href") || $(this).attr("href") || "",
 				a = $(this).attr("href") || "",
 				tar = $(this).attr("target") || "";
 
 			// nếu không có lệnh mở trong cửa sổ mới
 			if (tar == "" || tar == "_top") {
 				//				console.log(a);
-				var a = g_func.non_mark_seo(a);
+				let a = g_func.non_mark_seo(a);
 				if (a == "") {
 					a = "home";
 				}
@@ -906,7 +905,7 @@ function WGR_thread_list_quickview() {
 
 	//
 	//	jQuery('.thread-list li').each(function() {
-	//		var a = jQuery(this).attr('data-id') || '';
+	//		let a = jQuery(this).attr('data-id') || '';
 	//		jQuery('.wgr-fake-iframe', this).attr({
 	//			'data-id': a
 	//		});
@@ -921,7 +920,7 @@ function WGR_thread_list_quickview() {
 	jQuery(".thread-list-wgr-quickview")
 		.off("click")
 		.click(function () {
-			var a = jQuery(this).attr("data-id") || "",
+			let a = jQuery(this).attr("data-id") || "",
 				h = jQuery(this).attr("href") || "",
 				r = jQuery(this).attr("data-rel") || "";
 
@@ -944,7 +943,7 @@ function WGR_thread_list_quickview() {
 
 			// nếu có lệnh mở dạng iframe -> tải luôn trong đó
 			if (r == "iframe") {
-				var scron = jQuery("#webgiare__top").height() || 0;
+				let scron = jQuery("#webgiare__top").height() || 0;
 				if (scron > 90) {
 					scron -= 90;
 				}
@@ -1002,7 +1001,7 @@ function WGR_thread_list_quickview() {
 			//		ajaxl('quick_view&id=' + a, 'ui_ebe_quick_view');
 
 			//
-			var device = "desktop";
+			let device = "desktop";
 			if (global_window_width < 750) {
 				device = "mobile";
 			}
@@ -1010,7 +1009,7 @@ function WGR_thread_list_quickview() {
 			// sử dụng iframe
 			dog("ui_ebe_quick_view").src = "about:blank";
 
-			var uri = "";
+			let uri = "";
 			// có ID- > load sản phẩm
 			if (a > 0) {
 				uri = web_link + "eb-ajaxservice?set_module=quick_view&id=" + a + "&";
@@ -1058,15 +1057,15 @@ function WGR_thread_list_quickview() {
 
 // nhảy đến 1 ID đã được xác định (tương tự như thẻ A name)
 function WGR_fixed_a_tag() {
-	var nol = 0,
+	let nol = 0,
 		dm = document.domain;
 	if (WGR_check_option_on(cf_auto_nofollow)) {
 		nol = 1;
 	}
 
 	// tạo sự liên đới trong tab của flatsome
-	//var current_url
-	var i = 0;
+	//let current_url
+	let i = 0;
 	$(".tabbed-content .nav li").each(function () {
 		$(this).attr({
 			"data-id": i,
@@ -1083,7 +1082,7 @@ function WGR_fixed_a_tag() {
 	});
 
 	//
-	var i = 0;
+	let i = 0;
 	$(".tabbed-content .tab-panels .panel").each(function () {
 		$(this).attr({
 			id: "WGR-flatsome-tab" + i,
@@ -1105,10 +1104,10 @@ function WGR_fixed_a_tag() {
 	// để tránh xung đột với các plugin tạo menu khác
 	//jQuery('#ez-toc-container a').removeClass('hash-go-to-html');
 	// thêm base vào các URL chuyển hướng -> để lệnh lỗi thì nó sẽ nhảy xuống link đó được luôn
-	var base_href = window.location.href.split("#")[0];
+	let base_href = window.location.href.split("#")[0];
 	jQuery("a").each(function () {
-		var a = jQuery(this).attr("href") || "";
-		var label = jQuery(this).attr("aria-label") || "";
+		let a = jQuery(this).attr("href") || "",
+			label = jQuery(this).attr("aria-label") || "";
 		//console.log(a);
 
 		//

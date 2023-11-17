@@ -37,7 +37,7 @@ else if (act == "single") {
 
 	//
 	jQuery(".wp-caption-text").each(function () {
-		var a = jQuery(this).html() || "";
+		let a = jQuery(this).html() || "";
 		if (a != "") {
 			jQuery(this).html(a.replace(/\\n/g, "<br>"));
 		}
@@ -83,7 +83,7 @@ else if (act == "404") {
 
 // tạo slider cho widget
 (function () {
-	var i = 0;
+	let i = 0;
 
 	// Tạo số lượng chạy slider dựa theo kích cỡ ảnh đã được chỉ định
 	if (jQuery(window).width() > 768) {
@@ -104,7 +104,7 @@ else if (act == "404") {
 	//
 	setTimeout(function () {
 		jQuery(".ebwidget-run-slider").each(function () {
-			var c = "ebwidget-run-slider" + i,
+			let c = "ebwidget-run-slider" + i,
 				s = "";
 
 			jQuery(this).addClass(c);
@@ -113,7 +113,7 @@ else if (act == "404") {
 
 			//
 			if (s == "full") {
-				var lh = jQuery(window).height();
+				let lh = jQuery(window).height();
 
 				jQuery(c).height("auto");
 
@@ -160,7 +160,7 @@ ___eb_thread_list_li();
 // thuộc tính mở rộng khung tìm kiếm
 (function () {
 	jQuery(".span-search-icon").click(function () {
-		var a = jQuery(this).attr("data-active") || "";
+		let a = jQuery(this).attr("data-active") || "";
 
 		if (a != "") {
 			jQuery("." + a + " .div-search").toggleClass("active");
@@ -171,7 +171,7 @@ ___eb_thread_list_li();
 
 /*
  jQuery('.ebe-currency-format').each(function() {
- var a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
+ let a = jQuery(this).attr('data-num') || jQuery(this).html() || '';
  
  if ( a != '' && a != '0' ) {
  jQuery(this).html( g_func.money_format( a ) );
@@ -185,19 +185,19 @@ WGR_fixed_tab_height_in_line(".auto-fixed-menu-height");
 
 // đánh dấu sản phẩm yêu thích
 function WGR_click_add_product_to_favorite() {
-	var cookie_name = "wgr_product_id_user_favorite",
+	let cookie_name = "wgr_product_id_user_favorite",
 		limit_save = 30;
 
 	//
-	var str_favorite = g_func.getc(cookie_name);
+	let str_favorite = g_func.getc(cookie_name);
 	if (str_favorite == null || str_favorite == "") {
 		str_favorite = "";
 	}
 
 	// Khi người dùng bấm vào lưu sản phẩm yêu thích
 	jQuery(".add-to-favorite").click(function () {
-		var a = jQuery(this).attr("data-id") || pid;
-		var b = ___wgr_set_product_id_cookie(cookie_name, a, 50, limit_save);
+		let a = jQuery(this).attr("data-id") || pid,
+			b = ___wgr_set_product_id_cookie(cookie_name, a, 50, limit_save);
 
 		// nếu add không thành công -> đã có -> xóa sản phẩm khỏi favorite
 		if (b == false) {
@@ -243,11 +243,11 @@ function WGR_click_add_product_to_favorite() {
 	if (str_favorite == "") {
 		return false;
 	}
-	var check_favorite = str_favorite.split("][");
+	let check_favorite = str_favorite.split("][");
 	//	console.log(check_favorite);
 
 	// chạy vòng lặp và tạo hiệu ứng select cho các sản phẩm đã lưu
-	for (var i = 0; i < check_favorite.length; i++) {
+	for (let i = 0; i < check_favorite.length; i++) {
 		check_favorite[i] = check_favorite[i].replace(/\[|\]/g, "");
 		//		check_favorite[i] = parseInt( check_favorite[i], 10 );
 		//		console.log(check_favorite[i]);
@@ -329,11 +329,11 @@ WGR_create_href_for_facebook();
 		/*
 		 * G+ button
 		 */
-		var po = document.createElement("script");
+		let po = document.createElement("script");
 		po.type = "text/javascript";
 		po.async = true;
 		po.src = "https://apis.google.com/js/platform.js";
-		var s = document.getElementsByTagName("script")[0];
+		let s = document.getElementsByTagName("script")[0];
 		s.parentNode.insertBefore(po, s);
 
 		/*
@@ -377,8 +377,8 @@ WGR_create_href_for_facebook();
 			//			});
 
 			//
-			var fb_lang = (function () {
-				var lang =
+			let fb_lang = (function () {
+				let lang =
 					jQuery("html").attr("lang") ||
 					navigator.language ||
 					navigator.userLanguage ||
@@ -396,7 +396,7 @@ WGR_create_href_for_facebook();
 
 			//
 			(function (d, s, id) {
-				var js,
+				let js,
 					fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) {
 					return;
@@ -418,7 +418,7 @@ WGR_create_href_for_facebook();
 
 			/*
              (function(d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
+             let js, fjs = d.getElementsByTagName(s)[0];
              if (d.getElementById(id)) return;
              js = d.createElement(s);
              js.id = id;
@@ -430,7 +430,7 @@ WGR_create_href_for_facebook();
 			//
 			/*
              (function(d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
+             let js, fjs = d.getElementsByTagName(s)[0];
              if (d.getElementById(id)) {
              return;
              }
@@ -491,7 +491,7 @@ jQuery(".hide-if-zero-post, .hide-if-zero-other").each(function () {
 	}
 
 	//
-	var url = encodeURIComponent(post_canonical_url),
+	let url = encodeURIComponent(post_canonical_url),
 		des = encodeURIComponent(
 			jQuery('meta[name="description"]').attr("content") || ""
 		),
@@ -511,7 +511,7 @@ jQuery(".hide-if-zero-post, .hide-if-zero-other").each(function () {
 		utm_content = _date("Y-m-d", date_time);
 
 	//
-	for (var x in arr) {
+	for (let x in arr) {
 		str +=
 			'<div class="jssocials-share jssocials-share-' +
 			x +
@@ -541,7 +541,7 @@ jQuery(".hide-if-zero-post, .hide-if-zero-other").each(function () {
 	}
 
 	//
-	var med = _global_js_eb._get("utm_medium"),
+	let med = _global_js_eb._get("utm_medium"),
 		cam = _global_js_eb._get("utm_campaign");
 
 	//

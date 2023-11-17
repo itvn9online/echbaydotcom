@@ -30,7 +30,7 @@ if (top == self) {
     setInterval(function() {
         so_lan_reset_current_page++;
         if (so_lan_reset_current_page < 3) {
-            var jd = '_____eb_js_session_reset_timeout';
+            let jd = '_____eb_js_session_reset_timeout';
             if (dog(jd) == null) {
                 jQuery('<div id="' + jd + '" class="d-none"></div>').appendTo('body');
             }
@@ -77,14 +77,14 @@ var g_func = {
 		);
 		str = str.replace(/-+-/g, "-");
 		str = str.replace(/^\-+|\-+$/g, "");
-		for (var i = 0; i < 5; i++) {
+		for (let i = 0; i < 5; i++) {
 			str = str.replace(/--/g, "-");
 		}
 		str = (function (s) {
-			var str = "",
+			let str = "",
 				re = /^\w+$/,
 				t = "";
-			for (var i = 0; i < s.length; i++) {
+			for (let i = 0; i < s.length; i++) {
 				t = s.substr(i, 1);
 				if (t == "-" || t == "+" || re.test(t) == true) {
 					str += t;
@@ -108,7 +108,7 @@ var g_func = {
 		allowed = (
 			((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []
 		).join("");
-		var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+		let tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
 			cm = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
 		return input.replace(cm, "").replace(tags, function ($0, $1) {
 			return allowed.indexOf("<" + $1.toLowerCase() + ">") > -1 ? $0 : "";
@@ -120,7 +120,7 @@ var g_func = {
 	},
 
 	setc: function (name, value, seconds, days, set_domain) {
-		var expires = "";
+		let expires = "";
 
 		// tính theo ngày -> số giây trong ngày luôn
 		if (typeof days == "number" && days > 0) {
@@ -136,13 +136,13 @@ var g_func = {
 			// chuyển sang dạng timestamp
 			seconds = seconds * 1000;
 
-			var date = new Date();
+			let date = new Date();
 			date.setTime(date.getTime() + seconds);
 			expires = "; expires=" + date.toGMTString();
 		}
 
 		// set cookie theo domain
-		var cdomain = "";
+		let cdomain = "";
 		if (typeof set_domain != "undefined") {
 			if (set_domain.toString().split(".").length == 1) {
 				cdomain = window.location.host || document.domain || "";
@@ -204,11 +204,11 @@ var g_func = {
 			);
 	},
 	getc: function (name) {
-		var nameEQ = encodeURIComponent(name) + "=",
+		let nameEQ = encodeURIComponent(name) + "=",
 			ca = document.cookie.split(";"),
 			re = "";
-		for (var i = 0; i < ca.length; i++) {
-			var c = ca[i];
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i];
 			while (c.charAt(0) === " ") {
 				c = c.substring(1, c.length);
 			}
@@ -265,7 +265,7 @@ var g_func = {
 		} else {
 			//console.log('dfg dhas fsdf');
 			str = $.trim(str);
-			var so_am = str.substr(0, 1);
+			let so_am = str.substr(0, 1);
 			//str = str.toString().replace(/[^0-9\-\+]/g, '');
 			str = str.toString().replace(/[^0-9]/g, "");
 
@@ -310,7 +310,7 @@ var g_func = {
 		//console.log( dot );
 
 		num = num.toString().replace(/\s/g, "");
-		var str = num,
+		let str = num,
 			//re = /^\d+$/,
 			so_am = "",
 			so_thap_phan = "";
@@ -319,7 +319,7 @@ var g_func = {
 		}
 
 		/*
-        for (var i = 0, t = ''; i < num.length; i++) {
+        for (let i = 0, t = ''; i < num.length; i++) {
             t = num.substr(i, 1);
             if (re.test(t) == true) {
                 str += t;
@@ -353,13 +353,13 @@ var g_func = {
 			str = g_func.number_only(str);
 		}
 
-		var len = str.toString().length;
-		//var len = str.length;
+		let len = str.toString().length;
+		//let len = str.length;
 		//console.log( len );
 		if (len > 3) {
-			var new_str = str.toString();
+			let new_str = str.toString();
 			str = "";
-			for (var i = 0; i < new_str.length; i++) {
+			for (let i = 0; i < new_str.length; i++) {
 				len -= 3;
 				//console.log( len );
 				if (len > 0) {
@@ -411,7 +411,7 @@ var g_func = {
 		});
 
 		//
-		var a = window.scrollY || jQuery(window).scrollTop() || 0;
+		let a = window.scrollY || jQuery(window).scrollTop() || 0;
 
 		//
 		jQuery("#oi_popup")
@@ -459,11 +459,11 @@ var g_func = {
 		str = jQuery.trim(str);
 
 		if (len > 0 && str.length > len) {
-			var a = str.split(" ");
+			let a = str.split(" ");
 			//console.log(a);
 			str = "";
 
-			for (var i = 0; i < a.length; i++) {
+			for (let i = 0; i < a.length; i++) {
 				if (a[i] != "") {
 					str += a[i] + " ";
 
@@ -486,7 +486,7 @@ var g_func = {
 
 var _global_js_eb = {
 	check_email: function (email, alert_true) {
-		var re = /^\w+([\-\.]?\w+)*@\w+(\.\w+){1,3}$/;
+		let re = /^\w+([\-\.]?\w+)*@\w+(\.\w+){1,3}$/;
 		if (re.test(email) == true) {
 			return true;
 		}
@@ -526,10 +526,10 @@ var _global_js_eb = {
 			str_lnk = "price";
 		}
 
-		var str = "",
-			sl = "";
+		let str = "";
+		// let sl = "";
 
-		for (var i = 0; i < arr_gia.length; i++) {
+		for (let i = 0; i < arr_gia.length; i++) {
 			arr_gia[i].v = arr_gia[i].v.replace(/\s|\,/g, "");
 			arr_gia[i].v = encodeURIComponent(arr_gia[i].v);
 
@@ -557,7 +557,7 @@ var _global_js_eb = {
 
 	//
 	sb_token: function (jd) {
-		var str = "";
+		let str = "";
 		str +=
 			'<input type="text" name="_ebnonce" value="' +
 			window.location.href +
@@ -573,7 +573,7 @@ var _global_js_eb = {
 		_global_js_eb.sb_token("frm_contact_token");
 
 		//
-		//var f = document.frm_contact;
+		//let f = document.frm_contact;
 
 		//
 		return true;
@@ -587,7 +587,7 @@ var _global_js_eb = {
 		_global_js_eb.sb_token("frm_profile_token");
 
 		//
-		//var f = document.frm_canhan;
+		//let f = document.frm_canhan;
 
 		//
 		return true;
@@ -618,7 +618,7 @@ var _global_js_eb = {
 		_global_js_eb.sb_token("frm_passwd_token");
 
 		//
-		var f = document.frm_canhan;
+		let f = document.frm_canhan;
 
 		if (jQuery.trim(f.t_matkhau.value).length < 6) {
 			jQuery(".show-if-pass-short").fadeIn();
@@ -665,7 +665,7 @@ var _global_js_eb = {
 
 		// tạo attr mặc định để lưu thuộc tính cũ
 		jQuery(".img-max-width").each(function () {
-			var max_width = jQuery(this).attr("data-max-width") || "";
+			let max_width = jQuery(this).attr("data-max-width") || "";
 			//console.log('aaaaaaaaaaa: ' + max_width);
 			if (max_width == "" || max_width < 90) {
 				max_width =
@@ -684,7 +684,7 @@ var _global_js_eb = {
 			});
 			/*
             jQuery('.wp-caption', this).each(function() {
-                var wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
+                let wit = jQuery(this).attr('data-width') || jQuery(this).width() || max_width;
             	
                 //
                 jQuery(this).attr({
@@ -696,7 +696,7 @@ var _global_js_eb = {
             */
 
 			jQuery("iframe", this).each(function () {
-				var a = jQuery(this).attr("src") || "",
+				let a = jQuery(this).attr("src") || "",
 					wit =
 						jQuery(this).attr("data-width") ||
 						jQuery(this).attr("width") ||
@@ -721,14 +721,14 @@ var _global_js_eb = {
 			});
 
 			// thẻ TABLE
-			var i = 0;
+			let i = 0;
 			jQuery("table", this)
 				// fixed chiều rộng tối đa cho table
 				.css({
 					"max-width": max_width + "px",
 				})
 				.each(function () {
-					var a = jQuery(this).attr("data-no-reponsive") || "";
+					let a = jQuery(this).attr("data-no-reponsive") || "";
 
 					//
 					if (a == "") {
@@ -754,10 +754,10 @@ var _global_js_eb = {
 			});
 		});
 
-		var avt_max_height = 250,
+		let current_device = "",
+			// avt_max_height = 250,
 			//css_m_id = 'css-for-mobile',
-			screen_width = jQuery(window).width(),
-			current_device = "";
+			screen_width = jQuery(window).width();
 
 		// nếu có thuộc tính cố định, định dạng cho phiên bản -> lấy theo thuộc tính này
 		if (window.location.href.split("&set_device=").length > 1) {
@@ -774,8 +774,8 @@ var _global_js_eb = {
 			/*
             (function(d, j) {
                 if (d.getElementById(j)) return;
-                var head = d.getElementsByTagName('head')[0];
-                var l = d.createElement('link');
+                let head = d.getElementsByTagName('head')[0];
+                let l = d.createElement('link');
                 l.rel = 'stylesheet';
                 l.type = 'text/css';
                 l.href = 'css/m.css?v=' + _date('Y-m-d-H');
@@ -803,7 +803,7 @@ var _global_js_eb = {
 
 			// Điều chỉnh bằng cách dùng chung một chức năng
 			jQuery(".fix-li-wit").each(function () {
-				var a = jQuery(this).width() || 0,
+				let a = jQuery(this).width() || 0,
 					w = jQuery(this).attr("data-width") || "",
 					w_big = jQuery(this).attr("data-big-width") || "",
 					// điều chỉnh chiều rộng cho loại thẻ hoặc class nào -> mặc định là li
@@ -845,14 +845,14 @@ var _global_js_eb = {
 			// trên mobile -> giới hạn kích thước media
 			jQuery(".img-max-width").each(function () {
 				// lấy theo kích thước tối đa của khung này luôn
-				var max_width =
+				let max_width =
 					jQuery(this).attr("data-width") || jQuery(this).width() || 250;
 				max_width = Math.ceil(max_width) - 1;
 				console.log("max_width: " + max_width);
 
 				// xử lý với video của youtube
 				jQuery("iframe", this).each(function () {
-					var a = jQuery(this).attr("src") || "";
+					let a = jQuery(this).attr("src") || "";
 
 					// chỉ xử lý với video youtube
 					if (a.split("youtube.com/").length > 1) {
@@ -874,7 +874,7 @@ var _global_js_eb = {
 
 			//
 			jQuery(".fix-li-wit").each(function () {
-				var fix_for = jQuery(this).attr("data-tags") || "li";
+				let fix_for = jQuery(this).attr("data-tags") || "li";
 
 				//
 				jQuery(fix_for, this).width("");
@@ -882,7 +882,7 @@ var _global_js_eb = {
 
 			// hình ảnh và clip trên bản pc -> giờ mới xử lý
 			jQuery(".img-max-width").each(function () {
-				var max_width = jQuery(this).attr("data-max-width") || 250;
+				let max_width = jQuery(this).attr("data-max-width") || 250;
 				/*
                 if ( max_width == '' || max_width < 90 ) {
                     max_width = jQuery(this).attr('data-width') || jQuery(this).width() || 250;
@@ -919,8 +919,8 @@ var _global_js_eb = {
 
 				//
 				jQuery("iframe", this).each(function () {
-					var a = jQuery(this).attr("src") || "";
-					var no_resize = jQuery(this).attr("data-no-resize") || 0;
+					let a = jQuery(this).attr("src") || "",
+						no_resize = jQuery(this).attr("data-no-resize") || 0;
 
 					if (no_resize * 1 != 1) {
 						if (WGR_check_option_on(cf_tester_mode)) console.log(a);
@@ -928,7 +928,7 @@ var _global_js_eb = {
 						// chỉ xử lý với video youtube
 						if (a.split("youtube.com/").length > 1) {
 							//console.log('a: ' + a);
-							var wit =
+							let wit =
 								jQuery(this).attr("data-width") ||
 								jQuery(this).attr("width") ||
 								560;
@@ -960,8 +960,8 @@ var _global_js_eb = {
 
 		//
 		if (typeof pid != "undefined" && pid > 0) {
-			var wit_mb = jQuery(".thread-details-mobileAvt").width(),
-				hai_mb = wit_mb,
+			let wit_mb = jQuery(".thread-details-mobileAvt").width(),
+				// hai_mb = wit_mb,
 				li_len = jQuery(".thread-details-mobileAvt li").length,
 				li_wit = 100 / li_len;
 
@@ -973,9 +973,9 @@ var _global_js_eb = {
 		jQuery(".no-set-width-this-li").width("100%");
 
 		// chỉnh kích cỡ ảnh theo tỉ lệ
-		var new_arr_ti_le_global = {};
+		let new_arr_ti_le_global = {};
 		jQuery(".ti-le-global").each(function () {
-			var a = jQuery(this).width(),
+			let a = jQuery(this).width(),
 				// hiển thị size ảnh gợi ý cho admin
 				show_height = 0,
 				// tỉ lệ kích thước giữa chiều cao và rộng (nếu có), mặc định là 1x1
@@ -987,7 +987,7 @@ var _global_js_eb = {
 				//new_size = '';
 
 				//
-				var img = jQuery(this).attr("data-img") || "";
+				let img = jQuery(this).attr("data-img") || "";
 				if (img != "") {
 					jQuery(this)
 						.after(
@@ -1016,7 +1016,7 @@ var _global_js_eb = {
 					height: a + "px",
 				});
 			} else {
-				var pading_size = "ty-le-h100";
+				let pading_size = "ty-le-h100";
 				show_height = a;
 				// Tính toán chiều cao mới dựa trên chiều rộng
 				if (new_size != "") {
@@ -1076,8 +1076,8 @@ var _global_js_eb = {
 		});
 		//console.log(arr_ti_le_global);
 		//console.log(new_arr_ti_le_global);
-		var str_css = "";
-		for (var x in new_arr_ti_le_global) {
+		let str_css = "";
+		for (let x in new_arr_ti_le_global) {
 			new_arr_ti_le_global[x] *= 100;
 
 			// quy đổi padding teo % chiều rộng của width
@@ -1100,7 +1100,7 @@ var _global_js_eb = {
 	},
 
 	big_banner: function () {
-		var a = jQuery(".oi_big_banner li:first").height();
+		let a = jQuery(".oi_big_banner li:first").height();
 
 		jQuery(".oi_big_banner, .oi_big_banner li")
 			.height(a)
@@ -1115,7 +1115,7 @@ var _global_js_eb = {
 			.off("keyup")
 			.off("change")
 			.keyup(function (e) {
-				var k = e.keyCode,
+				let k = e.keyCode,
 					a = jQuery(this).val() || "";
 				if (
 					(k >= 48 && k <= 57) ||
@@ -1192,7 +1192,7 @@ var _global_js_eb = {
 				"date-format": op["dateFormat"],
 			})
 			.change(function () {
-				var a = jQuery(this).val() || "",
+				let a = jQuery(this).val() || "",
 					df = jQuery(this).attr("date-format") || "",
 					b = "";
 				a = jQuery.trim(a);
@@ -1247,13 +1247,13 @@ var _global_js_eb = {
 
 	_log_click_ref: function () {
 		setTimeout(function () {
-			var a = document.referrer || "",
+			let a = document.referrer || "",
 				click_url = window.location.href,
 				s = "",
 				s2 = "",
 				uri = "",
 				staff_id = "",
-				check_staff_id = "",
+				// check_staff_id = "",
 				jd = "process_referrer_data_click";
 
 			//
@@ -1280,8 +1280,8 @@ var _global_js_eb = {
             */
 
 			//
-			var pad = function (number, length) {
-					var str = "" + number;
+			let pad = function (number, length) {
+					let str = "" + number;
 					while (str.length < length) {
 						str = "0" + str;
 					}
@@ -1294,14 +1294,14 @@ var _global_js_eb = {
 				pad(Math.abs(offset % 60), 2);
 
 			//
-			var arr = {
+			let arr = {
 				ref: encodeURIComponent(a),
 				url: encodeURIComponent(click_url),
 				iframe: (function () {
 					return top != self ? 1 : 0;
 				})(),
 				title: (function () {
-					var str = document.title || "";
+					let str = document.title || "";
 					if (str != "") {
 						str = encodeURIComponent(str);
 					}
@@ -1309,11 +1309,11 @@ var _global_js_eb = {
 				})(),
 				timezone: encodeURIComponent(offset),
 				lang: (function () {
-					var str = navigator.userLanguage || navigator.language || "";
+					let str = navigator.userLanguage || navigator.language || "";
 					return str;
 				})(),
 				usertime: (function () {
-					var t = new Date().getTime();
+					let t = new Date().getTime();
 					//t = parseInt(t / 1000, 10);
 					t = (t / 1000) * 1;
 					return t;
@@ -1324,7 +1324,7 @@ var _global_js_eb = {
 				quaylai: g_func.getc("eb_wgr_quaylai_log_click") != null ? 1 : 0,
 				/*
                 agent: (function() {
-                    var str = navigator.userAgent || navigator.vendor || window.opera || '';
+                    let str = navigator.userAgent || navigator.vendor || window.opera || '';
                     str = str.replace(/\s/g, '+');
                     return str;
                 })(),
@@ -1333,7 +1333,7 @@ var _global_js_eb = {
 			};
 			/*
             uri = '';
-            for (var x in arr) {
+            for (let x in arr) {
                 uri += '&' + x + '=' + arr[x];
             }
             */
@@ -1414,7 +1414,7 @@ var _global_js_eb = {
 	},
 
 	ebBgLazzyLoad: function (lazzy_show) {
-		var eb_lazzy_class = "eb-lazzy-effect",
+		let eb_lazzy_class = "eb-lazzy-effect",
 			eb_lazzy_iframe = "eb-add-iframe",
 			a = 0,
 			wh = jQuery(window).width(),
@@ -1451,7 +1451,7 @@ var _global_js_eb = {
 				//a = jQuery(this).attr('data-offset') || jQuery(this).offset().top || 0;
 
 				if (a < lazzy_show) {
-					var wit = jQuery(this).width() || 300;
+					let wit = jQuery(this).width() || 300;
 
 					// v1
 					/*
@@ -1463,7 +1463,7 @@ var _global_js_eb = {
                     */
 
 					// v2
-					var img = jQuery(this).attr("data-img") || "",
+					let img = jQuery(this).attr("data-img") || "",
 						img_table = jQuery(this).attr("data-table-img") || img || "",
 						img_mobile =
 							jQuery(this).attr("data-mobile-img") || img_table || "";
@@ -1574,7 +1574,7 @@ var _global_js_eb = {
 			return false;
 		}
 
-		var wh = window.location.href,
+		let wh = window.location.href,
 			new_url = "";
 		if (wh.split("&").length > 1 || wh.split("-page").length > 1) {
 			console.log("Not rewrite URL or Part page");
@@ -1602,12 +1602,12 @@ var _global_js_eb = {
         else if (fid > 0) {
             */
 		if (fid > 0) {
-			for (var i = 0; i < site_group.length; i++) {
+			for (let i = 0; i < site_group.length; i++) {
 				if (new_url == "") {
 					(function (arr) {
-						for (var i = 0; i < arr.length; i++) {
+						for (let i = 0; i < arr.length; i++) {
 							(function (arr) {
-								for (var i = 0; i < arr.length; i++) {
+								for (let i = 0; i < arr.length; i++) {
 									if (arr[i].id == fid) {
 										new_url = _global_js_eb._c_link(fid, arr[i].seo, "f");
 										break;
@@ -1619,10 +1619,10 @@ var _global_js_eb = {
 				}
 			}
 		} else if (sid > 0) {
-			for (var i = 0; i < site_group.length; i++) {
+			for (let i = 0; i < site_group.length; i++) {
 				if (new_url == "") {
 					(function (arr) {
-						for (var i = 0; i < arr.length; i++) {
+						for (let i = 0; i < arr.length; i++) {
 							if (arr[i].id == sid) {
 								new_url = _global_js_eb._c_link(sid, arr[i].seo, "s");
 								break;
@@ -1632,7 +1632,7 @@ var _global_js_eb = {
 				}
 			}
 		} else {
-			for (var i = 0; i < site_group.length; i++) {
+			for (let i = 0; i < site_group.length; i++) {
 				if (site_group[i].id == cid) {
 					new_url = _global_js_eb._c_link(cid, site_group[i].seo);
 					break;
@@ -1659,8 +1659,8 @@ var _global_js_eb = {
 		}
 
 		//
-		var pad = function (number, length) {
-				var str = "" + number;
+		let pad = function (number, length) {
+				let str = "" + number;
 				while (str.length < length) {
 					str = "0" + str;
 				}
@@ -1676,7 +1676,7 @@ var _global_js_eb = {
 			pad(Math.abs(offset % 60), 2);
 
 		//
-		var eb_referrer = g_func.getc("eb_document_referrer");
+		let eb_referrer = g_func.getc("eb_document_referrer");
 		if (eb_referrer == null) {
 			eb_referrer = "";
 		} else {
@@ -1684,7 +1684,7 @@ var _global_js_eb = {
 		}
 
 		//
-		var ck_utm = g_func.getc("WGR_ref_for_campaign");
+		let ck_utm = g_func.getc("WGR_ref_for_campaign");
 		if (ck_utm == null) {
 			ck_utm = {};
 		} else {
@@ -1692,7 +1692,7 @@ var _global_js_eb = {
 		}
 
 		//
-		var arr = {
+		let arr = {
 			// user info
 			hd_ten: "",
 			hd_dienthoai: "",
@@ -1714,7 +1714,7 @@ var _global_js_eb = {
 				return str;
 			})(navigator.userLanguage || navigator.language || ""),
 			hd_usertime: (function () {
-				var t = new Date().getTime();
+				let t = new Date().getTime();
 				//t = parseInt(t / 1000, 10);
 				t = (t / 1000) * 1;
 				return t;
@@ -1731,7 +1731,7 @@ var _global_js_eb = {
 
 		// user info
 		if (pid > 0) {
-			var f = document.frm_cart;
+			let f = document.frm_cart;
 
 			arr.hd_ten = f.t_ten.value;
 			arr.hd_dienthoai = f.t_dienthoai.value;
@@ -1743,7 +1743,7 @@ var _global_js_eb = {
 		}
 		// cart
 		else {
-			var f = document.frm_cart;
+			let f = document.frm_cart;
 
 			//
 			try {
@@ -1794,7 +1794,7 @@ var _global_js_eb = {
 		//console.log(arr);
 
 		/*
-        for (var x in arr) {
+        for (let x in arr) {
             // v2
             arr[x] = encodeURIComponent(arr[x].toString().replace(/"/g, '&quot;'));
             str += ',' + x + ':"' + arr[x] + '"'
@@ -1867,7 +1867,7 @@ var _global_js_eb = {
 	youtube_id: function (a, start_end) {
 		if (a.split("youtube.com").length > 1 || a.split("youtu.be").length > 1) {
 			// lấy thời gian bắt đầu, kết thúc nếu có
-			var s = "",
+			let s = "",
 				e = "";
 			if (typeof start_end != "undefined") {
 				start_end = a.replace(/\?/g, "&");
@@ -1891,11 +1891,11 @@ var _global_js_eb = {
 			}
 
 			//
-			var youtube_parser = function (url) {
-				var regExp =
+			let youtube_parser = function (url) {
+				let regExp =
 					/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
 
-				var match = url.match(regExp);
+				let match = url.match(regExp);
 
 				return match && match[7].length == 11 ? match[7] : false;
 			};
@@ -1909,7 +1909,7 @@ var _global_js_eb = {
 
 	user_img_loc: function (wit, hai) {
 		// lấy tọa độ người dùng
-		var a = _global_js_eb.user_loc();
+		let a = _global_js_eb.user_loc();
 		//console.log(a);
 		//console.log(typeof a);
 
@@ -1939,7 +1939,7 @@ var _global_js_eb = {
 
 	user_string_loc: function () {
 		// lấy tọa độ người dùng
-		var a = _global_js_eb.user_loc();
+		let a = _global_js_eb.user_loc();
 		//console.log(a);
 		//console.log(typeof a);
 
@@ -1962,11 +1962,11 @@ var _global_js_eb = {
 		//g_func.delck('ipinfo_to_language'); return;
 
 		// kiểm tra trong cookie xem có ko
+		let a = null;
 		if (typeof real_time != "undefined" && real_time == 1) {
-			var a = null;
 			console.log("clear ipinfo_to_language cookie");
 		} else {
-			var a = g_func.getc("ipinfo_to_language");
+			a = g_func.getc("ipinfo_to_language");
 		}
 		//console.log( a );
 
@@ -1979,7 +1979,7 @@ var _global_js_eb = {
 			//g_func.setc('ipinfo_to_language', a, 3600 * 2 );
 
 			//
-			var json_array = function (a) {
+			let json_array = function (a) {
 				if (typeof a != "object") {
 					try {
 						return JSON.parse(a);
@@ -2031,15 +2031,15 @@ var _global_js_eb = {
 		navigator.geolocation.getCurrentPosition(
 			function (position) {
 				// Nếu người dùng tiết lộ -> xin luôn
-				var lat = position.coords.latitude,
+				let lat = position.coords.latitude,
 					lon = position.coords.longitude;
 				if (WGR_check_option_on(cf_tester_mode)) console.log(position);
 				//console.log( lat );
 				//console.log( lon );
 
 				//
-				//var data = '{"loc":"' +lat+ ',' +lon+ '"}';
-				var data = {
+				//let data = '{"loc":"' +lat+ ',' +lon+ '"}';
+				let data = {
 					loc: lat + "," + lon,
 					lat: lat,
 					lon: lon,
@@ -2073,7 +2073,7 @@ var _global_js_eb = {
 		console.log("AUTO get user Position");
 
 		//
-		var url_get_ip_info = window.location.protocol + "//ipinfo.io";
+		let url_get_ip_info = window.location.protocol + "//ipinfo.io";
 		if (typeof client_ip != "undefined" && client_ip != "") {
 			url_get_ip_info += "/" + client_ip;
 		}
@@ -2107,11 +2107,11 @@ var _global_js_eb = {
 
 		//
 		jQuery("." + clat).each(function () {
-			var str = jQuery(this).html() || "",
+			let str = jQuery(this).html() || "",
 				demo = "";
 
 			if (str != "") {
-				for (var i = 0; i < len; i++) {
+				for (let i = 0; i < len; i++) {
 					demo += str;
 				}
 
@@ -2130,7 +2130,7 @@ var _global_js_eb = {
 		// reset lại mảng
 		ebe_arr_cart_product_list = [];
 
-		//var cart_total_price = 0;
+		//let cart_total_price = 0;
 
 		// nếu đang là xem trang chi tiết
 		if (
@@ -2139,7 +2139,7 @@ var _global_js_eb = {
 			eb_wp_post_type == "post"
 		) {
 			//
-			var color_name =
+			let color_name =
 					jQuery(".oi_product_color li.selected").attr("title") ||
 					jQuery(".oi_product_color li:first").attr("title") ||
 					"",
@@ -2160,7 +2160,7 @@ var _global_js_eb = {
             */
 
 			// tạo khóa tìm kiếm để sau tìm sản phẩm được chuẩn hơn
-			var cart_product_slug = g_func.non_mark_seo(product_js.tieude + sku),
+			let cart_product_slug = g_func.non_mark_seo(product_js.tieude + sku),
 				cart_quan =
 					jQuery("#oi_change_soluong input").val() ||
 					jQuery("#oi_change_soluong select").val() ||
@@ -2199,7 +2199,7 @@ var _global_js_eb = {
 
 			//
 			jQuery(".each-for-set-cart-value").each(function () {
-				var cart_pid = jQuery(this).attr("data-id") || 0,
+				let cart_pid = jQuery(this).attr("data-id") || 0,
 					cart_product_name =
 						jQuery(".get-product-name-for-cart", this).html() || "",
 					cart_product_slug = "",
@@ -2321,7 +2321,7 @@ var _global_js_eb = {
 		jQuery(".auto-check-discount-code")
 			.off("change")
 			.change(function () {
-				var a = jQuery(this).val() || "",
+				let a = jQuery(this).val() || "",
 					jd = "oi_check_discount_code";
 
 				//
@@ -2379,7 +2379,7 @@ var _global_js_eb = {
 	// load size và color trong giỏ hàng
 	cart_user_select_size_color: function () {
 		// select màu với size theo lựa chọn trước đó
-		var a = g_func.getc("eb_cookie_cart_lists");
+		let a = g_func.getc("eb_cookie_cart_lists");
 		if (a != null) {
 			//console.log(a);
 			a = jQuery.parseJSON(unescape(a));
@@ -2396,9 +2396,9 @@ var _global_js_eb = {
 		// Size cho phần giỏ hàng
 		jQuery(".show-list-size").each(function () {
 			// ưu tiên lấy zie của color trước
-			//var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || jQuery(this).html() || '',
-			//var a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || '',
-			var a = jQuery(this).attr("data-color-size") || "",
+			//let a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || jQuery(this).html() || '',
+			//let a = jQuery(this).attr('data-color-size') || jQuery(this).attr('data-size') || '',
+			let a = jQuery(this).attr("data-color-size") || "",
 				t_post_id = jQuery(this).attr("data-id") || "";
 
 			// nếu không có -> mới lấy zie của sản phẩm
@@ -2418,9 +2418,9 @@ var _global_js_eb = {
 					a = a[0];
 				}
 
-				var str = "",
+				let str = "",
 					data_price = "";
-				for (var i = 0; i < a.length; i++) {
+				for (let i = 0; i < a.length; i++) {
 					// conver từ bản code cũ sang
 					if (typeof a[i].name == "undefined") {
 						if (typeof a[i].ten != "undefined") {
@@ -2502,13 +2502,13 @@ var _global_js_eb = {
 	},
 	cart_size_color: function () {
 		// select màu với size theo lựa chọn trước đó
-		var arr_user_select_size_color =
+		let arr_user_select_size_color =
 			_global_js_eb.cart_user_select_size_color();
 		sl = "";
 
 		// Size cho phần giỏ hàng -> tạo dữ liệu mặc định để tí html không bị mất
 		jQuery(".show-list-size").each(function () {
-			var a = jQuery(this).html() || "";
+			let a = jQuery(this).html() || "";
 			if (a != "") {
 				//console.log(a);
 				if (a.substr(0, 1) == ",") {
@@ -2533,22 +2533,22 @@ var _global_js_eb = {
 
 		//
 		jQuery(".show-list-color").each(function () {
-			var t_post_id = jQuery(this).attr("data-id") || "";
+			let t_post_id = jQuery(this).attr("data-id") || "";
 			//console.log(t_post_id);
 			//console.log(jQuery('img', this).length);
 
 			//
-			var str = "";
+			let str = "";
 
 			jQuery("img", this).each(function () {
-				var s = jQuery(this).attr("data-src") || jQuery(this).attr("src") || "";
+				let s = jQuery(this).attr("data-src") || jQuery(this).attr("src") || "";
 
 				if (s != "") {
 					// trạng thái
-					var status = jQuery(this).attr("data-status") || 1;
+					let status = jQuery(this).attr("data-status") || 1;
 
 					if (status > 0) {
-						var color_name =
+						let color_name =
 								jQuery(this).attr("alt") ||
 								jQuery(this).attr("title") ||
 								jQuery(this).attr("data-color") ||
@@ -2640,9 +2640,9 @@ var _global_js_eb = {
 
 		//
 		jQuery(".show-list-color select").change(function () {
-			var a = jQuery(this).attr("data-id") || "";
+			let a = jQuery(this).attr("data-id") || "";
 			if (a != "") {
-				var color_size =
+				let color_size =
 					jQuery('.show-list-color[data-id="' + a + '"] select')
 						.find(":selected")
 						.attr("data-size") || "";
@@ -2672,11 +2672,11 @@ var _global_js_eb = {
 	// tính toán lại giá trị giỏ hàng mỗi lần đổi số lượng, size, color
 	cart_calculator: function () {
 		// tính lại tổng tiền theo thời gian thực
-		var total = 0,
+		let total = 0,
 			line = 0;
 		jQuery(".each-for-set-cart-value").each(function () {
 			// lấy giá sản phẩm, ưu tiên lấy giá theo size trước
-			var gia =
+			let gia =
 					jQuery(".show-list-size select option:selected", this).attr(
 						"data-price"
 					) || 0,
@@ -2721,7 +2721,7 @@ var _global_js_eb = {
 			return true;
 		}
 
-		var a =
+		let a =
 			jQuery("#oi_cart .each-for-set-cart-value").length ||
 			jQuery(".cart-count-tr tr").length ||
 			0;
@@ -2817,7 +2817,7 @@ var _global_js_eb = {
 		_global_js_eb.add_primari_iframe();
 
 		//
-		var f = document.frm_cart;
+		let f = document.frm_cart;
 
 		// nếu chưa chọn màu hoặc size -> yêu cầu chọn
 		if (_global_js_eb.check_size_color_cart() == false) {
@@ -2845,7 +2845,7 @@ var _global_js_eb = {
         */
 
 		//
-		var check_phone_number = g_func.number_only(f.t_dienthoai.value);
+		let check_phone_number = g_func.number_only(f.t_dienthoai.value);
 
 		if (check_phone_number.toString().length < 9) {
 			a_lert("Vui lòng nhập ít nhất một số điện thoại bạn đang sử dụng");
@@ -2854,7 +2854,7 @@ var _global_js_eb = {
 		}
 
 		if (_global_js_eb.check_email(f.t_email.value) == false) {
-			var new_email = g_func.non_mark_seo(f.t_dienthoai.value);
+			let new_email = g_func.non_mark_seo(f.t_dienthoai.value);
 			try {
 				new_email +=
 					"@" +
@@ -2937,18 +2937,18 @@ var _global_js_eb = {
 			action_obj = {};
 		}
 
-		var remove_item = 0;
+		let remove_item = 0;
 		if (typeof action_obj.remove_item != "undefined") {
 			remove_item = action_obj.remove_item;
 		}
 		//console.log(remove_item);
 
-		var tr_id = "";
+		let tr_id = "";
 		if (typeof action_obj.tr_id != "undefined") {
 			tr_id = action_obj.tr_id;
 		}
 
-		var c = "eb_cookie_cart_list_id",
+		let c = "eb_cookie_cart_list_id",
 			cart_id_in_cookie = g_func.getc(c),
 			c_arr = "eb_cookie_cart_list_arr",
 			cart_arr_in_cookie = g_func.getc(c_arr),
@@ -2990,7 +2990,7 @@ var _global_js_eb = {
 			});
 
 			//
-			for (var i = 0; i < cart_arr_in_cookie.length; i++) {
+			for (let i = 0; i < cart_arr_in_cookie.length; i++) {
 				if (
 					cart_arr_in_cookie[i] == null ||
 					cart_arr_in_cookie[i].id == new_cart_id
@@ -3021,8 +3021,8 @@ var _global_js_eb = {
 		}
 
 		// add to cart
-		var check_cart_exist = 0;
-		for (var i = 0; i < cart_arr_in_cookie.length; i++) {
+		let check_cart_exist = 0;
+		for (let i = 0; i < cart_arr_in_cookie.length; i++) {
 			if (cart_arr_in_cookie[i].id == new_cart_id) {
 				console.log("Cart exist (" + new_cart_id + ")");
 				check_cart_exist = 1;
@@ -3052,7 +3052,7 @@ var _global_js_eb = {
 		console.log(JSON.stringify(cart_arr_in_cookie));
 
 		// thời gian chuyển sang trang cart -> để mấy cái pixel tải xong đã
-		var time_to_cart = 600;
+		let time_to_cart = 600;
 
 		// google tracking add to cart -> Sử dụng chức năng Mục tiêu trong google analytics
 		/*
@@ -3079,7 +3079,7 @@ var _global_js_eb = {
 		}, 200);
 
 		// facebook tracking add to cart
-		var track_arr = {
+		let track_arr = {
 			//'content_name' : '',
 			//'content_category' : '',
 			content_ids: [new_cart_id],
@@ -3137,18 +3137,18 @@ var _global_js_eb = {
 		}
 
 		//
-		var remove_item = 0;
+		let remove_item = 0;
 		if (typeof action_obj.remove_item != "undefined") {
 			remove_item = action_obj.remove_item;
 		}
 		//console.log(remove_item);
 
-		var tr_id = "";
+		let tr_id = "";
 		if (typeof action_obj.tr_id != "undefined") {
 			tr_id = action_obj.tr_id;
 		}
 
-		var c = "eb_cookie_cart_list_id",
+		let c = "eb_cookie_cart_list_id",
 			cart_id_in_cookie = g_func.getc(c),
 			add_cart_id = "," + new_cart_id,
 			list_cart_id = "";
@@ -3192,10 +3192,10 @@ var _global_js_eb = {
 					.remove();
 
 				// tính lại tổng tiền
-				var total = 0,
+				let total = 0,
 					list_cart_id = "";
 				jQuery(".each-for-set-cart-value").each(function () {
-					var gia = jQuery(this).attr("data-price") || 0,
+					let gia = jQuery(this).attr("data-price") || 0,
 						soluong = jQuery(".change-select-quantity", this).val() || 1,
 						post_id = jQuery(this).attr("data-id") || 0;
 
@@ -3240,7 +3240,7 @@ var _global_js_eb = {
 		//return false;
 
 		// thời gian chuyển sang trang cart -> để mấy cái pixel tải xong đã
-		var time_to_cart = 600;
+		let time_to_cart = 600;
 
 		// google tracking add to cart -> Sử dụng chức năng Mục tiêu trong google analytics
 		/*
@@ -3264,7 +3264,7 @@ var _global_js_eb = {
 		}, 200);
 
 		// facebook tracking add to cart
-		var track_arr = {
+		let track_arr = {
 			//'content_name' : '',
 			//'content_category' : '',
 			content_ids: [new_cart_id],
@@ -3385,7 +3385,7 @@ var _global_js_eb = {
 		}
 
 		//
-		var a = function (c) {
+		let a = function (c) {
 			c = g_func.getc(c);
 			return c == null ? "" : c;
 		};
@@ -3487,7 +3487,7 @@ var _global_js_eb = {
 			console.log(ops);
 
 			//
-			var para = {
+			let para = {
 				event_category: ops["category"],
 				event_label: ops["label"],
 			};
@@ -3809,14 +3809,14 @@ var _global_js_eb = {
 		}
 
 		//
-		var str = "",
+		let str = "",
 			current_url = window.location.href.split(parameter);
 		//console.log( current_url.length );
 		//console.log( current_url );
 
 		// nếu có giá trị sẵn -> thay thế
 		if (current_url.length > 1) {
-			var new_url = current_url[1].split("&");
+			let new_url = current_url[1].split("&");
 			//console.log( new_url );
 			new_url[0] = new_value;
 			//console.log( new_url );
@@ -3875,7 +3875,7 @@ var _global_js_eb = {
 	check_quick_register: function (form_name) {
 		// form mặc địch, thủ công nhưng cũng có tí chuẩn
 		if (form_name == "frm_dk_nhantin") {
-			var f = document.frm_dk_nhantin;
+			let f = document.frm_dk_nhantin;
 
 			if (f.t_hoten.value != "") {
 				f.t_hoten.value = g_func.strip_tags(f.t_hoten.value);
@@ -3915,7 +3915,7 @@ var _global_js_eb = {
 
 	// giả lập GET của PHP
 	_get: function (p) {
-		var wl = window.location.href.replace(/\&amp\;/g, "&").replace(/\?/g, "&"),
+		let wl = window.location.href.replace(/\&amp\;/g, "&").replace(/\?/g, "&"),
 			a = wl.split("&" + p + "="),
 			s = "";
 		if (a.length > 1) {
@@ -3926,9 +3926,9 @@ var _global_js_eb = {
 
 	ebe_currency_format: function () {
 		// hỗ trợ chuyển đổi đơn vị tiền tệ nếu to quá
-		var mot_ty = 1000000000;
-		var mot_trieu = 1000000;
-		var conver_to_trieu = false;
+		let mot_ty = 1000000000,
+			mot_trieu = 1000000,
+			conver_to_trieu = false;
 		if (
 			typeof cf_big_price_before != "undefined" &&
 			WGR_check_option_on(cf_big_price_before)
@@ -3937,13 +3937,13 @@ var _global_js_eb = {
 		}
 		jQuery(".ebe-currency-format")
 			.each(function () {
-				var a = jQuery(this).attr("data-num") || jQuery(this).html() || "";
+				let a = jQuery(this).attr("data-num") || jQuery(this).html() || "";
 
 				//if (a != '' && a != '0') {
 				if (a != "") {
 					a *= 1;
 					if (a > 0) {
-						var b = 0;
+						let b = 0;
 
 						//
 						if (conver_to_trieu == true) {
