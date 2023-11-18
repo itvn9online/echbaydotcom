@@ -208,8 +208,8 @@ setTimeout(function () {
 			//
 			let str = "",
 				wit = jQuery(this).width(),
-				hai = Math.ceil(wit * youtube_video_default_size),
-				wit = Math.ceil(wit);
+				hai = Math.ceil(wit * youtube_video_default_size);
+			wit = Math.ceil(wit);
 
 			//
 			//			console.log(wit);

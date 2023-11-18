@@ -291,7 +291,7 @@ function click_remove_style_of_content () {
 		
 		
 		// Các thẻ sẽ bị loại bỏ khỏi html
-		let arr = [
+		 arr = [
 			'figure',
 			'figcaption'
 		];
@@ -1505,7 +1505,7 @@ function click_remove_style_of_content() {
 		}
 
 		// Các thẻ sẽ bị loại bỏ khỏi html
-		let arr = ["font", "figure", "figcaption"];
+		arr = ["font", "figure", "figcaption"];
 
 		//
 		for (let i = 0; i < arr.length; i++) {
@@ -1652,7 +1652,7 @@ function click_convert_table_tags_of_content() {
 			}
 
 			//
-			let arr = ["thead", "tbody", "tfoot"];
+			arr = ["thead", "tbody", "tfoot"];
 			console.log(arr);
 			for (let i = 0; i < arr.length; i++) {
 				jQuery(content_id)
@@ -1664,7 +1664,7 @@ function click_convert_table_tags_of_content() {
 			}
 
 			//
-			let arr = ["tr"];
+			arr = ["tr"];
 			console.log(arr);
 			for (let i = 0; i < arr.length; i++) {
 				jQuery(content_id)
@@ -1682,7 +1682,7 @@ function click_convert_table_tags_of_content() {
 			}
 
 			//
-			let arr = ["th", "td"];
+			arr = ["th", "td"];
 			console.log(arr);
 			for (let i = 0; i < arr.length; i++) {
 				jQuery(content_id)

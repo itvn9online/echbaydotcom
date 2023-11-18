@@ -129,7 +129,7 @@ function check_update_config() {
 	}
 
 	// tạo HTML cho địa chỉ
-	let a = $.trim(f.cf_diachi.value);
+	a = $.trim(f.cf_diachi.value);
 	f.cf_p_diachi.value = "";
 	if (a != "") {
 		a = a.split("\n");
@@ -151,7 +151,7 @@ function check_update_config() {
 	}
 
 	// kiểm tra nếu là mã nhúng GA mới thì bắt buộc kích hoạt GTag
-	let a = $('input[name="cf_ga_id"]').val() || "";
+	a = $('input[name="cf_ga_id"]').val() || "";
 	if (a != "" && a.split("-")[0] == "G" && dog("cf_gtag_id").checked == false) {
 		dog("cf_gtag_id").checked = true;
 		$("#cf_gtag_id").val(1).change();
@@ -444,9 +444,7 @@ function create_phone_click_to_call() {
 	f.cf_call_dienthoai.value = $.trim(str);
 
 	// hotline
-	let a = $.trim(f.cf_hotline.value),
-		str = "",
-		str2 = "";
+	(a = $.trim(f.cf_hotline.value)), (str = ""), (str2 = "");
 	if (a != "") {
 		a = a.split("\n");
 

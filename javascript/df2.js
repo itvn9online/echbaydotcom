@@ -130,9 +130,9 @@ function ___eb_thread_details_timeend() {
 				if (a > 0) {
 					let mot_ngay = 24 * 3600,
 						giay = a % 60,
-						phut = a - giay,
-						phut = a > 3600 ? phut % 3600 : phut,
-						ngay = a > mot_ngay ? Math.ceil(a / mot_ngay) - 1 : 0,
+						phut = a - giay;
+					phut = a > 3600 ? phut % 3600 : phut;
+					let ngay = a > mot_ngay ? Math.ceil(a / mot_ngay) - 1 : 0,
 						//					so_du = a > mot_ngay ? a % mot_ngay : a,
 						//					phut = gio > 0 ? a % 3600 : a,
 						gio = ngay > 0 ? a - ngay * mot_ngay : a;
@@ -1082,7 +1082,7 @@ function WGR_fixed_a_tag() {
 	});
 
 	//
-	let i = 0;
+	i = 0;
 	$(".tabbed-content .tab-panels .panel").each(function () {
 		$(this).attr({
 			id: "WGR-flatsome-tab" + i,
