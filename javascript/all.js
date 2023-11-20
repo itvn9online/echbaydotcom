@@ -2587,8 +2587,8 @@ function WGR_view_by_time_line(time_lnk, time_select, private_cookie) {
         	jQuery('#oi_quick_connect .connect-padding').hide();
         },
         */
-		betwwen1 = _get("d1"),
-		betwwen2 = _get("d2"),
+		// betwwen1 = _get("d1"),
+		// betwwen2 = _get("d2"),
 		sl = "";
 
 	//

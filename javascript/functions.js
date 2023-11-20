@@ -763,7 +763,8 @@ function _date(phomat, t) {
 					"January February March April May June July August September October November December".split(
 						" "
 					);
-			for (let i = 0, str = ""; i < phomat.length; i++) {
+			let str = "";
+			for (let i = 0; i < phomat.length; i++) {
 				str += (function (a) {
 					if (typeof a == "undefined") {
 						return "";
