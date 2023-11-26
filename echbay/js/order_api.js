@@ -76,7 +76,12 @@ function get_user_location_by_ip() {
 
 				//
 				// console.log(str);
-				$(".order_ip-to-location").html(str + " (" + data.last_updated + ")");
+				$(".order_ip-to-location").html(
+					str +
+						" (" +
+						new Date(data.last_updated * 1000).toISOString().split("T")[0] +
+						")"
+				);
 			}
 		},
 	});
