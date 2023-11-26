@@ -34,6 +34,11 @@ function get_user_location_by_ip() {
 				}
 
 				//
+				if (typeof data.data.subdivisions != "undefined") {
+					str.push(data.data.subdivisions.names.en);
+				}
+
+				//
 				if (typeof data.data.country != "undefined") {
 					str.push(data.data.country.names.en);
 				}
