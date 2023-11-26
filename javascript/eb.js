@@ -2072,7 +2072,7 @@ var _global_js_eb = {
 	user_auto_loc: function (after_load) {
 		jQuery.ajax({
 			type: "POST",
-			url: "https://cloud.echbay.com/plains/user_city",
+			url: "https://cloud.echbay.com/plains/city_ip",
 			dataType: "json",
 			//crossDomain: true,
 			data: {

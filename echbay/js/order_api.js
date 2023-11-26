@@ -8,7 +8,7 @@ function get_user_location_by_ip() {
 	//
 	jQuery.ajax({
 		type: "POST",
-		url: "https://cloud.echbay.com/plains/user_city",
+		url: "https://cloud.echbay.com/plains/city_ip",
 		dataType: "json",
 		//crossDomain: true,
 		data: {
