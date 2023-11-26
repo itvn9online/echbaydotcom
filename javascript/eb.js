@@ -2070,37 +2070,93 @@ var _global_js_eb = {
 
 	// tự động lấy vị trí tương đối của người dùng mà không cần xin phép
 	user_auto_loc: function (after_load) {
-		console.log("AUTO get user Position");
+		jQuery.ajax({
+			type: "POST",
+			url: "https://cloud.echbay.com/plains/user_city",
+			dataType: "json",
+			//crossDomain: true,
+			data: {
+				nse: Math.random(),
+			},
+			timeout: 33 * 1000,
+			error: function (jqXHR, textStatus, errorThrown) {
+				console.log(jqXHR);
+				console.log(textStatus);
+				console.log(errorThrown);
+			},
+			success: function (data) {
+				// console.log(data);
+				//console.log(data.length);
 
-		//
-		let url_get_ip_info = window.location.protocol + "//ipinfo.io";
-		if (typeof client_ip != "undefined" && client_ip != "") {
-			url_get_ip_info += "/" + client_ip;
-		}
-		if (WGR_check_option_on(cf_tester_mode)) console.log(url_get_ip_info);
+				//
+				if (typeof data.data != "undefined") {
+					let obj = {};
 
-		// Không cho thì lấy gần đúng
-		jQuery.getJSON(url_get_ip_info, function (data) {
-			if (typeof data.lat == "undefined") {
-				data.lat = data.loc.split(",")[0];
-			}
-			if (typeof data.lon == "undefined") {
-				data.lon = data.loc.split(",")[1];
-			}
+					//
+					if (typeof data.data.city != "undefined") {
+						obj.region = data.data.city.names.en;
+					}
 
-			if (WGR_check_option_on(cf_tester_mode)) console.log(data);
+					//
+					if (typeof data.data.country != "undefined") {
+						// obj.country = data.data.country.names.en;
+						obj.country = data.data.country.iso_code;
+					}
 
-			g_func.setc("ipinfo_to_language", JSON.stringify(data), 3600 * 2);
+					//
+					if (typeof data.data.continent != "undefined") {
+						// obj.continent = data.data.continent.names.en;
+						obj.continent = data.data.continent.code;
+					}
 
-			if (typeof after_load == "function") {
-				after_load(data);
-			}
+					//
+					if (typeof data.data.location != "undefined") {
+						obj.loc =
+							data.data.location.latitude + "," + data.data.location.longitude;
+					}
 
-			return data;
+					//
+					if (typeof after_load == "function") {
+						after_load(obj);
+					}
+				} else {
+					console.log(data);
+				}
+			},
 		});
-
-		return {};
 	},
+	// user_v1_auto_loc: function (after_load) {
+	// 	console.log("AUTO get user Position");
+
+	// 	//
+	// 	let url_get_ip_info = window.location.protocol + "//ipinfo.io";
+	// 	if (typeof client_ip != "undefined" && client_ip != "") {
+	// 		url_get_ip_info += "/" + client_ip;
+	// 	}
+	// 	if (WGR_check_option_on(cf_tester_mode)) console.log(url_get_ip_info);
+
+	// 	// Không cho thì lấy gần đúng
+	// 	jQuery.getJSON(url_get_ip_info, function (data) {
+	// 		if (typeof data.lat == "undefined") {
+	// 			data.lat = data.loc.split(",")[0];
+	// 		}
+	// 		if (typeof data.lon == "undefined") {
+	// 			data.lon = data.loc.split(",")[1];
+	// 		}
+
+	// 		if (WGR_check_option_on(cf_tester_mode)) console.log(data);
+
+	// 		g_func.setc("ipinfo_to_language", JSON.stringify(data), 3600 * 2);
+
+	// 		if (typeof after_load == "function") {
+	// 			after_load(data);
+	// 		}
+
+	// 		return data;
+	// 	});
+
+	// 	return {};
+	// },
 
 	demo_html: function (clat, len) {
 		console.log("Demo html");

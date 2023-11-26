@@ -258,8 +258,8 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
                 // GeoLite2 -> xác định vị trí người dùng qua IP -> chỉ áp dụng đối với khách hàng
                 if ($order_user_can == 1) {
                     echo 'Gửi bởi Biên tập viên';
-                    /*
                 } else {
+                    /*
                     include_once EB_THEME_PLUGIN_INDEX . 'GeoLite2Helper.php';
 
                     //
@@ -270,10 +270,13 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
                         echo 'Phiên bản <i class="fa-pro upper small"></i>';
                     }
                     */
+                ?>
+                    <div data-ip="<?php echo $post->order_ip; ?>" class="order_ip-to-location"></div>
+                <?php
                 }
 
                 ?>
-                <div class="small">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng.</div>
+                <div class="redcolor">* Hệ thống sẽ định vị khu vực mà khách hàng này đã truy cập vào website và gửi đơn hàng. Dữ liệu chỉ có độ chính xác tương đối (80-90%), dùng cho mục đích kiểm soát và đối chiếu với địa chỉ người dùng đã nhập trong đơn hàng. Ví dụ người dùng ở HCM mà địa chỉ đơn hàng ở HN thì có thể đây sẽ là đơn hàng ảo.</div>
             </td>
         </tr>
         <tr>
@@ -345,7 +348,7 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
     </tr>
     <tr>
         <td class="t">Vị trí</td>
-        <td class="i"><a href="https://echbay.com/iplocation.html?ip=<?php echo $post->order_ip; ?>" target="_blank">Xem vị trí trên bản đồ</a></td>
+        <td class="i"><a href="javascript:;" target="_blank" rel="nofollow" class="set-map-url">Xem vị trí trên bản đồ</a></td>
     </tr>
 </table>
 <br>
