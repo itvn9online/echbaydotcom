@@ -26,7 +26,7 @@ function get_user_location_by_ip() {
 
 			//
 			if (typeof data.data != "undefined") {
-				let str = [];
+				let str = [a];
 
 				//
 				if (typeof data.data.city != "undefined") {
