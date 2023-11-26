@@ -35,7 +35,7 @@ function get_user_location_by_ip() {
 
 				//
 				if (typeof data.data.subdivisions != "undefined") {
-					str.push(data.data.subdivisions.names.en);
+					str.push(data.data.subdivisions[0].names.en);
 				}
 
 				//
