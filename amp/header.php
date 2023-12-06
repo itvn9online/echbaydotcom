@@ -31,7 +31,7 @@
 	}
 
 	?>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic"> -->
 	<script src="https://cdn.ampproject.org/v0.js" async></script>
 	<?php
 	if ($__cf_row['cf_ga_id'] != '') {

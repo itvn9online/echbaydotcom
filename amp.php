@@ -2,9 +2,9 @@
 
 
 
-/*
-* Kiểm tra chuẩn AMP
-*/
+/**
+ * Kiểm tra chuẩn AMP
+ */
 // https://search.google.com/search-console/amp
 // hoặc thêm #development=1 vào sau URL
 
@@ -22,9 +22,9 @@ include EB_THEME_PLUGIN_INDEX . 'amp/class.php';
 
 
 
-/*
-* amp không có phần đăng nhập -> cache toàn trang
-*/
+/**
+ * amp không có phần đăng nhập -> cache toàn trang
+ */
 
 // định thời gian cache mặc định là 2 phút
 $__cf_row['cf_reset_cache'] = 120;
