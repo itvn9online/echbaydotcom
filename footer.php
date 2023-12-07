@@ -104,9 +104,6 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
     // nạp footer cho website -> các theme khác có thể sẽ dùng
     get_footer();
 
-    // hàm để các plugin khác còn nhúng dữ liệu vào chân trang
-    wp_footer();
-
     //
     $footers_content = ob_get_contents();
 
@@ -117,6 +114,9 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 
     // in lại
     echo $before_footers_content . $footers_content;
+
+    // hàm để các plugin khác còn nhúng dữ liệu vào chân trang
+    wp_footer();
 
     ?>
 </div>
