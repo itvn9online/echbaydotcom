@@ -2,7 +2,7 @@
 
 // set giãn cách xóa cache nếu chưa có
 if (!isset($_GET['time_auto_cleanup_cache'])) {
-	$_GET['time_auto_cleanup_cache'] = 120;
+	$_GET['time_auto_cleanup_cache'] = 30;
 }
 //print_r( $_GET ); exit();
 //echo EB_THEME_CACHE . '<br>' . PHP_EOL;
