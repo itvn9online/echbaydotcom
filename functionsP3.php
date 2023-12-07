@@ -700,7 +700,7 @@ function WGR_show_header_favicon($icon = '')
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
 <!-- <link rel="icon" sizes="192x192" href="' . $icon . '"> -->
-<link href="' . $icon . '" rel="shortcut icon" type="image/png" />';
+<link rel="shortcut icon" type="image/png" href="' . $icon . '" />';
 }
 
 

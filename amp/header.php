@@ -17,7 +17,7 @@
 <meta name="msapplication-navbutton-color" content="' . $__cf_row['cf_default_bg'] . '">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
-<link href="' . $url_for_amp_favicon . '" rel="shortcut icon" type="image/png" />';
+<link rel="shortcut icon" type="image/png" href="' . $url_for_amp_favicon . '" />';
 
 	// có một số lệnh không hợp với amp
 	//echo WGR_show_header_favicon();
