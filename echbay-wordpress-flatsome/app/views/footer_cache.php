@@ -64,6 +64,7 @@ if (defined('HAS_USING_EB_START')) {
         WGR_content_cat_js_cache($cat_js_file_name, $using_js_file_name);
 
         //
+        // echo $main_content . '<br>' . PHP_EOL;
         ___eb_cache_cache($filename, $main_content, $eb_cache_note);
     } else {
         echo $main_content;

@@ -75,15 +75,18 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
 
     //
     //	return $data;
+    // echo $data . '<br>' . PHP_EOL;
 
     //
     $data = WGR_remove_js_multi_comment($data, '<!--', '-->');
 
     //
     $a = explode("\n", $data);
+    // print_r($a);
+    // die(__FILE__ . ':' . __LINE__);
     $data = '';
-    $i = 0;
-    $create_file = 1;
+    // $i = 0;
+    // $create_file = 1;
 
     foreach ($a as $v) {
         $v = trim($v);
@@ -92,7 +95,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
             continue;
         }
 
-        //echo substr( $v, -3 ) . "\n";
+        //echo substr( $v, -3 ) . PHP_EOL;
 
         // xóa HTML comment
         // https://stackoverflow.com/questions/1084741/regexp-to-strip-html-comments
@@ -106,7 +109,7 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
 
         // nội dung hợp lệ
         //if (strpos($v, '//') !== false) {
-        $v .= "\n";
+        $v .= PHP_EOL;
         /*
          }
          else {
@@ -150,25 +153,12 @@ function WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename = '', $data_comme
 
     //
     return true;
-
-
-    // v1
-    // xóa một số khoảng trắng không cần thiết -> tiết kiệm từng kb =))
-    for ($i = 0; $i < 10; $i++) {
-        $data = str_replace('</div> <div', '</div><div', $data);
-        $data = str_replace('</div> </div>', '</div></div>', $data);
-
-        $data = str_replace('/> </div>', '/></div>', $data);
-        $data = str_replace('/> <div', '/><div', $data);
-    }
-
-    return $data;
 }
 
 // page's content is $buffer ($data)
 function ___eb_cache_cache($filename, $data, $data_comment = '')
 {
-    //echo $filename . '<br>' . "\n";
+    //echo $filename . '<br>' . PHP_EOL;
 
     // v2
     // nhúng comment vào trước
@@ -176,39 +166,7 @@ function ___eb_cache_cache($filename, $data, $data_comment = '')
     //file_put_contents( $filename, '<!-- -->' )or die( 'ERROR: create file' );
 
     // rồi nhúng các nội dung khác vào sau
-    WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename, $data_comment);
-
-    return true;
-
-    // v3
-    // nhúng comment vào sau
-    if ($data_comment != '') {
-        file_put_contents($filename, $data_comment, FILE_APPEND) or die('ERROR: write comment main cache file');
-    }
-    //echo $filename . '<br>' . "\n";
-
-    return true;
-
-
-    // v1
-    // sử dụng hàm này cho gọn
-    file_put_contents($filename, WGR_rut_gon_HTML_truoc_khi_tao_cache($data) . $data_comment) or die('ERROR: write main cache file');
-
-    // TEST
-    //	unlink ( ABSPATH . EB_DIR_CONTENT . '/uploads/ebcache/all/-wordpress.org-.txt' ); echo 'TEST';
-
-    //
-    //	chmod($filename, 0777);
-
-    /*
-     // mở file để ghi
-     $filew = fopen( $filename, 'w+' );
-     // ghi nội dung cho file
-     fwrite($filew, $data);
-     fclose($filew);
-     */
-
-    return true;
+    return WGR_rut_gon_HTML_truoc_khi_tao_cache($data, $filename, $data_comment);
 }
 
 // kiểm tra và nạp ebsuppercache nếu chưa có -> chỉ áp dụng khi người dùng đang đăng nhập -> thường thì admin mới đăng nhập
@@ -226,13 +184,13 @@ function WGR_add_ebcache_php_to_index($__cf_row)
     ) {
         // copy file mẫu
         if (copy(__DIR__ . '/index-tmp.php', ABSPATH . 'index.php')) {
-            echo 'active WP ACTIVE WGR SUPPER CACHE <br>' . "\n";
+            echo 'active WP ACTIVE WGR SUPPER CACHE <br>' . PHP_EOL;
         } else {
             // không copy được thì dùng chức năng tạo file -> có hỗ trợ sử dụng phương thức FTP
             _eb_create_file(ABSPATH . 'index.php', file_get_contents(__DIR__ . '/index-tmp.php', 1));
 
             //
-            echo 'add ebsuppercache to index.php (1)<br>' . "\n";
+            echo 'add ebsuppercache to index.php (1)<br>' . PHP_EOL;
         }
     }
 }
@@ -240,40 +198,40 @@ function WGR_add_ebcache_php_to_index($__cf_row)
 function WGR_v1_add_ebcache_php_to_index($__cf_row)
 {
     if (mtv_id > 0 && $__cf_row['cf_enable_ebsuppercache'] == 1) {
-        //echo ABSPATH . '<br>' . "\n";
+        //echo ABSPATH . '<br>' . PHP_EOL;
         $content_of_wp_index = trim(file_get_contents(ABSPATH . 'index.php', 1));
 
         // nếu chưa có file cache thì thêm vào thôi
         if (strpos($content_of_wp_index, 'echbaydotcom/ebcache.php') === false) {
-            //echo __DIR__ . '<br>' . "\n";
+            //echo __DIR__ . '<br>' . PHP_EOL;
 
             // tách theo dấu xuống dòng \n
-            $content_of_wp_index = explode("\n", $content_of_wp_index);
+            $content_of_wp_index = explode(PHP_EOL, $content_of_wp_index);
             if (trim($content_of_wp_index[0]) == '<?php') {
-                $content_of_wp_index[0] .= ' ' . "\n" . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
+                $content_of_wp_index[0] .= ' ' . PHP_EOL . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
                 //print_r($content_of_wp_index);
                 //die('sdg sgds');
 
                 //
-                _eb_create_file(ABSPATH . 'index.php', implode("\n", $content_of_wp_index));
-                echo 'add ebsuppercache to index.php (1)<br>' . "\n";
+                _eb_create_file(ABSPATH . 'index.php', implode(PHP_EOL, $content_of_wp_index));
+                echo 'add ebsuppercache to index.php (1)<br>' . PHP_EOL;
             } else {
                 // tách theo dấu cách
-                $content_of_wp_index = implode("\n", $content_of_wp_index);
+                $content_of_wp_index = implode(PHP_EOL, $content_of_wp_index);
                 $content_of_wp_index = explode(' ', $content_of_wp_index);
 
                 //
                 if (trim($content_of_wp_index[0]) == '<?php') {
                     $content_of_wp_index[0] .= ' ' . 'include __DIR__ . \'/wp-content/echbaydotcom/ebcache.php\';';
                     _eb_create_file(ABSPATH . 'index.php', implode(' ', $content_of_wp_index));
-                    echo 'add ebsuppercache to index.php (2)<br>' . "\n";
+                    echo 'add ebsuppercache to index.php (2)<br>' . PHP_EOL;
                 } else {
-                    echo 'ERROR add ebsuppercache<br>' . "\n";
+                    echo 'ERROR add ebsuppercache<br>' . PHP_EOL;
                 }
             }
         } else {
-            //echo ABSPATH . 'index.php' . '<br>' . "\n";
-            //echo 'index.php has been add ebsuppercache!<br>' . "\n";
+            //echo ABSPATH . 'index.php' . '<br>' . PHP_EOL;
+            //echo 'index.php has been add ebsuppercache!<br>' . PHP_EOL;
         }
     }
 }
@@ -337,14 +295,17 @@ function WGR_cache($f, $buffer)
 
 function WGR_display($f, $reset_time = 120)
 {
-    //die(__FILE__ . ':' . __LINE__);
+    // echo $f . '<br>' . PHP_EOL;
+    // die(__FILE__ . ':' . __LINE__);
     $data = file_get_contents($f, 1);
+    // echo $data . '<br>' . PHP_EOL;
     $content = explode('¦', $data, 2);
+    // echo count($content) . '<br>' . PHP_EOL;
     if (count($content) != 2 || !is_numeric($content[0])) {
         return false;
     }
     $active_reset = time() - ($content[0] * 1);
-    //echo $active_reset . '<br>' . "\n";
+    // echo $active_reset . '<br>' . PHP_EOL;
     //die(__FILE__ . ':' . __LINE__);
     if ($active_reset > $reset_time) {
         return false;
@@ -359,10 +320,12 @@ function WGR_display($f, $reset_time = 120)
 
     // -> done
     if (is_file(EB_THEME_CACHE . $cat_js_file_name) && is_file(EB_THEME_CACHE . $using_js_file_name)) {
+        // echo __FILE__ . ':' . __LINE__ . '<br>' . PHP_EOL;
         echo $content[1];
         echo '<!-- generated by ebsuppercache (' . $active_reset . ' | ' . $reset_time . ' | ' . date('Y-m-d H:i:s', $content[0]) . ') -->';
         exit();
     }
+    // echo __FILE__ . ':' . __LINE__ . '<br>' . PHP_EOL;
 
     //
     return false;

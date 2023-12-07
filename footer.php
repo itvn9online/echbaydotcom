@@ -6,7 +6,7 @@
 // nếu không có nội dung trong widget -> lấy theo thiết kế mặc định
 //if ( $eb_footer_widget == '' ) {
 // nạp CSS -> vẫn phải chạy chức năng này để nó còn nạp CSS cho trang chủ
-if ( $__cf_row[ 'cf_using_footer_default' ] == 1 ) {
+if ($__cf_row['cf_using_footer_default'] == 1) {
 
     //
     ob_start();
@@ -16,7 +16,7 @@ if ( $__cf_row[ 'cf_using_footer_default' ] == 1 ) {
     //	include EB_THEME_PLUGIN_INDEX . 'footer_default.php';
 
     //
-    foreach ( $arr_includes_footer_file as $v ) {
+    foreach ($arr_includes_footer_file as $v) {
         include $v;
     }
 
@@ -33,18 +33,18 @@ if ( $__cf_row[ 'cf_using_footer_default' ] == 1 ) {
 
 // cache cho phần footer-ajax -> sau trong file footer-ajax chỉ việc hiển thị ra là được
 $strFooterAjaxCacheFilter = 'footer-ajax';
-$check_footer_ajax_content = _eb_get_static_html( $strFooterAjaxCacheFilter );
-if ( $check_footer_ajax_content == false ) {
+$check_footer_ajax_content = _eb_get_static_html($strFooterAjaxCacheFilter);
+if ($check_footer_ajax_content == false) {
     // lưu cache
-    _eb_get_static_html( $strFooterAjaxCacheFilter, $footer_ajax_content );
+    _eb_get_static_html($strFooterAjaxCacheFilter, $footer_ajax_content);
 }
 
 // nếu người dùng đang đăng nhập vào web -> hiển thị luôn nội dung
 $footer_lazyload = 'footer-lazyload';
 // 2021-06-30: tạm bỏ chức năng lazzyload do còn nhiều bất cập
 //if ( mtv_id > 0 || $__cf_row[ 'cf_lazy_load_home_footer' ] != 1 ) {
-$footer_content = file_get_contents( EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1 );
-echo str_replace( '{tmp.footer_content}', $footer_ajax_content, $footer_content );
+$footer_content = file_get_contents(EB_THEME_PLUGIN_INDEX . 'html/footer-ajax.html', 1);
+echo str_replace('{tmp.footer_content}', $footer_ajax_content, $footer_content);
 
 // xóa ID load content = ajax đi
 $footer_lazyload = 'footer-no-lazyload';
@@ -75,7 +75,7 @@ echo $html_search_nav_mobile;
 
 //
 //echo $act;
-if ( $act != 'cart' ) {
+if ($act != 'cart') {
     include EB_THEME_PLUGIN_INDEX . 'quick_cart.php';
 }
 
@@ -101,15 +101,15 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 
 
 //
-echo $__cf_row[ 'cf_js_allpage' ];
+echo $__cf_row['cf_js_allpage'];
 
 
 //print_r($arr_object_post_meta);
 
 
 //
-if ( eb_code_tester == true ) {
-    echo implode( "\n", $arr_for_show_html_file_load );
+if (eb_code_tester == true) {
+    echo implode("\n", $arr_for_show_html_file_load);
 }
 
 
@@ -117,14 +117,16 @@ if ( eb_code_tester == true ) {
 <!-- // FOOTER by <?php echo $arr_private_info_setting['author']; ?> -->
 <?php
 // nạp font awesome 5 khi có nhu cầu
-if ( 1 == 2 && $__cf_row[ 'cf_fontawesome_v5' ] == 1 ) {
-    ?>
-<!-- Our project just needs Font Awesome Solid + Brands --> 
-<script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/brands.min.js"></script> 
-<script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/solid.min.js"></script> 
-<script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/fontawesome.min.js"></script> 
-<script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/v4-shims.min.js"></script>
+if (1 == 2 && $__cf_row['cf_fontawesome_v5'] == 1) {
+?>
+    <!-- Our project just needs Font Awesome Solid + Brands -->
+    <script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/brands.min.js"></script>
+    <script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/solid.min.js"></script>
+    <script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/fontawesome.min.js"></script>
+    <script defer src="<?php echo EB_URL_OUTSOURCE; ?>fontawesome-free-5.15.4-web/js/v4-shims.min.js"></script>
 <?php
 }
 ?>
-</body></html>
+</body>
+
+</html>
