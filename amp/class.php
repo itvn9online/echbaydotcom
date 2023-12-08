@@ -247,12 +247,6 @@ class EchAMPFunction
                         $v2 = '';
                     }
                 } else if ($new_tag == 'amp-video') {
-                    // bổ sung poster là logo (nếu chưa có)
-                    if (strpos($v2, 'poster=') === false) {
-                        $v2 .= ' poster="' . DYNAMIC_BASE_URL . $this->option_model->get_the_logo($this->getconfig) . '"';
-                    }
-
-                    //
                     $v = '<' . $new_tag . ' ' . $v2 . ' layout="responsive">' . $v;
 
                     // xong thì bỏ v2 để không bị duplicate tag
