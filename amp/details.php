@@ -95,7 +95,7 @@ if ($__post->post_type == 'post') {
 */
 
 // Loại bỏ các attr không cần thiết và tag không được hỗ trợ
-$trv_noidung = $eb_amp->amp_remove_attr($trv_noidung);
+$trv_noidung = $eb_amp->removes_attr($trv_noidung);
 
 // thay thế các tag cũ bằng tag mới
 $trv_noidung = $eb_amp->amp_change_tag($trv_noidung);

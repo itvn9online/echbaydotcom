@@ -3,9 +3,8 @@
 
 class EchAMPFunction
 {
-    function amp_remove_attr($str)
+    function removes_attr($str)
     {
-
         //
         $arr = array(
             'id',
@@ -16,12 +15,13 @@ class EchAMPFunction
             'border',
             'align',
             'loading',
-
+            'decoding',
+            // img
+            'fetchpriority',
             // iframe
             'frameborder',
             'scrolling',
             'allowfullscreen',
-
             //
             'longdesc'
         );
@@ -112,165 +112,148 @@ class EchAMPFunction
 
     function amp_change_tag($str)
     {
-
-        $arr = array(
-            'img' => 'amp-img',
-            'iframe' => 'amp-iframe',
-            'video' => 'amp-video',
-        );
-
-        foreach ($arr as $k => $v) {
-            $str = $this->change_tag($str, $k, $v);
-        }
-
-        //
-        $str = str_replace('</iframe>', '', $str);
-        // bỏ một số thuộc tính không được hỗ trợ trong AMP
-        $str = str_replace(' decoding="async"', '', $str);
-        $str = str_replace(" decoding='async'", '', $str);
-
-        //
-        return $str;
-    }
-
-    function change_tag($str, $tag, $new_tag, $end_tag = '>')
-    {
         global $other_amp_cdn;
 
         //
-        $c = explode('<' . $tag . ' ', $str);
-        //		print_r( $c );
+        $search = array();
+        $replace = array();
 
-        $new_str = '';
-        foreach ($c as $k => $v) {
+        // amp-img
+        $matches = array();
+        preg_match_all('/<img[\s\r\n]+.*?>/is', $str, $matches);
+        // print_r($matches);
+        foreach ($matches[0] as $imgHTML) {
+            if (in_array($imgHTML, $search, true)) {
+                // already has a replacement
+                continue;
+            }
 
-            // bỏ qua mảng số 0
-            if ($k > 0) {
-                $v2 = explode('>', $v);
-                $v2 = $v2[0];
-                //			echo $v2. "\n";
-                //			echo substr( $v2, -1 ) . "\n";
-                //			echo substr( $v2, 0, -1 ) . "\n";
+            // replace the src and add the data-src attribute
+            $replaceHTML = $imgHTML;
+            // $replaceHTML = preg_replace('/<img(.*?)srcset=/is', '<img$1srcset="" data-srcset=', $replaceHTML);
 
-                // xóa đoạn
-                $v = str_replace($v2, '', $v);
-                $v = substr($v, 1);
+            // thêm class để resize ảnh (dựa theo AMP wp)
+            $classes = 'amp-wp-enforced-sizes';
+            if (preg_match('/class=["\']/i', $replaceHTML)) {
+                $replaceHTML = preg_replace('/class=(["\'])(.*?)["\']/is', 'class=$1' . $classes . ' $2$1', $replaceHTML);
+            } else {
+                $replaceHTML = preg_replace('/<img/is', '<img class="' . $classes . '"', $replaceHTML);
+            }
 
-                //
-                if (substr($v2, -1) == '/') {
-                    $v2 = substr($v2, 0, -1);
-                }
-                $v2 = trim($v2);
+            // thêm thẻ đóng amp-img
+            $replaceHTML = str_replace(' />', '>', $replaceHTML);
+            $replaceHTML = str_replace('/>', '>', $replaceHTML);
+            $replaceHTML .= '</amp-img>';
 
-                // riêng với video youtube
-                if (strpos($v2, 'youtube.com/') !== false) {
-                    //				echo $v2 . "\n";
-                    $v2 = explode('src="', $v2);
-                    $v2 = $v2[1];
-                    $v2 = explode('"', $v2);
-                    $v2 = $v2[0];
-                    //				echo $v2 . "\n";
-                    $v2 = _eb_get_youtube_id($v2);
-                    //				echo $v2 . "\n";
+            // cho vào mảng để thay thế nội dung
+            $search[] = $imgHTML;
+            $replace[] = $replaceHTML;
+        }
 
-                    // tạo nội dung mới từ ID youtube
-                    $v2 = 'data-videoid="' . $v2 . '" layout="responsive" width="480" height="270"';
-                    $new_tag = 'amp-youtube';
 
-                    // tải cdn cho youtube
-                    $other_amp_cdn['youtube'] = '';
-                } else if ($new_tag == 'amp-iframe') {
-                    //					echo $v2 . "\n";
-
-                    $iframe_src = explode('src="', $v2);
-                    $iframe_src = $iframe_src[1];
-                    $iframe_src = explode('"', $iframe_src);
-                    $iframe_src = $iframe_src[0];
-                    //					echo $iframe_src . "\n";
-
-                    $iframe_width = explode('width="', $v2);
-                    $iframe_width = $iframe_width[1];
-                    $iframe_width = explode('"', $iframe_width);
-                    $iframe_width = $iframe_width[0];
-                    //					echo $iframe_width . "\n";
-
-                    $iframe_height = explode('height="', $v2);
-                    $iframe_height = $iframe_height[1];
-                    $iframe_height = explode('"', $iframe_height);
-                    $iframe_height = $iframe_height[0];
-                    //					echo $iframe_height . "\n";
-
-                    $v2 = 'width="' . $iframe_width . '" height="' . $iframe_height . '" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0" src="' . $iframe_src . '"';
-
-                    $other_amp_cdn['amp-iframe'] = '';
-                }
-                // với hình ảnh, nếu thiếu layout thì bổ sung
-                else if ($new_tag == 'amp-img') {
-                    //echo $k . '" ----------- <br>' . "\n\n";
-                    //echo '"-----' . $v2 . '------" ----------- <br>' . "\n\n";
-                    if ($v2 != '' && strpos($v2, 'src=') !== false) {
-                        //echo '"-----' . $v2 . '------" ----------- <br>' . "\n\n";
-                        $amp_avt_size = array();
-
-                        // lấy chiều rộng thực của ảnh nếu chưa có
-                        if (strpos($v2, ' width=') === false) {
-                            $amp_avt_size = $this->get_src_img($v2);
-                            //print_r($amp_avt_size);
-
-                            //
-                            if (!empty($amp_avt_size)) {
-                                $v2 .= ' width="' . $amp_avt_size[0] . '"';
-                            } else {
-                                $v2 .= ' width="400"';
-                            }
-                        }
-
-                        // chiều cao thì lấy luôn từ mục chiều rộng trước đó rồi
-                        if (strpos($v2, ' height=') === false) {
-                            if (empty($amp_avt_size)) {
-                                $amp_avt_size = $this->get_src_img($v2);
-                            }
-
-                            //
-                            if (!empty($amp_avt_size)) {
-                                $v2 .= ' height="' . $amp_avt_size[1] . '"';
-                            } else {
-                                $v2 .= ' height="400"';
-                            }
-                        }
-
-                        //
-                        // thêm class để resize ảnh (dựa theo AMP wp)
-                        $v2 .= ' class="amp-wp-enforced-sizes"';
-                        //$v2 .= ' sizes="(min-width: 600px) 600px, 100vw"';
-                    } else {
-                        $v2 = '';
-                    }
-                } else if ($new_tag == 'amp-video') {
-                    $v = '<' . $new_tag . ' ' . $v2 . ' layout="responsive">' . $v;
-
-                    // xong thì bỏ v2 để không bị duplicate tag
-                    $v2 = '';
-
-                    //
-                    $other_amp_cdn['amp-video'] = '';
-                }
-
-                // tổng hợp nội dung lại
-                if ($v2 != '') {
-                    //echo $v2 . ' :::::::::::<br>' . "\n";
-                    $v = '<' . $new_tag . ' ' . $v2 . '></' . $new_tag . '>' . $v;
-                } else {
-                    //echo $v . ' ================ <br>' . "\n";
-                }
+        // amp-video
+        $matches = array();
+        preg_match_all('/<video[\s\r\n]+.*?>/is', $str, $matches);
+        // print_r($matches);
+        foreach ($matches[0] as $imgHTML) {
+            if (in_array($imgHTML, $search, true)) {
+                // already has a replacement
+                continue;
             }
 
             //
-            $new_str .= $v;
-        }
-        $new_str = str_replace('</video>', '</amp-video>', $new_str);
+            $replaceHTML = $imgHTML;
 
-        return $new_str;
+            // thêm layout responsive
+            $replaceHTML = str_replace('<video ', '<video layout="responsive" ', $replaceHTML);
+
+            // cho vào mảng để thay thế nội dung
+            $search[] = $imgHTML;
+            $replace[] = $replaceHTML;
+
+            //
+            $other_amp_cdn['amp-video'] = '';
+        }
+
+
+        // amp-iframe
+        $matches = array();
+        preg_match_all('/<iframe[\s\r\n]+.*?>/is', $str, $matches);
+        // print_r($matches);
+        foreach ($matches[0] as $imgHTML) {
+            if (in_array($imgHTML, $search, true)) {
+                // already has a replacement
+                continue;
+            }
+
+            //
+            $replaceHTML = $imgHTML;
+
+            // xử lý riêng với video youtube
+            if (strpos($replaceHTML, 'youtube.com/') !== false || strpos($replaceHTML, 'youtu.be/') !== false) {
+                // tách lấy id video
+                $replaceHTML = explode('src="', $replaceHTML);
+                $replaceHTML = $replaceHTML[1];
+                $replaceHTML = explode('"', $replaceHTML);
+                $replaceHTML = $replaceHTML[0];
+
+                // khởi tạo mã mới
+                $replaceHTML = '<amp-youtube data-videoid="' . $this->get_youtube_id($replaceHTML) . '" layout="responsive" width="480" height="270"></amp-youtube>';
+
+                //
+                $other_amp_cdn['youtube'] = '';
+            } else {
+                $iframe_src = explode('src="', $replaceHTML);
+                $iframe_src = $iframe_src[1];
+                $iframe_src = explode('"', $iframe_src);
+                $iframe_src = $iframe_src[0];
+                // echo $iframe_src . "\n";
+
+                $iframe_width = explode('width="', $replaceHTML);
+                $iframe_width = $iframe_width[1];
+                $iframe_width = explode('"', $iframe_width);
+                $iframe_width = $iframe_width[0];
+                // echo $iframe_width . "\n";
+
+                $iframe_height = explode('height="', $replaceHTML);
+                $iframe_height = $iframe_height[1];
+                $iframe_height = explode('"', $iframe_height);
+                $iframe_height = $iframe_height[0];
+                // echo $iframe_height . "\n";
+
+                // khởi tạo mã mới
+                $replaceHTML = '<amp-iframe width="' . $iframe_width . '" height="' . $iframe_height . '" sandbox="allow-scripts allow-same-origin" layout="responsive" frameborder="0" src="' . $iframe_src . '"></amp-iframe>';
+
+                //
+                $other_amp_cdn['amp-iframe'] = '';
+            }
+
+            // cho vào mảng để thay thế nội dung
+            $search[] = $imgHTML;
+            $replace[] = $replaceHTML;
+        }
+
+
+        // bắt đầu thay nội dung
+        // print_r($search);
+        // print_r($replace);
+        $str = str_replace($search, $replace, $str);
+
+
+        // thay nốt các dữ liệu còn sót
+        $str = str_replace('<img ', '<amp-img ', $str);
+        //
+        $str = str_replace('<video ', '<amp-video ', $str);
+        $str = str_replace('</video>', '</amp-video>', $str);
+        //
+        $str = str_replace('</iframe>', '', $str);
+        // bỏ một số thuộc tính không được hỗ trợ trong AMP
+        // $str = str_replace(' decoding="async"', '', $str);
+        // $str = str_replace(" decoding='async'", '', $str);
+        // $str = str_replace(' fetchpriority="high"', '', $str);
+
+        //
+        return $str;
     }
 
 
@@ -323,77 +306,6 @@ class EchAMPFunction
 
         //
         return $new_str;
-    }
-
-
-    // tìm kích thước ảnh trên host
-    function img_size($img, $default_width = 300, $default_height = 300)
-    {
-        //		echo $img . '<br>' . "\n";
-
-        //
-        $amp_avt_width = $default_width;
-        $amp_avt_height = $default_height;
-
-        // lấy domain hiện tại
-        $domain = str_replace('www.', '', $_SERVER['HTTP_HOST']) . '/';
-
-        //
-        $check_img = strstr($img, $domain);
-        $local_img = '';
-
-        // nếu không -> thử tìm theo thư mục upload
-        if ($check_img == '') {
-            $check_img = strstr($img, '/' . EB_DIR_CONTENT . '/uploads/');
-            if ($check_img != '') {
-                $local_img = EB_THEME_CONTENT . substr($check_img, 1);
-            }
-        }
-        // nếu có -> dùng luôn
-        else {
-            $local_img = ABSPATH . str_replace($domain, '', $check_img);
-        }
-        //		echo $local_img . '<br>' . "\n";
-
-        //
-        if ($local_img != '' && is_file($local_img)) {
-            $local_img = getimagesize($local_img);
-            //			print_r( $check_img );
-
-            //
-            $amp_avt_width = $local_img[0];
-            $amp_avt_height = $local_img[1];
-        }
-
-
-        //
-        return array(
-            $amp_avt_width,
-            $amp_avt_height,
-        );
-    }
-
-    function get_src_img($v2)
-    {
-        $get_img_src = str_replace("'", '"', $v2);
-        //		echo $get_img_src . '<br>' . "\n";
-
-        $get_img_src = explode('src="', $get_img_src);
-        //		print_r( $get_img_src );
-
-        if (isset($get_img_src[1])) {
-            //			echo $get_img_src . '<br>' . "\n";
-
-            $get_img_src = explode('"', $get_img_src[1]);
-            $get_img_src = $get_img_src[0];
-            //			echo $get_img_src . '<br>' . "\n";
-
-            //
-            return $this->img_size($get_img_src, 400, 400);
-        }
-
-        //
-        return array();
     }
 }
 
