@@ -47,6 +47,9 @@
 	if (isset($other_amp_cdn['amp-iframe'])) {
 		$other_amp_cdn['amp-iframe'] = '<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>';
 	}
+	if (isset($other_amp_cdn['amp-video'])) {
+		$other_amp_cdn['amp-video'] = '<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>';
+	}
 
 	foreach ($other_amp_cdn as $v) {
 		echo $v . "\n";

@@ -115,7 +115,8 @@ class EchAMPFunction
 
         $arr = array(
             'img' => 'amp-img',
-            'iframe' => 'amp-iframe'
+            'iframe' => 'amp-iframe',
+            'video' => 'amp-video',
         );
 
         foreach ($arr as $k => $v) {
@@ -245,6 +246,20 @@ class EchAMPFunction
                     } else {
                         $v2 = '';
                     }
+                } else if ($new_tag == 'amp-video') {
+                    // bổ sung poster là logo (nếu chưa có)
+                    if (strpos($v2, 'poster=') === false) {
+                        $v2 .= ' poster="' . DYNAMIC_BASE_URL . $this->option_model->get_the_logo($this->getconfig) . '"';
+                    }
+
+                    //
+                    $v = '<' . $new_tag . ' ' . $v2 . ' layout="responsive">' . $v;
+
+                    // xong thì bỏ v2 để không bị duplicate tag
+                    $v2 = '';
+
+                    //
+                    $other_amp_cdn['amp-video'] = '';
                 }
 
                 // tổng hợp nội dung lại
@@ -259,6 +274,7 @@ class EchAMPFunction
             //
             $new_str .= $v;
         }
+        $new_str = str_replace('</video>', '</amp-video>', $new_str);
 
         return $new_str;
     }
