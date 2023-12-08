@@ -1,4 +1,5 @@
 <?php
+// die(__FILE__ . ':' . __LINE__);
 
 // footer menu dưới dạng widget
 //$eb_footer_widget = _eb_echbay_sidebar( 'eb_footer_global', 'eb-widget-footer cf', 'div', 1, 0, 1 );
@@ -93,9 +94,6 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
      */
     // lấy nội dung trước đó, để phòng elementor nó clear
     $before_footers_content = ob_get_contents();
-
-    //ob_clean();
-    //ob_end_flush();
     ob_end_clean();
 
     // lấy nội dung tiếp theo trong footer
@@ -104,19 +102,18 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
     // nạp footer cho website -> các theme khác có thể sẽ dùng
     get_footer();
 
+    // hàm để các plugin khác còn nhúng dữ liệu vào chân trang
+    wp_footer();
+
     //
     $footers_content = ob_get_contents();
 
-    //ob_clean();
-    //ob_end_flush();
     ob_end_clean();
     // END ob footer
 
     // in lại
+    ob_start();
     echo $before_footers_content . $footers_content;
-
-    // hàm để các plugin khác còn nhúng dữ liệu vào chân trang
-    wp_footer();
 
     ?>
 </div>

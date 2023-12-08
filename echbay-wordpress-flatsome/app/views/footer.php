@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer.
  *
@@ -6,6 +7,8 @@
  * @daidq - 0984533228 - itvn9online@gmail.com
  * Chỉnh sửa và phát triển theo hướng chuyên cho thị trường Việt Nam
  */
+
+// die(__FILE__ . ':' . __LINE__);
 
 global $flatsome_opt;
 ?>
@@ -19,7 +22,7 @@ global $flatsome_opt;
 
 
 global $__cf_row;
-echo $__cf_row[ 'cf_js_allpage' ];
+echo $__cf_row['cf_js_allpage'];
 
 
 wp_footer();
@@ -31,6 +34,7 @@ require __DIR__ . '/footer_cache_quick_cart.php';
 <div id="oi_popup"></div>
 <!-- <script type="text/javascript" src="wp-content/echbaydotcom/javascript/analytics.js" defer></script> -->
 </body>
+
 </html>
 <?php
 
