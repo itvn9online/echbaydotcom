@@ -116,6 +116,7 @@ class EchAMPFunction
     function amp_change_tag($str)
     {
         global $other_amp_cdn;
+        global $__cf_row;
 
         //
         $search = array();
@@ -169,6 +170,11 @@ class EchAMPFunction
 
             // thêm layout responsive
             $replaceHTML = str_replace('<video ', '<video layout="responsive" ', $replaceHTML);
+
+            // bổ sung poster là logo (nếu chưa có)
+            if (strpos($replaceHTML, 'poster=') === false) {
+                $replaceHTML = str_replace('<video ', '<video poster="' . web_link . $__cf_row['cf_logo'] . '" ', $replaceHTML);
+            }
 
             // cho vào mảng để thay thế nội dung
             $search[] = $imgHTML;
