@@ -3,7 +3,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php
 
-	echo _eb_tieu_de_chuan_seo($__cf_row['cf_title']);
+	echo _eb_tieu_de_chuan_seo($__cf_row['cf_title'], true);
 
 
 	$url_for_amp_favicon = $__cf_row['cf_favicon'];

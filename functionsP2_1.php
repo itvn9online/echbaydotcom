@@ -1047,7 +1047,7 @@ function _eb_get_youtube_id($url)
 }
 
 // tiêu đề tiêu chuẩn của google < 70 ký tự
-function _eb_tieu_de_chuan_seo($str)
+function _eb_tieu_de_chuan_seo($str, $for_amp = false)
 {
     global $__cf_row;
     global $arr_active_for_404_page;
@@ -1055,6 +1055,7 @@ function _eb_tieu_de_chuan_seo($str)
     global $act;
 
     // nếu sử dụng module SEO của EchBay
+    // var_dump(cf_on_off_echbay_seo);
     if (cf_on_off_echbay_seo == 1) {
         $str = trim($str);
 
@@ -1084,6 +1085,10 @@ function _eb_tieu_de_chuan_seo($str)
     }
     // mặc định thì lấy theo mẫu của wordpress
     else {
+        echo '<!-- title by other plugin -->' . "\n";
+        if ($for_amp === false) {
+            return '';
+        }
         // chỉ lấy mỗi title cho phần trang chủ
         if (is_home() || is_front_page()) {
             $str = web_name;
@@ -1094,7 +1099,6 @@ function _eb_tieu_de_chuan_seo($str)
             $str = wp_title('', false, 'right');
         }
         //$str = wp_title( '', false );
-        echo '<!-- title by other plugin -->' . "\n";
     }
 
     //

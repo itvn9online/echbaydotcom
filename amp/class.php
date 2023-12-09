@@ -16,6 +16,9 @@ class EchAMPFunction
             'align',
             'loading',
             'decoding',
+            // video
+            'autoplay',
+            'loop',
             // img
             'fetchpriority',
             // iframe
@@ -253,6 +256,9 @@ class EchAMPFunction
         // $str = str_replace(' fetchpriority="high"', '', $str);
 
         //
+        // print_r($other_amp_cdn);
+
+        //
         return $str;
     }
 
@@ -306,6 +312,77 @@ class EchAMPFunction
 
         //
         return $new_str;
+    }
+
+
+    // tìm kích thước ảnh trên host
+    function img_size($img, $default_width = 300, $default_height = 300)
+    {
+        //		echo $img . '<br>' . "\n";
+
+        //
+        $amp_avt_width = $default_width;
+        $amp_avt_height = $default_height;
+
+        // lấy domain hiện tại
+        $domain = str_replace('www.', '', $_SERVER['HTTP_HOST']) . '/';
+
+        //
+        $check_img = strstr($img, $domain);
+        $local_img = '';
+
+        // nếu không -> thử tìm theo thư mục upload
+        if ($check_img == '') {
+            $check_img = strstr($img, '/' . EB_DIR_CONTENT . '/uploads/');
+            if ($check_img != '') {
+                $local_img = EB_THEME_CONTENT . substr($check_img, 1);
+            }
+        }
+        // nếu có -> dùng luôn
+        else {
+            $local_img = ABSPATH . str_replace($domain, '', $check_img);
+        }
+        //		echo $local_img . '<br>' . "\n";
+
+        //
+        if ($local_img != '' && is_file($local_img)) {
+            $local_img = getimagesize($local_img);
+            //			print_r( $check_img );
+
+            //
+            $amp_avt_width = $local_img[0];
+            $amp_avt_height = $local_img[1];
+        }
+
+
+        //
+        return array(
+            $amp_avt_width,
+            $amp_avt_height,
+        );
+    }
+
+    function get_src_img($v2)
+    {
+        $get_img_src = str_replace("'", '"', $v2);
+        //		echo $get_img_src . '<br>' . "\n";
+
+        $get_img_src = explode('src="', $get_img_src);
+        //		print_r( $get_img_src );
+
+        if (isset($get_img_src[1])) {
+            //			echo $get_img_src . '<br>' . "\n";
+
+            $get_img_src = explode('"', $get_img_src[1]);
+            $get_img_src = $get_img_src[0];
+            //			echo $get_img_src . '<br>' . "\n";
+
+            //
+            return $this->img_size($get_img_src, 400, 400);
+        }
+
+        //
+        return array();
     }
 }
 
