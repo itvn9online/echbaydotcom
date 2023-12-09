@@ -50,6 +50,9 @@
 	if (isset($other_amp_cdn['amp-video'])) {
 		$other_amp_cdn['amp-video'] = '<script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>';
 	}
+	if (isset($other_amp_cdn['amp-audio'])) {
+		$other_amp_cdn['amp-audio'] = '<script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>';
+	}
 
 	foreach ($other_amp_cdn as $v) {
 		echo $v . "\n";
