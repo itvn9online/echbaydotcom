@@ -75,7 +75,7 @@ if (have_posts()) {
 	<div class="amp-wp-blogs-padding">
 		' . $trv_giaban . $trv_giamoi . '
 		<div class="amp-wp-blogs-desc">' . nl2br(trim(strip_tags($post->post_excerpt))) . '</div>
-		<div class="amp-wp-blogs-date">' . date('d/m/Y H:i', strtotime($post->post_modified)) . '</div>
+		<div class="amp-wp-blogs-date">' . $post->post_modified . '</div>
 	</div>
 </div>';
 

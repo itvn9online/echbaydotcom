@@ -171,7 +171,7 @@ if (isset($post_categories[0])) {
 $amp_content = '
 <header class="amp-wp-article-header">
 	<h1 class="amp-wp-title"><a href="' . _eb_p_link($pid) . '">' . $__post->post_title . '</a></h1>
-	<div>' . date('d/m/Y H:i', strtotime($__post->post_modified)) . '</div>
+	<div>' . $__post->post_modified . '</div>
 </header>
 ' . $code_adsense_top . '
 <div class="amp-wp-article-content">
