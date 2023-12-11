@@ -2138,6 +2138,7 @@ function EBE_set_default_title_for_seo() {
 	} else if (jQuery("#snippet-editor-title").length > 0) {
 		yoast_tit_id = "#snippet-editor-title";
 	}
+	let yoast_des_id = "";
 	if (yoast_des_id != "") {
 		tit_yoast = jQuery.trim(jQuery(yoast_des_id).val() || "");
 
@@ -2148,7 +2149,6 @@ function EBE_set_default_title_for_seo() {
 	}
 
 	//
-	let yoast_des_id = "";
 	if (jQuery("#yoast_wpseo_metadesc").length > 0) {
 		yoast_des_id = "#yoast_wpseo_metadesc";
 	} else if (jQuery("#snippet-editor-meta-description").length > 0) {
