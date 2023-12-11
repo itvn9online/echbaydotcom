@@ -13,6 +13,7 @@
 /**
  * Thằng elementor nó có quả update làm xung đột với code cache nên phải thêm đoạn này để xử lý lỗi
  * Nếu bắt buộc phải dùng thì chuyển sang dùng w3-cache
+ * Nhớ kiểm tra xem có bị tình trạng download file khi truy cập website ko
  */
 // lấy nội dung trước đó, để phòng elementor nó clear
 // $before_footers_content = ob_get_contents();
