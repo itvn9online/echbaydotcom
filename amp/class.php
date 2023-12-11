@@ -16,6 +16,7 @@ class EchAMPFunction
             'align',
             'loading',
             'decoding',
+            'color',
             // video
             'autoplay',
             'loop',
@@ -33,8 +34,8 @@ class EchAMPFunction
         // xóa từng attr đã được chỉ định
         foreach ($arr as $v) {
             // v2 -> thay thành 1 attr sau đó remove 1 thể
-            $str = str_replace(' ' . $v . '=\'', ' data-remove_attr=\'', $str);
-            $str = str_replace(' ' . $v . '="', ' data-remove_attr="', $str);
+            $str = str_replace(' ' . $v . '=\'', ' for-remove-attr=\'', $str);
+            $str = str_replace(' ' . $v . '="', ' for-remove-attr="', $str);
 
             // v1
             // $str = $this->remove_attr($str, ' ' . $v . '="', '"');
@@ -46,8 +47,8 @@ class EchAMPFunction
 
 
         // bắt đầu xóa attr đã được thay thế
-        $str = $this->remove_attr($str, ' data-remove_attr="', '"');
-        $str = $this->remove_attr($str, " data-remove_attr='", "'");
+        $str = $this->remove_attr($str, ' for-remove-attr="', '"');
+        $str = $this->remove_attr($str, " for-remove-attr='", "'");
 
 
         // xóa các thẻ không còn được hỗ trợ
@@ -146,10 +147,10 @@ class EchAMPFunction
                 continue;
             }
 
-            // replace the attr and add the data-remove_attr attribute
+            // replace the attr and add the for-remove-attr attribute
             $replaceHTML = $imgHTML;
-            $replaceHTML = str_replace(' ' . $attr . '=\'', ' data-remove_attr=\'', $replaceHTML);
-            $replaceHTML = str_replace(' ' . $attr . '="', ' data-remove_attr="', $replaceHTML);
+            $replaceHTML = str_replace(' ' . $attr . '=\'', ' for-remove-attr=\'', $replaceHTML);
+            $replaceHTML = str_replace(' ' . $attr . '="', ' for-remove-attr="', $replaceHTML);
 
             // cho vào mảng để thay thế nội dung
             $search[] = $imgHTML;

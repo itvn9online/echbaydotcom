@@ -191,4 +191,4 @@ if (!defined('FLATSOME_BASIC_THEME')) {
 }
 
 // xóa thẻ <title> để sử dụng title tùy chỉnh
-remove_action('wp_head', '_wp_render_title_tag', 1);
+// remove_action('wp_head', '_wp_render_title_tag', 1);

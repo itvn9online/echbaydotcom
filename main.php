@@ -32,7 +32,7 @@ if (is_file(EB_THEME_CACHE . 'update_running.txt')) {
 
 		$m = 'He thong dang duoc bao tri</title><h1>He thong dang duoc bao tri! Vui long quay lai sau ' . (60 - (date_time - $time_for_bao_tri)) . ' giay';
 
-		die('<title>' . $m . '</h1><script>if (top != self) { alert("' . $m . '") }</script>');
+		die('<h1>' . $m . '</h1><script>if (top != self) { alert("' . $m . '") }</script>');
 	} else {
 		// xóa file
 		_eb_remove_file(EB_THEME_CACHE . 'update_running.txt');

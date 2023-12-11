@@ -27,7 +27,7 @@ function _eb_create_file(
 
     //
     if ($content_ == '') {
-        echo 'ERROR put file: content is NULL<br>' . "\n";
+        echo 'ERROR put file: content is NULL<br>' . PHP_EOL;
         return false;
     }
 
@@ -49,7 +49,7 @@ function _eb_create_file(
             }
 
             //
-            echo 'ERROR create file: ' . $file_ . '<br>' . "\n";
+            echo 'ERROR create file: ' . $file_ . '<br>' . PHP_EOL;
             return false;
         } else {
             // nhớ set 777 cho file
@@ -69,9 +69,9 @@ function _eb_create_file(
 
     //
     if (!$aa && $ftp == 1) {
-        //		echo $file_ . '<br>' . "\n";
+        //		echo $file_ . '<br>' . PHP_EOL;
         if (EBE_ftp_create_file($file_, $content_, $add_line) != true) {
-            echo 'ERROR write to file: ' . $file_ . '<br>' . "\n";
+            echo 'ERROR write to file: ' . $file_ . '<br>' . PHP_EOL;
             return false;
         }
     }
@@ -111,7 +111,7 @@ function _eb_create_file(
     */
 
     //
-    //	echo '<!-- ' . $file_ . ' -->' . "\n";
+    //	echo '<!-- ' . $file_ . ' -->' . PHP_EOL;
 
     //
     return true;
@@ -148,14 +148,14 @@ function WGR_ftp_copy($source, $path)
     // tạo kết nối
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
-        echo 'ERROR FTP connect to server<br>' . "\n";
+        echo 'ERROR FTP connect to server<br>' . PHP_EOL;
         return false;
     }
 
 
     // đăng nhập
     if (!ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)) {
-        echo 'ERROR FTP login false<br>' . "\n";
+        echo 'ERROR FTP login false<br>' . PHP_EOL;
         return false;
     }
 
@@ -171,7 +171,7 @@ function WGR_ftp_copy($source, $path)
 
         // nếu trong chuỗi file không có root dir -> báo lỗi
         if (strpos($file_for_ftp, '/' . $ftp_dir_root . '/') === false) {
-            echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
+            echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . PHP_EOL;
             return false;
         }
 
@@ -232,14 +232,14 @@ function WGR_ftp_create_dir($path, $mod = 0755)
     // tạo kết nối
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
-        echo 'ERROR FTP connect to server<br>' . "\n";
+        echo 'ERROR FTP connect to server<br>' . PHP_EOL;
         return false;
     }
 
 
     // đăng nhập
     if (!ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)) {
-        echo 'ERROR FTP login false<br>' . "\n";
+        echo 'ERROR FTP login false<br>' . PHP_EOL;
         return false;
     }
 
@@ -255,10 +255,10 @@ function WGR_ftp_create_dir($path, $mod = 0755)
     // upload file
     $result = true;
     if (!ftp_mkdir($conn_id, $file_for_ftp)) {
-        echo 'ERROR FTP: ftp_mkdir error<br>' . "\n";
+        echo 'ERROR FTP: ftp_mkdir error<br>' . PHP_EOL;
         $result = false;
     } else if (!ftp_chmod($conn_id, $mod, $file_for_ftp)) {
-        echo 'ERROR FTP: ftp_chmod error<br>' . "\n";
+        echo 'ERROR FTP: ftp_chmod error<br>' . PHP_EOL;
     }
 
 
@@ -280,7 +280,7 @@ function EBE_check_ftp_account()
 
     if (!defined('FTP_USER') || !defined('FTP_PASS')) {
         echo debug_backtrace()[1]['function'] . '<br>' . PHP_EOL;
-        echo 'ERROR FTP: FTP_USER or FTP_PASS not found<br>' . "\n";
+        echo 'ERROR FTP: FTP_USER or FTP_PASS not found<br>' . PHP_EOL;
         return false;
     }
 
@@ -291,7 +291,7 @@ function EBE_check_ftp_account()
         //$ftp_server = $_SERVER[ 'SERVER_ADDR' ];
         $ftp_server = '127.0.0.1';
     }
-    //	echo $ftp_server . '<br>' . "\n";
+    //	echo $ftp_server . '<br>' . PHP_EOL;
 
     return $ftp_server;
 }
@@ -329,14 +329,14 @@ function EBE_get_ftp_root_dir($content_ = 'test')
     // tạo kết nối
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
-        echo 'ERROR FTP connect to server<br>' . "\n";
+        echo 'ERROR FTP connect to server<br>' . PHP_EOL;
         return '';
     }
 
 
     // đăng nhập
     if (!ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)) {
-        echo 'ERROR FTP login false<br>' . "\n";
+        echo 'ERROR FTP login false<br>' . PHP_EOL;
         return '';
     }
 
@@ -355,7 +355,7 @@ function EBE_get_ftp_root_dir($content_ = 'test')
     $ftp_dir_root = '';
     //	print_r( $a );
     foreach ($a as $v) {
-        //		echo $v . "\n";
+        //		echo $v . PHP_EOL;
         if ($ftp_dir_root == '' && $v != '') {
             $file_test = strstr($cache_for_ftp, '/' . $v . '/');
             //			echo $file_test . " - \n";
@@ -369,14 +369,14 @@ function EBE_get_ftp_root_dir($content_ = 'test')
             }
         }
     }
-    //	echo $ftp_dir_root . '<br>' . "\n";
+    //	echo $ftp_dir_root . '<br>' . PHP_EOL;
 
     //
     ftp_close($conn_id);
 
     //
     if ($ftp_dir_root == '') {
-        echo 'ERROR FTP: ftp_dir_root not found<br>' . "\n";
+        echo 'ERROR FTP: ftp_dir_root not found<br>' . PHP_EOL;
     } else {
         //		echo ABSPATH . '<br>';
         //		echo basename( ABSPATH ) . '<br>';
@@ -404,7 +404,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
 
     //
     if ($content_ == '') {
-        echo 'ERROR FTP: content is NULL<br>' . "\n";
+        echo 'ERROR FTP: content is NULL<br>' . PHP_EOL;
         return false;
     }
 
@@ -413,7 +413,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
 
 
     if (!is_file($file_) && !is_dir(dirname($file_))) {
-        echo 'ERROR FTP: dir not found<br>' . "\n";
+        echo 'ERROR FTP: dir not found<br>' . PHP_EOL;
         return false;
     }
 
@@ -429,14 +429,14 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
     // tạo kết nối
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
-        echo 'ERROR FTP connect to server<br>' . "\n";
+        echo 'ERROR FTP connect to server<br>' . PHP_EOL;
         return false;
     }
 
 
     // đăng nhập
     if (!ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)) {
-        echo 'ERROR FTP login false<br>' . "\n";
+        echo 'ERROR FTP login false<br>' . PHP_EOL;
         return false;
     }
 
@@ -449,7 +449,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
 
         // nếu trong chuỗi file không có root dir -> báo lỗi
         if (strpos($file_, '/' . $ftp_dir_root . '/') === false) {
-            echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . "\n";
+            echo 'ERROR FTP root dir not found #' . $ftp_dir_root . '<br>' . PHP_EOL;
             return false;
         }
 
@@ -461,7 +461,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
     // upload file
     $result = true;
     if (!ftp_put($conn_id, '.' . $file_for_ftp, EBE_create_cache_for_ftp(), FTP_BINARY)) {
-        echo 'ERROR FTP: ftp_put error<br>' . "\n";
+        echo 'ERROR FTP: ftp_put error<br>' . PHP_EOL;
         $result = false;
     }
     // chmod file sau khi tạo
@@ -473,7 +473,7 @@ function EBE_ftp_create_file($file_, $content_, $add_line = '', $mod = 0777)
     ftp_close($conn_id);
 
     //
-    //	echo '<!-- ' . $file_ . ' (FTP) -->' . "\n";
+    //	echo '<!-- ' . $file_ . ' (FTP) -->' . PHP_EOL;
 
     //
     return $result;
@@ -498,14 +498,14 @@ function EBE_ftp_remove_file($file_)
     // tạo kết nối
     $conn_id = ftp_connect($ftp_server);
     if (!$conn_id) {
-        echo 'ERROR FTP connect to server<br>' . "\n";
+        echo 'ERROR FTP connect to server<br>' . PHP_EOL;
         return false;
     }
 
 
     // đăng nhập
     if (!ftp_login($conn_id, $ftp_user_name, $ftp_user_pass)) {
-        echo 'ERROR FTP login false<br>' . "\n";
+        echo 'ERROR FTP login false<br>' . PHP_EOL;
         return false;
     }
 
@@ -519,7 +519,7 @@ function EBE_ftp_remove_file($file_)
     // upload file
     $result = true;
     if (!ftp_delete($conn_id, $file_for_ftp)) {
-        echo 'ERROR FTP: ftp_delete error<br>' . "\n";
+        echo 'ERROR FTP: ftp_delete error<br>' . PHP_EOL;
         $result = false;
     }
 
@@ -667,7 +667,7 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0, $rem
      * v2
      */
     foreach ($arr as $v) {
-        //		echo $v . '<br>' . "\n";
+        //		echo $v . '<br>' . PHP_EOL;
 
         // nếu là thư mục -> xóa nội dung trong thư mục
         if (is_dir($v)) {
@@ -699,7 +699,7 @@ function _eb_remove_ebcache_content($dir = EB_THEME_CACHE, $remove_dir = 0, $rem
         //
         //		if ($remove_dir == 1) {
         //			rmdir ( $v );
-        //			echo $v . "\n";
+        //			echo $v . PHP_EOL;
         //		}
     }
 }
@@ -888,7 +888,7 @@ function _eb_create_breadcrumb($url, $tit, $id = 0, $rel = '', $to_first = false
         $group_go_to[$url] = ' <li><a data-id="' . $id . '" href="' . $url . '"' . $rel . '>' . $tit . '</a></li>';
 
         //
-        //	echo $breadcrumb_position . "\n";
+        //	echo $breadcrumb_position . PHP_EOL;
 
         $breadcrumb_position++;
         $p = $breadcrumb_position;
@@ -919,7 +919,7 @@ function _eb_create_html_breadcrumb($c)
 
     //
     $cat_custom_css = _eb_get_cat_object($c->term_id, '_eb_category_custom_css');
-    //	echo $cat_custom_css . '<br>' . "\n";
+    //	echo $cat_custom_css . '<br>' . PHP_EOL;
     if ($cat_custom_css != '') {
         $css_m_css[] = $cat_custom_css;
     }
@@ -933,7 +933,7 @@ function _eb_create_html_breadcrumb($c)
 
         //
         $cat_custom_css = _eb_get_cat_object($c->parent, '_eb_category_custom_css');
-        //		echo $cat_custom_css . '<br>' . "\n";
+        //		echo $cat_custom_css . '<br>' . PHP_EOL;
         if ($cat_custom_css != '') {
             $css_m_css[] = $cat_custom_css;
         }
@@ -1050,6 +1050,38 @@ function _eb_get_youtube_id($url)
 function _eb_tieu_de_chuan_seo($str, $for_amp = false)
 {
     global $__cf_row;
+    // global $arr_active_for_404_page;
+    global $arr_private_info_setting;
+    // global $act;
+
+    // nếu sử dụng module SEO của EchBay
+    // var_dump(cf_on_off_echbay_seo);
+    if (cf_on_off_echbay_seo != 1 && $for_amp === false) {
+        return '';
+    }
+
+    //
+    $str = trim($str);
+
+    // hoặc tự bổ sung nếu có dữ liệu đầu vào
+    if (strlen($str) < 35 && $__cf_row['cf_abstract'] != '') {
+        $str .= ' - ' . $__cf_row['cf_abstract'];
+
+        //
+        if (strlen($str) > 70) {
+            $str = _eb_short_string($str, 70);
+        }
+    }
+    echo '<!-- title by ' . $arr_private_info_setting['author'] . ' -->' . PHP_EOL;
+
+    //
+    return '<title>' . str_replace('"', '&quot;', $str) . '</title>' . PHP_EOL;
+    //	return $str;
+}
+
+function _eb_v1_tieu_de_chuan_seo($str, $for_amp = false)
+{
+    global $__cf_row;
     global $arr_active_for_404_page;
     global $arr_private_info_setting;
     global $act;
@@ -1073,7 +1105,7 @@ function _eb_tieu_de_chuan_seo($str, $for_amp = false)
                 $str = _eb_short_string($str, 70);
             }
         }
-        echo '<!-- title by ' . $arr_private_info_setting['author'] . ' -->' . "\n";
+        echo '<!-- title by ' . $arr_private_info_setting['author'] . ' -->' . PHP_EOL;
     }
     // page 404 của WGR
     else if (isset($arr_active_for_404_page[$act])) {
@@ -1085,7 +1117,7 @@ function _eb_tieu_de_chuan_seo($str, $for_amp = false)
     }
     // mặc định thì lấy theo mẫu của wordpress
     else {
-        echo '<!-- title by other plugin -->' . "\n";
+        echo '<!-- title by other plugin -->' . PHP_EOL;
         if ($for_amp === false) {
             return '';
         }
@@ -1102,7 +1134,7 @@ function _eb_tieu_de_chuan_seo($str, $for_amp = false)
     }
 
     //
-    echo '<title>' . str_replace('"', '&quot;', $str) . '</title>' . "\n";
+    echo '<title>' . str_replace('"', '&quot;', $str) . '</title>' . PHP_EOL;
     //	return $str;
 }
 
@@ -1155,7 +1187,7 @@ function _eb_del_line($str, $re = "", $pe = "/\r\n|\n\r|\n|\t/i")
             $v = trim($v);
 
             if ($v != '') {
-                $s .= $v . "\n";
+                $s .= $v . PHP_EOL;
             }
         }
         $s = explode("\n", trim($s));

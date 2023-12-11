@@ -628,13 +628,14 @@ function echbay_theme_setup()
     //	add_image_size( 'small', 160, 160, false );
 
 
-    /*
+    /**
      * Thêm chức năng title-tag để tự thêm <title>
      * Kích hoạt khi người dùng tắt chức năng SEO của EchBay
      */
-    //	if ( $__cf_row['cf_on_off_echbay_seo'] != 1 && ! is_404() ) {
-    //		add_theme_support( 'title-tag' );
-    //	}
+    // if ($__cf_row['cf_on_off_echbay_seo'] != 1 && !is_404()) {
+    if ($__cf_row['cf_on_off_echbay_seo'] != 1) {
+        add_theme_support('title-tag');
+    }
 
 
     /*
