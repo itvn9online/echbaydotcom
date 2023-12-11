@@ -91,14 +91,13 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
 
     /**
      * Thằng elementor nó có quả update làm xung đột với code cache nên phải thêm đoạn này để xử lý lỗi
-     * Nếu bắt buộc phải dùng thì chuyển sang dùng w3-cache
      */
     // lấy nội dung trước đó, để phòng elementor nó clear
-    // $before_footers_content = ob_get_contents();
-    // ob_end_clean();
+    $before_footers_content = ob_get_contents();
+    ob_end_clean();
 
     // lấy nội dung tiếp theo trong footer
-    // ob_start();
+    ob_start();
 
     // nạp footer cho website -> các theme khác có thể sẽ dùng
     get_footer();
@@ -107,14 +106,14 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
     wp_footer();
 
     //
-    // $footers_content = ob_get_contents();
+    $footers_content = ob_get_contents();
 
-    // ob_end_clean();
+    ob_end_clean();
     // END ob footer
 
     // in lại
-    // ob_start();
-    // echo $before_footers_content . $footers_content;
+    ob_start();
+    echo $before_footers_content . $footers_content;
 
     ?>
 </div>
