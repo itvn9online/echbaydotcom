@@ -1057,7 +1057,7 @@ function _eb_tieu_de_chuan_seo($str, $for_amp = false)
     // nếu sử dụng module SEO của EchBay
     // var_dump(cf_on_off_echbay_seo);
     if (cf_on_off_echbay_seo != 1 && $for_amp === false) {
-        return '';
+        return false;
     }
 
     //
@@ -1075,8 +1075,7 @@ function _eb_tieu_de_chuan_seo($str, $for_amp = false)
     echo '<!-- title by ' . $arr_private_info_setting['author'] . ' -->' . PHP_EOL;
 
     //
-    return '<title>' . str_replace('"', '&quot;', $str) . '</title>' . PHP_EOL;
-    //	return $str;
+    echo '<title>' . str_replace('"', '&quot;', $str) . '</title>' . PHP_EOL;
 }
 
 function _eb_v1_tieu_de_chuan_seo($str, $for_amp = false)

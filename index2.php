@@ -633,9 +633,9 @@ function echbay_theme_setup()
      * Kích hoạt khi người dùng tắt chức năng SEO của EchBay
      */
     // if ($__cf_row['cf_on_off_echbay_seo'] != 1 && !is_404()) {
-    if ($__cf_row['cf_on_off_echbay_seo'] != 1) {
-        add_theme_support('title-tag');
-    }
+    // if ($__cf_row['cf_on_off_echbay_seo'] != 1) {
+    add_theme_support('title-tag');
+    // }
 
 
     /*

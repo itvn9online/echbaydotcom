@@ -13,7 +13,7 @@
     <?php
     }
 
-    echo _eb_tieu_de_chuan_seo($__cf_row['cf_title']);
+    // _eb_tieu_de_chuan_seo($__cf_row['cf_title']);
     echo WGR_show_header_favicon();
 
 

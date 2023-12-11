@@ -10,6 +10,17 @@
 
 // die(__FILE__ . ':' . __LINE__);
 
+/**
+ * Thằng elementor nó có quả update làm xung đột với code cache nên phải thêm đoạn này để xử lý lỗi
+ * Nếu bắt buộc phải dùng thì chuyển sang dùng w3-cache
+ */
+// lấy nội dung trước đó, để phòng elementor nó clear
+// $before_footers_content = ob_get_contents();
+// ob_end_clean();
+
+// lấy nội dung tiếp theo trong footer
+// ob_start();
+
 global $flatsome_opt;
 ?>
 </main>
@@ -38,7 +49,17 @@ require __DIR__ . '/footer_cache_quick_cart.php';
 </html>
 <?php
 
-/*
+//
+// $footers_content = ob_get_contents();
+
+// ob_end_clean();
+// END ob footer
+
+// in lại
+// ob_start();
+// echo $before_footers_content . $footers_content;
+
+/**
  * Bên trên là footer của flatsome
  */
 
