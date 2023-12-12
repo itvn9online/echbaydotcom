@@ -193,7 +193,7 @@ class EchAMPFunction
 
             // chưa có sizes thì bổ sung
             if (!preg_match('/sizes=["\']/i', $replaceHTML)) {
-                $replaceHTML = preg_replace('/<img/is', '<img sizes="(max-width: 768px) 100vw, 768px"', $replaceHTML);
+                $replaceHTML = preg_replace('/<img/is', '<img sizes="(max-width: 450px) 100vw, 450px"', $replaceHTML);
             }
 
             // thêm thẻ đóng amp-img
