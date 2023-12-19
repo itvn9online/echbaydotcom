@@ -25,6 +25,11 @@ function get_user_location_by_ip() {
 			//console.log(data.length);
 
 			//
+			if (typeof data.last_updated != "undefined") {
+				console.log("", new Date(data.last_updated * 1000).toISOString());
+			}
+
+			//
 			if (typeof data.data != "undefined") {
 				let str = [a];
 
