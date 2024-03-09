@@ -937,15 +937,16 @@ function _eb_echbay_menu($slug, $menu = array(), $in_cache = 1, $tag_menu_name =
     $menu['menu_class'] .= ' eb-set-menu-selected ' . $slug;
 
     //
-    //		print_r($menu_cache_locations);
+    // print_r($menu_cache_locations);
     if (!isset($menu_cache_locations[$slug])) {
         $menu_cache_locations[$slug] = 0;
     }
+    // print_r($menu_cache_locations);
 
     // lấy tên menu nếu có yêu cầu
     $menu_name = '';
     if ($tag_menu_name != '') {
-        //			$menu_cache_locations = get_nav_menu_locations();
+        // $menu_cache_locations = get_nav_menu_locations();
 
         if (isset($menu_cache_locations[$slug])) {
             $menu_obj = wp_get_nav_menu_object($menu_cache_locations[$slug]);

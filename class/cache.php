@@ -1,5 +1,6 @@
 <?php
 
+// print_r(debug_backtrace());
 
 function WGR_check_syntax($__eb_cache_conf, $file_last_update, $auto_clean = false, $re_check = false)
 {
@@ -45,6 +46,12 @@ function WGR_check_syntax($__eb_cache_conf, $file_last_update, $auto_clean = fal
 
 	// tối đa 35 phút cache, quá thì tự dọn dẹp, hạn chế để web lỗi cache
 	if ($auto_clean == true && $last_update > 0 && date_time - $last_update > 2100) {
+		// echo date('r', date_time) . '<br>' . PHP_EOL;
+		// echo date('r', $last_update) . '<br>' . PHP_EOL;
+		// echo date('Y-m-d H:i:s', $last_update) . '<br>' . PHP_EOL;
+		// echo ($file_last_update) . '<br>' . PHP_EOL;
+
+		// 
 		unlink($file_last_update);
 		unlink($__eb_cache_conf);
 		$error_admin_log_cache = 'Auto reset cache after 2100s';
@@ -233,7 +240,7 @@ if ( strpos( $web_link, $_SERVER['HTTP_HOST'] ) === false ) {
 */
 
 define('web_link', $web_link);
-//echo web_link;
+// echo web_link;
 
 
 
@@ -241,20 +248,22 @@ define('web_link', $web_link);
 $__eb_cache_time = 0;
 
 $__eb_cache_conf = EB_THEME_CACHE . '___all.php';
-//echo $__eb_cache_conf . '<br>';
+// echo $__eb_cache_conf . '<br>';
 
 //$file_last_update = str_replace ( '.php', '.txt', $__eb_cache_conf );
 $file_last_update = EB_THEME_CACHE . '___all.txt';
-//echo $file_last_update . '<br>';
+// echo $file_last_update . '<br>';
 
 
 
 // chỉ nạp mới cache trong một số trường hợp
 if (strpos($_SERVER['REQUEST_URI'], '/admin-ajax.php') === false) {
+	// echo $__eb_cache_conf . '<br>';
 	include_once EB_THEME_CORE . 'cache2.php';
 }
 // còn lại sẽ sử dụng cache cũ (nếu có)
 else if (is_file($__eb_cache_conf)) {
+	// echo $__eb_cache_conf . '<br>';
 	include_once $__eb_cache_conf;
 } else {
 	// v3 -> nạp lại cache -> nếu có lỗi sẽ lỗi 1 lần rồi thôi

@@ -27,10 +27,19 @@ include EB_THEME_PLUGIN_INDEX . 'Libraries/OrderStatus.php';
 //
 //$default_all_timezone = 'Asia/Saigon';
 $default_all_timezone = 'Asia/Ho_Chi_Minh';
+// echo $default_all_timezone . '<br>' . PHP_EOL;
+// var_dump(get_option('timezone_string'));
+$timezone_string = get_option('timezone_string');
+// var_dump($timezone_string);
+if (!empty($timezone_string)) {
+    $default_all_timezone = $timezone_string;
+}
+date_default_timezone_set($default_all_timezone);
+// echo date('r');
 
 //
-//$date_time = time();
-$date_time = current_time('timestamp');
+$date_time = time();
+// $date_time = current_time('timestamp');
 
 $date_server = date('Y-m-d', $date_time);
 $time_server = date('H:i:s', $date_time);
@@ -40,6 +49,7 @@ $day_curent = substr($date_server, 8, 2);
 
 //
 define('date_time', $date_time);
+// echo date('r', date_time) . '<br>' . PHP_EOL;
 
 /*
  echo '<!-- ';
@@ -68,14 +78,11 @@ $eb_background_for_post = array();
 //
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
     $client_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-}
-else if (isset($_SERVER['HTTP_X_REAL_IP'])) {
+} else if (isset($_SERVER['HTTP_X_REAL_IP'])) {
     $client_ip = $_SERVER['HTTP_X_REAL_IP'];
-}
-else if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+} else if (isset($_SERVER['HTTP_CLIENT_IP'])) {
     $client_ip = $_SERVER['HTTP_CLIENT_IP'];
-}
-else {
+} else {
     $client_ip = $_SERVER['REMOTE_ADDR'];
 }
 
@@ -157,7 +164,7 @@ if (is_user_logged_in()) {
     //echo $mtv_id;
 
     $mtv_email = $eb_user_info->user_email;
-//echo $mtv_email;
+    //echo $mtv_email;
 }
 define('mtv_id', $mtv_id);
 define('mtv_email', $mtv_email);
@@ -175,7 +182,7 @@ if ($localhost == 1) {
     //if ( eb_code_tester == true || $localhost == 1 ) {
     //	$cf_reset_cache = 5;
     $__cf_row['cf_reset_cache'] = 10;
-/*
+    /*
  }
  else {
  $cf_reset_cache = $__cf_row['cf_reset_cache'];
@@ -199,8 +206,7 @@ include EB_THEME_CORE . 'cache.php';
 //define( 'cf_tester_mode', true );
 if ($__cf_row['cf_tester_mode'] == 1) {
     define('eb_code_tester', true);
-}
-else {
+} else {
     define('eb_code_tester', false);
 }
 
@@ -243,7 +249,8 @@ $url_for_js_lang = EB_DIR_CONTENT . '/uploads/ebcache/lang.js';
 
 
 // trạng thái đơn
-$arr_hd_trangthai = array(-1 => EBE_get_lang('order_status_name-1'),
+$arr_hd_trangthai = array(
+    -1 => EBE_get_lang('order_status_name-1'),
     0 => EBE_get_lang('order_status_name0'),
     1 => EBE_get_lang('order_status_name1'),
     2 => EBE_get_lang('order_status_name2'),

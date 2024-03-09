@@ -5,17 +5,29 @@
 include_once EB_THEME_CORE . 'cache_config.php';
 include_once EB_THEME_CORE . 'cache_lang.php';
 
+// 
+// var_dump(date_default_timezone_get());
+// echo date('r');
+
 
 //
 $error_admin_log_cache = WGR_check_syntax($__eb_cache_conf, $file_last_update, true);
 $last_update = 0;
 if ($error_admin_log_cache == '') {
-    @include_once $__eb_cache_conf;
+    // echo $__eb_cache_conf . '<br>';
+    include_once $__eb_cache_conf;
 } else {
+    // echo $__eb_cache_conf . '<br>';
+    // echo $error_admin_log_cache;
     _eb_log_admin($error_admin_log_cache);
 }
 // chấp nhận lần đầu truy cập sẽ lỗi
 //@include_once $__eb_cache_conf;
+
+// 
+// echo $__eb_cache_conf . '<br>';
+// var_dump($menu_cache_locations);
+// print_r($menu_cache_locations);
 
 // lấy config theo thời gian thực nếu tài khoản đang đăng nhập
 /*
@@ -33,7 +45,7 @@ if ( mtv_id > 0 ) {
 // kiểm tra thời gian tạo cache
 $__eb_cache_time = date_time - $__eb_cache_time + rand(0, 20);
 //$__eb_cache_time += rand ( 0, 60 );
-//echo $__eb_cache_time . '<br>';
+// echo $__eb_cache_time . '<br>';
 
 //$time_for_update_cache = $cf_reset_cache;
 $time_for_update_cache = $__cf_row['cf_reset_cache'];
@@ -66,10 +78,9 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 
         // dọn cache định kỳ -> chỉ dọn khi không phải thao tác thủ công
         if (
-            mtv_id > 0
-            //		&& strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) !== false
-            //		&& is_admin ()
-            &&
+            mtv_id > 0 &&
+            // strpos($_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/') !== false &&
+            // is_admin() &&
             !isset($_GET['tab'])
         ) {
             $_GET['time_auto_cleanup_cache'] = 6 * 3600;
@@ -91,7 +102,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
         $__eb_cache_content = '$__eb_cache_time=' . date_time . ';' . "\n";
 
 
-        /*
+        /**
          * Một số thông số khác
          */
 
@@ -165,14 +176,13 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 
 
         // tạo file timezone nếu chưa có
+        // echo $__cf_row['cf_timezone'];
         // chỉ với các website có ngôn ngữ không phải tiếng Việt
         if (
-            $__cf_row['cf_content_language'] != 'vi'
+            $__cf_row['cf_content_language'] != 'vi' &&
             // timezone phải tồn tại
-            &&
-            $__cf_row['cf_timezone'] != ''
+            $__cf_row['cf_timezone'] != '' &&
             // file chưa được tạo
-            &&
             !is_file(EB_THEME_CACHE . '___timezone.txt')
         ) {
             _eb_create_file(EB_THEME_CACHE . '___timezone.txt', $__cf_row['cf_timezone']);
@@ -181,13 +191,13 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 
         // danh sách menu đã được đăng ký
         $menu_locations = get_nav_menu_locations();
-        //		print_r($menu_locations);
+        // print_r($menu_locations);
         foreach ($menu_locations as $k => $v) {
             $__eb_cache_content .= '$menu_cache_locations[\'' . $k . '\']="' . $v . '";' . "\n";
         }
 
 
-        /*
+        /**
          * lưu cache -> chỉ lưu khi thành viên chưa đăng nhập
          */
         /*
@@ -217,7 +227,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
         }
 
 
-        /*
+        /**
          * tạo các page tự động nếu chưa có
          */
         /*
@@ -244,7 +254,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 		*/
 
 
-        /*
+        /**
          * Tự động dọn dẹp log sau một khoảng thời gian
          */
         /*

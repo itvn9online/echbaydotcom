@@ -1,4 +1,4 @@
-/*
+/**
  * file js thiết kế riêng cho theme wp
  */
 
@@ -21,7 +21,14 @@ var bg_load = "Loading...",
 	sb_submit_cart_disabled = 0,
 	ebe_arr_cart_product_list = [],
 	ebe_arr_cart_customer_info = [],
-	arr_ti_le_global = {};
+	arr_ti_le_global = {},
+	currency_fraction_digits = 2;
+
+// định dạng số -> tương tự number_format trong php
+var numFormatter = new Intl.NumberFormat("en-US");
+
+// định dạng tiền tệ
+var moneyFormatter = numFormatter;
 
 //
 /*
@@ -288,92 +295,21 @@ var g_func = {
 	},
 	money_format: function (str) {
 		// loại bỏ số 0 ở đầu chuỗi số
-		str = str.toString().replace(/\,/g, "").split(".");
-		//str[0] = parseInt( str[0], 10 );
-		str[0] = str[0] * 1;
+		str = str.toString().replace(/\,/g, "") * 1;
+		// console.log(str);
+		str = str.toFixed(currency_fraction_digits) * 1;
+		// console.log(str);
 
 		// chuyển sang định dạng tiền tệ
-		return g_func.formatCurrency(str.join("."), ",", 2);
+		str = moneyFormatter.format(str);
+		// console.log(str);
+		return str;
 	},
 	number_format: function (str) {
-		return g_func.formatCurrency(str);
+		return numFormatter.format(str);
 	},
-	formatCurrency: function (num, dot, num_thap_phan) {
-		if (typeof num == "undefined" || num == "") {
-			return 0;
-		}
-
-		//
-		if (typeof dot == "undefined" || dot == "") {
-			dot = ",";
-		}
-		//console.log( dot );
-
-		num = num.toString().replace(/\s/g, "");
-		let str = num,
-			//re = /^\d+$/,
-			so_am = "",
-			so_thap_phan = "";
-		if (num.substr(0, 1) == "-") {
-			so_am = "-";
-		}
-
-		/*
-        for (let i = 0, t = ''; i < num.length; i++) {
-            t = num.substr(i, 1);
-            if (re.test(t) == true) {
-                str += t;
-            }
-        }
-        */
-		// Nếu không phải tách số theo dấu chấm -> tìm cả số thập phân
-		if (dot != ".") {
-			//console.log( str );
-			str = g_func.float_only(str);
-			//if ( str != 0 ) {
-			//console.log( str );
-			so_thap_phan = str.toString().split(".");
-			if (so_thap_phan.length > 1) {
-				str = so_thap_phan[0];
-				if (typeof num_thap_phan == "number") {
-					so_thap_phan =
-						"." + so_thap_phan[1].toString().substr(0, num_thap_phan);
-				} else {
-					so_thap_phan = "." + so_thap_phan[1];
-				}
-			} else {
-				so_thap_phan = "";
-			}
-			//}
-			//console.log( str );
-		}
-		// Tách theo dấu chấm thì bỏ qua
-		else {
-			//console.log( str );
-			str = g_func.number_only(str);
-		}
-
-		let len = str.toString().length;
-		//let len = str.length;
-		//console.log( len );
-		if (len > 3) {
-			let new_str = str.toString();
-			str = "";
-			for (let i = 0; i < new_str.length; i++) {
-				len -= 3;
-				//console.log( len );
-				if (len > 0) {
-					str = dot + new_str.substr(len, 3) + str;
-				} else {
-					str = new_str.substr(0, len + 3) + str;
-					break;
-				}
-			}
-		}
-		return so_am + str + so_thap_phan;
-
-		//
-		//return num;
+	formatCurrency: function (num) {
+		return g_func.money_format(num);
 	},
 
 	wh: function () {},
@@ -1836,7 +1772,7 @@ var _global_js_eb = {
 			return name + id + "/";
 		}
 
-		/*
+		/**
 		 * định hình URL
 		 */
 		// -> /thiet-ke-web-gia-re-c1/
@@ -3833,7 +3769,7 @@ var _global_js_eb = {
 		return true;
 	},
 
-	/*
+	/**
 	 * Nạp iframe để submit
 	 */
 	add_primari_iframe: function () {
@@ -4054,6 +3990,3 @@ var _global_js_eb = {
 			.removeClass("ebe-currency-format");
 	},
 };
-
-//
-//var ___eb_for_wp = _global_js_eb.add_primari_iframe;
