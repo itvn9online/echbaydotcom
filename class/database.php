@@ -31,11 +31,19 @@ $default_all_timezone = 'Asia/Ho_Chi_Minh';
 // var_dump(get_option('timezone_string'));
 $timezone_string = get_option('timezone_string');
 // var_dump($timezone_string);
-if (!empty($timezone_string)) {
-    $default_all_timezone = $timezone_string;
+if (empty($timezone_string)) {
+    $timezone_string = $default_all_timezone;
 }
-date_default_timezone_set($default_all_timezone);
+// if (!defined('EBE_HAS_SET_TIMEZONE')) {
+date_default_timezone_set($timezone_string);
 // echo date('r');
+// }
+
+// 
+if (!is_file(EB_THEME_CACHE . '___timezone.txt')) {
+    // echo date('r');
+    _eb_create_file(EB_THEME_CACHE . '___timezone.txt', $timezone_string);
+}
 
 //
 $date_time = time();
