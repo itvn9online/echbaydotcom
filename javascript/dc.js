@@ -148,7 +148,7 @@ function ___eb_set_base_url_for_search_advanced() {
 			.split("&search_advanced=")[0]
 			.split("?search_advanced=")[0]
 			.split("/page/")[0];
-		if (url_for_advanced_search_filter.split("?").length > 1) {
+		if (url_for_advanced_search_filter.includes("?") == true) {
 			url_for_advanced_search_filter += "&";
 		} else {
 			url_for_advanced_search_filter += "?";
@@ -318,7 +318,7 @@ function WGR_load_category_with_ajax(new_url, time_load) {
 	//
 	clearTimeout(timeout_search_advanced_auto_submit);
 	timeout_search_advanced_auto_submit = setTimeout(function () {
-		if (new_url.split("?").length == 1) {
+		if (new_url.includes("?") == false) {
 			new_url += "?";
 		} else {
 			new_url += "&";
@@ -779,7 +779,7 @@ function WGR_widget_search_advanced() {
 				//			console.log(this_class.split('selected').length);
 
 				//
-				if (this_class.split("selected").length > 1) {
+				if (this_class.includes("selected") == true) {
 					jQuery(this).removeClass("selected");
 				} else {
 					jQuery(this).addClass("selected");

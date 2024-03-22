@@ -29,7 +29,7 @@ var widget_open_close_tag_confirm = false;
 
 		// nếu có URL cũ, và URL mới không phải là edit post
 		if (
-			window.location.href.split("/post.php?post=").length == 1 &&
+			window.location.href.includes("/post.php?post=") == false &&
 			l != "" &&
 			l != window.location.href
 		) {
@@ -196,7 +196,7 @@ function eb_drop_menu(fix_id, select_id) {
 					.each(function () {
 						if (a != "") {
 							let a = jQuery(this).attr("data-key") || "";
-							if (a != "" && a.split(key).length > 1) {
+							if (a != "" && a.includes(key) == true) {
 								jQuery(this).show();
 							}
 						}
@@ -431,7 +431,7 @@ function click_download_img_in_content() {
 		return false;
 	}
 
-	if (b.split("//").length == 1) {
+	if (b.includes("//") == false) {
 		alert("Tính năng chỉ áp dụng cho URL tuyệt đối");
 		return false;
 	}
@@ -444,7 +444,7 @@ function click_download_img_in_content() {
 	//alert(c);
 
 	// ảnh cần copy phải khác nguồn với site này
-	if (b.split(c).length > 1) {
+	if (b.includes(c) == true) {
 		alert("Tính năng chỉ hỗ trợ download ảnh từ website khác về");
 		return false;
 	}
@@ -478,7 +478,7 @@ function click_download_img_in_content() {
 	//				return false;
 
 	// tạo link download
-	if (a.split("?").length == 1) {
+	if (a.includes("?") == false) {
 		a += "?";
 	} else {
 		a += "&";
@@ -838,7 +838,7 @@ function click_edit_img_in_content() {
 					//alert(c);
 
 					// ảnh cần copy phải khác nguồn với site này
-					if (b.split(c).length > 1) {
+					if (b.includes(c) == true) {
 						alert("Tính năng chỉ hỗ trợ download ảnh từ website khác về");
 						return false;
 					}
@@ -872,7 +872,7 @@ function click_edit_img_in_content() {
 					//				return false;
 
 					// tạo link download
-					if (a.split("?").length == 1) {
+					if (a.includes("?") == false) {
 						a += "?";
 					} else {
 						a += "&";
@@ -1142,7 +1142,7 @@ function insertPictureContent(image) {
 	}
 
 	//
-	if (image.split("//").length == 1) {
+	if (image.includes("//") == false) {
 		image = web_link.replace("https://", "http://") + image;
 	}
 
@@ -1176,7 +1176,7 @@ function EBA_preview_img_logo(img, id) {
 	}
 
 	//
-	if (img != "" && img.split("//").length == 1) {
+	if (img != "" && img.includes("//") == false) {
 		if (img.substr(0, 1) == "/") {
 			img = img.substr(1);
 		}
@@ -1220,7 +1220,7 @@ function convert_size_to_one_format() {
 				if (a == "auto" || a == "full") {
 				} else {
 					// nếu có dấu x -> chuyển về định dạng của Cao/ Rộng
-					if (a.split("x").length > 1) {
+					if (a.includes("x") == true) {
 						a = a.split("x");
 
 						if (a[0] == a[1]) {
@@ -2199,11 +2199,11 @@ function EBE_set_default_title_for_seo() {
 
 			if (des_post != "") {
 				// không lấy tóm tắt nếu nó có URL ở đó
-				if (des_post.split("//").length > 1) {
+				if (des_post.includes("//") == true) {
 					console.log("%c excerpt has URL", "color: orange;");
 				}
 				// không lấy tóm tắt nếu nó có URL ở đó -> không tự khởi tạo khi nội dung build bởi flatsome
-				else if (des_post.split("[ux_").length > 1) {
+				else if (des_post.includes("[ux_") == true) {
 					console.log("%c excerpt build by flatsome", "color: orange;");
 				} else {
 					jQuery("#excerpt").val(des_post);
@@ -2254,43 +2254,43 @@ function EBE_get_current_wp_module(s) {
 	let a = "";
 
 	// chi tiết bài viết, sửa bài viết
-	if (s.split("/post.php").length > 1) {
+	if (s.includes("/post.php") == true) {
 		a = "post";
 	}
 	// thêm bài viết mới
-	else if (s.split("/post-new.php").length > 1) {
+	else if (s.includes("/post-new.php") == true) {
 		a = "post-new";
 	}
 	// danh sách post, page, custom post type
-	else if (s.split("/edit.php").length > 1) {
+	else if (s.includes("/edit.php") == true) {
 		a = "list";
 	}
 	// danh sách catgory, tag...
-	else if (s.split("/edit-tags.php").length > 1) {
+	else if (s.includes("/edit-tags.php") == true) {
 		a = "cat_list";
 	}
 	// chi tiết catgory, tag...
-	else if (s.split("/term.php").length > 1) {
+	else if (s.includes("/term.php") == true) {
 		a = "cat_details";
 	}
 	// thêm tài khoản thành viên
-	else if (s.split("/user-new.php").length > 1) {
+	else if (s.includes("/user-new.php") == true) {
 		a = "user-new";
 	}
 	// sửa tài khoản thành viên
-	else if (s.split("/user-edit.php").length > 1) {
+	else if (s.includes("/user-edit.php") == true) {
 		a = "user-edit";
 	}
 	// không cho người dùng chỉnh sửa kích thước ảnh thumb -> để các câu lệnh dùng thumb sẽ chính xác hơn
-	else if (s.split("/options-media.php").length > 1) {
+	else if (s.includes("/options-media.php") == true) {
 		a = "media";
 	}
 	// chuyển rule wordpress sang nginx cho nó mượt
-	else if (s.split("/options-permalink.php").length > 1) {
+	else if (s.includes("/options-permalink.php") == true) {
 		a = "permalink";
 	}
 	// chuyển rule wordpress sang nginx cho nó mượt
-	else if (s.split("/nav-menus.php").length > 1) {
+	else if (s.includes("/nav-menus.php") == true) {
 		a = "menu";
 	}
 	//	admin_act == 'menu'
@@ -2407,13 +2407,13 @@ function WGR_show_widget_name_by_title() {
 
 					if (a != "") {
 						if (
-							a.split("[custom_style]").length > 1 ||
-							a.split("[width]").length > 1
+							a.includes("[custom_style]") == true ||
+							a.includes("[width]") == true
 						) {
 							a = jQuery(this).val() || "";
 
 							if (a != "") {
-								//								console.log(a);
+								//console.log(a);
 								tit = a;
 							}
 						}
@@ -2898,20 +2898,20 @@ function WGR_finish_search_and_add_menu(
 		add_process.find("input").each(function () {
 			let a = jQuery(this).attr("name") || "";
 
-			if (a.split("[menu-item-object]").length > 1) {
+			if (a.includes("[menu-item-object]") == true) {
 				jQuery(this).val(post_type);
-			} else if (a.split("[menu-item-type]").length > 1) {
+			} else if (a.includes("[menu-item-type]") == true) {
 				/*
-            else if ( a.split('[menu-item-object-id]').length > 1 ) {
+            else if ( a.includes('[menu-item-object-id]') == true ) {
             	jQuery(this).val( post_id ).prop({
             		checked : true
             	});
             }
             */
 				jQuery(this).val(item_type);
-			} else if (a.split("[menu-item-title]").length > 1) {
+			} else if (a.includes("[menu-item-title]") == true) {
 				jQuery(this).val(post_title);
-			} else if (a.split("[menu-item-url]").length > 1) {
+			} else if (a.includes("[menu-item-url]") == true) {
 				jQuery(this).val(post_url);
 			}
 		});
@@ -2976,7 +2976,7 @@ function WGR_press_for_search_post_page() {
 					.each(function () {
 						if (a != "") {
 							let a = jQuery(this).attr("data-key") || "";
-							if (a != "" && a.split(key).length > 1) {
+							if (a != "" && a.includes(key) == true) {
 								jQuery(this).show();
 							}
 						}
@@ -3098,7 +3098,7 @@ function WGR_widget_add_custom_style_to_field(field_name) {
 					b = " " + jQuery.trim(b) + " ";
 
 					// xóa
-					if (b.split(" " + a + " ").length > 1) {
+					if (b.includes(" " + a + " ") == true) {
 						c = b.replace(" " + a + " ", "");
 					}
 					// thêm
@@ -3112,7 +3112,7 @@ function WGR_widget_add_custom_style_to_field(field_name) {
 					.change();
 
 				// tạo hiệu ứng thay đổi để người dùng dễ nhìn
-				//			if ( cl.split('fa-minus-square').length > 1 ) {
+				//			if ( cl.includes('fa-minus-square') == true ) {
 				if (cl === 1) {
 					jQuery("i.fa", this)
 						.removeClass("fa-minus-square")

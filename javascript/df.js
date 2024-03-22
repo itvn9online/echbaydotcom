@@ -11,7 +11,7 @@ function ___eb_set_thumb_to_fullsize(s) {
 	//	console.log(s);
 
 	//
-	if (s.split(wp_content + "/uploads/").length > 1) {
+	if (s.includes(wp_content + "/uploads/") == true) {
 		let t = s.split("-");
 		t = t[t.length - 1];
 		//		console.log( t );
@@ -73,7 +73,7 @@ function ___eb_set_img_to_thumbnail(sr, srcset) {
 			console.log("Auto get thumbnail disable");
 	}
 	// lấy thumb để làm ảnh slider -> load cho nhanh
-	else if (sr.split(wp_content + "/uploads/").length > 1) {
+	else if (sr.includes(wp_content + "/uploads/") == true) {
 		// ưu tiên lấy theo srcset
 		if (typeof srcset != "undefined" && srcset != "") {
 			srcset = WGR_get_thumb_in_srcset(srcset);
@@ -105,7 +105,7 @@ function ___eb_set_img_to_thumbnail(sr, srcset) {
 			//			console.log( is_thumb );
 
 			// có chữ x -> có thể là thumb -> xóa cái đoạn đó đi -> có thể gây lỗi nếu đó là tên file ảnh =))
-			if (is_thumb.split("x").length > 1) {
+			if (is_thumb.includes("x") == true) {
 				let re = /^\d+$/;
 				is_thumb = is_thumb.split("x");
 
@@ -496,7 +496,7 @@ function ___eb_click_open_video_popup() {
 				if (lnk == "" || lnk == "javascript:;") {
 				} else {
 					// chỉ link nội bộ mới sử dụng chức năng này
-					if (lnk.split("//").length == 1 || lnk.split(web_link).length > 1) {
+					if (lnk.includes("//") == false || lnk.includes(web_link) == true) {
 						window.history.pushState("", "", lnk);
 					}
 				}
@@ -803,7 +803,7 @@ function ___wgr_set_product_id_cookie(
 		str_history = "";
 	}
 	// nếu có rồi -> kiểm tra có trùng với ID hiện tại không
-	else if (str_history.split(new_id).length > 1) {
+	else if (str_history.includes(new_id) == true) {
 		if (WGR_check_option_on(cf_tester_mode))
 			console.log("product ID exist in history cookie");
 		return false;

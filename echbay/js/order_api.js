@@ -226,9 +226,9 @@ function WGR_GHTK_API(datas, uri) {
 }
 
 // https://api.ghn.vn/home/docs/detail?id=28
-//if ( window.location.href.split('localhost:8888').length > 1 || window.location.href.split('webgiare.org/').length > 1 ) {
-//if ( window.location.href.split('localhost:8888').length > 1 ) {
-if (window.location.href.split("webgiare.org/test").length > 1) {
+//if ( window.location.href.includes('localhost:8888') == true || window.location.href.includes('webgiare.org/') == true ) {
+//if ( window.location.href.includes('localhost:8888') == true ) {
+if (window.location.href.includes("webgiare.org/test") == true) {
 	//	WGR_GHN_API();
 	WGR_GHTK_API(
 		{

@@ -428,22 +428,22 @@ var arr_detect_browser = (function (ua) {
 	ua = ua.toLowerCase();
 
 	// facebook browser
-	if (ua.split("fban").length > 1 || ua.split("fbav").length > 1) {
+	if (ua.includes("fban") == true || ua.includes("fbav") == true) {
 		r = "fb";
-	} else if (ua.split("opr/").length > 1) {
+	} else if (ua.includes("opr/") == true) {
 		r = "opera";
-	} else if (ua.split("firefox/").length > 1) {
+	} else if (ua.includes("firefox/") == true) {
 		r = "firefox";
-	} else if (ua.split("edge/").length > 1) {
+	} else if (ua.includes("edge/") == true) {
 		r = "edge";
-	} else if (ua.split("coc_coc_browser/").length > 1) {
+	} else if (ua.includes("coc_coc_browser/") == true) {
 		r = "coc_coc";
-	} else if (ua.split("chrome/").length > 1) {
+	} else if (ua.includes("chrome/") == true) {
 		r = "chrome";
-	} else if (ua.split("safari/").length > 1) {
+	} else if (ua.includes("safari/") == true) {
 		r = "safari";
 	} else if (
-		ua.split("msie/").length > 1 ||
+		ua.includes("msie/") == true ||
 		// IF IE > 10
 		!document.documentMode == true
 	) {
@@ -476,7 +476,7 @@ jQuery('.phone-numbers-block').attr({
 //
 var str_for_click_call = "tel";
 /*
-if ( navigator.userAgent.toLowerCase().split("iphone").length > 1
+if ( navigator.userAgent.toLowerCase().includes("iphone") == true
 || arr_detect_browser == 'safari' ) {
 if ( arr_detect_browser == 'safari' ) {
 	str_for_click_call = 'callto';
@@ -568,9 +568,9 @@ jQuery("a").each(function () {
 	let a = jQuery(this).attr("href") || "";
 
 	if (a != "") {
-		if (a.split("tel:").length > 1) {
+		if (a.includes("tel:") == true) {
 			$(this).addClass("gg-phone-conversion");
-		} else if (a.split("mailto:").length > 1) {
+		} else if (a.includes("mailto:") == true) {
 			$(this).addClass("gg-mailto-conversion");
 		}
 	}
@@ -834,7 +834,7 @@ var threadDetailsTimeend = null;
 			let str = "",
 				i = 1;
 			for (let x in thread_js_list) {
-				if (thread_js_list[x].key.split(b).length > 1) {
+				if (thread_js_list[x].key.includes(b) == true) {
 					str +=
 						'<li><a title="' +
 						thread_js_list[x].ten +

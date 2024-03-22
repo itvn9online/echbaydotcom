@@ -151,7 +151,7 @@ var g_func = {
 		// set cookie theo domain
 		let cdomain = "";
 		if (typeof set_domain != "undefined") {
-			if (set_domain.toString().split(".").length == 1) {
+			if (set_domain.toString().includes(".") == false) {
 				cdomain = window.location.host || document.domain || "";
 			} else {
 				cdomain = set_domain;
@@ -592,7 +592,7 @@ var _global_js_eb = {
 	},
 
 	auto_margin: function () {
-		//if ( window.location.href.split('localhost').length == 1 ) {
+		//if ( window.location.href.includes('localhost') == false ) {
 		//console.log('test on localhost');
 		//return false;
 		//}
@@ -647,7 +647,7 @@ var _global_js_eb = {
 					//console.log(wit);
 
 					// chỉ xử lý với video youtube
-					if (a.split("youtube.com/").length > 1) {
+					if (a.includes("youtube.com/") == true) {
 						jQuery(this).attr({
 							//'data-height' : jQuery(this).attr('data-height') || jQuery(this).attr('height') || 315,
 							"data-width": Math.ceil(wit),
@@ -696,7 +696,7 @@ var _global_js_eb = {
 			screen_width = jQuery(window).width();
 
 		// nếu có thuộc tính cố định, định dạng cho phiên bản -> lấy theo thuộc tính này
-		if (window.location.href.split("&set_device=").length > 1) {
+		if (window.location.href.includes("&set_device=") == true) {
 			current_device = window.location.href
 				.split("&set_device=")[1]
 				.split("&")[0]
@@ -791,7 +791,7 @@ var _global_js_eb = {
 					let a = jQuery(this).attr("src") || "";
 
 					// chỉ xử lý với video youtube
-					if (a.split("youtube.com/").length > 1) {
+					if (a.includes("youtube.com/") == true) {
 						jQuery(this).attr({
 							width: max_width,
 							height: Math.ceil(max_width * youtube_video_default_size),
@@ -862,14 +862,14 @@ var _global_js_eb = {
 						if (WGR_check_option_on(cf_tester_mode)) console.log(a);
 
 						// chỉ xử lý với video youtube
-						if (a.split("youtube.com/").length > 1) {
+						if (a.includes("youtube.com/") == true) {
 							//console.log('a: ' + a);
 							let wit =
 								jQuery(this).attr("data-width") ||
 								jQuery(this).attr("width") ||
 								560;
 							//console.log('wit: ' + jQuery(this).attr('width'));
-							if (wit.toString().split("%").length > 1) {
+							if (wit.toString().includes("%") == true) {
 								wit = wit.replace(/\%/, "") * 1;
 								wit = jQuery(this).width() || 560;
 								//console.log('wit%: ' + wit);
@@ -957,8 +957,8 @@ var _global_js_eb = {
 				// Tính toán chiều cao mới dựa trên chiều rộng
 				if (new_size != "") {
 					if (
-						new_size.split("x").length > 1 ||
-						new_size.split("*").length > 1
+						new_size.includes("x") == true ||
+						new_size.includes("*") == true
 					) {
 						new_size.split("x").split("*");
 						new_size = new_size[1] + "/" + new_size[0];
@@ -1138,11 +1138,11 @@ var _global_js_eb = {
 				// kiểm tra và chuyển về 1 định dạng
 				if (a != "" && a.length == 10 && df != "") {
 					a = a.replace(/\-|\s/g, "/").split("/");
-					if (df.split("/").length > 1) {
+					if (df.includes("/") == true) {
 						jQuery(this).val(a.join("/"));
-					} else if (df.split("-").length > 1) {
+					} else if (df.includes("-") == true) {
 						jQuery(this).val(a.join("-"));
-					} else if (df.split(" ").length > 1) {
+					} else if (df.includes(" ") == true) {
 						jQuery(this).val(a.join(" "));
 					}
 
@@ -1201,7 +1201,7 @@ var _global_js_eb = {
 			//if ( WGR_check_option_on ( cf_tester_mode ) ) {
 			s = a.split("//")[1].split("/")[0];
 			s2 = click_url.split("//")[1].split("/")[0];
-			if (s.split(s2).length > 1 || s2.split(s).length > 1) {
+			if (s.includes(s2) == true || s2.includes(s) == true) {
 				return false;
 			}
 			//}
@@ -1512,7 +1512,7 @@ var _global_js_eb = {
 
 		let wh = window.location.href,
 			new_url = "";
-		if (wh.split("&").length > 1 || wh.split("-page").length > 1) {
+		if (wh.includes("&") == true || wh.includes("-page") == true) {
 			console.log("Not rewrite URL or Part page");
 			return false;
 		}
@@ -1801,7 +1801,7 @@ var _global_js_eb = {
 	},
 
 	youtube_id: function (a, start_end) {
-		if (a.split("youtube.com").length > 1 || a.split("youtu.be").length > 1) {
+		if (a.includes("youtube.com") == true || a.includes("youtu.be") == true) {
 			// lấy thời gian bắt đầu, kết thúc nếu có
 			let s = "",
 				e = "";
@@ -3221,7 +3221,7 @@ var _global_js_eb = {
 		//console.log(list_cart_id);
 
 		// thêm vào giỏ hàng
-		if (list_cart_id == "" || list_cart_id.split(add_cart_id).length == 1) {
+		if (list_cart_id == "" || list_cart_id.includes(add_cart_id) == false) {
 			list_cart_id += add_cart_id.toString();
 			g_func.setc(c, list_cart_id, 0, 7);
 

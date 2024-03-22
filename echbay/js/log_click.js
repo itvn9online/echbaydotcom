@@ -3,7 +3,7 @@
 		// str = "",
 		jmp = $(".jmp-for-tr tbody").html() || $(".jmp-for-tr").html() || "",
 		str_jmp = function (str, arr) {
-			for (let x; in arr) {
+			for (let x in arr) {
 				let t = "{jmp." + x + "}";
 				let a = str.split(t);
 				for (let i = 0; i < a.length; i++) {
@@ -145,7 +145,7 @@
 				arr_ref_to_source[w] += 1;
 				if (url.length > 1) {
 					url = url[1].split("&")[0];
-					if (url.split(url_check_source_too).length > 1) {
+					if (url.includes(url_check_source_too) == true) {
 					} else {
 						try {
 							url_lnk = decodeURIComponent(url);
@@ -236,7 +236,7 @@
 					a = a.replace(/&amp;/g, "&");
 				}
 				for (let i = 0; i < arr_check_keyword.length; i++) {
-					if (a.split(arr_check_keyword[i]).length > 1) {
+					if (a.includes(arr_check_keyword[i]) == true) {
 						a = a.split(arr_check_keyword[i])[1].split("&")[0];
 						$(this).html(a);
 						break;
@@ -246,8 +246,8 @@
 		})
 		.removeClass("url-to-campaign");
 
-	let arr_check_keyword = ["?q=", "&q="],
-		arr_check_p_keyword = ["?p=", "&p="];
+	arr_check_keyword = ["?q=", "&q="];
+	let arr_check_p_keyword = ["?p=", "&p="];
 
 	function tach_lay_tu_khoa_tim_kiem(a) {
 		if (a.substr(0, 4) == "http") {
@@ -286,7 +286,7 @@
 				}
 				let tim_thay_tu_khoa = false;
 				for (let i = 0; i < arr_check_keyword.length; i++) {
-					if (a.split(arr_check_keyword[i]).length > 1) {
+					if (a.includes(arr_check_keyword[i]) == true) {
 						a_title = a
 							.split(arr_check_keyword[i])[1]
 							.split("&")[0]
@@ -299,9 +299,9 @@
 						break;
 					}
 				}
-				if (tim_thay_tu_khoa == false && a.split("yahoo.com").length > 1) {
+				if (tim_thay_tu_khoa == false && a.includes("yahoo.com") == true) {
 					for (let i = 0; i < arr_check_p_keyword.length; i++) {
-						if (a.split(arr_check_p_keyword[i]).length > 1) {
+						if (a.includes(arr_check_p_keyword[i]) == true) {
 							a_title = a
 								.split(arr_check_p_keyword[i])[1]
 								.split("&")[0]

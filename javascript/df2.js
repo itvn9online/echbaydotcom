@@ -827,10 +827,10 @@ function WGR_open_local_link_in_iframe() {
 			if (
 				typeof a[i].href != "undefined" &&
 				a[i].href != "" &&
-				a[i].href.split(web_link).length > 1
+				a[i].href.includes(web_link) == true
 			) {
 				// không tác động tới các link riêng của wp
-				if (a[i].href.split(web_link + "wp-").length > 1) {
+				if (a[i].href.includes(web_link + "wp-") == true) {
 					a[i].setAttribute("data-local", "localWPlink");
 				} else {
 					//					if ( WGR_check_option_on ( cf_tester_mode ) ) console.log(a[i].href);
@@ -1016,11 +1016,11 @@ function WGR_thread_list_quickview() {
 			}
 			// không có -> load chính cái url được gửi tới
 			else if (
-				h.split("//").length == 1 ||
-				h.split(document.domain).length > 1
+				h.includes("//") == false ||
+				h.includes(document.domain) == true
 			) {
 				uri = h;
-				if (uri.split("?").length > 1) {
+				if (uri.includes("?") == true) {
 					uri += "&";
 				} else {
 					uri += "?";
@@ -1168,7 +1168,7 @@ function WGR_fixed_a_tag() {
 				jQuery(this).addClass("wgr-rel-home");
 			} else {
 				// tự thêm nofollow vào các liên kết ngoài
-				if (a.split("//").length > 1 && a.split("//")[1].split("/")[0] != dm) {
+				if (a.includes("//") == true && a.split("//")[1].split("/")[0] != dm) {
 					if (nol == 1) {
 						jQuery(this).attr({
 							//rel: 'nofollow',

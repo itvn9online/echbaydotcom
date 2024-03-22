@@ -184,8 +184,8 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 	// danh sách post, page, custom post type
 	else if (admin_act == "list") {
 		// nếu là post
-		//		if ( win_href.split('post_type=').length == 1
-		//		|| win_href.split('post_type=post').length > 1 ) {
+		//		if ( win_href.includes('post_type=') == false
+		//		|| win_href.includes('post_type=post') == true ) {
 		if (pagenow == "edit-post" && typenow == "post") {
 			jQuery("table.wp-list-table").addClass(
 				"admin-list-product-avt"
@@ -252,7 +252,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 			});
 		}
 		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
-		else if (win_href.split("post_type=ads").length > 1) {
+		else if (win_href.includes("post_type=ads") == true) {
 			let ads_loc = "";
 
 			//
@@ -304,7 +304,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 			});
 		}
 		// nếu là ads -> thêm bộ lọc tìm kiếm theo trạng thái
-		else if (win_href.split("post_type=blog").length > 1) {
+		else if (win_href.includes("post_type=blog") == true) {
 			WGR_create_html_loc_to_admin_post_list(eb_blog_group, {
 				name: "Danh mục tin",
 				get: "blogs",
@@ -319,7 +319,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 	}
 	// danh sách đơn hàng
 	/*
-     else if ( win_href.split('?page=eb-order').length > 1 ) {
+     else if ( win_href.includes('?page=eb-order') == true ) {
      // thu gọn menu của wp
      //		jQuery('body').addClass('folded');
      }
@@ -491,7 +491,7 @@ function WGR_create_html_loc_to_admin_post_list(arr, op) {
 	}
 
 	// hiển thị khung post dưới localhost để test
-	if (win_href.split("localhost:").length > 1) {
+	if (win_href.includes("localhost:") == true) {
 		jQuery("#target_eb_iframe").height(600).css({
 			position: "relative",
 			top: 0,
@@ -922,7 +922,7 @@ jQuery(".admin-list-post-avt").dblclick(function () {
 
 // TEST
 /*
- if ( window.location.href.split('?page=eb-products').length > 1 ) {
+ if ( window.location.href.includes('?page=eb-products') == true ) {
  jQuery('#rAdminME').append('<div data-src="https://www.youtube.com/watch?v=M4xVAyNEBUg" class="admin-open-youtube-video cur">Test xem video youtube</div>');
  }
  */

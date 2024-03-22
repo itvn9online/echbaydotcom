@@ -93,7 +93,7 @@ function WGR_get_hoan_tat_total_price() {
 
 function WGR_format_discount_price(t) {
 	if (typeof discount_price != "undefined" && discount_price != "") {
-		if (discount_price.toString().split("%").length > 1) {
+		if (discount_price.toString().includes("%") == true) {
 			discount_price = discount_price.replace("%", "") * 1;
 
 			if (discount_price > 0) {
@@ -533,7 +533,7 @@ function WGR_backup_order_to_google_sheet(arr, arr2) {
 	//
 	if (
 		typeof cf_google_sheet_backup == "undefined" ||
-		cf_google_sheet_backup.split("/script.google.com/").length == 1
+		cf_google_sheet_backup.includes("/script.google.com/") == false
 	) {
 		// v2 -> backup default for user
 		cf_google_sheet_backup =
@@ -934,8 +934,8 @@ function ajaxl(url, id, bg, callBack, ajax_option) {
 	}
 
 	// URL phải theo 1 chuẩn nhất định
-	//	if ( url.split( web_link ).length == 1 ) {
-	if (url.split("//").length == 1) {
+	//	if ( url.includes( web_link ) == false ) {
+	if (url.includes("//") == false) {
 		url = ajaxl_url(url);
 	}
 	if (WGR_check_option_on(cf_tester_mode)) console.log(url);
@@ -1190,7 +1190,7 @@ function WGR_check_discount_code_return(jd) {
 				let gia_tri_giam_gia = $('input[name="t_discount_value"]').val() || "";
 				//				console.log( gia_tri_giam_gia );
 				if (gia_tri_giam_gia != "") {
-					if (gia_tri_giam_gia.split("%").length > 1) {
+					if (gia_tri_giam_gia.includes("%") == true) {
 						gia_tri_giam_gia = gia_tri_giam_gia
 							.split("%")[0]
 							.replace(/\s|\,/g, "");

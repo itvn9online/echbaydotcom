@@ -106,19 +106,19 @@ setTimeout(function () {
 		if (_eb_product_supper_shop != "") {
 			// thêm các thông số track
 			let a = [];
-			if (_eb_product_supper_shop.split("utm_source").length == 1) {
+			if (_eb_product_supper_shop.includes("utm_source") == false) {
 				a.push("utm_source=" + document.domain.replace(/\./g, "_"));
 			}
-			if (_eb_product_supper_shop.split("utm_medium").length == 1) {
+			if (_eb_product_supper_shop.includes("utm_medium") == false) {
 				a.push("utm_medium=echbay_com");
 			}
-			if (_eb_product_supper_shop.split("utm_campaign").length == 1) {
+			if (_eb_product_supper_shop.includes("utm_campaign") == false) {
 				a.push("utm_medium=webgiare_org");
 			}
 			a = a.join("&");
 
 			// nếu url không có dấu ? -> đổi lại dấu hỏi luôn
-			if (_eb_product_supper_shop.split("?").length == 1) {
+			if (_eb_product_supper_shop.includes("?") == false) {
 				a = "?" + a.substr(1);
 			}
 			_eb_product_supper_shop += a;
@@ -617,9 +617,9 @@ jQuery(".widget-category-selectbox .echbay-widget-title").append(
 	}
 
 	//
-	if (hr.split("?register=1").length > 1) {
+	if (hr.includes("?register=1") == true) {
 		g_func.opopup("register");
-	} else if (hr.split("?login=1").length > 1) {
+	} else if (hr.includes("?login=1") == true) {
 		g_func.opopup("login");
 	}
 })(window.location.href);

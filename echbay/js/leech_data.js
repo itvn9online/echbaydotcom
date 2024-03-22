@@ -478,11 +478,11 @@ function func_download_img_to_my_host(img, dm, file_name) {
 	}
 
 	// nếu ảnh chưa được download -> download về thôi
-	if (img.split("/" + dm + "/").length == 1) {
+	if (img.includes("/" + dm + "/") == false) {
 		//
 		if (img.split("//")[0] == "") {
 			img = "http:" + img;
-		} else if (img.split("data:image/").length > 1) {
+		} else if (img.includes("data:image/") == true) {
 			return "";
 		}
 
@@ -524,7 +524,7 @@ function func_download_img_to_my_host(img, dm, file_name) {
 
 function check_category_by_auto_slug(a, alert_now) {
 	// nếu có lệnh tự xác định nhóm đi kèm -> xác định luôn
-	if (a.split("|").length > 1) {
+	if (a.includes("|") == true) {
 		a = a.split("|");
 
 		let auto_category = jQuery.trim(a[1]);
@@ -611,7 +611,7 @@ function check_category_by_auto_slug(a, alert_now) {
 
 function full_url_for_img_src(a) {
 	//console.log(a);
-	if (a.split("//").length == 1) {
+	if (a.includes("//") == false) {
 		if (a.substr(0, 1) == "/") {
 			a = a.substr(1);
 		}
@@ -1027,7 +1027,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 							let arr_get_img = arr[x].get.replace(/\s?\|\|\s?/g, ",");
 
 							// nếu là chuyển đổi theo attr cụ thể
-							if (arr_get_img.split("[").length > 1) {
+							if (arr_get_img.includes("[") == true) {
 								arr_get_img = arr_get_img.split(",");
 
 								let str = "";
@@ -1091,16 +1091,16 @@ function func_leech_data_lay_chi_tiet(push_url) {
 									eachn = 0;
 
 								// nếu là foreach để lấy dữ liệu -> có dấu :each ở cuối chuỗi
-								//							if ( a2[i].split(':each').length > 1 || a2[i].split(':each').length > 1 ) {
-								if (a2[i].split(":each").length > 1) {
+								//if ( a2[i].includes(':each') == true || a2[i].includes(':each') == true ) {
+								if (a2[i].includes(":each") == true) {
 									// cắt chuỗi để xử lý dữ liệu
 									let str_query = a2[i].split(",");
 
 									// chạy vòng lặp lần nữa, vì ech vẫn có thể đi kèm với multi class (dấy phẩy)
 									for (let j = 0; j < str_query.length; j++) {
-										if (str_query[j].split(":each").length > 1) {
+										if (str_query[j].includes(":each") == true) {
 											eachn = 0;
-											if (str_query[j].split(":eachn").length > 1) {
+											if (str_query[j].includes(":eachn") == true) {
 												eachn = 1;
 											}
 
@@ -1169,7 +1169,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 								}
 								// gọi trực tiếp đến class được nhắc đến
 								else {
-									if (a2[i].split(":next").length > 1) {
+									if (a2[i].includes(":next") == true) {
 										str = jQuery(a2[i] + ":first").remove();
 									}
 									//								else {
@@ -1370,7 +1370,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					//				console.log(a);
 
 					// kiểm tra URL ảnh có link tuyệt đối chưa
-					if (a != "" && a.split("//").length == 1) {
+					if (a != "" && a.includes("//") == false) {
 						if (a.substr(0, 1) == "/") {
 							a = a.substr(1);
 						}
@@ -1425,7 +1425,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 //				console.log(a);
 				
 				// kiểm tra URL ảnh có link tuyệt đối chưa
-				if ( a != '' && a.split('//').length == 1 ) {
+				if ( a != '' && a.includes('//') == false ) {
 					if ( a.substr( 0, 1 ) == '/' ) {
 						a = a.substr( 1 );
 					}
@@ -1581,7 +1581,7 @@ jQuery("#categories_url")
 				}
 				if (a[i].substr(0, 1) == "#") {
 					a[i] = "";
-				} else if (a[i].split("//").length > 1) {
+				} else if (a[i].includes("//") == true) {
 					str +=
 						'<li><a href="' +
 						a[i] +
@@ -1609,7 +1609,7 @@ jQuery("#categories_url")
 			}
 			if (a[i].substr(0, 1) == "#") {
 				a[i] = "";
-			} else if (a[i].split("//").length > 1) {
+			} else if (a[i].includes("//") == true) {
 				console.log(Math.random());
 				if (check_category_by_auto_slug(a[i]) != false) {
 					if (EBE_current_first_domain == "") {
@@ -1698,11 +1698,11 @@ jQuery("#categories_url")
 		}
 
 		// lấy đoạn text cuối của url để cho vào khung soạn chữ tìm kiếm nhóm
-		let a = jQuery('#oiAnt input[type="text"]').val() || "";
+		a = jQuery('#oiAnt input[type="text"]').val() || "";
 		if (a == "") {
 			let b = jQuery("#categories_list_url li:first").html() || "";
 			if (b != "") {
-				if (b.split("|").length > 1) {
+				if (b.includes("|") == true) {
 					b = jQuery.trim(b.split("|")[1]);
 				} else {
 					b = b.split("/");
@@ -1742,7 +1742,7 @@ function EBE_save_cookie_to_data_base() {
 
 	// Chạy vòng lặp để tạo mảng lưu cookie vào database
 	console.log(EBE_current_first_domain);
-	if (EBE_current_first_domain.split("//").length > 1) {
+	if (EBE_current_first_domain.includes("//") == true) {
 		EBE_current_first_domain =
 			EBE_current_first_domain.split("//")[1].split("/")[0];
 		console.log(EBE_current_first_domain);
@@ -1757,7 +1757,7 @@ function EBE_save_cookie_to_data_base() {
 	console.log(arr_for_save_domain_config);
 
 	// sau đó là gán giá trị thật
-	for (let x; in arr_cookie_lamviec) {
+	for (let x in arr_cookie_lamviec) {
 		arr_for_save_domain_config[EBE_current_first_domain][x] =
 			jQuery("#" + x).val() || "";
 	}
@@ -1966,8 +1966,8 @@ jQuery("#oi_save_list_category")
 			for (let i = 0; i < a.length; i++) {
 				a[i] = g_func.trim(a[i]);
 
-				//			if ( a[i] != '' && a[i].substr( 0, 1 ) != '#' && a[i].split('//').length > 1 ) {
-				if (a[i] != "" && a[i].split("//").length > 1) {
+				//if ( a[i] != '' && a[i].substr( 0, 1 ) != '#' && a[i].includes('//') == true ) {
+				if (a[i] != "" && a[i].includes("//") == true) {
 					str += a[i] + "\n";
 				}
 			}
@@ -2105,7 +2105,7 @@ function check_value_of_auto_leech(a) {
 	if (a != "" && a.substr(0, 1) != "#") {
 		// Hợp lệ thì mới tiếp tục
 		if (
-			a.split("|").length > 1 ||
+			a.includes("|") == true ||
 			jQuery.trim(jQuery("#details_category").val() || "") != ""
 		) {
 			//			console.log(a);
@@ -2153,7 +2153,7 @@ function add_parameter_for_auto_leech(start) {
 }
 
 function check_auto_leech_on_off() {
-	if (window.location.href.split("&auto_leech=1").length > 1) {
+	if (window.location.href.includes("&auto_leech=1") == true) {
 		return true;
 	}
 	return false;
@@ -2652,7 +2652,7 @@ setTimeout(function () {
 
 // TEST
 /*
-if ( window.location.href.split('localhost').length > 1 ) {
+if ( window.location.href.includes('localhost') == true ) {
 	jQuery('#categories_url').val( 'https://xwatchluxury.vn/dong-ho-nam/' ).change();
 	jQuery('.click-submit-url-categories').click();
 }

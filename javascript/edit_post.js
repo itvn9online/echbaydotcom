@@ -584,7 +584,7 @@ function WGR_run_for_admin_edit_ads_post(action_id) {
 					if (a != "") {
 						if (key.length == 1 && a.substr(0, 1) == key) {
 							jQuery(this).show();
-						} else if (a.split(key).length > 1) {
+						} else if (a.includes(key) == true) {
 							jQuery(this).show();
 						}
 					}
@@ -1112,7 +1112,7 @@ function eb_func_global_product_size() {
 function WGR_run_for_admin_edit_post() {
 	//
 	/*
-	if ( win_href.split('www.webgiare.org').length > 1 ) {
+	if ( win_href.includes('www.webgiare.org') == true ) {
 		jQuery(document).ready(function() {
 			setTimeout(function () {
 				jQuery('#click_remove_content_style').click();
@@ -1210,8 +1210,8 @@ function WGR_run_for_admin_edit_post() {
 
 			if (img == "") {
 				if (
-					ytb.split("youtube.com/").length > 1 ||
-					ytb.split("youtu.be/").length > 1
+					ytb.includes("youtube.com/") == true ||
+					ytb.includes("youtu.be/") == true
 				) {
 					console.log(ytb);
 					let a = _global_js_eb.youtube_id(ytb);
@@ -1608,7 +1608,7 @@ function WGR_run_for_admin_edit_post() {
 	});
 
 	// sau khi nhân bản xong, chuyển sang bài đó luôn
-	if (window.location.href.split("&post-duplicated=").length > 1) {
+	if (window.location.href.includes("&post-duplicated=") == true) {
 		let a = jQuery("#wpbody-content .updated a").attr("href") || "";
 
 		if (a != "") {
@@ -1671,7 +1671,7 @@ function WGR_run_for_admin_edit_post() {
 						//					console.log(a);
 
 						// nếu đang là URL tương đối -> chuyển sang tuyệt đối vì wp ko hỗ trợ
-						if (a.split("//").length == 1) {
+						if (a.includes("//") == false) {
 							if (a.substr(0, 1) == "/") {
 								a = a.substr(1);
 							}
@@ -1711,7 +1711,7 @@ function WGR_run_for_admin_edit_post() {
 					//
 					if (a != "") {
 						// nếu đang là URL tương đối -> chuyển sang tuyệt đối ví wp ko hỗ trợ
-						if (a.split("//").length == 1) {
+						if (a.includes("//") == false) {
 							if (a.substr(0, 1) == "/") {
 								a = a.substr(1);
 							}
@@ -1747,7 +1747,7 @@ function WGR_run_for_admin_edit_post() {
 				a != "" &&
 				jd != "" &&
 				jd != "submitdiv" &&
-				cl.split("hide-if-js").length == 1
+				cl.includes("hide-if-js") == false
 			) {
 				str += '<li data-id="' + jd + '">' + a + "</li>";
 			}
@@ -1963,7 +1963,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 				//
 				jQuery("#" + fix_id + " li label").each(function () {
 					let a = jQuery(this).attr("data-key") || "";
-					if (a != "" && a.split(key).length > 1) {
+					if (a != "" && a.includes(key) == true) {
 						jQuery(this).show();
 					}
 				});
