@@ -462,6 +462,7 @@ if (cf_on_off_echbay_logo + "" === "1") {
 }
 
 // kiểm tra phiên bản HTML mới hay cũ
+/*
 setTimeout(function () {
 	//	if ( jQuery('title').length != 1 ) {
 	if (top == self && jQuery("title").length != 1) {
@@ -469,6 +470,7 @@ setTimeout(function () {
 		console.log("Reinstall theme or call to +84984533228");
 	}
 }, 1200);
+*/
 
 // xử lý với video youtube
 ___eb_click_open_video_popup();
