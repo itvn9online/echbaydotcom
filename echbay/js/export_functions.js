@@ -286,7 +286,7 @@ jQuery(".click-create-col-for-excel").click(function () {
 				'" value="" />\' +' +
 				"\n";
 			str2 +=
-				"jQuery('form#backup-order-to-google-sheet input[name=\"" +
+				"jQuery('form#backup-data-to-google-sheet input[name=\"" +
 				jQuery(this).html() +
 				"\"]').val();" +
 				"\n";
