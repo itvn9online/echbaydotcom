@@ -31,6 +31,7 @@ if ($__cf_row['cf_using_footer_default'] == 1) {
 } else {
     $footer_ajax_content = '<!-- cf_using_footer_default != 1 -->';
 }
+// die(__FILE__ . ':' . __LINE__);
 
 // cache cho phần footer-ajax -> sau trong file footer-ajax chỉ việc hiển thị ra là được
 $strFooterAjaxCacheFilter = 'footer-ajax';
@@ -93,11 +94,11 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
      * Thằng elementor nó có quả update làm xung đột với code cache nên phải thêm đoạn này để xử lý lỗi
      */
     // lấy nội dung trước đó, để phòng elementor nó clear
-    $before_footers_content = ob_get_contents();
-    ob_end_clean();
+    // $before_footers_content = ob_get_contents();
+    // ob_end_clean();
 
     // lấy nội dung tiếp theo trong footer
-    ob_start();
+    // ob_start();
 
     // nạp footer cho website -> các theme khác có thể sẽ dùng
     get_footer();
@@ -106,14 +107,14 @@ include EB_THEME_PLUGIN_INDEX . 'footer_css.php';
     wp_footer();
 
     //
-    $footers_content = ob_get_contents();
+    // $footers_content = ob_get_contents();
 
-    ob_end_clean();
+    // ob_end_clean();
     // END ob footer
 
     // in lại
-    ob_start();
-    echo $before_footers_content . $footers_content;
+    // ob_start();
+    // echo $before_footers_content . $footers_content;
 
     ?>
 </div>
