@@ -37,13 +37,11 @@ if (!function_exists('wp_is_mobile')) {
     //
     if (WGR_is_mobile()) {
         //$EB_THEME_CACHE .= 'm/';
-        $cache_prefix .= '_m';
-        // $sub_dir_cache[] = '_m';
+        $cache_prefix .= 'm';
     }
 } else if (wp_is_mobile()) {
     //$EB_THEME_CACHE .= 'm/';
-    $cache_prefix .= '_m';
-    // $sub_dir_cache[] = '_m';
+    $cache_prefix .= 'm';
 }
 $sub_dir_cache[] = $cache_prefix;
 //print_r($sub_dir_cache);
