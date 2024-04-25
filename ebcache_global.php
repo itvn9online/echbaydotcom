@@ -4,7 +4,9 @@
 //$EB_THEME_CACHE = dirname(__DIR__) . '/uploads/ebcache/' . explode(':', str_replace('www.', '', $_SERVER['HTTP_HOST']))[0] . '/';
 // thư mục ebcache luôn cho vào uploads để đảm bảo lệnh tạo thư mục sẽ luôn được thực thi do permission
 $sub_dir_cache = ['uploads', 'ebcache'];
-$cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
+$cache_prefix = '_';
+// bỏ cái chế độ cache theo tên miền đi -> 1 host ko nên chạy nhiều tên miền
+// $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
 
 //
 if (!function_exists('wp_is_mobile')) {
@@ -36,10 +38,12 @@ if (!function_exists('wp_is_mobile')) {
     if (WGR_is_mobile()) {
         //$EB_THEME_CACHE .= 'm/';
         $cache_prefix .= '_m';
+        // $sub_dir_cache[] = '_m';
     }
 } else if (wp_is_mobile()) {
     //$EB_THEME_CACHE .= 'm/';
     $cache_prefix .= '_m';
+    // $sub_dir_cache[] = '_m';
 }
 $sub_dir_cache[] = $cache_prefix;
 //print_r($sub_dir_cache);
