@@ -66,10 +66,9 @@ function ___eb_cache_getUrl($cache_dir = 'all')
 
         //
         if (strlen($url) > 200) {
-            $url = md5($url);
-        } else {
-            $url = preg_replace("/\/|\?|\&|\,|\=/", '-', $url);
+            $url = substr($url, 0, 200);
         }
+        $url = preg_replace("/\/|\?|\&|\,|\=/", '-', $url);
     }
 
     //
