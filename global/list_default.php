@@ -153,6 +153,14 @@ $current_category_menu = _eb_echbay_category_menu($parent_parent_cat, $__categor
 
 //
 $url_og_url = _eb_c_link($__category->term_id, $__category->taxonomy);
+// echo $url_og_url . '<br>' . PHP_EOL;
+// echo $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '<br>' . PHP_EOL;
+// fixed url trong trường hợp bị spam url
+if (strpos($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], explode('//', $url_og_url)[1]) === false) {
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: $url_og_url");
+    exit();
+}
 
 // Mặc định là trang sản phẩm
 //$web_og_type = 'product';
@@ -163,7 +171,7 @@ if ($__category->taxonomy == EB_BLOG_POST_LINK || $__cf_row['cf_set_news_version
 }
 
 //
-_eb_fix_url($url_og_url);
+// _eb_fix_url($url_og_url);
 
 //
 //	echo substr( $url_og_url, -1 ) . '<br>' . "\n";

@@ -1,34 +1,35 @@
 <?php
 
 
-function EBE_get_big_banner( $limit = 5, $option = array(), $op = array() ) {
+function EBE_get_big_banner($limit = 5, $option = array(), $op = array())
+{
     // lấy mẫu q.cáo
-    $html = EBE_get_page_template( 'ads_node' );
+    $html = EBE_get_page_template('ads_node');
 
     // tạo sẵn bg -> ưu tiên load ảnh mobile trước cho nó nhẹ, tạo hình cho nhanh
     //	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html );
-    $html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_mobile_img});"', $html );
+    $html = str_replace('{tmp.other_attr}', ' style="background-image:url({tmp.trv_mobile_img});"', $html);
 
     //	print_r($option);
 
     //
-    if ( !isset( $op[ 'set_size' ] ) || $op[ 'set_size' ] == '' ) {
+    if (!isset($op['set_size']) || $op['set_size'] == '') {
         global $__cf_row;
 
-        $op[ 'set_size' ] = $__cf_row[ 'cf_top_banner_size' ];
+        $op['set_size'] = $__cf_row['cf_top_banner_size'];
     }
-    if ( !isset( $op[ 'class_big_banner' ] ) || $op[ 'class_big_banner' ] == '' ) {
-        $op[ 'class_big_banner' ] = 'oi_big_banner';
+    if (!isset($op['class_big_banner']) || $op['class_big_banner'] == '') {
+        $op['class_big_banner'] = 'oi_big_banner';
     }
-    if ( !isset( $op[ 'by_status' ] ) || $op[ 'by_status' ] === '' ) {
-        $op[ 'by_status' ] = 1;
+    if (!isset($op['by_status']) || $op['by_status'] === '') {
+        $op['by_status'] = 1;
     }
 
     //
     $a = _eb_load_ads(
-        $op[ 'by_status' ],
-        ( int )$limit,
-        $op[ 'set_size' ],
+        $op['by_status'],
+        (int)$limit,
+        $op['set_size'],
         $option,
         0,
         $html,
@@ -44,8 +45,8 @@ function EBE_get_big_banner( $limit = 5, $option = array(), $op = array() ) {
     );
 
     //
-    if ( $a != '' ) {
-        $a = '<div class="' . $op[ 'class_big_banner' ] . '">' . $a . '</div>';
+    if ($a != '') {
+        $a = '<div class="' . $op['class_big_banner'] . '">' . $a . '</div>';
     }
 
     //
@@ -53,19 +54,20 @@ function EBE_get_big_banner( $limit = 5, $option = array(), $op = array() ) {
 }
 
 
-function _eb_load_post_obj( $posts_per_page, $_eb_query = array() ) {
+function _eb_load_post_obj($posts_per_page, $_eb_query = array())
+{
 
     //
-    $arr[ 'post_type' ] = 'post';
-    $arr[ 'posts_per_page' ] = $posts_per_page;
+    $arr['post_type'] = 'post';
+    $arr['posts_per_page'] = $posts_per_page;
     //	$arr['orderby'] = 'menu_order';
-    $arr[ 'orderby' ] = 'menu_order ID';
-    $arr[ 'order' ] = 'DESC';
-    $arr[ 'post_status' ] = 'publish';
+    $arr['orderby'] = 'menu_order ID';
+    $arr['order'] = 'DESC';
+    $arr['post_status'] = 'publish';
 
     //
-    foreach ( $_eb_query as $k => $v ) {
-        $arr[ $k ] = $v;
+    foreach ($_eb_query as $k => $v) {
+        $arr[$k] = $v;
     }
     /*
 	echo '<!-- _eb_load_post_obj ' . "\n";
@@ -75,7 +77,7 @@ function _eb_load_post_obj( $posts_per_page, $_eb_query = array() ) {
 	*/
 
     // https://codex.wordpress.org/Class_Reference/WP_Query
-    $results = new WP_Query( $arr );
+    $results = new WP_Query($arr);
     wp_reset_postdata();
 
     //
@@ -86,53 +88,57 @@ function _eb_load_post_obj( $posts_per_page, $_eb_query = array() ) {
  * Load danh sách đơn hàng
  */
 // tạo đơn hàng
-function EBE_set_order( $arr ) {
-    _eb_sd( $arr, 'eb_in_con_voi' );
+function EBE_set_order($arr)
+{
+    _eb_sd($arr, 'eb_in_con_voi');
 
     // lấy ID trả về
-    $strsql = _eb_q( "SELECT *
+    $strsql = _eb_q("SELECT *
 	FROM
 		`eb_in_con_voi`
 	WHERE
-		tv_id = " . $arr[ 'tv_id' ] . "
+		tv_id = " . $arr['tv_id'] . "
 	ORDER BY
 		order_id DESC
-	LIMIT 0, 1" );
+	LIMIT 0, 1");
     //	print_r( $strsql );
     //	echo count($strsql);
-    if ( count( $strsql ) > 0 ) {
-        return $strsql[ 0 ]->order_id;
+    if (count($strsql) > 0) {
+        return $strsql[0]->order_id;
     }
 
     return 0;
 }
 
 // xóa chi tiết đơn hàng
-function EBE_update_details_order( $k, $id, $v = '' ) {
-    _eb_q( "DELETE
+function EBE_update_details_order($k, $id, $v = '')
+{
+    _eb_q("DELETE
 	FROM
 		`eb_details_in_con_voi`
 	WHERE
 		order_id = " . $id . "
-		AND dorder_key = '" . $k . "'", 0 );
+		AND dorder_key = '" . $k . "'", 0);
 
     // nếu có value mới -> add mới luôn
-    if ( $v != '' ) {
-        EBE_set_details_order( $k, $v, $id );
+    if ($v != '') {
+        EBE_set_details_order($k, $v, $id);
     }
 }
 
 // tạo chi tiết đơn hàng
-function EBE_set_details_order( $k, $v, $id ) {
-    _eb_q( "INSERT INTO
+function EBE_set_details_order($k, $v, $id)
+{
+    _eb_q("INSERT INTO
 	`eb_details_in_con_voi`
 	( dorder_key, dorder_name, order_id )
 	VALUES
-	( '" . $k . "', '" . $v . "', " . $id . " )", 0 );
+	( '" . $k . "', '" . $v . "', " . $id . " )", 0);
 }
 
 // danh sách đơn hàng
-function _eb_load_order( $posts_per_page = 68, $_eb_query = array() ) {
+function _eb_load_order($posts_per_page = 68, $_eb_query = array())
+{
 
     //
     //	print_r( $_eb_query );
@@ -142,31 +148,31 @@ function _eb_load_order( $posts_per_page = 68, $_eb_query = array() ) {
     $offset = 0;
 
     // lấy theo ID hóa đơn
-    if ( isset( $_eb_query[ 'offset' ] ) ) {
-        $offset = $_eb_query[ 'offset' ];
+    if (isset($_eb_query['offset'])) {
+        $offset = $_eb_query['offset'];
     }
 
     // lấy theo ID hóa đơn
-    if ( isset( $_eb_query[ 'p' ] ) && $_eb_query[ 'p' ] > 0 ) {
-        $strFilter .= " AND order_id = " . $_eb_query[ 'p' ];
+    if (isset($_eb_query['p']) && $_eb_query['p'] > 0) {
+        $strFilter .= " AND order_id = " . $_eb_query['p'];
     }
 
     // lấy theo trạng thái hóa đơn
     //	if ( isset( $_eb_query['status_by'] ) && (int) $_eb_query['status_by'] != '' ) {
-    if ( isset( $_eb_query[ 'status_by' ] ) ) {
-        $strFilter .= " AND order_status = " . ( int )$_eb_query[ 'status_by' ];
+    if (isset($_eb_query['status_by'])) {
+        $strFilter .= " AND order_status = " . (int)$_eb_query['status_by'];
     }
 
     // lấy theo filter có sẵn
-    if ( isset( $_eb_query[ 'filter_by' ] ) ) {
-        $strFilter .= " " . $_eb_query[ 'filter_by' ];
+    if (isset($_eb_query['filter_by'])) {
+        $strFilter .= " " . $_eb_query['filter_by'];
     }
 
     //
     //	echo $strFilter . '<br>' . "\n";
 
     //
-    $sql = _eb_q( "SELECT *
+    $sql = _eb_q("SELECT *
 	FROM
 		`eb_in_con_voi`
 	WHERE
@@ -174,14 +180,14 @@ function _eb_load_order( $posts_per_page = 68, $_eb_query = array() ) {
 		" . $strFilter . "
 	ORDER BY
 		order_id DESC
-	LIMIT " . $offset . ", " . $posts_per_page );
+	LIMIT " . $offset . ", " . $posts_per_page);
     //	print_r( $sql );
 
     return $sql;
-
 }
 
-function _eb_load_order_v1( $posts_per_page = 68, $_eb_query = array() ) {
+function _eb_load_order_v1($posts_per_page = 68, $_eb_query = array())
+{
     global $wpdb;
 
     //
@@ -189,12 +195,12 @@ function _eb_load_order_v1( $posts_per_page = 68, $_eb_query = array() ) {
 
     //
     $strFilter = "";
-    if ( isset( $_eb_query[ 'p' ] ) && $_eb_query[ 'p' ] > 0 ) {
-        $strFilter .= " AND ID = " . $_eb_query[ 'p' ];
+    if (isset($_eb_query['p']) && $_eb_query['p'] > 0) {
+        $strFilter .= " AND ID = " . $_eb_query['p'];
     }
 
     //
-    $sql = _eb_q( "SELECT *
+    $sql = _eb_q("SELECT *
 	FROM
 		" . wp_posts . "
 	WHERE
@@ -203,7 +209,7 @@ function _eb_load_order_v1( $posts_per_page = 68, $_eb_query = array() ) {
 		" . $strFilter . "
 	ORDER BY
 		ID DESC
-	LIMIT 0, " . $posts_per_page );
+	LIMIT 0, " . $posts_per_page);
     //	print_r( $sql );
 
     return $sql;
@@ -238,8 +244,8 @@ function _eb_load_post(
     //	echo '<!-- POST NOT IN: ' . $___eb_post__not_in . ' -->' . "\n";
 
     // lọc các sản phẩm trùng nhau
-    if ( $___eb_post__not_in != '' && $not_set_not_in === 0 ) {
-        $_eb_query[ 'post__not_in' ] = explode( ',', substr( $___eb_post__not_in, 1 ) );
+    if ($___eb_post__not_in != '' && $not_set_not_in === 0) {
+        $_eb_query['post__not_in'] = explode(',', substr($___eb_post__not_in, 1));
     }
     /*
     echo '<!-- ';
@@ -248,24 +254,24 @@ function _eb_load_post(
     */
 
     // ignore_sticky_posts -> wp mặc định nó lấy các bài viết được ghim -> bỏ qua nó để lấy cho chuẩn
-    if ( isset( $_eb_query[ 'post__in' ] ) && !isset( $_eb_query[ 'ignore_sticky_posts' ] ) ) {
-        $_eb_query[ 'ignore_sticky_posts' ] = 1;
+    if (isset($_eb_query['post__in']) && !isset($_eb_query['ignore_sticky_posts'])) {
+        $_eb_query['ignore_sticky_posts'] = 1;
     }
 
     //
     $show_sql_query = 0;
-    if ( isset( $other_options[ 'show_sql_query' ] ) ) {
+    if (isset($other_options['show_sql_query'])) {
         $show_sql_query = 1;
-        unset( $other_options[ 'show_sql_query' ] );
+        unset($other_options['show_sql_query']);
     }
 
     //
-    $sql = _eb_load_post_obj( $posts_per_page, $_eb_query );
-    if ( $show_sql_query == 1 ) {
+    $sql = _eb_load_post_obj($posts_per_page, $_eb_query);
+    if ($show_sql_query == 1) {
         //print_r($_eb_query);
         echo $sql->request . '<br>' . "\n";
     }
-    if ( isset( $_eb_query[ 'no_found_rows' ] ) && $_eb_query[ 'no_found_rows' ] == true && isset( $_eb_query[ 'fields' ] ) && $_eb_query[ 'fields' ] == 'ids' ) {
+    if (isset($_eb_query['no_found_rows']) && $_eb_query['no_found_rows'] == true && isset($_eb_query['fields']) && $_eb_query['fields'] == 'ids') {
         //print_r($sql);
         return $sql->post_count;
     }
@@ -282,71 +288,71 @@ function _eb_load_post(
 	*/
 
     //
-    if ( !isset( $other_options[ 'pot_tai' ] ) ) {
-        $other_options[ 'pot_tai' ] = 'category';
+    if (!isset($other_options['pot_tai'])) {
+        $other_options['pot_tai'] = 'category';
     }
 
     //
     $str = '';
 
     //
-    while ( $sql->have_posts() ) {
+    while ($sql->have_posts()) {
 
         $sql->the_post();
         //		the_content();
 
         //
-        if ( $not_set_not_in == 0 ) {
+        if ($not_set_not_in == 0) {
             $___eb_post__not_in .= ',' . $sql->post->ID;
         }
 
         //
-        $str .= EBE_select_thread_list_all( $sql->post, $html, $other_options[ 'pot_tai' ], $other_options );
-
+        $str .= EBE_select_thread_list_all($sql->post, $html, $other_options['pot_tai'], $other_options);
     }
 
     //
     wp_reset_postdata();
 
     // xác định có xóa dòng hay không
-    if ( !isset( $other_options[ 'auto_del_line' ] ) ) {
-        $other_options[ 'auto_del_line' ] = 'yes';
+    if (!isset($other_options['auto_del_line'])) {
+        $other_options['auto_del_line'] = 'yes';
     }
 
     // ưu tiên sử dụng URL tương đối -> có thể gây lỗi trên 1 số phiên bản -> bỏ
     //	return str_replace( web_link, '', _eb_supper_del_line( $str ) );
-    if ( $other_options[ 'auto_del_line' ] != 'no' ) {
-        return _eb_supper_del_line( $str );
+    if ($other_options['auto_del_line'] != 'no') {
+        return _eb_supper_del_line($str);
     }
     //	return str_replace( '{tmp.post_zero}', EBE_get_lang('post_zero'), _eb_supper_del_line( $str ) );
     return $str;
 }
 
 
-function _eb_checkPostServerClient() {
-    if ( $_SERVER[ 'REQUEST_METHOD' ] != 'POST' ) {
-        die( '<h1>POST DIE</h1>' );
+function _eb_checkPostServerClient()
+{
+    if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+        die('<h1>POST DIE</h1>');
         exit();
     }
 
 
-    $checkPostServer = $_SERVER[ 'HTTP_HOST' ];
-    $checkPostServer = str_replace( 'www.', '', $checkPostServer );
+    $checkPostServer = $_SERVER['HTTP_HOST'];
+    $checkPostServer = str_replace('www.', '', $checkPostServer);
     //	$checkPostServer = explode ( '/', $checkPostServer );
     //	$checkPostServer = $checkPostServer [0];
 
-    $checkPostClient = isset( $_SERVER[ 'HTTP_REFERER' ] ) ? $_SERVER[ 'HTTP_REFERER' ] : '';
-    if ( $checkPostClient != '' ) {
-        $checkPostClient = explode( '//', $checkPostClient );
-        $checkPostClient = $checkPostClient[ 1 ];
-        $checkPostClient = str_replace( 'www.', '', $checkPostClient );
-        $checkPostClient = explode( '/', $checkPostClient );
-        $checkPostClient = $checkPostClient[ 0 ];
+    $checkPostClient = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+    if ($checkPostClient != '') {
+        $checkPostClient = explode('//', $checkPostClient);
+        $checkPostClient = $checkPostClient[1];
+        $checkPostClient = str_replace('www.', '', $checkPostClient);
+        $checkPostClient = explode('/', $checkPostClient);
+        $checkPostClient = $checkPostClient[0];
     }
 
     //
-    if ( $checkPostClient == '' || strtolower( $checkPostServer ) != strtolower( $checkPostClient ) ) {
-        die( '<h1>REFERER DIE</h1>' );
+    if ($checkPostClient == '' || strtolower($checkPostServer) != strtolower($checkPostClient)) {
+        die('<h1>REFERER DIE</h1>');
         exit();
     }
 
@@ -364,23 +370,23 @@ function _eb_checkPostServerClient() {
     //	echo $magic_quotes . '<br>' . "\n";
 
     //
-    foreach ( $_POST as $k => $v ) {
+    foreach ($_POST as $k => $v) {
         //		if ( $v != '' && gettype( $v ) == 'string' ) {
-        if ( gettype( $v ) == 'string' ) {
+        if (gettype($v) == 'string') {
             // nếu Magic_quotes_gpc đang tắt -> loại bỏ ký tự đặc biệt
             //				if ( $magic_quotes == 1 ) {
             //					$v = stripslashes ( $v );
             //				}
 
             // nếu Magic_quotes_gpc đang tắt -> add dữ liệu an toàn thủ công vào
-            if ( $magic_quotes == 0 ) {
+            if ($magic_quotes == 0) {
                 // xử lý an toàn cho chuỗi
-                $v = addslashes( $v );
+                $v = addslashes($v);
 
                 // mysqli_real_escape_string tương tự như addslashes, nhưng công việc sẽ do mysql xử lý
                 //				$str = mysqli_real_escape_string ( $str );
 
-                $_POST[ $k ] = $v;
+                $_POST[$k] = $v;
             }
         }
     }
@@ -392,33 +398,35 @@ function _eb_checkPostServerClient() {
 }
 
 //
-function EBE_stripPostServerClient() {
+function EBE_stripPostServerClient()
+{
     //	global $_POST;
 
     //	print_r( $_POST );
-    foreach ( $_POST as $k => $v ) {
-        if ( gettype( $v ) == 'string' ) {
-            $v = trim( $v );
-            $v = strip_tags( $v );
-            $_POST[ $k ] = $v;
+    foreach ($_POST as $k => $v) {
+        if (gettype($v) == 'string') {
+            $v = trim($v);
+            $v = strip_tags($v);
+            $_POST[$k] = $v;
         }
     }
     return $_POST;
 }
 
-function WGR_check_ebnonce( $key = '_ebnonce' ) {
+function WGR_check_ebnonce($key = '_ebnonce')
+{
 
     //
     //echo $_SERVER['HTTP_REFERER'] . '<br>';
 
     //
-    if ( !isset( $_POST[ $key ] ) ) {
-        _eb_alert( 'nonce?' );
+    if (!isset($_POST[$key])) {
+        _eb_alert('nonce?');
         return false;
     }
 
-    if ( $_SERVER[ 'HTTP_REFERER' ] != $_POST[ $key ] ) {
-        _eb_alert( 'nonce token?' );
+    if ($_SERVER['HTTP_REFERER'] != $_POST[$key]) {
+        _eb_alert('nonce token?');
         return false;
     }
 
@@ -427,23 +435,25 @@ function WGR_check_ebnonce( $key = '_ebnonce' ) {
 }
 
 
-function _eb_checkDevice() {
-    if ( wp_is_mobile() ) {
+function _eb_checkDevice()
+{
+    if (wp_is_mobile()) {
         return 'mobile';
     }
     // mặc định cho rằng đây là PC
     return 'pc';
 }
 
-function _eb_checkDevice_v1() {
-    if ( isset( $_SERVER[ 'HTTP_USER_AGENT' ] ) ) {
+function _eb_checkDevice_v1()
+{
+    if (isset($_SERVER['HTTP_USER_AGENT'])) {
         // lấy thông tin hệ điều hành của người dùng
-        $_ebArrUAAgent = strtolower( $_SERVER[ 'HTTP_USER_AGENT' ] );
+        $_ebArrUAAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
         // mảng các thiết bị mobile chuyên dụng
-        $_ebArrMobi = array( 'midp', 'j2me', 'avantg', 'ipad', 'iphone', 'docomo', 'novarra', 'palmos', 'palmsource', '240x320', 'opwv', 'chtml', 'pda', 'windows ce', 'mmp/', 'mib/', 'symbian', 'wireless', 'nokia', 'hand', 'mobi', 'phone', 'cdm', 'up.b', 'audio', 'sie-', 'sec-', 'samsung', 'htc', 'mot-', 'mitsu', 'sagem', 'sony', 'alcatel', 'lg', 'erics', 'vx', 'nec', 'philips', 'mmm', 'xx', 'panasonic', 'sharp', 'wap', 'sch', 'rover', 'pocket', 'benq', 'java', 'pt', 'pg', 'vox', 'amoi', 'bird', 'compal', 'kg', 'voda', 'sany', 'kdd', 'dbt', 'sendo', 'sgh', 'gradi', 'jb', 'dddi', 'moto', 'opera mobi', 'opera mini', 'android' );
-        foreach ( $_ebArrMobi as $k => $v ) {
+        $_ebArrMobi = array('midp', 'j2me', 'avantg', 'ipad', 'iphone', 'docomo', 'novarra', 'palmos', 'palmsource', '240x320', 'opwv', 'chtml', 'pda', 'windows ce', 'mmp/', 'mib/', 'symbian', 'wireless', 'nokia', 'hand', 'mobi', 'phone', 'cdm', 'up.b', 'audio', 'sie-', 'sec-', 'samsung', 'htc', 'mot-', 'mitsu', 'sagem', 'sony', 'alcatel', 'lg', 'erics', 'vx', 'nec', 'philips', 'mmm', 'xx', 'panasonic', 'sharp', 'wap', 'sch', 'rover', 'pocket', 'benq', 'java', 'pt', 'pg', 'vox', 'amoi', 'bird', 'compal', 'kg', 'voda', 'sany', 'kdd', 'dbt', 'sendo', 'sgh', 'gradi', 'jb', 'dddi', 'moto', 'opera mobi', 'opera mini', 'android');
+        foreach ($_ebArrMobi as $k => $v) {
             // nếu không xác định được chuỗi
-            if ( strpos( $_ebArrUAAgent, $v ) === false ) {
+            if (strpos($_ebArrUAAgent, $v) === false) {
                 // ~> bỏ qua ko làm gì cả
             }
             // nếu tìm được -> trả về thông tin rằng đây là thiết bị mobile
@@ -460,7 +470,8 @@ function _eb_checkDevice_v1() {
 
 // Chuyển ký tự UTF-8 -> ra bảng mã mới
 // bảng mã dịch ngược lại mã escape
-function _eb_arr_escape_fix_content() {
+function _eb_arr_escape_fix_content()
+{
     return array(
         'á' => '%E1',
         'à' => '%E0',
@@ -599,7 +610,8 @@ function _eb_arr_escape_fix_content() {
     );
 }
 
-function _eb_arr_block_fix_content() {
+function _eb_arr_block_fix_content()
+{
     // https://www.google.com/search?q=site:charbase.com+%E1%BB%9D#q=site:charbase.com+%E1%BA%A3
     return array(
         'á' => '\u00e1',
@@ -739,8 +751,9 @@ function _eb_arr_block_fix_content() {
     );
 }
 
-function _eb_str_text_fix_js_content( $str ) {
-    if ( $str == '' ) {
+function _eb_str_text_fix_js_content($str)
+{
+    if ($str == '') {
         return '';
     }
 
@@ -751,16 +764,17 @@ function _eb_str_text_fix_js_content( $str ) {
     $arr = _eb_arr_block_fix_content();
 
     //
-    foreach ( $arr as $k => $v ) {
-        if ( $v != '' ) {
-            $str = str_replace( $k, $v, $str );
+    foreach ($arr as $k => $v) {
+        if ($v != '') {
+            $str = str_replace($k, $v, $str);
         }
     }
     return $str;
 }
 
-function _eb_str_block_fix_content( $str ) {
-    if ( $str == '' ) {
+function _eb_str_block_fix_content($str)
+{
+    if ($str == '') {
         return '';
     }
 
@@ -802,12 +816,12 @@ function _eb_str_block_fix_content( $str ) {
     );
 
     //
-    $str = _eb_str_text_fix_js_content( str_replace( '\\', '\\\\', $str ) );
+    $str = _eb_str_text_fix_js_content(str_replace('\\', '\\\\', $str));
 
     //
-    foreach ( $arr as $k => $v ) {
-        if ( $v != '' ) {
-            $str = str_replace( $k, $v, $str );
+    foreach ($arr as $k => $v) {
+        if ($v != '') {
+            $str = str_replace($k, $v, $str);
         }
     }
     //	$str = str_replace('\\', '/', str_replace("'", "\'", $str) );
@@ -815,29 +829,34 @@ function _eb_str_block_fix_content( $str ) {
 }
 
 
-function _eb_postUrlContent( $url, $data = '', $head = 0 ) {
+function _eb_postUrlContent($url, $data = '', $head = 0)
+{
     global $post_get_cc;
 
-    return $post_get_cc->post( $url, $data, $head );
+    return $post_get_cc->post($url, $data, $head);
 }
 
-function _eb_post_content( $url, $data = '', $head = 0 ) {
-    return _eb_postUrlContent( $url, $data, $head );
+function _eb_post_content($url, $data = '', $head = 0)
+{
+    return _eb_postUrlContent($url, $data, $head);
 }
 
-function _eb_getUrlContent( $url, $agent = '', $options = array(), $head = 0 ) {
+function _eb_getUrlContent($url, $agent = '', $options = array(), $head = 0)
+{
     global $post_get_cc;
 
-    return $post_get_cc->get( $url, $agent, $options, $head );
+    return $post_get_cc->get($url, $agent, $options, $head);
 }
 
-function _eb_get_content( $url, $agent = '', $options = array(), $head = 0 ) {
-    return _eb_getUrlContent( $url, $agent, $options, $head );
+function _eb_get_content($url, $agent = '', $options = array(), $head = 0)
+{
+    return _eb_getUrlContent($url, $agent, $options, $head);
 }
 
 
 // fix URL theo 1 chuẩn nhất định
-function _eb_fix_url( $url ) {
+function _eb_fix_url($url)
+{
     //echo strstr( _eb_full_url(), '//' ) . '<br>' . "\n";
     //echo strstr( $url, '//' ) . '<br>' . "\n";
     //var_dump( strpos( _eb_full_url(), '?' ) );
@@ -850,44 +869,47 @@ function _eb_fix_url( $url ) {
     //
     //	if ( strstr( $url, '//' ) != strstr( _eb_full_url (), '//' ) ) {
     // nếu không có dấu ? -> không có tham số nào được truyền trên URL
-    if ( strpos( _eb_full_url(), '?' ) === false
+    if (
+        strpos(_eb_full_url(), '?') === false
         // nếu URL khác nhau
         &&
-        strpos( strstr( _eb_full_url(), '//' ), strstr( $url, '//' ) ) === false ) {
+        strpos(strstr(_eb_full_url(), '//'), strstr($url, '//')) === false
+    ) {
         //	if ( count( explode( strstr( $url, '//' ), strstr( _eb_full_url (), '//' ) ) ) == 1 ) {
 
         //		header ( 'Location:' . $url, true, 301 );
 
-        wp_redirect( $url, 301 );
+        wp_redirect($url, 301);
 
         exit();
-
     }
 
     return true;
 }
 
 // short link
-function _eb_s_link( $id, $seo = 'p' ) {
+function _eb_s_link($id, $seo = 'p')
+{
     return web_link . '?' . $seo . '=' . $id;
 }
 
 // link cho sản phẩm
-function _eb_p_link( $id, $short_link = true ) {
+function _eb_p_link($id, $short_link = true)
+{
     $strCacheFilter = 'prod_link' . $id;
-    $a = _eb_get_static_html( $strCacheFilter, '', '', eb_default_cache_time );
-    if ( $a == false ) {
-        $a = get_the_permalink( $id );
-        if ( $a == '' ) {
-            if ( $short_link == true ) {
-                $a = _eb_s_link( $id );
+    $a = _eb_get_static_html($strCacheFilter, '', '', eb_default_cache_time);
+    if ($a == false) {
+        $a = get_the_permalink($id);
+        if ($a == '') {
+            if ($short_link == true) {
+                $a = _eb_s_link($id);
             } else {
-                $a = web_link . '404?redirect_from=' . urlencode( _eb_full_url() );
+                $a = web_link . '404?redirect_from=' . urlencode(_eb_full_url());
             }
         }
 
         //
-        _eb_get_static_html( $strCacheFilter, $a, '', 60 );
+        _eb_get_static_html($strCacheFilter, $a, '', 60);
     }
     //	echo $a . '<br>' . "\n";
 
@@ -900,41 +922,43 @@ $arr_cache_for_get_cat_url = array();
 
 // https://codex.wordpress.org/Function_Reference/get_category_link
 // lấy link nhóm theo object
-function _eb_cs_link( $v ) {
-    return _eb_c_link( $v->term_id, $v->taxonomy );
+function _eb_cs_link($v)
+{
+    return _eb_c_link($v->term_id, $v->taxonomy);
 }
 
 // lấy link nhóm 1 cách chi tiết
-function _eb_c_link( $id, $taxx = 'category' ) {
+function _eb_c_link($id, $taxx = 'category')
+{
     global $arr_cache_for_get_cat_url;
 
     //
-    if ( isset( $arr_cache_for_get_cat_url[ $id ] ) ) {
-        return $arr_cache_for_get_cat_url[ $id ];
+    if (isset($arr_cache_for_get_cat_url[$id])) {
+        return $arr_cache_for_get_cat_url[$id];
     }
 
     $strCacheFilter = 'cat_link' . $id;
     //	$a = _eb_get_static_html ( $strCacheFilter, '', '', eb_default_cache_time );
-    $a = _eb_get_static_html( $strCacheFilter, '', '', 600 );
+    $a = _eb_get_static_html($strCacheFilter, '', '', 600);
     //	$a = false;
     //	$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
-    if ( $a == false ) {
+    if ($a == false) {
         $a = '';
 
         //
         //		echo $taxx . '<br>' . "\n";
-        if ( $taxx == '' ) {
+        if ($taxx == '') {
             $taxx = 'category';
         }
         //		echo $taxx . '<br>' . "\n";
 
         //
-        $term = get_term( $id, $taxx );
+        $term = get_term($id, $taxx);
         //		echo $id . '<br>' . "\n";
         //		echo $taxx . '<br>' . "\n";
         //		print_r( $term );
-        if ( gettype( $term ) == 'object' && !isset( $term->errors ) ) {
-            $a = get_term_link( $term, $taxx );
+        if (gettype($term) == 'object' && !isset($term->errors)) {
+            $a = get_term_link($term, $taxx);
 
             /*
             echo '<!-- ';
@@ -963,17 +987,17 @@ function _eb_c_link( $id, $taxx = 'category' ) {
         //		echo $a . '<br>' . "\n";
 
         //
-        if ( isset( $a->errors ) || $a == '' ) {
+        if (isset($a->errors) || $a == '') {
             //			print_r($a);
 
             // thử chức năng tìm tất cả các term
-            $a = WGR_get_all_term( $id );
+            $a = WGR_get_all_term($id);
             //			print_r($a);
             //			echo 'aaaaaaaaaa<br>';
 
             // nếu tìm được -> tạo link luôn
-            if ( !isset( $a->errors ) ) {
-                $a = get_term_link( $a, $a->taxonomy );
+            if (!isset($a->errors)) {
+                $a = get_term_link($a, $a->taxonomy);
             }
             /*
             else {
@@ -1003,33 +1027,33 @@ function _eb_c_link( $id, $taxx = 'category' ) {
 			*/
 
             //
-            if ( isset( $a->errors ) || $a == '' ) {
+            if (isset($a->errors) || $a == '') {
                 //				$a = '#';
 
                 // trả về link lỗi luôn, không lưu cache
-                return _eb_c_short_link( $id, $taxx );
+                return _eb_c_short_link($id, $taxx);
             }
         }
         // xóa ký tự đặc biệt khi rút link category
-        $a = str_replace( '/./', '/', $a );
+        $a = str_replace('/./', '/', $a);
 
         // nếu tên file là dạng short link -> thử tạo thủ công
-        if ( strpos( $a, '?cat=' ) !== false || strpos( $a, '&cat=' ) !== false ) {
+        if (strpos($a, '?cat=') !== false || strpos($a, '&cat=') !== false) {
             // lấy URL trực tiếp luôn
-            if ( $taxx == 'category' || $taxx == 'post_tag' ) {
-                if ( $taxx == 'post_tag' ) {
+            if ($taxx == 'category' || $taxx == 'post_tag') {
+                if ($taxx == 'post_tag') {
                     $category_base = 'tag_base';
                 } else {
                     $category_base = 'category_base';
                 }
-                $category_base = get_option( $category_base );
+                $category_base = get_option($category_base);
                 //				$category_base = _eb_get_option($category_base);
 
-                if ( $category_base == '.' ) {
+                if ($category_base == '.') {
                     $category_base = '';
                 } else {
-                    if ( $category_base == '' ) {
-                        if ( $taxx == 'post_tag' ) {
+                    if ($category_base == '') {
+                        if ($taxx == 'post_tag') {
                             $category_base = 'tag';
                         } else {
                             $category_base = $taxx;
@@ -1049,42 +1073,45 @@ function _eb_c_link( $id, $taxx = 'category' ) {
         }
 
         // kiểm tra lại lần nữa
-        if ( strpos( $a, '?cat=' ) !== false || strpos( $a, '&cat=' ) !== false ) {}
+        if (strpos($a, '?cat=') !== false || strpos($a, '&cat=') !== false) {
+        }
         // lưu tên file vào cache nếu không phải short link
         else {
-            _eb_get_static_html( $strCacheFilter, $a, '', 60 );
+            _eb_get_static_html($strCacheFilter, $a, '', 60);
         }
     }
     //	echo $a . '<br>' . "\n";
 
     //
-    $arr_cache_for_get_cat_url[ $id ] = $a;
+    $arr_cache_for_get_cat_url[$id] = $a;
 
     return $a;
 }
 
-function _eb_c_short_link( $id, $taxx = '' ) {
-    if ( $taxx != 'category' ) {
+function _eb_c_short_link($id, $taxx = '')
+{
+    if ($taxx != 'category') {
         return web_link . '?taxonomy=' . $taxx . '&cat=' . $id;
     }
     return web_link . '?cat=' . $id;
 }
 
-function _eb_c_link_v1( $id, $taxx = 'category' ) {
+function _eb_c_link_v1($id, $taxx = 'category')
+{
     global $arr_cache_for_get_cat_url;
 
     //
-    if ( isset( $arr_cache_for_get_cat_url[ $id ] ) ) {
-        return $arr_cache_for_get_cat_url[ $id ];
+    if (isset($arr_cache_for_get_cat_url[$id])) {
+        return $arr_cache_for_get_cat_url[$id];
     }
 
     $strCacheFilter = 'cat_link' . $id;
-    $a = _eb_get_static_html( $strCacheFilter, '', '', eb_default_cache_time );
+    $a = _eb_get_static_html($strCacheFilter, '', '', eb_default_cache_time);
     //		$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
-    if ( $a == false ) {
+    if ($a == false) {
 
         //
-        $a = get_category_link( $id );
+        $a = get_category_link($id);
         //		$a = get_term_link( get_term( $id, $taxx ), $taxx );
 
         // nếu trùng với short link -> không ghi cache nữa
@@ -1095,56 +1122,58 @@ function _eb_c_link_v1( $id, $taxx = 'category' ) {
         */
 
         //
-        if ( isset( $a->errors ) || $a == '' ) {
+        if (isset($a->errors) || $a == '') {
             //			print_r($a);
 
             //			$tem = get_term_by( 'id', $id, EB_BLOG_POST_LINK );
-            $tem = get_term( $id, EB_BLOG_POST_LINK );
+            $tem = get_term($id, EB_BLOG_POST_LINK);
 
             // lấy theo blog
-            $a = get_term_link( $tem, EB_BLOG_POST_LINK );
+            $a = get_term_link($tem, EB_BLOG_POST_LINK);
             //				$a = get_term_link( get_term( $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
 
             // lấy theo post_options
-            if ( isset( $a->errors ) || $a == '' ) {
-                $a = get_term_link( $tem, 'post_options' );
+            if (isset($a->errors) || $a == '') {
+                $a = get_term_link($tem, 'post_options');
 
                 // lấy theo post_tag
-                if ( isset( $a->errors ) || $a == '' ) {
-                    $a = get_term_link( $tem, 'post_tag' );
+                if (isset($a->errors) || $a == '') {
+                    $a = get_term_link($tem, 'post_tag');
                 }
             }
         }
 
         //
-        if ( isset( $a->errors ) || $a == '' ) {
+        if (isset($a->errors) || $a == '') {
             $a = '#';
         }
         // xóa ký tự đặc biệt khi rút link category
         else {
-            $a = str_replace( '/./', '/', $a );
+            $a = str_replace('/./', '/', $a);
         }
         //			echo $id . ' -> ' . $a . '<br>' . "\n";
 
         //
-        _eb_get_static_html( $strCacheFilter, $a, '', 60 );
+        _eb_get_static_html($strCacheFilter, $a, '', 60);
     }
     //		echo $a . '<br>' . "\n";
 
     //
-    $arr_cache_for_get_cat_url[ $id ] = $a;
+    $arr_cache_for_get_cat_url[$id] = $a;
 
     return $a;
 }
 
 // blog
-function _eb_b_link( $id, $seo = '' ) {
-    return _eb_p_link( $id );
+function _eb_b_link($id, $seo = '')
+{
+    return _eb_p_link($id);
 }
 
 // blog group
-function _eb_bs_link( $id, $seo = '' ) {
-    return _eb_c_link( $id, EB_BLOG_POST_LINK );
+function _eb_bs_link($id, $seo = '')
+{
+    return _eb_c_link($id, EB_BLOG_POST_LINK);
 }
 
 //
