@@ -1,8 +1,13 @@
 <?php
-/*
-* Mọi code dùng chung cho trang chủ sản phẩm, lấy hay không sẽ dựa vào config của khách
-*/
 
+/**
+ * Mọi code dùng chung cho trang chủ sản phẩm, lấy hay không sẽ dựa vào config của khách
+ */
+
+
+// fixed cứng tên file cache cho 1 số trường hợp
+define('MY_FXIED_CACHE_FILENAME', '-');
+// echo __FILE__ . ':' . __LINE__ . '<br>' . PHP_EOL;
 
 
 //
