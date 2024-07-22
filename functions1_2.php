@@ -32,11 +32,13 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
     //	echo $f . '<br>';
     // lưu nội dung file nếu có
     if ($c != '') {
-        _eb_create_file($f, time() . '¦' . $c);
+        // _eb_create_file($f, time() . '¦' . $c);
+        _eb_create_file($f, time() . '|WGR_CACHE|' . $c);
     } else if (is_file($f)) {
         $data = file_get_contents($f, 1);
-        $content = explode('¦', $data, 2);
-        if (count($content) != 2 || !is_numeric($content[0])) {
+        // $content = explode('¦', $data, 2);
+        $content = explode('|WGR_CACHE|', $data, 2);
+        if (count($content) < 2 || !is_numeric($content[0])) {
             return false;
         }
 

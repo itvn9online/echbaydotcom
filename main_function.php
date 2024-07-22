@@ -305,7 +305,8 @@ function WGR_content_cat_js_cache($cat_js_file_name, $using_js_file_name)
 function WGR_cache($f, $buffer)
 {
     // page's content is $buffer
-    return file_put_contents($f, time() . '¦' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');
+    // return file_put_contents($f, time() . '¦' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');
+    return file_put_contents($f, time() . '|WGR_CACHE|' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');
 }
 
 function WGR_display($f, $reset_time = 120)
@@ -314,9 +315,12 @@ function WGR_display($f, $reset_time = 120)
     // die(__FILE__ . ':' . __LINE__);
     $data = file_get_contents($f, 1);
     // echo $data . '<br>' . PHP_EOL;
-    $content = explode('¦', $data, 2);
+    // $content = explode('¦', $data, 2);
+    $content = explode('|WGR_CACHE|', $data, 2);
     // echo count($content) . '<br>' . PHP_EOL;
-    if (count($content) != 2 || !is_numeric($content[0])) {
+    // echo PHP_ZTS . PHP_EOL;
+    // echo PHP_SAPI . PHP_EOL;
+    if (count($content) < 2 || !is_numeric($content[0])) {
         return false;
     }
     $active_reset = time() - ($content[0] * 1);
