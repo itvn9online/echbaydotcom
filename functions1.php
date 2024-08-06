@@ -1041,7 +1041,8 @@ function _eb_echbay_menu($slug, $menu = array(), $in_cache = 1, $tag_menu_name =
     }
 
     // trả về menu và URL tương đối
-    return '<!-- menu slug: ' . $slug . ' --><div data-id="' . $menu_cache_locations[$slug] . '" class="each-to-edit-menu"></div>' . $menu_name . str_replace(web_link, '', _eb_supper_del_line($a));
+    // return '<!-- menu slug: ' . $slug . ' --><div data-id="' . $menu_cache_locations[$slug] . '" class="each-to-edit-menu"></div>' . $menu_name . str_replace(web_link, '', _eb_supper_del_line($a));
+    return '<!-- menu slug: ' . $slug . ' --><div data-id="' . $menu_cache_locations[$slug] . '" class="each-to-edit-menu"></div>' . $menu_name . _eb_supper_del_line($a);
 }
 
 // load menu theo số thứ tự tăng dần
