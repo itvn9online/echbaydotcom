@@ -629,7 +629,8 @@ jQuery(document)
 		// điều chỉnh dữ liệu phần discount code
 		if (dog("_eb_category_coupon_ngayhethan") != null) {
 			//_global_js_eb.select_date('#_eb_category_coupon_ngayhethan');
-			$("#_eb_category_coupon_ngayhethan").datepicker();
+			// $("#_eb_category_coupon_ngayhethan").datepicker();
+			_global_js_eb.select_date("#_eb_category_coupon_ngayhethan");
 
 			// chuyển định dạng số cho phần giá
 			jQuery(

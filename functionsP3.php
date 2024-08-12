@@ -935,11 +935,9 @@ function WGR_check_discount_code_exist()
         'taxonomy' => 'discount_code'
     ));
 
-    /*
-    echo '<!-- ';
-    print_r($arr_discount_code);
-    echo ' -->';
-    */
+    // echo '<!-- ';
+    // print_r($arr_discount_code);
+    // echo ' -->';
 
     //
     if (!empty($arr_discount_code)) {
@@ -948,6 +946,9 @@ function WGR_check_discount_code_exist()
         //
         foreach ($arr_discount_code as $v) {
             $check_discount_ex = _eb_get_cat_object($v->term_id, '_eb_category_coupon_ngayhethan');
+            // echo '<!-- ';
+            // print_r($check_discount_ex);
+            // echo ' -->';
 
             // nếu chưa tìm thấy mã giảm giá nào
             if (

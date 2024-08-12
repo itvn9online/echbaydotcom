@@ -288,8 +288,8 @@ $(".click-convert-date-to-stt").click(function () {
 	}
 });
 
-//_global_js_eb.select_date('.thread-list-ngayhethan');
 jQuery(document).ready(function ($) {
-	$(".thread-list-ngayhethan").datepicker();
+	_global_js_eb.select_date(".thread-list-ngayhethan");
+	// $(".thread-list-ngayhethan").datepicker();
 });
 _global_js_eb.ebe_currency_format();
