@@ -3553,25 +3553,25 @@ var _global_js_eb = {
 		//console.log('aaaaaaaaa');
 
 		if (WGR_check_option_on(cf_facebook_tracking) == false) {
-			console.log("fb track has been disable!");
+			console.log("%c" + "fb track has been disable!", "color: orange");
 			return false;
 		}
 
 		// Không chạy trong iframe
 		if (top != self) {
-			console.log("fb track not run in iframe");
+			console.log("%c" + "fb track not run in iframe", "color: orange");
 			return false;
 		}
 
 		// không track đối với người dùng đã đăng nhập
 		if (isLogin > 0 && WGR_check_option_on(cf_disable_tracking)) {
-			console.log("fb track disable by user login");
+			console.log("%c" + "fb track disable by user login", "color: orange");
 			return false;
 		}
 
 		// không có tên sự kiện cũng thoát
 		if (typeof track_name == "undefined" || track_name == "") {
-			console.log("track_name not found");
+			console.log("%c" + "track_name not found", "color: orange");
 			return false;
 		}
 
@@ -3605,7 +3605,7 @@ var _global_js_eb = {
 			}
 
 			//
-			console.log("Max for FB track: " + max_for);
+			console.log("%c" + "Max for FB track: " + max_for, "color: orange");
 			return false;
 		}
 
@@ -3642,9 +3642,11 @@ var _global_js_eb = {
 			})(track_name) == false
 		) {
 			console.log(
-				"Facebook pixel tracking (" +
+				"%c" +
+					"Facebook pixel tracking (" +
 					track_name +
-					") disable by parameter is NULL"
+					") disable by parameter is NULL",
+				"color: orange"
 			);
 			console.log(track_arr);
 			return false;
@@ -3655,7 +3657,8 @@ var _global_js_eb = {
 
 		//
 		console.log(
-			"%c Facebook pixel tracking (" +
+			"%c" +
+				"Facebook pixel tracking (" +
 				track_name +
 				") by " +
 				private_info_setting_site_upper,
@@ -3692,25 +3695,25 @@ var _global_js_eb = {
 		//console.log(Math.random());
 
 		if (WGR_check_option_on(cf_facebook_tracking) == false) {
-			console.log("tt track has been disable!");
+			console.log("%c" + "tt track has been disable!", "color: orange;");
 			return false;
 		}
 
 		// Không chạy trong iframe
 		if (top != self) {
-			console.log("tt track not run in iframe");
+			console.log("%c" + "tt track not run in iframe", "color: orange;");
 			return false;
 		}
 
 		// không track đối với người dùng đã đăng nhập
 		if (isLogin > 0 && WGR_check_option_on(cf_disable_tracking)) {
-			console.log("tt track disable by user login");
+			console.log("%c" + "tt track disable by user login", "color: orange;");
 			return false;
 		}
 
 		// không có tên sự kiện cũng thoát
 		if (typeof track_name == "undefined" || track_name == "") {
-			console.log("track_name not found");
+			console.log("%c" + "track_name not found", "color: orange;");
 			return false;
 		}
 
@@ -3744,7 +3747,7 @@ var _global_js_eb = {
 			}
 
 			//
-			console.log("Max for TT track: " + max_for);
+			console.log("%c" + "Max for TT track: " + max_for, "color: orange;");
 			return false;
 		}
 
@@ -3757,7 +3760,8 @@ var _global_js_eb = {
 
 		//
 		console.log(
-			"%c TikTok pixel tracking (" +
+			"%c" +
+				"TikTok pixel tracking (" +
 				track_name +
 				") by " +
 				private_info_setting_site_upper,
