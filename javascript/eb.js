@@ -3429,7 +3429,10 @@ var _global_js_eb = {
 	) {
 		// không track đối với người dùng đã đăng nhập
 		if (isLogin > 0 && WGR_check_option_on(cf_disable_tracking)) {
-			console.log("ga_event_track disable by user login");
+			console.log(
+				"%c" + "ga_event_track disable by user login",
+				"color: orange"
+			);
 			return false;
 		}
 
@@ -3493,20 +3496,24 @@ var _global_js_eb = {
 			//
 			gtag("event", ops["action"], para);
 			console.log(
-				"Google analytics (gtag) event tracking (" +
+				"%c" +
+					"Google analytics (gtag) event tracking (" +
 					eventAction +
 					") by " +
-					private_info_setting_site_upper
+					private_info_setting_site_upper,
+				"color: green"
 			);
 		}
 		// rồi đến ga
 		else if (typeof ga == "function") {
 			ga("send", "event", eventCategory + " (EB)", eventAction, eventLabel);
 			console.log(
-				"Google analytics event tracking (" +
+				"%c" +
+					"Google analytics event tracking (" +
 					eventAction +
 					") by " +
-					private_info_setting_site_upper
+					private_info_setting_site_upper,
+				"color: green"
 			);
 		} else {
 			//if ( typeof ga != 'function' ) {
@@ -3537,7 +3544,7 @@ var _global_js_eb = {
 			}
 
 			//
-			console.log("Max for GG track: " + max_for);
+			console.log("%c" + "Max for GG track: " + max_for, "color: orange");
 			return false;
 		}
 
