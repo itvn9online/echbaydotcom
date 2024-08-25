@@ -697,7 +697,8 @@ function WGR_show_header_favicon($icon = '')
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <meta name="theme-color" content="' . $__cf_row['cf_default_bg'] . '">
 <meta name="msapplication-navbutton-color" content="' . $__cf_row['cf_default_bg'] . '">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="' . $__cf_row['cf_default_bg'] . '">
 <!-- <link rel="icon" sizes="192x192" href="' . $icon . '"> -->
 <link rel="shortcut icon" type="image/png" href="' . $icon . '" />';
