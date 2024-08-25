@@ -1415,7 +1415,9 @@ function ___eb_details_post_run(r) {
 	//	alert(arr_detect_browser);
 	if (
 		jQuery(".clone-show-mobile-quick-cart").length > 0 &&
-		arr_detect_browser == "fb"
+		arr_detect_browser == "fb" &&
+		// site mevutu ko muốn hiển thị quick cart trên cả fb
+		typeof disable_fb_quick_cart == "undefined"
 	) {
 		console.log("Show quick cart for Facebook browser");
 		jQuery(".clone-show-mobile-quick-cart").addClass("clone-show-quick-cart");
