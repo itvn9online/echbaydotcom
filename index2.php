@@ -49,7 +49,7 @@ $arr_posts_structure = NULL;
 
 
 // mảng dùng để truyền css tương ứng vào theme
-/*
+/**
  * Các file CSS nằm trong plugin tổng sẽ được add trước
  * Sau đó là các css của theme -> nó sẽ replace các css được viết trước đó
  */
@@ -148,7 +148,7 @@ define('ECHBAY_PRI_CODE', EB_THEME_PLUGIN_INDEX . 'echbay/');
 //echo ECHBAY_PRI_CODE . '<br>';
 
 
-/*
+/**
  * theme
  */
 // thư mục lưu trữ các file template html
@@ -336,7 +336,7 @@ define('__eb_thread_template', $__eb_thread_template);
 $arr_for_add_css[EB_THEME_PLUGIN_INDEX . 'css/thread_list.css'] = 1;
 
 
-/*
+/**
  * EchBay plugin recommend wp-config
  * Các thuộc tính khuyên khích sử dụng trong wp-config.php.
  * Nếu người dùng không thiết lập trong wp-config -> sử dụng thiết lập khuyên dùng bởi EchBay
@@ -372,7 +372,7 @@ if ( ! defined('WP_HOME') ) {
 */
 //echo WP_HOME . '<br>'; exit();
 
-/*
+/**
  * Host chỉ hỗ trợ up file qua FTP cho bảo mật hơn
  */
 /*
@@ -386,7 +386,7 @@ if (!defined('FTP_HOST')) {
     define('FTP_HOST', '127.0.0.1');
 }
 
-/*
+/**
  * Mặc định là không cho edit theme, plugin nếu sử dụng bản miễn phí
  * Kích hoạt bằng cách set thủ công trong wp-config.php
  */
@@ -398,7 +398,7 @@ if (!defined('DISALLOW_FILE_EDIT')) {
     }
 }
 
-/*
+/**
  * Mặc định là không cho update, install theme, plugin nếu sử dụng bản miễn phí
  * Kích hoạt bằng cách set thủ công trong wp-config.php
  */
@@ -410,14 +410,14 @@ if (!defined('DISALLOW_FILE_MODS')) {
     }
 }
 
-/*
+/**
  * Giới hạn số lần tối đa để lưu các bản nháp của bài viết, tự động xóa khi có quá 3 bài
  */
 if (!defined('WP_POST_REVISIONS')) {
     define('WP_POST_REVISIONS', 3);
 }
 
-/*
+/**
  * Gán mặc định tham số cho thư mục của admin nếu chưa có
  */
 if (!defined('WP_ADMIN_DIR')) {
@@ -428,7 +428,7 @@ if (!defined('WP_ADMIN_DIR')) {
 define('admin_link', web_link . WP_ADMIN_DIR . '/');
 
 
-/*
+/**
  * Mặc định là ẩn các menu quan trọng với tài khoản administrator
  */
 /*
@@ -482,7 +482,7 @@ define('EB_URL_OF_PLUGIN', $___eb_template_uri . EB_DIR_CONTENT . '/echbaydotcom
 define('EB_URL_OF_PARENT_THEME', EB_URL_OF_PLUGIN);
 //echo 'EB_URL_OF_PARENT_THEME: ' . EB_URL_OF_PARENT_THEME . '<br>' . "\n";
 
-/*
+/**
  * Thiết kế lại giao diện trang login
  */
 if (mtv_id == 0) {
@@ -501,7 +501,7 @@ if (mtv_id == 0) {
     function EBE_login_css()
     {
 
-        /*
+        /**
          * Chỉnh lại URL của database nếu vẫn là URL demo
          */
         global $wpdb;
@@ -582,7 +582,7 @@ include_once EB_THEME_PLUGIN_INDEX . 'shortcode.php';
 //remove_filter( 'the_excerpt', 'wpautop' );
 
 
-/*
+/**
  * Nếu biến $content_width chưa có dữ liệu thì gán giá trị cho nó (full HD)
  */
 if (!isset($content_width)) {
@@ -596,22 +596,22 @@ define('id_default_for_get_sidebar', 'main_sidebar');
 
 
 /**
- @ Thiết lập các chức năng sẽ được theme hỗ trợ
- **/
+ * Thiết lập các chức năng sẽ được theme hỗ trợ
+ */
 function echbay_theme_setup()
 {
 
     global $arr_to_add_menu;
     global $__cf_row;
 
-    /*
+    /**
      * Thiết lập theme có thể dịch được
      */
     //	$language_folder = EB_THEME_URL . '/languages';
     //	load_theme_textdomain( 'echbay', $language_folder );
 
 
-    /*
+    /**
      * Tự chèn RSS Feed links trong <head>
      */
     if ($__cf_row['cf_on_off_feed'] == 1) {
@@ -619,7 +619,7 @@ function echbay_theme_setup()
     }
 
 
-    /*
+    /**
      * Thêm chức năng post thumbnail
      */
     add_theme_support('post-thumbnails');
@@ -638,7 +638,7 @@ function echbay_theme_setup()
     // }
 
 
-    /*
+    /**
      * Thêm chức năng post format
      * https://codex.wordpress.org/Post_Formats
      */
@@ -651,7 +651,7 @@ function echbay_theme_setup()
     ));
 
 
-    /*
+    /**
      * Thêm chức năng custom background
      */
     /*
@@ -661,7 +661,7 @@ function echbay_theme_setup()
      */
 
 
-    /*
+    /**
      * Tạo menu cho theme, cứ dựa theo giao diện, thứ tự menu từ trái -> phải, trên -> dưới
      */
     foreach ($arr_to_add_menu as $k => $v) {
@@ -669,7 +669,7 @@ function echbay_theme_setup()
     }
 
 
-    /*
+    /**
      * Tạo sidebar cho theme
      */
     $arr_to_add_sidebar = array(
@@ -718,7 +718,7 @@ function echbay_theme_setup()
 add_filter('init', 'echbay_theme_setup');
 
 
-/*
+/**
  * Sắp xếp sản phẩm theo lựa chọn của người dùng
  * https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
@@ -796,11 +796,11 @@ function eb_change_product_query($query)
     $current_order = isset($_GET['orderby']) ? trim(strtolower($_GET['orderby'])) : '';
 
 
-    /*
+    /**
      * Tìm nâng cao
      */
     if (isset($_GET['search_advanced'])) {
-        /*
+        /**
          * Tìm theo khoảng giá
          */
         $price_in = isset($_GET['price_in']) ? trim(strtolower($_GET['price_in'])) : '';
@@ -856,7 +856,7 @@ function eb_change_product_query($query)
         }
 
 
-        /*
+        /**
          * Tìm theo phân nhóm
          */
         /*
@@ -866,7 +866,7 @@ function eb_change_product_query($query)
          */
 
 
-        /*
+        /**
          * Tìm kiếm nâng cao
          */
         $tim_nang_cao = isset($_GET['filter']) ? trim(strtolower($_GET['filter'])) : '';
@@ -954,7 +954,7 @@ function eb_change_product_query($query)
     }
 
 
-    /*
+    /**
      * Sắp xếp sản phẩm
      * https://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters
      */
@@ -1028,7 +1028,7 @@ function eb_change_product_query($query)
 }
 
 
-/*
+/**
  * Bổ sung 1 số trường cho admin
  */
 //if ( mtv_id > 0 && strpos( $_SERVER['REQUEST_URI'], '/' . WP_ADMIN_DIR . '/' ) !== false ) {
@@ -1046,7 +1046,7 @@ else {
     //}
 
 
-    /*
+    /**
      * Không cho đọc nội dung thông qua json
      */
     //echo __FILE__ . ':' . __LINE__ . '<br>' . "\n";
@@ -1064,7 +1064,7 @@ else {
     }
 
 
-    /*
+    /**
      * Không hiển thị menu admin ở theme -> áp dụng với phiên bản code cũ
      */
     if (!defined('WGR_APP_PATH')) {
@@ -1095,9 +1095,9 @@ else {
     }
 }
 
-/*
- tắt tính năng tự động redirect sang slug tương tự của WP
- http://www.kondorwithak.com/blog/2014/07/stopping-wordpress-from-redirecting-matched-slugs/
+/**
+ * tắt tính năng tự động redirect sang slug tương tự của WP
+ * http://www.kondorwithak.com/blog/2014/07/stopping-wordpress-from-redirecting-matched-slugs/
  */
 function WGR_no_redirect_same_slug_on_404($redirect_url)
 {
@@ -1204,7 +1204,7 @@ function EBE_register_scripts()
 }
 
 
-/*
+/**
  * Xóa bỏ product-category và toàn bộ slug của danh mục cha khỏi đường dẫn
  */
 //	$__eb_category_base = get_option( 'category_base' );
@@ -1218,7 +1218,7 @@ include EB_THEME_PLUGIN_INDEX . 'plugins/remove-emoji.php';
 //}
 
 
-/*
+/**
  * Tạo widget với một số mẫu HTML dựng sẵn dùng chung cho nhiều trang
  */
 include EB_THEME_CORE . 'widget.php';
@@ -1237,7 +1237,7 @@ add_filter( 'document_title_parts', function( $title ) {
 } );
 */
 
-/*
+/**
  * thay đổi query tìm kiếm -> chỉ tìm theo post title
  */
 function WGR_search_by_title_only($search, $wp_query)

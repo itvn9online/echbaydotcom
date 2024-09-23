@@ -90,7 +90,7 @@ function WGR_copy_secure_file($FromLocation, $ToLocation, $VerifyPeer = false, $
 }
 
 
-/*
+/**
  * Tải file theo thời gian thực
  */
 function EBE_admin_get_realtime_for_file($v)
@@ -314,7 +314,7 @@ function WGR_add_li_to_thread_node($str)
 // sắp xếp lại mảng của taxonomy sau khi select, ẩn các nhóm đang bị khóa
 function WGR_order_and_hidden_taxonomy($arr, $order_only = 0, $no_cache = 0)
 {
-    /*
+    /**
      * no_cache: khi muốn lấy dữ liệu trực tiếp từ CSDL thì đặt lệnh này
      */
     //
@@ -366,9 +366,9 @@ function WGR_order_and_hidden_taxonomy($arr, $order_only = 0, $no_cache = 0)
 function create_cache_infor_by($s)
 {
     return trim('
-/*
-Served from: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . date('r', date_time) . '
-List file: ' . substr($s, 1) . '
+/**
+* Served from: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . date('r', date_time) . '
+* List file: ' . substr($s, 1) . '
 */
 	');
 }
@@ -533,7 +533,7 @@ function WGR_update_meta_post($id, $k, $v)
 
 function WGR_insert_post($arr, $_alert = '', $wp_error = true, $using_default = 0)
 {
-
+    // die(__FUNCTION__ . ':' . __LINE__);
     // phiên bản mặc định
     if (cf_set_raovat_version != 1 || $using_default == 1) {
         $post_id = wp_insert_post($arr, $wp_error);
@@ -596,7 +596,7 @@ function WGR_insert_post($arr, $_alert = '', $wp_error = true, $using_default = 
 
 function WGR_update_post($arr, $_alert = '', $wp_error = true, $using_default = 0)
 {
-
+    // die(__FUNCTION__ . ':' . __LINE__);
     // phiên bản mặc định
     if (cf_set_raovat_version != 1 || $using_default == 1) {
         $post_id = wp_update_post($arr, $wp_error);
@@ -672,7 +672,7 @@ function WGR_after_update_post($id, $arr)
 }
 
 
-/*
+/**
  * Tạo header theo tiêu chuẩn chung cho cả mobile
  * https://developers.google.com/web/updates/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
  */

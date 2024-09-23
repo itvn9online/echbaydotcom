@@ -86,19 +86,19 @@ function echbay_create_admin_menu()
         $parent_slug = 'eb-about';
     }
 
-    /*
+    /**
      * EchBay menu -> mọi người đều có thể nhìn thấy menu này
      */
     add_menu_page('Danh sách đơn hàng', $arr_private_info_setting['site_upper'], 'read', $parent_slug, 'func_include_eb_private_code', NULL, 6);
 
 
-    /*
+    /**
      * submenu -> Super Admin, Administrator, Editor, Author
      */
     add_submenu_page($parent_slug, 'Danh sách đơn hàng', 'Đơn hàng', 'publish_posts', 'eb-order', 'func_include_eb_private_code');
 
 
-    /*
+    /**
      * submenu -> Super Admin, Administrator, Editor, Author, Contributor
      */
     add_submenu_page($parent_slug, 'Tổng quan về website', 'Tổng quan', 'edit_posts', 'eb-dashboard', 'func_include_eb_private_code');
@@ -114,7 +114,7 @@ function echbay_create_admin_menu()
     add_submenu_page($parent_slug, 'Công cụ hỗ trợ chỉnh sửa nhanh dữ liệu', 'Chỉnh sửa nhanh', 'publish_pages', 'eb-products', 'func_include_eb_private_code');
 
 
-    /*
+    /**
      * Super Admin, Administrator, Editor
      */
     add_submenu_page($parent_slug, 'Cấu hình website', 'Cấu hình website', 'publish_pages', 'eb-config', 'func_include_eb_private_code');
@@ -134,13 +134,13 @@ function echbay_create_admin_menu()
     //	add_submenu_page( $parent_slug, 'Dọn dẹp các dữ liệu tạm trong quá trình sử dụng website', 'Xóa bộ nhớ tạm', 'administrator', 'eb-cleanup-cache', 'func_include_eb_private_code' );
 
 
-    /*
+    /**
      * Mọi người đều có thể nhìn thấy menu này
      */
     add_submenu_page($parent_slug, 'Giới thiệu về tác giả', 'Giới thiệu', 'read', 'eb-about', 'func_include_eb_private_code');
 
 
-    /*
+    /**
      * Bản nâng cao thì chỉ cần admin nhìn thôi, người khác không quan trọng
      */
     if ($arr_private_info_setting['parent_theme_default'] == 'echbaytwo') {
@@ -190,7 +190,7 @@ if (mtv_id > 0 && strpos($_SERVER['REQUEST_URI'], '/options-permalink.php') !== 
 }
 
 
-/*
+/**
  * Nhúng css cho phần admin
  */
 function echbay_admin_styles()
@@ -437,7 +437,7 @@ function echbay_admin_footer_styles()
     echo '</div>';
 
 
-    /*
+    /**
      * các chức năng khác
      */
     include ECHBAY_PRI_CODE . 'global_html.php';
