@@ -34,6 +34,9 @@ $why_ebcache_not_active = '';
 //
 function ___eb_cache_getUrl($cache_dir = 'all')
 {
+    // echo __FUNCTION__ . ':' . __LINE__ . '<br>' . PHP_EOL;
+    // echo debug_backtrace()[1]['function'] . ':' . __LINE__ . '<br>' . PHP_EOL;
+
     if (defined('MY_FXIED_CACHE_FILENAME')) {
         $url = MY_FXIED_CACHE_FILENAME;
         // echo __FILE__ . ':' . __LINE__ . '<br>' . PHP_EOL;
@@ -304,6 +307,7 @@ function WGR_content_cat_js_cache($cat_js_file_name, $using_js_file_name)
 //getUrl gets the queried page with query string
 function WGR_cache($f, $buffer)
 {
+    // echo 'aaaaaaaaaaa';
     // page's content is $buffer
     // return file_put_contents($f, time() . '¦' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');
     return file_put_contents($f, time() . '|WGR_CACHE|' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');

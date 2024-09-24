@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Chức năng lấy dữ liệu trong cache
  */
 
@@ -29,7 +29,7 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
         $file_type = '.txt';
     }
     $f = $dir_cache . $f . $file_type;
-    //	echo $f . '<br>';
+    // echo $f . '<br>';
     // lưu nội dung file nếu có
     if ($c != '') {
         // _eb_create_file($f, time() . '¦' . $c);

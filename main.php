@@ -97,7 +97,20 @@ function ___eb_cache_display($cache_time = 60)
 	 */
 
 	//
-	$time_file = filemtime($filename);
+	$data = file_get_contents($filename, 1);
+	if ($data == '' || $data == '.') {
+		return $filename;
+	}
+
+	// 
+	$content = explode('|WGR_CACHE|', $data, 2);
+	if (count($content) < 2 || !is_numeric($content[0])) {
+		return $filename;
+	}
+
+	//
+	// $time_file = filemtime($filename);
+	$time_file = $content[0] * 1;
 	//	echo '<!-- ';
 	//	echo date_time - $time_file . '<br>' . "\n";
 	//	echo $cache_time . '<br>' . "\n";
@@ -108,13 +121,7 @@ function ___eb_cache_display($cache_time = 60)
 	}
 
 	//
-	$data = file_get_contents($filename, 1);
-	if ($data == '' || $data == '.') {
-		return $filename;
-	}
-
-	//
-	die(___eb_cache_mobile_class($data));
+	die(___eb_cache_mobile_class($content[1]));
 }
 
 

@@ -25,16 +25,17 @@ $ebsuppercache_filename = ___eb_cache_getUrl();
 //die($ebsuppercache_filename);
 
 //
-//echo date('Y-m-d H:i:s', date_time);
+// echo date('Y-m-d H:i:s', date_time);
 
 // nếu tồn tại cookie wgr_ebsuppercache_timeout -> người dùng đang đăng nhập -> bỏ
 if (isset($_COOKIE['wgr_ebsuppercache_timeout']) || $_SERVER['REQUEST_METHOD'] == 'POST') {
     // đăng nhập rồi thì bỏ qua -> không nạp cache
-    //echo 'wgr_ebsuppercache_timeout';
+    // echo 'wgr_ebsuppercache_timeout' . '<br>' . PHP_EOL;
+    // echo $ebsuppercache_filename . '<br>' . PHP_EOL;
 }
 //
 else if (is_file($ebsuppercache_filename)) {
-    //die( $ebsuppercache_filename );
+    // die($ebsuppercache_filename);
 
     //
     //$time_for_begin_reset_cache = 168;
