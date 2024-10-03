@@ -24,28 +24,57 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
         $f = md5($f);
     }
 
-
+    // cache file
     if ($file_type == '') {
         $file_type = '.txt';
     }
     $f = $dir_cache . $f . $file_type;
     // echo $f . '<br>';
+
+    // nếu sử dụng redis cache thì trả về tham số này luôn
+    if (defined('EB_REDIS_CACHE') && EB_REDIS_CACHE == true) {
+        $rd = new Redis();
+        $rd->connect(REDIS_MY_HOST, REDIS_MY_PORT);
+        //echo "Connection to server sucessfully";
+        //set the data in redis string 
+        // echo WGR_redis_key($f);
+        if ($c != '') {
+            return $rd->set(WGR_redis_key($f), WGR_buffer($c));
+        } else {
+            $data = $rd->get(WGR_redis_key($f));
+            //var_dump($data);
+            //echo "Stored string in redis: " . $data;
+            //die(WGR_redis_key($f));
+            if ($data === false) {
+                return false;
+            }
+            return WGR_cache_to_content($data, $cache_time);
+        }
+        return false;
+    }
+
     // lưu nội dung file nếu có
     if ($c != '') {
         // _eb_create_file($f, time() . '¦' . $c);
-        _eb_create_file($f, time() . '|WGR_CACHE|' . $c);
+        _eb_create_file($f, WGR_buffer($c));
     } else if (is_file($f)) {
-        $data = file_get_contents($f, 1);
-        // $content = explode('¦', $data, 2);
-        $content = explode('|WGR_CACHE|', $data, 2);
-        if (count($content) < 2 || !is_numeric($content[0])) {
-            return false;
-        }
+        return WGR_cache_to_content(file_get_contents($f, 1), $cache_time);
+    }
 
-        //
-        if (($content[0] * 1) + $cache_time + rand(1, 20) > time()) {
-            return $content[1];
-        }
+    return false;
+}
+
+function WGR_cache_to_content($data, $cache_time)
+{
+    // $content = explode('¦', $data, 2);
+    $content = explode('|WGR_CACHE|', $data, 2);
+    if (count($content) < 2 || !is_numeric($content[0])) {
+        return false;
+    }
+
+    //
+    if (($content[0] * 1) + $cache_time + rand(1, 20) > time()) {
+        return $content[1];
     }
 
     return false;

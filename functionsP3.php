@@ -367,7 +367,7 @@ function create_cache_infor_by($s)
 {
     return trim('
 /**
-* Served from: ' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . ' on ' . date('r', date_time) . '
+* Served from: ' . (defined('EB_PREFIX_CACHE') ? EB_PREFIX_CACHE : '') . ':' . $_SERVER['REQUEST_URI'] . ' on ' . date('r', date_time) . '
 * List file: ' . substr($s, 1) . '
 */
 	');

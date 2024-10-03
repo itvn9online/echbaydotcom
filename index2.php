@@ -172,12 +172,8 @@ define('EB_URL_THEMES_TUONG_DOI', EB_DIR_CONTENT . '/themes/' . $arr_private_inf
 //echo basename( EB_URL_THEMES_TUONG_DOI ) . '<br>' . "\n";
 
 // thư mục lưu trữ cache
-if (!defined('EB_THEME_CACHE')) {
-    $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
-    defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/' . $cache_prefix . '/');
-    //echo EB_THEME_CACHE . '<br>';
-}
-//echo EB_THEME_CACHE . '<br>';
+defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', EB_THEME_CONTENT . 'uploads/ebcache/_/');
+// echo EB_THEME_CACHE . '<br>';
 
 // Định dang riêng cho post type blog
 define('EB_BLOG_POST_TYPE', 'blog');

@@ -26,7 +26,7 @@ function WGR_custom_css_for_price()
 }
 
 
-/*
+/**
  * Do quá trình cache file config dễ bị lỗi file -> gây lỗi syntax -> nên phần config này sẽ update khi người dùng cập nhật web
  */
 $__eb_cache_only_conf = EB_THEME_CACHE . '___conf.php';
@@ -47,7 +47,7 @@ echo EB_THEME_CACHE . '<br>' . "\n";
 // chỉ tạo khi không có file cache config, hoặc người dùng đang đăng nhập thì lấy config theo thời gian thực
 if (mtv_id > 0 || !is_file($__eb_txt_only_conf)) {
 
-    /*
+    /**
      * Tự tạo các thư mục phục vụ cho cache nếu chưa có
      */
 
@@ -119,7 +119,7 @@ if (mtv_id > 0 || !is_file($__eb_txt_only_conf)) {
     //WGR_unzip_vendor_code();
 
 
-    /*
+    /**
      * lấy các dữ liệu được tạo riêng cho config -> $post_id = -1;
      */
     // reset lại cache
@@ -257,7 +257,7 @@ if (mtv_id > 0 || !is_file($__eb_txt_only_conf)) {
     }
 
 
-    /*
+    /**
      * Tối ưu thẻ META với mạng xã hội
      */
     $arr_meta = array();

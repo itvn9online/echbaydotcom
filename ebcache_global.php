@@ -73,33 +73,25 @@ defined('EB_THEME_CACHE') || define('EB_THEME_CACHE', $root_dir_cache . '/');
 //echo EB_GLOBAL_CACHE . '<br>';
 
 // file nạp config kết nối database
-define('EB_MY_CACHE_CONFIG', dirname(EB_THEME_CACHE) . '/my-config.php');
-//echo EB_MY_CACHE_CONFIG . '<br>' . PHP_EOL;
+define('EB_MY_CACHE_CONFIG', dirname(EB_THEME_CACHE) . '/my-config-' . date('Ymd') . '.php');
 
 //
 if (is_file(EB_MY_CACHE_CONFIG)) {
     include EB_MY_CACHE_CONFIG;
-
-    //
-    if (!empty(phpversion('redis'))) {
-        // xác định cache qua redis
-        if (defined('REDIS_MY_HOST') && defined('REDIS_MY_PORT')) {
-            define('EB_REDIS_CACHE', true);
-        } else {
-            // xóa file my-config nếu có -> vì có mà không có 2 tham số kia thì coi như lỗi
-            if (defined('EB_MY_CACHE_CONFIG') && is_file(EB_MY_CACHE_CONFIG)) {
-                echo 'Remove file ' . basename(EB_MY_CACHE_CONFIG) . ' because REDIS_MY_HOST not found!' . '<br>' . PHP_EOL;
-                unlink(EB_MY_CACHE_CONFIG);
-            }
-            define('EB_REDIS_CACHE', false);
-        }
-    } else {
-        define('EB_REDIS_CACHE', false);
-    }
-} else {
-    define('EB_REDIS_CACHE', false);
 }
-//var_dump(EB_REDIS_CACHE);
+// khai báo mặc định hằng số nếu chưa có
+defined('EB_REDIS_CACHE') || define('EB_REDIS_CACHE', false);
+defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))));
+// thay đổi prefix dựa theo thiết bị
+define('EB_PREFIX_CACHE', WGR_CACHE_PREFIX . $cache_prefix);
+defined('REDIS_MY_HOST') || define('REDIS_MY_HOST', '127.0.0.1');
+defined('REDIS_MY_PORT') || define('REDIS_MY_PORT', 6379);
+
+// TEST
+// if (isset($_GET['sdgs34fgjdfdf34dhdhdf'])) {
+//     echo EB_MY_CACHE_CONFIG . '<br>' . PHP_EOL;
+//     var_dump(EB_REDIS_CACHE);
+// }
 
 
 //

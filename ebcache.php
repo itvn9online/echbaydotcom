@@ -22,7 +22,9 @@ if ( in_array( $check_blacklist_ip, $arr_current_blacklist_ip ) ) {
 //
 include_once __DIR__ . '/main_function.php';
 $ebsuppercache_filename = ___eb_cache_getUrl();
-//die($ebsuppercache_filename);
+// if (isset($_GET['sdgs34fgjdfdf34dhdhdf'])) {
+//     die($ebsuppercache_filename);
+// }
 
 //
 // echo date('Y-m-d H:i:s', date_time);
@@ -33,16 +35,19 @@ if (isset($_COOKIE['wgr_ebsuppercache_timeout']) || $_SERVER['REQUEST_METHOD'] =
     // echo 'wgr_ebsuppercache_timeout' . '<br>' . PHP_EOL;
     // echo $ebsuppercache_filename . '<br>' . PHP_EOL;
 }
+// nếu có dùng redis cache thì nhảy vào đây
+else if (EB_REDIS_CACHE == true) {
+    /**
+     * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
+     * hạn chế được người tham gia vào quá trình reset cache
+     */
+    WGR_display($ebsuppercache_filename, rand(250, 350));
+}
 //
 else if (is_file($ebsuppercache_filename)) {
-    // die($ebsuppercache_filename);
-
-    //
-    //$time_for_begin_reset_cache = 168;
-    // tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
-    // hạn chế được người tham gia vào quá trình reset cache
-    $time_for_begin_reset_cache = rand(250, 350);
-
-    //
-    WGR_display($ebsuppercache_filename, $time_for_begin_reset_cache);
+    /**
+     * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
+     * hạn chế được người tham gia vào quá trình reset cache
+     */
+    WGR_display($ebsuppercache_filename, rand(250, 350));
 }
