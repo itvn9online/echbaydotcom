@@ -1087,6 +1087,7 @@ function EBE_add_js_compiler_in_cache(
 }
 
 // tách các phiên bản ra cho nhẹ người code
+include_once EB_THEME_PLUGIN_INDEX . 'main_function.php';
 include EB_THEME_PLUGIN_INDEX . 'functionsResizeImg.php';
 include EB_THEME_PLUGIN_INDEX . 'functions1.php';
 include EB_THEME_PLUGIN_INDEX . 'functions1_2.php';
