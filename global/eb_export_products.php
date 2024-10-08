@@ -4,6 +4,8 @@
 //
 //if ( ! current_user_can('delete_posts') || ! isset( $_GET['token'] ) || $_GET['token'] != _eb_mdnam( $_SERVER['HTTP_HOST'] ) ) {
 WGR_check_token();
+// print_r($_GET);
+// die(basename(__FILE__) . ':' . __LINE__);
 
 
 // export thành viên
@@ -52,7 +54,7 @@ function WGR_export_product_to_xml($op = array(), $post_type = 'post')
 	WHERE
 		" . $new_filter . "
 	GROUP BY
-		`" . wp_posts . "`.ID DESC
+		`" . wp_posts . "`.ID
 	ORDER BY
 		`" . wp_posts . "`.menu_order DESC,
 		`" . wp_posts . "`.ID DESC
@@ -64,7 +66,7 @@ function WGR_export_product_to_xml($op = array(), $post_type = 'post')
     	ID
     LIMIT " . $offset . ", " . $op['limit'];
     */
-    //	echo $sql;
+    // echo $sql;
 
     //
     return _eb_q($sql);
@@ -192,7 +194,7 @@ if (
     //	$arr_for_slect_data['filter'] = " AND `" . wp_posts . "`.post_status = 'publish' ";
 
     $sql = WGR_export_product_to_xml($arr_for_slect_data, $by_post_type);
-    //	print_r( $sql );
+    // print_r($sql);
 
     include EB_THEME_PLUGIN_INDEX . 'global/eb_export_products_facebook.php';
 } else if (
