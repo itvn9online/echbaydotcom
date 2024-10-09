@@ -2,9 +2,11 @@
 
 
 
+// TEST
+// $aaa_taxonomy = get_taxonomy('category');
+// print_r($aaa_taxonomy);
 
-//
-//print_r( $_GET );
+// print_r($_GET);
 if (isset($_GET['remove_update_running_file'])) {
     _eb_remove_file(EB_THEME_CACHE . 'update_running.txt');
     exit();
@@ -116,6 +118,7 @@ if (isset($_GET['confirm_eb_process'])) {
                 // thiết lập chế độ download từ server dự phòng
                 $url2_for_download_ebdotcom = 'http://api.echbay.com/daoloat/echbaydotcom.zip';
             }
+            // die($url_for_download_ebdotcom);
 
             // TEST
             //$url_for_download_ebdotcom = 'http://api.echbay.com/css/bg/HD-Eagle-Wallpapers.jpg';

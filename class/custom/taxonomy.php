@@ -5,22 +5,25 @@
 
 
 // xóa link cache của category sau khi update
-function WGR_custom_term_slug_edit_success( $taxonomy = 'category' ) {
-    add_filter( 'edited_' . $taxonomy, 'WGR_custom_term_slug_edit_success2', 10, 2 );
+function WGR_custom_term_slug_edit_success($taxonomy = 'category')
+{
+    add_filter('edited_' . $taxonomy, 'WGR_custom_term_slug_edit_success2', 10, 2);
 }
 
-function WGR_custom_term_slug_edit_success2( $term_id, $taxonomy ) {
+function WGR_custom_term_slug_edit_success2($term_id, $taxonomy)
+{
     // xóa cache
-    _eb_remove_static_html( 'cat_link' . $term_id );
+    _eb_remove_static_html('cat_link' . $term_id);
     // sau đó nạp lại url
-    _eb_c_link( $term_id, $taxonomy );
+    _eb_c_link($term_id, $taxonomy);
 }
 
 
 /*
  * Tạo taxonomy cho product
  */
-function dang_ky_taxonomy() {
+function dang_ky_taxonomy()
+{
     /*
      * Biến $label chứa các tham số thiết lập tên hiển thị của Taxonomy
      * Biến $args khai báo các tham số trong custom taxonomy cần tạo
@@ -63,8 +66,8 @@ function dang_ky_taxonomy() {
     );
 
     // Hàm register taxonomy để khởi tạo taxonomy
-    register_taxonomy( EB_BLOG_POST_LINK, $taxonomy_post_type, $args );
-    WGR_custom_term_slug_edit_success( EB_BLOG_POST_LINK );
+    register_taxonomy(EB_BLOG_POST_LINK, $taxonomy_post_type, $args);
+    WGR_custom_term_slug_edit_success(EB_BLOG_POST_LINK);
 
 
     // register taxonomy blog_tag
@@ -95,8 +98,8 @@ function dang_ky_taxonomy() {
         'show_tagcloud' => true
     );
 
-    register_taxonomy( $taxonomy_post_type . '_tag', $taxonomy_post_type, $args );
-    WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_tag' );
+    register_taxonomy($taxonomy_post_type . '_tag', $taxonomy_post_type, $args);
+    WGR_custom_term_slug_edit_success($taxonomy_post_type . '_tag');
 
 
     /*
@@ -130,20 +133,21 @@ function dang_ky_taxonomy() {
         'show_in_nav_menus' => false,
         'show_tagcloud_in_edit' => true,
         'show_in_quick_edit' => true,
-        'update_count_callback' => true,
+        // daidq (2024-10-09): thiết lập update_count_callback = false để có thể sử dụng trên php 8++
+        'update_count_callback' => false,
         'show_in_quick_edit' => true,
         'rewrite' => true,
         'show_tagcloud' => true
     );
 
     //
-    register_taxonomy( $taxonomy_post_type . '_options', $taxonomy_post_type, $args );
-    WGR_custom_term_slug_edit_success( $taxonomy_post_type . '_options' );
+    register_taxonomy($taxonomy_post_type . '_options', $taxonomy_post_type, $args);
+    WGR_custom_term_slug_edit_success($taxonomy_post_type . '_options');
 
     //
-    if ( defined( 'WGR_FOR_WOOCOMERCE' ) ) {
-        register_taxonomy( 'product_options', 'product', $args );
-        WGR_custom_term_slug_edit_success( 'product_options' );
+    if (defined('WGR_FOR_WOOCOMERCE')) {
+        register_taxonomy('product_options', 'product', $args);
+        WGR_custom_term_slug_edit_success('product_options');
     }
 
 
@@ -175,8 +179,8 @@ function dang_ky_taxonomy() {
         'show_tagcloud' => false
     );
 
-    register_taxonomy( 'discount_code', $taxonomy_post_type, $args );
-    WGR_custom_term_slug_edit_success( 'discount_code' );
+    register_taxonomy('discount_code', $taxonomy_post_type, $args);
+    WGR_custom_term_slug_edit_success('discount_code');
 }
 // Hook into the 'init' action
-add_filter( 'init', 'dang_ky_taxonomy' );
+add_filter('init', 'dang_ky_taxonomy');

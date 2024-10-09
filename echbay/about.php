@@ -3,6 +3,13 @@
 global $arr_private_info_setting;
 
 
+// TEST
+// $aaa_taxonomy = get_taxonomy('category');
+// print_r($aaa_taxonomy);
+// $aaa_taxonomy = get_taxonomy('post_options');
+// print_r($aaa_taxonomy);
+
+
 /**
  * Chỉnh lại nội dung cho file htaccess
  * Chức năng này sẽ tự động chỉnh nội dung trong file htaccess cho phù hợp
