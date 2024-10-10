@@ -18,7 +18,7 @@ $eb_ex_from_github = array();
 $eb_class_css_lang = array();
 
 //
-define( 'eb_key_for_site_lang', 'lang_eb_' );
+define('eb_key_for_site_lang', 'lang_eb_');
 
 
 //
@@ -586,7 +586,7 @@ $___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham kh
 
 
 // gọi tới function ngôn ngữ riêng của từng website
-if ( function_exists('WGR_child_lang') ) {
+if (function_exists('WGR_child_lang')) {
 	WGR_child_lang();
 }
 
@@ -595,65 +595,67 @@ if ( function_exists('WGR_child_lang') ) {
 
 
 // lúc lấy lang thì không cần gán key đầy đủ, mà sẽ gán trong function này
-function EBE_get_lang($k) {
+function EBE_get_lang($k)
+{
 	global $___eb_lang;
-	
-//	return isset( $___eb_lang[eb_key_for_site_lang . $k] ) ? $___eb_lang[eb_key_for_site_lang . $k] : '';
-//	return '<eblang-element>' . $___eb_lang[eb_key_for_site_lang . $k] . '</eblang-element>';
+
+	//	return isset( $___eb_lang[eb_key_for_site_lang . $k] ) ? $___eb_lang[eb_key_for_site_lang . $k] : '';
+	//	return '<eblang-element>' . $___eb_lang[eb_key_for_site_lang . $k] . '</eblang-element>';
 	return $___eb_lang[eb_key_for_site_lang . $k];
 }
 
-function EBE_set_lang($key, $val) {
-	
+function EBE_set_lang($key, $val)
+{
+
 	// sử dụng option thay cho meta_post -> load nhanh hơn nhiều
-//	$key = eb_key_for_site_lang . $key;
-	
+	//	$key = eb_key_for_site_lang . $key;
+
 	// xóa option cũ đi cho đỡ lằng nhằng
-//	delete_option( $key );
-	WGR_delete_option( $key );
-	
+	//	delete_option( $key );
+	WGR_delete_option($key);
+
 	// chỉ cập nhật khi có value, nếu không có thì sử dụng của bản default
-	if ( $val != '' ) {
-//		$val = WGR_stripslashes( $val );
-		
+	if ($val != '') {
+		//		$val = WGR_stripslashes( $val );
+
 		// thêm option mới
-//		add_option( $key, $val, '', 'no' );
-		WGR_set_option( $key, $val, 'no' );
+		//		add_option( $key, $val, '', 'no' );
+		WGR_set_option($key, $val, 'no');
 	}
-	
 }
 
-function EBE_get_lang_list() {
-	
+function EBE_get_lang_list()
+{
+
 	global $wpdb;
 	global $___eb_lang;
-//	print_r( $___eb_lang );
-	
-	
+	//	print_r( $___eb_lang );
+
+
 	//
 	$option_conf_name = eb_key_for_site_lang;
-	
+
 	$row = _eb_q("SELECT option_name, option_value
 	FROM
 		`" . $wpdb->options . "`
 	WHERE
 		option_name LIKE '{$option_conf_name}%'");
-//	print_r( $row );
-//	exit();
-	
+	//	print_r( $row );
+	//	exit();
+
 	//
-	foreach ( $row as $k => $a ) {
+	foreach ($row as $k => $a) {
 		// chỉ hiện thị các lang được hỗ trợ
-//		if ( isset( $___eb_lang[ $a->option_name ] ) ) {
-			$___eb_lang[ $a->option_name ] = WGR_stripslashes( $a->option_value );
-//		}
+		//		if ( isset( $___eb_lang[ $a->option_name ] ) ) {
+		$___eb_lang[$a->option_name] = WGR_stripslashes($a->option_value);
+		//		}
 		// xóa các lang không tồn tại
-//		else {
-//			delete_option( $a->option_name );
-//		}
+		//		else {
+		//			delete_option( $a->option_name );
+		//		}
 	}
-//	print_r( $___eb_lang );
-	
+	//	print_r( $___eb_lang );
+
 }
 
 
@@ -661,9 +663,9 @@ function EBE_get_lang_list() {
 
 // Nếu không phải tiếng Việt -> add mặc định tiếng anh
 //echo $__cf_row['cf_content_language'];
-if ( $__cf_row['cf_content_language'] != 'vi' ) {
+if ($__cf_row['cf_content_language'] != 'vi') {
 	include EB_THEME_PLUGIN_INDEX . 'lang/en.php';
-//	echo 'aaaaaaaaaaaa';
+	//	echo 'aaaaaaaaaaaa';
 }
 // phần ngôn ngữ cho admin
 include EB_THEME_PLUGIN_INDEX . 'lang/admin.php';
@@ -676,7 +678,3 @@ $___eb_default_lang = $___eb_lang;
 //$___eb_lang_default = $___eb_lang;
 //$___eb_lang = array();
 // EBE_get_lang('home')
-
-
-
-

@@ -12,13 +12,13 @@ $__post = $post;
 
 
 // nếu đây là một page, và page này có URL thuốc nhóm ưu tiên -> không hiển thị page theo kiểu thông thường
-if ( $__post->post_type == 'page' && isset( $arr_active_for_404_page[ $__post->post_name ] ) ) {
-    echo '<!-- Custom page by ' . $arr_private_info_setting[ 'author' ] . ': ' . $__post->post_name . ' -->' . "\n";
+if ($__post->post_type == 'page' && isset($arr_active_for_404_page[$__post->post_name])) {
+    echo '<!-- Custom page by ' . $arr_private_info_setting['author'] . ': ' . $__post->post_name . ' -->' . "\n";
 
     $act = $__post->post_name;
 
     // không index các trang module riêng của EB
-    $__cf_row[ "cf_blog_public" ] = 0;
+    $__cf_row["cf_blog_public"] = 0;
 
     include EB_THEME_PLUGIN_INDEX . 'global/' . $__post->post_name . '.php';
 }

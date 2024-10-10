@@ -77,7 +77,7 @@ function _eb_create_file(
     }
 
 
-    /*
+    /**
      * add_line: thêm dòng mới
      */
     //	$content_ = str_replace('\"', '"', $content_);

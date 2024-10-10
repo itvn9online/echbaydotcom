@@ -2,9 +2,9 @@
 
 
 
-/*
-* Mọi trang trong này đều mặc định có trạng thái là 404 -> sẽ không được google index
-*/
+/**
+ * Mọi trang trong này đều mặc định có trạng thái là 404 -> sẽ không được google index
+ */
 //exit();
 
 //echo __FILE__ . '<br>' . "\n";
@@ -106,9 +106,9 @@ if (isset($_SERVER['REQUEST_URI'])) {
 	//echo $act . '<br>';
 
 	$act = basename($act);
-	//	echo $act . '<br>';
+	// echo $act . '<br>';
 }
-//echo $act . '<br>';
+// echo $act . '<br>';
 
 // 404 thì không thể không có trường này được
 if ($act == '' || $act == '/') {
@@ -167,7 +167,7 @@ if ( $act == '9999' ) {
 // một số act trùng nhau
 switch ($act) {
 
-		// gờ vàng
+		// giờ vàng
 	case "gio-vang":
 	case "giovang":
 	case "golden-time":
@@ -194,6 +194,8 @@ switch ($act) {
 		break;
 }
 
+$arr_active_for_404_page['ebe-logout'] = 1;
+// print_r($arr_active_for_404_page);
 
 // danh sách các template được hỗ trợ -> làm theo kiểu này cho chắc chắn, tránh bị tạo url ảo
 /*
@@ -218,6 +220,7 @@ switch ( $act ) {
 	case "php_info":
 	*/
 if (isset($arr_active_for_404_page[$act])) {
+	// echo basename(__FILE__) . ':' . __LINE__ . '<br>' . PHP_EOL;
 
 	// Chuyển header sang 200
 	EBE_set_header();
@@ -295,6 +298,8 @@ else {
 	//
 	$redirect_301_link = '';
 	$redirect_add_link = '';
+	// echo basename(__FILE__) . ':' . __LINE__ . '<br>' . PHP_EOL;
+	// echo $act;
 
 	// lưu log 404 vào CSDL để tiện tra cứu
 	$current_404_uri = $_SERVER['REQUEST_URI'];
@@ -416,9 +421,9 @@ else {
 	// nếu không -> thử kiểm tra URL cũ xem có không
 	else {
 
-		/*
-			* Thử mọi phien bản, SSL, www.
-			*/
+		/**
+		 * Thử mọi phien bản, SSL, www.
+		 */
 		$strFilter = "";
 
 		//

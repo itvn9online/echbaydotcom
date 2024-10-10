@@ -81,15 +81,15 @@ if (cf_on_off_echbay_seo == 1) {
 
 
     // cho phép google index
-//echo get_option( 'blog_public' );
-/*
+    //echo get_option( 'blog_public' );
+    /*
 if ( $__cf_row ["cf_blog_public"] == 1 ) {
 echo '
 <meta name="robots" content="noodp,noydir" />';
 }
 */
     // chặn index nếu chưa có
-/*
+    /*
 else {
 if ( get_option( 'blog_public' ) == 0 ) {
 echo '
@@ -125,7 +125,7 @@ echo '
     //print_r($__cf_row);
 
 
-    ?>
+?>
     <meta name="revisit-after" content="1 days" />
     <meta name="title" content="<?php echo $__cf_row['cf_title']; ?>" />
     <meta name="keywords" content="<?php echo $__cf_row['cf_keywords']; ?>" />
@@ -151,7 +151,7 @@ echo '
     $header_seo_content = ob_get_contents();
 
     //ob_clean();
-//ob_end_flush();
+    //ob_end_flush();
     ob_end_clean();
 
 
@@ -159,7 +159,6 @@ echo '
         $header_seo_content = WGR_replace_for_all_content($__cf_row['cf_replace_content'], $header_seo_content);
     }
     echo $header_seo_content;
-
 } else {
     ?>
     <!-- // <?php echo $arr_private_info_setting['author']; ?> SEO plugin disable by customer -->
@@ -171,7 +170,7 @@ echo '
 if ($__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off') {
     // gtag
     if ($__cf_row['cf_gtag_id'] == 1) {
-        ?>
+    ?>
         <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $__cf_row['cf_ga_id']; ?>"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -182,15 +181,15 @@ if ($__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off') {
             gtag('js', new Date());
             gtag('config', '<?php echo $__cf_row['cf_ga_id']; ?>');
         </script>
-        <?php
+    <?php
     }
     // analytic
     else {
-        ?>
+    ?>
         <script type="text/javascript">
-            (function (i, s, o, g, r, a, m) {
+            (function(i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
+                i[r] = i[r] || function() {
                     (i[r].q = i[r].q || []).push(arguments)
                 }, i[r].l = 1 * new Date();
                 a = s.createElement(o), m = s.getElementsByTagName(o)[0];
@@ -200,9 +199,9 @@ if ($__cf_row['cf_ga_id'] != '' && $__cf_row['cf_tester_mode'] == 'off') {
             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
             ga('create', '<?php echo $__cf_row['cf_ga_id']; ?>', 'auto');
             ga('require', 'displayfeatures');
-        <?php echo $import_ecommerce_ga; ?>ga('send', 'pageview');
+            <?php echo $import_ecommerce_ga; ?>ga('send', 'pageview');
         </script>
-        <?php
+<?php
     }
 }
 
