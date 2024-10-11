@@ -15,7 +15,9 @@ $error_admin_log_cache = WGR_check_syntax($__eb_cache_conf, $file_last_update, t
 $last_update = 0;
 if ($error_admin_log_cache == '') {
     // echo $__eb_cache_conf . '<br>';
-    include_once $__eb_cache_conf;
+    if (is_file($__eb_cache_conf)) {
+        include_once $__eb_cache_conf;
+    }
 } else {
     // echo $__eb_cache_conf . '<br>';
     // echo $error_admin_log_cache;

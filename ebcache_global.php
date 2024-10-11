@@ -55,7 +55,7 @@ foreach ($sub_dir_cache as $v) {
     if (!is_dir($root_dir_cache)) {
         mkdir($root_dir_cache, 0777);
         chmod($root_dir_cache, 0777) or die('ERROR chmod cache dir');
-        echo $root_dir_cache . '<br>' . PHP_EOL;
+        // echo $root_dir_cache . '<br>' . PHP_EOL;
     }
 }
 
