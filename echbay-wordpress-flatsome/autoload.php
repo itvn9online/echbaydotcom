@@ -107,7 +107,8 @@ function WGR_flatsome_function_update($f)
         copy($f, str_replace('/function-update.php', '/function-update-flatsome.php', $f));
 
         // copy file mẫu ghi đè vào file của flatsome
-        copy('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', $f);
+        // copy('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', $f);
+        copy('https://raw.echbay.com/itvn9online/webgiareorg/main/function-update.php', $f);
     }
 }
 

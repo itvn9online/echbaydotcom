@@ -13,9 +13,11 @@ $arrs_private_info_setting = array(
         //'child_theme_default' => 'echbaytwo-child',
 
         //'url_check_WGR_version' => 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION',
-        'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
+        // 'url_check_WGR_version' => 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION',
+        'url_check_WGR_version' => 'https://raw.echbay.com/itvn9online/echbaydotcom/master/VERSION',
         //'url_check_EB_theme_version' => 'https://world.webgiare.org/wp-content/themes/echbaytwo/VERSION',
-        'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION',
+        // 'url_check_EB_theme_version' => 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION',
+        'url_check_EB_theme_version' => 'https://raw.echbay.com/itvn9online/echbaytwo/master/VERSION',
 
         //		'theme_author_email' => 'lienhe@echbay.com',
         'theme_site_upper' => 'WebGiaRe.org',
@@ -92,8 +94,10 @@ if (defined('EB_THEME_URL')) {
             $arr_private_info_setting[$k] = $v;
         }
         $arr_private_info_setting['author_logo'] = str_replace(ABSPATH, '', EB_THEME_URL) . 'logo.png';
-        $arr_private_info_setting['url_check_WGR_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
-        $arr_private_info_setting['url_check_EB_theme_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
+        // $arr_private_info_setting['url_check_WGR_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION';
+        $arr_private_info_setting['url_check_WGR_version'] = 'https://raw.echbay.com/itvn9online/echbaydotcom/master/VERSION';
+        // $arr_private_info_setting['url_check_EB_theme_version'] = 'https://raw.githubusercontent.com/itvn9online/echbaytwo/master/VERSION';
+        $arr_private_info_setting['url_check_EB_theme_version'] = 'https://raw.echbay.com/itvn9online/echbaytwo/master/VERSION';
     }
 }
 //print_r($arr_private_info_setting);
