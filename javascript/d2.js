@@ -591,7 +591,7 @@ if (typeof document.frm_search != "undefined") {
 	}
 }
 
-//
+// daidq (2024-10-13): tạm bỏ chức năng lưu log click
 _global_js_eb._log_click_ref();
 
 // báo lỗi nếu có thẻ dynamic_title_tag chưa được chuyển đổi
