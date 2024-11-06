@@ -84,7 +84,7 @@ foreach ($arr as $k => $v) {
 <div class="cf">
 	<div class="lf f75 fix-textarea-height">
 		<div>
-			<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=design" target="target_eb_iframe" onsubmit="check_update_design();">
+			<form name="frm_config" method="post" action="<?php echo web_link; ?>process?set_module=design" target="target_eb_iframe" onsubmit="check_update_design();">
 				<div class="d-none2">
 					<input type="text" name="eb_page_id" value="<?php echo $curent_page_id; ?>">
 					<input type="text" name="eb_page_name" value="<?php echo $curent_page_name; ?>">

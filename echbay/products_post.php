@@ -418,7 +418,7 @@ $strAjaxLink .= '&trang=' . $trang;
                 </div>
             </div>
             <div class="show-if-click-tools thread-multi-edit d-none">
-                <form name="frm_multi_edit_post" method="post" action="process/?set_module=multi_edit_post" target="target_eb_iframe">
+                <form name="frm_multi_edit_post" method="post" action="process?set_module=multi_edit_post" target="target_eb_iframe">
                     <div class="d-none">
                         <textarea name="t_list_id"></textarea>
                         <input type="text" name="actions_for" value="" />

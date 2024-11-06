@@ -913,7 +913,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 
 		//
 		leech_data_content(
-			"temp/?set_module=leech_data&categories_url=" +
+			"temp?set_module=leech_data&categories_url=" +
 				encodeURIComponent(a) +
 				"&leech_id=" +
 				f.t_id.value,
@@ -1647,7 +1647,7 @@ jQuery("#categories_url")
 						a[i][4] =
 							'<a href="' +
 							web_link +
-							"temp/?set_module=leech_data&create_category=" +
+							"temp?set_module=leech_data&create_category=" +
 							encodeURIComponent(jQuery.trim(a[i][2])) +
 							"&category_slug=" +
 							encodeURIComponent(jQuery.trim(category_slug)) +
@@ -2332,7 +2332,7 @@ jQuery(".click-submit-url-categories")
 
 			//
 			let uri_for_get_content =
-				"temp/?set_module=leech_data&categories_url=" + encodeURIComponent(a);
+				"temp?set_module=leech_data&categories_url=" + encodeURIComponent(a);
 
 			//
 			html_tags = html_tags.replace(/\s\|\|\s/, ", ").replace(/\|\|/, ", ");

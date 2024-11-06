@@ -101,7 +101,7 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
 
 
 ?>
-<form name="frm_invoice_details" method="post" action="<?php echo web_link; ?>process/?set_module=order_details" target="target_eb_iframe" onSubmit="return ___eb_admin_update_order_details();">
+<form name="frm_invoice_details" method="post" action="<?php echo web_link; ?>process?set_module=order_details" target="target_eb_iframe" onSubmit="return ___eb_admin_update_order_details();">
     <div class="d-none">
         <input type="number" name="order_id" value="<?php echo $post->order_id; ?>">
         <input type="number" name="order_old_type" id="order_old_type" value="<?php echo $order_old_type; ?>">

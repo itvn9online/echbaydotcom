@@ -5,7 +5,7 @@
         </div>
         <div class="cart-quick-title bold upper"><?php echo EBE_get_lang('cart_muangay'); ?></div>
         <div class="cart-quick-padding">
-            <form name="frm_cart" method="post" action="process/?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();" class="eb-global-frm-cart">
+            <form name="frm_cart" method="post" action="process?set_module=booking" target="target_eb_iframe" onsubmit="return _global_js_eb.check_cart();" class="eb-global-frm-cart">
                 <div id="cart_user_agent" class="d-none">
                     <input type="text" name="t_muangay[]" value="0" />
                     <input type="text" name="t_size[]" value="" />
@@ -43,32 +43,42 @@
                     <div class="eb-quickcart-node eb-quickcart-fullname cf">
                         <div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_hoten'); ?></div>
                         <div class="eb-quickcart-right">
-                            <input type="text" name="t_ten" value="" placeholder="<?php echo EBE_get_lang('cart_hoten'); ?>"<?php if ( $__cf_row['cf_required_name_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
+                            <input type="text" name="t_ten" value="" placeholder="<?php echo EBE_get_lang('cart_hoten'); ?>" <?php if ($__cf_row['cf_required_name_cart'] == 1) {
+                                                                                                                                    echo ' aria-required="true" required';
+                                                                                                                                }; ?> />
                         </div>
                     </div>
                     <div class="eb-quickcart-node eb-quickcart-tel cf">
                         <div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_dienthoai'); ?> <span class="redcolor d-none">*</span></div>
                         <div class="eb-quickcart-right">
-                            <input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>"<?php if ( $__cf_row['cf_required_phone_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
+                            <input type="text" name="t_dienthoai" value="" placeholder="<?php echo EBE_get_lang('cart_pla_dienthoai'); ?>" <?php if ($__cf_row['cf_required_phone_cart'] == 1) {
+                                                                                                                                                echo ' aria-required="true" required';
+                                                                                                                                            }; ?> />
                         </div>
                     </div>
                     <div class="eb-quickcart-node eb-quickcart-email cf">
                         <div class="eb-quickcart-left">Email</div>
                         <div class="eb-quickcart-right">
-                            <input type="email" name="t_email" value="" placeholder="Email"<?php if ( $__cf_row['cf_required_email_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?> />
+                            <input type="email" name="t_email" value="" placeholder="Email" <?php if ($__cf_row['cf_required_email_cart'] == 1) {
+                                                                                                echo ' aria-required="true" required';
+                                                                                            }; ?> />
                         </div>
                     </div>
                     <div class="eb-quickcart-node eb-quickcart-address cf">
                         <div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_diachi'); ?></div>
                         <div class="eb-quickcart-right">
-                            <textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>"<?php if ( $__cf_row['cf_required_address_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?>></textarea>
+                            <textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_diachi2'); ?>" <?php if ($__cf_row['cf_required_address_cart'] == 1) {
+                                                                                                                    echo ' aria-required="true" required';
+                                                                                                                }; ?>></textarea>
                         </div>
                     </div>
                     <!--
 					<div class="eb-quickcart-node eb-quickcart-districts cf">
 						<div class="eb-quickcart-left"><?php echo EBE_get_lang('cart_tinhthanh'); ?></div>
 						<div class="eb-quickcart-right">
-							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_tinhthanh2'); ?>" class="auto-set-cart-districts"<?php if ( $__cf_row['cf_required_address_cart'] == 1 ) { echo ' aria-required="true" required'; } ; ?>></textarea>
+							<textarea name="t_diachi" placeholder="<?php echo EBE_get_lang('cart_tinhthanh2'); ?>" class="auto-set-cart-districts"<?php if ($__cf_row['cf_required_address_cart'] == 1) {
+                                                                                                                                                        echo ' aria-required="true" required';
+                                                                                                                                                    }; ?>></textarea>
 						</div>
 					</div>
 					-->
@@ -128,11 +138,12 @@
                         </div>
                     </div>
                     <?php
-                    if ( EBE_get_lang( 'url_chinhsach' ) != '#' ) {
-                        ?>
-                    <p class="l19 small">
-                        <input type="checkbox" name="t_dongy" checked>
-                        <?php echo str_replace( '{tmp.url_chinhsach}', EBE_get_lang('url_chinhsach'), EBE_get_lang('chinhsach') ); ?></p>
+                    if (EBE_get_lang('url_chinhsach') != '#') {
+                    ?>
+                        <p class="l19 small">
+                            <input type="checkbox" name="t_dongy" checked>
+                            <?php echo str_replace('{tmp.url_chinhsach}', EBE_get_lang('url_chinhsach'), EBE_get_lang('chinhsach')); ?>
+                        </p>
                     <?php
                     }
                     ?>

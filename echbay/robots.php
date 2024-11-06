@@ -126,7 +126,7 @@ if (!is_file($dir_robots_txt) || $robots_txt_content == '') {
 <div class="l25">
 	<p class="bold">Nội dung file robots.txt hiện tại: <a href="<?php echo web_link; ?>robots.txt" target="_blank" rel="nofollow">Xem chi tiết</a></p>
 	<div>
-		<form name="frm_robots" method="post" action="<?php echo web_link; ?>process/?set_module=robots" target="target_eb_iframe">
+		<form name="frm_robots" method="post" action="<?php echo web_link; ?>process?set_module=robots" target="target_eb_iframe">
 			<textarea name="t_noidung" style="width:90%;max-width:800px;height:320px;"><?php echo $robots_txt_content; ?></textarea>
 			<div>
 				<input type="submit" value="Cập nhật" class="eb-admin-wp-submit" />

@@ -5,13 +5,13 @@
 //print_r( $_GET );
 
 
-if ( ! isset( $_GET['type'] ) ) {
+if (! isset($_GET['type'])) {
 	die('type not found!');
 }
-$type = trim( $_GET['type'] );
+$type = trim($_GET['type']);
 
 
-if ( ! isset( $_GET['id'] ) ) {
+if (! isset($_GET['id'])) {
 	die('id not found!');
 }
 $id = (int)$_GET['id'];
@@ -20,23 +20,21 @@ $id = (int)$_GET['id'];
 
 //
 $show_title = '';
-if ( $type == 'category' || $type == 'blogs' ) {
-	$title = _eb_get_cat_object( $id, '_eb_category_title' );
-	$description = _eb_get_cat_object( $id, '_eb_category_description' );
-	$content = _eb_get_cat_object( $id, '_eb_category_content' );
-	
-	$a = get_term( $id, $type );
-//	print_r( $a );
+if ($type == 'category' || $type == 'blogs') {
+	$title = _eb_get_cat_object($id, '_eb_category_title');
+	$description = _eb_get_cat_object($id, '_eb_category_description');
+	$content = _eb_get_cat_object($id, '_eb_category_content');
+
+	$a = get_term($id, $type);
+	//	print_r( $a );
 	$show_title = $a->name;
-}
-else if ( $type == 'post' || $type == 'blog' ) {
-	$title = _eb_get_post_object( $id, '_eb_product_title' );
-	$description = _eb_get_post_object( $id, '_eb_product_description' );
+} else if ($type == 'post' || $type == 'blog') {
+	$title = _eb_get_post_object($id, '_eb_product_title');
+	$description = _eb_get_post_object($id, '_eb_product_description');
 	$content = '';
-	
-	$show_title = get_the_title( $id );
-}
-else {
+
+	$show_title = get_the_title($id);
+} else {
 	die('type <strong>' . $type . '</strong> not support!');
 }
 
@@ -45,7 +43,7 @@ else {
 
 <h2><?php echo $type; ?>: <?php echo $show_title; ?></h2>
 <br>
-<form name="frm_config" method="post" action="<?php echo web_link; ?>process/?set_module=products_seo" target="target_eb_iframe">
+<form name="frm_config" method="post" action="<?php echo web_link; ?>process?set_module=products_seo" target="target_eb_iframe">
 	<div class="d-none">
 		<input type="text" name="t_id" value="<?php echo $id; ?>" />
 		<input type="text" name="t_type" value="<?php echo $type; ?>" />

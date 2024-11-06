@@ -27,7 +27,7 @@ global $eb_class_css_lang;
 <h4><span class="redcolor">&lt;?php</span> <span class="greencolor">echo</span> EBE_get_lang(<span class="orgcolor">'home'</span>); <span class="redcolor">?&gt;</span></h4>
 <h4>EBE_get_lang(<span class="orgcolor">'home'</span>)</h4>
 <br>
-<form name="frm_languages" method="post" action="<?php echo web_link; ?>process/?set_module=languages" target="target_eb_iframe" onsubmit="return check_update_languages();">
+<form name="frm_languages" method="post" action="<?php echo web_link; ?>process?set_module=languages" target="target_eb_iframe" onsubmit="return check_update_languages();">
 	<div class="d-none">
 		<input type="text" name="languages_key_edit" id="languages_key_edit" value="">
 		<textarea name="languages_content_edit" id="languages_content_edit" style="width:90%;"></textarea>
