@@ -90,7 +90,8 @@ $add_data_id = array(
     'cf_google_plus' => $__cf_row['cf_google_plus'],
     'cf_youtube_chanel' => $__cf_row['cf_youtube_chanel'],
     'cf_pinterest_page' => $__cf_row['cf_pinterest_page'],
-    'cf_twitter_page' => $__cf_row['cf_twitter_page']
+    'cf_twitter_page' => $__cf_row['cf_twitter_page'],
+    'media_url' => EB_CDN_UPLOADS_URL,
 );
 //$data_id = '';
 $data_id = array();

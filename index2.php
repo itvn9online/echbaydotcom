@@ -28,6 +28,9 @@ define('wp_termmeta', $wpdb->termmeta);
 //echo $wpdb->posts . '<br>';
 define('wp_posts', $wpdb->posts);
 
+// khi cần chuyển các file ảnh trong thư mục wp-content/uploads/ sang url khác để giảm tải cho server chính thì dùng chức năng này
+defined('EB_CDN_UPLOADS_URL') || define('EB_CDN_UPLOADS_URL', '');
+
 
 //
 if (defined('EB_CHILD_THEME_URL')) {

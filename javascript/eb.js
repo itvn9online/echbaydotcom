@@ -1443,6 +1443,17 @@ var _global_js_eb = {
                         */
 						//}
 
+						// chuyển url ảnh qua cdn nếu có yêu cầu
+						if (
+							add_data_id.media_url != "" &&
+							img.split("/")[0] == "wp-content"
+						) {
+							img = img.replace(
+								"wp-content/uploads/",
+								add_data_id.media_url + "wp-content/uploads/"
+							);
+						}
+
 						// sử dụng cdn nếu ảnh trong thư mục upload
 						//if ( primary_domain_usage_eb != '' && img.split('/')[0] == 'upload' ) {
 						//img = img.replace( 'upload/', '//upload.' +primary_domain_usage_eb+ '.com.vn/' );

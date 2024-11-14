@@ -310,8 +310,6 @@ if (using_child_wgr_theme == 1 && is_file(EB_CHILD_THEME_URL . 'i.php')) {
 
 // cache chỉ được kích hoạt khi tham số này = 1
 if ($enable_echbay_super_cache == 1) {
-
-
 	// nếu có tham số DNS prefetch -> kiểm tra domain hiện tại có trùng với DNS prefetch không
 	if ($__cf_row['cf_dns_prefetch'] != '') {
 		$arr_dns_prefetch = explode("\n", trim($__cf_row['cf_dns_prefetch']));
