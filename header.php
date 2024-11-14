@@ -30,6 +30,19 @@
     <base href="<?php echo web_link; ?>" />
     <?php
 
+    // 
+    if (EB_CDN_UPLOADS_URL != '') {
+    ?>
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <link rel="dns-prefetch" href="<?php echo EB_CDN_UPLOADS_URL; ?>" />
+        <script type="text/javascript">
+            if ('<?php echo EB_CDN_UPLOADS_URL; ?>'.includes('/' + window.location.host + '/') != false) {
+                window.location = '<?php echo get_site_url(); ?>' + window.location.pathname;
+            }
+        </script>
+    <?php
+    }
+
 
     // nạp phần font awesome trước -> include trực tiếp xem có bị lỗi của google page speed không
     $load_font_awesome = '';
