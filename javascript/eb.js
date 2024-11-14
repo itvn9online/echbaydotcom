@@ -1444,6 +1444,7 @@ var _global_js_eb = {
 						//}
 
 						// chuyển url ảnh qua cdn nếu có yêu cầu
+						img = img.replace(web_link, "");
 						if (
 							add_data_id.media_url != "" &&
 							img.split("/")[0] == "wp-content"
