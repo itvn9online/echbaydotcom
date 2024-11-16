@@ -32,7 +32,12 @@
 
     // 
     if (EB_CDN_UPLOADS_URL != '') {
+        if (strpos(EB_CDN_UPLOADS_URL, '/' . $_SERVER['HTTP_HOST'] . '/') !== false) {
     ?>
+            <meta http-equiv="refresh" content="0;url=<?php echo rtrim(get_site_url(), '/') . $_SERVER['REQUEST_URI']; ?>">
+        <?php
+        }
+        ?>
         <meta http-equiv="x-dns-prefetch-control" content="on">
         <link rel="dns-prefetch" href="<?php echo EB_CDN_UPLOADS_URL; ?>" />
         <script type="text/javascript">
