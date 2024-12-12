@@ -4,7 +4,7 @@
 
 //
 //if ( ! current_user_can('manage_options') ) {
-if ( ! current_user_can('publish_pages') ) {
+if (! current_user_can('publish_pages')) {
 	die('Permission ERROR!');
 }
 
@@ -12,7 +12,7 @@ if ( ! current_user_can('publish_pages') ) {
 WGR_check_token();
 
 //
-_eb_log_admin( 'Export order in ' . _eb_full_url() );
+_eb_log_admin('Export order in ' . _eb_full_url());
 
 
 
@@ -29,11 +29,11 @@ include ECHBAY_PRI_CODE . 'order_filter.php';
 
 
 
-$sql = _eb_load_order( $threadInPage, array(
-//	'status_by' => $status_by,
+$sql = _eb_load_order($threadInPage, array(
+	//	'status_by' => $status_by,
 	'filter_by' => $strFilter,
 	'offset' => $offset
-) );
+));
 
 //
 //print_r( $sql );
@@ -64,7 +64,7 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_top.php';
 		<td>C.Nặng</td>
 		<!--
 		<td>Sản phẩm (S.Lượng/ Màu sắc/ Kích thước)</td>
-			--> 
+			-->
 		<!--
 		<td><div class="cf">
 				<div class="lf f80">Sản phẩm</div>
@@ -104,23 +104,24 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_footer.php';
 
 ?>
 <script>
-var arr_hd_trangthai = <?php echo json_encode( $arr_hd_trangthai ); ?>;
-<?php
+	var arr_hd_trangthai = <?php echo json_encode($arr_hd_trangthai); ?>;
+	<?php
 
-$lang_date_format = _eb_get_option('date_format');
-//echo $lang_date_format . 'aaaaaaaaaaaaaaaaaaaa';
+	$lang_date_format = _eb_get_option('date_format');
+	//echo $lang_date_format . 'aaaaaaaaaaaaaaaaaaaa';
 
-foreach ( $sql as $k => $v ) {
-	$v->ngay_gui = date( $lang_date_format, $v->order_time );
-//	$v->ngay_gui = 'aaaaa';
-	
-	//
-	echo 'WGR_order_export_run( ' . json_encode( $v ) . ', ' . $k . ' );' . "\n";
-}
+	foreach ($sql as $k => $v) {
+		$v->ngay_gui = date($lang_date_format, $v->order_time);
+		//	$v->ngay_gui = 'aaaaa';
 
-?>
+		//
+		echo 'WGR_order_export_run( ' . json_encode($v) . ', ' . $k . ' );' . "\n";
+	}
+
+	?>
 </script>
 </body>
+
 </html>
 <?php
 /*

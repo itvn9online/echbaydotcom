@@ -6,27 +6,27 @@ print_r( $_POST );
 print_r( $_GET );
 exit();
 */
-$_POST = EBE_stripPostServerClient ();
+$_POST = EBE_stripPostServerClient();
 
 // kiểm tra dữ liệu đầu vào phải đầy đủ
 //WGR_check_ebnonce();
 
 
 //
-$t_matkhau = $_POST ['t_matkhau'];
-if ( strlen( trim( $t_matkhau ) ) < 6 ) {
-	_eb_alert( EBE_get_lang('pr_short_matkhau') );
+$t_matkhau = $_POST['t_matkhau'];
+if (strlen(trim($t_matkhau)) < 6) {
+	_eb_alert(EBE_get_lang('pr_short_matkhau'));
 }
 
 
 //
 if (mtv_id <= 0) {
-	_eb_alert( EBE_get_lang('pr_no_id') );
+	_eb_alert(EBE_get_lang('pr_no_id'));
 }
 
 
 //
-wp_set_password( $t_matkhau, mtv_id );
+wp_set_password($t_matkhau, mtv_id);
 
 // or
 /*
@@ -61,7 +61,3 @@ exit();
 
 //
 //_eb_alert( EBE_get_lang('pr_done') );
-
-
-
-
