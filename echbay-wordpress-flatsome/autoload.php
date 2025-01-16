@@ -119,7 +119,7 @@ if (
         [
             'webgiare.org',
             'www.webgiare.org',
-            'world.webgiare.org',
+            // 'world.webgiare.org',
         ]
     )
     && is_admin()

@@ -915,7 +915,6 @@ function EBE_add_js_compiler_in_cache(
     // có tối ưu nội dung file hay không
     $optimize = 0
 ) {
-
     global $__cf_row;
 
     //
@@ -924,21 +923,24 @@ function EBE_add_js_compiler_in_cache(
     //	if ( eb_code_tester == true ) {
     if ($__cf_row['cf_js_optimize'] != 1) {
         $content_dir = basename(WP_CONTENT_DIR);
-        //		echo $content_dir . "\n";
+        // echo $content_dir . "\n";
+        // $ver = web_version;
 
-        //		$ver = web_version;
-
+        // 
         foreach ($arr_eb_add_full_js as $v) {
             if (is_file($v)) {
                 $ver = filemtime($v);
 
-                //				echo ABSPATH . "\n";
-                //				$v = str_replace( ABSPATH, '', $v );
+                // echo ABSPATH . "\n";
+                // $v = str_replace( ABSPATH, '', $v );
                 $v = str_replace('\\', '/', strstr($v, $content_dir));
 
+                // 
                 echo '<script type="text/javascript" src="' . $v . '?ver=' . $ver . '" defer></script>' . "\n";
             }
         }
+
+        // 
         return true;
     }
 
@@ -947,7 +949,7 @@ function EBE_add_js_compiler_in_cache(
     $file_name = array();
     foreach ($arr_eb_add_full_js as $v) {
         if (is_file($v)) {
-            //			echo $v . "\n";
+            // echo $v . "\n";
 
             // nếu trong thư mục mặc định -> lấy tên file là đủ
             if (strpos($v, 'echbaydotcom/javascript') !== false) {

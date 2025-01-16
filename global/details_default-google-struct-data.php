@@ -83,7 +83,7 @@ if ($__post->post_type == 'post' || $__post->post_type == 'product') {
 
 	if ($trv_giaban > $trv_giamoi) {
 		$pt = 100 - _eb_float_only($trv_giamoi * 100 / $trv_giaban, 1);
-		//		echo $pt;
+		// echo $pt;
 	} else {
 		$trv_giaban = 0;
 	}
