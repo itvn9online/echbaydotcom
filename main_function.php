@@ -328,7 +328,8 @@ function WGR_cache($f, $buffer)
         }
         $config_content = str_replace('enable_redis', $enable_redis, $config_content);
         // gán prefix cho cache luôn
-        $config_content = str_replace('str_cache_prefix', str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))), $config_content);
+        defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))));
+        $config_content = str_replace('str_cache_prefix', WGR_CACHE_PREFIX, $config_content);
 
         // tạo file
         file_put_contents(EB_MY_CACHE_CONFIG, $config_content, LOCK_EX) or die('ERROR: create my-config');
