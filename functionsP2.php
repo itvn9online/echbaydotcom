@@ -909,7 +909,7 @@ function _eb_p_link($id, $short_link = true)
         }
 
         //
-        _eb_get_static_html($strCacheFilter, $a, '', 60);
+        _eb_get_static_html($strCacheFilter, $a, '', 300);
     }
     //	echo $a . '<br>' . "\n";
 
@@ -1077,7 +1077,7 @@ function _eb_c_link($id, $taxx = 'category')
         }
         // lưu tên file vào cache nếu không phải short link
         else {
-            _eb_get_static_html($strCacheFilter, $a, '', 60);
+            _eb_get_static_html($strCacheFilter, $a, '', 300);
         }
     }
     //	echo $a . '<br>' . "\n";
@@ -1154,7 +1154,7 @@ function _eb_c_link_v1($id, $taxx = 'category')
         //			echo $id . ' -> ' . $a . '<br>' . "\n";
 
         //
-        _eb_get_static_html($strCacheFilter, $a, '', 60);
+        _eb_get_static_html($strCacheFilter, $a, '', 300);
     }
     //		echo $a . '<br>' . "\n";
 
