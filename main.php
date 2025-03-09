@@ -75,9 +75,9 @@ function ___eb_cache_display($cache_time = 60)
 		//echo "Connection to server sucessfully";
 		// Get the stored data and print it 
 		$data = $rd->get(WGR_redis_key($filename));
-		//var_dump($data);
-		//echo "Stored string in redis: " . $data;
-		//die(WGR_redis_key($f));
+		// var_dump($data);
+		// echo "Stored string in redis: " . $data;
+		// die(WGR_redis_key($f));
 		if ($data === false) {
 			return $filename;
 		}
@@ -90,7 +90,7 @@ function ___eb_cache_display($cache_time = 60)
 		 file_put_contents( $filename, '.', LOCK_EX ) or die('ERROR: create cache file');
 		 chmod($filename, 0777);
 		 */
-			//		exit();
+			// exit();
 
 			// -> tạo file và trả về tên file
 			$filew = fopen($filename, 'x+');
@@ -99,7 +99,7 @@ function ___eb_cache_display($cache_time = 60)
 			fclose($filew);
 
 			//
-			//		exit();
+			// exit();
 
 			// trả về tên file
 			return $filename;

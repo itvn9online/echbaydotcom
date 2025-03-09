@@ -355,8 +355,18 @@ function WGR_cache($f, $buffer)
         $rd->connect(REDIS_MY_HOST, REDIS_MY_PORT);
         //echo "Connection to server sucessfully";
         //set the data in redis string 
-        // echo WGR_redis_key($f);
-        return $rd->set(WGR_redis_key($f), WGR_buffer($buffer));
+        $rd_key = WGR_redis_key($f);
+        // echo $rd_key;
+        if (1 > 2) {
+            // set the data in redis string
+            $rd->set($rd_key, WGR_buffer($buffer));
+            // key will be deleted after 10 seconds
+            $rd->expire($rd_key, 3600);
+        } else {
+            // key will be deleted after 10 seconds
+            $rd->setex($rd_key, 3600, WGR_buffer($buffer));
+        }
+        return true;
     }
 
     // return file_put_contents($f, time() . '¦' . $buffer, LOCK_EX) or die('ERROR: append last main cache file');

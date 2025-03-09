@@ -35,22 +35,22 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
     if (defined('EB_REDIS_CACHE') && EB_REDIS_CACHE == true) {
         $rd = new Redis();
         $rd->connect(REDIS_MY_HOST, REDIS_MY_PORT);
-        //echo "Connection to server sucessfully";
-        //set the data in redis string 
-        // echo WGR_redis_key($f);
+        // echo "Connection to server sucessfully";
+        $rd_key = WGR_redis_key($f);
+        // echo $rd_key;
         if ($c != '') {
-            return $rd->set(WGR_redis_key($f), WGR_buffer($c));
-        } else {
-            $data = $rd->get(WGR_redis_key($f));
-            //var_dump($data);
-            //echo "Stored string in redis: " . $data;
-            //die(WGR_redis_key($f));
-            if ($data === false) {
-                return false;
+            if (1 > 2) {
+                // set the data in redis string
+                $rd->set($rd_key, $c);
+                // key will be deleted after 10 seconds
+                $rd->expire($rd_key, $cache_time);
+            } else {
+                // key will be deleted after 10 seconds
+                $rd->setex($rd_key, $cache_time, $c);
             }
-            return WGR_cache_to_content($data, $cache_time);
+            return true;
         }
-        return false;
+        return $rd->get($rd_key);
     }
 
     // lưu nội dung file nếu có
@@ -60,7 +60,6 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
     } else if (is_file($f)) {
         return WGR_cache_to_content(file_get_contents($f, 1), $cache_time);
     }
-
     return false;
 }
 
