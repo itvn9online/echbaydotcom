@@ -455,8 +455,9 @@ function WGR_display($f, $reset_time = 120)
 // tạo key cho redis cache từ file name
 function WGR_redis_key($f)
 {
+    $f = str_replace('.', '-', explode('.txt', basename($f))[0]);
     if (defined('EB_PREFIX_CACHE')) {
-        return EB_PREFIX_CACHE . str_replace('.', '-', basename($f));
+        return EB_PREFIX_CACHE . $f;
     }
-    return str_replace('.', '-', basename($f));
+    return $f;
 }
