@@ -900,7 +900,7 @@ function _eb_non_mark_seo_v1($str)
 function _eb_non_mark_seo($str)
 {
     // sử dụng hàm của wordpress
-    //return sanitize_title( $str );
+    // return sanitize_title($str);
 
     //	$str = _eb_non_mark_seo_v1( $str );
     $str = _eb_non_mark_seo_v2($str);
@@ -908,10 +908,14 @@ function _eb_non_mark_seo($str)
 
     //	$str = urlencode($str);
     // thay thế 2- thành 1-  
-    $str = preg_replace('/-+-/', "-", $str);
+    // $str = preg_replace('/-+-/', "-", $str);
+    $str = preg_replace('!\-+!', '-', $str);
 
     // cắt bỏ ký tự - ở đầu và cuối chuỗi
-    $str = preg_replace('/^\-+|\-+$/', "", $str);
+    // $str = preg_replace('/^\-+|\-+$/', "", $str);
+    $str = rtrim(ltrim($str, '-'), '-');
+    $str = rtrim(ltrim($str, '.'), '.');
+    $str = trim($str);
 
     //
     $str = _eb_text_only($str);

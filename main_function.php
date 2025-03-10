@@ -90,6 +90,7 @@ function ___eb_cache_getUrl($cache_dir = 'all')
             // echo $url . '<br>' . PHP_EOL;
 
             // 
+            $url = preg_replace('!\-+!', '-', $url);
             $url = rtrim(ltrim($url, '-'), '-');
             // echo $url . '<br>' . PHP_EOL;
         }
