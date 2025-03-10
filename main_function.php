@@ -89,10 +89,19 @@ function ___eb_cache_getUrl($cache_dir = 'all')
             ], '-', $url);
             // echo $url . '<br>' . PHP_EOL;
 
-            // 
+            // thay thế 2- thành 1-  
             $url = preg_replace('!\-+!', '-', $url);
-            $url = rtrim(ltrim($url, '-'), '-');
             // echo $url . '<br>' . PHP_EOL;
+
+            // cắt bỏ ký tự - ở đầu và cuối chuỗi
+            $url = rtrim(ltrim($url, '-'), '-');
+            $url = rtrim(ltrim($url, '.'), '.');
+            $url = trim($url);
+            // echo $url . '<br>' . PHP_EOL;
+            if ($url == '') {
+                $url = '-';
+                // echo $url . '<br>' . PHP_EOL;
+            }
         }
     }
 
@@ -456,7 +465,10 @@ function WGR_display($f, $reset_time = 120)
 // tạo key cho redis cache từ file name
 function WGR_redis_key($f)
 {
+    // dùng redis thì cắt bỏ đuôi txt cho nhẹ
+    // echo $f . '<br>' . PHP_EOL;
     $f = str_replace('.', '-', explode('.txt', basename($f))[0]);
+    // echo $f . '<br>' . PHP_EOL;
     if (defined('EB_PREFIX_CACHE')) {
         return EB_PREFIX_CACHE . $f;
     }
