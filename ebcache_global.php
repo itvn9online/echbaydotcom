@@ -1,12 +1,8 @@
 <?php
 
-//
-//$EB_THEME_CACHE = dirname(__DIR__) . '/uploads/ebcache/' . explode(':', str_replace('www.', '', $_SERVER['HTTP_HOST']))[0] . '/';
 // thư mục ebcache luôn cho vào uploads để đảm bảo lệnh tạo thư mục sẽ luôn được thực thi do permission
 $sub_dir_cache = ['uploads', 'ebcache'];
 $cache_prefix = '_';
-// bỏ cái chế độ cache theo tên miền đi -> 1 host ko nên chạy nhiều tên miền
-// $cache_prefix = str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
 
 //
 if (!function_exists('wp_is_mobile')) {
@@ -81,7 +77,10 @@ if (is_file(EB_MY_CACHE_CONFIG)) {
 }
 // khai báo mặc định hằng số nếu chưa có
 defined('EB_REDIS_CACHE') || define('EB_REDIS_CACHE', false);
-defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace('www.', '', str_replace('.', '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))));
+defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace([
+    'www.',
+    '.'
+], '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
 // thay đổi prefix dựa theo thiết bị
 define('EB_PREFIX_CACHE', WGR_CACHE_PREFIX . $cache_prefix);
 defined('REDIS_MY_HOST') || define('REDIS_MY_HOST', '127.0.0.1');
