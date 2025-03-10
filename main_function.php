@@ -77,7 +77,21 @@ function ___eb_cache_getUrl($cache_dir = 'all')
                 // $url = md5($url);
                 $url = substr($url, 0, 200);
             }
-            $url = preg_replace("/\/|\?|\&|\,|\=/", '-', $url);
+            // $url = preg_replace("/\/|\?|\&|\,|\=/", '-', $url);
+            $url = str_replace([
+                '&amp%3B',
+                '&amp;',
+                '/',
+                '?',
+                '&',
+                ',',
+                '=',
+            ], '-', $url);
+            // echo $url . '<br>' . PHP_EOL;
+
+            // 
+            $url = rtrim(ltrim($url, '-'), '-');
+            // echo $url . '<br>' . PHP_EOL;
         }
     }
 
@@ -357,14 +371,14 @@ function WGR_cache($f, $buffer)
         //set the data in redis string 
         $rd_key = WGR_redis_key($f);
         // echo $rd_key;
-        if (1 > 2) {
+        try {
+            // key will be deleted after 10 seconds
+            $rd->setex($rd_key, 3600, WGR_buffer($buffer));
+        } catch (Exception $e) {
             // set the data in redis string
             $rd->set($rd_key, WGR_buffer($buffer));
             // key will be deleted after 10 seconds
             $rd->expire($rd_key, 3600);
-        } else {
-            // key will be deleted after 10 seconds
-            $rd->setex($rd_key, 3600, WGR_buffer($buffer));
         }
         return true;
     }

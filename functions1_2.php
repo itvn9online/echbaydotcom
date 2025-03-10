@@ -39,14 +39,14 @@ function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir
         $rd_key = WGR_redis_key($f);
         // echo $rd_key;
         if ($c != '') {
-            if (1 > 2) {
+            try {
+                // key will be deleted after 10 seconds
+                $rd->setex($rd_key, $cache_time, $c);
+            } catch (Exception $e) {
                 // set the data in redis string
                 $rd->set($rd_key, $c);
                 // key will be deleted after 10 seconds
                 $rd->expire($rd_key, $cache_time);
-            } else {
-                // key will be deleted after 10 seconds
-                $rd->setex($rd_key, $cache_time, $c);
             }
             return true;
         }

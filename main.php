@@ -68,7 +68,7 @@ function ___eb_cache_display($cache_time = 60)
 
 	// nếu sử dụng redis cache thì trả về tham số này luôn
 	if (defined('EB_REDIS_CACHE') && EB_REDIS_CACHE == true) {
-		// echo WGR_redis_key($f);
+		// echo WGR_redis_key($filename);
 		// die(__FUNCTION__ . ':' . __LINE__);
 		$rd = new Redis();
 		$rd->connect(REDIS_MY_HOST, REDIS_MY_PORT);
@@ -77,7 +77,6 @@ function ___eb_cache_display($cache_time = 60)
 		$data = $rd->get(WGR_redis_key($filename));
 		// var_dump($data);
 		// echo "Stored string in redis: " . $data;
-		// die(WGR_redis_key($f));
 		if ($data === false) {
 			return $filename;
 		}
