@@ -12,7 +12,7 @@ function _eb_lay_email_tu_cache($id)
     }
     $strCacheFilter = 'tv_mail/' . $id;
 
-    $tv_email = _eb_get_static_html($strCacheFilter, '', '', 24 * 3600);
+    $tv_email = _eb_get_static_html($strCacheFilter, '', '', 3600);
 
     if ($tv_email == false) {
         $user = get_user_by('id', $id);
@@ -26,7 +26,7 @@ function _eb_lay_email_tu_cache($id)
         }
 
         //
-        _eb_get_static_html($strCacheFilter, $tv_email, '', 60);
+        _eb_get_static_html($strCacheFilter, $tv_email, '', 3600);
     }
 
     return $tv_email;

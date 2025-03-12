@@ -381,8 +381,8 @@ function EBE_remove_dir_after_update($dir, $arr, $dir_to = '')
 
 
     // cập nhật lại version trong file cache
-    //	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 60 );
-    _eb_get_static_html('github_version', file_get_contents(EB_THEME_PLUGIN_INDEX . 'VERSION', 1), '', 60);
+    //	_eb_get_static_html ( 'github_version', EBE_get_text_version( file_get_contents( EB_THEME_PLUGIN_INDEX . 'readme.txt', 1 ) ), '', 3600 );
+    _eb_get_static_html('github_version', file_get_contents(EB_THEME_PLUGIN_INDEX . 'VERSION', 1), '', 3600);
 }
 
 function EBE_remove_dir_and_file($dir)

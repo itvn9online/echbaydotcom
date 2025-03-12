@@ -32,7 +32,7 @@ if ($check_Cleanup_cache == false) {
 	}
 
 	// ép lưu cache
-	_eb_get_static_html($strCacheFilter, date('r', date_time), '', 60);
+	_eb_get_static_html($strCacheFilter, date('r', date_time), '', $_GET['time_auto_cleanup_cache']);
 
 
 	// in thông báo nếu là xóa cache thủ công

@@ -324,7 +324,7 @@ if (isset($_GET['confirm_eb_process'])) {
          */
         $version_in_github = _eb_del_line(strip_tags($version_in_github));
 
-        _eb_get_static_html($strCacheFilter, $version_in_github, '', 60);
+        _eb_get_static_html($strCacheFilter, $version_in_github, '', 24 * 3600);
     }
 
     // Phiên bản hiện tại

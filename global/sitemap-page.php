@@ -84,7 +84,7 @@ if ($get_list_sitemap == false || eb_code_tester == true) {
 	}
 
 	// lưu cache
-	_eb_get_static_html($strCacheFilter, $get_list_sitemap, '', 1);
+	_eb_get_static_html($strCacheFilter, $get_list_sitemap);
 }
 
 

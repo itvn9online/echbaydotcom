@@ -161,7 +161,7 @@ if ($get_list_sitemap == false || eb_code_tester == true) {
 	$get_list_sitemap = WGR_sitemap_fixed_old_content($__cf_row['cf_replace_content'], $get_list_sitemap);
 
 	// lưu cache
-	_eb_get_static_html($strCacheFilter, $get_list_sitemap, '', 1);
+	_eb_get_static_html($strCacheFilter, $get_list_sitemap);
 }
 
 

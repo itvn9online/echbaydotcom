@@ -10,7 +10,7 @@ if ($check_Cleanup_cache == false) {
 	EBE_tao_bang_hoa_don_cho_echbay_wp();
 	
 	// ép lưu cache
-	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
+	_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 6 * 3600 );
 	
 }
 */

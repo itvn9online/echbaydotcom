@@ -172,11 +172,11 @@ class EchBayCommerce
 
 
 
-	/*
-	* Chức năng lấy dữ liệu trong cache
-	*/
-	// https://www.smashingmagazine.com/2012/06/diy-caching-methods-wordpress/
-	function get_static_html($f, $c = '', $file_type = '', $cache_time = 0)
+	/**
+	 * Chức năng lấy dữ liệu trong cache
+	 * https://www.smashingmagazine.com/2012/06/diy-caching-methods-wordpress/
+	 */
+	function get_static_html($f, $c = '', $file_type = '', $cache_time = 120)
 	{
 		return _eb_get_static_html($f, $c, $file_type, $cache_time);
 	}
@@ -595,9 +595,7 @@ class EchBayCommerce
 
 
 
-	function setCucki($c_name, $c_value = 0, $c_time = 0, $c_path = '/')
-	{
-	}
+	function setCucki($c_name, $c_value = 0, $c_time = 0, $c_path = '/') {}
 
 	function getCucki($c_name, $default_value = '')
 	{

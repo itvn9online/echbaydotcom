@@ -278,7 +278,7 @@ if ($rss_content == false || isset($_GET['wgr_real_time'])) {
 
 
 	// ép lưu cache
-	_eb_get_static_html($rssCacheFilter, $rss_content, '', 60);
+	_eb_get_static_html($rssCacheFilter, $rss_content, '', 300);
 }
 
 

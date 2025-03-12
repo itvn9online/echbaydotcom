@@ -251,7 +251,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 //			_eb_create_page( 'sitemap', 'Sitemap' );
 			
 			// ép lưu cache
-			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
+			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 3600 );
 		}
 		*/
 
@@ -308,7 +308,7 @@ if (mtv_id > 0 || $__eb_cache_time > $time_for_update_cache) {
 			
 			
 			// Lưu thời gian dọn log
-			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 60 );
+			_eb_get_static_html ( $strCacheFilter, date( 'r', date_time ), '', 24 * 3600 );
 		}
 		*/
 

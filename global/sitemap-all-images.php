@@ -11,12 +11,12 @@ include EB_THEME_PLUGIN_INDEX . 'global/sitemap_function.php';
 /*
  * Danh sách post (sản phẩm)
  */
-$strCacheFilter = sitemapCreateStrCacheFilter( basename( __FILE__, '.php' ) );
-if ( $time_for_relload_sitemap > 0 ) {
-    $get_list_sitemap = _eb_get_static_html( $strCacheFilter, '', '', $time_for_relload_sitemap );
+$strCacheFilter = sitemapCreateStrCacheFilter(basename(__FILE__, '.php'));
+if ($time_for_relload_sitemap > 0) {
+    $get_list_sitemap = _eb_get_static_html($strCacheFilter, '', '', $time_for_relload_sitemap);
 }
 
-if ( $get_list_sitemap == false || eb_code_tester == true ) {
+if ($get_list_sitemap == false || eb_code_tester == true) {
 
 
     //
@@ -30,9 +30,9 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
     // v3
 
     // phân trang
-    $trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
+    $trang = isset($_GET['trang']) ? (int)$_GET['trang'] : 1;
 
-    $sql = _eb_q( "SELECT ID
+    $sql = _eb_q("SELECT ID
 	FROM
 		`" . wp_posts . "`
 	WHERE
@@ -44,27 +44,27 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 	GROUP BY
 		post_parent
 	ORDER BY
-		ID ASC" );
-    $totalThread = count( $sql );
+		ID ASC");
+    $totalThread = count($sql);
     //	echo 'totalThread --> ' . $totalThread . '<br>' . "\n";
     $threadInPage = $limit_post_get;
     //	$threadInPage = 10;
 
-    $totalPage = ceil( $totalThread / $threadInPage );
-    if ( $totalPage < 1 ) {
+    $totalPage = ceil($totalThread / $threadInPage);
+    if ($totalPage < 1) {
         $totalPage = 1;
     }
 
-    if ( $trang > $totalPage ) {
+    if ($trang > $totalPage) {
         $trang = $totalPage;
-    } else if ( $trang < 1 ) {
+    } else if ($trang < 1) {
         $trang = 1;
     }
 
-    $offset = ( $trang - 1 ) * $threadInPage;
+    $offset = ($trang - 1) * $threadInPage;
 
     //
-    $sql = _eb_q( "SELECT post_parent
+    $sql = _eb_q("SELECT post_parent
 	FROM
 		`" . wp_posts . "`
 	WHERE
@@ -77,12 +77,12 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 		post_parent
 	ORDER BY
 		ID ASC
-	LIMIT " . $offset . ", " . $threadInPage );
+	LIMIT " . $offset . ", " . $threadInPage);
     //	print_r( $sql );
     //	exit();
 
-    foreach ( $sql as $v ) {
-        $strsql = _eb_q( "SELECT *
+    foreach ($sql as $v) {
+        $strsql = _eb_q("SELECT *
 		FROM
 			`" . wp_posts . "`
 		WHERE
@@ -91,16 +91,16 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
 			AND post_parent = " . $v->post_parent . "
 		ORDER BY
 			ID ASC
-		LIMIT 0, 10" );
+		LIMIT 0, 10");
 
         //
         $get_list_img_sitemap = '';
-        foreach ( $strsql as $v2 ) {
-            $img = str_replace( ABSPATH, web_link, $v2->guid );
+        foreach ($strsql as $v2) {
+            $img = str_replace(ABSPATH, web_link, $v2->guid);
 
             $name = $v2->post_excerpt;
-            if ( $name == '' && $v2->post_title != '' ) {
-                $name = str_replace( '-', ' ', $v2->post_title );
+            if ($name == '' && $v2->post_title != '') {
+                $name = str_replace('-', ' ', $v2->post_title);
             }
 
             //
@@ -114,24 +114,21 @@ if ( $get_list_sitemap == false || eb_code_tester == true ) {
         // lấy tất cả các ảnh không có parent cho về trang chủ
         $get_list_sitemap .= '
 <url>
-<loc><![CDATA[' . _eb_p_link( $v->post_parent ) . ']]></loc>' . $get_list_img_sitemap . '
+<loc><![CDATA[' . _eb_p_link($v->post_parent) . ']]></loc>' . $get_list_img_sitemap . '
 </url>';
-
     }
 
 
     //
-    $get_list_sitemap = trim( $get_list_sitemap );
+    $get_list_sitemap = trim($get_list_sitemap);
 
     //
-    if ( $__cf_row[ 'cf_replace_content' ] != '' ) {
-        $get_list_sitemap = WGR_replace_for_all_content( $__cf_row[ 'cf_replace_content' ], $get_list_sitemap );
+    if ($__cf_row['cf_replace_content'] != '') {
+        $get_list_sitemap = WGR_replace_for_all_content($__cf_row['cf_replace_content'], $get_list_sitemap);
     }
 
     // lưu cache
-    _eb_get_static_html( $strCacheFilter, $get_list_sitemap, '', 1 );
-
-
+    _eb_get_static_html($strCacheFilter, $get_list_sitemap);
 }
 
 

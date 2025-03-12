@@ -5,7 +5,7 @@
  */
 
 // https://www.smashingmagazine.com/2012/06/diy-caching-methods-wordpress/
-function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 0, $dir_cache = EB_THEME_CACHE)
+function _eb_get_static_html($f, $c = '', $file_type = '', $cache_time = 120, $dir_cache = EB_THEME_CACHE)
 {
     global $__cf_row;
 
