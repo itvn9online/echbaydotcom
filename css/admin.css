@@ -2152,11 +2152,11 @@ body.widgets-php #adminmenuwrap {
 }
 
 /* */
-.WGR-post-edit-search-taxnomy {
+.WGR-post-edit-search-taxonomy {
     padding: 10px 0 0 10px;
 }
 
-.WGR-post-edit-search-taxnomy textarea,
-.WGR-post-edit-search-taxnomy input {
+.WGR-post-edit-search-taxonomy textarea,
+.WGR-post-edit-search-taxonomy input {
     width: 96%;
 }

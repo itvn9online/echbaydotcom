@@ -7,10 +7,10 @@ function EBE_get_big_banner($limit = 5, $option = array(), $op = array())
     $html = EBE_get_page_template('ads_node');
 
     // tạo sẵn bg -> ưu tiên load ảnh mobile trước cho nó nhẹ, tạo hình cho nhanh
-    //	$html = str_replace( '{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html );
+    // $html = str_replace('{tmp.other_attr}', ' style="background-image:url({tmp.trv_table_img});"', $html);
     $html = str_replace('{tmp.other_attr}', ' style="background-image:url({tmp.trv_mobile_img});"', $html);
 
-    //	print_r($option);
+    // print_r($option);
 
     //
     if (!isset($op['set_size']) || $op['set_size'] == '') {
@@ -60,7 +60,7 @@ function _eb_load_post_obj($posts_per_page, $_eb_query = array())
     //
     $arr['post_type'] = 'post';
     $arr['posts_per_page'] = $posts_per_page;
-    //	$arr['orderby'] = 'menu_order';
+    // $arr['orderby'] = 'menu_order';
     $arr['orderby'] = 'menu_order ID';
     $arr['order'] = 'DESC';
     $arr['post_status'] = 'publish';
@@ -84,7 +84,7 @@ function _eb_load_post_obj($posts_per_page, $_eb_query = array())
     return $results;
 }
 
-/*
+/**
  * Load danh sách đơn hàng
  */
 // tạo đơn hàng
@@ -226,7 +226,7 @@ function _eb_load_order_v1($posts_per_page = 68, $_eb_query = array())
     */
 }
 
-/*
+/**
  * https://codex.wordpress.org/Class_Reference/WP_Query
  * posts_per_page: số lượng bài viết cần lấy
  * _eb_query: gán giá trị để thực thi wordpres query
@@ -357,7 +357,7 @@ function _eb_checkPostServerClient()
     }
 
 
-    /*
+    /**
      * xử lý an toàn cho chuỗi
      */
 
@@ -1028,7 +1028,7 @@ function _eb_c_link($id, $taxx = 'category')
 
             //
             if (isset($a->errors) || $a == '') {
-                //				$a = '#';
+                // $a = '#';
 
                 // trả về link lỗi luôn, không lưu cache
                 return _eb_c_short_link($id, $taxx);
@@ -1047,7 +1047,7 @@ function _eb_c_link($id, $taxx = 'category')
                     $category_base = 'category_base';
                 }
                 $category_base = get_option($category_base);
-                //				$category_base = _eb_get_option($category_base);
+                // $category_base = _eb_get_option($category_base);
 
                 if ($category_base == '.') {
                     $category_base = '';
@@ -1067,9 +1067,9 @@ function _eb_c_link($id, $taxx = 'category')
             else {
                 $a = web_link . $taxx . '/' . $term->slug;
             }
-            //			echo $a . '<br>' . "\n";
+            // echo $a . '<br>' . "\n";
 
-            //			return $a;
+            // return $a;
         }
 
         // kiểm tra lại lần nữa
@@ -1080,7 +1080,7 @@ function _eb_c_link($id, $taxx = 'category')
             _eb_get_static_html($strCacheFilter, $a, '', 300);
         }
     }
-    //	echo $a . '<br>' . "\n";
+    // echo $a . '<br>' . "\n";
 
     //
     $arr_cache_for_get_cat_url[$id] = $a;
@@ -1107,12 +1107,12 @@ function _eb_c_link_v1($id, $taxx = 'category')
 
     $strCacheFilter = 'cat_link' . $id;
     $a = _eb_get_static_html($strCacheFilter, '', '', eb_default_cache_time);
-    //		$a = _eb_get_static_html ( $strCacheFilter, '', '', 5 );
+    // $a = _eb_get_static_html($strCacheFilter, '', '', 5);
     if ($a == false) {
 
         //
         $a = get_category_link($id);
-        //		$a = get_term_link( get_term( $id, $taxx ), $taxx );
+        // $a = get_term_link(get_term($id, $taxx), $taxx);
 
         // nếu trùng với short link -> không ghi cache nữa
         /*
@@ -1123,14 +1123,14 @@ function _eb_c_link_v1($id, $taxx = 'category')
 
         //
         if (isset($a->errors) || $a == '') {
-            //			print_r($a);
+            // print_r($a);
 
-            //			$tem = get_term_by( 'id', $id, EB_BLOG_POST_LINK );
+            // $tem = get_term_by('id', $id, EB_BLOG_POST_LINK);
             $tem = get_term($id, EB_BLOG_POST_LINK);
 
             // lấy theo blog
             $a = get_term_link($tem, EB_BLOG_POST_LINK);
-            //				$a = get_term_link( get_term( $id, EB_BLOG_POST_LINK ), EB_BLOG_POST_LINK );
+            // $a = get_term_link(get_term($id, EB_BLOG_POST_LINK), EB_BLOG_POST_LINK);
 
             // lấy theo post_options
             if (isset($a->errors) || $a == '') {
@@ -1151,12 +1151,12 @@ function _eb_c_link_v1($id, $taxx = 'category')
         else {
             $a = str_replace('/./', '/', $a);
         }
-        //			echo $id . ' -> ' . $a . '<br>' . "\n";
+        // echo $id . ' -> ' . $a . '<br>' . "\n";
 
         //
         _eb_get_static_html($strCacheFilter, $a, '', 300);
     }
-    //		echo $a . '<br>' . "\n";
+    // echo $a . '<br>' . "\n";
 
     //
     $arr_cache_for_get_cat_url[$id] = $a;

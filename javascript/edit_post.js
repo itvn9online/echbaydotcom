@@ -1919,9 +1919,9 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 	// thêm ô tìm kiếm
 	let input_id = "WGR_search_taxonomy_" + tax_id;
 	jQuery("#" + tax + " .postbox-header").after(
-		'<div class="WGR-post-edit-search-taxnomy"><textarea placeholder="Tìm kiếm nhanh, mỗi từ khóa cách nhau bởi dấu xuống dòng" id="' +
+		'<div class="WGR-post-edit-search-taxonomy"><textarea placeholder="Tìm kiếm nhanh, mỗi từ khóa cách nhau bởi dấu xuống dòng" id="' +
 			input_id +
-			'" rows="3"></textarea></div>'
+			'" rows="2"></textarea></div>'
 	);
 
 	//
