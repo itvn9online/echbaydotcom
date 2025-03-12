@@ -1732,7 +1732,11 @@ function WGR_run_for_admin_edit_post() {
 		// tạo các quick menu cho phần edit post
 		let str = "";
 		jQuery(
-			"#normal-sortables .postbox, #advanced-sortables .postbox, #side-sortables .postbox"
+			[
+				"#normal-sortables .postbox",
+				"#advanced-sortables .postbox",
+				// "#side-sortables .postbox",
+			].join(",")
 		).each(function () {
 			let a =
 					jQuery(".postbox-header h2:first", this).html() ||
@@ -1740,7 +1744,12 @@ function WGR_run_for_admin_edit_post() {
 					"",
 				jd = jQuery(this).attr("id") || "",
 				cl = jQuery(this).attr("class") || "";
-			//			console.log(a);
+			a = jQuery.trim(a.split("<")[0]);
+			if (a == "") {
+				a = jQuery(".postbox-header h2:first span", this).html() || "";
+				a = jQuery.trim(a.split("<")[0]);
+			}
+			// console.log(a);
 
 			//
 			if (
@@ -1898,7 +1907,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 	// lượng dữ liệu nhiều chút thì mới hỗ trợ tìm kiếm
 	if (
 		jQuery("#" + tax).length === 0 ||
-		jQuery("#" + tax_id + "checklist li").length < 10
+		jQuery("#" + tax_id + "checklist li").length < 20
 	) {
 		return false;
 	}
@@ -1912,7 +1921,7 @@ function WGR_find_taxonomy_for_edit(tax_id) {
 	jQuery("#" + tax + " .postbox-header").after(
 		'<div class="WGR-post-edit-search-taxnomy"><textarea placeholder="Tìm kiếm nhanh, mỗi từ khóa cách nhau bởi dấu xuống dòng" id="' +
 			input_id +
-			'" class="fix-textarea-height"></textarea></div>'
+			'" rows="3"></textarea></div>'
 	);
 
 	//
