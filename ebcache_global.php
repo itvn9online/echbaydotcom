@@ -77,10 +77,10 @@ if (is_file(EB_MY_CACHE_CONFIG)) {
 }
 // khai báo mặc định hằng số nếu chưa có
 defined('EB_REDIS_CACHE') || define('EB_REDIS_CACHE', false);
-defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace([
+defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', strtolower(str_replace([
     'www.',
     '.'
-], '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
+], '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))));
 // thay đổi prefix dựa theo thiết bị
 define('EB_PREFIX_CACHE', WGR_CACHE_PREFIX . $cache_prefix);
 defined('REDIS_MY_HOST') || define('REDIS_MY_HOST', '127.0.0.1');

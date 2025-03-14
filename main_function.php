@@ -352,10 +352,10 @@ function WGR_cache($f, $buffer)
         }
         $config_content = str_replace('enable_redis', $enable_redis, $config_content);
         // gán prefix cho cache luôn
-        defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', str_replace([
+        defined('WGR_CACHE_PREFIX') || define('WGR_CACHE_PREFIX', strtolower(str_replace([
             'www.',
             '.'
-        ], '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0])));
+        ], '', str_replace('-', '_', explode(':', $_SERVER['HTTP_HOST'])[0]))));
         $config_content = str_replace('str_cache_prefix', WGR_CACHE_PREFIX, $config_content);
 
         // tạo file
