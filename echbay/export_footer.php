@@ -1,9 +1,11 @@
-<p class="small">* Bấm Ctrl + A rồi copy toàn bộ trang này cho vào file Excel hoặc Google trang tính.</p>
-<p class="bold"><span class="cur click-change-css-table">Thêm border cho table để xem cho dễ</span></p>
-<p class="bold"><span class="cur click-create-col-for-excel">Tạo cột để cho vào file google sheet (backup)</span></p>
-<table id="col_for_google_sheet" cellpadding="0" cellspacing="0" border="0">
-	<tr></tr>
-</table>
+<div style="display: none;">
+	<p class="small">* Bấm Ctrl + A rồi copy toàn bộ trang này cho vào file Excel hoặc Google trang tính.</p>
+	<p class="bold"><span class="cur click-change-css-table">Thêm border cho table để xem cho dễ</span></p>
+	<p class="bold"><span class="cur click-create-col-for-excel">Tạo cột để cho vào file google sheet (backup)</span></p>
+	<table id="col_for_google_sheet" cellpadding="0" cellspacing="0" border="0">
+		<tr></tr>
+	</table>
+</div>
 <?php
 
 

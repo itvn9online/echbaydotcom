@@ -258,9 +258,10 @@ function function_rieng_theo_domain() {
 
 		// nếu vẫn không có -> thử lấy trong nội dung
 		if (f.t_img.value == "") {
-			//			f.t_img.value = jQuery('#leech_data_fix_content img:first').attr('data-src') || '';
-			f.t_img.value = firts_img_in_content;
-			//			console.log(jQuery('#leech_data_fix_content img:first').attr('data-src'));
+			f.t_img.value =
+				// jQuery("#leech_data_fix_content img:first").attr("data-src") || "";
+				f.t_img.value = firts_img_in_content;
+			// console.log(jQuery("#leech_data_fix_content img:first").attr("data-src"));
 		}
 	}
 
@@ -269,6 +270,7 @@ function function_rieng_theo_domain() {
 		console.log("custom_func_leech_data_by_theme running...");
 		custom_func_leech_data_by_theme(f);
 	}
+	console.log("f.t_img.value", f.t_img.value);
 
 	// gallery kiểu mới
 	if (f.t_gallery.value != "") {
@@ -278,6 +280,7 @@ function function_rieng_theo_domain() {
 			a[i] = g_func.trim(a[i]);
 
 			if (a[i] != "") {
+				console.log(a[i]);
 				if (f.t_img.value == "") {
 					f.t_img.value = a[i];
 				}
@@ -292,6 +295,7 @@ function function_rieng_theo_domain() {
 	//
 	if (dog("download_img_to_my_host").checked == true) {
 		// download ảnh đại diện
+		console.log(Math.random());
 		f.t_img.value = func_download_img_to_my_host(
 			f.t_img.value,
 			current_img_domain
@@ -302,12 +306,12 @@ function function_rieng_theo_domain() {
 			"leech_data_fix_content",
 			f.t_noidung.value.replace(/\ssrc=/gi, " download-src=")
 		);
-		//		console.log( jQuery('#leech_data_fix_content').html() );
+		// console.log(jQuery("#leech_data_fix_content").html());
 
 		//
 		if (jQuery("#leech_data_fix_content img").length > 0) {
 			jQuery("#leech_data_fix_content img").addClass("download-img-to-here");
-			//			console.log( jQuery('#leech_data_fix_content').html() );
+			// console.log(jQuery("#leech_data_fix_content").html());
 
 			func_download_img_content_to_my_host();
 		} else {
@@ -415,6 +419,7 @@ function func_download_img_content_to_my_host() {
 		.removeClass("download-img-to-here");
 
 	// bắt đầu download ảnh về host
+	console.log(Math.random());
 	func_download_img_to_my_host(img, dm, file_name);
 
 	// lấy tiếp ảnh tiếp theo
@@ -612,6 +617,11 @@ function check_category_by_auto_slug(a, alert_now) {
 function full_url_for_img_src(a) {
 	//console.log(a);
 	if (a.includes("//") == false) {
+		if (a.includes("data:image/") == true) {
+			return "";
+		}
+
+		//
 		if (a.substr(0, 1) == "/") {
 			a = a.substr(1);
 		}
@@ -753,8 +763,8 @@ function leech_data_content(url, id, callBack) {
 		*/
 
 			// đổi iframe -> video youtube
-			//		msg = msg.replace(/\sdata-src=/gi, " data-old-src=");
-			//		msg = msg.replace(/\ssrc=/gi, " data-src=");
+			// msg = msg.replace(/\sdata-src=/gi, " data-old-src=");
+			// msg = msg.replace(/\ssrc=/gi, " data-src=");
 
 			// đổi URL ảnh
 			msg = msg.replace(/\sdata-src=/gi, " data-old-src=");
@@ -921,7 +931,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 			function () {
 				//
 				let f = document.frm_leech_data;
-				//			let img_tags = jQuery('#details_img').val() || '';
+				// let img_tags = jQuery('#details_img').val() || '';
 
 				// chức năng riêng của mỗi domain, chạy trước khi xử lý dữ liệu
 				if (typeof before_func_leech_data_by_theme == "function") {
@@ -993,7 +1003,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 
 				//
 				for (let x in arr) {
-					//				console.log( arr[x] );
+					// console.log(arr[x]);
 					let a = "";
 
 					//
@@ -1008,6 +1018,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					if (arr[x].get != "") {
 						//
 						arr[x].get = arr[x].get.replace(/\s\s/g, " ").replace(/\s\s/g, " ");
+						console.log(x, arr[x].get, arr[x].youtube, arr[x].img);
 
 						// nếu là youtube video
 						if (typeof arr[x].youtube != "undefined") {
@@ -1037,9 +1048,9 @@ function func_leech_data_lay_chi_tiet(push_url) {
 									console.log(get_attr);
 
 									if (get_attr.length > 1) {
-										//									console.log(get_attr[0]);
-										//									console.log(get_attr[1]);
-										//									console.log(get_attr[1].split(']')[0]);
+										// console.log(get_attr[0]);
+										// console.log(get_attr[1]);
+										// console.log(get_attr[1].split(']')[0]);
 
 										if (str == "") {
 											str =
@@ -1050,7 +1061,10 @@ function func_leech_data_lay_chi_tiet(push_url) {
 										if (str == "") {
 											str =
 												jQuery(get_attr[0]).attr("data-original") ||
+												jQuery(get_attr[0]).attr("data-lazy-src") ||
 												jQuery(get_attr[0]).attr("data-old-src") ||
+												jQuery(get_attr[0]).attr("data-image") ||
+												jQuery(get_attr[0]).attr("data-lazy") ||
 												jQuery(get_attr[0]).attr("data-src") ||
 												jQuery(get_attr[0]).attr("src") ||
 												"";
@@ -1059,7 +1073,9 @@ function func_leech_data_lay_chi_tiet(push_url) {
 
 									//
 									if (str != "") {
+										console.log(str);
 										a += full_url_for_img_src(str) + "\n";
+										console.log(str);
 									}
 								}
 							} else {
@@ -1067,7 +1083,10 @@ function func_leech_data_lay_chi_tiet(push_url) {
 								jQuery(arr_get_img).each(function () {
 									let str =
 										jQuery(this).attr("data-original") ||
+										jQuery(this).attr("data-lazy-src") ||
 										jQuery(this).attr("data-old-src") ||
+										jQuery(this).attr("data-image") ||
+										jQuery(this).attr("data-lazy") ||
 										jQuery(this).attr("data-src") ||
 										jQuery(this).attr("src") ||
 										"";
@@ -1470,7 +1489,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					return false;
 				}
 
-				//			if ( check_lech_data_submit() == false ) return false;
+				// if (check_lech_data_submit() == false) return false;
 
 				//
 				if (
@@ -1483,8 +1502,8 @@ function func_leech_data_lay_chi_tiet(push_url) {
 		);
 	} else {
 		jQuery(".click-submit-url-categories").click();
-		//		jQuery('#categories_url').change();
-		//		a_lert('Không tìm thấy dữ liệu nguồn');
+		// jQuery('#categories_url').change();
+		// a_lert('Không tìm thấy dữ liệu nguồn');
 	}
 }
 
@@ -1502,7 +1521,7 @@ function check_lech_data_submit(_alert) {
 		f.t_ant.value.toString() == "0" &&
 		jQuery.trim(jQuery("#details_category").val() || "") == ""
 	) {
-		//		console.log( f.t_ant.value );
+		// console.log(f.t_ant.value);
 
 		if (typeof _alert != "undefined" && _alert == "no") {
 		} else {
@@ -1525,7 +1544,7 @@ function check_lech_data_submit(_alert) {
         }, 5000);
         */
 
-		//		return 2;
+		// return 2;
 	}
 
 	//
@@ -1903,6 +1922,7 @@ function WGR_leech_data_after_load_iframe() {
 						jQuery(this).attr("href") || jQuery("a", this).attr("href") || "",
 					img =
 						jQuery("img", this).attr("data-original") ||
+						jQuery("img", this).attr("data-lazy-src") ||
 						jQuery("img", this).attr("data-src") ||
 						jQuery("img", this).attr("src") ||
 						jQuery(this).attr("data-img") ||
@@ -2381,6 +2401,7 @@ jQuery(".click-submit-url-categories")
 							"",
 						img =
 							jQuery("img", this).attr("data-original") ||
+							jQuery("img", this).attr("data-lazy-src") ||
 							jQuery("img", this).attr("data-src") ||
 							jQuery("img", this).attr("src") ||
 							jQuery(this).attr("data-img") ||

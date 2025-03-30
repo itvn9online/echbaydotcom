@@ -243,7 +243,7 @@ function EBE_config_load_top_footer_include($type, $file_type = '.php', $in_them
 			$warning_file_format = '';
 
 			if ($k2 == '') {
-				//				$str_for_return .= '<hr>';
+				// $str_for_return .= '<hr>';
 				$val = '';
 				$text = '[' . $v2 . ']';
 			} else {
@@ -255,7 +255,7 @@ function EBE_config_load_top_footer_include($type, $file_type = '.php', $in_them
 				if ($for_domain != '') {
 					$for_domain = strtolower(str_replace('www.', '', $for_domain));
 				}
-				//				echo $for_domain . '<br>' . "\n";
+				// echo $for_domain . '<br>' . "\n";
 
 				//
 				$theme_description = EBE_config_theme_load_file_tag($file_tag, 'Description');
