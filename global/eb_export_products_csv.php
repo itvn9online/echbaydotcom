@@ -65,7 +65,7 @@ if ($__cf_row['cf_current_price_before'] == 1) {
 		//
 		echo '
 <tr>
-	<td>10' . $v->ID . '</td>
+	<td>' . $v->ID . '</td>
 	<td>' . $v->post_title . '</td>
 	<td>' . $trv_img . '</td>
 	<td>' . $price . '</td>

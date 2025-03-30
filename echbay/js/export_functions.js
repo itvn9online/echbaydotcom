@@ -214,24 +214,24 @@ jQuery(document).ready(function () {
 			return false;
 		}
 
-		//		console.log( c );
+		// console.log(c);
 		// -> chiều cao của body -> thêm 10 đơn vị để dự phòng
 		c = c * 16 + 10;
-		//		console.log( c );
-		//		console.log( jQuery('#headerTable').height() );
+		// console.log(c);
+		// console.log(jQuery("#headerTable").height());
 
 		//
 		for (var i = 0; i < 150; i++) {
 			if (jQuery("#headerTable").height() > c) {
-				//				console.log( jQuery('#headerTable').height() );
+				// console.log(jQuery("#headerTable").height());
 				jQuery("#headerTable").width(100 + i * 1 + "%");
 			} else {
 				// thêm lần dữ phòng nữa
 				jQuery("#headerTable")
 					.width(110 + i * 1 + "%")
 					.addClass("pd");
-				//				console.log( i );
-				//				console.log( jQuery('#headerTable').height() );
+				// console.log(i);
+				// console.log(jQuery("#headerTable").height());
 
 				//
 				jQuery("body").addClass("done");
@@ -271,7 +271,7 @@ jQuery(".click-create-col-for-excel").click(function () {
 				jQuery("#col_for_google_sheet tr").append("<td>url</td>");
 			}
 		});
-		//		jQuery('#col_for_google_sheet tr').append('<td>domain</td>');
+		// jQuery("#col_for_google_sheet tr").append("<td>domain</td>");
 
 		// xóa td đầu tiên -> không dùng stt
 		jQuery("#col_for_google_sheet td:first").remove();
