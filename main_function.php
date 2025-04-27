@@ -54,6 +54,8 @@ function ___eb_cache_getUrl($cache_dir = 'all')
                 'fbclid=',
                 'gclid=',
                 'fb_comment_id=',
+                'add_to_wishlist=',
+                '_wpnonce=',
                 'utm_',
                 'v',
             );

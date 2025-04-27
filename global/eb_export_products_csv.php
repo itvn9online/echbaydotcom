@@ -70,7 +70,7 @@ if ($__cf_row['cf_current_price_before'] == 1) {
 	<td>' . $trv_img . '</td>
 	<td>' . $price . '</td>
 	<td>' . $new_price . '</td>
-	<td>' . $cats[0]->name . '</td>
+	<td>' . str_replace(', ', ' - ', $cats[0]->name) . '</td>
 	<td>' . htmlspecialchars(nl2br($v->post_excerpt)) . '</td>
 	<td>' . htmlspecialchars($v->post_content) . '</td>
 </tr>';

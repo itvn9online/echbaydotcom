@@ -1348,7 +1348,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					g_func.strip_tags(f.t_new_2category.value)
 				);
 
-				/*
+				/**
 				 * chỉnh lại phần nội dung
 				 */
 				// xóa bỏ các dấu cách
@@ -1358,7 +1358,7 @@ function func_leech_data_lay_chi_tiet(push_url) {
 					.replace(/\s+\s/g, " ");
 
 				dog("leech_data_fix_content", f.t_noidung.value);
-				//			console.log(jQuery('#leech_data_fix_content').html());
+				// console.log(jQuery('#leech_data_fix_content').html());
 
 				// URL
 				if (dog("loai_bo_a_trong_noi_dung").checked == true) {
@@ -1380,34 +1380,48 @@ function func_leech_data_lay_chi_tiet(push_url) {
 				}
 
 				// xóa thẻ H1 có trong nội dung đi
-				jQuery("#leech_data_fix_content h1").remove();
+				jQuery(
+					"#leech_data_fix_content h1, #leech_data_fix_content noscript"
+				).remove();
 
 				// hình ảnh
 				firts_img_in_content = "";
-				jQuery("#leech_data_fix_content img").each(function () {
-					let a = jQuery(this).attr("data-src") || "";
-					//				console.log(a);
+				jQuery("#leech_data_fix_content img")
+					.removeClass("lazyload")
+					.each(function () {
+						let a =
+							jQuery(this).attr("data-old-src") ||
+							jQuery(this).attr("data-src") ||
+							jQuery(this).attr("src") ||
+							"";
+						console.log(a);
 
-					// kiểm tra URL ảnh có link tuyệt đối chưa
-					if (a != "" && a.includes("//") == false) {
-						if (a.substr(0, 1) == "/") {
-							a = a.substr(1);
+						// kiểm tra URL ảnh có link tuyệt đối chưa
+						if (a != "") {
+							if (a.includes("//") == false) {
+								if (a.substr(0, 1) == "/") {
+									a = a.substr(1);
+								}
+								a = source_url + a;
+								console.log(a);
+							}
+
+							//
+							if (firts_img_in_content == "") {
+								firts_img_in_content = a;
+							}
+
+							// chưa có thì gán thêm vào
+							jQuery(this)
+								.removeAttr("data-old-src")
+								.removeAttr("data-src")
+								.attr({
+									// "data-src": a,
+									src: a,
+								});
 						}
-						a = source_url + a;
-						//					console.log(a);
-
-						//
-						if (firts_img_in_content == "") {
-							firts_img_in_content = a;
-						}
-
-						// chưa có thì gán thêm vào
-						jQuery(this).attr({
-							"data-src": a,
-						});
-					}
-				});
-				//			console.log(jQuery('#leech_data_fix_content').html());
+					});
+				console.log(jQuery("#leech_data_fix_content").html());
 
 				//
 				f.t_noidung.value = jQuery("#leech_data_fix_content").html();
@@ -1415,14 +1429,14 @@ function func_leech_data_lay_chi_tiet(push_url) {
 				//
 				f.t_noidung.value = f.t_noidung.value.replace(/\n|\r|\t/g, " ");
 				f.t_noidung.value = f.t_noidung.value.replace(/\sdata-src=/gi, " src=");
-				//			jQuery('form[name=\'frm_leech_data\'] textarea[name=\'t_noidung\']').change();
-				//			return false;
+				// jQuery('form[name=\'frm_leech_data\'] textarea[name=\'t_noidung\']').change();
+				// return false;
 
-				/*
+				/**
 				 * chỉnh lại phần nội dung
 				 */
 				dog("leech_data_fix_content", f.t_dieukien.value);
-				//			console.log(jQuery('#leech_data_fix_content').html());
+				// console.log(jQuery('#leech_data_fix_content').html());
 
 				// URL
 				/*
@@ -1830,12 +1844,11 @@ function EBE_auto_save_domain_cookie() {
 function create_list_post_for_crawl(a, img) {
 	// full url nếu chưa có
 	a = full_url_for_img_src(a);
-	//	console.log( a );
 
 	if (img != "") {
 		img = full_url_for_img_src(img);
 	}
-	//	console.log( img );
+	console.log(a, img);
 
 	// mặc định là check theo URL
 	let check_id = a;
@@ -1923,6 +1936,7 @@ function WGR_leech_data_after_load_iframe() {
 					img =
 						jQuery("img", this).attr("data-original") ||
 						jQuery("img", this).attr("data-lazy-src") ||
+						jQuery("img", this).attr("data-old-src") ||
 						jQuery("img", this).attr("data-src") ||
 						jQuery("img", this).attr("src") ||
 						jQuery(this).attr("data-img") ||
@@ -2402,6 +2416,7 @@ jQuery(".click-submit-url-categories")
 						img =
 							jQuery("img", this).attr("data-original") ||
 							jQuery("img", this).attr("data-lazy-src") ||
+							jQuery("img", this).attr("data-old-src") ||
 							jQuery("img", this).attr("data-src") ||
 							jQuery("img", this).attr("src") ||
 							jQuery(this).attr("data-img") ||

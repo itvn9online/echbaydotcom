@@ -959,28 +959,28 @@ function eb_change_product_query($query)
      */
 
     switch ($current_order) {
-            // xem nhiều -> lượt xem giảm dần
+        // xem nhiều -> lượt xem giảm dần
         case "view":
             $query->set('meta_key', '_eb_product_views');
             $query->set('orderby', 'meta_value_num');
             //$query->set( 'order', 'DESC' );
             break;
 
-            // giá tăng dần
+        // giá tăng dần
         case "price_up":
             $query->set('meta_key', '_eb_product_price');
             $query->set('orderby', 'meta_value_num');
             $query->set('order', 'ASC');
             break;
 
-            // giá giảm dần
+        // giá giảm dần
         case "price_down":
             $query->set('meta_key', '_eb_product_price');
             $query->set('orderby', 'meta_value_num');
             //$query->set( 'order', 'DESC' );
             break;
 
-            // thêm chức năng để có thể order theo thuộc tính meta bất kỳ
+        // thêm chức năng để có thể order theo thuộc tính meta bất kỳ
         case "meta_key":
             if (isset($_GET['by_key']) && trim($_GET['by_key']) != '') {
                 //print_r($_GET);
@@ -996,32 +996,32 @@ function eb_change_product_query($query)
             }
             break;
 
-            // tên sản phẩm từ A-Z
+        // tên sản phẩm từ A-Z
         case "az":
             $query->set('orderby', 'name');
             $query->set('order', 'ASC');
             break;
 
-            // Tên sản phẩm từ Z-A
+        // Tên sản phẩm từ Z-A
         case "za":
             $query->set('orderby', 'name');
             //$query->set( 'order', 'DESC' );
             break;
 
-            // đây là chỉ số sắp xếp riêng của wordpress
+        // đây là chỉ số sắp xếp riêng của wordpress
         case "title":
         case "date":
             break;
 
-            // mặc định sắp xếp theo STT giảm dần
+        // mặc định sắp xếp theo STT giảm dần
         default:
             $query->set('orderby', 'menu_order ID');
-            //$query->set( 'order', 'DESC' );
+            // $query->set('order', 'DESC');
             break;
     }
 
     //
-    //print_r( $query );
+    // print_r($query);
     return $query;
     //return;
 }
