@@ -2102,7 +2102,10 @@ function EBE_set_default_excerpt_for_seo() {
 }
 
 function EBE_set_default_title_for_seo() {
-	if (dog("postexcerpt-hide") == null) {
+	if (1 < 2) {
+		// tạm thời không dùng tính năng này
+		return false;
+	} else if (dog("postexcerpt-hide") == null) {
 		return false;
 	}
 

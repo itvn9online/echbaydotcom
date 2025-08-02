@@ -175,7 +175,7 @@ function EBE_show_log($m)
 }
 
 // https://codex.wordpress.org/Plugin_API/Action_Reference/phpmailer_init
-//function EBE_configure_smtp(PHPMailer $phpmailer) {
+// function EBE_configure_smtp(PHPMailer $phpmailer) {
 function EBE_configure_smtp($phpmailer)
 {
 
