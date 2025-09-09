@@ -427,6 +427,11 @@ input[id="_eb_category_order"] {
     order: 100;
 }
 
+.bill-detail-status li[data-tab="-1"],
+.eb-order-filter-tab li[data-tab="-1"] {
+    order: 999;
+}
+
 .eb-order-filter-tab a {
     position: relative;
 }

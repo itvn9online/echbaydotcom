@@ -4,13 +4,20 @@
 		<li><a href="admin.php?page=eb-order">Tất cả</a></li>
 		<?php
 		global $arr_hd_trangthai;
-		
+
 		//
-		foreach ( $arr_hd_trangthai as $k => $v ) {
-			if ( $k >= 0 && $v != 'none' ) {
-				echo '<li data-tab="' . $k . '" title="' . str_replace( '"', '&quot;', $v ) . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
+		$last_str = '';
+		foreach ($arr_hd_trangthai as $k => $v) {
+			if ($v != 'none') {
+				$str = '<li data-tab="' . $k . '" title="' . str_replace('"', '&quot;', $v) . '"><a href="admin.php?page=eb-order&tab=' . $k . '">' . $v . ' <sup id="show_count_order_by' . $k . '" data-value="0">0</sup></a></li>';
+				if ($k < 0) {
+					$last_str .= $str;
+				} else {
+					echo $str;
+				}
 			}
 		}
+		echo $last_str;
 		?>
 	</ul>
 </div>
@@ -29,29 +36,28 @@ include ECHBAY_PRI_CODE . 'order_function.php';
 $str_for_order_cookie_name = 'get_order_by_time_line';
 
 // lấy theo cookie nếu có
-$order_by_time_line = _eb_getCucki( $str_for_order_cookie_name );
-if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
-//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
-	$order_by_time_line = urldecode( $order_by_time_line );
-//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
-	
+$order_by_time_line = _eb_getCucki($str_for_order_cookie_name);
+if (! isset($_GET['d']) && $order_by_time_line != '') {
+	//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
+	$order_by_time_line = urldecode($order_by_time_line);
+	//	echo $order_by_time_line . ' - aaaaaaaaaaaaaaaaaaa<br>' . "\n";
+
 	//
-	$order_by_time_line = explode( '&d2=', $order_by_time_line );
-	
+	$order_by_time_line = explode('&d2=', $order_by_time_line);
+
 	//
-	if ( count( $order_by_time_line ) > 1 ) {
-		$_GET ['d1'] = str_replace( 'between&d1=', '', $order_by_time_line[0] );
-		$_GET ['d2'] = $order_by_time_line[1];
-		
+	if (count($order_by_time_line) > 1) {
+		$_GET['d1'] = str_replace('between&d1=', '', $order_by_time_line[0]);
+		$_GET['d2'] = $order_by_time_line[1];
+
 		//
 		$order_by_time_line = 'between';
-		$_GET ['d'] = $order_by_time_line;
-	}
-	else {
-		$_GET ['d'] = $order_by_time_line[0];
+		$_GET['d'] = $order_by_time_line;
+	} else {
+		$_GET['d'] = $order_by_time_line[0];
 		$order_by_time_line = $order_by_time_line[0];
 	}
-//	print_r( $_GET );
+	//	print_r( $_GET );
 }
 
 
@@ -59,19 +65,19 @@ if( ! isset ( $_GET ['d'] ) && $order_by_time_line != '' ) {
 // tính tổng số đơn hàng theo từng tab
 //print_r( $arr_hd_trangthai );
 $strCountFilter = "";
-if ( $order_by_time_line != '' ) {
-	$strCountFilter .= WGR_create_order_filter ( $order_by_time_line );
+if ($order_by_time_line != '') {
+	$strCountFilter .= WGR_create_order_filter($order_by_time_line);
 }
 //echo $strCountFilter . '<br>' . "\n";
-foreach ( $arr_hd_trangthai as $k => $v ) {
-	if ( $k >= 0 && $v != 'none' ) {
-		$totalTabThread = _eb_c ( "SELECT COUNT(order_id) AS c
+foreach ($arr_hd_trangthai as $k => $v) {
+	if ($k >= 0 && $v != 'none') {
+		$totalTabThread = _eb_c("SELECT COUNT(order_id) AS c
 		FROM
 			`eb_in_con_voi`
 		WHERE
 			tv_id > 0
 			" . $strCountFilter . "
-			AND order_status = " . $k );
+			AND order_status = " . $k);
 		echo '<span data-id="' . $k . '" class="each-to-count-tab d-none">' . $totalTabThread . '</span>';
 	}
 }
@@ -79,17 +85,11 @@ foreach ( $arr_hd_trangthai as $k => $v ) {
 
 
 //
-if ( isset($_GET['id']) ) {
+if (isset($_GET['id'])) {
 	$id = (int)$_GET['id'];
-	if ( $id > 0 ) {
+	if ($id > 0) {
 		include ECHBAY_PRI_CODE . 'order_details.php';
 	}
 } else {
 	include ECHBAY_PRI_CODE . 'order_list.php';
 }
-
-
-
-
-
-
