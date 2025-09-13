@@ -7,6 +7,15 @@
  * `order_customer` có chứa @gmail.com
  */
 
+// Tạo cấu trúc để hiển thị dạng JSON (chỉ khi cần thiết)
+header('Content-Type: application/json');
+
+// chỉ chấp nhận phương thức POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['error' => 'Bad request...']);
+    exit();
+}
+
 // Lấy ngày tháng hiện tại
 $current_date = date('m-d'); // Ví dụ: 09-08
 $nam_nay = date('Y') * 1;
@@ -119,9 +128,7 @@ foreach ($results as $k => $v) {
 }
 // print_r($customers);
 
-// Tạo cấu trúc để hiển thị dạng JSON (chỉ khi cần thiết)
-// Uncomment dòng dưới nếu muốn xuất ra JSON
-header('Content-Type: application/json');
+// 
 echo json_encode($customers);
 
 // Hiển thị tổng số bản ghi
