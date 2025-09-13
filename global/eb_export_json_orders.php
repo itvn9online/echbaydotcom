@@ -7,6 +7,9 @@
  * `order_customer` có chứa @gmail.com
  */
 
+// xóa mọi dữ liệu đã in ra trước đó, tranh lỗi JSON
+ob_clean();
+
 // Tạo cấu trúc để hiển thị dạng JSON (chỉ khi cần thiết)
 header('Content-Type: application/json');
 
@@ -129,7 +132,10 @@ foreach ($results as $k => $v) {
 // print_r($customers);
 
 // 
-echo json_encode($customers);
+echo json_encode([
+    'success' => true,
+    'datas' => $customers,
+]);
 
 // Hiển thị tổng số bản ghi
 // echo "<h3>Tổng số đơn hàng tìm thấy: " . count($results) . "</h3>";
