@@ -6,7 +6,7 @@ $rssCacheFilter = 'rss-members';
 
 
 // test
-$limit = isset( $_GET[ 'limit' ] ) ? ( int )$_GET[ 'limit' ] : 2000;
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 2000;
 /*
 if ( isset($_GET['test']) ) {
 	$limit = 20;
@@ -17,12 +17,12 @@ $rssCacheFilter .= '-limit' . $limit;
 
 
 // kiểu export
-$export_type = isset( $_GET[ 'members_export' ] ) ? $_GET[ 'members_export' ] : '';
+$export_type = isset($_GET['members_export']) ? $_GET['members_export'] : '';
 $rssCacheFilter .= '-type' . $export_type;
 
 
 //
-$trang = isset( $_GET[ 'trang' ] ) ? ( int )$_GET[ 'trang' ] : 1;
+$trang = isset($_GET['trang']) ? (int)$_GET['trang'] : 1;
 $rssCacheFilter .= '-trang' . $trang;
 //echo $rssCacheFilter;
 
@@ -35,24 +35,25 @@ header( 'Content-Disposition: inline; filename="' . $header_name . '-page' . $tr
 
 
 // export sản phẩm
-function WGR_export_members_to_xml( $op = array() ) {
+function WGR_export_members_to_xml($op = array())
+{
     global $wpdb;
     global $table_prefix;
 
     //
-    $export_type = isset( $_GET[ 'members_export' ] ) ? $_GET[ 'members_export' ] : '';
+    $export_type = isset($_GET['members_export']) ? $_GET['members_export'] : '';
 
     // cấu hình mặc định
-    if ( !isset( $op[ 'limit' ] ) || $op[ 'limit' ] == '' || $op[ 'limit' ] == 0 ) {
-        $op[ 'limit' ] = 50;
+    if (!isset($op['limit']) || $op['limit'] == '' || $op['limit'] == 0) {
+        $op['limit'] = 50;
     }
-    if ( $op[ 'limit' ] > 5000 ) {
-        $op[ 'limit' ] = 5000;
+    if ($op['limit'] > 5000) {
+        $op['limit'] = 5000;
     }
-    if ( !isset( $op[ 'trang' ] ) || $op[ 'trang' ] == '' || $op[ 'trang' ] == 0 ) {
-        $op[ 'trang' ] = 1;
+    if (!isset($op['trang']) || $op['trang'] == '' || $op['trang'] == 0) {
+        $op['trang'] = 1;
     }
-    $offset = ( $op[ 'trang' ] - 1 ) * $op[ 'limit' ];
+    $offset = ($op['trang'] - 1) * $op['limit'];
     //	echo $offset;
     //	print_r( $op ); exit();
 
@@ -61,7 +62,7 @@ function WGR_export_members_to_xml( $op = array() ) {
 
 
     // Lấy theo  phone
-    if ( $export_type == 'phone' ) {
+    if ($export_type == 'phone') {
         $tbl_usermeta = $table_prefix . 'usermeta';
 
         //
@@ -74,7 +75,7 @@ function WGR_export_members_to_xml( $op = array() ) {
             AND `" . $tbl_usermeta . "`.meta_value != ''
         ORDER BY
             `" . $tbl_usermeta . "`.user_id DESC
-        LIMIT " . $offset . ", " . $op[ 'limit' ];
+        LIMIT " . $offset . ", " . $op['limit'];
     }
     // Lấy theo  email
     // mặc định thì phải đủ cả 2 yêu cầu
@@ -96,7 +97,7 @@ function WGR_export_members_to_xml( $op = array() ) {
             AND ( `" . $tbl_users . "`.user_email LIKE '%{$key_gmail}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_yahoo_vn}' OR `" . $tbl_users . "`.user_email LIKE '%{$key_hotmail}' )
         ORDER BY
             `" . $tbl_users . "`.ID DESC
-        LIMIT " . $offset . ", " . $op[ 'limit' ];
+        LIMIT " . $offset . ", " . $op['limit'];
         /*
         GROUP BY
         	ID
@@ -108,7 +109,7 @@ function WGR_export_members_to_xml( $op = array() ) {
     //	echo $sql;
 
     //
-    return _eb_q( $sql );
+    return _eb_q($sql);
 }
 
 
@@ -127,10 +128,10 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_top.php';
 //
 $before_price = '';
 $after_price = '';
-if ( $__cf_row[ 'cf_current_price_before' ] == 1 ) {
-    $before_price = $__cf_row[ 'cf_current_sd_price' ] . ' ';
+if ($__cf_row['cf_current_price_before'] == 1) {
+    $before_price = $__cf_row['cf_current_sd_price'] . ' ';
 } else {
-    $after_price = ' ' . $__cf_row[ 'cf_current_sd_price' ];
+    $after_price = ' ' . $__cf_row['cf_current_sd_price'];
 }
 
 
@@ -144,16 +145,16 @@ if ( $__cf_row[ 'cf_current_price_before' ] == 1 ) {
     </tr>
     <?php
 
-    $sql = WGR_export_members_to_xml( $arr_for_slect_data );
-//    print_r( $sql );
-    if ( $export_type == 'phone' ) {
-        foreach ( $sql as $v ) {
+    $sql = WGR_export_members_to_xml($arr_for_slect_data);
+    //    print_r( $sql );
+    if ($export_type == 'phone') {
+        foreach ($sql as $v) {
             //        print_r( $v );
 
-            $user_address = get_user_meta( $v->user_id, 'address' );
+            $user_address = get_user_meta($v->user_id, 'address');
             //        print_r( $user_address );
-            if ( !empty( $user_address ) ) {
-                $user_address = $user_address[ 0 ];
+            if (!empty($user_address)) {
+                $user_address = $user_address[0];
             } else {
                 $user_address = '&nbsp';
             }
@@ -168,21 +169,21 @@ if ( $__cf_row[ 'cf_current_price_before' ] == 1 ) {
 </tr>';
         }
     } else {
-        foreach ( $sql as $v ) {
+        foreach ($sql as $v) {
             //        print_r( $v );
 
-            $user_phone = get_user_meta( $v->ID, 'phone' );
+            $user_phone = get_user_meta($v->ID, 'phone');
             //        print_r( $user_phone );
-            if ( !empty( $user_phone ) ) {
-                $user_phone = $user_phone[ 0 ];
+            if (!empty($user_phone)) {
+                $user_phone = $user_phone[0];
             } else {
                 $user_phone = '&nbsp';
             }
 
-            $user_address = get_user_meta( $v->ID, 'address' );
+            $user_address = get_user_meta($v->ID, 'address');
             //        print_r( $user_address );
-            if ( !empty( $user_address ) ) {
-                $user_address = $user_address[ 0 ];
+            if (!empty($user_address)) {
+                $user_address = $user_address[0];
             } else {
                 $user_address = '&nbsp';
             }
@@ -208,6 +209,7 @@ include EB_THEME_PLUGIN_INDEX . 'echbay/export_footer.php';
 
 ?>
 </body>
+
 </html>
 <?php
 /*
@@ -219,4 +221,4 @@ WGR_order_export_run ( <?php echo $main_content; ?>
 
 
 
-exit(); 
+exit();

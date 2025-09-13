@@ -10,7 +10,13 @@ WGR_check_token();
 
 // export thành viên
 if (isset($_GET['members_export'])) {
-    include EB_THEME_PLUGIN_INDEX . 'global/eb_export_members.php';
+    if (isset($_GET['xml_order_export'])) {
+        include EB_THEME_PLUGIN_INDEX . 'global/eb_export_xml_orders.php';
+    } else if (isset($_GET['xml_export'])) {
+        include EB_THEME_PLUGIN_INDEX . 'global/eb_export_xml_members.php';
+    } else {
+        include EB_THEME_PLUGIN_INDEX . 'global/eb_export_members.php';
+    }
     exit();
 }
 
