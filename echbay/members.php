@@ -76,6 +76,7 @@ $strAjaxLink .= '&trang=' . $trang;
     foreach ($arr_button_export as $k => $v) {
         echo '<div><a href="' . web_link . 'eb_export_products?members_export=' . $k . '&token=' . $export_token . '&trang=' . $trang . '&limit=' . $threadInPage . '" target="_blank" class="rf d-block blue-button whitecolor">' . $v . '</a></div> ';
     }
+    echo '<div><a href="' . web_link . 'eb_export_products?members_export=all&token=' . $export_token . '&json_order_export=1" target="_blank" class="rf d-block blue-button whitecolor">Export XML orders</a></div> ';
 
     ?>
 </div>

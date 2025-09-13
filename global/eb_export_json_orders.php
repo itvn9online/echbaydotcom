@@ -24,7 +24,7 @@ for ($year = $muoi_nam_truoc; $year < $nam_nay; $year++) {
 
 // Tạo SQL query với các điều kiện OR cho từng năm
 $date_conditions = implode(' OR ', $timestamp_conditions);
-$sql = "SELECT order_customer, order_time FROM `eb_in_con_voi` WHERE (order_customer LIKE '%gmail.com%' OR order_customer LIKE '%yahoo.com%'  OR order_customer LIKE '%hotmail.com%') AND ($date_conditions) ORDER BY order_id DESC LIMIT 1000";
+$sql = "SELECT order_customer, order_time FROM `eb_in_con_voi` WHERE (order_customer LIKE '%gmail.com%' OR order_customer LIKE '%yahoo.com%'  OR order_customer LIKE '%hotmail.com%') AND ($date_conditions) ORDER BY order_id ASC LIMIT 1000";
 // echo $sql . '<br><br>' . PHP_EOL;
 $results = $wpdb->get_results($sql, ARRAY_A);
 // print_r($results[0]);
@@ -42,68 +42,11 @@ function fix_vietnamese_text($str)
     }, $str);
 
     // Bước 2: Replace các ký tự UTF-8 encoding phổ biến của tiếng Việt
-    $utf8_map = array(
-        // Ký tự a
-        '%E0' => 'à',
-        '%E1' => 'á',
-        '%E2' => 'â',
-        '%E3' => 'ã',
-        '%C3%A0' => 'à',
-        '%C3%A1' => 'á',
-        '%C3%A2' => 'â',
-        '%C3%A3' => 'ã',
-
-        // Ký tự e  
-        '%E8' => 'è',
-        '%E9' => 'é',
-        '%EA' => 'ê',
-        '%C3%A8' => 'è',
-        '%C3%A9' => 'é',
-        '%C3%AA' => 'ê',
-
-        // Ký tự i
-        '%EC' => 'ì',
-        '%ED' => 'í',
-        '%EE' => 'î',
-        '%EF' => 'ï',
-        '%C3%AC' => 'ì',
-        '%C3%AD' => 'í',
-        '%C3%AE' => 'î',
-        '%C3%AF' => 'ï',
-
-        // Ký tự o
-        '%F2' => 'ò',
-        '%F3' => 'ó',
-        '%F4' => 'ô',
-        '%F5' => 'õ',
-        '%C3%B2' => 'ò',
-        '%C3%B3' => 'ó',
-        '%C3%B4' => 'ô',
-        '%C3%B5' => 'õ',
-
-        // Ký tự u
-        '%F9' => 'ù',
-        '%FA' => 'ú',
-        '%FB' => 'û',
-        '%FC' => 'ü',
-        '%C3%B9' => 'ù',
-        '%C3%BA' => 'ú',
-        '%C3%BB' => 'û',
-        '%C3%BC' => 'ü',
-
-        // Ký tự đ
-        '%C4%91' => 'đ',
-        '%C4%90' => 'Đ',
-
-        // Một số ký tự khác
-        '%C6%A1' => 'ơ',
-        '%C6%B0' => 'ư',
-        '%C4%83' => 'ă',
-        '%C3%A6' => 'æ',
-    );
-
-    foreach ($utf8_map as $encoded => $decoded) {
-        $str = str_replace($encoded, $decoded, $str);
+    $arr = _eb_arr_escape_fix_content();
+    foreach ($arr as $k2 => $v2) {
+        if ($v2 != '') {
+            $str = str_replace($v2, $k2, $str);
+        }
     }
 
     // Bước 3: Nếu vẫn còn ký tự %XX, thử decode hoặc chuyển về không dấu
