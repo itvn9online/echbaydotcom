@@ -19,14 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-// Lấy ngày tháng hiện tại
-$current_date = date('m-d'); // Ví dụ: 09-08
-$nam_nay = date('Y') * 1;
+// Lấy thời gian của 7 ngày trước
+$current_time = time() - (24 * 3600 * 7);
+// Lấy ngày tháng
+$current_date = date('m-d', $current_time); // Ví dụ: 09-08
+// echo $current_date . '<br>' . PHP_EOL;
+$nam_nay = date('Y', $current_time) * 1;
 $muoi_nam_truoc = $nam_nay - 10;
 
-// Tạo mảng các timestamp cho ngày này trong các năm 2011-2018
+// Tạo mảng các timestamp cho ngày này trong các năm qua
 $timestamp_conditions = [];
-for ($year = $muoi_nam_truoc; $year < $nam_nay; $year++) {
+for ($year = $muoi_nam_truoc; $year <= $nam_nay; $year++) {
     $date_string = $year . '-' . $current_date;
     $start_of_day = strtotime($date_string . ' 00:00:00');
     $end_of_day = $start_of_day + 86400; // 86400 giây trong một ngày
