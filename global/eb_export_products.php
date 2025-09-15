@@ -11,9 +11,9 @@ WGR_check_token();
 // export thành viên
 if (isset($_GET['members_export'])) {
     if (isset($_GET['json_order_export'])) {
-        include EB_THEME_PLUGIN_INDEX . 'global/eb_export_json_orders.php';
+        // include EB_THEME_PLUGIN_INDEX . 'global/eb_export_json_orders.php';
     } else if (isset($_GET['xml_export'])) {
-        include EB_THEME_PLUGIN_INDEX . 'global/eb_export_xml_members.php';
+        // include EB_THEME_PLUGIN_INDEX . 'global/eb_export_xml_members.php';
     } else {
         include EB_THEME_PLUGIN_INDEX . 'global/eb_export_members.php';
     }

@@ -7,6 +7,11 @@
  * `order_customer` có chứa @gmail.com
  */
 
+// bảo mật
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 // xóa mọi dữ liệu đã in ra trước đó, tranh lỗi JSON
 ob_clean();
 
