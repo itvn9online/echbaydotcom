@@ -137,6 +137,7 @@ foreach ($results as $k => $v) {
 // 
 echo json_encode([
     'success' => true,
+    'time' => date('Y-m-d', $current_time),
     'datas' => $customers,
 ]);
 
