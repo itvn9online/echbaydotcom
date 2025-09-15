@@ -29,7 +29,7 @@ $muoi_nam_truoc = $nam_nay - 10;
 
 // Tạo mảng các timestamp cho ngày này trong các năm qua
 $timestamp_conditions = [];
-for ($year = $muoi_nam_truoc; $year <= $nam_nay; $year++) {
+for ($year = $muoi_nam_truoc; $year < $nam_nay; $year++) {
     $date_string = $year . '-' . $current_date;
     $start_of_day = strtotime($date_string . ' 00:00:00');
     $end_of_day = $start_of_day + 86400; // 86400 giây trong một ngày
