@@ -469,8 +469,8 @@ if ($bai_san_pham == true) {
 
 		// Tạo rate ngẫu nhiên
 		if ($trv_rating_value < 6 || $trv_rating_count == 0) {
-			$trv_rating_value = rand(6, 10);
-			$trv_rating_count = rand(1, 5);
+			$trv_rating_value = mt_rand(6, 10);
+			$trv_rating_count = mt_rand(1, 5);
 
 			// dùng update_post_meta thay cho add_post_meta
 			WGR_update_meta_post($pid, '_eb_product_rating_value', $trv_rating_value);

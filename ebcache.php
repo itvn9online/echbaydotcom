@@ -41,7 +41,7 @@ else if (EB_REDIS_CACHE == true) {
      * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
      * hạn chế được người tham gia vào quá trình reset cache
      */
-    WGR_display($ebsuppercache_filename, rand(250, 350));
+    WGR_display($ebsuppercache_filename, mt_rand(250, 350));
 }
 //
 else if (is_file($ebsuppercache_filename)) {
@@ -49,5 +49,5 @@ else if (is_file($ebsuppercache_filename)) {
      * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
      * hạn chế được người tham gia vào quá trình reset cache
      */
-    WGR_display($ebsuppercache_filename, rand(250, 350));
+    WGR_display($ebsuppercache_filename, mt_rand(250, 350));
 }

@@ -25,7 +25,7 @@ if (is_file(EB_THEME_CACHE . '___timezone.txt')) {
 //$set_time_for_main_cache = $__cf_row['cf_reset_cache'] * 2;
 
 // set tĩnh thời gian cache
-$set_time_for_main_cache = rand(300, 600);
+$set_time_for_main_cache = mt_rand(300, 600);
 
 // thông điệp về ebcache
 $why_ebcache_not_active = '';

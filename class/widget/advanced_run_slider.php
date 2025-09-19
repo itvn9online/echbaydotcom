@@ -289,7 +289,7 @@ class ___echbay_widget_advanced_run_slider extends WP_Widget
 		//		print_r($this);
 
 		//$WGR_advanced_run_slider_number = 'WGR_advanced_run_slider_' . str_replace( '-', '_', $this->number);
-		$WGR_advanced_run_slider_number = 'WGR_advanced_run_slider_' . rand(0, 9999);
+		$WGR_advanced_run_slider_number = 'WGR_advanced_run_slider_' . mt_rand(0, 9999);
 
 		//
 		echo '<script>

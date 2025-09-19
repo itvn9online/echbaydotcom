@@ -104,7 +104,6 @@ function ___add_echbay_widget()
     register_widget('___echbay_widget_open_popup');
     register_widget('___echbay_category_search_advanced');
     register_widget('___echbay_categorys_search_advanced');
-
 }
 
 
@@ -141,7 +140,6 @@ function _eb_top_footer_form_for_widget($instance, $field_name = array())
 
 
     _eb_widget_echo_widget_input_checkbox($field_name['full_mobile'], $full_mobile, 'Fullsize if mobile', 'Module này sẽ chuyển sang dạng tràn khung trên các thiết bị mobile nếu tích vào.');
-
 }
 
 
@@ -173,7 +171,7 @@ function _eb_product_form_for_widget($instance, $field_name = array())
      */
 
     // tạo ID riêng cho từng widget để điều khiển cho dễ
-    $random_current_widget_id = 'ebe_widget_id_change' . md5(rand(1, 1000));
+    $random_current_widget_id = 'ebe_widget_id_change' . md5(mt_rand(1, 1000));
     $bbcode_current_widget_id = 'bbcode-' . $random_current_widget_id;
 
     //
@@ -201,16 +199,16 @@ function _eb_product_form_for_widget($instance, $field_name = array())
 
     __eb_widget_load_select(
         array(
-        //			'' => '[ Trống ]',
-        'div' => 'DIV',
-        'p' => 'P',
-        'li' => 'LI',
-        'h2' => 'H2',
-        'h3' => 'H3',
-        'h4' => 'H4',
-        'h5' => 'H5',
-        'h6' => 'H6'
-    ),
+            //			'' => '[ Trống ]',
+            'div' => 'DIV',
+            'p' => 'P',
+            'li' => 'LI',
+            'h2' => 'H2',
+            'h3' => 'H3',
+            'h4' => 'H4',
+            'h5' => 'H5',
+            'h6' => 'H6'
+        ),
         $field_name['dynamic_tag'],
         $dynamic_tag
     );
@@ -222,17 +220,17 @@ function _eb_product_form_for_widget($instance, $field_name = array())
 
     __eb_widget_load_select(
         array(
-        '' => '[ Trống ]',
-        'div' => 'DIV',
-        'p' => 'P',
-        //'li' => 'LI',
-        'h1' => 'H1',
-        'h2' => 'H2',
-        'h3' => 'H3',
-        'h4' => 'H4',
-        'h5' => 'H5',
-        'h6' => 'H6'
-    ),
+            '' => '[ Trống ]',
+            'div' => 'DIV',
+            'p' => 'P',
+            //'li' => 'LI',
+            'h1' => 'H1',
+            'h2' => 'H2',
+            'h3' => 'H3',
+            'h4' => 'H4',
+            'h5' => 'H5',
+            'h6' => 'H6'
+        ),
         $field_name['dynamic_post_tag'],
         $dynamic_post_tag
     );
@@ -258,13 +256,13 @@ function _eb_product_form_for_widget($instance, $field_name = array())
      */
 
     __eb_widget_load_select(
-    //$list_taxonomy,
+        //$list_taxonomy,
         array(
-        'post' => 'post',
-        'ads' => 'ads',
-        'blog' => 'blog',
-        'for_other_post_type' => 'Khác'
-    ),
+            'post' => 'post',
+            'ads' => 'ads',
+            'blog' => 'blog',
+            'for_other_post_type' => 'Khác'
+        ),
         $field_name['post_type'],
         $post_type,
         'ebe-post-type'
@@ -405,7 +403,7 @@ function _eb_product_form_for_widget($instance, $field_name = array())
     $id_click_add_style = str_replace('[', '_', str_replace(']', '_', $field_name['custom_style']));
     foreach ($arr_click_add_style as $k_class => $v_class) {
         $str_click_add_style .= '<span class="d-block"><strong data-value="' . $k_class . '" data-add="' . $field_name['custom_style'] . '" class="cur click_add_widget_class"><i class="fa fa-minus-square"></i> ' . $k_class . '</strong>: ' . $v_class . '</span>';
-    //		$i_class = 1;
+        //		$i_class = 1;
     }
 
     echo '<p class="small"><strong>Tùy chỉnh CSS</strong>: <input type="text" class="widefat" name="' . $field_name['custom_style'] . '" value="' . $custom_style . '" /> * Nhấp đúp để thêm class CSS tùy chỉnh sẵn:<br>
@@ -522,7 +520,6 @@ function _eb_product_form_for_widget($instance, $field_name = array())
 
     //
     WGR_show_widget_name_by_title();
-
 }
 
 
@@ -571,8 +568,7 @@ function _eb_widget_echo_widget_input_title(
     $class_css = 'eb-get-widget-title',
     // các option khác
     $op = array()
-    )
-{
+) {
 
     if ($menu_name == '') {
         $menu_name = 'Tiêu đề:';
@@ -585,7 +581,6 @@ function _eb_widget_echo_widget_input_title(
     }
 
     echo '<p><strong>' . $menu_name . '</strong> <input type="' . $op['type'] . '" class="widefat ' . $class_css . '" name="' . $select_name . '" value="' . $select_val . '" placeholder="' . $pla . '" /></p>';
-
 }
 
 
@@ -601,11 +596,11 @@ function _eb_widget_set_sortby_field($select_name, $select_val)
 
     __eb_widget_load_select(
         array(
-        'menu_order ID' => 'Post order',
-        'ID' => 'Post ID',
-        'post_title' => 'Post title',
-        'rand' => 'Random'
-    ),
+            'menu_order ID' => 'Post order',
+            'ID' => 'Post ID',
+            'post_title' => 'Post title',
+            'rand' => 'Random'
+        ),
         $select_name,
         $select_val
     );
@@ -620,15 +615,15 @@ function _eb_widget_style_for_post_cloumn($select_name, $select_val)
 
     __eb_widget_load_select(
         array(
-        '' => 'Mặc định',
-        'chu_anh' => 'Chữ trái - ảnh phải',
-        'anhtren_chuduoi' => 'Ảnh trên - chữ dưới',
-        'chutren_anhduoi' => 'Chữ trên - ảnh dưới',
-        'chi_chu' => 'Chỉ tiêu đề (title only)',
-        'chi_anh' => 'Chỉ ảnh (image only)',
-        'text_only' => 'Chỉ chữ (text only)',
-        'chi_anh_chu' => 'Chỉ ảnh + tiêu đề (title + image)'
-    ),
+            '' => 'Mặc định',
+            'chu_anh' => 'Chữ trái - ảnh phải',
+            'anhtren_chuduoi' => 'Ảnh trên - chữ dưới',
+            'chutren_anhduoi' => 'Chữ trên - ảnh dưới',
+            'chi_chu' => 'Chỉ tiêu đề (title only)',
+            'chi_anh' => 'Chỉ ảnh (image only)',
+            'text_only' => 'Chỉ chữ (text only)',
+            'chi_anh_chu' => 'Chỉ ảnh + tiêu đề (title + image)'
+        ),
         $select_name,
         $select_val
     );
@@ -677,10 +672,10 @@ function _eb_widget_max_width_for_module($select_name, $select_val)
 
     __eb_widget_load_select(
         array(
-        '' => 'Không giới hạn chiều rộng',
-        'w99' => 'Rộng tối đa 999px',
-        'w90' => 'Rộng tối đa 1366px',
-    ),
+            '' => 'Không giới hạn chiều rộng',
+            'w99' => 'Rộng tối đa 999px',
+            'w90' => 'Rộng tối đa 1366px',
+        ),
         $select_name,
         $select_val
     );
@@ -836,8 +831,7 @@ function _eb_get_echo_widget_title(
     $before_title = '',
     $dynamic_tag = 'div',
     $after_title = ''
-    )
-{
+) {
     if ($title == '') {
         return '';
     }
@@ -861,8 +855,7 @@ function _eb_echo_widget_title(
     $before_title = '',
     $dynamic_tag = 'div',
     $after_title = ''
-    )
-{
+) {
     echo _eb_get_echo_widget_title(
         $title,
         $clat,
@@ -964,7 +957,7 @@ function __eb_widget_load_cat_select($option, $tax = '', $get_child = false)
             }
         }
 
-    /*
+        /*
      //
      $a = get_categories( array(
      'taxonomy' => EB_BLOG_POST_LINK,
@@ -1031,7 +1024,7 @@ function __eb_widget_load_cat_select($option, $tax = '', $get_child = false)
 
 
     // ID của phiên làm việc hiện tại
-    $animate_id = 'ebwg_' . md5(date_time) . rand(1, 5000) . rand(1, 5000);
+    $animate_id = 'ebwg_' . md5(date_time) . mt_rand(1, 5000) . mt_rand(1, 5000);
 
 
     //
@@ -1064,8 +1057,7 @@ function __eb_widget_load_cat_select($option, $tax = '', $get_child = false)
                     echo '<option data-taxonomy="' . $v->taxonomy . '" value="' . $sub_v->term_id . '"' . $sl . '>---' . $sub_v->name . ' (' . $v->count . ')</option>';
                 }
             }
-        }
-        else {
+        } else {
             echo '<option value="0" disabled>' . $v . '</option>';
         }
     }
@@ -1120,10 +1112,8 @@ function __eb_widget_load_cat_select($option, $tax = '', $get_child = false)
         echo '<script type="text/javascript">
             WGR_widget_change_taxonomy_if_change_category("' . $animate_id . '");
         </script>';
-
     }
 
     //
     return $animate_id;
-
 }

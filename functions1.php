@@ -750,7 +750,7 @@ function _eb_add_compiler_v2_css($arr, $css_inline = 1)
         // nếu chưa -> tạo file cache
         //		if ( ! is_file( $file_save ) ) {
         // tạo file cache định kỳ
-        if (!is_file($file_save) || date_time - filemtime($file_save) + rand(0, 30) > 500) {
+        if (!is_file($file_save) || date_time - filemtime($file_save) + mt_rand(0, 30) > 500) {
             $cache_content = '';
             foreach ($new_arr as $v => $k) {
                 $file_content = explode("\n", file_get_contents($v, 1));

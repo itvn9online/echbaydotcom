@@ -72,7 +72,7 @@ function WGR_cache_to_content($data, $cache_time)
     }
 
     //
-    if (($content[0] * 1) + $cache_time + rand(1, 20) > time()) {
+    if (($content[0] * 1) + $cache_time + mt_rand(1, 20) > time()) {
         return $content[1];
     }
 
@@ -143,7 +143,7 @@ function _eb_code64($str, $code = 0)
         $str = '';
         // chạy vòng lặp để nhúng ký tự linh ta linh tinh vào chơi chơi
         foreach ($arr as $v) {
-            $str .= $v . $hoc_code[rand(0, count($hoc_code) - 1)];
+            $str .= $v . $hoc_code[mt_rand(0, count($hoc_code) - 1)];
         }
         // mã hóa chuỗi trc khi trả về
         return base64_encode($str);

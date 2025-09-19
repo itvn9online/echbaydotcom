@@ -45,7 +45,7 @@ if ( mtv_id > 0 ) {
 
 
 // kiểm tra thời gian tạo cache
-$__eb_cache_time = date_time - $__eb_cache_time + rand(0, 20);
+$__eb_cache_time = date_time - $__eb_cache_time + mt_rand(0, 20);
 //$__eb_cache_time += rand ( 0, 60 );
 // echo $__eb_cache_time . '<br>';
 
@@ -371,7 +371,7 @@ if ( is_file( $auto_update_web_version ) ) {
 }
 
 //
-if ( date_time - $last_update_web_version + rand( 0, 60 ) > 600 ) {
+if ( date_time - $last_update_web_version + mt_rand( 0, 60 ) > 600 ) {
 	_eb_set_config( 'cf_web_version', date( 'md.Hi', date_time ), 0 );
 	
 	_eb_create_file( $auto_update_web_version, date( 'r', date_time ) . ' - ' . date( 'r', $last_update_web_version ) );

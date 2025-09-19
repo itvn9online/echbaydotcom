@@ -1017,7 +1017,7 @@ function EBE_add_js_compiler_in_cache(
     // chỉ cập nhật file khi có sự thay đổi
     //	if ( is_file( $file_in_cache ) ) {
     // cập nhật file định kỳ
-    if (!is_file($file_in_cache) || date_time - filemtime($file_in_cache) + rand(0, 30) > 500) {
+    if (!is_file($file_in_cache) || date_time - filemtime($file_in_cache) + mt_rand(0, 30) > 500) {
 
         //
         $new_content = '';

@@ -388,11 +388,11 @@ else if (!empty($check_post_exist)) {
 			$trv_stt = date('ymdh', date_time);
 			// thêm số ngẫu nhiên trong khoảng 1 giờ
 			if (isset($_POST['cap_nhat_stt_ngau_nhien']) && $_POST['cap_nhat_stt_ngau_nhien'] == 1) {
-				$trv_stt += rand(0, 7200);
+				$trv_stt += mt_rand(0, 7200);
 			}
 			// thêm số ngẫu nhiên trong khoảng 1 phút
 			else {
-				$trv_stt += rand(0, 3600);
+				$trv_stt += mt_rand(0, 3600);
 			}
 			$arr_for_update['menu_order'] = $trv_stt;
 		}
@@ -566,7 +566,7 @@ $arr['post_modified_gmt'] = $post_date;
 // Tạo STT
 if (isset($_POST['cap_nhat_stt_cho_bai_viet']) && $_POST['cap_nhat_stt_cho_bai_viet'] == 1) {
 	// thêm số ngẫu nhiên trong khoảng 1 phút
-	$arr['menu_order'] = date('ymdh', date_time) + rand(0, 3600);
+	$arr['menu_order'] = date('ymdh', date_time) + mt_rand(0, 3600);
 }
 
 //print_r($arr);

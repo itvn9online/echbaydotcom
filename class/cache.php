@@ -80,7 +80,7 @@ function WGR_check_syntax($__eb_cache_conf, $file_last_update, $auto_clean = fal
 						// xóa file cache đi để thử lại
 						unlink($file_last_update);
 						unlink($__eb_cache_conf);
-						//						sleep( rand( 2, 10 ) );
+						//						sleep( mt_rand( 2, 10 ) );
 						$error_admin_log_cache = 'Cache syntax ERROR by exec ' . basename($__eb_cache_conf);
 
 						//
@@ -99,7 +99,7 @@ function WGR_check_syntax($__eb_cache_conf, $file_last_update, $auto_clean = fal
 					// xóa file cache đi để thử lại
 					unlink($file_last_update);
 					unlink($__eb_cache_conf);
-					//					sleep( rand( 2, 10 ) );
+					//					sleep( mt_rand( 2, 10 ) );
 					$error_admin_log_cache = 'Cache syntax ERROR by substr ' . basename($__eb_cache_conf);
 				}
 			}
