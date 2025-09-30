@@ -58,7 +58,7 @@ echo EB_THEME_PLUGIN_INDEX . '<br>' . "\n";
 echo $str_optimize_jquery_js . '<br>' . "\n";
 */
 /* */
-echo '<script type="text/javascript" src="' . strstr($str_optimize_jquery_js, EB_DIR_CONTENT) . '" defer></script>' . "\n";
+// echo '<script type="text/javascript" src="' . strstr($str_optimize_jquery_js, EB_DIR_CONTENT) . '" defer></script>' . "\n";
 /* */
 
 // phiên bản include thông qua file phụ
