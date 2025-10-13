@@ -143,33 +143,30 @@ else {
 	}
 
 
-	// kiểm tra lần gừi đơn trước đó, nếu mới gửi thì bỏ qua
-	// daidq: cho phép gửi trùng lặp nhiều đơn 1 lúc
-	if (1 > 2) {
-		$strsql = _eb_q("SELECT *
-		FROM
-			`eb_in_con_voi`
-		WHERE
-			tv_id = " . $tv_id . "
-		ORDER BY
-			order_id DESC
-		LIMIT 0, 1");
-		//	print_r( $strsql );
-		//	echo count($strsql);
-		if (count($strsql) > 0) {
-			$strsql = $strsql[0];
-			//		print_r( $strsql );
-			//die( __FILE__ . ':' . __LINE__ );
+	// kiểm tra lần gừi đơn trước đó, nếu mới gửi thì bỏ qua -> tránh spam
+	$strsql = _eb_q("SELECT *
+	FROM
+		`eb_in_con_voi`
+	WHERE
+		tv_id = " . $tv_id . "
+	ORDER BY
+		order_id DESC
+	LIMIT 0, 1");
+	//	print_r( $strsql );
+	//	echo count($strsql);
+	if (count($strsql) > 0) {
+		$strsql = $strsql[0];
+		// print_r($strsql);
+		// die(__FILE__ . ':' . __LINE__);
 
-			// lấy thời gian gửi đơn hàng trước đó, mỗi đơn cách nhau tầm 5 phút
-			$lan_gui_don_truoc = $strsql->order_time;
-			//		echo date( 'r', $lan_gui_don_truoc ) . "\n";
-			//		echo date_time - $lan_gui_don_truoc . "\n";
+		// lấy thời gian gửi đơn hàng trước đó, mỗi đơn cách nhau tầm 5 phút
+		$lan_gui_don_truoc = $strsql->order_time;
+		// echo date('r', $lan_gui_don_truoc) . "\n";
+		// echo date_time - $lan_gui_don_truoc . "\n";
 
-			// giãn cách gửi đơn
-			if (date_time - $lan_gui_don_truoc < 30) {
-				ket_thuc_qua_trinh_dat_hang($strsql->order_id, $strsql->order_sku, 'Cảm ơn bạn, chúng tôi đang tiếp nhận và xử lý đơn hàng của bạn.');
-			}
+		// giãn cách gửi đơn
+		if (date_time - $lan_gui_don_truoc < 33) {
+			ket_thuc_qua_trinh_dat_hang($strsql->order_id, $strsql->order_sku, 'Cảm ơn bạn, chúng tôi đang tiếp nhận và xử lý đơn hàng của bạn.');
 		}
 	}
 }

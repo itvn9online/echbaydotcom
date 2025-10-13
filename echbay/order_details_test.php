@@ -6,20 +6,20 @@ echo '<!--' . "\n";
 $print_sql = $sql;
 
 echo 'print_sql:' . "\n";
-print_r( $print_sql );
+print_r($print_sql);
 
 
 // xác định size, màu sắc để email cho khách
-$decode_order_product = WGR_decode_for_products_cart( $print_sql->order_products );
+$decode_order_product = WGR_decode_for_products_cart($print_sql->order_products);
 echo 'order_products:' . "\n";
-print_r( $print_sql->order_products );
-print_r( $decode_order_product );
+print_r($print_sql->order_products);
+print_r($decode_order_product);
 
 // xác định mã giảm giá nếu có
-$decode_order_discount = WGR_decode_for_discount_cart( $print_sql->order_customer );
+$decode_order_discount = WGR_decode_for_discount_cart($print_sql->order_customer);
 echo 'order_customer:' . "\n";
-print_r( $print_sql->order_customer );
-print_r( $decode_order_discount );
+print_r($print_sql->order_customer);
+print_r($decode_order_discount);
 
 
 /*

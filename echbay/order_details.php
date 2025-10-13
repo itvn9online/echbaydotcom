@@ -310,7 +310,7 @@ $order_user_can = user_can($post->tv_id, 'delete_posts') ? 1 : 0;
         <button type="submit" id="eb_cart_submit" class="blue-button cur"><i class="fa fa-save"></i> Lưu thay đổi</button>
         <button type="button" id="eb_cart_print" class="red-button cur"><i class="fa fa-print"></i> In Phiếu thu</button>
         <button type="button" id="eb_vandon_print" class="org-button cur"><i class="fa fa-truck"></i> In Vận đơn</button>
-        <button type="button" id="eb_vandon_print" onClick="process_for_press_esc();" class="org-button black-button cur d-none show-if-order-open-in-popup"><i class="fa fa-sign-out"></i> Đóng</button>
+        <button type="button" id="eb_vandon_close" onClick="process_for_press_esc();" class="org-button black-button cur d-none show-if-order-open-in-popup"><i class="fa fa-sign-out"></i> Đóng</button>
     </div>
 </form>
 <div id="order_show_too_order" class="d-none">
