@@ -1020,7 +1020,7 @@ setTimeout(function () {
 }, 200);
 
 //
-g_func.setc("wgr_ebsuppercache_timeout", 1, 1800);
+// g_func.setc("wgr_ebsuppercache_timeout", 1, 1800);
 
 //
 (function () {

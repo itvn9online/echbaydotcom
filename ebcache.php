@@ -29,25 +29,8 @@ $ebsuppercache_filename = ___eb_cache_getUrl();
 //
 // echo date('Y-m-d H:i:s', date_time);
 
-// nếu tồn tại cookie wgr_ebsuppercache_timeout -> người dùng đang đăng nhập -> bỏ
-if (isset($_COOKIE['wgr_ebsuppercache_timeout']) || $_SERVER['REQUEST_METHOD'] == 'POST') {
-    // đăng nhập rồi thì bỏ qua -> không nạp cache
-    // echo 'wgr_ebsuppercache_timeout' . '<br>' . PHP_EOL;
-    // echo $ebsuppercache_filename . '<br>' . PHP_EOL;
-}
-// nếu có dùng redis cache thì nhảy vào đây
-else if (EB_REDIS_CACHE == true) {
-    /**
-     * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
-     * hạn chế được người tham gia vào quá trình reset cache
-     */
-    WGR_display($ebsuppercache_filename, mt_rand(250, 350));
-}
-//
-else if (is_file($ebsuppercache_filename)) {
-    /**
-     * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
-     * hạn chế được người tham gia vào quá trình reset cache
-     */
-    WGR_display($ebsuppercache_filename, mt_rand(250, 350));
-}
+/**
+ * tạo thời gian reset cache ngẫu nhiên để trường hợp web quá nhiều truy cập thì cũng
+ * hạn chế được người tham gia vào quá trình reset cache
+ */
+WGR_display($ebsuppercache_filename, mt_rand(250, 350));

@@ -409,6 +409,19 @@ function WGR_buffer($buffer)
 
 function WGR_display($f, $reset_time = 120)
 {
+    // Don't cache POST requests
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        return false;
+    }
+
+    // Check for WordPress auth cookies
+    foreach ($_COOKIE as $cookie_name => $cookie_value) {
+        // Nếu có cookie đăng nhập thì không sử dụng cache
+        if (strpos($cookie_name, 'wordpress_logged_in_') === 0) {
+            return false;
+        }
+    }
+
     // echo $f . '<br>' . PHP_EOL;
     // die(__FILE__ . ':' . __LINE__);
     // nếu sử dụng redis cache thì trả về tham số này luôn
@@ -425,8 +438,10 @@ function WGR_display($f, $reset_time = 120)
         if ($data === false) {
             return false;
         }
-    } else {
+    } else if (is_file($f)) {
         $data = file_get_contents($f, 1);
+    } else {
+        return false;
     }
     // echo $data . '<br>' . PHP_EOL;
     // $content = explode('¦', $data, 2);

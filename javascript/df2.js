@@ -489,7 +489,7 @@ function WGR_set_quick_view_height() {
 //
 function ___eb_custom_login_done() {
 	// thêm cookie để bỏ qua chế độ ebsuppercache
-	g_func.setc("wgr_ebsuppercache_timeout", 1, 1800);
+	// g_func.setc("wgr_ebsuppercache_timeout", 1, 1800);
 
 	// re-load lại trang
 	window.location = window.location.href;

@@ -569,7 +569,7 @@ WGR_open_local_link_in_iframe();
 //jQuery('.fa').addClass('fas').removeClass('fa');
 
 //
-if (isLogin > 0) {
+if (1 > 2 && isLogin > 0) {
 	g_func.setc("wgr_ebsuppercache_timeout", 1, 1800);
 }
 

@@ -1,5 +1,5 @@
 <?php
-if ($mtv_id > 0) {
+if (1 > 2 && $mtv_id > 0) {
     include_once EB_THEME_PLUGIN_INDEX . 'login-exist.php';
 }
 ?>
