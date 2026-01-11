@@ -38,5 +38,12 @@ if (1 > 2 && $mtv_id > 0) {
             </div>
             <br>
         </form>
+        <?php
+        if (EBE_get_lang('policy_url_register') != '#') {
+        ?>
+            <p><?php echo str_replace('{tmp.policy_url_register}', EBE_get_lang('policy_url_register'), EBE_get_lang('policy_register')); ?></p>
+        <?php
+        }
+        ?>
     </div>
 </div>

@@ -582,6 +582,10 @@ $___eb_lang[eb_key_for_site_lang . '_eb_product_dieukien'] = 'Điều kiện';
 $___eb_lang[eb_key_for_site_lang . 'url_chinhsach'] = '#';
 $___eb_lang[eb_key_for_site_lang . 'chinhsach'] = 'Quý khách vui lòng tham khảo <a href="{tmp.url_chinhsach}" target="_blank">chính sách, quy định chung</a> của chúng tôi.';
 
+// URL của phần chính sách, quy định trong phần đăng ký tài khoản
+$___eb_lang[eb_key_for_site_lang . 'policy_url_register'] = '#';
+$___eb_lang[eb_key_for_site_lang . 'policy_register'] = 'Quý khách vui lòng tham khảo <a href="{tmp.policy_url_register}" target="_blank">chính sách, quy định chung</a> của chúng tôi.';
+
 
 
 
