@@ -23,7 +23,7 @@ function EB_flatsome_load_header_static()
         $load_font_awesome = str_replace('../webfonts/', EB_THEME_OUTSOURCE . 'fontawesome-free-5.15.4-web/webfonts/', $load_font_awesome);
         //echo EB_THEME_OUTSOURCE . '<br>' . "\n";
         //echo ABSPATH . '<br>' . "\n";
-        $load_font_awesome = str_replace(ABSPATH, '', $load_font_awesome);
+        $load_font_awesome = str_replace(ABSPATH, web_link, $load_font_awesome);
         echo '<style>' . $load_font_awesome . '</style>';
     }
     // nếu không có file css mà có file zip -> gọi hàm giải nén
