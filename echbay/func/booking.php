@@ -89,6 +89,60 @@ if (_eb_check_email_type($t_email) != 1) {
 	_eb_alert('Email không đúng định dạng');
 }
 
+// mảng danh sách các đuôi email được phép sử dụng
+$allowed_email_suffix = array(
+	// Google
+	'@gmail.com',
+	'@googlemail.com',
+
+	// Microsoft
+	'@outlook.com',
+	'@outlook.vn',
+	'@hotmail.com',
+	'@live.com',
+	'@msn.com',
+
+	// Yahoo
+	'@yahoo.com',
+	'@yahoo.com.vn',
+	'@yahoo.vn',
+	'@ymail.com',
+
+	// Apple
+	'@icloud.com',
+	'@me.com',
+	'@mac.com',
+
+	// Proton
+	'@proton.me',
+	'@protonmail.com',
+	'@pm.me',
+
+	// AOL
+	'@aol.com',
+
+	// Zoho
+	'@zoho.com',
+	'@zohomail.com',
+
+	// GMX
+	'@gmx.com',
+	'@gmx.net',
+
+	// Mail.com
+	'@mail.com',
+
+	// Yandex
+	'@yandex.com',
+	'@ya.ru',
+
+	// Internal domains
+	// '@echbay.com',
+	// '@ebay.vn',
+	// '@ftech.ai'
+);
+// cắt lấy đuôi email
+$email_suffix = substr($t_email, strpos($t_email, '@'));
 
 //
 $t_ten = trim($_POST['t_ten']);
@@ -180,10 +234,13 @@ if (!isset($_POST['hd_products_info'])) {
 
 	$hd_trangthai = -1;
 }
-
 if (!isset($_POST['hd_customer_info'])) {
 	$_POST['hd_customer_info'] = '';
 
+	$hd_trangthai = -1;
+}
+// nếu email ko trong danh sách này thì cũng hủy đơn
+if (!in_array($email_suffix, $allowed_email_suffix)) {
 	$hd_trangthai = -1;
 }
 //die( __FILE__ . ':' . __LINE__ );
@@ -473,11 +530,8 @@ if ($__cf_row['cf_email_note'] != '') {
 
 
 $bcc_email = '';
-if (
-	strpos($t_email, '@gmail.com') !== false ||
-	strpos($t_email, '@yahoo.') !== false ||
-	strpos($t_email, '@hotmail.com') !== false
-) {
+// kiểm tra đuôi email có được phép gửi mail không
+if (in_array($email_suffix, $allowed_email_suffix)) {
 	//	if ( _eb_check_email_type( $t_email ) == 1 ) {
 	$bcc_email = $t_email;
 	//		_eb_send_email( $t_email, $mail_title, $message, '', $mail_to_admin );
