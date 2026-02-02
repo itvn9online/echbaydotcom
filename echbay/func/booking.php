@@ -240,7 +240,7 @@ if (!isset($_POST['hd_customer_info'])) {
 	$hd_trangthai = -1;
 }
 // nếu email ko trong danh sách này thì cũng hủy đơn
-if (!in_array($email_suffix, $allowed_email_suffix)) {
+if (strpos($t_email, '@' . $_SERVER['HTTP_HOST']) === false && !in_array($email_suffix, $allowed_email_suffix)) {
 	$hd_trangthai = -1;
 }
 //die( __FILE__ . ':' . __LINE__ );
