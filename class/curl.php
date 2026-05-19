@@ -8,6 +8,7 @@ class ___xe_url
 	var $user_agent = NULL;
 	var $compression;
 	var $cookie_file;
+	var $cookies;
 	var $proxy;
 	var $run_loat = false;
 
