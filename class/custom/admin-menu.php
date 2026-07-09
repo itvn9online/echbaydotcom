@@ -808,7 +808,7 @@ add_filter("add_attachment", 'EBE_resizeafter_upload_media');
 
 
 // cập nhật lại rule mới cho phân nhóm khi người dùng vào sửa nhóm
-if ($__cf_row['cf_remove_category_base'] == 1) {
+if (1 > 2 && $__cf_row['cf_remove_category_base'] == 1) {
     if (
         strpos($_SERVER['REQUEST_URI'], '/term.php?taxonomy=category') !== false ||
         strpos($_SERVER['REQUEST_URI'], '/edit-tags.php?taxonomy=category') !== false

@@ -131,12 +131,33 @@ function WGR_register_category_taxonomy_rules () {
 }
 
 
+// flush rewrite rules khi gặp 404, tối đa 1 lần/30 phút
+function WGR_maybe_flush_rewrite_rules_on_404 () {
+
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+
+	if ( ! is_404() ) {
+		return;
+	}
+
+	$cache_key = 'wgr_flush_rewrite_rules_on_404';
+	if ( get_transient( $cache_key ) ) {
+		return;
+	}
+
+	flush_rewrite_rules( false );
+	set_transient( $cache_key, time(), 30 * MINUTE_IN_SECONDS );
+}
+
 
 // for category
 if ( $__cf_row['cf_remove_category_base'] == 1 ) {
 	add_filter ( 'term_link', 'WGR_remove_category_parents', 1000, 3 );
 //	add_filter ( 'rewrite_rules_array', '___eb_modife_wp_rule_taxonomy' );
 	add_filter('init', 'WGR_register_category_taxonomy_rules');
+	add_action( 'template_redirect', 'WGR_maybe_flush_rewrite_rules_on_404', 0 );
 }
 
 

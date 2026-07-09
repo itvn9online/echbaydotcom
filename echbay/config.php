@@ -449,7 +449,7 @@ $arr_cf_product_thumbnail_mobile_size = $arr_cf_product_thumbnail_size + array(
 	'ebmobile' => 'Tối ưu cho mobile',
 	'thumbnail' => 'Bản cắt gọn (thumbnail)'
 	//	'medium' => 'Thu gọn (medium)',
-//	'full' => 'Đầy đủ (bản gốc)',
+	//	'full' => 'Đầy đủ (bản gốc)',
 );
 //print_r($arr_cf_product_thumbnail_mobile_size);
 $str_cf_product_thumbnail_mobile_size = '';
@@ -551,8 +551,7 @@ foreach ( $arr_file_for_lang as $v ) {
 //
 if (class_exists('Imagick')) {
 	$config_check_Imagick_exist = '<span class="greencolor">Great! Imagick exist in your server.</span>';
-}
-else {
+} else {
 	$config_check_Imagick_exist = '<span class="orgcolor">Oh! Your server not install Imagick.</span>';
 }
 
@@ -774,19 +773,19 @@ $arr_for_set_template['cf_footer_class_style'] = __eb_create_select_checked_conf
 //echo $__cf_row['cf_current_price'] . 'aaaaaaaaaaaaaaaa<br>';
 $arr_for_set_template['cf_current_price'] = __eb_create_select_checked_config(
 	array(
-	'' => 'đ',
-	'vn/0111' => 'vnđ',
-	'VN/00d0' => 'VNĐ',
-	'VND' => 'VND',
-	'/00A5' => '&yen;',
-	'NT$' => 'NT$',
-	'$' => '$',
-	'USD' => 'USD',
-	//		'KRW' => 'Korean won',
-	'/20A9' => '&#8361;',
-	//		'PHP' => '&#8369;',
-	'/20B1' => '&#8369;'
-),
+		'' => 'đ',
+		'vn/0111' => 'vnđ',
+		'VN/00d0' => 'VNĐ',
+		'VND' => 'VND',
+		'/00A5' => '&yen;',
+		'NT$' => 'NT$',
+		'$' => '$',
+		'USD' => 'USD',
+		//		'KRW' => 'Korean won',
+		'/20A9' => '&#8361;',
+		//		'PHP' => '&#8369;',
+		'/20B1' => '&#8369;'
+	),
 	$__cf_row['cf_current_price'],
 	'cf_current_price'
 );
@@ -901,6 +900,6 @@ $main_content = EBE_arr_tmp($__cf_row_default, $main_content, 'aaa.');
 
 
 // cập nhật lại rule cho wp
-if ($__cf_row['cf_remove_category_base'] == 1) {
+if (1 > 2 && $__cf_row['cf_remove_category_base'] == 1) {
 	add_filter('shutdown', 'flush_rewrite_rules');
 }
