@@ -51,6 +51,7 @@ function ___eb_cache_getUrl($cache_dir = 'all')
             $url = '-';
         } else {
             $arr_cat_social_parameter = array(
+                'gidzl=',
                 'fbclid=',
                 'gclid=',
                 'fb_comment_id=',
