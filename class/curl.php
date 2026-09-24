@@ -74,7 +74,13 @@ class ___xe_url
 			curl_setopt($process, CURLOPT_COOKIEJAR, $this->cookie_file);
 		}
 		curl_setopt($process, CURLOPT_ENCODING, $this->compression);
-		curl_setopt($process, CURLOPT_TIMEOUT, 30);
+		// timeout mặc định 30s; truyền $options['timeout'] để giới hạn (vd. check version GitHub)
+		$timeout = 30;
+		if (isset($options['timeout']) && (int) $options['timeout'] > 0) {
+			$timeout = (int) $options['timeout'];
+		}
+		curl_setopt($process, CURLOPT_CONNECTTIMEOUT, $timeout);
+		curl_setopt($process, CURLOPT_TIMEOUT, $timeout);
 		if ($this->proxy != '') {
 			curl_setopt($process, CURLOPT_PROXY, $this->proxy);
 		}
@@ -83,6 +89,11 @@ class ___xe_url
 		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, false);
 		$return = curl_exec($process);
 		curl_close($process);
+
+		// timeout / lỗi mạng -> trả về chuỗi rỗng để caller bỏ qua
+		if ($return === false) {
+			return '';
+		}
 
 		return $return;
 	}

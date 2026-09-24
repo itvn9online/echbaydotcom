@@ -106,8 +106,21 @@ function WGR_flatsome_function_update($f)
         // copy 1 bản backup
         copy($f, str_replace('/function-update.php', '/function-update-flatsome.php', $f));
 
-        // copy file mẫu ghi đè vào file của flatsome
-        copy('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', $f);
+        // copy file mẫu ghi đè vào file của flatsome (timeout 10s; lỗi thì bỏ qua)
+        $ctx = stream_context_create(array(
+            'http' => array(
+                'timeout' => 10,
+                'method' => 'GET',
+            ),
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ),
+        ));
+        $remote_content = @file_get_contents('https://raw.githubusercontent.com/itvn9online/webgiareorg/main/function-update.php', false, $ctx);
+        if ($remote_content !== false && $remote_content != '') {
+            file_put_contents($f, $remote_content);
+        }
     }
 }
 

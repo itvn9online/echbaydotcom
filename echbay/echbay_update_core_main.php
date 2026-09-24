@@ -315,7 +315,9 @@ if (isset($_GET['confirm_eb_process'])) {
      $url_check_version = 'https://world.webgiare.org/wp-content/echbaydotcom/VERSION';
      */
     if ($version_in_github == false) {
-        $version_in_github = _eb_getUrlContent($url_check_version);
+        $version_in_github = _eb_getUrlContent($url_check_version, '', array(
+            'timeout' => 10
+        ));
         //			$version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/VERSION' );
         /*
          $version_in_github = _eb_getUrlContent( 'https://raw.githubusercontent.com/itvn9online/echbaydotcom/master/readme.txt' );
@@ -324,7 +326,10 @@ if (isset($_GET['confirm_eb_process'])) {
          */
         $version_in_github = _eb_del_line(strip_tags($version_in_github));
 
-        _eb_get_static_html($strCacheFilter, $version_in_github, '', 24 * 3600);
+        // timeout/lỗi mạng -> bỏ qua, không cache kết quả rỗng
+        if ($version_in_github != '') {
+            _eb_get_static_html($strCacheFilter, $version_in_github, '', 24 * 3600);
+        }
     }
 
     // Phiên bản hiện tại
@@ -332,7 +337,9 @@ if (isset($_GET['confirm_eb_process'])) {
     $version_current = file_get_contents(EB_THEME_PLUGIN_INDEX . 'VERSION', 1);
 
     //
-    if ($version_in_github != $version_current) {
+    if ($version_in_github == false || $version_in_github == '') {
+        echo '<h3>Không kiểm tra được phiên bản mới trên GitHub (timeout hoặc lỗi mạng). Phiên bản hiện tại: <strong>' . $version_current . '</strong>.</h3>';
+    } else if ($version_in_github != $version_current) {
         echo '<h3>* Phiên bản mới nhất <strong>' . $version_in_github . '</strong> đã được phát hành, phiên bản hiện tại của bạn là <strong>' . $version_current . '</strong>!</h3>';
     } else {
         echo '<h3>Xin chúc mừng! Phiên bản <strong>' . $version_current . '</strong> bạn đang sử dụng là phiên bản mới nhất.</h3>';
